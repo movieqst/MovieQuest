@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Splitter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f4f0;
+      color: #1a1a18;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; }
+
+    h1 { font-size: 22px; font-weight: 500; margin-bottom: 0.25rem; }
+
+    .subtitle { font-size: 14px; color: #6b6b67; margin-bottom: 1.75rem; }
+
+    .drop-zone {
+      border: 1.5px dashed #b4b2a9;
+      border-radius: 12px;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      background: #fff;
+    }
+    .drop-zone:hover, .drop-zone.drag-over { background: #eef5fc; border-color: #378add; }
+    .drop-zone i { font-size: 32px; color: #888780; display: block; margin-bottom: 10px; }
+    .drop-zone p.main { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .drop-zone p.sub { font-size: 13px; color: #6b6b67; }
+
+    input[type="file"] { display: none; }
+
+    .panel {
+      background: #fff;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .panel-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #6b6b67;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+
+    .settings-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .settings-row label { font-size: 13px; color: #6b6b67; white-space: nowrap; }
+
+    .seg-group { display: flex; gap: 4px; }
+
+    .seg-btn {
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 6px;
+      background: #fff;
+      color: #444441;
+      transition: background 0.1s;
+    }
+    .seg-btn.active { background: #1a1a18; color: #fff; border-color: #1a1a18; }
+
+    /* Direction toggle */
+    .dir-toggle {
+      display: flex;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .dir-btn {
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: #fff;
+      color: #444441;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.1s;
+    }
+    .dir-btn + .dir-btn { border-left: 0.5px solid #d3d1c7; }
+    .dir-btn.active { background: #1a1a18; color: #fff; }
+
+    .cuts-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+    .split-control { flex: 1; min-width: 160px; }
+    .split-control label { font-size: 12px; color: #888780; display: block; margin-bottom: 6px; }
+
+    .range-row { display: flex; align-items: center; gap: 10px; }
+
+    input[type="range"] {
+      flex: 1;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: #d3d1c7;
+      border-radius: 2px;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #378add;
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px #d3d1c7;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #378add;
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+
+    .range-val { font-size: 13px; font-weight: 500; min-width: 36px; text-align: right; }
+
+    .hint { font-size: 12px; color: #b4b2a9; margin-top: 0.75rem; }
+
+    /* Preview — flex-row for vertical splits, flex-col for horizontal */
+    .preview-row {
+      display: flex;
+      gap: 12px;
+    }
+    .preview-row.horizontal { flex-direction: column; }
+    .preview-row.vertical   { flex-direction: row; align-items: flex-start; }
+
+    .preview-item {
+      border: 0.5px solid #d3d1c7;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .preview-row.vertical .preview-item { flex: 1; }
+    .preview-row.horizontal .preview-item { width: 100%; }
+
+    .preview-item img { width: 100%; display: block; }
+
+    .preview-footer {
+      padding: 8px 10px;
+      background: #f5f4f0;
+      border-top: 0.5px solid #d3d1c7;
+    }
+    .preview-label { font-size: 12px; font-weight: 500; color: #444441; margin-bottom: 4px; }
+    .preview-dim   { font-size: 11px; color: #888780; margin-bottom: 6px; }
+
+    .dl-btn {
+      width: 100%;
+      padding: 7px 0;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 0.5px solid #b4b2a9;
+      border-radius: 6px;
+      background: #fff;
+      color: #1a1a18;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: background 0.1s;
+    }
+    .dl-btn:hover { background: #f5f4f0; }
+
+    .dl-all-wrap { margin-top: 1rem; }
+    .dl-all {
+      width: 100%;
+      padding: 11px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 0.5px solid #185fa5;
+      border-radius: 8px;
+      background: #e6f1fb;
+      color: #185fa5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: filter 0.1s;
+    }
+    .dl-all:hover { filter: brightness(0.95); }
+
+    .reset-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #888780;
+      cursor: pointer;
+      text-decoration: underline;
+      background: none;
+      border: none;
+    }
+    .reset-link:hover { color: #1a1a18; }
+
+    canvas { display: none; }
+
+    @media (max-width: 600px) {
+      .preview-row.vertical { flex-direction: column; }
+      .settings-row { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Image splitter</h1>
+  <p class="subtitle">Split any image into 2–4 parts, horizontally or vertically. Adjust cut positions and download as PNG.</p>
+
+  <div id="drop-zone" class="drop-zone" onclick="document.getElementById('file-input').click()">
+    <i class="ti ti-upload" aria-hidden="true"></i>
+    <p class="main">Drop an image here</p>
+    <p class="sub">or click to browse — PNG, JPG, WEBP, GIF</p>
+  </div>
+  <input type="file" id="file-input" accept="image/*">
+
+  <div id="main-panel" style="display:none;">
+
+    <div class="panel">
+      <div class="panel-title">Settings</div>
+
+      <div class="settings-row">
+        <label>Direction</label>
+        <div class="dir-toggle">
+          <button class="dir-btn active" id="btn-horiz" onclick="setDir('horizontal')">
+            <i class="ti ti-layout-rows" aria-hidden="true"></i> Horizontal
+          </button>
+          <button class="dir-btn" id="btn-vert" onclick="setDir('vertical')">
+            <i class="ti ti-layout-columns" aria-hidden="true"></i> Vertical
+          </button>
+        </div>
+
+        <label style="margin-left:0.5rem;">Number of parts</label>
+        <div class="seg-group">
+          <button class="seg-btn" data-n="2" onclick="setN(2)">2</button>
+          <button class="seg-btn active" data-n="3" onclick="setN(3)">3</button>
+          <button class="seg-btn" data-n="4" onclick="setN(4)">4</button>
+        </div>
+      </div>
+
+      <div id="cuts-area" class="cuts-grid"></div>
+      <p class="hint">Drag the sliders to fine-tune where each cut falls.</p>
+    </div>
+
+    <div class="panel" id="preview-panel">
+      <div class="panel-title">Preview</div>
+      <div id="preview-row" class="preview-row vertical"></div>
+      <div class="dl-all-wrap">
+        <button class="dl-all" id="dl-all-btn">
+          <i class="ti ti-download" aria-hidden="true"></i> Download all parts
+        </button>
+      </div>
+    </div>
+
+    <button class="reset-link" onclick="reset()">
+      <i class="ti ti-refresh" aria-hidden="true"></i> Load a different image
+    </button>
+  </div>
+</div>
+
+<canvas id="canvas"></canvas>
+
+<script>
+  let img = new Image();
+  let loaded = false;
+  let numParts = 3;
+  let direction = 'horizontal';
+  let cutPercents = [34, 67];
+  let filename = 'image';
+
+  const dropZone   = document.getElementById('drop-zone');
+  const fileInput  = document.getElementById('file-input');
+  const mainPanel  = document.getElementById('main-panel');
+  const canvas     = document.getElementById('canvas');
+
+  /* ── drag & drop / file pick ── */
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    const f = e.dataTransfer.files[0];
+    if (f && f.type.startsWith('image/')) loadFile(f);
+  });
+  fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+
+  function loadFile(file) {
+    filename = file.name.replace(/\.[^.]+$/, '');
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      loaded = true;
+      canvas.width  = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      /* auto-detect likely direction from aspect ratio */
+      if (img.naturalWidth > img.naturalHeight * 1.5) setDir('vertical');
+      else setDir('horizontal');
+      dropZone.style.display = 'none';
+      mainPanel.style.display = 'block';
+      buildCutControls();
+      render();
+    };
+    img.src = url;
+  }
+
+  /* ── direction ── */
+  function setDir(d) {
+    direction = d;
+    document.getElementById('btn-horiz').classList.toggle('active', d === 'horizontal');
+    document.getElementById('btn-vert').classList.toggle('active',  d === 'vertical');
+    const row = document.getElementById('preview-row');
+    row.classList.toggle('horizontal', d === 'horizontal');
+    row.classList.toggle('vertical',   d === 'vertical');
+    buildCutControls();
+    if (loaded) render();
+  }
+
+  /* ── number of parts ── */
+  function setN(n) {
+    numParts = n;
+    document.querySelectorAll('.seg-btn').forEach(b =>
+      b.classList.toggle('active', parseInt(b.dataset.n) === n));
+    const defaults = { 2: [50], 3: [33, 67], 4: [25, 50, 75] };
+    cutPercents = [...defaults[n]];
+    buildCutControls();
+    if (loaded) render();
+  }
+
+  /* ── build sliders ── */
+  function buildCutControls() {
+    const area = document.getElementById('cuts-area');
+    area.innerHTML = '';
+    const numCuts = numParts - 1;
+    const axisLabel = direction === 'horizontal' ? 'from top' : 'from left';
+    const partLabels = ['A/B', 'B/C', 'C/D'];
+    for (let i = 0; i < numCuts; i++) {
+      const minV = i === 0 ? 5 : cutPercents[i - 1] + 3;
+      const maxV = i === numCuts - 1 ? 95 : cutPercents[i + 1] - 3;
+      const div = document.createElement('div');
+      div.className = 'split-control';
+      div.innerHTML = `
+        <label>Cut ${i + 1} — ${partLabels[i]} boundary (% ${axisLabel})</label>
+        <div class="range-row">
+          <input type="range" min="${minV}" max="${maxV}" step="1"
+                 value="${cutPercents[i]}" id="cut-${i}">
+          <span class="range-val" id="cut-val-${i}">${cutPercents[i]}%</span>
+        </div>`;
+      area.appendChild(div);
+      div.querySelector(`#cut-${i}`).addEventListener('input', function () {
+        cutPercents[i] = parseInt(this.value);
+        document.getElementById(`cut-val-${i}`).textContent = this.value + '%';
+        render();
+      });
+    }
+  }
+
+  /* ── compute slice descriptors ── */
+  function getSlices() {
+    const W = img.naturalWidth;
+    const H = img.naturalHeight;
+    const dim = direction === 'horizontal' ? H : W;
+    const cuts = [0, ...cutPercents.map(p => Math.round(dim * p / 100)), dim];
+    const partNames = ['A', 'B', 'C', 'D'];
+    return cuts.slice(0, -1).map((start, i) => {
+      const size = cuts[i + 1] - start;
+      if (direction === 'horizontal') {
+        return { x: 0, y: start, w: W, h: size,
+                 label: `Part ${partNames[i]}`,
+                 dimText: `${W} × ${size}px`,
+                 file: `${filename}_part_${partNames[i].toLowerCase()}.png` };
+      } else {
+        return { x: start, y: 0, w: size, h: H,
+                 label: `Part ${partNames[i]}`,
+                 dimText: `${size} × ${H}px`,
+                 file: `${filename}_part_${partNames[i].toLowerCase()}.png` };
+      }
+    });
+  }
+
+  /* ── render slice to data URL ── */
+  function sliceDataURL(s) {
+    const tmp = document.createElement('canvas');
+    tmp.width  = s.w;
+    tmp.height = s.h;
+    tmp.getContext('2d').drawImage(img, s.x, s.y, s.w, s.h, 0, 0, s.w, s.h);
+    return tmp.toDataURL('image/png');
+  }
+
+  /* ── build previews ── */
+  function render() {
+    const slices = getSlices();
+    const row = document.getElementById('preview-row');
+    row.innerHTML = '';
+    slices.forEach((s, i) => {
+      const url = sliceDataURL(s);
+      const item = document.createElement('div');
+      item.className = 'preview-item';
+      item.innerHTML = `
+        <img src="${url}" alt="${s.label}">
+        <div class="preview-footer">
+          <div class="preview-label">${s.label}</div>
+          <div class="preview-dim">${s.dimText}</div>
+          <button class="dl-btn" data-idx="${i}">
+            <i class="ti ti-download" aria-hidden="true"></i> Download
+          </button>
+        </div>`;
+      row.appendChild(item);
+    });
+    row.querySelectorAll('.dl-btn').forEach(btn =>
+      btn.addEventListener('click', () => download(parseInt(btn.dataset.idx))));
+  }
+
+  /* ── download ── */
+  function download(idx) {
+    const s = getSlices()[idx];
+    const a = document.createElement('a');
+    a.href = sliceDataURL(s);
+    a.download = s.file;
+    a.click();
+  }
+
+  document.getElementById('dl-all-btn').addEventListener('click', () =>
+    getSlices().forEach((_, i) => setTimeout(() => download(i), i * 300)));
+
+  /* ── reset ── */
+  function reset() {
+    loaded = false;
+    img = new Image();
+    fileInput.value = '';
+    dropZone.style.display = 'block';
+    mainPanel.style.display = 'none';
+  }
+</script>
+</body>
+</html>
