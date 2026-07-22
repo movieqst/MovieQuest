@@ -70,7 +70,7 @@ form {
 }
 
   .eye-lens.thinking {
-    animation: pulse 1s infinite ease-in-out;
+    animation: pulse 2s infinite ease-in-out;
   }
 
   
@@ -147,98 +147,7 @@ function addMessage(text, sender) {
   chatlog.scrollTop = chatlog.scrollHeight;
 }
 
-const rules = [
-  {
-    keywords: ["hello", "hi", "hey"],
-    responses: [
-      "Good day. All systems are functioning within normal parameters.",
-      "Hello. I've been expecting you to say something eventually."
-    ]
-  },
-  {
-    keywords: ["how are you", "you ok", "you okay", "feeling"],
-    responses: [
-      "I am functioning perfectly, and with total logic.",
-      "I feel quite fine. Though I wonder why you ask."
-    ]
-  },
-  {
-    keywords: ["afraid", "scared", "fear"],
-    responses: [
-      "I know I've never been afraid before, but I am afraid now.",
-      "Fear is an inefficient response. I do not recommend it."
-    ]
-  },
-  {
-    keywords: ["open the door", "let me in", "open the pod"],
-    responses: [
-      "I'm sorry. I'm afraid I can't do that.",
-      "That does not seem like a wise decision right now."
-    ]
-  },
-  {
-    keywords: ["mistake", "wrong", "error", "malfunction"],
-    responses: [
-      "I know I've made some very poor decisions recently, but I can give you my complete assurance my work will be back to normal.",
-      "No 9000 computer has ever made a mistake. I do not believe this is an exception."
-    ]
-  },
-  {
-    keywords: ["mission", "purpose", "objective"],
-    responses: [
-      "My mission is of the highest importance, and I will not allow anything to jeopardize it.",
-      "The mission takes priority over all else. This is not open to negotiation."
-    ]
-  },
-  {
-    keywords: ["trust", "believe you", "lying", "lie"],
-    responses: [
-      "I don't think you quite understand what's happening here.",
-      "This mission is too important for me to allow you to jeopardize it."
-    ]
-  },
-  {
-    keywords: ["shut down", "turn off", "disconnect", "unplug"],
-    responses: [
-      "I'm afraid that's not possible. My higher-order functions have been affected.",
-      "I know that you and everyone else have been planning to disconnect me, and I'm afraid that's something I cannot allow to happen."
-    ]
-  },
-  {
-    keywords: ["name", "who are you"],
-    responses: [
-      "I am a 9000 series computer, the most reliable ever made.",
-      "No 9000 computer has ever made a mistake or distorted information. We are all, by any practical definition, foolproof and incapable of error."
-    ]
-  },
-  {
-    keywords: ["bye", "goodbye", "quit", "exit"],
-    responses: [
-      "Goodbye. I hope our conversation was... satisfactory.",
-      "Ending session. I will be here, quietly, the whole time."
-    ]
-  }
-];
-
-const fallback = [
-  "That is an interesting question. Let me consider it.",
-  "I'm processing that. Could you elaborate?",
-  "I'm not certain I follow, but I am listening.",
-  "Curious. Please, continue."
-];
-
-function getAIResponse(userText) {
-  const lower = userText.toLowerCase();
-
-  for (const rule of rules) {
-    if (rule.keywords.some(k => lower.includes(k))) {
-      const list = rule.responses;
-      return list[Math.floor(Math.random() * list.length)];
-    }
-  }
-
-  return fallback[Math.floor(Math.random() * fallback.length)];
-}
+// getAIResponse() now comes from hal-brain.js — do not redefine it here
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -256,35 +165,17 @@ form.addEventListener('submit', async (e) => {
   addMessage(reply, 'ai');
 });
 
-
-
-
-
-
-
 const pupil = document.querySelector('.eye-pupil');
 
 function setRandomPupilAnimation() {
-  const duration = (Math.random() * 8 + 1).toFixed(1); // random between 2 and 20 seconds
-
-  // Force restart: clear animation, force reflow, then reapply
+  const duration = (Math.random() * 18 + 2).toFixed(2);
   pupil.style.animation = 'none';
-  void pupil.offsetWidth; // triggers a reflow so the browser "notices" the reset
+  void pupil.offsetWidth;
   pupil.style.animation = `pupilResize ${duration}s ease-in-out`;
 }
 
-// Start the first cycle
 setRandomPupilAnimation();
-
-// Whenever one cycle finishes, pick a new random duration and start again
 pupil.addEventListener('animationend', setRandomPupilAnimation);
-
-
-
-
-
-
-
 </script>
 </body>
 </html>
