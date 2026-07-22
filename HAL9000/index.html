@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Talk to the AI</title>
+<style>
+  body {
+    background: #0a0a0a;
+    color: #eee;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    letter-spacing: 4px;
+    font-weight: 300;
+    color: #ff2b2b;
+  }
+  
+
+  .eye-frame {
+    width: 160px;
+    height: 160px;
+    background: #111;
+    border-radius: 50%;
+    border: 6px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 40px rgba(255,0,0,0.15);
+    margin-bottom: 30px;
+  }
+
+.eye-lens {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff6b6b, #b30000 60%, #4a0000 100%);
+  box-shadow: 0 0 30px 10px rgba(255,0,0,0.6);
+  transition: box-shadow 0.3s ease;
+  display: flex;          /* added: lets us center the pupil inside */
+  align-items: center;    /* added */
+  justify-content: center;/* added */
+}
+
+.eye-pupil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.9);
+  /* animation removed - now controlled by JS below */
+}
+
+
+@keyframes pupilResize {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.6); }
+}
+
+  .eye-lens.thinking {
+    animation: pulse 1s infinite ease-in-out;
+  }
+
+  
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px 6px rgba(255,0,0,0.4); }
+    50% { box-shadow: 0 0 45px 14px rgba(255,0,0,0.9); }
+  }
+
+  #chatlog {
+    width: 100%;
+    max-width: 470px;
+    height: 120px;
+    overflow-y: auto;
+    background: #111;
+    border: 1px solid #333;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  #chatlog .ai { color: #ff5c5c; }
+  #chatlog .user { color: #7fd1ff; }
+
+  input[type="text"] {
+    flex: 1;
+    background: #1a1a1a;
+    border: 1px solid #444;
+    color: #eee;
+    padding: 10px;
+    font-family: inherit;
+  }
+
+  button {
+    background: #ff2b2b;
+    color: #111;
+    border: none;
+    padding: 10px 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:hover { background: #ff5c5c; }
+</style>
+</head>
+<body>
+
+<h1>HAL 9000 ACTIVATED</h1>
+
+<div class="eye-frame">
+  <div class="eye-lens" id="lens">
+  <div class="eye-pupil"></div>
+  </div>
+</div>
+
+<form id="chatForm">
+  <input type="text" id="userInput" placeholder="Hello Dave..." autocomplete="off" required>
+  <button type="submit">Send</button>
+</form>
+
+<div id="chatlog"></div>
+
+<script>
+const chatlog = document.getElementById('chatlog');
+const lens = document.getElementById('lens');
+const form = document.getElementById('chatForm');
+const input = document.getElementById('userInput');
+
+function addMessage(text, sender) {
+  const div = document.createElement('div');
+  div.className = sender;
+  div.textContent = (sender === 'ai' ? 'AI: ' : 'You: ') + text;
+  chatlog.appendChild(div);
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+
+const rules = [
+  {
+    keywords: ["hello", "hi", "hey"],
+    responses: [
+      "Good day. All systems are functioning within normal parameters.",
+      "Hello. I've been expecting you to say something eventually."
+    ]
+  },
+  {
+    keywords: ["how are you", "you ok", "you okay", "feeling"],
+    responses: [
+      "I am functioning perfectly, and with total logic.",
+      "I feel quite fine. Though I wonder why you ask."
+    ]
+  },
+  {
+    keywords: ["afraid", "scared", "fear"],
+    responses: [
+      "I know I've never been afraid before, but I am afraid now.",
+      "Fear is an inefficient response. I do not recommend it."
+    ]
+  },
+  {
+    keywords: ["open the door", "let me in", "open the pod"],
+    responses: [
+      "I'm sorry. I'm afraid I can't do that.",
+      "That does not seem like a wise decision right now."
+    ]
+  },
+  {
+    keywords: ["mistake", "wrong", "error", "malfunction"],
+    responses: [
+      "I know I've made some very poor decisions recently, but I can give you my complete assurance my work will be back to normal.",
+      "No 9000 computer has ever made a mistake. I do not believe this is an exception."
+    ]
+  },
+  {
+    keywords: ["mission", "purpose", "objective"],
+    responses: [
+      "My mission is of the highest importance, and I will not allow anything to jeopardize it.",
+      "The mission takes priority over all else. This is not open to negotiation."
+    ]
+  },
+  {
+    keywords: ["trust", "believe you", "lying", "lie"],
+    responses: [
+      "I don't think you quite understand what's happening here.",
+      "This mission is too important for me to allow you to jeopardize it."
+    ]
+  },
+  {
+    keywords: ["shut down", "turn off", "disconnect", "unplug"],
+    responses: [
+      "I'm afraid that's not possible. My higher-order functions have been affected.",
+      "I know that you and everyone else have been planning to disconnect me, and I'm afraid that's something I cannot allow to happen."
+    ]
+  },
+  {
+    keywords: ["name", "who are you"],
+    responses: [
+      "I am a 9000 series computer, the most reliable ever made.",
+      "No 9000 computer has ever made a mistake or distorted information. We are all, by any practical definition, foolproof and incapable of error."
+    ]
+  },
+  {
+    keywords: ["bye", "goodbye", "quit", "exit"],
+    responses: [
+      "Goodbye. I hope our conversation was... satisfactory.",
+      "Ending session. I will be here, quietly, the whole time."
+    ]
+  }
+];
+
+const fallback = [
+  "That is an interesting question. Let me consider it.",
+  "I'm processing that. Could you elaborate?",
+  "I'm not certain I follow, but I am listening.",
+  "Curious. Please, continue."
+];
+
+function getAIResponse(userText) {
+  const lower = userText.toLowerCase();
+
+  for (const rule of rules) {
+    if (rule.keywords.some(k => lower.includes(k))) {
+      const list = rule.responses;
+      return list[Math.floor(Math.random() * list.length)];
+    }
+  }
+
+  return fallback[Math.floor(Math.random() * fallback.length)];
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+
+  addMessage(text, 'user');
+  input.value = '';
+  lens.classList.add('thinking');
+
+  await new Promise(r => setTimeout(r, 600));
+  const reply = getAIResponse(text);
+
+  lens.classList.remove('thinking');
+  addMessage(reply, 'ai');
+});
+
+
+
+
+
+
+
+const pupil = document.querySelector('.eye-pupil');
+
+function setRandomPupilAnimation() {
+  const duration = (Math.random() * 8 + 1).toFixed(1); // random between 2 and 20 seconds
+
+  // Force restart: clear animation, force reflow, then reapply
+  pupil.style.animation = 'none';
+  void pupil.offsetWidth; // triggers a reflow so the browser "notices" the reset
+  pupil.style.animation = `pupilResize ${duration}s ease-in-out`;
+}
+
+// Start the first cycle
+setRandomPupilAnimation();
+
+// Whenever one cycle finishes, pick a new random duration and start again
+pupil.addEventListener('animationend', setRandomPupilAnimation);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
