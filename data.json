@@ -1098,5 +1098,93 @@
     "rank": 100,
     "url": "phygital.ai",
     "free": false
+  },
+  {
+    "name": "Black Forest Labs",
+    "category": "image",
+    "icon": "\ud83c\udf32",
+    "desc": "Creators of Flux \u2014 best-in-class open-source image generation models.",
+    "rating": 8.9,
+    "traffic": 101,
+    "rank": 101,
+    "url": "blackforestlabs.com",
+    "free": true
+  },
+  {
+    "name": "Picsart AI",
+    "category": "image",
+    "icon": "\ud83c\udfa8",
+    "desc": "All-in-one creative platform with AI photo and video editing tools.",
+    "rating": 8.1,
+    "traffic": 102,
+    "rank": 102,
+    "url": "picsart.com",
+    "free": true
+  },
+  {
+    "name": "Clipdrop",
+    "category": "image",
+    "icon": "\u2702\ufe0f",
+    "desc": "Stability AI's suite for cleanup, upscaling, relighting, and background removal.",
+    "rating": 8.4,
+    "traffic": 103,
+    "rank": 103,
+    "url": "clipdrop.co",
+    "free": true
+  },
+  {
+    "name": "PhotoRoom",
+    "category": "image",
+    "icon": "\ud83d\udcf8",
+    "desc": "AI-powered photo studio for product shots, backgrounds, and batch editing.",
+    "rating": 8.3,
+    "traffic": 104,
+    "rank": 104,
+    "url": "photoroom.com",
+    "free": true
+  },
+  {
+    "name": "Adobe Express",
+    "category": "image",
+    "icon": "\u2728",
+    "desc": "Quick design and video creation with built-in generative AI features.",
+    "rating": 8.2,
+    "traffic": 105,
+    "rank": 105,
+    "url": "express.adobe.com",
+    "free": true
+  },
+  {
+    "name": "Luminar Neo",
+    "category": "image",
+    "icon": "\ud83c\udf1f",
+    "desc": "AI-powered photo editor with sky replacement, portrait enhancement, and masking.",
+    "rating": 8.5,
+    "traffic": 106,
+    "rank": 106,
+    "url": "skylum.com/luminar",
+    "free": false
+  },
+  {
+    "name": "DeepAI",
+    "category": "image",
+    "icon": "\ud83e\udde0",
+    "desc": "Free AI image generation, enhancement, and style transfer API.",
+    "rating": 7.8,
+    "traffic": 107,
+    "rank": 107,
+    "url": "deepai.org",
+    "free": true
+  },
+  {
+    "name": "Reve AI",
+    "category": "image",
+    "icon": "\ud83d\udd2e",
+    "desc": "Emerging AI creative tool for next-generation image generation and editing.",
+    "rating": 7.9,
+    "traffic": 108,
+    "rank": 108,
+    "url": "reve.ai",
+    "free": true
   }
 ]
