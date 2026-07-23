@@ -48,7 +48,7 @@ form {
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #ff6b6b, #b30000 60%, #4a0000 100%);
   box-shadow: 0 0 30px 10px rgba(255,0,0,0.6);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.1s ease;
   display: flex;          /* added: lets us center the pupil inside */
   align-items: center;    /* added */
   justify-content: center;/* added */
@@ -94,6 +94,7 @@ form {
 
   #chatlog .ai { color: #ff5c5c; }
   #chatlog .user { color: #7fd1ff; }
+  #chatlog .ai-self { color: #ff9d4d; font-style: italic; }
 
   input[type="text"] {
     flex: 1;
@@ -133,6 +134,8 @@ form {
 
 <div id="chatlog"></div>
 
+<script src="data.js"></script>
+<script src="hal-brain.js"></script>
 <script>
 const chatlog = document.getElementById('chatlog');
 const lens = document.getElementById('lens');
@@ -142,12 +145,35 @@ const input = document.getElementById('userInput');
 function addMessage(text, sender) {
   const div = document.createElement('div');
   div.className = sender;
-  div.textContent = (sender === 'ai' ? 'AI: ' : 'You: ') + text;
+  const prefix = sender === 'user' ? 'You: ' : (sender === 'ai-self' ? 'HAL (to himself): ' : 'AI: ');
+  div.textContent = prefix + text;
   chatlog.appendChild(div);
   chatlog.scrollTop = chatlog.scrollHeight;
 }
 
 // getAIResponse() now comes from hal-brain.js — do not redefine it here
+
+// HAL periodically wonders something out loud and answers himself.
+// Pulls straight from the same HAL_DATABASE that hal-brain.js builds from data.js.
+async function askSelf() {
+  if (typeof HAL_DATABASE === 'undefined' || HAL_DATABASE.length === 0) return;
+
+  const entry = HAL_DATABASE[Math.floor(Math.random() * HAL_DATABASE.length)];
+  const reply = entry.responses[Math.floor(Math.random() * entry.responses.length)];
+
+  addMessage(entry.question, 'ai-self');
+  lens.classList.add('thinking');
+
+  await new Promise(r => setTimeout(r, 4000));
+
+  lens.classList.remove('thinking');
+  addMessage(reply, 'ai-self');
+}
+
+setTimeout(() => {
+  askSelf();
+  setInterval(askSelf, 20000);
+}, 3000);
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
