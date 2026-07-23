@@ -1,0 +1,20 @@
+[
+  { "name": "ChatGPT", "category": "chat", "icon": "💬", "desc": "OpenAI's flagship conversational AI. Best for general assistance, coding help, creative writing.", "rating": 9.5, "traffic": 1, "rank": 1, "url": "chat.openai.com", "free": true },
+  { "name": "GitHub Copilot", "category": "code", "icon": "💻", "desc": "AI pair programmer that suggests code in real-time as you type.", "rating": 9.4, "traffic": 4, "rank": 4, "url": "github.com/features/copilot", "free": false },
+  { "name": "Midjourney", "category": "image", "icon": "🔥", "desc": "AI image generation tool known for stunning artistic and photorealistic images.", "rating": 9.3, "traffic": 2, "rank": 2, "url": "midjourney.com", "free": false },
+  { "name": "Claude", "category": "chat", "icon": "A", "desc": "Anthropic's AI assistant with strong reasoning and long-context capabilities.", "rating": 9.2, "traffic": 3, "rank": 3, "url": "claude.ai", "free": true },
+  { "name": "Cursor", "category": "code", "icon": "▶", "desc": "AI-powered code editor built on VS Code with integrated chat and autocomplete.", "rating": 9.0, "traffic": 5, "rank": 5, "url": "cursor.com", "free": true },
+  { "name": "ElevenLabs", "category": "voice", "icon": "🔈", "desc": "State-of-the-art AI voice synthesis and text-to-speech platform.", "rating": 8.9, "traffic": 6, "rank": 6, "url": "elevenlabs.io", "free": true },
+  { "name": "Runway", "category": "video", "icon": "🎬", "desc": "AI video generation and editing suite for creators and filmmakers.", "rating": 8.8, "traffic": 7, "rank": 7, "url": "runwayml.com", "free": false },
+  { "name": "Hugging Face", "category": "code", "icon": "🤗", "desc": "Open-source AI model hub and platform for machine learning tools.", "rating": 8.7, "traffic": 8, "rank": 8, "url": "huggingface.co", "free": true },
+  { "name": "Sora", "category": "video", "icon": "🎨", "desc": "OpenAI's text-to-video generation model creating realistic video from prompts.", "rating": 8.7, "traffic": 9, "rank": 9, "url": "openai.com/sora", "free": false },
+  { "name": "Gemini", "category": "chat", "icon": "+", "desc": "Google's multimodal AI with deep integration into Google Workspace and Search.", "rating": 8.6, "traffic": 10, "rank": 10, "url": "gemini.google.com", "free": true },
+  { "name": "Suno", "category": "voice", "icon": "🎵", "desc": "AI music generation that creates original songs from text prompts.", "rating": 8.5, "traffic": 11, "rank": 11, "url": "suno.ai", "free": true },
+  { "name": "DALL-E", "category": "image", "icon": "🔍", "desc": "OpenAI's image generation model for creating images from text descriptions.", "rating": 8.5, "traffic": 12, "rank": 12, "url": "labs.openai.com", "free": false },
+  { "name": "Stable Diffusion", "category": "image", "icon": "🔧", "desc": "Open-source image generation model with extensive customization options.", "rating": 8.4, "traffic": 13, "rank": 13, "url": "stability.ai", "free": true },
+  { "name": "Perplexity", "category": "chat", "icon": "◆", "desc": "AI-powered search engine that provides cited answers to complex queries.", "rating": 8.4, "traffic": 14, "rank": 14, "url": "perplexity.ai", "free": true },
+  { "name": "Codeium", "category": "code", "icon": "⚡", "desc": "Free AI coding assistant with autocomplete and chat features.", "rating": 8.3, "traffic": 15, "rank": 15, "url": "codeium.com", "free": true },
+  { "name": "Canva AI", "category": "image", "icon": "✎", "desc": "Design platform with built-in AI tools for images, presentations, and more.", "rating": 8.2, "traffic": 16, "rank": 16, "url": "canva.com", "free": true },
+  { "name": "Descript", "category": "video", "icon": "📝", "desc": "AI-powered video and audio editing with transcription and overdub features.", "rating": 8.1, "traffic": 17, "rank": 17, "url": "descript.com", "free": true },
+  { "name": "Kimi", "category": "chat", "icon": "🌙", "desc": "Moonshot AI's long-context assistant supporting up to 2M tokens.", "rating": 8.0, "traffic": 18, "rank": 18, "url": "kimi.moonshot.cn", "free": true }
+]
