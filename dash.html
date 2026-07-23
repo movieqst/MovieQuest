@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Dashboard</title>
+<title>AI Control Dashboard</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -258,12 +258,6 @@
     background: rgba(255,107,107,0.15);
     color: #ff6b6b;
   }
-  .card-rank {
-    font-size: 0.7rem;
-    color: #484f58;
-    font-weight: 600;
-  }
-
   .card-footer {
     display: flex;
     align-items: center;
@@ -327,8 +321,8 @@
 </div>
 
 <div class="header">
-  <h1>A I &nbsp;  C O N T R O L </h1>
-  <div class="subtitle">DASHBOARD</div>
+  <h1>A I &nbsp; D A S H &nbsp; C O N T R O L &nbsp; B O A R D</h1>
+  <div class="subtitle">Discover the best AI tools</div>
 </div>
 
 <div class="search-bar">
@@ -339,8 +333,7 @@
   <div class="control-group">
     <label>Sort by:</label>
     <select id="sortSelect">
-      <option value="rank">Rank</option>
-      <option value="rating">Rating</option>
+      <option value="rating" selected>Rating</option>
       <option value="traffic">Traffic</option>
       <option value="name">Name</option>
     </select>
@@ -368,7 +361,7 @@ const categoryColors = {
 
 let allData = [];
 let currentFilter = 'all';
-let currentSort = 'rank';
+let currentSort = 'rating';
 let currentFreeFilter = 'all';
 let searchQuery = '';
 
@@ -407,9 +400,8 @@ function getFilteredData() {
   
   data.sort((a, b) => {
     if (currentSort === 'name') return a.name.localeCompare(b.name);
-    if (currentSort === 'rating') return b.rating - a.rating;
     if (currentSort === 'traffic') return a.traffic - b.traffic;
-    return a.rank - b.rank;
+    return b.rating - a.rating;
   });
   
   return data;
@@ -441,7 +433,6 @@ function render() {
         <div class="card-meta">
           <div class="card-rating">${star} ${item.rating}</div>
           <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}">${item.free ? 'Free' : 'Paid'}</span>
-          <span class="card-rank">#${item.rank}</span>
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
