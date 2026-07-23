@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Control Dashboard</title>
+<meta name="description" content="Discover and compare the best AI tools for chat, image generation, video, audio, and coding. Filter, sort, and find the perfect AI for your workflow.">
+<title>AI Dash Control Board - Best AI Tools Directory</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -16,19 +18,17 @@
 
   .affiliate-notice {
     text-align: center;
-    padding: 8px 16px;
+    padding: 6px 16px;
     background: #0d1117;
     border-bottom: 1px solid #1c2128;
     font-size: 11px;
-    color: #8b949e;
+    color: #6e7681;
     letter-spacing: 0.3px;
   }
   .affiliate-notice .notice-word {
-    font-size: 13px;
-    font-weight: 700;
-    color: #ff6b6b;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #8b949e;
   }
 
   .top-nav {
@@ -64,8 +64,8 @@
     box-shadow: 0 0 10px currentColor;
   }
 
-  .tab-all       { color: #ff4444; }
-  .tab-all:hover, .tab-all.active       { background: rgba(255,68,68,0.1); }
+  .tab-all       { color: #e6edf3; }
+  .tab-all:hover, .tab-all.active       { background: rgba(230,237,243,0.08); }
   .tab-chat      { color: #58a6ff; }
   .tab-chat:hover, .tab-chat.active     { background: rgba(88,166,255,0.1); }
   .tab-image     { color: #f0883e; }
@@ -89,11 +89,11 @@
     text-transform: uppercase;
   }
   .header .subtitle {
-    font-size: 1.2rem;
+    font-size: 0.7rem;
     color: #ff6b6b;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-transform: uppercase;
-    margin-top: 6px;
+    margin-top: 4px;
     font-weight: 600;
   }
 
@@ -258,6 +258,12 @@
     background: rgba(255,107,107,0.15);
     color: #ff6b6b;
   }
+  .card-rank {
+    font-size: 0.7rem;
+    color: #6e7681;
+    font-weight: 600;
+  }
+
   .card-footer {
     display: flex;
     align-items: center;
@@ -279,7 +285,7 @@
   }
   .card-traffic {
     font-size: 0.7rem;
-    color: #484f58;
+    color: #6e7681;
   }
 
   .no-results {
@@ -287,6 +293,15 @@
     padding: 60px 20px;
     color: #484f58;
     font-size: 0.9rem;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #484f58;
+    font-size: 0.75rem;
+    border-top: 1px solid #1c2128;
+    margin-top: 40px;
   }
 
   @media (max-width: 640px) {
@@ -304,11 +319,12 @@
     }
   }
 </style>
+<base target="_blank">
 </head>
 <body>
 
 <div class="affiliate-notice">
-  <span class="notice-word">NOTICE:</span> AFFILIATE LINKS ARE EMBEDDED. BY USING THIS APP AND CLICKING THE LINK YOU ARE PROVIDING SUPPORT. THANK YOU!
+  <span class="notice-word">Notice:</span> Affiliate links are embedded. By using this app and clicking the links you are providing support. Thank you!
 </div>
 
 <div class="top-nav" id="topNav">
@@ -321,8 +337,8 @@
 </div>
 
 <div class="header">
-  <h1>A I &nbsp; D A S H</h1>
-  <div class="subtitle" id="appCounter">Loading...</div>
+  <h1>A I &nbsp; D A S H &nbsp; C O N T R O L &nbsp; B O A R D</h1>
+  <div class="subtitle">Discover the best AI tools</div>
 </div>
 
 <div class="search-bar">
@@ -333,7 +349,8 @@
   <div class="control-group">
     <label>Sort by:</label>
     <select id="sortSelect">
-      <option value="rating" selected>Rating</option>
+      <option value="rank">Rank</option>
+      <option value="rating">Rating</option>
       <option value="traffic">Traffic</option>
       <option value="name">Name</option>
     </select>
@@ -350,6 +367,11 @@
 
 <div class="cards-grid" id="cardsGrid"></div>
 
+<div class="footer">
+  <p>AI Dash Control Board &mdash; Curated directory of the best artificial intelligence tools.</p>
+  <p style="margin-top:6px; color:#6e7681;">Built with care. Data updates regularly.</p>
+</div>
+
 <script>
 const categoryColors = {
   chat:  { accent: '#58a6ff', bg: 'rgba(88,166,255,0.1)' },
@@ -361,7 +383,7 @@ const categoryColors = {
 
 let allData = [];
 let currentFilter = 'all';
-let currentSort = 'rating';
+let currentSort = 'rank';
 let currentFreeFilter = 'all';
 let searchQuery = '';
 
@@ -370,8 +392,6 @@ async function loadData() {
     const res = await fetch('data.json');
     allData = await res.json();
     render();
-    const counter = document.getElementById('appCounter');
-    if (counter) counter.textContent = 'VIEWING ' + allData.length + ' AI APPS';
   } catch (e) {
     document.getElementById('cardsGrid').innerHTML = 
       '<div class="no-results">Error loading data. Please check that data.json is in the same folder.</div>';
@@ -380,17 +400,17 @@ async function loadData() {
 
 function getFilteredData() {
   let data = [...allData];
-  
+
   if (currentFilter !== 'all') {
     data = data.filter(item => item.category === currentFilter);
   }
-  
+
   if (currentFreeFilter === 'free') {
     data = data.filter(item => item.free === true);
   } else if (currentFreeFilter === 'paid') {
     data = data.filter(item => item.free === false);
   }
-  
+
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     data = data.filter(item => 
@@ -399,41 +419,30 @@ function getFilteredData() {
       item.category.toLowerCase().includes(q)
     );
   }
-  
+
   data.sort((a, b) => {
     if (currentSort === 'name') return a.name.localeCompare(b.name);
+    if (currentSort === 'rating') return b.rating - a.rating;
     if (currentSort === 'traffic') return a.traffic - b.traffic;
-    return b.rating - a.rating;
+    return a.rank - b.rank;
   });
-  
-  // Update the counter
-  const counter = document.getElementById('appCounter');
-  if (counter) {
-    const total = allData.length;
-    const showing = data.length;
-    if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all') {
-      counter.textContent = 'VIEWING ' + total + ' AI APPS';
-    } else {
-      counter.textContent = 'VIEWING ' + showing + ' OF ' + total + ' AI APPS';
-    }
-  }
-  
+
   return data;
 }
 
 function render() {
   const grid = document.getElementById('cardsGrid');
   const data = getFilteredData();
-  
+
   if (data.length === 0) {
     grid.innerHTML = '<div class="no-results">No tools found matching your criteria.</div>';
     return;
   }
-  
+
   grid.innerHTML = data.map(item => {
     const colors = categoryColors[item.category] || categoryColors.chat;
     const star = '<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-    
+
     return `
       <div class="card" style="--accent:${colors.accent};--accent-bg:${colors.bg}" onclick="window.open('https://${item.url}','_blank')">
         <div class="card-header">
@@ -447,6 +456,7 @@ function render() {
         <div class="card-meta">
           <div class="card-rating">${star} ${item.rating}</div>
           <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}">${item.free ? 'Free' : 'Paid'}</span>
+          <span class="card-rank">#${item.rank}</span>
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
