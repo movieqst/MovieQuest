@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>HAL 9000 ACTIVATED</title>
 <style>
@@ -12,7 +13,8 @@
   html, body {
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     overscroll-behavior: none;
   }
 
@@ -159,7 +161,7 @@ form {
 
 <div id="chatlog"></div>
 
-<a id="logo-link" href="https://www.moviequest.ca"><img src="logo.jpg" alt="MOVIE QUEST CANADA" width="70" height="70"></a>
+<a id="logo-link" href="https://www.moviequest.ca/"><img src="logo.jpg" alt="MOVIE QUEST CANADA" width="70" height="70"></a>
 
 <script src="data.js"></script>
 <script src="hal-brain.js"></script>
@@ -233,6 +235,7 @@ function setRandomPupilAnimation() {
 setRandomPupilAnimation();
 pupil.addEventListener('animationend', setRandomPupilAnimation);
 </script>
+
 
 
 </body></html>
