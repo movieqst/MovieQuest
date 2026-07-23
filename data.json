@@ -4,39 +4,129 @@
     "category": "chat",
     "icon": "\ud83d\udcac",
     "desc": "OpenAI's flagship conversational AI. Best for general assistance, coding help, creative writing.",
-    "rating": 9.5,
+    "rating": 10.0,
     "traffic": 1,
     "url": "chat.openai.com",
     "free": true
-  },
-  {
-    "name": "GitHub Copilot",
-    "category": "code",
-    "icon": "\ud83d\udcbb",
-    "desc": "AI pair programmer that suggests code in real-time as you type.",
-    "rating": 9.4,
-    "traffic": 2,
-    "url": "github.com/features/copilot",
-    "free": false
-  },
-  {
-    "name": "Midjourney",
-    "category": "image",
-    "icon": "\ud83d\udd25",
-    "desc": "AI image generation tool known for stunning artistic and photorealistic images.",
-    "rating": 9.3,
-    "traffic": 3,
-    "url": "midjourney.com",
-    "free": false
   },
   {
     "name": "Claude",
     "category": "chat",
     "icon": "A",
     "desc": "Anthropic's AI assistant with strong reasoning and long-context capabilities.",
-    "rating": 9.2,
-    "traffic": 4,
+    "rating": 10.0,
+    "traffic": 2,
     "url": "claude.ai",
+    "free": true
+  },
+  {
+    "name": "Claude Code",
+    "category": "code",
+    "icon": "\ud83d\udcbb",
+    "desc": "Terminal-native AI coding agent that reads, writes, and executes code.",
+    "rating": 10.0,
+    "traffic": 3,
+    "url": "claude.ai/code",
+    "free": true
+  },
+  {
+    "name": "Higgsfield",
+    "category": "video",
+    "icon": "\ud83c\udf0c",
+    "desc": "All-in-one creative workspace for AI image and video production.",
+    "rating": 10.0,
+    "traffic": 4,
+    "url": "higgsfield.ai",
+    "free": false
+  },
+  {
+    "name": "Kimi",
+    "category": "chat",
+    "icon": "\ud83c\udf19",
+    "desc": "Moonshot AI's long-context assistant supporting up to 2M tokens.",
+    "rating": 10.0,
+    "traffic": 5,
+    "url": "kimi.moonshot.cn",
+    "free": true
+  },
+  {
+    "name": "Gemini",
+    "category": "chat",
+    "icon": "+",
+    "desc": "Google's multimodal AI with deep integration into Google Workspace and Search.",
+    "rating": 9.9,
+    "traffic": 6,
+    "url": "gemini.google.com",
+    "free": true
+  },
+  {
+    "name": "DeepSeek",
+    "category": "chat",
+    "icon": "\ud83d\udd37",
+    "desc": "Open-source Chinese AI with deep reasoning, comparable to OpenAI at lower cost.",
+    "rating": 9.8,
+    "traffic": 7,
+    "url": "deepseek.com",
+    "free": true
+  },
+  {
+    "name": "Ideogram",
+    "category": "image",
+    "icon": "\ud83d\udd8a",
+    "desc": "AI image generation with exceptional text rendering within images.",
+    "rating": 9.8,
+    "traffic": 8,
+    "url": "ideogram.ai",
+    "free": true
+  },
+  {
+    "name": "Superhuman",
+    "category": "chat",
+    "icon": "\u2709",
+    "desc": "AI-powered email client with drafting, summarizing, and prioritization.",
+    "rating": 9.7,
+    "traffic": 9,
+    "url": "superhuman.com",
+    "free": false
+  },
+  {
+    "name": "Grok",
+    "category": "chat",
+    "icon": "\u26a1",
+    "desc": "xAI's real-time chatbot with X integration and uncensored personality.",
+    "rating": 9.6,
+    "traffic": 10,
+    "url": "x.com/grok",
+    "free": true
+  },
+  {
+    "name": "Copilot (Microsoft)",
+    "category": "chat",
+    "icon": "\ud83e\ude9f",
+    "desc": "Microsoft's AI assistant integrated across 365 apps and Edge browser.",
+    "rating": 9.5,
+    "traffic": 11,
+    "url": "copilot.microsoft.com",
+    "free": true
+  },
+  {
+    "name": "Suno",
+    "category": "audio",
+    "icon": "\ud83c\udfb5",
+    "desc": "AI music generation that creates original songs from text prompts.",
+    "rating": 9.5,
+    "traffic": 12,
+    "url": "suno.ai",
+    "free": true
+  },
+  {
+    "name": "Stable Diffusion",
+    "category": "image",
+    "icon": "\ud83d\udd27",
+    "desc": "Open-source image generation model with extensive customization options.",
+    "rating": 9.4,
+    "traffic": 13,
+    "url": "stability.ai",
     "free": true
   },
   {
@@ -45,38 +135,28 @@
     "icon": "\ud83d\uddbc",
     "desc": "OpenAI's flagship for ultra-detailed 8K image generation.",
     "rating": 9.2,
-    "traffic": 5,
+    "traffic": 14,
     "url": "openai.com",
     "free": false
   },
   {
-    "name": "Claude Code",
-    "category": "code",
-    "icon": "\ud83d\udcbb",
-    "desc": "Terminal-native AI coding agent that reads, writes, and executes code.",
-    "rating": 9.1,
-    "traffic": 6,
-    "url": "claude.ai/code",
+    "name": "ElevenLabs",
+    "category": "audio",
+    "icon": "\ud83d\udd08",
+    "desc": "State-of-the-art AI voice synthesis and text-to-speech platform.",
+    "rating": 9.0,
+    "traffic": 15,
+    "url": "elevenlabs.io",
     "free": true
   },
   {
-    "name": "Cursor",
-    "category": "code",
-    "icon": "\u25b6",
-    "desc": "AI-powered code editor built on VS Code with integrated chat and autocomplete.",
+    "name": "Vapi AI",
+    "category": "audio",
+    "icon": "\ud83d\udcde",
+    "desc": "Real-time AI voice agents for inbound/outbound phone call automation.",
     "rating": 9.0,
-    "traffic": 7,
-    "url": "cursor.com",
-    "free": true
-  },
-  {
-    "name": "Veo 3",
-    "category": "video",
-    "icon": "\ud83c\udfa5",
-    "desc": "Google's 4K video generation with synchronized native audio.",
-    "rating": 9.0,
-    "traffic": 8,
-    "url": "labs.google/veo",
+    "traffic": 16,
+    "url": "vapi.ai",
     "free": false
   },
   {
@@ -85,7 +165,7 @@
     "icon": "\ud83d\udd25",
     "desc": "Generative AI studio with commercially-safe outputs, built into Creative Cloud.",
     "rating": 8.9,
-    "traffic": 9,
+    "traffic": 17,
     "url": "firefly.adobe.com",
     "free": true
   },
@@ -95,7 +175,7 @@
     "icon": "\ud83c\udf32",
     "desc": "Creators of Flux \u2014 best-in-class open-source image generation models.",
     "rating": 8.9,
-    "traffic": 10,
+    "traffic": 18,
     "url": "blackforestlabs.com",
     "free": true
   },
@@ -105,49 +185,9 @@
     "icon": "\ud83e\udd16",
     "desc": "Agentic coding tool integrated into ChatGPT for autonomous development.",
     "rating": 8.9,
-    "traffic": 11,
+    "traffic": 19,
     "url": "openai.com/codex",
     "free": true
-  },
-  {
-    "name": "ElevenLabs",
-    "category": "audio",
-    "icon": "\ud83d\udd08",
-    "desc": "State-of-the-art AI voice synthesis and text-to-speech platform.",
-    "rating": 8.9,
-    "traffic": 12,
-    "url": "elevenlabs.io",
-    "free": true
-  },
-  {
-    "name": "DeepSeek",
-    "category": "chat",
-    "icon": "\ud83d\udd37",
-    "desc": "Open-source Chinese AI with deep reasoning, comparable to OpenAI at lower cost.",
-    "rating": 8.8,
-    "traffic": 13,
-    "url": "deepseek.com",
-    "free": true
-  },
-  {
-    "name": "Flux",
-    "category": "image",
-    "icon": "\u26a1",
-    "desc": "Best-in-class photorealistic image generation with stunning detail.",
-    "rating": 8.8,
-    "traffic": 14,
-    "url": "flux.ai",
-    "free": false
-  },
-  {
-    "name": "Runway",
-    "category": "video",
-    "icon": "\ud83c\udfac",
-    "desc": "AI video generation and editing suite for creators and filmmakers.",
-    "rating": 8.8,
-    "traffic": 15,
-    "url": "runwayml.com",
-    "free": false
   },
   {
     "name": "Topaz Labs",
@@ -155,7 +195,7 @@
     "icon": "\ud83d\udc8e",
     "desc": "Professional-grade photo enhancement with Gigapixel and Sharpen AI.",
     "rating": 8.8,
-    "traffic": 16,
+    "traffic": 20,
     "url": "topazlabs.com",
     "free": false
   },
@@ -165,7 +205,7 @@
     "icon": "\ud83d\udc64",
     "desc": "Realistic AI avatar videos for product demos and training content.",
     "rating": 8.7,
-    "traffic": 17,
+    "traffic": 21,
     "url": "heygen.com",
     "free": false
   },
@@ -175,18 +215,8 @@
     "icon": "\ud83e\udd17",
     "desc": "Open-source AI model hub and platform for machine learning tools.",
     "rating": 8.7,
-    "traffic": 18,
+    "traffic": 22,
     "url": "huggingface.co",
-    "free": true
-  },
-  {
-    "name": "Ideogram",
-    "category": "image",
-    "icon": "\ud83d\udd8a",
-    "desc": "AI image generation with exceptional text rendering within images.",
-    "rating": 8.7,
-    "traffic": 19,
-    "url": "ideogram.ai",
     "free": true
   },
   {
@@ -195,28 +225,8 @@
     "icon": "\ud83d\udeab",
     "desc": "Instant background removal \u2014 simple, fast, and accurate.",
     "rating": 8.7,
-    "traffic": 20,
+    "traffic": 23,
     "url": "remove.bg",
-    "free": true
-  },
-  {
-    "name": "Sora",
-    "category": "video",
-    "icon": "\ud83c\udfa8",
-    "desc": "OpenAI's text-to-video generation model creating realistic video from prompts.",
-    "rating": 8.7,
-    "traffic": 21,
-    "url": "openai.com/sora",
-    "free": false
-  },
-  {
-    "name": "Gemini",
-    "category": "chat",
-    "icon": "+",
-    "desc": "Google's multimodal AI with deep integration into Google Workspace and Search.",
-    "rating": 8.6,
-    "traffic": 22,
-    "url": "gemini.google.com",
     "free": true
   },
   {
@@ -225,7 +235,7 @@
     "icon": "\ud83c\udf9e",
     "desc": "High-value video generation producing 2-minute clips affordably.",
     "rating": 8.6,
-    "traffic": 23,
+    "traffic": 24,
     "url": "klingai.com",
     "free": true
   },
@@ -235,19 +245,9 @@
     "icon": "\ud83c\udfae",
     "desc": "Game assets, real-time canvas, and style consistency for creatives.",
     "rating": 8.6,
-    "traffic": 24,
+    "traffic": 25,
     "url": "leonardo.ai",
     "free": true
-  },
-  {
-    "name": "Superhuman",
-    "category": "chat",
-    "icon": "\u2709",
-    "desc": "AI-powered email client with drafting, summarizing, and prioritization.",
-    "rating": 8.6,
-    "traffic": 25,
-    "url": "superhuman.com",
-    "free": false
   },
   {
     "name": "Synthesia",
@@ -270,24 +270,14 @@
     "free": true
   },
   {
-    "name": "Copilot (Microsoft)",
-    "category": "chat",
-    "icon": "\ud83e\ude9f",
-    "desc": "Microsoft's AI assistant integrated across 365 apps and Edge browser.",
+    "name": "Cursor",
+    "category": "code",
+    "icon": "\u25b6",
+    "desc": "AI-powered code editor built on VS Code with integrated chat and autocomplete.",
     "rating": 8.5,
     "traffic": 28,
-    "url": "copilot.microsoft.com",
+    "url": "cursor.com",
     "free": true
-  },
-  {
-    "name": "DALL-E",
-    "category": "image",
-    "icon": "\ud83d\udd0d",
-    "desc": "OpenAI's image generation model for creating images from text descriptions.",
-    "rating": 8.5,
-    "traffic": 29,
-    "url": "labs.openai.com",
-    "free": false
   },
   {
     "name": "Gamma",
@@ -295,7 +285,7 @@
     "icon": "\ud83d\udcca",
     "desc": "AI presentations, documents, and webpages from simple prompts.",
     "rating": 8.5,
-    "traffic": 30,
+    "traffic": 29,
     "url": "gamma.app",
     "free": true
   },
@@ -305,19 +295,9 @@
     "icon": "\u2713",
     "desc": "Gold standard for grammar, tone adjustment, and AI rewriting.",
     "rating": 8.5,
-    "traffic": 31,
+    "traffic": 30,
     "url": "grammarly.com",
     "free": true
-  },
-  {
-    "name": "Higgsfield",
-    "category": "video",
-    "icon": "\ud83c\udf0c",
-    "desc": "All-in-one creative workspace for AI image and video production.",
-    "rating": 8.5,
-    "traffic": 32,
-    "url": "higgsfield.ai",
-    "free": false
   },
   {
     "name": "Luminar Neo",
@@ -325,7 +305,7 @@
     "icon": "\ud83c\udf1f",
     "desc": "AI-powered photo editor with sky replacement, portrait enhancement, and masking.",
     "rating": 8.5,
-    "traffic": 33,
+    "traffic": 31,
     "url": "skylum.com/luminar",
     "free": false
   },
@@ -335,19 +315,19 @@
     "icon": "\ud83e\udd16",
     "desc": "Autonomous AI agent for workflow automation and team collaboration.",
     "rating": 8.5,
-    "traffic": 34,
+    "traffic": 32,
     "url": "manus.ai",
     "free": false
   },
   {
-    "name": "Suno",
-    "category": "audio",
-    "icon": "\ud83c\udfb5",
-    "desc": "AI music generation that creates original songs from text prompts.",
+    "name": "Runway",
+    "category": "video",
+    "icon": "\ud83c\udfac",
+    "desc": "AI video generation and editing suite for creators and filmmakers.",
     "rating": 8.5,
-    "traffic": 35,
-    "url": "suno.ai",
-    "free": true
+    "traffic": 33,
+    "url": "runwayml.com",
+    "free": false
   },
   {
     "name": "Zapier",
@@ -355,7 +335,7 @@
     "icon": "\u26a1",
     "desc": "Easiest no-code automation with 7,000+ app integrations.",
     "rating": 8.5,
-    "traffic": 36,
+    "traffic": 34,
     "url": "zapier.com",
     "free": true
   },
@@ -365,7 +345,7 @@
     "icon": "\u26a1",
     "desc": "Prompt-to-full-stack app builder for Next.js/React applications.",
     "rating": 8.4,
-    "traffic": 37,
+    "traffic": 35,
     "url": "bolt.new",
     "free": true
   },
@@ -375,7 +355,7 @@
     "icon": "\u2702\ufe0f",
     "desc": "Stability AI's suite for cleanup, upscaling, relighting, and background removal.",
     "rating": 8.4,
-    "traffic": 38,
+    "traffic": 36,
     "url": "clipdrop.co",
     "free": true
   },
@@ -385,7 +365,7 @@
     "icon": "\ud83d\udc1f",
     "desc": "Top-rated TTS in blind tests with diverse voice cloning capabilities.",
     "rating": 8.4,
-    "traffic": 39,
+    "traffic": 37,
     "url": "fish.audio",
     "free": true
   },
@@ -395,7 +375,7 @@
     "icon": "\u270d",
     "desc": "Enterprise AI writing platform with brand voice and bulk campaigns.",
     "rating": 8.4,
-    "traffic": 40,
+    "traffic": 38,
     "url": "jasper.ai",
     "free": false
   },
@@ -405,18 +385,8 @@
     "icon": "\ud83c\udfa8",
     "desc": "DALL\u00b7E 3 powered design tool integrated with Office 365.",
     "rating": 8.4,
-    "traffic": 41,
+    "traffic": 39,
     "url": "designer.microsoft.com",
-    "free": true
-  },
-  {
-    "name": "NotebookLM",
-    "category": "chat",
-    "icon": "\ud83d\udcd3",
-    "desc": "Google's AI research assistant for source-grounded document analysis.",
-    "rating": 8.4,
-    "traffic": 42,
-    "url": "notebooklm.google.com",
     "free": true
   },
   {
@@ -425,7 +395,7 @@
     "icon": "\ud83d\uddd2",
     "desc": "AI integrated directly into your docs, wikis, and databases.",
     "rating": 8.4,
-    "traffic": 43,
+    "traffic": 40,
     "url": "notion.so/product/ai",
     "free": false
   },
@@ -435,28 +405,8 @@
     "icon": "\u2702\ufe0f",
     "desc": "Long videos to viral short clips with auto-captions and highlights.",
     "rating": 8.4,
-    "traffic": 44,
+    "traffic": 41,
     "url": "opus.pro",
-    "free": true
-  },
-  {
-    "name": "Perplexity",
-    "category": "chat",
-    "icon": "\u25c6",
-    "desc": "AI-powered search engine that provides cited answers to complex queries.",
-    "rating": 8.4,
-    "traffic": 45,
-    "url": "perplexity.ai",
-    "free": true
-  },
-  {
-    "name": "Stable Diffusion",
-    "category": "image",
-    "icon": "\ud83d\udd27",
-    "desc": "Open-source image generation model with extensive customization options.",
-    "rating": 8.4,
-    "traffic": 46,
-    "url": "stability.ai",
     "free": true
   },
   {
@@ -465,7 +415,7 @@
     "icon": "\ud83c\udfaf",
     "desc": "Autonomous AI agent that executes tasks across 3,200+ tools.",
     "rating": 8.4,
-    "traffic": 47,
+    "traffic": 42,
     "url": "viktor.ai",
     "free": false
   },
@@ -475,7 +425,7 @@
     "icon": "\ud83d\udd17",
     "desc": "Open-source automation platform with native AI agent support.",
     "rating": 8.4,
-    "traffic": 48,
+    "traffic": 43,
     "url": "n8n.io",
     "free": true
   },
@@ -485,18 +435,8 @@
     "icon": "\u2601",
     "desc": "Best-in-class AI coding assistant for AWS-specific development.",
     "rating": 8.3,
-    "traffic": 49,
+    "traffic": 44,
     "url": "aws.amazon.com/q",
-    "free": true
-  },
-  {
-    "name": "BasedLabs",
-    "category": "image",
-    "icon": "\ud83e\uddea",
-    "desc": "AI-powered creative tools for image and video generation with advanced editing features.",
-    "rating": 8.3,
-    "traffic": 50,
-    "url": "basedlabs.ai",
     "free": true
   },
   {
@@ -505,18 +445,8 @@
     "icon": "\ud83d\udcf1",
     "desc": "AI-powered short-form video editing with auto-captions and B-roll.",
     "rating": 8.3,
-    "traffic": 51,
+    "traffic": 45,
     "url": "capcut.com",
-    "free": true
-  },
-  {
-    "name": "Codeium",
-    "category": "code",
-    "icon": "\u26a1",
-    "desc": "Free AI coding assistant with autocomplete and chat features.",
-    "rating": 8.3,
-    "traffic": 52,
-    "url": "codeium.com",
     "free": true
   },
   {
@@ -525,7 +455,7 @@
     "icon": "\ud83d\udccb",
     "desc": "Fast marketing copy and product messaging with workflow templates.",
     "rating": 8.3,
-    "traffic": 53,
+    "traffic": 46,
     "url": "copy.ai",
     "free": true
   },
@@ -535,19 +465,9 @@
     "icon": "\ud83e\udd63",
     "desc": "Bot-free meeting notes with private, summarized transcripts.",
     "rating": 8.3,
-    "traffic": 54,
+    "traffic": 47,
     "url": "granola.ai",
     "free": false
-  },
-  {
-    "name": "Grok",
-    "category": "chat",
-    "icon": "\u26a1",
-    "desc": "xAI's real-time chatbot with X integration and uncensored personality.",
-    "rating": 8.3,
-    "traffic": 55,
-    "url": "x.com/grok",
-    "free": true
   },
   {
     "name": "Lindy",
@@ -555,7 +475,7 @@
     "icon": "\ud83e\udd16",
     "desc": "AI assistant that automates admin work across hundreds of apps.",
     "rating": 8.3,
-    "traffic": 56,
+    "traffic": 48,
     "url": "lindy.ai",
     "free": false
   },
@@ -565,7 +485,7 @@
     "icon": "\u2764",
     "desc": "Cleanest React code generator for production-ready applications.",
     "rating": 8.3,
-    "traffic": 57,
+    "traffic": 49,
     "url": "lovable.dev",
     "free": true
   },
@@ -575,7 +495,7 @@
     "icon": "\ud83d\udcc5",
     "desc": "AI project management that auto-schedules tasks on your calendar.",
     "rating": 8.3,
-    "traffic": 58,
+    "traffic": 50,
     "url": "usemotion.com",
     "free": false
   },
@@ -585,7 +505,7 @@
     "icon": "\ud83d\udcf8",
     "desc": "AI-powered photo studio for product shots, backgrounds, and batch editing.",
     "rating": 8.3,
-    "traffic": 59,
+    "traffic": 51,
     "url": "photoroom.com",
     "free": true
   },
@@ -595,7 +515,7 @@
     "icon": "\ud83d\udd8c",
     "desc": "Photoshop-like browser-based editor with AI features, completely free.",
     "rating": 8.3,
-    "traffic": 60,
+    "traffic": 52,
     "url": "photopea.com",
     "free": true
   },
@@ -605,29 +525,9 @@
     "icon": "\ud83c\udfac",
     "desc": "Stylized video effects, motion control, and social media focus.",
     "rating": 8.3,
-    "traffic": 61,
+    "traffic": 53,
     "url": "pika.art",
     "free": true
-  },
-  {
-    "name": "Recraft",
-    "category": "image",
-    "icon": "\ud83c\udfa8",
-    "desc": "AI design tool that outputs editable SVG vector graphics.",
-    "rating": 8.3,
-    "traffic": 62,
-    "url": "recraft.ai",
-    "free": true
-  },
-  {
-    "name": "Vapi AI",
-    "category": "audio",
-    "icon": "\ud83d\udcde",
-    "desc": "Real-time AI voice agents for inbound/outbound phone call automation.",
-    "rating": 8.3,
-    "traffic": 63,
-    "url": "vapi.ai",
-    "free": false
   },
   {
     "name": "Wispr Flow",
@@ -635,7 +535,7 @@
     "icon": "\ud83c\udf99",
     "desc": "AI voice dictation that works across any app with smart cleanup.",
     "rating": 8.3,
-    "traffic": 64,
+    "traffic": 54,
     "url": "wisprflow.ai",
     "free": true
   },
@@ -645,18 +545,8 @@
     "icon": "\u2728",
     "desc": "Quick design and video creation with built-in generative AI features.",
     "rating": 8.2,
-    "traffic": 65,
+    "traffic": 55,
     "url": "express.adobe.com",
-    "free": true
-  },
-  {
-    "name": "Canva AI",
-    "category": "image",
-    "icon": "\u270e",
-    "desc": "Design platform with built-in AI tools for images, presentations, and more.",
-    "rating": 8.2,
-    "traffic": 66,
-    "url": "canva.com",
     "free": true
   },
   {
@@ -665,7 +555,7 @@
     "icon": "\ud83e\uddf9",
     "desc": "Remove objects, people, and text from photos with a brush.",
     "rating": 8.2,
-    "traffic": 67,
+    "traffic": 56,
     "url": "cleanup.pictures",
     "free": true
   },
@@ -675,7 +565,7 @@
     "icon": "\ud83d\udd27",
     "desc": "Open-source VS Code agent for local AI-powered coding.",
     "rating": 8.2,
-    "traffic": 68,
+    "traffic": 57,
     "url": "cline.bot",
     "free": true
   },
@@ -685,7 +575,7 @@
     "icon": "\ud83c\udfad",
     "desc": "Cheapest talking-photo avatar generation with real-time agents.",
     "rating": 8.2,
-    "traffic": 69,
+    "traffic": 58,
     "url": "d-id.com",
     "free": true
   },
@@ -695,18 +585,8 @@
     "icon": "\ud83d\udcda",
     "desc": "Academic research assistant for finding and analyzing papers.",
     "rating": 8.2,
-    "traffic": 70,
+    "traffic": 59,
     "url": "elicit.org",
-    "free": true
-  },
-  {
-    "name": "Krea",
-    "category": "image",
-    "icon": "\u2728",
-    "desc": "Real-time AI image generation that updates as you draw and sketch.",
-    "rating": 8.2,
-    "traffic": 71,
-    "url": "krea.ai",
     "free": true
   },
   {
@@ -715,18 +595,8 @@
     "icon": "\ud83d\udd27",
     "desc": "Visual multi-step automation for complex business workflows.",
     "rating": 8.2,
-    "traffic": 72,
+    "traffic": 60,
     "url": "make.com",
-    "free": true
-  },
-  {
-    "name": "Media.io",
-    "category": "video",
-    "icon": "\ud83c\udf9e",
-    "desc": "All-in-one AI media toolkit for video/image/audio conversion, enhancement, and editing.",
-    "rating": 8.2,
-    "traffic": 73,
-    "url": "media.io",
     "free": true
   },
   {
@@ -735,7 +605,7 @@
     "icon": "\ud83e\udda6",
     "desc": "Real-time transcription with speaker detection and AI summaries.",
     "rating": 8.2,
-    "traffic": 74,
+    "traffic": 61,
     "url": "otter.ai",
     "free": true
   },
@@ -745,9 +615,19 @@
     "icon": "\ud83d\udedd",
     "desc": "Batch generation, prompt testing, and model comparison platform.",
     "rating": 8.2,
-    "traffic": 75,
+    "traffic": 62,
     "url": "playgroundai.com",
     "free": true
+  },
+  {
+    "name": "Sora",
+    "category": "video",
+    "icon": "\ud83c\udfa8",
+    "desc": "OpenAI's text-to-video generation model creating realistic video from prompts.",
+    "rating": 8.2,
+    "traffic": 63,
+    "url": "openai.com/sora",
+    "free": false
   },
   {
     "name": "Submagic",
@@ -755,7 +635,7 @@
     "icon": "\ud83c\udfac",
     "desc": "AI social video editor with auto-captions and viral formatting.",
     "rating": 8.2,
-    "traffic": 76,
+    "traffic": 64,
     "url": "submagic.co",
     "free": true
   },
@@ -765,7 +645,7 @@
     "icon": "\u25b3",
     "desc": "Vercel's Next.js UI builder for components and landing pages.",
     "rating": 8.2,
-    "traffic": 77,
+    "traffic": 65,
     "url": "v0.dev",
     "free": true
   },
@@ -775,19 +655,9 @@
     "icon": "\ud83c\udf93",
     "desc": "AI video platform for structured training with 200+ avatars.",
     "rating": 8.1,
-    "traffic": 78,
+    "traffic": 66,
     "url": "colossyan.com",
     "free": false
-  },
-  {
-    "name": "Descript",
-    "category": "video",
-    "icon": "\ud83d\udcdd",
-    "desc": "AI-powered video and audio editing with transcription and overdub features.",
-    "rating": 8.1,
-    "traffic": 79,
-    "url": "descript.com",
-    "free": true
   },
   {
     "name": "Littlebird",
@@ -795,7 +665,7 @@
     "icon": "\ud83d\udc26",
     "desc": "Context-aware AI assistant that monitors your screen activity.",
     "rating": 8.1,
-    "traffic": 80,
+    "traffic": 67,
     "url": "littlebird.com",
     "free": true
   },
@@ -805,7 +675,7 @@
     "icon": "\ud83c\udf7d",
     "desc": "Text-to-diagram tool for instant visual concept explanations.",
     "rating": 8.1,
-    "traffic": 81,
+    "traffic": 68,
     "url": "napkin.ai",
     "free": true
   },
@@ -815,7 +685,7 @@
     "icon": "\ud83c\udfa8",
     "desc": "All-in-one creative platform with AI photo and video editing tools.",
     "rating": 8.1,
-    "traffic": 82,
+    "traffic": 69,
     "url": "picsart.com",
     "free": true
   },
@@ -825,7 +695,7 @@
     "icon": "\ud83d\udd04",
     "desc": "Autonomous AI app builder that deploys while you're away.",
     "rating": 8.1,
-    "traffic": 83,
+    "traffic": 70,
     "url": "replit.com",
     "free": true
   },
@@ -835,7 +705,7 @@
     "icon": "\ud83d\udd12",
     "desc": "Privacy-first AI coding assistant for regulated industries.",
     "rating": 8.1,
-    "traffic": 84,
+    "traffic": 71,
     "url": "tabnine.com",
     "free": false
   },
@@ -845,7 +715,7 @@
     "icon": "\ud83d\udce6",
     "desc": "Huge library of custom Stable Diffusion models and LoRAs.",
     "rating": 8.1,
-    "traffic": 85,
+    "traffic": 72,
     "url": "tensor.art",
     "free": true
   },
@@ -855,7 +725,7 @@
     "icon": "\ud83d\udcc8",
     "desc": "Free 4x upscaling for low-resolution images.",
     "rating": 8.1,
-    "traffic": 86,
+    "traffic": 73,
     "url": "upscale.media",
     "free": true
   },
@@ -865,7 +735,7 @@
     "icon": "\ud83d\udcdd",
     "desc": "Blog posts, product descriptions, and SEO content generation.",
     "rating": 8.1,
-    "traffic": 87,
+    "traffic": 74,
     "url": "writesonic.com",
     "free": true
   },
@@ -875,8 +745,18 @@
     "icon": "\ud83e\uddec",
     "desc": "Genetic blending, portrait variations, and collaborative AI art.",
     "rating": 8.0,
-    "traffic": 88,
+    "traffic": 75,
     "url": "artbreeder.com",
+    "free": true
+  },
+  {
+    "name": "BasedLabs",
+    "category": "image",
+    "icon": "\ud83e\uddea",
+    "desc": "AI-powered creative tools for image and video generation with advanced editing features.",
+    "rating": 8.0,
+    "traffic": 76,
+    "url": "basedlabs.ai",
     "free": true
   },
   {
@@ -885,8 +765,48 @@
     "icon": "\ud83d\udd0d",
     "desc": "DALL\u00b7E powered image generation free with Microsoft account.",
     "rating": 8.0,
-    "traffic": 89,
+    "traffic": 77,
     "url": "bing.com/create",
+    "free": true
+  },
+  {
+    "name": "Canva AI",
+    "category": "image",
+    "icon": "\u270e",
+    "desc": "Design platform with built-in AI tools for images, presentations, and more.",
+    "rating": 8.0,
+    "traffic": 78,
+    "url": "canva.com",
+    "free": true
+  },
+  {
+    "name": "Codeium",
+    "category": "code",
+    "icon": "\u26a1",
+    "desc": "Free AI coding assistant with autocomplete and chat features.",
+    "rating": 8.0,
+    "traffic": 79,
+    "url": "codeium.com",
+    "free": true
+  },
+  {
+    "name": "DALL-E",
+    "category": "image",
+    "icon": "\ud83d\udd0d",
+    "desc": "OpenAI's image generation model for creating images from text descriptions.",
+    "rating": 8.0,
+    "traffic": 80,
+    "url": "labs.openai.com",
+    "free": false
+  },
+  {
+    "name": "Descript",
+    "category": "video",
+    "icon": "\ud83d\udcdd",
+    "desc": "AI-powered video and audio editing with transcription and overdub features.",
+    "rating": 8.0,
+    "traffic": 81,
+    "url": "descript.com",
     "free": true
   },
   {
@@ -895,7 +815,7 @@
     "icon": "\ud83c\udfac",
     "desc": "Professional animated avatars for business presentations and training.",
     "rating": 8.0,
-    "traffic": 90,
+    "traffic": 82,
     "url": "elai.io",
     "free": false
   },
@@ -905,8 +825,18 @@
     "icon": "\ud83d\udd2c",
     "desc": "Semantic search API for developers building AI applications.",
     "rating": 8.0,
-    "traffic": 91,
+    "traffic": 83,
     "url": "exa.ai",
+    "free": false
+  },
+  {
+    "name": "Flux",
+    "category": "image",
+    "icon": "\u26a1",
+    "desc": "Best-in-class photorealistic image generation with stunning detail.",
+    "rating": 8.0,
+    "traffic": 84,
+    "url": "flux.ai",
     "free": false
   },
   {
@@ -915,18 +845,28 @@
     "icon": "\ud83d\udc8e",
     "desc": "Free AI coding assistant with 180K completions/month for individuals.",
     "rating": 8.0,
-    "traffic": 92,
+    "traffic": 85,
     "url": "aistudio.google.com",
     "free": true
   },
   {
-    "name": "Kimi",
-    "category": "chat",
-    "icon": "\ud83c\udf19",
-    "desc": "Moonshot AI's long-context assistant supporting up to 2M tokens.",
+    "name": "GitHub Copilot",
+    "category": "code",
+    "icon": "\ud83d\udcbb",
+    "desc": "AI pair programmer that suggests code in real-time as you type.",
     "rating": 8.0,
-    "traffic": 93,
-    "url": "kimi.moonshot.cn",
+    "traffic": 86,
+    "url": "github.com/features/copilot",
+    "free": false
+  },
+  {
+    "name": "Krea",
+    "category": "image",
+    "icon": "\u2728",
+    "desc": "Real-time AI image generation that updates as you draw and sketch.",
+    "rating": 8.0,
+    "traffic": 87,
+    "url": "krea.ai",
     "free": true
   },
   {
@@ -935,9 +875,29 @@
     "icon": "\ud83d\udcf8",
     "desc": "AI-powered mobile photo editor with avatar generation and retouching.",
     "rating": 8.0,
-    "traffic": 94,
+    "traffic": 88,
     "url": "prisma-ai.com/lensa",
     "free": true
+  },
+  {
+    "name": "Media.io",
+    "category": "video",
+    "icon": "\ud83c\udf9e",
+    "desc": "All-in-one AI media toolkit for video/image/audio conversion, enhancement, and editing.",
+    "rating": 8.0,
+    "traffic": 89,
+    "url": "media.io",
+    "free": true
+  },
+  {
+    "name": "Midjourney",
+    "category": "image",
+    "icon": "\ud83d\udd25",
+    "desc": "AI image generation tool known for stunning artistic and photorealistic images.",
+    "rating": 8.0,
+    "traffic": 90,
+    "url": "midjourney.com",
+    "free": false
   },
   {
     "name": "NightCafe",
@@ -945,8 +905,28 @@
     "icon": "\ud83c\udf19",
     "desc": "Community-driven AI art platform with multiple models and NFT support.",
     "rating": 8.0,
-    "traffic": 95,
+    "traffic": 91,
     "url": "nightcafe.studio",
+    "free": true
+  },
+  {
+    "name": "NotebookLM",
+    "category": "chat",
+    "icon": "\ud83d\udcd3",
+    "desc": "Google's AI research assistant for source-grounded document analysis.",
+    "rating": 8.0,
+    "traffic": 92,
+    "url": "notebooklm.google.com",
+    "free": true
+  },
+  {
+    "name": "Perplexity",
+    "category": "chat",
+    "icon": "\u25c6",
+    "desc": "AI-powered search engine that provides cited answers to complex queries.",
+    "rating": 8.0,
+    "traffic": 93,
+    "url": "perplexity.ai",
     "free": true
   },
   {
@@ -955,9 +935,29 @@
     "icon": "\u2728",
     "desc": "One-click AI effects, background removal, and face swap tools.",
     "rating": 8.0,
-    "traffic": 96,
+    "traffic": 94,
     "url": "pixlr.com",
     "free": true
+  },
+  {
+    "name": "Recraft",
+    "category": "image",
+    "icon": "\ud83c\udfa8",
+    "desc": "AI design tool that outputs editable SVG vector graphics.",
+    "rating": 8.0,
+    "traffic": 95,
+    "url": "recraft.ai",
+    "free": true
+  },
+  {
+    "name": "Veo 3",
+    "category": "video",
+    "icon": "\ud83c\udfa5",
+    "desc": "Google's 4K video generation with synchronized native audio.",
+    "rating": 8.0,
+    "traffic": 96,
+    "url": "labs.google/veo",
+    "free": false
   },
   {
     "name": "Writer",
