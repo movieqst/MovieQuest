@@ -89,11 +89,11 @@
     text-transform: uppercase;
   }
   .header .subtitle {
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     color: #ff6b6b;
-    letter-spacing: 6px;
+    letter-spacing: 8px;
     text-transform: uppercase;
-    margin-top: 4px;
+    margin-top: 6px;
     font-weight: 600;
   }
 
@@ -321,7 +321,7 @@
 </div>
 
 <div class="header">
-  <h1>A I &nbsp; D A S H &nbsp; C O N T R O L &nbsp; B O A R D</h1>
+  <h1>A I &nbsp; D A S H</h1>
   <div class="subtitle" id="appCounter">Loading...</div>
 </div>
 
@@ -350,14 +350,6 @@
 
 <div class="cards-grid" id="cardsGrid"></div>
 
-
-
-
-
-
-
-
-
 <script>
 const categoryColors = {
   chat:  { accent: '#58a6ff', bg: 'rgba(88,166,255,0.1)' },
@@ -378,7 +370,6 @@ async function loadData() {
     const res = await fetch('data.json');
     allData = await res.json();
     render();
-    // Set initial counter
     const counter = document.getElementById('appCounter');
     if (counter) counter.textContent = 'VIEWING ' + allData.length + ' AI APPS';
   } catch (e) {
