@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)blob:https://www.kimi.com/949b33bb-cc61-455d-b74c-4d7a43f0c009 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Control Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg-dark: #0a0e17;
+    --bg-card: rgba(15, 23, 42, 0.92);
+    --border-glow: rgba(6, 182, 212, 0.2);
+    --accent-cyan: #06b6d4;
+    --accent-red: #ef4444;
+    --accent-gold: #f59e0b;
+    --accent-green: #22c55e;
+    --accent-purple: #a855f7;
+    --accent-pink: #ec4899;
+    --accent-orange: #f97316;
+    --accent-orange-dark: #c2410c;
+    --accent-orange-light: #fb923c;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-particles {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 20s infinite ease-in-out;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.05; }
+    50% { transform: translateY(-120px) translateX(40px); opacity: 0.3; }
+  }
+
+  /* Affiliate Notice Banner */
+  .affiliate-notice {
+    text-align: center;
+    padding: 10px 16px;
+    background: rgba(239, 68, 68, 0.08);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.15);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 101;
+  }
+
+  .affiliate-notice .notice-word {
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: #fff;
+    margin-right: 4px;
+  }
+
+  /* Top Nav */
+  .top-nav {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 16px;
+    background: linear-gradient(180deg, rgba(10,14,23,0.95) 0%, rgba(10,14,23,0.6) 100%);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(6,182,212,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+  }
+
+  .nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    background: rgba(15,23,42,0.5);
+    color: var(--text-secondary);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-tab:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .nav-tab.active {
+    border-color: var(--accent-red);
+    background: rgba(239,68,68,0.12);
+    color: var(--accent-red);
+    box-shadow: 0 0 15px rgba(239,68,68,0.12);
+  }
+
+  /* Color-coded nav tabs */
+  .nav-tab[data-filter="text"]:hover, .nav-tab[data-filter="text"].active {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6,182,212,0.12);
+  }
+  .nav-tab[data-filter="personal"]:hover, .nav-tab[data-filter="personal"].active {
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
+    box-shadow: 0 0 15px rgba(236,72,153,0.12);
+  }
+  .nav-tab[data-filter="image"]:hover, .nav-tab[data-filter="image"].active {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+    box-shadow: 0 0 15px rgba(168,85,247,0.12);
+  }
+  .nav-tab[data-filter="audio"]:hover, .nav-tab[data-filter="audio"].active {
+    border-color: var(--accent-orange-dark);
+    color: var(--accent-orange-dark);
+    box-shadow: 0 0 15px rgba(194,65,12,0.12);
+  }
+  .nav-tab[data-filter="video"]:hover, .nav-tab[data-filter="video"].active {
+    border-color: var(--accent-orange-light);
+    color: var(--accent-orange-light);
+    box-shadow: 0 0 15px rgba(251,146,60,0.12);
+  }
+  .nav-tab[data-filter="coding"]:hover, .nav-tab[data-filter="coding"].active {
+    border-color: #94a3b8;
+    color: #94a3b8;
+    box-shadow: 0 0 15px rgba(148,163,184,0.12);
+  }
+
+
+  .nav-tab svg { width: 15px; height: 15px; }
+
+
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+
+  .header-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 10px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .glow-line {
+    width: 55%;
+    max-width: 450px;
+    height: 3px;
+    margin: 0 auto 16px;
+    background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--accent-red), 0 0 40px var(--accent-red);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; box-shadow: 0 0 15px var(--accent-red); }
+    50% { opacity: 1; box-shadow: 0 0 35px var(--accent-red), 0 0 55px var(--accent-red); }
+  }
+
+  .section-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+  }
+
+  /* Search */
+  .search-container {
+    max-width: 480px;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 12px 20px 12px 44px;
+    border-radius: 14px;
+    border: 1px solid rgba(6,182,212,0.12);
+    background: rgba(15,23,42,0.85);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .search-input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 18px rgba(6,182,212,0.12);
+  }
+
+  .search-input::placeholder { color: var(--text-muted); }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  /* ===== CARDS CONTAINER - 3 COLUMNS ===== */
+  .cards-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px 50px;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* ===== TOOL CARD ===== */
+  .tool-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(148,163,184,0.06);
+    border-radius: 12px;
+    padding: 10px 10px 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    min-height: 58px;
+  }
+
+  .tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(6,182,212,0.03) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .tool-card:hover {
+    border-color: var(--border-glow);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.35), 0 0 20px rgba(6,182,212,0.06);
+  }
+
+  .tool-card:hover::before { opacity: 1; }
+
+  /* Left: Icon + Info */
+  .tool-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tool-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .tool-info {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .tool-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-primary);
+    margin-bottom: 1px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tool-url {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ===== RIGHT SIDE: INFO BOXES ===== */
+  .tool-right {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 5px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.25);
+    min-width: 36px;
+    text-align: center;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .info-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  }
+
+  .info-box-label {
+    font-size: 6px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 1px;
+    white-space: nowrap;
+  }
+
+  .info-box-value {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  /* Box 1: My Rating - Red */
+  .box-rating {
+    border-color: rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.06);
+  }
+  .box-rating .info-box-label { color: var(--accent-red); }
+  .box-rating .info-box-value { color: var(--accent-red); }
+  .box-rating:hover {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.1);
+    box-shadow: 0 3px 12px rgba(239, 68, 68, 0.15);
+  }
+
+  /* Box 2: Traffic/Popularity - Grey */
+  .box-traffic {
+    border-color: rgba(148, 163, 184, 0.2);
+    background: rgba(148, 163, 184, 0.06);
+  }
+  .box-traffic .info-box-label { color: #94a3b8; }
+  .box-traffic .info-box-value { color: #94a3b8; }
+  .box-traffic:hover {
+    border-color: rgba(148, 163, 184, 0.4);
+    background: rgba(148, 163, 184, 0.1);
+    box-shadow: 0 3px 12px rgba(148, 163, 184, 0.15);
+  }
+
+  /* Category buttons - color coded */
+  .box-cat-text {
+    border-color: rgba(6, 182, 212, 0.2);
+    background: rgba(6, 182, 212, 0.06);
+  }
+  .box-cat-text .info-box-label,
+  .box-cat-text .info-box-value { color: var(--accent-cyan); }
+  .box-cat-text:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    background: rgba(6, 182, 212, 0.1);
+    box-shadow: 0 3px 12px rgba(6, 182, 212, 0.15);
+  }
+
+  .box-cat-image {
+    border-color: rgba(168, 85, 247, 0.2);
+    background: rgba(168, 85, 247, 0.06);
+  }
+  .box-cat-image .info-box-label,
+  .box-cat-image .info-box-value { color: var(--accent-purple); }
+  .box-cat-image:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    background: rgba(168, 85, 247, 0.1);
+    box-shadow: 0 3px 12px rgba(168, 85, 247, 0.15);
+  }
+
+  .box-cat-audio {
+    border-color: rgba(194, 65, 12, 0.2);
+    background: rgba(194, 65, 12, 0.06);
+  }
+  .box-cat-audio .info-box-label,
+  .box-cat-audio .info-box-value { color: var(--accent-orange-dark); }
+  .box-cat-audio:hover {
+    border-color: rgba(194, 65, 12, 0.4);
+    background: rgba(194, 65, 12, 0.1);
+    box-shadow: 0 3px 12px rgba(194, 65, 12, 0.15);
+  }
+
+  .box-cat-video {
+    border-color: rgba(251, 146, 60, 0.2);
+    background: rgba(251, 146, 60, 0.06);
+  }
+  .box-cat-video .info-box-label,
+  .box-cat-video .info-box-value { color: var(--accent-orange-light); }
+  .box-cat-video:hover {
+    border-color: rgba(251, 146, 60, 0.4);
+    background: rgba(251, 146, 60, 0.1);
+    box-shadow: 0 3px 12px rgba(251, 146, 60, 0.15);
+  }
+
+  .box-cat-coding {
+    border-color: rgba(34, 197, 94, 0.2);
+    background: rgba(34, 197, 94, 0.06);
+  }
+  .box-cat-coding .info-box-label,
+  .box-cat-coding .info-box-value { color: var(--accent-green); }
+  .box-cat-coding:hover {
+    border-color: rgba(34, 197, 94, 0.4);
+    background: rgba(34, 197, 94, 0.1);
+    box-shadow: 0 3px 12px rgba(34, 197, 94, 0.15);
+  }
+
+  .box-cat-personal {
+    border-color: rgba(236, 72, 153, 0.2);
+    background: rgba(236, 72, 153, 0.06);
+  }
+  .box-cat-personal .info-box-label,
+  .box-cat-personal .info-box-value { color: var(--accent-pink); }
+  .box-cat-personal:hover {
+    border-color: rgba(236, 72, 153, 0.4);
+    background: rgba(236, 72, 153, 0.1);
+    box-shadow: 0 3px 12px rgba(236, 72, 153, 0.15);
+  }
+
+  /* Bottom glow */
+  .bottom-glow {
+    width: 35%;
+    max-width: 300px;
+    height: 2px;
+    margin: 0 auto 24px;
+    background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent-red);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 16px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(148,163,184,0.05);
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-muted);
+    font-size: 16px;
+    grid-column: 1 / -1;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-dark); }
+  ::-webkit-scrollbar-thumb { background: rgba(6,182,212,0.2); border-radius: 3px; }
+
+  /* Tablet: 2 columns */
+  @media (max-width: 900px) {
+    .cards-container { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .info-box { min-width: 30px; padding: 3px 4px; }
+    .info-box-label { font-size: 5.5px; }
+    .info-box-value { font-size: 9px; }
+  }
+
+  @media (max-width: 768px) {
+    .header-title { font-size: 24px; letter-spacing: 3px; }
+    .header-subtitle { font-size: 12px; letter-spacing: 6px; }
+    .nav-tab { padding: 7px 12px; font-size: 11px; }
+  }
+
+  /* Mobile: 1 column */
+  @media (max-width: 580px) {
+    .cards-container { grid-template-columns: 1fr; }
+    .info-box { min-width: 36px; padding: 4px 5px; }
+    .info-box-label { font-size: 6px; }
+    .info-box-value { font-size: 10px; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tool-card {
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+  }
+</style>
+<!--<base target="_blank">--><base href="." target="_blank">
+</head>
+<body>
+
+<div class="bg-particles" id="particles"><div class="particle" style="left: 75.0249%; top: 1.13852%; animation-delay: 18.039s; animation-duration: 22.1309s;"></div><div class="particle" style="left: 38.3846%; top: 64.6262%; animation-delay: 4.88557s; animation-duration: 18.8028s;"></div><div class="particle" style="left: 39.549%; top: 73.4261%; animation-delay: 11.7495s; animation-duration: 22.2792s;"></div><div class="particle" style="left: 33.5066%; top: 74.579%; animation-delay: 10.1899s; animation-duration: 23.0925s;"></div><div class="particle" style="left: 54.5434%; top: 43.7204%; animation-delay: 11.7356s; animation-duration: 20.0024s;"></div><div class="particle" style="left: 97.4093%; top: 73.2876%; animation-delay: 11.9491s; animation-duration: 21.3354s;"></div><div class="particle" style="left: 54.6982%; top: 48.8297%; animation-delay: 17.1329s; animation-duration: 14.8869s;"></div><div class="particle" style="left: 20.3251%; top: 77.8983%; animation-delay: 2.92655s; animation-duration: 22.2346s;"></div><div class="particle" style="left: 65.8853%; top: 98.2329%; animation-delay: 15.0446s; animation-duration: 21.2143s;"></div><div class="particle" style="left: 24.612%; top: 36.6463%; animation-delay: 5.24251s; animation-duration: 15.8488s;"></div><div class="particle" style="left: 13.5633%; top: 82.8909%; animation-delay: 14.4334s; animation-duration: 15.9849s;"></div><div class="particle" style="left: 61.2013%; top: 91.3687%; animation-delay: 3.50565s; animation-duration: 17.7839s;"></div><div class="particle" style="left: 83.7113%; top: 29.3632%; animation-delay: 16.1056s; animation-duration: 21.4497s;"></div><div class="particle" style="left: 94.3179%; top: 85.9306%; animation-delay: 7.68524s; animation-duration: 18.3652s;"></div><div class="particle" style="left: 89.6355%; top: 78.6701%; animation-delay: 4.55122s; animation-duration: 14.4558s;"></div><div class="particle" style="left: 24.8284%; top: 17.6073%; animation-delay: 12.6908s; animation-duration: 19.1622s;"></div><div class="particle" style="left: 45.4958%; top: 42.0499%; animation-delay: 13.02s; animation-duration: 14.7985s;"></div><div class="particle" style="left: 85.7557%; top: 43.2555%; animation-delay: 11.4217s; animation-duration: 23.6141s;"></div><div class="particle" style="left: 99.89%; top: 17.7111%; animation-delay: 9.80801s; animation-duration: 21.6576s;"></div><div class="particle" style="left: 70.6113%; top: 66.5709%; animation-delay: 0.348787s; animation-duration: 23.1786s;"></div></div>
+
+<div class="affiliate-notice">
+  <span class="notice-word">NOTICE:</span> AFFILIATE LINKS ARE EMBEDDED. BY USING THIS APP AND CLICKING THE LINK YOU ARE PROVIDING SUPPORT. THANK YOU!
+</div>
+
+<div class="top-nav">
+  <div class="nav-tab active" data-filter="all" onclick="filterTools(&#39;all&#39;, this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    All
+  </div>
+  <div class="nav-tab" data-filter="text" onclick="filterTools(&#39;text&#39;, this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+    Chat AI
+  </div>
+  <div class="nav-tab" data-filter="personal" onclick="filterTools(&#39;personal&#39;, this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    Personal AI
+  </div>
+  <div class="nav-tab" data-filter="image" onclick="filterTools(&#39;image&#39;, this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+    Image AI
+  </div>
+  <div class="nav-tab" data-filter="audio" onclick="filterTools(&#39;audio&#39;, this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"></path></svg>
+    Audio/Video AI
+  </div>
+  <div class="nav-tab nav-coding" data-filter="coding" onclick="filterTools(&#39;coding&#39;, this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+    Coding AI
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-title">AI CONTROL</div>
+  <div class="glow-line"></div>
+  <div class="section-label">DASHBOARD</div>
+</div>
+
+<div class="search-container">
+  <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  <input type="text" class="search-input" id="searchInput" placeholder="Search AI tools..." oninput="searchTools(this.value)">
+</div>
+
+<div class="cards-container" id="cardsContainer"><div class="tool-card" data-categories="text,image" style="animation-delay: 0s;">
+        <a href="https://chat.openai.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🌀</div>
+          <div class="tool-info">
+            <div class="tool-name">ChatGPT</div>
+            <div class="tool-url">chat.openai.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">9.5</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#1</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="coding" style="animation-delay: 0.035s;">
+        <a href="https://github.com/copilot" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">👤</div>
+          <div class="tool-info">
+            <div class="tool-name">GitHub Copilot</div>
+            <div class="tool-url">github.com/copilot</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">9.4</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#7</div>
+          </div>
+          
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image" style="animation-delay: 0.07s;">
+        <a href="https://midjourney.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">⛵</div>
+          <div class="tool-info">
+            <div class="tool-name">Midjourney</div>
+            <div class="tool-url">midjourney.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">9.3</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#12</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text,coding" style="animation-delay: 0.105s;">
+        <a href="https://claude.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🅰️</div>
+          <div class="tool-info">
+            <div class="tool-name">Claude</div>
+            <div class="tool-url">claude.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">9.2</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#3</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="coding" style="animation-delay: 0.14s;">
+        <a href="https://cursor.sh/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">➤</div>
+          <div class="tool-info">
+            <div class="tool-name">Cursor</div>
+            <div class="tool-url">cursor.sh</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">9.2</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#21</div>
+          </div>
+          
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="audio" style="animation-delay: 0.175s;">
+        <a href="https://elevenlabs.io/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">⏸</div>
+          <div class="tool-info">
+            <div class="tool-name">ElevenLabs</div>
+            <div class="tool-url">elevenlabs.io</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">9.1</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#20</div>
+          </div>
+          
+          <div class="info-box box-cat-audio" title="Category: AUDIO">
+            <div class="info-box-label">AUDIO</div>
+            <div class="info-box-value">AUD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image,video" style="animation-delay: 0.21s;">
+        <a href="https://runwayml.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🅁</div>
+          <div class="tool-info">
+            <div class="tool-name">Runway</div>
+            <div class="tool-url">runwayml.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">9</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#18</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+          <div class="info-box box-cat-video" title="Category: VIDEO">
+            <div class="info-box-label">VIDEO</div>
+            <div class="info-box-value">VID</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="coding,text,image" style="animation-delay: 0.245s;">
+        <a href="https://huggingface.co/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🤗</div>
+          <div class="tool-info">
+            <div class="tool-name">Hugging Face</div>
+            <div class="tool-url">huggingface.co</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.9</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#10</div>
+          </div>
+          
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image,video" style="animation-delay: 0.28s;">
+        <a href="https://openai.com/sora" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🎬</div>
+          <div class="tool-info">
+            <div class="tool-name">Sora</div>
+            <div class="tool-url">openai.com/sora</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.9</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#13</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+          <div class="info-box box-cat-video" title="Category: VIDEO">
+            <div class="info-box-label">VIDEO</div>
+            <div class="info-box-value">VID</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text,image" style="animation-delay: 0.315s;">
+        <a href="https://gemini.google.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">✦</div>
+          <div class="tool-info">
+            <div class="tool-name">Gemini</div>
+            <div class="tool-url">gemini.google.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#2</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="audio" style="animation-delay: 0.35s;">
+        <a href="https://suno.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🎵</div>
+          <div class="tool-info">
+            <div class="tool-name">Suno</div>
+            <div class="tool-url">suno.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#24</div>
+          </div>
+          
+          <div class="info-box box-cat-audio" title="Category: AUDIO">
+            <div class="info-box-label">AUDIO</div>
+            <div class="info-box-value">AUD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image" style="animation-delay: 0.385s;">
+        <a href="https://labs.openai.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🌀</div>
+          <div class="tool-info">
+            <div class="tool-name">DALL-E</div>
+            <div class="tool-url">labs.openai.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.7</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#15</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image,text" style="animation-delay: 0.42s;">
+        <a href="https://stability.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🎨</div>
+          <div class="tool-info">
+            <div class="tool-name">Stable Diffusion</div>
+            <div class="tool-url">stability.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.6</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#19</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 0.455s;">
+        <a href="https://perplexity.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔷</div>
+          <div class="tool-info">
+            <div class="tool-name">Perplexity</div>
+            <div class="tool-url">perplexity.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.5</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#8</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="coding" style="animation-delay: 0.49s;">
+        <a href="https://codeium.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">⚡</div>
+          <div class="tool-info">
+            <div class="tool-name">Codeium</div>
+            <div class="tool-url">codeium.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.5</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#33</div>
+          </div>
+          
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image,text" style="animation-delay: 0.525s;">
+        <a href="https://canva.com/ai" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">©️</div>
+          <div class="tool-info">
+            <div class="tool-name">Canva AI</div>
+            <div class="tool-url">canva.com/ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.4</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#9</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="audio" style="animation-delay: 0.56s;">
+        <a href="https://descript.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">📊</div>
+          <div class="tool-info">
+            <div class="tool-name">Descript</div>
+            <div class="tool-url">descript.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.3</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#30</div>
+          </div>
+          
+          <div class="info-box box-cat-audio" title="Category: AUDIO">
+            <div class="info-box-label">AUDIO</div>
+            <div class="info-box-value">AUD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text,coding" style="animation-delay: 0.595s;">
+        <a href="https://kimi.moonshot.cn/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🌙</div>
+          <div class="tool-info">
+            <div class="tool-name">Kimi</div>
+            <div class="tool-url">kimi.moonshot.cn</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.3</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#11</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image,video" style="animation-delay: 0.63s;">
+        <a href="https://pika.art/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🎬</div>
+          <div class="tool-info">
+            <div class="tool-name">Pika</div>
+            <div class="tool-url">pika.art</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.2</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#25</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+          <div class="info-box box-cat-video" title="Category: VIDEO">
+            <div class="info-box-label">VIDEO</div>
+            <div class="info-box-value">VID</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 0.665s;">
+        <a href="https://gamma.app/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔶</div>
+          <div class="tool-info">
+            <div class="tool-name">Gamma</div>
+            <div class="tool-url">gamma.app</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.1</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#32</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image" style="animation-delay: 0.7s;">
+        <a href="https://lumalabs.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">✨</div>
+          <div class="tool-info">
+            <div class="tool-name">Luma AI</div>
+            <div class="tool-url">lumalabs.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8.1</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#37</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text,coding" style="animation-delay: 0.735s;">
+        <a href="https://copilot.microsoft.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🌈</div>
+          <div class="tool-info">
+            <div class="tool-name">Microsoft Copilot</div>
+            <div class="tool-url">copilot.microsoft.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#5</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="personal,text" style="animation-delay: 0.77s;">
+        <a href="https://beta.character.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">👤</div>
+          <div class="tool-info">
+            <div class="tool-name">Character.AI</div>
+            <div class="tool-url">beta.character.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#6</div>
+          </div>
+          
+          <div class="info-box box-cat-personal" title="Category: PERSONAL">
+            <div class="info-box-label">PERSONAL</div>
+            <div class="info-box-value">PER</div>
+          </div>
+        
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="coding" style="animation-delay: 0.805s;">
+        <a href="https://replit.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔄</div>
+          <div class="tool-info">
+            <div class="tool-name">Replit</div>
+            <div class="tool-url">replit.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#17</div>
+          </div>
+          
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="video,image" style="animation-delay: 0.84s;">
+        <a href="https://heygen.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🎭</div>
+          <div class="tool-info">
+            <div class="tool-name">HeyGen</div>
+            <div class="tool-url">heygen.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#29</div>
+          </div>
+          
+          <div class="info-box box-cat-video" title="Category: VIDEO">
+            <div class="info-box-label">VIDEO</div>
+            <div class="info-box-value">VID</div>
+          </div>
+        
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="image" style="animation-delay: 0.875s;">
+        <a href="https://remove.bg/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">📐</div>
+          <div class="tool-info">
+            <div class="tool-name">Remove.bg</div>
+            <div class="tool-url">remove.bg</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.9</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#40</div>
+          </div>
+          
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 0.91s;">
+        <a href="https://notion.so/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">📝</div>
+          <div class="tool-info">
+            <div class="tool-name">Notion AI</div>
+            <div class="tool-url">notion.so</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#14</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="coding" style="animation-delay: 0.945s;">
+        <a href="https://tabnine.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔷</div>
+          <div class="tool-info">
+            <div class="tool-name">Tabnine</div>
+            <div class="tool-url">tabnine.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#36</div>
+          </div>
+          
+          <div class="info-box box-cat-coding" title="Category: CODE">
+            <div class="info-box-label">CODE</div>
+            <div class="info-box-value">COD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="audio" style="animation-delay: 0.98s;">
+        <a href="https://fireflies.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔥</div>
+          <div class="tool-info">
+            <div class="tool-name">Fireflies</div>
+            <div class="tool-url">fireflies.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.7</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#45</div>
+          </div>
+          
+          <div class="info-box box-cat-audio" title="Category: AUDIO">
+            <div class="info-box-label">AUDIO</div>
+            <div class="info-box-value">AUD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 1.015s;">
+        <a href="https://beautiful.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">Ⓑ</div>
+          <div class="tool-info">
+            <div class="tool-name">Beautiful.ai</div>
+            <div class="tool-url">beautiful.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.6</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#38</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="audio" style="animation-delay: 1.05s;">
+        <a href="https://murf.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔊</div>
+          <div class="tool-info">
+            <div class="tool-name">Murf AI</div>
+            <div class="tool-url">murf.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.6</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#41</div>
+          </div>
+          
+          <div class="info-box box-cat-audio" title="Category: AUDIO">
+            <div class="info-box-label">AUDIO</div>
+            <div class="info-box-value">AUD</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text,image" style="animation-delay: 1.085s;">
+        <a href="https://bing.com/chat" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔵</div>
+          <div class="tool-info">
+            <div class="tool-name">Bing AI</div>
+            <div class="tool-url">bing.com/chat</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.5</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#4</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+          <div class="info-box box-cat-image" title="Category: IMAGE">
+            <div class="info-box-label">IMAGE</div>
+            <div class="info-box-value">IMG</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 1.12s;">
+        <a href="https://copy.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">©️</div>
+          <div class="tool-info">
+            <div class="tool-name">Copy.ai</div>
+            <div class="tool-url">copy.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.5</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#28</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="personal,text" style="animation-delay: 1.155s;">
+        <a href="https://pi.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">π</div>
+          <div class="tool-info">
+            <div class="tool-name">Pi</div>
+            <div class="tool-url">pi.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.5</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#27</div>
+          </div>
+          
+          <div class="info-box box-cat-personal" title="Category: PERSONAL">
+            <div class="info-box-label">PERSONAL</div>
+            <div class="info-box-value">PER</div>
+          </div>
+        
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 1.19s;">
+        <a href="https://tome.app/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔄</div>
+          <div class="tool-info">
+            <div class="tool-name">Tome</div>
+            <div class="tool-url">tome.app</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.4</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#42</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 1.225s;">
+        <a href="https://quillbot.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🤖</div>
+          <div class="tool-info">
+            <div class="tool-name">QuillBot</div>
+            <div class="tool-url">quillbot.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.3</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#16</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 1.26s;">
+        <a href="https://you.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">🔷</div>
+          <div class="tool-info">
+            <div class="tool-name">You.com</div>
+            <div class="tool-url">you.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7.2</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#22</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="text" style="animation-delay: 1.295s;">
+        <a href="https://writesonic.com/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">📝</div>
+          <div class="tool-info">
+            <div class="tool-name">Writesonic</div>
+            <div class="tool-url">writesonic.com</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">7</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#35</div>
+          </div>
+          
+          <div class="info-box box-cat-text" title="Category: CHAT">
+            <div class="info-box-label">CHAT</div>
+            <div class="info-box-value">TXT</div>
+          </div>
+        
+        </div>
+      </div><div class="tool-card" data-categories="personal" style="animation-delay: 1.33s;">
+        <a href="https://replika.ai/" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">💬</div>
+          <div class="tool-info">
+            <div class="tool-name">Replika</div>
+            <div class="tool-url">replika.ai</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">6.8</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#34</div>
+          </div>
+          
+          <div class="info-box box-cat-personal" title="Category: PERSONAL">
+            <div class="info-box-label">PERSONAL</div>
+            <div class="info-box-value">PER</div>
+          </div>
+        
+        </div>
+      </div></div>
+
+<div class="bottom-glow"></div>
+
+<div class="footer">
+  AI Control Dashboard — Curated Directory of Artificial Intelligence Tools
+</div>
+
+<script>
+  const tools = [
+    { name: "ChatGPT", url: "chat.openai.com", icon: "🌀", myRating: 9.5, trafficRank: 1, categories: ["text","image"], slug: "chatgpt" },
+    { name: "Claude", url: "claude.ai", icon: "🅰️", myRating: 9.2, trafficRank: 3, categories: ["text","coding"], slug: "claude" },
+    { name: "Gemini", url: "gemini.google.com", icon: "✦", myRating: 8.8, trafficRank: 2, categories: ["text","image"], slug: "gemini" },
+    { name: "Perplexity", url: "perplexity.ai", icon: "🔷", myRating: 8.5, trafficRank: 8, categories: ["text"], slug: "perplexity" },
+    { name: "Microsoft Copilot", url: "copilot.microsoft.com", icon: "🌈", myRating: 8.0, trafficRank: 5, categories: ["text","coding"], slug: "copilot" },
+    { name: "Bing AI", url: "bing.com/chat", icon: "🔵", myRating: 7.5, trafficRank: 4, categories: ["text","image"], slug: "bing-ai" },
+    { name: "Midjourney", url: "midjourney.com", icon: "⛵", myRating: 9.3, trafficRank: 12, categories: ["image"], slug: "midjourney" },
+    { name: "DALL-E", url: "labs.openai.com", icon: "🌀", myRating: 8.7, trafficRank: 15, categories: ["image"], slug: "dall-e" },
+    { name: "Runway", url: "runwayml.com", icon: "🅁", myRating: 9.0, trafficRank: 18, categories: ["image","video"], slug: "runway" },
+    { name: "Pika", url: "pika.art", icon: "🎬", myRating: 8.2, trafficRank: 25, categories: ["image","video"], slug: "pika" },
+    { name: "ElevenLabs", url: "elevenlabs.io", icon: "⏸", myRating: 9.1, trafficRank: 20, categories: ["audio"], slug: "elevenlabs" },
+    { name: "Hugging Face", url: "huggingface.co", icon: "🤗", myRating: 8.9, trafficRank: 10, categories: ["coding","text","image"], slug: "huggingface" },
+    { name: "Notion AI", url: "notion.so", icon: "📝", myRating: 7.8, trafficRank: 14, categories: ["text"], slug: "notion-ai" },
+    { name: "You.com", url: "you.com", icon: "🔷", myRating: 7.2, trafficRank: 22, categories: ["text"], slug: "you-com" },
+    { name: "Copy.ai", url: "copy.ai", icon: "©️", myRating: 7.5, trafficRank: 28, categories: ["text"], slug: "copy-ai" },
+    { name: "Character.AI", url: "beta.character.ai", icon: "👤", myRating: 8.0, trafficRank: 6, categories: ["personal","text"], slug: "character-ai" },
+    { name: "Writesonic", url: "writesonic.com", icon: "📝", myRating: 7.0, trafficRank: 35, categories: ["text"], slug: "writesonic" },
+    { name: "QuillBot", url: "quillbot.com", icon: "🤖", myRating: 7.3, trafficRank: 16, categories: ["text"], slug: "quillbot" },
+    { name: "Suno", url: "suno.com", icon: "🎵", myRating: 8.8, trafficRank: 24, categories: ["audio"], slug: "suno" },
+    { name: "Descript", url: "descript.com", icon: "📊", myRating: 8.3, trafficRank: 30, categories: ["audio"], slug: "descript" },
+    { name: "Gamma", url: "gamma.app", icon: "🔶", myRating: 8.1, trafficRank: 32, categories: ["text"], slug: "gamma" },
+    { name: "Beautiful.ai", url: "beautiful.ai", icon: "Ⓑ", myRating: 7.6, trafficRank: 38, categories: ["text"], slug: "beautiful-ai" },
+    { name: "Remove.bg", url: "remove.bg", icon: "📐", myRating: 7.9, trafficRank: 40, categories: ["image"], slug: "remove-bg" },
+    { name: "Stable Diffusion", url: "stability.ai", icon: "🎨", myRating: 8.6, trafficRank: 19, categories: ["image","text"], slug: "stable-diffusion" },
+    { name: "Tome", url: "tome.app", icon: "🔄", myRating: 7.4, trafficRank: 42, categories: ["text"], slug: "tome" },
+    { name: "Canva AI", url: "canva.com/ai", icon: "©️", myRating: 8.4, trafficRank: 9, categories: ["image","text"], slug: "canva-ai" },
+    { name: "Fireflies", url: "fireflies.ai", icon: "🔥", myRating: 7.7, trafficRank: 45, categories: ["audio"], slug: "fireflies" },
+    { name: "GitHub Copilot", url: "github.com/copilot", icon: "👤", myRating: 9.4, trafficRank: 7, categories: ["coding"], slug: "github-copilot" },
+    { name: "Codeium", url: "codeium.com", icon: "⚡", myRating: 8.5, trafficRank: 33, categories: ["coding"], slug: "codeium" },
+    { name: "Tabnine", url: "tabnine.com", icon: "🔷", myRating: 7.8, trafficRank: 36, categories: ["coding"], slug: "tabnine" },
+    { name: "Replit", url: "replit.com", icon: "🔄", myRating: 8.0, trafficRank: 17, categories: ["coding"], slug: "replit" },
+    { name: "Cursor", url: "cursor.sh", icon: "➤", myRating: 9.2, trafficRank: 21, categories: ["coding"], slug: "cursor" },
+    { name: "Pi", url: "pi.ai", icon: "π", myRating: 7.5, trafficRank: 27, categories: ["personal","text"], slug: "pi" },
+    { name: "Replika", url: "replika.ai", icon: "💬", myRating: 6.8, trafficRank: 34, categories: ["personal"], slug: "replika" },
+    { name: "Kimi", url: "kimi.moonshot.cn", icon: "🌙", myRating: 8.3, trafficRank: 11, categories: ["text","coding"], slug: "kimi" },
+    { name: "Sora", url: "openai.com/sora", icon: "🎬", myRating: 8.9, trafficRank: 13, categories: ["image","video"], slug: "sora" },
+    { name: "Luma AI", url: "lumalabs.ai", icon: "✨", myRating: 8.1, trafficRank: 37, categories: ["image"], slug: "luma-ai" },
+    { name: "HeyGen", url: "heygen.com", icon: "🎭", myRating: 8.0, trafficRank: 29, categories: ["video","image"], slug: "heygen" },
+    { name: "Murf AI", url: "murf.ai", icon: "🔊", myRating: 7.6, trafficRank: 41, categories: ["audio"], slug: "murf-ai" },
+  ];
+
+  let currentFilter = 'all';
+  let searchQuery = '';
+  let sortMode = 'rating'; // 'rating' or 'traffic'
+
+  const catConfig = {
+    text:     { abbr: 'TXT', colorClass: 'box-cat-text',     label: 'CHAT' },
+    image:    { abbr: 'IMG', colorClass: 'box-cat-image',    label: 'IMAGE' },
+    audio:    { abbr: 'AUD', colorClass: 'box-cat-audio',    label: 'AUDIO' },
+    video:    { abbr: 'VID', colorClass: 'box-cat-video',    label: 'VIDEO' },
+    coding:   { abbr: 'COD', colorClass: 'box-cat-coding',   label: 'CODE' },
+    personal: { abbr: 'PER', colorClass: 'box-cat-personal', label: 'PERSONAL' }
+  };
+
+  function renderCards() {
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = '';
+
+    let filtered = tools.filter(t => {
+      const matchesFilter = currentFilter === 'all' || t.categories.includes(currentFilter);
+      const matchesSearch = !searchQuery || 
+        t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t.url.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesFilter && matchesSearch;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="no-results">No tools found</div>';
+      return;
+    }
+
+    if (currentFilter === 'all') {
+      if (sortMode === 'traffic') {
+        filtered.sort((a, b) => a.trafficRank - b.trafficRank);
+      } else {
+        filtered.sort((a, b) => b.myRating - a.myRating);
+      }
+    } else {
+      filtered.sort((a, b) => a.trafficRank - b.trafficRank);
+    }
+
+    filtered.forEach((tool, i) => {
+      const card = document.createElement('div');
+      card.className = 'tool-card';
+      card.setAttribute('data-categories', tool.categories.join(','));
+      card.style.animationDelay = (i * 0.035) + 's';
+
+      // Build category boxes dynamically
+      let catBoxes = '';
+      tool.categories.forEach(cat => {
+        const cfg = catConfig[cat];
+        catBoxes += `
+          <div class="info-box ${cfg.colorClass}" title="Category: ${cfg.label}">
+            <div class="info-box-label">${cfg.label}</div>
+            <div class="info-box-value">${cfg.abbr}</div>
+          </div>
+        `;
+      });
+
+      card.innerHTML = `
+        <a href="https://${tool.url}" target="_blank" class="tool-left" style="text-decoration:none;flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+          <div class="tool-icon">${tool.icon}</div>
+          <div class="tool-info">
+            <div class="tool-name">${tool.name}</div>
+            <div class="tool-url">${tool.url}</div>
+          </div>
+        </a>
+        <div class="tool-right">
+          <div class="info-box box-rating" title="Click to sort by Rating" onclick="event.preventDefault(); event.stopPropagation(); sortByRating();">
+            <div class="info-box-label">RATING</div>
+            <div class="info-box-value">${tool.myRating}</div>
+          </div>
+          <div class="info-box box-traffic" title="Click to sort by Traffic Rank" onclick="event.preventDefault(); event.stopPropagation(); sortByTraffic();">
+            <div class="info-box-label">TRAFFIC</div>
+            <div class="info-box-value">#${tool.trafficRank}</div>
+          </div>
+          ${catBoxes}
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+  function sortByTraffic() {
+    sortMode = 'traffic';
+    currentFilter = 'all';
+    // Reset all nav tabs
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    // Activate ALL tab
+    document.querySelector('.nav-tab[data-filter="all"]').classList.add('active');
+    renderCards();
+  }
+
+  function sortByRating() {
+    sortMode = 'rating';
+    currentFilter = 'all';
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelector('.nav-tab[data-filter="all"]').classList.add('active');
+    renderCards();
+  }
+
+  function filterTools(category, el) {
+    currentFilter = category;
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    renderCards();
+  }
+
+  function searchTools(query) {
+    searchQuery = query;
+    renderCards();
+  }
+
+  function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDelay = Math.random() * 20 + 's';
+      p.style.animationDuration = (14 + Math.random() * 10) + 's';
+      container.appendChild(p);
+    }
+  }
+
+  createParticles();
+  renderCards();
+</script>
+
+
+</body></html>
