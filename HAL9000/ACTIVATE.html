@@ -4,16 +4,28 @@
 <meta charset="UTF-8">
 <title>Talk to the AI</title>
 <style>
-  body {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
     margin: 0;
+  }
+
+  body {
     background: #0a0a0a;
     color: #eee;
     font-family: 'Courier New', monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 15px 20px;
     text-align: center;
+    overflow-x: hidden;
   }
 
 form {
