@@ -401,12 +401,12 @@ async function loadData() {
 
 function formatTraffic(n) {
   if (n >= 1000000) {
-    return (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M/day';
+    return 'DAILY TRAFFIC ' + (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M';
   }
   if (n >= 1000) {
-    return Math.round(n / 1000) + 'K/day';
+    return 'DAILY TRAFFIC ' + Math.round(n / 1000) + 'K';
   }
-  return n + '/day';
+  return 'DAILY TRAFFIC ' + n;
 }
 
 function showOnly(type) {
@@ -517,7 +517,7 @@ function render() {
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
-          <span class="card-traffic">~${formatTraffic(item.traffic)}</span>
+          <span class="card-traffic">${formatTraffic(item.traffic)}</span>
         </div>
       </div>
     `;
