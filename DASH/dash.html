@@ -264,6 +264,11 @@
     background: rgba(255,107,107,0.15);
     color: #ff6b6b;
   }
+  .badge-affiliate {
+    background: rgba(255,107,107,0.15);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+  }
   .card-footer {
     display: flex;
     align-items: center;
@@ -467,6 +472,7 @@ function render() {
           <div class="card-badges">
             ${secondaryTags}
             <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}">${item.free ? 'Free' : 'Paid'}</span>
+            ${item.affiliate ? '<span class="card-badge badge-affiliate">Affiliate</span>' : ''}
           </div>
         </div>
         <div class="card-footer">

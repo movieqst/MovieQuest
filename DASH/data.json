@@ -11,7 +11,8 @@
       "chat",
       "code",
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Claude",
@@ -24,7 +25,8 @@
     "categories": [
       "chat",
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Claude Code",
@@ -36,7 +38,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Higgsfield",
@@ -49,7 +52,8 @@
     "categories": [
       "image",
       "video"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Kimi",
@@ -61,7 +65,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Gemini",
@@ -75,7 +80,8 @@
       "chat",
       "code",
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "DeepSeek",
@@ -88,7 +94,8 @@
     "categories": [
       "chat",
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Ideogram",
@@ -100,7 +107,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Superhuman",
@@ -112,7 +120,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Grok",
@@ -125,7 +134,8 @@
     "categories": [
       "chat",
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Copilot (Microsoft)",
@@ -137,7 +147,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Suno",
@@ -149,7 +160,8 @@
     "free": true,
     "categories": [
       "audio"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Stable Diffusion",
@@ -161,7 +173,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "ElevenLabs",
@@ -173,7 +186,8 @@
     "free": true,
     "categories": [
       "audio"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Vapi AI",
@@ -185,7 +199,8 @@
     "free": false,
     "categories": [
       "audio"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Adobe Firefly",
@@ -198,7 +213,8 @@
     "categories": [
       "image",
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Black Forest Labs",
@@ -210,7 +226,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Codex (OpenAI)",
@@ -222,7 +239,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Topaz Labs",
@@ -234,7 +252,8 @@
     "free": false,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "HeyGen",
@@ -246,7 +265,8 @@
     "free": false,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Hugging Face",
@@ -258,7 +278,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Remove.bg",
@@ -270,7 +291,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Kling 3.0",
@@ -282,7 +304,8 @@
     "free": true,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Leonardo AI",
@@ -294,7 +317,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Pi",
@@ -306,7 +330,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Synthesia",
@@ -318,7 +343,8 @@
     "free": false,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Udio",
@@ -330,7 +356,8 @@
     "free": true,
     "categories": [
       "audio"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Cursor",
@@ -342,7 +369,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Gamma",
@@ -354,7 +382,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Grammarly",
@@ -366,7 +395,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Luminar Neo",
@@ -378,7 +408,8 @@
     "free": false,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Manus AI",
@@ -390,7 +421,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Runway",
@@ -403,7 +435,8 @@
     "categories": [
       "image",
       "video"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Zapier",
@@ -415,7 +448,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Bolt",
@@ -427,7 +461,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Clipdrop",
@@ -439,7 +474,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Fish Audio",
@@ -451,7 +487,8 @@
     "free": true,
     "categories": [
       "audio"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Jasper",
@@ -463,7 +500,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Microsoft Designer",
@@ -475,7 +513,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Notion AI",
@@ -487,7 +526,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "OpenArt",
@@ -499,7 +539,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Opus Clip",
@@ -511,7 +552,8 @@
     "free": true,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Viktor AI",
@@ -523,7 +565,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "n8n",
@@ -535,7 +578,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Amazon Q Developer",
@@ -547,7 +591,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "CapCut AI",
@@ -559,7 +604,8 @@
     "free": true,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Copy.ai",
@@ -571,7 +617,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Granola",
@@ -583,7 +630,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Lindy",
@@ -595,7 +643,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Lovable",
@@ -607,7 +656,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Motion",
@@ -619,7 +669,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "PhotoRoom",
@@ -631,7 +682,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Photopea AI",
@@ -643,7 +695,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Pika Labs",
@@ -655,7 +708,8 @@
     "free": true,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Wispr Flow",
@@ -667,7 +721,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Adobe Express",
@@ -680,7 +735,8 @@
     "categories": [
       "image",
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "CleanUp.pictures",
@@ -692,7 +748,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Cline",
@@ -704,7 +761,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "D-ID",
@@ -717,7 +775,8 @@
     "categories": [
       "video",
       "audio"
-    ]
+    ],
+    "affiliate": true
   },
   {
     "name": "Elicit",
@@ -729,7 +788,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Make",
@@ -741,7 +801,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Otter.ai",
@@ -753,7 +814,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Playground AI",
@@ -765,7 +827,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Sora",
@@ -777,7 +840,8 @@
     "free": false,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Submagic",
@@ -789,7 +853,8 @@
     "free": true,
     "categories": [
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "v0 (Vercel)",
@@ -801,7 +866,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Colossyan",
@@ -814,7 +880,8 @@
     "categories": [
       "video",
       "audio"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Littlebird",
@@ -826,7 +893,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Napkin AI",
@@ -839,7 +907,8 @@
     "categories": [
       "chat",
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Picsart AI",
@@ -852,7 +921,8 @@
     "categories": [
       "image",
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Replit",
@@ -864,7 +934,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Tabnine",
@@ -876,7 +947,8 @@
     "free": false,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Tensor.Art",
@@ -888,7 +960,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Upscale.media",
@@ -900,7 +973,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Weavy AI",
@@ -912,7 +986,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Writesonic",
@@ -924,7 +999,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Artbreeder",
@@ -936,7 +1012,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "BasedLabs",
@@ -948,7 +1025,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Bing Image Creator",
@@ -960,7 +1038,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Canva AI",
@@ -973,7 +1052,8 @@
     "categories": [
       "image",
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Codeium",
@@ -985,7 +1065,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "DALL-E",
@@ -997,7 +1078,8 @@
     "free": false,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Descript",
@@ -1010,7 +1092,8 @@
     "categories": [
       "video",
       "audio"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Elai",
@@ -1023,7 +1106,8 @@
     "categories": [
       "video",
       "audio"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Exa",
@@ -1035,7 +1119,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Flux",
@@ -1047,7 +1132,8 @@
     "free": false,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Gemini Code Assist",
@@ -1059,7 +1145,8 @@
     "free": true,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "GitHub Copilot",
@@ -1071,7 +1158,8 @@
     "free": false,
     "categories": [
       "code"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Krea",
@@ -1084,7 +1172,8 @@
     "categories": [
       "image",
       "video"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Lensa",
@@ -1096,7 +1185,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Media.io",
@@ -1110,7 +1200,8 @@
       "video",
       "image",
       "audio"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Midjourney",
@@ -1122,7 +1213,8 @@
     "free": false,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "NightCafe",
@@ -1134,7 +1226,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "NotebookLM",
@@ -1146,7 +1239,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Perplexity",
@@ -1158,7 +1252,8 @@
     "free": true,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Pixlr AI",
@@ -1170,7 +1265,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Recraft",
@@ -1182,7 +1278,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Writer",
@@ -1194,7 +1291,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "BlueWillow",
@@ -1206,7 +1304,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Facetune",
@@ -1218,7 +1317,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Fotor AI",
@@ -1230,7 +1330,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Quarkle",
@@ -1242,7 +1343,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Reve AI",
@@ -1254,7 +1356,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Deep Dream Generator",
@@ -1266,7 +1369,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "DeepAI",
@@ -1278,7 +1382,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Phygital",
@@ -1290,7 +1395,8 @@
     "free": false,
     "categories": [
       "chat"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Dream by Wombo",
@@ -1302,7 +1408,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "StarryAI",
@@ -1314,7 +1421,8 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   },
   {
     "name": "Craiyon",
@@ -1326,6 +1434,7 @@
     "free": true,
     "categories": [
       "image"
-    ]
+    ],
+    "affiliate": false
   }
 ]
