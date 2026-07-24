@@ -258,6 +258,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    cursor: pointer;
   }
   .card-badge {
     font-size: 1.18rem;
@@ -441,6 +442,19 @@ function formatTraffic(n) {
   return `<span class="card-traffic-label">DAILY TRAFFIC </span><span class="card-traffic-value">${value}</span>`;
 }
 
+function filterByCategory(cat) {
+  currentFilter = cat;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const tab = document.querySelector(`.nav-tab[data-filter="${cat}"]`);
+  if (tab) tab.classList.add('active');
+  currentFreeFilter = 'all';
+  currentAffiliateFilter = false;
+  const filterSelect = document.getElementById('filterSelect');
+  if (filterSelect) filterSelect.value = 'all';
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function showOnly(type) {
   // Reset the visible category tabs to "All" since these are invisible/cross-category filters
   currentFilter = 'all';
@@ -530,7 +544,7 @@ function render() {
     const categoryLabel = displayCat(item.categories[0]);
     const secondaryTags = item.categories.slice(1).map(cat => {
       const c = categoryColors[cat] || categoryColors.chat;
-      return `<span class="card-tag" style="background:${c.bg};color:${c.accent};border:1px solid ${c.accent}">${displayCat(cat)}</span>`;
+      return `<span class="card-tag" style="background:${c.bg};color:${c.accent};border:1px solid ${c.accent}" onclick="event.stopPropagation(); filterByCategory('${cat}')">${displayCat(cat)}</span>`;
     }).join('');
     
     return `
