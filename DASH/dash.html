@@ -258,12 +258,6 @@
     background: rgba(255,107,107,0.15);
     color: #ff6b6b;
   }
-  .card-rank {
-    font-size: 0.7rem;
-    color: #484f58;
-    font-weight: 600;
-  }
-
   .card-footer {
     display: flex;
     align-items: center;
@@ -328,7 +322,7 @@
 
 <div class="header">
   <h1>A I &nbsp; D A S H &nbsp; C O N T R O L &nbsp; B O A R D</h1>
-  <div class="subtitle">Discover the best AI tools</div>
+  <div class="subtitle" id="appCounter">Loading...</div>
 </div>
 
 <div class="search-bar">
@@ -339,8 +333,7 @@
   <div class="control-group">
     <label>Sort by:</label>
     <select id="sortSelect">
-      <option value="rank">Rank</option>
-      <option value="rating">Rating</option>
+      <option value="rating" selected>Rating</option>
       <option value="traffic">Traffic</option>
       <option value="name">Name</option>
     </select>
@@ -357,6 +350,15 @@
 
 <div class="cards-grid" id="cardsGrid"></div>
 
+
+
+
+
+
+
+
+
+
 <script>
 const categoryColors = {
   chat:  { accent: '#58a6ff', bg: 'rgba(88,166,255,0.1)' },
@@ -368,7 +370,7 @@ const categoryColors = {
 
 let allData = [];
 let currentFilter = 'all';
-let currentSort = 'rank';
+let currentSort = 'rating';
 let currentFreeFilter = 'all';
 let searchQuery = '';
 
@@ -377,6 +379,9 @@ async function loadData() {
     const res = await fetch('data.json');
     allData = await res.json();
     render();
+    // Set initial counter
+    const counter = document.getElementById('appCounter');
+    if (counter) counter.textContent = 'VIEWING ' + allData.length + ' AI APPS';
   } catch (e) {
     document.getElementById('cardsGrid').innerHTML = 
       '<div class="no-results">Error loading data. Please check that data.json is in the same folder.</div>';
@@ -407,10 +412,21 @@ function getFilteredData() {
   
   data.sort((a, b) => {
     if (currentSort === 'name') return a.name.localeCompare(b.name);
-    if (currentSort === 'rating') return b.rating - a.rating;
     if (currentSort === 'traffic') return a.traffic - b.traffic;
-    return a.rank - b.rank;
+    return b.rating - a.rating;
   });
+  
+  // Update the counter
+  const counter = document.getElementById('appCounter');
+  if (counter) {
+    const total = allData.length;
+    const showing = data.length;
+    if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all') {
+      counter.textContent = 'VIEWING ' + total + ' AI APPS';
+    } else {
+      counter.textContent = 'VIEWING ' + showing + ' OF ' + total + ' AI APPS';
+    }
+  }
   
   return data;
 }
@@ -441,7 +457,6 @@ function render() {
         <div class="card-meta">
           <div class="card-rating">${star} ${item.rating}</div>
           <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}">${item.free ? 'Free' : 'Paid'}</span>
-          <span class="card-rank">#${item.rank}</span>
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
@@ -484,3 +499,14 @@ loadData();
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+ 
