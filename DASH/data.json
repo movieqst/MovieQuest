@@ -539,7 +539,8 @@
     "url": "openart.ai",
     "free": true,
     "categories": [
-      "image"
+      "image",
+      "video"
     ],
     "affiliate": false
   },
@@ -1382,7 +1383,9 @@
     "url": "deepai.org",
     "free": true,
     "categories": [
-      "image"
+      "image",
+      "video",
+      "chat"
     ],
     "affiliate": false
   },
