@@ -64,7 +64,8 @@
     "url": "kimi.moonshot.cn",
     "free": true,
     "categories": [
-      "chat"
+      "chat",
+      "code"
     ],
     "affiliate": false
   },
@@ -1434,6 +1435,19 @@
     "free": true,
     "categories": [
       "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Aider",
+    "icon": "\ud83d\udee0\ufe0f",
+    "desc": "Open-source AI pair programmer that edits code directly in your local git repo from the terminal.",
+    "rating": 9.4,
+    "traffic": 150000,
+    "url": "aider.chat",
+    "free": true,
+    "categories": [
+      "code"
     ],
     "affiliate": false
   }
