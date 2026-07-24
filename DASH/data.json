@@ -17,26 +17,13 @@
   {
     "name": "Claude",
     "icon": "A",
-    "desc": "Anthropic's AI assistant with strong reasoning and long-context capabilities.",
+    "desc": "Anthropic's AI assistant with strong reasoning and long-context capabilities, plus a terminal-native coding agent (Claude Code) that reads, writes, and executes code.",
     "rating": 10.0,
-    "traffic": 3000000,
+    "traffic": 3200000,
     "url": "claude.ai",
     "free": true,
     "categories": [
       "chat",
-      "code"
-    ],
-    "affiliate": false
-  },
-  {
-    "name": "Claude Code",
-    "icon": "\ud83d\udcbb",
-    "desc": "Terminal-native AI coding agent that reads, writes, and executes code.",
-    "rating": 10.0,
-    "traffic": 200000,
-    "url": "claude.ai/code",
-    "free": true,
-    "categories": [
       "code"
     ],
     "affiliate": false
@@ -1453,5 +1440,18 @@
       "code"
     ],
     "affiliate": false
+  },
+  {
+    "name": "DupDub",
+    "icon": "\ud83c\udf99\ufe0f",
+    "desc": "AI voice generation and dubbing platform with text-to-speech, voice cloning, and video localization.",
+    "rating": 8.3,
+    "traffic": 150000,
+    "url": "dupdub.com",
+    "free": true,
+    "categories": [
+      "audio"
+    ],
+    "affiliate": true
   }
 ]
