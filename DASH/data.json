@@ -130,16 +130,6 @@
     "free": true
   },
   {
-    "name": "GPT Image 2",
-    "category": "image",
-    "icon": "\ud83d\uddbc",
-    "desc": "OpenAI's flagship for ultra-detailed 8K image generation.",
-    "rating": 9.2,
-    "traffic": 14,
-    "url": "openai.com",
-    "free": false
-  },
-  {
     "name": "ElevenLabs",
     "category": "audio",
     "icon": "\ud83d\udd08",
