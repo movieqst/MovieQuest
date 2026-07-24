@@ -38,7 +38,8 @@
     "free": false,
     "categories": [
       "video",
-      "image"
+      "image",
+      "supercomputer"
     ],
     "affiliate": true
   },
@@ -52,7 +53,8 @@
     "free": true,
     "categories": [
       "chat",
-      "code"
+      "code",
+      "supercomputer"
     ],
     "affiliate": false
   },
@@ -174,7 +176,8 @@
     "url": "elevenlabs.io",
     "free": true,
     "categories": [
-      "audio"
+      "audio",
+      "niche"
     ],
     "affiliate": true
   },
@@ -187,7 +190,8 @@
     "url": "vapi.ai",
     "free": false,
     "categories": [
-      "audio"
+      "audio",
+      "niche"
     ],
     "affiliate": true
   },
@@ -253,7 +257,8 @@
     "url": "heygen.com",
     "free": false,
     "categories": [
-      "video"
+      "video",
+      "niche"
     ],
     "affiliate": true
   },
@@ -266,7 +271,8 @@
     "url": "huggingface.co",
     "free": true,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -292,7 +298,8 @@
     "url": "klingai.com",
     "free": true,
     "categories": [
-      "video"
+      "video",
+      "niche"
     ],
     "affiliate": true
   },
@@ -331,7 +338,8 @@
     "url": "synthesia.io",
     "free": false,
     "categories": [
-      "video"
+      "video",
+      "niche"
     ],
     "affiliate": true
   },
@@ -357,7 +365,8 @@
     "url": "cursor.com",
     "free": true,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -383,7 +392,8 @@
     "url": "grammarly.com",
     "free": true,
     "categories": [
-      "chat"
+      "chat",
+      "niche"
     ],
     "affiliate": false
   },
@@ -488,7 +498,8 @@
     "url": "jasper.ai",
     "free": false,
     "categories": [
-      "chat"
+      "chat",
+      "niche"
     ],
     "affiliate": false
   },
@@ -528,7 +539,8 @@
     "free": true,
     "categories": [
       "image",
-      "video"
+      "video",
+      "supercomputer"
     ],
     "affiliate": false
   },
@@ -580,7 +592,8 @@
     "url": "aws.amazon.com/q",
     "free": true,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -777,7 +790,8 @@
     "url": "elicit.org",
     "free": true,
     "categories": [
-      "chat"
+      "chat",
+      "niche"
     ],
     "affiliate": false
   },
@@ -923,7 +937,8 @@
     "url": "replit.com",
     "free": true,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -936,7 +951,8 @@
     "url": "tabnine.com",
     "free": false,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -1054,7 +1070,8 @@
     "url": "codeium.com",
     "free": true,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -1081,7 +1098,8 @@
     "free": true,
     "categories": [
       "video",
-      "audio"
+      "audio",
+      "niche"
     ],
     "affiliate": false
   },
@@ -1134,7 +1152,8 @@
     "url": "aistudio.google.com",
     "free": true,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -1147,7 +1166,8 @@
     "url": "github.com/features/copilot",
     "free": false,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -1280,7 +1300,8 @@
     "url": "writer.com",
     "free": false,
     "categories": [
-      "chat"
+      "chat",
+      "niche"
     ],
     "affiliate": false
   },
@@ -1438,7 +1459,8 @@
     "url": "aider.chat",
     "free": true,
     "categories": [
-      "code"
+      "code",
+      "niche"
     ],
     "affiliate": false
   },
@@ -1451,8 +1473,386 @@
     "url": "dupdub.com",
     "free": true,
     "categories": [
-      "audio"
+      "audio",
+      "niche"
     ],
     "affiliate": true
+  },
+  {
+    "name": "Avoca",
+    "icon": "\ud83d\udcde",
+    "desc": "AI voice agent platform that answers calls, books jobs, and follows up with customers for home service businesses.",
+    "rating": 8.7,
+    "traffic": 40000,
+    "url": "avoca.ai",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Revin",
+    "icon": "\u260e\ufe0f",
+    "desc": "AI-powered customer service agents for home service businesses, handling scheduling, marketing, and membership calls.",
+    "rating": 8.3,
+    "traffic": 20000,
+    "url": "revin.ai",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Drillbit",
+    "icon": "\ud83d\udd27",
+    "desc": "AI back-office platform automating quoting, communications, and payments for home service businesses.",
+    "rating": 8.0,
+    "traffic": 15000,
+    "url": "drillbit.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "audio"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Trunk Tools",
+    "icon": "\ud83c\udfd7\ufe0f",
+    "desc": "Construction-specific AI platform that analyzes drawings, specs, and project documents to reduce rework and delays.",
+    "rating": 8.8,
+    "traffic": 30000,
+    "url": "trunktools.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Supio",
+    "icon": "\u2696\ufe0f",
+    "desc": "Agentic legal AI platform for plaintiff law firms, automating medical record review and case preparation.",
+    "rating": 8.9,
+    "traffic": 35000,
+    "url": "supio.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "GC AI",
+    "icon": "\ud83d\udc69\u200d\u2696\ufe0f",
+    "desc": "Legal AI platform built for in-house counsel, helping draft contracts, review documents, and conduct legal research.",
+    "rating": 8.6,
+    "traffic": 30000,
+    "url": "gc.ai",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Sixfold",
+    "icon": "\ud83d\udee1\ufe0f",
+    "desc": "AI underwriting agent for insurance carriers that evaluates submissions and recommends next-best actions.",
+    "rating": 8.9,
+    "traffic": 25000,
+    "url": "sixfold.ai",
+    "free": false,
+    "categories": [
+      "niche",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Monto",
+    "icon": "\ud83d\udcb3",
+    "desc": "AI connector for B2B finance teams that automates invoicing and payment collection across accounts payable portals.",
+    "rating": 8.2,
+    "traffic": 15000,
+    "url": "montopay.com",
+    "free": false,
+    "categories": [
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Range",
+    "icon": "\ud83d\udcb0",
+    "desc": "AI-powered wealth management platform combining an AI financial planner with licensed human advisors.",
+    "rating": 8.5,
+    "traffic": 60000,
+    "url": "range.com",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Abridge",
+    "icon": "\ud83e\ude7a",
+    "desc": "Ambient AI medical scribe that listens to patient visits and generates clinical documentation automatically.",
+    "rating": 9.3,
+    "traffic": 200000,
+    "url": "abridge.com",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Freed",
+    "icon": "\ud83d\udcdd",
+    "desc": "AI medical scribe app that listens to patient visits and writes structured clinical notes in seconds.",
+    "rating": 9.0,
+    "traffic": 150000,
+    "url": "getfreed.ai",
+    "free": true,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Collate",
+    "icon": "\ud83d\uddc4\ufe0f",
+    "desc": "AI-native data governance and catalog platform built on OpenMetadata for enterprise data discovery and lineage.",
+    "rating": 8.4,
+    "traffic": 25000,
+    "url": "getcollate.io",
+    "free": false,
+    "categories": [
+      "niche",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Prepared",
+    "icon": "\ud83d\udea8",
+    "desc": "Assistive AI platform for 911 emergency communications that transcribes, translates, and surfaces call details in real time.",
+    "rating": 8.9,
+    "traffic": 40000,
+    "url": "prepared911.com",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Axon",
+    "icon": "\ud83d\udef0\ufe0f",
+    "desc": "Public safety technology company using AI across body cameras, 911 response, and automated police report drafting.",
+    "rating": 8.7,
+    "traffic": 500000,
+    "url": "axon.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "MagicSchool",
+    "icon": "\ud83e\ude84",
+    "desc": "AI platform for K-12 educators with 80+ tools for lesson planning, rubrics, and reducing teacher burnout.",
+    "rating": 9.2,
+    "traffic": 800000,
+    "url": "magicschool.ai",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "SchoolAI",
+    "icon": "\ud83c\udfeb",
+    "desc": "Classroom AI platform where teachers build interactive AI 'Spaces' for personalized student learning and insights.",
+    "rating": 9.1,
+    "traffic": 700000,
+    "url": "schoolai.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "CoreWeave",
+    "icon": "\ud83c\udf29\ufe0f",
+    "desc": "Specialized cloud provider offering large-scale NVIDIA GPU infrastructure for AI training and inference workloads.",
+    "rating": 9.0,
+    "traffic": 2000000,
+    "url": "coreweave.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Nebius",
+    "icon": "\u2601\ufe0f",
+    "desc": "AI-centric cloud platform providing GPU compute clusters, managed infrastructure, and tools for training large models.",
+    "rating": 8.7,
+    "traffic": 500000,
+    "url": "nebius.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Crusoe",
+    "icon": "\ud83d\udd25",
+    "desc": "Vertically integrated AI cloud offering GPU compute powered by stranded and clean energy sources for large-scale training.",
+    "rating": 8.6,
+    "traffic": 300000,
+    "url": "crusoe.ai",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Lambda",
+    "icon": "\u03bb",
+    "desc": "GPU cloud and on-prem infrastructure built for machine learning researchers and enterprises training large AI models.",
+    "rating": 8.8,
+    "traffic": 600000,
+    "url": "lambda.ai",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Nscale",
+    "icon": "\ud83d\udda5\ufe0f",
+    "desc": "Vertically integrated European AI cloud provider building GPU superclusters and full-stack AI infrastructure at scale.",
+    "rating": 8.5,
+    "traffic": 200000,
+    "url": "nscale.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "SkyPilot",
+    "icon": "\ud83d\ude80",
+    "desc": "Open-source framework for running AI and ML workloads across any cloud, automatically finding the cheapest available GPUs.",
+    "rating": 8.9,
+    "traffic": 150000,
+    "url": "skypilot.co",
+    "free": true,
+    "categories": [
+      "supercomputer",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "TensorWave",
+    "icon": "\ud83d\udce1",
+    "desc": "AI and HPC cloud built exclusively on AMD Instinct GPUs, offering liquid-cooled clusters for large-scale training.",
+    "rating": 8.3,
+    "traffic": 80000,
+    "url": "tensorwave.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "MeluXina-AI",
+    "icon": "\ud83c\uddf1\ud83c\uddfa",
+    "desc": "Luxembourg's EuroHPC AI-optimized supercomputer delivering multi-exaflop performance for AI model training and research.",
+    "rating": 8.0,
+    "traffic": 20000,
+    "url": "luxprovide.lu",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "OCI",
+    "icon": "\ud83d\udd3a",
+    "desc": "Oracle Cloud Infrastructure, offering enterprise cloud computing including large-scale GPU clusters for AI workloads.",
+    "rating": 8.4,
+    "traffic": 4000000,
+    "url": "oracle.com/cloud",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Zettascale10",
+    "icon": "\u26a1",
+    "desc": "Oracle's flagship AI supercomputer connecting hundreds of thousands of NVIDIA GPUs across data centers for extreme-scale AI training.",
+    "rating": 8.6,
+    "traffic": 100000,
+    "url": "oracle.com/cloud/zettascale",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Project Ceiba",
+    "icon": "\ud83c\udf33",
+    "desc": "Joint AWS and NVIDIA supercomputer initiative built to power NVIDIA's own AI research using tens of thousands of GPUs.",
+    "rating": 8.5,
+    "traffic": 50000,
+    "url": "aws.amazon.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
   }
 ]
