@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#0d0d0d"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Black box background -->
+  <rect x="1" y="1" width="30" height="30" rx="3" fill="url(#boxGrad)" stroke="#2a2a2a" stroke-width="0.5"/>
+
+  <!-- AI text above (bigger) -->
+  <text x="16" y="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="900" fill="#e6edf3" letter-spacing="1.5">AI</text>
+
+  <!-- Dark track background (inside the frame) -->
+  <rect x="2" y="13" width="28" height="4" rx="1" fill="#1a0000"/>
+  <rect x="2" y="14" width="28" height="2" rx="0.5" fill="#0d0000"/>
+
+  <!-- Lead dot (brightest, with glow) - moves FIRST -->
+  <rect x="2" y="12.5" width="4" height="5" rx="1" fill="#ff1a1a" filter="url(#glow)">
+    <animate attributeName="x" values="2;27;2" dur="1.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- Lead dot core (white-hot center) -->
+  <rect x="2" y="13.5" width="2" height="3" rx="0.5" fill="#ff6666">
+    <animate attributeName="x" values="2;27;2" dur="1.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- Trail LED 1 (bright, follows immediately behind) -->
+  <rect x="2" y="13.5" width="3" height="3" rx="0.5" fill="#ff0000" opacity="0.9">
+    <animate attributeName="x" values="2;27;2" dur="1.4s" begin="0.04s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- Trail LED 2 (medium bright) -->
+  <rect x="2" y="13.5" width="3" height="3" rx="0.5" fill="#ff0000" opacity="0.75">
+    <animate attributeName="x" values="2;27;2" dur="1.4s" begin="0.08s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- Trail LED 3 (medium dim) -->
+  <rect x="2" y="13.5" width="3" height="3" rx="0.5" fill="#ff0000" opacity="0.5">
+    <animate attributeName="x" values="2;27;2" dur="1.4s" begin="0.12s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- Trail LED 4 (dim) -->
+  <rect x="2" y="13.5" width="3" height="3" rx="0.5" fill="#ff0000" opacity="0.3">
+    <animate attributeName="x" values="2;27;2" dur="1.4s" begin="0.16s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- Trail LED 5 (furthest back, very dim) -->
+  <rect x="2" y="13.5" width="3" height="3" rx="0.5" fill="#ff0000" opacity="0.15">
+    <animate attributeName="x" values="2;27;2" dur="1.4s" begin="0.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- DASH text below (same size as AI) -->
+  <text x="16" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="900" fill="#e6edf3" letter-spacing="0.5">DASH</text>
+</svg>
