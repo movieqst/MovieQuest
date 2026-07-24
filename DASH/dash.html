@@ -255,6 +255,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    cursor: pointer;
   }
   .badge-free {
     background: rgba(63,185,80,0.15);
@@ -381,6 +382,7 @@ let allData = [];
 let currentFilter = 'all';
 let currentSort = 'rating';
 let currentFreeFilter = 'all';
+let currentAffiliateFilter = false;
 let searchQuery = '';
 
 async function loadData() {
@@ -397,6 +399,30 @@ async function loadData() {
   }
 }
 
+function showOnly(type) {
+  // Reset the visible category tabs to "All" since these are invisible/cross-category filters
+  currentFilter = 'all';
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab-all').classList.add('active');
+
+  if (type === 'free') {
+    currentFreeFilter = 'free';
+    currentAffiliateFilter = false;
+  } else if (type === 'paid') {
+    currentFreeFilter = 'paid';
+    currentAffiliateFilter = false;
+  } else if (type === 'affiliate') {
+    currentFreeFilter = 'all';
+    currentAffiliateFilter = true;
+  }
+
+  // Keep the Filter dropdown in sync
+  const filterSelect = document.getElementById('filterSelect');
+  if (filterSelect) filterSelect.value = currentFreeFilter;
+
+  render();
+}
+
 function getFilteredData() {
   let data = [...allData];
   
@@ -408,6 +434,10 @@ function getFilteredData() {
     data = data.filter(item => item.free === true);
   } else if (currentFreeFilter === 'paid') {
     data = data.filter(item => item.free === false);
+  }
+  
+  if (currentAffiliateFilter) {
+    data = data.filter(item => item.affiliate === true);
   }
   
   if (searchQuery) {
@@ -430,7 +460,7 @@ function getFilteredData() {
   if (counter) {
     const total = allData.length;
     const showing = data.length;
-    if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all') {
+    if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all' && !currentAffiliateFilter) {
       counter.textContent = total + ' AI APPS';
     } else {
       counter.textContent = showing + ' OF ' + total + ' AI APPS';
@@ -471,8 +501,8 @@ function render() {
           <div class="card-rating">${star} ${item.rating}</div>
           <div class="card-badges">
             ${secondaryTags}
-            <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}">${item.free ? 'Free' : 'Paid'}</span>
-            ${item.affiliate ? '<span class="card-badge badge-affiliate">Affiliate</span>' : ''}
+            <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}" onclick="event.stopPropagation(); showOnly('${item.free ? 'free' : 'paid'}')">${item.free ? 'Free' : 'Paid'}</span>
+            ${item.affiliate ? `<span class="card-badge badge-affiliate" onclick="event.stopPropagation(); showOnly('affiliate')">Affiliate</span>` : ''}
           </div>
         </div>
         <div class="card-footer">
