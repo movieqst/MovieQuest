@@ -533,7 +533,7 @@
     "name": "OpenArt",
     "icon": "🎨",
     "desc": "AI art generator and image editor with custom models and community sharing.",
-    "rating": 8.4,
+    "rating": 10,
     "traffic": 200000,
     "url": "openart.ai",
     "free": true,
