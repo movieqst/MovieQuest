@@ -80,6 +80,10 @@
   .tab-supercomputer:hover, .tab-supercomputer.active { background: rgba(255,45,120,0.1); }
   .tab-niche     { color: #d29922; }
   .tab-niche:hover, .tab-niche.active   { background: rgba(210,153,34,0.1); }
+  .tab-notai     { color: #8b949e; }
+  .tab-notai:hover, .tab-notai.active   { background: rgba(139,148,158,0.1); }
+  .tab-txtspeech { color: #ff9bce; }
+  .tab-txtspeech:hover, .tab-txtspeech.active { background: rgba(255,155,206,0.1); }
 
   .header {
     text-align: center;
@@ -360,6 +364,8 @@
   <div class="nav-tab tab-code" data-filter="code" onclick="selectNavTab(this, 'code')">💻 Coding AI</div>
   <div class="nav-tab tab-supercomputer" data-filter="supercomputer" onclick="selectNavTab(this, 'supercomputer')">🖥️ Super Cmptr</div>
   <div class="nav-tab tab-niche" data-filter="niche" onclick="selectNavTab(this, 'niche')">🧩 Niche AI</div>
+  <div class="nav-tab tab-notai" data-filter="notai" onclick="selectNavTab(this, 'notai')">🚫 Not AI</div>
+  <div class="nav-tab tab-txtspeech" data-filter="txtspeech" onclick="selectNavTab(this, 'txtspeech')">🗣️ Txt-Speech</div>
 </div>
 
 <div class="header">
@@ -407,7 +413,9 @@ const categoryColors = {
   audio: { accent: '#a371f7', bg: 'rgba(163,113,247,0.1)' },
   code:  { accent: '#3fb950', bg: 'rgba(63,185,80,0.1)' },
   supercomputer: { accent: '#ff2d78', bg: 'rgba(255,45,120,0.1)' },
-  niche: { accent: '#d29922', bg: 'rgba(210,153,34,0.1)' }
+  niche: { accent: '#d29922', bg: 'rgba(210,153,34,0.1)' },
+  notai: { accent: '#8b949e', bg: 'rgba(139,148,158,0.1)' },
+  txtspeech: { accent: '#ff9bce', bg: 'rgba(255,155,206,0.1)' }
 };
 
 let allData = [];
@@ -547,7 +555,7 @@ function render() {
   
   grid.innerHTML = data.map(item => {
     const colors = categoryColors[item.categories[0]] || categoryColors.chat;
-    const categoryDisplayNames = { code: 'coding', niche: 'niche ai', supercomputer: 'super cmptr' };
+    const categoryDisplayNames = { code: 'coding', niche: 'niche ai', supercomputer: 'super cmptr', notai: 'not ai', txtspeech: 'txt-speech' };
     const displayCat = c => categoryDisplayNames[c] || c;
     const categoryLabel = displayCat(item.categories[0]);
     const secondaryTags = item.categories.slice(1).map(cat => {
