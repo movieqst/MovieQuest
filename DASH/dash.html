@@ -89,7 +89,7 @@
     text-transform: uppercase;
   }
   .header .subtitle {
-    font-size: 0.7rem;
+    font-size: 1.05rem;
     color: #ff6b6b;
     letter-spacing: 6px;
     text-transform: uppercase;
@@ -321,7 +321,7 @@
 </div>
 
 <div class="header">
-  <h1>A I &nbsp; D A S H &nbsp; C O N T R O L &nbsp; B O A R D</h1>
+  <h1>A I &nbsp; D A S H</h1>
   <div class="subtitle" id="appCounter">Loading...</div>
 </div>
 
@@ -379,7 +379,7 @@ async function loadData() {
     render();
     // Set initial counter
     const counter = document.getElementById('appCounter');
-    if (counter) counter.textContent = 'VIEWING ' + allData.length + ' AI APPS';
+    if (counter) counter.textContent = allData.length + ' AI APPS';
   } catch (e) {
     document.getElementById('cardsGrid').innerHTML = 
       '<div class="no-results">Error loading data. Please check that data.json is in the same folder.</div>';
@@ -420,9 +420,9 @@ function getFilteredData() {
     const total = allData.length;
     const showing = data.length;
     if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all') {
-      counter.textContent = 'VIEWING ' + total + ' AI APPS';
+      counter.textContent = total + ' AI APPS';
     } else {
-      counter.textContent = 'VIEWING ' + showing + ' OF ' + total + ' AI APPS';
+      counter.textContent = showing + ' OF ' + total + ' AI APPS';
     }
   }
   
