@@ -1890,7 +1890,8 @@
     "url": "text-to-speech.online",
     "free": true,
     "categories": [
-      "txtspeech"
+      "txtspeech",
+      "notai"
     ],
     "affiliate": false
   }
