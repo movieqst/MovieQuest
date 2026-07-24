@@ -134,7 +134,8 @@
     "url": "copilot.microsoft.com",
     "free": true,
     "categories": [
-      "chat"
+      "chat",
+      "code"
     ],
     "affiliate": false
   },

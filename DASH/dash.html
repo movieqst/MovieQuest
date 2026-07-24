@@ -356,7 +356,7 @@
   <div class="nav-tab tab-video" data-filter="video">🎬 Video AI</div>
   <div class="nav-tab tab-audio" data-filter="audio">🔊 Audio AI</div>
   <div class="nav-tab tab-code" data-filter="code">💻 Coding AI</div>
-  <div class="nav-tab tab-supercomputer" data-filter="supercomputer">🖥️ Supercomputer AI</div>
+  <div class="nav-tab tab-supercomputer" data-filter="supercomputer">🖥️ Super Cmptr</div>
   <div class="nav-tab tab-niche" data-filter="niche">🧩 Niche AI</div>
 </div>
 
@@ -502,10 +502,12 @@ function getFilteredData() {
   if (counter) {
     const total = allData.length;
     const showing = data.length;
+    const catColor = currentFilter !== 'all' ? (categoryColors[currentFilter] || {}).accent : null;
+    const showingSpan = catColor ? `<span style="color:${catColor}">${showing}</span>` : showing;
     if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all' && !currentAffiliateFilter) {
-      counter.textContent = total + ' AI APPS';
+      counter.innerHTML = total + ' AI APPS';
     } else {
-      counter.textContent = showing + ' OF ' + total + ' AI APPS';
+      counter.innerHTML = showingSpan + ' OF ' + total + ' AI APPS';
     }
   }
   
@@ -523,7 +525,7 @@ function render() {
   
   grid.innerHTML = data.map(item => {
     const colors = categoryColors[item.categories[0]] || categoryColors.chat;
-    const categoryDisplayNames = { code: 'coding', niche: 'niche ai' };
+    const categoryDisplayNames = { code: 'coding', niche: 'niche ai', supercomputer: 'super cmptr' };
     const displayCat = c => categoryDisplayNames[c] || c;
     const categoryLabel = displayCat(item.categories[0]);
     const secondaryTags = item.categories.slice(1).map(cat => {
