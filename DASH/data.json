@@ -155,7 +155,7 @@
     "name": "Stable Diffusion",
     "icon": "\ud83d\udd27",
     "desc": "Open-source image generation model with extensive customization options.",
-    "rating": 9.4,
+    "rating": 7,
     "traffic": 1000000,
     "url": "stability.ai",
     "free": true,
@@ -194,10 +194,10 @@
     "name": "Adobe Firefly",
     "icon": "\ud83d\udd25",
     "desc": "Generative AI studio with commercially-safe outputs, built into Creative Cloud.",
-    "rating": 8.9,
+    "rating": 7,
     "traffic": 2000000,
     "url": "firefly.adobe.com",
-    "free": true,
+    "free": false,
     "categories": [
       "image",
       "video"
