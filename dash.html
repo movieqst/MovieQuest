@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Discover and compare the best AI tools for chat, image generation, video, audio, and coding. Filter, sort, and find the perfect AI for your workflow.">
-<title>AI Dash Control Board - Best AI Tools Directory</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>AI Control Dashboard</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -18,17 +16,19 @@
 
   .affiliate-notice {
     text-align: center;
-    padding: 6px 16px;
+    padding: 8px 16px;
     background: #0d1117;
     border-bottom: 1px solid #1c2128;
     font-size: 11px;
-    color: #6e7681;
+    color: #8b949e;
     letter-spacing: 0.3px;
   }
   .affiliate-notice .notice-word {
-    font-size: 11px;
-    font-weight: 600;
-    color: #8b949e;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ff6b6b;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .top-nav {
@@ -64,8 +64,8 @@
     box-shadow: 0 0 10px currentColor;
   }
 
-  .tab-all       { color: #e6edf3; }
-  .tab-all:hover, .tab-all.active       { background: rgba(230,237,243,0.08); }
+  .tab-all       { color: #ff4444; }
+  .tab-all:hover, .tab-all.active       { background: rgba(255,68,68,0.1); }
   .tab-chat      { color: #58a6ff; }
   .tab-chat:hover, .tab-chat.active     { background: rgba(88,166,255,0.1); }
   .tab-image     { color: #f0883e; }
@@ -89,7 +89,7 @@
     text-transform: uppercase;
   }
   .header .subtitle {
-    font-size: 0.7rem;
+    font-size: 1.4rem;
     color: #ff6b6b;
     letter-spacing: 6px;
     text-transform: uppercase;
@@ -202,13 +202,13 @@
     flex-shrink: 0;
   }
   .card-title {
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: #e6edf3;
     line-height: 1.2;
   }
   .card-category {
-    font-size: 0.65rem;
+    font-size: 0.91rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--accent, #58a6ff);
@@ -216,14 +216,8 @@
     margin-top: 2px;
   }
 
-  .card-desc {
-    font-size: 0.82rem;
-    color: #8b949e;
-    line-height: 1.5;
-    margin-bottom: 14px;
-  }
-
   .card-meta {
+    margin-top: 4px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -233,7 +227,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.85rem;
+    font-size: 1.19rem;
     font-weight: 700;
     color: #f0883e;
   }
@@ -243,7 +237,7 @@
     fill: #f0883e;
   }
   .card-badge {
-    font-size: 0.65rem;
+    font-size: 0.91rem;
     padding: 3px 8px;
     border-radius: 4px;
     font-weight: 600;
@@ -258,12 +252,6 @@
     background: rgba(255,107,107,0.15);
     color: #ff6b6b;
   }
-  .card-rank {
-    font-size: 0.7rem;
-    color: #6e7681;
-    font-weight: 600;
-  }
-
   .card-footer {
     display: flex;
     align-items: center;
@@ -273,7 +261,7 @@
     border-top: 1px solid #1c2128;
   }
   .card-url {
-    font-size: 0.75rem;
+    font-size: 1.05rem;
     color: #58a6ff;
     text-decoration: none;
     opacity: 0.7;
@@ -284,8 +272,8 @@
     text-decoration: underline;
   }
   .card-traffic {
-    font-size: 0.7rem;
-    color: #6e7681;
+    font-size: 0.98rem;
+    color: #484f58;
   }
 
   .no-results {
@@ -293,15 +281,6 @@
     padding: 60px 20px;
     color: #484f58;
     font-size: 0.9rem;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 30px 20px;
-    color: #484f58;
-    font-size: 0.75rem;
-    border-top: 1px solid #1c2128;
-    margin-top: 40px;
   }
 
   @media (max-width: 640px) {
@@ -319,12 +298,11 @@
     }
   }
 </style>
-<base target="_blank">
 </head>
 <body>
 
 <div class="affiliate-notice">
-  <span class="notice-word">Notice:</span> Affiliate links are embedded. By using this app and clicking the links you are providing support. Thank you!
+  <span class="notice-word">NOTICE:</span> AFFILIATE LINKS ARE EMBEDDED. BY USING THIS APP AND CLICKING THE LINK YOU ARE PROVIDING SUPPORT. THANK YOU!
 </div>
 
 <div class="top-nav" id="topNav">
@@ -337,8 +315,8 @@
 </div>
 
 <div class="header">
-  <h1>A I &nbsp; D A S H &nbsp; C O N T R O L &nbsp; B O A R D</h1>
-  <div class="subtitle">Discover the best AI tools</div>
+  <h1>A I &nbsp; D A S H</h1>
+  <div class="subtitle" id="appCounter">Loading...</div>
 </div>
 
 <div class="search-bar">
@@ -349,8 +327,7 @@
   <div class="control-group">
     <label>Sort by:</label>
     <select id="sortSelect">
-      <option value="rank">Rank</option>
-      <option value="rating">Rating</option>
+      <option value="rating" selected>Rating</option>
       <option value="traffic">Traffic</option>
       <option value="name">Name</option>
     </select>
@@ -367,10 +344,12 @@
 
 <div class="cards-grid" id="cardsGrid"></div>
 
-<div class="footer">
-  <p>AI Dash Control Board &mdash; Curated directory of the best artificial intelligence tools.</p>
-  <p style="margin-top:6px; color:#6e7681;">Built with care. Data updates regularly.</p>
-</div>
+
+
+
+
+
+
 
 <script>
 const categoryColors = {
@@ -383,7 +362,7 @@ const categoryColors = {
 
 let allData = [];
 let currentFilter = 'all';
-let currentSort = 'rank';
+let currentSort = 'rating';
 let currentFreeFilter = 'all';
 let searchQuery = '';
 
@@ -392,6 +371,9 @@ async function loadData() {
     const res = await fetch('data.json');
     allData = await res.json();
     render();
+    // Set initial counter
+    const counter = document.getElementById('appCounter');
+    if (counter) counter.textContent = allData.length + ' AI APPS';
   } catch (e) {
     document.getElementById('cardsGrid').innerHTML = 
       '<div class="no-results">Error loading data. Please check that data.json is in the same folder.</div>';
@@ -400,63 +382,73 @@ async function loadData() {
 
 function getFilteredData() {
   let data = [...allData];
-
+  
   if (currentFilter !== 'all') {
-    data = data.filter(item => item.category === currentFilter);
+    data = data.filter(item => item.categories.includes(currentFilter));
   }
-
+  
   if (currentFreeFilter === 'free') {
     data = data.filter(item => item.free === true);
   } else if (currentFreeFilter === 'paid') {
     data = data.filter(item => item.free === false);
   }
-
+  
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     data = data.filter(item => 
       item.name.toLowerCase().includes(q) ||
       item.desc.toLowerCase().includes(q) ||
-      item.category.toLowerCase().includes(q)
+      item.categories.some(c => c.toLowerCase().includes(q))
     );
   }
-
+  
   data.sort((a, b) => {
     if (currentSort === 'name') return a.name.localeCompare(b.name);
-    if (currentSort === 'rating') return b.rating - a.rating;
     if (currentSort === 'traffic') return a.traffic - b.traffic;
-    return a.rank - b.rank;
+    return b.rating - a.rating;
   });
-
+  
+  // Update the counter
+  const counter = document.getElementById('appCounter');
+  if (counter) {
+    const total = allData.length;
+    const showing = data.length;
+    if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all') {
+      counter.textContent = total + ' AI APPS';
+    } else {
+      counter.textContent = showing + ' OF ' + total + ' AI APPS';
+    }
+  }
+  
   return data;
 }
 
 function render() {
   const grid = document.getElementById('cardsGrid');
   const data = getFilteredData();
-
+  
   if (data.length === 0) {
     grid.innerHTML = '<div class="no-results">No tools found matching your criteria.</div>';
     return;
   }
-
+  
   grid.innerHTML = data.map(item => {
-    const colors = categoryColors[item.category] || categoryColors.chat;
+    const colors = categoryColors[item.categories[0]] || categoryColors.chat;
     const star = '<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-
+    const categoryLabel = item.categories.join(' / ');
+    
     return `
       <div class="card" style="--accent:${colors.accent};--accent-bg:${colors.bg}" onclick="window.open('https://${item.url}','_blank')">
         <div class="card-header">
           <div class="card-icon">${item.icon}</div>
           <div>
             <div class="card-title">${item.name}</div>
-            <div class="card-category">${item.category}</div>
+            <div class="card-category">${categoryLabel}</div>
           </div>
         </div>
-        <div class="card-desc">${item.desc}</div>
         <div class="card-meta">
           <div class="card-rating">${star} ${item.rating}</div>
           <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}">${item.free ? 'Free' : 'Paid'}</span>
-          <span class="card-rank">#${item.rank}</span>
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
@@ -499,3 +491,9 @@ loadData();
 
 </body>
 </html>
+
+
+
+
+
+ 
