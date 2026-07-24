@@ -220,6 +220,7 @@
     color: var(--accent, #58a6ff);
     font-weight: 600;
     margin-top: 2px;
+    cursor: pointer;
   }
 
   .card-meta {
@@ -351,14 +352,14 @@
 </div>
 
 <div class="top-nav" id="topNav">
-  <div class="nav-tab tab-all active" data-filter="all">● ALL</div>
-  <div class="nav-tab tab-chat" data-filter="chat">💬 Chat AI</div>
-  <div class="nav-tab tab-image" data-filter="image">🎨 Image AI</div>
-  <div class="nav-tab tab-video" data-filter="video">🎬 Video AI</div>
-  <div class="nav-tab tab-audio" data-filter="audio">🔊 Audio AI</div>
-  <div class="nav-tab tab-code" data-filter="code">💻 Coding AI</div>
-  <div class="nav-tab tab-supercomputer" data-filter="supercomputer">🖥️ Super Cmptr</div>
-  <div class="nav-tab tab-niche" data-filter="niche">🧩 Niche AI</div>
+  <div class="nav-tab tab-all active" data-filter="all" onclick="selectNavTab(this, 'all')">● ALL</div>
+  <div class="nav-tab tab-chat" data-filter="chat" onclick="selectNavTab(this, 'chat')">💬 Chat AI</div>
+  <div class="nav-tab tab-image" data-filter="image" onclick="selectNavTab(this, 'image')">🎨 Image AI</div>
+  <div class="nav-tab tab-video" data-filter="video" onclick="selectNavTab(this, 'video')">🎬 Video AI</div>
+  <div class="nav-tab tab-audio" data-filter="audio" onclick="selectNavTab(this, 'audio')">🔊 Audio AI</div>
+  <div class="nav-tab tab-code" data-filter="code" onclick="selectNavTab(this, 'code')">💻 Coding AI</div>
+  <div class="nav-tab tab-supercomputer" data-filter="supercomputer" onclick="selectNavTab(this, 'supercomputer')">🖥️ Super Cmptr</div>
+  <div class="nav-tab tab-niche" data-filter="niche" onclick="selectNavTab(this, 'niche')">🧩 Niche AI</div>
 </div>
 
 <div class="header">
@@ -440,6 +441,13 @@ function formatTraffic(n) {
     value = String(n);
   }
   return `<span class="card-traffic-label">DAILY TRAFFIC </span><span class="card-traffic-value">${value}</span>`;
+}
+
+function selectNavTab(el, filterValue) {
+  currentFilter = filterValue;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  render();
 }
 
 function filterByCategory(cat) {
@@ -554,7 +562,7 @@ function render() {
           <div class="card-icon">${item.icon}</div>
           <div>
             <div class="card-title">${item.name}</div>
-            <div class="card-category">${categoryLabel}</div>
+            <div class="card-category" onclick="event.stopPropagation(); filterByCategory('${item.categories[0]}')">${categoryLabel}</div>
           </div>
         </div>
         <div class="card-meta">
@@ -572,15 +580,6 @@ function render() {
     `;
   }).join('');
 }
-
-// Tab clicks
-document.getElementById('topNav').addEventListener('click', e => {
-  if (!e.target.classList.contains('nav-tab')) return;
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  e.target.classList.add('active');
-  currentFilter = e.target.dataset.filter;
-  render();
-});
 
 // Search
 document.getElementById('searchInput').addEventListener('input', e => {
