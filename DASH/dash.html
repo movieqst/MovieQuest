@@ -258,17 +258,17 @@
     cursor: pointer;
   }
   .badge-free {
-    background: rgba(63,185,80,0.15);
-    color: #3fb950;
+    background: rgba(240,196,25,0.15);
+    color: #f0c419;
   }
   .badge-paid {
     background: rgba(255,107,107,0.15);
     color: #ff6b6b;
   }
   .badge-affiliate {
-    background: rgba(255,107,107,0.15);
-    color: #ff6b6b;
-    border: 1px solid #ff6b6b;
+    background: rgba(139,148,158,0.15);
+    color: #8b949e;
+    border: 1px solid #8b949e;
   }
   .card-footer {
     display: flex;
@@ -290,8 +290,13 @@
     text-decoration: underline;
   }
   .card-traffic {
+    color: #ffffff;
+  }
+  .card-traffic-label {
+    font-size: 0.635rem;
+  }
+  .card-traffic-value {
     font-size: 1.27rem;
-    color: #484f58;
   }
 
   .no-results {
@@ -400,13 +405,15 @@ async function loadData() {
 }
 
 function formatTraffic(n) {
+  let value;
   if (n >= 1000000) {
-    return 'DAILY TRAFFIC ' + (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M';
+    value = (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M';
+  } else if (n >= 1000) {
+    value = Math.round(n / 1000) + 'K';
+  } else {
+    value = String(n);
   }
-  if (n >= 1000) {
-    return 'DAILY TRAFFIC ' + Math.round(n / 1000) + 'K';
-  }
-  return 'DAILY TRAFFIC ' + n;
+  return `<span class="card-traffic-label">DAILY TRAFFIC </span><span class="card-traffic-value">${value}</span>`;
 }
 
 function showOnly(type) {
