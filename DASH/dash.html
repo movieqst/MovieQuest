@@ -346,6 +346,42 @@
       padding: 5px 10px;
       font-size: 0.91rem;
     }
+    .ad-banner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .ad-banner {
+    max-width: 1400px;
+    margin: 30px auto 0;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    border-top: 1px solid #1c2128;
+  }
+  .ad-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 76px;
+    background: #0d1117;
+    border: 1px solid #1c2128;
+    border-radius: 10px;
+    padding: 8px;
+  }
+  .ad-slot img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .ad-slot.empty {
+    color: #484f58;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border-style: dashed;
   }
 </style>
 </head>
@@ -397,6 +433,19 @@
 </div>
 
 <div class="cards-grid" id="cardsGrid"></div>
+
+<div class="ad-banner">
+  <div class="ad-slot">
+    <a id="logo-link" href="https://www.moviequest.ca/"><img src="logo.jpg" alt="MOVIE QUEST CANADA" width="70" height="70"></a>
+  </div>
+  <div class="ad-slot">
+    <a href="https://submitaitools.org" target="_blank">
+      <img src="https://submitaitools.org/static_submitaitools/images/submitaitools.png" alt="Submit AI Tools" style="border-radius: 10px; width: 200px; height: 60px;" />
+    </a>
+  </div>
+  <div class="ad-slot empty">Ad Space</div>
+  <div class="ad-slot empty">Ad Space</div>
+</div>
 
 
 
