@@ -188,6 +188,7 @@
     align-items: center;
     gap: 12px;
     margin-bottom: 10px;
+    padding-right: 70px;
   }
   .card-icon {
     width: 42px;
@@ -219,7 +220,7 @@
     margin-top: 4px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 10px;
   }
   .card-rating {
@@ -291,10 +292,19 @@
   .card-traffic {
     color: #ffffff;
   }
+  .card-traffic-corner {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    text-align: right;
+    line-height: 1.2;
+  }
   .card-traffic-label {
+    display: block;
     font-size: 0.635rem;
   }
   .card-traffic-value {
+    display: block;
     font-size: 1.27rem;
   }
 
@@ -498,14 +508,17 @@ function render() {
   grid.innerHTML = data.map(item => {
     const colors = categoryColors[item.categories[0]] || categoryColors.chat;
     const star = '<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-    const categoryLabel = item.categories.join(' / ');
+    const categoryDisplayNames = { code: 'coding' };
+    const displayCat = c => categoryDisplayNames[c] || c;
+    const categoryLabel = item.categories.map(displayCat).join(' / ');
     const secondaryTags = item.categories.slice(1).map(cat => {
       const c = categoryColors[cat] || categoryColors.chat;
-      return `<span class="card-tag" style="background:${c.bg};color:${c.accent}">${cat}</span>`;
+      return `<span class="card-tag" style="background:${c.bg};color:${c.accent}">${displayCat(cat)}</span>`;
     }).join('');
     
     return `
       <div class="card" style="--accent:${colors.accent};--accent-bg:${colors.bg}" onclick="window.open('https://${item.url}','_blank')">
+        <span class="card-traffic card-traffic-corner">${formatTraffic(item.traffic)}</span>
         <div class="card-header">
           <div class="card-icon">${item.icon}</div>
           <div>
@@ -514,7 +527,6 @@ function render() {
           </div>
         </div>
         <div class="card-meta">
-          <div class="card-rating">${star} ${item.rating}</div>
           <div class="card-badges">
             ${secondaryTags}
             <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}" onclick="event.stopPropagation(); showOnly('${item.free ? 'free' : 'paid'}')">${item.free ? 'Free' : 'Paid'}</span>
@@ -523,7 +535,7 @@ function render() {
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
-          <span class="card-traffic">${formatTraffic(item.traffic)}</span>
+          <div class="card-rating">${star} ${item.rating}</div>
         </div>
       </div>
     `;
