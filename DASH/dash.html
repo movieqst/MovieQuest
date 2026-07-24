@@ -76,6 +76,10 @@
   .tab-video:hover, .tab-video.active   { background: rgba(57,197,207,0.1); }
   .tab-code      { color: #3fb950; }
   .tab-code:hover, .tab-code.active     { background: rgba(63,185,80,0.1); }
+  .tab-supercomputer  { color: #ff2d78; }
+  .tab-supercomputer:hover, .tab-supercomputer.active { background: rgba(255,45,120,0.1); }
+  .tab-niche     { color: #d29922; }
+  .tab-niche:hover, .tab-niche.active   { background: rgba(210,153,34,0.1); }
 
   .header {
     text-align: center;
@@ -220,23 +224,24 @@
 
   .card-meta {
     margin-top: auto;
+    margin-bottom: auto;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
   }
   .card-rating {
-    text-align: right;
-    line-height: 1.2;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
     color: #ffffff;
   }
   .card-rating-label {
-    display: block;
     font-size: 0.635rem;
     font-weight: 600;
   }
   .card-rating-value {
-    display: block;
     font-size: 1.27rem;
     font-weight: 700;
   }
@@ -265,10 +270,12 @@
   .badge-free {
     background: rgba(240,196,25,0.15);
     color: #f0c419;
+    border: 1px solid #f0c419;
   }
   .badge-paid {
     background: rgba(139,148,158,0.15);
     color: #8b949e;
+    border: 1px solid #8b949e;
   }
   .badge-affiliate {
     background: rgba(255,107,107,0.15);
@@ -348,6 +355,8 @@
   <div class="nav-tab tab-video" data-filter="video">🎬 Video AI</div>
   <div class="nav-tab tab-audio" data-filter="audio">🔊 Audio AI</div>
   <div class="nav-tab tab-code" data-filter="code">💻 Coding AI</div>
+  <div class="nav-tab tab-supercomputer" data-filter="supercomputer">🖥️ Supercomputer AI</div>
+  <div class="nav-tab tab-niche" data-filter="niche">🧩 Niche AI</div>
 </div>
 
 <div class="header">
@@ -393,7 +402,9 @@ const categoryColors = {
   image: { accent: '#f0883e', bg: 'rgba(240,136,62,0.1)' },
   video: { accent: '#39c5cf', bg: 'rgba(57,197,207,0.1)' },
   audio: { accent: '#a371f7', bg: 'rgba(163,113,247,0.1)' },
-  code:  { accent: '#3fb950', bg: 'rgba(63,185,80,0.1)' }
+  code:  { accent: '#3fb950', bg: 'rgba(63,185,80,0.1)' },
+  supercomputer: { accent: '#ff2d78', bg: 'rgba(255,45,120,0.1)' },
+  niche: { accent: '#d29922', bg: 'rgba(210,153,34,0.1)' }
 };
 
 let allData = [];
@@ -511,12 +522,12 @@ function render() {
   
   grid.innerHTML = data.map(item => {
     const colors = categoryColors[item.categories[0]] || categoryColors.chat;
-    const categoryDisplayNames = { code: 'coding' };
+    const categoryDisplayNames = { code: 'coding', niche: 'niche ai' };
     const displayCat = c => categoryDisplayNames[c] || c;
-    const categoryLabel = item.categories.map(displayCat).join(' / ');
+    const categoryLabel = displayCat(item.categories[0]);
     const secondaryTags = item.categories.slice(1).map(cat => {
       const c = categoryColors[cat] || categoryColors.chat;
-      return `<span class="card-tag" style="background:${c.bg};color:${c.accent}">${displayCat(cat)}</span>`;
+      return `<span class="card-tag" style="background:${c.bg};color:${c.accent};border:1px solid ${c.accent}">${displayCat(cat)}</span>`;
     }).join('');
     
     return `
@@ -538,7 +549,7 @@ function render() {
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
-          <div class="card-rating"><span class="card-rating-label">RATING </span><span class="card-rating-value">${item.rating}</span></div>
+          <div class="card-rating"><span class="card-rating-value">${item.rating}</span><span class="card-rating-label">RATING</span></div>
         </div>
       </div>
     `;
