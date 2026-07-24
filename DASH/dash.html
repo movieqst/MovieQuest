@@ -399,6 +399,16 @@ async function loadData() {
   }
 }
 
+function formatTraffic(n) {
+  if (n >= 1000000) {
+    return (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M/day';
+  }
+  if (n >= 1000) {
+    return Math.round(n / 1000) + 'K/day';
+  }
+  return n + '/day';
+}
+
 function showOnly(type) {
   // Reset the visible category tabs to "All" since these are invisible/cross-category filters
   currentFilter = 'all';
@@ -451,7 +461,7 @@ function getFilteredData() {
   
   data.sort((a, b) => {
     if (currentSort === 'name') return a.name.localeCompare(b.name);
-    if (currentSort === 'traffic') return a.traffic - b.traffic;
+    if (currentSort === 'traffic') return b.traffic - a.traffic;
     return b.rating - a.rating;
   });
   
@@ -507,7 +517,7 @@ function render() {
         </div>
         <div class="card-footer">
           <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
-          <span class="card-traffic">Traffic: ${item.traffic}</span>
+          <span class="card-traffic">~${formatTraffic(item.traffic)}</span>
         </div>
       </div>
     `;
