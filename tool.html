@@ -46,6 +46,15 @@
     gap: 20px;
     margin-bottom: 16px;
   }
+  .tool-title-block {
+    flex: 1;
+    min-width: 0;
+  }
+  .cta-btn-header {
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
   .tool-icon {
     width: 64px; height: 64px;
     border-radius: 14px;
@@ -79,6 +88,14 @@
     font-size: 0.85rem;
     font-weight: 600;
     border: 1px solid var(--accent, #58a6ff);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .meta-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px currentColor;
   }
   .meta-badge.free { color: #3fb950 !important; border-color: #3fb950 !important; background: rgba(63,185,80,0.1) !important; }
   .meta-badge.paid { color: #c18c5a !important; border-color: #c18c5a !important; background: rgba(193,140,90,0.1) !important; }
@@ -144,7 +161,7 @@
   .cta-row {
     margin-top: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
@@ -198,6 +215,7 @@
     .tool-detail { padding: 20px; }
     .tool-header { flex-wrap: wrap; }
     .tool-name { font-size: 1.6rem; }
+    .cta-btn-header { margin-left: 0; width: 100%; justify-content: center; }
     .rating-section { flex-wrap: wrap; }
     .cta-row { flex-direction: column; align-items: stretch; }
     .cta-btn { justify-content: center; }
@@ -209,6 +227,7 @@
 <body>
 
 <div class="container" id="app">
+  <!-- THE BACK LINK WAS CHANGED HERE -->
   <a class="back-link" href="dash.html"> ← MAIN AI DASH </a>
 
   <div id="loading" class="not-found">Loading tool details...</div>
@@ -221,10 +240,13 @@
   <div id="tool-detail" class="tool-detail hidden">
     <div class="tool-header">
       <div class="tool-icon" id="icon">💬</div>
-      <div>
+      <div class="tool-title-block">
         <div class="tool-name" id="name">Tool Name</div>
         <div class="tool-tagline" id="tagline">Short description</div>
       </div>
+      <a class="cta-btn cta-btn-header" id="ctaLink" href="#" target="_blank" rel="noopener">
+        Visit <span id="ctaName">Tool</span> →
+      </a>
     </div>
 
     <div class="tool-meta" id="meta-badges"></div>
@@ -257,9 +279,6 @@
 
     <div class="cta-row">
       <span class="cta-url" id="urlDisplay">example.com</span>
-      <a class="cta-btn" id="ctaLink" href="#" target="_blank" rel="noopener">
-        Visit <span id="ctaName">Tool</span> →
-      </a>
     </div>
   </div>
 </div>
@@ -326,7 +345,7 @@ async function loadTool() {
     document.getElementById('traffic').textContent = formatTraffic(tool.traffic);
 
     // Long description
-    document.getElementById('longDesc').textContent = tool.longDesc || tool.desc || 'No detailed description available.';
+    document.getElementById('longDesc').textContent = tool.overview || tool.desc || 'No detailed description available.';
 
     // Benefits
     const benefitsList = document.getElementById('benefits');
@@ -350,24 +369,27 @@ async function loadTool() {
     const metaBadges = document.getElementById('meta-badges');
     metaBadges.innerHTML = '';
     const categoryNames = { code: 'Coding', niche: 'Niche AI', supercomputer: 'Supercomputer', notai: 'Not AI', txtspeech: 'Text-to-Speech' };
+    
+    // THE DYNAMIC COLOR LOGIC WAS ADDED HERE
     tool.categories.forEach(cat => {
-      const span = document.createElement('span');
-      span.className = 'meta-badge';
-      span.textContent = categoryNames[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
+      const a = document.createElement('a');
+      a.className = 'meta-badge';
+      a.href = `dash.html?category=${encodeURIComponent(cat)}`;
+      a.textContent = categoryNames[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
       
-      // Color coding logic based on categories
       const catColor = categoryColors[cat];
       if (catColor) {
-        span.style.color = catColor.accent;
-        span.style.borderColor = catColor.accent;
-        span.style.backgroundColor = catColor.bg;
+        a.style.color = catColor.accent;
+        a.style.borderColor = catColor.accent;
+        a.style.backgroundColor = catColor.bg;
       }
       
-      metaBadges.appendChild(span);
+      metaBadges.appendChild(a);
     });
 
-    const freeSpan = document.createElement('span');
+    const freeSpan = document.createElement('a');
     freeSpan.className = 'meta-badge ' + (tool.free ? 'free' : 'paid');
+    freeSpan.href = `dash.html?free=${tool.free ? 'true' : 'false'}`;
     freeSpan.textContent = tool.free ? 'Free Tier' : 'Paid Only';
     metaBadges.appendChild(freeSpan);
 

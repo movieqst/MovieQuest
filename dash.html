@@ -19,12 +19,12 @@
     padding: 8px 16px;
     background: #0d1117;
     border-bottom: 1px solid #1c2128;
-    font-size: 11px;
+    font-size: 14.3px;
     color: #8b949e;
     letter-spacing: 0.3px;
   }
   .affiliate-notice .notice-word {
-    font-size: 13px;
+    font-size: 16.9px;
     font-weight: 700;
     color: #ff6b6b;
     text-decoration: underline;
@@ -46,7 +46,7 @@
   .nav-tab {
     padding: 6px 14px;
     border-radius: 6px;
-    font-size: 0.78rem;
+    font-size: 1.01rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -59,10 +59,7 @@
     gap: 5px;
   }
   .nav-tab:hover { transform: translateY(-1px); }
-  .nav-tab.active {
-    border-color: currentColor;
-    box-shadow: 0 0 10px currentColor;
-  }
+  .nav-tab.active { border-color: currentColor; box-shadow: 0 0 10px currentColor; }
 
   .tab-all       { color: #ff4444; }
   .tab-all:hover, .tab-all.active       { background: rgba(255,68,68,0.1); }
@@ -76,20 +73,28 @@
   .tab-video:hover, .tab-video.active   { background: rgba(57,197,207,0.1); }
   .tab-code      { color: #3fb950; }
   .tab-code:hover, .tab-code.active     { background: rgba(63,185,80,0.1); }
+  .tab-supercomputer  { color: #ff2d78; }
+  .tab-supercomputer:hover, .tab-supercomputer.active { background: rgba(255,45,120,0.1); }
+  .tab-niche     { color: #d29922; }
+  .tab-niche:hover, .tab-niche.active   { background: rgba(210,153,34,0.1); }
+  .tab-notai     { color: #8b949e; }
+  .tab-notai:hover, .tab-notai.active   { background: rgba(139,148,158,0.1); }
+  .tab-txtspeech { color: #ff9bce; }
+  .tab-txtspeech:hover, .tab-txtspeech.active { background: rgba(255,155,206,0.1); }
 
   .header {
     text-align: center;
     padding: 25px 20px 10px;
   }
   .header h1 {
-    font-size: 1.6rem;
+    font-size: 2.08rem;
     font-weight: 700;
     color: #e6edf3;
     letter-spacing: 3px;
     text-transform: uppercase;
   }
   .header .subtitle {
-    font-size: 1.4rem;
+    font-size: 1.82rem;
     color: #ff6b6b;
     letter-spacing: 6px;
     text-transform: uppercase;
@@ -109,16 +114,12 @@
     border: 1px solid #1c2128;
     background: #0d1117;
     color: #c9d1d9;
-    font-size: 0.9rem;
+    font-size: 1.17rem;
     outline: none;
     transition: border-color 0.2s;
   }
-  .search-bar input:focus {
-    border-color: #58a6ff;
-  }
-  .search-bar input::placeholder {
-    color: #484f58;
-  }
+  .search-bar input:focus { border-color: #58a6ff; }
+  .search-bar input::placeholder { color: #484f58; }
 
   .controls {
     display: flex;
@@ -131,7 +132,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.75rem;
+    font-size: 0.98rem;
     color: #8b949e;
   }
   .control-group select {
@@ -140,7 +141,7 @@
     border: 1px solid #1c2128;
     background: #0d1117;
     color: #c9d1d9;
-    font-size: 0.75rem;
+    font-size: 0.98rem;
     cursor: pointer;
     outline: none;
   }
@@ -156,146 +157,109 @@
 
   .card {
     background: #161b22;
-    border: 1px solid #1c2128;
+    border: 2px solid var(--accent, #1c2128);
     border-radius: 12px;
     padding: 18px;
     transition: all 0.25s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: #30363d;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
   .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 3px;
     background: var(--accent, #58a6ff);
     opacity: 0;
     transition: opacity 0.25s;
   }
-  .card:hover::before {
-    opacity: 1;
-  }
+  .card:hover::before { opacity: 1; }
 
   .card-header {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 10px;
+    padding-right: 70px;
   }
   .card-icon {
-    width: 42px;
-    height: 42px;
+    width: 42px; height: 42px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.69rem;
     background: var(--accent-bg, rgba(88,166,255,0.1));
     flex-shrink: 0;
   }
-  .card-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #e6edf3;
-    line-height: 1.2;
-  }
+  .card-title { font-size: 1.82rem; font-weight: 700; color: #e6edf3; line-height: 1.2; }
   .card-category {
-    font-size: 0.91rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent, #58a6ff);
-    font-weight: 600;
-    margin-top: 2px;
+    font-size: 1.18rem; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--accent, #58a6ff); font-weight: 600; margin-top: 2px; cursor: pointer;
   }
 
   .card-meta {
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    margin-top: auto; margin-bottom: auto;
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;
   }
-  .card-rating {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 1.19rem;
-    font-weight: 700;
-    color: #f0883e;
-  }
-  .card-rating svg {
-    width: 14px;
-    height: 14px;
-    fill: #f0883e;
+  .card-rating { text-align: right; line-height: 1.2; color: #ffffff; }
+  .card-rating-label { display: block; font-size: 0.635rem; font-weight: 600; }
+  .card-rating-value { display: block; font-size: 1.27rem; font-weight: 700; }
+  .card-badges { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .card-tag {
+    font-size: 1rem; padding: 3px 8px; border-radius: 4px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;
   }
   .card-badge {
-    font-size: 0.91rem;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 1.18rem; padding: 3px 8px; border-radius: 4px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;
   }
-  .badge-free {
-    background: rgba(63,185,80,0.15);
-    color: #3fb950;
-  }
-  .badge-paid {
-    background: rgba(255,107,107,0.15);
-    color: #ff6b6b;
-  }
+  .badge-free { background: rgba(139,148,158,0.15); color: #8b949e; border: 1px solid #8b949e; }
+  .badge-paid { background: rgba(193,140,90,0.15); color: #c18c5a; border: 1px solid #c18c5a; }
+  .badge-affiliate { background: rgba(255,107,107,0.15); color: #ff6b6b; border: 1px solid #ff6b6b; }
+
   .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 12px;
-    padding-top: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto; padding-top: 12px; border-top: 1px solid #1c2128;
+  }
+  .card-url { font-size: 1.51rem; color: #ffffff; text-decoration: underline; opacity: 0.7; transition: opacity 0.2s; }
+  .card-url:hover { opacity: 1; }
+  .card-traffic { color: #ffffff; }
+  .card-traffic-corner {
+    position: absolute; top: 14px; right: 16px; text-align: right; line-height: 1.2;
+  }
+  .card-traffic-label { display: block; font-size: 0.635rem; }
+  .card-traffic-value { display: block; font-size: 1.27rem; }
+
+  .no-results { text-align: center; padding: 60px 20px; color: #484f58; font-size: 1.17rem; }
+
+  .ad-banner {
+    max-width: 1400px;
+    margin: 30px auto 0;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
     border-top: 1px solid #1c2128;
   }
-  .card-url {
-    font-size: 1.05rem;
-    color: #58a6ff;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+  .ad-slot {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 76px;
+    background: #0d1117;
+    border: 1px solid #1c2128;
+    border-radius: 10px;
+    padding: 8px;
   }
-  .card-url:hover {
-    opacity: 1;
-    text-decoration: underline;
-  }
-  .card-traffic {
-    font-size: 0.98rem;
-    color: #484f58;
-  }
-
-  .no-results {
-    text-align: center;
-    padding: 60px 20px;
-    color: #484f58;
-    font-size: 0.9rem;
-  }
+  .ad-slot img { max-width: 100%; height: auto; border-radius: 10px; }
+  .ad-slot.empty { color: #484f58; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; border-style: dashed; }
 
   @media (max-width: 640px) {
-    .cards-grid {
-      grid-template-columns: 1fr;
-      padding: 0 12px;
-    }
-    .header h1 {
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-    }
-    .nav-tab {
-      padding: 5px 10px;
-      font-size: 0.7rem;
-    }
+    .cards-grid { grid-template-columns: 1fr; padding: 0 12px; }
+    .header h1 { font-size: 1.56rem; letter-spacing: 2px; }
+    .nav-tab { padding: 5px 10px; font-size: 0.91rem; }
+    .ad-banner { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -306,12 +270,16 @@
 </div>
 
 <div class="top-nav" id="topNav">
-  <div class="nav-tab tab-all active" data-filter="all">● ALL</div>
-  <div class="nav-tab tab-chat" data-filter="chat">💬 Chat AI</div>
-  <div class="nav-tab tab-image" data-filter="image">🎨 Image AI</div>
-  <div class="nav-tab tab-video" data-filter="video">🎬 Video AI</div>
-  <div class="nav-tab tab-audio" data-filter="audio">🔊 Audio AI</div>
-  <div class="nav-tab tab-code" data-filter="code">💻 Coding AI</div>
+  <div class="nav-tab tab-all active" data-filter="all" onclick="selectNavTab(this, 'all')">● ALL</div>
+  <div class="nav-tab tab-chat" data-filter="chat" onclick="selectNavTab(this, 'chat')">💬 Chat AI</div>
+  <div class="nav-tab tab-image" data-filter="image" onclick="selectNavTab(this, 'image')">🎨 Image AI</div>
+  <div class="nav-tab tab-video" data-filter="video" onclick="selectNavTab(this, 'video')">🎬 Video AI</div>
+  <div class="nav-tab tab-audio" data-filter="audio" onclick="selectNavTab(this, 'audio')">🔊 Audio AI</div>
+  <div class="nav-tab tab-code" data-filter="code" onclick="selectNavTab(this, 'code')">💻 Coding AI</div>
+  <div class="nav-tab tab-supercomputer" data-filter="supercomputer" onclick="selectNavTab(this, 'supercomputer')">🖥️ Super Cmptr</div>
+  <div class="nav-tab tab-niche" data-filter="niche" onclick="selectNavTab(this, 'niche')">🧩 Niche AI</div>
+  <div class="nav-tab tab-txtspeech" data-filter="txtspeech" onclick="selectNavTab(this, 'txtspeech')">🗣️ Txt-Speech</div>
+  <div class="nav-tab tab-notai" data-filter="notai" onclick="selectNavTab(this, 'notai')">🚫 Not AI</div>
 </div>
 
 <div class="header">
@@ -344,12 +312,18 @@
 
 <div class="cards-grid" id="cardsGrid"></div>
 
-
-
-
-
-
-
+<div class="ad-banner">
+  <div class="ad-slot">
+    <a id="logo-link" href="https://www.moviequest.ca/"><img src="logo.jpg" alt="MOVIE QUEST CANADA" width="70" height="70"></a>
+  </div>
+  <div class="ad-slot">
+    <a href="https://submitaitools.org" target="_blank">
+      <img src="https://submitaitools.org/static_submitaitools/images/submitaitools.png" alt="Submit AI Tools" style="border-radius: 10px; width: 200px; height: 60px;" />
+    </a>
+  </div>
+  <div class="ad-slot empty">Ad Space</div>
+  <div class="ad-slot empty">Ad Space</div>
+</div>
 
 <script>
 const categoryColors = {
@@ -357,27 +331,107 @@ const categoryColors = {
   image: { accent: '#f0883e', bg: 'rgba(240,136,62,0.1)' },
   video: { accent: '#39c5cf', bg: 'rgba(57,197,207,0.1)' },
   audio: { accent: '#a371f7', bg: 'rgba(163,113,247,0.1)' },
-  code:  { accent: '#3fb950', bg: 'rgba(63,185,80,0.1)' }
+  code:  { accent: '#3fb950', bg: 'rgba(63,185,80,0.1)' },
+  supercomputer: { accent: '#ff2d78', bg: 'rgba(255,45,120,0.1)' },
+  niche: { accent: '#d29922', bg: 'rgba(210,153,34,0.1)' },
+  notai: { accent: '#8b949e', bg: 'rgba(139,148,158,0.1)' },
+  txtspeech: { accent: '#ff9bce', bg: 'rgba(255,155,206,0.1)' }
 };
+
+const slugify = (name) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 let allData = [];
 let currentFilter = 'all';
 let currentSort = 'rating';
 let currentFreeFilter = 'all';
+let currentAffiliateFilter = false;
 let searchQuery = '';
 
 async function loadData() {
   try {
     const res = await fetch('data.json');
     allData = await res.json();
+    applyUrlParams();
     render();
-    // Set initial counter
     const counter = document.getElementById('appCounter');
     if (counter) counter.textContent = allData.length + ' AI APPS';
   } catch (e) {
     document.getElementById('cardsGrid').innerHTML = 
       '<div class="no-results">Error loading data. Please check that data.json is in the same folder.</div>';
   }
+}
+
+function applyUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('category');
+  const free = params.get('free');
+
+  if (cat) {
+    currentFilter = cat;
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    const tab = document.querySelector(`.nav-tab[data-filter="${cat}"]`);
+    if (tab) tab.classList.add('active');
+  }
+
+  if (free === 'true' || free === 'false') {
+    currentFreeFilter = free === 'true' ? 'free' : 'paid';
+    const filterSelect = document.getElementById('filterSelect');
+    if (filterSelect) filterSelect.value = currentFreeFilter;
+  }
+}
+
+function formatTraffic(n) {
+  let value;
+  if (n >= 1000000) {
+    value = (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M';
+  } else if (n >= 1000) {
+    value = Math.round(n / 1000) + 'K';
+  } else {
+    value = String(n);
+  }
+  return `<span class="card-traffic-label">DAILY TRAFFIC </span><span class="card-traffic-value">${value}</span>`;
+}
+
+function selectNavTab(el, filterValue) {
+  currentFilter = filterValue;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+function filterByCategory(cat) {
+  currentFilter = cat;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const tab = document.querySelector(`.nav-tab[data-filter="${cat}"]`);
+  if (tab) tab.classList.add('active');
+  currentFreeFilter = 'all';
+  currentAffiliateFilter = false;
+  const filterSelect = document.getElementById('filterSelect');
+  if (filterSelect) filterSelect.value = 'all';
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showOnly(type) {
+  currentFilter = 'all';
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab-all').classList.add('active');
+
+  if (type === 'free') {
+    currentFreeFilter = 'free';
+    currentAffiliateFilter = false;
+  } else if (type === 'paid') {
+    currentFreeFilter = 'paid';
+    currentAffiliateFilter = false;
+  } else if (type === 'affiliate') {
+    currentFreeFilter = 'all';
+    currentAffiliateFilter = true;
+  }
+
+  const filterSelect = document.getElementById('filterSelect');
+  if (filterSelect) filterSelect.value = currentFreeFilter;
+
+  render();
 }
 
 function getFilteredData() {
@@ -393,6 +447,10 @@ function getFilteredData() {
     data = data.filter(item => item.free === false);
   }
   
+  if (currentAffiliateFilter) {
+    data = data.filter(item => item.affiliate === true);
+  }
+  
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     data = data.filter(item => 
@@ -404,19 +462,20 @@ function getFilteredData() {
   
   data.sort((a, b) => {
     if (currentSort === 'name') return a.name.localeCompare(b.name);
-    if (currentSort === 'traffic') return a.traffic - b.traffic;
+    if (currentSort === 'traffic') return b.traffic - a.traffic;
     return b.rating - a.rating;
   });
   
-  // Update the counter
   const counter = document.getElementById('appCounter');
   if (counter) {
     const total = allData.length;
     const showing = data.length;
-    if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all') {
-      counter.textContent = total + ' AI APPS';
+    const catColor = currentFilter !== 'all' ? (categoryColors[currentFilter] || {}).accent : null;
+    const showingSpan = catColor ? `<span style="color:${catColor}">${showing}</span>` : showing;
+    if (currentFilter === 'all' && !searchQuery && currentFreeFilter === 'all' && !currentAffiliateFilter) {
+      counter.innerHTML = total + ' AI APPS';
     } else {
-      counter.textContent = showing + ' OF ' + total + ' AI APPS';
+      counter.innerHTML = showingSpan + ' OF ' + total + ' AI APPS';
     }
   }
   
@@ -434,53 +493,52 @@ function render() {
   
   grid.innerHTML = data.map(item => {
     const colors = categoryColors[item.categories[0]] || categoryColors.chat;
-    const star = '<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-    const categoryLabel = item.categories.join(' / ');
+    const categoryDisplayNames = { code: 'coding', niche: 'niche ai', supercomputer: 'super cmptr', notai: 'not ai', txtspeech: 'txt-speech' };
+    const displayCat = c => categoryDisplayNames[c] || c;
+    const categoryLabel = displayCat(item.categories[0]);
+    const secondaryTags = item.categories.slice(1).map(cat => {
+      const c = categoryColors[cat] || categoryColors.chat;
+      return `<span class="card-tag" style="background:${c.bg};color:${c.accent};border:1px solid ${c.accent}" onclick="event.stopPropagation(); filterByCategory('${cat}')">${displayCat(cat)}</span>`;
+    }).join('');
     
+    const toolPage = `tool.html?slug=${encodeURIComponent(slugify(item.name))}`;
+
     return `
-      <div class="card" style="--accent:${colors.accent};--accent-bg:${colors.bg}" onclick="window.open('https://${item.url}','_blank')">
+      <div class="card" style="--accent:${colors.accent};--accent-bg:${colors.bg}" onclick="window.location.href='${toolPage}'">
+        <span class="card-traffic card-traffic-corner">${formatTraffic(item.traffic)}</span>
         <div class="card-header">
           <div class="card-icon">${item.icon}</div>
           <div>
             <div class="card-title">${item.name}</div>
-            <div class="card-category">${categoryLabel}</div>
+            <div class="card-category" onclick="event.stopPropagation(); filterByCategory('${item.categories[0]}')">${categoryLabel}</div>
           </div>
         </div>
         <div class="card-meta">
-          <div class="card-rating">${star} ${item.rating}</div>
-          <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}">${item.free ? 'Free' : 'Paid'}</span>
+          <div class="card-badges">
+            ${secondaryTags}
+            <span class="card-badge ${item.free ? 'badge-free' : 'badge-paid'}" onclick="event.stopPropagation(); showOnly('${item.free ? 'free' : 'paid'}')">${item.free ? 'Free' : 'Paid'}</span>
+            ${item.affiliate ? `<span class="card-badge badge-affiliate" onclick="event.stopPropagation(); showOnly('affiliate')">Affiliate</span>` : ''}
+          </div>
         </div>
         <div class="card-footer">
-          <a class="card-url" href="https://${item.url}" target="_blank" onclick="event.stopPropagation()">${item.url}</a>
-          <span class="card-traffic">Traffic: ${item.traffic}</span>
+          <a class="card-url" href="${toolPage}" onclick="event.stopPropagation()">${item.url}</a>
+          <div class="card-rating"><span class="card-rating-value">${item.rating}</span><span class="card-rating-label">RATING</span></div>
         </div>
       </div>
     `;
   }).join('');
 }
 
-// Tab clicks
-document.getElementById('topNav').addEventListener('click', e => {
-  if (!e.target.classList.contains('nav-tab')) return;
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  e.target.classList.add('active');
-  currentFilter = e.target.dataset.filter;
-  render();
-});
-
-// Search
 document.getElementById('searchInput').addEventListener('input', e => {
   searchQuery = e.target.value;
   render();
 });
 
-// Sort
 document.getElementById('sortSelect').addEventListener('change', e => {
   currentSort = e.target.value;
   render();
 });
 
-// Free/Paid filter
 document.getElementById('filterSelect').addEventListener('change', e => {
   currentFreeFilter = e.target.value;
   render();
@@ -488,12 +546,5 @@ document.getElementById('filterSelect').addEventListener('change', e => {
 
 loadData();
 </script>
-
 </body>
 </html>
-
-
-
-
-
- 
