@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool — AI Tools Directory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- tokens ---------- */
+  :root{
+    --desk: #322E28;
+    --desk-soft: #3C3830;
+    --card: #F7F4EC;
+    --card-edge: #EDE8DA;
+    --ink: #221F1A;
+    --ink-soft: #6E6759;
+    --ink-faint: #A39C8B;
+    --rule: #DAD3C0;
+    --rule-strong: #C7BFA8;
+
+    /* category accent palette — the page's one recurring signature: */
+    /* the accent colour is drawn straight from the tool's own category */
+    --acc-chat: #3B6E8F;
+    --acc-code: #4C7A5D;
+    --acc-image: #9C3F68;
+    --acc-video: #B9761F;
+    --acc-audio: #6957A0;
+    --acc-niche: #7A6E5C;
+    --acc-supercomputer: #23808C;
+    --acc-txtspeech: #4C6E9E;
+    --acc-notai: #766F63;
+    --acc-default: #4C6E9E;
+
+    --accent: var(--acc-default);
+    --shadow: 0 30px 60px -25px rgba(0,0,0,0.55), 0 2px 0 rgba(0,0,0,0.15);
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+
+  body{
+    background:
+      radial-gradient(1200px 800px at 15% -10%, var(--desk-soft) 0%, transparent 60%),
+      var(--desk);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:56px 20px 80px;
+  }
+
+  a{ color:inherit; }
+
+  /* ---------- top nav ---------- */
+  .topbar{
+    width:100%;
+    max-width:760px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+  }
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:#D8D2C2;
+    text-decoration:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:.02em;
+    opacity:.85;
+    transition:opacity .15s ease, transform .15s ease;
+  }
+  .back-link:hover{ opacity:1; transform:translateX(-2px); }
+  .back-link:focus-visible{ outline:2px solid #D8D2C2; outline-offset:4px; border-radius:3px; }
+  .back-link svg{ width:14px; height:14px; }
+
+  .record-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#B7AF9A;
+    letter-spacing:.08em;
+  }
+
+  /* ---------- card ---------- */
+  .card{
+    position:relative;
+    width:100%;
+    max-width:760px;
+    background:var(--card);
+    border-radius:6px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(10px);
+    animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion: reduce){
+    .card{ animation:none; opacity:1; transform:none; }
+  }
+
+  /* perforated top edge, like a ticket stub torn from a card catalog */
+  .card::before{
+    content:"";
+    position:absolute;
+    top:-1px; left:28px; right:28px; height:14px;
+    background-image: radial-gradient(circle at 7px 7px, var(--desk) 6px, transparent 6.5px);
+    background-size:15px 14px;
+    background-repeat:repeat-x;
+    pointer-events:none;
+  }
+
+  .accent-bar{ height:6px; width:100%; background:var(--accent); }
+
+  /* ---------- header block ---------- */
+  .header{
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    padding:38px 40px 26px;
+  }
+  .icon-plate{
+    flex:0 0 auto;
+    width:76px; height:76px;
+    border-radius:14px;
+    background:var(--card-edge);
+    border:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center;
+    font-size:34px;
+    line-height:1;
+  }
+  .head-text{ flex:1; min-width:0; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(28px, 4.4vw, 38px);
+    line-height:1.08;
+    margin:0 0 8px;
+    letter-spacing:-.01em;
+  }
+  .tagline{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    line-height:1.55;
+    max-width:46ch;
+  }
+
+  .gauge-wrap{
+    flex:0 0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:126px;
+  }
+  .gauge-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:22px;
+    margin-top:-38px;
+  }
+  .gauge-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-top:2px;
+  }
+
+  /* ---------- tags row ---------- */
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:0 40px 28px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.04em;
+    padding:5px 10px;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    border-radius:3px;
+    background:color-mix(in srgb, var(--accent) 7%, transparent);
+    text-transform:uppercase;
+  }
+
+  .divider{
+    height:0;
+    border-top:1px dashed var(--rule-strong);
+    margin:0 40px;
+  }
+
+  /* ---------- body grid ---------- */
+  .body-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:36px;
+    padding:30px 40px;
+  }
+  .col-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 12px;
+  }
+  .about p{
+    font-size:15px;
+    line-height:1.7;
+    color:var(--ink);
+    margin:0 0 12px;
+  }
+  .about p:last-child{ margin-bottom:0; }
+
+  .facts{ list-style:none; margin:0; padding:0; }
+  .facts li{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    padding:11px 0;
+    border-bottom:1px solid var(--rule);
+    font-size:13.5px;
+  }
+  .facts li:last-child{ border-bottom:none; }
+  .facts .k{ color:var(--ink-soft); }
+  .facts .v{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    text-align:right;
+  }
+  .pill-free{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:20px;
+    font-size:11px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .pill-free.yes{ background:#E4EEE6; color:#2E6B47; }
+  .pill-free.no{ background:#F1E4E2; color:#8A3F35; }
+
+  /* ---------- best-for ---------- */
+  .best-for{ padding:0 40px 34px; }
+  .best-for-inner{
+    background:var(--card-edge);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    padding:18px 20px;
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  .best-for-inner b{ color:var(--accent); }
+
+  /* ---------- CTA ---------- */
+  .cta-row{
+    padding:6px 40px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .cta-url{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-faint);
+  }
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--ink);
+    color:var(--card);
+    text-decoration:none;
+    font-weight:500;
+    font-size:15px;
+    padding:14px 22px;
+    border-radius:5px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .cta:hover{ background:var(--accent); transform:translateY(-1px); }
+  .cta:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  .cta svg{ width:16px; height:16px; transition:transform .15s ease; }
+  .cta:hover svg{ transform:translate(2px,-2px); }
+
+  /* ---------- states ---------- */
+  #loading, #not-found{
+    color:#D8D2C2;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    text-align:center;
+    padding:80px 20px;
+    max-width:760px;
+  }
+  #not-found a{ color:#EFE9D8; text-decoration:underline; }
+  .hidden{ display:none !important; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:640px){
+    body{ padding:32px 14px 60px; }
+    .header{ flex-wrap:wrap; padding:30px 22px 20px; }
+    .gauge-wrap{ order:-1; width:100%; flex-direction:row; justify-content:flex-start; gap:14px; }
+    .gauge-num{ margin-top:0; }
+    .tags{ padding:0 22px 22px; }
+    .divider{ margin:0 22px; }
+    .body-grid{ grid-template-columns:1fr; padding:26px 22px; gap:26px; }
+    .best-for{ padding:0 22px 28px; }
+    .cta-row{ padding:6px 22px 32px; }
+    .cta{ width:100%; justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to directory
+    </a>
+    <span class="record-tag" id="record-tag"></span>
+  </div>
+
+  <div id="loading">Pulling the record…</div>
+  <div id="not-found" class="hidden">
+    Couldn't find that entry in the catalog.<br><br>
+    <a href="index.html">← Return to the directory</a>
+  </div>
+
+  <article class="card hidden" id="card">
+    <div class="accent-bar"></div>
+
+    <div class="header">
+      <div class="icon-plate" id="icon-plate"></div>
+      <div class="head-text">
+        <div class="eyebrow" id="eyebrow"></div>
+        <h1 id="tool-name"></h1>
+        <p class="tagline" id="tool-desc"></p>
+      </div>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 140 82" width="126" height="74">
+          <path d="M10,72 A60,60 0 0 1 130,72" fill="none" stroke="var(--rule)" stroke-width="10" stroke-linecap="round" pathLength="100"/>
+          <path id="gauge-fill" d="M10,72 A60,60 0 0 1 130,72" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
+        </svg>
+        <div class="gauge-num" id="gauge-num">–</div>
+        <div class="gauge-label">Rating / 10</div>
+      </div>
+    </div>
+
+    <div class="tags" id="tags"></div>
+
+    <div class="divider"></div>
+
+    <div class="body-grid">
+      <div class="about">
+        <p class="col-title">Overview</p>
+        <p id="about-text"></p>
+      </div>
+      <div>
+        <p class="col-title">At a glance</p>
+        <ul class="facts" id="facts"></ul>
+      </div>
+    </div>
+
+    <div class="best-for">
+      <div class="best-for-inner" id="best-for-text"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-row">
+      <span class="cta-url" id="cta-url"></span>
+      <a class="cta" id="cta-link" href="#" target="_blank" rel="noopener noreferrer">
+        <span id="cta-text">Visit site</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </article>
+
+<script>
+  // ---------- helpers ----------
+  const slugify = (name) => name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+  const CATEGORY_META = {
+    chat:          { label: 'Chat & Assistants',   blurb: 'general conversation, writing, and everyday Q&A' },
+    code:          { label: 'Code',                 blurb: 'writing, reviewing, or shipping software' },
+    image:         { label: 'Image',                blurb: 'generating or editing visuals' },
+    video:         { label: 'Video',                blurb: 'generating or editing video content' },
+    audio:         { label: 'Audio',                blurb: 'voice, speech, or music generation' },
+    niche:         { label: 'Niche / Vertical',     blurb: 'a specialized industry or workflow' },
+    supercomputer: { label: 'Compute / Infra',      blurb: 'large-scale training or inference infrastructure' },
+    txtspeech:     { label: 'Text-to-Speech',       blurb: 'converting written text into spoken audio' },
+    notai:         { label: 'Utility',              blurb: 'a general-purpose, non-AI utility' },
+  };
+
+  function fmtTraffic(n){
+    if(!n && n !== 0) return '—';
+    if(n >= 1000000) return (n/1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M / mo';
+    if(n >= 1000) return Math.round(n/1000) + 'K / mo';
+    return n + ' / mo';
+  }
+
+  function setAccent(categories){
+    const primary = (categories && categories[0]) || 'default';
+    const varName = `--acc-${primary}`;
+    const root = document.documentElement;
+    const val = getComputedStyle(root).getPropertyValue(varName).trim() || getComputedStyle(root).getPropertyValue('--acc-default').trim();
+    root.style.setProperty('--accent', val);
+  }
+
+  function renderTags(categories){
+    const wrap = document.getElementById('tags');
+    wrap.innerHTML = '';
+    (categories || []).forEach(cat => {
+      const meta = CATEGORY_META[cat] || { label: cat };
+      const span = document.createElement('span');
+      span.className = 'tag';
+      span.textContent = meta.label;
+      wrap.appendChild(span);
+    });
+  }
+
+  function renderGauge(rating){
+    const pct = Math.max(0, Math.min(10, rating || 0)) * 10; // out of 100
+    const fillPath = document.getElementById('gauge-fill');
+    document.getElementById('gauge-num').textContent = (rating ?? '–').toString();
+    requestAnimationFrame(() => {
+      fillPath.setAttribute('stroke-dasharray', `${pct} 100`);
+    });
+  }
+
+  function renderFacts(tool){
+    const list = document.getElementById('facts');
+    list.innerHTML = '';
+    const rows = [
+      ['Pricing', tool.free
+        ? '<span class="pill-free yes">Free tier</span>'
+        : '<span class="pill-free no">Paid only</span>'],
+      ['Monthly traffic', fmtTraffic(tool.traffic)],
+      ['Primary category', (CATEGORY_META[tool.categories?.[0]]?.label) || (tool.categories?.[0] || '—')],
+      ['Rating', `${tool.rating ?? '—'} / 10`],
+    ];
+    rows.forEach(([k, v]) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span class="k">${k}</span><span class="v">${v}</span>`;
+      list.appendChild(li);
+    });
+  }
+
+  function renderBestFor(tool){
+    const cats = tool.categories || [];
+    const parts = cats.map(c => CATEGORY_META[c]?.blurb).filter(Boolean);
+    const el = document.getElementById('best-for-text');
+    if (parts.length === 0){
+      el.textContent = '';
+      el.parentElement.classList.add('hidden');
+      return;
+    }
+    const joined = parts.length > 1
+      ? parts.slice(0, -1).join(', ') + ' and ' + parts.slice(-1)
+      : parts[0];
+    el.innerHTML = `<b>Best for —</b> ${joined}.`;
+  }
+
+  function normalizeUrl(u){
+    if(!u) return '#';
+    return /^https?:\/\//i.test(u) ? u : `https://${u}`;
+  }
+
+  async function init(){
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug') || params.get('name');
+
+    let data;
+    try{
+      const res = await fetch('data.json');
+      data = await res.json();
+    }catch(err){
+      document.getElementById('loading').textContent = 'Could not load the tool catalog (data.json).';
+      return;
+    }
+
+    const idx = data.findIndex(t => slugify(t.name) === slug);
+    const tool = idx > -1 ? data[idx] : null;
+
+    document.getElementById('loading').classList.add('hidden');
+
+    if(!tool){
+      document.getElementById('not-found').classList.remove('hidden');
+      return;
+    }
+
+    document.title = `${tool.name} — AI Tools Directory`;
+    setAccent(tool.categories);
+
+    document.getElementById('record-tag').textContent = `No. ${String(idx + 1).padStart(3, '0')}`;
+    document.getElementById('icon-plate').textContent = tool.icon || '★';
+    document.getElementById('eyebrow').textContent = (CATEGORY_META[tool.categories?.[0]]?.label || 'AI Tool');
+    document.getElementById('tool-name').textContent = tool.name;
+    document.getElementById('tool-desc').textContent = tool.desc || '';
+    document.getElementById('about-text').textContent = tool.longDesc || tool.desc || 'No description available yet.';
+
+    renderTags(tool.categories);
+    renderGauge(tool.rating);
+    renderFacts(tool);
+    renderBestFor(tool);
+
+    const url = normalizeUrl(tool.url);
+    document.getElementById('cta-link').href = url;
+    document.getElementById('cta-text').textContent = `Visit ${tool.name}`;
+    document.getElementById('cta-url').textContent = tool.url || '';
+
+    document.getElementById('card').classList.remove('hidden');
+  }
+
+  init();
+</script>
+</body>
+</html>
