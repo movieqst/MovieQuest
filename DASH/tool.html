@@ -325,8 +325,8 @@ async function loadTool() {
     document.getElementById('rating').textContent = tool.rating || '—';
     document.getElementById('traffic').textContent = formatTraffic(tool.traffic);
 
-    // Long description
-    document.getElementById('longDesc').textContent = tool.longDesc || tool.desc || 'No detailed description available.';
+    // Overview — now pulls from the "overview" field in JSON
+    document.getElementById('longDesc').textContent = tool.overview || 'No detailed overview available.';
 
     // Benefits
     const benefitsList = document.getElementById('benefits');
