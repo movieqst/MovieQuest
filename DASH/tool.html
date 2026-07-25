@@ -327,7 +327,7 @@ async function loadTool() {
     document.getElementById('traffic').textContent = formatTraffic(tool.traffic);
 
     // Long description
-    document.getElementById('longDesc').textContent = tool.longDesc || tool.desc || 'No detailed description available.';
+    document.getElementById('longDesc').textContent = tool.overview || tool.desc || 'No detailed description available.';
 
     // Benefits
     const benefitsList = document.getElementById('benefits');
