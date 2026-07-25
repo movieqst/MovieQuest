@@ -3,531 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tool — AI Tools Directory</title>
+<title>Tool Detail — AI Tools Directory</title>
 <style>
-  /* ---------- tokens (matching AI DASH theme) ---------- */
-  :root{
-    --bg: #0a0e1a;
-    --panel: #0d1117;
-    --card: #161b22;
-    --card-edge: #1c2128;
-    --ink: #c9d1d9;
-    --ink-strong: #e6edf3;
-    --ink-soft: #8b949e;
-    --ink-faint: #484f58;
-    --rule: #1c2128;
-    --rule-strong: #30363d;
-
-    /* category accent palette — identical to the dashboard's tab/card colors */
-    --acc-chat: #58a6ff;
-    --acc-code: #3fb950;
-    --acc-image: #f0883e;
-    --acc-video: #39c5cf;
-    --acc-audio: #a371f7;
-    --acc-niche: #d29922;
-    --acc-supercomputer: #ff2d78;
-    --acc-txtspeech: #ff9bce;
-    --acc-notai: #8b949e;
-    --acc-default: #58a6ff;
-
-    --accent: var(--acc-default);
-    --accent-bg: rgba(88,166,255,0.1);
-    --shadow: 0 8px 24px rgba(0,0,0,0.4);
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #c9d1d9;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
   }
 
-  *{ box-sizing:border-box; }
-  html,body{ margin:0; padding:0; }
-
-  body{
-    background: var(--bg);
-    color:var(--ink);
-    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:0 20px 60px;
+  .container {
+    width: 100%;
+    max-width: 900px;
   }
 
-  .topbar + #loading,
-  .topbar + #not-found,
-  .topbar ~ .card{ margin-top:6px; }
-
-  a{ color:inherit; }
-
-  /* ---------- top nav ---------- */
-  .topbar{
-    width:100%;
-    max-width:760px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px 16px;
-    margin-bottom:30px;
-    background: var(--panel);
-    border-bottom:1px solid var(--card-edge);
-    position:sticky;
-    top:0;
-    z-index:100;
+  .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #8b949e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
   }
-  .back-link{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    color:var(--ink);
-    text-decoration:none;
-    font-size:13px;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:.4px;
-    opacity:.85;
-    transition:opacity .15s ease, transform .15s ease;
-  }
-  .back-link:hover{ opacity:1; transform:translateX(-2px); color:var(--accent); }
-  .back-link:focus-visible{ outline:2px solid var(--accent); outline-offset:4px; border-radius:3px; }
-  .back-link svg{ width:14px; height:14px; }
+  .back-link:hover { color: #58a6ff; }
 
-  .record-tag{
-    font-size:12px;
-    color:var(--ink-soft);
-    letter-spacing:.08em;
-    text-transform:uppercase;
+  .tool-detail {
+    background: #161b22;
+    border: 2px solid var(--accent, #58a6ff);
+    border-radius: 16px;
+    padding: 30px 40px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
   }
 
-  /* ---------- card ---------- */
-  .card{
-    position:relative;
-    width:100%;
-    max-width:760px;
-    background:var(--card);
-    border:2px solid var(--accent);
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    overflow:hidden;
-    opacity:0;
-    transform:translateY(10px);
-    animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards;
+  .tool-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
   }
-  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
-  @media (prefers-reduced-motion: reduce){
-    .card{ animation:none; opacity:1; transform:none; }
+  .tool-icon {
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    background: var(--accent-bg, rgba(88,166,255,0.1));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    border: 1px solid var(--accent, #58a6ff);
+  }
+  .tool-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #e6edf3;
+  }
+  .tool-tagline {
+    font-size: 1.1rem;
+    color: #8b949e;
+    margin-top: 4px;
+  }
+  .tool-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0 25px;
+  }
+  .meta-badge {
+    background: var(--accent-bg, rgba(88,166,255,0.1));
+    color: var(--accent, #58a6ff);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--accent, #58a6ff);
+  }
+  .meta-badge.free { color: #3fb950; border-color: #3fb950; background: rgba(63,185,80,0.1); }
+  .meta-badge.paid { color: #c18c5a; border-color: #c18c5a; background: rgba(193,140,90,0.1); }
+  .meta-badge.affiliate { color: #ff6b6b; border-color: #ff6b6b; background: rgba(255,107,107,0.1); }
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e6edf3;
+    margin: 28px 0 12px;
+    border-bottom: 1px solid #1c2128;
+    padding-bottom: 6px;
+  }
+  .detail-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #c9d1d9;
+    margin-bottom: 16px;
   }
 
-  .accent-bar{ height:4px; width:100%; background:var(--accent); box-shadow: 0 0 12px var(--accent); }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px;
+  }
+  ul li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    line-height: 1.6;
+    font-size: 1.02rem;
+  }
+  ul li::before {
+    content: "●";
+    position: absolute;
+    left: 4px;
+    font-weight: 700;
+  }
+  .benefits li::before { color: #3fb950; }
+  .drawbacks li::before { color: #f0883e; }
 
-  /* ---------- header block ---------- */
-  .header{
-    display:flex;
-    gap:22px;
-    align-items:flex-start;
-    padding:38px 40px 26px;
+  .rating-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 16px 20px;
+    background: #0d1117;
+    border-radius: 10px;
+    border: 1px solid #1c2128;
   }
-  .icon-plate{
-    flex:0 0 auto;
-    width:76px; height:76px;
-    border-radius:14px;
-    background:var(--accent-bg);
-    border:1px solid var(--rule-strong);
-    display:flex; align-items:center; justify-content:center;
-    font-size:34px;
-    line-height:1;
+  .rating-value {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--accent, #58a6ff);
   }
-  .head-text{ flex:1; min-width:0; }
-  .eyebrow{
-    font-size:11.5px;
-    text-transform:uppercase;
-    letter-spacing:.12em;
-    color:var(--accent);
-    font-weight:700;
-    margin-bottom:8px;
-  }
-  h1{
-    font-weight:700;
-    font-size:clamp(26px, 4.4vw, 34px);
-    line-height:1.15;
-    margin:0 0 8px;
-    letter-spacing:-.01em;
-    color:var(--ink-strong);
-  }
-  .tagline{
-    font-size:15.5px;
-    color:var(--ink-soft);
-    line-height:1.55;
-    max-width:46ch;
-  }
-
-  .gauge-wrap{
-    flex:0 0 auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    width:126px;
-  }
-  .gauge-num{
-    font-weight:700;
-    font-size:22px;
-    margin-top:-38px;
-    color:var(--ink-strong);
-  }
-  .gauge-label{
-    font-size:10px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-    margin-top:2px;
+  .rating-label {
+    font-size: 0.85rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
-  /* ---------- tags row ---------- */
-  .tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    padding:0 40px 28px;
+  .cta-row {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid #1c2128;
+    padding-top: 20px;
   }
-  .tag{
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:.04em;
-    padding:5px 10px;
-    border:1px solid var(--accent);
-    color:var(--accent);
-    border-radius:4px;
-    background:var(--accent-bg);
-    text-transform:uppercase;
+  .cta-btn {
+    background: var(--accent, #58a6ff);
+    color: #0a0e1a;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cta-btn:hover { box-shadow: 0 0 20px var(--accent, #58a6ff); transform: translateY(-2px); }
+  .cta-url {
+    color: #8b949e;
+    font-size: 0.95rem;
+    word-break: break-all;
   }
 
-  .divider{
-    height:0;
-    border-top:1px solid var(--rule);
-    margin:0 40px;
+  .traffic-display {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: #0d1117;
+    border-radius: 8px;
+    border: 1px solid #1c2128;
+  }
+  .traffic-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e6edf3;
   }
 
-  /* ---------- body grid ---------- */
-  .body-grid{
-    display:grid;
-    grid-template-columns:1.5fr 1fr;
-    gap:36px;
-    padding:30px 40px;
+  .not-found {
+    text-align: center;
+    padding: 60px 20px;
+    color: #8b949e;
   }
-  .col-title{
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-    margin:0 0 12px;
-  }
-  .about p{
-    font-size:15px;
-    line-height:1.7;
-    color:var(--ink);
-    margin:0 0 12px;
-  }
-  .about p:last-child{ margin-bottom:0; }
+  .not-found a { color: #58a6ff; text-decoration: none; }
+  .not-found a:hover { text-decoration: underline; }
 
-  .facts{ list-style:none; margin:0; padding:0; }
-  .facts li{
-    display:flex;
-    justify-content:space-between;
-    gap:14px;
-    padding:11px 0;
-    border-bottom:1px solid var(--rule);
-    font-size:13.5px;
+  @media (max-width: 640px) {
+    .tool-detail { padding: 20px; }
+    .tool-header { flex-wrap: wrap; }
+    .tool-name { font-size: 1.6rem; }
+    .rating-section { flex-wrap: wrap; }
+    .cta-row { flex-direction: column; align-items: stretch; }
+    .cta-btn { justify-content: center; }
   }
-  .facts li:last-child{ border-bottom:none; }
-  .facts .k{ color:var(--ink-soft); }
-  .facts .v{
-    font-weight:600;
-    color:var(--ink-strong);
-    text-align:right;
-  }
-  .pill-free{
-    display:inline-block;
-    padding:2px 8px;
-    border-radius:20px;
-    font-size:11px;
-    font-weight:600;
-  }
-  .pill-free.yes{ background:rgba(63,185,80,0.15); color:#3fb950; border:1px solid #3fb950; }
-  .pill-free.no{ background:rgba(193,140,90,0.15); color:#c18c5a; border:1px solid #c18c5a; }
 
-  /* ---------- best-for ---------- */
-  .best-for{ padding:0 40px 34px; }
-  .best-for-inner{
-    background:var(--panel);
-    border:1px solid var(--rule);
-    border-radius:8px;
-    padding:18px 20px;
-    font-size:14px;
-    line-height:1.6;
-    color:var(--ink);
-  }
-  .best-for-inner b{ color:var(--accent); }
-
-  /* ---------- CTA ---------- */
-  .cta-row{
-    padding:6px 40px 40px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    flex-wrap:wrap;
-  }
-  .cta-url{
-    font-size:12.5px;
-    color:var(--ink-faint);
-  }
-  .cta{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    background:var(--accent);
-    color:#0a0e1a;
-    text-decoration:none;
-    font-weight:700;
-    font-size:15px;
-    padding:14px 22px;
-    border-radius:6px;
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .cta:hover{ box-shadow: 0 0 16px var(--accent); transform:translateY(-1px); }
-  .cta:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
-  .cta svg{ width:16px; height:16px; transition:transform .15s ease; }
-  .cta:hover svg{ transform:translate(2px,-2px); }
-
-  /* ---------- states ---------- */
-  #loading, #not-found{
-    color:var(--ink-soft);
-    font-size:14px;
-    text-align:center;
-    padding:80px 20px;
-    max-width:760px;
-  }
-  #not-found a{ color:var(--ink-strong); text-decoration:underline; }
-  .hidden{ display:none !important; }
-
-  /* ---------- responsive ---------- */
-  @media (max-width:640px){
-    body{ padding:32px 14px 60px; }
-    .header{ flex-wrap:wrap; padding:30px 22px 20px; }
-    .gauge-wrap{ order:-1; width:100%; flex-direction:row; justify-content:flex-start; gap:14px; }
-    .gauge-num{ margin-top:0; }
-    .tags{ padding:0 22px 22px; }
-    .divider{ margin:0 22px; }
-    .body-grid{ grid-template-columns:1fr; padding:26px 22px; gap:26px; }
-    .best-for{ padding:0 22px 28px; }
-    .cta-row{ padding:6px 22px 32px; }
-    .cta{ width:100%; justify-content:center; }
-  }
+  .hidden { display: none !important; }
 </style>
 </head>
 <body>
 
-  <div class="topbar">
-    <a class="back-link" href="/DASH/dash.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      MAIN AI DASH
-    </a>
-    <span class="record-tag" id="record-tag"></span>
+<div class="container" id="app">
+  <a class="back-link" href="dash.html">← Back to Dashboard</a>
+
+  <div id="loading" class="not-found">Loading tool details...</div>
+
+  <div id="not-found" class="not-found hidden">
+    <p>Couldn't find that tool in the catalog.</p>
+    <p><a href="dash.html">← Return to the directory</a></p>
   </div>
 
-  <div id="loading">Pulling the record…</div>
-  <div id="not-found" class="hidden">
-    Couldn't find that entry in the catalog.<br><br>
-    <a href="/dash.html">← Return to the directory</a>
-  </div>
-
-  <article class="card hidden" id="card">
-    <div class="accent-bar"></div>
-
-    <div class="header">
-      <div class="icon-plate" id="icon-plate"></div>
-      <div class="head-text">
-        <div class="eyebrow" id="eyebrow"></div>
-        <h1 id="tool-name"></h1>
-        <p class="tagline" id="tool-desc"></p>
-      </div>
-      <div class="gauge-wrap">
-        <svg viewBox="0 0 140 82" width="126" height="74">
-          <path d="M10,72 A60,60 0 0 1 130,72" fill="none" stroke="var(--rule)" stroke-width="10" stroke-linecap="round" pathLength="100"/>
-          <path id="gauge-fill" d="M10,72 A60,60 0 0 1 130,72" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
-        </svg>
-        <div class="gauge-num" id="gauge-num">–</div>
-        <div class="gauge-label">Rating / 10</div>
-      </div>
-    </div>
-
-    <div class="tags" id="tags"></div>
-
-    <div class="divider"></div>
-
-    <div class="body-grid">
-      <div class="about">
-        <p class="col-title">Overview</p>
-        <p id="about-text"></p>
-      </div>
+  <div id="tool-detail" class="tool-detail hidden">
+    <div class="tool-header">
+      <div class="tool-icon" id="icon">💬</div>
       <div>
-        <p class="col-title">At a glance</p>
-        <ul class="facts" id="facts"></ul>
+        <div class="tool-name" id="name">Tool Name</div>
+        <div class="tool-tagline" id="tagline">Short description</div>
       </div>
     </div>
 
-    <div class="best-for">
-      <div class="best-for-inner" id="best-for-text"></div>
+    <div class="tool-meta" id="meta-badges"></div>
+
+    <div class="rating-section">
+      <div>
+        <div class="rating-value" id="rating">0.0</div>
+        <div class="rating-label">Rating / 10</div>
+      </div>
+      <div class="traffic-display">
+        <span class="traffic-number" id="traffic">0</span>
+        <span style="color:#8b949e;">monthly visits</span>
+      </div>
     </div>
 
-    <div class="divider"></div>
+    <div>
+      <div class="section-title">Overview</div>
+      <div class="detail-text" id="longDesc">Detailed description goes here...</div>
+    </div>
+
+    <div>
+      <div class="section-title">✅ Benefits</div>
+      <ul class="benefits" id="benefits"></ul>
+    </div>
+
+    <div>
+      <div class="section-title">⚠️ Drawbacks</div>
+      <ul class="drawbacks" id="drawbacks"></ul>
+    </div>
 
     <div class="cta-row">
-      <span class="cta-url" id="cta-url"></span>
-      <a class="cta" id="cta-link" href="#" target="_blank" rel="noopener noreferrer">
-        <span id="cta-text">Visit site</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      <span class="cta-url" id="urlDisplay">example.com</span>
+      <a class="cta-btn" id="ctaLink" href="#" target="_blank" rel="noopener">
+        Visit <span id="ctaName">Tool</span> →
       </a>
     </div>
-  </article>
+  </div>
+</div>
 
 <script>
-  // ---------- helpers ----------
-  const slugify = (name) => name
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
+const slugify = (name) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-  const CATEGORY_META = {
-    chat:          { label: 'Chat & Assistants',   blurb: 'general conversation, writing, and everyday Q&A' },
-    code:          { label: 'Code',                 blurb: 'writing, reviewing, or shipping software' },
-    image:         { label: 'Image',                blurb: 'generating or editing visuals' },
-    video:         { label: 'Video',                blurb: 'generating or editing video content' },
-    audio:         { label: 'Audio',                blurb: 'voice, speech, or music generation' },
-    niche:         { label: 'Niche / Vertical',     blurb: 'a specialized industry or workflow' },
-    supercomputer: { label: 'Compute / Infra',      blurb: 'large-scale training or inference infrastructure' },
-    txtspeech:     { label: 'Text-to-Speech',       blurb: 'converting written text into spoken audio' },
-    notai:         { label: 'Utility',              blurb: 'a general-purpose, non-AI utility' },
-  };
+const categoryColors = {
+  chat:  { accent: '#58a6ff', bg: 'rgba(88,166,255,0.1)' },
+  image: { accent: '#f0883e', bg: 'rgba(240,136,62,0.1)' },
+  video: { accent: '#39c5cf', bg: 'rgba(57,197,207,0.1)' },
+  audio: { accent: '#a371f7', bg: 'rgba(163,113,247,0.1)' },
+  code:  { accent: '#3fb950', bg: 'rgba(63,185,80,0.1)' },
+  supercomputer: { accent: '#ff2d78', bg: 'rgba(255,45,120,0.1)' },
+  niche: { accent: '#d29922', bg: 'rgba(210,153,34,0.1)' },
+  notai: { accent: '#8b949e', bg: 'rgba(139,148,158,0.1)' },
+  txtspeech: { accent: '#ff9bce', bg: 'rgba(255,155,206,0.1)' }
+};
 
-  function fmtTraffic(n){
-    if(!n && n !== 0) return '—';
-    if(n >= 1000000) return (n/1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M / mo';
-    if(n >= 1000) return Math.round(n/1000) + 'K / mo';
-    return n + ' / mo';
-  }
+function formatTraffic(n) {
+  if (!n && n !== 0) return '—';
+  if (n >= 1000000) return (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M';
+  if (n >= 1000) return Math.round(n / 1000) + 'K';
+  return String(n);
+}
 
-  function setAccent(categories){
-    const primary = (categories && categories[0]) || 'default';
-    const varName = `--acc-${primary}`;
-    const root = document.documentElement;
-    const val = getComputedStyle(root).getPropertyValue(varName).trim() || getComputedStyle(root).getPropertyValue('--acc-default').trim();
-    root.style.setProperty('--accent', val);
-  }
+function normalizeUrl(u) {
+  if (!u) return '#';
+  return /^https?:\/\//i.test(u) ? u : `https://${u}`;
+}
 
-  function renderTags(categories){
-    const wrap = document.getElementById('tags');
-    wrap.innerHTML = '';
-    (categories || []).forEach(cat => {
-      const meta = CATEGORY_META[cat] || { label: cat };
-      const span = document.createElement('span');
-      span.className = 'tag';
-      span.textContent = meta.label;
-      wrap.appendChild(span);
-    });
-  }
+async function loadTool() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug') || params.get('name');
 
-  function renderGauge(rating){
-    const pct = Math.max(0, Math.min(10, rating || 0)) * 10; // out of 100
-    const fillPath = document.getElementById('gauge-fill');
-    document.getElementById('gauge-num').textContent = (rating ?? '–').toString();
-    requestAnimationFrame(() => {
-      fillPath.setAttribute('stroke-dasharray', `${pct} 100`);
-    });
-  }
+  const loading = document.getElementById('loading');
+  const notFound = document.getElementById('not-found');
+  const detail = document.getElementById('tool-detail');
 
-  function renderFacts(tool){
-    const list = document.getElementById('facts');
-    list.innerHTML = '';
-    const rows = [
-      ['Pricing', tool.free
-        ? '<span class="pill-free yes">Free tier</span>'
-        : '<span class="pill-free no">Paid only</span>'],
-      ['Monthly traffic', fmtTraffic(tool.traffic)],
-      ['Primary category', (CATEGORY_META[tool.categories?.[0]]?.label) || (tool.categories?.[0] || '—')],
-      ['Rating', `${tool.rating ?? '—'} / 10`],
-    ];
-    rows.forEach(([k, v]) => {
+  try {
+    const res = await fetch('data.json');
+    const data = await res.json();
+
+    const tool = data.find(t => slugify(t.name) === slug);
+
+    if (!tool) {
+      loading.classList.add('hidden');
+      notFound.classList.remove('hidden');
+      return;
+    }
+
+    loading.classList.add('hidden');
+    detail.classList.remove('hidden');
+
+    const colors = categoryColors[tool.categories?.[0]] || categoryColors.chat;
+    document.documentElement.style.setProperty('--accent', colors.accent);
+    document.documentElement.style.setProperty('--accent-bg', colors.bg);
+
+    document.title = tool.name + ' — AI Tools Directory';
+    document.getElementById('icon').textContent = tool.icon || '★';
+    document.getElementById('name').textContent = tool.name;
+    document.getElementById('tagline').textContent = tool.desc || '';
+    document.getElementById('rating').textContent = tool.rating || '—';
+    document.getElementById('traffic').textContent = formatTraffic(tool.traffic);
+
+    // Long description
+    document.getElementById('longDesc').textContent = tool.longDesc || tool.desc || 'No detailed description available.';
+
+    // Benefits
+    const benefitsList = document.getElementById('benefits');
+    benefitsList.innerHTML = '';
+    (tool.benefits || ['No benefits listed yet.']).forEach(b => {
       const li = document.createElement('li');
-      li.innerHTML = `<span class="k">${k}</span><span class="v">${v}</span>`;
-      list.appendChild(li);
+      li.textContent = b;
+      benefitsList.appendChild(li);
     });
-  }
 
-  function renderBestFor(tool){
-    const cats = tool.categories || [];
-    const parts = cats.map(c => CATEGORY_META[c]?.blurb).filter(Boolean);
-    const el = document.getElementById('best-for-text');
-    if (parts.length === 0){
-      el.textContent = '';
-      el.parentElement.classList.add('hidden');
-      return;
-    }
-    const joined = parts.length > 1
-      ? parts.slice(0, -1).join(', ') + ' and ' + parts.slice(-1)
-      : parts[0];
-    el.innerHTML = `<b>Best for —</b> ${joined}.`;
-  }
+    // Drawbacks
+    const drawbacksList = document.getElementById('drawbacks');
+    drawbacksList.innerHTML = '';
+    (tool.drawbacks || ['No drawbacks listed yet.']).forEach(d => {
+      const li = document.createElement('li');
+      li.textContent = d;
+      drawbacksList.appendChild(li);
+    });
 
-  function normalizeUrl(u){
-    if(!u) return '#';
-    return /^https?:\/\//i.test(u) ? u : `https://${u}`;
-  }
+    // Meta badges
+    const metaBadges = document.getElementById('meta-badges');
+    metaBadges.innerHTML = '';
+    const categoryNames = { code: 'Coding', niche: 'Niche AI', supercomputer: 'Supercomputer', notai: 'Not AI', txtspeech: 'Text-to-Speech' };
+    tool.categories.forEach(cat => {
+      const span = document.createElement('span');
+      span.className = 'meta-badge';
+      span.textContent = categoryNames[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
+      metaBadges.appendChild(span);
+    });
 
-  async function init(){
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get('slug') || params.get('name');
+    const freeSpan = document.createElement('span');
+    freeSpan.className = 'meta-badge ' + (tool.free ? 'free' : 'paid');
+    freeSpan.textContent = tool.free ? 'Free Tier' : 'Paid Only';
+    metaBadges.appendChild(freeSpan);
 
-    let data;
-    try{
-      const res = await fetch('data.json');
-      data = await res.json();
-    }catch(err){
-      document.getElementById('loading').textContent = 'Could not load the tool catalog (data.json).';
-      return;
+    if (tool.affiliate) {
+      const affSpan = document.createElement('span');
+      affSpan.className = 'meta-badge affiliate';
+      affSpan.textContent = 'Affiliate';
+      metaBadges.appendChild(affSpan);
     }
 
-    const idx = data.findIndex(t => slugify(t.name) === slug);
-    const tool = idx > -1 ? data[idx] : null;
-
-    document.getElementById('loading').classList.add('hidden');
-
-    if(!tool){
-      document.getElementById('not-found').classList.remove('hidden');
-      return;
-    }
-
-    document.title = `${tool.name} — AI Tools Directory`;
-    setAccent(tool.categories);
-
-    document.getElementById('record-tag').textContent = `No. ${String(idx + 1).padStart(3, '0')}`;
-    document.getElementById('icon-plate').textContent = tool.icon || '★';
-    document.getElementById('eyebrow').textContent = (CATEGORY_META[tool.categories?.[0]]?.label || 'AI Tool');
-    document.getElementById('tool-name').textContent = tool.name;
-    document.getElementById('tool-desc').textContent = tool.desc || '';
-    document.getElementById('about-text').textContent = tool.longDesc || tool.desc || 'No description available yet.';
-
-    renderTags(tool.categories);
-    renderGauge(tool.rating);
-    renderFacts(tool);
-    renderBestFor(tool);
-
+    // CTA
     const url = normalizeUrl(tool.url);
-    document.getElementById('cta-link').href = url;
-    document.getElementById('cta-text').textContent = `Visit ${tool.name}`;
-    document.getElementById('cta-url').textContent = tool.url || '';
+    document.getElementById('ctaLink').href = url;
+    document.getElementById('ctaName').textContent = tool.name;
+    document.getElementById('urlDisplay').textContent = tool.url || '';
 
-    document.getElementById('card').classList.remove('hidden');
+  } catch (err) {
+    loading.textContent = 'Error loading data. Please check that data.json is in the same folder.';
+    console.error(err);
   }
+}
 
-  init();
+loadTool();
 </script>
 </body>
 </html>
