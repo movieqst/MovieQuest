@@ -1,7 +1,7 @@
 [
   {
     "name": "ChatGPT",
-    "icon": "💬",
+    "icon": "\ud83d\udcac",
     "desc": "OpenAI's flagship conversational AI. Best for general assistance, coding help, creative writing.",
     "rating": 10.0,
     "traffic": 60000000,
@@ -12,19 +12,7 @@
       "code",
       "image"
     ],
-    "affiliate": false,
-    "longDesc": "ChatGPT is OpenAI's flagship conversational AI, built on the GPT architecture. It excels at natural language understanding, coding assistance, creative writing, and brainstorming. With its ability to handle complex prompts and iterative conversations, it has become the go-to tool for millions of users worldwide, from students and professionals to developers and creatives. The model is constantly updated, with new features like image generation, browsing, and code interpretation making it a versatile digital assistant for nearly any task.",
-    "benefits": [
-      "Exceptional conversational ability and coherence.",
-      "Wide range of capabilities: writing, coding, reasoning.",
-      "Free tier available with generous usage limits.",
-      "Continuous updates and new features."
-    ],
-    "drawbacks": [
-      "Occasional inaccuracies or 'hallucinations'.",
-      "Advanced features require a paid subscription.",
-      "Privacy concerns with data handling."
-    ]
+    "affiliate": false
   },
   {
     "name": "Claude",
@@ -38,23 +26,11 @@
       "chat",
       "code"
     ],
-    "affiliate": false,
-    "longDesc": "Claude, developed by Anthropic, is a highly capable AI assistant known for its strong reasoning, nuanced understanding, and long-context window of up to 200K tokens (and more in some versions). It excels in handling complex documents, multi-step instructions, and code generation. The introduction of Claude Code brings a terminal-native agent that can read, write, and execute code, making it a powerful tool for developers. Its 'Constitutional AI' approach focuses on safety and transparency, making it a trusted choice for both enterprises and individuals.",
-    "benefits": [
-      "Exceptional long-context processing (200K+ tokens).",
-      "Strong reasoning and code generation.",
-      "Claude Code for terminal-based coding assistance.",
-      "Focus on safety and ethical AI."
-    ],
-    "drawbacks": [
-      "Limited availability in some regions.",
-      "Free tier has message caps.",
-      "May be overly cautious in some responses."
-    ]
+    "affiliate": false
   },
   {
     "name": "Higgsfield",
-    "icon": "🌌",
+    "icon": "\ud83c\udf0c",
     "desc": "All-in-one creative workspace for AI image and video production.",
     "rating": 10.0,
     "traffic": 50000,
@@ -65,23 +41,11 @@
       "image",
       "supercomputer"
     ],
-    "affiliate": true,
-    "longDesc": "Higgsfield is an all-in-one creative workspace designed for AI-driven image and video production. It provides a streamlined interface for generating and editing visual content, making it accessible for professionals and hobbyists alike. With powerful tools for text-to-image, image-to-video, and advanced editing features, Higgsfield aims to replace complex workflows with a single, intuitive platform. Its supercomputer category integration hints at high-performance backend processing for demanding tasks.",
-    "benefits": [
-      "All-in-one platform for image and video generation.",
-      "User-friendly interface for creatives.",
-      "High-performance backend for demanding tasks.",
-      "Aims to replace complex workflows."
-    ],
-    "drawbacks": [
-      "Paid-only model (no free tier).",
-      "Newer platform with a smaller user base.",
-      "May lack some advanced features of specialized tools."
-    ]
+    "affiliate": true
   },
   {
     "name": "Kimi",
-    "icon": "🌙",
+    "icon": "\ud83c\udf19",
     "desc": "Moonshot AI's long-context assistant supporting up to 2M tokens.",
     "rating": 10.0,
     "traffic": 500000,
@@ -92,19 +56,7 @@
       "code",
       "supercomputer"
     ],
-    "affiliate": false,
-    "longDesc": "Kimi, developed by Moonshot AI, is a long-context AI assistant that supports up to 2 million tokens in a single session. This makes it ideal for processing massive documents, books, or entire codebases without losing context. Kimi's ability to maintain coherent understanding over such long stretches of text is a game-changer for researchers, legal professionals, and developers working with large datasets. Its integration with both chat and coding tasks makes it a versatile tool for heavy-duty analysis.",
-    "benefits": [
-      "Industry-leading 2M token context window.",
-      "Excellent for processing long documents and codebases.",
-      "Maintains coherence over massive datasets.",
-      "Free tier available with substantial usage."
-    ],
-    "drawbacks": [
-      "Primarily focused on the Chinese market.",
-      "May have slower response times on free tier.",
-      "Less known in Western markets."
-    ]
+    "affiliate": false
   },
   {
     "name": "Gemini",
@@ -119,23 +71,11 @@
       "code",
       "image"
     ],
-    "affiliate": false,
-    "longDesc": "Gemini is Google's most advanced multimodal AI model, capable of understanding and reasoning across text, images, audio, video, and code. It is deeply integrated into Google's ecosystem, including Workspace (Gmail, Docs, Sheets) and Search, providing seamless assistance across daily tasks. Gemini's ability to process and synthesize information from multiple modalities makes it a powerful tool for research, creativity, and productivity.",
-    "benefits": [
-      "Multimodal understanding across text, image, audio, and video.",
-      "Deep integration with Google Workspace and Search.",
-      "Strong performance on reasoning and complex tasks.",
-      "Free tier with generous usage."
-    ],
-    "drawbacks": [
-      "Requires Google account for full features.",
-      "Some advanced features may be paywalled.",
-      "Privacy concerns due to Google's data practices."
-    ]
+    "affiliate": false
   },
   {
     "name": "DeepSeek",
-    "icon": "🔷",
+    "icon": "\ud83d\udd37",
     "desc": "Open-source Chinese AI with deep reasoning, comparable to OpenAI at lower cost.",
     "rating": 9.8,
     "traffic": 5000000,
@@ -145,23 +85,11 @@
       "chat",
       "code"
     ],
-    "affiliate": false,
-    "longDesc": "DeepSeek is an open-source AI model developed by DeepSeek Company, offering competitive performance to OpenAI's models at a fraction of the cost. It excels in reasoning tasks, mathematical problem-solving, and coding. The model's transparency and cost-effectiveness make it attractive for researchers, developers, and businesses looking for powerful AI capabilities without the high price tag.",
-    "benefits": [
-      "Competitive performance at much lower cost.",
-      "Open-source and transparent.",
-      "Strong reasoning and mathematical abilities.",
-      "Excellent for coding and technical tasks."
-    ],
-    "drawbacks": [
-      "Less polished user experience than some commercial alternatives.",
-      "Smaller ecosystem of integrations.",
-      "May require more setup for specific use cases."
-    ]
+    "affiliate": false
   },
   {
     "name": "Ideogram",
-    "icon": "🖊",
+    "icon": "\ud83d\udd8a",
     "desc": "AI image generation with exceptional text rendering within images.",
     "rating": 9.8,
     "traffic": 300000,
@@ -170,23 +98,11 @@
     "categories": [
       "image"
     ],
-    "affiliate": true,
-    "longDesc": "Ideogram is a cutting-edge AI image generation platform that specializes in rendering text within images with remarkable accuracy. Unlike many other image generators that struggle with text, Ideogram produces clean, readable text in various styles and fonts. This makes it invaluable for creating posters, social media graphics, product mockups, and any visual content that requires text integration.",
-    "benefits": [
-      "Exceptional text rendering within images.",
-      "User-friendly interface for all skill levels.",
-      "Free tier with daily credits.",
-      "Creates production-ready visuals."
-    ],
-    "drawbacks": [
-      "Free tier has usage limits.",
-      "Some advanced features require payment.",
-      "May occasionally produce artifacts in complex scenes."
-    ]
+    "affiliate": true
   },
   {
     "name": "Superhuman",
-    "icon": "✉",
+    "icon": "\u2709",
     "desc": "AI-powered email client with drafting, summarizing, and prioritization.",
     "rating": 9.7,
     "traffic": 30000,
@@ -195,23 +111,11 @@
     "categories": [
       "chat"
     ],
-    "affiliate": false,
-    "longDesc": "Superhuman is an AI-powered email client designed for speed and efficiency. It uses AI to draft responses, summarize long threads, and prioritize important messages, helping users achieve inbox zero faster. With a focus on keyboard shortcuts and productivity features, Superhuman is tailored for professionals who spend significant time managing email.",
-    "benefits": [
-      "AI-powered drafting and summarization.",
-      "Advanced keyboard shortcuts for speed.",
-      "Smart prioritization of important messages.",
-      "Beautiful and intuitive interface."
-    ],
-    "drawbacks": [
-      "Premium pricing with no free tier.",
-      "Steep learning curve for keyboard shortcuts.",
-      "Only available on select platforms."
-    ]
+    "affiliate": false
   },
   {
     "name": "Grok",
-    "icon": "⚡",
+    "icon": "\u26a1",
     "desc": "xAI's real-time chatbot with X integration and uncensored personality.",
     "rating": 9.6,
     "traffic": 4000000,
@@ -221,23 +125,11 @@
       "chat",
       "image"
     ],
-    "affiliate": false,
-    "longDesc": "Grok, developed by xAI (Elon Musk's AI company), is a real-time chatbot integrated with the X platform. Known for its uncensored, witty personality, Grok can access and process real-time information from X, making it uniquely positioned to engage with current events and trends. Its image generation capabilities and willingness to tackle controversial topics set it apart from more filtered AI assistants.",
-    "benefits": [
-      "Real-time access to X platform data.",
-      "Uncensored and witty personality.",
-      "Image generation capabilities.",
-      "Free for X Premium subscribers."
-    ],
-    "drawbacks": [
-      "Requires X account for access.",
-      "May generate controversial responses.",
-      "Limited to X ecosystem."
-    ]
+    "affiliate": false
   },
   {
     "name": "Copilot (Microsoft)",
-    "icon": "🛟",
+    "icon": "\ud83e\ude9f",
     "desc": "Microsoft's AI assistant integrated across 365 apps and Edge browser.",
     "rating": 9.5,
     "traffic": 8000000,
@@ -247,23 +139,11 @@
       "chat",
       "code"
     ],
-    "affiliate": false,
-    "longDesc": "Microsoft Copilot is an AI assistant deeply integrated into the Microsoft ecosystem, including Windows, Office 365, Edge browser, and various enterprise applications. It leverages large language models to assist with writing, coding, data analysis, and daily tasks. Its integration across the entire Microsoft stack makes it a powerful productivity tool for both individuals and enterprises.",
-    "benefits": [
-      "Deep integration with Microsoft 365 and Windows.",
-      "Assists with coding, writing, and data analysis.",
-      "Free tier with Microsoft account.",
-      "Enterprise-grade security and compliance."
-    ],
-    "drawbacks": [
-      "Some advanced features require Copilot Pro subscription.",
-      "Tightly coupled to Microsoft ecosystem.",
-      "Occasional connectivity requirements."
-    ]
+    "affiliate": false
   },
   {
     "name": "Suno",
-    "icon": "🎵",
+    "icon": "\ud83c\udfb5",
     "desc": "AI music generation that creates original songs from text prompts.",
     "rating": 9.5,
     "traffic": 1500000,
@@ -272,48 +152,24 @@
     "categories": [
       "audio"
     ],
-    "affiliate": false,
-    "longDesc": "Suno is a groundbreaking AI music generation platform that creates original songs from text prompts. Users can describe the genre, mood, lyrics, and style, and Suno generates complete compositions with vocals, instrumentation, and production. This makes music creation accessible to everyone, from musicians seeking inspiration to content creators needing background tracks.",
-    "benefits": [
-      "Generates complete songs with vocals and instrumentation.",
-      "User-friendly prompt-based interface.",
-      "Free tier with daily credits.",
-      "Professional-quality audio output."
-    ],
-    "drawbacks": [
-      "Free tier has limited daily generations.",
-      "May occasionally produce generic results.",
-      "Copyright and ownership considerations for generated music."
-    ]
+    "affiliate": false
   },
   {
     "name": "Stable Diffusion",
-    "icon": "🔧",
+    "icon": "\ud83d\udd27",
     "desc": "Open-source image generation model with extensive customization options.",
-    "rating": 7.0,
+    "rating": 7,
     "traffic": 1000000,
     "url": "stability.ai",
     "free": true,
     "categories": [
       "image"
     ],
-    "affiliate": false,
-    "longDesc": "Stable Diffusion is a powerful open-source text-to-image model developed by Stability AI. It offers extensive customization through fine-tuning, control nets, and various community-built extensions. Its open-source nature has spawned a vast ecosystem of tools, interfaces, and models, making it the backbone of many AI image generation workflows for developers, artists, and researchers.",
-    "benefits": [
-      "Completely free and open-source.",
-      "Highly customizable with extensions and fine-tuning.",
-      "Runs locally on consumer hardware.",
-      "Vast community of developers and users."
-    ],
-    "drawbacks": [
-      "Requires technical knowledge for advanced use.",
-      "Quality can vary depending on prompt engineering.",
-      "May struggle with complex scenes and anatomy."
-    ]
+    "affiliate": false
   },
   {
     "name": "ElevenLabs",
-    "icon": "🔈",
+    "icon": "\ud83d\udd08",
     "desc": "State-of-the-art AI voice synthesis and text-to-speech platform.",
     "rating": 9.0,
     "traffic": 1200000,
@@ -323,23 +179,11 @@
       "audio",
       "niche"
     ],
-    "affiliate": true,
-    "longDesc": "ElevenLabs is a leading AI voice synthesis platform offering state-of-the-art text-to-speech and voice cloning capabilities. With incredibly natural-sounding voices, multilingual support, and advanced features like emotion and pacing control, it has become the go-to choice for content creators, video producers, and businesses seeking high-quality AI voiceovers.",
-    "benefits": [
-      "Exceptionally natural-sounding voice synthesis.",
-      "Supports multiple languages and accents.",
-      "Voice cloning and customization features.",
-      "Free tier with usage credits."
-    ],
-    "drawbacks": [
-      "Free tier has limited usage.",
-      "Some features require paid subscription.",
-      "Potential for misuse with voice cloning."
-    ]
+    "affiliate": true
   },
   {
     "name": "Vapi AI",
-    "icon": "📞",
+    "icon": "\ud83d\udcde",
     "desc": "Real-time AI voice agents for inbound/outbound phone call automation.",
     "rating": 9.0,
     "traffic": 20000,
@@ -349,25 +193,13 @@
       "audio",
       "niche"
     ],
-    "affiliate": true,
-    "longDesc": "Vapi AI provides real-time AI voice agents that automate inbound and outbound phone calls. The platform enables businesses to build conversational AI agents that can handle customer service, scheduling, lead qualification, and other telephony tasks with human-like interaction. Its low-latency architecture and advanced natural language understanding make it suitable for mission-critical business applications.",
-    "benefits": [
-      "Real-time conversational AI for phone calls.",
-      "Automates customer service and scheduling.",
-      "Low-latency architecture for natural conversation.",
-      "Flexible pricing based on usage."
-    ],
-    "drawbacks": [
-      "Paid-only model with usage-based pricing.",
-      "Requires integration with existing systems.",
-      "May require fine-tuning for specific industries."
-    ]
+    "affiliate": true
   },
   {
     "name": "Adobe Firefly",
-    "icon": "🔥",
+    "icon": "\ud83d\udd25",
     "desc": "Generative AI studio with commercially-safe outputs, built into Creative Cloud.",
-    "rating": 7.0,
+    "rating": 7,
     "traffic": 2000000,
     "url": "firefly.adobe.com",
     "free": false,
@@ -375,18 +207,2126 @@
       "image",
       "video"
     ],
-    "affiliate": false,
-    "longDesc": "Adobe Firefly is a generative AI studio integrated into Adobe Creative Cloud. It offers a suite of tools for generating images, vector art, videos, and effects using AI. Designed for professionals, Firefly focuses on commercially-safe outputs, ensuring that generated content is free from copyright issues and suitable for commercial projects. Its integration with Photoshop, Illustrator, and other Creative Cloud apps makes it a seamless addition to professional workflows.",
-    "benefits": [
-      "Commercial-safe outputs for professional use.",
-      "Deep integration with Creative Cloud apps.",
-      "Professional-grade tools and features.",
-      "Regular updates with new capabilities."
+    "affiliate": false
+  },
+  {
+    "name": "Black Forest Labs",
+    "icon": "\ud83c\udf32",
+    "desc": "Creators of Flux \u2014 best-in-class open-source image generation models.",
+    "rating": 8.9,
+    "traffic": 150000,
+    "url": "blackforestlabs.com",
+    "free": true,
+    "categories": [
+      "image"
     ],
-    "drawbacks": [
-      "Requires Creative Cloud subscription.",
-      "Free tier has limited generations.",
-      "May lack some advanced features of other tools."
-    ]
+    "affiliate": false
+  },
+  {
+    "name": "Codex (OpenAI)",
+    "icon": "\ud83e\udd16",
+    "desc": "Agentic coding tool integrated into ChatGPT for autonomous development.",
+    "rating": 8.9,
+    "traffic": 300000,
+    "url": "openai.com/codex",
+    "free": true,
+    "categories": [
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Topaz Labs",
+    "icon": "\ud83d\udc8e",
+    "desc": "Professional-grade photo enhancement with Gigapixel and Sharpen AI.",
+    "rating": 8.8,
+    "traffic": 100000,
+    "url": "topazlabs.com",
+    "free": false,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "HeyGen",
+    "icon": "\ud83d\udc64",
+    "desc": "Realistic AI avatar videos for product demos and training content.",
+    "rating": 8.7,
+    "traffic": 500000,
+    "url": "heygen.com",
+    "free": false,
+    "categories": [
+      "video",
+      "niche"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Hugging Face",
+    "icon": "\ud83e\udd17",
+    "desc": "Open-source AI model hub and platform for machine learning tools.",
+    "rating": 8.7,
+    "traffic": 2000000,
+    "url": "huggingface.co",
+    "free": true,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Remove.bg",
+    "icon": "\ud83d\udeab",
+    "desc": "Instant background removal \u2014 simple, fast, and accurate.",
+    "rating": 8.7,
+    "traffic": 1000000,
+    "url": "remove.bg",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Kling 3.0",
+    "icon": "\ud83c\udf9e",
+    "desc": "High-value video generation producing 2-minute clips affordably.",
+    "rating": 8.6,
+    "traffic": 400000,
+    "url": "klingai.com",
+    "free": true,
+    "categories": [
+      "video",
+      "niche"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Leonardo AI",
+    "icon": "\ud83c\udfae",
+    "desc": "Game assets, real-time canvas, and style consistency for creatives.",
+    "rating": 8.6,
+    "traffic": 600000,
+    "url": "leonardo.ai",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Pi",
+    "icon": "\u03c0",
+    "desc": "Inflection AI's conversational assistant focused on empathy and emotional intelligence.",
+    "rating": 8.6,
+    "traffic": 200000,
+    "url": "pi.ai",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Synthesia",
+    "icon": "\ud83c\udfad",
+    "desc": "Enterprise AI avatar platform for corporate training videos at scale.",
+    "rating": 8.6,
+    "traffic": 400000,
+    "url": "synthesia.io",
+    "free": false,
+    "categories": [
+      "video",
+      "niche"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Udio",
+    "icon": "\ud83c\udfb5",
+    "desc": "AI music generation with refined, professional-quality audio output.",
+    "rating": 8.6,
+    "traffic": 500000,
+    "url": "udio.com",
+    "free": true,
+    "categories": [
+      "audio"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Cursor",
+    "icon": "\u25b6",
+    "desc": "AI-powered code editor built on VS Code with integrated chat and autocomplete.",
+    "rating": 8.5,
+    "traffic": 1000000,
+    "url": "cursor.com",
+    "free": true,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Gamma",
+    "icon": "\ud83d\udcca",
+    "desc": "AI presentations, documents, and webpages from simple prompts.",
+    "rating": 8.5,
+    "traffic": 700000,
+    "url": "gamma.app",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Grammarly",
+    "icon": "\u2713",
+    "desc": "Gold standard for grammar, tone adjustment, and AI rewriting.",
+    "rating": 8.5,
+    "traffic": 10000000,
+    "url": "grammarly.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Luminar Neo",
+    "icon": "\ud83c\udf1f",
+    "desc": "AI-powered photo editor with sky replacement, portrait enhancement, and masking.",
+    "rating": 8.5,
+    "traffic": 50000,
+    "url": "skylum.com/luminar",
+    "free": false,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Manus AI",
+    "icon": "\ud83e\udd16",
+    "desc": "Autonomous AI agent for workflow automation and team collaboration.",
+    "rating": 8.5,
+    "traffic": 150000,
+    "url": "manus.ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Runway",
+    "icon": "\ud83c\udfac",
+    "desc": "AI video generation and editing suite for creators and filmmakers.",
+    "rating": 8.5,
+    "traffic": 800000,
+    "url": "runwayml.com",
+    "free": false,
+    "categories": [
+      "image",
+      "video"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Zapier",
+    "icon": "\u26a1",
+    "desc": "Easiest no-code automation with 7,000+ app integrations.",
+    "rating": 8.5,
+    "traffic": 3000000,
+    "url": "zapier.com",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Bolt",
+    "icon": "\u26a1",
+    "desc": "Prompt-to-full-stack app builder for Next.js/React applications.",
+    "rating": 8.4,
+    "traffic": 500000,
+    "url": "bolt.new",
+    "free": true,
+    "categories": [
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Clipdrop",
+    "icon": "\u2702\ufe0f",
+    "desc": "Stability AI's suite for cleanup, upscaling, relighting, and background removal.",
+    "rating": 8.4,
+    "traffic": 300000,
+    "url": "clipdrop.co",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Fish Audio",
+    "icon": "\ud83d\udc1f",
+    "desc": "Top-rated TTS in blind tests with diverse voice cloning capabilities.",
+    "rating": 8.4,
+    "traffic": 50000,
+    "url": "fish.audio",
+    "free": true,
+    "categories": [
+      "audio"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Jasper",
+    "icon": "\u270d",
+    "desc": "Enterprise AI writing platform with brand voice and bulk campaigns.",
+    "rating": 8.4,
+    "traffic": 200000,
+    "url": "jasper.ai",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Microsoft Designer",
+    "icon": "\ud83c\udfa8",
+    "desc": "DALL\u00b7E 3 powered design tool integrated with Office 365.",
+    "rating": 8.4,
+    "traffic": 500000,
+    "url": "designer.microsoft.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Notion AI",
+    "icon": "\ud83d\uddd2",
+    "desc": "AI integrated directly into your docs, wikis, and databases.",
+    "rating": 8.4,
+    "traffic": 5000000,
+    "url": "notion.so/product/ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "OpenArt",
+    "icon": "\ud83c\udfa8",
+    "desc": "AI art generator and image editor with custom models and community sharing.",
+    "rating": 10,
+    "traffic": 200000,
+    "url": "openart.ai",
+    "free": true,
+    "categories": [
+      "image",
+      "video",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Opus Clip",
+    "icon": "\u2702\ufe0f",
+    "desc": "Long videos to viral short clips with auto-captions and highlights.",
+    "rating": 8.4,
+    "traffic": 300000,
+    "url": "opus.pro",
+    "free": true,
+    "categories": [
+      "video"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Viktor AI",
+    "icon": "\ud83c\udfaf",
+    "desc": "Autonomous AI agent that executes tasks across 3,200+ tools.",
+    "rating": 8.4,
+    "traffic": 20000,
+    "url": "viktor.ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "n8n",
+    "icon": "\ud83d\udd17",
+    "desc": "Open-source automation platform with native AI agent support.",
+    "rating": 8.4,
+    "traffic": 800000,
+    "url": "n8n.io",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Amazon Q Developer",
+    "icon": "\u2601",
+    "desc": "Best-in-class AI coding assistant for AWS-specific development.",
+    "rating": 8.3,
+    "traffic": 200000,
+    "url": "aws.amazon.com/q",
+    "free": true,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "CapCut AI",
+    "icon": "\ud83d\udcf1",
+    "desc": "AI-powered short-form video editing with auto-captions and B-roll.",
+    "rating": 8.3,
+    "traffic": 20000000,
+    "url": "capcut.com",
+    "free": true,
+    "categories": [
+      "video"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Copy.ai",
+    "icon": "\ud83d\udccb",
+    "desc": "Fast marketing copy and product messaging with workflow templates.",
+    "rating": 8.3,
+    "traffic": 400000,
+    "url": "copy.ai",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Granola",
+    "icon": "\ud83e\udd63",
+    "desc": "Bot-free meeting notes with private, summarized transcripts.",
+    "rating": 8.3,
+    "traffic": 50000,
+    "url": "granola.ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Lindy",
+    "icon": "\ud83e\udd16",
+    "desc": "AI assistant that automates admin work across hundreds of apps.",
+    "rating": 8.3,
+    "traffic": 50000,
+    "url": "lindy.ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Lovable",
+    "icon": "\u2764",
+    "desc": "Cleanest React code generator for production-ready applications.",
+    "rating": 8.3,
+    "traffic": 500000,
+    "url": "lovable.dev",
+    "free": true,
+    "categories": [
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Motion",
+    "icon": "\ud83d\udcc5",
+    "desc": "AI project management that auto-schedules tasks on your calendar.",
+    "rating": 8.3,
+    "traffic": 100000,
+    "url": "usemotion.com",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "PhotoRoom",
+    "icon": "\ud83d\udcf8",
+    "desc": "AI-powered photo studio for product shots, backgrounds, and batch editing.",
+    "rating": 8.3,
+    "traffic": 1000000,
+    "url": "photoroom.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Photopea AI",
+    "icon": "\ud83d\udd8c",
+    "desc": "Photoshop-like browser-based editor with AI features, completely free.",
+    "rating": 8.3,
+    "traffic": 1500000,
+    "url": "photopea.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Pika Labs",
+    "icon": "\ud83c\udfac",
+    "desc": "Stylized video effects, motion control, and social media focus.",
+    "rating": 8.3,
+    "traffic": 300000,
+    "url": "pika.art",
+    "free": true,
+    "categories": [
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Wispr Flow",
+    "icon": "\ud83c\udf99",
+    "desc": "AI voice dictation that works across any app with smart cleanup.",
+    "rating": 8.3,
+    "traffic": 50000,
+    "url": "wisprflow.ai",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Adobe Express",
+    "icon": "\u2728",
+    "desc": "Quick design and video creation with built-in generative AI features.",
+    "rating": 8.2,
+    "traffic": 3000000,
+    "url": "express.adobe.com",
+    "free": true,
+    "categories": [
+      "image",
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "CleanUp.pictures",
+    "icon": "\ud83e\uddf9",
+    "desc": "Remove objects, people, and text from photos with a brush.",
+    "rating": 8.2,
+    "traffic": 400000,
+    "url": "cleanup.pictures",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Cline",
+    "icon": "\ud83d\udd27",
+    "desc": "Open-source VS Code agent for local AI-powered coding.",
+    "rating": 8.2,
+    "traffic": 100000,
+    "url": "cline.bot",
+    "free": true,
+    "categories": [
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "D-ID",
+    "icon": "\ud83c\udfad",
+    "desc": "Cheapest talking-photo avatar generation with real-time agents.",
+    "rating": 8.2,
+    "traffic": 300000,
+    "url": "d-id.com",
+    "free": true,
+    "categories": [
+      "video",
+      "audio"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Elicit",
+    "icon": "\ud83d\udcda",
+    "desc": "Academic research assistant for finding and analyzing papers.",
+    "rating": 8.2,
+    "traffic": 100000,
+    "url": "elicit.org",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Make",
+    "icon": "\ud83d\udd27",
+    "desc": "Visual multi-step automation for complex business workflows.",
+    "rating": 8.2,
+    "traffic": 1000000,
+    "url": "make.com",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Otter.ai",
+    "icon": "\ud83e\udda6",
+    "desc": "Real-time transcription with speaker detection and AI summaries.",
+    "rating": 8.2,
+    "traffic": 1500000,
+    "url": "otter.ai",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Playground AI",
+    "icon": "\ud83d\udedd",
+    "desc": "Batch generation, prompt testing, and model comparison platform.",
+    "rating": 8.2,
+    "traffic": 300000,
+    "url": "playgroundai.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Sora",
+    "icon": "\ud83c\udfa8",
+    "desc": "OpenAI's text-to-video generation model creating realistic video from prompts.",
+    "rating": 8.2,
+    "traffic": 2000000,
+    "url": "openai.com/sora",
+    "free": false,
+    "categories": [
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Submagic",
+    "icon": "\ud83c\udfac",
+    "desc": "AI social video editor with auto-captions and viral formatting.",
+    "rating": 8.2,
+    "traffic": 200000,
+    "url": "submagic.co",
+    "free": true,
+    "categories": [
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "v0 (Vercel)",
+    "icon": "\u25b3",
+    "desc": "Vercel's Next.js UI builder for components and landing pages.",
+    "rating": 8.2,
+    "traffic": 500000,
+    "url": "v0.dev",
+    "free": true,
+    "categories": [
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Colossyan",
+    "icon": "\ud83c\udf93",
+    "desc": "AI video platform for structured training with 200+ avatars.",
+    "rating": 8.1,
+    "traffic": 50000,
+    "url": "colossyan.com",
+    "free": false,
+    "categories": [
+      "video",
+      "audio"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Littlebird",
+    "icon": "\ud83d\udc26",
+    "desc": "Context-aware AI assistant that monitors your screen activity.",
+    "rating": 8.1,
+    "traffic": 10000,
+    "url": "littlebird.com",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Napkin AI",
+    "icon": "\ud83c\udf7d",
+    "desc": "Text-to-diagram tool for instant visual concept explanations.",
+    "rating": 8.1,
+    "traffic": 50000,
+    "url": "napkin.ai",
+    "free": true,
+    "categories": [
+      "chat",
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Picsart AI",
+    "icon": "\ud83c\udfa8",
+    "desc": "All-in-one creative platform with AI photo and video editing tools.",
+    "rating": 8.1,
+    "traffic": 15000000,
+    "url": "picsart.com",
+    "free": true,
+    "categories": [
+      "image",
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Replit",
+    "icon": "\ud83d\udd04",
+    "desc": "Autonomous AI app builder that deploys while you're away.",
+    "rating": 8.1,
+    "traffic": 2000000,
+    "url": "replit.com",
+    "free": true,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Tabnine",
+    "icon": "\ud83d\udd12",
+    "desc": "Privacy-first AI coding assistant for regulated industries.",
+    "rating": 8.1,
+    "traffic": 200000,
+    "url": "tabnine.com",
+    "free": false,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Tensor.Art",
+    "icon": "\ud83d\udce6",
+    "desc": "Huge library of custom Stable Diffusion models and LoRAs.",
+    "rating": 8.1,
+    "traffic": 300000,
+    "url": "tensor.art",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Upscale.media",
+    "icon": "\ud83d\udcc8",
+    "desc": "Free 4x upscaling for low-resolution images.",
+    "rating": 8.1,
+    "traffic": 1000000,
+    "url": "upscale.media",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Weavy AI",
+    "icon": "\ud83c\udf0a",
+    "desc": "AI-powered workspace assistant for team collaboration and knowledge management.",
+    "rating": 8.1,
+    "traffic": 20000,
+    "url": "app.weavy.ai",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Writesonic",
+    "icon": "\ud83d\udcdd",
+    "desc": "Blog posts, product descriptions, and SEO content generation.",
+    "rating": 8.1,
+    "traffic": 300000,
+    "url": "writesonic.com",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Artbreeder",
+    "icon": "\ud83e\uddec",
+    "desc": "Genetic blending, portrait variations, and collaborative AI art.",
+    "rating": 8.0,
+    "traffic": 100000,
+    "url": "artbreeder.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "BasedLabs",
+    "icon": "\ud83e\uddea",
+    "desc": "AI-powered creative tools for image and video generation with advanced editing features.",
+    "rating": 8.0,
+    "traffic": 20000,
+    "url": "basedlabs.ai",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Bing Image Creator",
+    "icon": "\ud83d\udd0d",
+    "desc": "DALL\u00b7E powered image generation free with Microsoft account.",
+    "rating": 8.0,
+    "traffic": 3000000,
+    "url": "bing.com/create",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Canva AI",
+    "icon": "\u270e",
+    "desc": "Design platform with built-in AI tools for images, presentations, and more.",
+    "rating": 8.0,
+    "traffic": 20000000,
+    "url": "canva.com",
+    "free": true,
+    "categories": [
+      "image",
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Codeium",
+    "icon": "\u26a1",
+    "desc": "Free AI coding assistant with autocomplete and chat features.",
+    "rating": 8.0,
+    "traffic": 300000,
+    "url": "codeium.com",
+    "free": true,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "DALL-E",
+    "icon": "\ud83d\udd0d",
+    "desc": "OpenAI's image generation model for creating images from text descriptions.",
+    "rating": 8.0,
+    "traffic": 2000000,
+    "url": "labs.openai.com",
+    "free": false,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Descript",
+    "icon": "\ud83d\udcdd",
+    "desc": "AI-powered video and audio editing with transcription and overdub features.",
+    "rating": 8.0,
+    "traffic": 500000,
+    "url": "descript.com",
+    "free": true,
+    "categories": [
+      "video",
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Elai",
+    "icon": "\ud83c\udfac",
+    "desc": "Professional animated avatars for business presentations and training.",
+    "rating": 8.0,
+    "traffic": 30000,
+    "url": "elai.io",
+    "free": false,
+    "categories": [
+      "video",
+      "audio"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Exa",
+    "icon": "\ud83d\udd2c",
+    "desc": "Semantic search API for developers building AI applications.",
+    "rating": 8.0,
+    "traffic": 50000,
+    "url": "exa.ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Flux",
+    "icon": "\u26a1",
+    "desc": "Best-in-class photorealistic image generation with stunning detail.",
+    "rating": 8.0,
+    "traffic": 500000,
+    "url": "flux.ai",
+    "free": false,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Gemini Code Assist",
+    "icon": "\ud83d\udc8e",
+    "desc": "Free AI coding assistant with 180K completions/month for individuals.",
+    "rating": 8.0,
+    "traffic": 300000,
+    "url": "aistudio.google.com",
+    "free": true,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "GitHub Copilot",
+    "icon": "\ud83d\udcbb",
+    "desc": "AI pair programmer that suggests code in real-time as you type.",
+    "rating": 8.0,
+    "traffic": 5000000,
+    "url": "github.com/features/copilot",
+    "free": false,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Krea",
+    "icon": "\u2728",
+    "desc": "Real-time AI image generation that updates as you draw and sketch.",
+    "rating": 8.0,
+    "traffic": 400000,
+    "url": "krea.ai",
+    "free": true,
+    "categories": [
+      "image",
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Lensa",
+    "icon": "\ud83d\udcf8",
+    "desc": "AI-powered mobile photo editor with avatar generation and retouching.",
+    "rating": 8.0,
+    "traffic": 1000000,
+    "url": "prisma-ai.com/lensa",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Media.io",
+    "icon": "\ud83c\udf9e",
+    "desc": "All-in-one AI media toolkit for video/image/audio conversion, enhancement, and editing.",
+    "rating": 8.0,
+    "traffic": 300000,
+    "url": "media.io",
+    "free": true,
+    "categories": [
+      "video",
+      "image",
+      "audio"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Midjourney",
+    "icon": "\ud83d\udd25",
+    "desc": "AI image generation tool known for stunning artistic and photorealistic images.",
+    "rating": 8.0,
+    "traffic": 5000000,
+    "url": "midjourney.com",
+    "free": false,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "NightCafe",
+    "icon": "\ud83c\udf19",
+    "desc": "Community-driven AI art platform with multiple models and NFT support.",
+    "rating": 8.0,
+    "traffic": 200000,
+    "url": "nightcafe.studio",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "NotebookLM",
+    "icon": "\ud83d\udcd3",
+    "desc": "Google's AI research assistant for source-grounded document analysis.",
+    "rating": 8.0,
+    "traffic": 1500000,
+    "url": "notebooklm.google.com",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Perplexity",
+    "icon": "\u25c6",
+    "desc": "AI-powered search engine that provides cited answers to complex queries.",
+    "rating": 8.0,
+    "traffic": 6000000,
+    "url": "perplexity.ai",
+    "free": true,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Pixlr AI",
+    "icon": "\u2728",
+    "desc": "One-click AI effects, background removal, and face swap tools.",
+    "rating": 8.0,
+    "traffic": 1000000,
+    "url": "pixlr.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Recraft",
+    "icon": "\ud83c\udfa8",
+    "desc": "AI design tool that outputs editable SVG vector graphics.",
+    "rating": 8.0,
+    "traffic": 200000,
+    "url": "recraft.ai",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Writer",
+    "icon": "\ud83d\udd8a",
+    "desc": "Enterprise AI writing with proprietary Palmyra LLM and knowledge graph.",
+    "rating": 8.0,
+    "traffic": 100000,
+    "url": "writer.com",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "BlueWillow",
+    "icon": "\ud83d\udd35",
+    "desc": "Discord-based, fast, community-driven image generation.",
+    "rating": 7.9,
+    "traffic": 50000,
+    "url": "bluewillow.ai",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Facetune",
+    "icon": "\ud83d\udc84",
+    "desc": "AI photo and video editor with one-tap retouching and makeup filters.",
+    "rating": 7.9,
+    "traffic": 3000000,
+    "url": "facetuneapp.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Fotor AI",
+    "icon": "\ud83d\udcf8",
+    "desc": "Free tier photo enhancement, background removal, and AI editing.",
+    "rating": 7.9,
+    "traffic": 800000,
+    "url": "fotor.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Quarkle",
+    "icon": "\ud83d\udcd6",
+    "desc": "AI writing partner for authors with persistent story knowledge base.",
+    "rating": 7.9,
+    "traffic": 10000,
+    "url": "quarkle.ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Reve AI",
+    "icon": "\ud83d\udd2e",
+    "desc": "Emerging AI creative tool for next-generation image generation and editing.",
+    "rating": 7.9,
+    "traffic": 30000,
+    "url": "reve.ai",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Deep Dream Generator",
+    "icon": "\ud83c\udf00",
+    "desc": "Artistic, trippy, style-transfer focused image generation.",
+    "rating": 7.8,
+    "traffic": 50000,
+    "url": "deepdreamgenerator.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "DeepAI",
+    "icon": "\ud83e\udde0",
+    "desc": "Free AI image generation, enhancement, and style transfer API.",
+    "rating": 7.8,
+    "traffic": 300000,
+    "url": "deepai.org",
+    "free": true,
+    "categories": [
+      "image",
+      "video",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Phygital",
+    "icon": "\ud83d\udd17",
+    "desc": "Blends physical and digital design with AI-powered workflows.",
+    "rating": 7.8,
+    "traffic": 10000,
+    "url": "phygital.ai",
+    "free": false,
+    "categories": [
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Dream by Wombo",
+    "icon": "\ud83d\udca4",
+    "desc": "Fun, stylized, mobile-first AI art generation.",
+    "rating": 7.7,
+    "traffic": 1000000,
+    "url": "wombo.art",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "StarryAI",
+    "icon": "\u2b50",
+    "desc": "Free daily generations with NFT publishing capabilities.",
+    "rating": 7.6,
+    "traffic": 200000,
+    "url": "starryai.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Craiyon",
+    "icon": "\ud83d\udd8d",
+    "desc": "Formerly DALL\u00b7E Mini \u2014 simple, free, fun image generation.",
+    "rating": 7.5,
+    "traffic": 500000,
+    "url": "craiyon.com",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Aider",
+    "icon": "\ud83d\udee0\ufe0f",
+    "desc": "Open-source AI pair programmer that edits code directly in your local git repo from the terminal.",
+    "rating": 9.4,
+    "traffic": 150000,
+    "url": "aider.chat",
+    "free": true,
+    "categories": [
+      "code",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "DupDub",
+    "icon": "\ud83c\udf99\ufe0f",
+    "desc": "AI voice generation and dubbing platform with text-to-speech, voice cloning, and video localization.",
+    "rating": 8.3,
+    "traffic": 150000,
+    "url": "dupdub.com",
+    "free": true,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": true
+  },
+  {
+    "name": "Avoca",
+    "icon": "\ud83d\udcde",
+    "desc": "AI voice agent platform that answers calls, books jobs, and follows up with customers for home service businesses.",
+    "rating": 8.7,
+    "traffic": 40000,
+    "url": "avoca.ai",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Revin",
+    "icon": "\u260e\ufe0f",
+    "desc": "AI-powered customer service agents for home service businesses, handling scheduling, marketing, and membership calls.",
+    "rating": 8.3,
+    "traffic": 20000,
+    "url": "revin.ai",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Drillbit",
+    "icon": "\ud83d\udd27",
+    "desc": "AI back-office platform automating quoting, communications, and payments for home service businesses.",
+    "rating": 8.0,
+    "traffic": 15000,
+    "url": "drillbit.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "audio"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Trunk Tools",
+    "icon": "\ud83c\udfd7\ufe0f",
+    "desc": "Construction-specific AI platform that analyzes drawings, specs, and project documents to reduce rework and delays.",
+    "rating": 8.8,
+    "traffic": 30000,
+    "url": "trunktools.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Supio",
+    "icon": "\u2696\ufe0f",
+    "desc": "Agentic legal AI platform for plaintiff law firms, automating medical record review and case preparation.",
+    "rating": 8.9,
+    "traffic": 35000,
+    "url": "supio.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "GC AI",
+    "icon": "\ud83d\udc69\u200d\u2696\ufe0f",
+    "desc": "Legal AI platform built for in-house counsel, helping draft contracts, review documents, and conduct legal research.",
+    "rating": 8.6,
+    "traffic": 30000,
+    "url": "gc.ai",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Sixfold",
+    "icon": "\ud83d\udee1\ufe0f",
+    "desc": "AI underwriting agent for insurance carriers that evaluates submissions and recommends next-best actions.",
+    "rating": 8.9,
+    "traffic": 25000,
+    "url": "sixfold.ai",
+    "free": false,
+    "categories": [
+      "niche",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Monto",
+    "icon": "\ud83d\udcb3",
+    "desc": "AI connector for B2B finance teams that automates invoicing and payment collection across accounts payable portals.",
+    "rating": 8.2,
+    "traffic": 15000,
+    "url": "montopay.com",
+    "free": false,
+    "categories": [
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Range",
+    "icon": "\ud83d\udcb0",
+    "desc": "AI-powered wealth management platform combining an AI financial planner with licensed human advisors.",
+    "rating": 8.5,
+    "traffic": 60000,
+    "url": "range.com",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Abridge",
+    "icon": "\ud83e\ude7a",
+    "desc": "Ambient AI medical scribe that listens to patient visits and generates clinical documentation automatically.",
+    "rating": 9.3,
+    "traffic": 200000,
+    "url": "abridge.com",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Freed",
+    "icon": "\ud83d\udcdd",
+    "desc": "AI medical scribe app that listens to patient visits and writes structured clinical notes in seconds.",
+    "rating": 9.0,
+    "traffic": 150000,
+    "url": "getfreed.ai",
+    "free": true,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Collate",
+    "icon": "\ud83d\uddc4\ufe0f",
+    "desc": "AI-native data governance and catalog platform built on OpenMetadata for enterprise data discovery and lineage.",
+    "rating": 8.4,
+    "traffic": 25000,
+    "url": "getcollate.io",
+    "free": false,
+    "categories": [
+      "niche",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Prepared",
+    "icon": "\ud83d\udea8",
+    "desc": "Assistive AI platform for 911 emergency communications that transcribes, translates, and surfaces call details in real time.",
+    "rating": 8.9,
+    "traffic": 40000,
+    "url": "prepared911.com",
+    "free": false,
+    "categories": [
+      "audio",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Axon",
+    "icon": "\ud83d\udef0\ufe0f",
+    "desc": "Public safety technology company using AI across body cameras, 911 response, and automated police report drafting.",
+    "rating": 8.7,
+    "traffic": 500000,
+    "url": "axon.com",
+    "free": false,
+    "categories": [
+      "niche",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "MagicSchool",
+    "icon": "\ud83e\ude84",
+    "desc": "AI platform for K-12 educators with 80+ tools for lesson planning, rubrics, and reducing teacher burnout.",
+    "rating": 9.2,
+    "traffic": 800000,
+    "url": "magicschool.ai",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "SchoolAI",
+    "icon": "\ud83c\udfeb",
+    "desc": "Classroom AI platform where teachers build interactive AI 'Spaces' for personalized student learning and insights.",
+    "rating": 9.1,
+    "traffic": 700000,
+    "url": "schoolai.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "CoreWeave",
+    "icon": "\ud83c\udf29\ufe0f",
+    "desc": "Specialized cloud provider offering large-scale NVIDIA GPU infrastructure for AI training and inference workloads.",
+    "rating": 9.0,
+    "traffic": 2000000,
+    "url": "coreweave.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Nebius",
+    "icon": "\u2601\ufe0f",
+    "desc": "AI-centric cloud platform providing GPU compute clusters, managed infrastructure, and tools for training large models.",
+    "rating": 8.7,
+    "traffic": 500000,
+    "url": "nebius.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Crusoe",
+    "icon": "\ud83d\udd25",
+    "desc": "Vertically integrated AI cloud offering GPU compute powered by stranded and clean energy sources for large-scale training.",
+    "rating": 8.6,
+    "traffic": 300000,
+    "url": "crusoe.ai",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Lambda",
+    "icon": "\u03bb",
+    "desc": "GPU cloud and on-prem infrastructure built for machine learning researchers and enterprises training large AI models.",
+    "rating": 8.8,
+    "traffic": 600000,
+    "url": "lambda.ai",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Nscale",
+    "icon": "\ud83d\udda5\ufe0f",
+    "desc": "Vertically integrated European AI cloud provider building GPU superclusters and full-stack AI infrastructure at scale.",
+    "rating": 8.5,
+    "traffic": 200000,
+    "url": "nscale.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "SkyPilot",
+    "icon": "\ud83d\ude80",
+    "desc": "Open-source framework for running AI and ML workloads across any cloud, automatically finding the cheapest available GPUs.",
+    "rating": 8.9,
+    "traffic": 150000,
+    "url": "skypilot.co",
+    "free": true,
+    "categories": [
+      "supercomputer",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "TensorWave",
+    "icon": "\ud83d\udce1",
+    "desc": "AI and HPC cloud built exclusively on AMD Instinct GPUs, offering liquid-cooled clusters for large-scale training.",
+    "rating": 8.3,
+    "traffic": 80000,
+    "url": "tensorwave.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "MeluXina-AI",
+    "icon": "\ud83c\uddf1\ud83c\uddfa",
+    "desc": "Luxembourg's EuroHPC AI-optimized supercomputer delivering multi-exaflop performance for AI model training and research.",
+    "rating": 8.0,
+    "traffic": 20000,
+    "url": "luxprovide.lu",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "OCI",
+    "icon": "\ud83d\udd3a",
+    "desc": "Oracle Cloud Infrastructure, offering enterprise cloud computing including large-scale GPU clusters for AI workloads.",
+    "rating": 8.4,
+    "traffic": 4000000,
+    "url": "oracle.com/cloud",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Zettascale10",
+    "icon": "\u26a1",
+    "desc": "Oracle's flagship AI supercomputer connecting hundreds of thousands of NVIDIA GPUs across data centers for extreme-scale AI training.",
+    "rating": 8.6,
+    "traffic": 100000,
+    "url": "oracle.com/cloud/zettascale",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Project Ceiba",
+    "icon": "\ud83c\udf33",
+    "desc": "Joint AWS and NVIDIA supercomputer initiative built to power NVIDIA's own AI research using tens of thousands of GPUs.",
+    "rating": 8.5,
+    "traffic": 50000,
+    "url": "aws.amazon.com",
+    "free": false,
+    "categories": [
+      "supercomputer",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "InVideo AI",
+    "icon": "\ud83c\udfac",
+    "desc": "Text-to-video AI generator that turns prompts or scripts into full edited videos with AI voiceovers, subtitles, and stock media.",
+    "rating": 10,
+    "traffic": 900000,
+    "url": "invideo.io",
+    "free": true,
+    "categories": [
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Vidu",
+    "icon": "\ud83c\udf00",
+    "desc": "AI video generator for text-to-video, image-to-video, and multi-reference consistency, with fast generation and free monthly credits.",
+    "rating": 10,
+    "traffic": 500000,
+    "url": "vidu.com",
+    "free": true,
+    "categories": [
+      "video"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Text-to-Speech Online",
+    "icon": "\ud83d\udde3\ufe0f",
+    "desc": "Free online tool that converts typed text into natural-sounding speech audio, with multiple voices and languages.",
+    "rating": 9.9,
+    "traffic": 100000,
+    "url": "text-to-speech.online",
+    "free": true,
+    "categories": [
+      "txtspeech",
+      "notai"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Windsurf",
+    "icon": "\ud83c\udf0a",
+    "desc": "Agentic AI code editor with deep codebase awareness and multi-file autonomous editing.",
+    "rating": 8.6,
+    "traffic": 700000,
+    "url": "windsurf.com",
+    "free": true,
+    "categories": [
+      "code",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Mistral Le Chat",
+    "icon": "\ud83c\udf2c",
+    "desc": "Mistral AI's chat assistant with web search, image generation, and coding support.",
+    "rating": 8.5,
+    "traffic": 1000000,
+    "url": "chat.mistral.ai",
+    "free": true,
+    "categories": [
+      "chat",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Luma Dream Machine",
+    "icon": "\ud83c\udf20",
+    "desc": "Fast, high-quality text-to-video and image-to-video generation from Luma AI.",
+    "rating": 8.5,
+    "traffic": 600000,
+    "url": "lumalabs.ai",
+    "free": true,
+    "categories": [
+      "video",
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Hailuo AI",
+    "icon": "\ud83c\udfa5",
+    "desc": "MiniMax's text-to-video and image-to-video generator known for cinematic motion.",
+    "rating": 8.4,
+    "traffic": 500000,
+    "url": "hailuoai.video",
+    "free": true,
+    "categories": [
+      "video",
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Meshy AI",
+    "icon": "\ud83d\uddff",
+    "desc": "AI 3D model generation from text or images for games and design.",
+    "rating": 8.3,
+    "traffic": 300000,
+    "url": "meshy.ai",
+    "free": true,
+    "categories": [
+      "image",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Tripo AI",
+    "icon": "\ud83d\udd3a",
+    "desc": "Fast text-to-3D and image-to-3D model generation platform.",
+    "rating": 8.1,
+    "traffic": 150000,
+    "url": "tripo3d.ai",
+    "free": true,
+    "categories": [
+      "image",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Flowise",
+    "icon": "\ud83c\udf00",
+    "desc": "Open-source drag-and-drop builder for LLM workflows and AI agents.",
+    "rating": 8.3,
+    "traffic": 200000,
+    "url": "flowiseai.com",
+    "free": true,
+    "categories": [
+      "code",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Langflow",
+    "icon": "\ud83d\udd17",
+    "desc": "Visual framework for building and deploying multi-agent LLM applications.",
+    "rating": 8.2,
+    "traffic": 150000,
+    "url": "langflow.org",
+    "free": true,
+    "categories": [
+      "code",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "CrewAI",
+    "icon": "\ud83d\udc65",
+    "desc": "Framework for orchestrating role-playing autonomous AI agents that collaborate on tasks.",
+    "rating": 8.4,
+    "traffic": 250000,
+    "url": "crewai.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Open WebUI",
+    "icon": "\ud83d\udda5",
+    "desc": "Self-hosted, extensible chat interface for running local and remote LLMs.",
+    "rating": 8.5,
+    "traffic": 300000,
+    "url": "openwebui.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Ollama",
+    "icon": "\ud83e\udd99",
+    "desc": "Run open-source large language models locally with a simple command-line interface.",
+    "rating": 9.0,
+    "traffic": 2000000,
+    "url": "ollama.com",
+    "free": true,
+    "categories": [
+      "code",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "LM Studio",
+    "icon": "\ud83c\udf9b",
+    "desc": "Desktop app for discovering, downloading, and running local LLMs with a chat UI.",
+    "rating": 8.8,
+    "traffic": 800000,
+    "url": "lmstudio.ai",
+    "free": true,
+    "categories": [
+      "code",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Tavily",
+    "icon": "\ud83d\udd0e",
+    "desc": "Search API purpose-built for AI agents and LLM applications.",
+    "rating": 8.3,
+    "traffic": 100000,
+    "url": "tavily.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Jina AI",
+    "icon": "\ud83d\udd37",
+    "desc": "Search foundation and embedding APIs for building neural search and RAG applications.",
+    "rating": 8.2,
+    "traffic": 200000,
+    "url": "jina.ai",
+    "free": true,
+    "categories": [
+      "chat",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Consensus",
+    "icon": "\ud83c\udf93",
+    "desc": "AI-powered search engine that finds and summarizes findings from scientific papers.",
+    "rating": 8.3,
+    "traffic": 300000,
+    "url": "consensus.app",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "SciSpace",
+    "icon": "\ud83d\udd2c",
+    "desc": "AI research assistant for reading, understanding, and summarizing academic papers.",
+    "rating": 8.2,
+    "traffic": 400000,
+    "url": "scispace.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Glean",
+    "icon": "\ud83d\udd0d",
+    "desc": "Enterprise AI search assistant that connects across company apps and knowledge sources.",
+    "rating": 8.6,
+    "traffic": 250000,
+    "url": "glean.com",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Harvey AI",
+    "icon": "\u2696",
+    "desc": "Generative AI platform built for law firms, covering research, drafting, and review.",
+    "rating": 8.8,
+    "traffic": 100000,
+    "url": "harvey.ai",
+    "free": false,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Clay",
+    "icon": "\ud83e\uddf1",
+    "desc": "AI-powered data enrichment and outreach platform for sales and go-to-market teams.",
+    "rating": 8.5,
+    "traffic": 300000,
+    "url": "clay.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "niche"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Browser Use",
+    "icon": "\ud83c\udf10",
+    "desc": "Open-source AI agent framework that lets LLMs control a web browser to complete tasks.",
+    "rating": 8.4,
+    "traffic": 150000,
+    "url": "browser-use.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Continue.dev",
+    "icon": "\u27a1",
+    "desc": "Open-source AI code assistant that plugs into VS Code and JetBrains IDEs.",
+    "rating": 8.2,
+    "traffic": 200000,
+    "url": "continue.dev",
+    "free": true,
+    "categories": [
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "OpenHands",
+    "icon": "\ud83d\ude4c",
+    "desc": "Open-source autonomous coding agent that can write, run, and debug code end-to-end.",
+    "rating": 8.3,
+    "traffic": 150000,
+    "url": "all-hands.dev",
+    "free": true,
+    "categories": [
+      "code",
+      "chat"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Hedra",
+    "icon": "\ud83c\udfad",
+    "desc": "AI platform for generating expressive talking-avatar videos synced to audio.",
+    "rating": 8.4,
+    "traffic": 200000,
+    "url": "hedra.com",
+    "free": true,
+    "categories": [
+      "video",
+      "audio",
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Vidu AI",
+    "icon": "\ud83c\udf00",
+    "desc": "Multimodal AI video generator supporting text-to-video and reference-consistent characters.",
+    "rating": 8.3,
+    "traffic": 400000,
+    "url": "vidu.com",
+    "free": true,
+    "categories": [
+      "video",
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Fal.ai",
+    "icon": "\u25b2",
+    "desc": "Generative media platform offering fast, scalable inference APIs for image, video, and code.",
+    "rating": 8.5,
+    "traffic": 300000,
+    "url": "fal.ai",
+    "free": true,
+    "categories": [
+      "image",
+      "video",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "ComfyUI",
+    "icon": "\ud83d\udd78",
+    "desc": "Node-based interface for building custom Stable Diffusion image and video pipelines.",
+    "rating": 8.5,
+    "traffic": 500000,
+    "url": "comfy.org",
+    "free": true,
+    "categories": [
+      "image",
+      "code"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Fooocus",
+    "icon": "\ud83c\udfaf",
+    "desc": "Simplified, open-source Stable Diffusion interface focused on ease of use.",
+    "rating": 8.1,
+    "traffic": 150000,
+    "url": "github.com/lllyasviel/Fooocus",
+    "free": true,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Jan AI",
+    "icon": "\ud83e\ude90",
+    "desc": "Open-source, privacy-first desktop app for running AI models locally.",
+    "rating": 8.2,
+    "traffic": 200000,
+    "url": "jan.ai",
+    "free": true,
+    "categories": [
+      "chat",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "AnythingLLM",
+    "icon": "\ud83e\udde9",
+    "desc": "Open-source, all-in-one desktop app for local AI chat and document-grounded RAG.",
+    "rating": 8.2,
+    "traffic": 200000,
+    "url": "anythingllm.com",
+    "free": true,
+    "categories": [
+      "chat",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "OpenRouter",
+    "icon": "\ud83d\udd00",
+    "desc": "Unified API that routes requests across hundreds of AI models from different providers.",
+    "rating": 8.7,
+    "traffic": 500000,
+    "url": "openrouter.ai",
+    "free": true,
+    "categories": [
+      "code",
+      "supercomputer"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "LiteLLM",
+    "icon": "\ud83e\udeb6",
+    "desc": "Open-source library and proxy server for calling 100+ LLM APIs in a unified format.",
+    "rating": 8.4,
+    "traffic": 200000,
+    "url": "litellm.ai",
+    "free": true,
+    "categories": [
+      "code",
+      "supercomputer"
+    ],
+    "affiliate": false
   }
 ]
