@@ -1894,5 +1894,31 @@
       "notai"
     ],
     "affiliate": false
+  },
+  {
+    "name": "Convertico GIF to Favicon",
+    "icon": "🖼️",
+    "desc": "Free online tool that converts animated GIFs into favicon files for websites.",
+    "rating": 9.5,
+    "traffic": 20000,
+    "url": "convertico.com/gif-to-favicon/",
+    "free": true,
+    "categories": [
+      "notai"
+    ],
+    "affiliate": false
+  },
+  {
+    "name": "Giphy",
+    "icon": "🎞️",
+    "desc": "Massive library and search engine for GIFs and animated stickers, widely used for messaging and social media.",
+    "rating": 9.5,
+    "traffic": 5000000,
+    "url": "giphy.com",
+    "free": true,
+    "categories": [
+      "notai"
+    ],
+    "affiliate": false
   }
 ]
