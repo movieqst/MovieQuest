@@ -80,9 +80,9 @@
     font-weight: 600;
     border: 1px solid var(--accent, #58a6ff);
   }
-  .meta-badge.free { color: #3fb950; border-color: #3fb950; background: rgba(63,185,80,0.1); }
-  .meta-badge.paid { color: #c18c5a; border-color: #c18c5a; background: rgba(193,140,90,0.1); }
-  .meta-badge.affiliate { color: #ff6b6b; border-color: #ff6b6b; background: rgba(255,107,107,0.1); }
+  .meta-badge.free { color: #3fb950 !important; border-color: #3fb950 !important; background: rgba(63,185,80,0.1) !important; }
+  .meta-badge.paid { color: #c18c5a !important; border-color: #c18c5a !important; background: rgba(193,140,90,0.1) !important; }
+  .meta-badge.affiliate { color: #ff6b6b !important; border-color: #ff6b6b !important; background: rgba(255,107,107,0.1) !important; }
 
   .section-title {
     font-size: 1.3rem;
@@ -209,7 +209,8 @@
 <body>
 
 <div class="container" id="app">
-  <a class="back-link" href="dash.html">← Back to Dashboard</a>
+  <!-- THE BACK LINK WAS CHANGED HERE -->
+  <a class="back-link" href="dash.html"> ← MAIN AI DASH </a>
 
   <div id="loading" class="not-found">Loading tool details...</div>
 
@@ -325,8 +326,8 @@ async function loadTool() {
     document.getElementById('rating').textContent = tool.rating || '—';
     document.getElementById('traffic').textContent = formatTraffic(tool.traffic);
 
-    // Overview — now pulls from the "overview" field in JSON
-    document.getElementById('longDesc').textContent = tool.overview || 'No detailed overview available.';
+    // Long description
+    document.getElementById('longDesc').textContent = tool.longDesc || tool.desc || 'No detailed description available.';
 
     // Benefits
     const benefitsList = document.getElementById('benefits');
@@ -350,10 +351,20 @@ async function loadTool() {
     const metaBadges = document.getElementById('meta-badges');
     metaBadges.innerHTML = '';
     const categoryNames = { code: 'Coding', niche: 'Niche AI', supercomputer: 'Supercomputer', notai: 'Not AI', txtspeech: 'Text-to-Speech' };
+    
+    // THE DYNAMIC COLOR LOGIC WAS ADDED HERE
     tool.categories.forEach(cat => {
       const span = document.createElement('span');
       span.className = 'meta-badge';
       span.textContent = categoryNames[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
+      
+      const catColor = categoryColors[cat];
+      if (catColor) {
+        span.style.color = catColor.accent;
+        span.style.borderColor = catColor.accent;
+        span.style.backgroundColor = catColor.bg;
+      }
+      
       metaBadges.appendChild(span);
     });
 
