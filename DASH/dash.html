@@ -351,12 +351,32 @@ async function loadData() {
   try {
     const res = await fetch('data.json');
     allData = await res.json();
+    applyUrlParams();
     render();
     const counter = document.getElementById('appCounter');
     if (counter) counter.textContent = allData.length + ' AI APPS';
   } catch (e) {
     document.getElementById('cardsGrid').innerHTML = 
       '<div class="no-results">Error loading data. Please check that data.json is in the same folder.</div>';
+  }
+}
+
+function applyUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('category');
+  const free = params.get('free');
+
+  if (cat) {
+    currentFilter = cat;
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    const tab = document.querySelector(`.nav-tab[data-filter="${cat}"]`);
+    if (tab) tab.classList.add('active');
+  }
+
+  if (free === 'true' || free === 'false') {
+    currentFreeFilter = free === 'true' ? 'free' : 'paid';
+    const filterSelect = document.getElementById('filterSelect');
+    if (filterSelect) filterSelect.value = currentFreeFilter;
   }
 }
 

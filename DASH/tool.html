@@ -88,6 +88,14 @@
     font-size: 0.85rem;
     font-weight: 600;
     border: 1px solid var(--accent, #58a6ff);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .meta-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px currentColor;
   }
   .meta-badge.free { color: #3fb950 !important; border-color: #3fb950 !important; background: rgba(63,185,80,0.1) !important; }
   .meta-badge.paid { color: #c18c5a !important; border-color: #c18c5a !important; background: rgba(193,140,90,0.1) !important; }
@@ -364,22 +372,24 @@ async function loadTool() {
     
     // THE DYNAMIC COLOR LOGIC WAS ADDED HERE
     tool.categories.forEach(cat => {
-      const span = document.createElement('span');
-      span.className = 'meta-badge';
-      span.textContent = categoryNames[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
+      const a = document.createElement('a');
+      a.className = 'meta-badge';
+      a.href = `dash.html?category=${encodeURIComponent(cat)}`;
+      a.textContent = categoryNames[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
       
       const catColor = categoryColors[cat];
       if (catColor) {
-        span.style.color = catColor.accent;
-        span.style.borderColor = catColor.accent;
-        span.style.backgroundColor = catColor.bg;
+        a.style.color = catColor.accent;
+        a.style.borderColor = catColor.accent;
+        a.style.backgroundColor = catColor.bg;
       }
       
-      metaBadges.appendChild(span);
+      metaBadges.appendChild(a);
     });
 
-    const freeSpan = document.createElement('span');
+    const freeSpan = document.createElement('a');
     freeSpan.className = 'meta-badge ' + (tool.free ? 'free' : 'paid');
+    freeSpan.href = `dash.html?free=${tool.free ? 'true' : 'false'}`;
     freeSpan.textContent = tool.free ? 'Free Tier' : 'Paid Only';
     metaBadges.appendChild(freeSpan);
 

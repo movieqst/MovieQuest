@@ -5,7 +5,7 @@
     "desc": "OpenAI's flagship conversational AI. Best for general assistance, coding help, creative writing.",
     "rating": 10.0,
     "traffic": 60000000,
-    "url": "chat.openai.com",
+    "url": "https://chatgpt.com/",
     "free": true,
     "categories": [
       "chat",
