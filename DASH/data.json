@@ -2360,7 +2360,18 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Dream by Wombo is a mobile-first AI art generator with over 200 million users worldwide, making it one of the most popular entry-level AI art platforms available. The platform operates on a simple premise: users type any text prompt, choose from 50+ art styles (including realistic, fantasy, anime, oil painting, watercolor, and synthwave), and the AI generates an artwork in seconds. It is designed for users with no artistic skill, transforming text into images for social media content, profile pictures, poems, movie posters, album covers, and personalized gifts. The app is available on iOS, iPadOS, and macOS, and supports image-to-image generation by uploading a photo as a visual base for the prompt. Beyond basic generation, Dream allows users to edit images with simple text instructions, changing colors, adding details, or adjusting lighting—a feature that adds a layer of refinement to the creative process. The platform is developed by Wombo Studios, a Canadian AI company with over 1.4 billion app installations across its product lineup.",
+    "benefits": [
+      "Extremely low barrier to entry—no artistic skill or technical knowledge required, with a simple prompt-and-generate workflow",
+      "Huge variety of 50+ art styles across multiple categories (realistic, fantasy, anime, painting styles) provides broad creative range",
+      "Image-to-image feature lets users upload photos as visual bases, expanding beyond pure text-to-image generation"
+    ],
+    "drawbacks": [
+      "Free tier generates only one image per prompt, while paid subscriptions show four variants simultaneously",
+      "English-only prompt input with limited support for other languages",
+      "Common AI image generation errors persist: issues with hands, limbs, proportions, and occasional misinterpretation of complex prompts"
+    ]
   },
   {
     "name": "StarryAI",
@@ -2373,7 +2384,18 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "StarryAI is a mobile AI art generation app supporting iOS and Android platforms, designed for users who want to create stunning visuals from text prompts or images. The platform offers a free tier with 5 generations per day, all of which are completely watermark-free and owned by the creator—a notable differentiator from many free-tier competitors. Users can choose from a variety of artistic styles and models, adjust aspect ratios, and set initial images as starting points. StarryAI's core features include batch generation (creating multiple works at once), image evolution (iterative refinement of outputs), image upscaling, and smart fill for completing missing parts of images. The platform also supports image variation generation and AI portrait creation, with a community feed where users can view and be inspired by others' creations. For creators interested in the NFT space, StarryAI provides integrated NFT publishing capabilities, allowing users to tokenize their AI-generated artwork.",
+    "benefits": [
+      "Daily free generations (5 per day) are completely watermark-free and owned by the creator—a genuine differentiator from many free-tier competitors",
+      "Batch generation, image evolution, and smart fill provide more creative control than basic text-to-image generators",
+      "Integrated NFT publishing capability appeals to creators interested in the Web3 art space"
+    ],
+    "drawbacks": [
+      "Free tier's daily allowance is limited compared to unlimited generation platforms like Dream by Wombo",
+      "Some advanced styles require 2 'coins' per generation, with only 1 free coin awarded daily, creating a paywall for certain aesthetic options",
+      "Relies heavily on mobile app interface, which may feel less versatile than web-based platforms for some users"
+    ]
   },
   {
     "name": "Craiyon",
@@ -2386,7 +2408,18 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Craiyon is a web-based text-to-image generator born as a playful, accessible alternative to research-grade models. Originally called DALL-E mini, it branched into its own product line with fast, free image generation directly in the browser. The platform requires no heavy setup, no installation, and no account to get started—users simply type a prompt, click 'Draw,' and within 20-60 seconds receive a grid of nine image variants. The interface is deliberately minimal, encouraging creativity over parameter fiddling, and the ad-supported model keeps the tool free for all users. Craiyon's aesthetic tends toward whimsical, illustrative, and stylized outputs; photorealism and faces can be unpredictable, positioning it as a creativity sandbox and rapid thumbnail sketch tool rather than a high-end paid generator. The platform has expanded into a mobile app that bundles image generation with AI chat, translation, photo filters, poster design, and smart crop tools—transforming from a single-purpose generator into an all-in-one creative toolkit.",
+    "benefits": [
+      "Completely free and browser-based with no sign-up required—the lowest barrier to entry for any AI image generator",
+      "Generates nine variants per prompt, giving users multiple composition and style options to choose from",
+      "Fast iteration speed (20-60 seconds) makes it useful for rapid concept thumbnails and mood exploration"
+    ],
+    "drawbacks": [
+      "Not photorealistic or clean compared to paid, high-end models; faces, hands, and small text often render inaccurately",
+      "Limited advanced controls and fine-tuning options—users get what the AI gives them with minimal parameter adjustment",
+      "Licensing terms can be unclear, requiring extra verification before commercial use"
+    ]
   },
   {
     "name": "Aider",
@@ -2400,7 +2433,18 @@
       "code",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Aider is an open-source AI pair programming tool that operates from the terminal, allowing developers to pair program with LLMs to start new projects or build on existing codebases. Unlike many AI coding assistants that integrate only with specific IDEs, Aider works directly with local git repositories, automatically committing changes with sensible commit messages so that developers can easily diff, manage, and undo AI changes using familiar Git tools. The tool works with most popular programming languages (Python, JavaScript, Rust, Ruby, Go, C++, PHP, HTML, CSS, and dozens more) and maps the entire codebase to help it work well in larger projects. Aider supports both cloud-based LLMs (Claude 3.7 Sonnet, DeepSeek R1 & Chat V3, OpenAI o1, o3-mini & GPT-4o) and local models, making it flexible for different privacy and cost requirements. Additional features include voice-to-code input, image and web page attachments for visual context, linting/testing integration that automatically fixes problems, and a copy/paste workflow for interacting with any LLM via its web chat interface.",
+    "benefits": [
+      "Works directly with your local git repository, automatically committing changes and letting you use familiar Git tools to manage AI edits",
+      "Supports both cloud and local LLMs, offering flexibility for different privacy requirements and cost preferences",
+      "Voice-to-code feature enables natural language coding requests, reducing friction for developers on the move"
+    ],
+    "drawbacks": [
+      "Command-line interface has a steeper learning curve than graphical IDE plugins, particularly for developers new to terminal workflows",
+      "Requires API keys for cloud models, meaning users must manage their own API costs and billing accounts",
+      "Best-in-class when paired with premium models like Claude 3.7 Sonnet or DeepSeek—performance with free or lower-tier models may be inconsistent"
+    ]
   },
   {
     "name": "DupDub",
@@ -2414,7 +2458,18 @@
       "audio",
       "niche"
     ],
-    "affiliate": true
+    "affiliate": true,
+    "overview": "DupDub is an AI voice and dubbing platform that started as a YouTube-focused Chrome extension for transcript generation and has expanded into a broader audio and video localization tool. The core Chrome extension automatically converts YouTube audio to text with high accuracy, translates video subtitles into 40+ languages, generates AI-powered video summaries, and provides text-to-speech voiceovers—all integrated seamlessly within YouTube. This makes it a valuable tool for content creators, educators, and global audiences looking to repurpose video content into written formats or localize it for international viewers. The platform prides itself on being free, processing data locally to ensure privacy and security with no external data storage. Beyond the browser extension, DupDub Lab offers a more advanced 'Talking Photos' feature that animates static images with lip-sync, multi-role dialogue, and AI avatar generation, turning photos into animated storytellers. This lab product supports multiple characters in conversation, voice integration (uploaded, recorded, or extracted from audio/video files), and effortless sharing across platforms, making it useful for content creators, artists, and marketers.",
+    "benefits": [
+      "Free YouTube transcription and translation into 40+ languages, making it a practical tool for content creators and global audiences",
+      "Processes data locally with no external storage or sharing, which provides a strong privacy guarantee for users",
+      "Expansion into audio/video localization with 'Talking Photos' animation creates a multi-product ecosystem beyond the core Chrome extension"
+    ],
+    "drawbacks": [
+      "Core product remains browser-extension focused, which may not appeal to users who prefer standalone applications",
+      "Talking Photos feature on Google Play has a low rating of 2.4/5, indicating potential quality or user experience issues with the lab product",
+      "As a relatively new player compared to established TTS platforms like ElevenLabs or Murf, the platform's voice quality and language coverage may not match category leaders"
+    ]
   },
   {
     "name": "Avoca",
@@ -2428,7 +2483,18 @@
       "audio",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Avoca is an AI startup founded in 2022 by MIT graduates Apurva Shrivastava and Tyson Chen, developing voice AI agents specifically for home service businesses including plumbers, electricians, HVAC technicians, roofers, and home repair companies. The company's origin story is deeply personal: Shrivastava grew up helping his parents run a small business in Michigan and noticed that every missed customer call meant a lost sale; Chen had a similar experience with his mother's acupuncture clinic in Pennsylvania. This insight led them to build AI that could answer calls instantly, sound like a real human conversation, check live calendars to book appointments automatically, and follow up on old customer estimates—all without requiring a full-time receptionist. The platform integrates directly with business software and has been adopted by over 800 customers including 1-800-GOT-JUNK and Goettl Air Conditioning. After raising more than $125 million from top Silicon Valley investors (Meritech Capital, General Catalyst, Kleiner Perkins), Avoca has reached a $1 billion valuation and is on track to help generate nearly $1 billion worth of jobs for its customers. The company is positioned as a growth enabler rather than a replacement for technicians, reflecting Shrivastava's view that 'the next million-dollar job is the job of a plumber, the job of a technician.'",
+    "benefits": [
+      "Deep specialization in home service businesses with voice agents that book appointments, check calendars, and follow up on estimates—a high-value vertical where a missed call can mean a $30,000+ loss",
+      "Over 800 customers including major brands like 1-800-GOT-JUNK and Goettl Air Conditioning demonstrate enterprise credibility and proven ROI",
+      "Founders' firsthand experience with family businesses means the product solves a real documented pain point rather than a theoretical one"
+    ],
+    "drawbacks": [
+      "Narrow focus exclusively on home service businesses—not useful for other industries or general-purpose customer service",
+      "Pricing is not publicly disclosed, requiring custom quotes for each customer",
+      "Relatively young company (founded 2022) with limited long-term track record compared to more established customer service platforms"
+    ]
   },
   {
     "name": "Revin",
@@ -2456,7 +2522,18 @@
       "niche",
       "audio"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Drillbit is an AI-powered back-office platform purpose-built for residential contractors—plumbers, electricians, house cleaners, landscapers, roofers, and other home service businesses. The platform automates the entire job lifecycle from lead generation to payment collection using AI receptionists and an LLM-based quoting tool on top of a proprietary CRM. Drillbit handles phone calls with homeowners and businesses at every stage: answering inquiries, coordinating scheduling, providing estimates, managing staffing, and processing payments.\n\nThe company was founded in 2023 by Alex Seutin (Stanford CS/AI) and Liam, who previously worked together developing robots for industrial construction projects. Seutin brings hands-on experience from renovating homes and airstreams, which gave him intimate familiarity with the pain points in the construction industry. Drillbit's key insight was that existing CRMs suffered from massive churn because business owners felt like they were 'babysitting' the tool—doing 'homework' rather than getting value. Drillbit solves this by handling coordination in a familiar way: talking to 'employees' on the phone like real people, and having those AI employees engage with homeowners over the phone.\n\nThe platform is designed to eliminate the estimated $675B/year in administrative overhead that contributes to home maintenance costs across the U.S. Drillbit is still in its growth phase as of mid-2026, actively seeking to onboard contractors across the home service industry. The company is Y Combinator-backed (Summer 2024 batch) and based in Austin, Texas.",
+    "benefits": [
+      "Takes a genuinely hands-off approach—contractors can talk to AI 'employees' by phone rather than babysitting a dashboard, solving the churn problem that plagued earlier CRMs",
+      "End-to-end automation covering the full job lifecycle from lead intake to payment, not just a single feature",
+      "Founded by someone with actual construction industry experience, ensuring the product solves real pain points rather than theoretical ones"
+    ],
+    "drawbacks": [
+      "No publicly disclosed pricing—requires contacting the company directly for a quote",
+      "Narrow focus exclusively on residential contractors; not suitable for other industries or general business use",
+      "Company is still in growth phase as of mid-2026, so the product may lack the maturity and feature depth of more established industry CRMs"
+    ]
   },
   {
     "name": "Trunk Tools",
@@ -2539,7 +2616,18 @@
       "niche",
       "supercomputer"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Sixfold is an AI platform purpose-built for commercial property & casualty (P&C) and life & health insurance underwriting. Unlike generic document ingestion tools, Sixfold's AI Underwriter is an agentic colleague that receives a submission and produces real underwriting work product: it understands the risk, knows the broker, holds the portfolio in memory, and tells the underwriter what to do next. The platform processes submission data directly from an inbox, enriches it, identifies gaps, evaluates appetite and portfolio fit, and produces recommendations with rationale and drafted broker follow-ups.\n\nAt the center of the AI Underwriter is what Sixfold calls the Underwriting Brain—an AI system that brings functional knowledge across lines, reasoning patterns from experienced underwriters, and a ground-truth library of what good underwriting looks like. It doesn't need months of ramp time; it already knows how to underwrite on day one. The system has processed more than 1.5 million submissions across more than 50 lines of business for carriers including Zurich, Skyward Specialty, Generali GC&C, Guardian, AXIS, and New York Life across North America, Europe, South America, and Australia.\n\nSixfold's customers report 50% to 97% faster processing, hit ratios up 15%, and 30% more GWP per underwriter. One carrier went from pilot to 500+ underwriters, reaching go/no-go decisions in 5 minutes and saving more than 2 hours per submission. Another cut days-to-quote from 16 to 7 days. The platform is SOC 2, HIPAA, and GDPR compliant with a responsible AI framework addressing bias testing, explainability, and regulatory requirements including the EU AI Act and Colorado AI Act. A survey of 543 underwriting executives found that 71% already use AI daily and 99% feel more optimistic about the industry's future.",
+    "benefits": [
+      "The AI Underwriter does the analytical work rather than just summarizing submissions—it evaluates appetite, knows the broker, considers portfolio fit, and recommends next actions",
+      "Proven ROI with customers reporting 50-97% faster processing, 15% higher hit ratios, and 30% more GWP per underwriter at scale",
+      "Trusted by major global carriers including Zurich, Skyward Specialty, AXIS, and New York Life, with 1.5M+ submissions processed across 50+ lines of business"
+    ],
+    "drawbacks": [
+      "Built exclusively for insurance underwriting—not applicable to any other industry or use case",
+      "Pricing is not publicly disclosed; requires contacting the company for a custom quote",
+      "Effectiveness depends on quality of the carrier's existing data and guidelines—the AI is a powerful colleague but requires clean inputs to perform at its best"
+    ]
   },
   {
     "name": "Monto",
@@ -2552,7 +2640,18 @@
     "categories": [
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Monto is an AI-driven accounts receivable automation platform that helps B2B finance teams get paid from any accounts payable (AP) portal used by their enterprise customers. The platform provides AI agents that automate portal interactions, submit and track invoices, verify data, integrate with ERP systems, and centralize payment workflows, allowing finance teams to reduce manual effort, minimize errors, and accelerate collections.\n\nThe company's core value proposition addresses a growing problem in global commerce: as more than 80 countries have established e-invoicing mandates or continuous transaction control requirements, suppliers must integrate with each customer's payment software—each with its own complex logins and workflows—creating endless chaos for payment collection teams that severely impacts cash flow and working capital. Monto's AI platform learns each customer's invoicing requirements and ensures a seamless payment flow. The platform has helped suppliers get paid nearly $1 billion, with clients including Shutterstock, TechTarget, and G2.\n\nMonto was founded in 2021 and is backed by seven investors. The company recently raised $9 million in seed funding and established a new office in New York City. As of 2026, the company employs approximately 109 people.",
+    "benefits": [
+      "AI agents automatically interact with customer AP portals, submit and track invoices, and verify data—eliminating the manual chaos of managing separate logins and workflows for every customer",
+      "Demonstrated traction with nearly $1B in payments processed for clients including Shutterstock, TechTarget, and G2",
+      "Addresses a growing, regulated market: 80+ countries have established e-invoicing mandates, making this a compliance necessity for global suppliers"
+    ],
+    "drawbacks": [
+      "Narrow focus on B2B accounts receivable—not useful for consumer payments, B2C businesses, or general finance operations",
+      "No publicly disclosed pricing; requires contacting the company for a quote",
+      "Integration complexity may vary depending on the specific ERPs and AP portals a supplier's customers use"
+    ]
   },
   {
     "name": "Range",
@@ -2589,7 +2688,18 @@
       "audio",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Abridge is an ambient AI medical scribe that listens to patient-clinician conversations and automatically generates structured clinical notes, allowing physicians to focus entirely on their patients during visits rather than typing on keyboards. The platform uses proprietary automatic speech recognition (ASR) to process audio and generate comprehensive notes, including treatment plans, physical exams, and history of present illness, plus a patient-facing visit summary.\n\nA standout feature is Abridge's language support: the AI automatically detects and processes conversations in 28 languages (including Arabic, Cantonese, Mandarin, French, German, Hindi, Japanese, Korean, Spanish, and Vietnamese) and outputs a complete English clinical note. The system performs well across diverse accents, languages, and dialects, with high-performing languages achieving approximately 1% absolute improvement in Word Error Rate compared to leading state-of-the-art models. All notes are generated in English regardless of the language spoken during the encounter.\n\nAbridge has been deployed at major healthcare institutions including UC Davis Health, where 370 physicians used it in a pilot program and reported a 52.7% decrease in cognitive load and saved an average of 1.6 hours per week in notetaking. Physicians reported the AI is 'very accurate' and does an excellent job summarizing patient conversations without bias or hallucination. The platform is HIPAA, HITECH, and SOC2 compliant, and works with popular EHRs like Athena and eClinicalWorks on desktop. Abridge is available on iPhone and iPad (iOS 17.6 or later), with no Android app currently listed.",
+    "benefits": [
+      "Clinicians at UC Davis Health reported a 52.7% decrease in cognitive load and saved 1.6 hours per week in notetaking with Abridge",
+      "Supports 28 languages automatically—no language selection required—with outputs in English, making it valuable for diverse patient populations",
+      "Integrates with major EHRs like Athena and eClinicalWorks, and is fully HIPAA, HITECH, and SOC2 compliant"
+    ],
+    "drawbacks": [
+      "Available only on iPhone and iPad (iOS 17.6 or later) with no Android app or web-based interface currently listed",
+      "Pricing is not publicly disclosed; requires contacting the company or healthcare institution for access",
+      "As an ambient AI scribe, it requires a quiet, clear audio environment to generate accurate notes; noisy clinics or overlapping speech may reduce accuracy"
+    ]
   },
   {
     "name": "Freed",
@@ -2603,7 +2713,18 @@
       "audio",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Freed is an AI-powered clinical documentation assistant designed for physicians, nurse practitioners, and other clinicians. Like Abridge, Freed listens to patient-clinician conversations and automatically generates complete SOAP notes (Subjective, Objective, Assessment, Plan). However, Freed emphasizes extreme simplicity: clinicians just tap a 'Capture' button, and the AI scribe creates the entire note instantly—no complex setup or configuration required.\n\nThe platform works out of the box without training, but can be trained to learn each clinician's individual style and adapt to their preferences. Freed is available across any device—phone, tablet, or desktop—and integrates with popular EHRs including Athena and eClinicalWorks on desktop. The platform is fully HIPAA, HITECH, and SOC2 compliant. The app is available on both iOS and Android.\n\nFreed operates on a subscription model with a monthly subscription costing approximately $179. A free trial is available for clinicians to test the platform before committing. The company does not collect any user data from the app. Freed is positioned as the tool for clinicians who want a simpler, faster alternative to traditional dictation services, with a focus on allowing doctors to 'leave work at work' and reclaim their weekends.",
+    "benefits": [
+      "Extremely simple workflow: one 'Capture' button generates a complete SOAP note instantly—no complex setup, training, or workflow changes required",
+      "Available on both iOS and Android (unlike competitor Abridge), plus desktop, making it accessible across the full range of clinician devices",
+      "Can be trained to learn each clinician's individual style and preferences, improving accuracy and personalization over time"
+    ],
+    "drawbacks": [
+      "Pricing is steep at approximately $179/month, which may be prohibitive for individual clinicians or small practices",
+      "As an ambient AI scribe, it requires a clear audio environment; noisy clinics or overlapping speech may impact accuracy",
+      "Android app may not be available in all regions; users should confirm availability in their country's Google Play Store"
+    ]
   },
   {
     "name": "Collate",
@@ -2617,7 +2738,18 @@
       "niche",
       "supercomputer"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Collate is the AI-for-data platform built by the creators of OpenMetadata, the open semantic context layer for AI. The platform addresses a fundamental problem in enterprise data: LLMs identify the right data for a given prompt only about 10% of the time, making AI a non-starter for serious data applications. Collate 2.0 (announced June 2026) fixes this by giving AI agents semantic context—not just context (what data exists) but semantics (what it means) and memory (making knowledge persistent and shareable).\n\nWith Collate 2.0, data professionals can tag, classify, document, curate, search, and analyze data by simply describing what they want conversationally. The platform's semantic context graph boosts data agent accuracy by as much as 7x in benchmarks. The platform uses more than 130 native connectors to map every enterprise data source to a single metadata graph. Collate provides a no-code AI Studio for building custom agents, an AI SDK for programmatic agent development, and five built-in automation templates for common jobs like regulatory compliance tagging, domain assignment, and data quality testing.\n\nCollate also includes a Data Marketplace: an internal storefront for domains and data products with self-serve discovery, governed data product check-out, and end-to-end Data Access Request Workflows. The platform is backed by Venrock, Unusual Ventures, and Karman Ventures, and is used by Global 2000 companies and innovative startups. Collate 2.0 is scheduled for general availability in July 2026.",
+    "benefits": [
+      "Semantic context graph boosts data agent accuracy by up to 7x—solving the fundamental problem that LLMs identify the right data only ~10% of the time without semantic context",
+      "130+ native connectors map every enterprise data source to a single metadata graph, plus a Data Marketplace for governed self-serve discovery",
+      "Conversational interface lets data professionals tag, classify, document, search, and analyze data without writing SQL or complex queries"
+    ],
+    "drawbacks": [
+      "Narrow focus on enterprise data governance and discovery—not useful for general AI work or consumer use",
+      "Pricing is not publicly disclosed; requires contacting Collate for a custom quote",
+      "The platform is built on OpenMetadata, meaning organizations using other metadata standards may face migration or integration complexity"
+    ]
   },
   {
     "name": "Prepared",
@@ -2631,7 +2763,18 @@
       "audio",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Prepared is an assistive AI platform for 911 emergency communications (Public Safety Answering Points, or PSAPs) that turns emergency calls into actionable intelligence and enables faster response. The platform synthesizes call audio, text, video, GPS, and real-time translation into a single view, supporting more than 1,000 agencies across 49 states that protect nearly 100 million people. Prepared's technology is designed to eliminate blind spots in the earliest moments of an emergency and give responders the speed and clarity they need to save lives.\n\nKey features include: AI-powered non-emergency call handling that triages routine inquiries, preserving critical personnel and phone capacity for urgent emergencies; a real-time communication platform that allows dispatchers to send secure links via text for livestream video from caller mobile phones (voluntary participation requiring caller consent); two-way texting capabilities for situations where the caller cannot safely speak; text translation across more than 200 languages; and audio translation in 33 languages.\n\nPrepared was founded in 2019 and initially developed technology to help mitigate school emergencies before identifying gaps in traditional 911 systems. In September 2025, Axon (the global public safety technology leader behind TASER and body cameras) announced it had entered into a definitive agreement to acquire Prepared, integrating the platform into Axon's ecosystem to strengthen its strategy to connect every link in public safety from call to closure. Oneida County, New York, launched both Prepared systems in March 2026, praising them for improving efficiency and expanding capabilities.",
+    "benefits": [
+      "Supports over 1,000 agencies across 49 states protecting nearly 100 million people, with proven real-world deployment",
+      "AI-powered call triage, livestream video, and text/audio translation across 200+ languages provide unique, life-saving capabilities unavailable in traditional 911 systems",
+      "Acquired by Axon (the public safety technology leader) in September 2025, ensuring long-term stability and integration with the broader public safety ecosystem"
+    ],
+    "drawbacks": [
+      "Built exclusively for public safety and 911 emergency communications—not applicable to any other industry or use case",
+      "Pricing is not publicly disclosed; agencies must contact Prepared or Axon for custom quotes",
+      "Video features require caller consent and a smartphone; not all 911 callers will be able or willing to participate"
+    ]
   },
   {
     "name": "Axon",
