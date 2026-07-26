@@ -3161,5 +3161,27 @@
       "supercomputer"
     ],
     "affiliate": false
+  },
+  {
+    "name": "Black Forest Labs",
+    "icon": "🌲",
+    "desc": "Frontier German AI lab behind FLUX, expanding into physical AI.",
+    "rating": 8.3,
+    "traffic": 650000,
+    "url": "bfl.ai",
+    "free": false,
+    "categories": [
+      "image"
+    ],
+    "affiliate": false,
+    "overview": "Black Forest Labs (BFL) is the German frontier AI research lab founded in 2024 by Robin Rombach, Andreas Blattmann, and Patrick Esser — the researchers who originally created Stable Diffusion. Based in Freiburg, the company builds the FLUX family of models, which has become the de facto standard for open-weight and API-based image generation. Rather than a consumer app, bfl.ai is the company's official hub: a playground and API platform for generating and editing images directly with the latest FLUX models, alongside developer documentation at docs.bfl.ai. As of mid-2026 the company is valued at roughly $3.25 billion, backed by Andreessen Horowitz and other investors, with Martin Scorsese serving as an advisor.\n\nPricing on bfl.ai runs on a simple credit system where 1 credit equals $0.01, applied identically across the Playground and API. FLUX.2 pricing scales by output megapixel — roughly $0.03/MP for standard text-to-image generation and about $0.045/MP for editing — while older FLUX.1 tiers range from about $0.01 per image (schnell) up to $0.06 (pro ultra). There's no traditional monthly subscription; users top up credits and spend them as they generate, and the lightweight schnell/klein variants remain free to self-host under Apache 2.0 for anyone with the hardware to run them locally.\n\nIn 2026 BFL has pushed well beyond static images, framing its mission as building general \"visual intelligence.\" The company recently unveiled Flux 3, a model trained jointly on images, video, and audio that can also predict physical outcomes — the foundation for its new robotics push alongside partner Mimic Robotics and manufacturing trials with Audi. This positions BFL as much more than an image generator today: it's a research lab moving from generative media into physical AI and robotics, with FLUX still at the core of its commercial offering.",
+    "benefits": [
+      "Straightforward, transparent credit-based pricing (1 credit = $0.01, same rate on API and Playground) with direct access to the newest FLUX models the moment they ship, plus free open-weight variants for self-hosting",
+      "Founded by Stable Diffusion's original creators and now expanding well beyond image generation into video, audio, and physical AI/robotics, backed by a $3.25 billion valuation and serious investor and advisor support"
+    ],
+    "drawbacks": [
+      "Built as a developer/API-first platform rather than a polished consumer app — there's no traditional subscription plan, which makes it less approachable for casual users who just want simple, predictable pricing",
+      "The company's rapid pivot toward robotics and physical AI means some of its newest capabilities (like Flux 3 and Flux-mimic) are still early-stage and not yet broadly available outside trial partnerships"
+    ]
   }
 ]
