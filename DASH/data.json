@@ -2788,7 +2788,18 @@
       "niche",
       "supercomputer"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Axon (Nasdaq: AXON) is the global leader in public safety technology, evolving far beyond its origins as a TASER manufacturer into a comprehensive technology platform for law enforcement, enterprise security, and national defense . The company's mission is to build a connected picture of safety that helps protect people and places with greater speed, clarity, and accountability. Its ecosystem includes TASER energy devices, body-worn cameras, in-car cameras, drones, counter-drone systems (Dedrone), digital evidence management, real-time operations, immersive training, and AI-driven capabilities .\n\nAxon has become a leading AI provider in public safety, reporting $750 million in sales from its AI product line last year with bookings growing almost 40% . The company's AI suite includes Draft One, which listens to body camera recordings and automatically generates first drafts of police reports, saving officers 20-30% of their time . Other AI tools include Axon Vision for recognizing critical activity in live video feeds, Axon Assistant for secure AI-powered access to case data and BOLO creation, and Axon Gravity for connecting department systems to provide data visualization and real-time insights .\n\nIn 2025-2026, Axon completed four major acquisitions: Fusus (CCTV integration), Dedrone (counter-drone), Carbyne (911 communication), and Prepared (emergency call analysis), positioning the company as 'the true operating system of public safety' . The company's Evidence.com platform now manages approximately 40 times as much data as the Netflix library . Beyond law enforcement, Axon has expanded into enterprise security for retailers, logistics providers, hospitals, and data centers . With more than 3,000 attendees at its recent Axon Week conference, the company continues to drive AI adoption across public safety agencies of all sizes .",
+    "benefits": [
+      "Draft One can save officers 20-30% of their time by automating report writing, allowing them to spend more time in the field .",
+      "Axon's connected ecosystem integrates body cameras, evidence management, drones, 911 tools, and AI into a single operating system for public safety .",
+      "Axon AI is purpose-built for public safety with rigorous bias testing, human-in-the-loop oversight, and CJIS-compliant security ."
+    ],
+    "drawbacks": [
+      "Built exclusively for public safety, law enforcement, and enterprise security—not applicable to other industries or general AI use .",
+      "Pricing is not publicly disclosed; agencies must contact Axon for custom quotes, with contracts often at enterprise scale.",
+      "AI effectiveness depends on the quality and volume of data an agency has—smaller departments with limited digital infrastructure may see less dramatic ROI ."
+    ]
   },
   {
     "name": "MagicSchool",
@@ -2802,7 +2813,18 @@
       "chat",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "MagicSchool AI is the leading AI platform for K-12 educators, providing a library of over 80 specialized tools designed to save teachers time on administrative and instructional tasks while enhancing classroom instruction . The platform addresses critical pain points in lesson planning, student engagement, and workload management, with tools that can generate lesson plans, create assessments and rubrics, draft professional emails and report card comments, adapt text to different reading levels, and create interactive study aids . It has been adopted by school districts nationwide as their primary AI platform for teachers and students .\n\nA distinguishing characteristic of MagicSchool is its emphasis on accessibility through intuitive design. The platform eliminates the need for complex AI prompting by providing straightforward user interfaces featuring pre-made buttons, dropdown menus, and simplified text fields—making advanced AI capabilities accessible to educators regardless of their technical proficiency . The platform also features 'Raina,' a conversational AI assistant designed specifically for educational contexts, and includes a 'MagicStudent' environment where teachers can create controlled 'rooms' for students to interact with AI tools .\n\nMagicSchool integrates directly with Google Slides for exporting presentations, supports multilingual content generation, and includes features like the 'Text Leveler' tool which can adjust the reading grade of a passage . Teachers can use the platform to brainstorm instructional strategies, differentiate content for diverse learners, and generate accommodations for IEP or 504 plans . The platform operates on a freemium model with a free tier available, though enterprise districts typically deploy through paid accounts accessed via ClassLink or similar portals .",
+    "benefits": [
+      "80+ specialized AI tools built specifically for educators, covering everything from lesson planning and rubric generation to parent communication and IEP accommodations .",
+      "Designed for accessibility with pre-made buttons, dropdown menus, and simplified text fields—teachers don't need to learn complex prompting .",
+      "Integrates with Google Slides, Canvas, and other common educational tools, with an intuitive interface that any teacher can start using immediately ."
+    ],
+    "drawbacks": [
+      "Free tier limits access to some advanced features; full enterprise deployment requires district-level subscriptions .",
+      "While it generates lesson plans and materials quickly, teachers must still review and customize outputs for their specific classroom needs .",
+      "Student-facing tools require teacher-created 'rooms' with access links, adding an administrative step before students can use the platform ."
+    ]
   },
   {
     "name": "SchoolAI",
@@ -2816,7 +2838,18 @@
       "chat",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "SchoolAI is a classroom AI platform founded in 2023 by former Apple instructional designer Caleb Hicks, designed to help teachers provide personalized learning at scale . The platform has reached 1 million classrooms across 80+ countries and is embedded in over 500 education partnerships . Built on OpenAI models including GPT-4o, GPT-4.1, image generation, and text-to-speech, SchoolAI translates cutting-edge AI into classroom-ready tools that teachers report save 10+ hours per week .\n\nSchoolAI's agent architecture revolves around two core components: 'Spaces' (interactive learning environments created by teachers through the 'Dot' conversational assistant) and 'Sidekick' (an AI tutor that adapts to how students learn, offering guidance, pacing, and encouragement based on their responses) . Teachers can type something like 'create a differentiated reading activity for students at three different levels,' and Dot assembles a ready-to-use lesson in seconds . Unlike simple chatbots, every student interaction runs through an agent graph with dozens of specialized nodes that call models, tools, or guardrails before returning an answer—ensuring students receive structured support that reinforces real learning rather than just getting answers .\n\nA key differentiator is SchoolAI's teacher-in-the-loop architecture: every student interaction is observable, giving teachers proactive insight into what students need before small gaps become bigger ones . Built-in guardrails help ensure safe, transparent, and classroom-aligned AI use. One cited example involved a student newly arrived in the US who only spoke Dari—within weeks of using Sidekick for real-time translation, he was participating in group work and building friendships . The platform serves teachers, students, and administrators, with real-time instructional data that school leaders use to understand what's working and where to invest support . SchoolAI is available with a free tier and operates on a freemium model for expanded features .",
+    "benefits": [
+      "Teachers report saving 10+ hours per week by using SchoolAI for lesson creation, differentiation, and personalized student support .",
+      "Spaces and Sidekick architecture ensures AI coaches students rather than just giving answers—every interaction is designed to reinforce learning .",
+      "Full teacher visibility into every student interaction enables early intervention before small gaps become major learning setbacks ."
+    ],
+    "drawbacks": [
+      "Building sophisticated Spaces requires some setup time; while Dot speeds lesson creation, teachers need to invest initial effort in designing their AI environments .",
+      "Fully leveraging the platform's personalization capabilities requires teachers to integrate it consistently into their classroom workflow .",
+      "As a relatively young platform (founded 2023), SchoolAI has less established track record than some legacy education technology providers ."
+    ]
   },
   {
     "name": "CoreWeave",
@@ -2830,7 +2863,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "CoreWeave is a specialized cloud provider purpose-built for AI and compute-intensive workloads, offering access to NVIDIA GPUs on a cloud infrastructure that is reportedly up to 35x faster and 80% less expensive than general-purpose clouds . The company has been named NVIDIA's first Elite Cloud Services Provider for Compute, reflecting its deep partnership with NVIDIA and its ability to deliver world-class solutions for AI, ML, HPC, and rendering use cases . CoreWeave Cloud provides over 10 NVIDIA SKUs, allowing clients to access the specific GPU types purpose-built for their use case rather than accepting a 'one size fits all' approach .\n\nCoreWeave's cloud platform is Kubernetes-native and designed for AI workloads from the ground up, featuring bleeding-edge bare-metal infrastructure, automated provisioning, and support for leading workload orchestration frameworks . The platform offers compute, storage, networking, managed software services, and cluster health management—all optimized for AI training and inference . Key performance metrics include 10x faster inference spin-up times and 96% cluster goodput, with fewer interruptions and near-real-time issue resolution .\n\nThe company has scaled its fleet across multiple GPU architectures including NVIDIA H100, A100, A40, and others, with one of the largest deployments of NVIDIA A40 GPUs in North America . CoreWeave is used by AI companies, research institutions, and enterprises requiring high-performance GPU infrastructure for training large language models, running inference at scale, batch processing, and pixel streaming . Pricing follows a cloud consumption model with transparent, predictable costs designed to be significantly lower than general-purpose clouds .",
+    "benefits": [
+      "NVIDIA's first Elite Cloud Services Provider for Compute, reflecting deep partnership and early access to the latest NVIDIA GPU technology .",
+      "Up to 35x faster and 80% less expensive than general-purpose clouds for AI and compute-intensive workloads .",
+      "Kubernetes-native platform with 10+ NVIDIA GPU SKUs, automated provisioning, and 96% cluster goodput for production-ready AI workloads ."
+    ],
+    "drawbacks": [
+      "As a specialized cloud, CoreWeave may not offer the full breadth of services (e.g., managed databases, analytics, serverless functions) available on general-purpose clouds like AWS or Azure .",
+      "Pricing is consumption-based and may not be suitable for teams with limited budgets or unpredictable workloads .",
+      "The platform's GPU focus means it's less suitable for traditional web applications or workloads that don't require significant GPU acceleration ."
+    ]
   },
   {
     "name": "Nebius",
@@ -2844,7 +2888,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Nebius AI Cloud is an AI-centric cloud platform providing high-performance infrastructure for machine learning training and inference workloads . The platform offers a comprehensive suite of services for AI development including virtual machines with NVIDIA GPU support, GPU clusters connected via InfiniBand networks for high-speed distributed computing, Slurm workload manager clusters for ML/AI experiments, and Kubernetes clusters with GPU and InfiniBand support .\n\nBeyond compute, Nebius provides object storage (AWS S3-compatible) for ML/AI datasets and model artifacts, managed PostgreSQL database clusters, and a container registry for Docker image storage . The platform also offers specialized AI services including Serverless AI (containerized inference endpoints and background jobs), managed MLflow clusters for experiment tracking and model registry, and turnkey applications like JupyterLab, vLLM, and Open WebUI . Third-party integrations support running and orchestrating AI workloads with tools like SkyPilot and Run:ai .\n\nNebius is designed for developers, data scientists, and ML engineers who need scalable, high-performance infrastructure for training and deploying AI models . The platform includes observability tools (metrics and alerts, logs, traces), identity and access management, comprehensive documentation, and support for Terraform and CLI tools . The platform is GDPR-compliant with features for data portability and deletion . Pricing follows a cloud consumption model with transparent costs for compute, storage, and networking resources .",
+    "benefits": [
+      "Comprehensive AI infrastructure platform with GPU compute, high-speed InfiniBand networking, Slurm and Kubernetes clusters, and managed MLflow .",
+      "Serverless AI endpoints and background jobs for containerized inference and training, plus turnkey applications like JupyterLab and vLLM .",
+      "S3-compatible object storage and third-party integrations (SkyPilot, Run:ai) make it easy to migrate existing AI workloads ."
+    ],
+    "drawbacks": [
+      "As a specialized AI cloud, Nebius may not offer the breadth of general-purpose cloud services available on AWS, Azure, or GCP .",
+      "Pricing is consumption-based; teams should model expected GPU usage before committing to a deployment .",
+      "The platform's focus on AI/ML means it's not suitable for traditional web applications or non-AI workloads ."
+    ]
   },
   {
     "name": "Crusoe",
@@ -2858,7 +2913,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Crusoe is a vertically integrated AI cloud platform that distinguishes itself by powering high-performance computing infrastructure with clean, renewable, and stranded energy sources . The company was founded in 2018 with an energy-first approach: rather than bringing power to data centers, Crusoe brings data centers to energy production sites, minimizing grid strain while reducing emissions . This approach has been recognized with Crusoe being named Cloud AI Company of the Year 2025 .\n\nThe company's AI cloud platform uses NVIDIA H200, H100 SXM, A100 SXM GPU instances with NVIDIA Quantum InfiniBand networking to accelerate distributed training on clusters ranging from 8 to over 8,000 GPUs . For scalable inference, Crusoe employs NVIDIA H200, H100, L40S, A100, and A40 GPUs, enabling 20B+ parameter model inference on a single card . Leading Fortune 500 companies rely on Crusoe's advanced, AI-optimized cloud to support their most demanding AI applications .\n\nCrusoe has made significant infrastructure investments including a $3.4 billion joint venture with Blue Owl Capital and Primary Digital Infrastructure announced in October 2024 to accelerate AI data center development . In July 2024, Crusoe unveiled plans for an initial 200 MW AI data center at Lancium Clean Campus with expansion plans already in place . The company also participates in STEM education initiatives, hackathons, and partnerships to foster AI innovation . Crusoe's vertical integration enables faster deployment of state-of-the-art capacity than legacy cloud providers, with the company's CEO stating they can deploy new infrastructure in 'a fraction of the time' of competitors .",
+    "benefits": [
+      "Vertically integrated AI cloud with access to NVIDIA H100, H200, and A100 GPUs on clusters up to 8,000+ GPUs with InfiniBand networking .",
+      "Powered by clean, stranded, and renewable energy sources, delivering high-performance computing with significantly lower emissions .",
+      "$3.4 billion joint venture and 200 MW data center investments demonstrate serious long-term commitment to scaling AI infrastructure ."
+    ],
+    "drawbacks": [
+      "Pricing is not publicly disclosed; requires contacting Crusoe for custom quotes .",
+      "The energy-first model means data center locations may be remote or not ideal for all latency-sensitive workloads .",
+      "As a specialized AI cloud, Crusoe may not offer the broad set of general-purpose services available from AWS, Azure, or GCP ."
+    ]
   },
   {
     "name": "Lambda",
@@ -2872,7 +2938,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Lambda provides NVIDIA GPU-dense infrastructure for AI research and development teams, offering both on-demand public cloud access and dedicated private cloud deployments . The company is pioneering 'AI factories'—next-generation data centers purpose-built for GPU workloads—with Lambda's facilities operating at 130 to 240 kW per rack compared to traditional data centers at 2 to 15 kW per rack . This reimagining of data center infrastructure supports the massive power and cooling requirements of modern AI training .\n\nLambda's public cloud offers on-demand GPU leasing from hours to a year, providing immediate access to the latest NVIDIA GPU technology . For larger needs, Lambda's private cloud offers dedicated AI factory contracts ranging from about 64 to tens of thousands of GPUs, enabling enterprises to train models at scale without managing the complexities of high-performance compute orchestration . The platform includes managed Kubernetes with native GPU and InfiniBand support, S3-compatible storage, and enterprise-grade observability .\n\nLambda's multi-cloud architecture enables seamless operations across AWS, Google Cloud, Azure, and OCI, with zero data-transfer fees for moving data in and out of Lambda . The platform is SOC 2 Type II certified, features SSO login, and offers industry-leading SLAs with 24/7 infrastructure monitoring . Lambda's long-term vision is 'one GPU per person'—democratizing compute as a force multiplier for human progress, advancing innovation in healthcare, education, and beyond . Customers include ML researchers, enterprises, and organizations requiring dedicated, high-performance GPU infrastructure .",
+    "benefits": [
+      "Both public cloud (on-demand GPU leasing) and private cloud (64 to tens of thousands of dedicated GPUs) options provide flexibility for teams of all sizes .",
+      "Next-generation AI factories operating at 130-240 kW per rack support the density and cooling requirements of massive AI training clusters .",
+      "Zero data-transfer fees and seamless integration with AWS, Azure, GCP, and OCI enable true multi-cloud AI infrastructure ."
+    ],
+    "drawbacks": [
+      "Public cloud on-demand pricing can be expensive for long-running workloads; private cloud contracts require significant commitment .",
+      "Lambda's specialized infrastructure is designed for AI/ML workloads and not suitable for general-purpose cloud computing .",
+      "Private cloud contracts for enterprise customers require sales engagement; public cloud may have capacity limitations during periods of high demand ."
+    ]
   },
   {
     "name": "Nscale",
@@ -2886,7 +2963,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Nscale is a vertically integrated AI cloud provider headquartered in Europe, purpose-built to deliver enterprise-grade AI infrastructure at massive scale . The company offers a comprehensive suite of AI solutions including owned and colocated data centres, GPU clusters, orchestration, AI services, managed software, and private cloud enhancements . Its architecture spans GW+ greenfield data centres across Europe and North America, enabling customers to run efficient and scalable AI training, fine-tuning, and inferencing workloads .\n\nNscale has emerged as a major player in the global AI infrastructure market, signing landmark agreements with Microsoft to deploy approximately 200,000 NVIDIA GB300 GPUs across Europe and the U.S. . This includes a ~240MW hyperscale AI campus in Texas delivering 104,000 GPUs from Q3 2026, plus deployments in Portugal, the UK, and Norway . The company also announced Stargate UK with OpenAI and NVIDIA, and Stargate Norway with Aker ASA, positioning itself as a key sovereign AI infrastructure provider for Europe .\n\nNscale raised the largest Series B in UK and European history at $1.1 billion in September 2025, led by Aker ASA with participation from NVIDIA, Dell, Fidelity, Blue Owl, and others . The company's vertically integrated model and access to low-cost renewable energy enable it to deliver state-of-the-art AI infrastructure more quickly and at lower cost than industry benchmarks. With a leadership team that has built over 50 data centers and scaled multi-billion-dollar infrastructure businesses, Nscale is setting a new standard for how the next wave of AI infrastructure is delivered globally .",
+    "benefits": [
+      "Vertically integrated AI infrastructure platform covering everything from greenfield data centers and GPU clusters to managed software and AI services.",
+      "Signed massive contracts with Microsoft for ~200,000 NVIDIA GB300 GPUs across Europe and the U.S., demonstrating world-class execution capability.",
+      "$1.1 billion Series B (largest in European history) with backing from NVIDIA, Dell, Fidelity, and Aker provides strong financial runway."
+    ],
+    "drawbacks": [
+      "Pricing is not publicly disclosed; requires contacting Nscale for custom enterprise quotes.",
+      "As a relatively young company (founded ~2020), Nscale has a shorter track record than established cloud providers like AWS or Azure.",
+      "The company's focus on hyperscale infrastructure is built for enterprise customers—not suitable for individual developers or small teams."
+    ]
   },
   {
     "name": "SkyPilot",
@@ -2900,7 +2988,18 @@
       "supercomputer",
       "code"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "SkyPilot is an open-source multi-cloud orchestration framework founded at the Sky Computing Lab at UC Berkeley that enables ML teams to run training and batch jobs seamlessly across any cloud provider . The framework abstracts cloud complexity by automatically selecting the cheapest and most optimal cloud, region, and GPU type for a given workload, making it possible to avoid vendor lock-in while dramatically reducing costs . It supports 20+ cloud providers including AWS, GCP, Azure, Lambda, RunPod, CoreWeave, and Kubernetes clusters .\n\nKey features include automatic cost optimization with cloud/region selection, spot instance support with 3-6x cost savings and auto-recovery, multi-node distributed training with gang scheduling, managed jobs with automatic checkpointing and fault tolerance, and Sky Serve for model serving with autoscaling . SkyPilot tasks are defined through simple YAML files that specify resource requirements (CPU, memory, disk, GPU type/count) and run commands, with the framework handling provisioning, environment setup, and log management .\n\nSkyPilot has become an essential tool for AI teams that want to avoid vendor lock-in and optimize GPU costs across providers . It integrates natively with major AI clouds including CoreWeave (with InfiniBand support), and supports GPU configurations from T4 and L4 through A100 and H100 clusters . The framework is entirely free and open-source, with a thriving community and active development. As noted in CoreWeave's announcement, SkyPilot on CoreWeave enables 'SLURM-like convenience with the reliability and flexibility of Kubernetes,' and can provision hundreds or thousands of GPUs with a single command .",
+    "benefits": [
+      "Automatically selects the cheapest cloud/region/GPU combination for any workload, delivering 3-6x cost savings through spot instance orchestration with auto-recovery.",
+      "Unified interface for 20+ cloud providers eliminates vendor lock-in while supporting distributed multi-node training and managed jobs with fault tolerance.",
+      "Completely free and open-source framework with native integrations including CoreWeave, Lambda, and RunPod."
+    ],
+    "drawbacks": [
+      "Orchestration layer requires learning YAML-based task definitions and cloud credential configuration—not as simple as a single provider's CLI.",
+      "Cost optimization depends on accurate pricing data and spot availability across clouds; unpredictable spot pricing can occasionally impact job continuity.",
+      "As an open-source tool, there is no commercial support tier; teams must rely on community support or internal expertise for troubleshooting."
+    ]
   },
   {
     "name": "TensorWave",
@@ -2914,7 +3013,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "TensorWave is a specialized AI cloud built exclusively on AMD Instinct GPUs, offering high-performance, memory-intensive infrastructure for frontier-scale AI training and inference workloads . The company differentiates itself by providing access to AMD's latest accelerator technologies—including MI455X, MI355X, MI325X, and MI300X GPUs—without vendor lock-in, delivering what it calls 'leading price to performance' for AI workloads . TensorWave operates one of the world's largest all-AMD GPU clouds and is expanding rapidly to meet global enterprise demand .\n\nIn June 2026, TensorWave raised a $350 million Series B at a $1.55 billion valuation, co-led by Magnetar and AMD Ventures, with continued participation from Maverick Silicon, Nexus Venture Partners, and Western Frontier . The platform announced adoption of the AMD Helios rackscale solution in July 2026, a 72-GPU system integrating AMD Instinct GPUs, 6th Gen AMD EPYC CPUs, AMD Pensando networking, and ROCm software into a unified rack-scale platform . At rack scale, AMD Helios delivers up to 2.9 exaFLOPS peak 4-bit performance with 31 TB of HBM4 memory and 1.7 PB/s memory bandwidth .\n\nTensorWave's platform includes plug-and-play compatibility with 2+ million supported libraries and frameworks, hands-on expert support, 24/7 infrastructure monitoring, and enterprise-grade security (SOC 2 Type II, ISO 27001, HIPAA) . The company is actively deploying across multiple datacenter locations with comprehensive monitoring for critical training and inference workloads. Customers include AI-native pioneers like Featherless AI, which cited TensorWave's deep AMD expertise as a key differentiator .",
+    "benefits": [
+      "Exclusive AMD Instinct GPU cloud offering competitive price-to-performance with access to next-generation MI455X and MI355X accelerators.",
+      "AMD Helios rack-scale architecture delivers 2.9 exaFLOPS peak 4-bit and 31 TB HBM4 memory at scale, enabling multi-trillion-parameter training.",
+      "Backed by $350 million Series B ($1.55B valuation) with AMD Ventures participation, supporting rapid global infrastructure expansion."
+    ],
+    "drawbacks": [
+      "AMD GPU ecosystem is less mature than NVIDIA's CUDA ecosystem; some AI frameworks and libraries may have limited ROCm optimization.",
+      "Pricing is not publicly disclosed; requires contacting TensorWave for custom enterprise quotes.",
+      "As a specialist AMD cloud, TensorWave is not suitable for teams requiring NVIDIA-specific features like NVLink or CUDA-only libraries."
+    ]
   },
   {
     "name": "MeluXina-AI",
@@ -2928,10 +3038,21 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "MeluXina-AI is Luxembourg's new AI-optimized supercomputer, selected as one of the first seven European 'AI Factories' under the EuroHPC Joint Undertaking initiative . The supercomputer is equipped with more than 2,100 GPU-AI accelerators and will deliver multi-exaflop AI computational power to train and fine-tune specialized and optimized AI models . It will be hosted and operated by LuxProvide, the same organization that operates Luxembourg's existing MeluXina supercomputer, and will be located in Bissen, Luxembourg, adjacent to its predecessor .\n\nThe Luxembourg AI Factory (L-AIF) is a collaborative effort involving LuxProvide, Luxinnovation (the national innovation agency), the Luxembourg National Data Service (LNDS), the University of Luxembourg, and the Luxembourg Institute of Science and Technology (LIST) . MeluXina-AI will serve as a national strategic asset with 50% of computing capacity reserved for the EuroHPC network and European countries, and 50% dedicated to national needs . The project received €60 million in funding from the Luxembourg State .\n\nThe AI Factory will provide startups, SMEs, and researchers with comprehensive support including access to AI-optimized HPC resources, training, and technical expertise . It will actively lead and develop the AI journey of early-stage startups, scaleups, and SMEs with a focus on finance, space, cybersecurity, and the green economy . The facility is intended to create a robust and interconnected network of AI hubs across Europe, acting as a one-stop-shop for AI innovation, and will be deployed in 2025 alongside other AI Factories in Germany, Spain, Finland, Greece, Italy, and Sweden .",
+    "benefits": [
+      "Over 2,100 GPU-AI accelerators delivering multi-exaflop AI computational power for training and fine-tuning specialized AI models.",
+      "50% of capacity reserved for national strategic needs while 50% contributes to the pan-European EuroHPC research network.",
+      "Comprehensive AI Factory ecosystem includes access to HPC resources, training, technical expertise, and data services for startups, SMEs, and researchers."
+    ],
+    "drawbacks": [
+      "Capacity allocation is split between European and national use; availability for commercial workloads may be limited.",
+      "Pricing and access mechanisms are not publicly disclosed; researchers and businesses must apply through the EuroHPC or national AI Factory programs.",
+      "As a national infrastructure project, MeluXina-AI is not designed for general commercial cloud use—it serves research and strategic AI development."
+    ]
   },
   {
-    "name": "OCI",
+    "name": "Oracle Cloud Infrastructure (OCI)",
     "icon": "🔺",
     "desc": "Oracle Cloud Infrastructure, offering enterprise cloud computing including large-scale GPU clusters for AI workloads.",
     "rating": 8.4,
@@ -2942,10 +3063,21 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Oracle Cloud Infrastructure (OCI) is Oracle's enterprise cloud platform, offering a comprehensive suite of cloud services including computing, storage, networking, and databases . For AI workloads, OCI provides purpose-built infrastructure with bare metal GPU instances, ultra-low-latency RDMA cluster networking (2.5-9.1 microseconds), and high-performance storage options including up to 61.44 TB of NVMe SSD capacity . OCI supports NVIDIA Blackwell (GB200 NVL72, HGX B200), Hopper (H200, H100), and AMD MI300X GPUs .\n\nOCI Supercluster is designed for large-scale AI training, scaling from a few GPUs to zettascale clusters with up to 131,072 NVIDIA Blackwell GPUs . Key features include zero hypervisor overhead on bare metal instances, high-performance Lustre and Oracle-managed file storage with terabytes per second throughput, and custom-designed RoCE v2 networking with up to 3,200 Gb/sec cluster network bandwidth . The platform integrates with OCI Data Science for end-to-end ML workflows and model management .\n\nOCI has been selected as the cloud infrastructure partner for Stargate, the OpenAI-led U.S. AI infrastructure project, and recently announced OCI Zettascale10, a next-generation supercluster delivering 16 zettaFLOPS across multigigawatt data centers . OCI also offers Oracle Multicloud Universal Credits, enabling customers to procure OCI services across AWS, Azure, and Google Cloud with a single consumption model . OCI is SOC, HIPAA, and GDPR compliant, with sovereign AI capabilities for regulated industries and governments .",
+    "benefits": [
+      "OCI Supercluster scales to 131,072 NVIDIA Blackwell GPUs with 2.5-microsecond RDMA latency and industry-leading bare metal performance.",
+      "Selected as Stargate's cloud infrastructure partner, demonstrating world-class capability for the largest AI deployments.",
+      "Multicloud Universal Credits and distributed cloud architecture enable deployment across AWS, Azure, and Google Cloud with consistent governance."
+    ],
+    "drawbacks": [
+      "Oracle's cloud ecosystem is less mature than AWS for non-database workloads, with fewer third-party integrations and AI services.",
+      "Enterprise-focused platform with complex licensing and pricing that can be difficult to navigate for smaller teams.",
+      "While OCI offers competitive pricing, scaling to zettascale capacity requires significant financial commitment and enterprise contracts."
+    ]
   },
   {
-    "name": "Zettascale10",
+    "name": "OCI Zettascale10",
     "icon": "⚡",
     "desc": "Oracle's flagship AI supercomputer connecting hundreds of thousands of NVIDIA GPUs across data centers for extreme-scale AI training.",
     "rating": 8.6,
@@ -2956,7 +3088,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "OCI Zettascale10 is Oracle's flagship next-generation AI supercomputer, announced in October 2025 as a powerful evolution of the first Zettascale-class cloud computing cluster introduced in September 2024 . The platform delivers 16 zettaFLOPS of peak performance across multigigawatt clusters spanning multiple data centers, integrating up to 800,000 NVIDIA GPUs connected through Oracle's innovative Acceleron RoCE network fabric . The first Zettascale10 supercomputer is deployed in Abilene, Texas, serving as the foundation for the Stargate flagship supercluster in partnership with OpenAI .\n\nThe platform's power comes from a fundamental rethinking of network architecture. Oracle Acceleron RoCE uses built-in switching on modern GPU NICs, allowing each NIC to connect simultaneously to multiple switches across separate network planes . This creates a flatter, more resilient network fabric that dramatically improves reliability—when problems occur, traffic moves to other planes without expensive checkpoint restarts . The architecture delivers consistent GPU-to-GPU latency across the entire cluster, and reduces network layers, costs, and energy consumption compared to traditional three-tier designs .\n\nOCI Zettascale10 was developed in collaboration with OpenAI, with the architecture deployed at the Abilene Stargate site. Oracle is now accepting orders for Zettascale10, with availability targeted for the second half of 2026, supporting up to 800,000 NVIDIA GPUs . The platform represents a new category of AI infrastructure, moving beyond individual supercomputers to interconnected multigigawatt data center campuses purpose-built for the most demanding frontier AI workloads.",
+    "benefits": [
+      "16 zettaFLOPS peak performance across multigigawatt clusters with up to 800,000 NVIDIA GPUs—unprecedented scale for frontier AI training.",
+      "Oracle Acceleron RoCE network architecture delivers consistent performance, 2x potential networking capacity, and reliability through isolated network planes.",
+      "Developed in collaboration with OpenAI and deployed at the flagship Stargate Abilene site, demonstrating production-grade readiness."
+    ],
+    "drawbacks": [
+      "Targeted at the largest AI workloads—excessive overkill for most enterprise and all individual use cases.",
+      "Pricing and access are not publicly disclosed; orders require enterprise contracts with significant commitment.",
+      "Availability is Q2 2026 at the earliest, and initial capacity is likely reserved for marquee customers like OpenAI."
+    ]
   },
   {
     "name": "Project Ceiba",
@@ -2970,7 +3113,18 @@
       "supercomputer",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Project Ceiba is a groundbreaking collaboration between AWS and NVIDIA to construct one of the world's fastest AI supercomputers, hosted exclusively on AWS, to power NVIDIA's internal research and development in AI . The supercomputer is built on NVIDIA's latest GB200 NVL72 architecture—a liquid-cooled, rack-scale system featuring fifth-generation NVLink—scaling to 20,736 NVIDIA Blackwell GPUs connected to 10,368 NVIDIA Grace CPUs . Project Ceiba is capable of processing 414 exaflops of AI compute, making it approximately 375 times more powerful than Frontier (the current world's fastest supercomputer), with a single second of computation equivalent to over 1,660 years of one calculation per second from every human on Earth .\n\nProject Ceiba is the first system to leverage the massive scale-out capabilities enabled by fourth-generation AWS Elastic Fabric Adapter (EFA) networking, providing 1,600 Gbps per superchip of low-latency, high-bandwidth throughput . To address the unprecedented power density, AWS pioneered liquid cooling at scale in its data centers, delivering efficient and sustainable high-performance computing solutions . The system incorporates industry-leading security features including the NVIDIA Blackwell GPU architecture's secure communication between GPUs, integrated with AWS Nitro System and EFA technologies, enabling end-to-end encrypted data for generative AI workloads .\n\nNVIDIA's research and development teams will use Project Ceiba to drive advancements across large language models, graphics (images, videos, 3D generation), simulation, digital biology, robotics, autonomous vehicles, and climate prediction with NVIDIA Earth-2 . The supercomputer is available through NVIDIA's DGX Cloud architecture, an end-to-end scalable AI platform available on AWS . As of 2026, Project Ceiba has been updated to include GB300s as well as the original GB200 configuration .",
+    "benefits": [
+      "414 exaflops of AI compute—375x more powerful than Frontier, the world's fastest supercomputer, with 20,736 NVIDIA Blackwell GPUs.",
+      "4th-generation AWS EFA networking with 1,600 Gbps per superchip and pioneering liquid cooling at scale for efficient HPC.",
+      "Powering NVIDIA's own AI research across LLMs, digital biology, robotics, autonomous vehicles, and climate prediction."
+    ],
+    "drawbacks": [
+      "Built exclusively for NVIDIA's internal research—not available as a commercial cloud service for external customers.",
+      "Massive scale and specialized infrastructure make this an extreme outlier, not representative of typical AI deployment.",
+      "As an internal NVIDIA research system, detailed performance metrics and operational data are not publicly released."
+    ]
   },
   {
     "name": "InVideo AI",
