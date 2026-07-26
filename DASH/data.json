@@ -1898,7 +1898,18 @@
       "code",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Gemini Code Assist is Google's AI-powered coding assistant, built around the Gemini model family and Google Cloud's identity and security tooling. As of mid-2026, the service underwent a major transition: on June 18, 2026, the IDE extension and Gemini CLI stopped serving free-tier and Google AI Pro/Ultra subscribers, who were migrated to Antigravity and Antigravity CLI. Gemini Code Assist Standard and Enterprise editions continue to be available for organizations. The tool targets long-context work with a 1,000,000-token context window that can absorb substantial portions of a repository into a single prompt, making it suitable for cross-file refactors and pattern audits. The Enterprise tier adds code customization that can index up to 20,000 private repositories from GitHub, GitLab, or Bitbucket for organization-specific suggestions. The free tier previously offered 180,000 completions per month and 1,000 agent/CLI requests per day, though the free offering now routes through Antigravity for individuals.",
+    "benefits": [
+      "Million-token context window handles large monorepo questions and cross-file refactors without separate retrieval steps",
+      "Enterprise tier supports VPC Service Controls, IAM, and federated identity, plugging into existing Google Cloud governance",
+      "Free tier remains generous relative to competitors with 180,000 completions/month for personal use via Antigravity"
+    ],
+    "drawbacks": [
+      "Product direction shifted in June 2026: free users must migrate to Antigravity, creating uncertainty about the legacy Gemini Code Assist experience",
+      "Standard and Enterprise editions require a Google Cloud project and sales engagement, making adoption complex for individuals",
+      "Best suited for Google Cloud-aligned teams; value drops outside that ecosystem"
+    ]
   },
   {
     "name": "GitHub Copilot",
@@ -1912,7 +1923,18 @@
       "code",
       "niche"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "GitHub Copilot is Microsoft/GitHub's AI pair programming assistant, providing real-time code suggestions, chat, and agentic coding capabilities directly inside IDEs like VS Code, JetBrains, and Visual Studio. As of mid-2026, Copilot shifted to usage-based billing with a new lineup of individual plans: Free (2,000 completions/month, 50 premium requests), Pro ($10/month, $15 included usage with flex allotment), Pro+ ($39/month, $70 usage), and Max ($100/month, $200 usage). All paid plans include unlimited code completions and next-edit suggestions; credits apply to chat and agent usage. Model access is broad, including Claude Opus 4.5/4.6/4.8, Gemini 2.5 Pro, GPT-5.2, and GPT-5.4 series. For teams, Copilot Business runs $19/user/month and Enterprise $39/user/month, adding centralized management, policy controls, and IP indemnification. As of April 2026, new sign-ups for individual paid plans were temporarily paused, though existing plans can be upgraded.",
+    "benefits": [
+      "Multi-model catalog with Claude, Gemini, and GPT models accessible from a single interface, avoiding lock-in to any one provider",
+      "Unlimited completions on all paid plans, with flex allotment providing cushion against credit-based surprise bills",
+      "Deep GitHub ecosystem integration, including pull request summaries, agent mode, and Model Context Protocol support"
+    ],
+    "drawbacks": [
+      "Free tier is severely limited (2,000 completions/month, 50 premium requests), making it a trial rather than a sustainable option",
+      "New individual sign-ups paused as of April 2026, limiting immediate access for new users",
+      "Credit-based billing creates unpredictability in monthly costs, with overage charges beyond flex allotment"
+    ]
   },
   {
     "name": "Krea",
@@ -1926,7 +1948,18 @@
       "image",
       "video"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Krea is an AI image generation platform that released its first foundation model, Krea 2, in 2026. Unlike typical text-to-image generators, Krea 2 offers advanced creative control through style transfer (extracting style from up to 10 reference images), moodboards (anchoring to a curated aesthetic), and tunable creativity as an actual parameter. The model comes in two variants: Medium (smaller, faster, optimized for illustration, anime, and painterly styles) and Large (over 2x the size, stronger on photorealism and raw textures). Krea 2 supports multiple aspect ratios including 16:9 and 9:16. The platform offers an API starting at $0.030 per image for text-to-image Medium, scaling to $0.070 for Large with moodboards. A free tier is available through the web app with daily credits, and the platform also supports real-time generation and video capabilities.",
+    "benefits": [
+      "Advanced style transfer system with moodboard support (up to dozens of reference images) provides creative control unmatched by most competitors",
+      "Tunable creativity parameter and generative sliders (intensity, complexity, movement) give fine-grained control over output character",
+      "Strong performance on artistic and expressive styles (illustration, anime, painting) where other models flatten aesthetic diversity"
+    ],
+    "drawbacks": [
+      "Krea 2 is API-first; the consumer web experience may lag behind the API's capabilities",
+      "Resolution currently capped at 1K, limiting print and high-res use cases",
+      "Less established than Midjourney or DALL-E for mainstream consumer adoption; still a newer entrant"
+    ]
   },
   {
     "name": "Lensa",
@@ -1939,7 +1972,18 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Lensa is a mobile-first AI photo editing app from Prisma AI, available on iOS and Android. As of mid-2026, the app runs version 8.8.3 and offers AI-powered photo retouching, Magic Avatars (AI-generated stylized avatars from user selfies), background removal, and one-tap enhancement tools. Lensa gained significant popularity in late 2022 with its Magic Avatars feature and has maintained a strong user base. The app operates on a freemium subscription model with in-app purchases: Unlimited Access Weekly ($2.99), Monthly ($4.99), Annual ($29.99-$49.99 depending on tier), and one-time Magic Avatar packs ranging from $3.99 to $11.99. The app supports 9 languages and is available in the US, Russia, and Brazil, with approximately 50,000 monthly downloads and $300,000 in monthly revenue. Content rating is 4+.",
+    "benefits": [
+      "Best-in-class mobile AI photo editing experience with extensive retouching tools",
+      "Magic Avatars feature remains a popular differentiator for generating stylized profile pictures",
+      "Broad language support (9 languages including English, French, German, Japanese, Korean, Portuguese, Russian, Simplified Chinese, Spanish)"
+    ],
+    "drawbacks": [
+      "Subscription-first with no clear free tier beyond limited features—annual pricing ranges from $29.99-$49.99",
+      "Limited desktop or web presence; mobile-only experience",
+      "Advanced features (Magic Avatars packs) are locked behind one-time in-app purchases on top of subscription"
+    ]
   },
   {
     "name": "Media.io",
@@ -1954,7 +1998,18 @@
       "image",
       "audio"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Wondershare Media.io is an all-in-one AI creative platform that combines AI image generation, AI video generation, AI audio tools, and professional editing tools in a single platform. In 2026, the platform announced a major update featuring unlimited free AI image generation powered by the ToMoviee Lite model, removing the credit-based limitations common among competitors. New dedicated workflows include AI Story (turning long-form text of up to 5,000 characters into AI-generated videos with character consistency across scenes) and AI Ads (generating campaign-ready video ads from product images or URLs). The platform also offers video enhancement up to 4K, noise reduction, and old video restoration. Pricing: Free (limited enhancement, watermark), Monthly ($19.99/month), Annual ($69.99/year, best value), and pay-as-you-go credit options.",
+    "benefits": [
+      "Unlimited free AI image generation is a genuine differentiator—no credit caps, daily quotas, or subscription-based limits",
+      "End-to-end storytelling workflow from script to polished video (5,000 character input, character consistency, scene generation)",
+      "AI Ads workflow for e-commerce sellers creates product videos from URLs, reducing campaign production time"
+    ],
+    "drawbacks": [
+      "Free tier still includes watermarks on exports, limiting commercial use without paid upgrade",
+      "Quality of ToMoviee Lite model for image generation may lag behind dedicated tools like Midjourney or FLUX",
+      "Video enhancement tools are less established than dedicated competitors like Topaz or Runway"
+    ]
   },
   {
     "name": "Midjourney",
@@ -1967,7 +2022,18 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Midjourney is the leading closed-source AI image generation platform, operating through Discord and a redesigned web interface at alpha.midjourney.com. As of mid-2026, the platform launched V8 Alpha on March 17, 2026—a complete rewrite delivering 5x faster generation, native 2K HD images via the --hd parameter, dramatically improved text rendering (readable street signs, product labels, typography), and superior prompt understanding. V8 introduces new creative parameters including --chaos, --weird, --exp, and --raw for experimental control. Premium features cost 4x standard generation: --hd, --q 4 (enhanced coherence), style references, and moodboards. Pricing is subscription-based with GPU-hour allocations: Basic ($10/month, ~3.3 fast hours, no Relax Mode), Standard ($30/month, 15 fast hours + unlimited Relax), Pro ($60/month, 30 hours + Stealth Mode), Mega ($120/month, 60 hours + Stealth). Annual billing offers 20% savings. Relax Mode provides unlimited but slower generations after fast hours are depleted (Standard and above). Extra GPU hours cost ~$4/hour. There is no public API—Midjourney remains a closed ecosystem.",
+    "benefits": [
+      "Best-in-class aesthetic quality for artistic, painterly, and cinematic outputs—consistently rated ahead of competitors for creative work",
+      "V8's 5x speed improvement and native 2K resolution (--hd) dramatically improve workflow compared to V7",
+      "Relax Mode prevents hard cutoffs; users with Standard+ plans can continue generating (slower) after fast hours run out"
+    ],
+    "drawbacks": [
+      "No API or programmatic access—all interaction is through Discord or the web interface, making automation impossible",
+      "No free tier; the Basic plan's 3.3 fast hours with no Relax Mode functions more as a trial than a sustainable option",
+      "GPU-hour pricing is opaque and hard to predict—users cannot easily estimate how many images their hours will produce"
+    ]
   },
   {
     "name": "NightCafe",
@@ -1980,7 +2046,19 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "NightCafe is a community-focused AI art platform with multiple AI models including Stable Diffusion and DALL-E, accessible through a web interface. The platform is built around social features: sharing creations, running art challenges, exploring different styles, and community engagement. It offers a free tier with daily credits for casual use, with paid plans starting at $5.99/month (AI Beginner), $9.99/month (AI Hobbyist), $19.99/month (AI Enthusiast), and $49.99/month (AI Artist). NightCafe includes features like AI/Machine Learning, content generation, design templates, image editing, mobile access, natural language processing, and personalization. The platform does not offer a production API, batch processing, or clear commercial licensing terms, limiting its usefulness for professional or high-volume use.",
+    "benefits": [
+      "Strong community features—sharing, challenges, and social discovery create engagement beyond a pure generator",
+      "Multiple model backends (Stable Diffusion, DALL-E) accessible from one interface",
+      "Free daily credits make it accessible to casual users who don't want to commit to a subscription"
+    ],
+    "drawbacks": [
+      "No production API—all usage is web-only, preventing programmatic integration or automation",
+      "Credit-based pricing is complex and expensive at scale compared to pay-per-use APIs",
+      "Commercial licensing terms are unclear, creating risk for business use",
+      "No batch processing—each image requires separate manual generation"
+    ]
   },
   {
     "name": "NotebookLM",
@@ -2037,7 +2115,16 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Pixlr is an all-in-one AI-powered creative studio that has evolved from its origins as a browser-based photo editor into a comprehensive platform for image and video creation. The platform serves as a multi-model hub, routing prompts across AI models from Google, Black Forest Labs, ByteDance, and Stability AI, which means users can choose the best engine for their specific needs. This model-agnostic approach is a double-edged sword: while it offers flexibility, prompt fidelity can vary significantly depending on which underlying engine is selected. The suite includes flagship tools like Nano Banana for prompt-based image editing, AI Video Generator for text-to-video creation, AI Generative Fill, AI Remove Object, AI Remove Background, and AI Image to Video for animating static photos.\n\nThe platform is designed for creators at all levels, from casual hobbyists producing social media content to professional designers building branding projects. It offers a full creative workflow including aesthetic collages, layouts, carousel makers for Instagram, layered compositions, dynamic video effects, and precision cropping tools. Pixlr is available across web, mobile, and desktop platforms, with a free tier that provides access to core features and premium subscriptions (starting at $1.99/month) that unlock higher credit limits, full model access, and advanced export options. With over 18 million creators worldwide and 2 million+ combinations of free effects, overlays, and filters, Pixlr positions itself as an accessible, cost-effective alternative to traditional design software.",
+    "benefits": [
+      "Aggregates multiple leading AI models (Google, Black Forest Labs, ByteDance, Stability) into a single platform, allowing users to choose the best engine for their task",
+      "Available across web, mobile, and desktop with a very low entry price point ($1.99/month), making professional AI tools accessible to budget-conscious creators"
+    ],
+    "drawbacks": [
+      "Prompt fidelity is inconsistent across the model catalog—some engines follow instructions faithfully while others improvise, requiring users to learn which model best matches their prompting style",
+      "The entry tier's 80 credits/month can be consumed quickly, limiting experimentation for free users"
+    ]
   },
   {
     "name": "Recraft",
@@ -2050,7 +2137,16 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Recraft is a uniquely positioned AI image generator that distinguishes itself by producing genuinely editable vector graphics (SVG files) from text prompts, making it the only tool in its class for professional design workflows. While most AI image generators output pixel-based raster images, Recraft's architecture returns production-ready SVGs with smooth paths and organized layers, eliminating the need for tracing or cleanup—ideal for logos, icons, illustrations, and brand assets. The platform's model family has evolved through several generations, with Recraft V2 (released March 2024) being the first model trained from scratch by the company, featuring 20 billion parameters and breakthrough human anatomical accuracy. V2 introduced vector image generation and brand consistency inputs, and remains popular for its curated styles like Plastic 3D, Linocut, Grain, and Vector Art. The newer Recraft V4 series includes specialized variants: V4 for fast concepting, V4 Pro for super-resolution realism, V4 Vector for clean scalable graphics, and V4 Pro Vector for production-grade illustrations.\n\nRecraft operates as a comprehensive workspace rather than a single-output generator, allowing users to generate, edit, and organize assets with advanced style control. The platform supports brand consistency through custom style training and includes features like background removal, vectorization, inpainting, and upscaling. All V4 models are available on every plan including the Free tier, with paid plans unlocking commercial rights and API access. The platform is particularly valued by designers, branding professionals, and marketing teams who need consistent, high-quality, and commercially usable vector and raster visuals. It also integrates with third-party models like Nano Banana 2 and GPT Image 2 within the same workspace.",
+    "benefits": [
+      "The only AI image generator that produces truly editable vector files (SVG) with smooth paths and organized layers—production-ready without tracing or cleanup",
+      "Provides specialized V4 model variants (V4, V4 Pro, V4 Vector, V4 Pro Vector) optimized for different use cases from concepting to production-grade illustrations"
+    ],
+    "drawbacks": [
+      "V2 models, while still available, lack accurate in-image text generation and may produce typographic errors compared to V3/V4 models",
+      "Some style names exist across different model versions but produce visually different results, requiring users to test which model fits their aesthetic needs"
+    ]
   },
   {
     "name": "Writer",
@@ -2086,7 +2182,16 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "BlueWillow is an AI-powered image generation platform that operates exclusively within the Discord ecosystem, offering a free alternative to tools like Midjourney. Users interact with the BlueWillow bot by typing a slash command followed by their text prompt in designated channels, and the bot returns four generated images that can be downloaded or further refined. The platform is designed to be accessible to users of all experience levels, with no complex setup or technical knowledge required beyond joining a Discord server. It can generate logos, characters, digital artworks, and photos based on text descriptions.\n\nThe tool is particularly suited for hobbyists and creators who want a simple, community-driven entry point to AI art without paying subscription fees. Users can create their own private Discord servers and invite the BlueWillow bot to organize their creative projects in a structured environment. After a free trial period, the tool can be subscribed to for approximately $5 per month. A notable limitation is that the platform does not display a progress indicator during image generation, which may be disorienting for users accustomed to tools like Midjourney that show real-time creation status. The generated images can be saved in high quality, and the platform works with prompts in multiple languages including English and German.",
+    "benefits": [
+      "Completely free to use and accessible via Discord with no software installation required",
+      "Allows users to create private Discord servers to organize their creative projects and collaborate with friends"
+    ],
+    "drawbacks": [
+      "Generations happen in public Discord channels by default, which may not be suitable for users requiring privacy",
+      "No progress indicator during image generation, making it difficult to track creation status"
+    ]
   },
   {
     "name": "Facetune",
@@ -2099,7 +2204,16 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Facetune is a specialized AI-powered photo and video editing app focused entirely on portrait and selfie enhancement, serving social media creators, influencers, and everyday users who want polished, natural-looking selfies. The platform's flagship feature is its AI Assistant, which allows users to edit photos through natural language commands—simply type or say what you want (e.g., 'whiten my teeth,' 'remove my eye bags,' 'smooth my skin') and the AI applies the changes automatically. This conversational interface eliminates the need to navigate complex editing menus, making professional-quality retouching accessible to users with no prior experience.\n\nBeyond its AI Assistant, Facetune offers a comprehensive suite of portrait editing tools: virtual makeup application with beauty looks presets, hairstyle and hair color swapping, photo retouch (blemish removal, teeth whitening, under-eye concealment), background removal and replacement, object removal, and image enhancement. The app also includes video retouching capabilities, allowing consistent enhancements across video content. Facetune is available on iOS and Android with a touch-friendly mobile interface optimized for on-the-go editing, and free tier provides basic functionality with advanced features locked behind subscription. The platform is positioned as a style playground where users can experiment with different looks and maintain a vibrant, varied social media presence.",
+    "benefits": [
+      "AI Assistant enables natural language photo editing—users describe what they want in plain English and the AI applies the changes instantly",
+      "Specializes in natural-looking facial retouching with professional-grade tools for blemish removal, teeth whitening, skin smoothing, and virtual makeup"
+    ],
+    "drawbacks": [
+      "Narrow focus on portrait and selfie enhancement with no general-purpose photo editing capabilities",
+      "Free tier is heavily restricted with watermarks and limited tools, with advanced features behind subscription"
+    ]
   },
   {
     "name": "Fotor AI",
@@ -2112,7 +2226,16 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Fotor is an all-in-one AI photo editing toolbox that positions itself as the editor where 'editing used to be a task, now it's just a talk'. The platform's flagship feature is the AI Agent, which allows users to upload a photo and simply say or type what they want—the AI understands natural language commands and applies multiple edits simultaneously, eliminating the need for complex manual adjustments. This makes professional-quality photo editing accessible to creators, photo enthusiasts, and casual users alike. The platform serves as a comprehensive toolkit with a broad range of AI-powered features: AI Photo Enhancer for sharpening blurry, grainy, or low-resolution images; Magic Eraser for removing unwanted elements from photos and videos; Background Remover for one-click subject extraction; AI Retouch for skin smoothing and blemish removal; AI Headshot Generator for professional-quality avatars; Text-to-Image and Text-to-Video generation; and creative effects like 3D Cartoon and AI art transformations.\n\nFotor also includes traditional photo editing tools for brightness, contrast, saturation, curves, hue, and grain adjustment, as well as unique AI features like AI Hairstyle, AI Expand for extending photo subjects and backgrounds, and photo restoration for old family photos. The platform is available across mobile and web, with a free tier offering basic functionality and Fotor Pro subscriptions available on weekly, monthly, or yearly plans. Fotor is positioned as a versatile, one-stop solution for users who need quick, AI-driven photo enhancements without the learning curve of traditional editing software.",
+    "benefits": [
+      "AI Agent understands natural language commands and applies multiple edits simultaneously, dramatically simplifying the editing workflow",
+      "Comprehensive toolkit covering everything from photo enhancement and background removal to AI generation and creative effects"
+    ],
+    "drawbacks": [
+      "The sheer number of features and tools can feel cluttered or overwhelming to new users",
+      "As a one-stop-shop, it may lack the depth or precision of specialized applications for professional-grade retouching"
+    ]
   },
   {
     "name": "Quarkle",
@@ -2147,7 +2270,16 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Reve AI is an emerging next-generation AI creative tool that unifies image generation and advanced editing into a single, cohesive model. The platform's latest model, Reve 2.1, folds what were previously separate create, edit, and remix workflows into one unified endpoint—meaning the same model can generate images from scratch, edit existing images via natural language instructions, or remix multiple reference images into a single composition. This architectural approach sets Reve apart from tools that require switching between separate models or interfaces for different tasks. Users can pass up to 8 reference images and describe how to combine them, with the ability to reference specific images using <frame>N</frame> syntax to identify which image element to edit or move. The model supports a wide range of aspect ratios from tall (1:4) to wide (4:1), plus an auto option that picks the optimal shape for a given request.\n\nReve is positioned as a tool for users who need granular control over AI-generated images beyond what a simple text prompt provides. The platform excels at precise edits—removing unwanted objects, changing backgrounds, swapping seasons, restyling elements, or making any adjustment that can be described in natural language. It is available through Replicate's platform for API integration, with a focus on delivering professional results that match or exceed top editors for realism and detail. The model's strengths include stunning aesthetics, precise text rendering, and flawless prompt following, making it a strong option for designers and artists who require both creative generation and precise image manipulation in a single workflow.",
+    "benefits": [
+      "Unified model handles text-to-image, editing, and remixing in a single endpoint—no need to switch between separate workflows",
+      "Supports up to 8 reference images with precise referencing syntax, enabling complex compositions and targeted edits"
+    ],
+    "drawbacks": [
+      "A relatively new platform with a smaller community and track record compared to established tools like Midjourney or DALL-E",
+      "Complex multi-step changes may require chaining multiple requests, as the model is best suited for single, clear edits"
+    ]
   },
   {
     "name": "Deep Dream Generator",
@@ -2160,7 +2292,16 @@
     "categories": [
       "image"
     ],
-    "affiliate": false
+    "affiliate": false,
+    "overview": "Deep Dream Generator (DDG) is the original pioneer of accessible AI art creation, launching in 2015—years before Midjourney or DALL-E existed. The platform was the first to bring Google's revolutionary DeepDream neural network technology to the public through a simple web interface, allowing anyone to create AI-generated art without coding or technical skills. Today, DDG has evolved into a comprehensive platform offering 30+ AI models for image generation, advanced editing tools, and cutting-edge AI video generation capabilities. The platform's core technology is based on convolutional neural networks (CNN) using the Inceptionism model, which enhances and extracts image features through multiple iterations of processing to create surreal, dream-like visuals. Users can input text prompts or upload base images and apply various artistic styles including Deep Style, Thin Style, and Deep Dream, with adjustable parameters like dream depth and effect strength for fine-tuning control.\n\nDDG provides multi-platform support through web browsers and mobile browsers, with both free and paid versions available. According to its service terms, the platform does not claim copyright over user-generated content. The platform includes community features where users can browse and share artworks created by other members, fostering a collaborative creative environment. Key features include art style transfer for transforming ordinary photos into artistic works, image detail enhancement through neural network pattern recognition, parameter customization for personalized results, multi-platform real-time preview, and generation of abstract, surreal visual effects. Deep Dream Generator is best suited for artists, creators, and hobbyists interested in exploring unique, dream-like, and highly stylized AI art aesthetics that differ from modern photorealistic generators.",
+    "benefits": [
+      "Pioneering AI art platform with a 2015 launch, establishing it as the original accessible AI art generator",
+      "Offers 30+ AI models including unique style-transfer capabilities that produce distinctive dream-like, surreal imagery not available elsewhere"
+    ],
+    "drawbacks": [
+      "The distinctive DeepDream aesthetic is a niche style that may not suit all purposes or user preferences",
+      "Compared to modern tools, it may have slower generation speeds and less sophisticated prompt interpretation for non-surreal outputs"
+    ]
   },
   {
     "name": "DeepAI",
