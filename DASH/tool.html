@@ -233,14 +233,15 @@
 <body>
 
 <div class="container" id="app">
-  <!-- THE BACK LINK WAS CHANGED HERE -->
-  <a class="back-link" href="dash.html"> ← MAIN AI DASH </a>
+  <!-- UPDATED: dash.html → index.html -->
+  <a class="back-link" href="./"> ← MAIN AI DASH </a>
 
   <div id="loading" class="not-found">Loading tool details...</div>
 
   <div id="not-found" class="not-found hidden">
     <p>Couldn't find that tool in the catalog.</p>
-    <p><a href="dash.html">← Return to the directory</a></p>
+    <!-- UPDATED: dash.html → index.html -->
+    <p><a href="./">← Return to the directory</a></p>
   </div>
 
   <div id="tool-detail" class="tool-detail hidden">
@@ -376,11 +377,11 @@ async function loadTool() {
     metaBadges.innerHTML = '';
     const categoryNames = { code: 'Coding', niche: 'Niche AI', supercomputer: 'Supercomputer', notai: 'Not AI', txtspeech: 'Text-to-Speech' };
     
-    // THE DYNAMIC COLOR LOGIC WAS ADDED HERE
+    // UPDATED: dash.html → index.html in the href below
     tool.categories.forEach(cat => {
       const a = document.createElement('a');
       a.className = 'meta-badge';
-      a.href = `dash.html?category=${encodeURIComponent(cat)}`;
+      a.href = `./?category=${encodeURIComponent(cat)}`;
       a.textContent = categoryNames[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
       
       const catColor = categoryColors[cat];
@@ -395,7 +396,8 @@ async function loadTool() {
 
     const freeSpan = document.createElement('a');
     freeSpan.className = 'meta-badge ' + (tool.free ? 'free' : 'paid');
-    freeSpan.href = `dash.html?free=${tool.free ? 'true' : 'false'}`;
+    // UPDATED: dash.html → index.html in the href below
+    freeSpan.href = `./?free=${tool.free ? 'true' : 'false'}`;
     freeSpan.textContent = tool.free ? 'Free Tier' : 'Paid Only';
     metaBadges.appendChild(freeSpan);
 
