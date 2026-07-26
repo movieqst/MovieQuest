@@ -345,28 +345,6 @@
     ]
   },
   {
-    "name": "Black Forest Labs",
-    "icon": "🌲",
-    "desc": "Creators of Flux — best-in-class open-source image generation models.",
-    "rating": 8.9,
-    "traffic": 150000,
-    "url": "blackforestlabs.com",
-    "free": true,
-    "categories": [
-      "image"
-    ],
-    "affiliate": false,
-    "overview": "Black Forest Labs is the German AI research company behind the FLUX family of open-source image generation models, widely regarded as the de facto standard for serious open-source image AI in 2026. Founded by former Stability AI researchers, the company has shipped multiple model variants optimized for different use cases: FLUX.1 Schnell (speed-optimized, Apache 2.0 license, free for commercial use), FLUX.1 Dev (higher quality, non-commercial license), FLUX.1 Pro and FLUX.2 Pro (frontier-quality, API-only), and FLUX.2 variants including Klein (fast), Flex (balanced), Max (maximum quality), and Kontext (in-context editing). The models are built on Flow Matching architecture with up to 12 billion parameters, delivering photorealism and prompt adherence competitive with proprietary alternatives.\n\nThe FLUX ecosystem is massive. Self-hosted Schnell runs on consumer GPUs with 12GB+ VRAM at zero per-image cost. API access through FAL.AI, Replicate, Together.ai, and Black Forest Labs' own API costs approximately $0.02–0.06 per image depending on model and resolution. The models support up to 4K output, multi-reference consistency (up to 10 reference images for character/brand consistency), LoRA fine-tuning, and in-context editing. Major platforms including Krea AI, Recraft, and Weavy AI use FLUX as their underlying generation engine. The company is backed by Andreessen Horowitz and has raised significant venture funding.\n\nIndependent benchmarks place FLUX.2 Max among the top-tier image models, scoring competitively with Midjourney V8 and GPT Image 2 on photorealism and prompt adherence. User feedback consistently praises FLUX for its strong hand rendering, text accuracy (better than Stable Diffusion 3.5, comparable to Ideogram), and economic flexibility — the ability to self-host for free or pay per-image via API without subscription lock-in. The primary drawbacks are the learning curve for self-hosting (ComfyUI workflows resemble engineering diagrams) and the fact that the highest-quality Pro variants are API-only, requiring ongoing costs for production work. For technical users and developers, FLUX represents the best balance of quality, cost, and freedom available in 2026.",
-    "benefits": [
-      "Open-source Schnell variant is completely free for commercial use with no subscription or per-image fees when self-hosted — the most cost-effective option for high-volume image generation",
-      "Massive ecosystem with API access through FAL.AI, Replicate, and others at ~$0.02–0.06/image, plus multi-reference consistency and 4K output that rival proprietary leaders"
-    ],
-    "drawbacks": [
-      "Self-hosting requires technical expertise — ComfyUI node-based workflows have a steep learning curve, and 12GB+ VRAM is needed for comfortable local operation",
-      "The highest-quality Pro and Max variants are API-only (not downloadable), so production-grade work still incurs ongoing costs, and output quality is capped by the underlying model selected"
-    ]
-  },
-  {
     "name": "Codex (OpenAI)",
     "icon": "🤖",
     "desc": "Autonomous cloud coding agent that writes, tests, and submits pull requests.",
