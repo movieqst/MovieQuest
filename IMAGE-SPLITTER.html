@@ -16,7 +16,7 @@
       padding: 2rem 1rem;
     }
 
-    .container { max-width: 960px; margin: 0 auto; }
+    .container { max-width: 1100px; margin: 0 auto; }
 
     h1 { font-size: 22px; font-weight: 500; margin-bottom: 0.25rem; }
 
@@ -103,50 +103,187 @@
     .dir-btn + .dir-btn { border-left: 0.5px solid #d3d1c7; }
     .dir-btn.active { background: #1a1a18; color: #fff; }
 
-    .cuts-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-
-    .split-control { flex: 1; min-width: 160px; }
-    .split-control label { font-size: 12px; color: #888780; display: block; margin-bottom: 6px; }
-
-    .range-row { display: flex; align-items: center; gap: 10px; }
-
-    input[type="range"] {
-      flex: 1;
-      height: 4px;
-      -webkit-appearance: none;
-      appearance: none;
-      background: #d3d1c7;
-      border-radius: 2px;
+    .format-select {
+      padding: 5px 12px;
+      font-size: 13px;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 6px;
+      background: #fff;
+      color: #444441;
+      cursor: pointer;
       outline: none;
     }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: #378add;
-      cursor: pointer;
-      border: 2px solid #fff;
-      box-shadow: 0 0 0 1px #d3d1c7;
+    .format-select:focus { border-color: #378add; }
+
+    /* Grid size inputs */
+    .grid-inputs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    input[type="range"]::-moz-range-thumb {
-      width: 16px; height: 16px;
-      border-radius: 50%;
-      background: #378add;
-      cursor: pointer;
-      border: 2px solid #fff;
+    .grid-inputs input[type="number"] {
+      width: 56px;
+      padding: 5px 8px;
+      font-size: 13px;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .grid-inputs input[type="number"]:focus { outline: none; border-color: #378add; }
+    .grid-inputs span { color: #6b6b67; font-size: 13px; }
+
+    /* Draggable split lines on preview */
+    .preview-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      user-select: none;
     }
 
-    .range-val { font-size: 13px; font-weight: 500; min-width: 36px; text-align: right; }
+    .preview-base-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: crosshair;
+    }
+
+    .split-line-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .split-line {
+      position: absolute;
+      background: #378add;
+      pointer-events: auto;
+      z-index: 10;
+      transition: background 0.15s;
+    }
+    .split-line:hover, .split-line.dragging {
+      background: #185fa5;
+      z-index: 20;
+    }
+
+    /* Vertical lines (draggable left-right) */
+    .split-line.vertical-line {
+      width: 6px;
+      height: 100%;
+      top: 0;
+      cursor: ew-resize;
+      border-radius: 3px;
+      transform: translateX(-50%);
+    }
+    .split-line.vertical-line::before {
+      content: '';
+      position: absolute;
+      width: 44px;
+      height: 100%;
+      left: -19px;
+      top: 0;
+    }
+
+    /* Horizontal lines (draggable up-down) */
+    .split-line.horizontal-line {
+      height: 6px;
+      width: 100%;
+      left: 0;
+      cursor: ns-resize;
+      border-radius: 3px;
+      transform: translateY(-50%);
+    }
+    .split-line.horizontal-line::before {
+      content: '';
+      position: absolute;
+      height: 44px;
+      width: 100%;
+      top: -19px;
+      left: 0;
+    }
+
+    /* Cross intersection handle */
+    .line-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      background: #fff;
+      border: 2.5px solid #378add;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .split-line:hover .line-handle,
+    .split-line.dragging .line-handle {
+      border-color: #185fa5;
+    }
+
+    .line-handle i {
+      color: #378add;
+      font-size: 14px;
+    }
+    .split-line:hover .line-handle i,
+    .split-line.dragging .line-handle i {
+      color: #185fa5;
+    }
+
+    /* Percentage label */
+    .split-label {
+      position: absolute;
+      background: #1a1a18;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 4px;
+      pointer-events: none;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .split-line:hover .split-label,
+    .split-line.dragging .split-label {
+      opacity: 1;
+    }
+    .split-line.vertical-line .split-label {
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .split-line.horizontal-line .split-label {
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Grid cells highlight on hover */
+    .grid-cell-highlight {
+      position: absolute;
+      border: 2px solid #378add;
+      background: rgba(55, 138, 221, 0.08);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      border-radius: 4px;
+    }
 
     .hint { font-size: 12px; color: #b4b2a9; margin-top: 0.75rem; }
+    .hint strong { color: #6b6b67; }
 
-    /* Preview — flex-row for vertical splits, flex-col for horizontal */
-    .preview-row {
-      display: flex;
+    /* Output grid */
+    .output-grid {
+      display: grid;
       gap: 12px;
+      margin-top: 1.25rem;
     }
-    .preview-row.horizontal { flex-direction: column; }
-    .preview-row.vertical   { flex-direction: row; align-items: flex-start; }
 
     .preview-item {
       border: 0.5px solid #d3d1c7;
@@ -154,9 +291,6 @@
       overflow: hidden;
       background: #fff;
     }
-    .preview-row.vertical .preview-item { flex: 1; }
-    .preview-row.horizontal .preview-item { width: 100%; }
-
     .preview-item img { width: 100%; display: block; }
 
     .preview-footer {
@@ -220,9 +354,9 @@
 
     canvas { display: none; }
 
-    @media (max-width: 600px) {
-      .preview-row.vertical { flex-direction: column; }
+    @media (max-width: 700px) {
       .settings-row { gap: 1rem; }
+      .output-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -230,7 +364,7 @@
 
 <div class="container">
   <h1>Image splitter</h1>
-  <p class="subtitle">Split any image into 2–4 parts, horizontally or vertically. Adjust cut positions and download as PNG.</p>
+  <p class="subtitle">Split any image into a grid or strips. Drag lines on the image to adjust cuts, then download in your preferred format.</p>
 
   <div id="drop-zone" class="drop-zone" onclick="document.getElementById('file-input').click()">
     <i class="ti ti-upload" aria-hidden="true"></i>
@@ -253,23 +387,58 @@
           <button class="dir-btn" id="btn-vert" onclick="setDir('vertical')">
             <i class="ti ti-layout-columns" aria-hidden="true"></i> Vertical
           </button>
+          <button class="dir-btn" id="btn-grid" onclick="setDir('grid')">
+            <i class="ti ti-layout-grid" aria-hidden="true"></i> Grid
+          </button>
         </div>
 
-        <label style="margin-left:0.5rem;">Number of parts</label>
-        <div class="seg-group">
-          <button class="seg-btn" data-n="2" onclick="setN(2)">2</button>
-          <button class="seg-btn active" data-n="3" onclick="setN(3)">3</button>
-          <button class="seg-btn" data-n="4" onclick="setN(4)">4</button>
+        <div id="strip-controls">
+          <label style="margin-left:0.5rem;">Parts</label>
+          <div class="seg-group">
+            <button class="seg-btn" data-n="2" onclick="setN(2)">2</button>
+            <button class="seg-btn active" data-n="3" onclick="setN(3)">3</button>
+            <button class="seg-btn" data-n="4" onclick="setN(4)">4</button>
+            <button class="seg-btn" data-n="5" onclick="setN(5)">5</button>
+            <button class="seg-btn" data-n="6" onclick="setN(6)">6</button>
+          </div>
         </div>
+
+        <div id="grid-controls" style="display:none;">
+          <label style="margin-left:0.5rem;">Grid</label>
+          <div class="grid-inputs">
+            <input type="number" id="grid-cols" value="3" min="2" max="8" onchange="updateGridSize()">
+            <span>×</span>
+            <input type="number" id="grid-rows" value="2" min="2" max="8" onchange="updateGridSize()">
+            <span>columns × rows</span>
+          </div>
+        </div>
+
+        <label style="margin-left:0.5rem;">Format</label>
+        <select class="format-select" id="format-select" onchange="updateFormat()">
+          <option value="png">PNG</option>
+          <option value="jpeg">JPG</option>
+          <option value="webp">WEBP</option>
+          <option value="bmp">BMP</option>
+          <option value="tiff">TIFF</option>
+        </select>
       </div>
 
-      <div id="cuts-area" class="cuts-grid"></div>
-      <p class="hint">Drag the sliders to fine-tune where each cut falls.</p>
+      <p class="hint" id="hint-text"><strong>Tip:</strong> Drag the <span style="color:#378add;">●</span> blue lines directly on the image to adjust split positions.</p>
     </div>
 
-    <div class="panel" id="preview-panel">
-      <div class="panel-title">Preview</div>
-      <div id="preview-row" class="preview-row vertical"></div>
+    <!-- Live preview with draggable lines -->
+    <div class="panel" id="live-preview-panel">
+      <div class="panel-title">Live Preview — Drag lines to adjust</div>
+      <div class="preview-wrap" id="preview-wrap">
+        <img class="preview-base-img" id="preview-base-img" alt="Upload preview">
+        <div class="split-line-overlay" id="split-line-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Output preview and download -->
+    <div class="panel" id="output-panel">
+      <div class="panel-title">Output Preview</div>
+      <div id="output-grid" class="output-grid"></div>
       <div class="dl-all-wrap">
         <button class="dl-all" id="dl-all-btn">
           <i class="ti ti-download" aria-hidden="true"></i> Download all parts
@@ -286,19 +455,33 @@
 <canvas id="canvas"></canvas>
 
 <script>
+  /* ── State ── */
   let img = new Image();
   let loaded = false;
   let numParts = 3;
-  let direction = 'horizontal';
-  let cutPercents = [34, 67];
+  let direction = 'horizontal'; // 'horizontal' | 'vertical' | 'grid'
+  let gridCols = 3;
+  let gridRows = 2;
+  let hCuts = [50];      // horizontal cut percentages (Y positions)
+  let vCuts = [33, 67];  // vertical cut percentages (X positions)
   let filename = 'image';
+  let exportFormat = 'png';
 
-  const dropZone   = document.getElementById('drop-zone');
-  const fileInput  = document.getElementById('file-input');
-  const mainPanel  = document.getElementById('main-panel');
-  const canvas     = document.getElementById('canvas');
+  /* DOM refs */
+  const dropZone       = document.getElementById('drop-zone');
+  const fileInput      = document.getElementById('file-input');
+  const mainPanel      = document.getElementById('main-panel');
+  const canvas         = document.getElementById('canvas');
+  const previewWrap    = document.getElementById('preview-wrap');
+  const previewBaseImg = document.getElementById('preview-base-img');
+  const overlay        = document.getElementById('split-line-overlay');
+  const formatSelect   = document.getElementById('format-select');
+  const stripControls  = document.getElementById('strip-controls');
+  const gridControls   = document.getElementById('grid-controls');
+  const gridColsInput  = document.getElementById('grid-cols');
+  const gridRowsInput  = document.getElementById('grid-rows');
 
-  /* ── drag & drop / file pick ── */
+  /* ── Drag & drop / file pick ── */
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
   dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
   dropZone.addEventListener('drop', e => {
@@ -316,111 +499,287 @@
       loaded = true;
       canvas.width  = img.naturalWidth;
       canvas.height = img.naturalHeight;
-      /* auto-detect likely direction from aspect ratio */
+
+      // Auto-detect likely direction from aspect ratio
       if (img.naturalWidth > img.naturalHeight * 1.5) setDir('vertical');
       else setDir('horizontal');
+
+      previewBaseImg.src = url;
+      previewBaseImg.onload = () => buildOverlay();
+
       dropZone.style.display = 'none';
       mainPanel.style.display = 'block';
-      buildCutControls();
-      render();
+      renderOutput();
     };
     img.src = url;
   }
 
-  /* ── direction ── */
+  /* ── Format ── */
+  function updateFormat() {
+    exportFormat = formatSelect.value;
+    if (loaded) renderOutput();
+  }
+
+  /* ── Direction ── */
   function setDir(d) {
     direction = d;
     document.getElementById('btn-horiz').classList.toggle('active', d === 'horizontal');
     document.getElementById('btn-vert').classList.toggle('active',  d === 'vertical');
-    const row = document.getElementById('preview-row');
-    row.classList.toggle('horizontal', d === 'horizontal');
-    row.classList.toggle('vertical',   d === 'vertical');
-    buildCutControls();
-    if (loaded) render();
+    document.getElementById('btn-grid').classList.toggle('active',   d === 'grid');
+
+    stripControls.style.display = d === 'grid' ? 'none' : 'flex';
+    gridControls.style.display  = d === 'grid' ? 'flex' : 'none';
+
+    // Initialize cuts if switching to grid
+    if (d === 'grid') {
+      gridCols = parseInt(gridColsInput.value) || 3;
+      gridRows = parseInt(gridRowsInput.value) || 2;
+      initGridCuts();
+    } else {
+      const defaults = { 2: [50], 3: [33, 67], 4: [25, 50, 75], 5: [20, 40, 60, 80], 6: [17, 33, 50, 67, 83] };
+      hCuts = d === 'horizontal' ? [...(defaults[numParts] || defaults[3])] : [];
+      vCuts = d === 'vertical'   ? [...(defaults[numParts] || defaults[3])] : [];
+    }
+
+    if (loaded) {
+      buildOverlay();
+      renderOutput();
+    }
   }
 
-  /* ── number of parts ── */
+  function updateGridSize() {
+    gridCols = Math.max(2, Math.min(8, parseInt(gridColsInput.value) || 2));
+    gridRows = Math.max(2, Math.min(8, parseInt(gridRowsInput.value) || 2));
+    gridColsInput.value = gridCols;
+    gridRowsInput.value = gridRows;
+    initGridCuts();
+    if (loaded) {
+      buildOverlay();
+      renderOutput();
+    }
+  }
+
+  function initGridCuts() {
+    vCuts = [];
+    hCuts = [];
+    for (let i = 1; i < gridCols; i++) vCuts.push(Math.round(100 * i / gridCols));
+    for (let i = 1; i < gridRows; i++) hCuts.push(Math.round(100 * i / gridRows));
+  }
+
+  /* ── Number of parts (strip mode) ── */
   function setN(n) {
     numParts = n;
     document.querySelectorAll('.seg-btn').forEach(b =>
       b.classList.toggle('active', parseInt(b.dataset.n) === n));
-    const defaults = { 2: [50], 3: [33, 67], 4: [25, 50, 75] };
-    cutPercents = [...defaults[n]];
-    buildCutControls();
-    if (loaded) render();
-  }
 
-  /* ── build sliders ── */
-  function buildCutControls() {
-    const area = document.getElementById('cuts-area');
-    area.innerHTML = '';
-    const numCuts = numParts - 1;
-    const axisLabel = direction === 'horizontal' ? 'from top' : 'from left';
-    const partLabels = ['A/B', 'B/C', 'C/D'];
-    for (let i = 0; i < numCuts; i++) {
-      const minV = i === 0 ? 5 : cutPercents[i - 1] + 3;
-      const maxV = i === numCuts - 1 ? 95 : cutPercents[i + 1] - 3;
-      const div = document.createElement('div');
-      div.className = 'split-control';
-      div.innerHTML = `
-        <label>Cut ${i + 1} — ${partLabels[i]} boundary (% ${axisLabel})</label>
-        <div class="range-row">
-          <input type="range" min="${minV}" max="${maxV}" step="1"
-                 value="${cutPercents[i]}" id="cut-${i}">
-          <span class="range-val" id="cut-val-${i}">${cutPercents[i]}%</span>
-        </div>`;
-      area.appendChild(div);
-      div.querySelector(`#cut-${i}`).addEventListener('input', function () {
-        cutPercents[i] = parseInt(this.value);
-        document.getElementById(`cut-val-${i}`).textContent = this.value + '%';
-        render();
-      });
+    const defaults = { 2: [50], 3: [33, 67], 4: [25, 50, 75], 5: [20, 40, 60, 80], 6: [17, 33, 50, 67, 83] };
+    if (direction === 'horizontal') hCuts = [...defaults[n]];
+    else if (direction === 'vertical') vCuts = [...defaults[n]];
+
+    if (loaded) {
+      buildOverlay();
+      renderOutput();
     }
   }
 
-  /* ── compute slice descriptors ── */
-  function getSlices() {
-    const W = img.naturalWidth;
-    const H = img.naturalHeight;
-    const dim = direction === 'horizontal' ? H : W;
-    const cuts = [0, ...cutPercents.map(p => Math.round(dim * p / 100)), dim];
-    const partNames = ['A', 'B', 'C', 'D'];
-    return cuts.slice(0, -1).map((start, i) => {
-      const size = cuts[i + 1] - start;
-      if (direction === 'horizontal') {
-        return { x: 0, y: start, w: W, h: size,
-                 label: `Part ${partNames[i]}`,
-                 dimText: `${W} × ${size}px`,
-                 file: `${filename}_part_${partNames[i].toLowerCase()}.png` };
-      } else {
-        return { x: start, y: 0, w: size, h: H,
-                 label: `Part ${partNames[i]}`,
-                 dimText: `${size} × ${H}px`,
-                 file: `${filename}_part_${partNames[i].toLowerCase()}.png` };
-      }
+  /* ── Build draggable overlay lines ── */
+  function buildOverlay() {
+    overlay.innerHTML = '';
+
+    // Vertical lines (X positions, draggable left-right)
+    vCuts.forEach((pct, i) => {
+      const line = createLine('vertical', pct, i);
+      overlay.appendChild(line);
+    });
+
+    // Horizontal lines (Y positions, draggable up-down)
+    hCuts.forEach((pct, i) => {
+      const line = createLine('horizontal', pct, i);
+      overlay.appendChild(line);
     });
   }
 
-  /* ── render slice to data URL ── */
+  function createLine(orientation, pct, idx) {
+    const line = document.createElement('div');
+    line.className = `split-line ${orientation}-line`;
+    line.dataset.orientation = orientation;
+    line.dataset.idx = idx;
+
+    const handle = document.createElement('div');
+    handle.className = 'line-handle';
+    handle.innerHTML = orientation === 'vertical'
+      ? '<i class="ti ti-grip-vertical" aria-hidden="true"></i>'
+      : '<i class="ti ti-grip-horizontal" aria-hidden="true"></i>';
+
+    const label = document.createElement('div');
+    label.className = 'split-label';
+    label.textContent = `${pct}%`;
+
+    line.appendChild(handle);
+    line.appendChild(label);
+
+    positionLine(line, pct);
+
+    setupDrag(line, orientation, idx);
+    return line;
+  }
+
+  function positionLine(lineEl, pct) {
+    const orientation = lineEl.dataset.orientation;
+    if (orientation === 'vertical') {
+      lineEl.style.left = `${pct}%`;
+    } else {
+      lineEl.style.top = `${pct}%`;
+    }
+    const label = lineEl.querySelector('.split-label');
+    if (label) label.textContent = `${pct}%`;
+  }
+
+  /* ── Drag logic ── */
+  function setupDrag(lineEl, orientation, idx) {
+    let dragging = false;
+
+    const startDrag = (e) => {
+      e.preventDefault();
+      dragging = true;
+      lineEl.classList.add('dragging');
+      document.body.style.cursor = orientation === 'vertical' ? 'ew-resize' : 'ns-resize';
+    };
+
+    const doDrag = (clientX, clientY) => {
+      if (!dragging) return;
+
+      const rect = previewWrap.getBoundingClientRect();
+      let pct;
+
+      if (orientation === 'vertical') {
+        pct = ((clientX - rect.left) / rect.width) * 100;
+      } else {
+        pct = ((clientY - rect.top) / rect.height) * 100;
+      }
+
+      // Clamp with neighbors
+      const cuts = orientation === 'vertical' ? vCuts : hCuts;
+      const minPct = idx === 0 ? 5 : cuts[idx - 1] + 3;
+      const maxPct = idx === cuts.length - 1 ? 95 : cuts[idx + 1] - 3;
+      pct = Math.max(minPct, Math.min(maxPct, pct));
+
+      // Update state
+      if (orientation === 'vertical') vCuts[idx] = Math.round(pct);
+      else hCuts[idx] = Math.round(pct);
+
+      positionLine(lineEl, Math.round(pct));
+    };
+
+    const endDrag = () => {
+      if (dragging) {
+        dragging = false;
+        lineEl.classList.remove('dragging');
+        document.body.style.cursor = '';
+        renderOutput();
+      }
+    };
+
+    // Mouse
+    lineEl.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', e => doDrag(e.clientX, e.clientY));
+    document.addEventListener('mouseup', endDrag);
+
+    // Touch
+    lineEl.addEventListener('touchstart', e => {
+      e.preventDefault();
+      startDrag(e.touches[0]);
+    }, { passive: false });
+
+    document.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      const t = e.touches[0];
+      doDrag(t.clientX, t.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchend', endDrag);
+  }
+
+  /* ── Compute all slice descriptors ── */
+  function getSlices() {
+    const W = img.naturalWidth;
+    const H = img.naturalHeight;
+
+    // Build pixel boundaries
+    const vPixels = [0, ...vCuts.map(p => Math.round(W * p / 100)), W];
+    const hPixels = [0, ...hCuts.map(p => Math.round(H * p / 100)), H];
+
+    const slices = [];
+    const partNames = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    for (let row = 0; row < hPixels.length - 1; row++) {
+      for (let col = 0; col < vPixels.length - 1; col++) {
+        const x = vPixels[col];
+        const y = hPixels[row];
+        const w = vPixels[col + 1] - x;
+        const h = hPixels[row + 1] - y;
+
+        const nameIdx = slices.length;
+        const label = direction === 'grid'
+          ? `Part ${partNames[nameIdx] || nameIdx + 1} (${col + 1},${row + 1})`
+          : `Part ${partNames[nameIdx] || nameIdx + 1}`;
+
+        slices.push({
+          x, y, w, h,
+          label,
+          dimText: `${w} × ${h}px`,
+          file: `${filename}_part_${String(nameIdx + 1).padStart(2, '0')}.${exportFormat}`
+        });
+      }
+    }
+
+    return slices;
+  }
+
+  /* ── Render slice to data URL ── */
   function sliceDataURL(s) {
     const tmp = document.createElement('canvas');
     tmp.width  = s.w;
     tmp.height = s.h;
     tmp.getContext('2d').drawImage(img, s.x, s.y, s.w, s.h, 0, 0, s.w, s.h);
-    return tmp.toDataURL('image/png');
+
+    const mimeType = exportFormat === 'jpeg' ? 'image/jpeg'
+                   : exportFormat === 'webp' ? 'image/webp'
+                   : exportFormat === 'bmp' ? 'image/bmp'
+                   : exportFormat === 'tiff' ? 'image/tiff'
+                   : 'image/png';
+
+    const quality = exportFormat === 'jpeg' ? 0.92 : undefined;
+    return tmp.toDataURL(mimeType, quality);
   }
 
-  /* ── build previews ── */
-  function render() {
+  /* ── Build output grid ── */
+  function renderOutput() {
     const slices = getSlices();
-    const row = document.getElementById('preview-row');
-    row.innerHTML = '';
+    const grid = document.getElementById('output-grid');
+
+    // Set CSS grid columns based on layout
+    if (direction === 'horizontal') {
+      grid.style.gridTemplateColumns = `repeat(${slices.length}, 1fr)`;
+    } else if (direction === 'vertical') {
+      grid.style.gridTemplateColumns = `repeat(${slices.length}, 1fr)`;
+    } else {
+      // Grid mode: match the column count
+      grid.style.gridTemplateColumns = `repeat(${vCuts.length + 1}, 1fr)`;
+    }
+
+    // Responsive: cap columns on small screens
+    if (window.innerWidth <= 700) {
+      grid.style.gridTemplateColumns = '1fr';
+    }
+
+    grid.innerHTML = '';
     slices.forEach((s, i) => {
       const url = sliceDataURL(s);
       const item = document.createElement('div');
       item.className = 'preview-item';
       item.innerHTML = `
-        <img src="${url}" alt="${s.label}">
+        <img src="${url}" alt="${s.label}" loading="lazy">
         <div class="preview-footer">
           <div class="preview-label">${s.label}</div>
           <div class="preview-dim">${s.dimText}</div>
@@ -428,13 +787,14 @@
             <i class="ti ti-download" aria-hidden="true"></i> Download
           </button>
         </div>`;
-      row.appendChild(item);
+      grid.appendChild(item);
     });
-    row.querySelectorAll('.dl-btn').forEach(btn =>
+
+    grid.querySelectorAll('.dl-btn').forEach(btn =>
       btn.addEventListener('click', () => download(parseInt(btn.dataset.idx))));
   }
 
-  /* ── download ── */
+  /* ── Download ── */
   function download(idx) {
     const s = getSlices()[idx];
     const a = document.createElement('a');
@@ -444,16 +804,23 @@
   }
 
   document.getElementById('dl-all-btn').addEventListener('click', () =>
-    getSlices().forEach((_, i) => setTimeout(() => download(i), i * 300)));
+    getSlices().forEach((_, i) => setTimeout(() => download(i), i * 200)));
 
-  /* ── reset ── */
+  /* ── Reset ── */
   function reset() {
     loaded = false;
     img = new Image();
     fileInput.value = '';
+    previewBaseImg.src = '';
+    overlay.innerHTML = '';
     dropZone.style.display = 'block';
     mainPanel.style.display = 'none';
   }
+
+  /* ── Window resize handler for responsive grid ── */
+  window.addEventListener('resize', () => {
+    if (loaded) renderOutput();
+  });
 </script>
 </body>
 </html>
