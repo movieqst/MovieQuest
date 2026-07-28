@@ -354,6 +354,27 @@
 
     canvas { display: none; }
 
+    .paste-btn {
+      margin-top: 12px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 6px;
+      background: #fff;
+      color: #444441;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .paste-btn:hover {
+      background: #f5f4f0;
+      border-color: #378add;
+    }
+    .paste-btn i { font-size: 15px; }
+
     @media (max-width: 700px) {
       .settings-row { gap: 1rem; }
       .output-grid { grid-template-columns: 1fr !important; }
@@ -370,6 +391,9 @@
     <i class="ti ti-upload" aria-hidden="true"></i>
     <p class="main">Drop an image here</p>
     <p class="sub">or click to browse — PNG, JPG, WEBP, GIF</p>
+    <button type="button" class="paste-btn" onclick="event.stopPropagation(); pasteFromClipboard();" title="Paste image from clipboard (Ctrl+V also works)">
+      <i class="ti ti-clipboard" aria-hidden="true"></i> Paste from clipboard
+    </button>
   </div>
   <input type="file" id="file-input" accept="image/*">
 
@@ -482,15 +506,78 @@
   const gridRowsInput  = document.getElementById('grid-rows');
 
   /* ── Drag & drop / file pick ── */
-  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
-  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropZone.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', e => { e.stopPropagation(); dropZone.classList.remove('drag-over'); });
   dropZone.addEventListener('drop', e => {
     e.preventDefault();
+    e.stopPropagation();
     dropZone.classList.remove('drag-over');
-    const f = e.dataTransfer.files[0];
-    if (f && f.type.startsWith('image/')) loadFile(f);
+
+    // Try dataTransfer.files first, then fallback to items (Linux fix)
+    let file = e.dataTransfer.files[0];
+    if (!file && e.dataTransfer.items) {
+      for (let i = 0; i < e.dataTransfer.items.length; i++) {
+        const item = e.dataTransfer.items[i];
+        if (item.kind === 'file') {
+          const f = item.getAsFile();
+          if (f && isImageFile(f)) { file = f; break; }
+        }
+      }
+    }
+    if (file && isImageFile(file)) loadFile(file);
   });
   fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+
+  function isImageFile(file) {
+    if (file.type && file.type.startsWith('image/')) return true;
+    // Fallback for Linux where MIME type may be blank/generic
+    const ext = (file.name.split('.').pop() || '').toLowerCase();
+    return ['png','jpg','jpeg','webp','gif','bmp','tiff','tif'].includes(ext);
+  }
+
+  async function pasteFromClipboard() {
+    try {
+      // Modern Clipboard API (requires permission)
+      if (navigator.clipboard && navigator.clipboard.read) {
+        const items = await navigator.clipboard.read();
+        for (const item of items) {
+          for (const type of item.types) {
+            if (type.startsWith('image/')) {
+              const blob = await item.getType(type);
+              const ext = type.split('/')[1] || 'png';
+              const file = new File([blob], `pasted_image.${ext}`, { type });
+              loadFile(file);
+              return;
+            }
+          }
+        }
+      }
+      // Fallback: trigger the hidden paste event path
+      alert('Clipboard access denied or no image found. Try pressing Ctrl+V instead.');
+    } catch (err) {
+      console.error('Clipboard read failed:', err);
+      alert('Could not read clipboard. Try pressing Ctrl+V instead.');
+    }
+  }
+
+  // Global paste listener (Ctrl+V anywhere on page)
+  document.addEventListener('paste', e => {
+    const items = e.clipboardData || e.originalEvent?.clipboardData;
+    if (!items) return;
+    for (let i = 0; i < items.items.length; i++) {
+      const item = items.items[i];
+      if (item.kind === 'file' && item.type.startsWith('image/')) {
+        const blob = item.getAsFile();
+        if (blob) {
+          const ext = item.type.split('/')[1] || 'png';
+          const file = new File([blob], `pasted_image.${ext}`, { type: item.type });
+          loadFile(file);
+          e.preventDefault();
+          break;
+        }
+      }
+    }
+  });
 
   function loadFile(file) {
     filename = file.name.replace(/\.[^.]+$/, '');
