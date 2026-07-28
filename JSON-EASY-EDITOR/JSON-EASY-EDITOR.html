@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON EASY-EDITOR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            align-items: center;
+        }
+
+        .toolbar button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .toolbar button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-add-row { background: #28a745; color: white; }
+        .btn-add-row:hover:not(:disabled) { background: #218838; }
+
+        .btn-add-col { background: #007bff; color: white; }
+        .btn-add-col:hover:not(:disabled) { background: #0069d9; }
+
+        .btn-add-image-col { background: #8b5cf6; color: white; }
+        .btn-add-image-col:hover:not(:disabled) { background: #7c3aed; }
+
+        .btn-delete-row { background: #dc3545; color: white; }
+        .btn-delete-row:hover:not(:disabled) { background: #c82333; }
+
+        .btn-delete-col { background: #ffc107; color: #333; }
+        .btn-delete-col:hover:not(:disabled) { background: #e0a800; }
+
+        .btn-generate { background: #17a2b8; color: white; padding: 8px 30px; font-size: 16px; }
+        .btn-generate:hover:not(:disabled) { background: #138496; }
+
+        .btn-clear { background: #6c757d; color: white; }
+        .btn-clear:hover:not(:disabled) { background: #5a6268; }
+
+        .btn-import { background: #6f42c1; color: white; }
+        .btn-import:hover:not(:disabled) { background: #5a32a3; }
+
+        .btn-undo { background: #fd7e14; color: white; padding: 8px 20px; }
+        .btn-undo:hover:not(:disabled) { background: #e06b0a; }
+        .btn-undo:disabled { background: #fd7e14; }
+
+        .undo-count {
+            font-size: 12px;
+            color: #666;
+            background: #e9ecef;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 5px;
+        }
+
+        .toolbar .spacer { flex: 1; }
+
+        .toolbar label {
+            font-size: 13px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toolbar input[type="file"] { display: none; }
+
+        .file-label {
+            background: #6f42c1;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .file-label:hover { background: #5a32a3; }
+
+        .image-badge {
+            background: #8b5cf6;
+            color: white;
+            font-size: 9px;
+            padding: 1px 6px;
+            border-radius: 10px;
+            margin-left: 4px;
+            font-weight: normal;
+            display: inline-block;
+        }
+
+        .spreadsheet-wrapper {
+            overflow: auto;
+            max-height: 70vh;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        #spreadsheet {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 600px;
+            font-size: 14px;
+        }
+
+        #spreadsheet th,
+        #spreadsheet td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+            min-width: 120px;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #spreadsheet th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            min-width: 80px;
+        }
+
+        #spreadsheet th.image-col {
+            background: #f3f0ff;
+            border-color: #8b5cf6;
+        }
+
+        #spreadsheet .row-header {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+            text-align: center;
+            min-width: 40px;
+            width: 40px;
+            position: sticky;
+            left: 0;
+            z-index: 5;
+        }
+
+        #spreadsheet .row-header.col-header {
+            background: #e9ecef;
+            z-index: 15;
+        }
+
+        #spreadsheet td input,
+        #spreadsheet th input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-family: inherit;
+            font-size: 14px;
+            padding: 4px;
+            outline: none;
+        }
+
+        #spreadsheet td input:focus,
+        #spreadsheet th input:focus {
+            background: #fff;
+            box-shadow: inset 0 0 0 2px #007bff;
+            border-radius: 3px;
+        }
+
+        #spreadsheet td { background: white; }
+        #spreadsheet td:hover { background: #f8f9fa; }
+
+        #spreadsheet td.image-cell {
+            min-width: 100px;
+            max-width: 150px;
+            text-align: center;
+            padding: 4px;
+        }
+
+        .image-preview {
+            max-width: 60px;
+            max-height: 60px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-preview:hover {
+            transform: scale(1.5);
+            z-index: 100;
+            position: relative;
+        }
+
+        .image-preview.placeholder {
+            border: 1px dashed #ccc;
+            padding: 8px;
+            color: #999;
+            font-size: 10px;
+            text-align: center;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-upload-btn {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 10px;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: background 0.2s;
+        }
+        .file-upload-btn:hover { background: #7c3aed; }
+
+        .image-cell-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .image-filename {
+            font-size: 9px;
+            color: #666;
+            max-width: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .image-clear-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 1px 6px;
+            font-size: 9px;
+            cursor: pointer;
+        }
+        .image-clear-btn:hover { background: #c82333; }
+
+        .output-section {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .output-section.visible { display: block; }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .output-header h3 { color: #1a1a2e; }
+
+        .output-header button {
+            padding: 6px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .output-header button:hover { background: #218838; }
+
+        #json-output {
+            background: #1a1a2e;
+            color: #00ff9d;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 400px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 768px) {
+            .toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .toolbar .spacer { display: none; }
+            #spreadsheet th,
+            #spreadsheet td {
+                min-width: 80px;
+                font-size: 12px;
+                padding: 4px 6px;
+            }
+        }
+
+        .spreadsheet-wrapper::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .spreadsheet-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .spreadsheet-wrapper::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .spreadsheet-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .status {
+            padding: 8px 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: none;
+        }
+        .status.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.undo {
+            display: block;
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffc107;
+        }
+        .status.info {
+            display: block;
+            background: #cce5ff;
+            color: #004085;
+            border: 1px solid #b8daff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📊 JSON EASY-EDITOR</h1>
+    <p class="subtitle">The EASY way to edit the JSON Data for your WEBSITE! <span style="color:#fd7e14;">(Undo supported!)</span></p>
+
+    <div class="toolbar">
+        <button class="btn-add-row" onclick="addRow()">➕ Add Row</button>
+        <button class="btn-add-col" onclick="addColumn()">➕ Add Column</button>
+        <button class="btn-add-image-col" onclick="addImageColumn()">🖼️ Add Image Column</button>
+        <button class="btn-delete-row" onclick="deleteRow()">🗑️ Delete Row</button>
+        <button class="btn-delete-col" onclick="deleteColumn()">🗑️ Delete Column</button>
+        <button class="btn-undo" id="undoBtn" onclick="undoAction()" disabled>
+            ↩️ Undo <span class="undo-count" id="undoCount">0</span>
+        </button>
+        <span class="spacer"></span>
+        <button class="btn-clear" onclick="clearAll()">🗑️ Clear All</button>
+        <label>
+            <span class="file-label" onclick="document.getElementById('file-input').click()">📂 Import JSON</span>
+            <input type="file" id="file-input" accept=".json" onchange="importJSON(event)">
+        </label>
+        <button class="btn-generate" onclick="generateJSON()">⚡ GENERATE JSON</button>
+    </div>
+
+    <div class="spreadsheet-wrapper">
+        <table id="spreadsheet">
+            <thead id="table-head"></thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div class="output-section" id="output-section">
+        <div class="output-header">
+            <h3>📄 Generated JSON</h3>
+            <button onclick="copyJSON()">📋 Copy JSON</button>
+        </div>
+        <pre id="json-output"></pre>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // UNDO SYSTEM
+    // ============================================================
+
+    let undoStack = [];
+    const MAX_UNDO = 50;
+    let imageColumns = new Set();
+    let columns = [
+        'id', 'title', 'year', 'decade', 'format', 'starring',
+        'director', 'writer', 'company', 'coverImage', 'backImage',
+        'trailer', 'description'
+    ];
+    imageColumns = new Set(['coverImage', 'backImage']);
+    let data = [];
+
+    const sampleData = [
+        {
+            id: '2011-drive',
+            title: 'Drive',
+            year: 2011,
+            decade: '2010s',
+            format: 'Blu-Ray+DVD',
+            starring: 'Ryan Gosling, Carey Mulligan, Bryan Cranston',
+            director: 'Nicolas Winding Refn',
+            writer: 'Hossein Amini',
+            company: 'Alliance',
+            coverImage: '2011Drive.webp',
+            backImage: '2011Driveback.webp',
+            trailer: 'https://www.youtube.com/watch?v=KBiOF3y1W0Y',
+            description: 'A mysterious Hollywood stuntman and mechanic moonlights as a getaway driver.'
+        },
+        {
+            id: '2013-elysium',
+            title: 'Elysium',
+            year: 2013,
+            decade: '2010s',
+            format: 'Blu-Ray',
+            starring: 'Matt Damon, Jodie Foster, William Fichtner',
+            director: 'Neill Blomkamp',
+            writer: 'Neill Blomkamp',
+            company: 'TriStar Pictures',
+            coverImage: '2013Elysium.webp',
+            backImage: '2013Elysiumback.webp',
+            trailer: 'https://www.youtube.com/watch?v=oIBtePb-dGY',
+            description: 'In the year 2154, the wealthy live on a space station while the rest live on a ruined Earth.'
+        },
+        {
+            id: '1990-predator2',
+            title: 'Predator 2',
+            year: 1990,
+            decade: '1990s',
+            format: 'DVD',
+            starring: 'Kevin Peter Hall, Danny Glover, Gary Busey',
+            director: 'Stephen Hopkins',
+            writer: 'Jim Thomas, John Thomas',
+            company: '20th Century Fox',
+            coverImage: '1990Predator2.webp',
+            backImage: '1990Predator2back.webp',
+            trailer: 'https://www.youtube.com/watch?v=pLe_1SheJms',
+            description: 'A team of commandos on a mission find themselves hunted by an extraterrestrial warrior.'
+        }
+    ];
+
+    // ============================================================
+    // UNDO FUNCTIONS
+    // ============================================================
+
+    function saveState(actionDescription) {
+        const state = {
+            columns: [...columns],
+            data: data.map(row => ({...row})),
+            imageColumns: new Set([...imageColumns]),
+            action: actionDescription || 'Unknown action'
+        };
+        undoStack.push(state);
+        if (undoStack.length > MAX_UNDO) undoStack.shift();
+        updateUndoButton();
+    }
+
+    function undoAction() {
+        if (undoStack.length === 0) {
+            updateStatus('Nothing to undo', 'error');
+            return;
+        }
+        const previousState = undoStack.pop();
+        columns = previousState.columns;
+        data = previousState.data.map(row => ({...row}));
+        imageColumns = new Set([...previousState.imageColumns]);
+        render();
+        document.getElementById('output-section').classList.remove('visible');
+        updateStatus(`↩️ Undo: ${previousState.action}`, 'undo');
+        updateUndoButton();
+    }
+
+    function updateUndoButton() {
+        const btn = document.getElementById('undoBtn');
+        const count = document.getElementById('undoCount');
+        const hasUndo = undoStack.length > 0;
+        btn.disabled = !hasUndo;
+        count.textContent = hasUndo ? undoStack.length : '0';
+        btn.style.opacity = hasUndo ? '1' : '0.6';
+    }
+
+    function clearUndoHistory() {
+        undoStack = [];
+        updateUndoButton();
+    }
+
+    // ============================================================
+    // RENDER FUNCTIONS
+    // ============================================================
+
+    function render() {
+        const thead = document.getElementById('table-head');
+        const tbody = document.getElementById('table-body');
+
+        let headerHTML = '<tr><th class="row-header col-header">#</th>';
+        columns.forEach((col, index) => {
+            const colNum = index + 1;
+            const isImage = imageColumns.has(col);
+            const imageBadge = isImage ? ' <span class="image-badge">🖼️</span>' : '';
+            headerHTML += `<th class="${isImage ? 'image-col' : ''}">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
+                    <span style="font-size:10px; color:#999; font-weight:normal;">#${colNum}</span>
+                    <input type="text" value="${escapeHTML(col)}" 
+                           onchange="renameColumn(${index}, this.value)" 
+                           placeholder="Column name"
+                           style="text-align:center;">
+                    ${imageBadge}
+                </div>
+            </th>`;
+        });
+        headerHTML += '</tr>';
+        thead.innerHTML = headerHTML;
+
+        let bodyHTML = '';
+        if (data.length === 0) {
+            bodyHTML += `<tr>`;
+            bodyHTML += `<td class="row-header">1</td>`;
+            columns.forEach((col) => {
+                const isImage = imageColumns.has(col);
+                if (isImage) {
+                    bodyHTML += `<td class="image-cell">
+                        <div class="image-cell-wrapper">
+                            <div class="image-preview placeholder">📷 No image</div>
+                            <button class="file-upload-btn" onclick="uploadImage(0, '${escapeHTML(col)}')">📤 Upload</button>
+                        </div>
+                    </td>`;
+                } else {
+                    bodyHTML += `<td>
+                        <input type="text" placeholder="Enter ${escapeHTML(col)}" 
+                               onchange="addRowFromInput(this, '${escapeHTML(col)}')">
+                    </td>`;
+                }
+            });
+            bodyHTML += '</tr>';
+        } else {
+            data.forEach((row, rowIndex) => {
+                bodyHTML += `<tr>`;
+                bodyHTML += `<td class="row-header">${rowIndex + 1}</td>`;
+                columns.forEach((col) => {
+                    const isImage = imageColumns.has(col);
+                    const value = row[col] !== undefined ? row[col] : '';
+                    if (isImage) {
+                        bodyHTML += `<td class="image-cell">
+                            <div class="image-cell-wrapper">
+                                ${renderImageCell(rowIndex, col, value)}
+                            </div>
+                        </td>`;
+                    } else {
+                        bodyHTML += `<td>
+                            <input type="text" value="${escapeHTML(String(value))}" 
+                                   onchange="updateCell(${rowIndex}, '${escapeHTML(col)}', this.value)"
+                                   placeholder="Enter ${escapeHTML(col)}">
+                        </td>`;
+                    }
+                });
+                bodyHTML += '</tr>';
+            });
+        }
+
+        tbody.innerHTML = bodyHTML;
+        updateStatus('', '');
+        updateUndoButton();
+    }
+
+    function renderImageCell(rowIndex, colName, value) {
+        if (value && value.trim() !== '') {
+            if (value.startsWith('data:image/')) {
+                return `
+                    <img src="${value}" alt="${colName}" class="image-preview" 
+                         onclick="window.open('${value}', '_blank')">
+                    <span class="image-filename">📷 Uploaded</span>
+                    <div>
+                        <button class="file-upload-btn" onclick="uploadImage(${rowIndex}, '${escapeHTML(colName)}')">🔄 Change</button>
+                        <button class="image-clear-btn" onclick="clearImage(${rowIndex}, '${escapeHTML(colName)}')">✕</button>
+                    </div>
+                `;
+            } else {
+                return `
+                    <img src="${escapeHTML(value)}" alt="${colName}" class="image-preview" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                         onclick="window.open('${escapeHTML(value)}', '_blank')">
+                    <span class="image-filename" style="display:none;">📷 ${escapeHTML(value)}</span>
+                    <span class="image-filename" style="color:#dc3545;">⚠️ ${escapeHTML(value)}</span>
+                    <div>
+                        <button class="file-upload-btn" onclick="uploadImage(${rowIndex}, '${escapeHTML(colName)}')">🔄 Change</button>
+                        <button class="image-clear-btn" onclick="clearImage(${rowIndex}, '${escapeHTML(colName)}')">✕</button>
+                    </div>
+                `;
+            }
+        } else {
+            return `
+                <div class="image-preview placeholder">📷 No image</div>
+                <button class="file-upload-btn" onclick="uploadImage(${rowIndex}, '${escapeHTML(colName)}')">📤 Upload</button>
+            `;
+        }
+    }
+
+    function escapeHTML(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+                  .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // ============================================================
+    // IMAGE HANDLING
+    // ============================================================
+
+    function uploadImage(rowIndex, colName) {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 5 * 1024 * 1024) {
+                updateStatus('Image too large! Max 5MB.', 'error');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const dataUrl = event.target.result;
+                saveState(`Uploaded image to ${colName} (row ${rowIndex + 1})`);
+                if (!data[rowIndex]) data[rowIndex] = {};
+                data[rowIndex][colName] = dataUrl;
+                render();
+                updateStatus(`✅ Image uploaded to ${colName}`, 'success');
+            };
+            reader.readAsDataURL(file);
+        };
+        input.click();
+    }
+
+    function clearImage(rowIndex, colName) {
+        if (!confirm(`Remove image from ${colName}?`)) return;
+        saveState(`Cleared image from ${colName} (row ${rowIndex + 1})`);
+        if (data[rowIndex]) data[rowIndex][colName] = '';
+        render();
+        updateStatus(`🗑️ Image cleared from ${colName}`, 'success');
+    }
+
+    function addImageColumn() {
+        const colName = prompt('Enter image column name:', 'image');
+        if (!colName || colName.trim() === '') return;
+        if (columns.includes(colName.trim())) {
+            updateStatus(`Column "${colName}" already exists`, 'error');
+            return;
+        }
+        saveState(`Added image column "${colName}"`);
+        const trimmedName = colName.trim();
+        columns.push(trimmedName);
+        imageColumns.add(trimmedName);
+        data.forEach(row => { row[trimmedName] = ''; });
+        render();
+        updateStatus(`🖼️ Image column "${colName}" added`, 'success');
+    }
+
+    // ============================================================
+    // CELL OPERATIONS
+    // ============================================================
+
+    function updateCell(rowIndex, colName, value) {
+        if (!data[rowIndex]) data[rowIndex] = {};
+        if (colName === 'title' && value && (!data[rowIndex].id || data[rowIndex].id === '')) {
+            const id = value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            if (id) {
+                data[rowIndex].id = id;
+                render();
+                return;
+            }
+        }
+        data[rowIndex][colName] = value;
+        updateStatus('Cell updated', 'success');
+    }
+
+    function addRowFromInput(inputElement, colName) {
+        const rowIndex = data.length;
+        if (!data[rowIndex]) data[rowIndex] = {};
+        data[rowIndex][colName] = inputElement.value;
+        render();
+        setTimeout(() => {
+            const inputs = document.querySelectorAll('#table-body tr:last-child input');
+            if (inputs.length > 0) inputs[0].focus();
+        }, 50);
+    }
+
+    function renameColumn(index, newName) {
+        const oldName = columns[index];
+        if (oldName === newName) return;
+        if (!newName || newName.trim() === '') {
+            updateStatus('Column name cannot be empty', 'error');
+            render();
+            return;
+        }
+        const trimmedName = newName.trim();
+        columns[index] = trimmedName;
+        if (imageColumns.has(oldName)) {
+            imageColumns.delete(oldName);
+            imageColumns.add(trimmedName);
+        }
+        data = data.map(row => {
+            if (row[oldName] !== undefined) {
+                row[trimmedName] = row[oldName];
+                if (oldName !== trimmedName) delete row[oldName];
+            }
+            return row;
+        });
+        render();
+        updateStatus(`Column renamed to "${trimmedName}"`, 'success');
+    }
+
+    // ============================================================
+    // ROW / COLUMN MANAGEMENT
+    // ============================================================
+
+    function addRow() {
+        const newRow = {};
+        columns.forEach(col => { newRow[col] = ''; });
+        data.push(newRow);
+        render();
+        updateStatus(`Row ${data.length} added`, 'success');
+        const wrapper = document.querySelector('.spreadsheet-wrapper');
+        wrapper.scrollTop = wrapper.scrollHeight;
+    }
+
+    function addColumn() {
+        const colName = prompt('Enter new column name:', 'new_field');
+        if (!colName || colName.trim() === '') return;
+        if (columns.includes(colName.trim())) {
+            updateStatus(`Column "${colName}" already exists`, 'error');
+            return;
+        }
+        columns.push(colName.trim());
+        data.forEach(row => { row[colName.trim()] = ''; });
+        render();
+        updateStatus(`Column "${colName}" added`, 'success');
+    }
+
+    function deleteRow() {
+        if (data.length === 0) {
+            updateStatus('No rows to delete', 'error');
+            return;
+        }
+        const rowNum = prompt(`Enter row number to delete (1-${data.length}):`, data.length);
+        if (!rowNum) return;
+        const index = parseInt(rowNum) - 1;
+        if (isNaN(index) || index < 0 || index >= data.length) {
+            updateStatus('Invalid row number', 'error');
+            return;
+        }
+        data.splice(index, 1);
+        render();
+        updateStatus(`Row ${rowNum} deleted`, 'success');
+    }
+
+    function deleteColumn(index) {
+        if (index === undefined) {
+            if (columns.length <= 1) {
+                updateStatus('Cannot delete the last column', 'error');
+                return;
+            }
+            let colList = columns.map((name, i) => {
+                const isImage = imageColumns.has(name) ? ' 🖼️' : '';
+                return `  ${i + 1}. "${name}"${isImage}`;
+            }).join('\n');
+            const input = prompt(
+                `Enter column NUMBER to delete (1-${columns.length}):\n\n` +
+                `Current columns:\n${colList}\n\nEnter number:`
+            );
+            if (input === null) return;
+            const num = parseInt(input) - 1;
+            if (isNaN(num) || num < 0 || num >= columns.length) {
+                updateStatus(`Invalid column number. Must be 1-${columns.length}`, 'error');
+                return;
+            }
+            index = num;
+        }
+        const colName = columns[index];
+        columns.splice(index, 1);
+        imageColumns.delete(colName);
+        data.forEach(row => { delete row[colName]; });
+        render();
+        updateStatus(`Column "${colName}" deleted`, 'success');
+    }
+
+    function clearAll() {
+        if (!confirm('⚠️ This will delete ALL data. Are you sure?')) return;
+        data = [];
+        render();
+        updateStatus('All data cleared', 'success');
+    }
+
+    // ============================================================
+    // GENERATE JSON
+    // ============================================================
+
+    function generateJSON() {
+        collectAllData();
+        const filteredData = data.filter(row => {
+            return Object.values(row).some(val => val && val.trim() !== '');
+        });
+        if (filteredData.length === 0) {
+            updateStatus('No data to generate. Add some rows first!', 'error');
+            return;
+        }
+        const output = {
+            movies: filteredData.map(row => {
+                const cleanRow = {};
+                columns.forEach(col => {
+                    if (row[col] !== undefined && row[col] !== null && row[col] !== '') {
+                        cleanRow[col] = row[col];
+                    }
+                });
+                return cleanRow;
+            })
+        };
+        const jsonString = JSON.stringify(output, null, 2);
+        document.getElementById('json-output').textContent = jsonString;
+        document.getElementById('output-section').classList.add('visible');
+        updateStatus(`✅ Generated JSON with ${filteredData.length} movies!`, 'success');
+    }
+
+    function collectAllData() {
+        const rows = document.querySelectorAll('#table-body tr');
+        rows.forEach((row, rowIndex) => {
+            const inputs = row.querySelectorAll('input');
+            if (inputs.length === 0) return;
+            if (!data[rowIndex]) data[rowIndex] = {};
+            inputs.forEach((input, colIndex) => {
+                if (colIndex < columns.length) {
+                    const colName = columns[colIndex];
+                    data[rowIndex][colName] = input.value;
+                }
+            });
+        });
+    }
+
+    // ============================================================
+    // COPY / EXPORT
+    // ============================================================
+
+    function copyJSON() {
+        const jsonText = document.getElementById('json-output').textContent;
+        if (!jsonText) {
+            updateStatus('Nothing to copy. Generate JSON first.', 'error');
+            return;
+        }
+        navigator.clipboard.writeText(jsonText).then(() => {
+            updateStatus('✅ JSON copied to clipboard!', 'success');
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = jsonText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            updateStatus('✅ JSON copied to clipboard!', 'success');
+        });
+    }
+
+    // ============================================================
+    // IMPORT JSON
+    // ============================================================
+
+    function importJSON(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const imported = JSON.parse(e.target.result);
+                let importedMovies = [];
+                if (imported.movies && Array.isArray(imported.movies)) {
+                    importedMovies = imported.movies;
+                } else if (Array.isArray(imported)) {
+                    importedMovies = imported;
+                } else {
+                    for (const key in imported) {
+                        if (Array.isArray(imported[key])) {
+                            importedMovies = imported[key];
+                            break;
+                        }
+                    }
+                }
+                if (importedMovies.length === 0) {
+                    updateStatus('No movie data found in the JSON file', 'error');
+                    return;
+                }
+                const allKeys = new Set();
+                importedMovies.forEach(row => {
+                    Object.keys(row).forEach(key => allKeys.add(key));
+                });
+                const newColumns = Array.from(allKeys);
+                const priority = ['id', 'title', 'year', 'decade'];
+                const sorted = [...priority.filter(p => newColumns.includes(p)), 
+                               ...newColumns.filter(c => !priority.includes(c))];
+                columns = sorted;
+                // Reset imageColumns - detect image columns by content
+                imageColumns = new Set();
+                data = importedMovies.map(row => {
+                    const newRow = {};
+                    columns.forEach(col => {
+                        const val = row[col] !== undefined ? String(row[col]) : '';
+                        newRow[col] = val;
+                        // Auto-detect image columns (URLs ending with image extensions or data URLs)
+                        if (val && (val.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp)$/i) || val.startsWith('data:image/'))) {
+                            imageColumns.add(col);
+                        }
+                    });
+                    return newRow;
+                });
+                clearUndoHistory();
+                render();
+                document.getElementById('output-section').classList.remove('visible');
+                updateStatus(`✅ Imported ${data.length} movies from JSON!`, 'success');
+                event.target.value = '';
+            } catch (err) {
+                updateStatus(`❌ Error importing JSON: ${err.message}`, 'error');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    // ============================================================
+    // STATUS / UTILITY
+    // ============================================================
+
+    function updateStatus(message, type) {
+        const statusEl = document.getElementById('status');
+        if (!message) {
+            statusEl.style.display = 'none';
+            return;
+        }
+        statusEl.textContent = message;
+        statusEl.className = 'status ' + (type || 'success');
+        statusEl.style.display = 'block';
+        setTimeout(() => {
+            statusEl.style.display = 'none';
+        }, 4000);
+    }
+
+    // ============================================================
+    // KEYBOARD SHORTCUTS
+    // ============================================================
+
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'z') { e.preventDefault(); undoAction(); }
+        if (e.ctrlKey && e.key === 'Enter') { e.preventDefault(); generateJSON(); }
+        if (e.ctrlKey && e.key === 's') { e.preventDefault(); generateJSON(); }
+    });
+
+    // ============================================================
+    // INIT
+    // ============================================================
+
+    data = sampleData.map(row => {
+        const newRow = {};
+        columns.forEach(col => {
+            newRow[col] = row[col] !== undefined ? String(row[col]) : '';
+        });
+        return newRow;
+    });
+
+    clearUndoHistory();
+    render();
+    updateStatus('📊 Ready! Edit cells, add rows/columns, then click GENERATE JSON', 'success');
+</script>
+
+</body>
+</html>
