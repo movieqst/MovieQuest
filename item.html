@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Item — Movie Quest Canada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#131211;
+    --paper:#FAF8F3;
+    --card:#F1ECE0;
+    --red:#C8102E;
+    --red-dark:#98081F;
+    --stone:#8C8578;
+    --line:#E1DACB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  a{color:inherit;}
+
+  header{
+    background:var(--ink);
+    color:var(--paper);
+    padding:18px 28px;
+    border-bottom:6px solid var(--red);
+  }
+  .wordmark{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(1.4rem,3vw,2rem);
+    letter-spacing:1px;
+    text-decoration:none;
+  }
+  .wordmark span{color:var(--red);}
+
+  .container{
+    max-width:920px;
+    margin:0 auto;
+    padding:30px 24px 60px;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:var(--stone);
+    text-decoration:none;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.85rem;
+    font-weight:700;
+  }
+  .back-link:hover{ color:var(--red); }
+
+  .detail{
+    background:var(--card);
+    border-radius:10px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:300px 1fr;
+    box-shadow:0 8px 30px rgba(0,0,0,0.1);
+  }
+  .poster-wrap{
+    position:relative;
+    background:#e5ded0;
+  }
+  .poster-wrap img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .format-tag{
+    position:absolute;
+    top:0; right:0;
+    background:var(--red);
+    color:var(--paper);
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:0.75rem;
+    letter-spacing:0.5px;
+    padding:7px 14px 7px 18px;
+    clip-path:polygon(18px 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .info{
+    padding:28px 32px;
+    display:flex;
+    flex-direction:column;
+  }
+  .item-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.9rem;
+    letter-spacing:0.5px;
+    line-height:1.1;
+    margin-bottom:6px;
+  }
+  .item-meta{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--stone);
+    font-size:0.9rem;
+    margin-bottom:18px;
+  }
+  .item-desc{
+    font-size:1rem;
+    line-height:1.6;
+    margin-bottom:24px;
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:24px;
+    padding-bottom:24px;
+    border-bottom:1px dashed var(--line);
+  }
+  .price-value{
+    font-family:'Anton',sans-serif;
+    font-size:2rem;
+    color:var(--red);
+  }
+  .price-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.8rem;
+    color:var(--stone);
+    text-transform:uppercase;
+  }
+
+  .cta-row{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:auto;
+  }
+  .cta-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 20px;
+    border-radius:6px;
+    font-weight:700;
+    font-size:1rem;
+    text-decoration:none;
+    text-align:center;
+    transition:all 0.15s;
+  }
+  .cta-primary{
+    background:var(--red);
+    color:var(--paper);
+  }
+  .cta-primary:hover{ background:var(--red-dark); }
+  .cta-secondary{
+    background:transparent;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+  }
+  .cta-secondary:hover{ background:var(--ink); color:var(--paper); }
+
+  .tidbits-section{
+    margin-top:24px;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:10px;
+    padding:24px 28px;
+  }
+  .tidbits-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.2rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .tidbits-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .tidbits-list li{
+    padding-left:22px;
+    position:relative;
+    line-height:1.55;
+    font-size:0.95rem;
+    color:#e9e5db;
+  }
+  .tidbits-list li::before{
+    content:"★";
+    position:absolute;
+    left:0; top:1px;
+    color:var(--red);
+    font-size:0.8rem;
+  }
+
+  .not-found{
+    text-align:center;
+    padding:80px 20px;
+    color:var(--stone);
+  }
+  .not-found a{ color:var(--red); text-decoration:none; font-weight:700; }
+
+  .hidden{ display:none !important; }
+
+  @media (max-width:640px){
+    .detail{ grid-template-columns:1fr; }
+    .poster-wrap{ aspect-ratio:5/7; }
+    .info{ padding:22px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="wordmark" href="./">MOVIE QUEST<span>·</span>CANADA</a>
+</header>
+
+<div class="container">
+  <a class="back-link" href="./">← BACK TO CATALOGUE</a>
+
+  <div id="loading" class="not-found">Loading item…</div>
+
+  <div id="not-found" class="not-found hidden">
+    <p>Couldn't find that item in the catalogue.</p>
+    <p style="margin-top:10px;"><a href="./">← Return to the catalogue</a></p>
+  </div>
+
+  <div id="detail" class="detail hidden">
+    <div class="poster-wrap">
+      <img id="poster" src="" alt="">
+      <div class="format-tag" id="formatTag"></div>
+    </div>
+    <div class="info">
+      <div class="item-title" id="title"></div>
+      <div class="item-meta" id="meta"></div>
+      <div class="item-desc" id="desc"></div>
+      <div class="price-row">
+        <div class="price-value" id="price"></div>
+        <div class="price-label">from our store</div>
+      </div>
+      <div class="cta-row">
+        <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">Buy at Movie Quest eBay Store →</a>
+        <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">See other eBay listings →</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="tidbitsSection" class="tidbits-section hidden">
+    <div class="tidbits-title">🎬 Did You Know?</div>
+    <ul class="tidbits-list" id="tidbitsList"></ul>
+  </div>
+</div>
+
+<script>
+async function loadItem(){
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  const loading = document.getElementById('loading');
+  const notFound = document.getElementById('not-found');
+  const detail = document.getElementById('detail');
+
+  try {
+    const res = await fetch('data.json');
+    const data = await res.json();
+    const item = data.find(t => t.id === id);
+
+    if (!item){
+      loading.classList.add('hidden');
+      notFound.classList.remove('hidden');
+      return;
+    }
+
+    loading.classList.add('hidden');
+    detail.classList.remove('hidden');
+
+    document.title = item.title + ' — Movie Quest Canada';
+    document.getElementById('poster').src = item.image;
+    document.getElementById('poster').alt = item.title;
+    document.getElementById('formatTag').textContent = item.format;
+    document.getElementById('title').textContent = item.title;
+    document.getElementById('meta').textContent = [item.year, item.format, item.condition].filter(Boolean).join('  ·  ');
+    document.getElementById('desc').textContent = item.desc || '';
+    document.getElementById('price').textContent = item.price != null ? '$' + Number(item.price).toFixed(2) : '—';
+    document.getElementById('storeLink').href = item.storeUrl || '#';
+    document.getElementById('searchLink').href = item.searchUrl || '#';
+
+    const tidbitsSection = document.getElementById('tidbitsSection');
+    const tidbitsList = document.getElementById('tidbitsList');
+    if (item.tidbits && item.tidbits.length){
+      tidbitsList.innerHTML = '';
+      item.tidbits.forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = t;
+        tidbitsList.appendChild(li);
+      });
+      tidbitsSection.classList.remove('hidden');
+    } else {
+      tidbitsSection.classList.add('hidden');
+    }
+
+  } catch (err){
+    loading.textContent = 'Error loading item. Please check that data.json is in the same folder.';
+    console.error(err);
+  }
+}
+
+loadItem();
+</script>
+</body>
+</html>

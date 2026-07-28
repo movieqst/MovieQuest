@@ -1,0 +1,313 @@
+[
+  {
+    "id": "casablanca-1942-dvd",
+    "title": "Casablanca",
+    "year": 1942,
+    "format": "DVD",
+    "condition": "Used - Very Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Casablanca",
+    "desc": "Bogart and Bergman in the WWII-era romance classic. Widescreen restoration.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=casablanca-1942-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Casablanca+1942+DVD&campid=5339133571&customid=casablanca-1942-dvd",
+    "price": 8.99,
+    "categories": [
+      "pre1949"
+    ]
+  },
+  {
+    "id": "ben-hur-1959-dvd",
+    "title": "Ben-Hur",
+    "year": 1959,
+    "format": "DVD",
+    "condition": "Used - Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Ben-Hur",
+    "desc": "Charlton Heston's epic chariot-race classic, 2-disc special edition.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=ben-hur-1959-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Ben-Hur+1959+DVD&campid=5339133571&customid=ben-hur-1959-dvd",
+    "price": 11.99,
+    "categories": [
+      "1950s"
+    ]
+  },
+  {
+    "id": "psycho-1960-bluray",
+    "title": "Psycho",
+    "year": 1960,
+    "format": "Blu-ray",
+    "condition": "Used - Like New",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Psycho",
+    "desc": "Hitchcock's shower-scene thriller, remastered Blu-ray.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=psycho-1960-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Psycho+1960+Blu-ray&campid=5339133571&customid=psycho-1960-bluray",
+    "price": 14.99,
+    "categories": [
+      "1960s"
+    ]
+  },
+  {
+    "id": "jaws-1975-vhs",
+    "title": "Jaws",
+    "year": 1975,
+    "format": "VHS",
+    "condition": "Used - Good, plays well",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Jaws",
+    "desc": "Spielberg's original summer blockbuster on VHS, clamshell case.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=jaws-1975-vhs&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Jaws+1975+VHS&campid=5339133571&customid=jaws-1975-vhs",
+    "price": 6.99,
+    "categories": [
+      "1970s"
+    ]
+  },
+  {
+    "id": "the-shining-1980-dvd",
+    "title": "The Shining",
+    "year": 1980,
+    "format": "DVD",
+    "condition": "Used - Very Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=The+Shining",
+    "desc": "Kubrick's Overlook Hotel horror classic, widescreen edition.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=the-shining-1980-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The+Shining+1980+DVD&campid=5339133571&customid=the-shining-1980-dvd",
+    "price": 9.99,
+    "categories": [
+      "1980s"
+    ]
+  },
+  {
+    "id": "back-to-the-future-1985-vhs",
+    "title": "Back to the Future",
+    "year": 1985,
+    "format": "VHS",
+    "condition": "Used - Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Back+to+the+Future",
+    "desc": "Marty McFly's time-travelling DeLorean adventure, original release VHS.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=back-to-the-future-1985-vhs&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Back+to+the+Future+1985+VHS&campid=5339133571&customid=back-to-the-future-1985-vhs",
+    "price": 7.99,
+    "categories": [
+      "1980s"
+    ]
+  },
+  {
+    "id": "pulp-fiction-1994-dvd",
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "format": "DVD",
+    "condition": "Used - Very Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Pulp+Fiction",
+    "desc": "Tarantino's nonlinear crime classic, collector's edition DVD.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=pulp-fiction-1994-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Pulp+Fiction+1994+DVD&campid=5339133571&customid=pulp-fiction-1994-dvd",
+    "price": 8.49,
+    "categories": [
+      "1990s"
+    ]
+  },
+  {
+    "id": "gladiator-2000-dvd",
+    "title": "Gladiator",
+    "year": 2000,
+    "format": "DVD",
+    "condition": "Used - Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Gladiator",
+    "desc": "Ridley Scott's Roman Colosseum epic, 2-disc widescreen edition.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=gladiator-2000-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Gladiator+2000+DVD&campid=5339133571&customid=gladiator-2000-dvd",
+    "price": 6.99,
+    "categories": [
+      "2000s"
+    ]
+  },
+  {
+    "id": "inception-2010-bluray",
+    "title": "Inception",
+    "year": 2010,
+    "format": "Blu-ray",
+    "condition": "Used - Like New",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Inception",
+    "desc": "Nolan's dream-within-a-dream heist thriller on Blu-ray.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=inception-2010-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Inception+2010+Blu-ray&campid=5339133571&customid=inception-2010-bluray",
+    "price": 12.99,
+    "categories": [
+      "2010s"
+    ]
+  },
+  {
+    "id": "dune-2021-bluray",
+    "title": "Dune",
+    "year": 2021,
+    "format": "Blu-ray",
+    "condition": "Used - Like New",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Dune",
+    "desc": "Villeneuve's Arrakis epic, part one, 4K UHD + Blu-ray combo.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=dune-2021-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Dune+2021+Blu-ray&campid=5339133571&customid=dune-2021-bluray",
+    "price": 16.99,
+    "categories": [
+      "2020s"
+    ]
+  },
+  {
+    "id": "breaking-bad-complete-series-dvd",
+    "title": "Breaking Bad: The Complete Series",
+    "year": 2013,
+    "format": "DVD",
+    "condition": "Used - Very Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Breaking+Bad",
+    "desc": "All 5 seasons of Walter White's transformation, complete box set.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=breaking-bad-complete-series-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Breaking+Bad+Complete+Series+DVD&campid=5339133571&customid=breaking-bad-complete-series-dvd",
+    "price": 34.99,
+    "categories": [
+      "tvseries"
+    ]
+  },
+  {
+    "id": "abbey-road-1969-cd",
+    "title": "The Beatles - Abbey Road",
+    "year": 1969,
+    "format": "CD",
+    "condition": "Used - Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Abbey+Road",
+    "desc": "Remastered CD reissue of the Beatles' 1969 studio album.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=abbey-road-1969-cd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Beatles+Abbey+Road+CD&campid=5339133571&customid=abbey-road-1969-cd",
+    "price": 9.99,
+    "categories": [
+      "music"
+    ]
+  },
+  {
+    "id": "criterion-box-set-misc",
+    "title": "Criterion Collection Sampler Box",
+    "year": 2015,
+    "format": "Blu-ray",
+    "condition": "Used - Very Good",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Criterion",
+    "desc": "Mixed lot of Criterion Collection restorations, assorted titles.",
+    "storeUrl": "https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=criterion-box-set-misc&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Criterion+Collection+Box+Set&campid=5339133571&customid=criterion-box-set-misc",
+    "price": 24.99,
+    "categories": [
+      "etc"
+    ]
+  },
+  {
+    "id": "the-wizard-1989-dvd",
+    "title": "The Wizard",
+    "year": 1989,
+    "format": "DVD",
+    "condition": "",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=The+Wizard",
+    "desc": "Two runaway brothers cross the country so the younger one, a gifted but withdrawn video-game prodigy, can compete in a Nintendo tournament in California. Directed by Todd Holland and starring Fred Savage, Christian Slater, and Jenny Lewis.",
+    "tidbits": [
+      "The film's real claim to fame is introducing North American audiences to Super Mario Bros. 3 months before it hit store shelves, making the movie essentially a feature-length product demo.",
+      "This was Tobey Maguire's first-ever film role, though he went uncredited for it.",
+      "The giant roadside dinosaurs the kids climb on are a real tourist stop in Cabazon, California, that also showed up in Pee-wee's Big Adventure.",
+      "Beau Bridges and Christian Slater both said in interviews they had barely any interest in video games before filming, then genuinely got hooked after playing on set.",
+      "It took until 2006 for the film to finally get an official US DVD release, after years of fans requesting it."
+    ],
+    "storeUrl": "",
+    "searchUrl": "",
+    "price": null,
+    "categories": [
+      "1980s"
+    ]
+  },
+  {
+    "id": "trailer-park-boys-season-7-dvd",
+    "title": "Trailer Park Boys: Season 7",
+    "year": 2001,
+    "format": "DVD",
+    "condition": "",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Trailer+Park+Boys",
+    "desc": "The mockumentary-style Canadian comedy follows Ricky, Julian, and Bubbles as their small-time schemes at a Nova Scotia trailer park keep landing them back behind bars. Season 7 (2007) was the finale of the original Showcase run, which began in 2001.",
+    "tidbits": [
+      "The series started life on Showcase in 2001 and used a mockumentary format years before The Office popularized the style in North America.",
+      "Bubbles' iconic thick glasses weren't a costume department choice — actor Mike Smith's girlfriend picked them up at a Texas estate sale as a joke, and the bit stuck.",
+      "Ricky traditionally wears the same shirt for an entire season, a quiet continuity gag the show kept up for years.",
+      "Across the original seven seasons, the cast reportedly said a certain four-letter word over 1,280 times combined — averaging roughly 46 times per episode.",
+      "The show's production moved trailer parks almost every season, filming in a different real Nova Scotia location for seasons one through four before settling into a park the crew purchased outright from season five on."
+    ],
+    "storeUrl": "",
+    "searchUrl": "",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ]
+  },
+  {
+    "id": "the-beach-2000-dvd",
+    "title": "The Beach",
+    "year": 2000,
+    "format": "DVD",
+    "condition": "",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=The+Beach",
+    "desc": "A restless American backpacker in Bangkok follows a mysterious map to a hidden island community in Thailand, where paradise slowly reveals its darker side. Directed by Danny Boyle and starring Leonardo DiCaprio in his first major role after Titanic.",
+    "tidbits": [
+      "Ewan McGregor, who'd worked with director Danny Boyle on Trainspotting, was originally attached to star before the studio pushed for DiCaprio instead — a falling-out that strained the director-actor relationship going in.",
+      "DiCaprio reportedly earned around $20 million for the role, a payday tied directly to Titanic's massive success just two years earlier.",
+      "The production altered the real Maya Bay beach in Thailand to look more idyllic for filming, which triggered an environmental lawsuit and a court-ordered restoration years later.",
+      "The film's mountain-enclosed look at the beach is a visual trick — editors digitally added a mountain in post-production, since the real cove has a gap facing open sea.",
+      "DiCaprio was nominated for a Razzie for Worst Actor for the role, a rough follow-up to his Titanic-era stardom."
+    ],
+    "storeUrl": "",
+    "searchUrl": "",
+    "price": null,
+    "categories": [
+      "2000s"
+    ]
+  },
+  {
+    "id": "spy-cold-french-connection-double-feature-dvd",
+    "title": "The Spy Who Came in from the Cold / The French Connection (Double Feature)",
+    "year": 1965,
+    "format": "DVD",
+    "condition": "",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=Double+Feature",
+    "desc": "A double feature pairing two landmark thrillers: Martin Ritt's 1965 Cold War spy drama The Spy Who Came in from the Cold, starring Richard Burton as a burned-out British agent, and William Friedkin's 1971 crime classic The French Connection, starring Gene Hackman as a relentless NYPD narcotics detective.",
+    "tidbits": [
+      "Richard Burton and director Martin Ritt reportedly clashed constantly on set of The Spy Who Came in from the Cold — tension some critics believe fed directly into Burton's brooding, career-best performance.",
+      "The French Connection's famous elevated-train car chase was shot largely without permits; director William Friedkin has said he simply paid a transit official to let the crew film on the tracks.",
+      "Gene Hackman did the majority of his own driving during that chase, reaching real speeds of 70-90 mph through Brooklyn streets with live traffic and pedestrians still around.",
+      "The French Connection was based on a real 1961 NYPD drug bust that seized 112 pounds of heroin worth roughly $32 million at the time.",
+      "The Spy Who Came in from the Cold was adapted from John le Carré's own bestselling novel, later named by Publishers Weekly as the best spy novel ever written."
+    ],
+    "storeUrl": "",
+    "searchUrl": "",
+    "price": null,
+    "categories": [
+      "1960s",
+      "1970s"
+    ],
+    "years": [
+      1965,
+      1971
+    ]
+  },
+  {
+    "id": "the-legend-of-zorro-2005-bluray",
+    "title": "The Legend of Zorro",
+    "year": 2005,
+    "format": "Blu-ray",
+    "condition": "",
+    "image": "https://placehold.co/400x560/121212/FAF8F3?text=The+Legend+of+Zorro",
+    "desc": "Years after donning the mask, Alejandro de la Vega must balance his secret identity as Zorro with his crumbling marriage while a conspiracy threatens California's path to statehood. Antonio Banderas and Catherine Zeta-Jones return in this sequel to The Mask of Zorro.",
+    "tidbits": [
+      "Antonio Banderas trained with Spain's Olympic fencing team and practiced with real steel swords before switching to lighter aluminum ones for filming.",
+      "Young co-star Adrian Alonso didn't speak English during filming and learned all of his lines phonetically — the same technique Banderas himself used decades earlier for The Mambo Kings.",
+      "The train seen in the climax couldn't actually move under its own power; the illusion was created using an out-of-shot diesel locomotive, a bluescreen setup, and even a scale model.",
+      "A planned third Zorro film with Banderas and Zeta-Jones never happened after this sequel underperformed at the box office relative to its budget.",
+      "Zorro is widely cited as a direct influence on the creation of Batman, making this franchise something of a spiritual ancestor to the modern superhero genre."
+    ],
+    "storeUrl": "",
+    "searchUrl": "",
+    "price": null,
+    "categories": [
+      "2000s"
+    ]
+  }
+]
