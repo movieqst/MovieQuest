@@ -42,7 +42,7 @@
   .wordmark span{color:var(--red);}
 
   .container{
-    max-width:1180px;
+    max-width:1360px;
     margin:0 auto;
     padding:30px 24px 60px;
   }
@@ -108,6 +108,16 @@
   }
   .flank.next{ text-align:right; }
   .flank.next .flank-label{ text-align:right; }
+
+  .flank-far{
+    width:90px;
+    opacity:0.68;
+  }
+  .flank-far:hover{ opacity:1; }
+  .flank-far .flank-title{
+    padding-top:10px;
+    font-size:0.7rem;
+  }
 
   .detail{
     background:var(--card);
@@ -350,10 +360,15 @@
   </div>
 
   <div id="detailLayout" class="detail-layout hidden">
-    <a id="prevFlank" class="flank prev hidden" href="#">
-      <div class="flank-poster"><img id="prevFlankImg" src="" alt=""></div>
+    <a id="prevFlank2" class="flank flank-far prev hidden" href="#">
+      <div class="flank-poster"><img id="prevFlank2Img" src="" alt=""></div>
+      <div class="flank-title" id="prevFlank2Title"></div>
+    </a>
+
+    <a id="prevFlank1" class="flank prev hidden" href="#">
+      <div class="flank-poster"><img id="prevFlank1Img" src="" alt=""></div>
       <div class="flank-label">← Previous</div>
-      <div class="flank-title" id="prevFlankTitle"></div>
+      <div class="flank-title" id="prevFlank1Title"></div>
     </a>
 
     <div id="detail" class="detail">
@@ -379,10 +394,15 @@
       </div>
     </div>
 
-    <a id="nextFlank" class="flank next hidden" href="#">
-      <div class="flank-poster"><img id="nextFlankImg" src="" alt=""></div>
+    <a id="nextFlank1" class="flank next hidden" href="#">
+      <div class="flank-poster"><img id="nextFlank1Img" src="" alt=""></div>
       <div class="flank-label">Next →</div>
-      <div class="flank-title" id="nextFlankTitle"></div>
+      <div class="flank-title" id="nextFlank1Title"></div>
+    </a>
+
+    <a id="nextFlank2" class="flank flank-far next hidden" href="#">
+      <div class="flank-poster"><img id="nextFlank2Img" src="" alt=""></div>
+      <div class="flank-title" id="nextFlank2Title"></div>
     </a>
   </div>
 
@@ -487,28 +507,34 @@ async function loadItem(){
     loading.classList.add('hidden');
     detailLayout.classList.remove('hidden');
 
-    // Populate previous/next flank cards
-    const prevItem = data.length > 1 ? data[(index - 1 + data.length) % data.length] : null;
-    const nextItem = data.length > 1 ? data[(index + 1) % data.length] : null;
+    // Populate previous/next flank cards (2 per side, wrapping around the ends)
+    const total = data.length;
+    const at = (offset) => total > 0 ? data[((index + offset) % total + total) % total] : null;
 
-    const prevFlank = document.getElementById('prevFlank');
-    const nextFlank = document.getElementById('nextFlank');
+    const prev1 = total > 1 ? at(-1) : null;
+    const next1 = total > 1 ? at(1) : null;
+    let prev2 = total > 2 ? at(-2) : null;
+    let next2 = total > 2 ? at(2) : null;
 
-    if (prevItem){
-      prevFlank.href = `item.html?id=${encodeURIComponent(prevItem.id)}`;
-      document.getElementById('prevFlankImg').src = prevItem.image;
-      document.getElementById('prevFlankImg').alt = prevItem.title;
-      document.getElementById('prevFlankTitle').textContent = prevItem.title;
-      prevFlank.classList.remove('hidden');
+    // Avoid showing a duplicate title when the catalogue is small enough that
+    // the 2-away item wraps around to something already shown elsewhere.
+    if (prev2 && (prev2.id === item.id || prev2.id === next1?.id)) prev2 = null;
+    if (next2 && (next2.id === item.id || next2.id === prev1?.id)) next2 = null;
+
+    function fillFlank(prefix, flankItem){
+      const el = document.getElementById(prefix);
+      if (!flankItem){ return; }
+      el.href = `item.html?id=${encodeURIComponent(flankItem.id)}`;
+      document.getElementById(prefix + 'Img').src = flankItem.image;
+      document.getElementById(prefix + 'Img').alt = flankItem.title;
+      document.getElementById(prefix + 'Title').textContent = flankItem.title;
+      el.classList.remove('hidden');
     }
 
-    if (nextItem){
-      nextFlank.href = `item.html?id=${encodeURIComponent(nextItem.id)}`;
-      document.getElementById('nextFlankImg').src = nextItem.image;
-      document.getElementById('nextFlankImg').alt = nextItem.title;
-      document.getElementById('nextFlankTitle').textContent = nextItem.title;
-      nextFlank.classList.remove('hidden');
-    }
+    fillFlank('prevFlank1', prev1);
+    fillFlank('prevFlank2', prev2);
+    fillFlank('nextFlank1', next1);
+    fillFlank('nextFlank2', next2);
 
     document.title = item.title + ' — Movie Quest Canada';
     document.getElementById('poster').src = item.image;
