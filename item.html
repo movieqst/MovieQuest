@@ -488,8 +488,8 @@ async function loadItem(){
     detailLayout.classList.remove('hidden');
 
     // Populate previous/next flank cards
-    const prevItem = index > 0 ? data[index - 1] : null;
-    const nextItem = index < data.length - 1 ? data[index + 1] : null;
+    const prevItem = data.length > 1 ? data[(index - 1 + data.length) % data.length] : null;
+    const nextItem = data.length > 1 ? data[(index + 1) % data.length] : null;
 
     const prevFlank = document.getElementById('prevFlank');
     const nextFlank = document.getElementById('nextFlank');
