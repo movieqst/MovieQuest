@@ -16,8 +16,8 @@
     --red-dark:#98081F;
     --stone:#6E685C;
     --line:#E1DACB;
-    --fs-lg:1.1875rem;   /* larger text: +25% */
-    --fs-sm:0.95rem;     /* smaller text: 80% of --fs-lg */
+    --fs-lg:1.5rem;      /* titles: +25% again from last round */
+    --fs-sm:1.05rem;     /* small text: 70% of --fs-lg */
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
@@ -182,7 +182,7 @@
     color:var(--stone);
     text-decoration:none;
     font-family:'JetBrains Mono',monospace;
-    font-size:0.85rem;
+    font-size:var(--fs-sm);
     font-weight:700;
   }
   .back-link:hover{ color:var(--red); }
@@ -223,7 +223,7 @@
   }
   .flank-label{
     font-family:'JetBrains Mono',monospace;
-    font-size:0.62rem;
+    font-size:var(--fs-sm);
     font-weight:700;
     letter-spacing:0.6px;
     text-transform:uppercase;
@@ -231,7 +231,7 @@
     padding:8px 10px 0;
   }
   .flank-title{
-    font-size:0.78rem;
+    font-size:var(--fs-sm);
     font-weight:700;
     line-height:1.25;
     padding:3px 10px 10px;
@@ -246,7 +246,7 @@
   .flank-far:hover{ opacity:1; }
   .flank-far .flank-title{
     padding-top:10px;
-    font-size:0.7rem;
+    font-size:calc(var(--fs-sm) * 0.85);
   }
 
   .detail{
@@ -272,6 +272,40 @@
     object-fit:cover;
     display:block;
   }
+  .poster-fallback{
+    width:100%; height:100%;
+    background:#0c0c0c;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    gap:10px;
+  }
+  .poster-fallback .pf-title{
+    font-family:'Work Sans',sans-serif;
+    font-weight:700;
+    font-size:1.3rem;
+    line-height:1.3;
+  }
+  .poster-fallback .pf-year{
+    font-family:'JetBrains Mono',monospace;
+    font-size:1rem;
+    color:#a29d90;
+  }
+  .flank-poster .poster-fallback{
+    padding:8px;
+    gap:4px;
+  }
+  .flank-poster .poster-fallback .pf-title{
+    font-size:0.72rem;
+    line-height:1.2;
+  }
+  .flank-poster .poster-fallback .pf-year{
+    font-size:0.62rem;
+  }
   .format-tag{
     position:absolute;
     top:0; right:0;
@@ -279,7 +313,7 @@
     color:var(--paper);
     font-family:'JetBrains Mono',monospace;
     font-weight:700;
-    font-size:0.75rem;
+    font-size:var(--fs-sm);
     letter-spacing:0.5px;
     padding:7px 14px 7px 18px;
     clip-path:polygon(18px 0, 100% 0, 100% 100%, 0 100%);
@@ -322,7 +356,7 @@
     background:rgba(19,18,17,0.7);
     color:var(--paper);
     font-family:'JetBrains Mono',monospace;
-    font-size:0.7rem;
+    font-size:var(--fs-sm);
     padding:4px 10px;
     border-radius:12px;
     z-index:10;
@@ -335,7 +369,7 @@
   }
   .item-title{
     font-family:'Anton',sans-serif;
-    font-size:1.9rem;
+    font-size:2.375rem;
     letter-spacing:0.5px;
     line-height:1.1;
     margin-bottom:6px;
@@ -343,11 +377,11 @@
   .item-meta{
     font-family:'JetBrains Mono',monospace;
     color:var(--stone);
-    font-size:0.9rem;
+    font-size:var(--fs-sm);
     margin-bottom:18px;
   }
   .item-desc{
-    font-size:1rem;
+    font-size:1.1rem;
     line-height:1.6;
     margin-bottom:24px;
   }
@@ -361,12 +395,12 @@
   }
   .price-value{
     font-family:'Anton',sans-serif;
-    font-size:2rem;
+    font-size:2.5rem;
     color:var(--red);
   }
   .price-label{
     font-family:'JetBrains Mono',monospace;
-    font-size:0.8rem;
+    font-size:var(--fs-sm);
     color:var(--stone);
     text-transform:uppercase;
   }
@@ -385,7 +419,7 @@
     padding:14px 20px;
     border-radius:6px;
     font-weight:700;
-    font-size:1rem;
+    font-size:1.25rem;
     text-decoration:none;
     text-align:center;
     transition:all 0.15s;
@@ -396,11 +430,11 @@
   }
   .cta-primary:hover{ background:var(--red-dark); }
   .cta-secondary{
-    background:transparent;
+    background:var(--red);
     color:var(--ink);
-    border:1.5px solid var(--ink);
+    border:1.5px solid var(--red);
   }
-  .cta-secondary:hover{ background:var(--ink); color:var(--paper); }
+  .cta-secondary:hover{ background:var(--red-dark); border-color:var(--red-dark); }
 
   .tidbits-section{
     margin-top:24px;
@@ -411,7 +445,7 @@
   }
   .tidbits-title{
     font-family:'Anton',sans-serif;
-    font-size:1.2rem;
+    font-size:1.5rem;
     letter-spacing:0.5px;
     color:var(--red);
     margin-bottom:14px;
@@ -426,7 +460,7 @@
     padding-left:22px;
     position:relative;
     line-height:1.55;
-    font-size:0.95rem;
+    font-size:var(--fs-sm);
     color:#e9e5db;
   }
   .tidbits-list li::before{
@@ -488,7 +522,7 @@
   }
   .meta-title{
     font-family:'Anton',sans-serif;
-    font-size:1.2rem;
+    font-size:1.5rem;
     letter-spacing:0.5px;
     color:var(--red);
     margin-bottom:14px;
@@ -505,14 +539,14 @@
   }
   .meta-label{
     font-family:'JetBrains Mono',monospace;
-    font-size:0.72rem;
+    font-size:var(--fs-sm);
     font-weight:700;
     letter-spacing:0.6px;
     text-transform:uppercase;
     color:var(--stone);
   }
   .meta-value{
-    font-size:0.95rem;
+    font-size:var(--fs-sm);
     font-weight:600;
     line-height:1.4;
     color:var(--ink);
@@ -528,7 +562,7 @@
   }
   .trailer-title{
     font-family:'Anton',sans-serif;
-    font-size:1.2rem;
+    font-size:1.5rem;
     letter-spacing:0.5px;
     color:var(--red);
     margin-bottom:14px;
@@ -716,6 +750,29 @@ let currentImgIndex = 1;
 let imgBaseUrl = '';
 let totalImages = 1;
 
+// Shows the real poster image, or a black-background/white-text fallback
+// card (title + year) when the item has no image on file.
+function renderPoster(containerEl, imgEl, item) {
+  if (item.image) {
+    imgEl.src = item.image;
+    imgEl.alt = item.title;
+    imgEl.classList.remove('hidden');
+    const fb = containerEl.querySelector('.poster-fallback');
+    if (fb) fb.remove();
+    return true;
+  }
+  imgEl.classList.add('hidden');
+  imgEl.removeAttribute('src');
+  let fb = containerEl.querySelector('.poster-fallback');
+  if (!fb) {
+    fb = document.createElement('div');
+    fb.className = 'poster-fallback';
+    containerEl.appendChild(fb);
+  }
+  fb.innerHTML = `<div class="pf-title">${item.title}</div>${item.year ? `<div class="pf-year">${item.year}</div>` : ''}`;
+  return false;
+}
+
 function initCarousel(imageUrl) {
   const match = imageUrl.match(/^(.*-)(\d+)(\.jpg)$/i);
   if (match) {
@@ -824,8 +881,8 @@ async function loadItem(){
       const el = document.getElementById(prefix);
       if (!flankItem){ return; }
       el.href = `item.html?id=${encodeURIComponent(flankItem.id)}`;
-      document.getElementById(prefix + 'Img').src = flankItem.image;
-      document.getElementById(prefix + 'Img').alt = flankItem.title;
+      const imgEl = document.getElementById(prefix + 'Img');
+      renderPoster(imgEl.parentElement, imgEl, flankItem);
       document.getElementById(prefix + 'Title').textContent = flankItem.title;
       el.classList.remove('hidden');
     }
@@ -836,8 +893,8 @@ async function loadItem(){
     fillFlank('nextFlank2', next2);
 
     document.title = item.title + ' — Movie Quest Canada';
-    document.getElementById('poster').src = item.image;
-    document.getElementById('poster').alt = item.title;
+    const posterEl = document.getElementById('poster');
+    const hasImage = renderPoster(posterEl.parentElement, posterEl, item);
     document.getElementById('formatTag').textContent = item.format;
     document.getElementById('title').textContent = item.title;
     document.getElementById('meta').textContent = [item.year, item.format, item.condition].filter(Boolean).join('  ·  ');
@@ -907,13 +964,25 @@ async function loadItem(){
       tidbitsSection.classList.add('hidden');
     }
 
-    // Initialize image carousel
-    initCarousel(item.image);
-    document.getElementById('imgPrev').addEventListener('click', () => changeImage(-1));
-    document.getElementById('imgNext').addEventListener('click', () => changeImage(1));
+    // Initialize image carousel (only relevant when there's a real poster image)
+    const imgPrevEl = document.getElementById('imgPrev');
+    const imgNextEl = document.getElementById('imgNext');
+    const imgCounterEl = document.getElementById('imgCounter');
+    if (hasImage) {
+      imgPrevEl.classList.remove('hidden');
+      imgNextEl.classList.remove('hidden');
+      initCarousel(item.image);
+    } else {
+      imgPrevEl.classList.add('hidden');
+      imgNextEl.classList.add('hidden');
+      imgCounterEl.style.display = 'none';
+    }
+    imgPrevEl.addEventListener('click', () => changeImage(-1));
+    imgNextEl.addEventListener('click', () => changeImage(1));
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
+      if (!hasImage) return;
       if (e.key === 'ArrowLeft') changeImage(-1);
       if (e.key === 'ArrowRight') changeImage(1);
     });
