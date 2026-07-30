@@ -16,8 +16,6 @@
     --red-dark:#98081F;
     --stone:#8C8578;
     --line:#E1DACB;
-    --fs-lg:1.1875rem;   /* larger text: was ~0.95rem, now +25% */
-    --fs-sm:0.95rem;     /* smaller text: 80% of --fs-lg */
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
@@ -32,35 +30,29 @@
   header{
     background:var(--ink);
     color:var(--paper);
-    width:100%;
-    margin:0;
-    padding:14px 28px;
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
+    padding:18px 28px;
+    display:flex;
     align-items:center;
-    gap:16px;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
     border-bottom:6px solid var(--red);
   }
-  .logo-link{
-    grid-column:2;
-    justify-self:center;
-    display:block;
-    line-height:0;
+  .wordmark{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(1.6rem,3.2vw,2.4rem);
+    letter-spacing:1px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    text-decoration:none;
   }
-  .site-logo{
-    width:160px;
-    height:160px;
-    object-fit:cover;
-    border-radius:14px;
-    display:block;
-  }
+  .wordmark span{color:var(--red);}
   .header-right{
-    grid-column:3;
     display:flex;
     align-items:center;
     gap:16px;
     flex-wrap:wrap;
-    justify-self:end;
   }
   .search-wrap{
     position:relative;
@@ -70,7 +62,7 @@
     border:1px solid #3a3833;
     color:var(--paper);
     font-family:'JetBrains Mono',monospace;
-    font-size:var(--fs-sm);
+    font-size:0.9rem;
     padding:10px 14px 10px 34px;
     border-radius:4px;
     width:220px;
@@ -87,7 +79,7 @@
   }
   .store-link{
     font-family:'JetBrains Mono',monospace;
-    font-size:var(--fs-sm);
+    font-size:0.8rem;
     font-weight:700;
     letter-spacing:0.5px;
     text-transform:uppercase;
@@ -112,7 +104,7 @@
   }
   .reel-tab{
     font-family:'JetBrains Mono',monospace;
-    font-size:var(--fs-sm);
+    font-size:0.78rem;
     font-weight:700;
     letter-spacing:0.4px;
     text-transform:uppercase;
@@ -149,7 +141,7 @@
   .year-strip.visible{ display:flex; }
   .year-chip{
     font-family:'JetBrains Mono',monospace;
-    font-size:var(--fs-sm);
+    font-size:0.75rem;
     font-weight:500;
     color:#a29d90;
     background:transparent;
@@ -177,12 +169,12 @@
   }
   .result-count{
     font-family:'JetBrains Mono',monospace;
-    font-size:var(--fs-sm);
+    font-size:0.85rem;
     color:var(--stone);
   }
   select{
     font-family:'JetBrains Mono',monospace;
-    font-size:var(--fs-sm);
+    font-size:0.8rem;
     padding:7px 10px;
     border-radius:4px;
     border:1px solid var(--line);
@@ -231,10 +223,10 @@
     color:var(--paper);
     font-family:'JetBrains Mono',monospace;
     font-weight:700;
-    font-size:var(--fs-sm);
+    font-size:0.68rem;
     letter-spacing:0.5px;
-    padding:6px 12px 6px 18px;
-    clip-path:polygon(18px 0, 100% 0, 100% 100%, 0 100%);
+    padding:5px 10px 5px 14px;
+    clip-path:polygon(15px 0, 100% 0, 100% 100%, 0 100%);
   }
   .card-body{
     padding:12px 14px 14px;
@@ -245,7 +237,7 @@
   }
   .card-title{
     font-weight:700;
-    font-size:var(--fs-lg);
+    font-size:0.95rem;
     line-height:1.25;
   }
   .card-barcode{
@@ -254,7 +246,7 @@
     align-items:center;
     justify-content:space-between;
     font-family:'JetBrains Mono',monospace;
-    font-size:var(--fs-sm);
+    font-size:0.75rem;
     color:var(--stone);
     padding-top:8px;
     border-top:1px dashed var(--line);
@@ -289,18 +281,12 @@
     justify-content:center;
     font-family:'JetBrains Mono',monospace;
     color:var(--stone);
-    font-size:var(--fs-sm);
+    font-size:0.8rem;
   }
   .ad-slot img{ max-height:160px; }
 
   @media (max-width:640px){
-    header{
-      grid-template-columns:1fr;
-      justify-items:center;
-      padding:14px 16px;
-    }
-    .logo-link{ grid-column:1; }
-    .header-right{ grid-column:1; justify-self:center; }
+    header{padding:14px 16px;}
     .reel-nav, .year-strip{ padding-left:16px; padding-right:16px; }
     .controls-bar{ padding-left:16px; padding-right:16px; }
     .cards-grid{ padding-left:16px; padding-right:16px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px; }
@@ -313,7 +299,7 @@
 <body>
 
 <header>
-  <a class="logo-link" href="./"><img class="site-logo" src="https://moviequest.ca/logo.jpg" alt="Movie Quest Canada"></a>
+  <a class="wordmark" href="./">MOVIE QUEST<span>·</span>CANADA</a>
   <div class="header-right">
     <div class="search-wrap">
       <input type="text" id="searchInput" placeholder="Search titles...">
