@@ -1,0 +1,18 @@
+{
+  "topCategories": [
+    { "code": "pre1949", "label": "Pre-1949" },
+    { "code": "1950s",   "label": "1950s" },
+    { "code": "1960s",   "label": "1960s" },
+    { "code": "1970s",   "label": "1970s" },
+    { "code": "1980s",   "label": "1980s", "years": [1980,1981,1982,1983,1984,1985,1986,1987,1988,1989] },
+    { "code": "1990s",   "label": "1990s", "years": [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999] },
+    { "code": "2000s",   "label": "2000s", "years": [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009] },
+    { "code": "2010s",   "label": "2010s", "years": [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019] },
+    { "code": "2020s",   "label": "2020s" },
+    { "code": "tvseries","label": "TV Series" },
+    { "code": "etc",     "label": "ETC" },
+    { "code": "music",   "label": "Music CDs" }
+  ],
+  "formats": ["DVD", "VHS", "Blu-ray", "CD"],
+  "notes": "Each entry's 'categories' field is an array of one or more of the topCategories codes above — an item can belong to multiple categories at once (e.g. a TV series can be tagged both 'tvseries' and its release-decade code). For entries tagged with a split decade (1980s/1990s/2000s/2010s), also set 'year' to the exact release year so the site can offer a year-level filter within that decade. For double/triple features spanning more than one year (and, typically, more than one decade), add an optional 'years' array listing every relevant release year (e.g. [1965, 1971]) — the site will match the item under any of those years' filters, while 'year' still holds the earliest date for display purposes."
+}

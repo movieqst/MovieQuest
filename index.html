@@ -30,35 +30,29 @@
   header{
     background:var(--ink);
     color:var(--paper);
-    padding:0;
-    display:block;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
     border-bottom:6px solid var(--red);
   }
-  .header-center{
+  .wordmark{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(1.6rem,3.2vw,2.4rem);
+    letter-spacing:1px;
     display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:32px;
-    flex-wrap:wrap;
-    width:100%;
-    max-width:1100px;
-    margin:0 auto;
-    padding:18px 28px;
+    align-items:baseline;
+    gap:10px;
+    text-decoration:none;
   }
-  .logo-center{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-  }
-  .logo-center img{
-    width:200px;
-    height:200px;
-    object-fit:contain;
-    display:block;
-  }
+  .wordmark span{color:var(--red);}
   .header-right{
-    display:none;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
   }
   .search-wrap{
     position:relative;
@@ -289,10 +283,10 @@
     color:var(--stone);
     font-size:0.8rem;
   }
-  .ad-slot img{ max-height:160px; }
+  .ad-slot img{ max-height:70px; }
 
   @media (max-width:640px){
-    .header-center{padding:14px 16px;gap:16px;}
+    header{padding:14px 16px;}
     .reel-nav, .year-strip{ padding-left:16px; padding-right:16px; }
     .controls-bar{ padding-left:16px; padding-right:16px; }
     .cards-grid{ padding-left:16px; padding-right:16px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px; }
@@ -305,11 +299,11 @@
 <body>
 
 <header>
-  <div class="header-center">
+  <a class="wordmark" href="./">MOVIE QUEST<span>·</span>CANADA</a>
+  <div class="header-right">
     <div class="search-wrap">
       <input type="text" id="searchInput" placeholder="Search titles...">
     </div>
-    <a class="logo-center" href="./"><img src="logo.png" alt="Movie Quest Logo" width="200" height="200"></a>
     <a class="store-link" href="https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=header&toolid=10001&mkevt=1" target="_blank" rel="noopener">Visit eBay Store →</a>
   </div>
 </header>
@@ -330,12 +324,9 @@
 <div class="cards-grid" id="cardsGrid"></div>
 
 <div class="ad-banner">
-
- <div class="ad-slot"> <a id="logo-link" href="https://www.moviequest.ca/"><img src="https://moviequest.ca/logo.jpg" alt="MOVIE QUEST CANADA" width="150" height="150"></a></div>
- 
-  <div class="ad-slot"><a id="logo-link" href="https://www.aidashbd.com/"><img src="https://www.aidashbd.com/aidashbd.gif" alt="AI-DASHBoarD" width="150" height="150"></a></div>
- 
-   <div class="ad-slot"><a id="logo-link" href="https://www.aidashbd.com/PDF-FLATTENER.html"><img src="https://www.aidashbd.com/PDF-FLATTENER.jpg" alt="PDF FLATTENER" width="150" height="150"></a></div>
+  <div class="ad-slot">Ad Space</div>
+  <div class="ad-slot">Ad Space</div>
+  <div class="ad-slot">Ad Space</div>
   <div class="ad-slot">Ad Space</div>
 </div>
 
@@ -494,6 +485,5 @@ searchInput.addEventListener('input', (e) => {
 
 init();
 </script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5"}' crossorigin="anonymous"></script>
 </body>
 </html>
