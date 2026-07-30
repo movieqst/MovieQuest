@@ -31,29 +31,35 @@
   header{
     background:var(--ink);
     color:var(--paper);
-    padding:18px 28px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
-    flex-wrap:wrap;
+    padding:0;
+    display:block;
     border-bottom:6px solid var(--red);
   }
-  .wordmark{
-    font-family:'Anton',sans-serif;
-    font-size:clamp(1.6rem,3.2vw,2.4rem);
-    letter-spacing:1px;
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-    text-decoration:none;
-  }
-  .wordmark span{color:var(--red);}
-  .header-right{
+  .header-center{
     display:flex;
     align-items:center;
-    gap:16px;
+    justify-content:center;
+    gap:32px;
     flex-wrap:wrap;
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:18px 28px;
+  }
+  .logo-center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .logo-center img{
+    width:200px;
+    height:200px;
+    object-fit:contain;
+    display:block;
+  }
+  .header-right{
+    display:none;
   }
   .search-wrap{
     position:relative;
@@ -468,11 +474,11 @@
 <body>
 
 <header>
-  <a class="wordmark" href="./">MOVIE QUEST<span>·</span>CANADA</a>
-  <div class="header-right">
+  <div class="header-center">
     <div class="search-wrap">
       <input type="text" id="searchInput" placeholder="Search titles...">
     </div>
+    <a class="logo-center" href="./"><img src="logo.png" alt="Movie Quest Logo" width="200" height="200"></a>
     <a class="store-link" href="https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=header&toolid=10001&mkevt=1" target="_blank" rel="noopener">Visit eBay Store →</a>
   </div>
 </header>
@@ -519,8 +525,8 @@
           <div class="price-label">from our store</div>
         </div>
         <div class="cta-row">
-          <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">Buy at Movie Quest eBay Store →</a>
-          <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">See other eBay listings →</a>
+          <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">View Movie Quest eBay listings →</a>
+          <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">View ALL eBay listings →</a>
         </div>
       </div>
     </div>
@@ -778,5 +784,6 @@ async function loadItem(){
 
 loadItem();
 </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5"}' crossorigin="anonymous"></script>
 </body>
 </html>
