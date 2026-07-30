@@ -394,6 +394,83 @@
   }
   .cta-secondary:hover{ background:var(--ink); color:var(--paper); }
 
+  /* ---------- NEW: Movie Details Box ---------- */
+  .movie-details-box{
+    background:var(--card);
+    border-radius:10px;
+    padding:24px 28px;
+    margin-top:24px;
+    box-shadow:0 2px 0 var(--line);
+  }
+  .movie-details-box h3{
+    font-family:'Anton',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:16px;
+  }
+  .detail-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 32px;
+  }
+  .detail-item{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .detail-item .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.65rem;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--stone);
+  }
+  .detail-item .value{
+    font-size:0.95rem;
+    line-height:1.4;
+  }
+  .detail-item .value .actor{
+    display:inline-block;
+  }
+  .detail-item .value .actor:not(:last-child)::after{
+    content:" • ";
+    color:var(--stone);
+  }
+
+  /* ---------- YouTube Trailer ---------- */
+  .trailer-box{
+    margin-top:20px;
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--ink);
+    position:relative;
+    padding-bottom:56.25%; /* 16:9 aspect ratio */
+    height:0;
+  }
+  .trailer-box iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+  .trailer-placeholder{
+    background:var(--ink);
+    color:var(--stone);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.9rem;
+    padding:40px 20px;
+    text-align:center;
+    border-radius:10px;
+    margin-top:20px;
+  }
+
+  /* ---------- Tidbits Section ---------- */
   .tidbits-section{
     margin-top:24px;
     background:var(--ink);
@@ -455,6 +532,10 @@
     .flank.next{ text-align:left; flex-direction:row-reverse; }
     .flank.next .flank-label{ text-align:left; padding:0 12px 0 0; }
     .flank.next .flank-title{ text-align:right; padding:2px 12px 0 0; }
+    .detail-grid{
+      grid-template-columns:1fr;
+      gap:10px;
+    }
   }
 
   @media (max-width:640px){
@@ -462,6 +543,7 @@
     .poster-wrap{ aspect-ratio:5/7; }
     .info{ padding:22px; }
     .img-nav{ width:34px; height:34px; font-size:18px; }
+    .movie-details-box{ padding:18px; }
   }
 </style>
 </head>
@@ -536,6 +618,15 @@
       <div class="flank-title" id="nextFlank2Title"></div>
     </a>
   </div>
+
+  <!-- NEW: Movie Details Box (appears below the main detail card) -->
+  <div id="movieDetailsBox" class="movie-details-box hidden">
+    <h3>🎬 Movie Details</h3>
+    <div class="detail-grid" id="detailGrid"></div>
+  </div>
+
+  <!-- NEW: YouTube Trailer Embed -->
+  <div id="trailerContainer"></div>
 
   <div id="tidbitsSection" class="tidbits-section hidden">
     <div class="tidbits-title">🎬 Did You Know?</div>
@@ -629,7 +720,6 @@ function initCarousel(imageUrl) {
 }
 
 function probeImages() {
-  // Probe ahead to find how many images exist
   let probeIndex = currentImgIndex + 1;
   function tryProbe() {
     const img = new Image();
@@ -714,8 +804,6 @@ async function loadItem(){
     let prev2 = total > 2 ? at(-2) : null;
     let next2 = total > 2 ? at(2) : null;
 
-    // Avoid showing a duplicate title when the catalogue is small enough that
-    // the 2-away item wraps around to something already shown elsewhere.
     if (prev2 && (prev2.id === item.id || prev2.id === next1?.id)) prev2 = null;
     if (next2 && (next2.id === item.id || next2.id === prev1?.id)) next2 = null;
 
@@ -745,6 +833,75 @@ async function loadItem(){
     document.getElementById('storeLink').href = item.storeUrl || '#';
     document.getElementById('searchLink').href = item.searchUrl || '#';
 
+    // ----- NEW: Movie Details Box -----
+    const detailsBox = document.getElementById('movieDetailsBox');
+    const detailGrid = document.getElementById('detailGrid');
+    detailGrid.innerHTML = '';
+
+    const detailsToShow = [];
+
+    if (item.starring && item.starring.length) {
+      detailsToShow.push({
+        label: 'Starring',
+        value: item.starring.map(a => `<span class="actor">${a}</span>`).join('')
+      });
+    }
+
+    if (item.director) {
+      detailsToShow.push({ label: 'Director', value: item.director });
+    }
+
+    if (item.producers && item.producers.length) {
+      detailsToShow.push({
+        label: 'Producers',
+        value: item.producers.join(' • ')
+      });
+    }
+
+    if (item.productionCompanies && item.productionCompanies.length) {
+      detailsToShow.push({
+        label: 'Production',
+        value: item.productionCompanies.join(' • ')
+      });
+    }
+
+    if (detailsToShow.length) {
+      detailsBox.classList.remove('hidden');
+      detailsToShow.forEach(d => {
+        const div = document.createElement('div');
+        div.className = 'detail-item';
+        div.innerHTML = `
+          <span class="label">${d.label}</span>
+          <span class="value">${d.value}</span>
+        `;
+        detailGrid.appendChild(div);
+      });
+    } else {
+      detailsBox.classList.add('hidden');
+    }
+
+    // ----- NEW: YouTube Trailer -----
+    const trailerContainer = document.getElementById('trailerContainer');
+    trailerContainer.innerHTML = '';
+    if (item.youtubeTrailer) {
+      const trailerDiv = document.createElement('div');
+      trailerDiv.className = 'trailer-box';
+      trailerDiv.innerHTML = `
+        <iframe src="${item.youtubeTrailer}" 
+                allowfullscreen 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                loading="lazy">
+        </iframe>
+      `;
+      trailerContainer.appendChild(trailerDiv);
+    } else {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'trailer-placeholder';
+      placeholder.textContent = '🎬 No trailer available for this title.';
+      trailerContainer.appendChild(placeholder);
+    }
+
+    // ----- Tidbits -----
     const tidbitsSection = document.getElementById('tidbitsSection');
     const tidbitsList = document.getElementById('tidbitsList');
     if (item.tidbits && item.tidbits.length){
