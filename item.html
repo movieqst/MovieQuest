@@ -394,7 +394,7 @@
   }
   .cta-secondary:hover{ background:var(--ink); color:var(--paper); }
 
-  /* ---------- NEW: Movie Details Box ---------- */
+  /* ---------- Movie Details Box ---------- */
   .movie-details-box{
     background:var(--card);
     border-radius:10px;
@@ -446,7 +446,7 @@
     overflow:hidden;
     background:var(--ink);
     position:relative;
-    padding-bottom:56.25%; /* 16:9 aspect ratio */
+    padding-bottom:56.25%;
     height:0;
   }
   .trailer-box iframe{
@@ -600,9 +600,11 @@
           <div class="price-value" id="price"></div>
           <div class="price-label">from our store</div>
         </div>
-        <div class="cta-row">
-          <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">Buy at Movie Quest eBay Store →</a>
-          <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">See other eBay listings →</a>
+        <div class="cta-row" id="ctaRow">
+          <!-- Primary button: only shows if storeUrl exists -->
+          <a class="cta-btn cta-primary hidden" id="storeLink" href="#" target="_blank" rel="noopener">View Movie Quest eBay Listing</a>
+          <!-- Secondary button: always shows -->
+          <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">View ALL eBay Listings →</a>
         </div>
       </div>
     </div>
@@ -619,13 +621,13 @@
     </a>
   </div>
 
-  <!-- NEW: Movie Details Box (appears below the main detail card) -->
+  <!-- Movie Details Box -->
   <div id="movieDetailsBox" class="movie-details-box hidden">
     <h3>🎬 Movie Details</h3>
     <div class="detail-grid" id="detailGrid"></div>
   </div>
 
-  <!-- NEW: YouTube Trailer Embed -->
+  <!-- YouTube Trailer Embed -->
   <div id="trailerContainer"></div>
 
   <div id="tidbitsSection" class="tidbits-section hidden">
@@ -795,7 +797,7 @@ async function loadItem(){
     loading.classList.add('hidden');
     detailLayout.classList.remove('hidden');
 
-    // Populate previous/next flank cards (2 per side, wrapping around the ends)
+    // Populate previous/next flank cards
     const total = data.length;
     const at = (offset) => total > 0 ? data[((index + offset) % total + total) % total] : null;
 
@@ -830,10 +832,23 @@ async function loadItem(){
     document.getElementById('meta').textContent = [item.year, item.format, item.condition].filter(Boolean).join('  ·  ');
     document.getElementById('desc').textContent = item.desc || '';
     document.getElementById('price').textContent = item.price != null ? '$' + Number(item.price).toFixed(2) : '—';
-    document.getElementById('storeLink').href = item.storeUrl || '#';
-    document.getElementById('searchLink').href = item.searchUrl || '#';
 
-    // ----- NEW: Movie Details Box -----
+    // ----- UPDATED: Button Logic -----
+    const storeLink = document.getElementById('storeLink');
+    const searchLink = document.getElementById('searchLink');
+
+    // Set the secondary "View ALL eBay Listings" button
+    searchLink.href = item.searchUrl || '#';
+
+    // Primary button: only show if storeUrl exists and is not empty
+    if (item.storeUrl && item.storeUrl.trim() !== '') {
+      storeLink.href = item.storeUrl;
+      storeLink.classList.remove('hidden');
+    } else {
+      storeLink.classList.add('hidden');
+    }
+
+    // ----- Movie Details Box -----
     const detailsBox = document.getElementById('movieDetailsBox');
     const detailGrid = document.getElementById('detailGrid');
     detailGrid.innerHTML = '';
@@ -880,7 +895,7 @@ async function loadItem(){
       detailsBox.classList.add('hidden');
     }
 
-    // ----- NEW: YouTube Trailer -----
+    // ----- YouTube Trailer -----
     const trailerContainer = document.getElementById('trailerContainer');
     trailerContainer.innerHTML = '';
     if (item.youtubeTrailer) {
