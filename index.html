@@ -453,6 +453,18 @@ function render(){
 }
 
 async function init(){
+  const params = new URLSearchParams(window.location.search);
+  const catParam = params.get('cat');
+  const yearParam = params.get('year');
+  const qParam = params.get('q');
+
+  if (catParam && CATEGORIES.some(c => c.code === catParam)) activeCategory = catParam;
+  if (yearParam) activeYear = parseInt(yearParam, 10);
+  if (qParam){
+    searchTerm = qParam.toLowerCase().trim();
+    searchInput.value = qParam;
+  }
+
   buildReelNav();
   buildYearStrip();
   try {
