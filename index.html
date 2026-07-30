@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Movie Quest Canada — DVD, Blu-ray, VHS &amp; Music CDs</title>
+<title>Item — Movie Quest Canada</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
     color:var(--ink);
     font-family:'Work Sans',sans-serif;
     -webkit-font-smoothing:antialiased;
+    min-height:100vh;
   }
   a{color:inherit;}
 
@@ -116,6 +117,8 @@
     cursor:pointer;
     transition:all 0.15s;
     position:relative;
+    text-decoration:none;
+    display:inline-block;
   }
   .reel-tab::before{
     content:"○";
@@ -150,6 +153,8 @@
     border-radius:3px;
     cursor:pointer;
     transition:all 0.15s;
+    text-decoration:none;
+    display:inline-block;
   }
   .year-chip:hover{ color:var(--paper); border-color:var(--stone); }
   .year-chip.active{
@@ -158,60 +163,103 @@
     border-color:var(--paper);
   }
 
-  /* ---------- Controls ---------- */
-  .controls-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 28px 6px;
-    flex-wrap:wrap;
-    gap:12px;
+  .container{
+    max-width:1360px;
+    margin:0 auto;
+    padding:30px 24px 60px;
   }
-  .result-count{
+  .back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:var(--stone);
+    text-decoration:none;
     font-family:'JetBrains Mono',monospace;
     font-size:0.85rem;
-    color:var(--stone);
+    font-weight:700;
   }
-  select{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.8rem;
-    padding:7px 10px;
-    border-radius:4px;
-    border:1px solid var(--line);
-    background:var(--paper);
-    color:var(--ink);
+  .back-link:hover{ color:var(--red); }
+
+  .detail-layout{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:16px;
   }
 
-  /* ---------- Card grid ---------- */
-  .cards-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
-    gap:22px;
-    padding:18px 28px 60px;
-  }
-  .card{
-    background:var(--card);
-    border-radius:6px;
-    overflow:hidden;
-    text-decoration:none;
-    color:var(--ink);
+  .flank{
+    width:120px;
+    flex-shrink:0;
     display:flex;
     flex-direction:column;
-    position:relative;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--card);
+    border-radius:8px;
+    overflow:hidden;
     box-shadow:0 2px 0 var(--line);
     transition:transform 0.15s, box-shadow 0.15s;
   }
-  .card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 24px rgba(0,0,0,0.18);
+  .flank:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
   }
-  .card-poster{
-    position:relative;
+  .flank-poster{
     aspect-ratio:5/7;
     background:#e5ded0;
     overflow:hidden;
   }
-  .card-poster img{
+  .flank-poster img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .flank-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem;
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:var(--red);
+    padding:8px 10px 0;
+  }
+  .flank-title{
+    font-size:0.78rem;
+    font-weight:700;
+    line-height:1.25;
+    padding:3px 10px 10px;
+  }
+  .flank.next{ text-align:right; }
+  .flank.next .flank-label{ text-align:right; }
+
+  .flank-far{
+    width:90px;
+    opacity:0.68;
+  }
+  .flank-far:hover{ opacity:1; }
+  .flank-far .flank-title{
+    padding-top:10px;
+    font-size:0.7rem;
+  }
+
+  .detail{
+    background:var(--card);
+    border-radius:10px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:300px 1fr;
+    box-shadow:0 8px 30px rgba(0,0,0,0.1);
+    flex:1 1 auto;
+    min-width:0;
+    max-width:820px;
+  }
+  .poster-wrap{
+    position:relative;
+    background:#e5ded0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .poster-wrap img{
     width:100%; height:100%;
     object-fit:cover;
     display:block;
@@ -223,78 +271,281 @@
     color:var(--paper);
     font-family:'JetBrains Mono',monospace;
     font-weight:700;
-    font-size:0.68rem;
+    font-size:0.75rem;
     letter-spacing:0.5px;
-    padding:5px 10px 5px 14px;
-    clip-path:polygon(15px 0, 100% 0, 100% 100%, 0 100%);
+    padding:7px 14px 7px 18px;
+    clip-path:polygon(18px 0, 100% 0, 100% 100%, 0 100%);
+    z-index:5;
   }
-  .card-body{
-    padding:12px 14px 14px;
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    flex:1;
-  }
-  .card-title{
-    font-weight:700;
-    font-size:0.95rem;
-    line-height:1.25;
-  }
-  .card-barcode{
-    margin-top:auto;
+
+  /* Image carousel arrows */
+  .img-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(19,18,17,0.7);
+    color:var(--paper);
+    border:none;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+    line-height:1;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.75rem;
-    color:var(--stone);
-    padding-top:8px;
-    border-top:1px dashed var(--line);
+    justify-content:center;
+    z-index:10;
+    transition:background 0.15s;
+    padding-bottom:2px;
   }
-  .card-price{
-    font-weight:700;
+  .img-nav:hover{ background:rgba(19,18,17,0.95); }
+  .img-nav:disabled{
+    opacity:0.25;
+    cursor:not-allowed;
+  }
+  .img-nav.prev{ left:8px; }
+  .img-nav.next{ right:8px; }
+  .img-counter{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(19,18,17,0.7);
+    color:var(--paper);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    padding:4px 10px;
+    border-radius:12px;
+    z-index:10;
+  }
+
+  .info{
+    padding:28px 32px;
+    display:flex;
+    flex-direction:column;
+  }
+  .item-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.9rem;
+    letter-spacing:0.5px;
+    line-height:1.1;
+    margin-bottom:6px;
+  }
+  .item-meta{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--stone);
+    font-size:0.9rem;
+    margin-bottom:18px;
+  }
+  .item-desc{
+    font-size:1rem;
+    line-height:1.6;
+    margin-bottom:24px;
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:24px;
+    padding-bottom:24px;
+    border-bottom:1px dashed var(--line);
+  }
+  .price-value{
+    font-family:'Anton',sans-serif;
+    font-size:2rem;
     color:var(--red);
   }
-
-  .empty-state{
-    grid-column:1/-1;
-    text-align:center;
-    padding:60px 20px;
-    color:var(--stone);
+  .price-label{
     font-family:'JetBrains Mono',monospace;
+    font-size:0.8rem;
+    color:var(--stone);
+    text-transform:uppercase;
   }
 
-  /* ---------- Ad banner ---------- */
-  .ad-banner{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
-    padding:0 28px 40px;
+  .cta-row{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:auto;
   }
-  .ad-slot{
-    background:var(--card);
-    border:1px dashed var(--line);
+  .cta-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 20px;
     border-radius:6px;
-    min-height:90px;
+    font-weight:700;
+    font-size:1rem;
+    text-decoration:none;
+    text-align:center;
+    transition:all 0.15s;
+  }
+  .cta-primary{
+    background:var(--red);
+    color:var(--paper);
+  }
+  .cta-primary:hover{ background:var(--red-dark); }
+  .cta-secondary{
+    background:transparent;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+  }
+  .cta-secondary:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ---------- NEW: Movie Details Box ---------- */
+  .movie-details-box{
+    background:var(--card);
+    border-radius:10px;
+    padding:24px 28px;
+    margin-top:24px;
+    box-shadow:0 2px 0 var(--line);
+  }
+  .movie-details-box h3{
+    font-family:'Anton',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:16px;
+  }
+  .detail-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 32px;
+  }
+  .detail-item{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .detail-item .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.65rem;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--stone);
+  }
+  .detail-item .value{
+    font-size:0.95rem;
+    line-height:1.4;
+  }
+  .detail-item .value .actor{
+    display:inline-block;
+  }
+  .detail-item .value .actor:not(:last-child)::after{
+    content:" • ";
+    color:var(--stone);
+  }
+
+  /* ---------- YouTube Trailer ---------- */
+  .trailer-box{
+    margin-top:20px;
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--ink);
+    position:relative;
+    padding-bottom:56.25%; /* 16:9 aspect ratio */
+    height:0;
+  }
+  .trailer-box iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+  .trailer-placeholder{
+    background:var(--ink);
+    color:var(--stone);
     display:flex;
     align-items:center;
     justify-content:center;
     font-family:'JetBrains Mono',monospace;
-    color:var(--stone);
+    font-size:0.9rem;
+    padding:40px 20px;
+    text-align:center;
+    border-radius:10px;
+    margin-top:20px;
+  }
+
+  /* ---------- Tidbits Section ---------- */
+  .tidbits-section{
+    margin-top:24px;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:10px;
+    padding:24px 28px;
+  }
+  .tidbits-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.2rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .tidbits-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .tidbits-list li{
+    padding-left:22px;
+    position:relative;
+    line-height:1.55;
+    font-size:0.95rem;
+    color:#e9e5db;
+  }
+  .tidbits-list li::before{
+    content:"★";
+    position:absolute;
+    left:0; top:1px;
+    color:var(--red);
     font-size:0.8rem;
   }
-  .ad-slot img{ max-height:160px; }
+
+  .not-found{
+    text-align:center;
+    padding:80px 20px;
+    color:var(--stone);
+  }
+  .not-found a{ color:var(--red); text-decoration:none; font-weight:700; }
+
+  .hidden{ display:none !important; }
+
+  @media (max-width:900px){
+    .detail-layout{ flex-direction:column; }
+    .flank{
+      width:100%;
+      flex-direction:row;
+      align-items:center;
+    }
+    .flank-poster{
+      width:64px;
+      aspect-ratio:5/7;
+      flex-shrink:0;
+    }
+    .flank-label{ padding:0 0 0 12px; }
+    .flank-title{ padding:2px 12px 0 12px; }
+    .flank.next{ text-align:left; flex-direction:row-reverse; }
+    .flank.next .flank-label{ text-align:left; padding:0 12px 0 0; }
+    .flank.next .flank-title{ text-align:right; padding:2px 12px 0 0; }
+    .detail-grid{
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+  }
 
   @media (max-width:640px){
-    header{padding:14px 16px;}
-    .reel-nav, .year-strip{ padding-left:16px; padding-right:16px; }
-    .controls-bar{ padding-left:16px; padding-right:16px; }
-    .cards-grid{ padding-left:16px; padding-right:16px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px; }
-    #searchInput{ width:160px; }
-    .ad-banner{ grid-template-columns:repeat(2,1fr); padding-left:16px; padding-right:16px; }
+    .detail{ grid-template-columns:1fr; }
+    .poster-wrap{ aspect-ratio:5/7; }
+    .info{ padding:22px; }
+    .img-nav{ width:34px; height:34px; font-size:18px; }
+    .movie-details-box{ padding:18px; }
   }
 </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -311,27 +562,76 @@
 <nav class="reel-nav" id="reelNav"></nav>
 <div class="year-strip" id="yearStrip"></div>
 
-<div class="controls-bar">
-  <div class="result-count" id="resultCount">Loading catalogue…</div>
-  <select id="sortSelect">
-    <option value="title">Sort: Title A–Z</option>
-    <option value="year-desc">Sort: Newest first</option>
-    <option value="year-asc">Sort: Oldest first</option>
-    <option value="price">Sort: Price low–high</option>
-  </select>
-</div>
+<div class="container">
+  <a class="back-link" href="./">← BACK TO CATALOGUE</a>
 
-<div class="cards-grid" id="cardsGrid"></div>
+  <div id="loading" class="not-found">Loading item…</div>
 
-<div class="ad-banner">
-  <div class="ad-slot">
-    <a id="logo-link" href="https://www.moviequest.ca/IMAGE-SPLITTER/IMAGE-SPLITTER.html"><img src="https://moviequest.ca/IMAGE-SPLITTER/IMAGE-SPLITTER.jpg" alt="IMAGE-SPLITTER" width="150" height="150"></a>
+  <div id="not-found" class="not-found hidden">
+    <p>Couldn't find that item in the catalogue.</p>
+    <p style="margin-top:10px;"><a href="./">← Return to the catalogue</a></p>
   </div>
-  <div class="ad-slot">
-    <a id="logo-link" href="https://www.moviequest.ca/PDF-FLATTENER/PDF-FLATTENER.html"><img src="https://moviequest.ca/PDF-FLATTENER/PDF-FLATTENER.jpg" alt="PDF-FLATTENER" width="150" height="150"></a>
+
+  <div id="detailLayout" class="detail-layout hidden">
+    <a id="prevFlank2" class="flank flank-far prev hidden" href="#">
+      <div class="flank-poster"><img id="prevFlank2Img" src="" alt=""></div>
+      <div class="flank-title" id="prevFlank2Title"></div>
+    </a>
+
+    <a id="prevFlank1" class="flank prev hidden" href="#">
+      <div class="flank-poster"><img id="prevFlank1Img" src="" alt=""></div>
+      <div class="flank-label">← Previous</div>
+      <div class="flank-title" id="prevFlank1Title"></div>
+    </a>
+
+    <div id="detail" class="detail">
+      <div class="poster-wrap">
+        <img id="poster" src="" alt="">
+        <div class="format-tag" id="formatTag"></div>
+        <button class="img-nav prev" id="imgPrev" aria-label="Previous image">‹</button>
+        <button class="img-nav next" id="imgNext" aria-label="Next image">›</button>
+        <div class="img-counter" id="imgCounter"></div>
+      </div>
+      <div class="info">
+        <div class="item-title" id="title"></div>
+        <div class="item-meta" id="meta"></div>
+        <div class="item-desc" id="desc"></div>
+        <div class="price-row">
+          <div class="price-value" id="price"></div>
+          <div class="price-label">from our store</div>
+        </div>
+        <div class="cta-row">
+          <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">Buy at Movie Quest eBay Store →</a>
+          <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">See other eBay listings →</a>
+        </div>
+      </div>
+    </div>
+
+    <a id="nextFlank1" class="flank next hidden" href="#">
+      <div class="flank-poster"><img id="nextFlank1Img" src="" alt=""></div>
+      <div class="flank-label">Next →</div>
+      <div class="flank-title" id="nextFlank1Title"></div>
+    </a>
+
+    <a id="nextFlank2" class="flank flank-far next hidden" href="#">
+      <div class="flank-poster"><img id="nextFlank2Img" src="" alt=""></div>
+      <div class="flank-title" id="nextFlank2Title"></div>
+    </a>
   </div>
-  <div class="ad-slot">  <a id="logo-link" href="https://www.aidashbd.com"><img src="https://aidashbd.com/aidashbd.gif" alt="AI-DASHBoarD" width="150" height="150"></a></div>
-  <div class="ad-slot"> <a id="logo-link" href="https://www.moviequest.ca"><img src="https://moviequest.ca/logo.jpg" alt="Movie Quest Canada" width="150" height="150"></a></div>
+
+  <!-- NEW: Movie Details Box (appears below the main detail card) -->
+  <div id="movieDetailsBox" class="movie-details-box hidden">
+    <h3>🎬 Movie Details</h3>
+    <div class="detail-grid" id="detailGrid"></div>
+  </div>
+
+  <!-- NEW: YouTube Trailer Embed -->
+  <div id="trailerContainer"></div>
+
+  <div id="tidbitsSection" class="tidbits-section hidden">
+    <div class="tidbits-title">🎬 Did You Know?</div>
+    <ul class="tidbits-list" id="tidbitsList"></ul>
+  </div>
 </div>
 
 <script>
@@ -351,39 +651,32 @@ const CATEGORIES = [
   { code:'music',    label:'Music CDs' }
 ];
 
-const slugify = (name) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-
-let allItems = [];
-let activeCategory = 'all';
-let activeYear = null;
-let searchTerm = '';
-
 const reelNav = document.getElementById('reelNav');
 const yearStrip = document.getElementById('yearStrip');
-const cardsGrid = document.getElementById('cardsGrid');
-const resultCount = document.getElementById('resultCount');
-const sortSelect = document.getElementById('sortSelect');
 const searchInput = document.getElementById('searchInput');
+let openCategory = null;
 
 function buildReelNav(){
   reelNav.innerHTML = '';
   CATEGORIES.forEach(cat => {
-    const tab = document.createElement('div');
-    tab.className = 'reel-tab' + (cat.code === activeCategory ? ' active' : '');
+    const tab = document.createElement('a');
+    tab.className = 'reel-tab' + (cat.code === openCategory ? ' active' : '');
     tab.textContent = cat.label;
-    tab.onclick = () => {
-      activeCategory = cat.code;
-      activeYear = null;
-      buildReelNav();
-      buildYearStrip();
-      render();
-    };
+    tab.href = `index.html?cat=${encodeURIComponent(cat.code)}`;
+    if (cat.years){
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCategory = (openCategory === cat.code) ? null : cat.code;
+        buildReelNav();
+        buildYearStrip();
+      });
+    }
     reelNav.appendChild(tab);
   });
 }
 
 function buildYearStrip(){
-  const cat = CATEGORIES.find(c => c.code === activeCategory);
+  const cat = CATEGORIES.find(c => c.code === openCategory);
   if (!cat || !cat.years){
     yearStrip.classList.remove('visible');
     yearStrip.innerHTML = '';
@@ -392,102 +685,255 @@ function buildYearStrip(){
   yearStrip.classList.add('visible');
   yearStrip.innerHTML = '';
   cat.years.forEach(y => {
-    const chip = document.createElement('div');
-    chip.className = 'year-chip' + (activeYear === y ? ' active' : '');
+    const chip = document.createElement('a');
+    chip.className = 'year-chip';
     chip.textContent = y;
-    chip.onclick = () => {
-      activeYear = (activeYear === y) ? null : y;
-      buildYearStrip();
-      render();
-    };
+    chip.href = `index.html?cat=${encodeURIComponent(cat.code)}&year=${y}`;
     yearStrip.appendChild(chip);
   });
 }
 
-function formatPrice(p){
-  if (p === undefined || p === null) return '—';
-  return '$' + Number(p).toFixed(2);
+buildReelNav();
+buildYearStrip();
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && searchInput.value.trim()){
+    window.location.href = `index.html?q=${encodeURIComponent(searchInput.value.trim())}`;
+  }
+});
+
+let currentImgIndex = 1;
+let imgBaseUrl = '';
+let totalImages = 1;
+
+function initCarousel(imageUrl) {
+  const match = imageUrl.match(/^(.*-)(\d+)(\.jpg)$/i);
+  if (match) {
+    imgBaseUrl = match[1];
+    currentImgIndex = parseInt(match[2], 10);
+  } else {
+    imgBaseUrl = imageUrl.replace(/\.jpg$/i, '-');
+    currentImgIndex = 1;
+  }
+  updateCounter();
+  probeImages();
 }
 
-function render(){
-  let items = allItems.filter(item => {
-    if (activeCategory !== 'all' && !(item.categories || []).includes(activeCategory)) return false;
-    if (activeYear){
-      const itemYears = item.years || (item.year != null ? [item.year] : []);
-      if (!itemYears.includes(activeYear)) return false;
+function probeImages() {
+  let probeIndex = currentImgIndex + 1;
+  function tryProbe() {
+    const img = new Image();
+    img.onload = () => {
+      totalImages = probeIndex;
+      probeIndex++;
+      tryProbe();
+    };
+    img.onerror = () => {
+      updateNavButtons();
+    };
+    img.src = imgBaseUrl + probeIndex + '.jpg';
+  }
+  tryProbe();
+}
+
+function changeImage(delta) {
+  const newIndex = currentImgIndex + delta;
+  if (newIndex < 1) return;
+
+  const testImg = new Image();
+  testImg.onload = () => {
+    currentImgIndex = newIndex;
+    if (currentImgIndex > totalImages) totalImages = currentImgIndex;
+    document.getElementById('poster').src = testImg.src;
+    updateNavButtons();
+    updateCounter();
+  };
+  testImg.onerror = () => {
+    if (delta > 0) {
+      totalImages = currentImgIndex;
+      updateNavButtons();
     }
-    if (searchTerm && !item.title.toLowerCase().includes(searchTerm)) return false;
-    return true;
-  });
-
-  switch(sortSelect.value){
-    case 'year-desc': items.sort((a,b) => (b.year||0) - (a.year||0)); break;
-    case 'year-asc':  items.sort((a,b) => (a.year||0) - (b.year||0)); break;
-    case 'price':     items.sort((a,b) => (a.price||0) - (b.price||0)); break;
-    default:          items.sort((a,b) => a.title.localeCompare(b.title));
-  }
-
-  resultCount.textContent = `${items.length} item${items.length === 1 ? '' : 's'} in the catalogue`;
-
-  cardsGrid.innerHTML = '';
-  if (items.length === 0){
-    cardsGrid.innerHTML = '<div class="empty-state">No titles match that search. Try another year, category, or keyword.</div>';
-    return;
-  }
-
-  items.forEach(item => {
-    const a = document.createElement('a');
-    a.className = 'card';
-    a.href = `item.html?id=${encodeURIComponent(item.id)}`;
-    a.innerHTML = `
-      <div class="card-poster">
-        <img src="${item.image}" alt="${item.title}" loading="lazy">
-        <div class="format-tag">${item.format}</div>
-      </div>
-      <div class="card-body">
-        <div class="card-title">${item.title}</div>
-        <div class="card-barcode">
-          <span>${item.year || ''}</span>
-          <span class="card-price">${formatPrice(item.price)}</span>
-        </div>
-      </div>
-    `;
-    cardsGrid.appendChild(a);
-  });
+  };
+  testImg.src = imgBaseUrl + newIndex + '.jpg';
 }
 
-async function init(){
-  const params = new URLSearchParams(window.location.search);
-  const catParam = params.get('cat');
-  const yearParam = params.get('year');
-  const qParam = params.get('q');
+function updateNavButtons() {
+  document.getElementById('imgPrev').disabled = currentImgIndex <= 1;
+  document.getElementById('imgNext').disabled = currentImgIndex >= totalImages;
+}
 
-  if (catParam && CATEGORIES.some(c => c.code === catParam)) activeCategory = catParam;
-  if (yearParam) activeYear = parseInt(yearParam, 10);
-  if (qParam){
-    searchTerm = qParam.toLowerCase().trim();
-    searchInput.value = qParam;
+function updateCounter() {
+  const counter = document.getElementById('imgCounter');
+  if (totalImages > 1) {
+    counter.textContent = currentImgIndex + ' / ' + totalImages;
+    counter.style.display = 'block';
+  } else {
+    counter.style.display = 'none';
   }
+}
 
-  buildReelNav();
-  buildYearStrip();
+async function loadItem(){
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  const loading = document.getElementById('loading');
+  const notFound = document.getElementById('not-found');
+  const detailLayout = document.getElementById('detailLayout');
+
   try {
     const res = await fetch('data.json');
-    allItems = await res.json();
-    render();
+    const data = await res.json();
+    const index = data.findIndex(t => t.id === id);
+    const item = index !== -1 ? data[index] : null;
+
+    if (!item){
+      loading.classList.add('hidden');
+      notFound.classList.remove('hidden');
+      return;
+    }
+
+    loading.classList.add('hidden');
+    detailLayout.classList.remove('hidden');
+
+    // Populate previous/next flank cards (2 per side, wrapping around the ends)
+    const total = data.length;
+    const at = (offset) => total > 0 ? data[((index + offset) % total + total) % total] : null;
+
+    const prev1 = total > 1 ? at(-1) : null;
+    const next1 = total > 1 ? at(1) : null;
+    let prev2 = total > 2 ? at(-2) : null;
+    let next2 = total > 2 ? at(2) : null;
+
+    if (prev2 && (prev2.id === item.id || prev2.id === next1?.id)) prev2 = null;
+    if (next2 && (next2.id === item.id || next2.id === prev1?.id)) next2 = null;
+
+    function fillFlank(prefix, flankItem){
+      const el = document.getElementById(prefix);
+      if (!flankItem){ return; }
+      el.href = `item.html?id=${encodeURIComponent(flankItem.id)}`;
+      document.getElementById(prefix + 'Img').src = flankItem.image;
+      document.getElementById(prefix + 'Img').alt = flankItem.title;
+      document.getElementById(prefix + 'Title').textContent = flankItem.title;
+      el.classList.remove('hidden');
+    }
+
+    fillFlank('prevFlank1', prev1);
+    fillFlank('prevFlank2', prev2);
+    fillFlank('nextFlank1', next1);
+    fillFlank('nextFlank2', next2);
+
+    document.title = item.title + ' — Movie Quest Canada';
+    document.getElementById('poster').src = item.image;
+    document.getElementById('poster').alt = item.title;
+    document.getElementById('formatTag').textContent = item.format;
+    document.getElementById('title').textContent = item.title;
+    document.getElementById('meta').textContent = [item.year, item.format, item.condition].filter(Boolean).join('  ·  ');
+    document.getElementById('desc').textContent = item.desc || '';
+    document.getElementById('price').textContent = item.price != null ? '$' + Number(item.price).toFixed(2) : '—';
+    document.getElementById('storeLink').href = item.storeUrl || '#';
+    document.getElementById('searchLink').href = item.searchUrl || '#';
+
+    // ----- NEW: Movie Details Box -----
+    const detailsBox = document.getElementById('movieDetailsBox');
+    const detailGrid = document.getElementById('detailGrid');
+    detailGrid.innerHTML = '';
+
+    const detailsToShow = [];
+
+    if (item.starring && item.starring.length) {
+      detailsToShow.push({
+        label: 'Starring',
+        value: item.starring.map(a => `<span class="actor">${a}</span>`).join('')
+      });
+    }
+
+    if (item.director) {
+      detailsToShow.push({ label: 'Director', value: item.director });
+    }
+
+    if (item.producers && item.producers.length) {
+      detailsToShow.push({
+        label: 'Producers',
+        value: item.producers.join(' • ')
+      });
+    }
+
+    if (item.productionCompanies && item.productionCompanies.length) {
+      detailsToShow.push({
+        label: 'Production',
+        value: item.productionCompanies.join(' • ')
+      });
+    }
+
+    if (detailsToShow.length) {
+      detailsBox.classList.remove('hidden');
+      detailsToShow.forEach(d => {
+        const div = document.createElement('div');
+        div.className = 'detail-item';
+        div.innerHTML = `
+          <span class="label">${d.label}</span>
+          <span class="value">${d.value}</span>
+        `;
+        detailGrid.appendChild(div);
+      });
+    } else {
+      detailsBox.classList.add('hidden');
+    }
+
+    // ----- NEW: YouTube Trailer -----
+    const trailerContainer = document.getElementById('trailerContainer');
+    trailerContainer.innerHTML = '';
+    if (item.youtubeTrailer) {
+      const trailerDiv = document.createElement('div');
+      trailerDiv.className = 'trailer-box';
+      trailerDiv.innerHTML = `
+        <iframe src="${item.youtubeTrailer}" 
+                allowfullscreen 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                loading="lazy">
+        </iframe>
+      `;
+      trailerContainer.appendChild(trailerDiv);
+    } else {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'trailer-placeholder';
+      placeholder.textContent = '🎬 No trailer available for this title.';
+      trailerContainer.appendChild(placeholder);
+    }
+
+    // ----- Tidbits -----
+    const tidbitsSection = document.getElementById('tidbitsSection');
+    const tidbitsList = document.getElementById('tidbitsList');
+    if (item.tidbits && item.tidbits.length){
+      tidbitsList.innerHTML = '';
+      item.tidbits.forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = t;
+        tidbitsList.appendChild(li);
+      });
+      tidbitsSection.classList.remove('hidden');
+    } else {
+      tidbitsSection.classList.add('hidden');
+    }
+
+    // Initialize image carousel
+    initCarousel(item.image);
+    document.getElementById('imgPrev').addEventListener('click', () => changeImage(-1));
+    document.getElementById('imgNext').addEventListener('click', () => changeImage(1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') changeImage(-1);
+      if (e.key === 'ArrowRight') changeImage(1);
+    });
+
   } catch (err){
-    resultCount.textContent = 'Error loading catalogue.';
+    loading.textContent = 'Error loading item. Please check that data.json is in the same folder.';
     console.error(err);
   }
 }
 
-sortSelect.addEventListener('change', render);
-searchInput.addEventListener('input', (e) => {
-  searchTerm = e.target.value.toLowerCase().trim();
-  render();
-});
-
-init();
+loadItem();
 </script>
 </body>
 </html>
