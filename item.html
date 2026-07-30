@@ -757,6 +757,17 @@ function renderPoster(containerEl, imgEl, item) {
     imgEl.src = item.image;
     imgEl.alt = item.title;
     imgEl.classList.remove('hidden');
+    imgEl.onerror = () => {
+      imgEl.classList.add('hidden');
+      imgEl.removeAttribute('src');
+      let fb = containerEl.querySelector('.poster-fallback');
+      if (!fb) {
+        fb = document.createElement('div');
+        fb.className = 'poster-fallback';
+        containerEl.appendChild(fb);
+      }
+      fb.innerHTML = `<div class="pf-title">${item.title}</div>${item.year ? `<div class="pf-year">${item.year}</div>` : ''}`;
+    };
     const fb = containerEl.querySelector('.poster-fallback');
     if (fb) fb.remove();
     return true;
@@ -995,5 +1006,6 @@ async function loadItem(){
 
 loadItem();
 </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5"}' crossorigin="anonymous"></script>
 </body>
 </html>

@@ -330,6 +330,7 @@
     #searchInput{ width:160px; }
     .ad-banner{ grid-template-columns:repeat(2,1fr); padding-left:16px; padding-right:16px; }
   }
+  .hidden{display:none!important;}
 </style>
 <base target="_blank">
 </head>
@@ -476,9 +477,10 @@ function render(){
     const a = document.createElement('a');
     a.className = 'card';
     a.href = `item.html?id=${encodeURIComponent(item.id)}`;
+    const fallbackHTML = `<div class="poster-fallback" style="display:none"><div class="pf-title">${item.title}</div>${item.year ? `<div class="pf-year">${item.year}</div>` : ''}</div>`;
     const posterHTML = item.image
-      ? `<img src="${item.image}" alt="${item.title}" loading="lazy">`
-      : `<div class="poster-fallback"><div class="pf-title">${item.title}</div>${item.year ? `<div class="pf-year">${item.year}</div>` : ''}</div>`;
+      ? `<img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.style.display=\'none\'; const f=this.nextElementSibling; if(f&&f.classList.contains(\'poster-fallback\')){f.style.display=\'flex\';}">${fallbackHTML}`
+      : fallbackHTML;
     a.innerHTML = `
       <div class="card-poster">
         ${posterHTML}
@@ -529,5 +531,6 @@ searchInput.addEventListener('input', (e) => {
 
 init();
 </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5"}' crossorigin="anonymous"></script>
 </body>
 </html>
