@@ -601,7 +601,7 @@
         <div class="item-title" id="title"></div>
         <div class="item-meta" id="meta"></div>
         <div class="item-desc" id="desc"></div>
-        <div class="price-row">
+        <div class="price-row" id="priceRow">
           <div class="price-value" id="price"></div>
           <div class="price-label">from our store</div>
         </div>
@@ -843,7 +843,16 @@ async function loadItem(){
     document.getElementById('meta').textContent = [item.year, item.format, item.condition].filter(Boolean).join('  ·  ');
     document.getElementById('desc').textContent = item.desc || '';
     document.getElementById('price').textContent = item.price != null ? '$' + Number(item.price).toFixed(2) : '—';
-    document.getElementById('storeLink').href = item.storeUrl || '#';
+    const storeLinkEl = document.getElementById('storeLink');
+    const priceRowEl = document.getElementById('priceRow');
+    if (item.storeUrl) {
+      storeLinkEl.href = item.storeUrl;
+      storeLinkEl.classList.remove('hidden');
+      priceRowEl.classList.remove('hidden');
+    } else {
+      storeLinkEl.classList.add('hidden');
+      priceRowEl.classList.add('hidden');
+    }
     document.getElementById('searchLink').href = item.searchUrl || '#';
 
     // Populate metadata box
