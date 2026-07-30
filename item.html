@@ -42,7 +42,7 @@
   .wordmark span{color:var(--red);}
 
   .container{
-    max-width:920px;
+    max-width:1180px;
     margin:0 auto;
     padding:30px 24px 60px;
   }
@@ -56,6 +56,56 @@
     font-weight:700;
   }
   .back-link:hover{ color:var(--red); }
+
+  .detail-layout{
+    display:grid;
+    grid-template-columns:120px 1fr 120px;
+    gap:16px;
+    align-items:start;
+  }
+
+  .flank{
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--card);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 2px 0 var(--line);
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .flank:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  }
+  .flank-poster{
+    aspect-ratio:5/7;
+    background:#e5ded0;
+    overflow:hidden;
+  }
+  .flank-poster img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .flank-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem;
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:var(--red);
+    padding:8px 10px 0;
+  }
+  .flank-title{
+    font-size:0.78rem;
+    font-weight:700;
+    line-height:1.25;
+    padding:3px 10px 10px;
+  }
+  .flank.next{ text-align:right; }
+  .flank.next .flank-label{ text-align:right; }
 
   .detail{
     background:var(--card);
@@ -251,6 +301,24 @@
 
   .hidden{ display:none !important; }
 
+  @media (max-width:900px){
+    .detail-layout{ grid-template-columns:1fr; }
+    .flank{
+      flex-direction:row;
+      align-items:center;
+    }
+    .flank-poster{
+      width:64px;
+      aspect-ratio:5/7;
+      flex-shrink:0;
+    }
+    .flank-label{ padding:0 0 0 12px; }
+    .flank-title{ padding:2px 12px 0 12px; }
+    .flank.next{ text-align:left; flex-direction:row-reverse; }
+    .flank.next .flank-label{ text-align:left; padding:0 12px 0 0; }
+    .flank.next .flank-title{ text-align:right; padding:2px 12px 0 0; }
+  }
+
   @media (max-width:640px){
     .detail{ grid-template-columns:1fr; }
     .poster-wrap{ aspect-ratio:5/7; }
@@ -275,27 +343,41 @@
     <p style="margin-top:10px;"><a href="./">← Return to the catalogue</a></p>
   </div>
 
-  <div id="detail" class="detail hidden">
-    <div class="poster-wrap">
-      <img id="poster" src="" alt="">
-      <div class="format-tag" id="formatTag"></div>
-      <button class="img-nav prev" id="imgPrev" aria-label="Previous image">‹</button>
-      <button class="img-nav next" id="imgNext" aria-label="Next image">›</button>
-      <div class="img-counter" id="imgCounter"></div>
-    </div>
-    <div class="info">
-      <div class="item-title" id="title"></div>
-      <div class="item-meta" id="meta"></div>
-      <div class="item-desc" id="desc"></div>
-      <div class="price-row">
-        <div class="price-value" id="price"></div>
-        <div class="price-label">from our store</div>
+  <div id="detailLayout" class="detail-layout hidden">
+    <a id="prevFlank" class="flank prev hidden" href="#">
+      <div class="flank-poster"><img id="prevFlankImg" src="" alt=""></div>
+      <div class="flank-label">← Previous</div>
+      <div class="flank-title" id="prevFlankTitle"></div>
+    </a>
+
+    <div id="detail" class="detail">
+      <div class="poster-wrap">
+        <img id="poster" src="" alt="">
+        <div class="format-tag" id="formatTag"></div>
+        <button class="img-nav prev" id="imgPrev" aria-label="Previous image">‹</button>
+        <button class="img-nav next" id="imgNext" aria-label="Next image">›</button>
+        <div class="img-counter" id="imgCounter"></div>
       </div>
-      <div class="cta-row">
-        <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">Buy at Movie Quest eBay Store →</a>
-        <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">See other eBay listings →</a>
+      <div class="info">
+        <div class="item-title" id="title"></div>
+        <div class="item-meta" id="meta"></div>
+        <div class="item-desc" id="desc"></div>
+        <div class="price-row">
+          <div class="price-value" id="price"></div>
+          <div class="price-label">from our store</div>
+        </div>
+        <div class="cta-row">
+          <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">Buy at Movie Quest eBay Store →</a>
+          <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">See other eBay listings →</a>
+        </div>
       </div>
     </div>
+
+    <a id="nextFlank" class="flank next hidden" href="#">
+      <div class="flank-poster"><img id="nextFlankImg" src="" alt=""></div>
+      <div class="flank-label">Next →</div>
+      <div class="flank-title" id="nextFlankTitle"></div>
+    </a>
   </div>
 
   <div id="tidbitsSection" class="tidbits-section hidden">
@@ -382,12 +464,13 @@ async function loadItem(){
 
   const loading = document.getElementById('loading');
   const notFound = document.getElementById('not-found');
-  const detail = document.getElementById('detail');
+  const detailLayout = document.getElementById('detailLayout');
 
   try {
     const res = await fetch('data.json');
     const data = await res.json();
-    const item = data.find(t => t.id === id);
+    const index = data.findIndex(t => t.id === id);
+    const item = index !== -1 ? data[index] : null;
 
     if (!item){
       loading.classList.add('hidden');
@@ -396,7 +479,30 @@ async function loadItem(){
     }
 
     loading.classList.add('hidden');
-    detail.classList.remove('hidden');
+    detailLayout.classList.remove('hidden');
+
+    // Populate previous/next flank cards
+    const prevItem = index > 0 ? data[index - 1] : null;
+    const nextItem = index < data.length - 1 ? data[index + 1] : null;
+
+    const prevFlank = document.getElementById('prevFlank');
+    const nextFlank = document.getElementById('nextFlank');
+
+    if (prevItem){
+      prevFlank.href = `item.html?id=${encodeURIComponent(prevItem.id)}`;
+      document.getElementById('prevFlankImg').src = prevItem.image;
+      document.getElementById('prevFlankImg').alt = prevItem.title;
+      document.getElementById('prevFlankTitle').textContent = prevItem.title;
+      prevFlank.classList.remove('hidden');
+    }
+
+    if (nextItem){
+      nextFlank.href = `item.html?id=${encodeURIComponent(nextItem.id)}`;
+      document.getElementById('nextFlankImg').src = nextItem.image;
+      document.getElementById('nextFlankImg').alt = nextItem.title;
+      document.getElementById('nextFlankTitle').textContent = nextItem.title;
+      nextFlank.classList.remove('hidden');
+    }
 
     document.title = item.title + ' — Movie Quest Canada';
     document.getElementById('poster').src = item.image;
