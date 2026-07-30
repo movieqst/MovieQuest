@@ -14,8 +14,10 @@
     --card:#F1ECE0;
     --red:#C8102E;
     --red-dark:#98081F;
-    --stone:#8C8578;
+    --stone:#6E685C;
     --line:#E1DACB;
+    --fs-lg:1.1875rem;   /* larger text: +25% */
+    --fs-sm:0.95rem;     /* smaller text: 80% of --fs-lg */
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
@@ -31,29 +33,35 @@
   header{
     background:var(--ink);
     color:var(--paper);
-    padding:18px 28px;
-    display:flex;
+    width:100%;
+    margin:0;
+    padding:14px 28px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
     align-items:center;
-    justify-content:space-between;
-    gap:24px;
-    flex-wrap:wrap;
+    gap:16px;
     border-bottom:6px solid var(--red);
   }
-  .wordmark{
-    font-family:'Anton',sans-serif;
-    font-size:clamp(1.6rem,3.2vw,2.4rem);
-    letter-spacing:1px;
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-    text-decoration:none;
+  .logo-link{
+    grid-column:2;
+    justify-self:center;
+    display:block;
+    line-height:0;
   }
-  .wordmark span{color:var(--red);}
+  .site-logo{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+    border-radius:14px;
+    display:block;
+  }
   .header-right{
+    grid-column:3;
     display:flex;
     align-items:center;
     gap:16px;
     flex-wrap:wrap;
+    justify-self:end;
   }
   .search-wrap{
     position:relative;
@@ -63,7 +71,7 @@
     border:1px solid #3a3833;
     color:var(--paper);
     font-family:'JetBrains Mono',monospace;
-    font-size:0.9rem;
+    font-size:var(--fs-sm);
     padding:10px 14px 10px 34px;
     border-radius:4px;
     width:220px;
@@ -80,7 +88,7 @@
   }
   .store-link{
     font-family:'JetBrains Mono',monospace;
-    font-size:0.8rem;
+    font-size:var(--fs-sm);
     font-weight:700;
     letter-spacing:0.5px;
     text-transform:uppercase;
@@ -105,7 +113,7 @@
   }
   .reel-tab{
     font-family:'JetBrains Mono',monospace;
-    font-size:0.78rem;
+    font-size:var(--fs-sm);
     font-weight:700;
     letter-spacing:0.4px;
     text-transform:uppercase;
@@ -144,7 +152,7 @@
   .year-strip.visible{ display:flex; }
   .year-chip{
     font-family:'JetBrains Mono',monospace;
-    font-size:0.75rem;
+    font-size:var(--fs-sm);
     font-weight:500;
     color:#a29d90;
     background:transparent;
@@ -458,6 +466,13 @@
   }
 
   @media (max-width:640px){
+    header{
+      grid-template-columns:1fr;
+      justify-items:center;
+      padding:14px 16px;
+    }
+    .logo-link{ grid-column:1; }
+    .header-right{ grid-column:1; justify-self:center; }
     .detail{ grid-template-columns:1fr; }
     .poster-wrap{ aspect-ratio:5/7; }
     .info{ padding:22px; }
@@ -536,12 +551,11 @@
 
 </style>
 <base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
 <header>
-  <a class="wordmark" href="./">MOVIE QUEST<span>·</span>CANADA</a>
+  <a class="logo-link" href="./"><img class="site-logo" src="https://moviequest.ca/logo.jpg" alt="Movie Quest Canada"></a>
   <div class="header-right">
     <div class="search-wrap">
       <input type="text" id="searchInput" placeholder="Search titles...">
