@@ -463,6 +463,77 @@
     .info{ padding:22px; }
     .img-nav{ width:34px; height:34px; font-size:18px; }
   }
+  /* ---------- Metadata box ---------- */
+  .meta-section{
+    margin-top:24px;
+    background:var(--card);
+    border-radius:10px;
+    padding:24px 28px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.06);
+  }
+  .meta-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.2rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .meta-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:14px 28px;
+  }
+  .meta-row{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .meta-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:var(--stone);
+  }
+  .meta-value{
+    font-size:0.95rem;
+    font-weight:600;
+    line-height:1.4;
+    color:var(--ink);
+  }
+
+  /* ---------- Trailer box ---------- */
+  .trailer-section{
+    margin-top:24px;
+    background:var(--ink);
+    border-radius:10px;
+    padding:24px 28px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.1);
+  }
+  .trailer-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.2rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .trailer-wrap{
+    position:relative;
+    padding-bottom:56.25%; /* 16:9 */
+    height:0;
+    overflow:hidden;
+    border-radius:8px;
+    background:#0f0e0d;
+  }
+  .trailer-wrap iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    border:none;
+    border-radius:8px;
+  }
+
 </style>
 </head>
 <body>
@@ -535,6 +606,20 @@
       <div class="flank-poster"><img id="nextFlank2Img" src="" alt=""></div>
       <div class="flank-title" id="nextFlank2Title"></div>
     </a>
+  </div>
+
+  <!-- Metadata box -->
+  <div id="metaSection" class="meta-section hidden">
+    <div class="meta-title">📋 Details</div>
+    <div class="meta-grid" id="metaGrid"></div>
+  </div>
+
+  <!-- Trailer box -->
+  <div id="trailerSection" class="trailer-section hidden">
+    <div class="trailer-title">▶ Trailer</div>
+    <div class="trailer-wrap">
+      <iframe id="trailerFrame" src="" title="Movie trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
   </div>
 
   <div id="tidbitsSection" class="tidbits-section hidden">
@@ -744,6 +829,44 @@ async function loadItem(){
     document.getElementById('price').textContent = item.price != null ? '$' + Number(item.price).toFixed(2) : '—';
     document.getElementById('storeLink').href = item.storeUrl || '#';
     document.getElementById('searchLink').href = item.searchUrl || '#';
+
+    // Populate metadata box
+    const metaSection = document.getElementById('metaSection');
+    const metaGrid = document.getElementById('metaGrid');
+    const metaFields = [
+      { key: 'starring',   label: 'Starring' },
+      { key: 'director',   label: 'Director' },
+      { key: 'producers',  label: 'Producers' },
+      { key: 'company',    label: 'Company' }
+    ];
+    const hasMeta = metaFields.some(f => item[f.key] && String(item[f.key]).trim());
+    if (hasMeta) {
+      metaGrid.innerHTML = '';
+      metaFields.forEach(f => {
+        const val = item[f.key];
+        if (val && String(val).trim()) {
+          const row = document.createElement('div');
+          row.className = 'meta-row';
+          row.innerHTML = `<div class="meta-label">${f.label}</div><div class="meta-value">${String(val).trim()}</div>`;
+          metaGrid.appendChild(row);
+        }
+      });
+      metaSection.classList.remove('hidden');
+    } else {
+      metaSection.classList.add('hidden');
+    }
+
+    // Populate trailer box
+    const trailerSection = document.getElementById('trailerSection');
+    const trailerFrame = document.getElementById('trailerFrame');
+    const ytId = item.youtubeId ? String(item.youtubeId).trim() : '';
+    if (ytId) {
+      trailerFrame.src = `https://www.youtube.com/embed/${encodeURIComponent(ytId)}`;
+      trailerSection.classList.remove('hidden');
+    } else {
+      trailerFrame.src = '';
+      trailerSection.classList.add('hidden');
+    }
 
     const tidbitsSection = document.getElementById('tidbitsSection');
     const tidbitsList = document.getElementById('tidbitsList');
