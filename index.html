@@ -332,7 +332,6 @@
   }
   .hidden{display:none!important;}
 </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -363,33 +362,30 @@
 
 <div class="ad-banner">
   <div class="ad-slot">
-    <a class="ad-logo-link" href="https://www.moviequest.ca/IMAGE-SPLITTER/IMAGE-SPLITTER.html"><img src="https://moviequest.ca/IMAGE-SPLITTER/IMAGE-SPLITTER.jpg" alt="IMAGE-SPLITTER" width="150" height="150"></a>
+    <a class="ad-logo-link" href="https://www.moviequest.ca/IMAGE-SPLITTER/IMAGE-SPLITTER.html" target="_blank" rel="noopener"><img src="https://moviequest.ca/IMAGE-SPLITTER/IMAGE-SPLITTER.jpg" alt="IMAGE-SPLITTER" width="150" height="150"></a>
   </div>
   <div class="ad-slot">
-    <a class="ad-logo-link" href="https://www.moviequest.ca/PDF-FLATTENER/PDF-FLATTENER.html"><img src="https://moviequest.ca/PDF-FLATTENER/PDF-FLATTENER.jpg" alt="PDF-FLATTENER" width="150" height="150"></a>
+    <a class="ad-logo-link" href="https://www.moviequest.ca/PDF-FLATTENER/PDF-FLATTENER.html" target="_blank" rel="noopener"><img src="https://moviequest.ca/PDF-FLATTENER/PDF-FLATTENER.jpg" alt="PDF-FLATTENER" width="150" height="150"></a>
   </div>
-  <div class="ad-slot">  <a class="ad-logo-link" href="https://www.aidashbd.com"><img src="https://aidashbd.com/aidashbd.gif" alt="AI-DASHBoarD" width="150" height="150"></a></div>
-  <div class="ad-slot"> <a class="ad-logo-link" href="https://www.moviequest.ca"><img src="https://moviequest.ca/logo.jpg" alt="Movie Quest Canada" width="150" height="150"></a></div>
+  <div class="ad-slot">  <a class="ad-logo-link" href="https://www.aidashbd.com" target="_blank" rel="noopener"><img src="https://aidashbd.com/aidashbd.gif" alt="AI-DASHBoarD" width="150" height="150"></a></div>
+  <div class="ad-slot"> <a class="ad-logo-link" href="https://www.moviequest.ca" target="_blank" rel="noopener"><img src="https://moviequest.ca/logo.jpg" alt="Movie Quest Canada" width="150" height="150"></a></div>
 </div>
 
 <script>
-const CATEGORIES = [
-  { code:'all',      label:'All' },
-  { code:'pre1949',  label:'Pre-1949' },
-  { code:'1950s',    label:'1950s' },
-  { code:'1960s',    label:'1960s' },
-  { code:'1970s',    label:'1970s' },
-  { code:'1980s',    label:'1980s', years:[1980,1981,1982,1983,1984,1985,1986,1987,1988,1989] },
-  { code:'1990s',    label:'1990s', years:[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999] },
-  { code:'2000s',    label:'2000s', years:[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009] },
-  { code:'2010s',    label:'2010s', years:[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019] },
-  { code:'2020s',    label:'2020s' },
-  { code:'tvseries', label:'TV Series' },
-  { code:'etc',      label:'ETC' },
-  { code:'music',    label:'Music CDs' }
-];
+// Category tabs come from categories.json so there is ONE source of truth.
+// If that file can't be loaded we still show an "All" tab and the full grid.
+let CATEGORIES = [{ code:'all', label:'All' }];
 
-const slugify = (name) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+async function loadCategories(){
+  try {
+    const res = await fetch('categories.json');
+    const cfg = await res.json();
+    const tops = Array.isArray(cfg.topCategories) ? cfg.topCategories : [];
+    CATEGORIES = [{ code:'all', label:'All' }, ...tops];
+  } catch (err){
+    console.error('Could not load categories.json — falling back to "All" only.', err);
+  }
+}
 
 let allItems = [];
 let activeCategory = 'all';
@@ -442,6 +438,13 @@ function buildYearStrip(){
   });
 }
 
+// "The Wizard" should file under W, not T.
+const titleKey = (t) => String(t || '').replace(/^(the|a|an)\s+/i, '').trim().toLowerCase();
+
+// Items missing a year or price sort to the end rather than to the top.
+const yearKey  = (item, missing = Infinity) => item.year  == null ? missing : item.year;
+const priceKey = (item) => item.price == null ? Infinity : Number(item.price);
+
 function formatPrice(p){
   if (p === undefined || p === null) return '—';
   return '$' + Number(p).toFixed(2);
@@ -459,10 +462,10 @@ function render(){
   });
 
   switch(sortSelect.value){
-    case 'year-desc': items.sort((a,b) => (b.year||0) - (a.year||0)); break;
-    case 'year-asc':  items.sort((a,b) => (a.year||0) - (b.year||0)); break;
-    case 'price':     items.sort((a,b) => (a.price||0) - (b.price||0)); break;
-    default:          items.sort((a,b) => a.title.localeCompare(b.title));
+    case 'year-desc': items.sort((a,b) => yearKey(b, -Infinity) - yearKey(a, -Infinity)); break;
+    case 'year-asc':  items.sort((a,b) => yearKey(a) - yearKey(b)); break;
+    case 'price':     items.sort((a,b) => priceKey(a) - priceKey(b)); break;
+    default:          items.sort((a,b) => titleKey(a.title).localeCompare(titleKey(b.title)));
   }
 
   resultCount.textContent = `${items.length} item${items.length === 1 ? '' : 's'} in the catalogue`;
@@ -499,6 +502,11 @@ function render(){
 }
 
 async function init(){
+  // Kick both files off together, then wait on categories so the nav can be
+  // built (and the ?cat= param validated) before the items land.
+  const itemsPromise = fetch('data.json').then(res => res.json());
+  await loadCategories();
+
   const params = new URLSearchParams(window.location.search);
   const catParam = params.get('cat');
   const yearParam = params.get('year');
@@ -514,8 +522,7 @@ async function init(){
   buildReelNav();
   buildYearStrip();
   try {
-    const res = await fetch('data.json');
-    allItems = await res.json();
+    allItems = await itemsPromise;
     render();
   } catch (err){
     resultCount.textContent = 'Error loading catalogue.';

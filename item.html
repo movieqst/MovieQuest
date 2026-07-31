@@ -584,7 +584,6 @@
   }
 
 </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -679,21 +678,20 @@
 </div>
 
 <script>
-const CATEGORIES = [
-  { code:'all',      label:'All' },
-  { code:'pre1949',  label:'Pre-1949' },
-  { code:'1950s',    label:'1950s' },
-  { code:'1960s',    label:'1960s' },
-  { code:'1970s',    label:'1970s' },
-  { code:'1980s',    label:'1980s', years:[1980,1981,1982,1983,1984,1985,1986,1987,1988,1989] },
-  { code:'1990s',    label:'1990s', years:[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999] },
-  { code:'2000s',    label:'2000s', years:[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009] },
-  { code:'2010s',    label:'2010s', years:[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019] },
-  { code:'2020s',    label:'2020s' },
-  { code:'tvseries', label:'TV Series' },
-  { code:'etc',      label:'ETC' },
-  { code:'music',    label:'Music CDs' }
-];
+// Category tabs come from categories.json so there is ONE source of truth,
+// shared with index.html. Falls back to an "All" tab if the file can't load.
+let CATEGORIES = [{ code:'all', label:'All' }];
+
+async function loadCategories(){
+  try {
+    const res = await fetch('categories.json');
+    const cfg = await res.json();
+    const tops = Array.isArray(cfg.topCategories) ? cfg.topCategories : [];
+    CATEGORIES = [{ code:'all', label:'All' }, ...tops];
+  } catch (err){
+    console.error('Could not load categories.json — falling back to "All" only.', err);
+  }
+}
 
 const reelNav = document.getElementById('reelNav');
 const yearStrip = document.getElementById('yearStrip');
@@ -737,8 +735,10 @@ function buildYearStrip(){
   });
 }
 
-buildReelNav();
-buildYearStrip();
+loadCategories().then(() => {
+  buildReelNav();
+  buildYearStrip();
+});
 
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && searchInput.value.trim()){
@@ -874,9 +874,21 @@ async function loadItem(){
     loading.classList.add('hidden');
     detailLayout.classList.remove('hidden');
 
-    // Populate previous/next flank cards (2 per side, wrapping around the ends)
-    const total = data.length;
-    const at = (offset) => total > 0 ? data[((index + offset) % total + total) % total] : null;
+    // Populate previous/next flank cards (2 per side, wrapping around the ends).
+    // Neighbours come from the same category where possible and follow the same
+    // A-Z order as the catalogue grid, so "next" means something to the visitor
+    // instead of being whatever happened to sit beside it in data.json.
+    const titleKey = (t) => String(t || '').replace(/^(the|a|an)\s+/i, '').trim().toLowerCase();
+    const myCats = item.categories || [];
+    let ring = data.filter(x => (x.categories || []).some(c => myCats.includes(c)));
+    if (ring.length < 3) ring = data.slice();
+    ring.sort((a, b) => titleKey(a.title).localeCompare(titleKey(b.title)));
+
+    const total = ring.length;
+    const ringIndex = ring.findIndex(x => x.id === item.id);
+    const at = (offset) => (total > 0 && ringIndex !== -1)
+      ? ring[((ringIndex + offset) % total + total) % total]
+      : null;
 
     const prev1 = total > 1 ? at(-1) : null;
     const next1 = total > 1 ? at(1) : null;
