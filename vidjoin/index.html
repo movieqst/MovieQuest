@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP4 Joiner — Fixed</title>
+    <title>MP4 Joiner — Self-Hosted Ready</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -342,6 +342,25 @@
         .modal-header h3 { color: #fff; font-size: 1rem; }
         .modal-close { background: none; border: none; color: #888; font-size: 1.4rem; cursor: pointer; }
         .modal-video { width: 100%; display: block; max-height: 55vh; background: #000; }
+        
+        .setup-box {
+            background: rgba(254,202,87,0.08);
+            border: 1px solid #feca5744;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+        .setup-box h4 { color: #feca57; margin-bottom: 8px; }
+        .setup-box code {
+            background: #1a1a2e;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #74c0fc;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
@@ -727,7 +746,6 @@
             if (added) {
                 clearLog();
                 log(`Added ${added} file(s).`, 'ok');
-                // Auto-start loading FFmpeg in background so it's ready
                 if (!ffmpeg && !ffmpegLoading) {
                     initFFmpeg().catch(() => {});
                 }
@@ -743,14 +761,21 @@
             progressBar.classList.remove('active');
         };
 
-        // ─── CRITICAL FIX: Only assign ffmpeg after FULL successful load ───
+        // ─── MULTI-SOURCE FALLBACK LOADER ───
+        async function tryLoadSource(name, urls) {
+            log(`Trying ${name}...`, 'info');
+            const ff = new FFmpeg();
+            const core = await toBlobURL(urls.js, 'text/javascript');
+            const wasm = await toBlobURL(urls.wasm, 'application/wasm');
+            const worker = await toBlobURL(urls.worker, 'text/javascript');
+            await ff.load({ coreURL: core, wasmURL: wasm, workerURL: worker });
+            return ff;
+        }
+
         async function initFFmpeg() {
-            if (ffmpeg) return; // Already loaded successfully
+            if (ffmpeg) return;
             if (ffmpegLoading) {
-                // Wait for existing load attempt
-                while (ffmpegLoading) {
-                    await new Promise(r => setTimeout(r, 200));
-                }
+                while (ffmpegLoading) await new Promise(r => setTimeout(r, 200));
                 if (ffmpeg) return;
                 throw new Error('Previous load failed');
             }
@@ -760,46 +785,74 @@
             log('Loading FFmpeg.wasm (~25 MB)...', 'info');
             setProgress(5);
 
-            const ff = new FFmpeg(); // LOCAL instance - don't assign to global yet!
-            const base = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
-            
-            try {
-                log('Downloading core JS...', 'info');
-                const core = await toBlobURL(`${base}/ffmpeg-core.js`, 'text/javascript');
-                setProgress(15);
-                
-                log('Downloading WASM...', 'info');
-                const wasm = await toBlobURL(`${base}/ffmpeg-core.wasm`, 'application/wasm');
-                setProgress(25);
-                
-                log('Downloading worker...', 'info');
-                const worker = await toBlobURL(`${base}/ffmpeg-core.worker.js`, 'text/javascript');
-                setProgress(35);
-                
-                log('Initializing...', 'info');
-                await ff.load({ coreURL: core, wasmURL: wasm, workerURL: worker });
-                
-                // ONLY assign after full success!
-                ffmpeg = ff;
-                ffmpegLoading = false;
-                
-                setProgress(100);
-                setTimeout(() => progressBar.classList.remove('active'), 400);
-                clearLog();
-                log('FFmpeg ready!', 'ok');
-            } catch (e) {
-                ffmpegLoading = false;
-                ffmpeg = null; // Ensure null so next attempt retries
-                log('Failed to load FFmpeg: ' + e.message, 'err');
-                if (e.message.includes('fetch')) {
-                    log('', 'info');
-                    log('Network error. If using Brave/Chrome:', 'warn');
-                    log('1. Disable aggressive blocking for this page', 'warn');
-                    log('2. Or open this HTML file locally (double-click)', 'warn');
-                    log('3. Or try a different network/WiFi', 'warn');
+            // Try multiple sources in order
+            const sources = [
+                {
+                    name: 'unpkg CDN',
+                    urls: {
+                        js: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js',
+                        wasm: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm',
+                        worker: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.worker.js'
+                    }
+                },
+                {
+                    name: 'jsDelivr CDN',
+                    urls: {
+                        js: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js',
+                        wasm: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm',
+                        worker: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.worker.js'
+                    }
+                },
+                {
+                    name: 'local files',
+                    urls: {
+                        js: './ffmpeg-core.js',
+                        wasm: './ffmpeg-core.wasm',
+                        worker: './ffmpeg-core.worker.js'
+                    }
                 }
-                throw e;
+            ];
+
+            let lastError = null;
+            
+            for (const source of sources) {
+                try {
+                    setProgress(10);
+                    const ff = await tryLoadSource(source.name, source.urls);
+                    ffmpeg = ff;
+                    ffmpegLoading = false;
+                    setProgress(100);
+                    setTimeout(() => progressBar.classList.remove('active'), 400);
+                    clearLog();
+                    log(`FFmpeg loaded from ${source.name}!`, 'ok');
+                    return;
+                } catch (e) {
+                    lastError = e;
+                    log(`${source.name} failed: ${e.message}`, 'warn');
+                    // Continue to next source
+                }
             }
+
+            // All sources failed
+            ffmpegLoading = false;
+            ffmpeg = null;
+            setProgress(0);
+            progressBar.classList.remove('active');
+            
+            clearLog();
+            log('All sources failed to load FFmpeg.', 'err');
+            log('', 'info');
+            log('BRAVE/ADBLOCK FIX:', 'warn');
+            log('1. Download these 3 files:', 'info');
+            log('   https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js', 'info');
+            log('   https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm', 'info');
+            log('   https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.worker.js', 'info');
+            log('2. Put them in the SAME folder as this HTML file', 'info');
+            log('3. Refresh the page', 'info');
+            log('', 'info');
+            log('Or: Disable Brave Shields / ad blocker for this site', 'warn');
+            
+            throw lastError;
         }
 
         function buildFilters() {
