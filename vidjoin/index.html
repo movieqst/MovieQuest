@@ -8,15 +8,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #001a1a;
-      --bg2: #002020;
-      --bg3: #001818;
-      --card: #002525;
-      --border: #004444;
-      --text: #d8f8f8;
-      --muted: #4a9090;
-      --blue: #00e5ff;
-      --amber: #00bcd4;
+      --bg: #1a0f00;
+      --bg2: #241400;
+      --bg3: #1e1200;
+      --card: #2a1800;
+      --border: #4a3000;
+      --text: #f5e6c8;
+      --muted: #8a6a40;
+      --blue: #d4a054;
+      --amber: #c17f24;
       --green: #51cf66;
       --red: #ff6b6b;
       --radius: 10px;
@@ -623,12 +623,9 @@
       }
       hideProgress();
     } catch (err) {
-      clearLog();
+      // do NOT clearLog() here — FFmpeg's own error messages are in the log and help diagnose
       const msg = err.message || String(err);
-      log((previewMode ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
-      if (msg.includes('SharedArrayBuffer') || msg.includes('crossOriginIsolated')) {
-        log('Fix: make sure coi-serviceworker.js is in the same folder and hard-refresh (Ctrl+Shift+R).', 'warn');
-      }
+      log('▶ ' + (previewMode ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
       hideProgress();
     } finally {
       isProcessing = false;
