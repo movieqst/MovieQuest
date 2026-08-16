@@ -8,15 +8,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #1a0a00;
-      --bg2: #221000;
-      --bg3: #1e0e00;
-      --card: #281400;
-      --border: #4a2800;
-      --text: #fff0d8;
-      --muted: #906040;
-      --blue: #ff8c00;
-      --amber: #e06000;
+      --bg: #001408;
+      --bg2: #001c0c;
+      --bg3: #001810;
+      --card: #002010;
+      --border: #004020;
+      --text: #e0ffe8;
+      --muted: #40a060;
+      --blue: #00e864;
+      --amber: #00c050;
       --green: #51cf66;
       --red: #ff6b6b;
       --radius: 10px;
@@ -269,13 +269,24 @@
 
   <div id="previewSection">
     <div class="preview-hdr">
-      <span>Preview (draft quality)</span>
-      <button onclick="closePreview()">✕</button>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="background:#c00;color:#fff;font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.05em;">LOW RES</span>
+        <span>Quick Preview — 480p draft only</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button id="btnDlPreview" onclick="downloadPreview()" title="Save this draft — instant, no re-encode">
+          ⬇ Save Draft
+        </button>
+        <button onclick="closePreview()">✕</button>
+      </div>
     </div>
     <video id="previewVideo" controls></video>
-    <div class="preview-info">
+    <div class="preview-info" style="align-items:center;flex-wrap:wrap;gap:12px;">
       <span>Clips: <b id="prevCount">0</b></span>
       <span>Duration: <b id="prevDur">0:00</b></span>
+      <span style="margin-left:auto;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text);font-size:0.8rem;">
+        ✨ Happy with the cuts? Hit <b>Merge &amp; Download</b> below for full 1080p — download is instant once it encodes.
+      </span>
     </div>
   </div>
 </main>
@@ -295,7 +306,7 @@
         </button>
         <button class="btn btn-preview" id="btnPreview" disabled>
           <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"></polygon></svg>
-          Preview
+          ⚡ Quick Preview
         </button>
         <button class="btn btn-merge" id="btnMerge" disabled>
           <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -361,6 +372,7 @@
   const progressWrap   = document.getElementById('progressWrap');
   const progressFill   = document.getElementById('progressFill');
   const previewSection = document.getElementById('previewSection');
+  let previewBlobUrl   = null; // kept alive so "Download Preview" needs no re-encode
   const previewVideo   = document.getElementById('previewVideo');
   const prevCount      = document.getElementById('prevCount');
   const prevDur        = document.getElementById('prevDur');
@@ -612,13 +624,15 @@
       setProgress(100);
 
       if (previewMode) {
+        if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl); // free old preview
+        previewBlobUrl = url; // keep alive for download button
         previewVideo.src = url;
         prevCount.textContent = vCount;
         prevDur.textContent = fmt(totalDur);
         previewSection.classList.add('show');
         setTimeout(() => previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
         clearLog();
-        log('Preview ready! Scroll down to watch.', 'ok');
+        log('Preview ready! Hit ⬇ Download Preview to save it, or Merge & Download for full 1080p.', 'ok');
       } else {
         clearLog();
         log('Done! Your download should start automatically.', 'ok');
@@ -669,6 +683,15 @@
   window.closePreview = () => {
     previewSection.classList.remove('show');
     previewVideo.pause(); previewVideo.src = '';
+    if (previewBlobUrl) { URL.revokeObjectURL(previewBlobUrl); previewBlobUrl = null; }
+  };
+
+  window.downloadPreview = () => {
+    if (!previewBlobUrl) return;
+    const a = document.createElement('a');
+    a.href = previewBlobUrl;
+    a.download = 'preview_draft.mp4';
+    a.click();
   };
 
   // ── Slider helpers ─────────────────────────────────────────────────────
