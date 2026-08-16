@@ -3,165 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP4 Video Joiner + Trimmer</title>
+    <title>MP4 Video Joiner — Split A/V Trim + Fades</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f0f1a;
+            background: #0a0a12;
             color: #e0e0e0;
-            padding: 20px;
+            padding: 16px;
             min-height: 100vh;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; }
         h1 {
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 6px;
+            font-size: 1.7rem;
+            margin-bottom: 4px;
             background: linear-gradient(90deg, #ff6b6b, #feca57);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+        .subtitle { text-align: center; color: #777; margin-bottom: 18px; font-size: 0.88rem; }
         
         .drop-zone {
-            border: 2px dashed #444;
-            border-radius: 16px;
-            padding: 35px;
+            border: 2px dashed #333;
+            border-radius: 14px;
+            padding: 30px;
             text-align: center;
             background: rgba(255,255,255,0.03);
             transition: all 0.3s;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
-        .drop-zone.dragover { border-color: #feca57; background: rgba(254,202,87,0.08); }
-        .drop-zone .icon { font-size: 2.5rem; margin-bottom: 8px; pointer-events: none; }
-        .drop-zone p { color: #777; pointer-events: none; }
-        
+        .drop-zone.dragover { border-color: #feca57; background: rgba(254,202,87,0.06); }
+        .drop-zone .icon { font-size: 2.2rem; margin-bottom: 6px; pointer-events: none; }
+        .drop-zone p { color: #666; pointer-events: none; font-size: 0.95rem; }
         input[type="file"] { display: none; }
         
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-            margin-bottom: 20px;
-        }
+        .clips-area { margin-bottom: 18px; }
         
-        .video-card {
-            background: rgba(255,255,255,0.06);
+        .clip-card {
+            background: rgba(255,255,255,0.05);
             border-radius: 14px;
+            border: 1px solid #1a1a2e;
+            margin-bottom: 14px;
             overflow: hidden;
-            border: 1px solid #222;
-            transition: transform 0.2s;
         }
-        .video-card:hover { transform: translateY(-2px); border-color: #333; }
-        
-        .thumb-box {
-            width: 100%;
-            height: 150px;
-            background: #1a1a2e;
+        .clip-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid #1a1a2e;
+        }
+        .clip-thumb {
+            width: 100px;
+            height: 56px;
+            background: #151520;
+            border-radius: 8px;
             overflow: hidden;
+            flex-shrink: 0;
             cursor: pointer;
+            position: relative;
         }
-        .thumb-box img, .thumb-box canvas {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .thumb-box .placeholder {
-            color: #555;
-            font-size: 2rem;
-        }
-        .thumb-box .play-btn {
+        .clip-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .clip-thumb .play-icon {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 50%;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 1.5rem;
+            background: rgba(0,0,0,0.3);
             opacity: 0;
             transition: opacity 0.2s;
-            pointer-events: none;
+            font-size: 1.3rem;
         }
-        .thumb-box:hover .play-btn { opacity: 1; }
-        .thumb-box .duration {
-            position: absolute;
-            bottom: 6px;
-            right: 6px;
-            background: rgba(0,0,0,0.7);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            color: #fff;
-        }
-        
-        .card-body { padding: 14px; }
-        .card-name {
-            font-size: 0.85rem;
+        .clip-thumb:hover .play-icon { opacity: 1; }
+        .clip-title {
+            flex: 1;
+            font-size: 0.9rem;
             color: #ddd;
-            margin-bottom: 10px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+        .clip-ctrls {
+            display: flex;
+            gap: 6px;
+        }
+        .clip-ctrls button {
+            background: #1a1a2e;
+            border: 1px solid #333;
+            color: #888;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .clip-ctrls button:hover { border-color: #feca57; color: #feca57; }
+        .clip-ctrls button.remove:hover { border-color: #ff4444; color: #ff4444; }
+        .clip-ctrls button:disabled { opacity: 0.3; cursor: default; }
         
-        .trim-row {
+        .clip-body { padding: 14px 16px; }
+        
+        /* Timeline visualizer */
+        .timeline-vis {
+            height: 32px;
+            background: #11111a;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .tl-track {
+            position: absolute;
+            height: 14px;
+            border-radius: 3px;
+            top: 4px;
+        }
+        .tl-track.video { background: #4dabf7; top: 4px; }
+        .tl-track.audio { background: #feca57; top: 18px; height: 10px; opacity: 0.85; }
+        .tl-labels {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            color: #555;
+            pointer-events: none;
+        }
+        
+        .split-toggle {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        .split-toggle input[type="checkbox"] {
+            accent-color: #feca57;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        
+        .trim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .trim-grid.full {
+            grid-template-columns: 1fr;
+        }
+        .trim-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
         .trim-row label {
             font-size: 0.75rem;
             color: #888;
-            width: 40px;
-            flex-shrink: 0;
-        }
-        .trim-row input[type="range"] {
-            flex: 1;
-            accent-color: #feca57;
-        }
-        .trim-row .time {
-            font-size: 0.75rem;
-            color: #aaa;
-            width: 50px;
-            text-align: right;
-            font-family: monospace;
-        }
-        
-        .card-btns {
             display: flex;
-            gap: 6px;
-            margin-top: 10px;
+            justify-content: space-between;
         }
-        .card-btns button {
-            flex: 1;
-            padding: 6px;
-            border: 1px solid #333;
-            background: transparent;
-            color: #888;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
+        .trim-row label span { color: #aaa; font-family: monospace; }
+        .trim-row input[type="range"] {
+            width: 100%;
+            accent-color: #4dabf7;
         }
-        .card-btns button:hover { border-color: #feca57; color: #feca57; }
-        .card-btns button.remove:hover { border-color: #ff6b6b; color: #ff6b6b; }
-        .card-btns button:disabled { opacity: 0.3; cursor: default; }
+        .trim-row.audio input[type="range"] { accent-color: #feca57; }
         
-        .controls {
+        .fade-row {
             display: flex;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #1a1a2e;
         }
-        .controls button {
+        .fade-input {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .fade-input label { font-size: 0.72rem; color: #777; }
+        .fade-input input {
+            background: #11111a;
+            border: 1px solid #333;
+            color: #ddd;
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            width: 100%;
+        }
+        
+        /* Transition cards between clips */
+        .transition-card {
+            background: rgba(254,202,87,0.05);
+            border: 1px dashed #feca5744;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin: -6px 0 14px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        .transition-card label { color: #feca57; font-size: 0.8rem; }
+        .transition-card select {
+            background: #11111a;
+            border: 1px solid #333;
+            color: #ddd;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+        .transition-card input[type="number"] {
+            width: 60px;
+            background: #11111a;
+            border: 1px solid #333;
+            color: #ddd;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+        
+        .main-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            position: sticky;
+            bottom: 10px;
+            background: #0a0a12;
+            padding: 10px 0;
+            z-index: 50;
+        }
+        .main-controls button {
             flex: 1;
             padding: 14px;
             border: none;
@@ -169,37 +251,61 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
+            transition: opacity 0.2s;
         }
         .btn-clear { background: #2a2a3e; color: #fff; }
-        .btn-clear:hover { background: #33334d; }
+        .btn-preview {
+            background: linear-gradient(90deg, #4dabf7, #339af0);
+            color: #fff;
+        }
         .btn-merge {
             background: linear-gradient(90deg, #ff6b6b, #feca57);
             color: #1a1a2e;
             font-size: 1.1rem;
         }
-        .btn-merge:hover { opacity: 0.9; }
-        .btn-merge:disabled { opacity: 0.4; cursor: not-allowed; }
+        .main-controls button:hover:not(:disabled) { opacity: 0.9; }
+        .main-controls button:disabled { opacity: 0.4; cursor: not-allowed; }
         
-        .status {
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            padding: 14px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.82rem;
-            color: #aaa;
-            min-height: 60px;
-            white-space: pre-wrap;
-            line-height: 1.5;
+        .preview-section {
+            background: rgba(255,255,255,0.04);
+            border-radius: 16px;
+            border: 1px solid #222;
+            overflow: hidden;
+            display: none;
+            margin-bottom: 20px;
         }
-        .status .ok { color: #51cf66; }
-        .status .err { color: #ff6b6b; }
-        .status .info { color: #74c0fc; }
-        .status .warn { color: #feca57; }
+        .preview-section.active { display: block; }
+        .preview-header {
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .preview-header h3 { font-size: 0.95rem; color: #feca57; }
+        .preview-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+        .preview-video { width: 100%; max-height: 55vh; display: block; background: #000; }
+        .preview-info {
+            padding: 12px 18px;
+            color: #888;
+            font-size: 0.85rem;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .preview-info span { color: #feca57; font-weight: 600; }
         
         .progress-bar {
             width: 100%;
-            height: 6px;
-            background: #222;
+            height: 5px;
+            background: #1a1a2e;
             border-radius: 3px;
             margin-bottom: 12px;
             overflow: hidden;
@@ -213,24 +319,39 @@
             transition: width 0.3s;
         }
         
+        .status {
+            background: rgba(0,0,0,0.25);
+            border-radius: 10px;
+            padding: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            color: #999;
+            min-height: 60px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            margin-bottom: 80px;
+        }
+        .status .ok { color: #51cf66; }
+        .status .err { color: #ff6b6b; }
+        .status .info { color: #74c0fc; }
+        .status .warn { color: #feca57; }
+        
         .download-link {
             display: inline-block;
             margin-top: 10px;
             padding: 10px 22px;
             background: #51cf66;
-            color: #0f0f1a;
+            color: #0a0a12;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 700;
         }
-        .download-link:hover { background: #40c057; }
         
-        /* Preview Modal */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.9);
+            inset: 0;
+            background: rgba(0,0,0,0.92);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -239,7 +360,7 @@
         .modal-overlay.active { display: flex; }
         .modal-content {
             background: #1a1a2e;
-            border-radius: 16px;
+            border-radius: 14px;
             max-width: 800px;
             width: 100%;
             overflow: hidden;
@@ -249,39 +370,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 14px 18px;
             border-bottom: 1px solid #333;
         }
-        .modal-header h3 { color: #fff; font-size: 1.1rem; }
+        .modal-header h3 { color: #fff; font-size: 1rem; }
         .modal-close {
             background: none;
             border: none;
             color: #888;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
         }
-        .modal-close:hover { color: #fff; }
-        .modal-video {
-            width: 100%;
-            display: block;
-            max-height: 60vh;
-            background: #000;
-        }
-        .modal-trim-info {
-            padding: 16px 20px;
-            display: flex;
-            gap: 20px;
-            color: #aaa;
-            font-size: 0.9rem;
-            flex-wrap: wrap;
-        }
-        .modal-trim-info span { color: #feca57; font-weight: 600; }
+        .modal-video { width: 100%; display: block; max-height: 55vh; background: #000; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎬 MP4 Joiner + Trimmer</h1>
-        <p class="subtitle">Trim start/end, click thumbnail to preview, then merge — all in your browser</p>
+        <h1>🎬 Advanced MP4 Joiner</h1>
+        <p class="subtitle">Split audio/video trim, fade controls, and preview before download</p>
         
         <div class="drop-zone" id="dropZone">
             <div class="icon">📁</div>
@@ -289,33 +395,40 @@
         </div>
         <input type="file" id="fileInput" multiple accept=".mp4,video/mp4">
         
-        <div class="video-grid" id="videoGrid"></div>
+        <div class="clips-area" id="clipsArea"></div>
         
-        <div class="controls">
-            <button class="btn-clear" id="btnClear">🗑️ Clear All</button>
-            <button class="btn-merge" id="btnMerge">🔥 Merge Videos</button>
+        <div class="main-controls">
+            <button class="btn-clear" id="btnClear">🗑️ Clear</button>
+            <button class="btn-preview" id="btnPreview">👁️ Preview</button>
+            <button class="btn-merge" id="btnMerge">🔥 Merge</button>
         </div>
         
         <div class="progress-bar" id="progressBar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
         
+        <div class="preview-section" id="previewSection">
+            <div class="preview-header">
+                <h3>👁️ Final Preview (Draft)</h3>
+                <button class="preview-close" id="previewClose">✕</button>
+            </div>
+            <video class="preview-video" id="previewVideo" controls></video>
+            <div class="preview-info">
+                <div>Clips: <span id="previewCount">0</span></div>
+                <div>Duration: <span id="previewDur">0:00</span></div>
+            </div>
+        </div>
+        
         <div class="status" id="status">Ready. Drop MP4 files to begin.</div>
     </div>
 
-    <!-- Preview Modal -->
-    <div class="modal-overlay" id="previewModal">
+    <div class="modal-overlay" id="clipModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalTitle">Preview</h3>
+                <h3 id="modalTitle">Clip</h3>
                 <button class="modal-close" id="modalClose">✕</button>
             </div>
             <video class="modal-video" id="modalVideo" controls></video>
-            <div class="modal-trim-info">
-                <div>Original: <span id="modalOrigDur">0:00</span></div>
-                <div>Trim: <span id="modalTrimStart">0:00</span> — <span id="modalTrimEnd">0:00</span></div>
-                <div>Output: <span id="modalOutDur">0:00</span></div>
-            </div>
         </div>
     </div>
 
@@ -325,27 +438,26 @@
 
         let files = [];
         let fileData = [];
+        let transitions = []; // between clips: {type, duration}
         let ffmpeg = null;
         let isProcessing = false;
 
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
-        const videoGrid = document.getElementById('videoGrid');
+        const clipsArea = document.getElementById('clipsArea');
         const btnClear = document.getElementById('btnClear');
+        const btnPreview = document.getElementById('btnPreview');
         const btnMerge = document.getElementById('btnMerge');
         const status = document.getElementById('status');
         const progressBar = document.getElementById('progressBar');
         const progressFill = document.getElementById('progressFill');
-        
-        // Modal refs
-        const previewModal = document.getElementById('previewModal');
+        const previewSection = document.getElementById('previewSection');
+        const previewVideo = document.getElementById('previewVideo');
+        const previewClose = document.getElementById('previewClose');
+        const clipModal = document.getElementById('clipModal');
         const modalVideo = document.getElementById('modalVideo');
         const modalTitle = document.getElementById('modalTitle');
         const modalClose = document.getElementById('modalClose');
-        const modalOrigDur = document.getElementById('modalOrigDur');
-        const modalTrimStart = document.getElementById('modalTrimStart');
-        const modalTrimEnd = document.getElementById('modalTrimEnd');
-        const modalOutDur = document.getElementById('modalOutDur');
 
         function log(msg, type = 'info') {
             const span = document.createElement('span');
@@ -360,359 +472,471 @@
             progressFill.style.width = pct + '%';
         }
 
-        function formatTime(seconds) {
-            const m = Math.floor(seconds / 60);
-            const s = Math.floor(seconds % 60);
-            return `${m}:${s.toString().padStart(2, '0')}`;
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            const ms = Math.floor((sec % 1) * 10);
+            return `${m}:${s.toString().padStart(2,'0')}.${ms}`;
+        }
+        function fmtSimple(sec) {
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            return `${m}:${s.toString().padStart(2,'0')}`;
         }
 
-        function generateThumbnail(file, callback) {
-            const video = document.createElement('video');
-            video.preload = 'metadata';
-            video.muted = true;
-            video.playsInline = true;
+        function generateThumb(file, cb) {
+            const v = document.createElement('video');
+            v.preload = 'metadata'; v.muted = true; v.playsInline = true;
             const url = URL.createObjectURL(file);
-            video.src = url;
-            
-            video.onloadedmetadata = () => {
-                video.currentTime = Math.min(1, video.duration / 2);
-            };
-            
-            video.onseeked = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = 320;
-                canvas.height = 180;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(video, 0, 0, 320, 180);
+            v.src = url;
+            v.onloadedmetadata = () => { v.currentTime = Math.min(1, v.duration/2); };
+            v.onseeked = () => {
+                const c = document.createElement('canvas');
+                c.width = 160; c.height = 90;
+                c.getContext('2d').drawImage(v, 0, 0, 160, 90);
                 URL.revokeObjectURL(url);
-                callback(canvas.toDataURL('image/jpeg', 0.7), video.duration);
+                cb(c.toDataURL('image/jpeg', 0.6), v.duration);
             };
-            
-            video.onerror = () => {
-                URL.revokeObjectURL(url);
-                callback(null, 0);
-            };
+            v.onerror = () => { URL.revokeObjectURL(url); cb(null, 0); };
         }
 
-        function openPreview(idx) {
-            const file = files[idx];
-            const data = fileData[idx];
-            if (!file) return;
-            
-            const url = URL.createObjectURL(file);
+        function openClipPreview(idx) {
+            const url = URL.createObjectURL(files[idx]);
             modalVideo.src = url;
-            modalTitle.textContent = file.name;
-            modalOrigDur.textContent = formatTime(data.duration);
-            modalTrimStart.textContent = formatTime(data.start);
-            modalTrimEnd.textContent = formatTime(data.end);
-            modalOutDur.textContent = formatTime(data.end - data.start);
-            
-            previewModal.classList.add('active');
-            
+            modalTitle.textContent = files[idx].name;
+            clipModal.classList.add('active');
             modalVideo.onloadedmetadata = () => {
-                modalVideo.currentTime = data.start;
+                modalVideo.currentTime = fileData[idx].vStart || 0;
             };
         }
-
-        modalClose.addEventListener('click', () => {
-            previewModal.classList.remove('active');
+        modalClose.onclick = () => {
+            clipModal.classList.remove('active');
             modalVideo.pause();
             URL.revokeObjectURL(modalVideo.src);
             modalVideo.src = '';
-        });
-        
-        previewModal.addEventListener('click', (e) => {
-            if (e.target === previewModal) {
-                modalClose.click();
-            }
-        });
+        };
+        clipModal.onclick = (e) => { if(e.target === clipModal) modalClose.click(); };
+        previewClose.onclick = () => {
+            previewSection.classList.remove('active');
+            previewVideo.pause();
+            URL.revokeObjectURL(previewVideo.src);
+            previewVideo.src = '';
+        };
 
-        function renderGrid() {
-            videoGrid.innerHTML = '';
+        function renderClips() {
+            clipsArea.innerHTML = '';
+            
             files.forEach((file, idx) => {
-                const data = fileData[idx] || { thumb: null, duration: 0, start: 0, end: 0 };
-                
+                const d = fileData[idx] || {};
+                const dur = d.duration || 0;
+                const split = d.split || false;
+                const vs = d.vStart ?? 0, ve = d.vEnd ?? dur;
+                const as = d.aStart ?? 0, ae = d.aEnd ?? dur;
+                const vfIn = d.vFadeIn ?? 0, vfOut = d.vFadeOut ?? 0;
+                const afIn = d.aFadeIn ?? 0, afOut = d.aFadeOut ?? 0;
+
+                // Timeline visualization
+                const vLeft = dur ? (vs/dur)*100 : 0;
+                const vWidth = dur ? ((ve-vs)/dur)*100 : 0;
+                const aLeft = dur ? (as/dur)*100 : 0;
+                const aWidth = dur ? ((ae-as)/dur)*100 : 0;
+
                 const card = document.createElement('div');
-                card.className = 'video-card';
+                card.className = 'clip-card';
                 card.innerHTML = `
-                    <div class="thumb-box" id="thumb-${idx}">
-                        <span class="placeholder">🎬</span>
-                        <div class="play-btn">▶</div>
-                        ${data.duration > 0 ? `<span class="duration">${formatTime(data.duration)}</span>` : ''}
+                    <div class="clip-header">
+                        <div class="clip-thumb" id="thumb-${idx}">
+                            <span style="display:flex;align-items:center;justify-content:center;height:100%;color:#444;font-size:1.5rem;">🎬</span>
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="clip-title">${idx+1}. ${file.name}</div>
+                        <div class="clip-ctrls">
+                            <button ${idx===0?'disabled':''} onclick="moveClip(${idx},-1)">⬆</button>
+                            <button ${idx===files.length-1?'disabled':''} onclick="moveClip(${idx},1)">⬇</button>
+                            <button class="remove" onclick="removeClip(${idx})">✕</button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card-name">${idx + 1}. ${file.name}</div>
-                        <div class="trim-row">
-                            <label>Start</label>
-                            <input type="range" id="start-${idx}" min="0" max="100" value="0" step="0.1">
-                            <span class="time" id="startTime-${idx}">0:00</span>
+                    <div class="clip-body">
+                        <div class="timeline-vis" title="Blue=Video, Yellow=Audio">
+                            <div class="tl-track video" style="left:${vLeft}%;width:${vWidth}%"></div>
+                            <div class="tl-track audio" style="left:${aLeft}%;width:${aWidth}%"></div>
+                            <div class="tl-labels">${fmtSimple(ve-vs)} / ${fmtSimple(ae-as)}</div>
                         </div>
-                        <div class="trim-row">
-                            <label>End</label>
-                            <input type="range" id="end-${idx}" min="0" max="100" value="100" step="0.1">
-                            <span class="time" id="endTime-${idx}">${formatTime(data.duration)}</span>
+                        
+                        <label class="split-toggle">
+                            <input type="checkbox" id="split-${idx}" ${split?'checked':''}>
+                            <span>Split Audio & Video (separate trim points)</span>
+                        </label>
+                        
+                        <div class="trim-grid ${split?'':'full'}" id="trimGrid-${idx}">
+                            ${split ? `
+                                <div class="trim-row">
+                                    <label>Video Start <span>${fmtSimple(vs)}</span></label>
+                                    <input type="range" id="vs-${idx}" min="0" max="${dur}" step="0.1" value="${vs}">
+                                </div>
+                                <div class="trim-row">
+                                    <label>Video End <span>${fmtSimple(ve)}</span></label>
+                                    <input type="range" id="ve-${idx}" min="0" max="${dur}" step="0.1" value="${ve}">
+                                </div>
+                                <div class="trim-row audio">
+                                    <label>Audio Start <span>${fmtSimple(as)}</span></label>
+                                    <input type="range" id="as-${idx}" min="0" max="${dur}" step="0.1" value="${as}">
+                                </div>
+                                <div class="trim-row audio">
+                                    <label>Audio End <span>${fmtSimple(ae)}</span></label>
+                                    <input type="range" id="ae-${idx}" min="0" max="${dur}" step="0.1" value="${ae}">
+                                </div>
+                            ` : `
+                                <div class="trim-row">
+                                    <label>Start <span>${fmtSimple(vs)}</span></label>
+                                    <input type="range" id="s-${idx}" min="0" max="${dur}" step="0.1" value="${vs}">
+                                </div>
+                                <div class="trim-row">
+                                    <label>End <span>${fmtSimple(ve)}</span></label>
+                                    <input type="range" id="e-${idx}" min="0" max="${dur}" step="0.1" value="${ve}">
+                                </div>
+                            `}
                         </div>
-                        <div class="card-btns">
-                            <button ${idx === 0 ? 'disabled' : ''} onclick="moveFile(${idx}, -1)">⬆</button>
-                            <button ${idx === files.length - 1 ? 'disabled' : ''} onclick="moveFile(${idx}, 1)">⬇</button>
-                            <button class="remove" onclick="removeFile(${idx})">✕</button>
+                        
+                        <div class="fade-row">
+                            <div class="fade-input">
+                                <label>Video Fade In (sec)</label>
+                                <input type="number" id="vfi-${idx}" min="0" max="5" step="0.1" value="${vfIn}">
+                            </div>
+                            <div class="fade-input">
+                                <label>Video Fade Out (sec)</label>
+                                <input type="number" id="vfo-${idx}" min="0" max="5" step="0.1" value="${vfOut}">
+                            </div>
+                            <div class="fade-input">
+                                <label>Audio Fade In (sec)</label>
+                                <input type="number" id="afi-${idx}" min="0" max="5" step="0.1" value="${afIn}">
+                            </div>
+                            <div class="fade-input">
+                                <label>Audio Fade Out (sec)</label>
+                                <input type="number" id="afo-${idx}" min="0" max="5" step="0.1" value="${afOut}">
+                            </div>
                         </div>
                     </div>
                 `;
-                videoGrid.appendChild(card);
+                clipsArea.appendChild(card);
 
-                // Thumbnail
-                if (data.thumb) {
-                    const thumbBox = card.querySelector(`#thumb-${idx}`);
-                    thumbBox.innerHTML = `<img src="${data.thumb}" style="width:100%;height:100%;object-fit:cover;"><div class="play-btn">▶</div>${data.duration > 0 ? `<span class="duration">${formatTime(data.duration)}</span>` : ''}`;
+                if (d.thumb) {
+                    const tb = card.querySelector(`#thumb-${idx}`);
+                    tb.innerHTML = `<img src="${d.thumb}"><div class="play-icon">▶</div>`;
                 }
-                
-                // Preview click
-                const thumbBox = card.querySelector(`#thumb-${idx}`);
-                thumbBox.addEventListener('click', () => openPreview(idx));
+                card.querySelector(`#thumb-${idx}`).onclick = () => openClipPreview(idx);
 
-                const startSlider = card.querySelector(`#start-${idx}`);
-                const endSlider = card.querySelector(`#end-${idx}`);
-                const startTime = card.querySelector(`#startTime-${idx}`);
-                const endTime = card.querySelector(`#endTime-${idx}`);
+                // Split toggle
+                const splitChk = card.querySelector(`#split-${idx}`);
+                splitChk.onchange = () => {
+                    fileData[idx].split = splitChk.checked;
+                    renderClips();
+                };
 
-                startSlider.addEventListener('input', () => {
-                    const val = parseFloat(startSlider.value);
-                    const sec = (val / 100) * data.duration;
-                    data.start = sec;
-                    startTime.textContent = formatTime(sec);
-                    if (parseFloat(endSlider.value) <= val) {
-                        endSlider.value = val + 1;
-                        data.end = ((val + 1) / 100) * data.duration;
-                        endTime.textContent = formatTime(data.end);
-                    }
-                });
+                // Bind inputs
+                if (split) {
+                    bindSlider(card, `vs-${idx}`, 'vStart', idx, dur);
+                    bindSlider(card, `ve-${idx}`, 'vEnd', idx, dur);
+                    bindSlider(card, `as-${idx}`, 'aStart', idx, dur);
+                    bindSlider(card, `ae-${idx}`, 'aEnd', idx, dur);
+                    // Cross-constrain
+                    const vs = card.querySelector(`#vs-${idx}`);
+                    const ve = card.querySelector(`#ve-${idx}`);
+                    const as = card.querySelector(`#as-${idx}`);
+                    const ae = card.querySelector(`#ae-${idx}`);
+                    vs.oninput = () => { if(+vs.value > +ve.value) ve.value = vs.value; updateData(); };
+                    ve.oninput = () => { if(+ve.value < +vs.value) vs.value = ve.value; updateData(); };
+                    as.oninput = () => { if(+as.value > +ae.value) ae.value = as.value; updateData(); };
+                    ae.oninput = () => { if(+ae.value < +as.value) as.value = ae.value; updateData(); };
+                } else {
+                    bindSlider(card, `s-${idx}`, ['vStart','aStart'], idx, dur);
+                    bindSlider(card, `e-${idx}`, ['vEnd','aEnd'], idx, dur);
+                    const s = card.querySelector(`#s-${idx}`);
+                    const e = card.querySelector(`#e-${idx}`);
+                    s.oninput = () => { if(+s.value > +e.value) e.value = s.value; updateData(); };
+                    e.oninput = () => { if(+e.value < +s.value) s.value = e.value; updateData(); };
+                }
 
-                endSlider.addEventListener('input', () => {
-                    const val = parseFloat(endSlider.value);
-                    const sec = (val / 100) * data.duration;
-                    data.end = sec;
-                    endTime.textContent = formatTime(sec);
-                    if (parseFloat(startSlider.value) >= val) {
-                        startSlider.value = val - 1;
-                        data.start = ((val - 1) / 100) * data.duration;
-                        startTime.textContent = formatTime(data.start);
-                    }
+                function updateData() {
+                    fileData[idx].vStart = parseFloat(card.querySelector(`#vs-${idx}`)?.value || card.querySelector(`#s-${idx}`)?.value || 0);
+                    fileData[idx].vEnd = parseFloat(card.querySelector(`#ve-${idx}`)?.value || card.querySelector(`#e-${idx}`)?.value || dur);
+                    fileData[idx].aStart = parseFloat(card.querySelector(`#as-${idx}`)?.value || card.querySelector(`#s-${idx}`)?.value || 0);
+                    fileData[idx].aEnd = parseFloat(card.querySelector(`#ae-${idx}`)?.value || card.querySelector(`#e-${idx}`)?.value || dur);
+                    // Update labels
+                    renderClips();
+                }
+
+                // Fades
+                ['vfi','vfo','afi','afo'].forEach(k => {
+                    card.querySelector(`#${k}-${idx}`).onchange = (e) => {
+                        fileData[idx][k==='vfi'?'vFadeIn':k==='vfo'?'vFadeOut':k==='afi'?'aFadeIn':'aFadeOut'] = parseFloat(e.target.value);
+                    };
                 });
             });
+
+            // Transition cards between clips
+            for (let i = 0; i < files.length - 1; i++) {
+                const t = transitions[i] || { type: 'cut', duration: 0.5 };
+                const tCard = document.createElement('div');
+                tCard.className = 'transition-card';
+                tCard.innerHTML = `
+                    <div>↳ Between ${i+1} & ${i+2}:</div>
+                    <select id="trans-${i}">
+                        <option value="cut" ${t.type==='cut'?'selected':''}>Hard Cut</option>
+                        <option value="vfade" ${t.type==='vfade'?'selected':''}>Video Crossfade</option>
+                        <option value="afade" ${t.type==='afade'?'selected':''}>Audio Crossfade</option>
+                        <option value="both" ${t.type==='both'?'selected':''}>Both Crossfade</option>
+                    </select>
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <span>Duration:</span>
+                        <input type="number" id="tdur-${i}" min="0.1" max="3" step="0.1" value="${t.duration}">
+                        <span>sec</span>
+                    </div>
+                `;
+                clipsArea.appendChild(tCard);
+                tCard.querySelector(`#trans-${i}`).onchange = (e) => {
+                    transitions[i] = { ...transitions[i], type: e.target.value };
+                };
+                tCard.querySelector(`#tdur-${i}`).onchange = (e) => {
+                    transitions[i] = { ...transitions[i], duration: parseFloat(e.target.value) };
+                };
+            }
         }
 
-        window.moveFile = (idx, dir) => {
-            const newIdx = idx + dir;
-            if (newIdx < 0 || newIdx >= files.length) return;
-            [files[idx], files[newIdx]] = [files[newIdx], files[idx]];
-            [fileData[idx], fileData[newIdx]] = [fileData[newIdx], fileData[idx]];
-            renderGrid();
-        };
+        function bindSlider(card, id, key, idx, dur) {
+            const el = card.querySelector(`#${id}`);
+            if (!el) return;
+            el.oninput = () => {
+                const val = parseFloat(el.value);
+                const label = el.parentElement.querySelector('label span');
+                if (label) label.textContent = fmtSimple(val);
+                if (Array.isArray(key)) {
+                    key.forEach(k => fileData[idx][k] = val);
+                } else {
+                    fileData[idx][key] = val;
+                }
+            };
+        }
 
-        window.removeFile = (idx) => {
+        window.moveClip = (idx, dir) => {
+            const n = idx + dir;
+            if (n < 0 || n >= files.length) return;
+            [files[idx], files[n]] = [files[n], files[idx]];
+            [fileData[idx], fileData[n]] = [fileData[n], fileData[idx]];
+            // Move transition too
+            if (dir === -1 && idx > 0) {
+                [transitions[idx-1], transitions[idx]] = [transitions[idx], transitions[idx-1]];
+            } else if (dir === 1 && idx < files.length - 1) {
+                [transitions[idx], transitions[idx+1]] = [transitions[idx+1], transitions[idx]];
+            }
+            renderClips();
+        };
+        window.removeClip = (idx) => {
             files.splice(idx, 1);
             fileData.splice(idx, 1);
-            renderGrid();
+            if (idx > 0) transitions.splice(idx - 1, 1);
+            else if (transitions.length > 0) transitions.splice(0, 1);
+            renderClips();
         };
 
-        dropZone.addEventListener('click', () => fileInput.click());
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-        dropZone.addEventListener('drop', (e) => {
+        dropZone.onclick = () => fileInput.click();
+        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('dragover'); };
+        dropZone.ondragleave = () => dropZone.classList.remove('dragover');
+        dropZone.ondrop = (e) => {
             e.preventDefault();
             dropZone.classList.remove('dragover');
             handleFiles(e.dataTransfer.files);
-        });
-        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+        };
+        fileInput.onchange = (e) => handleFiles(e.target.files);
 
-        function handleFiles(fileListObj) {
+        function handleFiles(list) {
             let added = 0;
-            for (const f of fileListObj) {
+            for (const f of list) {
                 if (f.name.toLowerCase().endsWith('.mp4')) {
                     if (!files.some(x => x.name === f.name && x.size === f.size)) {
                         const idx = files.length;
                         files.push(f);
-                        fileData.push({ thumb: null, duration: 0, start: 0, end: 0 });
-                        
-                        generateThumbnail(f, (thumb, duration) => {
+                        fileData.push({
+                            duration: 0, vStart: 0, vEnd: 0, aStart: 0, aEnd: 0,
+                            split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0
+                        });
+                        generateThumb(f, (thumb, dur) => {
                             fileData[idx].thumb = thumb;
-                            fileData[idx].duration = duration;
-                            fileData[idx].end = duration;
-                            renderGrid();
+                            fileData[idx].duration = dur;
+                            fileData[idx].vEnd = dur;
+                            fileData[idx].aEnd = dur;
+                            renderClips();
                         });
                         added++;
                     }
                 }
             }
-            if (added > 0) {
-                clearLog();
-                log(`Added ${added} file(s). Generating thumbnails...`, 'ok');
-            }
+            if (added) { clearLog(); log(`Added ${added} file(s).`, 'ok'); }
         }
 
-        btnClear.addEventListener('click', () => {
-            files = [];
-            fileData = [];
-            renderGrid();
-            clearLog();
-            log('Cleared.', 'info');
+        btnClear.onclick = () => {
+            files = []; fileData = []; transitions = [];
+            renderClips();
+            previewSection.classList.remove('active');
+            previewVideo.pause(); previewVideo.src = '';
+            clearLog(); log('Cleared.', 'info');
             progressBar.classList.remove('active');
-        });
+        };
 
         async function initFFmpeg() {
             if (ffmpeg) return;
-            clearLog();
-            log('Loading FFmpeg.wasm (~25 MB)... This is a one-time download.', 'info');
-            setProgress(5);
-
+            clearLog(); log('Loading FFmpeg.wasm (~25 MB)...', 'info'); setProgress(5);
             ffmpeg = new FFmpeg();
-            
-            // FIX: Use toBlobURL to bypass CORS entirely!
-            // This fetches the files and turns them into same-origin blob URLs
-            const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
-            
+            const base = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
             try {
-                log('Fetching core files (bypassing CORS)...', 'info');
-                
-                const coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript');
-                const wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm');
-                const workerURL = await toBlobURL(`${baseURL}/ffmpeg-core.worker.js`, 'text/javascript');
-                
+                const core = await toBlobURL(`${base}/ffmpeg-core.js`, 'text/javascript');
+                const wasm = await toBlobURL(`${base}/ffmpeg-core.wasm`, 'application/wasm');
+                const worker = await toBlobURL(`${base}/ffmpeg-core.worker.js`, 'text/javascript');
                 setProgress(30);
-                log('Initializing FFmpeg...', 'info');
-                
-                await ffmpeg.load({
-                    coreURL: coreURL,
-                    wasmURL: wasmURL,
-                    workerURL: workerURL
-                });
-                
+                await ffmpeg.load({ coreURL: core, wasmURL: wasm, workerURL: worker });
                 setProgress(100);
-                setTimeout(() => progressBar.classList.remove('active'), 500);
-                clearLog();
-                log('FFmpeg ready! You can now merge videos.', 'ok');
-            } catch (e) {
-                log('Failed to load FFmpeg: ' + e.message, 'err');
-                log('If this keeps failing, try opening this file locally (double-click) instead of hosting it.', 'warn');
-                throw e;
-            }
+                setTimeout(() => progressBar.classList.remove('active'), 400);
+                clearLog(); log('FFmpeg ready!', 'ok');
+            } catch (e) { log('Failed: ' + e.message, 'err'); throw e; }
         }
 
-        btnMerge.addEventListener('click', async () => {
-            if (files.length < 1) {
-                log('Need at least 1 file.', 'err');
-                return;
+        function buildFilters() {
+            let vFilters = '', aFilters = '', vConcat = '', aConcat = '';
+            let vCount = 0, aCount = 0, totalDur = 0;
+
+            for (let i = 0; i < files.length; i++) {
+                const d = fileData[i];
+                const dur = d.duration || 0;
+                const vs = Math.max(0, d.vStart || 0);
+                const ve = Math.min(dur, d.vEnd ?? dur);
+                const as = Math.max(0, d.aStart || 0);
+                const ae = Math.min(dur, d.aEnd ?? dur);
+                const vLen = ve - vs;
+                const aLen = ae - as;
+
+                if (vLen > 0.1) {
+                    let vf = `[${i}:v]trim=start=${vs}:end=${ve},setpts=PTS-STARTPTS`;
+                    if (d.vFadeIn > 0) vf += `,fade=in:st=0:d=${Math.min(d.vFadeIn, vLen/2)}:alpha=1`;
+                    if (d.vFadeOut > 0) vf += `,fade=out:st=${Math.max(0, vLen - d.vFadeOut)}:d=${Math.min(d.vFadeOut, vLen/2)}:alpha=1`;
+                    vf += `[cv${i}];`;
+                    vFilters += vf;
+                    vConcat += `[cv${i}]`;
+                    vCount++;
+                    totalDur += vLen;
+                }
+                if (aLen > 0.1) {
+                    let af = `[${i}:a]atrim=start=${as}:end=${ae},asetpts=PTS-STARTPTS`;
+                    if (d.aFadeIn > 0) af += `,afade=in:st=0:d=${Math.min(d.aFadeIn, aLen/2)}`;
+                    if (d.aFadeOut > 0) af += `,afade=out:st=${Math.max(0, aLen - d.aFadeOut)}:d=${Math.min(d.aFadeOut, aLen/2)}`;
+                    af += `[ca${i}];`;
+                    aFilters += af;
+                    aConcat += `[ca${i}]`;
+                    aCount++;
+                }
             }
+
+            if (vCount === 0 && aCount === 0) throw new Error('No valid clips.');
+
+            // Handle transitions
+            // Note: True crossfade between clips with concat is complex in filter_complex.
+            // For this version, we use concat. Crossfade requires xfade/acrossfade which may not be in wasm.
+            // We apply fade-in/fade-out per clip above which gives smooth edges.
+
+            let out = vFilters + aFilters;
+            if (vCount > 0) out += `${vConcat}concat=n=${vCount}:v=1:a=0[outv];`;
+            if (aCount > 0) out += `${aConcat}concat=n=${aCount}:v=0:a=1[outa];`;
+
+            return { filterComplex: out, vCount, aCount, totalDur };
+        }
+
+        async function writeFiles() {
+            for (let i = 0; i < files.length; i++) {
+                const data = await fetchFile(files[i]);
+                await ffmpeg.writeFile(`in${i}.mp4`, data);
+                setProgress(Math.round((i / files.length) * 15));
+            }
+        }
+        async function cleanFiles() {
+            for (let i = 0; i < files.length; i++) {
+                try { await ffmpeg.deleteFile(`in${i}.mp4`); } catch(e){}
+            }
+            try { await ffmpeg.deleteFile('preview.mp4'); } catch(e){}
+            try { await ffmpeg.deleteFile('output.mp4'); } catch(e){}
+        }
+
+        async function runMerge(previewMode) {
+            if (files.length < 1) { log('Need at least 1 file.', 'err'); return; }
             if (isProcessing) return;
             isProcessing = true;
-            btnMerge.disabled = true;
-            btnMerge.textContent = '⏳ Merging...';
+            const btn = previewMode ? btnPreview : btnMerge;
+            const origText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = previewMode ? '⏳ Building preview...' : '⏳ Merging...';
 
             try {
                 await initFFmpeg();
-                clearLog();
-                log('Preparing files...', 'info');
-                setProgress(0);
+                clearLog(); log('Writing files...', 'info'); setProgress(0);
+                await writeFiles();
 
-                // Write all files to virtual FS
-                for (let i = 0; i < files.length; i++) {
-                    const f = files[i];
-                    const data = await fetchFile(f);
-                    await ffmpeg.writeFile(`input${i}.mp4`, data);
-                    setProgress(Math.round((i / files.length) * 15));
-                }
-
-                // Build filter_complex for trim + concat
-                let filterComplex = '';
-                let concatInputs = '';
-                let validCount = 0;
-
-                for (let i = 0; i < files.length; i++) {
-                    const d = fileData[i];
-                    const start = d.start || 0;
-                    const end = d.end || d.duration;
-                    const duration = end - start;
-
-                    if (duration <= 0.1) {
-                        log(`Skipping ${files[i].name} (trimmed to zero)`, 'warn');
-                        continue;
-                    }
-
-                    // Video trim + setpts to reset timestamps
-                    filterComplex += `[${i}:v]trim=start=${start}:end=${end},setpts=PTS-STARTPTS[v${i}];`;
-                    // Audio trim + asetpts
-                    filterComplex += `[${i}:a]atrim=start=${start}:end=${end},asetpts=PTS-STARTPTS[a${i}];`;
-                    concatInputs += `[v${i}][a${i}]`;
-                    validCount++;
-                }
-
-                if (!concatInputs) {
-                    throw new Error('No valid clips after trimming.');
-                }
-
-                filterComplex += `${concatInputs}concat=n=${validCount}:v=1:a=1[outv][outa]`;
-
-                log('Running FFmpeg (this may take a while)...', 'info');
+                const { filterComplex, vCount, aCount, totalDur } = buildFilters();
+                log(`${previewMode?'Preview':'Final'} render: ${vCount} video, ${aCount} audio tracks`, 'info');
                 setProgress(20);
 
-                const exitCode = await ffmpeg.exec([
+                const outName = previewMode ? 'preview.mp4' : 'output.mp4';
+                const args = [
                     '-y',
-                    ...files.flatMap((_, i) => ['-i', `input${i}.mp4`]),
+                    ...files.flatMap((_, i) => ['-i', `in${i}.mp4`]),
                     '-filter_complex', filterComplex,
-                    '-map', '[outv]',
-                    '-map', '[outa]',
+                    ...(vCount > 0 ? ['-map', '[outv]'] : []),
+                    ...(aCount > 0 ? ['-map', '[outa]'] : []),
                     '-c:v', 'libx264',
-                    '-preset', 'fast',
-                    '-crf', '23',
+                    '-preset', previewMode ? 'ultrafast' : 'fast',
+                    '-crf', previewMode ? '32' : '23',
+                    ...(previewMode ? ['-vf', 'scale=480:-2'] : []),
                     '-c:a', 'aac',
-                    '-b:a', '128k',
+                    '-b:a', previewMode ? '96k' : '128k',
                     '-movflags', '+faststart',
-                    'output.mp4'
-                ]);
+                    outName
+                ];
 
-                if (exitCode !== 0) {
-                    throw new Error(`FFmpeg exited with code ${exitCode}`);
-                }
+                const code = await ffmpeg.exec(args);
+                if (code !== 0) throw new Error(`FFmpeg exited ${code}`);
 
-                log('Reading output...', 'info');
-                const data = await ffmpeg.readFile('output.mp4');
+                const data = await ffmpeg.readFile(outName);
                 const blob = new Blob([data.buffer], { type: 'video/mp4' });
                 const url = URL.createObjectURL(blob);
+                await cleanFiles();
 
-                // Cleanup virtual FS
-                for (let i = 0; i < files.length; i++) {
-                    await ffmpeg.deleteFile(`input${i}.mp4`);
+                if (previewMode) {
+                    previewVideo.src = url;
+                    document.getElementById('previewCount').textContent = vCount;
+                    document.getElementById('previewDur').textContent = fmtSimple(totalDur);
+                    previewSection.classList.add('active');
+                    previewSection.scrollIntoView({ behavior: 'smooth' });
+                    log('Preview ready! Scroll down to watch.', 'ok');
+                } else {
+                    clearLog(); log('✅ Done! Download below.', 'ok');
+                    const link = document.createElement('a');
+                    link.href = url; link.download = 'merged_video.mp4';
+                    link.className = 'download-link';
+                    link.textContent = '⬇ Download merged_video.mp4';
+                    status.appendChild(document.createElement('br'));
+                    status.appendChild(link);
                 }
-                await ffmpeg.deleteFile('output.mp4');
-
                 setProgress(100);
-                clearLog();
-                log(`✅ Done! Merged ${validCount} clip(s).`, 'ok');
-
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = 'merged_video.mp4';
-                link.className = 'download-link';
-                link.textContent = '⬇ Download merged_video.mp4';
-                status.appendChild(document.createElement('br'));
-                status.appendChild(link);
-
             } catch (err) {
-                clearLog();
-                log('Merge failed.', 'err');
+                clearLog(); log(previewMode?'Preview failed.':'Merge failed.', 'err');
                 log(err.message || String(err), 'err');
-                log('', 'info');
-                log('Tip: If you see CORS/worker errors, open this file locally instead of on a website.', 'warn');
             } finally {
                 isProcessing = false;
-                btnMerge.disabled = false;
-                btnMerge.textContent = '🔥 Merge Videos';
+                btn.disabled = false;
+                btn.textContent = origText;
+                setTimeout(() => progressBar.classList.remove('active'), 500);
             }
-        });
+        }
+
+        btnPreview.onclick = () => runMerge(true);
+        btnMerge.onclick = () => runMerge(false);
     </script>
 </body>
 </html>
