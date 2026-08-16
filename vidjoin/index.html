@@ -8,15 +8,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0a12;
-      --bg2: #0f0f1a;
-      --bg3: #13131f;
-      --card: #111120;
-      --border: #1e1e30;
-      --text: #d8d8e8;
-      --muted: #555570;
-      --blue: #4dabf7;
-      --amber: #feca57;
+      --bg: #1a0010;
+      --bg2: #2a0018;
+      --bg3: #200014;
+      --card: #250016;
+      --border: #4a0030;
+      --text: #f8d8e8;
+      --muted: #a06080;
+      --blue: #ff69b4;
+      --amber: #ff1493;
       --green: #51cf66;
       --red: #ff6b6b;
       --radius: 10px;
@@ -425,11 +425,15 @@
       const pkgBase  = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm';
       const coreBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
 
-      // @ffmpeg/ffmpeg internally does: new Worker(new URL('./worker.js', import.meta.url))
-      // That URL is cross-origin, so browsers block it. Pre-fetch it as a blob URL and
-      // intercept the Worker constructor so FFmpeg picks up the same-origin blob instead.
-      log('Fetching FFmpeg worker…', 'info');
-      const ffmpegWorkerBlobURL = await toBlobURL(`${pkgBase}/worker.js`, 'text/javascript');
+      // @ffmpeg/ffmpeg creates: new Worker(new URL('./worker.js', import.meta.url), {type:'module'})
+      // That CDN URL is cross-origin → blocked. Fix: create a same-origin blob that simply
+      // re-imports from the CDN. Module workers CAN import cross-origin; only the Worker()
+      // constructor itself enforces the same-origin restriction.
+      const ffmpegWorkerBlob = new Blob(
+        [`import '${pkgBase}/worker.js';`],
+        { type: 'text/javascript' }
+      );
+      const ffmpegWorkerBlobURL = URL.createObjectURL(ffmpegWorkerBlob);
 
       const _OrigWorker = window.Worker;
       window.Worker = function(url, opts) {
@@ -620,11 +624,9 @@
     } catch (err) {
       clearLog();
       const msg = err.message || String(err);
-      if (msg.toLowerCase().includes('fetch') || msg.toLowerCase().includes('sharedarraybuffer') || msg.toLowerCase().includes('worker')) {
-        log((previewMode ? 'Preview' : 'Merge') + ' failed — browser security headers missing.', 'err');
+      log((previewMode ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
+      if (msg.includes('SharedArrayBuffer') || msg.includes('crossOriginIsolated')) {
         log('Fix: make sure coi-serviceworker.js is in the same folder and hard-refresh (Ctrl+Shift+R).', 'warn');
-      } else {
-        log((previewMode ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
       }
       hideProgress();
     } finally {
