@@ -27,7 +27,7 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding-bottom: 260px;
+      padding-bottom: 280px;
     }
 
     header {
@@ -35,396 +35,219 @@
       border-bottom: 1px solid var(--border);
       position: relative;
     }
-    header h1 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #fff;
-    }
+    header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; }
     header p { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
 
     #ffmpegBar {
-      position: absolute;
-      bottom: 0; left: 0;
+      position: absolute; bottom: 0; left: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--blue), var(--amber));
-      width: 0%;
-      transition: width 0.3s;
-      display: none;
+      width: 0%; transition: width 0.3s; display: none;
     }
     #ffmpegBar.active { display: block; }
 
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
 
-    /* Drop zone */
     .drop-zone {
       border: 2px dashed var(--border);
       border-radius: var(--radius);
-      padding: 40px 24px;
+      padding: 48px 24px;
       text-align: center;
       cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color .2s, background .2s;
+      margin-bottom: 24px;
     }
-    .drop-zone:hover, .drop-zone.dragover {
-      border-color: var(--blue);
-      background: rgba(77, 171, 247, 0.05);
-    }
-    .drop-zone .icon {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      pointer-events: none;
-    }
-    .drop-zone p { color: var(--muted); font-size: 0.9rem; pointer-events: none; }
-    .drop-zone p strong { color: var(--text); }
-    input[type="file"] { display: none; }
+    .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(77,171,247,.06); }
+    .drop-zone .icon { font-size: 3rem; margin-bottom: 12px; }
+    .drop-zone p { color: var(--muted); font-size: 0.9rem; }
+    .drop-zone strong { color: var(--text); }
+
+    input[type=file] { display: none; }
 
     /* Clips */
-    #clipsArea { display: flex; flex-direction: column; gap: 4px; }
-
     .clip-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-    }
-    .clip-header {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      background: rgba(0,0,0,0.2);
-      border-bottom: 1px solid var(--border);
+      flex-direction: column;
     }
+    .clip-body { display: flex; gap: 0; }
     .clip-thumb {
-      width: 96px;
-      height: 54px;
-      border-radius: 6px;
-      background: #080810;
-      flex-shrink: 0;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
+      width: 160px; min-height: 90px; flex-shrink: 0;
+      background: #000; position: relative; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
     }
-    .clip-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .clip-thumb .play-ovr {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.4);
-      opacity: 0;
-      transition: opacity 0.15s;
-      font-size: 1.2rem;
+    .clip-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .clip-thumb .play-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s;
     }
-    .clip-thumb:hover .play-ovr { opacity: 1; }
-    .clip-title {
-      flex: 1;
-      font-size: 0.85rem;
-      color: #ccc;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .clip-thumb:hover .play-overlay { opacity: 1; }
+    .play-overlay svg { width: 32px; height: 32px; fill: #fff; }
+    .clip-thumb .dur-badge {
+      position: absolute; bottom: 6px; right: 6px;
+      background: rgba(0,0,0,.8); color: #fff;
+      font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;
     }
-    .clip-num { color: var(--blue); font-weight: 700; margin-right: 4px; }
-    .clip-ctrls { display: flex; gap: 4px; }
-    .clip-ctrls button {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .clip-controls { flex: 1; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+    .clip-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .clip-name { font-size: 0.85rem; font-weight: 600; color: var(--text); word-break: break-all; }
+    .clip-name span { color: var(--blue); margin-right: 6px; }
+    .clip-actions { display: flex; gap: 4px; flex-shrink: 0; }
+    .icon-btn {
+      background: transparent; border: none; color: var(--muted);
+      cursor: pointer; padding: 4px; border-radius: 6px; display: flex;
+      align-items: center; justify-content: center; transition: background .15s, color .15s;
     }
-    .clip-ctrls button:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
-    .clip-ctrls button.del:hover:not(:disabled) { border-color: var(--red); color: var(--red); }
-    .clip-ctrls button:disabled { opacity: 0.25; cursor: default; }
+    .icon-btn:hover { background: rgba(255,255,255,.08); color: var(--text); }
+    .icon-btn.del:hover { color: var(--red); background: rgba(255,107,107,.1); }
+    .icon-btn:disabled { opacity: .3; cursor: not-allowed; }
 
-    .clip-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+    /* Timeline bar */
+    .timeline-bar { height: 14px; background: var(--bg3); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; gap: 1px; margin: 2px 0; }
+    .tl-row { flex: 1; position: relative; }
+    .tl-fill { position: absolute; height: 100%; border-radius: 2px; }
+    .tl-fill.video { background: var(--blue); }
+    .tl-fill.audio { background: var(--amber); }
 
-    /* Timeline vis */
-    .tl-bar {
-      height: 28px;
-      background: #0a0a14;
-      border-radius: 6px;
-      position: relative;
-      overflow: hidden;
+    /* Split checkbox */
+    .split-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); cursor: pointer; }
+    .split-row input { accent-color: var(--blue); width: 14px; height: 14px; cursor: pointer; }
+
+    /* Range sliders */
+    .slider-group { display: flex; flex-direction: column; gap: 3px; }
+    .slider-label { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); }
+    .range-wrap { position: relative; height: 20px; }
+    .range-wrap input[type=range] {
+      position: absolute; width: 100%; height: 100%;
+      appearance: none; background: transparent; cursor: pointer; pointer-events: none;
     }
-    .tl-seg {
-      position: absolute;
-      height: 10px;
-      border-radius: 3px;
+    .range-wrap input[type=range]::-webkit-slider-thumb {
+      appearance: none; width: 16px; height: 16px;
+      border-radius: 50%; cursor: pointer; pointer-events: all; border: 2px solid;
     }
-    .tl-seg.vid { top: 4px; background: var(--blue); opacity: 0.85; }
-    .tl-seg.aud { top: 16px; background: var(--amber); opacity: 0.8; height: 8px; }
-    .tl-hint {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.65rem;
-      color: var(--muted);
-      font-family: monospace;
+    .range-wrap input[type=range].start::-webkit-slider-thumb { background: #fff; border-color: var(--blue); }
+    .range-wrap input[type=range].end::-webkit-slider-thumb { background: #fff; border-color: var(--blue); }
+    .range-wrap input[type=range].astart::-webkit-slider-thumb { background: #fff; border-color: var(--amber); }
+    .range-wrap input[type=range].aend::-webkit-slider-thumb { background: #fff; border-color: var(--amber); }
+    .range-track {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      height: 4px; width: 100%; border-radius: 2px;
+      pointer-events: none;
     }
 
-    /* Split toggle */
-    .split-toggle {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--muted);
+    /* Fade inputs */
+    .fade-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .fade-field label { font-size: 0.68rem; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; letter-spacing: .04em; }
+    .fade-field input[type=number] {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+      border-radius: 6px; padding: 5px 8px; font-size: 0.8rem;
     }
-    .split-toggle input { accent-color: var(--amber); width: 14px; height: 14px; cursor: pointer; }
 
-    /* Trim grid */
-    .trim-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+    /* Transition */
+    .transition-row {
+      display: flex; justify-content: center; align-items: center;
+      padding: 10px 0;
     }
-    .trim-grid.merged { grid-template-columns: 1fr 1fr; }
-    .trim-grid.split4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-    .trim-row { display: flex; flex-direction: column; gap: 3px; }
-    .trim-row label {
-      font-size: 0.7rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
+    .transition-pill {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 99px; padding: 6px 16px;
+      display: flex; align-items: center; gap: 12px; font-size: 0.82rem;
     }
-    .trim-row label .val { font-family: monospace; color: #aaa; }
-    .trim-row input[type=range] { width: 100%; accent-color: var(--blue); cursor: pointer; }
-    .trim-row.aud input[type=range] { accent-color: var(--amber); }
+    .transition-pill select {
+      background: transparent; border: none; color: var(--text); font-size: 0.82rem;
+      cursor: pointer; outline: none; font-weight: 600;
+    }
+    .transition-pill .dur-wrap { display: flex; align-items: center; gap: 6px; border-left: 1px solid var(--border); padding-left: 12px; }
+    .transition-pill input[type=number] {
+      width: 52px; background: var(--bg3); border: 1px solid var(--border);
+      color: var(--text); border-radius: 6px; padding: 3px 6px; font-size: 0.8rem; text-align: center;
+    }
 
-    /* Fades */
-    .fade-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-    }
-    .fade-input { display: flex; flex-direction: column; gap: 3px; }
-    .fade-input label { font-size: 0.68rem; color: var(--muted); }
-    .fade-input input {
-      background: #0a0a14;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 5px 8px;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      width: 100%;
-    }
-    .fade-input input:focus { outline: none; border-color: var(--blue); }
+    /* Clips area spacing */
+    #clipsArea { display: flex; flex-direction: column; gap: 0; }
+    .clip-wrap { display: flex; flex-direction: column; }
 
-    /* Transition card */
-    .trans-card {
-      margin: 0 0 2px 20px;
-      background: rgba(254,202,87,0.04);
-      border: 1px dashed rgba(254,202,87,0.2);
-      border-radius: 8px;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      flex-wrap: wrap;
-    }
-    .trans-label { color: var(--amber); font-size: 0.75rem; }
-    .trans-card select, .trans-card input[type=number] {
-      background: #0a0a14;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-    }
-    .trans-card select:focus, .trans-card input:focus { outline: none; border-color: var(--amber); }
-    .trans-card input[type=number] { width: 58px; }
-
-    /* Preview section */
+    /* Preview */
     #previewSection {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: none;
+      background: #000; border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; display: none; margin-top: 24px;
     }
     #previewSection.show { display: block; }
     .preview-hdr {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 16px;
-      background: rgba(0,0,0,0.2);
-      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 14px; background: var(--card); border-bottom: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--muted);
     }
-    .preview-hdr span { font-size: 0.85rem; color: var(--amber); }
-    .preview-hdr button {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-    .preview-hdr button:hover { color: #fff; }
-    #previewVideo { width: 100%; max-height: 55vh; display: block; background: #000; }
-    .preview-info {
-      padding: 10px 16px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: flex;
-      gap: 16px;
-    }
-    .preview-info b { color: var(--amber); }
+    .preview-hdr button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 4px; }
+    .preview-hdr button:hover { background: rgba(255,255,255,.08); color: var(--text); }
+    #previewVideo { width: 100%; max-height: 60vh; display: block; }
+    .preview-info { padding: 8px 14px; font-size: 0.78rem; color: var(--muted); display: flex; gap: 16px; }
 
-    /* Sticky bottom bar */
+    /* Bottom bar */
     .bottom-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: rgba(10,10,18,0.92);
-      backdrop-filter: blur(12px);
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(10,10,18,.85); backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
-      padding: 12px 24px;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      box-shadow: 0 -8px 32px rgba(0,0,0,.5);
     }
-    .bottom-bar-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .bottom-bar-inner { max-width: 960px; margin: 0 auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; }
 
-    .progress-wrap {
-      height: 3px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      display: none;
-    }
-    .progress-wrap.show { display: block; }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--red), var(--amber));
-      width: 0%;
-      transition: width 0.3s;
-    }
+    .progress-wrap { height: 4px; background: var(--border); border-radius: 2px; display: none; }
+    .progress-wrap.active { display: block; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--amber)); border-radius: 2px; transition: width .3s; width: 0%; }
 
     #statusLog {
-      height: 72px;
-      background: #06060e;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 12px;
-      overflow-y: auto;
-      font-family: 'Courier New', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      line-height: 1.5;
-      white-space: pre-wrap;
+      height: 90px; background: #050508; border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 12px; overflow-y: auto;
+      font-family: monospace; font-size: 0.72rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word;
     }
-    #statusLog .ok { color: var(--green); }
-    #statusLog .err { color: var(--red); }
     #statusLog .info { color: var(--blue); }
+    #statusLog .ok   { color: var(--green); }
+    #statusLog .err  { color: var(--red); }
     #statusLog .warn { color: var(--amber); }
 
-    .actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .clip-count { font-size: 0.75rem; color: var(--muted); flex: 1; }
-    .btn {
-      padding: 9px 18px;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: opacity 0.15s;
-    }
-    .btn:hover:not(:disabled) { opacity: 0.88; }
-    .btn:disabled { opacity: 0.35; cursor: not-allowed; }
-    .btn-clear { background: var(--bg3); color: #aaa; border: 1px solid var(--border); }
-    .btn-preview { background: linear-gradient(90deg, #339af0, #4dabf7); color: #fff; }
-    .btn-merge { background: linear-gradient(90deg, #ff6b6b, #feca57); color: #0a0a12; font-size: 0.9rem; }
+    .actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .clip-count { font-size: 0.8rem; color: var(--muted); }
 
-    /* Download link */
-    .dl-link {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 7px 18px;
-      background: var(--green);
-      color: #0a0a12;
-      text-decoration: none;
-      border-radius: 7px;
-      font-weight: 700;
-      font-size: 0.85rem;
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;
+      font-size: 0.85rem; font-weight: 600; transition: opacity .15s;
     }
+    .btn:disabled { opacity: .4; cursor: not-allowed; }
+    .btn:not(:disabled):hover { opacity: .85; }
+    .btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-preview { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+    .btn-merge { background: linear-gradient(135deg, var(--amber), #f0932b); color: #000; }
+
+    .icon-svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* Modal */
     .modal {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.88); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; padding: 16px;
       display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.9);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
     }
-    .modal.show { display: flex; }
+    .modal.open { display: flex; }
     .modal-inner {
-      background: #1a1a2e;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      max-width: 860px;
-      width: 100%;
-      overflow: hidden;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; max-width: 900px; width: 100%;
     }
     .modal-hdr {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      font-size: 0.88rem; font-weight: 600;
     }
-    .modal-hdr h3 { font-size: 0.9rem; color: #fff; }
-    .modal-hdr button {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    .modal-hdr button:hover { color: #fff; }
-    #modalVideo { width: 100%; max-height: 60vh; background: #000; display: block; }
+    .modal-hdr button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.1rem; padding: 2px 8px; border-radius: 4px; }
+    .modal-hdr button:hover { background: rgba(255,255,255,.08); color: var(--text); }
+    #modalVideo { width: 100%; max-height: 70vh; display: block; background: #000; }
 
-    /* SVG icons (inline) */
-    .icon-svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .dl-link { color: var(--green); text-decoration: underline; display: inline-block; margin-top: 6px; }
   </style>
 </head>
 <body>
@@ -436,21 +259,18 @@
 </header>
 
 <main>
-  <!-- Drop zone -->
   <div class="drop-zone" id="dropZone">
     <div class="icon">🎬</div>
     <p><strong>Drop MP4 files here</strong><br><small>or click to browse — files never leave your device</small></p>
   </div>
   <input type="file" id="fileInput" multiple accept=".mp4,video/mp4">
 
-  <!-- Clips -->
   <div id="clipsArea"></div>
 
-  <!-- Preview section -->
   <div id="previewSection">
     <div class="preview-hdr">
       <span>Preview (draft quality)</span>
-      <button onclick="closePreview()" title="Close">✕</button>
+      <button onclick="closePreview()">✕</button>
     </div>
     <video id="previewVideo" controls></video>
     <div class="preview-info">
@@ -460,7 +280,6 @@
   </div>
 </main>
 
-<!-- Sticky bottom bar -->
 <div class="bottom-bar">
   <div class="bottom-bar-inner">
     <div class="progress-wrap" id="progressWrap">
@@ -469,24 +288,25 @@
     <div id="statusLog"><span class="info">Ready. Drop MP4 files to begin.</span></div>
     <div class="actions">
       <span class="clip-count" id="clipCount">0 clips</span>
-      <button class="btn btn-clear" id="btnClear">
-        <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-3.42"></path></svg>
-        Clear
-      </button>
-      <button class="btn btn-preview" id="btnPreview" disabled>
-        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        Preview
-      </button>
-      <button class="btn btn-merge" id="btnMerge" disabled>
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Merge &amp; Download
-      </button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="btn btn-clear" id="btnClear">
+          <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-3.42"></path></svg>
+          Clear
+        </button>
+        <button class="btn btn-preview" id="btnPreview" disabled>
+          <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"></polygon></svg>
+          Preview
+        </button>
+        <button class="btn btn-merge" id="btnMerge" disabled>
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Merge &amp; Download
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Clip modal -->
-<div class="modal" id="clipModal" onclick="closeModal(event)">
+<div class="modal" id="clipModal" onclick="if(event.target===this)closeModal()">
   <div class="modal-inner">
     <div class="modal-hdr">
       <h3 id="modalTitle">Clip</h3>
@@ -496,20 +316,41 @@
   </div>
 </div>
 
-<script type="module">
-  import { FFmpeg } from 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
-  import { fetchFile, toBlobURL } from 'https://unpkg.com/@ffmpeg/util@0.12.1/dist/esm/index.js';
+<script>
+  /* ── COI Service Worker ──────────────────────────────────────────────────
+     Injects COOP/COEP headers so FFmpeg.wasm (SharedArrayBuffer) works on
+     any host without server-side header config.
+     Requires coi-serviceworker.js in the same folder as this HTML file.
+  */
+  (function() {
+    if (self.crossOriginIsolated) return;
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.register('coi-serviceworker.js').then(function(reg) {
+      if (!reg.active) window.location.reload();
+    }).catch(function() {
+      // SW not found — show banner
+      var b = document.createElement('div');
+      b.style.cssText = 'background:#7c3a00;color:#ffe0b2;padding:10px 16px;font-size:0.8rem;line-height:1.6;border-bottom:1px solid #a04000;';
+      b.innerHTML = '<b>⚠ FFmpeg may not work on this host.</b> Upload <code>coi-serviceworker.js</code> to the same folder as this HTML, then refresh. Or add <code>Cross-Origin-Opener-Policy: same-origin</code> &amp; <code>Cross-Origin-Embedder-Policy: credentialless</code> to your server.';
+      document.body.insertBefore(b, document.body.firstChild);
+    });
+  })();
+</script>
 
-  // ── State ──────────────────────────────────────────────────────────────────
+<script type="module">
+  import { FFmpeg } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
+  import { fetchFile, toBlobURL } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
+
+  // ── State ──────────────────────────────────────────────────────────────
   let clips = [];
   let transitions = [];
   let ffmpeg = null;
   let ffmpegLoading = false;
   let isProcessing = false;
   let uidCounter = 0;
-  const uid = () => ++uidCounter;
+  const uid = () => String(++uidCounter);
 
-  // ── DOM refs ───────────────────────────────────────────────────────────────
+  // ── DOM refs ───────────────────────────────────────────────────────────
   const dropZone       = document.getElementById('dropZone');
   const fileInput      = document.getElementById('fileInput');
   const clipsArea      = document.getElementById('clipsArea');
@@ -529,7 +370,7 @@
   const modalVideo     = document.getElementById('modalVideo');
   const modalTitle     = document.getElementById('modalTitle');
 
-  // ── Logging ────────────────────────────────────────────────────────────────
+  // ── Logging ────────────────────────────────────────────────────────────
   function log(msg, type = 'info') {
     const span = document.createElement('span');
     span.className = type;
@@ -539,157 +380,131 @@
   }
   function clearLog() { statusLog.innerHTML = ''; }
 
-  // ── Progress ───────────────────────────────────────────────────────────────
+  // ── Progress ───────────────────────────────────────────────────────────
   function setProgress(pct) {
-    progressWrap.classList.add('show');
+    progressWrap.classList.add('active');
     progressFill.style.width = pct + '%';
   }
   function hideProgress() {
-    setTimeout(() => progressWrap.classList.remove('show'), 400);
+    setTimeout(() => {
+      progressWrap.classList.remove('active');
+      progressFill.style.width = '0%';
+    }, 600);
   }
 
-  // ── Time formatting ────────────────────────────────────────────────────────
-  function fmt(sec) {
-    const m = Math.floor(sec / 60);
-    const s = (sec % 60).toFixed(1).padStart(4, '0');
-    return `${m}:${s}`;
-  }
-  function fmtShort(sec) {
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-  }
-
-  // ── Thumbnail ──────────────────────────────────────────────────────────────
+  // ── Thumbnail ──────────────────────────────────────────────────────────
   function generateThumb(file) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const v = document.createElement('video');
       v.preload = 'metadata'; v.muted = true; v.playsInline = true;
       const url = URL.createObjectURL(file);
       v.src = url;
-      v.onloadedmetadata = () => { v.currentTime = Math.min(1, v.duration / 2); };
+      v.onloadedmetadata = () => {
+        if (v.duration === Infinity || isNaN(v.duration)) v.currentTime = 1e101;
+        else v.currentTime = Math.min(1, v.duration / 2);
+      };
       v.onseeked = () => {
         const c = document.createElement('canvas');
         c.width = 160; c.height = 90;
         c.getContext('2d').drawImage(v, 0, 0, 160, 90);
         URL.revokeObjectURL(url);
-        resolve({ thumb: c.toDataURL('image/jpeg', 0.65), duration: v.duration });
+        resolve({ thumb: c.toDataURL('image/jpeg', 0.6), duration: v.duration });
       };
-      v.onerror = () => { URL.revokeObjectURL(url); resolve({ thumb: null, duration: 0 }); };
+      v.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Failed to load')); };
     });
   }
 
-  // ── File handling ──────────────────────────────────────────────────────────
-  dropZone.onclick = () => fileInput.click();
-  dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('dragover'); };
-  dropZone.ondragleave = () => dropZone.classList.remove('dragover');
-  dropZone.ondrop = (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); };
-  fileInput.onchange = (e) => handleFiles(e.target.files);
-
-  async function handleFiles(list) {
-    let added = 0;
-    for (const f of list) {
-      if (!f.name.toLowerCase().endsWith('.mp4')) continue;
-      if (clips.some(c => c.file.name === f.name && c.file.size === f.size)) continue;
-      const id = uid();
-      const placeholder = { id, file: f, thumb: null, duration: 0, vStart: 0, vEnd: 0, aStart: 0, aEnd: 0, split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0 };
-      clips.push(placeholder);
-      if (clips.length > 1) transitions.push({ id: uid(), type: 'cut', duration: 0.5 });
-      added++;
-      generateThumb(f).then(({ thumb, duration }) => {
-        const c = clips.find(x => x.id === id);
-        if (!c) return;
-        c.thumb = thumb;
-        c.duration = duration;
-        c.vEnd = duration;
-        c.aEnd = duration;
-        render();
-      });
-    }
-    if (added) {
-      render();
-      clearLog();
-      log(`Added ${added} file(s). Tip: FFmpeg loads on first Preview/Merge (~25 MB).`, 'ok');
-      if (!ffmpeg && !ffmpegLoading) initFFmpeg().catch(() => {});
-    }
-  }
-
-  // ── FFmpeg init ────────────────────────────────────────────────────────────
+  // ── FFmpeg ─────────────────────────────────────────────────────────────
   async function initFFmpeg() {
     if (ffmpeg) return;
-    if (ffmpegLoading) {
-      while (ffmpegLoading) await new Promise(r => setTimeout(r, 200));
-      if (ffmpeg) return;
-      throw new Error('Previous FFmpeg load failed');
-    }
+    if (ffmpegLoading) { while (ffmpegLoading) await new Promise(r => setTimeout(r, 100)); return; }
     ffmpegLoading = true;
-    clearLog();
-    log('Loading FFmpeg.wasm (~25 MB)…', 'info');
-    setProgress(5);
+    log('Loading FFmpeg core (first time only)…', 'info');
     ffmpegBar.classList.add('active');
-
-    const ff = new FFmpeg();
-    const base = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
     try {
-      log('Downloading core…', 'info');
+      const ff = new FFmpeg();
+      ff.on('progress', ({ progress }) => {
+        ffmpegBar.style.width = (progress * 100) + '%';
+        log(`Downloading core… ${Math.round(progress * 100)}%`, 'info');
+        statusLog.lastChild && (statusLog.lastChild.textContent = `Downloading core… ${Math.round(progress * 100)}%\n`);
+      });
+      ff.on('log', ({ message }) => {
+        if (!message.includes('Aborted()')) log(message, 'info');
+      });
+      const base = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
+      log('Fetching core files from cdn.jsdelivr.net…', 'info');
       const coreURL   = await toBlobURL(`${base}/ffmpeg-core.js`,        'text/javascript');
-      setProgress(18);
-      log('Downloading WASM…', 'info');
       const wasmURL   = await toBlobURL(`${base}/ffmpeg-core.wasm`,      'application/wasm');
-      setProgress(32);
-      log('Downloading worker…', 'info');
       const workerURL = await toBlobURL(`${base}/ffmpeg-core.worker.js`, 'text/javascript');
-      setProgress(40);
-      log('Initialising…', 'info');
       await ff.load({ coreURL, wasmURL, workerURL });
       ffmpeg = ff;
-      ffmpegLoading = false;
-      setProgress(100);
-      hideProgress();
-      ffmpegBar.classList.remove('active');
-      clearLog();
-      log('FFmpeg ready!', 'ok');
-      updateButtons();
+      log('FFmpeg ready ✓', 'ok');
     } catch (e) {
-      ffmpegLoading = false;
-      ffmpeg = null;
-      ffmpegBar.classList.remove('active');
-      log('Failed to load FFmpeg: ' + e.message, 'err');
-      if (e.message.includes('fetch')) {
-        log('Check your internet connection. FFmpeg files are fetched from unpkg.com.', 'warn');
+      const msg = e.message || String(e);
+      if (msg.toLowerCase().includes('fetch')) {
+        log('Failed to load FFmpeg: Failed to fetch', 'err');
+        log('Check your internet connection or try a different browser.', 'warn');
+      } else {
+        log('Failed to load FFmpeg: ' + msg, 'err');
       }
       throw e;
+    } finally {
+      ffmpegLoading = false;
+      ffmpegBar.classList.remove('active');
+      ffmpegBar.style.width = '0%';
     }
   }
 
-  // ── Filter builder ─────────────────────────────────────────────────────────
+  // ── File handling ──────────────────────────────────────────────────────
+  async function handleFiles(files) {
+    if (!ffmpeg && !ffmpegLoading) initFFmpeg().catch(() => {});
+    for (const f of Array.from(files)) {
+      if (!f.name.toLowerCase().endsWith('.mp4')) { log(`Skipped non-MP4: ${f.name}`, 'warn'); continue; }
+      if (clips.some(c => c.file.name === f.name && c.file.size === f.size)) { log(`Skipped duplicate: ${f.name}`, 'warn'); continue; }
+      log(`Loading ${f.name}…`, 'info');
+      try {
+        const { thumb, duration } = await generateThumb(f);
+        clips.push({ id: uid(), file: f, thumb, duration,
+          vStart: 0, vEnd: duration, aStart: 0, aEnd: duration,
+          split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0 });
+        // Keep transitions in sync
+        while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
+        log(`Loaded ${f.name} (${duration.toFixed(1)}s)`, 'ok');
+      } catch { log(`Failed to load ${f.name}`, 'err'); }
+    }
+    render();
+  }
+
+  // ── Format helpers ─────────────────────────────────────────────────────
+  function fmt(s) {
+    const m = Math.floor(s / 60), sec = (s % 60).toFixed(1).padStart(4, '0');
+    return `${m}:${sec}`;
+  }
+
+  // ── Filter builder ─────────────────────────────────────────────────────
   function buildFilters() {
     let vFilters = '', aFilters = '', vConcat = '', aConcat = '';
     let vCount = 0, aCount = 0, totalDur = 0;
-
     for (let i = 0; i < clips.length; i++) {
       const d = clips[i];
-      const dur = d.duration;
-      const vs = Math.max(0, d.vStart), ve = Math.min(dur, d.vEnd);
-      const as = Math.max(0, d.aStart), ae = Math.min(dur, d.aEnd);
-      const vLen = ve - vs, aLen = ae - as;
-
+      const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
+      const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
+      const vLen = ve - vs, aLen = ae - as2;
       if (vLen > 0.1) {
         let vf = `[${i}:v]trim=start=${vs}:end=${ve},setpts=PTS-STARTPTS`;
-        if (d.vFadeIn  > 0) vf += `,fade=in:st=0:d=${Math.min(d.vFadeIn,  vLen/2)}:alpha=1`;
-        if (d.vFadeOut > 0) vf += `,fade=out:st=${Math.max(0, vLen - d.vFadeOut)}:d=${Math.min(d.vFadeOut, vLen/2)}:alpha=1`;
+        if (d.vFadeIn > 0)  vf += `,fade=in:st=0:d=${Math.min(d.vFadeIn, vLen/2)}:alpha=1`;
+        if (d.vFadeOut > 0) vf += `,fade=out:st=${Math.max(0, vLen-d.vFadeOut)}:d=${Math.min(d.vFadeOut, vLen/2)}:alpha=1`;
         vf += `[cv${i}];`;
         vFilters += vf; vConcat += `[cv${i}]`; vCount++; totalDur += vLen;
       }
       if (aLen > 0.1) {
-        let af = `[${i}:a]atrim=start=${as}:end=${ae},asetpts=PTS-STARTPTS`;
-        if (d.aFadeIn  > 0) af += `,afade=in:st=0:d=${Math.min(d.aFadeIn,  aLen/2)}`;
-        if (d.aFadeOut > 0) af += `,afade=out:st=${Math.max(0, aLen - d.aFadeOut)}:d=${Math.min(d.aFadeOut, aLen/2)}`;
+        let af = `[${i}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
+        if (d.aFadeIn > 0)  af += `,afade=in:st=0:d=${Math.min(d.aFadeIn, aLen/2)}`;
+        if (d.aFadeOut > 0) af += `,afade=out:st=${Math.max(0, aLen-d.aFadeOut)}:d=${Math.min(d.aFadeOut, aLen/2)}`;
         af += `[ca${i}];`;
         aFilters += af; aConcat += `[ca${i}]`; aCount++;
       }
     }
-
     if (vCount === 0 && aCount === 0) throw new Error('No valid clips after trimming.');
     let out = vFilters + aFilters;
     if (vCount > 0) out += `${vConcat}concat=n=${vCount}:v=1:a=0[outv];`;
@@ -697,16 +512,14 @@
     return { filterComplex: out, vCount, aCount, totalDur };
   }
 
-  // ── Main process ───────────────────────────────────────────────────────────
+  // ── Main process ───────────────────────────────────────────────────────
   async function runProcess(previewMode) {
     if (clips.length < 1) { log('Add at least one clip.', 'err'); return; }
     if (isProcessing) return;
     isProcessing = true;
     const btn = previewMode ? btnPreview : btnMerge;
-    const origText = btn.innerHTML;
-    btn.disabled = true;
+    btn.disabled = btnPreview.disabled = btnMerge.disabled = true;
     btn.textContent = previewMode ? '⏳ Building…' : '⏳ Merging…';
-    btnPreview.disabled = btnMerge.disabled = true;
 
     try {
       await initFFmpeg();
@@ -714,10 +527,26 @@
       log(`Writing ${clips.length} file(s) to virtual FS…`, 'info');
       setProgress(0);
 
-      for (let i = 0; i < clips.length; i++) {
-        const data = await fetchFile(clips[i].file);
+      // Apply transition fades to clip settings before processing
+      const proc = clips.map((c, i) => {
+        const cl = { ...c };
+        if (i < transitions.length) {
+          const t = transitions[i];
+          if (t.type === 'vfade' || t.type === 'both') cl.vFadeOut = Math.max(cl.vFadeOut, t.duration);
+          if (t.type === 'afade' || t.type === 'both') cl.aFadeOut = Math.max(cl.aFadeOut, t.duration);
+        }
+        if (i > 0) {
+          const t = transitions[i - 1];
+          if (t.type === 'vfade' || t.type === 'both') cl.vFadeIn = Math.max(cl.vFadeIn, t.duration);
+          if (t.type === 'afade' || t.type === 'both') cl.aFadeIn = Math.max(cl.aFadeIn, t.duration);
+        }
+        return cl;
+      });
+
+      for (let i = 0; i < proc.length; i++) {
+        const data = await fetchFile(proc[i].file);
         await ffmpeg.writeFile(`in${i}.mp4`, data);
-        setProgress(Math.round((i + 1) / clips.length * 15));
+        setProgress(Math.round((i + 1) / proc.length * 15));
         log(`  Wrote in${i}.mp4`, 'info');
       }
 
@@ -728,7 +557,7 @@
       const outName = previewMode ? 'preview.mp4' : 'output.mp4';
       const args = [
         '-y',
-        ...clips.flatMap((_, i) => ['-i', `in${i}.mp4`]),
+        ...proc.flatMap((_, i) => ['-i', `in${i}.mp4`]),
         '-filter_complex', filterComplex,
         ...(vCount > 0 ? ['-map', '[outv]'] : []),
         ...(aCount > 0 ? ['-map', '[outa]'] : []),
@@ -736,16 +565,12 @@
         '-preset', previewMode ? 'ultrafast' : 'fast',
         '-crf',   previewMode ? '32' : '23',
         ...(previewMode ? ['-vf', 'scale=480:-2'] : []),
-        '-c:a', 'aac',
-        '-b:a', previewMode ? '96k' : '128k',
+        '-c:a', 'aac', '-b:a', previewMode ? '96k' : '128k',
         '-movflags', '+faststart',
         outName,
       ];
 
-      ffmpeg.on('progress', ({ progress }) => {
-        setProgress(20 + Math.round(progress * 75));
-      });
-
+      ffmpeg.on('progress', ({ progress }) => setProgress(20 + Math.round(progress * 75)));
       const code = await ffmpeg.exec(args);
       if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
 
@@ -753,294 +578,328 @@
       const blob = new Blob([data.buffer], { type: 'video/mp4' });
       const url  = URL.createObjectURL(blob);
 
-      // Cleanup FS
-      for (let i = 0; i < clips.length; i++) await ffmpeg.deleteFile(`in${i}.mp4`).catch(() => {});
+      for (let i = 0; i < proc.length; i++) await ffmpeg.deleteFile(`in${i}.mp4`).catch(() => {});
       await ffmpeg.deleteFile(outName).catch(() => {});
-
       setProgress(100);
 
       if (previewMode) {
         previewVideo.src = url;
         prevCount.textContent = vCount;
-        prevDur.textContent = fmtShort(totalDur);
+        prevDur.textContent = fmt(totalDur);
         previewSection.classList.add('show');
         setTimeout(() => previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
         clearLog();
         log('Preview ready! Scroll down to watch.', 'ok');
       } else {
         clearLog();
-        log('Done! Click the link below to download.', 'ok');
+        log('Done! Your download should start automatically.', 'ok');
         const a = document.createElement('a');
         a.href = url;
         a.download = 'merged_video.mp4';
-        a.className = 'dl-link';
-        a.textContent = '⬇ Download merged_video.mp4';
-        statusLog.appendChild(document.createElement('br'));
-        statusLog.appendChild(a);
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 3000);
       }
-
       hideProgress();
     } catch (err) {
       clearLog();
-      log((previewMode ? 'Preview' : 'Merge') + ' failed: ' + (err.message || String(err)), 'err');
+      const msg = err.message || String(err);
+      if (msg.toLowerCase().includes('fetch') || msg.toLowerCase().includes('sharedarraybuffer') || msg.toLowerCase().includes('worker')) {
+        log((previewMode ? 'Preview' : 'Merge') + ' failed — browser security headers missing.', 'err');
+        log('Fix: make sure coi-serviceworker.js is in the same folder and hard-refresh (Ctrl+Shift+R).', 'warn');
+      } else {
+        log((previewMode ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
+      }
       hideProgress();
     } finally {
       isProcessing = false;
-      btn.innerHTML = origText;
       updateButtons();
     }
   }
 
-  // ── Clip management ────────────────────────────────────────────────────────
+  // ── Clip management ────────────────────────────────────────────────────
   window.moveClip = (id, dir) => {
     const idx = clips.findIndex(c => c.id === id);
     const n = idx + dir;
     if (n < 0 || n >= clips.length) return;
     [clips[idx], clips[n]] = [clips[n], clips[idx]];
+    [transitions[Math.min(idx, n)]] = [transitions[Math.min(idx, n)]]; // keep transitions stable
     render();
   };
-
   window.removeClip = (id) => {
     const idx = clips.findIndex(c => c.id === id);
     clips.splice(idx, 1);
     if (transitions.length >= clips.length) transitions.splice(Math.max(0, idx - 1), 1);
     render();
   };
-
-  window.openClipModal = (id) => {
+  window.openModal = (id) => {
     const clip = clips.find(c => c.id === id);
     if (!clip) return;
-    const url = URL.createObjectURL(clip.file);
-    modalVideo.src = url;
     modalTitle.textContent = clip.file.name;
-    clipModal.classList.add('show');
+    modalVideo.src = URL.createObjectURL(clip.file);
+    clipModal.classList.add('open');
   };
-
-  window.closeModal = (e) => {
-    if (e && e.target !== clipModal) return;
-    clipModal.classList.remove('show');
-    modalVideo.pause();
-    URL.revokeObjectURL(modalVideo.src);
-    modalVideo.src = '';
+  window.closeModal = () => {
+    clipModal.classList.remove('open');
+    modalVideo.pause(); modalVideo.src = '';
   };
-  document.getElementById('clipModal').querySelector('button').onclick = () => window.closeModal();
-
   window.closePreview = () => {
     previewSection.classList.remove('show');
-    previewVideo.pause();
-    URL.revokeObjectURL(previewVideo.src);
-    previewVideo.src = '';
+    previewVideo.pause(); previewVideo.src = '';
   };
 
-  // ── Clear ──────────────────────────────────────────────────────────────────
-  btnClear.onclick = () => {
-    clips = []; transitions = [];
-    window.closePreview();
-    render();
-    clearLog();
-    log('Cleared.', 'info');
-  };
+  // ── Slider helpers ─────────────────────────────────────────────────────
+  function makeRangeSlider(container, { min, max, start, end, colorClass, onChangeStart, onChangeEnd }) {
+    const step = 0.1;
+    const trackEl = container.querySelector('.range-track');
+    const startEl = container.querySelector('input.start, input.astart');
+    const endEl   = container.querySelector('input.end, input.aend');
 
-  btnPreview.onclick = () => runProcess(true);
-  btnMerge.onclick   = () => runProcess(false);
-
-  // ── Render ─────────────────────────────────────────────────────────────────
-  function updateButtons() {
-    const hasClips = clips.length > 0;
-    const ready    = !!ffmpeg && !isProcessing;
-    btnClear.disabled   = isProcessing;
-    btnPreview.disabled = !hasClips || !ready;
-    btnMerge.disabled   = !hasClips || !ready;
-    // If FFmpeg not loaded yet, still allow clicking (init fires inside runProcess)
-    if (hasClips && !ffmpeg && !isProcessing) {
-      btnPreview.disabled = false;
-      btnMerge.disabled   = false;
+    function updateTrack() {
+      const pct = v => ((v - min) / (max - min)) * 100;
+      const s = parseFloat(startEl.value), e = parseFloat(endEl.value);
+      trackEl.style.background = `linear-gradient(to right, var(--border) ${pct(s)}%, ${colorClass === 'audio' ? 'var(--amber)' : 'var(--blue)'} ${pct(s)}%, ${colorClass === 'audio' ? 'var(--amber)' : 'var(--blue)'} ${pct(e)}%, var(--border) ${pct(e)}%)`;
     }
-    clipCount.textContent = `${clips.length} clip${clips.length !== 1 ? 's' : ''}${clips.length > 0 ? ` · ~${clips.reduce((a,c)=>a+(c.vEnd-c.vStart),0).toFixed(1)}s` : ''}`;
+
+    startEl.min = min; startEl.max = max; startEl.step = step; startEl.value = start;
+    endEl.min   = min; endEl.max   = max; endEl.step   = step; endEl.value   = end;
+
+    startEl.addEventListener('input', () => {
+      if (parseFloat(startEl.value) > parseFloat(endEl.value) - step) startEl.value = parseFloat(endEl.value) - step;
+      onChangeStart(parseFloat(startEl.value));
+      updateTrack();
+    });
+    endEl.addEventListener('input', () => {
+      if (parseFloat(endEl.value) < parseFloat(startEl.value) + step) endEl.value = parseFloat(startEl.value) + step;
+      onChangeEnd(parseFloat(endEl.value));
+      updateTrack();
+    });
+    updateTrack();
   }
 
+  // ── Render ─────────────────────────────────────────────────────────────
   function render() {
     clipsArea.innerHTML = '';
-    updateButtons();
 
     clips.forEach((clip, idx) => {
-      const dur  = clip.duration || 0;
-      const vs   = clip.vStart, ve = clip.vEnd || dur;
-      const as   = clip.aStart, ae = clip.aEnd || dur;
-      const vL   = dur ? (vs/dur*100).toFixed(1) : 0;
-      const vW   = dur ? ((ve-vs)/dur*100).toFixed(1) : 100;
-      const aL   = dur ? (as/dur*100).toFixed(1) : 0;
-      const aW   = dur ? ((ae-as)/dur*100).toFixed(1) : 100;
+      const wrap = document.createElement('div');
+      wrap.className = 'clip-wrap';
 
-      // ── clip card ──────────────────────────────────────────────────
       const card = document.createElement('div');
       card.className = 'clip-card';
-      card.innerHTML = `
+      card.style.marginBottom = '0';
+
+      const body = document.createElement('div');
+      body.className = 'clip-body';
+
+      // Thumb
+      const thumb = document.createElement('div');
+      thumb.className = 'clip-thumb';
+      thumb.onclick = () => openModal(clip.id);
+      thumb.innerHTML = `
+        ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : ''}
+        <div class="play-overlay"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="dur-badge">${clip.duration.toFixed(1)}s</div>
+      `;
+
+      // Controls
+      const ctrl = document.createElement('div');
+      ctrl.className = 'clip-controls';
+      ctrl.innerHTML = `
         <div class="clip-header">
-          <div class="clip-thumb" onclick="openClipModal(${clip.id})">
-            ${clip.thumb
-              ? `<img src="${clip.thumb}" alt="">`
-              : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#333;font-size:1.3rem;">🎬</div>`}
-            <div class="play-ovr">▶</div>
-          </div>
-          <div class="clip-title"><span class="clip-num">#${idx+1}</span>${escHtml(clip.file.name)}</div>
-          <div class="clip-ctrls">
-            <button ${idx===0?'disabled':''} onclick="moveClip(${clip.id},-1)" title="Move up">↑</button>
-            <button ${idx===clips.length-1?'disabled':''} onclick="moveClip(${clip.id},1)" title="Move down">↓</button>
-            <button class="del" onclick="removeClip(${clip.id})" title="Remove">✕</button>
+          <div class="clip-name"><span>#${idx + 1}</span>${clip.file.name}</div>
+          <div class="clip-actions">
+            <button class="icon-btn" title="Move up" onclick="moveClip('${clip.id}',-1)" ${idx === 0 ? 'disabled' : ''}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </button>
+            <button class="icon-btn" title="Move down" onclick="moveClip('${clip.id}',1)" ${idx === clips.length - 1 ? 'disabled' : ''}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <button class="icon-btn del" title="Remove" onclick="removeClip('${clip.id}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            </button>
           </div>
         </div>
-        <div class="clip-body">
-          <div class="tl-bar" title="Blue = video trim  ·  Yellow = audio trim">
-            <div class="tl-seg vid" style="left:${vL}%;width:${vW}%"></div>
-            <div class="tl-seg aud" style="left:${aL}%;width:${aW}%"></div>
-            <div class="tl-hint">${fmtShort(ve-vs)} / ${fmtShort(ae-as)}</div>
-          </div>
-          <div class="split-toggle">
-            <input type="checkbox" id="split_${clip.id}" ${clip.split?'checked':''}>
-            <label for="split_${clip.id}">Split audio/video trim</label>
-          </div>
-          <div class="trim-grid ${clip.split?'split4':'merged'}" id="trimGrid_${clip.id}">
-            ${clip.split ? `
-              <div class="trim-row">
-                <label>Video Start <span class="val">${fmt(vs)}</span></label>
-                <input type="range" id="vs_${clip.id}" min="0" max="${dur}" step="0.05" value="${vs}">
-              </div>
-              <div class="trim-row">
-                <label>Video End <span class="val">${fmt(ve)}</span></label>
-                <input type="range" id="ve_${clip.id}" min="0" max="${dur}" step="0.05" value="${ve}">
-              </div>
-              <div class="trim-row aud">
-                <label>Audio Start <span class="val">${fmt(as)}</span></label>
-                <input type="range" id="as_${clip.id}" min="0" max="${dur}" step="0.05" value="${as}">
-              </div>
-              <div class="trim-row aud">
-                <label>Audio End <span class="val">${fmt(ae)}</span></label>
-                <input type="range" id="ae_${clip.id}" min="0" max="${dur}" step="0.05" value="${ae}">
-              </div>
-            ` : `
-              <div class="trim-row">
-                <label>Start <span class="val">${fmt(vs)}</span></label>
-                <input type="range" id="s_${clip.id}" min="0" max="${dur}" step="0.05" value="${vs}">
-              </div>
-              <div class="trim-row">
-                <label>End <span class="val">${fmt(ve)}</span></label>
-                <input type="range" id="e_${clip.id}" min="0" max="${dur}" step="0.05" value="${ve}">
-              </div>
-            `}
-          </div>
-          <div class="fade-row">
-            <div class="fade-input"><label>Video Fade In (s)</label><input type="number" id="vfi_${clip.id}" min="0" max="5" step="0.1" value="${clip.vFadeIn}"></div>
-            <div class="fade-input"><label>Video Fade Out (s)</label><input type="number" id="vfo_${clip.id}" min="0" max="5" step="0.1" value="${clip.vFadeOut}"></div>
-            <div class="fade-input"><label>Audio Fade In (s)</label><input type="number" id="afi_${clip.id}" min="0" max="5" step="0.1" value="${clip.aFadeIn}"></div>
-            <div class="fade-input"><label>Audio Fade Out (s)</label><input type="number" id="afo_${clip.id}" min="0" max="5" step="0.1" value="${clip.aFadeOut}"></div>
-          </div>
+
+        <div class="timeline-bar">
+          <div class="tl-row"><div class="tl-fill video" id="tlv-${clip.id}" style="left:${(clip.vStart/clip.duration)*100}%;width:${((clip.vEnd-clip.vStart)/clip.duration)*100}%"></div></div>
+          <div class="tl-row"><div class="tl-fill audio" id="tla-${clip.id}" style="left:${(clip.aStart/clip.duration)*100}%;width:${((clip.aEnd-clip.aStart)/clip.duration)*100}%"></div></div>
+        </div>
+
+        <label class="split-row">
+          <input type="checkbox" ${clip.split ? 'checked' : ''} onchange="toggleSplit('${clip.id}',this.checked)">
+          Split audio/video trim
+        </label>
+
+        <div id="sliders-${clip.id}"></div>
+
+        <div class="fade-grid">
+          <div class="fade-field"><label>Vid Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeIn}" onchange="updateClip('${clip.id}','vFadeIn',+this.value)"></div>
+          <div class="fade-field"><label>Vid Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeOut}" onchange="updateClip('${clip.id}','vFadeOut',+this.value)"></div>
+          <div class="fade-field"><label>Aud Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeIn}" onchange="updateClip('${clip.id}','aFadeIn',+this.value)"></div>
+          <div class="fade-field"><label>Aud Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeOut}" onchange="updateClip('${clip.id}','aFadeOut',+this.value)"></div>
         </div>
       `;
-      clipsArea.appendChild(card);
 
-      // Wire split toggle
-      card.querySelector(`#split_${clip.id}`).onchange = (e) => {
-        clip.split = e.target.checked;
-        render();
-      };
+      body.appendChild(thumb);
+      body.appendChild(ctrl);
+      card.appendChild(body);
+      wrap.appendChild(card);
 
-      // Wire trim sliders
-      if (clip.split) {
-        const vsEl = card.querySelector(`#vs_${clip.id}`);
-        const veEl = card.querySelector(`#ve_${clip.id}`);
-        const asEl = card.querySelector(`#as_${clip.id}`);
-        const aeEl = card.querySelector(`#ae_${clip.id}`);
-        const bind = (el, key, limKey, limFn) => {
-          el.oninput = () => {
-            const v = parseFloat(el.value);
-            el.previousElementSibling?.querySelector('.val') && (el.parentElement.querySelector('.val').textContent = fmt(v));
-            clip[key] = v;
-            if (limKey && limFn(v, parseFloat(card.querySelector(`#${limKey}_${clip.id}`)?.value||0))) {
-              card.querySelector(`#${limKey}_${clip.id}`).value = v;
-              clip[limKey.split('_')[0] === 'vs' ? 've' : limKey.split('_')[0]] = v;
-            }
-            refreshTL(clip, card, dur);
-          };
-        };
-        vsEl.oninput = () => { clip.vStart = +vsEl.value; if(clip.vStart > clip.vEnd) { clip.vEnd = clip.vStart; veEl.value = veEl.value; } vsEl.parentElement.querySelector('.val').textContent = fmt(clip.vStart); refreshTL(clip,card,dur); };
-        veEl.oninput = () => { clip.vEnd   = +veEl.value; if(clip.vEnd < clip.vStart) { clip.vStart = clip.vEnd; vsEl.value = vsEl.value; } veEl.parentElement.querySelector('.val').textContent = fmt(clip.vEnd);   refreshTL(clip,card,dur); };
-        asEl.oninput = () => { clip.aStart = +asEl.value; if(clip.aStart > clip.aEnd) { clip.aEnd = clip.aStart; aeEl.value = aeEl.value; } asEl.parentElement.querySelector('.val').textContent = fmt(clip.aStart); refreshTL(clip,card,dur); };
-        aeEl.oninput = () => { clip.aEnd   = +aeEl.value; if(clip.aEnd < clip.aStart) { clip.aStart = clip.aEnd; asEl.value = asEl.value; } aeEl.parentElement.querySelector('.val').textContent = fmt(clip.aEnd);   refreshTL(clip,card,dur); };
-      } else {
-        const sEl = card.querySelector(`#s_${clip.id}`);
-        const eEl = card.querySelector(`#e_${clip.id}`);
-        sEl.oninput = () => {
-          const v = +sEl.value;
-          clip.vStart = clip.aStart = v;
-          if (v > clip.vEnd) { clip.vEnd = clip.aEnd = v; eEl.value = v; }
-          sEl.parentElement.querySelector('.val').textContent = fmt(v);
-          refreshTL(clip, card, dur);
-        };
-        eEl.oninput = () => {
-          const v = +eEl.value;
-          clip.vEnd = clip.aEnd = v;
-          if (v < clip.vStart) { clip.vStart = clip.aStart = v; sEl.value = v; }
-          eEl.parentElement.querySelector('.val').textContent = fmt(v);
-          refreshTL(clip, card, dur);
-        };
-      }
+      // Build sliders after inserting into DOM context
+      clipsArea.appendChild(wrap);
 
-      // Wire fade inputs
-      [['vfi', 'vFadeIn'], ['vfo', 'vFadeOut'], ['afi', 'aFadeIn'], ['afo', 'aFadeOut']].forEach(([prefix, key]) => {
-        const el = card.querySelector(`#${prefix}_${clip.id}`);
-        if (el) el.onchange = () => { clip[key] = parseFloat(el.value) || 0; };
-      });
+      const slidersDiv = document.getElementById(`sliders-${clip.id}`);
+      renderSliders(clip, slidersDiv);
 
-      // ── transition card between clips ──────────────────────────────
-      if (idx < clips.length - 1) {
-        const t = transitions[idx] || { id: uid(), type: 'cut', duration: 0.5 };
-        transitions[idx] = t;
-        const tc = document.createElement('div');
-        tc.className = 'trans-card';
-        tc.innerHTML = `
-          <span class="trans-label">↳ Between #${idx+1} &amp; #${idx+2}:</span>
-          <select id="tt_${t.id}">
-            <option value="cut"   ${t.type==='cut'   ?'selected':''}>Hard Cut</option>
-            <option value="vfade" ${t.type==='vfade' ?'selected':''}>Video Crossfade</option>
-            <option value="afade" ${t.type==='afade' ?'selected':''}>Audio Crossfade</option>
-            <option value="both"  ${t.type==='both'  ?'selected':''}>Both Crossfade</option>
-          </select>
-          <span style="display:flex;align-items:center;gap:6px;">
-            <span>Duration:</span>
-            <input type="number" id="td_${t.id}" min="0.1" max="3" step="0.1" value="${t.duration}">
-            <span>sec</span>
-          </span>
+      // Transition
+      if (idx < clips.length - 1 && transitions[idx]) {
+        const t = transitions[idx];
+        const tRow = document.createElement('div');
+        tRow.className = 'transition-row';
+        tRow.innerHTML = `
+          <div class="transition-pill">
+            <span style="color:var(--muted);font-size:0.75rem;">↳ Between #${idx+1} &amp; #${idx+2}:</span>
+            <select onchange="updateTransition('${t.id}','type',this.value)">
+              <option value="cut" ${t.type==='cut'?'selected':''}>Hard Cut</option>
+              <option value="vfade" ${t.type==='vfade'?'selected':''}>Video Crossfade</option>
+              <option value="afade" ${t.type==='afade'?'selected':''}>Audio Crossfade</option>
+              <option value="both" ${t.type==='both'?'selected':''}>Full Crossfade</option>
+            </select>
+            ${t.type !== 'cut' ? `<div class="dur-wrap"><input type="number" min="0.1" max="3" step="0.1" value="${t.duration}" onchange="updateTransition('${t.id}','duration',+this.value)"><span style="color:var(--muted);font-size:0.75rem">sec</span></div>` : ''}
+          </div>
         `;
-        clipsArea.appendChild(tc);
-        tc.querySelector(`#tt_${t.id}`).onchange = e => { t.type = e.target.value; };
-        tc.querySelector(`#td_${t.id}`).onchange = e => { t.duration = parseFloat(e.target.value) || 0.5; };
+        wrap.appendChild(tRow);
       }
     });
+
+    updateButtons();
   }
 
-  function refreshTL(clip, card, dur) {
-    const vs = clip.vStart, ve = clip.vEnd || dur;
-    const as = clip.aStart, ae = clip.aEnd || dur;
-    const vSeg = card.querySelector('.tl-seg.vid');
-    const aSeg = card.querySelector('.tl-seg.aud');
-    const hint = card.querySelector('.tl-hint');
-    if (dur > 0) {
-      vSeg.style.left  = (vs/dur*100).toFixed(1) + '%';
-      vSeg.style.width = ((ve-vs)/dur*100).toFixed(1) + '%';
-      aSeg.style.left  = (as/dur*100).toFixed(1) + '%';
-      aSeg.style.width = ((ae-as)/dur*100).toFixed(1) + '%';
+  function renderSliders(clip, container) {
+    container.innerHTML = '';
+    if (!clip.split) {
+      const div = document.createElement('div');
+      div.className = 'slider-group';
+      div.innerHTML = `
+        <div class="slider-label"><span>Trim</span><span id="lbl-master-${clip.id}">${fmt(clip.vStart)} – ${fmt(clip.vEnd)}</span></div>
+        <div class="range-wrap">
+          <div class="range-track"></div>
+          <input type="range" class="start" value="${clip.vStart}">
+          <input type="range" class="end" value="${clip.vEnd}">
+        </div>
+      `;
+      container.appendChild(div);
+      makeRangeSlider(div, {
+        min: 0, max: clip.duration, start: clip.vStart, end: clip.vEnd,
+        colorClass: 'video',
+        onChangeStart: v => {
+          clip.vStart = clip.aStart = v;
+          document.getElementById(`lbl-master-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(clip.vEnd)}`;
+          updateTimeline(clip);
+        },
+        onChangeEnd: v => {
+          clip.vEnd = clip.aEnd = v;
+          document.getElementById(`lbl-master-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(clip.vEnd)}`;
+          updateTimeline(clip);
+        }
+      });
+    } else {
+      // Video
+      const vDiv = document.createElement('div');
+      vDiv.className = 'slider-group';
+      vDiv.innerHTML = `
+        <div class="slider-label"><span>Video Trim</span><span id="lbl-v-${clip.id}">${fmt(clip.vStart)} – ${fmt(clip.vEnd)}</span></div>
+        <div class="range-wrap">
+          <div class="range-track"></div>
+          <input type="range" class="start" value="${clip.vStart}">
+          <input type="range" class="end" value="${clip.vEnd}">
+        </div>
+      `;
+      container.appendChild(vDiv);
+      makeRangeSlider(vDiv, {
+        min: 0, max: clip.duration, start: clip.vStart, end: clip.vEnd,
+        colorClass: 'video',
+        onChangeStart: v => { clip.vStart = v; document.getElementById(`lbl-v-${clip.id}`).textContent = `${fmt(v)} – ${fmt(clip.vEnd)}`; updateTimeline(clip); },
+        onChangeEnd: v => { clip.vEnd = v; document.getElementById(`lbl-v-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(v)}`; updateTimeline(clip); }
+      });
+
+      // Audio
+      const aDiv = document.createElement('div');
+      aDiv.className = 'slider-group';
+      aDiv.innerHTML = `
+        <div class="slider-label"><span>Audio Trim</span><span id="lbl-a-${clip.id}">${fmt(clip.aStart)} – ${fmt(clip.aEnd)}</span></div>
+        <div class="range-wrap">
+          <div class="range-track"></div>
+          <input type="range" class="astart" value="${clip.aStart}">
+          <input type="range" class="aend" value="${clip.aEnd}">
+        </div>
+      `;
+      container.appendChild(aDiv);
+      makeRangeSlider(aDiv, {
+        min: 0, max: clip.duration, start: clip.aStart, end: clip.aEnd,
+        colorClass: 'audio',
+        onChangeStart: v => { clip.aStart = v; document.getElementById(`lbl-a-${clip.id}`).textContent = `${fmt(v)} – ${fmt(clip.aEnd)}`; updateTimeline(clip); },
+        onChangeEnd: v => { clip.aEnd = v; document.getElementById(`lbl-a-${clip.id}`).textContent = `${fmt(clip.aStart)} – ${fmt(v)}`; updateTimeline(clip); }
+      });
     }
-    hint.textContent = `${fmtShort(ve-vs)} / ${fmtShort(ae-as)}`;
-    // update total in button bar
-    clipCount.textContent = `${clips.length} clip${clips.length!==1?'s':''}${clips.length>0?` · ~${clips.reduce((a,c)=>a+(c.vEnd-c.vStart),0).toFixed(1)}s`:''}`;
   }
 
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  function updateTimeline(clip) {
+    const vEl = document.getElementById(`tlv-${clip.id}`);
+    const aEl = document.getElementById(`tla-${clip.id}`);
+    if (vEl) { vEl.style.left = (clip.vStart/clip.duration*100)+'%'; vEl.style.width = ((clip.vEnd-clip.vStart)/clip.duration*100)+'%'; }
+    if (aEl) { aEl.style.left = (clip.aStart/clip.duration*100)+'%'; aEl.style.width = ((clip.aEnd-clip.aStart)/clip.duration*100)+'%'; }
   }
 
-  render();
+  window.toggleSplit = (id, val) => {
+    const clip = clips.find(c => c.id === id);
+    if (!clip) return;
+    clip.split = val;
+    const slidersDiv = document.getElementById(`sliders-${id}`);
+    if (slidersDiv) renderSliders(clip, slidersDiv);
+  };
+
+  window.updateClip = (id, key, val) => {
+    const clip = clips.find(c => c.id === id);
+    if (clip) clip[key] = val;
+  };
+
+  window.updateTransition = (id, key, val) => {
+    const t = transitions.find(t => t.id === id);
+    if (t) { t[key] = val; render(); }
+  };
+
+  function updateButtons() {
+    const hasClips = clips.length > 0;
+    btnPreview.disabled = !hasClips || isProcessing;
+    btnMerge.disabled   = !hasClips || isProcessing;
+    clipCount.textContent = clips.length + ' clip' + (clips.length !== 1 ? 's' : '') +
+      (hasClips ? ` • ~${clips.reduce((s,c)=>s+(c.vEnd-c.vStart),0).toFixed(1)}s` : '');
+    if (!isProcessing) {
+      btnPreview.innerHTML = '<svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Preview';
+      btnMerge.innerHTML   = '<svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Merge &amp; Download';
+    }
+  }
+
+  // ── Events ─────────────────────────────────────────────────────────────
+  dropZone.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', e => e.target.files && handleFiles(e.target.files));
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault(); dropZone.classList.remove('drag');
+    if (e.dataTransfer.files) handleFiles(e.dataTransfer.files);
+  });
+
+  btnClear.addEventListener('click', () => {
+    clips = []; transitions = [];
+    closePreview(); clearLog(); render();
+    log('Ready. Drop MP4 files to begin.', 'info');
+  });
+  btnPreview.addEventListener('click', () => runProcess(true));
+  btnMerge.addEventListener('click', () => runProcess(false));
+
+  updateButtons();
 </script>
 </body>
 </html>
