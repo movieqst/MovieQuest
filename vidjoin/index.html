@@ -419,31 +419,48 @@
     if (ffmpeg) return;
     if (ffmpegLoading) { while (ffmpegLoading) await new Promise(r => setTimeout(r, 100)); return; }
     ffmpegLoading = true;
-    log('Loading FFmpeg core (first time only)…', 'info');
+    log('Loading FFmpeg (first time only)…', 'info');
     ffmpegBar.classList.add('active');
     try {
+      const pkgBase  = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm';
+      const coreBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
+
+      // @ffmpeg/ffmpeg internally does: new Worker(new URL('./worker.js', import.meta.url))
+      // That URL is cross-origin, so browsers block it. Pre-fetch it as a blob URL and
+      // intercept the Worker constructor so FFmpeg picks up the same-origin blob instead.
+      log('Fetching FFmpeg worker…', 'info');
+      const ffmpegWorkerBlobURL = await toBlobURL(`${pkgBase}/worker.js`, 'text/javascript');
+
+      const _OrigWorker = window.Worker;
+      window.Worker = function(url, opts) {
+        const s = (url instanceof URL ? url.href : String(url));
+        if (s.includes('worker.js')) return new _OrigWorker(ffmpegWorkerBlobURL, opts);
+        return new _OrigWorker(url, opts);
+      };
+
       const ff = new FFmpeg();
+      window.Worker = _OrigWorker; // restore immediately after construction
+
       ff.on('progress', ({ progress }) => {
         ffmpegBar.style.width = (progress * 100) + '%';
-        log(`Downloading core… ${Math.round(progress * 100)}%`, 'info');
-        statusLog.lastChild && (statusLog.lastChild.textContent = `Downloading core… ${Math.round(progress * 100)}%\n`);
+        if (statusLog.lastChild) statusLog.lastChild.textContent = `Downloading core… ${Math.round(progress * 100)}%\n`;
       });
       ff.on('log', ({ message }) => {
         if (!message.includes('Aborted()')) log(message, 'info');
       });
-      const base = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
+
       log('Fetching core files from cdn.jsdelivr.net…', 'info');
-      const coreURL   = await toBlobURL(`${base}/ffmpeg-core.js`,        'text/javascript');
-      const wasmURL   = await toBlobURL(`${base}/ffmpeg-core.wasm`,      'application/wasm');
-      const workerURL = await toBlobURL(`${base}/ffmpeg-core.worker.js`, 'text/javascript');
+      const coreURL   = await toBlobURL(`${coreBase}/ffmpeg-core.js`,        'text/javascript');
+      const wasmURL   = await toBlobURL(`${coreBase}/ffmpeg-core.wasm`,      'application/wasm');
+      const workerURL = await toBlobURL(`${coreBase}/ffmpeg-core.worker.js`, 'text/javascript');
       await ff.load({ coreURL, wasmURL, workerURL });
       ffmpeg = ff;
       log('FFmpeg ready ✓', 'ok');
     } catch (e) {
       const msg = e.message || String(e);
-      if (msg.toLowerCase().includes('fetch')) {
-        log('Failed to load FFmpeg: Failed to fetch', 'err');
-        log('Check your internet connection or try a different browser.', 'warn');
+      if (msg.toLowerCase().includes('fetch') || msg.toLowerCase().includes('worker')) {
+        log('Failed to load FFmpeg: ' + msg, 'err');
+        log('Try a hard refresh (Ctrl+Shift+R) or check your internet connection.', 'warn');
       } else {
         log('Failed to load FFmpeg: ' + msg, 'err');
       }
