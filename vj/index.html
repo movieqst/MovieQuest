@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP4 Video Joiner with Trim</title>
+    <title>MP4 Video Joiner + Trimmer</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -13,7 +13,7 @@
             padding: 20px;
             min-height: 100vh;
         }
-        .container { max-width: 900px; margin: 0 auto; }
+        .container { max-width: 1000px; margin: 0 auto; }
         h1 {
             text-align: center;
             font-size: 1.8rem;
@@ -42,7 +42,7 @@
         
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 16px;
             margin-bottom: 20px;
         }
@@ -58,13 +58,14 @@
         
         .thumb-box {
             width: 100%;
-            height: 140px;
+            height: 150px;
             background: #1a1a2e;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
         .thumb-box img, .thumb-box canvas {
             width: 100%;
@@ -75,6 +76,22 @@
             color: #555;
             font-size: 2rem;
         }
+        .thumb-box .play-btn {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .thumb-box:hover .play-btn { opacity: 1; }
         .thumb-box .duration {
             position: absolute;
             bottom: 6px;
@@ -207,12 +224,64 @@
             font-weight: 700;
         }
         .download-link:hover { background: #40c057; }
+        
+        /* Preview Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: #1a1a2e;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #333;
+        }
+        .modal-header h3 { color: #fff; font-size: 1.1rem; }
+        .modal-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .modal-close:hover { color: #fff; }
+        .modal-video {
+            width: 100%;
+            display: block;
+            max-height: 60vh;
+            background: #000;
+        }
+        .modal-trim-info {
+            padding: 16px 20px;
+            display: flex;
+            gap: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        .modal-trim-info span { color: #feca57; font-weight: 600; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🎬 MP4 Joiner + Trimmer</h1>
-        <p class="subtitle">Trim start/end of each clip, then merge — all in your browser</p>
+        <p class="subtitle">Trim start/end, click thumbnail to preview, then merge — all in your browser</p>
         
         <div class="drop-zone" id="dropZone">
             <div class="icon">📁</div>
@@ -234,9 +303,25 @@
         <div class="status" id="status">Ready. Drop MP4 files to begin.</div>
     </div>
 
+    <!-- Preview Modal -->
+    <div class="modal-overlay" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Preview</h3>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <video class="modal-video" id="modalVideo" controls></video>
+            <div class="modal-trim-info">
+                <div>Original: <span id="modalOrigDur">0:00</span></div>
+                <div>Trim: <span id="modalTrimStart">0:00</span> — <span id="modalTrimEnd">0:00</span></div>
+                <div>Output: <span id="modalOutDur">0:00</span></div>
+            </div>
+        </div>
+    </div>
+
     <script type="module">
-        import { FFmpeg } from 'https://esm.sh/@ffmpeg/ffmpeg@0.12.10';
-        import { fetchFile, toBlobURL } from 'https://esm.sh/@ffmpeg/util@0.12.1';
+        import { FFmpeg } from 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
+        import { fetchFile, toBlobURL } from 'https://unpkg.com/@ffmpeg/util@0.12.1/dist/esm/index.js';
 
         let files = [];
         let fileData = [];
@@ -251,6 +336,16 @@
         const status = document.getElementById('status');
         const progressBar = document.getElementById('progressBar');
         const progressFill = document.getElementById('progressFill');
+        
+        // Modal refs
+        const previewModal = document.getElementById('previewModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalClose = document.getElementById('modalClose');
+        const modalOrigDur = document.getElementById('modalOrigDur');
+        const modalTrimStart = document.getElementById('modalTrimStart');
+        const modalTrimEnd = document.getElementById('modalTrimEnd');
+        const modalOutDur = document.getElementById('modalOutDur');
 
         function log(msg, type = 'info') {
             const span = document.createElement('span');
@@ -276,7 +371,8 @@
             video.preload = 'metadata';
             video.muted = true;
             video.playsInline = true;
-            video.src = URL.createObjectURL(file);
+            const url = URL.createObjectURL(file);
+            video.src = url;
             
             video.onloadedmetadata = () => {
                 video.currentTime = Math.min(1, video.duration / 2);
@@ -288,15 +384,48 @@
                 canvas.height = 180;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(video, 0, 0, 320, 180);
-                URL.revokeObjectURL(video.src);
+                URL.revokeObjectURL(url);
                 callback(canvas.toDataURL('image/jpeg', 0.7), video.duration);
             };
             
             video.onerror = () => {
-                URL.revokeObjectURL(video.src);
+                URL.revokeObjectURL(url);
                 callback(null, 0);
             };
         }
+
+        function openPreview(idx) {
+            const file = files[idx];
+            const data = fileData[idx];
+            if (!file) return;
+            
+            const url = URL.createObjectURL(file);
+            modalVideo.src = url;
+            modalTitle.textContent = file.name;
+            modalOrigDur.textContent = formatTime(data.duration);
+            modalTrimStart.textContent = formatTime(data.start);
+            modalTrimEnd.textContent = formatTime(data.end);
+            modalOutDur.textContent = formatTime(data.end - data.start);
+            
+            previewModal.classList.add('active');
+            
+            modalVideo.onloadedmetadata = () => {
+                modalVideo.currentTime = data.start;
+            };
+        }
+
+        modalClose.addEventListener('click', () => {
+            previewModal.classList.remove('active');
+            modalVideo.pause();
+            URL.revokeObjectURL(modalVideo.src);
+            modalVideo.src = '';
+        });
+        
+        previewModal.addEventListener('click', (e) => {
+            if (e.target === previewModal) {
+                modalClose.click();
+            }
+        });
 
         function renderGrid() {
             videoGrid.innerHTML = '';
@@ -308,6 +437,7 @@
                 card.innerHTML = `
                     <div class="thumb-box" id="thumb-${idx}">
                         <span class="placeholder">🎬</span>
+                        <div class="play-btn">▶</div>
                         ${data.duration > 0 ? `<span class="duration">${formatTime(data.duration)}</span>` : ''}
                     </div>
                     <div class="card-body">
@@ -331,10 +461,15 @@
                 `;
                 videoGrid.appendChild(card);
 
+                // Thumbnail
                 if (data.thumb) {
-                    const thumbBox = card.querySelector('.thumb-box');
-                    thumbBox.innerHTML = `<img src="${data.thumb}" style="width:100%;height:100%;object-fit:cover;">${data.duration > 0 ? `<span class="duration">${formatTime(data.duration)}</span>` : ''}`;
+                    const thumbBox = card.querySelector(`#thumb-${idx}`);
+                    thumbBox.innerHTML = `<img src="${data.thumb}" style="width:100%;height:100%;object-fit:cover;"><div class="play-btn">▶</div>${data.duration > 0 ? `<span class="duration">${formatTime(data.duration)}</span>` : ''}`;
                 }
+                
+                // Preview click
+                const thumbBox = card.querySelector(`#thumb-${idx}`);
+                thumbBox.addEventListener('click', () => openPreview(idx));
 
                 const startSlider = card.querySelector(`#start-${idx}`);
                 const endSlider = card.querySelector(`#end-${idx}`);
@@ -395,6 +530,7 @@
         fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
 
         function handleFiles(fileListObj) {
+            let added = 0;
             for (const f of fileListObj) {
                 if (f.name.toLowerCase().endsWith('.mp4')) {
                     if (!files.some(x => x.name === f.name && x.size === f.size)) {
@@ -408,12 +544,13 @@
                             fileData[idx].end = duration;
                             renderGrid();
                         });
+                        added++;
                     }
                 }
             }
-            if (files.length > 0) {
+            if (added > 0) {
                 clearLog();
-                log(`Added ${files.length} file(s). Generating thumbnails...`, 'ok');
+                log(`Added ${added} file(s). Generating thumbnails...`, 'ok');
             }
         }
 
@@ -429,28 +566,40 @@
         async function initFFmpeg() {
             if (ffmpeg) return;
             clearLog();
-            log('Loading FFmpeg.wasm (~25 MB)... Please wait.', 'info');
+            log('Loading FFmpeg.wasm (~25 MB)... This is a one-time download.', 'info');
             setProgress(5);
 
             ffmpeg = new FFmpeg();
-            ffmpeg.on('log', ({ message }) => {
-                if (message.includes('Error') || message.includes('error') || message.includes('failed')) {
-                    log(message, 'err');
-                }
-            });
-            ffmpeg.on('progress', ({ progress }) => {
-                setProgress(20 + Math.round(progress * 70));
-            });
-
-            const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
-            await ffmpeg.load({
-                coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-                wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-            });
-            setProgress(100);
-            setTimeout(() => progressBar.classList.remove('active'), 500);
-            clearLog();
-            log('FFmpeg ready!', 'ok');
+            
+            // FIX: Use toBlobURL to bypass CORS entirely!
+            // This fetches the files and turns them into same-origin blob URLs
+            const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
+            
+            try {
+                log('Fetching core files (bypassing CORS)...', 'info');
+                
+                const coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript');
+                const wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm');
+                const workerURL = await toBlobURL(`${baseURL}/ffmpeg-core.worker.js`, 'text/javascript');
+                
+                setProgress(30);
+                log('Initializing FFmpeg...', 'info');
+                
+                await ffmpeg.load({
+                    coreURL: coreURL,
+                    wasmURL: wasmURL,
+                    workerURL: workerURL
+                });
+                
+                setProgress(100);
+                setTimeout(() => progressBar.classList.remove('active'), 500);
+                clearLog();
+                log('FFmpeg ready! You can now merge videos.', 'ok');
+            } catch (e) {
+                log('Failed to load FFmpeg: ' + e.message, 'err');
+                log('If this keeps failing, try opening this file locally (double-click) instead of hosting it.', 'warn');
+                throw e;
+            }
         }
 
         btnMerge.addEventListener('click', async () => {
@@ -466,9 +615,10 @@
             try {
                 await initFFmpeg();
                 clearLog();
-                log('Writing files...', 'info');
+                log('Preparing files...', 'info');
                 setProgress(0);
 
+                // Write all files to virtual FS
                 for (let i = 0; i < files.length; i++) {
                     const f = files[i];
                     const data = await fetchFile(f);
@@ -476,8 +626,10 @@
                     setProgress(Math.round((i / files.length) * 15));
                 }
 
+                // Build filter_complex for trim + concat
                 let filterComplex = '';
                 let concatInputs = '';
+                let validCount = 0;
 
                 for (let i = 0; i < files.length; i++) {
                     const d = fileData[i];
@@ -490,19 +642,23 @@
                         continue;
                     }
 
+                    // Video trim + setpts to reset timestamps
                     filterComplex += `[${i}:v]trim=start=${start}:end=${end},setpts=PTS-STARTPTS[v${i}];`;
+                    // Audio trim + asetpts
                     filterComplex += `[${i}:a]atrim=start=${start}:end=${end},asetpts=PTS-STARTPTS[a${i}];`;
                     concatInputs += `[v${i}][a${i}]`;
+                    validCount++;
                 }
 
                 if (!concatInputs) {
                     throw new Error('No valid clips after trimming.');
                 }
 
-                const n = files.length;
-                filterComplex += `${concatInputs}concat=n=${n}:v=1:a=1[outv][outa]`;
+                filterComplex += `${concatInputs}concat=n=${validCount}:v=1:a=1[outv][outa]`;
 
-                log('Running FFmpeg with trim + concat...', 'info');
+                log('Running FFmpeg (this may take a while)...', 'info');
+                setProgress(20);
+
                 const exitCode = await ffmpeg.exec([
                     '-y',
                     ...files.flatMap((_, i) => ['-i', `input${i}.mp4`]),
@@ -518,13 +674,16 @@
                     'output.mp4'
                 ]);
 
-                if (exitCode !== 0) throw new Error(`FFmpeg exited with code ${exitCode}`);
+                if (exitCode !== 0) {
+                    throw new Error(`FFmpeg exited with code ${exitCode}`);
+                }
 
                 log('Reading output...', 'info');
                 const data = await ffmpeg.readFile('output.mp4');
                 const blob = new Blob([data.buffer], { type: 'video/mp4' });
                 const url = URL.createObjectURL(blob);
 
+                // Cleanup virtual FS
                 for (let i = 0; i < files.length; i++) {
                     await ffmpeg.deleteFile(`input${i}.mp4`);
                 }
@@ -532,13 +691,13 @@
 
                 setProgress(100);
                 clearLog();
-                log('✅ Done! Download your merged video below.', 'ok');
+                log(`✅ Done! Merged ${validCount} clip(s).`, 'ok');
 
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = 'merged_trimmed.mp4';
+                link.download = 'merged_video.mp4';
                 link.className = 'download-link';
-                link.textContent = '⬇ Download merged_trimmed.mp4';
+                link.textContent = '⬇ Download merged_video.mp4';
                 status.appendChild(document.createElement('br'));
                 status.appendChild(link);
 
@@ -546,6 +705,8 @@
                 clearLog();
                 log('Merge failed.', 'err');
                 log(err.message || String(err), 'err');
+                log('', 'info');
+                log('Tip: If you see CORS/worker errors, open this file locally instead of on a website.', 'warn');
             } finally {
                 isProcessing = false;
                 btnMerge.disabled = false;
