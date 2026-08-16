@@ -223,6 +223,13 @@
     .btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
     .btn-preview { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
     .btn-merge { background: linear-gradient(135deg, var(--amber), #f0932b); color: #000; }
+    .quality-select {
+      background: var(--bg3); color: var(--text); border: 1px solid var(--border);
+      border-radius: 6px; padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
+      outline: none; height: 34px;
+    }
+    .quality-select:disabled { opacity: .4; cursor: not-allowed; }
+    .quality-select option { background: var(--bg2); }
 
     .icon-svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -304,9 +311,15 @@
           <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-3.42"></path></svg>
           Clear
         </button>
+        <select id="previewQuality" class="quality-select">
+          <option value="triple">💥 Triple Turbo (120p)</option>
+          <option value="double">⚡⚡⚡ Double Turbo (160p)</option>
+          <option value="turbo">⚡⚡ Turbo (240p)</option>
+          <option value="quick" selected>⚡ Quick Preview (480p)</option>
+        </select>
         <button class="btn btn-preview" id="btnPreview" disabled>
           <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"></polygon></svg>
-          ⚡ Quick Preview
+          Preview
         </button>
         <button class="btn btn-merge" id="btnMerge" disabled>
           <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -352,6 +365,14 @@
   import { FFmpeg } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
   import { fetchFile, toBlobURL } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
 
+  // ── Preview quality tiers ──────────────────────────────────────────────
+  const MODES = {
+    triple: { label: '💥 Triple Turbo', W: 120,  H: 68,  fps: 6,  crf: 51, audioBr: '24k',  mono: true  },
+    double: { label: '⚡⚡⚡ Double Turbo', W: 160,  H: 90,  fps: 8,  crf: 51, audioBr: '32k',  mono: true  },
+    turbo:  { label: '⚡⚡ Turbo',        W: 240,  H: 135, fps: 24, crf: 40, audioBr: '64k',  mono: false },
+    quick:  { label: '⚡ Quick Preview', W: 480,  H: 270, fps: 24, crf: 32, audioBr: '96k',  mono: false },
+  };
+
   // ── State ──────────────────────────────────────────────────────────────
   let clips = [];
   let transitions = [];
@@ -368,6 +389,7 @@
   const btnClear       = document.getElementById('btnClear');
   const btnPreview     = document.getElementById('btnPreview');
   const btnMerge       = document.getElementById('btnMerge');
+  const previewQuality = document.getElementById('previewQuality');
   const statusLog      = document.getElementById('statusLog');
   const progressWrap   = document.getElementById('progressWrap');
   const progressFill   = document.getElementById('progressFill');
@@ -518,9 +540,7 @@
   // ── Filter builder ─────────────────────────────────────────────────────
   // previewMode: scale to 480x270, full: scale to 1920x1080.
   // Scale+pad+format is done per-clip so concat receives identical frame sizes.
-  function buildFilters(previewMode) {
-    const W = previewMode ? 480 : 1920;
-    const H = previewMode ? 270 : 1080;
+  function buildFilters(W, H) {
     // Collect each filter chain as a separate string; join with ';' at the end.
     // Never append ';' inside the loop — that causes double semicolons when joined.
     const chains = [];
@@ -555,13 +575,16 @@
   }
 
   // ── Main process ───────────────────────────────────────────────────────
-  async function runProcess(previewMode) {
+  async function runProcess(mode) {
+    // mode: 'triple'|'double'|'turbo'|'quick' for preview, false for full merge
     if (clips.length < 1) { log('Add at least one clip.', 'err'); return; }
     if (isProcessing) return;
     isProcessing = true;
-    const btn = previewMode ? btnPreview : btnMerge;
-    btn.disabled = btnPreview.disabled = btnMerge.disabled = true;
-    btn.textContent = previewMode ? '⏳ Building…' : '⏳ Merging…';
+    const isPreview = !!MODES[mode];
+    const activeBtn = isPreview ? btnPreview : btnMerge;
+    activeBtn.disabled = btnPreview.disabled = btnMerge.disabled = true;
+    previewQuality.disabled = true;
+    activeBtn.textContent = isPreview ? '⏳ Building…' : '⏳ Merging…';
 
     try {
       await initFFmpeg();
@@ -592,11 +615,14 @@
         log(`  Wrote in${i}.mp4`, 'info');
       }
 
-      const { filterComplex, vCount, aCount, totalDur } = buildFilters(previewMode);
+      const cfg = MODES[mode]; // null when mode===false (full merge)
+      const W = cfg ? cfg.W : 1920;
+      const H = cfg ? cfg.H : 1080;
+      const { filterComplex, vCount, aCount, totalDur } = buildFilters(W, H);
       log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
       setProgress(20);
 
-      const outName = previewMode ? 'preview.mp4' : 'output.mp4';
+      const outName = cfg ? 'preview.mp4' : 'output.mp4';
       const args = [
         '-y',
         ...proc.flatMap((_, i) => ['-i', `in${i}.mp4`]),
@@ -604,9 +630,12 @@
         ...(vCount > 0 ? ['-map', '[outv]'] : []),
         ...(aCount > 0 ? ['-map', '[outa]'] : []),
         '-c:v', 'libx264',
-        '-preset', previewMode ? 'ultrafast' : 'fast',
-        '-crf',   previewMode ? '32' : '23',
-        '-c:a', 'aac', '-b:a', previewMode ? '96k' : '128k',
+        '-preset', cfg ? 'ultrafast' : 'fast',
+        '-crf',   String(cfg ? cfg.crf : 23),
+        ...(cfg && cfg.fps < 24 ? ['-r', String(cfg.fps)] : []),
+        '-c:a', 'aac',
+        '-b:a', cfg ? cfg.audioBr : '128k',
+        ...(cfg && cfg.mono ? ['-ac', '1'] : []),
         '-movflags', '+faststart',
         outName,
       ];
@@ -623,16 +652,17 @@
       await ffmpeg.deleteFile(outName).catch(() => {});
       setProgress(100);
 
-      if (previewMode) {
-        if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl); // free old preview
-        previewBlobUrl = url; // keep alive for download button
+      if (isPreview) {
+        if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl);
+        previewBlobUrl = url;
         previewVideo.src = url;
         prevCount.textContent = vCount;
         prevDur.textContent = fmt(totalDur);
         previewSection.classList.add('show');
         setTimeout(() => previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
         clearLog();
-        log('Preview ready! Hit ⬇ Download Preview to save it, or Merge & Download for full 1080p.', 'ok');
+        const modeLabel = MODES[mode].label;
+        log(`${modeLabel} ready! Hit ⬇ Save Draft to keep it, or Merge & Download for full 1080p.`, 'ok');
       } else {
         clearLog();
         log('Done! Your download should start automatically.', 'ok');
@@ -644,9 +674,8 @@
       }
       hideProgress();
     } catch (err) {
-      // do NOT clearLog() here — FFmpeg's own error messages are in the log and help diagnose
       const msg = err.message || String(err);
-      log('▶ ' + (previewMode ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
+      log('▶ ' + (isPreview ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
       hideProgress();
     } finally {
       isProcessing = false;
@@ -918,8 +947,10 @@
 
   function updateButtons() {
     const hasClips = clips.length > 0;
-    btnPreview.disabled = !hasClips || isProcessing;
-    btnMerge.disabled   = !hasClips || isProcessing;
+    const dis = !hasClips || isProcessing;
+    btnPreview.disabled     = dis;
+    btnMerge.disabled       = dis;
+    previewQuality.disabled = dis;
     clipCount.textContent = clips.length + ' clip' + (clips.length !== 1 ? 's' : '') +
       (hasClips ? ` • ~${clips.reduce((s,c)=>s+(c.vEnd-c.vStart),0).toFixed(1)}s` : '');
     if (!isProcessing) {
@@ -943,7 +974,7 @@
     closePreview(); clearLog(); render();
     log('Ready. Drop MP4 files to begin.', 'info');
   });
-  btnPreview.addEventListener('click', () => runProcess(true));
+  btnPreview.addEventListener('click', () => runProcess(previewQuality.value));
   btnMerge.addEventListener('click', () => runProcess(false));
 
   updateButtons();
