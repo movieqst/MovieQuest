@@ -3,245 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP4 Video Joiner — Browser</title>
+    <title>MP4 Video Joiner with Trim</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
+            background: #0f0f1a;
             color: #e0e0e0;
             padding: 20px;
+            min-height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .container { max-width: 900px; margin: 0 auto; }
         h1 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .subtitle {
-            text-align: center;
-            color: #888;
-            margin-bottom: 24px;
-            font-size: 0.95rem;
-        }
+        .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+        
         .drop-zone {
             border: 2px dashed #444;
             border-radius: 16px;
-            padding: 40px;
+            padding: 35px;
             text-align: center;
             background: rgba(255,255,255,0.03);
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             cursor: pointer;
             margin-bottom: 20px;
         }
-        .drop-zone.dragover {
-            border-color: #00d4ff;
-            background: rgba(0,212,255,0.08);
-        }
-        .drop-zone p {
-            color: #666;
-            font-size: 1.1rem;
-            pointer-events: none;
-        }
-        .drop-zone .icon {
-            font-size: 3rem;
-            margin-bottom: 12px;
-            pointer-events: none;
-        }
-        .file-list {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 16px;
+        .drop-zone.dragover { border-color: #feca57; background: rgba(254,202,87,0.08); }
+        .drop-zone .icon { font-size: 2.5rem; margin-bottom: 8px; pointer-events: none; }
+        .drop-zone p { color: #777; pointer-events: none; }
+        
+        input[type="file"] { display: none; }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
             margin-bottom: 20px;
-            min-height: 60px;
         }
-        .file-list:empty::before {
-            content: "No files added yet";
-            color: #555;
-            display: block;
-            text-align: center;
-            padding: 20px;
+        
+        .video-card {
+            background: rgba(255,255,255,0.06);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: transform 0.2s;
         }
-        .file-item {
+        .video-card:hover { transform: translateY(-2px); border-color: #333; }
+        
+        .thumb-box {
+            width: 100%;
+            height: 140px;
+            background: #1a1a2e;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px 14px;
-            background: rgba(255,255,255,0.07);
-            border-radius: 8px;
-            margin-bottom: 8px;
-            transition: background 0.2s;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-        .file-item:hover {
-            background: rgba(255,255,255,0.1);
+        .thumb-box img, .thumb-box canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .file-item .name {
-            font-size: 0.9rem;
+        .thumb-box .placeholder {
+            color: #555;
+            font-size: 2rem;
+        }
+        .thumb-box .duration {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #fff;
+        }
+        
+        .card-body { padding: 14px; }
+        .card-name {
+            font-size: 0.85rem;
             color: #ddd;
-            flex: 1;
+            margin-bottom: 10px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        .file-item .size {
-            color: #666;
-            font-size: 0.8rem;
-            margin-right: 12px;
+        
+        .trim-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
         }
-        .file-item .btns {
+        .trim-row label {
+            font-size: 0.75rem;
+            color: #888;
+            width: 40px;
+            flex-shrink: 0;
+        }
+        .trim-row input[type="range"] {
+            flex: 1;
+            accent-color: #feca57;
+        }
+        .trim-row .time {
+            font-size: 0.75rem;
+            color: #aaa;
+            width: 50px;
+            text-align: right;
+            font-family: monospace;
+        }
+        
+        .card-btns {
             display: flex;
             gap: 6px;
+            margin-top: 10px;
         }
-        .file-item button {
+        .card-btns button {
+            flex: 1;
+            padding: 6px;
+            border: 1px solid #333;
             background: transparent;
-            border: 1px solid #444;
-            color: #aaa;
-            padding: 4px 10px;
+            color: #888;
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.8rem;
-            transition: all 0.2s;
         }
-        .file-item button:hover {
-            border-color: #00d4ff;
-            color: #00d4ff;
-        }
-        .file-item button.remove:hover {
-            border-color: #ff4444;
-            color: #ff4444;
-        }
+        .card-btns button:hover { border-color: #feca57; color: #feca57; }
+        .card-btns button.remove:hover { border-color: #ff6b6b; color: #ff6b6b; }
+        .card-btns button:disabled { opacity: 0.3; cursor: default; }
+        
         .controls {
             display: flex;
             gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            margin-bottom: 16px;
         }
         .controls button {
             flex: 1;
-            min-width: 140px;
-            padding: 14px 20px;
+            padding: 14px;
             border: none;
             border-radius: 10px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
         }
-        .btn-clear {
-            background: #333;
-            color: #fff;
-        }
-        .btn-clear:hover { background: #444; }
+        .btn-clear { background: #2a2a3e; color: #fff; }
+        .btn-clear:hover { background: #33334d; }
         .btn-merge {
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            color: #fff;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            color: #1a1a2e;
             font-size: 1.1rem;
         }
-        .btn-merge:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-        .btn-merge:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .btn-merge:hover { opacity: 0.9; }
+        .btn-merge:disabled { opacity: 0.4; cursor: not-allowed; }
+        
         .status {
             background: rgba(0,0,0,0.3);
             border-radius: 10px;
-            padding: 16px;
+            padding: 14px;
             font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #aaa;
             min-height: 60px;
             white-space: pre-wrap;
-            word-break: break-word;
+            line-height: 1.5;
         }
-        .status .ok { color: #4ade80; }
-        .status .err { color: #f87171; }
-        .status .info { color: #60a5fa; }
+        .status .ok { color: #51cf66; }
+        .status .err { color: #ff6b6b; }
+        .status .info { color: #74c0fc; }
+        .status .warn { color: #feca57; }
+        
         .progress-bar {
             width: 100%;
             height: 6px;
-            background: #333;
+            background: #222;
             border-radius: 3px;
-            margin-top: 10px;
+            margin-bottom: 12px;
             overflow: hidden;
             display: none;
         }
         .progress-bar.active { display: block; }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.3s;
         }
+        
         .download-link {
             display: inline-block;
-            margin-top: 12px;
-            padding: 10px 20px;
-            background: #22c55e;
-            color: #fff;
+            margin-top: 10px;
+            padding: 10px 22px;
+            background: #51cf66;
+            color: #0f0f1a;
             text-decoration: none;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
         }
-        .download-link:hover { background: #16a34a; }
-        input[type="file"] { display: none; }
+        .download-link:hover { background: #40c057; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎬 MP4 Video Joiner</h1>
-        <p class="subtitle">Runs entirely in your browser — no upload to any server</p>
-
+        <h1>🎬 MP4 Joiner + Trimmer</h1>
+        <p class="subtitle">Trim start/end of each clip, then merge — all in your browser</p>
+        
         <div class="drop-zone" id="dropZone">
             <div class="icon">📁</div>
             <p>Drop MP4 files here<br><small>or click to browse</small></p>
         </div>
         <input type="file" id="fileInput" multiple accept=".mp4,video/mp4">
-
-        <div class="file-list" id="fileList"></div>
-
+        
+        <div class="video-grid" id="videoGrid"></div>
+        
         <div class="controls">
             <button class="btn-clear" id="btnClear">🗑️ Clear All</button>
             <button class="btn-merge" id="btnMerge">🔥 Merge Videos</button>
         </div>
-
+        
         <div class="progress-bar" id="progressBar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
-
-        <div class="status" id="status">Ready. Add MP4 files to begin.</div>
+        
+        <div class="status" id="status">Ready. Drop MP4 files to begin.</div>
     </div>
 
     <script type="module">
         import { FFmpeg } from 'https://esm.sh/@ffmpeg/ffmpeg@0.12.10';
         import { fetchFile, toBlobURL } from 'https://esm.sh/@ffmpeg/util@0.12.1';
 
-        // ── State ──
         let files = [];
+        let fileData = [];
         let ffmpeg = null;
         let isProcessing = false;
 
-        // ── DOM refs ──
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
-        const fileList = document.getElementById('fileList');
+        const videoGrid = document.getElementById('videoGrid');
         const btnClear = document.getElementById('btnClear');
         const btnMerge = document.getElementById('btnMerge');
         const status = document.getElementById('status');
         const progressBar = document.getElementById('progressBar');
         const progressFill = document.getElementById('progressFill');
 
-        // ── Helpers ──
         function log(msg, type = 'info') {
             const span = document.createElement('span');
             span.className = type;
@@ -250,34 +260,110 @@
             status.scrollTop = status.scrollHeight;
         }
         function clearLog() { status.innerHTML = ''; }
-        function formatBytes(b) {
-            if (b === 0) return '0 B';
-            const k = 1024;
-            const sizes = ['B','KB','MB','GB'];
-            const i = Math.floor(Math.log(b) / Math.log(k));
-            return parseFloat((b / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
-        }
         function setProgress(pct) {
             progressBar.classList.add('active');
             progressFill.style.width = pct + '%';
         }
 
-        // ── File list UI ──
-        function renderList() {
-            fileList.innerHTML = '';
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function generateThumbnail(file, callback) {
+            const video = document.createElement('video');
+            video.preload = 'metadata';
+            video.muted = true;
+            video.playsInline = true;
+            video.src = URL.createObjectURL(file);
+            
+            video.onloadedmetadata = () => {
+                video.currentTime = Math.min(1, video.duration / 2);
+            };
+            
+            video.onseeked = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 320;
+                canvas.height = 180;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0, 320, 180);
+                URL.revokeObjectURL(video.src);
+                callback(canvas.toDataURL('image/jpeg', 0.7), video.duration);
+            };
+            
+            video.onerror = () => {
+                URL.revokeObjectURL(video.src);
+                callback(null, 0);
+            };
+        }
+
+        function renderGrid() {
+            videoGrid.innerHTML = '';
             files.forEach((file, idx) => {
-                const item = document.createElement('div');
-                item.className = 'file-item';
-                item.innerHTML = `
-                    <span class="name">${idx + 1}. ${file.name}</span>
-                    <span class="size">${formatBytes(file.size)}</span>
-                    <div class="btns">
-                        <button ${idx === 0 ? 'disabled style="opacity:0.3"' : ''} onclick="moveFile(${idx}, -1)">⬆</button>
-                        <button ${idx === files.length - 1 ? 'disabled style="opacity:0.3"' : ''} onclick="moveFile(${idx}, 1)">⬇</button>
-                        <button class="remove" onclick="removeFile(${idx})">✕</button>
+                const data = fileData[idx] || { thumb: null, duration: 0, start: 0, end: 0 };
+                
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.innerHTML = `
+                    <div class="thumb-box" id="thumb-${idx}">
+                        <span class="placeholder">🎬</span>
+                        ${data.duration > 0 ? `<span class="duration">${formatTime(data.duration)}</span>` : ''}
+                    </div>
+                    <div class="card-body">
+                        <div class="card-name">${idx + 1}. ${file.name}</div>
+                        <div class="trim-row">
+                            <label>Start</label>
+                            <input type="range" id="start-${idx}" min="0" max="100" value="0" step="0.1">
+                            <span class="time" id="startTime-${idx}">0:00</span>
+                        </div>
+                        <div class="trim-row">
+                            <label>End</label>
+                            <input type="range" id="end-${idx}" min="0" max="100" value="100" step="0.1">
+                            <span class="time" id="endTime-${idx}">${formatTime(data.duration)}</span>
+                        </div>
+                        <div class="card-btns">
+                            <button ${idx === 0 ? 'disabled' : ''} onclick="moveFile(${idx}, -1)">⬆</button>
+                            <button ${idx === files.length - 1 ? 'disabled' : ''} onclick="moveFile(${idx}, 1)">⬇</button>
+                            <button class="remove" onclick="removeFile(${idx})">✕</button>
+                        </div>
                     </div>
                 `;
-                fileList.appendChild(item);
+                videoGrid.appendChild(card);
+
+                if (data.thumb) {
+                    const thumbBox = card.querySelector('.thumb-box');
+                    thumbBox.innerHTML = `<img src="${data.thumb}" style="width:100%;height:100%;object-fit:cover;">${data.duration > 0 ? `<span class="duration">${formatTime(data.duration)}</span>` : ''}`;
+                }
+
+                const startSlider = card.querySelector(`#start-${idx}`);
+                const endSlider = card.querySelector(`#end-${idx}`);
+                const startTime = card.querySelector(`#startTime-${idx}`);
+                const endTime = card.querySelector(`#endTime-${idx}`);
+
+                startSlider.addEventListener('input', () => {
+                    const val = parseFloat(startSlider.value);
+                    const sec = (val / 100) * data.duration;
+                    data.start = sec;
+                    startTime.textContent = formatTime(sec);
+                    if (parseFloat(endSlider.value) <= val) {
+                        endSlider.value = val + 1;
+                        data.end = ((val + 1) / 100) * data.duration;
+                        endTime.textContent = formatTime(data.end);
+                    }
+                });
+
+                endSlider.addEventListener('input', () => {
+                    const val = parseFloat(endSlider.value);
+                    const sec = (val / 100) * data.duration;
+                    data.end = sec;
+                    endTime.textContent = formatTime(sec);
+                    if (parseFloat(startSlider.value) >= val) {
+                        startSlider.value = val - 1;
+                        data.start = ((val - 1) / 100) * data.duration;
+                        startTime.textContent = formatTime(data.start);
+                    }
+                });
             });
         }
 
@@ -285,14 +371,16 @@
             const newIdx = idx + dir;
             if (newIdx < 0 || newIdx >= files.length) return;
             [files[idx], files[newIdx]] = [files[newIdx], files[idx]];
-            renderList();
-        };
-        window.removeFile = (idx) => {
-            files.splice(idx, 1);
-            renderList();
+            [fileData[idx], fileData[newIdx]] = [fileData[newIdx], fileData[idx]];
+            renderGrid();
         };
 
-        // ── Drag & drop ──
+        window.removeFile = (idx) => {
+            files.splice(idx, 1);
+            fileData.splice(idx, 1);
+            renderGrid();
+        };
+
         dropZone.addEventListener('click', () => fileInput.click());
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
@@ -310,34 +398,43 @@
             for (const f of fileListObj) {
                 if (f.name.toLowerCase().endsWith('.mp4')) {
                     if (!files.some(x => x.name === f.name && x.size === f.size)) {
+                        const idx = files.length;
                         files.push(f);
+                        fileData.push({ thumb: null, duration: 0, start: 0, end: 0 });
+                        
+                        generateThumbnail(f, (thumb, duration) => {
+                            fileData[idx].thumb = thumb;
+                            fileData[idx].duration = duration;
+                            fileData[idx].end = duration;
+                            renderGrid();
+                        });
                     }
                 }
             }
-            renderList();
-            clearLog();
-            log(`Added ${files.length} file(s). Ready to merge.`, 'ok');
+            if (files.length > 0) {
+                clearLog();
+                log(`Added ${files.length} file(s). Generating thumbnails...`, 'ok');
+            }
         }
 
         btnClear.addEventListener('click', () => {
             files = [];
-            renderList();
+            fileData = [];
+            renderGrid();
             clearLog();
             log('Cleared.', 'info');
             progressBar.classList.remove('active');
         });
 
-        // ── Init FFmpeg ──
         async function initFFmpeg() {
             if (ffmpeg) return;
             clearLog();
             log('Loading FFmpeg.wasm (~25 MB)... Please wait.', 'info');
-            setProgress(10);
+            setProgress(5);
 
             ffmpeg = new FFmpeg();
             ffmpeg.on('log', ({ message }) => {
-                // Only show important messages
-                if (message.includes('Error') || message.includes('error')) {
+                if (message.includes('Error') || message.includes('error') || message.includes('failed')) {
                     log(message, 'err');
                 }
             });
@@ -346,25 +443,19 @@
             });
 
             const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
-            try {
-                await ffmpeg.load({
-                    coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-                    wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-                });
-                setProgress(100);
-                setTimeout(() => progressBar.classList.remove('active'), 500);
-                clearLog();
-                log('FFmpeg ready! You can now merge videos.', 'ok');
-            } catch (e) {
-                log('Failed to load FFmpeg: ' + e.message, 'err');
-                throw e;
-            }
+            await ffmpeg.load({
+                coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+                wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+            });
+            setProgress(100);
+            setTimeout(() => progressBar.classList.remove('active'), 500);
+            clearLog();
+            log('FFmpeg ready!', 'ok');
         }
 
-        // ── Merge ──
         btnMerge.addEventListener('click', async () => {
-            if (files.length < 2) {
-                log('Need at least 2 files to merge.', 'err');
+            if (files.length < 1) {
+                log('Need at least 1 file.', 'err');
                 return;
             }
             if (isProcessing) return;
@@ -375,68 +466,79 @@
             try {
                 await initFFmpeg();
                 clearLog();
-                log('Starting merge...', 'info');
+                log('Writing files...', 'info');
                 setProgress(0);
 
-                // Write files to FFmpeg virtual FS
                 for (let i = 0; i < files.length; i++) {
                     const f = files[i];
-                    log(`Writing ${f.name}...`);
                     const data = await fetchFile(f);
                     await ffmpeg.writeFile(`input${i}.mp4`, data);
-                    setProgress(Math.round((i / files.length) * 20));
+                    setProgress(Math.round((i / files.length) * 15));
                 }
 
-                // Create concat list
-                let concatList = '';
+                let filterComplex = '';
+                let concatInputs = '';
+
                 for (let i = 0; i < files.length; i++) {
-                    concatList += `file 'input${i}.mp4'\n`;
-                }
-                await ffmpeg.writeFile('concat_list.txt', concatList);
-                log('Concat list created.', 'info');
+                    const d = fileData[i];
+                    const start = d.start || 0;
+                    const end = d.end || d.duration;
+                    const duration = end - start;
 
-                // Run FFmpeg
-                // -safe 0 allows any filename
-                // -c copy preserves quality (fast, no re-encode)
-                // -movflags +faststart makes it web-friendly
-                log('Running FFmpeg concat...', 'info');
+                    if (duration <= 0.1) {
+                        log(`Skipping ${files[i].name} (trimmed to zero)`, 'warn');
+                        continue;
+                    }
+
+                    filterComplex += `[${i}:v]trim=start=${start}:end=${end},setpts=PTS-STARTPTS[v${i}];`;
+                    filterComplex += `[${i}:a]atrim=start=${start}:end=${end},asetpts=PTS-STARTPTS[a${i}];`;
+                    concatInputs += `[v${i}][a${i}]`;
+                }
+
+                if (!concatInputs) {
+                    throw new Error('No valid clips after trimming.');
+                }
+
+                const n = files.length;
+                filterComplex += `${concatInputs}concat=n=${n}:v=1:a=1[outv][outa]`;
+
+                log('Running FFmpeg with trim + concat...', 'info');
                 const exitCode = await ffmpeg.exec([
                     '-y',
-                    '-f', 'concat',
-                    '-safe', '0',
-                    '-i', 'concat_list.txt',
-                    '-c', 'copy',
+                    ...files.flatMap((_, i) => ['-i', `input${i}.mp4`]),
+                    '-filter_complex', filterComplex,
+                    '-map', '[outv]',
+                    '-map', '[outa]',
+                    '-c:v', 'libx264',
+                    '-preset', 'fast',
+                    '-crf', '23',
+                    '-c:a', 'aac',
+                    '-b:a', '128k',
                     '-movflags', '+faststart',
                     'output.mp4'
                 ]);
 
-                if (exitCode !== 0) {
-                    throw new Error(`FFmpeg exited with code ${exitCode}`);
-                }
+                if (exitCode !== 0) throw new Error(`FFmpeg exited with code ${exitCode}`);
 
-                // Read result
-                log('Reading output file...', 'info');
+                log('Reading output...', 'info');
                 const data = await ffmpeg.readFile('output.mp4');
                 const blob = new Blob([data.buffer], { type: 'video/mp4' });
                 const url = URL.createObjectURL(blob);
 
-                // Cleanup virtual FS
                 for (let i = 0; i < files.length; i++) {
                     await ffmpeg.deleteFile(`input${i}.mp4`);
                 }
-                await ffmpeg.deleteFile('concat_list.txt');
                 await ffmpeg.deleteFile('output.mp4');
 
                 setProgress(100);
                 clearLog();
-                log(`✅ Done! Merged ${files.length} videos.`, 'ok');
+                log('✅ Done! Download your merged video below.', 'ok');
 
-                // Show download
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = 'merged_video.mp4';
+                link.download = 'merged_trimmed.mp4';
                 link.className = 'download-link';
-                link.textContent = '⬇ Download merged_video.mp4';
+                link.textContent = '⬇ Download merged_trimmed.mp4';
                 status.appendChild(document.createElement('br'));
                 status.appendChild(link);
 
@@ -444,8 +546,6 @@
                 clearLog();
                 log('Merge failed.', 'err');
                 log(err.message || String(err), 'err');
-                log('', 'info');
-                log('Tip: This usually means your MP4s have different codecs, resolutions, or frame rates. Try converting them to the same format first, or use a desktop FFmpeg with re-encoding.', 'info');
             } finally {
                 isProcessing = false;
                 btnMerge.disabled = false;
