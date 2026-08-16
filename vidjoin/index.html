@@ -8,15 +8,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #1a0010;
-      --bg2: #2a0018;
-      --bg3: #200014;
-      --card: #250016;
-      --border: #4a0030;
-      --text: #f8d8e8;
-      --muted: #a06080;
-      --blue: #ff69b4;
-      --amber: #ff1493;
+      --bg: #001a1a;
+      --bg2: #002020;
+      --bg3: #001818;
+      --card: #002525;
+      --border: #004444;
+      --text: #d8f8f8;
+      --muted: #4a9090;
+      --blue: #00e5ff;
+      --amber: #00bcd4;
       --green: #51cf66;
       --red: #ff6b6b;
       --radius: 10px;
@@ -443,7 +443,7 @@
       };
 
       const ff = new FFmpeg();
-      window.Worker = _OrigWorker; // restore immediately after construction
+      // NOTE: do NOT restore window.Worker yet — ff.load() creates the worker lazily
 
       ff.on('progress', ({ progress }) => {
         ffmpegBar.style.width = (progress * 100) + '%';
@@ -457,7 +457,8 @@
       const coreURL   = await toBlobURL(`${coreBase}/ffmpeg-core.js`,        'text/javascript');
       const wasmURL   = await toBlobURL(`${coreBase}/ffmpeg-core.wasm`,      'application/wasm');
       const workerURL = await toBlobURL(`${coreBase}/ffmpeg-core.worker.js`, 'text/javascript');
-      await ff.load({ coreURL, wasmURL, workerURL });
+      await ff.load({ coreURL, wasmURL, workerURL }); // Worker is created here
+      window.Worker = _OrigWorker; // restore only after worker is fully spawned
       ffmpeg = ff;
       log('FFmpeg ready ✓', 'ok');
     } catch (e) {
