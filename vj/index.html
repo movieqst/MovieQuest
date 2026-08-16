@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP4 Video Joiner — Split A/V Trim + Fades</title>
+    <title>MP4 Joiner — Fixed</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -13,7 +13,7 @@
             padding: 16px;
             min-height: 100vh;
         }
-        .container { max-width: 1100px; margin: 0 auto; }
+        .container { max-width: 1000px; margin: 0 auto; }
         h1 {
             text-align: center;
             font-size: 1.7rem;
@@ -87,10 +87,7 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        .clip-ctrls {
-            display: flex;
-            gap: 6px;
-        }
+        .clip-ctrls { display: flex; gap: 6px; }
         .clip-ctrls button {
             background: #1a1a2e;
             border: 1px solid #333;
@@ -107,25 +104,22 @@
         
         .clip-body { padding: 14px 16px; }
         
-        /* Timeline visualizer */
         .timeline-vis {
-            height: 32px;
+            height: 36px;
             background: #11111a;
             border-radius: 8px;
             margin-bottom: 14px;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
         }
         .tl-track {
             position: absolute;
-            height: 14px;
+            height: 12px;
             border-radius: 3px;
-            top: 4px;
+            left: 0;
         }
         .tl-track.video { background: #4dabf7; top: 4px; }
-        .tl-track.audio { background: #feca57; top: 18px; height: 10px; opacity: 0.85; }
+        .tl-track.audio { background: #feca57; top: 20px; height: 10px; opacity: 0.85; }
         .tl-labels {
             position: absolute;
             right: 8px;
@@ -133,7 +127,6 @@
             transform: translateY(-50%);
             font-size: 0.7rem;
             color: #555;
-            pointer-events: none;
         }
         
         .split-toggle {
@@ -156,9 +149,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
-        .trim-grid.full {
-            grid-template-columns: 1fr;
-        }
+        .trim-grid.full { grid-template-columns: 1fr; }
         .trim-row {
             display: flex;
             flex-direction: column;
@@ -171,10 +162,7 @@
             justify-content: space-between;
         }
         .trim-row label span { color: #aaa; font-family: monospace; }
-        .trim-row input[type="range"] {
-            width: 100%;
-            accent-color: #4dabf7;
-        }
+        .trim-row input[type="range"] { width: 100%; accent-color: #4dabf7; }
         .trim-row.audio input[type="range"] { accent-color: #feca57; }
         
         .fade-row {
@@ -201,7 +189,6 @@
             width: 100%;
         }
         
-        /* Transition cards between clips */
         .transition-card {
             background: rgba(254,202,87,0.05);
             border: 1px dashed #feca5744;
@@ -213,9 +200,10 @@
             gap: 12px;
             font-size: 0.85rem;
             color: #aaa;
+            flex-wrap: wrap;
         }
         .transition-card label { color: #feca57; font-size: 0.8rem; }
-        .transition-card select {
+        .transition-card select, .transition-card input[type="number"] {
             background: #11111a;
             border: 1px solid #333;
             color: #ddd;
@@ -223,15 +211,7 @@
             border-radius: 6px;
             font-size: 0.85rem;
         }
-        .transition-card input[type="number"] {
-            width: 60px;
-            background: #11111a;
-            border: 1px solid #333;
-            color: #ddd;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-        }
+        .transition-card input[type="number"] { width: 60px; }
         
         .main-controls {
             display: flex;
@@ -251,18 +231,10 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.2s;
         }
         .btn-clear { background: #2a2a3e; color: #fff; }
-        .btn-preview {
-            background: linear-gradient(90deg, #4dabf7, #339af0);
-            color: #fff;
-        }
-        .btn-merge {
-            background: linear-gradient(90deg, #ff6b6b, #feca57);
-            color: #1a1a2e;
-            font-size: 1.1rem;
-        }
+        .btn-preview { background: linear-gradient(90deg, #4dabf7, #339af0); color: #fff; }
+        .btn-merge { background: linear-gradient(90deg, #ff6b6b, #feca57); color: #1a1a2e; font-size: 1.1rem; }
         .main-controls button:hover:not(:disabled) { opacity: 0.9; }
         .main-controls button:disabled { opacity: 0.4; cursor: not-allowed; }
         
@@ -284,13 +256,7 @@
             align-items: center;
         }
         .preview-header h3 { font-size: 0.95rem; color: #feca57; }
-        .preview-close {
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
+        .preview-close { background: none; border: none; color: #888; font-size: 1.3rem; cursor: pointer; }
         .preview-video { width: 100%; max-height: 55vh; display: block; background: #000; }
         .preview-info {
             padding: 12px 18px;
@@ -374,20 +340,14 @@
             border-bottom: 1px solid #333;
         }
         .modal-header h3 { color: #fff; font-size: 1rem; }
-        .modal-close {
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 1.4rem;
-            cursor: pointer;
-        }
+        .modal-close { background: none; border: none; color: #888; font-size: 1.4rem; cursor: pointer; }
         .modal-video { width: 100%; display: block; max-height: 55vh; background: #000; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🎬 Advanced MP4 Joiner</h1>
-        <p class="subtitle">Split audio/video trim, fade controls, and preview before download</p>
+        <p class="subtitle">Split audio/video trim, fades, and preview</p>
         
         <div class="drop-zone" id="dropZone">
             <div class="icon">📁</div>
@@ -438,8 +398,9 @@
 
         let files = [];
         let fileData = [];
-        let transitions = []; // between clips: {type, duration}
+        let transitions = [];
         let ffmpeg = null;
+        let ffmpegLoading = false;
         let isProcessing = false;
 
         const dropZone = document.getElementById('dropZone');
@@ -535,7 +496,6 @@
                 const vfIn = d.vFadeIn ?? 0, vfOut = d.vFadeOut ?? 0;
                 const afIn = d.aFadeIn ?? 0, afOut = d.aFadeOut ?? 0;
 
-                // Timeline visualization
                 const vLeft = dur ? (vs/dur)*100 : 0;
                 const vWidth = dur ? ((ve-vs)/dur)*100 : 0;
                 const aLeft = dur ? (as/dur)*100 : 0;
@@ -626,35 +586,32 @@
                 }
                 card.querySelector(`#thumb-${idx}`).onclick = () => openClipPreview(idx);
 
-                // Split toggle
                 const splitChk = card.querySelector(`#split-${idx}`);
                 splitChk.onchange = () => {
                     fileData[idx].split = splitChk.checked;
                     renderClips();
                 };
 
-                // Bind inputs
                 if (split) {
-                    bindSlider(card, `vs-${idx}`, 'vStart', idx, dur);
-                    bindSlider(card, `ve-${idx}`, 'vEnd', idx, dur);
-                    bindSlider(card, `as-${idx}`, 'aStart', idx, dur);
-                    bindSlider(card, `ae-${idx}`, 'aEnd', idx, dur);
-                    // Cross-constrain
-                    const vs = card.querySelector(`#vs-${idx}`);
-                    const ve = card.querySelector(`#ve-${idx}`);
-                    const as = card.querySelector(`#as-${idx}`);
-                    const ae = card.querySelector(`#ae-${idx}`);
-                    vs.oninput = () => { if(+vs.value > +ve.value) ve.value = vs.value; updateData(); };
-                    ve.oninput = () => { if(+ve.value < +vs.value) vs.value = ve.value; updateData(); };
-                    as.oninput = () => { if(+as.value > +ae.value) ae.value = as.value; updateData(); };
-                    ae.oninput = () => { if(+ae.value < +as.value) as.value = ae.value; updateData(); };
+                    bindSlider(card, `vs-${idx}`, 'vStart', idx);
+                    bindSlider(card, `ve-${idx}`, 'vEnd', idx);
+                    bindSlider(card, `as-${idx}`, 'aStart', idx);
+                    bindSlider(card, `ae-${idx}`, 'aEnd', idx);
+                    const vsEl = card.querySelector(`#vs-${idx}`);
+                    const veEl = card.querySelector(`#ve-${idx}`);
+                    const asEl = card.querySelector(`#as-${idx}`);
+                    const aeEl = card.querySelector(`#ae-${idx}`);
+                    vsEl.oninput = () => { if(+vsEl.value > +veEl.value) veEl.value = vsEl.value; updateData(); };
+                    veEl.oninput = () => { if(+veEl.value < +vsEl.value) vsEl.value = veEl.value; updateData(); };
+                    asEl.oninput = () => { if(+asEl.value > +aeEl.value) aeEl.value = asEl.value; updateData(); };
+                    aeEl.oninput = () => { if(+aeEl.value < +asEl.value) asEl.value = aeEl.value; updateData(); };
                 } else {
-                    bindSlider(card, `s-${idx}`, ['vStart','aStart'], idx, dur);
-                    bindSlider(card, `e-${idx}`, ['vEnd','aEnd'], idx, dur);
-                    const s = card.querySelector(`#s-${idx}`);
-                    const e = card.querySelector(`#e-${idx}`);
-                    s.oninput = () => { if(+s.value > +e.value) e.value = s.value; updateData(); };
-                    e.oninput = () => { if(+e.value < +s.value) s.value = e.value; updateData(); };
+                    bindSlider(card, `s-${idx}`, ['vStart','aStart'], idx);
+                    bindSlider(card, `e-${idx}`, ['vEnd','aEnd'], idx);
+                    const sEl = card.querySelector(`#s-${idx}`);
+                    const eEl = card.querySelector(`#e-${idx}`);
+                    sEl.oninput = () => { if(+sEl.value > +eEl.value) eEl.value = sEl.value; updateData(); };
+                    eEl.oninput = () => { if(+eEl.value < +sEl.value) sEl.value = eEl.value; updateData(); };
                 }
 
                 function updateData() {
@@ -662,11 +619,9 @@
                     fileData[idx].vEnd = parseFloat(card.querySelector(`#ve-${idx}`)?.value || card.querySelector(`#e-${idx}`)?.value || dur);
                     fileData[idx].aStart = parseFloat(card.querySelector(`#as-${idx}`)?.value || card.querySelector(`#s-${idx}`)?.value || 0);
                     fileData[idx].aEnd = parseFloat(card.querySelector(`#ae-${idx}`)?.value || card.querySelector(`#e-${idx}`)?.value || dur);
-                    // Update labels
                     renderClips();
                 }
 
-                // Fades
                 ['vfi','vfo','afi','afo'].forEach(k => {
                     card.querySelector(`#${k}-${idx}`).onchange = (e) => {
                         fileData[idx][k==='vfi'?'vFadeIn':k==='vfo'?'vFadeOut':k==='afi'?'aFadeIn':'aFadeOut'] = parseFloat(e.target.value);
@@ -674,7 +629,6 @@
                 });
             });
 
-            // Transition cards between clips
             for (let i = 0; i < files.length - 1; i++) {
                 const t = transitions[i] || { type: 'cut', duration: 0.5 };
                 const tCard = document.createElement('div');
@@ -703,7 +657,7 @@
             }
         }
 
-        function bindSlider(card, id, key, idx, dur) {
+        function bindSlider(card, id, key, idx) {
             const el = card.querySelector(`#${id}`);
             if (!el) return;
             el.oninput = () => {
@@ -723,7 +677,6 @@
             if (n < 0 || n >= files.length) return;
             [files[idx], files[n]] = [files[n], files[idx]];
             [fileData[idx], fileData[n]] = [fileData[n], fileData[idx]];
-            // Move transition too
             if (dir === -1 && idx > 0) {
                 [transitions[idx-1], transitions[idx]] = [transitions[idx], transitions[idx-1]];
             } else if (dir === 1 && idx < files.length - 1) {
@@ -771,7 +724,14 @@
                     }
                 }
             }
-            if (added) { clearLog(); log(`Added ${added} file(s).`, 'ok'); }
+            if (added) {
+                clearLog();
+                log(`Added ${added} file(s).`, 'ok');
+                // Auto-start loading FFmpeg in background so it's ready
+                if (!ffmpeg && !ffmpegLoading) {
+                    initFFmpeg().catch(() => {});
+                }
+            }
         }
 
         btnClear.onclick = () => {
@@ -783,21 +743,63 @@
             progressBar.classList.remove('active');
         };
 
+        // ─── CRITICAL FIX: Only assign ffmpeg after FULL successful load ───
         async function initFFmpeg() {
-            if (ffmpeg) return;
-            clearLog(); log('Loading FFmpeg.wasm (~25 MB)...', 'info'); setProgress(5);
-            ffmpeg = new FFmpeg();
+            if (ffmpeg) return; // Already loaded successfully
+            if (ffmpegLoading) {
+                // Wait for existing load attempt
+                while (ffmpegLoading) {
+                    await new Promise(r => setTimeout(r, 200));
+                }
+                if (ffmpeg) return;
+                throw new Error('Previous load failed');
+            }
+            
+            ffmpegLoading = true;
+            clearLog();
+            log('Loading FFmpeg.wasm (~25 MB)...', 'info');
+            setProgress(5);
+
+            const ff = new FFmpeg(); // LOCAL instance - don't assign to global yet!
             const base = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
+            
             try {
+                log('Downloading core JS...', 'info');
                 const core = await toBlobURL(`${base}/ffmpeg-core.js`, 'text/javascript');
+                setProgress(15);
+                
+                log('Downloading WASM...', 'info');
                 const wasm = await toBlobURL(`${base}/ffmpeg-core.wasm`, 'application/wasm');
+                setProgress(25);
+                
+                log('Downloading worker...', 'info');
                 const worker = await toBlobURL(`${base}/ffmpeg-core.worker.js`, 'text/javascript');
-                setProgress(30);
-                await ffmpeg.load({ coreURL: core, wasmURL: wasm, workerURL: worker });
+                setProgress(35);
+                
+                log('Initializing...', 'info');
+                await ff.load({ coreURL: core, wasmURL: wasm, workerURL: worker });
+                
+                // ONLY assign after full success!
+                ffmpeg = ff;
+                ffmpegLoading = false;
+                
                 setProgress(100);
                 setTimeout(() => progressBar.classList.remove('active'), 400);
-                clearLog(); log('FFmpeg ready!', 'ok');
-            } catch (e) { log('Failed: ' + e.message, 'err'); throw e; }
+                clearLog();
+                log('FFmpeg ready!', 'ok');
+            } catch (e) {
+                ffmpegLoading = false;
+                ffmpeg = null; // Ensure null so next attempt retries
+                log('Failed to load FFmpeg: ' + e.message, 'err');
+                if (e.message.includes('fetch')) {
+                    log('', 'info');
+                    log('Network error. If using Brave/Chrome:', 'warn');
+                    log('1. Disable aggressive blocking for this page', 'warn');
+                    log('2. Or open this HTML file locally (double-click)', 'warn');
+                    log('3. Or try a different network/WiFi', 'warn');
+                }
+                throw e;
+            }
         }
 
         function buildFilters() {
@@ -835,12 +837,7 @@
                 }
             }
 
-            if (vCount === 0 && aCount === 0) throw new Error('No valid clips.');
-
-            // Handle transitions
-            // Note: True crossfade between clips with concat is complex in filter_complex.
-            // For this version, we use concat. Crossfade requires xfade/acrossfade which may not be in wasm.
-            // We apply fade-in/fade-out per clip above which gives smooth edges.
+            if (vCount === 0 && aCount === 0) throw new Error('No valid clips after trimming.');
 
             let out = vFilters + aFilters;
             if (vCount > 0) out += `${vConcat}concat=n=${vCount}:v=1:a=0[outv];`;
@@ -925,7 +922,8 @@
                 }
                 setProgress(100);
             } catch (err) {
-                clearLog(); log(previewMode?'Preview failed.':'Merge failed.', 'err');
+                clearLog();
+                log(previewMode?'Preview failed.':'Merge failed.', 'err');
                 log(err.message || String(err), 'err');
             } finally {
                 isProcessing = false;
