@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced MP4 Joiner</title>
+  <title>DZ Video-Stitcher</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -38,16 +38,6 @@
       display: flex; justify-content: center; align-items: center;
     }
     header img.site-logo { height: 72px; width: auto; display: block; }
-    header .logo-link {
-      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-      display: flex; align-items: center; transition: 0.3s;
-    }
-    header .logo-link img {
-      height: 50px; width: auto; opacity: 0.7; transition: 0.3s;
-    }
-    header .logo-link:hover img {
-      opacity: 1; filter: drop-shadow(0 0 12px rgba(0,200,255,0.6));
-    }
     header .info-link {
       position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
       color: var(--blue); text-decoration: none; white-space: nowrap;
@@ -58,7 +48,6 @@
     header .info-link:hover { border-color: var(--blue); background: rgba(0,200,255,0.08); }
     @media (max-width: 720px) {
       header { flex-direction: column; gap: 12px; }
-      header .logo-link { position: static; transform: none; }
       header .info-link { position: static; transform: none; }
       header img.site-logo { max-width: 100%; }
     }
@@ -85,7 +74,7 @@
     .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(0,200,255,.06); }
     .drop-zone .icon { font-size: 3rem; margin-bottom: 12px; }
     .drop-zone p { color: var(--muted); font-size: 0.9rem; }
-    .drop-zone strong { color: var(--text); }
+    .drop-zone strong { color: var(--text); font-size: 1.05rem; }
 
     input[type=file] { display: none; }
 
@@ -125,6 +114,12 @@
     .clip-name { font-size: 0.85rem; font-weight: 600; color: var(--text); word-break: break-all; }
     .clip-name span { color: var(--blue); margin-right: 6px; }
     .clip-res { font-size: 0.72rem; color: var(--muted); margin-top: 2px; letter-spacing: 0.02em; }
+    .clip-badge {
+      display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: .04em;
+      padding: 2px 6px; border-radius: 4px; margin-top: 4px; text-transform: uppercase;
+    }
+    .clip-badge.native { background: rgba(0,232,176,.14); color: var(--green); }
+    .clip-badge.normalized { background: rgba(0,200,255,.14); color: var(--blue); }
     .clip-actions { display: flex; gap: 4px; flex-shrink: 0; }
     .icon-btn {
       background: transparent; border: none; color: var(--muted);
@@ -199,6 +194,21 @@
     /* Clips area spacing */
     #clipsArea { display: flex; flex-direction: column; gap: 0; }
     .clip-wrap { display: flex; flex-direction: column; }
+
+    /* Info panel (per-clip probe report) */
+    .info-panel { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 12px; }
+    .info-grid { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 5px 16px; font-size: 0.8rem; margin: 0; }
+    .info-grid dt { color: var(--muted); }
+    .info-grid dd { margin: 0; overflow-wrap: anywhere; }
+    .info-section { color: var(--blue); font-size: 0.68rem; letter-spacing: .09em; text-transform: uppercase; margin: 10px 0 6px; }
+    .info-section:first-child { margin-top: 0; }
+    .info-raw { margin-top: 10px; }
+    .info-raw summary { cursor: pointer; color: var(--muted); font-size: 0.75rem; }
+    .info-raw pre {
+      margin-top: 8px; background: #05070c; border: 1px solid var(--border); border-radius: 8px;
+      padding: 11px; font: 11px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #a8dcff;
+      overflow: auto; max-height: 220px; white-space: pre-wrap;
+    }
 
     /* Preview */
     #previewSection {
@@ -314,7 +324,6 @@
 
 <header>
   <div id="ffmpegBar"></div>
-  <a href="cv.html" class="logo-link" title="DZ Video-Converter"><img src="DZ-Video-Converter.png" alt="DZ Video-Converter"></a>
   <img class="site-logo" src="DZ_logo.png" alt="DZ Video Stitcher">
   <a class="info-link" href="h264mp4.html">Why H.264 MP4?</a>
 </header>
@@ -322,9 +331,9 @@
 <main>
   <div class="drop-zone" id="dropZone">
     <div class="icon">🎬</div>
-    <p><strong>Drop MP4 files here</strong><br><small>or click to browse — files never leave your device</small></p>
+    <p><strong>DZ Drop Zone</strong><br><small>Drop any video — MP4, MOV, MKV, AVI, WebM and more. Anything that isn't already H.264 MP4 is converted automatically before it hits the timeline.</small></p>
   </div>
-  <input type="file" id="fileInput" multiple accept=".mp4,video/mp4">
+  <input type="file" id="fileInput" multiple accept="video/*">
 
   <div id="clipsArea"></div>
 
@@ -357,7 +366,7 @@
     <div class="progress-wrap" id="progressWrap">
       <div class="progress-fill" id="progressFill"></div>
     </div>
-    <div id="statusLog"><span class="info">Ready. Drop MP4 files to begin.</span></div>
+    <div id="statusLog"><span class="info">Ready. Drop any video file into the DZ Drop Zone to begin.</span></div>
     <div class="actions">
       <span class="clip-count" id="clipCount">0 clips</span>
       <div style="display:flex;gap:8px;align-items:center;">
@@ -419,7 +428,6 @@
     navigator.serviceWorker.register('coi-serviceworker.js').then(function(reg) {
       if (!reg.active) window.location.reload();
     }).catch(function() {
-      // SW not found — show banner
       var b = document.createElement('div');
       b.style.cssText = 'background:#7c3a00;color:#ffe0b2;padding:10px 16px;font-size:0.8rem;line-height:1.6;border-bottom:1px solid #a04000;';
       b.innerHTML = '<b>⚠ FFmpeg may not work on this host.</b> Upload <code>coi-serviceworker.js</code> to the same folder as this HTML, then refresh. Or add <code>Cross-Origin-Opener-Policy: same-origin</code> &amp; <code>Cross-Origin-Embedder-Policy: credentialless</code> to your server.';
@@ -433,12 +441,10 @@
   import { fetchFile, toBlobURL } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
 
   // ── Quality tiers ──────────────────────────────────────────────────────
-  // Low-res preview tiers (fast, for checking cuts/timing)
   const PREVIEW_MODES = {
     p360:  { label: '⚡ Turbo (360p)',  W: 640,  H: 360, fps: 24, crf: 36, audioBr: '80k', mono: false },
     quick: { label: '⚡ Quick (480p)', W: 854,  H: 480, fps: 24, crf: 32, audioBr: '96k', mono: false },
   };
-  // High-res download tiers. suggestMinH = min input height where this makes sense.
   const DOWNLOAD_MODES = {
     hd720:  { label: '720p HD',       W: 1280, H: 720,  fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 400  },
     hd1080: { label: '1080p Full HD', W: 1920, H: 1080, fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 900  },
@@ -450,8 +456,8 @@
 
   function estResLabel(w, h) {
     if (!w || !h) return '';
-    const p = Math.max(w, h); // use longer edge in case portrait
-    const n = Math.min(w, h); // short edge = "p" value for landscape
+    const p = Math.max(w, h);
+    const n = Math.min(w, h);
     if (n >= 2160 || p >= 3840) return 'EST. 4K (2160p)';
     if (n >= 1440 || p >= 2560) return 'EST. 2K';
     if (n >= 1080 || p >= 1920) return 'EST. 1080p';
@@ -486,7 +492,7 @@
   const progressWrap   = document.getElementById('progressWrap');
   const progressFill   = document.getElementById('progressFill');
   const previewSection = document.getElementById('previewSection');
-  let previewBlobUrl   = null; // kept alive so "Download Preview" needs no re-encode
+  let previewBlobUrl   = null;
   const previewVideo   = document.getElementById('previewVideo');
   const prevCount      = document.getElementById('prevCount');
   const prevDur        = document.getElementById('prevDur');
@@ -497,7 +503,12 @@
   const modalTitle     = document.getElementById('modalTitle');
 
   // ── Logging ────────────────────────────────────────────────────────────
+  // capture.on redirects log() output into an array instead of the visible
+  // status log — used while probing a file with `ffmpeg -i` so the huge
+  // dump of stream info doesn't flood the user-facing progress log.
+  const capture = { on: false, lines: [] };
   function log(msg, type = 'info') {
+    if (capture.on) { capture.lines.push(msg); return; }
     const span = document.createElement('span');
     span.className = type;
     span.textContent = msg + '\n';
@@ -518,26 +529,16 @@
     }, 600);
   }
 
+  // ── Name helpers ───────────────────────────────────────────────────────
+  function ext(name) { const m = name.match(/\.[^.]+$/); return m ? m[0] : '.mp4'; }
+  function stem(name) { return name.replace(/\.[^.]+$/, ''); }
+
   // ── Thumbnail ──────────────────────────────────────────────────────────
-  // FIX: previously this used only 'seeked' + drawImage/toDataURL with no
-  // try/catch and no timeout. Under cross-origin-isolation (COEP:
-  // credentialless) some browsers throw a SecurityError on toDataURL, and
-  // some MP4s (odd edit lists / non-keyframe-aligned starts) never fire
-  // 'seeked' at all. Either case silently left clip.thumb === undefined
-  // with no log message, so thumbnails just rendered as blank black boxes.
-  // This version: waits for 'loadeddata' before seeking, wraps the canvas
-  // draw in try/catch, adds a timeout fallback, and ALWAYS resolves (with
-  // thumb: null on failure) so a bad thumbnail never blocks the clip from
-  // loading — the UI shows a text fallback instead of a blank box.
   function generateThumb(file) {
     return new Promise((resolve) => {
       const v = document.createElement('video');
       v.preload = 'auto'; v.muted = true; v.playsInline = true;
       v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
-      // Some browsers throttle or skip decoding frames for <video> elements
-      // that are never attached to the DOM. Attach it off-screen (not
-      // display:none — some engines skip layout/decode for display:none too)
-      // so real frames get decoded, then remove it once we're done.
       v.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:2px;height:2px;opacity:0;';
       document.body.appendChild(v);
 
@@ -565,17 +566,16 @@
           const ctx = canvas.getContext('2d');
           const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
           let sum = 0;
-          // Sample every 8th pixel (4 bytes/px) for speed.
           const step = 8 * 4;
           let n = 0;
           for (let i = 0; i < data.length; i += step) {
             sum += data[i] + data[i + 1] + data[i + 2];
             n++;
           }
-          const avg = sum / (n * 3); // 0-255
-          return avg < 12; // very dark = likely a black fade frame
+          const avg = sum / (n * 3);
+          return avg < 12;
         } catch (e) {
-          return false; // if we can't read pixels, don't block on it
+          return false;
         }
       };
 
@@ -586,11 +586,6 @@
         return c;
       };
 
-      // Many clips (esp. "closer"-style edits) fade in from black. Grabbing
-      // a frame at a fixed ~1s point often lands inside that fade and
-      // produces a solid black thumbnail even though capture "succeeded".
-      // Try a few timestamps further into the clip and keep the first one
-      // that isn't near-black; fall back to whatever we last captured.
       const candidateTimes = (dur) => {
         if (!dur || !isFinite(dur) || dur <= 0) return [0];
         const pts = [dur * 0.25, dur * 0.5, dur * 0.75, Math.min(2, dur * 0.9)];
@@ -602,7 +597,6 @@
 
       const trySeekNext = () => {
         if (candidateIdx >= times.length) {
-          // Out of candidates — use the last frame we captured, black or not.
           if (lastCanvas) {
             try { finish(lastCanvas.toDataURL('image/jpeg', 0.6), v.duration); }
             catch (e) { finish(null, v.duration); }
@@ -627,22 +621,14 @@
           const dataUrl = c.toDataURL('image/jpeg', 0.6);
           finish(dataUrl, v.duration);
         } catch (e) {
-          // Canvas tainted / SecurityError / etc — fall back gracefully.
           finish(null, v.duration);
         }
       };
 
       const captureFrame = () => {
-        // KEY FIX: right when 'seeked' fires, the browser has often only
-        // scheduled the new frame — it hasn't actually painted it into the
-        // video element's decode buffer yet. drawImage()/toDataURL() at that
-        // instant silently succeeds but captures an all-black frame. Waiting
-        // two animation-frame ticks gives the compositor time to paint the
-        // real frame before we read it.
         requestAnimationFrame(() => requestAnimationFrame(drawNow));
       };
 
-      // Overall safety net: never leave the clip stuck loading forever.
       const failTimer = setTimeout(() => finish(null, v.duration), 8000);
 
       v.onloadedmetadata = () => {
@@ -676,10 +662,6 @@
       const pkgBase  = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm';
       const coreBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
 
-      // @ffmpeg/ffmpeg creates: new Worker(new URL('./worker.js', import.meta.url), {type:'module'})
-      // That CDN URL is cross-origin → blocked. Fix: create a same-origin blob that simply
-      // re-imports from the CDN. Module workers CAN import cross-origin; only the Worker()
-      // constructor itself enforces the same-origin restriction.
       const ffmpegWorkerBlob = new Blob(
         [`import '${pkgBase}/worker.js';`],
         { type: 'text/javascript' }
@@ -694,7 +676,6 @@
       };
 
       const ff = new FFmpeg();
-      // NOTE: do NOT restore window.Worker yet — ff.load() creates the worker lazily
 
       ff.on('progress', ({ progress }) => {
         ffmpegBar.style.width = (progress * 100) + '%';
@@ -708,8 +689,8 @@
       const coreURL   = await toBlobURL(`${coreBase}/ffmpeg-core.js`,        'text/javascript');
       const wasmURL   = await toBlobURL(`${coreBase}/ffmpeg-core.wasm`,      'application/wasm');
       const workerURL = await toBlobURL(`${coreBase}/ffmpeg-core.worker.js`, 'text/javascript');
-      await ff.load({ coreURL, wasmURL, workerURL }); // Worker is created here
-      window.Worker = _OrigWorker; // restore only after worker is fully spawned
+      await ff.load({ coreURL, wasmURL, workerURL });
+      window.Worker = _OrigWorker;
       ffmpeg = ff;
       log('FFmpeg ready ✓', 'ok');
     } catch (e) {
@@ -728,19 +709,178 @@
     }
   }
 
+  // ── Ingest inspection (DZ Drop Zone) ──────────────────────────────────
+  // Every dropped file is probed with `ffmpeg -i` (no output — ffmpeg dumps
+  // full stream info to stderr, which the `log` module captures instead of
+  // printing). If it's already H.264/yuv420p/AAC in an MP4/MOV container,
+  // it goes straight onto the timeline. Otherwise it's normalized once here
+  // so the stitcher's own concat/filter pipeline never has to deal with
+  // mismatched codecs.
+  async function probeFile(source, label) {
+    const name = 'probe' + ext(label);
+    capture.on = true; capture.lines = [];
+    try {
+      await ffmpeg.writeFile(name, await fetchFile(source));
+      try { await ffmpeg.exec(['-hide_banner', '-i', name]); } catch (e) { /* no output file: expected */ }
+      await ffmpeg.deleteFile(name).catch(() => {});
+    } finally {
+      capture.on = false;
+    }
+    return capture.lines.join('\n').trim();
+  }
+
+  function parseProbe(text) {
+    const info = { streams: [], tags: [] };
+    const container = text.match(/Input #0,\s*([^,]+(?:,[^,]+)*),\s*from/);
+    if (container) info.container = container[1].trim();
+    const dur = text.match(/Duration:\s*([0-9:.]+|N\/A)/);
+    if (dur && dur[1] !== 'N/A') info.duration = dur[1];
+    const rate = text.match(/bitrate:\s*([^\n,]+)/);
+    if (rate) info.bitrate = rate[1].trim();
+    for (const line of text.split('\n')) {
+      const s = line.match(/Stream #\d+:\d+(?:\[[^\]]*\])?(?:\(([^)]*)\))?:\s*(Video|Audio|Subtitle|Data):\s*(.+)/);
+      if (s) info.streams.push({ lang: s[1] || '', kind: s[2], detail: s[3].trim() });
+      const t = line.match(/^\s{4}([A-Za-z_][\w-]*)\s*:\s*(.+)$/);
+      if (t && !/^(Duration|Stream|Metadata|Side data|encoder)$/i.test(t[1]) && t[2].trim()) info.tags.push([t[1], t[2].trim()]);
+    }
+    const v = info.streams.find(s => s.kind === 'Video');
+    if (v) {
+      const dim = v.detail.match(/(\d{2,5})x(\d{2,5})/);
+      if (dim) info.resolution = dim[1] + ' × ' + dim[2];
+      const fps = v.detail.match(/([\d.]+)\s*fps/);
+      if (fps) info.fps = fps[1] + ' fps';
+      const codec = v.detail.match(/^([\w.]+)(?:\s*\(([^)]+)\))?/);
+      if (codec) info.vcodec = codec[1] + (codec[2] && !/^[\da-fx/ ]+$/i.test(codec[2]) ? ' (' + codec[2] + ')' : '');
+      const pix = v.detail.match(/\b(yuv[\w]+|rgb[\w]*|gbr[\w]*|nv\d+|pal8)\b/);
+      if (pix) info.pixfmt = pix[1];
+      const dar = v.detail.match(/DAR ([\d:]+)/);
+      if (dar) info.aspect = dar[1];
+    }
+    const a = info.streams.find(s => s.kind === 'Audio');
+    if (a) {
+      const codec = a.detail.match(/^([\w.]+)(?:\s*\(([^)]+)\))?/);
+      if (codec) info.acodec = codec[1] + (codec[2] && !/^[\da-fx/ ]+$/i.test(codec[2]) ? ' (' + codec[2] + ')' : '');
+      const hz = a.detail.match(/(\d+)\s*Hz/);
+      if (hz) info.samplerate = Number(hz[1]).toLocaleString() + ' Hz';
+      const ch = a.detail.match(/\b(mono|stereo|5\.1[\w()]*|7\.1[\w()]*|quad|\d+ channels)\b/);
+      if (ch) info.channels = ch[1];
+    }
+    return info;
+  }
+
+  // The stitcher's own export pipeline re-encodes every clip anyway
+  // (scale/pad/fades/concat), so ingest just needs to guarantee ffmpeg can
+  // decode the source cleanly — H.264/yuv420p video in an MP4-family
+  // container, with AAC or no audio track at all.
+  function isConformant(info) {
+    const containerOk = /mp4|mov|m4v|3gp|3g2/i.test(info.container || '');
+    const vcodecOk = /^h264/i.test(info.vcodec || '');
+    const pixOk = (info.pixfmt || '') === 'yuv420p';
+    const acodecOk = !info.acodec || /^aac/i.test(info.acodec);
+    return containerOk && vcodecOk && pixOk && acodecOk;
+  }
+
+  // Fixed-quality normalize — CRF 16 (a notch above the old standalone
+  // converter's CRF 18) since this is a mezzanine step: the stitcher's
+  // final export re-compresses it again, and stacking two lossy passes at
+  // a low bitrate compounds visible quality loss.
+  async function normalizeToH264(file) {
+    const inName = 'norm_in_' + uid() + ext(file.name);
+    const outName = 'norm_out_' + uid() + '.mp4';
+    await ffmpeg.writeFile(inName, await fetchFile(file));
+    await ffmpeg.exec([
+      '-i', inName,
+      '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '16', '-preset', 'medium',
+      '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+      '-movflags', '+faststart',
+      outName,
+    ]);
+    const data = await ffmpeg.readFile(outName);
+    await ffmpeg.deleteFile(inName).catch(() => {});
+    await ffmpeg.deleteFile(outName).catch(() => {});
+    const blob = new Blob([data.buffer], { type: 'video/mp4' });
+    return new File([blob], stem(file.name) + '_h264.mp4', { type: 'video/mp4' });
+  }
+
+  function infoPanel(raw, clip) {
+    const wrap = document.createElement('div');
+    wrap.className = 'info-panel';
+    const info = parseProbe(raw || '');
+    const rows = [];
+    rows.push(['section', 'File']);
+    rows.push(['Name', clip.origName]);
+    if (clip.normalized) rows.push(['Status', 'Converted to H.264 MP4 on ingest']);
+    else rows.push(['Status', 'Already H.264 MP4 — used as-is']);
+    if (info.container || info.duration || info.bitrate) {
+      rows.push(['section', 'Container']);
+      if (info.container) rows.push(['Format', info.container]);
+      if (info.duration) rows.push(['Duration', info.duration]);
+      if (info.bitrate) rows.push(['Overall bitrate', info.bitrate]);
+    }
+    if (info.vcodec || info.resolution) {
+      rows.push(['section', 'Video']);
+      if (info.vcodec) rows.push(['Codec', info.vcodec]);
+      if (info.resolution) rows.push(['Resolution', info.resolution]);
+      if (info.fps) rows.push(['Frame rate', info.fps]);
+      if (info.pixfmt) rows.push(['Pixel format', info.pixfmt]);
+    }
+    if (info.acodec) {
+      rows.push(['section', 'Audio']);
+      rows.push(['Codec', info.acodec]);
+      if (info.samplerate) rows.push(['Sample rate', info.samplerate]);
+      if (info.channels) rows.push(['Channels', info.channels]);
+    }
+    let dl = null;
+    for (const [k, v] of rows) {
+      if (k === 'section') {
+        const h = document.createElement('div'); h.className = 'info-section'; h.textContent = v; wrap.append(h);
+        dl = document.createElement('dl'); dl.className = 'info-grid'; wrap.append(dl);
+        continue;
+      }
+      const dt = document.createElement('dt'); dt.textContent = k;
+      const dd = document.createElement('dd'); dd.textContent = v;
+      dl.append(dt, dd);
+    }
+    const details = document.createElement('details'); details.className = 'info-raw';
+    const summary = document.createElement('summary'); summary.textContent = 'Raw ffmpeg output';
+    const pre = document.createElement('pre'); pre.textContent = raw || '(no output — source used as-is)';
+    details.append(summary, pre); wrap.append(details);
+    return wrap;
+  }
+
   // ── File handling ──────────────────────────────────────────────────────
   async function handleFiles(files) {
-    if (!ffmpeg && !ffmpegLoading) initFFmpeg().catch(() => {});
+    await initFFmpeg().catch(() => {});
     for (const f of Array.from(files)) {
-      if (!f.name.toLowerCase().endsWith('.mp4')) { log(`Skipped non-MP4: ${f.name}`, 'warn'); continue; }
-      if (clips.some(c => c.file.name === f.name && c.file.size === f.size)) { log(`Skipped duplicate: ${f.name}`, 'warn'); continue; }
-      log(`Loading ${f.name}…`, 'info');
+      const looksLikeVideo = f.type.startsWith('video/') || /\.(mp4|mov|mkv|avi|webm|wmv|flv|m4v|mpeg|mpg)$/i.test(f.name);
+      if (!looksLikeVideo) { log(`Skipped non-video: ${f.name}`, 'warn'); continue; }
+      if (clips.some(c => c.origName === f.name && c.origSize === f.size)) { log(`Skipped duplicate: ${f.name}`, 'warn'); continue; }
+
+      log(`Inspecting ${f.name}…`, 'info');
+      let workingFile = f, probeRaw = null, normalized = false;
       try {
-        const { thumb, duration, nativeW, nativeH } = await generateThumb(f);
-        clips.push({ id: uid(), file: f, thumb, duration, nativeW, nativeH,
+        probeRaw = await probeFile(f, f.name);
+        const info = parseProbe(probeRaw);
+        if (!isConformant(info)) {
+          log(`${f.name} isn't H.264 MP4 yet — converting…`, 'warn');
+          workingFile = await normalizeToH264(f);
+          normalized = true;
+          log(`Converted ${f.name} → ready to stitch`, 'ok');
+        } else {
+          log(`${f.name} is already H.264 MP4 — no conversion needed`, 'ok');
+        }
+      } catch (e) {
+        log(`Could not inspect ${f.name} (${e.message || e}) — using as-is`, 'warn');
+      }
+
+      try {
+        const { thumb, duration, nativeW, nativeH } = await generateThumb(workingFile);
+        clips.push({
+          id: uid(), file: workingFile, origName: f.name, origSize: f.size, probeRaw, normalized,
+          thumb, duration, nativeW, nativeH,
           vStart: 0, vEnd: duration, aStart: 0, aEnd: duration,
-          split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0 });
-        // Keep transitions in sync
+          split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0,
+        });
         while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
         if (thumb) {
           log(`Loaded ${f.name} (${duration.toFixed(1)}s)`, 'ok');
@@ -757,13 +897,10 @@
     const m = Math.floor(s / 60), sec = (s % 60).toFixed(1).padStart(4, '0');
     return `${m}:${sec}`;
   }
+  function size(n) { return n < 1048576 ? (n / 1024).toFixed(0) + ' KB' : (n / 1048576).toFixed(1) + ' MB'; }
 
   // ── Filter builder ─────────────────────────────────────────────────────
-  // previewMode: scale to 480x270, full: scale to 1920x1080.
-  // Scale+pad+format is done per-clip so concat receives identical frame sizes.
   function buildFilters(W, H) {
-    // Collect each filter chain as a separate string; join with ';' at the end.
-    // Never append ';' inside the loop — that causes double semicolons when joined.
     const chains = [];
     let vConcat = '', aConcat = '';
     let vCount = 0, aCount = 0, totalDur = 0;
@@ -809,7 +946,7 @@
         await res.body.pipeTo(writable);
       } else { throw new Error('no picker'); }
     } catch (e) {
-      if (e.name === 'AbortError') return; // user cancelled — do nothing
+      if (e.name === 'AbortError') return;
       const a = document.createElement('a'); a.href = url; a.download = filename; a.click();
     }
   }
@@ -827,16 +964,11 @@
   }
 
   function updateDownloadSelect() {
-    // Compare by HEIGHT — the conventional "1080p / 720p" descriptor used by humans.
-    // A 1440×1080 video is legitimately 1080p; comparing by longest edge mislabels it.
-    // hd720 is always the floor — never grey it out regardless of source quality.
     const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
-
     let bestDefault = 'hd720';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
       if (maxH === 0 || maxH >= cfg.H) bestDefault = key;
     }
-
     downloadQuality.innerHTML = '';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
       const opt = document.createElement('option');
@@ -849,14 +981,6 @@
     }
   }
 
-  // ── Damped progress helper ─────────────────────────────────────────────
-  // FFmpeg's progress ratio overshoots 1.0 with filter_complex/trim (users see
-  // 400%+). This maps the raw percentage to a display value that decelerates
-  // near the end and hard-caps at 98 until the encode finishes.
-  //   0–89 raw  → 1:1 display
-  //   89–101 raw → half speed  → display 89–95
-  //   101–113 raw → quarter speed → display 95–98
-  //   >113 raw  → capped at 98
   function dampedProgress(rawPct) {
     if (rawPct <= 89) return rawPct;
     if (rawPct <= 101) return 89 + (rawPct - 89) / 2;
@@ -940,7 +1064,6 @@
       await ffmpeg.deleteFile(outName).catch(() => {});
       setProgress(100);
 
-      // Always show the video in the preview panel
       if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl);
       previewBlobUrl = url;
       previewVideo.src = url;
@@ -982,7 +1105,7 @@
     const n = idx + dir;
     if (n < 0 || n >= clips.length) return;
     [clips[idx], clips[n]] = [clips[n], clips[idx]];
-    [transitions[Math.min(idx, n)]] = [transitions[Math.min(idx, n)]]; // keep transitions stable
+    [transitions[Math.min(idx, n)]] = [transitions[Math.min(idx, n)]];
     render();
   };
   window.removeClip = (id) => {
@@ -996,7 +1119,7 @@
     const clip = clips.find(c => c.id === id);
     if (!clip) return;
     modalClipId = id;
-    modalTitle.textContent = clip.file.name;
+    modalTitle.textContent = clip.origName;
     modalVideo.src = URL.createObjectURL(clip.file);
     clipModal.classList.add('open');
   };
@@ -1016,20 +1139,17 @@
       log('Move the playhead away from the very start or end to split.', 'warn');
       return;
     }
-    // Clip A: original start → split point
     const clipA = { ...orig, id: uid(),
       vEnd: Math.min(t, orig.vEnd), aEnd: Math.min(t, orig.aEnd),
       vFadeOut: 0, aFadeOut: 0 };
-    // Clip B: split point → original end
     const clipB = { ...orig, id: uid(),
       vStart: Math.max(t, orig.vStart), aStart: Math.max(t, orig.aStart),
       vFadeIn: 0, aFadeIn: 0 };
     clips.splice(idx, 1, clipA, clipB);
-    // Insert a cut transition between the two halves
     transitions.splice(idx, 0, { id: uid(), type: 'cut', duration: 0 });
     closeModal();
     render();
-    log(`Split "${orig.file.name}" at ${t.toFixed(2)}s → two clips.`, 'ok');
+    log(`Split "${orig.origName}" at ${t.toFixed(2)}s → two clips.`, 'ok');
   };
   window.closePreview = () => {
     previewSection.classList.remove('show');
@@ -1043,6 +1163,16 @@
     a.href = previewBlobUrl;
     a.download = 'preview_draft.mp4';
     a.click();
+  };
+
+  window.toggleInfo = (id) => {
+    const clip = clips.find(c => c.id === id);
+    if (!clip) return;
+    clip.infoOpen = !clip.infoOpen;
+    const panelHost = document.getElementById(`infowrap-${id}`);
+    if (!panelHost) return;
+    panelHost.innerHTML = '';
+    if (clip.infoOpen) panelHost.appendChild(infoPanel(clip.probeRaw, clip));
   };
 
   // ── Slider helpers ─────────────────────────────────────────────────────
@@ -1089,7 +1219,6 @@
       const body = document.createElement('div');
       body.className = 'clip-body';
 
-      // Thumb
       const thumb = document.createElement('div');
       thumb.className = 'clip-thumb';
       thumb.onclick = () => openModal(clip.id);
@@ -1099,14 +1228,19 @@
         <div class="dur-badge">${clip.duration.toFixed(1)}s</div>
       `;
 
-      // Controls
       const ctrl = document.createElement('div');
       ctrl.className = 'clip-controls';
       ctrl.innerHTML = `
         <div class="clip-header">
-          <div class="clip-name"><span>#${idx + 1}</span>${clip.file.name}</div>
-          <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
+          <div>
+            <div class="clip-name"><span>#${idx + 1}</span>${clip.origName}</div>
+            <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
+            <span class="clip-badge ${clip.normalized ? 'normalized' : 'native'}">${clip.normalized ? 'Converted to H.264' : 'Native H.264'}</span>
+          </div>
           <div class="clip-actions">
+            <button class="icon-btn" title="File info" onclick="toggleInfo('${clip.id}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </button>
             <button class="icon-btn" title="Move up" onclick="moveClip('${clip.id}',-1)" ${idx === 0 ? 'disabled' : ''}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             </button>
@@ -1137,6 +1271,8 @@
           <div class="fade-field"><label>Aud Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeIn}" onchange="updateClip('${clip.id}','aFadeIn',+this.value)"></div>
           <div class="fade-field"><label>Aud Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeOut}" onchange="updateClip('${clip.id}','aFadeOut',+this.value)"></div>
         </div>
+
+        <div id="infowrap-${clip.id}"></div>
       `;
 
       body.appendChild(thumb);
@@ -1144,13 +1280,15 @@
       card.appendChild(body);
       wrap.appendChild(card);
 
-      // Build sliders after inserting into DOM context
       clipsArea.appendChild(wrap);
 
       const slidersDiv = document.getElementById(`sliders-${clip.id}`);
       renderSliders(clip, slidersDiv);
 
-      // Transition
+      if (clip.infoOpen) {
+        document.getElementById(`infowrap-${clip.id}`).appendChild(infoPanel(clip.probeRaw, clip));
+      }
+
       if (idx < clips.length - 1 && transitions[idx]) {
         const t = transitions[idx];
         const tRow = document.createElement('div');
@@ -1203,7 +1341,6 @@
         }
       });
     } else {
-      // Video
       const vDiv = document.createElement('div');
       vDiv.className = 'slider-group';
       vDiv.innerHTML = `
@@ -1222,7 +1359,6 @@
         onChangeEnd: v => { clip.vEnd = v; document.getElementById(`lbl-v-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(v)}`; updateTimeline(clip); }
       });
 
-      // Audio
       const aDiv = document.createElement('div');
       aDiv.className = 'slider-group';
       aDiv.innerHTML = `
@@ -1297,7 +1433,7 @@
   btnClear.addEventListener('click', () => {
     clips = []; transitions = [];
     closePreview(); clearLog(); render();
-    log('Ready. Drop MP4 files to begin.', 'info');
+    log('Ready. Drop any video file into the DZ Drop Zone to begin.', 'info');
   });
   btnPreview.addEventListener('click', () => runProcess(previewQuality.value));
   btnMerge.addEventListener('click', () => runProcess(downloadQuality.value));
