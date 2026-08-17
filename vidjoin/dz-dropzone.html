@@ -516,6 +516,30 @@
   let uidCounter = 0;
   const uid = () => String(++uidCounter);
 
+  // ── FFmpeg engine lock ─────────────────────────────────────────────────
+  // There is exactly one FFmpeg.wasm instance shared by everything: probing
+  // a dropped file, converting it, and rendering the stitched export. Its
+  // writeFile/exec/readFile calls all touch the same in-memory filesystem
+  // and aren't safe to interleave — e.g. dropping a new file mid-export
+  // would otherwise race with the export's own exec() call. This mutex
+  // makes every ffmpeg-touching operation wait its turn instead of racing;
+  // callers still feel responsive (their row just shows "Inspecting…" a
+  // little longer), and nothing silently corrupts or hangs.
+  let ffmpegLockChain = Promise.resolve();
+  let ffmpegLockHeld = false;
+  async function acquireFFmpegLock() {
+    let release;
+    const wait = new Promise(resolve => { release = resolve; });
+    const previous = ffmpegLockChain;
+    ffmpegLockChain = wait;
+    // If something else is already holding the lock, say so — otherwise
+    // this looks exactly like the silent hang it's meant to prevent.
+    if (ffmpegLockHeld) log('Waiting for the current FFmpeg operation to finish…', 'info');
+    await previous;
+    ffmpegLockHeld = true;
+    return () => { ffmpegLockHeld = false; release(); };
+  }
+
   // ── DOM refs ───────────────────────────────────────────────────────────
   const dropZone       = document.getElementById('dropZone');
   const fileInput      = document.getElementById('fileInput');
@@ -785,16 +809,21 @@
   // for that row; the user can still override it before adding to the
   // timeline.
   async function probeFile(source, label) {
-    const name = 'probe' + ext(label);
-    capture.on = true; capture.lines = [];
+    const release = await acquireFFmpegLock();
     try {
-      await ffmpeg.writeFile(name, await fetchFile(source));
-      try { await ffmpeg.exec(['-hide_banner', '-i', name]); } catch (e) { /* no output file: expected */ }
-      await ffmpeg.deleteFile(name).catch(() => {});
+      const name = 'probe' + ext(label);
+      capture.on = true; capture.lines = [];
+      try {
+        await ffmpeg.writeFile(name, await fetchFile(source));
+        try { await ffmpeg.exec(['-hide_banner', '-i', name]); } catch (e) { /* no output file: expected */ }
+        await ffmpeg.deleteFile(name).catch(() => {});
+      } finally {
+        capture.on = false;
+      }
+      return capture.lines.join('\n').trim();
     } finally {
-      capture.on = false;
+      release();
     }
-    return capture.lines.join('\n').trim();
   }
 
   function parseProbe(text) {
@@ -854,21 +883,26 @@
   // final export re-compresses it again, and stacking two lossy passes at
   // a low bitrate compounds visible quality loss.
   async function normalizeToH264(file) {
-    const inName = 'norm_in_' + uid() + ext(file.name);
-    const outName = 'norm_out_' + uid() + '.mp4';
-    await ffmpeg.writeFile(inName, await fetchFile(file));
-    await ffmpeg.exec([
-      '-i', inName,
-      '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '16', '-preset', 'medium',
-      '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
-      '-movflags', '+faststart',
-      outName,
-    ]);
-    const data = await ffmpeg.readFile(outName);
-    await ffmpeg.deleteFile(inName).catch(() => {});
-    await ffmpeg.deleteFile(outName).catch(() => {});
-    const blob = new Blob([data.buffer], { type: 'video/mp4' });
-    return new File([blob], stem(file.name) + '_h264.mp4', { type: 'video/mp4' });
+    const release = await acquireFFmpegLock();
+    try {
+      const inName = 'norm_in_' + uid() + ext(file.name);
+      const outName = 'norm_out_' + uid() + '.mp4';
+      await ffmpeg.writeFile(inName, await fetchFile(file));
+      await ffmpeg.exec([
+        '-i', inName,
+        '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '16', '-preset', 'medium',
+        '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+        '-movflags', '+faststart',
+        outName,
+      ]);
+      const data = await ffmpeg.readFile(outName);
+      await ffmpeg.deleteFile(inName).catch(() => {});
+      await ffmpeg.deleteFile(outName).catch(() => {});
+      const blob = new Blob([data.buffer], { type: 'video/mp4' });
+      return new File([blob], stem(file.name) + '_h264.mp4', { type: 'video/mp4' });
+    } finally {
+      release();
+    }
   }
 
   // meta: { name, statusLabel } — used by both the incoming-review rows
@@ -1197,48 +1231,58 @@
         return cl;
       });
 
-      for (let i = 0; i < proc.length; i++) {
-        const data = await fetchFile(proc[i].file);
-        await ffmpeg.writeFile(`in${i}.mp4`, data);
-        setProgress(Math.round((i + 1) / proc.length * 15));
-        log(`  Wrote in${i}.mp4`, 'info');
-      }
-
       const cfg = getModeConfig(mode);
       const W = cfg ? cfg.W : 1920;
       const H = cfg ? cfg.H : 1080;
-      const { filterComplex, vCount, aCount, totalDur } = buildFilters(W, H);
-      log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
-      setProgress(20);
-
       const outName = isDL ? 'output.mp4' : 'preview.mp4';
-      const args = [
-        '-y',
-        ...proc.flatMap((_, i) => ['-i', `in${i}.mp4`]),
-        '-filter_complex', filterComplex,
-        ...(vCount > 0 ? ['-map', '[outv]'] : []),
-        ...(aCount > 0 ? ['-map', '[outa]'] : []),
-        '-c:v', 'libx264',
-        '-preset', isDL ? 'fast' : 'ultrafast',
-        '-crf',   String(cfg ? cfg.crf : 23),
-        ...(cfg && cfg.fps < 24 ? ['-r', String(cfg.fps)] : []),
-        '-c:a', 'aac',
-        '-b:a', cfg ? cfg.audioBr : '128k',
-        ...(cfg && cfg.mono ? ['-ac', '1'] : []),
-        '-movflags', '+faststart',
-        outName,
-      ];
+      let vCount, aCount, totalDur, blob;
 
-      ffmpeg.on('progress', ({ progress }) => setProgress(dampedProgress(Math.round(progress * 100))));
-      const code = await ffmpeg.exec(args);
-      if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
+      const ffmpegRelease = await acquireFFmpegLock();
+      try {
+        for (let i = 0; i < proc.length; i++) {
+          const data = await fetchFile(proc[i].file);
+          await ffmpeg.writeFile(`in${i}.mp4`, data);
+          setProgress(Math.round((i + 1) / proc.length * 15));
+          log(`  Wrote in${i}.mp4`, 'info');
+        }
 
-      const data = await ffmpeg.readFile(outName);
-      const blob = new Blob([data.buffer], { type: 'video/mp4' });
-      const url  = URL.createObjectURL(blob);
+        const built = buildFilters(W, H);
+        const filterComplex = built.filterComplex;
+        vCount = built.vCount; aCount = built.aCount; totalDur = built.totalDur;
+        log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
+        setProgress(20);
 
-      for (let i = 0; i < proc.length; i++) await ffmpeg.deleteFile(`in${i}.mp4`).catch(() => {});
-      await ffmpeg.deleteFile(outName).catch(() => {});
+        const args = [
+          '-y',
+          ...proc.flatMap((_, i) => ['-i', `in${i}.mp4`]),
+          '-filter_complex', filterComplex,
+          ...(vCount > 0 ? ['-map', '[outv]'] : []),
+          ...(aCount > 0 ? ['-map', '[outa]'] : []),
+          '-c:v', 'libx264',
+          '-preset', isDL ? 'fast' : 'ultrafast',
+          '-crf',   String(cfg ? cfg.crf : 23),
+          ...(cfg && cfg.fps < 24 ? ['-r', String(cfg.fps)] : []),
+          '-c:a', 'aac',
+          '-b:a', cfg ? cfg.audioBr : '128k',
+          ...(cfg && cfg.mono ? ['-ac', '1'] : []),
+          '-movflags', '+faststart',
+          outName,
+        ];
+
+        ffmpeg.on('progress', ({ progress }) => setProgress(dampedProgress(Math.round(progress * 100))));
+        const code = await ffmpeg.exec(args);
+        if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
+
+        const data = await ffmpeg.readFile(outName);
+        blob = new Blob([data.buffer], { type: 'video/mp4' });
+
+        for (let i = 0; i < proc.length; i++) await ffmpeg.deleteFile(`in${i}.mp4`).catch(() => {});
+        await ffmpeg.deleteFile(outName).catch(() => {});
+      } finally {
+        ffmpegRelease();
+      }
+
+      const url = URL.createObjectURL(blob);
       setProgress(100);
 
       if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl);
