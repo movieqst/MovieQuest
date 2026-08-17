@@ -231,6 +231,7 @@
     }
     .quality-select:disabled { opacity: .4; cursor: not-allowed; }
     .quality-select option { background: var(--bg2); }
+    .quality-select option.upscale { color: #555; }
     .modal-split-bar {
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 16px; border-top: 1px solid var(--border);
@@ -671,14 +672,26 @@
   function updateDownloadSelect() {
     const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
     const prev  = downloadQuality.value;
+
+    // Best non-upscaling tier (iterates insertion order: 720→1080→1440→4k)
+    let bestDefault = 'hd720';
+    for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
+      if (maxH === 0 || maxH >= cfg.suggestMinH) bestDefault = key;
+    }
+
+    // Keep prev only if it's a valid non-upscaling choice
+    const prevIsGood = prev && (DOWNLOAD_MODES[prev]) &&
+                       (maxH === 0 || maxH >= DOWNLOAD_MODES[prev].suggestMinH);
+    const toSelect = prevIsGood ? prev : bestDefault;
+
     downloadQuality.innerHTML = '';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
       const opt = document.createElement('option');
       opt.value = key;
-      const lowInput = maxH > 0 && maxH < cfg.suggestMinH;
-      opt.textContent = cfg.label + (lowInput ? ' ⚠' : '');
-      opt.dataset.lowInput = lowInput ? '1' : '';
-      if (key === prev) opt.selected = true;
+      const upscale = maxH > 0 && maxH < cfg.suggestMinH;
+      opt.textContent = cfg.label + (upscale ? ' △' : '');
+      if (upscale) opt.className = 'upscale';
+      if (key === toSelect) opt.selected = true;
       downloadQuality.appendChild(opt);
     }
   }
