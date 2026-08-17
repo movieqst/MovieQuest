@@ -670,21 +670,21 @@
   }
 
   function updateDownloadSelect() {
-    // Use the longer edge of each clip so portrait/rotated videos are handled correctly
-    const maxLong = clips.reduce((m, c) => Math.max(m, c.nativeW || 0, c.nativeH || 0), 0);
+    // Compare by HEIGHT — the conventional "1080p / 720p" descriptor used by humans.
+    // A 1440×1080 video is legitimately 1080p; comparing by longest edge mislabels it.
+    // hd720 is always the floor — never grey it out regardless of source quality.
+    const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
 
-    // Best non-upscaling tier: highest mode whose output width ≤ source longer edge
-    // cfg.W is always the longer dimension for these landscape presets
     let bestDefault = 'hd720';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
-      if (maxLong === 0 || maxLong >= cfg.W) bestDefault = key;
+      if (maxH === 0 || maxH >= cfg.H) bestDefault = key;
     }
 
     downloadQuality.innerHTML = '';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
       const opt = document.createElement('option');
       opt.value = key;
-      const upscale = maxLong > 0 && maxLong < cfg.W;
+      const upscale = key !== 'hd720' && maxH > 0 && maxH < cfg.H;
       opt.textContent = cfg.label + (upscale ? ' △' : '');
       if (upscale) opt.className = 'upscale';
       if (key === bestDefault) opt.selected = true;
@@ -780,10 +780,10 @@
       clearLog();
 
       if (isDL) {
-        const maxLong2 = clips.reduce((m, c) => Math.max(m, c.nativeW || 0, c.nativeH || 0), 0);
-        const isUpscale = maxLong2 > 0 && maxLong2 < cfg.W;
+        const maxH2 = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
+        const isUpscale = maxH2 > 0 && maxH2 < cfg.H;
         if (isUpscale) {
-          log(`⚠ Your clips are ~${maxLong2}px wide — saving at ${cfg.W}px won't add quality, but here it is.`, 'warn');
+          log(`⚠ Your clips are ~${maxH2}p — saving at ${cfg.H}p won't add quality, but here it is.`, 'warn');
         } else {
           log(`${cfg.label} encoded! Choose where to save it.`, 'ok');
         }
