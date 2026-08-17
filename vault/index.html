@@ -915,8 +915,8 @@
       thumbHtml = '<div class="pq-thumb" style="display:flex;align-items:center;justify-content:center;font-size:24px;background:#000;border:1px solid #004444;">📄</div>';
     }
 
-    return '<div class="pq-file-card" onclick="pqPreviewFile(' + idx + ', '' + zone + '')">' +
-      '<button class="pq-file-del" onclick="event.stopPropagation(); pqDeleteFile(' + idx + ', '' + zone + '')">×</button>' +
+    return '<div class="pq-file-card" onclick="pqPreviewFile(' + idx + ', \'' + zone + '\')">' +
+      '<button class="pq-file-del" onclick="event.stopPropagation(); pqDeleteFile(' + idx + ', \'' + zone + '\')">×</button>' +
       thumbHtml +
       '<div class="pq-file-name" title="' + f.name + '">' + f.name + '</div>' +
       '<div class="pq-file-size">' + (f.size/1024).toFixed(0) + 'KB</div>' +
@@ -1018,25 +1018,25 @@
     var msg = zone === 'public' ? document.getElementById('pq-public-msg') : document.getElementById('pq-vault-msg');
     var text;
     if (zone === 'public') {
-      text = 'PUBLIC DESK COMMANDS:
-• DROP FILE - Upload to shared desk
-• LIST FILES - View desk contents
-• DELETE [name] - Remove a file
-• PREVIEW [name] - View image/video
-• CLEAR DESK - Destroy everything
-• SECURE - Go to classified vault
-• HELP - Show this message';
+      text = 'PUBLIC DESK COMMANDS:\n' +
+        '• DROP FILE - Upload to shared desk\n' +
+        '• LIST FILES - View desk contents\n' +
+        '• DELETE [name] - Remove a file\n' +
+        '• PREVIEW [name] - View image/video\n' +
+        '• CLEAR DESK - Destroy everything\n' +
+        '• SECURE - Go to classified vault\n' +
+        '• HELP - Show this message';
     } else {
-      text = 'CLASSIFIED VAULT COMMANDS:
-• DROP FILE - Upload to private locker
-• LIST FILES - View locker contents
-• DELETE [name] - Remove a file
-• PREVIEW [name] - View image/video
-• NUKE VAULT - Destroy everything
-• EMAIL BACKUP - Send to email
-• LOGOUT - Return to PIN screen
-• PUBLIC - Go to public desk
-• HELP - Show this message';
+      text = 'CLASSIFIED VAULT COMMANDS:\n' +
+        '• DROP FILE - Upload to private locker\n' +
+        '• LIST FILES - View locker contents\n' +
+        '• DELETE [name] - Remove a file\n' +
+        '• PREVIEW [name] - View image/video\n' +
+        '• NUKE VAULT - Destroy everything\n' +
+        '• EMAIL BACKUP - Send to email\n' +
+        '• LOGOUT - Return to PIN screen\n' +
+        '• PUBLIC - Go to public desk\n' +
+        '• HELP - Show this message';
     }
     pqType(msg, text, 12, 'white');
     pqBeep(600, 50);
