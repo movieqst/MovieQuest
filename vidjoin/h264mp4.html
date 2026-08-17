@@ -84,6 +84,17 @@ header p {
   border-radius: 4px;
   font: 13px/1.4 ui-monospace, monospace;
 }
+.section pre {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 10px 0 14px;
+  overflow-x: auto;
+  font: 12.5px/1.6 ui-monospace, monospace;
+  color: var(--cyan);
+}
+.section pre code { background: none; padding: 0; font-size: inherit; }
 .section .highlight {
   background: rgba(34, 228, 255, 0.08);
   border-left: 3px solid var(--cyan);
@@ -240,6 +251,16 @@ tr:last-child td { border-bottom: none; }
 
   <h3>⚡ faststart — The Streaming Flag</h3>
   <p>This moves the index (the "moov atom") from the end of the file to the front. Without it, a browser must download the entire file before showing frame one. With it, playback starts immediately. For a website, this is the difference between working and appearing broken.</p>
+
+  <h3>🔧 The Exact Command Behind All Four</h3>
+  <p>These four properties are not abstractions — they are literally the flags the converter hands to ffmpeg, running in your browser, on your machine:</p>
+  <pre><code>ffmpeg -i input \
+  -c:v libx264 -profile:v high -pix_fmt yuv420p \
+  -crf 18 -preset medium \
+  -c:a aac -b:a 192k -ar 48000 \
+  -movflags +faststart \
+  output.mp4</code></pre>
+  <p><code>-crf</code> is the quality dial, and it runs backwards from what you would expect: <strong>lower means better</strong>. 16 is visually lossless for practical purposes, 18 is the default and near-transparent, and 20 trades a little detail for a noticeably smaller file. Grainy sources such as VHS captures inflate at any CRF setting, because film grain is random and random data does not compress.</p>
 </div>
 
 <div class="section">
@@ -260,6 +281,9 @@ tr:last-child td { border-bottom: none; }
 
   <h3>Generation Loss — The Big One</h3>
   <p>H.264 is <strong>lossy → lossy</strong>. It decodes your video to raw pixels and re-compresses from scratch, throwing away detail permanently. Converting an already-H.264 MP4 through another encoding pass makes it strictly worse with zero benefit. Same for the audio: re-encoding even if the source was already fine AAC.</p>
+  <div class="highlight">
+    <strong>The practical rule:</strong> before converting, press <strong>Info</strong> on the file in the converter. If it already reports H.264 video with AAC audio inside an MP4, don't convert it — you would wait through the encode only to get a slightly worse file. Convert when the codec is something else.
+  </div>
 
   <h3>Old and Inefficient</h3>
   <p>H.264 is from 2003. At equal quality:</p>
@@ -362,11 +386,12 @@ tr:last-child td { border-bottom: none; }
     <p style="margin-top:8px;">For editing, use <strong>ProRes</strong> or <strong>DNxHR</strong>. For archival, consider <strong>H.265</strong> or <strong>MKV</strong> with full metadata. For web delivery, <strong>H.264 MP4</strong> with <code>+faststart</code>, yuv420p, and AAC audio remains the gold standard. Nothing else has that reach.</p>
   </div>
   <div class="note">
-    Inspired by <a href="https://pdf.bluejetty.ca/HOW-PDFS-WORK.html" target="_blank">How PDFs Work</a> · Built for the <a href="index.html">DZ Video Stitcher</a>
+    Inspired by <a href="https://pdf.bluejetty.ca/HOW-PDFS-WORK.html" target="_blank">How PDFs Work</a> · Built for the <a href="index.html">DZ Video Stitcher</a> and the <a href="cv.html">DZ Video-Converter</a>
   </div>
 </div>
 
 <a href="index.html" class="back-link">← Back to Video Stitcher</a>
+<a href="cv.html" class="back-link">← Back to Video-Converter</a>
 
 </main>
 </body>
