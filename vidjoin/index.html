@@ -37,6 +37,16 @@
       display: flex; justify-content: center; align-items: center;
     }
     header img.site-logo { height: 72px; width: auto; display: block; }
+    header .logo-link {
+      position: absolute; left: 24px; top: 50%; transform: translateY(-50%);
+      display: flex; align-items: center; transition: 0.3s;
+    }
+    header .logo-link img {
+      height: 50px; width: auto; opacity: 0.7; transition: 0.3s;
+    }
+    header .logo-link:hover img {
+      opacity: 1; filter: drop-shadow(0 0 12px rgba(0,200,255,0.6));
+    }
     header .info-link {
       position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
       color: var(--blue); text-decoration: none; white-space: nowrap;
@@ -47,6 +57,7 @@
     header .info-link:hover { border-color: var(--blue); background: rgba(0,200,255,0.08); }
     @media (max-width: 720px) {
       header { flex-direction: column; gap: 12px; }
+      header .logo-link { position: static; transform: none; }
       header .info-link { position: static; transform: none; }
       header img.site-logo { max-width: 100%; }
     }
@@ -302,6 +313,7 @@
 
 <header>
   <div id="ffmpegBar"></div>
+  <a href="cv.html" class="logo-link" title="DZ Video-Converter"><img src="DZ-Video-Converter.png" alt="DZ Video-Converter"></a>
   <img class="site-logo" src="DZ_logo.png" alt="DZ Video Stitcher">
   <a class="info-link" href="h264mp4.html">Why MP4?</a>
 </header>
