@@ -19,30 +19,28 @@
 <section class="log-wrap"><div class="log-label">Progress log</div><div id="log" class="log" role="log" aria-live="polite">Ready. Add one or more video files to begin.</div></section>
 <div class="hint">H.264 · High Profile · yuv420p · AAC 192k · 48 kHz · fast start</div>
 </main>
-<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
-<script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
-<script>
-'use strict';
-const {FFmpeg}=FFmpegWASM;
-const {fetchFile,toBlobURL}=FFmpegUtil;
+<script type="module">
+import {FFmpeg} from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
+import {fetchFile} from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
 const $=id=>document.getElementById(id);
 const drop=$('drop'), input=$('fileInput'), list=$('fileList'), logBox=$('log'), convert=$('convertBtn'), clear=$('clearBtn'), crf=$('crf');
 const state=[]; let engine=null, loading=null, busy=false;
-const CDN={
-  core:'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js',
-  wasm:'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.wasm',
-  classWorker:'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js'
-};
+/* @ffmpeg/ffmpeg always spawns its worker with {type:'module'}, so the core it
+   imports must be the ESM build — the UMD build has no default export and the
+   load fails with "failed to import ffmpeg-core.js". */
+const PKG='https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm';
+const CORE='https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
+async function blobURL(url,type){const res=await fetch(url);if(!res.ok)throw new Error(url.split('/').pop()+' failed to download (HTTP '+res.status+')');return URL.createObjectURL(new Blob([await res.arrayBuffer()],{type}))}
 function log(message,kind=''){const line=document.createElement('div');if(kind)line.className=kind;line.textContent=message;logBox.append(line);logBox.scrollTop=logBox.scrollHeight}
 function ext(name){const m=name.match(/\.[^.]+$/);return m?m[0]:'.mp4'}
 function stem(name){return name.replace(/\.[^.]+$/,'')}
 function size(n){return n<1048576?(n/1024).toFixed(0)+' KB':(n/1048576).toFixed(1)+' MB'}
 function render(){list.replaceChildren();state.forEach((item,i)=>{const row=document.createElement('div');row.className='file-row';row.innerHTML='<div><div class="name"></div><div class="meta"></div><div class="bar"><i></i></div></div><div class="status"></div>';row.querySelector('.name').textContent=item.file.name;row.querySelector('.meta').textContent=size(item.file.size);row.querySelector('.status').textContent=item.status||'Pending';row.querySelector('i').style.width=(item.progress||0)+'%';row.dataset.index=i;list.append(row)});convert.disabled=!state.length||busy;clear.disabled=!state.length||busy}
 function add(files){for(const file of files){if(file.type.startsWith('video/')||/\.(mp4|mov|mkv|avi|webm|wmv|flv|m4v|mpeg|mpg)$/i.test(file.name))state.push({file,status:'Pending',progress:0})}render()}
-async function loadEngine(){if(engine?.loaded)return;if(loading)return loading;loading=(async()=>{log('Loading ffmpeg.wasm core…');engine=new FFmpeg();engine.on('log',({message})=>log(message));engine.on('progress',({progress})=>{if(window.currentIndex==null)return;state[window.currentIndex].progress=Math.max(0,Math.min(100,Math.round(progress*100)));render()});const [coreURL,wasmURL,classWorkerURL]=await Promise.all([toBlobURL(CDN.core,'text/javascript'),toBlobURL(CDN.wasm,'application/wasm'),toBlobURL(CDN.classWorker,'text/javascript')]);await engine.load({coreURL,wasmURL,classWorkerURL});log('ffmpeg.wasm ready.','ok')})().catch(e=>{engine=null;log('Load error: '+(e.message||e),'err');throw e}).finally(()=>{loading=null});return loading}
+async function loadEngine(){if(engine?.loaded)return;if(loading)return loading;loading=(async()=>{log('Loading ffmpeg.wasm core…');engine=new FFmpeg();engine.on('log',({message})=>{if(!message.includes('Aborted()'))log(message)});engine.on('progress',({progress})=>{if(window.currentIndex==null)return;state[window.currentIndex].progress=Math.max(0,Math.min(100,Math.round(progress*100)));render()});/* The Worker constructor rejects a cross-origin URL, so point it at a same-origin
+   blob that re-imports worker.js from the CDN — module workers may import cross-origin. */
+const classWorkerURL=URL.createObjectURL(new Blob(["import '"+PKG+"/worker.js';"],{type:'text/javascript'}));const [coreURL,wasmURL]=await Promise.all([blobURL(CORE+'/ffmpeg-core.js','text/javascript'),blobURL(CORE+'/ffmpeg-core.wasm','application/wasm')]);await engine.load({coreURL,wasmURL,classWorkerURL});URL.revokeObjectURL(classWorkerURL);log('ffmpeg.wasm ready.','ok')})().catch(e=>{engine=null;log('Load error: '+(e.message||e),'err');throw e}).finally(()=>{loading=null});return loading}
 async function convertAll(){if(busy||!state.length)return;busy=true;render();try{await loadEngine();for(let i=0;i<state.length;i++){window.currentIndex=i;const item=state[i],file=item.file;item.status='Converting…';item.progress=0;render();log('\n— Converting '+file.name+' —');const inName='input_'+i+ext(file.name),outName='normalized_'+i+'.mp4';try{await engine.writeFile(inName,await fetchFile(file));await engine.exec(['-i',inName,'-c:v','libx264','-profile:v','high','-pix_fmt','yuv420p','-crf',crf.value,'-preset','medium','-c:a','aac','-b:a','192k','-ar','48000','-movflags','+faststart',outName]);const data=await engine.readFile(outName);const url=URL.createObjectURL(new Blob([data],{type:'video/mp4'}));item.status='Download ✅';item.url=url;item.progress=100;await engine.deleteFile(inName);await engine.deleteFile(outName);render();const status=list.querySelector(`[data-index="${i}"] .status`);status.innerHTML='';const a=document.createElement('a');a.href=url;a.download=stem(file.name)+'_normalized.mp4';a.textContent='Download ✅';status.append(a);status.className='status ok';log('Finished '+file.name,'ok')}catch(e){item.status='Error ❌';item.error=e.message||String(e);render();const status=list.querySelector(`[data-index="${i}"] .status`);status.className='status err';log('Error converting '+file.name+': '+item.error,'err')}}log('\nAll conversions complete.','ok')}catch(e){}finally{window.currentIndex=null;busy=false;render()}}
 drop.addEventListener('click',()=>input.click());drop.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')input.click()});['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag')}));drop.addEventListener('drop',e=>add(e.dataTransfer.files));input.addEventListener('change',e=>{add(e.target.files);input.value='' });clear.addEventListener('click',()=>{state.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.length=0;render();logBox.textContent='Ready. Add one or more video files to begin.'});convert.addEventListener('click',convertAll);
-</script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5"}' crossorigin="anonymous"></script>
-</body>
+</script></body>
 </html>
