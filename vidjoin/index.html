@@ -312,8 +312,6 @@
           Clear
         </button>
         <select id="previewQuality" class="quality-select">
-          <option value="triple">💥 Triple Turbo (120p)</option>
-          <option value="double">⚡⚡⚡ Double Turbo (160p)</option>
           <option value="turbo">⚡⚡ Turbo (240p)</option>
           <option value="quick" selected>⚡ Quick Preview (480p)</option>
         </select>
@@ -372,10 +370,8 @@
   // ── Quality tiers ──────────────────────────────────────────────────────
   // Low-res preview tiers (fast, for checking cuts/timing)
   const PREVIEW_MODES = {
-    triple: { label: '💥 Triple Turbo', W: 120,  H: 68,  fps: 6,  crf: 51, audioBr: '24k',  mono: true  },
-    double: { label: '⚡⚡⚡ Double Turbo', W: 160,  H: 90,  fps: 8,  crf: 51, audioBr: '32k',  mono: true  },
-    turbo:  { label: '⚡⚡ Turbo',         W: 240,  H: 135, fps: 24, crf: 40, audioBr: '64k',  mono: false },
-    quick:  { label: '⚡ Quick Preview',  W: 480,  H: 270, fps: 24, crf: 32, audioBr: '96k',  mono: false },
+    turbo: { label: '⚡⚡ Turbo',        W: 240, H: 136, fps: 24, crf: 40, audioBr: '64k', mono: false },
+    quick: { label: '⚡ Quick Preview', W: 480, H: 270, fps: 24, crf: 32, audioBr: '96k', mono: false },
   };
   // High-res download tiers (full quality, download-only). minH = min input height to offer.
   const DOWNLOAD_MODES = {
