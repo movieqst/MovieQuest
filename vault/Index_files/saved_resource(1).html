@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://1a00d60cf39283c080000a2be2de51526.kimicanvas.ai/ -->
+<html lang="zh-CN" style="color-scheme: light;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- CSP：frame-ancestors / X-Frame-Options 由 CDN 响应头补充，meta 不支持。 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;unsafe-inline&#39; https://esm.sh; style-src &#39;unsafe-inline&#39;; font-src https://assets.kimi.com data:; img-src data: blob: https:; media-src data: blob: https:; connect-src https://esm.sh; form-action &#39;none&#39;; frame-src &#39;none&#39;; object-src &#39;none&#39;; base-uri &#39;none&#39;; worker-src &#39;none&#39;;">
+    <title>Kimi Widget Sandbox</title>
+    <style>
+      :root{color-scheme:light dark;--color-bg: #ffffff;--color-border: #e5e5e5;--color-text-secondary: #737373;--font-sans: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;--font-mono: "SF Mono", Monaco, "Fira Code", "Courier New", monospace;--seo-chat-Colors-KMBlue: #1783ff;--seo-chat-Colors-KMBlue-hover: rgba(22, 127, 247, 1);--seo-chat-Colors-Red: #ff3849;--seo-chat-Colors-Green: #16c456;--seo-chat-Colors-Yellow: #ffd230;--seo-chat-Colors-Orange: #ff9500;--seo-chat-Colors-Purple: #985ffb;--seo-chat-Chart-Green: #7eb233;--seo-chat-Chart-Purple: #a44185;--seo-chat-Chart-Neutral: #b2b2b2;--seo-chat-Bg-Primary: #ffffff;--seo-chat-Bg-Primary-hover: rgba(247, 247, 247, 1);--seo-chat-Bg-Secondary: #f5f5f5;--seo-chat-BgGp-Secondary: #ffffff;--seo-chat-BgGp-Secondary-hover: rgba(247, 247, 247, 1);--seo-chat-Labels-Primary: rgba(0, 0, 0, .9);--seo-chat-Labels-Primary-hover: rgba(37, 37, 37, 1);--seo-chat-Labels-Primary-active: rgba(0, 0, 0, .905);--seo-chat-Labels-Secondary: rgba(0, 0, 0, .6);--seo-chat-Labels-Tertiary: rgba(0, 0, 0, .45);--seo-chat-Labels-Quaternary: rgba(0, 0, 0, .27);--seo-chat-Fills-F1: rgba(0, 0, 0, .03);--seo-chat-Fills-F1-hover: rgba(0, 0, 0, .06);--seo-chat-Fills-F1-active: rgba(0, 0, 0, .079);--seo-chat-Fills-F2: rgba(0, 0, 0, .05);--seo-chat-Fills-F2-hover: rgba(0, 0, 0, .079);--seo-chat-Fills-F2-active: rgba(0, 0, 0, .098);--seo-chat-Fills-F3: rgba(0, 0, 0, .15);--seo-chat-Fills-F4: rgba(0, 0, 0, .25);--seo-chat-MaskBg-Icon: rgba(0, 0, 0, .3);--seo-chat-MaskBg-Icon-hover: rgba(0, 0, 0, .5);--seo-chat-Separators-S1: rgba(0, 0, 0, .13);--seo-chat-Separators-S1-hover: rgba(0, 0, 0, .156);--seo-chat-Separators-S1-active: rgba(0, 0, 0, .173);--seo-chat-Others-BubbleGray_PC: #f5f5f5;--seo-chat-Others-LightRedBg: rgba(255, 77, 77, .1);--seo-chat-Others-LightGreenBg: rgba(22, 196, 86, .1);--seo-chat-Others-LightOrangeBg: rgba(255, 149, 0, .1);--seo-chat-Others-LightYellowBg: rgba(255, 200, 0, .2);--seo-chat-Others-KMBlue10: rgba(23, 131, 255, .1);--seo-chat-Always-White: #ffffff;--seo-chat-ui-B1-font-size: 15px;--seo-chat-ui-B1-line-height: 22px;--seo-chat-markdown-H1-font-size: 20px;--seo-chat-markdown-H1-line-height: 32px;--seo-chat-markdown-H2-font-size: 18px;--seo-chat-markdown-H2-line-height: 28px;--seo-chat-markdown-B1-font-size: 16px;--seo-chat-markdown-B1-line-height: 26px;--seo-chat-markdown-B3-font-size: 14px;--seo-chat-markdown-B3-line-height: 22px;--seo-chat-markdown-code-font-size: 14px;--seo-chat-markdown-code-line-height: 22px;--Colors-KMBlue: var(--seo-chat-Colors-KMBlue);--Colors-KMBlue-hover: var(--seo-chat-Colors-KMBlue-hover);--Colors-KMBlue-active: var(--seo-chat-Colors-KMBlue-hover);--Bg-Primary: var(--seo-chat-Bg-Primary);--Bg-Secondary: var(--seo-chat-Bg-Secondary);--BgGp-Secondary: var(--seo-chat-BgGp-Secondary);--Labels-Primary: var(--seo-chat-Labels-Primary);--Labels-Secondary: var(--seo-chat-Labels-Secondary);--Labels-Tertiary: var(--seo-chat-Labels-Tertiary);--Labels-Quaternary: var(--seo-chat-Labels-Quaternary);--Fills-F1: var(--seo-chat-Fills-F1);--Fills-F2: var(--seo-chat-Fills-F2);--Fills-F3: var(--seo-chat-Fills-F3);--Separators-S1: var(--seo-chat-Separators-S1);--markdown-H1_Content-font-size: var(--seo-chat-markdown-H1-font-size);--markdown-H1_Content-line-height: var(--seo-chat-markdown-H1-line-height);--markdown-H2_Content-font-size: var(--seo-chat-markdown-H2-font-size);--markdown-H2_Content-line-height: var(--seo-chat-markdown-H2-line-height);--markdown-B1_Content-font-size: var(--seo-chat-markdown-B1-font-size);--markdown-B1_Content-line-height: var(--seo-chat-markdown-B1-line-height);--markdown-B1_Content_Emphasized-font-size: var(--seo-chat-markdown-B1-font-size);--markdown-B1_Content_Emphasized-line-height: var(--seo-chat-markdown-B1-line-height);--markdown-B3_Content-font-size: var(--seo-chat-markdown-B3-font-size);--markdown-B3_Content-line-height: var(--seo-chat-markdown-B3-line-height);--markdown-Codeblocks-font-size: var(--seo-chat-markdown-code-font-size);--markdown-Codeblocks-line-height: var(--seo-chat-markdown-code-line-height);--t-micro: 60ms;--t-fast: .12s;--t-normal: .2s;--t-slow: .3s;--ease-out: cubic-bezier(0, 0, .2, 1);--ease-in: cubic-bezier(.4, 0, 1, 1);--ease-standard: cubic-bezier(.4, 0, .2, 1);--ease-motion-out: cubic-bezier(.23, 1, .32, 1);--ease-motion-standard: cubic-bezier(.4, 0, .2, 1);--ease-motion-panel: cubic-bezier(.32, .72, 0, 1);--motion-popover-duration: .14s;--motion-popover-offset: 4px;--motion-dialog-duration: .18s;--motion-dialog-exit-duration: 135ms;--motion-view-duration: .18s;--motion-panel-duration: .24s;--motion-list-duration: .18s;--app-scrollbar-size: 8px;--app-scrollbar-thumb: var(--seo-chat-Separators-S1);--app-scrollbar-thumb-hover: var(--seo-chat-Labels-Tertiary);--kimi-color-text-primary: var(--seo-chat-Labels-Primary);--kimi-color-text-secondary: var(--seo-chat-Labels-Secondary);--kimi-color-text-tertiary: var(--seo-chat-Labels-Tertiary);--kimi-color-text-quaternary: var(--seo-chat-Labels-Quaternary);--kimi-color-surface: var(--seo-chat-Bg-Primary);--kimi-color-surface-muted: var(--seo-chat-Fills-F1);--kimi-color-surface-raised: var(--seo-chat-BgGp-Secondary);--kimi-color-surface-strong: var(--seo-chat-Fills-F2);--kimi-color-border: var(--seo-chat-Separators-S1);--kimi-color-accent: var(--seo-chat-Colors-KMBlue);--kimi-color-danger: var(--seo-chat-Colors-Red);--kimi-color-positive: var(--seo-chat-Colors-Green);--kimi-color-warning: var(--seo-chat-Colors-Orange);--kimi-chart-1: var(--seo-chat-Colors-KMBlue);--kimi-chart-2: var(--seo-chat-Colors-Red);--kimi-chart-3: var(--seo-chat-Chart-Green);--kimi-chart-4: var(--seo-chat-Chart-Purple);--kimi-chart-5: var(--seo-chat-Chart-Neutral);--kimi-font-sans: var(--font-sans);--kimi-font-mono: var(--font-mono);--color-text-primary: var(--seo-chat-Labels-Primary);--color-text-secondary: var(--seo-chat-Labels-Secondary);--color-background-primary: var(--seo-chat-Bg-Primary);--color-background-secondary: var(--seo-chat-Fills-F1);--color-border-tertiary: var(--seo-chat-Separators-S1);--color-accent: var(--seo-chat-Colors-KMBlue);--color-danger: var(--seo-chat-Colors-Red)}:root.dark{color-scheme:dark;--color-bg: #121212;--color-border: #404040;--color-text-secondary: #a3a3a3;--seo-chat-Colors-KMBlue: #1a88ff;--seo-chat-Colors-KMBlue-hover: rgba(37, 142, 255, 1);--seo-chat-Colors-Red: #ff4756;--seo-chat-Colors-Green: #32ff7d;--seo-chat-Colors-Yellow: #ffd230;--seo-chat-Colors-Orange: #ff9f0a;--seo-chat-Colors-Purple: #a16bff;--seo-chat-Chart-Green: #dcdcaa;--seo-chat-Chart-Purple: #ce9178;--seo-chat-Chart-Neutral: #424242;--seo-chat-Bg-Primary: #121212;--seo-chat-Bg-Primary-hover: rgba(30, 30, 30, 1);--seo-chat-Bg-Secondary: #1f1f1f;--seo-chat-BgGp-Secondary: #1f1f1f;--seo-chat-BgGp-Secondary-hover: rgba(42, 42, 42, 1);--seo-chat-Labels-Primary: rgba(255, 255, 255, .84);--seo-chat-Labels-Primary-hover: rgba(255, 255, 255, .848);--seo-chat-Labels-Primary-active: rgba(255, 255, 255, .856);--seo-chat-Labels-Secondary: rgba(255, 255, 255, .56);--seo-chat-Labels-Tertiary: rgba(255, 255, 255, .42);--seo-chat-Labels-Quaternary: rgba(255, 255, 255, .28);--seo-chat-Fills-F1: rgba(255, 255, 255, .05);--seo-chat-Fills-F1-hover: rgba(255, 255, 255, .08);--seo-chat-Fills-F1-active: rgba(255, 255, 255, .145);--seo-chat-Fills-F2: rgba(255, 255, 255, .1);--seo-chat-Fills-F2-hover: rgba(255, 255, 255, .145);--seo-chat-Fills-F2-active: rgba(255, 255, 255, .19);--seo-chat-Fills-F3: rgba(255, 255, 255, .18);--seo-chat-Fills-F4: rgba(255, 255, 255, .25);--seo-chat-MaskBg-Icon: rgba(0, 0, 0, .45);--seo-chat-MaskBg-Icon-hover: rgba(0, 0, 0, .65);--seo-chat-Separators-S1: rgba(255, 255, 255, .12);--seo-chat-Separators-S1-hover: rgba(255, 255, 255, .164);--seo-chat-Separators-S1-active: rgba(255, 255, 255, .208);--seo-chat-Others-BubbleGray_PC: #292929;--seo-chat-Others-LightRedBg: rgba(255, 82, 82, .1);--seo-chat-Others-LightGreenBg: rgba(22, 196, 86, .1);--seo-chat-Others-LightOrangeBg: rgba(255, 159, 10, .1);--seo-chat-Others-LightYellowBg: rgba(255, 210, 48, .2);--seo-chat-Others-KMBlue10: rgba(26, 136, 255, .1)}*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;background:transparent}body{margin:0;color:var(--kimi-color-text-primary, var(--seo-chat-Labels-Primary));font-family:var( --kimi-font-sans, var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif) );font-size:16px;line-height:1.5;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}input,select,textarea,button{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed}a{color:var(--kimi-color-accent, var(--color-accent, currentColor))}html,body{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0}::-webkit-scrollbar{width:var(--app-scrollbar-size, 8px);height:var(--app-scrollbar-size, 8px)}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{border-radius:4px;background:var(--app-scrollbar-thumb, var(--seo-chat-Separators-S1))}::-webkit-scrollbar-thumb:hover{background:var(--app-scrollbar-thumb-hover, var(--seo-chat-Labels-Tertiary))}#widget-root{width:100%;position:relative;overflow:hidden}#widget-root>svg{display:block;margin-inline:auto;max-width:100%;height:auto;overflow:visible}#widget-root.streaming :where(svg,circle,rect,path,polygon,polyline,line,ellipse,g,text):not([transform]):not([opacity]){transition:fill .4s ease-out,stroke .4s ease-out,opacity .4s ease-out;animation:svgFadeInScale .5s ease-out;transform-origin:center}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+    </style>
+  </head>
+  <body>
+    <div id="widget-root" class="">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+  
+  .pq-container {
+    font-family: 'VT323', monospace;
+    background: #000;
+    color: #0ff;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    border: 4px solid #0ff;
+    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+    image-rendering: pixelated;
+  }
+  
+  .pq-status {
+    background: #000080;
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 18px;
+    border-bottom: 2px solid #0ff;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .pq-scene {
+    background: #000510;
+    min-height: 320px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pq-scene::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,255,255,0.03) 2px,
+      rgba(0,255,255,0.03) 4px
+    );
+    pointer-events: none;
+  }
+  
+  .pq-parser {
+    background: #000;
+    border-top: 4px solid #0ff;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .pq-parser-label {
+    color: #ff0;
+    font-size: 20px;
+    white-space: nowrap;
+  }
+  
+  .pq-input {
+    background: #000;
+    color: #0ff;
+    border: 2px solid #0ff;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    padding: 4px 8px;
+    flex: 1;
+    outline: none;
+  }
+  
+  .pq-input::placeholder {
+    color: #008888;
+  }
+  
+  .pq-btn {
+    background: #000080;
+    color: #0ff;
+    border: 2px solid #0ff;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    padding: 4px 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .pq-btn:hover {
+    background: #0ff;
+    color: #000;
+  }
+  
+  .pq-btn.danger {
+    border-color: #f00;
+    color: #f00;
+  }
+  .pq-btn.danger:hover {
+    background: #f00;
+    color: #fff;
+  }
+  
+  .pq-text {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #0ff;
+    text-shadow: 0 0 4px rgba(0,255,255,0.5);
+  }
+  
+  .pq-text.yellow { color: #ff0; }
+  .pq-text.red { color: #f00; }
+  .pq-text.green { color: #0f0; }
+  .pq-text.white { color: #fff; }
+  .pq-text.magenta { color: #f0f; }
+  
+  .pq-blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  
+  .pq-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 64px);
+    gap: 8px;
+    justify-content: center;
+    margin: 16px 0;
+  }
+  
+  .pq-key {
+    width: 64px;
+    height: 48px;
+    background: #000080;
+    border: 2px solid #0ff;
+    color: #0ff;
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pq-key:hover {
+    background: #0ff;
+    color: #000;
+  }
+  
+  .pq-key.red {
+    border-color: #f00;
+    color: #f00;
+  }
+  .pq-key.red:hover {
+    background: #f00;
+    color: #fff;
+  }
+  
+  .pq-pin-display {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  
+  .pq-pin-box {
+    width: 48px;
+    height: 56px;
+    background: #000;
+    border: 3px solid #0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #0ff;
+  }
+  
+  .pq-dropzone {
+    border: 3px dashed #0ff;
+    background: rgba(0,255,255,0.05);
+    padding: 24px;
+    text-align: center;
+    margin: 12px 0;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .pq-dropzone.dragover {
+    background: rgba(0,255,255,0.15);
+    border-color: #ff0;
+  }
+  
+  .pq-file-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 2px solid #008888;
+    margin: 12px 0;
+    padding: 8px;
+  }
+  
+  .pq-file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    border-bottom: 1px solid #004444;
+    font-size: 18px;
+  }
+  
+  .pq-file-item:hover {
+    background: rgba(0,255,255,0.1);
+  }
+  
+  .pq-warning-box {
+    border: 2px solid #f00;
+    background: rgba(255,0,0,0.1);
+    padding: 12px;
+    margin: 12px 0;
+    font-size: 16px;
+  }
+  
+  .pq-scene-title {
+    text-align: center;
+    font-size: 24px;
+    color: #ff0;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .pq-hidden { display: none !important; }
+</style>
+
+<div class="pq-container">
+  <!-- Status Bar -->
+  <div class="pq-status">
+    <span>SCORE: <span id="pq-score">10</span></span>
+    <span>LYTTON PD EVIDENCE VAULT v1.0</span>
+    <span>USER: <span id="pq-user">OFFICER 2256</span></span>
+  </div>
+  
+  <!-- Scene Area -->
+  <div class="pq-scene" id="pq-scene">
+    
+    <!-- PIN SCREEN -->
+    <div id="screen-pin" class="pq-hidden">
+      <div class="pq-scene-title">🔒 Evidence Vault Access</div>
+      <div class="pq-text" style="text-align:center; margin-bottom:8px;">ENTER 4-DIGIT ACCESS CODE</div>
+      <div class="pq-pin-display" id="pq-pin-display">
+        <div class="pq-pin-box" style="border-color: rgb(0, 255, 0);">*</div>
+        <div class="pq-pin-box" style="border-color: rgb(0, 255, 0);">*</div>
+        <div class="pq-pin-box" style="border-color: rgb(0, 255, 0);">*</div>
+        <div class="pq-pin-box" style="border-color: rgb(0, 255, 0);">*</div>
+      </div>
+      <div class="pq-keypad">
+        <div class="pq-key" onclick="pqEnterDigit(1)">1</div>
+        <div class="pq-key" onclick="pqEnterDigit(2)">2</div>
+        <div class="pq-key" onclick="pqEnterDigit(3)">3</div>
+        <div class="pq-key" onclick="pqEnterDigit(4)">4</div>
+        <div class="pq-key" onclick="pqEnterDigit(5)">5</div>
+        <div class="pq-key" onclick="pqEnterDigit(6)">6</div>
+        <div class="pq-key" onclick="pqEnterDigit(7)">7</div>
+        <div class="pq-key" onclick="pqEnterDigit(8)">8</div>
+        <div class="pq-key" onclick="pqEnterDigit(9)">9</div>
+        <div class="pq-key red" onclick="pqClearPin()">CLR</div>
+        <div class="pq-key" onclick="pqEnterDigit(0)">0</div>
+        <div class="pq-key" onclick="pqCheckPin()" style="border-color:#0f0; color:#0f0;">GO</div>
+      </div>
+      <div class="pq-text red" id="pq-pin-msg" style="text-align:center; min-height:24px;">UNKNOWN COMMAND. USE KEYPAD OR TYPE: GO</div>
+      
+      <div class="pq-warning-box">
+        <div class="pq-text red" style="text-align:center; font-size:18px;">⚠️ SECURITY NOTICE ⚠️</div>
+        <div class="pq-text" style="font-size:15px; margin-top:6px;">
+          This vault provides ZERO actual security. All files are stored in your browser's local cache (IndexedDB). Anyone with access to this computer can view, copy, or delete your files by pressing F12. This is privacy theater — a toy lock on a glass door. Use "EMAIL BACKUP" for anything you actually care about.
+        </div>
+      </div>
+    </div>
+    
+    <!-- MAIN VAULT SCREEN -->
+    <div id="screen-vault" class="">
+      <div class="pq-scene-title">📁 EVIDENCE LOCKER</div>
+      <div class="pq-text green" id="pq-vault-welcome" style="margin-bottom:8px;">WELCOME, OFFICER. VAULT 2256 UNLOCKED.</div>
+      
+      <div class="pq-dropzone" id="pq-dropzone" ondragover="pqDragOver(event)" ondragleave="pqDragLeave(event)" ondrop="pqDrop(event)" onclick="document.getElementById(&#39;pq-file-input&#39;).click()">
+        <div class="pq-text yellow" style="font-size:22px;">📦 DROP FILES HERE</div>
+        <div class="pq-text" style="font-size:16px; margin-top:4px;">or click to browse • Images, Videos, Documents, Anything</div>
+        <input type="file" id="pq-file-input" multiple="" style="display:none" onchange="pqFileSelect(event)">
+      </div>
+      
+      <div class="pq-text yellow" style="margin-top:12px;">📋 STORED EVIDENCE:</div>
+      <div class="pq-file-list" id="pq-file-list">
+      <div class="pq-file-item">
+        <span class="pq-text">📄 closer 7.mp4 (26463.2 KB)</span>
+        <span>
+          <button class="pq-btn" style="padding:2px 8px; font-size:14px;" onclick="pqDownloadFile(0)">DL</button>
+          <button class="pq-btn danger" style="padding:2px 8px; font-size:14px;" onclick="pqDeleteFile(0)">X</button>
+        </span>
+      </div>
+    </div>
+      
+      <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
+        <button class="pq-btn" onclick="pqShowHelp()">HELP</button>
+        <button class="pq-btn" onclick="pqEmailBackup()">EMAIL BACKUP</button>
+        <button class="pq-btn danger" onclick="pqNukeVault()">☠️ NUKE VAULT</button>
+        <button class="pq-btn" onclick="pqLogout()" style="margin-left:auto;">LOGOUT</button>
+      </div>
+      
+      <div class="pq-text green" id="pq-vault-msg" style="margin-top:10px; min-height:22px;">ESVIINDGE N1C EF ILLOEG(GSE)D. .S.UCCESSFULLY.</div>
+    </div>
+    
+  </div>
+  
+  <!-- Parser Bar -->
+  <div class="pq-parser">
+    <span class="pq-parser-label">&gt;</span>
+    <input type="text" class="pq-input" id="pq-parser-input" placeholder="Type a command..." onkeydown="if(event.key===&#39;Enter&#39;)pqParse()">
+    <button class="pq-btn" onclick="pqParse()">ENTER</button>
+  </div>
+</div>
+
+<script>
+  // ===== STATE =====
+  let currentPin = '';
+  let activePin = null;
+  let userFiles = [];
+  let db = null;
+  
+  // ===== AUDIO (PC Speaker beeps) =====
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  function pqBeep(freq=800, duration=80, type='square') {
+    try {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq;
+      gain.gain.value = 0.1;
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      setTimeout(() => { osc.stop(); }, duration);
+    } catch(e) {}
+  }
+  function pqBeepError() { pqBeep(200, 200); setTimeout(()=>pqBeep(150, 200), 100); }
+  function pqBeepSuccess() { pqBeep(600, 100); setTimeout(()=>pqBeep(800, 100), 100); setTimeout(()=>pqBeep(1000, 150), 200); }
+  
+  // ===== TYPEWRITER TEXT =====
+  function pqType(el, text, speed=25, colorClass='') {
+    el.innerHTML = '';
+    el.className = 'pq-text ' + colorClass;
+    let i = 0;
+    function typeChar() {
+      if (i < text.length) {
+        el.innerHTML += text.charAt(i);
+        i++;
+        if (text.charAt(i-1) !== ' ') pqBeep(1200, 15, 'square');
+        setTimeout(typeChar, speed);
+      }
+    }
+    typeChar();
+  }
+  
+  // ===== INIT DB =====
+  async function pqInitDB() {
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open('LyttonVaultDB', 1);
+      req.onerror = () => reject(req.error);
+      req.onsuccess = () => { db = req.result; resolve(); };
+      req.onupgradeneeded = (e) => {
+        const d = e.target.result;
+        if (!d.objectStoreNames.contains('files')) {
+          d.createObjectStore('files');
+        }
+      };
+    });
+  }
+  
+  // ===== PIN SCREEN =====
+  function pqEnterDigit(n) {
+    pqBeep(1000, 30);
+    if (currentPin.length < 4) {
+      currentPin += n;
+      pqUpdatePinDisplay();
+      document.getElementById('pq-pin-msg').innerHTML = '';
+    }
+  }
+  
+  function pqClearPin() {
+    pqBeep(400, 50);
+    currentPin = '';
+    pqUpdatePinDisplay();
+    document.getElementById('pq-pin-msg').innerHTML = '';
+  }
+  
+  function pqUpdatePinDisplay() {
+    const boxes = document.querySelectorAll('#pq-pin-display .pq-pin-box');
+    for (let i = 0; i < 4; i++) {
+      boxes[i].textContent = currentPin[i] ? '*' : '_';
+      boxes[i].style.borderColor = currentPin[i] ? '#0f0' : '#0ff';
+    }
+  }
+  
+  async function pqCheckPin() {
+    if (currentPin.length !== 4) {
+      pqBeepError();
+      pqType(document.getElementById('pq-pin-msg'), 'ACCESS DENIED: ENTER 4 DIGITS', 30, 'red');
+      return;
+    }
+    
+    pqBeep(800, 100);
+    await pqInitDB();
+    
+    // Load or create user
+    const tx = db.transaction('files', 'readonly');
+    const store = tx.objectStore('files');
+    const req = store.get('user_' + currentPin);
+    
+    req.onsuccess = () => {
+      if (req.result) {
+        userFiles = req.result;
+      } else {
+        userFiles = [];
+      }
+      activePin = currentPin;
+      document.getElementById('pq-user').textContent = 'OFFICER ' + activePin;
+      pqBeepSuccess();
+      pqShowVault();
+    };
+    req.onerror = () => {
+      pqBeepError();
+      pqType(document.getElementById('pq-pin-msg'), 'DATABASE ERROR', 30, 'red');
+    };
+  }
+  
+  // ===== VAULT SCREEN =====
+  function pqShowVault() {
+    document.getElementById('screen-pin').classList.add('pq-hidden');
+    document.getElementById('screen-vault').classList.remove('pq-hidden');
+    pqType(document.getElementById('pq-vault-welcome'), 'WELCOME, OFFICER. VAULT ' + activePin + ' UNLOCKED.', 20, 'green');
+    pqRenderFileList();
+  }
+  
+  function pqRenderFileList() {
+    const list = document.getElementById('pq-file-list');
+    if (userFiles.length === 0) {
+      list.innerHTML = '<div class="pq-text" style="text-align:center; color:#008888;">-- LOCKER EMPTY --</div>';
+      return;
+    }
+    list.innerHTML = userFiles.map((f, idx) => `
+      <div class="pq-file-item">
+        <span class="pq-text">📄 ${f.name} (${(f.size/1024).toFixed(1)} KB)</span>
+        <span>
+          <button class="pq-btn" style="padding:2px 8px; font-size:14px;" onclick="pqDownloadFile(${idx})">DL</button>
+          <button class="pq-btn danger" style="padding:2px 8px; font-size:14px;" onclick="pqDeleteFile(${idx})">X</button>
+        </span>
+      </div>
+    `).join('');
+  }
+  
+  async function pqSaveUserFiles() {
+    const tx = db.transaction('files', 'readwrite');
+    const store = tx.objectStore('files');
+    store.put(userFiles, 'user_' + activePin);
+  }
+  
+  // ===== DRAG & DROP =====
+  function pqDragOver(e) { e.preventDefault(); document.getElementById('pq-dropzone').classList.add('dragover'); }
+  function pqDragLeave(e) { e.preventDefault(); document.getElementById('pq-dropzone').classList.remove('dragover'); }
+  
+  async function pqDrop(e) {
+    e.preventDefault();
+    document.getElementById('pq-dropzone').classList.remove('dragover');
+    const files = Array.from(e.dataTransfer.files);
+    await pqProcessFiles(files);
+  }
+  
+  async function pqFileSelect(e) {
+    const files = Array.from(e.target.files);
+    await pqProcessFiles(files);
+  }
+  
+  async function pqProcessFiles(files) {
+    const msg = document.getElementById('pq-vault-msg');
+    pqType(msg, 'PROCESSING ' + files.length + ' FILE(S)...', 20, 'yellow');
+    
+    for (const file of files) {
+      const reader = new FileReader();
+      await new Promise((resolve) => {
+        reader.onload = (e) => {
+          userFiles.push({
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            data: e.target.result,
+            date: Date.now()
+          });
+          resolve();
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+    
+    await pqSaveUserFiles();
+    pqRenderFileList();
+    pqBeepSuccess();
+    pqType(msg, 'EVIDENCE LOGGED SUCCESSFULLY.', 20, 'green');
+    document.getElementById('pq-score').textContent = userFiles.length * 10;
+  }
+  
+  function pqDownloadFile(idx) {
+    const f = userFiles[idx];
+    const a = document.createElement('a');
+    a.href = f.data;
+    a.download = f.name;
+    a.click();
+    pqBeep(800, 50);
+  }
+  
+  async function pqDeleteFile(idx) {
+    pqBeep(300, 80);
+    userFiles.splice(idx, 1);
+    await pqSaveUserFiles();
+    pqRenderFileList();
+    document.getElementById('pq-score').textContent = userFiles.length * 10;
+    pqType(document.getElementById('pq-vault-msg'), 'FILE DELETED.', 20, 'red');
+  }
+  
+  // ===== COMMANDS =====
+  function pqShowHelp() {
+    const helpText = `AVAILABLE COMMANDS:
+• DROP FILE - Upload evidence
+• LIST FILES - View locker contents  
+• DELETE [name] - Remove a file
+• DOWNLOAD [name] - Save file to disk
+• EMAIL BACKUP - Send copy to email
+• NUKE VAULT - Destroy everything
+• LOGOUT - Return to PIN screen
+• HELP - Show this message`;
+    pqType(document.getElementById('pq-vault-msg'), helpText, 15, 'white');
+    pqBeep(600, 50);
+  }
+  
+  function pqEmailBackup() {
+    pqType(document.getElementById('pq-vault-msg'), 'EMAIL BACKUP: Use your existing email-sender program. Select a file and attach it manually. (Serverless apps cannot send email directly.)', 20, 'yellow');
+    pqBeep(500, 100);
+  }
+  
+  async function pqNukeVault() {
+    pqBeep(200, 100);
+    setTimeout(()=>pqBeep(180, 100), 100);
+    setTimeout(()=>pqBeep(160, 100), 200);
+    
+    if (!confirm('☠️ DESTROY ALL EVIDENCE? THIS CANNOT BE UNDONE.')) {
+      pqType(document.getElementById('pq-vault-msg'), 'NUKE CANCELLED.', 20, 'green');
+      return;
+    }
+    
+    userFiles = [];
+    await pqSaveUserFiles();
+    pqRenderFileList();
+    document.getElementById('pq-score').textContent = '0';
+    pqType(document.getElementById('pq-vault-msg'), 'VAULT PURGED. ALL EVIDENCE DESTROYED.', 20, 'red');
+    pqBeep(150, 400);
+  }
+  
+  function pqLogout() {
+    pqBeep(400, 80);
+    activePin = null;
+    currentPin = '';
+    userFiles = [];
+    pqUpdatePinDisplay();
+    document.getElementById('pq-user').textContent = '---';
+    document.getElementById('screen-vault').classList.add('pq-hidden');
+    document.getElementById('screen-pin').classList.remove('pq-hidden');
+    document.getElementById('pq-pin-msg').innerHTML = '';
+    document.getElementById('pq-parser-input').value = '';
+  }
+  
+  // ===== TEXT PARSER =====
+  function pqParse() {
+    const input = document.getElementById('pq-parser-input');
+    const cmd = input.value.trim().toUpperCase();
+    input.value = '';
+    
+    pqBeep(900, 30);
+    
+    if (!activePin) {
+      // PIN screen parser
+      if (/^\d$/.test(cmd)) pqEnterDigit(parseInt(cmd));
+      else if (cmd === 'CLR') pqClearPin();
+      else if (cmd === 'GO' || cmd === 'ENTER') pqCheckPin();
+      else pqType(document.getElementById('pq-pin-msg'), 'UNKNOWN COMMAND. USE KEYPAD OR TYPE: GO', 20, 'red');
+      return;
+    }
+    
+    // Vault parser
+    const msg = document.getElementById('pq-vault-msg');
+    
+    if (cmd === 'HELP') pqShowHelp();
+    else if (cmd === 'LIST FILES' || cmd === 'LS') pqRenderFileList();
+    else if (cmd === 'DROP FILE' || cmd === 'UPLOAD') document.getElementById('pq-file-input').click();
+    else if (cmd === 'NUKE VAULT' || cmd === 'NUKE') pqNukeVault();
+    else if (cmd === 'EMAIL BACKUP' || cmd === 'EMAIL') pqEmailBackup();
+    else if (cmd === 'LOGOUT' || cmd === 'EXIT') pqLogout();
+    else if (cmd.startsWith('DELETE ')) {
+      const name = cmd.replace('DELETE ', '');
+      const idx = userFiles.findIndex(f => f.name.toUpperCase() === name);
+      if (idx >= 0) pqDeleteFile(idx);
+      else pqType(msg, 'FILE NOT FOUND: ' + name, 20, 'red');
+    }
+    else if (cmd.startsWith('DOWNLOAD ')) {
+      const name = cmd.replace('DOWNLOAD ', '');
+      const idx = userFiles.findIndex(f => f.name.toUpperCase() === name);
+      if (idx >= 0) pqDownloadFile(idx);
+      else pqType(msg, 'FILE NOT FOUND: ' + name, 20, 'red');
+    }
+    else pqType(msg, 'UNKNOWN COMMAND. TYPE "HELP" FOR OPTIONS.', 20, 'red');
+  }
+  
+  // Init
+  pqUpdatePinDisplay();
+</script>
+</div>
+    <script>
+      "use strict";(()=>{var j=Object.create;var x=Object.defineProperty;var Q=Object.getOwnPropertyDescriptor;var Z=Object.getOwnPropertyNames;var K=Object.getPrototypeOf,$=Object.prototype.hasOwnProperty;var V=(t,e,r)=>e in t?x(t,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[e]=r;var R=(t=>typeof require<"u"?require:typeof Proxy<"u"?new Proxy(t,{get:(e,r)=>(typeof require<"u"?require:e)[r]}):t)(function(t){if(typeof require<"u")return require.apply(this,arguments);throw Error('Dynamic require of "'+t+'" is not supported')});var Y=(t,e,r,n)=>{if(e&&typeof e=="object"||typeof e=="function")for(let o of Z(e))!$.call(t,o)&&o!==r&&x(t,o,{get:()=>e[o],enumerable:!(n=Q(e,o))||n.enumerable});return t};var O=(t,e,r)=>(r=t!=null?j(K(t)):{},Y(e||!t||!t.__esModule?x(r,"default",{value:t,enumerable:!0}):r,t));var p=(t,e,r)=>V(t,typeof e!="symbol"?e+"":e,r);var P={SANDBOX_INIT:"request/sandbox-init"},c={INITIALIZED:"ui/notifications/initialized",SIZE_CHANGED:"ui/notifications/size-changed",SCRIPT_LOADING_STARTED:"notifications/script-loading-started",SCRIPT_LOADING_FINISHED:"notifications/script-loading-finished",MESSAGE:"ui/message",OPEN_LINK:"ui/open-link",ERROR:"ui/notifications/error",LOG:"notifications/message"},u={TOOL_INPUT_PARTIAL:"notifications/tool-input-partial",TOOL_INPUT:"notifications/tool-input",TOOL_RESULT:"notifications/tool-result",HOST_CONTEXT_CHANGE:"notifications/host-context-change"};var tt=["https://www.kimi.com","https://www.kimi.ai","https://kimi.ai","https://kimi.com","https://kimi.moonshot.cn","https://*.kimi.team"];function _(t){try{let e=new URL(t),r=e.hostname,n=e.protocol.replace(":","");return r==="localhost"||r==="127.0.0.1"?!0:tt.some(o=>{let[s,i]=o.split("://");if(n!==s)return!1;if(i?.startsWith("*.")){let d=i.slice(2);return r.endsWith("."+d)}return r===i})}catch{return!1}}var et=new Set(Object.values(u)),b=t=>!!t&&typeof t=="object",rt=t=>b(t)?typeof t.id=="number"&&!("method"in t):!1,nt=t=>b(t)?typeof t.method=="string"&&et.has(t.method):!1,w=class extends Error{constructor(r,n,o){super(n);p(this,"code");p(this,"data");this.name="RpcError",this.code=r,this.data=o}},l=class l{constructor(){p(this,"hostOrigin",l.WILD_CARD_ORIGIN);p(this,"nextId",0);p(this,"pending",new Map);p(this,"notificationHandlers",new Map);p(this,"handleMessage",e=>{let r=e.data;if(!(e.source!==window.parent||!_(e.origin))){if(l.setHostOrigin(e.origin),rt(r)){let n=this.pending.get(r.id);if(!n)return;this.pending.delete(r.id),clearTimeout(n.timer),r.error?n.reject(new w(r.error.code,r.error.message,r.error.data)):n.resolve(r.result);return}if(nt(r))try{this.notificationHandlers.get(r.method)?.(r.params)}catch(n){console.warn("[transport] notification handler failed:",r.method,n);let s={type:"notification_error",fatal:!1,message:n instanceof Error?n.message:String(n??"")};this.sendNotification(c.ERROR,s)}}});p(this,"sendRequest",(e,r,n)=>new Promise((o,s)=>{let i=this.nextId++,d=setTimeout(()=>{this.pending.delete(i),s(new w(-32e3,`request timed out: ${e}`))},n);this.pending.set(i,{resolve:o,reject:s,timer:d});let g={id:i,method:e,params:r};window.parent.postMessage(g,this.hostOrigin)}));p(this,"sendNotification",(e,r)=>{let n={method:e,params:r};window.parent.postMessage(n,this.hostOrigin)});p(this,"onNotification",(e,r)=>{this.notificationHandlers.set(e,r)});window.addEventListener("message",this.handleMessage)}static getInstance(){return l.instance??(l.instance=new l),l.instance}static setHostOrigin(e){let r=l.getInstance();r.hostOrigin===l.WILD_CARD_ORIGIN&&(r.hostOrigin=e)}};p(l,"WILD_CARD_ORIGIN","*"),p(l,"instance",null);var E=l;var a=E.getInstance();var ot=t=>{a.sendNotification(c.MESSAGE,{prompt:t})};window.sendPrompt=ot;var it=t=>t instanceof Error?t.message:typeof t=="string"?t:t==null?void 0:String(t),f=(t,e,r=!1)=>{let n=it(e)??"",o={type:t,fatal:r,message:n};a.sendNotification(c.ERROR,o)},k=()=>{window.addEventListener("error",t=>{f("runtime_error",t.error??t.message)}),window.addEventListener("unhandledrejection",t=>{f("runtime_error",t.reason)})};var M=async()=>{try{let t=await a.sendRequest(P.SANDBOX_INIT,{},1e4);return a.sendNotification(c.INITIALIZED,{}),t.hostContext}catch{f("init_timeout","",!0)}};var at=t=>{let e=document.documentElement;for(let[r,n]of Object.entries(t??{}))e.style.setProperty(r,n)},ct=t=>{let e=document.documentElement;e.classList.toggle("dark",t==="dark"),e.style.colorScheme=t},C=t=>{t&&(at(t.styles.variables),ct(t.styles.colorScheme))},F=()=>{a.onNotification(u.HOST_CONTEXT_CHANGE,t=>{C(t?.hostContext)})};var pt=t=>{a.sendNotification(c.OPEN_LINK,{url:t})},G=t=>{t.addEventListener("click",e=>{let n=e.target?.closest?.("a[href]");if(!n)return;e.preventDefault();let o=n.getAttribute("href");if(!o)return;let s;try{s=new URL(o)}catch{return}s.protocol!=="http:"&&s.protocol!=="https:"||pt(s.href)})};async function lt(){let[t,e,r,n]=await Promise.all([import("https://esm.sh/htmlparser2@9.1.0"),import("https://esm.sh/domhandler@5.0.3"),import("https://esm.sh/dom-serializer@2.0.0"),import("https://esm.sh/morphdom@2.7.4")]),o="default"in n?n.default:n;return{Parser:t.Parser,DomHandler:e.DomHandler,render:r.default,morphdom:o}}function H(t={}){let{stripScripts:e=!1,widgetName:r="Widget",shouldRender:n=()=>!0,onFirstRender:o,loadDeps:s=lt}=t,i=!1,d=()=>{i||(i=!0,o?.())},g=null,y=null,I=null,S="";async function q(){if(g)return g;try{return g=await s(),g}catch(m){return console.warn(`[${r}] streaming deps load failed, falling back to innerHTML:`,m),null}}function J(m){I=new m.DomHandler,y=new m.Parser(I,{decodeEntities:!1,lowerCaseAttributeNames:!1,lowerCaseTags:!1,recognizeSelfClosing:!0}),S=""}async function W(m,h){if(!h)return;let T=await q();if(!T){m.innerHTML=h,d();return}(h.length<S.length||!y||!I)&&J(T);let L=y,A=I;if(!L||!A)return;let v=h.substring(S.length);v&&(L.write(v),S=h);let N=T.render(A.root.children,{encodeEntities:!1});if(!N||(e&&(N=N.replace(/<script[\s\S]*?<\/script>/gi,"")),!n(N)))return;let D=m.cloneNode(!1);D.innerHTML=N,T.morphdom(m,D,{childrenOnly:!0}),d()}return{renderPartial:W}}var dt=t=>t.trimStart().startsWith("<svg"),B=t=>!!t&&/<(rect|circle|ellipse|line|polyline|polygon|path|text|image|use|g|foreignObject)[\s>]/i.test(t.replace(/<style[\s\S]*?<\/style>/gi,"").replace(/<defs[\s\S]*?<\/defs>/gi,"")),U=t=>!!t&&t.replace(/<style[\s\S]*?<\/style>/gi,"").replace(/<script[\s\S]*?<\/script>/gi,"").replace(/<!--[\s\S]*?-->/g,"").trim().length>0,mt=t=>t.includes("<script")&&(U(t)||B(t)),ut=H({widgetName:"kimi-widget-svg",stripScripts:!0,shouldRender:B}),ft=H({widgetName:"kimi-widget-html",stripScripts:!0,shouldRender:U}),gt=async t=>{let e=Array.from(t.querySelectorAll("script"));for(let r of e){let n=document.createElement("script");Array.from(r.attributes).forEach(i=>{n.setAttribute(i.name,i.value)}),n.textContent=r.textContent;let s=n.hasAttribute("src")?new Promise(i=>{n.onload=()=>{i()},n.onerror=()=>{f("script_load_error",n.getAttribute("src")??void 0),i()}}):Promise.resolve();r.parentNode?.replaceChild(n,r),await s}},ht=async(t,e)=>{e.classList.add("streaming");let r=dt(t)?ut.renderPartial(e,t):ft.renderPartial(e,t);if(mt(t)){let n=e.classList.contains("scripts-loading");e.classList.add("scripts-loading"),n||a.sendNotification(c.SCRIPT_LOADING_STARTED,{})}await r},Nt=async(t,e)=>{e.classList.remove("streaming");let r=e.classList.contains("scripts-loading");e.innerHTML=t;try{await gt(e)}finally{e.classList.remove("scripts-loading"),r&&a.sendNotification(c.SCRIPT_LOADING_FINISHED,{})}};function X(t){let e=Promise.resolve(),r=!1,n=o=>{e=e.then(o).catch(i=>{console.warn("[kimi-widget] render failed:",i),f("render_error",i)})};a.onNotification(u.TOOL_INPUT_PARTIAL,o=>{r||!o.code||n(()=>r?Promise.resolve():ht(o.code,t))}),a.onNotification(u.TOOL_INPUT,o=>{r=!0,o.code&&n(()=>Nt(o.code,t))})}var z=()=>{let t=-1,e=-1;new ResizeObserver(()=>{let{body:r,documentElement:n}=document,o=getComputedStyle(n),s=r.getBoundingClientRect(),i=Math.ceil(s.width),d=Math.ceil(s.height+(parseFloat(o.borderTop)||0)+(parseFloat(o.borderBottom)||0));i===t&&d===e||(t=i,e=d,a.sendNotification(c.SIZE_CHANGED,{width:i,height:d}))}).observe(document.body)};var It=async()=>{k();let t=document.getElementById("widget-root");if(!t)return;z(),X(t),G(t),F();let e=await M();C(e)};It();})();
+    </script>
+  
+
+</body></html>
