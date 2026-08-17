@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why MP4? · DZ Video-Converter</title>
+<meta name="description" content="Why the DZ Video-Converter normalizes video to H.264/AAC MP4 — what that format does well, what it costs you, and when not to convert at all.">
+<style>
+:root{color-scheme:dark;--bg:#080b14;--panel:#111727;--panel2:#0d1220;--line:#283148;--text:#edf3ff;--muted:#8994ad;--pink:#ff43c8;--cyan:#22e4ff;--green:#55e6a5;--danger:#ff748e}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(900px 480px at 50% -180px,#20204b 0%,transparent 70%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:38px 18px 70px}
+main{max-width:780px;margin:auto}
+header{text-align:center;margin:5px 0 34px}
+.brand{margin:0 0 16px}
+.brand img{display:block;margin:0 auto;width:min(520px,100%);height:auto}
+.brand-text{display:inline-block;font-size:clamp(1.8rem,4.5vw,2.9rem);line-height:1.1;font-weight:800;letter-spacing:-.04em;background:linear-gradient(100deg,var(--pink),#f8a9ec 42%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.page-title{font-size:clamp(1.5rem,3.6vw,2.1rem);margin:0 0 10px;font-weight:750;letter-spacing:-.02em}
+.lede{color:var(--muted);max-width:620px;margin:0 auto}
+.back{display:inline-block;margin-bottom:26px;color:var(--cyan);text-decoration:none;font-size:.9rem;font-weight:600}
+.back:hover{text-decoration:underline}
+h2{font-size:1.22rem;margin:38px 0 12px;letter-spacing:-.01em;color:var(--text)}
+h3{font-size:1rem;margin:24px 0 6px;color:var(--cyan);font-weight:650}
+p{margin:0 0 14px}
+strong{color:#fff}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+.card.good{border-left:3px solid var(--green)}
+.card.cost{border-left:3px solid var(--danger)}
+.card p:last-child{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.92rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase}
+td:first-child{font-weight:600}
+.table-wrap{overflow-x:auto}
+code{background:#05070c;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font:.86em ui-monospace,SFMono-Regular,Menlo,monospace;color:#a8f4ff;overflow-wrap:anywhere}
+pre{background:#05070c;border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#a8f4ff}
+pre code{background:none;border:0;padding:0}
+ul{margin:0 0 14px;padding-left:22px}li{margin-bottom:7px}
+.tldr{background:linear-gradient(135deg,rgba(255,67,200,.07),rgba(34,228,255,.07));border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 8px}
+.tldr h2{margin-top:0}
+footer{margin-top:46px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;text-align:center}
+footer a{color:var(--cyan);text-decoration:none}footer a:hover{text-decoration:underline}
+@media(max-width:600px){body{padding:25px 12px 45px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1 class="brand"><img src="DZ_Video-Converter.png" alt="DZ Video-Converter" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand-text" hidden>DZ Video-Converter</span></h1>
+</header>
+
+<a class="back" href="cv.html">← Back to the converter</a>
+
+<h2 class="page-title">Why MP4 — and when you shouldn't convert at all</h2>
+<p class="lede">The converter turns whatever you drop on it into an H.264/AAC MP4. Here is what that format buys you, what it costs, and the one case where running a file through it makes things worse.</p>
+
+<div class="tldr">
+<h2>The short version</h2>
+<p>MP4 with H.264 video and AAC audio is the most universally playable video format ever made, and it decodes in dedicated hardware on virtually every device. You pay for that with a bigger file than modern codecs would need, and — importantly — with a quality loss every time you re-encode. <strong>If a file is already H.264/AAC in an MP4, converting it again only makes it worse.</strong></p>
+</div>
+
+<h2>First: “.mp4” is a container, not a format</h2>
+<p>This trips up almost everyone. <code>.mp4</code> is a box. What matters is what is inside the box — the video codec, the audio codec, and how they are arranged. Two files can both end in <code>.mp4</code> and have almost nothing in common.</p>
+<p>This converter always puts the same things in the box:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Setting</th><th>Value</th><th>Why</th></tr>
+<tr><td>Video codec</td><td>H.264, High profile</td><td>Universal playback and hardware decoding</td></tr>
+<tr><td>Pixel format</td><td>yuv420p</td><td>The “everything can read this” layout</td></tr>
+<tr><td>Quality</td><td>CRF 18 (default)</td><td>Visually near-identical to the source</td></tr>
+<tr><td>Audio codec</td><td>AAC, 192 kbit/s, 48 kHz</td><td>Editor-standard sample rate, transparent bitrate</td></tr>
+<tr><td>Layout</td><td><code>+faststart</code></td><td>Plays before the file finishes downloading</td></tr>
+</table>
+</div>
+
+<h2>Where MP4 is genuinely better</h2>
+
+<div class="card good">
+<h3>It plays everywhere, using hardware</h3>
+<p>H.264 decoding is built into the silicon of essentially every phone, TV, tablet, laptop and browser made in the last fifteen years. That means smooth playback and smooth scrubbing at almost no CPU cost — and on a laptop, far less battery burn. No other codec comes close on reach.</p>
+</div>
+
+<div class="card good">
+<h3><code>+faststart</code> makes web video actually work</h3>
+<p>An MP4 contains an index describing where every frame lives. By default that index sits at the <em>end</em> of the file, so a browser must download the whole thing before showing the first frame. <code>+faststart</code> moves the index to the front. On a website this is the difference between video that starts instantly and video that looks broken.</p>
+</div>
+
+<div class="card good">
+<h3>yuv420p is the “just works” layout</h3>
+<p>Fancier colour layouts (4:4:4, 10-bit) look better on paper and are rejected by a surprising amount of software, including some editors and most TVs. yuv420p is the safe common denominator.</p>
+</div>
+
+<div class="card good">
+<h3>Predictability across a pile of odd sources</h3>
+<p>VHS captures, DVD rips, and phone clips with variable frame rates all behave differently. Normalizing them into one consistent shape is the single most effective cure for audio drifting out of sync partway through an edit.</p>
+</div>
+
+<h2>Where MP4 costs you</h2>
+
+<div class="card cost">
+<h3>Generation loss — the one that actually matters</h3>
+<p>This is a lossy-to-lossy conversion. The video is decoded back to raw pixels and compressed again from scratch, and detail thrown away in that second pass is gone permanently. It is not a repackage.</p>
+<p>The practical rule: <strong>if the Info panel says a file is already H.264 with AAC audio in an MP4, do not run it through the converter.</strong> You will get a slightly worse file for your trouble. The same applies to the audio — the sound is re-encoded even when the original was perfectly good.</p>
+</div>
+
+<div class="card cost">
+<h3>H.264 is old, and old means bigger</h3>
+<p>The codec dates from 2003. Newer codecs reach the same visual quality in substantially less space:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Codec</th><th>Size at equal quality</th><th>Plays everywhere?</th></tr>
+<tr><td>H.264 (this converter)</td><td>100%</td><td>Yes — universal</td></tr>
+<tr><td>H.265 / HEVC</td><td>~50–70%</td><td>Patchy — Safari yes, Firefox no</td></tr>
+<tr><td>VP9</td><td>~50–70%</td><td>Browsers yes, editors inconsistent</td></tr>
+<tr><td>AV1</td><td>~40–60%</td><td>Recent devices only</td></tr>
+</table>
+</div>
+<p>You are paying roughly 30–50% in file size for compatibility. For video that strangers will open on unknown devices, that is usually the right trade.</p>
+</div>
+
+<div class="card cost">
+<h3>“Editor-ready” is a compromise, not the ideal</h3>
+<p>H.264 is a <em>delivery</em> codec. It stores most frames as differences from their neighbours, so to display one frame at an arbitrary point the editor must decode a run of surrounding frames. That is why scrubbing through H.264 can feel sluggish.</p>
+<p>True editing codecs — ProRes, DNxHR — store every frame whole. They scrub instantly and produce enormous files. MP4 is the <strong>universal</strong> choice; it is not the <strong>fastest to edit</strong> choice.</p>
+</div>
+
+<div class="card cost">
+<h3>Some things get dropped</h3>
+<p>Only the first video track and the first audio track survive the conversion. Subtitles, commentary tracks, alternate languages and chapter markers do not — worth knowing if you are feeding it a DVD rip or an MKV. Sources with 10-bit colour or HDR are also flattened to standard 8-bit.</p>
+</div>
+
+<h2>The exact command</h2>
+<p>No mystery here — this is what runs, in your browser, on your machine:</p>
+<pre><code>ffmpeg -i input \
+  -c:v libx264 -profile:v high -pix_fmt yuv420p \
+  -crf 18 -preset medium \
+  -c:a aac -b:a 192k -ar 48000 \
+  -movflags +faststart \
+  output.mp4</code></pre>
+<p><code>-crf</code> is the quality dial and it is backwards from what you might expect: <em>lower means better</em>. 16 is visually lossless for practical purposes, 18 is the default and near-transparent, 20 trades a little detail for a noticeably smaller file. Grainy sources such as VHS captures inflate at any CRF, because film grain is random and random data does not compress.</p>
+
+<h2>Rules of thumb</h2>
+<ul>
+<li><strong>Already H.264/AAC MP4?</strong> Don't convert. Check with the Info button first.</li>
+<li><strong>Odd old format — AVI, WMV, MKV, VOB, MOV from a camera?</strong> Convert. This is exactly the case MP4 is for.</li>
+<li><strong>Putting it on a website?</strong> Convert, for <code>+faststart</code> alone.</li>
+<li><strong>Serious colour grading or heavy effects work?</strong> MP4 will do, but a ProRes or DNxHR intermediate will edit far more comfortably.</li>
+<li><strong>Archiving the only copy you have?</strong> Keep the original too. A converted file can always be made again from the original; the original cannot be recovered from the conversion.</li>
+</ul>
+
+<footer>
+<a href="cv.html">DZ Video-Converter</a> · <a href="index.html">MP4 Joiner</a> · <a href="https://moviequest.ca/">Movie Quest Canada</a><br>
+Everything runs in your browser — your files never leave your device.
+</footer>
+</main>
+</body>
+</html>
