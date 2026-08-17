@@ -8,16 +8,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #150502;
-      --bg2: #1e0803;
-      --bg3: #250a04;
-      --card: #2c0d05;
-      --border: #6b2410;
-      --text: #fdebd0;
-      --muted: #a05030;
-      --blue: #d4622a;
-      --amber: #b84a1a;
-      --green: #e8854a;
+      --bg: #030d1a;
+      --bg2: #051220;
+      --bg3: #071828;
+      --card: #091e30;
+      --border: #1b4070;
+      --text: #d0eaff;
+      --muted: #4a85b8;
+      --blue: #00c8ff;
+      --amber: #0099dd;
+      --green: #00e8b0;
       --red: #ff6b6b;
       --radius: 10px;
     }
@@ -57,7 +57,7 @@
       transition: border-color .2s, background .2s;
       margin-bottom: 24px;
     }
-    .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(212,98,42,.06); }
+    .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(0,200,255,.06); }
     .drop-zone .icon { font-size: 3rem; margin-bottom: 12px; }
     .drop-zone p { color: var(--muted); font-size: 0.9rem; }
     .drop-zone strong { color: var(--text); }
@@ -222,7 +222,7 @@
     .btn:not(:disabled):hover { opacity: .85; }
     .btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
     .btn-preview { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
-    .btn-merge { background: linear-gradient(135deg, #d4622a, #8b2500); color: #fff; }
+    .btn-merge { background: linear-gradient(135deg, #00c8ff, #0055cc); color: #fff; }
     .quality-select {
       background: var(--bg3); color: var(--text); border: 1px solid var(--border);
       border-radius: 6px; padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
@@ -312,7 +312,7 @@
           Clear
         </button>
         <select id="previewQuality" class="quality-select">
-          <option value="turbo">⚡⚡ Turbo (240p)</option>
+          <option value="p360">⚡ 360p</option>
           <option value="quick" selected>⚡ Quick Preview (480p)</option>
         </select>
         <button class="btn btn-preview" id="btnPreview" disabled>
@@ -370,15 +370,15 @@
   // ── Quality tiers ──────────────────────────────────────────────────────
   // Low-res preview tiers (fast, for checking cuts/timing)
   const PREVIEW_MODES = {
-    turbo: { label: '⚡⚡ Turbo',        W: 240, H: 136, fps: 24, crf: 40, audioBr: '64k', mono: false },
+    p360:  { label: '⚡ 360p',          W: 640, H: 360, fps: 24, crf: 36, audioBr: '80k', mono: false },
     quick: { label: '⚡ Quick Preview', W: 480, H: 270, fps: 24, crf: 32, audioBr: '96k', mono: false },
   };
-  // High-res download tiers (full quality, download-only). minH = min input height to offer.
+  // High-res download tiers. suggestMinH = min input height where this makes sense.
   const DOWNLOAD_MODES = {
-    hd720:  { label: '720p HD',       W: 1280, H: 720,  fps: 24, crf: 23, audioBr: '128k', mono: false, minH: 400  },
-    hd1080: { label: '1080p Full HD', W: 1920, H: 1080, fps: 24, crf: 23, audioBr: '128k', mono: false, minH: 900  },
-    hd1440: { label: '1440p 2K',      W: 2560, H: 1440, fps: 24, crf: 20, audioBr: '192k', mono: false, minH: 1200 },
-    hd4k:   { label: '4K Ultra HD',   W: 3840, H: 2160, fps: 24, crf: 18, audioBr: '256k', mono: false, minH: 1800 },
+    hd720:  { label: '720p HD',       W: 1280, H: 720,  fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 400  },
+    hd1080: { label: '1080p Full HD', W: 1920, H: 1080, fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 900  },
+    hd1440: { label: '1440p 2K',      W: 2560, H: 1440, fps: 24, crf: 20, audioBr: '192k', mono: false, suggestMinH: 1200 },
+    hd4k:   { label: '4K Ultra HD',   W: 3840, H: 2160, fps: 24, crf: 18, audioBr: '256k', mono: false, suggestMinH: 1800 },
   };
   function getModeConfig(mode) { return PREVIEW_MODES[mode] || DOWNLOAD_MODES[mode] || null; }
   function isDownloadMode(mode) { return !!DOWNLOAD_MODES[mode]; }
@@ -624,18 +624,12 @@
     const prev  = downloadQuality.value;
     downloadQuality.innerHTML = '';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
-      if (maxH === 0 || maxH >= cfg.minH) {
-        const opt = document.createElement('option');
-        opt.value = key;
-        const tag = (maxH > 0 && cfg.H > maxH) ? ' ⚠ upscale' : '';
-        opt.textContent = cfg.label + tag;
-        if (key === prev) opt.selected = true;
-        downloadQuality.appendChild(opt);
-      }
-    }
-    if (!downloadQuality.options.length) {
       const opt = document.createElement('option');
-      opt.value = 'hd1080'; opt.textContent = '1080p Full HD';
+      opt.value = key;
+      const lowInput = maxH > 0 && maxH < cfg.suggestMinH;
+      opt.textContent = cfg.label + (lowInput ? ' ⚠' : '');
+      opt.dataset.lowInput = lowInput ? '1' : '';
+      if (key === prev) opt.selected = true;
       downloadQuality.appendChild(opt);
     }
   }
@@ -728,8 +722,13 @@
       clearLog();
 
       if (isDL) {
-        log(`${cfg.label} encoded! Choose where to save it. ▼`, 'ok');
-        // Small delay so user sees the preview first, then the save dialog pops
+        const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
+        const isUpscale = maxH > 0 && cfg.suggestMinH && maxH < cfg.suggestMinH;
+        if (isUpscale) {
+          log(`⚠ Your clips are ~${maxH}p — saving at ${cfg.H}p won't add quality, but here it is.`, 'warn');
+        } else {
+          log(`${cfg.label} encoded! Choose where to save it.`, 'ok');
+        }
         setTimeout(() => triggerDownload(url, `merged_${cfg.W}x${cfg.H}.mp4`), 600);
       } else {
         log(`${cfg.label} ready! Hit ⬇ Save Draft to keep it, or pick a Download resolution below.`, 'ok');
@@ -1045,3 +1044,4 @@
 </script>
 </body>
 </html>
+
