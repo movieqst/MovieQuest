@@ -8,16 +8,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #001408;
-      --bg2: #001c0c;
-      --bg3: #001810;
-      --card: #002010;
-      --border: #004020;
-      --text: #e0ffe8;
-      --muted: #40a060;
-      --blue: #00e864;
-      --amber: #00c050;
-      --green: #51cf66;
+      --bg: #150502;
+      --bg2: #1e0803;
+      --bg3: #250a04;
+      --card: #2c0d05;
+      --border: #6b2410;
+      --text: #fdebd0;
+      --muted: #a05030;
+      --blue: #d4622a;
+      --amber: #b84a1a;
+      --green: #e8854a;
       --red: #ff6b6b;
       --radius: 10px;
     }
@@ -57,7 +57,7 @@
       transition: border-color .2s, background .2s;
       margin-bottom: 24px;
     }
-    .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(77,171,247,.06); }
+    .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(212,98,42,.06); }
     .drop-zone .icon { font-size: 3rem; margin-bottom: 12px; }
     .drop-zone p { color: var(--muted); font-size: 0.9rem; }
     .drop-zone strong { color: var(--text); }
@@ -222,7 +222,7 @@
     .btn:not(:disabled):hover { opacity: .85; }
     .btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
     .btn-preview { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
-    .btn-merge { background: linear-gradient(135deg, var(--amber), #f0932b); color: #000; }
+    .btn-merge { background: linear-gradient(135deg, #d4622a, #8b2500); color: #fff; }
     .quality-select {
       background: var(--bg3); color: var(--text); border: 1px solid var(--border);
       border-radius: 6px; padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
@@ -277,11 +277,11 @@
   <div id="previewSection">
     <div class="preview-hdr">
       <div style="display:flex;align-items:center;gap:10px;">
-        <span style="background:#c00;color:#fff;font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.05em;">LOW RES</span>
-        <span>Quick Preview — 480p draft only</span>
+        <span id="prevBadge" style="background:#c00;color:#fff;font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.05em;">LOW RES</span>
+        <span id="prevBadgeLabel">Quick Preview — 480p draft only</span>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
-        <button id="btnDlPreview" onclick="downloadPreview()" title="Save this draft — instant, no re-encode">
+        <button id="btnDlPreview" onclick="downloadPreview()" title="Save this file — instant, no re-encode">
           ⬇ Save Draft
         </button>
         <button onclick="closePreview()">✕</button>
@@ -291,8 +291,8 @@
     <div class="preview-info" style="align-items:center;flex-wrap:wrap;gap:12px;">
       <span>Clips: <b id="prevCount">0</b></span>
       <span>Duration: <b id="prevDur">0:00</b></span>
-      <span style="margin-left:auto;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text);font-size:0.8rem;">
-        ✨ Happy with the cuts? Hit <b>Merge &amp; Download</b> below for full 1080p — download is instant once it encodes.
+      <span id="prevHint" style="margin-left:auto;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text);font-size:0.8rem;">
+        ✨ Happy with the cuts? Choose a resolution below and hit <b>Download</b>.
       </span>
     </div>
   </div>
@@ -321,9 +321,13 @@
           <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"></polygon></svg>
           Preview
         </button>
+        <div style="width:1px;background:var(--border);height:28px;margin:0 4px;"></div>
+        <select id="downloadQuality" class="quality-select dl-select" disabled>
+          <option value="hd1080">1080p Full HD</option>
+        </select>
         <button class="btn btn-merge" id="btnMerge" disabled>
           <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          Merge &amp; Download
+          Download
         </button>
       </div>
     </div>
@@ -365,13 +369,23 @@
   import { FFmpeg } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
   import { fetchFile, toBlobURL } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
 
-  // ── Preview quality tiers ──────────────────────────────────────────────
-  const MODES = {
+  // ── Quality tiers ──────────────────────────────────────────────────────
+  // Low-res preview tiers (fast, for checking cuts/timing)
+  const PREVIEW_MODES = {
     triple: { label: '💥 Triple Turbo', W: 120,  H: 68,  fps: 6,  crf: 51, audioBr: '24k',  mono: true  },
     double: { label: '⚡⚡⚡ Double Turbo', W: 160,  H: 90,  fps: 8,  crf: 51, audioBr: '32k',  mono: true  },
-    turbo:  { label: '⚡⚡ Turbo',        W: 240,  H: 135, fps: 24, crf: 40, audioBr: '64k',  mono: false },
-    quick:  { label: '⚡ Quick Preview', W: 480,  H: 270, fps: 24, crf: 32, audioBr: '96k',  mono: false },
+    turbo:  { label: '⚡⚡ Turbo',         W: 240,  H: 135, fps: 24, crf: 40, audioBr: '64k',  mono: false },
+    quick:  { label: '⚡ Quick Preview',  W: 480,  H: 270, fps: 24, crf: 32, audioBr: '96k',  mono: false },
   };
+  // High-res download tiers (full quality, download-only). minH = min input height to offer.
+  const DOWNLOAD_MODES = {
+    hd720:  { label: '720p HD',       W: 1280, H: 720,  fps: 24, crf: 23, audioBr: '128k', mono: false, minH: 400  },
+    hd1080: { label: '1080p Full HD', W: 1920, H: 1080, fps: 24, crf: 23, audioBr: '128k', mono: false, minH: 900  },
+    hd1440: { label: '1440p 2K',      W: 2560, H: 1440, fps: 24, crf: 20, audioBr: '192k', mono: false, minH: 1200 },
+    hd4k:   { label: '4K Ultra HD',   W: 3840, H: 2160, fps: 24, crf: 18, audioBr: '256k', mono: false, minH: 1800 },
+  };
+  function getModeConfig(mode) { return PREVIEW_MODES[mode] || DOWNLOAD_MODES[mode] || null; }
+  function isDownloadMode(mode) { return !!DOWNLOAD_MODES[mode]; }
 
   // ── State ──────────────────────────────────────────────────────────────
   let clips = [];
@@ -389,7 +403,11 @@
   const btnClear       = document.getElementById('btnClear');
   const btnPreview     = document.getElementById('btnPreview');
   const btnMerge       = document.getElementById('btnMerge');
-  const previewQuality = document.getElementById('previewQuality');
+  const previewQuality  = document.getElementById('previewQuality');
+  const downloadQuality = document.getElementById('downloadQuality');
+  const prevBadge      = document.getElementById('prevBadge');
+  const prevBadgeLabel = document.getElementById('prevBadgeLabel');
+  const prevHint       = document.getElementById('prevHint');
   const statusLog      = document.getElementById('statusLog');
   const progressWrap   = document.getElementById('progressWrap');
   const progressFill   = document.getElementById('progressFill');
@@ -442,7 +460,8 @@
         c.width = 160; c.height = 90;
         c.getContext('2d').drawImage(v, 0, 0, 160, 90);
         URL.revokeObjectURL(url);
-        resolve({ thumb: c.toDataURL('image/jpeg', 0.6), duration: v.duration });
+        resolve({ thumb: c.toDataURL('image/jpeg', 0.6), duration: v.duration,
+                  nativeW: v.videoWidth, nativeH: v.videoHeight });
       };
       v.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Failed to load')); };
     });
@@ -519,8 +538,8 @@
       if (clips.some(c => c.file.name === f.name && c.file.size === f.size)) { log(`Skipped duplicate: ${f.name}`, 'warn'); continue; }
       log(`Loading ${f.name}…`, 'info');
       try {
-        const { thumb, duration } = await generateThumb(f);
-        clips.push({ id: uid(), file: f, thumb, duration,
+        const { thumb, duration, nativeW, nativeH } = await generateThumb(f);
+        clips.push({ id: uid(), file: f, thumb, duration, nativeW, nativeH,
           vStart: 0, vEnd: duration, aStart: 0, aEnd: duration,
           split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0 });
         // Keep transitions in sync
@@ -574,17 +593,67 @@
     return { filterComplex: chains.join(';'), vCount, aCount, totalDur };
   }
 
+  // ── Download helpers ───────────────────────────────────────────────────
+  async function triggerDownload(url, filename) {
+    try {
+      if ('showSaveFilePicker' in window) {
+        const fh = await window.showSaveFilePicker({
+          suggestedName: filename,
+          types: [{ description: 'MP4 Video', accept: { 'video/mp4': ['.mp4'] } }],
+        });
+        const res = await fetch(url);
+        const writable = await fh.createWritable();
+        await res.body.pipeTo(writable);
+      } else { throw new Error('no picker'); }
+    } catch (e) {
+      if (e.name === 'AbortError') return; // user cancelled — do nothing
+      const a = document.createElement('a'); a.href = url; a.download = filename; a.click();
+    }
+  }
+
+  function updatePreviewBadge(mode) {
+    const cfg = getModeConfig(mode);
+    const isDL = isDownloadMode(mode);
+    prevBadge.textContent  = isDL ? 'HI RES' : 'LOW RES';
+    prevBadge.style.background = isDL ? '#2e7d32' : '#c00';
+    prevBadgeLabel.textContent = cfg ? `${cfg.label} — ${cfg.W}×${cfg.H}` : 'Full Quality';
+    btnDlPreview.textContent   = isDL ? '⬇ Save to Disk' : '⬇ Save Draft';
+    prevHint.innerHTML = isDL
+      ? '✅ Full quality render complete. Click <b>Save to Disk</b> above to choose where to save.'
+      : '✨ Happy with the cuts? Choose a resolution in <b>Download</b> below for full quality.';
+  }
+
+  function updateDownloadSelect() {
+    const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
+    const prev  = downloadQuality.value;
+    downloadQuality.innerHTML = '';
+    for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
+      if (maxH === 0 || maxH >= cfg.minH) {
+        const opt = document.createElement('option');
+        opt.value = key;
+        const tag = (maxH > 0 && cfg.H > maxH) ? ' ⚠ upscale' : '';
+        opt.textContent = cfg.label + tag;
+        if (key === prev) opt.selected = true;
+        downloadQuality.appendChild(opt);
+      }
+    }
+    if (!downloadQuality.options.length) {
+      const opt = document.createElement('option');
+      opt.value = 'hd1080'; opt.textContent = '1080p Full HD';
+      downloadQuality.appendChild(opt);
+    }
+  }
+
   // ── Main process ───────────────────────────────────────────────────────
   async function runProcess(mode) {
-    // mode: 'triple'|'double'|'turbo'|'quick' for preview, false for full merge
     if (clips.length < 1) { log('Add at least one clip.', 'err'); return; }
     if (isProcessing) return;
     isProcessing = true;
-    const isPreview = !!MODES[mode];
-    const activeBtn = isPreview ? btnPreview : btnMerge;
+    const isDL      = isDownloadMode(mode);
+    const activeBtn = isDL ? btnMerge : btnPreview;
     activeBtn.disabled = btnPreview.disabled = btnMerge.disabled = true;
-    previewQuality.disabled = true;
-    activeBtn.textContent = isPreview ? '⏳ Building…' : '⏳ Merging…';
+    previewQuality.disabled = downloadQuality.disabled = true;
+    activeBtn.textContent = isDL ? '⏳ Encoding…' : '⏳ Building…';
 
     try {
       await initFFmpeg();
@@ -592,7 +661,6 @@
       log(`Writing ${clips.length} file(s) to virtual FS…`, 'info');
       setProgress(0);
 
-      // Apply transition fades to clip settings before processing
       const proc = clips.map((c, i) => {
         const cl = { ...c };
         if (i < transitions.length) {
@@ -615,14 +683,14 @@
         log(`  Wrote in${i}.mp4`, 'info');
       }
 
-      const cfg = MODES[mode]; // null when mode===false (full merge)
+      const cfg = getModeConfig(mode);
       const W = cfg ? cfg.W : 1920;
       const H = cfg ? cfg.H : 1080;
       const { filterComplex, vCount, aCount, totalDur } = buildFilters(W, H);
       log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
       setProgress(20);
 
-      const outName = cfg ? 'preview.mp4' : 'output.mp4';
+      const outName = isDL ? 'output.mp4' : 'preview.mp4';
       const args = [
         '-y',
         ...proc.flatMap((_, i) => ['-i', `in${i}.mp4`]),
@@ -630,7 +698,7 @@
         ...(vCount > 0 ? ['-map', '[outv]'] : []),
         ...(aCount > 0 ? ['-map', '[outa]'] : []),
         '-c:v', 'libx264',
-        '-preset', cfg ? 'ultrafast' : 'fast',
+        '-preset', isDL ? 'fast' : 'ultrafast',
         '-crf',   String(cfg ? cfg.crf : 23),
         ...(cfg && cfg.fps < 24 ? ['-r', String(cfg.fps)] : []),
         '-c:a', 'aac',
@@ -652,30 +720,28 @@
       await ffmpeg.deleteFile(outName).catch(() => {});
       setProgress(100);
 
-      if (isPreview) {
-        if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl);
-        previewBlobUrl = url;
-        previewVideo.src = url;
-        prevCount.textContent = vCount;
-        prevDur.textContent = fmt(totalDur);
-        previewSection.classList.add('show');
-        setTimeout(() => previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
-        clearLog();
-        const modeLabel = MODES[mode].label;
-        log(`${modeLabel} ready! Hit ⬇ Save Draft to keep it, or Merge & Download for full 1080p.`, 'ok');
+      // Always show the video in the preview panel
+      if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl);
+      previewBlobUrl = url;
+      previewVideo.src = url;
+      prevCount.textContent = vCount;
+      prevDur.textContent = fmt(totalDur);
+      updatePreviewBadge(mode);
+      previewSection.classList.add('show');
+      setTimeout(() => previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+      clearLog();
+
+      if (isDL) {
+        log(`${cfg.label} encoded! Choose where to save it. ▼`, 'ok');
+        // Small delay so user sees the preview first, then the save dialog pops
+        setTimeout(() => triggerDownload(url, `merged_${cfg.W}x${cfg.H}.mp4`), 600);
       } else {
-        clearLog();
-        log('Done! Your download should start automatically.', 'ok');
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'merged_video.mp4';
-        a.click();
-        setTimeout(() => URL.revokeObjectURL(url), 3000);
+        log(`${cfg.label} ready! Hit ⬇ Save Draft to keep it, or pick a Download resolution below.`, 'ok');
       }
       hideProgress();
     } catch (err) {
       const msg = err.message || String(err);
-      log('▶ ' + (isPreview ? 'Preview' : 'Merge') + ' failed: ' + msg, 'err');
+      log('▶ ' + (isDL ? 'Download' : 'Preview') + ' failed: ' + msg, 'err');
       hideProgress();
     } finally {
       isProcessing = false;
@@ -948,14 +1014,16 @@
   function updateButtons() {
     const hasClips = clips.length > 0;
     const dis = !hasClips || isProcessing;
-    btnPreview.disabled     = dis;
-    btnMerge.disabled       = dis;
-    previewQuality.disabled = dis;
+    btnPreview.disabled      = dis;
+    btnMerge.disabled        = dis;
+    previewQuality.disabled  = dis;
+    downloadQuality.disabled = dis;
+    if (hasClips) updateDownloadSelect();
     clipCount.textContent = clips.length + ' clip' + (clips.length !== 1 ? 's' : '') +
       (hasClips ? ` • ~${clips.reduce((s,c)=>s+(c.vEnd-c.vStart),0).toFixed(1)}s` : '');
     if (!isProcessing) {
       btnPreview.innerHTML = '<svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Preview';
-      btnMerge.innerHTML   = '<svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Merge &amp; Download';
+      btnMerge.innerHTML   = '<svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download';
     }
   }
 
@@ -975,7 +1043,7 @@
     log('Ready. Drop MP4 files to begin.', 'info');
   });
   btnPreview.addEventListener('click', () => runProcess(previewQuality.value));
-  btnMerge.addEventListener('click', () => runProcess(false));
+  btnMerge.addEventListener('click', () => runProcess(downloadQuality.value));
 
   updateButtons();
 </script>
