@@ -96,6 +96,7 @@
     .clip-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
     .clip-name { font-size: 0.85rem; font-weight: 600; color: var(--text); word-break: break-all; }
     .clip-name span { color: var(--blue); margin-right: 6px; }
+    .clip-res { font-size: 0.72rem; color: var(--muted); margin-top: 2px; letter-spacing: 0.02em; }
     .clip-actions { display: flex; gap: 4px; flex-shrink: 0; }
     .icon-btn {
       background: transparent; border: none; color: var(--muted);
@@ -312,7 +313,7 @@
           Clear
         </button>
         <select id="previewQuality" class="quality-select">
-          <option value="p360">⚡ 360p</option>
+          <option value="p360">⚡ Turbo</option>
           <option value="quick" selected>⚡ Quick Preview (480p)</option>
         </select>
         <button class="btn btn-preview" id="btnPreview" disabled>
@@ -370,7 +371,7 @@
   // ── Quality tiers ──────────────────────────────────────────────────────
   // Low-res preview tiers (fast, for checking cuts/timing)
   const PREVIEW_MODES = {
-    p360:  { label: '⚡ 360p',          W: 640, H: 360, fps: 24, crf: 36, audioBr: '80k', mono: false },
+    p360:  { label: '⚡ Turbo',          W: 640, H: 360, fps: 24, crf: 36, audioBr: '80k', mono: false },
     quick: { label: '⚡ Quick Preview', W: 480, H: 270, fps: 24, crf: 32, audioBr: '96k', mono: false },
   };
   // High-res download tiers. suggestMinH = min input height where this makes sense.
@@ -382,6 +383,19 @@
   };
   function getModeConfig(mode) { return PREVIEW_MODES[mode] || DOWNLOAD_MODES[mode] || null; }
   function isDownloadMode(mode) { return !!DOWNLOAD_MODES[mode]; }
+
+  function estResLabel(w, h) {
+    if (!w || !h) return '';
+    const p = Math.max(w, h); // use longer edge in case portrait
+    const n = Math.min(w, h); // short edge = "p" value for landscape
+    if (n >= 2160 || p >= 3840) return 'est. 4K';
+    if (n >= 1440 || p >= 2560) return 'est. 2K';
+    if (n >= 1080 || p >= 1920) return 'est. 1080p';
+    if (n >= 720  || p >= 1280) return 'est. 720p';
+    if (n >= 480  || p >= 854)  return 'est. 480p';
+    if (n >= 360  || p >= 640)  return 'est. 360p';
+    return 'est. SD';
+  }
 
   // ── State ──────────────────────────────────────────────────────────────
   let clips = [];
@@ -844,6 +858,7 @@
       ctrl.innerHTML = `
         <div class="clip-header">
           <div class="clip-name"><span>#${idx + 1}</span>${clip.file.name}</div>
+          <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
           <div class="clip-actions">
             <button class="icon-btn" title="Move up" onclick="moveClip('${clip.id}',-1)" ${idx === 0 ? 'disabled' : ''}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
@@ -1044,4 +1059,3 @@
 </script>
 </body>
 </html>
-
