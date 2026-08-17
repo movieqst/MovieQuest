@@ -1,1 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced MP4 Joiner</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #030d1a;
+      --bg2: #051220;
+      --bg3: #071828;
+      --card: #091e30;
+      --border: rgba(255,255,255,0.18);
+      --text: #d0eaff;
+      --muted: #4a85b8;
+      --blue: #00c8ff;
+      --amber: #0099dd;
+      --green: #00e8b0;
+      --red: #ff6b6b;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 280px;
+    }
+
+    header {
+      padding: 16px 24px 14px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      display: flex; justify-content: center; align-items: center;
+    }
+    header img.site-logo { height: 72px; width: auto; display: block; }
+
+    #ffmpegBar {
+      position: absolute; bottom: 0; left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--amber));
+      width: 0%; transition: width 0.3s; display: none;
+    }
+    #ffmpegBar.active { display: block; }
+
+    main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+
+    .drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 48px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      margin-bottom: 24px;
+    }
+    .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(0,200,255,.06); }
+    .drop-zone .icon { font-size: 3rem; margin-bottom: 12px; }
+    .drop-zone p { color: var(--muted); font-size: 0.9rem; }
+    .drop-zone strong { color: var(--text); }
+
+    input[type=file] { display: none; }
+
+    /* Clips */
+    .clip-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .clip-body { display: flex; gap: 0; }
+    .clip-thumb {
+      width: 160px; min-height: 90px; flex-shrink: 0;
+      background: #000; position: relative; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .clip-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .clip-thumb .play-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s;
+    }
+    .clip-thumb:hover .play-overlay { opacity: 1; }
+    .play-overlay svg { width: 32px; height: 32px; fill: #fff; }
+    .clip-thumb .dur-badge {
+      position: absolute; bottom: 6px; right: 6px;
+      background: rgba(0,0,0,.8); color: #fff;
+      font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;
+    }
+    .clip-thumb .thumb-fallback {
+      color: var(--muted); font-size: 0.65rem; text-align: center; padding: 0 6px; line-height: 1.4;
+    }
+    .clip-controls { flex: 1; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+    .clip-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .clip-name { font-size: 0.85rem; font-weight: 600; color: var(--text); word-break: break-all; }
+    .clip-name span { color: var(--blue); margin-right: 6px; }
+    .clip-res { font-size: 0.72rem; color: var(--muted); margin-top: 2px; letter-spacing: 0.02em; }
+    .clip-actions { display: flex; gap: 4px; flex-shrink: 0; }
+    .icon-btn {
+      background: transparent; border: none; color: var(--muted);
+      cursor: pointer; padding: 4px; border-radius: 6px; display: flex;
+      align-items: center; justify-content: center; transition: background .15s, color .15s;
+    }
+    .icon-btn:hover { background: rgba(255,255,255,.08); color: var(--text); }
+    .icon-btn.del:hover { color: var(--red); background: rgba(255,107,107,.1); }
+    .icon-btn:disabled { opacity: .3; cursor: not-allowed; }
+
+    /* Timeline bar */
+    .timeline-bar { height: 14px; background: var(--bg3); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; gap: 1px; margin: 2px 0; }
+    .tl-row { flex: 1; position: relative; }
+    .tl-fill { position: absolute; height: 100%; border-radius: 2px; }
+    .tl-fill.video { background: var(--blue); }
+    .tl-fill.audio { background: var(--amber); }
+
+    /* Split checkbox */
+    .split-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); cursor: pointer; }
+    .split-row input { accent-color: var(--blue); width: 14px; height: 14px; cursor: pointer; }
+
+    /* Range sliders */
+    .slider-group { display: flex; flex-direction: column; gap: 3px; }
+    .slider-label { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); }
+    .range-wrap { position: relative; height: 20px; }
+    .range-wrap input[type=range] {
+      position: absolute; width: 100%; height: 100%;
+      appearance: none; background: transparent; cursor: pointer; pointer-events: none;
+    }
+    .range-wrap input[type=range]::-webkit-slider-thumb {
+      appearance: none; width: 16px; height: 16px;
+      border-radius: 50%; cursor: pointer; pointer-events: all; border: 2px solid;
+    }
+    .range-wrap input[type=range].start::-webkit-slider-thumb { background: #fff; border-color: var(--blue); }
+    .range-wrap input[type=range].end::-webkit-slider-thumb { background: #fff; border-color: var(--blue); }
+    .range-wrap input[type=range].astart::-webkit-slider-thumb { background: #fff; border-color: var(--amber); }
+    .range-wrap input[type=range].aend::-webkit-slider-thumb { background: #fff; border-color: var(--amber); }
+    .range-track {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      height: 4px; width: 100%; border-radius: 2px;
+      pointer-events: none;
+    }
+
+    /* Fade inputs */
+    .fade-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .fade-field label { font-size: 0.68rem; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; letter-spacing: .04em; }
+    .fade-field input[type=number] {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+      border-radius: 6px; padding: 5px 8px; font-size: 0.8rem;
+    }
+
+    /* Transition */
+    .transition-row {
+      display: flex; justify-content: center; align-items: center;
+      padding: 10px 0;
+    }
+    .transition-pill {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 99px; padding: 6px 16px;
+      display: flex; align-items: center; gap: 12px; font-size: 0.82rem;
+    }
+    .transition-pill select {
+      background: transparent; border: none; color: var(--text); font-size: 0.82rem;
+      cursor: pointer; outline: none; font-weight: 600;
+    }
+    .transition-pill .dur-wrap { display: flex; align-items: center; gap: 6px; border-left: 1px solid var(--border); padding-left: 12px; }
+    .transition-pill input[type=number] {
+      width: 52px; background: var(--bg3); border: 1px solid var(--border);
+      color: var(--text); border-radius: 6px; padding: 3px 6px; font-size: 0.8rem; text-align: center;
+    }
+
+    /* Clips area spacing */
+    #clipsArea { display: flex; flex-direction: column; gap: 0; }
+    .clip-wrap { display: flex; flex-direction: column; }
+
+    /* Preview */
+    #previewSection {
+      background: #000; border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; display: none; margin-top: 24px;
+    }
+    #previewSection.show { display: block; }
+    .preview-hdr {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 14px; background: var(--card); border-bottom: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .preview-hdr button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 4px; }
+    .preview-hdr button:hover { background: rgba(255,255,255,.08); color: var(--text); }
+    #previewVideo { width: 100%; max-height: 60vh; display: block; }
+    .preview-info { padding: 8px 14px; font-size: 0.78rem; color: var(--muted); display: flex; gap: 16px; }
+
+    /* Bottom bar */
+    .bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(10,10,18,.85); backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -8px 32px rgba(0,0,0,.5);
+    }
+    .bottom-bar-inner { max-width: 960px; margin: 0 auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; }
+
+    .progress-wrap { height: 4px; background: var(--border); border-radius: 2px; display: none; }
+    .progress-wrap.active { display: block; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--amber)); border-radius: 2px; transition: width .3s; width: 0%; }
+
+    #statusLog {
+      height: 90px; background: #050508; border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 12px; overflow-y: auto;
+      font-family: monospace; font-size: 0.72rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word;
+    }
+    #statusLog .info { color: var(--blue); }
+    #statusLog .ok   { color: var(--green); }
+    #statusLog .err  { color: var(--red); }
+    #statusLog .warn { color: var(--amber); }
+
+    .actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .clip-count { font-size: 0.8rem; color: var(--muted); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;
+      font-size: 0.85rem; font-weight: 600; transition: opacity .15s;
+    }
+    .btn:disabled { opacity: .4; cursor: not-allowed; }
+    .btn:not(:disabled):hover { opacity: .85; }
+    .btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-preview { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+    .btn-merge { background: linear-gradient(135deg, #00c8ff, #0055cc); color: #fff; }
+    .quality-select {
+      background: var(--bg3); color: var(--text); border: 1px solid var(--border);
+      border-radius: 6px; padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
+      outline: none; height: 34px;
+    }
+    .quality-select:disabled { opacity: .4; cursor: not-allowed; }
+    .quality-select option { background: var(--bg2); }
+    .quality-select option.upscale { color: #555; }
+    .modal-split-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; border-top: 1px solid var(--border);
+      background: var(--bg3);
+    }
+    .modal-split-hint { font-size: 0.78rem; color: var(--muted); }
+    .btn-split {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--bg2); color: var(--text); border: 1px solid var(--border);
+      border-radius: 6px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer;
+      font-weight: 600; transition: background .15s;
+    }
+    .btn-split:hover { background: rgba(0,200,255,.12); border-color: var(--blue); color: var(--blue); }
+    .fade-color-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0 10px; height: 34px; cursor: pointer;
+      font-size: 0.8rem; color: var(--muted); white-space: nowrap;
+    }
+    .fade-color-pill input[type=color] {
+      width: 18px; height: 18px; border: none; background: none;
+      padding: 0; cursor: pointer; border-radius: 3px; flex-shrink: 0;
+    }
+
+    .icon-svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Modal */
+    .modal {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.88); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; padding: 16px;
+      display: none;
+    }
+    .modal.open { display: flex; }
+    .modal-inner {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; max-width: 900px; width: 100%;
+    }
+    .modal-hdr {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      font-size: 0.88rem; font-weight: 600;
+    }
+    .modal-hdr button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.1rem; padding: 2px 8px; border-radius: 4px; }
+    .modal-hdr button:hover { background: rgba(255,255,255,.08); color: var(--text); }
+    #modalVideo { width: 100%; max-height: 70vh; display: block; background: #000; }
+
+    .dl-link { color: var(--green); text-decoration: underline; display: inline-block; margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div id="ffmpegBar"></div>
+  <img class="site-logo" src="DZ_logo.png" alt="DZ Video Stitcher">
+</header>
+
+<main>
+  <div class="drop-zone" id="dropZone">
+    <div class="icon">🎬</div>
+    <p><strong>Drop MP4 files here</strong><br><small>or click to browse — files never leave your device</small></p>
+  </div>
+  <input type="file" id="fileInput" multiple accept=".mp4,video/mp4">
+
+  <div id="clipsArea"></div>
+
+  <div id="previewSection">
+    <div class="preview-hdr">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span id="prevBadge" style="background:#c00;color:#fff;font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.05em;">LOW RES</span>
+        <span id="prevBadgeLabel">Quick Preview — 480p draft only</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button id="btnDlPreview" onclick="downloadPreview()" title="Save this file — instant, no re-encode">
+          ⬇ Save Draft
+        </button>
+        <button onclick="closePreview()">✕</button>
+      </div>
+    </div>
+    <video id="previewVideo" controls></video>
+    <div class="preview-info" style="align-items:center;flex-wrap:wrap;gap:12px;">
+      <span>Clips: <b id="prevCount">0</b></span>
+      <span>Duration: <b id="prevDur">0:00</b></span>
+      <span id="prevHint" style="margin-left:auto;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text);font-size:0.8rem;">
+        ✨ Happy with the cuts? Choose a resolution below and hit <b>Download</b>.
+      </span>
+    </div>
+  </div>
+</main>
+
+<div class="bottom-bar">
+  <div class="bottom-bar-inner">
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div id="statusLog"><span class="info">Ready. Drop MP4 files to begin.</span></div>
+    <div class="actions">
+      <span class="clip-count" id="clipCount">0 clips</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <label class="fade-color-pill" title="Fade-to colour (applies to all clips)">
+          <input type="color" id="fadeColorPicker" value="#000000">
+          Fade colour
+        </label>
+        <button class="btn btn-clear" id="btnClear">
+          <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-3.42"></path></svg>
+          Clear
+        </button>
+        <select id="previewQuality" class="quality-select">
+          <option value="p360">⚡ Turbo (360p)</option>
+          <option value="quick" selected>⚡ Quick (480p)</option>
+        </select>
+        <button class="btn btn-preview" id="btnPreview" disabled>
+          <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"></polygon></svg>
+          Preview
+        </button>
+        <div style="width:1px;background:var(--border);height:28px;margin:0 4px;"></div>
+        <select id="downloadQuality" class="quality-select dl-select" disabled>
+          <option value="hd1080">1080p Full HD</option>
+        </select>
+        <button class="btn btn-merge" id="btnMerge" disabled>
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="clipModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-inner">
+    <div class="modal-hdr">
+      <h3 id="modalTitle">Clip</h3>
+      <button onclick="closeModal()">✕</button>
+    </div>
+    <video id="modalVideo" controls></video>
+    <div class="modal-split-bar">
+      <span class="modal-split-hint">Scrub to the split point, then:</span>
+      <button class="btn btn-split" onclick="splitClipAtPlayhead()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="4 8 2 12 4 16"/><polyline points="20 8 22 12 20 16"/></svg>
+        Split here
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── COI Service Worker ──────────────────────────────────────────────────
+     Injects COOP/COEP headers so FFmpeg.wasm (SharedArrayBuffer) works on
+     any host without server-side header config.
+     Requires coi-serviceworker.js in the same folder as this HTML file.
+  */
+  (function() {
+    if (self.crossOriginIsolated) return;
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.register('coi-serviceworker.js').then(function(reg) {
+      if (!reg.active) window.location.reload();
+    }).catch(function() {
+      // SW not found — show banner
+      var b = document.createElement('div');
+      b.style.cssText = 'background:#7c3a00;color:#ffe0b2;padding:10px 16px;font-size:0.8rem;line-height:1.6;border-bottom:1px solid #a04000;';
+      b.innerHTML = '<b>⚠ FFmpeg may not work on this host.</b> Upload <code>coi-serviceworker.js</code> to the same folder as this HTML, then refresh. Or add <code>Cross-Origin-Opener-Policy: same-origin</code> &amp; <code>Cross-Origin-Embedder-Policy: credentialless</code> to your server.';
+      document.body.insertBefore(b, document.body.firstChild);
+    });
+  })();
+</script>
+
+<script type="module">
+  import { FFmpeg } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
+  import { fetchFile, toBlobURL } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
+
+  // ── Quality tiers ──────────────────────────────────────────────────────
+  // Low-res preview tiers (fast, for checking cuts/timing)
+  const PREVIEW_MODES = {
+    p360:  { label: '⚡ Turbo (360p)',  W: 640,  H: 360, fps: 24, crf: 36, audioBr: '80k', mono: false },
+    quick: { label: '⚡ Quick (480p)', W: 854,  H: 480, fps: 24, crf: 32, audioBr: '96k', mono: false },
+  };
+  // High-res download tiers. suggestMinH = min input height where this makes sense.
+  const DOWNLOAD_MODES = {
+    hd720:  { label: '720p HD',       W: 1280, H: 720,  fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 400  },
+    hd1080: { label: '1080p Full HD', W: 1920, H: 1080, fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 900  },
+    hd1440: { label: '1440p 2K',      W: 2560, H: 1440, fps: 24, crf: 20, audioBr: '192k', mono: false, suggestMinH: 1200 },
+    hd4k:   { label: '4K Ultra HD',   W: 3840, H: 2160, fps: 24, crf: 18, audioBr: '256k', mono: false, suggestMinH: 1800 },
+  };
+  function getModeConfig(mode) { return PREVIEW_MODES[mode] || DOWNLOAD_MODES[mode] || null; }
+  function isDownloadMode(mode) { return !!DOWNLOAD_MODES[mode]; }
+
+  function estResLabel(w, h) {
+    if (!w || !h) return '';
+    const p = Math.max(w, h); // use longer edge in case portrait
+    const n = Math.min(w, h); // short edge = "p" value for landscape
+    if (n >= 2160 || p >= 3840) return 'EST. 4K (2160p)';
+    if (n >= 1440 || p >= 2560) return 'EST. 2K';
+    if (n >= 1080 || p >= 1920) return 'EST. 1080p';
+    if (n >= 720  || p >= 1280) return 'EST. 720p';
+    if (n >= 480  || p >= 854)  return 'EST. 480p';
+    if (n >= 360  || p >= 640)  return 'EST. 360p';
+    return 'EST. SD';
+  }
+
+  // ── State ──────────────────────────────────────────────────────────────
+  let clips = [];
+  let transitions = [];
+  let ffmpeg = null;
+  let ffmpegLoading = false;
+  let isProcessing = false;
+  let uidCounter = 0;
+  const uid = () => String(++uidCounter);
+
+  // ── DOM refs ───────────────────────────────────────────────────────────
+  const dropZone       = document.getElementById('dropZone');
+  const fileInput      = document.getElementById('fileInput');
+  const clipsArea      = document.getElementById('clipsArea');
+  const btnClear       = document.getElementById('btnClear');
+  const btnPreview     = document.getElementById('btnPreview');
+  const btnMerge       = document.getElementById('btnMerge');
+  const previewQuality  = document.getElementById('previewQuality');
+  const downloadQuality = document.getElementById('downloadQuality');
+  const prevBadge      = document.getElementById('prevBadge');
+  const prevBadgeLabel = document.getElementById('prevBadgeLabel');
+  const prevHint       = document.getElementById('prevHint');
+  const statusLog      = document.getElementById('statusLog');
+  const progressWrap   = document.getElementById('progressWrap');
+  const progressFill   = document.getElementById('progressFill');
+  const previewSection = document.getElementById('previewSection');
+  let previewBlobUrl   = null; // kept alive so "Download Preview" needs no re-encode
+  const previewVideo   = document.getElementById('previewVideo');
+  const prevCount      = document.getElementById('prevCount');
+  const prevDur        = document.getElementById('prevDur');
+  const clipCount      = document.getElementById('clipCount');
+  const ffmpegBar      = document.getElementById('ffmpegBar');
+  const clipModal      = document.getElementById('clipModal');
+  const modalVideo     = document.getElementById('modalVideo');
+  const modalTitle     = document.getElementById('modalTitle');
+
+  // ── Logging ────────────────────────────────────────────────────────────
+  function log(msg, type = 'info') {
+    const span = document.createElement('span');
+    span.className = type;
+    span.textContent = msg + '\n';
+    statusLog.appendChild(span);
+    statusLog.scrollTop = statusLog.scrollHeight;
+  }
+  function clearLog() { statusLog.innerHTML = ''; }
+
+  // ── Progress ───────────────────────────────────────────────────────────
+  function setProgress(pct) {
+    progressWrap.classList.add('active');
+    progressFill.style.width = pct + '%';
+  }
+  function hideProgress() {
+    setTimeout(() => {
+      progressWrap.classList.remove('active');
+      progressFill.style.width = '0%';
+    }, 600);
+  }
+
+  // ── Thumbnail ──────────────────────────────────────────────────────────
+  // FIX: previously this used only 'seeked' + drawImage/toDataURL with no
+  // try/catch and no timeout. Under cross-origin-isolation (COEP:
+  // credentialless) some browsers throw a SecurityError on toDataURL, and
+  // some MP4s (odd edit lists / non-keyframe-aligned starts) never fire
+  // 'seeked' at all. Either case silently left clip.thumb === undefined
+  // with no log message, so thumbnails just rendered as blank black boxes.
+  // This version: waits for 'loadeddata' before seeking, wraps the canvas
+  // draw in try/catch, adds a timeout fallback, and ALWAYS resolves (with
+  // thumb: null on failure) so a bad thumbnail never blocks the clip from
+  // loading — the UI shows a text fallback instead of a blank box.
+  function generateThumb(file) {
+    return new Promise((resolve) => {
+      const v = document.createElement('video');
+      v.preload = 'auto'; v.muted = true; v.playsInline = true;
+      v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+      // Some browsers throttle or skip decoding frames for <video> elements
+      // that are never attached to the DOM. Attach it off-screen (not
+      // display:none — some engines skip layout/decode for display:none too)
+      // so real frames get decoded, then remove it once we're done.
+      v.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:2px;height:2px;opacity:0;';
+      document.body.appendChild(v);
+
+      const url = URL.createObjectURL(file);
+      v.src = url;
+
+      let settled = false;
+      let dims = { nativeW: 0, nativeH: 0 };
+
+      const cleanup = () => {
+        URL.revokeObjectURL(url);
+        if (v.parentNode) v.parentNode.removeChild(v);
+      };
+
+      const finish = (thumb, duration) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(failTimer);
+        cleanup();
+        resolve({ thumb, duration: duration || 0, nativeW: dims.nativeW, nativeH: dims.nativeH });
+      };
+
+      const isNearBlack = (canvas) => {
+        try {
+          const ctx = canvas.getContext('2d');
+          const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          let sum = 0;
+          // Sample every 8th pixel (4 bytes/px) for speed.
+          const step = 8 * 4;
+          let n = 0;
+          for (let i = 0; i < data.length; i += step) {
+            sum += data[i] + data[i + 1] + data[i + 2];
+            n++;
+          }
+          const avg = sum / (n * 3); // 0-255
+          return avg < 12; // very dark = likely a black fade frame
+        } catch (e) {
+          return false; // if we can't read pixels, don't block on it
+        }
+      };
+
+      const drawAt = () => {
+        const c = document.createElement('canvas');
+        c.width = 160; c.height = 90;
+        c.getContext('2d').drawImage(v, 0, 0, 160, 90);
+        return c;
+      };
+
+      // Many clips (esp. "closer"-style edits) fade in from black. Grabbing
+      // a frame at a fixed ~1s point often lands inside that fade and
+      // produces a solid black thumbnail even though capture "succeeded".
+      // Try a few timestamps further into the clip and keep the first one
+      // that isn't near-black; fall back to whatever we last captured.
+      const candidateTimes = (dur) => {
+        if (!dur || !isFinite(dur) || dur <= 0) return [0];
+        const pts = [dur * 0.25, dur * 0.5, dur * 0.75, Math.min(2, dur * 0.9)];
+        return [...new Set(pts.map(t => Math.min(t, Math.max(dur - 0.05, 0))))];
+      };
+      let candidateIdx = 0;
+      let times = [];
+      let lastCanvas = null;
+
+      const trySeekNext = () => {
+        if (candidateIdx >= times.length) {
+          // Out of candidates — use the last frame we captured, black or not.
+          if (lastCanvas) {
+            try { finish(lastCanvas.toDataURL('image/jpeg', 0.6), v.duration); }
+            catch (e) { finish(null, v.duration); }
+          } else {
+            finish(null, v.duration);
+          }
+          return;
+        }
+        try { v.currentTime = times[candidateIdx]; }
+        catch (e) { drawNow(); }
+      };
+
+      const drawNow = () => {
+        try {
+          const c = drawAt();
+          lastCanvas = c;
+          if (isNearBlack(c) && candidateIdx < times.length - 1) {
+            candidateIdx++;
+            trySeekNext();
+            return;
+          }
+          const dataUrl = c.toDataURL('image/jpeg', 0.6);
+          finish(dataUrl, v.duration);
+        } catch (e) {
+          // Canvas tainted / SecurityError / etc — fall back gracefully.
+          finish(null, v.duration);
+        }
+      };
+
+      const captureFrame = () => {
+        // KEY FIX: right when 'seeked' fires, the browser has often only
+        // scheduled the new frame — it hasn't actually painted it into the
+        // video element's decode buffer yet. drawImage()/toDataURL() at that
+        // instant silently succeeds but captures an all-black frame. Waiting
+        // two animation-frame ticks gives the compositor time to paint the
+        // real frame before we read it.
+        requestAnimationFrame(() => requestAnimationFrame(drawNow));
+      };
+
+      // Overall safety net: never leave the clip stuck loading forever.
+      const failTimer = setTimeout(() => finish(null, v.duration), 8000);
+
+      v.onloadedmetadata = () => {
+        dims = { nativeW: v.videoWidth, nativeH: v.videoHeight };
+      };
+
+      v.onloadeddata = () => {
+        times = candidateTimes(v.duration);
+        candidateIdx = 0;
+        try {
+          v.currentTime = times[0];
+        } catch (e) {
+          captureFrame();
+        }
+      };
+
+      v.onseeked = captureFrame;
+
+      v.onerror = () => finish(null, 0);
+    });
+  }
+
+  // ── FFmpeg ─────────────────────────────────────────────────────────────
+  async function initFFmpeg() {
+    if (ffmpeg) return;
+    if (ffmpegLoading) { while (ffmpegLoading) await new Promise(r => setTimeout(r, 100)); return; }
+    ffmpegLoading = true;
+    log('Loading FFmpeg (first time only)…', 'info');
+    ffmpegBar.classList.add('active');
+    try {
+      const pkgBase  = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm';
+      const coreBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
+
+      // @ffmpeg/ffmpeg creates: new Worker(new URL('./worker.js', import.meta.url), {type:'module'})
+      // That CDN URL is cross-origin → blocked. Fix: create a same-origin blob that simply
+      // re-imports from the CDN. Module workers CAN import cross-origin; only the Worker()
+      // constructor itself enforces the same-origin restriction.
+      const ffmpegWorkerBlob = new Blob(
+        [`import '${pkgBase}/worker.js';`],
+        { type: 'text/javascript' }
+      );
+      const ffmpegWorkerBlobURL = URL.createObjectURL(ffmpegWorkerBlob);
+
+      const _OrigWorker = window.Worker;
+      window.Worker = function(url, opts) {
+        const s = (url instanceof URL ? url.href : String(url));
+        if (s.includes('worker.js')) return new _OrigWorker(ffmpegWorkerBlobURL, opts);
+        return new _OrigWorker(url, opts);
+      };
+
+      const ff = new FFmpeg();
+      // NOTE: do NOT restore window.Worker yet — ff.load() creates the worker lazily
+
+      ff.on('progress', ({ progress }) => {
+        ffmpegBar.style.width = (progress * 100) + '%';
+        if (statusLog.lastChild) statusLog.lastChild.textContent = `Downloading core… ${Math.round(progress * 100)}%\n`;
+      });
+      ff.on('log', ({ message }) => {
+        if (!message.includes('Aborted()')) log(message, 'info');
+      });
+
+      log('Fetching core files from cdn.jsdelivr.net…', 'info');
+      const coreURL   = await toBlobURL(`${coreBase}/ffmpeg-core.js`,        'text/javascript');
+      const wasmURL   = await toBlobURL(`${coreBase}/ffmpeg-core.wasm`,      'application/wasm');
+      const workerURL = await toBlobURL(`${coreBase}/ffmpeg-core.worker.js`, 'text/javascript');
+      await ff.load({ coreURL, wasmURL, workerURL }); // Worker is created here
+      window.Worker = _OrigWorker; // restore only after worker is fully spawned
+      ffmpeg = ff;
+      log('FFmpeg ready ✓', 'ok');
+    } catch (e) {
+      const msg = e.message || String(e);
+      if (msg.toLowerCase().includes('fetch') || msg.toLowerCase().includes('worker')) {
+        log('Failed to load FFmpeg: ' + msg, 'err');
+        log('Try a hard refresh (Ctrl+Shift+R) or check your internet connection.', 'warn');
+      } else {
+        log('Failed to load FFmpeg: ' + msg, 'err');
+      }
+      throw e;
+    } finally {
+      ffmpegLoading = false;
+      ffmpegBar.classList.remove('active');
+      ffmpegBar.style.width = '0%';
+    }
+  }
+
+  // ── File handling ──────────────────────────────────────────────────────
+  async function handleFiles(files) {
+    if (!ffmpeg && !ffmpegLoading) initFFmpeg().catch(() => {});
+    for (const f of Array.from(files)) {
+      if (!f.name.toLowerCase().endsWith('.mp4')) { log(`Skipped non-MP4: ${f.name}`, 'warn'); continue; }
+      if (clips.some(c => c.file.name === f.name && c.file.size === f.size)) { log(`Skipped duplicate: ${f.name}`, 'warn'); continue; }
+      log(`Loading ${f.name}…`, 'info');
+      try {
+        const { thumb, duration, nativeW, nativeH } = await generateThumb(f);
+        clips.push({ id: uid(), file: f, thumb, duration, nativeW, nativeH,
+          vStart: 0, vEnd: duration, aStart: 0, aEnd: duration,
+          split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0 });
+        // Keep transitions in sync
+        while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
+        if (thumb) {
+          log(`Loaded ${f.name} (${duration.toFixed(1)}s)`, 'ok');
+        } else {
+          log(`Loaded ${f.name} (${duration.toFixed(1)}s) — thumbnail unavailable`, 'warn');
+        }
+      } catch { log(`Failed to load ${f.name}`, 'err'); }
+    }
+    render();
+  }
+
+  // ── Format helpers ─────────────────────────────────────────────────────
+  function fmt(s) {
+    const m = Math.floor(s / 60), sec = (s % 60).toFixed(1).padStart(4, '0');
+    return `${m}:${sec}`;
+  }
+
+  // ── Filter builder ─────────────────────────────────────────────────────
+  // previewMode: scale to 480x270, full: scale to 1920x1080.
+  // Scale+pad+format is done per-clip so concat receives identical frame sizes.
+  function buildFilters(W, H) {
+    // Collect each filter chain as a separate string; join with ';' at the end.
+    // Never append ';' inside the loop — that causes double semicolons when joined.
+    const chains = [];
+    let vConcat = '', aConcat = '';
+    let vCount = 0, aCount = 0, totalDur = 0;
+    for (let i = 0; i < clips.length; i++) {
+      const d = clips[i];
+      const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
+      const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
+      const vLen = ve - vs, aLen = ae - as2;
+      if (vLen > 0.1) {
+        let vf = `[${i}:v]trim=start=${vs}:end=${ve},setpts=PTS-STARTPTS`;
+        vf += `,scale=${W}:${H}:force_original_aspect_ratio=decrease`;
+        vf += `,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2,format=yuv420p`;
+        const fadeHex = (document.getElementById('fadeColorPicker')?.value || '#000000').replace('#','');
+        if (d.vFadeIn > 0)  vf += `,fade=t=in:st=0:d=${Math.min(d.vFadeIn, vLen/2)}:color=${fadeHex}`;
+        if (d.vFadeOut > 0) vf += `,fade=t=out:st=${Math.max(0, vLen-d.vFadeOut)}:d=${Math.min(d.vFadeOut, vLen/2)}:color=${fadeHex}`;
+        vf += `[cv${i}]`;
+        chains.push(vf); vConcat += `[cv${i}]`; vCount++; totalDur += vLen;
+      }
+      if (aLen > 0.1) {
+        let af = `[${i}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
+        if (d.aFadeIn > 0)  af += `,afade=t=in:st=0:d=${Math.min(d.aFadeIn, aLen/2)}`;
+        if (d.aFadeOut > 0) af += `,afade=t=out:st=${Math.max(0, aLen-d.aFadeOut)}:d=${Math.min(d.aFadeOut, aLen/2)}`;
+        af += `[ca${i}]`;
+        chains.push(af); aConcat += `[ca${i}]`; aCount++;
+      }
+    }
+    if (vCount === 0 && aCount === 0) throw new Error('No valid clips after trimming.');
+    if (vCount > 0) chains.push(`${vConcat}concat=n=${vCount}:v=1:a=0[outv]`);
+    if (aCount > 0) chains.push(`${aConcat}concat=n=${aCount}:v=0:a=1[outa]`);
+    return { filterComplex: chains.join(';'), vCount, aCount, totalDur };
+  }
+
+  // ── Download helpers ───────────────────────────────────────────────────
+  async function triggerDownload(url, filename) {
+    try {
+      if ('showSaveFilePicker' in window) {
+        const fh = await window.showSaveFilePicker({
+          suggestedName: filename,
+          types: [{ description: 'MP4 Video', accept: { 'video/mp4': ['.mp4'] } }],
+        });
+        const res = await fetch(url);
+        const writable = await fh.createWritable();
+        await res.body.pipeTo(writable);
+      } else { throw new Error('no picker'); }
+    } catch (e) {
+      if (e.name === 'AbortError') return; // user cancelled — do nothing
+      const a = document.createElement('a'); a.href = url; a.download = filename; a.click();
+    }
+  }
+
+  function updatePreviewBadge(mode) {
+    const cfg = getModeConfig(mode);
+    const isDL = isDownloadMode(mode);
+    prevBadge.textContent  = isDL ? 'HI RES' : 'LOW RES';
+    prevBadge.style.background = isDL ? '#2e7d32' : '#c00';
+    prevBadgeLabel.textContent = cfg ? `${cfg.label} — ${cfg.W}×${cfg.H}` : 'Full Quality';
+    btnDlPreview.textContent   = isDL ? '⬇ Save to Disk' : '⬇ Save Draft';
+    prevHint.innerHTML = isDL
+      ? '✅ Full quality render complete. Click <b>Save to Disk</b> above to choose where to save.'
+      : '✨ Happy with the cuts? Choose a resolution in <b>Download</b> below for full quality.';
+  }
+
+  function updateDownloadSelect() {
+    // Compare by HEIGHT — the conventional "1080p / 720p" descriptor used by humans.
+    // A 1440×1080 video is legitimately 1080p; comparing by longest edge mislabels it.
+    // hd720 is always the floor — never grey it out regardless of source quality.
+    const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
+
+    let bestDefault = 'hd720';
+    for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
+      if (maxH === 0 || maxH >= cfg.H) bestDefault = key;
+    }
+
+    downloadQuality.innerHTML = '';
+    for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
+      const opt = document.createElement('option');
+      opt.value = key;
+      const upscale = key !== 'hd720' && maxH > 0 && maxH < cfg.H;
+      opt.textContent = cfg.label + (upscale ? ' △' : '');
+      if (upscale) opt.className = 'upscale';
+      if (key === bestDefault) opt.selected = true;
+      downloadQuality.appendChild(opt);
+    }
+  }
+
+  // ── Damped progress helper ─────────────────────────────────────────────
+  // FFmpeg's progress ratio overshoots 1.0 with filter_complex/trim (users see
+  // 400%+). This maps the raw percentage to a display value that decelerates
+  // near the end and hard-caps at 98 until the encode finishes.
+  //   0–89 raw  → 1:1 display
+  //   89–101 raw → half speed  → display 89–95
+  //   101–113 raw → quarter speed → display 95–98
+  //   >113 raw  → capped at 98
+  function dampedProgress(rawPct) {
+    if (rawPct <= 89) return rawPct;
+    if (rawPct <= 101) return 89 + (rawPct - 89) / 2;
+    if (rawPct <= 113) return 95 + (rawPct - 101) / 4;
+    return 98;
+  }
+
+  // ── Main process ───────────────────────────────────────────────────────
+  async function runProcess(mode) {
+    if (clips.length < 1) { log('Add at least one clip.', 'err'); return; }
+    if (isProcessing) return;
+    isProcessing = true;
+    const isDL      = isDownloadMode(mode);
+    const activeBtn = isDL ? btnMerge : btnPreview;
+    activeBtn.disabled = btnPreview.disabled = btnMerge.disabled = true;
+    previewQuality.disabled = downloadQuality.disabled = true;
+    activeBtn.textContent = isDL ? '⏳ Encoding…' : '⏳ Building…';
+
+    try {
+      await initFFmpeg();
+      clearLog();
+      log(`Writing ${clips.length} file(s) to virtual FS…`, 'info');
+      setProgress(0);
+
+      const proc = clips.map((c, i) => {
+        const cl = { ...c };
+        if (i < transitions.length) {
+          const t = transitions[i];
+          if (t.type === 'vfade' || t.type === 'both') cl.vFadeOut = Math.max(cl.vFadeOut, t.duration);
+          if (t.type === 'afade' || t.type === 'both') cl.aFadeOut = Math.max(cl.aFadeOut, t.duration);
+        }
+        if (i > 0) {
+          const t = transitions[i - 1];
+          if (t.type === 'vfade' || t.type === 'both') cl.vFadeIn = Math.max(cl.vFadeIn, t.duration);
+          if (t.type === 'afade' || t.type === 'both') cl.aFadeIn = Math.max(cl.aFadeIn, t.duration);
+        }
+        return cl;
+      });
+
+      for (let i = 0; i < proc.length; i++) {
+        const data = await fetchFile(proc[i].file);
+        await ffmpeg.writeFile(`in${i}.mp4`, data);
+        setProgress(Math.round((i + 1) / proc.length * 15));
+        log(`  Wrote in${i}.mp4`, 'info');
+      }
+
+      const cfg = getModeConfig(mode);
+      const W = cfg ? cfg.W : 1920;
+      const H = cfg ? cfg.H : 1080;
+      const { filterComplex, vCount, aCount, totalDur } = buildFilters(W, H);
+      log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
+      setProgress(20);
+
+      const outName = isDL ? 'output.mp4' : 'preview.mp4';
+      const args = [
+        '-y',
+        ...proc.flatMap((_, i) => ['-i', `in${i}.mp4`]),
+        '-filter_complex', filterComplex,
+        ...(vCount > 0 ? ['-map', '[outv]'] : []),
+        ...(aCount > 0 ? ['-map', '[outa]'] : []),
+        '-c:v', 'libx264',
+        '-preset', isDL ? 'fast' : 'ultrafast',
+        '-crf',   String(cfg ? cfg.crf : 23),
+        ...(cfg && cfg.fps < 24 ? ['-r', String(cfg.fps)] : []),
+        '-c:a', 'aac',
+        '-b:a', cfg ? cfg.audioBr : '128k',
+        ...(cfg && cfg.mono ? ['-ac', '1'] : []),
+        '-movflags', '+faststart',
+        outName,
+      ];
+
+      ffmpeg.on('progress', ({ progress }) => setProgress(dampedProgress(Math.round(progress * 100))));
+      const code = await ffmpeg.exec(args);
+      if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
+
+      const data = await ffmpeg.readFile(outName);
+      const blob = new Blob([data.buffer], { type: 'video/mp4' });
+      const url  = URL.createObjectURL(blob);
+
+      for (let i = 0; i < proc.length; i++) await ffmpeg.deleteFile(`in${i}.mp4`).catch(() => {});
+      await ffmpeg.deleteFile(outName).catch(() => {});
+      setProgress(100);
+
+      // Always show the video in the preview panel
+      if (previewBlobUrl) URL.revokeObjectURL(previewBlobUrl);
+      previewBlobUrl = url;
+      previewVideo.src = url;
+      prevCount.textContent = vCount;
+      prevDur.textContent = fmt(totalDur);
+      updatePreviewBadge(mode);
+      previewSection.classList.add('show');
+      setTimeout(() => previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+      clearLog();
+
+      if (isDL) {
+        const maxH2 = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
+        const isUpscale = maxH2 > 0 && maxH2 < cfg.H;
+        if (isUpscale) {
+          log(`⚠ Your clips are ~${maxH2}p — saving at ${cfg.H}p won't add quality, but here it is.`, 'warn');
+        } else {
+          log(`${cfg.label} encoded! Choose where to save it.`, 'ok');
+        }
+        const _n = new Date();
+        const _ts = `${String(_n.getFullYear()).slice(2)}${String(_n.getMonth()+1).padStart(2,'0')}${String(_n.getDate()).padStart(2,'0')}_${String(_n.getHours()).padStart(2,'0')}${String(_n.getMinutes()).padStart(2,'0')}`;
+        setTimeout(() => triggerDownload(url, `DZVIDEO${_ts}_${cfg.W}x${cfg.H}.mp4`), 600);
+      } else {
+        log(`${cfg.label} ready! Hit ⬇ Save Draft to keep it, or pick a Download resolution below.`, 'ok');
+      }
+      hideProgress();
+    } catch (err) {
+      const msg = err.message || String(err);
+      log('▶ ' + (isDL ? 'Download' : 'Preview') + ' failed: ' + msg, 'err');
+      hideProgress();
+    } finally {
+      isProcessing = false;
+      updateButtons();
+    }
+  }
+
+  // ── Clip management ────────────────────────────────────────────────────
+  window.moveClip = (id, dir) => {
+    const idx = clips.findIndex(c => c.id === id);
+    const n = idx + dir;
+    if (n < 0 || n >= clips.length) return;
+    [clips[idx], clips[n]] = [clips[n], clips[idx]];
+    [transitions[Math.min(idx, n)]] = [transitions[Math.min(idx, n)]]; // keep transitions stable
+    render();
+  };
+  window.removeClip = (id) => {
+    const idx = clips.findIndex(c => c.id === id);
+    clips.splice(idx, 1);
+    if (transitions.length >= clips.length) transitions.splice(Math.max(0, idx - 1), 1);
+    render();
+  };
+  let modalClipId = null;
+  window.openModal = (id) => {
+    const clip = clips.find(c => c.id === id);
+    if (!clip) return;
+    modalClipId = id;
+    modalTitle.textContent = clip.file.name;
+    modalVideo.src = URL.createObjectURL(clip.file);
+    clipModal.classList.add('open');
+  };
+  window.closeModal = () => {
+    clipModal.classList.remove('open');
+    modalVideo.pause(); modalVideo.src = '';
+    modalClipId = null;
+  };
+
+  window.splitClipAtPlayhead = () => {
+    if (!modalClipId) return;
+    const idx = clips.findIndex(c => c.id === modalClipId);
+    if (idx === -1) return;
+    const orig = clips[idx];
+    const t = modalVideo.currentTime;
+    if (t <= 0.1 || t >= orig.duration - 0.1) {
+      log('Move the playhead away from the very start or end to split.', 'warn');
+      return;
+    }
+    // Clip A: original start → split point
+    const clipA = { ...orig, id: uid(),
+      vEnd: Math.min(t, orig.vEnd), aEnd: Math.min(t, orig.aEnd),
+      vFadeOut: 0, aFadeOut: 0 };
+    // Clip B: split point → original end
+    const clipB = { ...orig, id: uid(),
+      vStart: Math.max(t, orig.vStart), aStart: Math.max(t, orig.aStart),
+      vFadeIn: 0, aFadeIn: 0 };
+    clips.splice(idx, 1, clipA, clipB);
+    // Insert a cut transition between the two halves
+    transitions.splice(idx, 0, { id: uid(), type: 'cut', duration: 0 });
+    closeModal();
+    render();
+    log(`Split "${orig.file.name}" at ${t.toFixed(2)}s → two clips.`, 'ok');
+  };
+  window.closePreview = () => {
+    previewSection.classList.remove('show');
+    previewVideo.pause(); previewVideo.src = '';
+    if (previewBlobUrl) { URL.revokeObjectURL(previewBlobUrl); previewBlobUrl = null; }
+  };
+
+  window.downloadPreview = () => {
+    if (!previewBlobUrl) return;
+    const a = document.createElement('a');
+    a.href = previewBlobUrl;
+    a.download = 'preview_draft.mp4';
+    a.click();
+  };
+
+  // ── Slider helpers ─────────────────────────────────────────────────────
+  function makeRangeSlider(container, { min, max, start, end, colorClass, onChangeStart, onChangeEnd }) {
+    const step = 0.1;
+    const trackEl = container.querySelector('.range-track');
+    const startEl = container.querySelector('input.start, input.astart');
+    const endEl   = container.querySelector('input.end, input.aend');
+
+    function updateTrack() {
+      const pct = v => ((v - min) / (max - min)) * 100;
+      const s = parseFloat(startEl.value), e = parseFloat(endEl.value);
+      trackEl.style.background = `linear-gradient(to right, var(--border) ${pct(s)}%, ${colorClass === 'audio' ? 'var(--amber)' : 'var(--blue)'} ${pct(s)}%, ${colorClass === 'audio' ? 'var(--amber)' : 'var(--blue)'} ${pct(e)}%, var(--border) ${pct(e)}%)`;
+    }
+
+    startEl.min = min; startEl.max = max; startEl.step = step; startEl.value = start;
+    endEl.min   = min; endEl.max   = max; endEl.step   = step; endEl.value   = end;
+
+    startEl.addEventListener('input', () => {
+      if (parseFloat(startEl.value) > parseFloat(endEl.value) - step) startEl.value = parseFloat(endEl.value) - step;
+      onChangeStart(parseFloat(startEl.value));
+      updateTrack();
+    });
+    endEl.addEventListener('input', () => {
+      if (parseFloat(endEl.value) < parseFloat(startEl.value) + step) endEl.value = parseFloat(startEl.value) + step;
+      onChangeEnd(parseFloat(endEl.value));
+      updateTrack();
+    });
+    updateTrack();
+  }
+
+  // ── Render ─────────────────────────────────────────────────────────────
+  function render() {
+    clipsArea.innerHTML = '';
+
+    clips.forEach((clip, idx) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'clip-wrap';
+
+      const card = document.createElement('div');
+      card.className = 'clip-card';
+      card.style.marginBottom = '0';
+
+      const body = document.createElement('div');
+      body.className = 'clip-body';
+
+      // Thumb
+      const thumb = document.createElement('div');
+      thumb.className = 'clip-thumb';
+      thumb.onclick = () => openModal(clip.id);
+      thumb.innerHTML = `
+        ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : `<div class="thumb-fallback">No preview<br>(tap to play)</div>`}
+        <div class="play-overlay"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="dur-badge">${clip.duration.toFixed(1)}s</div>
+      `;
+
+      // Controls
+      const ctrl = document.createElement('div');
+      ctrl.className = 'clip-controls';
+      ctrl.innerHTML = `
+        <div class="clip-header">
+          <div class="clip-name"><span>#${idx + 1}</span>${clip.file.name}</div>
+          <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
+          <div class="clip-actions">
+            <button class="icon-btn" title="Move up" onclick="moveClip('${clip.id}',-1)" ${idx === 0 ? 'disabled' : ''}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </button>
+            <button class="icon-btn" title="Move down" onclick="moveClip('${clip.id}',1)" ${idx === clips.length - 1 ? 'disabled' : ''}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <button class="icon-btn del" title="Remove" onclick="removeClip('${clip.id}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="timeline-bar">
+          <div class="tl-row"><div class="tl-fill video" id="tlv-${clip.id}" style="left:${(clip.vStart/clip.duration)*100}%;width:${((clip.vEnd-clip.vStart)/clip.duration)*100}%"></div></div>
+          <div class="tl-row"><div class="tl-fill audio" id="tla-${clip.id}" style="left:${(clip.aStart/clip.duration)*100}%;width:${((clip.aEnd-clip.aStart)/clip.duration)*100}%"></div></div>
+        </div>
+
+        <label class="split-row">
+          <input type="checkbox" ${clip.split ? 'checked' : ''} onchange="toggleSplit('${clip.id}',this.checked)">
+          Split audio/video trim
+        </label>
+
+        <div id="sliders-${clip.id}"></div>
+
+        <div class="fade-grid">
+          <div class="fade-field"><label>Vid Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeIn}" onchange="updateClip('${clip.id}','vFadeIn',+this.value)"></div>
+          <div class="fade-field"><label>Vid Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeOut}" onchange="updateClip('${clip.id}','vFadeOut',+this.value)"></div>
+          <div class="fade-field"><label>Aud Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeIn}" onchange="updateClip('${clip.id}','aFadeIn',+this.value)"></div>
+          <div class="fade-field"><label>Aud Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeOut}" onchange="updateClip('${clip.id}','aFadeOut',+this.value)"></div>
+        </div>
+      `;
+
+      body.appendChild(thumb);
+      body.appendChild(ctrl);
+      card.appendChild(body);
+      wrap.appendChild(card);
+
+      // Build sliders after inserting into DOM context
+      clipsArea.appendChild(wrap);
+
+      const slidersDiv = document.getElementById(`sliders-${clip.id}`);
+      renderSliders(clip, slidersDiv);
+
+      // Transition
+      if (idx < clips.length - 1 && transitions[idx]) {
+        const t = transitions[idx];
+        const tRow = document.createElement('div');
+        tRow.className = 'transition-row';
+        tRow.innerHTML = `
+          <div class="transition-pill">
+            <span style="color:var(--muted);font-size:0.75rem;">↳ Between #${idx+1} &amp; #${idx+2}:</span>
+            <select onchange="updateTransition('${t.id}','type',this.value)">
+              <option value="cut" ${t.type==='cut'?'selected':''}>Hard Cut</option>
+              <option value="vfade" ${t.type==='vfade'?'selected':''}>Video Crossfade</option>
+              <option value="afade" ${t.type==='afade'?'selected':''}>Audio Crossfade</option>
+              <option value="both" ${t.type==='both'?'selected':''}>Full Crossfade</option>
+            </select>
+            ${t.type !== 'cut' ? `<div class="dur-wrap"><input type="number" min="0.1" max="3" step="0.1" value="${t.duration}" onchange="updateTransition('${t.id}','duration',+this.value)"><span style="color:var(--muted);font-size:0.75rem">sec</span></div>` : ''}
+          </div>
+        `;
+        wrap.appendChild(tRow);
+      }
+    });
+
+    updateButtons();
+  }
+
+  function renderSliders(clip, container) {
+    container.innerHTML = '';
+    if (!clip.split) {
+      const div = document.createElement('div');
+      div.className = 'slider-group';
+      div.innerHTML = `
+        <div class="slider-label"><span>Trim</span><span id="lbl-master-${clip.id}">${fmt(clip.vStart)} – ${fmt(clip.vEnd)}</span></div>
+        <div class="range-wrap">
+          <div class="range-track"></div>
+          <input type="range" class="start" value="${clip.vStart}">
+          <input type="range" class="end" value="${clip.vEnd}">
+        </div>
+      `;
+      container.appendChild(div);
+      makeRangeSlider(div, {
+        min: 0, max: clip.duration, start: clip.vStart, end: clip.vEnd,
+        colorClass: 'video',
+        onChangeStart: v => {
+          clip.vStart = clip.aStart = v;
+          document.getElementById(`lbl-master-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(clip.vEnd)}`;
+          updateTimeline(clip);
+        },
+        onChangeEnd: v => {
+          clip.vEnd = clip.aEnd = v;
+          document.getElementById(`lbl-master-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(clip.vEnd)}`;
+          updateTimeline(clip);
+        }
+      });
+    } else {
+      // Video
+      const vDiv = document.createElement('div');
+      vDiv.className = 'slider-group';
+      vDiv.innerHTML = `
+        <div class="slider-label"><span>Video Trim</span><span id="lbl-v-${clip.id}">${fmt(clip.vStart)} – ${fmt(clip.vEnd)}</span></div>
+        <div class="range-wrap">
+          <div class="range-track"></div>
+          <input type="range" class="start" value="${clip.vStart}">
+          <input type="range" class="end" value="${clip.vEnd}">
+        </div>
+      `;
+      container.appendChild(vDiv);
+      makeRangeSlider(vDiv, {
+        min: 0, max: clip.duration, start: clip.vStart, end: clip.vEnd,
+        colorClass: 'video',
+        onChangeStart: v => { clip.vStart = v; document.getElementById(`lbl-v-${clip.id}`).textContent = `${fmt(v)} – ${fmt(clip.vEnd)}`; updateTimeline(clip); },
+        onChangeEnd: v => { clip.vEnd = v; document.getElementById(`lbl-v-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(v)}`; updateTimeline(clip); }
+      });
+
+      // Audio
+      const aDiv = document.createElement('div');
+      aDiv.className = 'slider-group';
+      aDiv.innerHTML = `
+        <div class="slider-label"><span>Audio Trim</span><span id="lbl-a-${clip.id}">${fmt(clip.aStart)} – ${fmt(clip.aEnd)}</span></div>
+        <div class="range-wrap">
+          <div class="range-track"></div>
+          <input type="range" class="astart" value="${clip.aStart}">
+          <input type="range" class="aend" value="${clip.aEnd}">
+        </div>
+      `;
+      container.appendChild(aDiv);
+      makeRangeSlider(aDiv, {
+        min: 0, max: clip.duration, start: clip.aStart, end: clip.aEnd,
+        colorClass: 'audio',
+        onChangeStart: v => { clip.aStart = v; document.getElementById(`lbl-a-${clip.id}`).textContent = `${fmt(v)} – ${fmt(clip.aEnd)}`; updateTimeline(clip); },
+        onChangeEnd: v => { clip.aEnd = v; document.getElementById(`lbl-a-${clip.id}`).textContent = `${fmt(clip.aStart)} – ${fmt(v)}`; updateTimeline(clip); }
+      });
+    }
+  }
+
+  function updateTimeline(clip) {
+    const vEl = document.getElementById(`tlv-${clip.id}`);
+    const aEl = document.getElementById(`tla-${clip.id}`);
+    if (vEl) { vEl.style.left = (clip.vStart/clip.duration*100)+'%'; vEl.style.width = ((clip.vEnd-clip.vStart)/clip.duration*100)+'%'; }
+    if (aEl) { aEl.style.left = (clip.aStart/clip.duration*100)+'%'; aEl.style.width = ((clip.aEnd-clip.aStart)/clip.duration*100)+'%'; }
+  }
+
+  window.toggleSplit = (id, val) => {
+    const clip = clips.find(c => c.id === id);
+    if (!clip) return;
+    clip.split = val;
+    const slidersDiv = document.getElementById(`sliders-${id}`);
+    if (slidersDiv) renderSliders(clip, slidersDiv);
+  };
+
+  window.updateClip = (id, key, val) => {
+    const clip = clips.find(c => c.id === id);
+    if (clip) clip[key] = val;
+  };
+
+  window.updateTransition = (id, key, val) => {
+    const t = transitions.find(t => t.id === id);
+    if (t) { t[key] = val; render(); }
+  };
+
+  function updateButtons() {
+    const hasClips = clips.length > 0;
+    const dis = !hasClips || isProcessing;
+    btnPreview.disabled      = dis;
+    btnMerge.disabled        = dis;
+    previewQuality.disabled  = dis;
+    downloadQuality.disabled = dis;
+    if (hasClips) updateDownloadSelect();
+    clipCount.textContent = clips.length + ' clip' + (clips.length !== 1 ? 's' : '') +
+      (hasClips ? ` • ~${clips.reduce((s,c)=>s+(c.vEnd-c.vStart),0).toFixed(1)}s` : '');
+    if (!isProcessing) {
+      btnPreview.innerHTML = '<svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Preview';
+      btnMerge.innerHTML   = '<svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download';
+    }
+  }
+
+  // ── Events ─────────────────────────────────────────────────────────────
+  dropZone.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', e => e.target.files && handleFiles(e.target.files));
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault(); dropZone.classList.remove('drag');
+    if (e.dataTransfer.files) handleFiles(e.dataTransfer.files);
+  });
+
+  btnClear.addEventListener('click', () => {
+    clips = []; transitions = [];
+    closePreview(); clearLog(); render();
+    log('Ready. Drop MP4 files to begin.', 'info');
+  });
+  btnPreview.addEventListener('click', () => runProcess(previewQuality.value));
+  btnMerge.addEventListener('click', () => runProcess(downloadQuality.value));
+
+  updateButtons();
+</script>
+</body>
+</html>
