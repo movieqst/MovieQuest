@@ -92,6 +92,9 @@
       background: rgba(0,0,0,.8); color: #fff;
       font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;
     }
+    .clip-thumb .thumb-fallback {
+      color: var(--muted); font-size: 0.65rem; text-align: center; padding: 0 6px; line-height: 1.4;
+    }
     .clip-controls { flex: 1; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
     .clip-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
     .clip-name { font-size: 0.85rem; font-weight: 600; color: var(--text); word-break: break-all; }
@@ -489,25 +492,68 @@
   }
 
   // ── Thumbnail ──────────────────────────────────────────────────────────
+  // FIX: previously this used only 'seeked' + drawImage/toDataURL with no
+  // try/catch and no timeout. Under cross-origin-isolation (COEP:
+  // credentialless) some browsers throw a SecurityError on toDataURL, and
+  // some MP4s (odd edit lists / non-keyframe-aligned starts) never fire
+  // 'seeked' at all. Either case silently left clip.thumb === undefined
+  // with no log message, so thumbnails just rendered as blank black boxes.
+  // This version: waits for 'loadeddata' before seeking, wraps the canvas
+  // draw in try/catch, adds a timeout fallback, and ALWAYS resolves (with
+  // thumb: null on failure) so a bad thumbnail never blocks the clip from
+  // loading — the UI shows a text fallback instead of a blank box.
   function generateThumb(file) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const v = document.createElement('video');
-      v.preload = 'metadata'; v.muted = true; v.playsInline = true;
+      v.preload = 'auto'; v.muted = true; v.playsInline = true;
       const url = URL.createObjectURL(file);
       v.src = url;
-      v.onloadedmetadata = () => {
-        if (v.duration === Infinity || isNaN(v.duration)) v.currentTime = 1e101;
-        else v.currentTime = Math.min(1, v.duration / 2);
-      };
-      v.onseeked = () => {
-        const c = document.createElement('canvas');
-        c.width = 160; c.height = 90;
-        c.getContext('2d').drawImage(v, 0, 0, 160, 90);
+
+      let settled = false;
+      let dims = { nativeW: 0, nativeH: 0 };
+
+      const finish = (thumb, duration) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(failTimer);
         URL.revokeObjectURL(url);
-        resolve({ thumb: c.toDataURL('image/jpeg', 0.6), duration: v.duration,
-                  nativeW: v.videoWidth, nativeH: v.videoHeight });
+        resolve({ thumb, duration: duration || 0, nativeW: dims.nativeW, nativeH: dims.nativeH });
       };
-      v.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Failed to load')); };
+
+      const captureFrame = () => {
+        try {
+          const c = document.createElement('canvas');
+          c.width = 160; c.height = 90;
+          c.getContext('2d').drawImage(v, 0, 0, 160, 90);
+          const dataUrl = c.toDataURL('image/jpeg', 0.6);
+          finish(dataUrl, v.duration);
+        } catch (e) {
+          // Canvas tainted / SecurityError / etc — fall back gracefully.
+          finish(null, v.duration);
+        }
+      };
+
+      // Overall safety net: never leave the clip stuck loading forever.
+      const failTimer = setTimeout(() => finish(null, v.duration), 6000);
+
+      v.onloadedmetadata = () => {
+        dims = { nativeW: v.videoWidth, nativeH: v.videoHeight };
+      };
+
+      v.onloadeddata = () => {
+        try {
+          const target = (v.duration === Infinity || isNaN(v.duration))
+            ? 1e101
+            : Math.min(1, v.duration / 2);
+          v.currentTime = target;
+        } catch (e) {
+          captureFrame();
+        }
+      };
+
+      v.onseeked = captureFrame;
+
+      v.onerror = () => finish(null, 0);
     });
   }
 
@@ -588,7 +634,11 @@
           split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0 });
         // Keep transitions in sync
         while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
-        log(`Loaded ${f.name} (${duration.toFixed(1)}s)`, 'ok');
+        if (thumb) {
+          log(`Loaded ${f.name} (${duration.toFixed(1)}s)`, 'ok');
+        } else {
+          log(`Loaded ${f.name} (${duration.toFixed(1)}s) — thumbnail unavailable`, 'warn');
+        }
       } catch { log(`Failed to load ${f.name}`, 'err'); }
     }
     render();
@@ -936,7 +986,7 @@
       thumb.className = 'clip-thumb';
       thumb.onclick = () => openModal(clip.id);
       thumb.innerHTML = `
-        ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : ''}
+        ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : `<div class="thumb-fallback">No preview<br>(tap to play)</div>`}
         <div class="play-overlay"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
         <div class="dur-badge">${clip.duration.toFixed(1)}s</div>
       `;
