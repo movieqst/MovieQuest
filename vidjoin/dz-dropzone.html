@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DZ Video-Stitcher</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -696,6 +697,45 @@
   }
 
   // ── FFmpeg ─────────────────────────────────────────────────────────────
+  // Loads one FFmpeg core build from the given base URL. Shared by both the
+  // multi-threaded and single-threaded attempts in initFFmpeg() below.
+  async function loadCore(coreBase, label) {
+    const pkgBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm';
+    const ffmpegWorkerBlob = new Blob(
+      [`import '${pkgBase}/worker.js';`],
+      { type: 'text/javascript' }
+    );
+    const ffmpegWorkerBlobURL = URL.createObjectURL(ffmpegWorkerBlob);
+
+    const _OrigWorker = window.Worker;
+    window.Worker = function(url, opts) {
+      const s = (url instanceof URL ? url.href : String(url));
+      if (s.includes('worker.js')) return new _OrigWorker(ffmpegWorkerBlobURL, opts);
+      return new _OrigWorker(url, opts);
+    };
+
+    try {
+      const ff = new FFmpeg();
+
+      ff.on('progress', ({ progress }) => {
+        ffmpegBar.style.width = (progress * 100) + '%';
+        if (statusLog.lastChild) statusLog.lastChild.textContent = `Downloading ${label} core… ${Math.round(progress * 100)}%\n`;
+      });
+      ff.on('log', ({ message }) => {
+        if (!message.includes('Aborted()')) log(message, 'info');
+      });
+
+      log(`Fetching ${label} core files from cdn.jsdelivr.net…`, 'info');
+      const coreURL   = await toBlobURL(`${coreBase}/ffmpeg-core.js`,        'text/javascript');
+      const wasmURL   = await toBlobURL(`${coreBase}/ffmpeg-core.wasm`,      'application/wasm');
+      const workerURL = await toBlobURL(`${coreBase}/ffmpeg-core.worker.js`, 'text/javascript');
+      await ff.load({ coreURL, wasmURL, workerURL });
+      return ff;
+    } finally {
+      window.Worker = _OrigWorker;
+    }
+  }
+
   async function initFFmpeg() {
     if (ffmpeg) return;
     if (ffmpegLoading) { while (ffmpegLoading) await new Promise(r => setTimeout(r, 100)); if (!ffmpeg) throw new Error('FFmpeg failed to load'); return; }
@@ -703,40 +743,24 @@
     log('Loading FFmpeg (first time only)…', 'info');
     ffmpegBar.classList.add('active');
     try {
-      const pkgBase  = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm';
-      const coreBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
-
-      const ffmpegWorkerBlob = new Blob(
-        [`import '${pkgBase}/worker.js';`],
-        { type: 'text/javascript' }
-      );
-      const ffmpegWorkerBlobURL = URL.createObjectURL(ffmpegWorkerBlob);
-
-      const _OrigWorker = window.Worker;
-      window.Worker = function(url, opts) {
-        const s = (url instanceof URL ? url.href : String(url));
-        if (s.includes('worker.js')) return new _OrigWorker(ffmpegWorkerBlobURL, opts);
-        return new _OrigWorker(url, opts);
-      };
-
-      const ff = new FFmpeg();
-
-      ff.on('progress', ({ progress }) => {
-        ffmpegBar.style.width = (progress * 100) + '%';
-        if (statusLog.lastChild) statusLog.lastChild.textContent = `Downloading core… ${Math.round(progress * 100)}%\n`;
-      });
-      ff.on('log', ({ message }) => {
-        if (!message.includes('Aborted()')) log(message, 'info');
-      });
-
-      log('Fetching core files from cdn.jsdelivr.net…', 'info');
-      const coreURL   = await toBlobURL(`${coreBase}/ffmpeg-core.js`,        'text/javascript');
-      const wasmURL   = await toBlobURL(`${coreBase}/ffmpeg-core.wasm`,      'application/wasm');
-      const workerURL = await toBlobURL(`${coreBase}/ffmpeg-core.worker.js`, 'text/javascript');
-      await ff.load({ coreURL, wasmURL, workerURL });
-      window.Worker = _OrigWorker;
-      ffmpeg = ff;
-      log('FFmpeg ready ✓', 'ok');
+      // The multi-threaded core needs SharedArrayBuffer, which needs
+      // cross-origin isolation (COOP/COEP) — provided by the
+      // coi-serviceworker.js bootstrap above. When it's active, try the
+      // multi-threaded core first (real multi-core encoding speed); if
+      // anything about that fails, fall back to the single-threaded core
+      // rather than leaving the tool broken.
+      if (self.crossOriginIsolated) {
+        try {
+          ffmpeg = await loadCore('https://cdn.jsdelivr.net/npm/@ffmpeg/core-mt@0.12.6/dist/esm', 'multi-threaded');
+          log('FFmpeg ready ✓ (multi-threaded — faster conversions)', 'ok');
+        } catch (e) {
+          log(`Multi-threaded core failed to load (${e.message || e}) — falling back to single-threaded.`, 'warn');
+        }
+      }
+      if (!ffmpeg) {
+        ffmpeg = await loadCore('https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm', 'single-threaded');
+        log('FFmpeg ready ✓ (single-threaded)', 'ok');
+      }
     } catch (e) {
       const msg = e.message || String(e);
       if (msg.toLowerCase().includes('fetch') || msg.toLowerCase().includes('worker')) {
@@ -745,6 +769,7 @@
       } else {
         log('Failed to load FFmpeg: ' + msg, 'err');
       }
+      ffmpeg = null;
       throw e;
     } finally {
       ffmpegLoading = false;
@@ -1598,6 +1623,15 @@
 
   updateButtons();
   renderIncoming();
+
+  // Start fetching FFmpeg in the background as soon as the page opens,
+  // instead of waiting for the first drop. The core download (several
+  // seconds even on a fast connection) then usually finishes before the
+  // user has picked a file, so their first conversion doesn't have to eat
+  // that wait on top of the encode itself. Silently ignored if it fails —
+  // the normal on-demand load in handleFiles()/runProcess() still covers
+  // that case.
+  initFFmpeg().catch(() => {});
 </script>
 </body>
 </html>
