@@ -31,12 +31,12 @@
     }
 
     header {
-      padding: 20px 24px 16px;
+      padding: 16px 24px 14px;
       border-bottom: 1px solid var(--border);
       position: relative;
+      display: flex; justify-content: center; align-items: center;
     }
-    header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; }
-    header p { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+    header img.site-logo { height: 72px; width: auto; display: block; }
 
     #ffmpegBar {
       position: absolute; bottom: 0; left: 0;
@@ -286,8 +286,7 @@
 
 <header>
   <div id="ffmpegBar"></div>
-  <h1>Advanced MP4 Joiner</h1>
-  <p>Client-side video stitching via FFmpeg.wasm — no upload, no server</p>
+  <img class="site-logo" src="DZ_logo.png" alt="DZ Video Stitcher">
 </header>
 
 <main>
@@ -670,30 +669,41 @@
   }
 
   function updateDownloadSelect() {
+    // Compare by HEIGHT — the conventional "1080p / 720p" descriptor used by humans.
+    // A 1440×1080 video is legitimately 1080p; comparing by longest edge mislabels it.
+    // hd720 is always the floor — never grey it out regardless of source quality.
     const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
-    const prev  = downloadQuality.value;
 
-    // Best non-upscaling tier (iterates insertion order: 720→1080→1440→4k)
     let bestDefault = 'hd720';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
-      if (maxH === 0 || maxH >= cfg.suggestMinH) bestDefault = key;
+      if (maxH === 0 || maxH >= cfg.H) bestDefault = key;
     }
-
-    // Keep prev only if it's a valid non-upscaling choice
-    const prevIsGood = prev && (DOWNLOAD_MODES[prev]) &&
-                       (maxH === 0 || maxH >= DOWNLOAD_MODES[prev].suggestMinH);
-    const toSelect = prevIsGood ? prev : bestDefault;
 
     downloadQuality.innerHTML = '';
     for (const [key, cfg] of Object.entries(DOWNLOAD_MODES)) {
       const opt = document.createElement('option');
       opt.value = key;
-      const upscale = maxH > 0 && maxH < cfg.suggestMinH;
+      const upscale = key !== 'hd720' && maxH > 0 && maxH < cfg.H;
       opt.textContent = cfg.label + (upscale ? ' △' : '');
       if (upscale) opt.className = 'upscale';
-      if (key === toSelect) opt.selected = true;
+      if (key === bestDefault) opt.selected = true;
       downloadQuality.appendChild(opt);
     }
+  }
+
+  // ── Damped progress helper ─────────────────────────────────────────────
+  // FFmpeg's progress ratio overshoots 1.0 with filter_complex/trim (users see
+  // 400%+). This maps the raw percentage to a display value that decelerates
+  // near the end and hard-caps at 98 until the encode finishes.
+  //   0–89 raw  → 1:1 display
+  //   89–101 raw → half speed  → display 89–95
+  //   101–113 raw → quarter speed → display 95–98
+  //   >113 raw  → capped at 98
+  function dampedProgress(rawPct) {
+    if (rawPct <= 89) return rawPct;
+    if (rawPct <= 101) return 89 + (rawPct - 89) / 2;
+    if (rawPct <= 113) return 95 + (rawPct - 101) / 4;
+    return 98;
   }
 
   // ── Main process ───────────────────────────────────────────────────────
@@ -760,7 +770,7 @@
         outName,
       ];
 
-      ffmpeg.on('progress', ({ progress }) => setProgress(20 + Math.round(progress * 75)));
+      ffmpeg.on('progress', ({ progress }) => setProgress(dampedProgress(Math.round(progress * 100))));
       const code = await ffmpeg.exec(args);
       if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
 
@@ -784,10 +794,10 @@
       clearLog();
 
       if (isDL) {
-        const maxH = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
-        const isUpscale = maxH > 0 && cfg.suggestMinH && maxH < cfg.suggestMinH;
+        const maxH2 = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
+        const isUpscale = maxH2 > 0 && maxH2 < cfg.H;
         if (isUpscale) {
-          log(`⚠ Your clips are ~${maxH}p — saving at ${cfg.H}p won't add quality, but here it is.`, 'warn');
+          log(`⚠ Your clips are ~${maxH2}p — saving at ${cfg.H}p won't add quality, but here it is.`, 'warn');
         } else {
           log(`${cfg.label} encoded! Choose where to save it.`, 'ok');
         }
