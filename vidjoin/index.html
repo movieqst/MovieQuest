@@ -506,25 +506,97 @@
     return new Promise((resolve) => {
       const v = document.createElement('video');
       v.preload = 'auto'; v.muted = true; v.playsInline = true;
+      v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+      // Some browsers throttle or skip decoding frames for <video> elements
+      // that are never attached to the DOM. Attach it off-screen (not
+      // display:none — some engines skip layout/decode for display:none too)
+      // so real frames get decoded, then remove it once we're done.
+      v.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:2px;height:2px;opacity:0;';
+      document.body.appendChild(v);
+
       const url = URL.createObjectURL(file);
       v.src = url;
 
       let settled = false;
       let dims = { nativeW: 0, nativeH: 0 };
 
+      const cleanup = () => {
+        URL.revokeObjectURL(url);
+        if (v.parentNode) v.parentNode.removeChild(v);
+      };
+
       const finish = (thumb, duration) => {
         if (settled) return;
         settled = true;
         clearTimeout(failTimer);
-        URL.revokeObjectURL(url);
+        cleanup();
         resolve({ thumb, duration: duration || 0, nativeW: dims.nativeW, nativeH: dims.nativeH });
       };
 
-      const captureFrame = () => {
+      const isNearBlack = (canvas) => {
         try {
-          const c = document.createElement('canvas');
-          c.width = 160; c.height = 90;
-          c.getContext('2d').drawImage(v, 0, 0, 160, 90);
+          const ctx = canvas.getContext('2d');
+          const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          let sum = 0;
+          // Sample every 8th pixel (4 bytes/px) for speed.
+          const step = 8 * 4;
+          let n = 0;
+          for (let i = 0; i < data.length; i += step) {
+            sum += data[i] + data[i + 1] + data[i + 2];
+            n++;
+          }
+          const avg = sum / (n * 3); // 0-255
+          return avg < 12; // very dark = likely a black fade frame
+        } catch (e) {
+          return false; // if we can't read pixels, don't block on it
+        }
+      };
+
+      const drawAt = () => {
+        const c = document.createElement('canvas');
+        c.width = 160; c.height = 90;
+        c.getContext('2d').drawImage(v, 0, 0, 160, 90);
+        return c;
+      };
+
+      // Many clips (esp. "closer"-style edits) fade in from black. Grabbing
+      // a frame at a fixed ~1s point often lands inside that fade and
+      // produces a solid black thumbnail even though capture "succeeded".
+      // Try a few timestamps further into the clip and keep the first one
+      // that isn't near-black; fall back to whatever we last captured.
+      const candidateTimes = (dur) => {
+        if (!dur || !isFinite(dur) || dur <= 0) return [0];
+        const pts = [dur * 0.25, dur * 0.5, dur * 0.75, Math.min(2, dur * 0.9)];
+        return [...new Set(pts.map(t => Math.min(t, Math.max(dur - 0.05, 0))))];
+      };
+      let candidateIdx = 0;
+      let times = [];
+      let lastCanvas = null;
+
+      const trySeekNext = () => {
+        if (candidateIdx >= times.length) {
+          // Out of candidates — use the last frame we captured, black or not.
+          if (lastCanvas) {
+            try { finish(lastCanvas.toDataURL('image/jpeg', 0.6), v.duration); }
+            catch (e) { finish(null, v.duration); }
+          } else {
+            finish(null, v.duration);
+          }
+          return;
+        }
+        try { v.currentTime = times[candidateIdx]; }
+        catch (e) { drawNow(); }
+      };
+
+      const drawNow = () => {
+        try {
+          const c = drawAt();
+          lastCanvas = c;
+          if (isNearBlack(c) && candidateIdx < times.length - 1) {
+            candidateIdx++;
+            trySeekNext();
+            return;
+          }
           const dataUrl = c.toDataURL('image/jpeg', 0.6);
           finish(dataUrl, v.duration);
         } catch (e) {
@@ -533,19 +605,28 @@
         }
       };
 
+      const captureFrame = () => {
+        // KEY FIX: right when 'seeked' fires, the browser has often only
+        // scheduled the new frame — it hasn't actually painted it into the
+        // video element's decode buffer yet. drawImage()/toDataURL() at that
+        // instant silently succeeds but captures an all-black frame. Waiting
+        // two animation-frame ticks gives the compositor time to paint the
+        // real frame before we read it.
+        requestAnimationFrame(() => requestAnimationFrame(drawNow));
+      };
+
       // Overall safety net: never leave the clip stuck loading forever.
-      const failTimer = setTimeout(() => finish(null, v.duration), 6000);
+      const failTimer = setTimeout(() => finish(null, v.duration), 8000);
 
       v.onloadedmetadata = () => {
         dims = { nativeW: v.videoWidth, nativeH: v.videoHeight };
       };
 
       v.onloadeddata = () => {
+        times = candidateTimes(v.duration);
+        candidateIdx = 0;
         try {
-          const target = (v.duration === Infinity || isNaN(v.duration))
-            ? 1e101
-            : Math.min(1, v.duration / 2);
-          v.currentTime = target;
+          v.currentTime = times[0];
         } catch (e) {
           captureFrame();
         }
