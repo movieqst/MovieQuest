@@ -865,6 +865,16 @@
     return info;
   }
 
+  // Per-stream checks — used both to decide whether a file can be used
+  // untouched, and (independently) whether normalizeToH264 needs to
+  // re-encode a given stream or can just stream-copy it.
+  function needsVideoReencode(info) {
+    return !(/^h264/i.test(info.vcodec || '') && (info.pixfmt || '') === 'yuv420p');
+  }
+  function needsAudioReencode(info) {
+    return !(!info.acodec || /^aac/i.test(info.acodec));
+  }
+
   // The stitcher's own export pipeline re-encodes every clip anyway
   // (scale/pad/fades/concat), so this just flags whether ffmpeg can decode
   // the source cleanly as-is — H.264/yuv420p video in an MP4-family
@@ -872,34 +882,63 @@
   // the user can always override the Convert checkbox per file.
   function isConformant(info) {
     const containerOk = /mp4|mov|m4v|3gp|3g2/i.test(info.container || '');
-    const vcodecOk = /^h264/i.test(info.vcodec || '');
-    const pixOk = (info.pixfmt || '') === 'yuv420p';
-    const acodecOk = !info.acodec || /^aac/i.test(info.acodec);
-    return containerOk && vcodecOk && pixOk && acodecOk;
+    return containerOk && !needsVideoReencode(info) && !needsAudioReencode(info);
   }
 
-  // Fixed-quality normalize — CRF 16 (a notch above the old standalone
-  // converter's CRF 18) since this is a mezzanine step: the stitcher's
-  // final export re-compresses it again, and stacking two lossy passes at
-  // a low bitrate compounds visible quality loss.
-  async function normalizeToH264(file) {
+  // Re-encodes only the streams that actually need it. A file that's
+  // already H.264/yuv420p just wrapped in the wrong container (.mkv, .avi,
+  // vp8-in-webm's h264 cousin, etc.) gets its video stream-copied — a fast
+  // remux, no re-encode — and same for audio that's already AAC. Only a
+  // stream that genuinely needs converting goes through libx264/aac.
+  // CRF 16 / preset veryfast: this is a mezzanine step (the stitcher's own
+  // export re-compresses everything again), so quality loss from a fast
+  // preset here is essentially invisible, and stacking two SLOW lossy
+  // passes buys nothing since the second pass dominates final quality.
+  // If a stream-copy attempt fails outright (rare — some source bitstreams
+  // don't remux cleanly into MP4), falls back to a full re-encode of both
+  // streams rather than leaving the user with nothing.
+  async function normalizeToH264(file, info) {
     const release = await acquireFFmpegLock();
     try {
       const inName = 'norm_in_' + uid() + ext(file.name);
       const outName = 'norm_out_' + uid() + '.mp4';
       await ffmpeg.writeFile(inName, await fetchFile(file));
-      await ffmpeg.exec([
+
+      const vCopy = !needsVideoReencode(info);
+      const aCopy = !needsAudioReencode(info);
+      const buildArgs = (copyVideo, copyAudio) => [
         '-i', inName,
-        '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '16', '-preset', 'medium',
-        '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+        ...(copyVideo
+          ? ['-c:v', 'copy']
+          : ['-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '16', '-preset', 'veryfast']),
+        ...(copyAudio
+          ? ['-c:a', 'copy']
+          : ['-c:a', 'aac', '-b:a', '192k', '-ar', '48000']),
         '-movflags', '+faststart',
         outName,
-      ]);
+      ];
+
+      let videoReencoded = !vCopy, audioReencoded = !aCopy;
+      try {
+        await ffmpeg.exec(buildArgs(vCopy, aCopy));
+      } catch (e) {
+        if (vCopy || aCopy) {
+          await ffmpeg.deleteFile(outName).catch(() => {});
+          videoReencoded = true; audioReencoded = true;
+          await ffmpeg.exec(buildArgs(false, false));
+        } else {
+          throw e;
+        }
+      }
+
       const data = await ffmpeg.readFile(outName);
       await ffmpeg.deleteFile(inName).catch(() => {});
       await ffmpeg.deleteFile(outName).catch(() => {});
       const blob = new Blob([data.buffer], { type: 'video/mp4' });
-      return new File([blob], stem(file.name) + '_h264.mp4', { type: 'video/mp4' });
+      return {
+        file: new File([blob], stem(file.name) + '_h264.mp4', { type: 'video/mp4' }),
+        videoReencoded, audioReencoded,
+      };
     } finally {
       release();
     }
@@ -956,9 +995,16 @@
   function incomingStatusLabel(item) {
     if (item.status === 'inspecting') return 'Inspecting…';
     if (item.status === 'error') return 'Could not be read — will be added without conversion';
-    return item.conformant
-      ? (item.convert ? 'Already H.264 MP4 — will be re-encoded anyway (your choice)' : 'Already H.264 MP4 — will be added as-is')
-      : (item.convert ? 'Not H.264 — will be converted when added' : 'Not H.264 — will be added without conversion (your choice)');
+    if (item.conformant) {
+      return item.convert ? 'Already H.264 MP4 — will be re-encoded anyway (your choice)' : 'Already H.264 MP4 — will be added as-is';
+    }
+    // Video+audio may already be fine even when isConformant() said no —
+    // that only happens when just the container is wrong, which is a fast
+    // remux rather than a real re-encode.
+    const info = parseProbe(item.probeRaw || '');
+    const fastRemux = !needsVideoReencode(info) && !needsAudioReencode(info);
+    if (!item.convert) return fastRemux ? 'Wrong container only — will be added without remuxing (your choice)' : 'Not H.264 — will be added without conversion (your choice)';
+    return fastRemux ? 'Wrong container only — will be remuxed (fast, no re-encode)' : 'Not H.264 — will be converted when added';
   }
 
   function renderIncoming() {
@@ -1041,23 +1087,26 @@
 
     for (const item of ready) {
       const f = item.file;
-      let workingFile = f, normalized = false;
+      let workingFile = f, normalized = false, fastRemux = false;
       try {
         if (item.convert && ffmpegOk) {
           log(`Converting ${f.name}…`, 'info');
-          workingFile = await normalizeToH264(f);
+          const info = parseProbe(item.probeRaw || '');
+          const result = await normalizeToH264(f, info);
+          workingFile = result.file;
           normalized = true;
-          log(`Converted ${f.name}`, 'ok');
+          fastRemux = !result.videoReencoded && !result.audioReencoded;
+          log(fastRemux ? `Remuxed ${f.name} — no re-encode needed` : `Converted ${f.name}`, 'ok');
         }
         const { thumb, duration, nativeW, nativeH } = await generateThumb(workingFile);
         clips.push({
-          id: uid(), file: workingFile, origName: f.name, origSize: f.size, probeRaw: item.probeRaw, normalized,
+          id: uid(), file: workingFile, origName: f.name, origSize: f.size, probeRaw: item.probeRaw, normalized, fastRemux,
           thumb, duration, nativeW, nativeH,
           vStart: 0, vEnd: duration, aStart: 0, aEnd: duration,
           split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0,
         });
         while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
-        log(`Added ${f.name} to the timeline${normalized ? ' (converted)' : ''}.`, 'ok');
+        log(`Added ${f.name} to the timeline${normalized ? (fastRemux ? ' (remuxed)' : ' (converted)') : ''}.`, 'ok');
         const idx = incoming.findIndex(i => i.id === item.id);
         if (idx !== -1) incoming.splice(idx, 1);
       } catch (e) {
@@ -1386,6 +1435,15 @@
     a.click();
   };
 
+  function clipStatusLabel(clip) {
+    if (!clip.normalized) return 'Already H.264 MP4 — used as-is';
+    return clip.fastRemux ? 'Remuxed into MP4 on ingest — video/audio were already fine, no re-encode' : 'Converted to H.264 MP4 on ingest';
+  }
+  function clipBadgeText(clip) {
+    if (!clip.normalized) return 'Native H.264';
+    return clip.fastRemux ? 'Remuxed (fast)' : 'Converted to H.264';
+  }
+
   window.toggleInfo = (id) => {
     const clip = clips.find(c => c.id === id);
     if (!clip) return;
@@ -1393,7 +1451,7 @@
     const panelHost = document.getElementById(`infowrap-${id}`);
     if (!panelHost) return;
     panelHost.innerHTML = '';
-    if (clip.infoOpen) panelHost.appendChild(infoPanel(clip.probeRaw, { name: clip.origName, statusLabel: clip.normalized ? 'Converted to H.264 MP4 on ingest' : 'Already H.264 MP4 — used as-is' }));
+    if (clip.infoOpen) panelHost.appendChild(infoPanel(clip.probeRaw, { name: clip.origName, statusLabel: clipStatusLabel(clip) }));
   };
 
   // ── Slider helpers ─────────────────────────────────────────────────────
@@ -1456,7 +1514,7 @@
           <div>
             <div class="clip-name"><span>#${idx + 1}</span>${clip.origName}</div>
             <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
-            <span class="clip-badge ${clip.normalized ? 'normalized' : 'native'}">${clip.normalized ? 'Converted to H.264' : 'Native H.264'}</span>
+            <span class="clip-badge ${clip.normalized ? 'normalized' : 'native'}">${clipBadgeText(clip)}</span>
           </div>
           <div class="clip-actions">
             <button class="icon-btn" title="File info" onclick="toggleInfo('${clip.id}')">
@@ -1507,7 +1565,7 @@
       renderSliders(clip, slidersDiv);
 
       if (clip.infoOpen) {
-        document.getElementById(`infowrap-${clip.id}`).appendChild(infoPanel(clip.probeRaw, { name: clip.origName, statusLabel: clip.normalized ? 'Converted to H.264 MP4 on ingest' : 'Already H.264 MP4 — used as-is' }));
+        document.getElementById(`infowrap-${clip.id}`).appendChild(infoPanel(clip.probeRaw, { name: clip.origName, statusLabel: clipStatusLabel(clip) }));
       }
 
       if (idx < clips.length - 1 && transitions[idx]) {
