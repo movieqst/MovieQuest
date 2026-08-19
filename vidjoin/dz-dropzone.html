@@ -368,6 +368,10 @@
     .clip-card.is-empty .clip-stage { background: var(--bg2); }
     .clip-card.is-empty:hover, .clip-card.is-empty.drag { border-color: var(--blue); }
     .clip-card.is-empty.drag .clip-stage { background: rgba(0,200,255,.08); }
+    /* No video to letterbox, so the placeholder doesn't hold a 16:9 box —
+       it would push the controls (the point of showing the panel at all)
+       off the bottom of the screen. */
+    .clip-card.is-empty .stage-fallback { aspect-ratio: auto; min-height: 180px; padding: 26px 16px; }
     .clip-stage .stage-fallback {
       display: flex; align-items: center; justify-content: center;
       aspect-ratio: 16 / 9; color: var(--muted); font-size: 0.8rem; text-align: center; padding: 0 12px;
@@ -3172,7 +3176,10 @@
   btnPreview.addEventListener('click', () => runProcess(previewQuality.value));
   btnMerge.addEventListener('click', () => runProcess(downloadQuality.value));
 
-  updateButtons();
+  // render() paints the filmstrip and the edit panel — including the empty
+  // stitcher panel, which otherwise wouldn't show up until the first clip
+  // arrived. It calls updateButtons() itself.
+  render();
   renderIncoming();
   renderConverter();
 
