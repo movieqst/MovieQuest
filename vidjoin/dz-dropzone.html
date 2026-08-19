@@ -146,6 +146,15 @@
 
     /* Section-divider logos: same 72px reference height the header logos
        used before this update's 120% bump. */
+    /* Detector and Converter stack normally. Once BOTH are collapsed to
+       their tab strips they're short enough to sit side by side, so the
+       host flips to a row — flex-basis plus wrap means the browser drops
+       them back on top of each other by itself when the column gets too
+       narrow to hold two, rather than needing a breakpoint guess. */
+    .stages { display: flex; flex-direction: column; }
+    .stages.side-by-side { flex-direction: row; flex-wrap: wrap; gap: 0 26px; align-items: flex-start; }
+    .stages.side-by-side .stage-col { flex: 1 1 360px; min-width: 0; }
+
     .section-logo-row { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 4px 0 20px; }
     .section-logo-row[hidden] { display: none; }
     .section-logo-row img { height: 72px; width: auto; display: block; opacity: .85; }
@@ -637,35 +646,41 @@
   </div>
   <input type="file" id="fileInput" multiple accept="video/*,image/*">
 
-  <div class="section-logo-row">
-    <button class="logo-arrow-btn" id="btnCollapseIncomingL" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-    <img src="DZ-Video-Detector.png" alt="DZ Video-Detector">
-    <button class="logo-arrow-btn" id="btnCollapseIncomingR" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
+  <div id="stagesWrap" class="stages">
+    <div class="stage-col">
+      <div class="section-logo-row">
+        <button class="logo-arrow-btn" id="btnCollapseIncomingL" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+        <img src="DZ-Video-Detector.png" alt="DZ Video-Detector">
+        <button class="logo-arrow-btn" id="btnCollapseIncomingR" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+      </div>
+
+      <section id="incomingSection" class="incoming-section" hidden>
+        <div class="section-label">Dropped files — review, then convert</div>
+        <div id="incomingList" class="incoming-list"></div>
+      </section>
+    </div>
+
+    <div class="stage-col">
+      <div class="section-logo-row">
+        <button class="logo-arrow-btn" id="btnCollapseConverterL" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+        <img src="DZ-Video-Converter.png" alt="DZ Video-Converter">
+        <button class="logo-arrow-btn" id="btnCollapseConverterR" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+      </div>
+
+      <section id="converterSection" class="incoming-section" hidden>
+        <div class="section-label">Converted files — download, or add to the stitcher</div>
+        <div id="converterList" class="incoming-list"></div>
+      </section>
+    </div>
   </div>
-
-  <section id="incomingSection" class="incoming-section" hidden>
-    <div class="section-label">Dropped files — review, then convert</div>
-    <div id="incomingList" class="incoming-list"></div>
-  </section>
-
-  <div class="section-logo-row">
-    <button class="logo-arrow-btn" id="btnCollapseConverterL" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-    <img src="DZ-Video-Converter.png" alt="DZ Video-Converter">
-    <button class="logo-arrow-btn" id="btnCollapseConverterR" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-  </div>
-
-  <section id="converterSection" class="incoming-section" hidden>
-    <div class="section-label">Converted files — download, or add to the stitcher</div>
-    <div id="converterList" class="incoming-list"></div>
-  </section>
 
   <div id="stitcherLogoDivider" class="section-logo-row"><img src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher"></div>
   <div id="filmstrip" class="filmstrip" hidden></div>
@@ -870,6 +885,7 @@
   const btnCollapseIncomingR = document.getElementById('btnCollapseIncomingR');
   const btnCollapseConverterL = document.getElementById('btnCollapseConverterL');
   const btnCollapseConverterR = document.getElementById('btnCollapseConverterR');
+  const stagesWrap     = document.getElementById('stagesWrap');
   const btnClear       = document.getElementById('btnClear');
   const btnPreview     = document.getElementById('btnPreview');
   const btnMerge       = document.getElementById('btnMerge');
@@ -898,22 +914,31 @@
   // the Converter each get their own pair, collapsing independently.
   const ARROW_UP   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>';
   const ARROW_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
-  function wireSectionCollapse(list, leftBtn, rightBtn) {
+  const sectionCollapsed = { incoming: false, converter: false };
+  // Side by side only once both are rolled up — one collapsed section next
+  // to a full-height expanded one would just leave a tall empty column.
+  function updateStageLayout() {
+    if (stagesWrap) {
+      stagesWrap.classList.toggle('side-by-side',
+        sectionCollapsed.incoming && sectionCollapsed.converter);
+    }
+  }
+  function wireSectionCollapse(key, list, leftBtn, rightBtn) {
     if (!list || !leftBtn || !rightBtn) return;
-    let collapsed = false;
     const apply = () => {
-      list.classList.toggle('collapsed', collapsed);
-      const icon = collapsed ? ARROW_DOWN : ARROW_UP;
+      list.classList.toggle('collapsed', sectionCollapsed[key]);
+      const icon = sectionCollapsed[key] ? ARROW_DOWN : ARROW_UP;
       leftBtn.innerHTML = icon;
       rightBtn.innerHTML = icon;
+      updateStageLayout();
     };
-    const toggle = () => { collapsed = !collapsed; apply(); };
+    const toggle = () => { sectionCollapsed[key] = !sectionCollapsed[key]; apply(); };
     leftBtn.addEventListener('click', toggle);
     rightBtn.addEventListener('click', toggle);
     apply();
   }
-  wireSectionCollapse(incomingList, btnCollapseIncomingL, btnCollapseIncomingR);
-  wireSectionCollapse(converterList, btnCollapseConverterL, btnCollapseConverterR);
+  wireSectionCollapse('incoming', incomingList, btnCollapseIncomingL, btnCollapseIncomingR);
+  wireSectionCollapse('converter', converterList, btnCollapseConverterL, btnCollapseConverterR);
 
   // ── Logging ────────────────────────────────────────────────────────────
   // capture.on redirects log() output into an array instead of the visible
