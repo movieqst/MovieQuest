@@ -21,6 +21,10 @@
       --green: #00e8b0;
       --red: #ff6b6b;
       --radius: 10px;
+      /* Drop strip width. Floor is ~1in (96 CSS px); it scales with the
+         viewport up to 170px, which is a fifth of the 850px content
+         column. Change this one value to retune the strip. */
+      --dz-w: clamp(96px, 15vw, 170px);
     }
 
     body {
@@ -29,6 +33,9 @@
       color: var(--text);
       min-height: 100vh;
       padding-bottom: 280px;
+      /* Gutter the fixed drop strip lives in. Everything else — header,
+         main, the bottom bar — is pushed clear of it by this one value. */
+      padding-left: var(--dz-w);
     }
 
     header {
@@ -65,19 +72,51 @@
 
     main { max-width: 850px; margin: 0 auto; padding: 24px 16px; }
 
+    /* Full-height strip down the left edge. Fixed rather than in-flow so it
+       stays put while the (often long) converter/stitcher columns scroll —
+       a drop target you have to scroll back up to reach isn't much of a
+       drop target. */
     .drop-zone {
-      border: 2px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 48px 24px;
+      position: fixed; left: 0; top: 0; bottom: 0; width: var(--dz-w);
+      z-index: 60;
+      background: var(--bg2);
+      border-right: 2px dashed var(--border);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 6px;
       text-align: center;
       cursor: pointer;
       transition: border-color .2s, background .2s;
-      margin-bottom: 24px;
     }
-    .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); background: rgba(0,200,255,.06); }
-    .drop-zone .icon { font-size: 3rem; margin-bottom: 12px; }
-    .drop-zone p { color: var(--muted); font-size: 0.9rem; }
-    .drop-zone strong { color: var(--text); font-size: 1.05rem; }
+    .drop-zone:hover, .drop-zone.drag { border-right-color: var(--blue); background: rgba(0,200,255,.06); }
+    .dz-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .drop-zone .icon { font-size: 2.1rem; line-height: 1; }
+    /* Rotated so the label reads bottom-to-top up the strip — at this width
+       horizontal text would wrap to one or two characters a line. */
+    .dz-label, .dz-sub {
+      writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+    }
+    .dz-label {
+      font-size: 1rem; font-weight: 700; color: var(--text);
+      letter-spacing: .2em; text-transform: uppercase;
+    }
+    .dz-sub { font-size: 0.76rem; color: var(--muted); letter-spacing: .08em; }
+
+    /* Too narrow for a side strip — fold the drop zone back into a normal
+       block at the top of the page. Zeroing --dz-w takes the body gutter
+       and the bottom bar's offset with it. Has to sit after the rules
+       above: same specificity, so the later block is the one that wins. */
+    @media (max-width: 720px) {
+      :root { --dz-w: 0px; }
+      .drop-zone {
+        position: static; width: auto;
+        border: 2px dashed var(--border); border-right-width: 2px;
+        border-radius: var(--radius);
+        padding: 26px 20px; margin-bottom: 24px;
+      }
+      .drop-zone:hover, .drop-zone.drag { border-color: var(--blue); }
+      .dz-inner { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 4px 14px; }
+      .dz-label, .dz-sub { writing-mode: horizontal-tb; transform: none; white-space: normal; }
+    }
 
     input[type=file] { display: none; }
 
@@ -429,7 +468,7 @@
 
     /* Bottom bar */
     .bottom-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      position: fixed; bottom: 0; left: var(--dz-w); right: 0; z-index: 50;
       background: rgba(10,10,18,.85); backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
       box-shadow: 0 -8px 32px rgba(0,0,0,.5);
@@ -530,9 +569,13 @@
 </header>
 
 <main>
-  <div class="drop-zone" id="dropZone">
-    <div class="icon">🎬</div>
-    <p><strong>DZ Drop Zone</strong><br><small>Drop any video — MP4, MOV, MKV, AVI, WebM and more. Each file is inspected automatically; you decide what gets converted before it hits the timeline.</small></p>
+  <div class="drop-zone" id="dropZone"
+       title="Drop any video — MP4, MOV, MKV, AVI, WebM and more. Each file is inspected automatically; you decide what gets converted before it hits the timeline.">
+    <div class="dz-inner">
+      <div class="icon">🎬</div>
+      <div class="dz-label">DZ Drop Zone</div>
+      <div class="dz-sub">Drop videos here — or click to browse</div>
+    </div>
   </div>
   <input type="file" id="fileInput" multiple accept="video/*">
 
