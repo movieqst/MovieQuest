@@ -518,7 +518,11 @@
     #statusLog .err  { color: var(--red); }
     #statusLog .warn { color: var(--amber); }
 
-    .actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    /* Wraps rather than clipping: the bar lost ~170px to the drop strip, so
+       below roughly 950px the row no longer fits on one line and the
+       right-hand controls were being cut off. */
+    .actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .actions-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
     .clip-count { font-size: 0.8rem; color: var(--muted); }
 
     .btn {
@@ -558,8 +562,13 @@
       border-radius: 6px; padding: 0 10px; height: 34px; cursor: pointer;
       font-size: 0.8rem; color: var(--muted); white-space: nowrap;
     }
+    /* The swatch defaults to black, which on this dark bar with no border
+       read as an empty gap — easy to mistake for a missing control. The
+       ring keeps it legible whatever colour is chosen. */
     .fade-color-pill input[type=color] {
-      width: 18px; height: 18px; border: none; background: none;
+      width: 18px; height: 18px; background: none;
+      border: 1px solid rgba(255,255,255,.5);
+      box-shadow: 0 0 0 1px rgba(0,0,0,.6);
       padding: 0; cursor: pointer; border-radius: 3px; flex-shrink: 0;
     }
 
@@ -671,7 +680,7 @@
     <div id="statusLog"><span class="info">Ready. Drop any video file into the DZ Drop Zone to begin.</span></div>
     <div class="actions">
       <span class="clip-count" id="clipCount">0 clips</span>
-      <div style="display:flex;gap:8px;align-items:center;">
+      <div class="actions-group">
         <label class="fade-color-pill" title="Fade-to colour (applies to all clips)">
           <input type="color" id="fadeColorPicker" value="#000000">
           Fade colour
@@ -2129,8 +2138,8 @@
         // lead-in/tail padding is added — and after the speed change, so a
         // "2 second fade" is two seconds of finished video regardless of
         // the rate.
-        if (d.vFadeIn > 0)  vf += `,fade=t=in:st=0:d=${Math.min(d.vFadeIn, vOut/2)}:color=${fadeHex}`;
-        if (d.vFadeOut > 0) vf += `,fade=t=out:st=${Math.max(0, vOut-d.vFadeOut)}:d=${Math.min(d.vFadeOut, vOut/2)}:color=${fadeHex}`;
+        if (d.vFadeIn > 0)  vf += `,fade=t=in:st=0:d=${Math.min(d.vFadeIn, vOut/2)}:color=0x${fadeHex}`;
+        if (d.vFadeOut > 0) vf += `,fade=t=out:st=${Math.max(0, vOut-d.vFadeOut)}:d=${Math.min(d.vFadeOut, vOut/2)}:color=0x${fadeHex}`;
         if (vLead > 0.001 || vTail > 0.001) {
           vf += `,tpad=start_duration=${vLead.toFixed(3)}:stop_duration=${vTail.toFixed(3)}:color=0x${fadeHex}`;
         }
