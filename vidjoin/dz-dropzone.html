@@ -371,7 +371,8 @@
     /* No video to letterbox, so the placeholder doesn't hold a 16:9 box —
        it would push the controls (the point of showing the panel at all)
        off the bottom of the screen. */
-    .clip-card.is-empty .stage-fallback { aspect-ratio: auto; min-height: 180px; padding: 26px 16px; }
+    .clip-card.is-empty .stage-fallback { aspect-ratio: auto; min-height: 150px; padding: 22px 16px; }
+    .clip-card.is-empty .preview-blank { aspect-ratio: auto; height: 150px; }
     .clip-stage .stage-fallback {
       display: flex; align-items: center; justify-content: center;
       aspect-ratio: 16 / 9; color: var(--muted); font-size: 0.8rem; text-align: center; padding: 0 12px;
@@ -506,12 +507,33 @@
     /* Clip edit preview — renders just the active clip's current trim/fade
        settings through ffmpeg, so an edit can be checked without running
        the full multi-clip export. */
-    .clip-preview { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 12px; }
-    .clip-preview-hdr { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-    .clip-preview-hdr .btn { padding: 6px 14px; font-size: 0.78rem; }
-    .clip-preview-stale { font-size: 0.72rem; color: var(--amber); display: flex; align-items: center; gap: 5px; }
-    .clip-preview-video { width: 100%; max-height: 240px; background: #000; border-radius: 8px; display: none; margin-top: 10px; }
-    .clip-preview-video.show { display: block; }
+    /* Two screens stacked, each captioned: the source clip on top and the
+       rendered edit below it, at matching size so the two can be compared
+       without either one changing shape. */
+    .stage-caption {
+      text-align: center; padding: 7px 0 11px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); border-bottom: 1px solid var(--border);
+    }
+    .stage-caption.live { color: var(--green); }
+
+    .preview-stage { position: relative; background: #000; border-bottom: 1px solid var(--border); }
+    /* Matches .clip-stage video exactly so both screens are the same size. */
+    .preview-stage video,
+    .preview-stage .preview-blank {
+      display: block; width: 100%; aspect-ratio: 16 / 9;
+      max-height: 46vh; object-fit: contain; background: #000;
+    }
+    /* Sits over the middle of the screen whenever there's nothing rendered
+       yet, or the clip has been edited since the last render. */
+    .preview-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      background: rgba(0,0,0,.55); text-align: center; padding: 12px;
+    }
+    .preview-overlay .btn { padding: 11px 22px; font-size: 0.82rem; letter-spacing: .04em; }
+    .clip-preview-stale { font-size: 0.74rem; color: var(--amber); }
+    .preview-hint { font-size: 0.72rem; color: var(--muted); max-width: 330px; line-height: 1.5; }
 
     /* Little tab that opens the info panel below it — used on the active
        clip's edit panel. */
@@ -2728,6 +2750,18 @@
         </div>
         <span class="stage-badge">no clip</span>
       </div>
+      <div class="stage-caption">Original</div>
+      <div class="preview-stage">
+        <div class="preview-blank"></div>
+        <div class="preview-overlay">
+          <button class="btn btn-merge" disabled>
+            <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
+            Render edited preview
+          </button>
+          <div class="preview-hint">Once a clip is loaded, your edit renders here so you can compare it against the original above.</div>
+        </div>
+      </div>
+      <div class="stage-caption">Edited preview</div>
       <div class="clip-controls">
         <div class="clip-header">
           <div>
@@ -2896,15 +2930,31 @@
 
       ${idx < clips.length - 1 && transitions[idx] ? transitionControlHTML(transitions[idx], idx) : ''}
 
-      <div class="clip-preview" id="clipPreviewWrap-${clip.id}"></div>
-
       <div class="info-tab-row">
         <button class="info-tab-btn" id="infotab-${clip.id}" onclick="toggleInfo('${clip.id}')">${infoTabBtnInner(clip)}</button>
       </div>
       <div id="infowrap-${clip.id}"></div>
     `;
 
+    // Screen one (the source clip) is captioned ORIGINAL; screen two below
+    // it holds the rendered edit at the same size, captioned EDITED PREVIEW.
+    const origCaption = document.createElement('div');
+    origCaption.className = 'stage-caption';
+    origCaption.textContent = 'Original';
+
+    const previewStage = document.createElement('div');
+    previewStage.className = 'preview-stage';
+    previewStage.id = `previewStage-${clip.id}`;
+
+    const previewCaption = document.createElement('div');
+    previewCaption.className = 'stage-caption';
+    previewCaption.id = `previewCaption-${clip.id}`;
+    previewCaption.textContent = 'Edited preview';
+
     card.appendChild(stage);
+    card.appendChild(origCaption);
+    card.appendChild(previewStage);
+    card.appendChild(previewCaption);
     card.appendChild(ctrl);
     editPanelHost.appendChild(card);
 
@@ -2926,22 +2976,34 @@
   // Renders just the active clip's own trim/fade settings through ffmpeg at
   // a small size/fast preset — so a trim or fade can be checked without
   // running the full multi-clip export just to see one clip.
+  // The lower of the two screens. Dark with a call-to-action in the middle
+  // until something has been rendered; the rendered edit afterwards, with
+  // the button coming back over it the moment the clip is edited again.
   function renderClipPreviewUI(clip) {
-    const host = document.getElementById(`clipPreviewWrap-${clip.id}`);
+    const host = document.getElementById(`previewStage-${clip.id}`);
     if (!host) return;
     const isCurrent = clipPreviewFor === clip.id && !!clipPreviewBlobUrl;
+    const needsRender = !isCurrent || clipPreviewStale;
     host.innerHTML = `
-      <div class="clip-preview-hdr">
-        <button class="btn btn-preview" id="btnPreviewClipEdit" ${clipPreviewBusy ? 'disabled' : ''}>
-          <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
-          ${clipPreviewBusy ? 'Rendering…' : (isCurrent ? 'Re-render preview' : 'Preview this edit')}
-        </button>
-        ${isCurrent && clipPreviewStale ? `<span class="clip-preview-stale">⚠ Edited since last preview</span>` : ''}
-      </div>
-      <video class="clip-preview-video ${isCurrent ? 'show' : ''}" id="clipPreviewVideo" controls${isCurrent ? ` src="${clipPreviewBlobUrl}"` : ''}></video>
+      ${isCurrent
+        ? `<video id="clipPreviewVideo" controls playsinline src="${clipPreviewBlobUrl}"></video>`
+        : `<div class="preview-blank"></div>`}
+      ${needsRender ? `
+        <div class="preview-overlay">
+          <button class="btn btn-merge" id="btnPreviewClipEdit" ${clipPreviewBusy ? 'disabled' : ''}>
+            ${clipPreviewBusy
+              ? '<svg class="spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Rendering…'
+              : '<svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Render edited preview'}
+          </button>
+          ${isCurrent && clipPreviewStale
+            ? '<div class="clip-preview-stale">⚠ Edited since this was rendered</div>'
+            : '<div class="preview-hint">Your trim, fades and speed applied — rendered here so you can check the edit before exporting.</div>'}
+        </div>` : ''}
     `;
     const btn = document.getElementById('btnPreviewClipEdit');
     if (btn) btn.onclick = () => previewActiveClipEdit();
+    const cap = document.getElementById(`previewCaption-${clip.id}`);
+    if (cap) cap.classList.toggle('live', isCurrent && !clipPreviewStale);
   }
 
   // Any edit to the active clip invalidates its rendered preview (if any) —
