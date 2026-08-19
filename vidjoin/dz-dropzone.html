@@ -221,27 +221,31 @@
       display: flex;
       flex-direction: column;
     }
-    .clip-body { display: flex; gap: 0; }
-    .clip-thumb {
-      width: 160px; min-height: 90px; flex-shrink: 0;
-      background: #000; position: relative; cursor: pointer;
+    /* Edit-panel stage: the active clip's video, full width across the top
+       of the panel with the controls underneath. object-fit:contain (not
+       cover) so odd aspect ratios letterbox instead of being cropped or
+       stretched — the old 160px-wide thumbnail sat in a flex row and got
+       stretched to the full height of the controls column beside it. */
+    .clip-stage { position: relative; width: 100%; background: #000; border-bottom: 1px solid var(--border); }
+    .clip-stage video {
+      display: block; width: 100%; aspect-ratio: 16 / 9;
+      max-height: 46vh; object-fit: contain; background: #000;
+    }
+    .clip-stage .stage-badge {
+      position: absolute; top: 8px; left: 10px;
+      background: rgba(0,0,0,.75); color: #fff;
+      font-size: 0.7rem; padding: 2px 7px; border-radius: 4px; pointer-events: none;
+    }
+    .clip-stage .stage-btn {
+      position: absolute; top: 6px; right: 8px;
+      background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.25); color: #fff;
+      border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 0.72rem;
+      display: inline-flex; align-items: center; gap: 5px; transition: background .15s;
+    }
+    .clip-stage .stage-btn:hover { background: rgba(0,200,255,.35); }
+    .clip-stage .stage-fallback {
       display: flex; align-items: center; justify-content: center;
-    }
-    .clip-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .clip-thumb .play-overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity .2s;
-    }
-    .clip-thumb:hover .play-overlay { opacity: 1; }
-    .play-overlay svg { width: 32px; height: 32px; fill: #fff; }
-    .clip-thumb .dur-badge {
-      position: absolute; bottom: 6px; right: 6px;
-      background: rgba(0,0,0,.8); color: #fff;
-      font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;
-    }
-    .clip-thumb .thumb-fallback {
-      color: var(--muted); font-size: 0.65rem; text-align: center; padding: 0 6px; line-height: 1.4;
+      aspect-ratio: 16 / 9; color: var(--muted); font-size: 0.8rem; text-align: center; padding: 0 12px;
     }
     .clip-controls { flex: 1; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
     .clip-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
@@ -691,6 +695,10 @@
   // clip's settings change or a different clip becomes active.
   let clipPreviewBlobUrl = null;
   let clipPreviewFor = null;   // clip id the current blob was rendered for
+  // Object URL backing the edit panel's inline <video>. Recreated whenever
+  // the panel re-renders, so the previous one has to be revoked or every
+  // re-render leaks the whole decoded file.
+  let stageVideoUrl = null;
   let clipPreviewStale = true;
   let clipPreviewBusy = false;
   let ffmpeg = null;
@@ -807,6 +815,14 @@
   function ext(name) { const m = name.match(/\.[^.]+$/); return m ? m[0] : '.mp4'; }
   function stem(name) { return name.replace(/\.[^.]+$/, ''); }
   function size(n) { return n < 1048576 ? (n / 1024).toFixed(0) + ' KB' : (n / 1048576).toFixed(1) + ' MB'; }
+  // Filenames go into innerHTML in a few places, and `<`, `>` and `&` are
+  // all legal in one — an un-escaped name like "a<b>.mp4" silently mangles
+  // the row it's rendered into.
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+  }
 
   // ── Thumbnail ──────────────────────────────────────────────────────────
   function generateThumb(file) {
@@ -1370,7 +1386,7 @@
       // the Converter section below).
       const tab = document.createElement('div');
       tab.className = 'folder-tab tab-blue';
-      tab.innerHTML = `<div class="folder-tab-name">${item.file.name}</div>`;
+      tab.innerHTML = `<div class="folder-tab-name">${esc(item.file.name)}</div>`;
 
       const row = document.createElement('div');
       row.className = 'incoming-row';
@@ -1483,7 +1499,7 @@
 
       const tab = document.createElement('div');
       tab.className = `folder-tab ${converterTabColorClass(item)}`;
-      tab.innerHTML = `<div class="folder-tab-name">${item.origName}</div>`;
+      tab.innerHTML = `<div class="folder-tab-name">${esc(item.origName)}</div>`;
 
       const row = document.createElement('div');
       row.className = 'incoming-row';
@@ -1562,6 +1578,9 @@
       id: uid(), file: item.file, origName: item.file.name, origSize: item.file.size,
       probeRaw: item.probeRaw, jobState: 'queued', infoOpen: false,
       normalized: false, fastRemux: false, thumb: null, duration: 0, nativeW: 0, nativeH: 0,
+      // Silent sources have no [i:a] to reference in the export's filter
+      // graph — buildFilters needs to know before it writes one.
+      hasAudio: parseProbe(item.probeRaw || '').streams.some(s => s.kind === 'Audio'),
     };
     converterQueue.push(centry);
     renderConverter();
@@ -1600,7 +1619,7 @@
     if (!item || !['converted', 'remuxed'].includes(item.jobState)) return;
     const newClip = {
       id: uid(), file: item.file, origName: item.origName, origSize: item.origSize, probeRaw: item.probeRaw,
-      normalized: item.normalized, fastRemux: item.fastRemux,
+      normalized: item.normalized, fastRemux: item.fastRemux, hasAudio: item.hasAudio,
       thumb: item.thumb, duration: item.duration, nativeW: item.nativeW, nativeH: item.nativeH,
       vStart: 0, vEnd: item.duration, aStart: 0, aEnd: item.duration,
       split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0,
@@ -1657,6 +1676,12 @@
     const chains = [];
     let vConcat = '', aConcat = '';
     let vCount = 0, aCount = 0, totalDur = 0;
+    // A clip with no audio track has no [i:a] to reference — writing one
+    // anyway makes ffmpeg reject the whole graph, so a silent source used
+    // to take the entire export down with it. When *some* clip in the set
+    // has audio, silent ones get generated silence of the same length
+    // instead, so the concatenated audio stays in step with the video.
+    const anyAudio = list.some(d => d.hasAudio !== false);
     for (let i = 0; i < list.length; i++) {
       const d = list[i];
       const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
@@ -1676,10 +1701,18 @@
         vf += `[cv${i}]`;
         chains.push(vf); vConcat += `[cv${i}]`; vCount++; totalDur += vLen;
       }
-      if (aLen > 0.1) {
-        let af = `[${i}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
-        if (d.aFadeIn > 0)  af += `,afade=t=in:st=0:d=${Math.min(d.aFadeIn, aLen/2)}`;
-        if (d.aFadeOut > 0) af += `,afade=t=out:st=${Math.max(0, aLen-d.aFadeOut)}:d=${Math.min(d.aFadeOut, aLen/2)}`;
+      if (anyAudio && aLen > 0.1) {
+        let af;
+        if (d.hasAudio === false) {
+          af = `anullsrc=r=48000:cl=stereo,atrim=start=0:end=${aLen},asetpts=PTS-STARTPTS`;
+        } else {
+          af = `[${i}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
+          if (d.aFadeIn > 0)  af += `,afade=t=in:st=0:d=${Math.min(d.aFadeIn, aLen/2)}`;
+          if (d.aFadeOut > 0) af += `,afade=t=out:st=${Math.max(0, aLen-d.aFadeOut)}:d=${Math.min(d.aFadeOut, aLen/2)}`;
+        }
+        // concat refuses audio inputs whose rate/layout disagree, so every
+        // branch is forced to the same format before it reaches the concat.
+        af += `,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo`;
         af += `[ca${i}]`;
         chains.push(af); aConcat += `[ca${i}]`; aCount++;
       }
@@ -1885,7 +1918,8 @@
     const n = idx + dir;
     if (n < 0 || n >= clips.length) return;
     [clips[idx], clips[n]] = [clips[n], clips[idx]];
-    [transitions[Math.min(idx, n)]] = [transitions[Math.min(idx, n)]];
+    // Transitions stay put: they describe the join at a position in the
+    // timeline ("between slot 1 and 2"), not a property of either clip.
     render();
   };
   window.removeClip = (id) => {
@@ -1899,27 +1933,31 @@
     render();
   };
   let modalClipId = null;
+  let modalBlobUrl = null;
   window.openModal = (id) => {
     const clip = clips.find(c => c.id === id);
     if (!clip) return;
     modalClipId = id;
     modalTitle.textContent = clip.origName;
-    modalVideo.src = URL.createObjectURL(clip.file);
+    if (modalBlobUrl) URL.revokeObjectURL(modalBlobUrl);
+    modalBlobUrl = URL.createObjectURL(clip.file);
+    modalVideo.src = modalBlobUrl;
     clipModal.classList.add('open');
   };
   window.closeModal = () => {
     clipModal.classList.remove('open');
     modalVideo.pause(); modalVideo.src = '';
+    if (modalBlobUrl) { URL.revokeObjectURL(modalBlobUrl); modalBlobUrl = null; }
     modalClipId = null;
   };
 
-  window.splitClipAtPlayhead = () => {
-    if (!modalClipId) return;
-    const idx = clips.findIndex(c => c.id === modalClipId);
+  // Shared by the edit panel's "Split here" button and the modal's, so a
+  // split behaves identically wherever the playhead is being read from.
+  function splitClipAt(id, t) {
+    const idx = clips.findIndex(c => c.id === id);
     if (idx === -1) return;
     const orig = clips[idx];
-    const t = modalVideo.currentTime;
-    if (t <= 0.1 || t >= orig.duration - 0.1) {
+    if (!(t > 0.1) || t >= orig.duration - 0.1) {
       log('Move the playhead away from the very start or end to split.', 'warn');
       return;
     }
@@ -1931,9 +1969,18 @@
       vFadeIn: 0, aFadeIn: 0 };
     clips.splice(idx, 1, clipA, clipB);
     transitions.splice(idx, 0, { id: uid(), type: 'cut', duration: 0 });
-    closeModal();
+    // The original id is gone — keep the panel on the first half rather
+    // than letting render() fall back to clip #1.
+    activeClipId = clipA.id;
     render();
     log(`Split "${orig.origName}" at ${t.toFixed(2)}s → two clips.`, 'ok');
+  }
+
+  window.splitClipAtPlayhead = () => {
+    if (!modalClipId) return;
+    const id = modalClipId, t = modalVideo.currentTime;
+    closeModal();
+    splitClipAt(id, t);
   };
   window.closePreview = () => {
     previewSection.classList.remove('show');
@@ -2068,6 +2115,9 @@
   }
 
   function renderEditPanel() {
+    // The previous panel's <video> is about to be thrown away with the
+    // innerHTML wipe; its object URL has to go with it.
+    if (stageVideoUrl) { URL.revokeObjectURL(stageVideoUrl); stageVideoUrl = null; }
     editPanelHost.innerHTML = '';
     const clip = clips.find(c => c.id === activeClipId);
     if (!clip) {
@@ -2083,16 +2133,18 @@
     const card = document.createElement('div');
     card.className = 'clip-card';
 
-    const body = document.createElement('div');
-    body.className = 'clip-body';
-
-    const thumb = document.createElement('div');
-    thumb.className = 'clip-thumb';
-    thumb.onclick = () => openModal(clip.id);
-    thumb.innerHTML = `
-      ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : `<div class="thumb-fallback">No preview<br>(tap to play)</div>`}
-      <div class="play-overlay"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      <div class="dur-badge">${clip.duration.toFixed(1)}s</div>
+    // Full-width video across the top of the panel, controls underneath.
+    stageVideoUrl = URL.createObjectURL(clip.file);
+    const stage = document.createElement('div');
+    stage.className = 'clip-stage';
+    stage.innerHTML = `
+      <video id="stageVideo-${clip.id}" controls preload="metadata" playsinline
+             ${clip.thumb ? `poster="${clip.thumb}"` : ''} src="${stageVideoUrl}"></video>
+      <span class="stage-badge">#${idx + 1} · ${clip.duration.toFixed(1)}s</span>
+      <button class="stage-btn" id="stageSplit-${clip.id}" title="Split this clip at the playhead">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="4 8 2 12 4 16"/><polyline points="20 8 22 12 20 16"/></svg>
+        Split here
+      </button>
     `;
 
     const ctrl = document.createElement('div');
@@ -2100,7 +2152,7 @@
     ctrl.innerHTML = `
       <div class="clip-header">
         <div>
-          <div class="clip-name"><span>#${idx + 1}</span>${clip.origName}</div>
+          <div class="clip-name"><span>#${idx + 1}</span>${esc(clip.origName)}</div>
           <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
         </div>
         <div class="clip-side">
@@ -2148,10 +2200,14 @@
       <div id="infowrap-${clip.id}"></div>
     `;
 
-    body.appendChild(thumb);
-    body.appendChild(ctrl);
-    card.appendChild(body);
+    card.appendChild(stage);
+    card.appendChild(ctrl);
     editPanelHost.appendChild(card);
+
+    document.getElementById(`stageSplit-${clip.id}`).addEventListener('click', () => {
+      const v = document.getElementById(`stageVideo-${clip.id}`);
+      splitClipAt(clip.id, v ? v.currentTime : 0);
+    });
 
     renderSliders(clip, document.getElementById(`sliders-${clip.id}`));
     renderClipPreviewUI(clip);
@@ -2216,7 +2272,16 @@
           '-movflags', '+faststart',
           outName,
         ];
-        const code = await ffmpeg.exec(args);
+        let code;
+        try {
+          code = await ffmpeg.exec(args);
+        } catch (e) {
+          // Same hazard the full export guards against: a core that dies
+          // mid-encode stays broken for every later call, so throw it away
+          // rather than leaving the page silently poisoned.
+          await restartFFmpeg().catch(() => {});
+          throw new Error(`FFmpeg crashed while rendering the preview (${e.message || e})`);
+        }
         if (code !== 0) throw new Error(`ffmpeg exited with code ${code}`);
         const data = await ffmpeg.readFile(outName);
         blob = new Blob([data.buffer], { type: 'video/mp4' });
