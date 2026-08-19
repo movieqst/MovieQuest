@@ -741,10 +741,15 @@
     try {
       const ff = new FFmpeg();
 
-      ff.on('progress', ({ progress }) => {
+      // Only meaningful while the core is downloading — the same 'progress'
+      // event is reused for encoding progress afterwards, so this handler is
+      // removed as soon as load() resolves. Leaving it attached rewrites the
+      // last log line with nonsense percentages during every later conversion.
+      const onDownloadProgress = ({ progress }) => {
         ffmpegBar.style.width = (progress * 100) + '%';
         if (statusLog.lastChild) statusLog.lastChild.textContent = `Downloading ${label} core… ${Math.round(progress * 100)}%\n`;
-      });
+      };
+      ff.on('progress', onDownloadProgress);
       ff.on('log', ({ message }) => {
         if (!message.includes('Aborted()')) log(message, 'info');
       });
@@ -753,7 +758,11 @@
       const coreURL   = await toBlobURL(`${coreBase}/ffmpeg-core.js`,        'text/javascript');
       const wasmURL   = await toBlobURL(`${coreBase}/ffmpeg-core.wasm`,      'application/wasm');
       const workerURL = await toBlobURL(`${coreBase}/ffmpeg-core.worker.js`, 'text/javascript');
-      await ff.load({ coreURL, wasmURL, workerURL });
+      try {
+        await ff.load({ coreURL, wasmURL, workerURL });
+      } finally {
+        ff.off('progress', onDownloadProgress);
+      }
       return ff;
     } finally {
       window.Worker = _OrigWorker;
@@ -800,6 +809,19 @@
       ffmpegBar.classList.remove('active');
       ffmpegBar.style.width = '0%';
     }
+  }
+
+  // A crashed core (a worker thread dying mid-encode, an abort deep inside
+  // libx264, …) leaves the whole FFmpeg instance unusable: every later call
+  // fails with a confusing error thrown from inside the core rather than
+  // anything that names the real problem. Throw the dead instance away and
+  // load a fresh one. Its virtual filesystem starts empty, so callers must
+  // rewrite any input files they still need.
+  async function restartFFmpeg() {
+    const dead = ffmpeg;
+    ffmpeg = null;
+    try { if (dead) dead.terminate(); } catch (e) { /* already gone */ }
+    await initFFmpeg();
   }
 
   // ── File inspection (DZ Drop Zone) ───────────────────────────────────
@@ -890,10 +912,14 @@
   // vp8-in-webm's h264 cousin, etc.) gets its video stream-copied — a fast
   // remux, no re-encode — and same for audio that's already AAC. Only a
   // stream that genuinely needs converting goes through libx264/aac.
-  // CRF 16 / preset veryfast: this is a mezzanine step (the stitcher's own
+  // CRF 16 / preset fast: this is a mezzanine step (the stitcher's own
   // export re-compresses everything again), so quality loss from a fast
   // preset here is essentially invisible, and stacking two SLOW lossy
   // passes buys nothing since the second pass dominates final quality.
+  // Do not use `veryfast` here: libx264's veryfast preset reliably crashes
+  // ffmpeg.wasm mid-encode with "RuntimeError: function signature mismatch"
+  // (ffmpegwasm/ffmpeg.wasm#116), which kills the core and takes every
+  // later operation down with it. fast/superfast/ultrafast are unaffected.
   // If a stream-copy attempt fails outright (rare — some source bitstreams
   // don't remux cleanly into MP4), falls back to a full re-encode of both
   // streams rather than leaving the user with nothing.
@@ -910,7 +936,7 @@
         '-i', inName,
         ...(copyVideo
           ? ['-c:v', 'copy']
-          : ['-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '16', '-preset', 'veryfast']),
+          : ['-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '16', '-preset', 'fast']),
         ...(copyAudio
           ? ['-c:a', 'copy']
           : ['-c:a', 'aac', '-b:a', '192k', '-ar', '48000']),
@@ -918,16 +944,26 @@
         outName,
       ];
 
+      const runPass = async (copyVideo, copyAudio) => {
+        const code = await ffmpeg.exec(buildArgs(copyVideo, copyAudio));
+        if (code !== 0) throw new Error(`ffmpeg exited with code ${code}`);
+      };
+
       let videoReencoded = !vCopy, audioReencoded = !aCopy;
       try {
-        await ffmpeg.exec(buildArgs(vCopy, aCopy));
+        await runPass(vCopy, aCopy);
       } catch (e) {
-        if (vCopy || aCopy) {
-          await ffmpeg.deleteFile(outName).catch(() => {});
-          videoReencoded = true; audioReencoded = true;
-          await ffmpeg.exec(buildArgs(false, false));
-        } else {
-          throw e;
+        if (!vCopy && !aCopy) throw new Error(`conversion failed (${e.message || e})`);
+        log(`Stream copy failed for ${file.name} (${e.message || e}) — retrying with a full re-encode…`, 'warn');
+        videoReencoded = true; audioReencoded = true;
+        // The first attempt may have taken the core down with it, so start
+        // from a clean instance and rewrite the input before retrying.
+        await restartFFmpeg();
+        await ffmpeg.writeFile(inName, await fetchFile(file));
+        try {
+          await runPass(false, false);
+        } catch (e2) {
+          throw new Error(`conversion failed (${e2.message || e2})`);
         }
       }
 
@@ -1318,8 +1354,20 @@
           outName,
         ];
 
-        ffmpeg.on('progress', ({ progress }) => setProgress(dampedProgress(Math.round(progress * 100))));
-        const code = await ffmpeg.exec(args);
+        const engine = ffmpeg;
+        const onProgress = ({ progress }) => setProgress(dampedProgress(Math.round(progress * 100)));
+        engine.on('progress', onProgress);
+        let code;
+        try {
+          code = await engine.exec(args);
+        } catch (e) {
+          // The core died mid-encode; reload it so the next attempt isn't
+          // doomed by a poisoned instance.
+          await restartFFmpeg().catch(() => {});
+          throw new Error(`FFmpeg crashed during encoding (${e.message || e})`);
+        } finally {
+          engine.off('progress', onProgress);
+        }
         if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
 
         const data = await ffmpeg.readFile(outName);
