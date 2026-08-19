@@ -1821,33 +1821,62 @@
     // has audio, silent ones get generated silence of the same length
     // instead, so the concatenated audio stays in step with the video.
     const anyAudio = list.some(d => d.hasAudio !== false);
+    const fadeHex = (document.getElementById('fadeColorPicker')?.value || '#000000').replace('#','');
     for (let i = 0; i < list.length; i++) {
       const d = list[i];
       const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
       const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
       const vLen = ve - vs, aLen = ae - as2;
+
+      // Split trim can leave the video and audio covering different windows
+      // of the source. Both are laid onto one shared per-clip timeline that
+      // spans from the earlier of the two starts to the later of the two
+      // ends, and each branch is padded out to fill it. Without this, both
+      // branches got their timestamps independently reset to zero, so
+      // trimming the head off the video slid the picture out from under the
+      // sound by exactly the amount trimmed and left the tail short (the
+      // last frame then held while the remaining audio played out).
+      const base = Math.min(vs, as2);
+      const end  = Math.max(ve, ae);
+      const span = end - base;
+      if (span <= 0.1) continue;
+
+      const vLead = vs - base, vTail = end - ve;
+      const aLead = as2 - base, aTail = end - ae;
+
+      let vf;
       if (vLen > 0.1) {
-        let vf = `[${i}:v]trim=start=${vs}:end=${ve},setpts=PTS-STARTPTS`;
+        vf = `[${i}:v]trim=start=${vs}:end=${ve},setpts=PTS-STARTPTS`;
         vf += `,scale=${W}:${H}:force_original_aspect_ratio=decrease`;
         // setsar=1 after the pad: scaling an odd-width source (1918 px, say)
         // into an even canvas leaves a non-square sample aspect ratio, and
         // concat refuses inputs whose SARs disagree ("Input link in0:v0
         // parameters … do not match"), failing the whole export.
         vf += `,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p`;
-        const fadeHex = (document.getElementById('fadeColorPicker')?.value || '#000000').replace('#','');
+        // Fades run against the picture itself, so they go on before any
+        // lead-in/tail padding is added.
         if (d.vFadeIn > 0)  vf += `,fade=t=in:st=0:d=${Math.min(d.vFadeIn, vLen/2)}:color=${fadeHex}`;
         if (d.vFadeOut > 0) vf += `,fade=t=out:st=${Math.max(0, vLen-d.vFadeOut)}:d=${Math.min(d.vFadeOut, vLen/2)}:color=${fadeHex}`;
-        vf += `[cv${i}]`;
-        chains.push(vf); vConcat += `[cv${i}]`; vCount++; totalDur += vLen;
+        if (vLead > 0.001 || vTail > 0.001) {
+          vf += `,tpad=start_duration=${vLead.toFixed(3)}:stop_duration=${vTail.toFixed(3)}:color=0x${fadeHex}`;
+        }
+      } else {
+        // Video trimmed away entirely, but audio survives: hold the slot
+        // with blank picture so nothing downstream shifts out of sync.
+        vf = `color=c=0x${fadeHex}:s=${W}x${H}:d=${span.toFixed(3)}:r=30,setsar=1,format=yuv420p`;
       }
-      if (anyAudio && aLen > 0.1) {
+      chains.push(vf + `[cv${i}]`); vConcat += `[cv${i}]`; vCount++; totalDur += span;
+
+      if (anyAudio) {
         let af;
-        if (d.hasAudio === false) {
-          af = `anullsrc=r=48000:cl=stereo,atrim=start=0:end=${aLen},asetpts=PTS-STARTPTS`;
+        if (d.hasAudio === false || aLen <= 0.1) {
+          af = `anullsrc=r=48000:cl=stereo,atrim=start=0:end=${span.toFixed(3)},asetpts=PTS-STARTPTS`;
         } else {
           af = `[${i}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
           if (d.aFadeIn > 0)  af += `,afade=t=in:st=0:d=${Math.min(d.aFadeIn, aLen/2)}`;
           if (d.aFadeOut > 0) af += `,afade=t=out:st=${Math.max(0, aLen-d.aFadeOut)}:d=${Math.min(d.aFadeOut, aLen/2)}`;
+          if (aLead > 0.001) af += `,adelay=delays=${Math.round(aLead*1000)}:all=1`;
+          if (aTail > 0.001) af += `,apad=pad_dur=${aTail.toFixed(3)}`;
         }
         // concat refuses audio inputs whose rate/layout disagree, so every
         // branch is forced to the same format before it reaches the concat.
