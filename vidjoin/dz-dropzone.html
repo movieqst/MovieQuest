@@ -38,24 +38,9 @@
       position: relative;
       display: flex; justify-content: center; align-items: center; gap: 28px;
     }
-    /* 86.4px = 120% of the 72px reference size used for the two new
-       section-divider logos below. */
+    /* 86.4px = 120% of the 72px reference size used for the section-divider
+       logos below. */
     header img.site-logo { height: 86.4px; width: auto; display: block; }
-    /* Pulled out of the flex flow so the Stitcher logo centres on the page
-       rather than the pair centring together (which pushed it right of
-       centre). left:16px matches main's 16px padding, so it lines up with
-       the drop zone's left edge below.
-       75.4px (not 86.4px) because the two source PNGs aren't cropped the
-       same way: the Converter art fills ~80% of its canvas height while
-       the Stitcher art only fills ~70% (more transparent padding top/
-       bottom). Matched at equal box heights, Converter would visibly render
-       taller. 75.4px = 86.4px * (0.695 / 0.797), the ratio that makes both
-       wordmarks the same rendered height. */
-    header img.converter-logo {
-      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-      height: 75.4px; width: auto; display: block; opacity: .85; transition: .3s;
-    }
-    header img.converter-logo:hover { opacity: 1; filter: drop-shadow(0 0 10px rgba(0,200,255,.5)); }
     header .info-link {
       position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
       color: var(--blue); text-decoration: none; white-space: nowrap;
@@ -67,9 +52,7 @@
     @media (max-width: 720px) {
       header { flex-direction: column; gap: 12px; }
       header .info-link { position: static; transform: none; }
-      header img.converter-logo { position: static; transform: none; }
       header img.site-logo { max-width: 100%; }
-      header img.converter-logo { max-width: 100%; }
     }
 
     #ffmpegBar {
@@ -105,12 +88,8 @@
     .section-logo-row { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 4px 0 20px; }
     .section-logo-row[hidden] { display: none; }
     .section-logo-row img { height: 72px; width: auto; display: block; opacity: .85; }
-    /* Converter art fills more of its canvas than the Stitcher art (see the
-       header comment above) — scaled down to the same ratio so the two
-       wordmarks read as the same size. */
-    .section-logo-row img.logo-converter { height: 62.8px; }
 
-    /* Up/down toggle flanking the converter logo — collapses the dropped
+    /* Up/down toggle flanking the Detector logo — collapses the dropped
        files list down to just its folder tabs. */
     .logo-arrow-btn {
       background: transparent; border: none; color: var(--blue);
@@ -464,7 +443,6 @@
 
 <header>
   <div id="ffmpegBar"></div>
-  <img class="converter-logo" src="DZ-Video-Converter.png" alt="DZ Video-Converter">
   <img class="site-logo" src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher">
   <a class="info-link" href="h264mp4.html">Why H.264 MP4?</a>
 </header>
@@ -480,7 +458,7 @@
     <button class="logo-arrow-btn" id="btnCollapseIncomingL" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
-    <img class="logo-converter" src="DZ-Video-Converter.png" alt="DZ Video-Converter">
+    <img src="DZ-Video-File-Detector.png" alt="DZ Video-File-Detector">
     <button class="logo-arrow-btn" id="btnCollapseIncomingR" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
@@ -494,6 +472,8 @@
       <button class="btn btn-merge" id="btnAddToStitcher">Add to Stitcher</button>
     </div>
   </section>
+
+  <div class="section-logo-row"><img src="DZ-Video-Converter.png" alt="DZ Video-Converter"></div>
 
   <div id="stitcherLogoDivider" class="section-logo-row"><img src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher"></div>
   <div id="clipsArea"></div>
@@ -696,7 +676,7 @@
   const modalTitle     = document.getElementById('modalTitle');
 
   // ── Incoming list collapse ────────────────────────────────────────────
-  // Arrows flanking the converter logo roll the dropped-files list up to
+  // Arrows flanking the Detector logo roll the dropped-files list up to
   // just its folder tabs (colour-coded by status) and back down again.
   const ARROW_UP   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>';
   const ARROW_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
