@@ -189,6 +189,15 @@
     .status-pill.converted { background: rgba(0,232,176,.16); color: var(--green); border: 1px solid rgba(0,232,176,.45); }
     /* Keeps the pill readable while the rest of the folder is dimmed. */
     .incoming-wrap.is-busy .status-pill { opacity: 1; }
+    /* The converting pill doubles as its own progress bar: the fill sweeps
+       left-to-right across the pill as ffmpeg reports progress, so the one
+       job actually running is obvious next to the queued ones. */
+    .status-pill.has-progress { position: relative; overflow: hidden; min-width: 148px; justify-content: center; }
+    .status-pill .pill-fill {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
+      background: rgba(255,150,0,.42); transition: width .25s linear;
+    }
+    .status-pill .pill-text { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; }
     .status-pill .spin { animation: pill-spin 1s linear infinite; transform-origin: 50% 50%; }
     @keyframes pill-spin { to { transform: rotate(360deg); } }
     @media (prefers-reduced-motion: reduce) { .status-pill .spin { animation: none; } }
@@ -718,14 +727,21 @@
   // little longer), and nothing silently corrupts or hangs.
   let ffmpegLockChain = Promise.resolve();
   let ffmpegLockHeld = false;
-  async function acquireFFmpegLock() {
+  // onQueued fires only when the lock is already held, i.e. this caller is
+  // going to sit and wait. Callers use it to show "waiting its turn"
+  // instead of claiming to be working — without it a queued file looks
+  // identical to one actively being processed.
+  async function acquireFFmpegLock(onQueued) {
     let release;
     const wait = new Promise(resolve => { release = resolve; });
     const previous = ffmpegLockChain;
     ffmpegLockChain = wait;
     // If something else is already holding the lock, say so — otherwise
     // this looks exactly like the silent hang it's meant to prevent.
-    if (ffmpegLockHeld) log('Waiting for the current FFmpeg operation to finish…', 'info');
+    if (ffmpegLockHeld) {
+      log('Waiting for the current FFmpeg operation to finish…', 'info');
+      if (onQueued) { try { onQueued(); } catch (e) { /* UI only */ } }
+    }
     await previous;
     ffmpegLockHeld = true;
     return () => { ffmpegLockHeld = false; release(); };
@@ -1136,12 +1152,43 @@
   // something unrelated-looking — so a crash here costs one file instead of
   // poisoning the shared instance that probing and exporting rely on. The
   // memory the job used goes away with it too, which matters across a batch.
-  async function withConversionEngine(fn) {
+  // Thrown when the user stops a conversion. Flagged so the retry ladder in
+  // normalizeToH264 can tell "the user pulled the plug" apart from "this
+  // encoder setting failed" — otherwise stopping a job just makes it start
+  // over with the next preset.
+  class CancelledError extends Error {
+    constructor() { super('Conversion stopped'); this.cancelled = true; }
+  }
+  function newCancelToken() { return { cancelled: false, engine: null }; }
+  // Killing the worker is what actually stops an encode mid-flight;
+  // conversions run on a throwaway engine, so this can't hurt the shared
+  // instance that probing and exporting use.
+  function cancelToken(token) {
+    if (!token || token.cancelled) return;
+    token.cancelled = true;
+    if (token.engine) {
+      try { token.engine.terminate(); } catch (e) { /* already gone */ }
+      token.engine = null;
+    }
+  }
+
+  async function withConversionEngine(fn, { token, onProgress } = {}) {
     await initFFmpeg(); // picks (and health-checks) the core build to clone
+    if (token && token.cancelled) throw new CancelledError();
     const ff = await loadCore(activeCore.base, activeCore.label);
+    if (token) token.engine = ff;
+    // loadCore detaches its own download-progress handler before returning,
+    // so this one only ever sees encoding progress.
+    const handler = onProgress
+      ? ({ progress }) => onProgress(Math.max(0, Math.min(1, progress || 0)))
+      : null;
+    if (handler) ff.on('progress', handler);
     try {
+      if (token && token.cancelled) throw new CancelledError();
       return await fn(ff);
     } finally {
+      if (handler) { try { ff.off('progress', handler); } catch (e) { /* gone */ } }
+      if (token && token.engine === ff) token.engine = null;
       try { ff.terminate(); } catch (e) { /* already gone */ }
     }
   }
@@ -1152,8 +1199,9 @@
   // instead of printing). The result decides the default "Convert" state
   // for that row; the user can still override it before adding to the
   // timeline.
-  async function probeFile(source, label) {
-    const release = await acquireFFmpegLock();
+  async function probeFile(source, label, hooks = {}) {
+    const release = await acquireFFmpegLock(hooks.onQueued);
+    if (hooks.onStart) hooks.onStart();
     try {
       const name = 'probe' + ext(label);
       capture.on = true; capture.lines = [];
@@ -1257,7 +1305,7 @@
   // re-compresses everything again), so quality loss from a fast preset
   // here is essentially invisible, and stacking two slow lossy passes buys
   // nothing since the second pass dominates final quality.
-  async function normalizePass(file, { copyVideo, copyAudio, preset }) {
+  async function normalizePass(file, { copyVideo, copyAudio, preset }, engineOpts = {}) {
     return withConversionEngine(async (ff) => {
       const inName = 'norm_in_' + uid() + ext(file.name);
       const outName = 'norm_out_' + uid() + '.mp4';
@@ -1282,7 +1330,7 @@
         videoReencoded: !copyVideo,
         audioReencoded: !copyAudio,
       };
-    });
+    }, engineOpts);
   }
 
   // Tries the cheapest thing that could work first and gets progressively
@@ -1294,9 +1342,15 @@
   //      and gets some sources through that `fast` chokes on.
   // Each attempt runs on a fresh engine, so a crash costs one attempt
   // rather than every operation that follows it.
-  async function normalizeToH264(file, info) {
-    const release = await acquireFFmpegLock();
+  async function normalizeToH264(file, info, hooks = {}) {
+    const { token, onStart, onProgress } = hooks;
+    if (token && token.cancelled) throw new CancelledError();
+    // onStart fires once the engine is actually ours — before this the job
+    // is only queued behind whatever else is using FFmpeg.
+    const release = await acquireFFmpegLock(hooks.onQueued);
     try {
+      if (token && token.cancelled) throw new CancelledError();
+      if (onStart) onStart();
       const vCopy = !needsVideoReencode(info);
       const aCopy = !needsAudioReencode(info);
       const attempts = [];
@@ -1306,9 +1360,13 @@
 
       let lastErr;
       for (let i = 0; i < attempts.length; i++) {
+        if (token && token.cancelled) throw new CancelledError();
         try {
-          return await normalizePass(file, attempts[i]);
+          return await normalizePass(file, attempts[i], { token, onProgress });
         } catch (e) {
+          // A stop is a decision, not a failure — don't fall down the
+          // retry ladder trying to encode something the user cancelled.
+          if (e.cancelled || (token && token.cancelled)) throw new CancelledError();
           lastErr = e;
           const next = attempts[i + 1];
           if (next) log(`${attempts[i].label} failed for ${file.name} (${e.message || e}) — retrying with ${next.label}…`, 'warn');
@@ -1369,9 +1427,23 @@
 
   // ── Incoming review list ──────────────────────────────────────────────
   function incomingStatusLabel(item) {
-    if (item.status === 'inspecting') return 'Inspecting…';
+    if (item.status === 'waiting')    return 'Detector… will complete after current video processing';
+    if (item.status === 'inspecting') return 'Detector — inspecting now…';
     if (item.status === 'error') return 'Could not be read — you can still try converting it';
+    if (isAlreadyH264Mp4(item)) return 'Already H.264 MP4 — no re-encode needed';
     return item.conformant ? 'Your browser plays this natively' : "Your browser can't decode this — needs converting";
+  }
+
+  // Judged from the probe, not from whether the browser could decode it:
+  // a long file can fail the decode check on a timeout while still being a
+  // perfectly good H.264 MP4. These need no re-encode at all, so they get a
+  // green "already fine" button rather than the red convert alarm.
+  function isAlreadyH264Mp4(item) {
+    if (!item.probeRaw) return false;
+    const info = parseProbe(item.probeRaw);
+    return /mp4/i.test(info.container || '')
+      && !needsVideoReencode(info)
+      && !needsAudioReencode(info);
   }
 
   function renderIncoming() {
@@ -1391,8 +1463,10 @@
       const row = document.createElement('div');
       row.className = 'incoming-row';
 
-      const metaClass = item.status === 'error' ? 'warn' : (item.status === 'ready' ? (item.conformant ? 'ok' : 'warn') : '');
-      const notReady = item.status === 'inspecting';
+      const alreadyH264 = item.status === 'ready' && isAlreadyH264Mp4(item);
+      const metaClass = item.status === 'error' ? 'warn'
+        : (item.status === 'ready' ? ((item.conformant || alreadyH264) ? 'ok' : 'warn') : '');
+      const notReady = item.status === 'inspecting' || item.status === 'waiting';
 
       row.innerHTML = `
         <div class="incoming-main">
@@ -1402,7 +1476,10 @@
             ${item.infoOpen ? 'Hide information' : 'Information / click to open folder'}
           </span>
         </div>
-        <button class="action-pill red" ${notReady ? 'disabled' : ''}>Convert to H.264 .MP4</button>
+        <button class="action-pill ${alreadyH264 ? 'green' : 'red'}" ${notReady ? 'disabled' : ''}
+          title="${alreadyH264 ? 'Already H.264 MP4 — sends it straight through, no re-encode' : 'Convert this file to H.264 MP4'}">
+          ${alreadyH264 ? '✓ H.264 .MP4' : 'Convert to H.264 .MP4'}
+        </button>
         <div class="incoming-actions">
           <button class="icon-btn del" title="Remove">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -1463,27 +1540,56 @@
   // a clip from the Stitcher doesn't lose the converted source; it can just
   // be added again.
   const CONVERTER_PILL = {
-    queued:     { cls: 'queued',     text: 'Queued to convert' },
-    converting: { cls: 'converting', text: 'Converting…' },
+    queued:     { cls: 'queued',     text: 'Queued' },
+    converting: { cls: 'converting', text: 'Converting' },
     converted:  { cls: 'converted',  text: 'Converted to H.264 MP4' },
     remuxed:    { cls: 'converted',  text: 'Remuxed (fast, no re-encode)' },
     failed:     { cls: 'queued',     text: 'Failed' },
+    stopped:    { cls: 'queued',     text: 'Stopped' },
   };
+  const SPIN_SVG = '<svg class="spin" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>';
+
   function converterPillHTML(item) {
     const spec = CONVERTER_PILL[item.jobState];
     if (!spec) return '';
-    const spinner = item.jobState === 'converting'
-      ? '<svg class="spin" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'
-      : '';
-    return `<span class="status-pill ${spec.cls}">${spinner}${spec.text}</span>`;
+    if (item.jobState !== 'converting') {
+      return `<span class="status-pill ${spec.cls}" id="cpill-${item.id}">${spec.text}</span>`;
+    }
+    // Only the job that actually holds the engine shows the sweep; queued
+    // ones sit on a plain "Queued" pill until their turn comes.
+    const pct = Math.round((item.progress || 0) * 100);
+    return `<span class="status-pill converting has-progress" id="cpill-${item.id}">
+      <span class="pill-fill" style="width:${pct}%"></span>
+      <span class="pill-text">${SPIN_SVG}Converting ${pct}%</span>
+    </span>`;
+  }
+
+  // Progress ticks land many times a second — repaint just the one pill
+  // rather than re-rendering the whole list under the user's cursor.
+  function updateConverterProgress(item) {
+    const pill = document.getElementById(`cpill-${item.id}`);
+    if (!pill || item.jobState !== 'converting') return;
+    const pct = Math.round((item.progress || 0) * 100);
+    const fill = pill.querySelector('.pill-fill');
+    const text = pill.querySelector('.pill-text');
+    if (fill) fill.style.width = pct + '%';
+    if (text) text.innerHTML = `${SPIN_SVG}Converting ${pct}%`;
   }
   function converterTabColorClass(item) {
     return ['converted', 'remuxed'].includes(item.jobState) ? 'tab-green' : 'tab-orange';
   }
+
+  function stopConverterItem(id) {
+    const item = converterQueue.find(i => i.id === id);
+    if (!item || !['queued', 'converting'].includes(item.jobState)) return;
+    cancelToken(item.token);
+    log(`Stopping ${item.origName}…`, 'warn');
+  }
   function converterMetaLabel(item) {
     switch (item.jobState) {
-      case 'queued':     return 'Waiting its turn to convert';
+      case 'queued':     return 'Waiting its turn — will start when the current video finishes';
       case 'converting': return 'Converting now…';
+      case 'stopped':    return 'Stopped before it finished';
       case 'failed':     return 'Conversion failed — see the progress log';
       case 'converted':  return 'Converted to H.264 MP4';
       case 'remuxed':    return 'Remuxed into MP4 — video/audio were already fine, no re-encode';
@@ -1505,7 +1611,8 @@
       row.className = 'incoming-row';
 
       const done = ['converted', 'remuxed'].includes(item.jobState);
-      const metaClass = done ? 'ok' : (item.jobState === 'failed' ? 'warn' : '');
+      const running = ['queued', 'converting'].includes(item.jobState);
+      const metaClass = done ? 'ok' : (['failed', 'stopped'].includes(item.jobState) ? 'warn' : '');
 
       row.innerHTML = `
         <div class="incoming-main">
@@ -1516,10 +1623,12 @@
           </span>
         </div>
         ${converterPillHTML(item)}
-        <button class="action-pill green" ${done ? '' : 'disabled'}>Download converted file</button>
-        <button class="action-pill orange" ${done ? '' : 'disabled'}>Add to stitcher</button>
+        ${running
+          ? `<button class="action-pill red stop-btn">■ Stop</button>`
+          : `<button class="action-pill green" ${done ? '' : 'disabled'}>Download converted file</button>
+             <button class="action-pill orange" ${done ? '' : 'disabled'}>Add to stitcher</button>`}
         <div class="incoming-actions">
-          <button class="icon-btn del" title="Remove">
+          <button class="icon-btn del" title="${running ? 'Stop and remove' : 'Remove'}">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
@@ -1527,6 +1636,7 @@
 
       const dlBtn = row.querySelector('.action-pill.green');
       const addBtn = row.querySelector('.action-pill.orange');
+      const stopBtn = row.querySelector('.stop-btn');
       const delBtn = row.querySelector('.incoming-actions button');
       const infoHost = document.createElement('div');
       infoHost.id = `converter-info-${item.id}`;
@@ -1539,10 +1649,15 @@
         if (cue) cue.lastChild.textContent = item.infoOpen ? 'Hide information' : 'Information / click to open folder';
       };
 
-      dlBtn.addEventListener('click', e => { e.stopPropagation(); downloadConverterItem(item.id); });
-      addBtn.addEventListener('click', e => { e.stopPropagation(); addConverterItemToStitcher(item.id); });
+      if (dlBtn)  dlBtn.addEventListener('click', e => { e.stopPropagation(); downloadConverterItem(item.id); });
+      if (addBtn) addBtn.addEventListener('click', e => { e.stopPropagation(); addConverterItemToStitcher(item.id); });
+      if (stopBtn) stopBtn.addEventListener('click', e => { e.stopPropagation(); stopConverterItem(item.id); });
       delBtn.addEventListener('click', e => {
         e.stopPropagation();
+        // Removing the row has to kill the job too — otherwise the encode
+        // carries on invisibly, holding the FFmpeg lock and blocking
+        // everything queued behind it.
+        cancelToken(item.token);
         const idx = converterQueue.findIndex(i => i.id === item.id);
         if (idx !== -1) converterQueue.splice(idx, 1);
         renderConverter();
@@ -1581,29 +1696,47 @@
       // Silent sources have no [i:a] to reference in the export's filter
       // graph — buildFilters needs to know before it writes one.
       hasAudio: parseProbe(item.probeRaw || '').streams.some(s => s.kind === 'Audio'),
+      progress: 0,
+      token: newCancelToken(),
     };
     converterQueue.push(centry);
+    // Stays "Queued" until normalizeToH264 actually takes the engine — it
+    // used to jump straight to "Converting…" while really just sitting in
+    // line behind another job.
     renderConverter();
 
-    centry.jobState = 'converting';
-    renderConverter();
     try {
       await initFFmpeg();
       const info = parseProbe(item.probeRaw || '');
-      log(`Converting ${item.file.name}…`, 'info');
-      const result = await normalizeToH264(item.file, info);
+      const result = await normalizeToH264(item.file, info, {
+        token: centry.token,
+        onStart: () => {
+          centry.jobState = 'converting';
+          centry.progress = 0;
+          log(`Converting ${item.file.name}…`, 'info');
+          renderConverter();
+        },
+        onProgress: (p) => { centry.progress = p; updateConverterProgress(centry); },
+      });
       const { thumb, duration, nativeW, nativeH } = await generateThumb(result.file);
       centry.file = result.file;
       centry.normalized = true;
       centry.fastRemux = !result.videoReencoded && !result.audioReencoded;
       centry.thumb = thumb; centry.duration = duration; centry.nativeW = nativeW; centry.nativeH = nativeH;
       centry.jobState = centry.fastRemux ? 'remuxed' : 'converted';
+      centry.progress = 1;
       log(centry.fastRemux ? `Remuxed ${item.file.name} — no re-encode needed` : `Converted ${item.file.name}`, 'ok');
     } catch (e) {
-      centry.jobState = 'failed';
-      log(`Failed to convert ${item.file.name}: ${e.message || e}`, 'err');
+      if (e.cancelled || centry.token.cancelled) {
+        centry.jobState = 'stopped';
+        log(`Stopped converting ${item.file.name}.`, 'warn');
+      } else {
+        centry.jobState = 'failed';
+        log(`Failed to convert ${item.file.name}: ${e.message || e}`, 'err');
+      }
     }
-    renderConverter();
+    // The row may have been deleted mid-conversion; don't resurrect it.
+    if (converterQueue.some(i => i.id === centry.id)) renderConverter();
   }
 
   function downloadConverterItem(id) {
@@ -1648,7 +1781,13 @@
       log(`Inspecting ${f.name}…`, 'info');
 
       try {
-        const raw = await probeFile(f, f.name);
+        const raw = await probeFile(f, f.name, {
+          // Files dropped together queue behind each other (and behind any
+          // running conversion), so say which of the two is happening
+          // instead of showing every row an identical "Inspecting…".
+          onQueued: () => { item.status = 'waiting'; renderIncoming(); },
+          onStart:  () => { item.status = 'inspecting'; renderIncoming(); },
+        });
         const info = parseProbe(raw);
         item.probeRaw = raw;
         // The export re-encodes every clip regardless, so a file only needs
@@ -2424,6 +2563,7 @@
   });
 
   btnClear.addEventListener('click', () => {
+    converterQueue.forEach(i => cancelToken(i.token));
     clips = []; transitions = []; incoming = []; converterQueue = [];
     activeClipId = null;
     if (clipPreviewBlobUrl) URL.revokeObjectURL(clipPreviewBlobUrl);
