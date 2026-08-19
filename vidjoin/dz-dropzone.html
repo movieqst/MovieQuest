@@ -193,14 +193,24 @@
     @keyframes pill-spin { to { transform: rotate(360deg); } }
     @media (prefers-reduced-motion: reduce) { .status-pill .spin { animation: none; } }
 
-    .incoming-convert {
-      display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--muted);
-      white-space: nowrap; cursor: pointer; flex-shrink: 0;
-    }
-    .incoming-convert.disabled { opacity: .4; cursor: not-allowed; }
-    .incoming-convert input { accent-color: var(--blue); width: 14px; height: 14px; cursor: pointer; }
     .incoming-actions { display: flex; gap: 4px; flex-shrink: 0; }
-    .incoming-bar-actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+    /* Action pills — pill-shaped like status-pill, but clickable buttons:
+       red "convert" in the Detector list, green "download" / orange "add
+       to stitcher" in the Converter list. */
+    .action-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 99px; border: 1px solid;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap; flex-shrink: 0;
+      transition: opacity .15s, transform .1s;
+    }
+    .action-pill:hover:not(:disabled) { opacity: .85; }
+    .action-pill:active:not(:disabled) { transform: scale(0.97); }
+    .action-pill:disabled { opacity: .35; cursor: not-allowed; }
+    .action-pill.red    { color: #ff6b6b;    border-color: rgba(255,107,107,.55); background: rgba(255,107,107,.12); }
+    .action-pill.green  { color: var(--green); border-color: rgba(0,232,176,.5);   background: rgba(0,232,176,.12); }
+    .action-pill.orange { color: #ffab3d;    border-color: rgba(255,150,0,.5);    background: rgba(255,150,0,.14); }
 
     /* Clips */
     .clip-card {
@@ -311,8 +321,67 @@
     }
 
     /* Clips area spacing */
-    #clipsArea { display: flex; flex-direction: column; gap: 0; }
     .clip-wrap { display: flex; flex-direction: column; }
+
+    /* Filmstrip — browse all clips; click one to open it in the edit panel
+       below. The clicked item enlarges, its neighbours stay mid-size, and
+       everything further away shrinks — so you always see what's coming
+       up/just played without every clip fighting for full-size space. */
+    .filmstrip {
+      display: flex; align-items: center; gap: 10px;
+      overflow-x: auto; overflow-y: hidden;
+      padding: 6px 6px 18px;
+      scroll-behavior: smooth;
+    }
+    .filmstrip::-webkit-scrollbar { height: 6px; }
+    .filmstrip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .fs-item {
+      flex-shrink: 0; cursor: pointer; position: relative;
+      border-radius: 8px; overflow: hidden; background: #000;
+      border: 2px solid transparent; opacity: .55;
+      transition: width .25s, height .25s, opacity .2s, border-color .2s, box-shadow .2s;
+    }
+    .fs-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fs-item .fs-dur {
+      position: absolute; bottom: 4px; right: 5px;
+      background: rgba(0,0,0,.8); color: #fff;
+      font-size: 0.62rem; padding: 1px 5px; border-radius: 4px;
+    }
+    .fs-item .fs-idx {
+      position: absolute; top: 4px; left: 5px;
+      background: rgba(0,0,0,.7); color: var(--blue);
+      font-size: 0.62rem; font-weight: 700; padding: 1px 5px; border-radius: 4px;
+    }
+    .fs-item.dist-0   { width: 224px; height: 126px; opacity: 1;   border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 6px 24px rgba(0,200,255,.25); }
+    .fs-item.dist-1   { width: 132px; height: 74px;  opacity: .8; }
+    .fs-item.dist-2   { width: 88px;  height: 50px;  opacity: .55; }
+    .fs-item.dist-far { width: 60px;  height: 34px;  opacity: .35; }
+    .fs-item:hover { opacity: 1; }
+
+    /* Edit panel — the one active clip's full controls, below the filmstrip. */
+    #editPanelHost { display: flex; flex-direction: column; }
+    .no-clip-hint { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 20px 0 30px; }
+
+    /* Clip edit preview — renders just the active clip's current trim/fade
+       settings through ffmpeg, so an edit can be checked without running
+       the full multi-clip export. */
+    .clip-preview { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 12px; }
+    .clip-preview-hdr { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .clip-preview-hdr .btn { padding: 6px 14px; font-size: 0.78rem; }
+    .clip-preview-stale { font-size: 0.72rem; color: var(--amber); display: flex; align-items: center; gap: 5px; }
+    .clip-preview-video { width: 100%; max-height: 240px; background: #000; border-radius: 8px; display: none; margin-top: 10px; }
+    .clip-preview-video.show { display: block; }
+
+    /* Little tab that opens the info panel below it — used on the active
+       clip's edit panel. */
+    .info-tab-row { display: flex; }
+    .info-tab-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg3); border: 1px solid var(--border); border-bottom: none;
+      color: var(--blue); font-size: 0.72rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 8px 8px 0 0; cursor: pointer;
+    }
+    .info-tab-btn:hover { background: rgba(0,200,255,.08); }
 
     /* Info panel (per-file probe report, shared by incoming rows and clip cards) */
     .info-panel { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 12px; }
@@ -465,18 +534,20 @@
   </div>
 
   <section id="incomingSection" class="incoming-section" hidden>
-    <div class="section-label">Dropped files — review, then add to the timeline</div>
+    <div class="section-label">Dropped files — review, then convert</div>
     <div id="incomingList" class="incoming-list"></div>
-    <div class="incoming-bar-actions">
-      <button class="btn btn-clear" id="btnDiscardIncoming">Discard all</button>
-      <button class="btn btn-merge" id="btnAddToStitcher">Add to Stitcher</button>
-    </div>
   </section>
 
   <div class="section-logo-row"><img src="DZ-Video-Converter.png" alt="DZ Video-Converter"></div>
 
+  <section id="converterSection" class="incoming-section" hidden>
+    <div class="section-label">Converted files — download, or add to the stitcher</div>
+    <div id="converterList" class="incoming-list"></div>
+  </section>
+
   <div id="stitcherLogoDivider" class="section-logo-row"><img src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher"></div>
-  <div id="clipsArea"></div>
+  <div id="filmstrip" class="filmstrip" hidden></div>
+  <div id="editPanelHost"></div>
 
   <div id="previewSection">
     <div class="preview-hdr">
@@ -610,9 +681,18 @@
 
   // ── State ──────────────────────────────────────────────────────────────
   let incoming = [];       // dropped files, probed, awaiting a convert/keep decision
-  let incomingBusy = false;
+  let converterQueue = []; // files sent for conversion — a persistent library independent of the timeline
   let clips = [];          // files actually on the stitcher timeline
   let transitions = [];
+  let activeClipId = null; // which clip's full edit panel is open below the filmstrip
+  // Rendered preview of the active clip's own trim/fade settings (not the
+  // full multi-clip export) — lets an edit be checked without running the
+  // whole timeline through ffmpeg. Keyed by clip id; wiped whenever that
+  // clip's settings change or a different clip becomes active.
+  let clipPreviewBlobUrl = null;
+  let clipPreviewFor = null;   // clip id the current blob was rendered for
+  let clipPreviewStale = true;
+  let clipPreviewBusy = false;
   let ffmpeg = null;
   let ffmpegLoading = false;
   let isProcessing = false;
@@ -648,9 +728,10 @@
   const fileInput      = document.getElementById('fileInput');
   const incomingSection = document.getElementById('incomingSection');
   const incomingList    = document.getElementById('incomingList');
-  const btnDiscardIncoming = document.getElementById('btnDiscardIncoming');
-  const btnAddToStitcher   = document.getElementById('btnAddToStitcher');
-  const clipsArea      = document.getElementById('clipsArea');
+  const converterSection = document.getElementById('converterSection');
+  const converterList    = document.getElementById('converterList');
+  const filmstrip      = document.getElementById('filmstrip');
+  const editPanelHost  = document.getElementById('editPanelHost');
   const btnCollapseIncomingL = document.getElementById('btnCollapseIncomingL');
   const btnCollapseIncomingR = document.getElementById('btnCollapseIncomingR');
   const btnClear       = document.getElementById('btnClear');
@@ -1272,80 +1353,30 @@
 
   // ── Incoming review list ──────────────────────────────────────────────
   function incomingStatusLabel(item) {
-    // Once a folder has been through the batch its label describes what
-    // happened, not what was going to happen.
-    switch (item.jobState) {
-      case 'converted': return 'Converted to H.264 MP4 and added to the timeline';
-      case 'remuxed':   return 'Remuxed into MP4 (no re-encode) and added to the timeline';
-      case 'added':     return 'Added to the timeline unchanged';
-      case 'failed':    return 'Conversion failed — see the progress log';
-      case 'converting':return 'Converting now…';
-      case 'queued':    return 'Waiting its turn to convert';
-    }
     if (item.status === 'inspecting') return 'Inspecting…';
-    if (item.status === 'error') return 'Could not be read — will be added without conversion';
-    if (item.conformant) {
-      return item.convert ? 'Your browser plays this natively — will be converted anyway (your choice)' : 'Your browser plays this natively — will be added as-is';
-    }
-    // Video+audio may already be fine even though the browser can't play
-    // the file — that's the wrong-container case, a fast remux rather than
-    // a real re-encode.
-    const info = parseProbe(item.probeRaw || '');
-    const fastRemux = !needsVideoReencode(info) && !needsAudioReencode(info);
-    if (!item.convert) return fastRemux ? 'Wrong container only — will be added without remuxing (your choice)' : "Your browser can't decode this — will be added without conversion (your choice)";
-    return fastRemux ? 'Wrong container only — will be remuxed (fast, no re-encode)' : "Your browser can't decode this — will be converted when added";
-  }
-
-  // jobState drives the folder's tint + pill: null while the file is still
-  // awaiting a decision, then queued -> converting -> done once the user
-  // commits the batch. Done folders stay in the list as a tinted receipt
-  // rather than vanishing, so the batch's outcome stays readable.
-  const PILL = {
-    queued:     { cls: 'queued',    text: 'Queued to convert' },
-    converting: { cls: 'converting', text: 'Converting…' },
-    added:      { cls: 'converted', text: 'Added' },
-    converted:  { cls: 'converted', text: 'Converted to H.264 MP4' },
-    remuxed:    { cls: 'converted', text: 'Remuxed' },
-    failed:     { cls: 'queued',    text: 'Failed' },
-  };
-
-  // Tab colour when the incoming list is collapsed down to just its tabs.
-  function tabColorClass(item) {
-    if (['converted', 'remuxed', 'added'].includes(item.jobState)) return 'tab-green';
-    if (['queued', 'converting', 'failed'].includes(item.jobState)) return 'tab-orange';
-    return 'tab-blue';
-  }
-
-  function statusPillHTML(item) {
-    const spec = PILL[item.jobState];
-    if (!spec) return '';
-    const spinner = item.jobState === 'converting'
-      ? '<svg class="spin" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'
-      : '';
-    return `<span class="status-pill ${spec.cls}">${spinner}${spec.text}</span>`;
+    if (item.status === 'error') return 'Could not be read — you can still try converting it';
+    return item.conformant ? 'Your browser plays this natively' : "Your browser can't decode this — needs converting";
   }
 
   function renderIncoming() {
     incomingList.innerHTML = '';
     incoming.forEach(item => {
       const wrap = document.createElement('div');
-      wrap.className = 'incoming-wrap' + (item.jobState ? ' is-busy' : '');
+      wrap.className = 'incoming-wrap';
 
       // Folder tab — carries the filename so a stack of folders is
-      // scannable by name alone.
+      // scannable by name alone. Detector folders are always blue: nothing
+      // here has started converting yet (that happens after it moves to
+      // the Converter section below).
       const tab = document.createElement('div');
-      tab.className = `folder-tab ${tabColorClass(item)}`;
+      tab.className = 'folder-tab tab-blue';
       tab.innerHTML = `<div class="folder-tab-name">${item.file.name}</div>`;
 
       const row = document.createElement('div');
       row.className = 'incoming-row';
 
-      const doneOk = ['converted', 'remuxed', 'added'].includes(item.jobState);
-      const metaClass = doneOk ? 'ok'
-        : (item.jobState === 'failed' || item.status === 'error') ? 'warn'
-        : (item.status === 'ready' ? (item.conformant ? 'ok' : 'warn') : '');
-      const notReady = item.status !== 'ready';
-      const settled = !!item.jobState; // queued or beyond: no more editing
+      const metaClass = item.status === 'error' ? 'warn' : (item.status === 'ready' ? (item.conformant ? 'ok' : 'warn') : '');
+      const notReady = item.status === 'inspecting';
 
       row.innerHTML = `
         <div class="incoming-main">
@@ -1355,11 +1386,7 @@
             ${item.infoOpen ? 'Hide information' : 'Information / click to open folder'}
           </span>
         </div>
-        ${statusPillHTML(item)}
-        <label class="incoming-convert ${notReady || settled ? 'disabled' : ''}">
-          <input type="checkbox" ${item.convert ? 'checked' : ''} ${notReady || settled ? 'disabled' : ''}>
-          Convert to H.264
-        </label>
+        <button class="action-pill red" ${notReady ? 'disabled' : ''}>Convert to H.264 .MP4</button>
         <div class="incoming-actions">
           <button class="icon-btn del" title="Remove">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -1368,7 +1395,7 @@
       `;
 
       const delBtn = row.querySelector('.incoming-actions button');
-      const checkbox = row.querySelector('input[type=checkbox]');
+      const convertBtn = row.querySelector('.action-pill');
       const infoHost = document.createElement('div');
       infoHost.id = `incoming-info-${item.id}`;
       infoHost.className = 'incoming-info-host';
@@ -1380,16 +1407,10 @@
         if (cue) cue.lastChild.textContent = item.infoOpen ? 'Hide information' : 'Information / click to open folder';
       };
 
-      checkbox.addEventListener('change', () => {
-        item.convert = checkbox.checked;
-        const meta = row.querySelector('.incoming-meta');
-        meta.textContent = `${size(item.file.size)}${item.file.type ? ' · ' + item.file.type : ''} · ${incomingStatusLabel(item)}`;
-        meta.className = `incoming-meta ${metaClass}`;
-        if (item.infoOpen) paintInfo();
+      convertBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        convertIncomingItem(item.id);
       });
-      // The checkbox is inside the folder, so keep its clicks from also
-      // toggling the folder open.
-      checkbox.closest('.incoming-convert').addEventListener('click', e => e.stopPropagation());
 
       delBtn.addEventListener('click', e => {
         e.stopPropagation();
@@ -1417,63 +1438,177 @@
     });
 
     incomingSection.hidden = incoming.length === 0;
-    // Folders already run through the batch are receipts — they don't make
-    // the button live again.
-    const anyActionable = incoming.some(i => i.status !== 'inspecting' && !i.jobState);
-    btnAddToStitcher.disabled = !anyActionable || incomingBusy;
-    btnDiscardIncoming.disabled = incoming.length === 0 || incomingBusy;
   }
 
-  async function addIncomingToStitcher() {
-    // Folders from an earlier batch are receipts, not work to redo.
-    const ready = incoming.filter(i => i.status !== 'inspecting' && !i.jobState);
-    if (!ready.length || incomingBusy) return;
-    incomingBusy = true;
-    // Mark the whole batch queued up front so the user can see exactly
-    // what's waiting its turn, not just whatever is converting right now.
-    ready.forEach(i => { i.jobState = 'queued'; i.infoOpen = false; });
-    renderIncoming();
-
-    let ffmpegOk = true;
-    try { await initFFmpeg(); } catch (e) { ffmpegOk = false; log('FFmpeg unavailable — files will be added without conversion.', 'err'); }
-
-    for (const item of ready) {
-      const f = item.file;
-      let workingFile = f, normalized = false, fastRemux = false;
-      item.jobState = 'converting';
-      renderIncoming();
-      try {
-        if (item.convert && ffmpegOk) {
-          log(`Converting ${f.name}…`, 'info');
-          const info = parseProbe(item.probeRaw || '');
-          const result = await normalizeToH264(f, info);
-          workingFile = result.file;
-          normalized = true;
-          fastRemux = !result.videoReencoded && !result.audioReencoded;
-          log(fastRemux ? `Remuxed ${f.name} — no re-encode needed` : `Converted ${f.name}`, 'ok');
-        }
-        const { thumb, duration, nativeW, nativeH } = await generateThumb(workingFile);
-        clips.push({
-          id: uid(), file: workingFile, origName: f.name, origSize: f.size, probeRaw: item.probeRaw, normalized, fastRemux,
-          thumb, duration, nativeW, nativeH,
-          vStart: 0, vEnd: duration, aStart: 0, aEnd: duration,
-          split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0,
-        });
-        while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
-        log(`Added ${f.name} to the timeline${normalized ? (fastRemux ? ' (remuxed)' : ' (converted)') : ''}.`, 'ok');
-        item.jobState = normalized ? (fastRemux ? 'remuxed' : 'converted') : 'added';
-      } catch (e) {
-        log(`Failed to add ${f.name}: ${e.message || e}`, 'err');
-        // Left in the list, flagged failed, so a failure is visible rather
-        // than the folder just sitting there looking untouched.
-        item.jobState = 'failed';
-      }
-      renderIncoming();
-      render();
+  // ── Converter library ──────────────────────────────────────────────────
+  // A persistent list, independent of the Stitcher timeline: pressing
+  // Convert moves a file here immediately (queued -> converting -> done),
+  // and it stays here even after being added to the timeline — so deleting
+  // a clip from the Stitcher doesn't lose the converted source; it can just
+  // be added again.
+  const CONVERTER_PILL = {
+    queued:     { cls: 'queued',     text: 'Queued to convert' },
+    converting: { cls: 'converting', text: 'Converting…' },
+    converted:  { cls: 'converted',  text: 'Converted to H.264 MP4' },
+    remuxed:    { cls: 'converted',  text: 'Remuxed (fast, no re-encode)' },
+    failed:     { cls: 'queued',     text: 'Failed' },
+  };
+  function converterPillHTML(item) {
+    const spec = CONVERTER_PILL[item.jobState];
+    if (!spec) return '';
+    const spinner = item.jobState === 'converting'
+      ? '<svg class="spin" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'
+      : '';
+    return `<span class="status-pill ${spec.cls}">${spinner}${spec.text}</span>`;
+  }
+  function converterTabColorClass(item) {
+    return ['converted', 'remuxed'].includes(item.jobState) ? 'tab-green' : 'tab-orange';
+  }
+  function converterMetaLabel(item) {
+    switch (item.jobState) {
+      case 'queued':     return 'Waiting its turn to convert';
+      case 'converting': return 'Converting now…';
+      case 'failed':     return 'Conversion failed — see the progress log';
+      case 'converted':  return 'Converted to H.264 MP4';
+      case 'remuxed':    return 'Remuxed into MP4 — video/audio were already fine, no re-encode';
     }
+    return '';
+  }
 
-    incomingBusy = false;
+  function renderConverter() {
+    converterList.innerHTML = '';
+    converterQueue.forEach(item => {
+      const wrap = document.createElement('div');
+      wrap.className = 'incoming-wrap';
+
+      const tab = document.createElement('div');
+      tab.className = `folder-tab ${converterTabColorClass(item)}`;
+      tab.innerHTML = `<div class="folder-tab-name">${item.origName}</div>`;
+
+      const row = document.createElement('div');
+      row.className = 'incoming-row';
+
+      const done = ['converted', 'remuxed'].includes(item.jobState);
+      const metaClass = done ? 'ok' : (item.jobState === 'failed' ? 'warn' : '');
+
+      row.innerHTML = `
+        <div class="incoming-main">
+          <div class="incoming-meta ${metaClass}">${size(item.origSize)} · ${converterMetaLabel(item)}</div>
+          <span class="info-cue">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            ${item.infoOpen ? 'Hide information' : 'Information / click to open folder'}
+          </span>
+        </div>
+        ${converterPillHTML(item)}
+        <button class="action-pill green" ${done ? '' : 'disabled'}>Download converted file</button>
+        <button class="action-pill orange" ${done ? '' : 'disabled'}>Add to stitcher</button>
+        <div class="incoming-actions">
+          <button class="icon-btn del" title="Remove">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      `;
+
+      const dlBtn = row.querySelector('.action-pill.green');
+      const addBtn = row.querySelector('.action-pill.orange');
+      const delBtn = row.querySelector('.incoming-actions button');
+      const infoHost = document.createElement('div');
+      infoHost.id = `converter-info-${item.id}`;
+      infoHost.className = 'incoming-info-host';
+
+      const paintInfo = () => {
+        infoHost.innerHTML = '';
+        if (item.infoOpen) infoHost.appendChild(infoPanel(item.probeRaw, { name: item.origName, statusLabel: converterMetaLabel(item) }));
+        const cue = row.querySelector('.info-cue');
+        if (cue) cue.lastChild.textContent = item.infoOpen ? 'Hide information' : 'Information / click to open folder';
+      };
+
+      dlBtn.addEventListener('click', e => { e.stopPropagation(); downloadConverterItem(item.id); });
+      addBtn.addEventListener('click', e => { e.stopPropagation(); addConverterItemToStitcher(item.id); });
+      delBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        const idx = converterQueue.findIndex(i => i.id === item.id);
+        if (idx !== -1) converterQueue.splice(idx, 1);
+        renderConverter();
+      });
+
+      const toggleInfo = () => {
+        if (item.probeRaw == null) return;
+        item.infoOpen = !item.infoOpen;
+        paintInfo();
+      };
+      row.addEventListener('click', toggleInfo);
+      tab.addEventListener('click', toggleInfo);
+      tab.style.cursor = 'pointer';
+
+      wrap.appendChild(tab);
+      wrap.appendChild(row);
+      wrap.appendChild(infoHost);
+      if (item.infoOpen && item.probeRaw != null) paintInfo();
+
+      converterList.appendChild(wrap);
+    });
+
+    converterSection.hidden = converterQueue.length === 0;
+  }
+
+  async function convertIncomingItem(id) {
+    const idx = incoming.findIndex(i => i.id === id);
+    if (idx === -1) return;
+    const [item] = incoming.splice(idx, 1);
     renderIncoming();
+
+    const centry = {
+      id: uid(), file: item.file, origName: item.file.name, origSize: item.file.size,
+      probeRaw: item.probeRaw, jobState: 'queued', infoOpen: false,
+      normalized: false, fastRemux: false, thumb: null, duration: 0, nativeW: 0, nativeH: 0,
+    };
+    converterQueue.push(centry);
+    renderConverter();
+
+    centry.jobState = 'converting';
+    renderConverter();
+    try {
+      await initFFmpeg();
+      const info = parseProbe(item.probeRaw || '');
+      log(`Converting ${item.file.name}…`, 'info');
+      const result = await normalizeToH264(item.file, info);
+      const { thumb, duration, nativeW, nativeH } = await generateThumb(result.file);
+      centry.file = result.file;
+      centry.normalized = true;
+      centry.fastRemux = !result.videoReencoded && !result.audioReencoded;
+      centry.thumb = thumb; centry.duration = duration; centry.nativeW = nativeW; centry.nativeH = nativeH;
+      centry.jobState = centry.fastRemux ? 'remuxed' : 'converted';
+      log(centry.fastRemux ? `Remuxed ${item.file.name} — no re-encode needed` : `Converted ${item.file.name}`, 'ok');
+    } catch (e) {
+      centry.jobState = 'failed';
+      log(`Failed to convert ${item.file.name}: ${e.message || e}`, 'err');
+    }
+    renderConverter();
+  }
+
+  function downloadConverterItem(id) {
+    const item = converterQueue.find(i => i.id === id);
+    if (!item || !['converted', 'remuxed'].includes(item.jobState)) return;
+    const url = URL.createObjectURL(item.file);
+    triggerDownload(url, item.file.name || item.origName);
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  }
+
+  function addConverterItemToStitcher(id) {
+    const item = converterQueue.find(i => i.id === id);
+    if (!item || !['converted', 'remuxed'].includes(item.jobState)) return;
+    const newClip = {
+      id: uid(), file: item.file, origName: item.origName, origSize: item.origSize, probeRaw: item.probeRaw,
+      normalized: item.normalized, fastRemux: item.fastRemux,
+      thumb: item.thumb, duration: item.duration, nativeW: item.nativeW, nativeH: item.nativeH,
+      vStart: 0, vEnd: item.duration, aStart: 0, aEnd: item.duration,
+      split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0,
+    };
+    clips.push(newClip);
+    while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
+    activeClipId = newClip.id;
+    log(`Added ${item.origName} to the stitcher timeline.`, 'ok');
     render();
   }
 
@@ -1484,10 +1619,11 @@
       const looksLikeVideo = f.type.startsWith('video/') || /\.(mp4|mov|mkv|avi|webm|wmv|flv|m4v|mpeg|mpg)$/i.test(f.name);
       if (!looksLikeVideo) { log(`Skipped non-video: ${f.name}`, 'warn'); continue; }
       const dupe = incoming.some(i => i.file.name === f.name && i.file.size === f.size)
+        || converterQueue.some(i => i.origName === f.name && i.origSize === f.size)
         || clips.some(c => c.origName === f.name && c.origSize === f.size);
       if (dupe) { log(`Skipped duplicate: ${f.name}`, 'warn'); continue; }
 
-      const item = { id: uid(), file: f, status: 'inspecting', probeRaw: null, conformant: false, convert: false, infoOpen: false, jobState: null };
+      const item = { id: uid(), file: f, status: 'inspecting', probeRaw: null, conformant: false, infoOpen: false };
       incoming.push(item);
       renderIncoming();
       log(`Inspecting ${f.name}…`, 'info');
@@ -1500,13 +1636,11 @@
         // converting when the browser can't decode it for the timeline and
         // preview — not merely because it isn't H.264.
         item.conformant = info.streams.some(s => s.kind === 'Video') && await browserCanDecode(f);
-        item.convert = !item.conformant;
         item.status = 'ready';
-        log(item.conformant ? `${f.name} plays natively — no conversion needed.` : `${f.name} can't be decoded by your browser — flagged for conversion (you can change this).`, item.conformant ? 'ok' : 'warn');
+        log(item.conformant ? `${f.name} plays natively — convert it anyway if you want a clean H.264 copy.` : `${f.name} can't be decoded by your browser — needs converting.`, item.conformant ? 'ok' : 'warn');
       } catch (e) {
         item.status = 'error';
-        item.convert = false;
-        log(`Could not inspect ${f.name} (${e.message || e}) — you can still add it as-is.`, 'warn');
+        log(`Could not inspect ${f.name} (${e.message || e}) — you can still try converting it.`, 'warn');
       }
       renderIncoming();
     }
@@ -1519,12 +1653,12 @@
   }
 
   // ── Filter builder ─────────────────────────────────────────────────────
-  function buildFilters(W, H) {
+  function buildFilters(W, H, list = clips) {
     const chains = [];
     let vConcat = '', aConcat = '';
     let vCount = 0, aCount = 0, totalDur = 0;
-    for (let i = 0; i < clips.length; i++) {
-      const d = clips[i];
+    for (let i = 0; i < list.length; i++) {
+      const d = list[i];
       const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
       const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
       const vLen = ve - vs, aLen = ae - as2;
@@ -1758,6 +1892,10 @@
     const idx = clips.findIndex(c => c.id === id);
     clips.splice(idx, 1);
     if (transitions.length >= clips.length) transitions.splice(Math.max(0, idx - 1), 1);
+    if (clipPreviewFor === id) {
+      if (clipPreviewBlobUrl) URL.revokeObjectURL(clipPreviewBlobUrl);
+      clipPreviewBlobUrl = null; clipPreviewFor = null; clipPreviewStale = true;
+    }
     render();
   };
   let modalClipId = null;
@@ -1824,6 +1962,8 @@
     const clip = clips.find(c => c.id === id);
     if (!clip) return;
     clip.infoOpen = !clip.infoOpen;
+    const tabBtn = document.getElementById(`infotab-${id}`);
+    if (tabBtn) tabBtn.innerHTML = infoTabBtnInner(clip);
     const panelHost = document.getElementById(`infowrap-${id}`);
     if (!panelHost) return;
     panelHost.innerHTML = '';
@@ -1860,113 +2000,242 @@
   }
 
   // ── Render ─────────────────────────────────────────────────────────────
+  // Clips render as a horizontal filmstrip (click one to make it active —
+  // it enlarges, neighbours stay mid-size, the rest shrink) plus a single
+  // full edit panel below for whichever clip is active. Editing three clips
+  // side by side didn't leave room for usable trim sliders at this page's
+  // width, and there's only ever one clip preview anyway.
   function render() {
-    clipsArea.innerHTML = '';
+    // Keep the active clip valid across add/remove/reorder — falls back to
+    // the first clip, or none if the timeline is empty.
+    if (!clips.some(c => c.id === activeClipId)) {
+      activeClipId = clips.length ? clips[0].id : null;
+    }
+    renderFilmstrip();
+    renderEditPanel();
+    updateButtons();
+  }
+
+  function renderFilmstrip() {
+    filmstrip.innerHTML = '';
+    filmstrip.hidden = clips.length === 0;
+    const activeIdx = clips.findIndex(c => c.id === activeClipId);
 
     clips.forEach((clip, idx) => {
-      const wrap = document.createElement('div');
-      wrap.className = 'clip-wrap';
-
-      const card = document.createElement('div');
-      card.className = 'clip-card';
-      card.style.marginBottom = '0';
-
-      const body = document.createElement('div');
-      body.className = 'clip-body';
-
-      const thumb = document.createElement('div');
-      thumb.className = 'clip-thumb';
-      thumb.onclick = () => openModal(clip.id);
-      thumb.innerHTML = `
-        ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : `<div class="thumb-fallback">No preview<br>(tap to play)</div>`}
-        <div class="play-overlay"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="dur-badge">${clip.duration.toFixed(1)}s</div>
+      const item = document.createElement('div');
+      const dist = activeIdx === -1 ? 0 : Math.abs(idx - activeIdx);
+      const distClass = dist === 0 ? 'dist-0' : dist === 1 ? 'dist-1' : dist === 2 ? 'dist-2' : 'dist-far';
+      item.className = `fs-item ${distClass}`;
+      item.title = clip.origName;
+      item.innerHTML = `
+        ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : ''}
+        <span class="fs-idx">#${idx + 1}</span>
+        <span class="fs-dur">${clip.duration.toFixed(1)}s</span>
       `;
-
-      const ctrl = document.createElement('div');
-      ctrl.className = 'clip-controls';
-      ctrl.innerHTML = `
-        <div class="clip-header">
-          <div>
-            <div class="clip-name"><span>#${idx + 1}</span>${clip.origName}</div>
-            <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
-          </div>
-          <div class="clip-side">
-            <span class="status-pill converted">${clipBadgeText(clip)}</span>
-            <div class="clip-actions">
-            <button class="icon-btn" title="File info" onclick="toggleInfo('${clip.id}')">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            </button>
-            <button class="icon-btn" title="Move up" onclick="moveClip('${clip.id}',-1)" ${idx === 0 ? 'disabled' : ''}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-            </button>
-            <button class="icon-btn" title="Move down" onclick="moveClip('${clip.id}',1)" ${idx === clips.length - 1 ? 'disabled' : ''}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <button class="icon-btn del" title="Remove" onclick="removeClip('${clip.id}')">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
-            </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-bar">
-          <div class="tl-row"><div class="tl-fill video" id="tlv-${clip.id}" style="left:${(clip.vStart/clip.duration)*100}%;width:${((clip.vEnd-clip.vStart)/clip.duration)*100}%"></div></div>
-          <div class="tl-row"><div class="tl-fill audio" id="tla-${clip.id}" style="left:${(clip.aStart/clip.duration)*100}%;width:${((clip.aEnd-clip.aStart)/clip.duration)*100}%"></div></div>
-        </div>
-
-        <label class="split-row">
-          <input type="checkbox" ${clip.split ? 'checked' : ''} onchange="toggleSplit('${clip.id}',this.checked)">
-          Split audio/video trim
-        </label>
-
-        <div id="sliders-${clip.id}"></div>
-
-        <div class="fade-grid">
-          <div class="fade-field"><label>Vid Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeIn}" onchange="updateClip('${clip.id}','vFadeIn',+this.value)"></div>
-          <div class="fade-field"><label>Vid Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeOut}" onchange="updateClip('${clip.id}','vFadeOut',+this.value)"></div>
-          <div class="fade-field"><label>Aud Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeIn}" onchange="updateClip('${clip.id}','aFadeIn',+this.value)"></div>
-          <div class="fade-field"><label>Aud Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeOut}" onchange="updateClip('${clip.id}','aFadeOut',+this.value)"></div>
-        </div>
-
-        <div id="infowrap-${clip.id}"></div>
-      `;
-
-      body.appendChild(thumb);
-      body.appendChild(ctrl);
-      card.appendChild(body);
-      wrap.appendChild(card);
-
-      clipsArea.appendChild(wrap);
-
-      const slidersDiv = document.getElementById(`sliders-${clip.id}`);
-      renderSliders(clip, slidersDiv);
-
-      if (clip.infoOpen) {
-        document.getElementById(`infowrap-${clip.id}`).appendChild(infoPanel(clip.probeRaw, { name: clip.origName, statusLabel: clipStatusLabel(clip) }));
-      }
-
-      if (idx < clips.length - 1 && transitions[idx]) {
-        const t = transitions[idx];
-        const tRow = document.createElement('div');
-        tRow.className = 'transition-row';
-        tRow.innerHTML = `
-          <div class="transition-pill">
-            <span style="color:var(--muted);font-size:0.75rem;">↳ Between #${idx+1} &amp; #${idx+2}:</span>
-            <select onchange="updateTransition('${t.id}','type',this.value)">
-              <option value="cut" ${t.type==='cut'?'selected':''}>Hard Cut</option>
-              <option value="vfade" ${t.type==='vfade'?'selected':''}>Video Crossfade</option>
-              <option value="afade" ${t.type==='afade'?'selected':''}>Audio Crossfade</option>
-              <option value="both" ${t.type==='both'?'selected':''}>Full Crossfade</option>
-            </select>
-            ${t.type !== 'cut' ? `<div class="dur-wrap"><input type="number" min="0.1" max="3" step="0.1" value="${t.duration}" onchange="updateTransition('${t.id}','duration',+this.value)"><span style="color:var(--muted);font-size:0.75rem">sec</span></div>` : ''}
-          </div>
-        `;
-        wrap.appendChild(tRow);
-      }
+      item.addEventListener('click', () => setActiveClip(clip.id));
+      filmstrip.appendChild(item);
     });
 
-    updateButtons();
+    const activeEl = filmstrip.querySelector('.dist-0');
+    if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+
+  function setActiveClip(id) {
+    if (id === activeClipId) return;
+    activeClipId = id;
+    render();
+  }
+
+  function infoTabBtnInner(clip) {
+    return `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> ${clip.infoOpen ? 'Hide info' : 'Info'}`;
+  }
+
+  function transitionControlHTML(t, idx) {
+    return `
+      <div class="transition-row" style="padding:2px 0 0;">
+        <div class="transition-pill">
+          <span style="color:var(--muted);font-size:0.75rem;">↳ Transition to #${idx + 2}:</span>
+          <select onchange="updateTransition('${t.id}','type',this.value)">
+            <option value="cut" ${t.type==='cut'?'selected':''}>Hard Cut</option>
+            <option value="vfade" ${t.type==='vfade'?'selected':''}>Video Crossfade</option>
+            <option value="afade" ${t.type==='afade'?'selected':''}>Audio Crossfade</option>
+            <option value="both" ${t.type==='both'?'selected':''}>Full Crossfade</option>
+          </select>
+          ${t.type !== 'cut' ? `<div class="dur-wrap"><input type="number" min="0.1" max="3" step="0.1" value="${t.duration}" onchange="updateTransition('${t.id}','duration',+this.value)"><span style="color:var(--muted);font-size:0.75rem">sec</span></div>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderEditPanel() {
+    editPanelHost.innerHTML = '';
+    const clip = clips.find(c => c.id === activeClipId);
+    if (!clip) {
+      if (clips.length === 0) return;
+      const hint = document.createElement('div');
+      hint.className = 'no-clip-hint';
+      hint.textContent = 'Select a clip above to edit it.';
+      editPanelHost.appendChild(hint);
+      return;
+    }
+    const idx = clips.findIndex(c => c.id === clip.id);
+
+    const card = document.createElement('div');
+    card.className = 'clip-card';
+
+    const body = document.createElement('div');
+    body.className = 'clip-body';
+
+    const thumb = document.createElement('div');
+    thumb.className = 'clip-thumb';
+    thumb.onclick = () => openModal(clip.id);
+    thumb.innerHTML = `
+      ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : `<div class="thumb-fallback">No preview<br>(tap to play)</div>`}
+      <div class="play-overlay"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      <div class="dur-badge">${clip.duration.toFixed(1)}s</div>
+    `;
+
+    const ctrl = document.createElement('div');
+    ctrl.className = 'clip-controls';
+    ctrl.innerHTML = `
+      <div class="clip-header">
+        <div>
+          <div class="clip-name"><span>#${idx + 1}</span>${clip.origName}</div>
+          <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
+        </div>
+        <div class="clip-side">
+          <span class="status-pill converted">${clipBadgeText(clip)}</span>
+          <div class="clip-actions">
+          <button class="icon-btn" title="Move left" onclick="moveClip('${clip.id}',-1)" ${idx === 0 ? 'disabled' : ''}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="icon-btn" title="Move right" onclick="moveClip('${clip.id}',1)" ${idx === clips.length - 1 ? 'disabled' : ''}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="icon-btn del" title="Remove" onclick="removeClip('${clip.id}')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-bar">
+        <div class="tl-row"><div class="tl-fill video" id="tlv-${clip.id}" style="left:${(clip.vStart/clip.duration)*100}%;width:${((clip.vEnd-clip.vStart)/clip.duration)*100}%"></div></div>
+        <div class="tl-row"><div class="tl-fill audio" id="tla-${clip.id}" style="left:${(clip.aStart/clip.duration)*100}%;width:${((clip.aEnd-clip.aStart)/clip.duration)*100}%"></div></div>
+      </div>
+
+      <label class="split-row">
+        <input type="checkbox" ${clip.split ? 'checked' : ''} onchange="toggleSplit('${clip.id}',this.checked)">
+        Split audio/video trim
+      </label>
+
+      <div id="sliders-${clip.id}"></div>
+
+      <div class="fade-grid">
+        <div class="fade-field"><label>Vid Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeIn}" onchange="updateClip('${clip.id}','vFadeIn',+this.value)"></div>
+        <div class="fade-field"><label>Vid Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeOut}" onchange="updateClip('${clip.id}','vFadeOut',+this.value)"></div>
+        <div class="fade-field"><label>Aud Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeIn}" onchange="updateClip('${clip.id}','aFadeIn',+this.value)"></div>
+        <div class="fade-field"><label>Aud Fade Out</label><input type="number" min="0" max="5" step="0.1" value="${clip.aFadeOut}" onchange="updateClip('${clip.id}','aFadeOut',+this.value)"></div>
+      </div>
+
+      ${idx < clips.length - 1 && transitions[idx] ? transitionControlHTML(transitions[idx], idx) : ''}
+
+      <div class="clip-preview" id="clipPreviewWrap-${clip.id}"></div>
+
+      <div class="info-tab-row">
+        <button class="info-tab-btn" id="infotab-${clip.id}" onclick="toggleInfo('${clip.id}')">${infoTabBtnInner(clip)}</button>
+      </div>
+      <div id="infowrap-${clip.id}"></div>
+    `;
+
+    body.appendChild(thumb);
+    body.appendChild(ctrl);
+    card.appendChild(body);
+    editPanelHost.appendChild(card);
+
+    renderSliders(clip, document.getElementById(`sliders-${clip.id}`));
+    renderClipPreviewUI(clip);
+
+    if (clip.infoOpen) {
+      document.getElementById(`infowrap-${clip.id}`).appendChild(infoPanel(clip.probeRaw, { name: clip.origName, statusLabel: clipStatusLabel(clip) }));
+    }
+  }
+
+  // ── Per-clip edit preview ─────────────────────────────────────────────
+  // Renders just the active clip's own trim/fade settings through ffmpeg at
+  // a small size/fast preset — so a trim or fade can be checked without
+  // running the full multi-clip export just to see one clip.
+  function renderClipPreviewUI(clip) {
+    const host = document.getElementById(`clipPreviewWrap-${clip.id}`);
+    if (!host) return;
+    const isCurrent = clipPreviewFor === clip.id && !!clipPreviewBlobUrl;
+    host.innerHTML = `
+      <div class="clip-preview-hdr">
+        <button class="btn btn-preview" id="btnPreviewClipEdit" ${clipPreviewBusy ? 'disabled' : ''}>
+          <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
+          ${clipPreviewBusy ? 'Rendering…' : (isCurrent ? 'Re-render preview' : 'Preview this edit')}
+        </button>
+        ${isCurrent && clipPreviewStale ? `<span class="clip-preview-stale">⚠ Edited since last preview</span>` : ''}
+      </div>
+      <video class="clip-preview-video ${isCurrent ? 'show' : ''}" id="clipPreviewVideo" controls${isCurrent ? ` src="${clipPreviewBlobUrl}"` : ''}></video>
+    `;
+    const btn = document.getElementById('btnPreviewClipEdit');
+    if (btn) btn.onclick = () => previewActiveClipEdit();
+  }
+
+  // Any edit to the active clip invalidates its rendered preview (if any) —
+  // called from the slider/fade/split handlers below.
+  function markClipEditsDirty(clip) {
+    if (clipPreviewFor !== clip.id) return;
+    clipPreviewStale = true;
+    renderClipPreviewUI(clip);
+  }
+
+  async function previewActiveClipEdit() {
+    const clip = clips.find(c => c.id === activeClipId);
+    if (!clip || clipPreviewBusy) return;
+    clipPreviewBusy = true;
+    renderClipPreviewUI(clip);
+    const inName = 'clip_preview_in.mp4';
+    const outName = 'clip_preview_out.mp4';
+    try {
+      await initFFmpeg();
+      const release = await acquireFFmpegLock();
+      let blob;
+      try {
+        await ffmpeg.writeFile(inName, await fetchFile(clip.file));
+        const { filterComplex, vCount, aCount } = buildFilters(480, 270, [clip]);
+        const args = [
+          ...GLOBAL_ARGS,
+          '-i', inName,
+          '-filter_complex', filterComplex,
+          ...(vCount > 0 ? ['-map', '[outv]'] : []),
+          ...(aCount > 0 ? ['-map', '[outa]'] : []),
+          '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '30', '-threads', '0',
+          '-c:a', 'aac', '-b:a', '96k',
+          '-movflags', '+faststart',
+          outName,
+        ];
+        const code = await ffmpeg.exec(args);
+        if (code !== 0) throw new Error(`ffmpeg exited with code ${code}`);
+        const data = await ffmpeg.readFile(outName);
+        blob = new Blob([data.buffer], { type: 'video/mp4' });
+        await ffmpeg.deleteFile(inName).catch(() => {});
+        await ffmpeg.deleteFile(outName).catch(() => {});
+      } finally {
+        release();
+      }
+      if (clipPreviewBlobUrl) URL.revokeObjectURL(clipPreviewBlobUrl);
+      clipPreviewBlobUrl = URL.createObjectURL(blob);
+      clipPreviewFor = clip.id;
+      clipPreviewStale = false;
+      log(`Rendered a quick preview of "${clip.origName}"'s current edit.`, 'ok');
+    } catch (e) {
+      log(`Clip preview failed: ${e.message || e}`, 'err');
+    } finally {
+      clipPreviewBusy = false;
+      if (activeClipId === clip.id) renderClipPreviewUI(clip);
+    }
   }
 
   function renderSliders(clip, container) {
@@ -2041,6 +2310,7 @@
     const aEl = document.getElementById(`tla-${clip.id}`);
     if (vEl) { vEl.style.left = (clip.vStart/clip.duration*100)+'%'; vEl.style.width = ((clip.vEnd-clip.vStart)/clip.duration*100)+'%'; }
     if (aEl) { aEl.style.left = (clip.aStart/clip.duration*100)+'%'; aEl.style.width = ((clip.aEnd-clip.aStart)/clip.duration*100)+'%'; }
+    markClipEditsDirty(clip);
   }
 
   window.toggleSplit = (id, val) => {
@@ -2049,11 +2319,12 @@
     clip.split = val;
     const slidersDiv = document.getElementById(`sliders-${id}`);
     if (slidersDiv) renderSliders(clip, slidersDiv);
+    markClipEditsDirty(clip);
   };
 
   window.updateClip = (id, key, val) => {
     const clip = clips.find(c => c.id === id);
-    if (clip) clip[key] = val;
+    if (clip) { clip[key] = val; markClipEditsDirty(clip); }
   };
 
   window.updateTransition = (id, key, val) => {
@@ -2087,15 +2358,12 @@
     if (e.dataTransfer.files) handleFiles(e.dataTransfer.files);
   });
 
-  btnDiscardIncoming.addEventListener('click', () => {
-    incoming = [];
-    renderIncoming();
-  });
-  btnAddToStitcher.addEventListener('click', addIncomingToStitcher);
-
   btnClear.addEventListener('click', () => {
-    clips = []; transitions = []; incoming = [];
-    closePreview(); clearLog(); render(); renderIncoming();
+    clips = []; transitions = []; incoming = []; converterQueue = [];
+    activeClipId = null;
+    if (clipPreviewBlobUrl) URL.revokeObjectURL(clipPreviewBlobUrl);
+    clipPreviewBlobUrl = null; clipPreviewFor = null; clipPreviewStale = true;
+    closePreview(); clearLog(); render(); renderIncoming(); renderConverter();
     log('Ready. Drop any video file into the DZ Drop Zone to begin.', 'info');
   });
   btnPreview.addEventListener('click', () => runProcess(previewQuality.value));
@@ -2103,6 +2371,7 @@
 
   updateButtons();
   renderIncoming();
+  renderConverter();
 
   // Start fetching FFmpeg in the background as soon as the page opens,
   // instead of waiting for the first drop. The core download (several
