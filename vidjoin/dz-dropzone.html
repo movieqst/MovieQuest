@@ -169,12 +169,11 @@
     .stages { display: flex; flex-direction: column; }
     .stages.side-by-side { flex-direction: row; flex-wrap: wrap; gap: 0 26px; align-items: flex-start; }
     .stages.side-by-side .stage-col { flex: 1 1 300px; min-width: 0; }
-    /* Collapsed is a summary view, so the headings shrink with it — 60% of
-       the normal 72px. That also buys the two columns enough room to stay
-       side by side further down the width range. */
-    .stages.side-by-side .section-logo-row img { height: 43.2px; }
-    .stages.side-by-side .section-logo-row { padding-bottom: 12px; gap: 6px; }
-    .stages.side-by-side .logo-arrow-btn svg { width: 15px; height: 15px; }
+    /* Two columns is a summary view, so the headings ease off slightly —
+       90% of the normal 72px. Enough to keep both columns comfortable
+       without the logos reading as shrunken. */
+    .stages.side-by-side .section-logo-row img { height: 64.8px; }
+    .stages.side-by-side .section-logo-row { padding-bottom: 14px; }
 
     .section-logo-row { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 4px 0 20px; }
     .section-logo-row[hidden] { display: none; }
@@ -989,12 +988,19 @@
   })();
 
   const sectionCollapsed = { incoming: false, converter: false };
-  // Side by side only once both are rolled up — one collapsed section next
-  // to a full-height expanded one would just leave a tall empty column.
+  // A stage is "short" when it isn't showing a full list — either because
+  // it's been rolled up, or because it holds nothing yet and is just a
+  // heading. Two short stages fit beside each other; pairing a short one
+  // with a full-height expanded list would only leave a tall empty column,
+  // so that case stays stacked.
+  function stageIsShort(key) {
+    const isEmpty = key === 'incoming' ? incoming.length === 0 : converterQueue.length === 0;
+    return isEmpty || sectionCollapsed[key];
+  }
   function updateStageLayout() {
     if (stagesWrap) {
       stagesWrap.classList.toggle('side-by-side',
-        sectionCollapsed.incoming && sectionCollapsed.converter);
+        stageIsShort('incoming') && stageIsShort('converter'));
     }
   }
   function wireSectionCollapse(key, list, leftBtn, rightBtn) {
@@ -1827,6 +1833,8 @@
     });
 
     incomingSection.hidden = incoming.length === 0;
+    // Emptying or filling a stage changes whether the pair fits side by side.
+    updateStageLayout();
   }
 
   // ── Converter library ──────────────────────────────────────────────────
@@ -1984,6 +1992,7 @@
     });
 
     converterSection.hidden = converterQueue.length === 0;
+    updateStageLayout();
   }
 
   async function convertIncomingItem(id) {
