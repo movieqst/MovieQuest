@@ -44,10 +44,16 @@
     /* Pulled out of the flex flow so the Stitcher logo centres on the page
        rather than the pair centring together (which pushed it right of
        centre). left:16px matches main's 16px padding, so it lines up with
-       the drop zone's left edge below. */
+       the drop zone's left edge below.
+       75.4px (not 86.4px) because the two source PNGs aren't cropped the
+       same way: the Converter art fills ~80% of its canvas height while
+       the Stitcher art only fills ~70% (more transparent padding top/
+       bottom). Matched at equal box heights, Converter would visibly render
+       taller. 75.4px = 86.4px * (0.695 / 0.797), the ratio that makes both
+       wordmarks the same rendered height. */
     header img.converter-logo {
       position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-      height: 86.4px; width: auto; display: block; opacity: .85; transition: .3s;
+      height: 75.4px; width: auto; display: block; opacity: .85; transition: .3s;
     }
     header img.converter-logo:hover { opacity: 1; filter: drop-shadow(0 0 10px rgba(0,200,255,.5)); }
     header .info-link {
@@ -96,9 +102,24 @@
 
     /* Section-divider logos: same 72px reference height the header logos
        used before this update's 120% bump. */
-    .section-logo-row { display: flex; justify-content: center; padding: 4px 0 20px; }
+    .section-logo-row { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 4px 0 20px; }
     .section-logo-row[hidden] { display: none; }
     .section-logo-row img { height: 72px; width: auto; display: block; opacity: .85; }
+    /* Converter art fills more of its canvas than the Stitcher art (see the
+       header comment above) — scaled down to the same ratio so the two
+       wordmarks read as the same size. */
+    .section-logo-row img.logo-converter { height: 62.8px; }
+
+    /* Up/down toggle flanking the converter logo — collapses the dropped
+       files list down to just its folder tabs. */
+    .logo-arrow-btn {
+      background: transparent; border: none; color: var(--blue);
+      cursor: pointer; padding: 6px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: .65; transition: opacity .15s, background .15s;
+    }
+    .logo-arrow-btn:hover { opacity: 1; background: rgba(0,200,255,.1); }
+    .logo-arrow-btn svg { width: 18px; height: 18px; }
 
     /* Incoming (review-before-convert) list — drawn as manila-style folders:
        a small tab sits on top of the folder body, and clicking anywhere on
@@ -127,6 +148,21 @@
       font-size: 0.82rem; font-weight: 700; color: var(--text);
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
+    /* Tab colour reflects conversion status: blue while still awaiting a
+       decision, orange while queued/converting (or failed), green once
+       done. Shown at all times, but this is what's left to scan once the
+       list is collapsed down to just its tabs. */
+    .folder-tab.tab-blue   { border-color: rgba(0,200,255,.5); box-shadow: inset 0 0 0 1px rgba(0,200,255,.15); }
+    .folder-tab.tab-orange { border-color: rgba(255,150,0,.55); box-shadow: inset 0 0 0 1px rgba(255,150,0,.18); }
+    .folder-tab.tab-green  { border-color: rgba(0,232,176,.55); box-shadow: inset 0 0 0 1px rgba(0,232,176,.18); }
+
+    /* Collapsed state: hide each folder's body/info panel and lay the tabs
+       out as a wrapping strip instead of one-per-line. */
+    .incoming-list.collapsed { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .incoming-list.collapsed .incoming-wrap { flex-direction: row; }
+    .incoming-list.collapsed .incoming-row,
+    .incoming-list.collapsed .incoming-info-host { display: none; }
+    .incoming-list.collapsed .folder-tab { margin: 0; max-width: 220px; }
 
     .incoming-row {
       display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
@@ -440,8 +476,17 @@
   </div>
   <input type="file" id="fileInput" multiple accept="video/*">
 
+  <div class="section-logo-row">
+    <button class="logo-arrow-btn" id="btnCollapseIncomingL" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+    <img class="logo-converter" src="DZ-Video-Converter.png" alt="DZ Video-Converter">
+    <button class="logo-arrow-btn" id="btnCollapseIncomingR" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+  </div>
+
   <section id="incomingSection" class="incoming-section" hidden>
-    <div class="section-logo-row"><img src="DZ-Video-Converter.png" alt="DZ Video-Converter"></div>
     <div class="section-label">Dropped files — review, then add to the timeline</div>
     <div id="incomingList" class="incoming-list"></div>
     <div class="incoming-bar-actions">
@@ -450,7 +495,7 @@
     </div>
   </section>
 
-  <div id="stitcherLogoDivider" class="section-logo-row" hidden><img src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher"></div>
+  <div id="stitcherLogoDivider" class="section-logo-row"><img src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher"></div>
   <div id="clipsArea"></div>
 
   <div id="previewSection">
@@ -626,7 +671,8 @@
   const btnDiscardIncoming = document.getElementById('btnDiscardIncoming');
   const btnAddToStitcher   = document.getElementById('btnAddToStitcher');
   const clipsArea      = document.getElementById('clipsArea');
-  const stitcherLogoDivider = document.getElementById('stitcherLogoDivider');
+  const btnCollapseIncomingL = document.getElementById('btnCollapseIncomingL');
+  const btnCollapseIncomingR = document.getElementById('btnCollapseIncomingR');
   const btnClear       = document.getElementById('btnClear');
   const btnPreview     = document.getElementById('btnPreview');
   const btnMerge       = document.getElementById('btnMerge');
@@ -648,6 +694,26 @@
   const clipModal      = document.getElementById('clipModal');
   const modalVideo     = document.getElementById('modalVideo');
   const modalTitle     = document.getElementById('modalTitle');
+
+  // ── Incoming list collapse ────────────────────────────────────────────
+  // Arrows flanking the converter logo roll the dropped-files list up to
+  // just its folder tabs (colour-coded by status) and back down again.
+  const ARROW_UP   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>';
+  const ARROW_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  let incomingCollapsed = false;
+  function applyIncomingCollapse() {
+    incomingList.classList.toggle('collapsed', incomingCollapsed);
+    const icon = incomingCollapsed ? ARROW_DOWN : ARROW_UP;
+    btnCollapseIncomingL.innerHTML = icon;
+    btnCollapseIncomingR.innerHTML = icon;
+  }
+  function toggleIncomingCollapse() {
+    incomingCollapsed = !incomingCollapsed;
+    applyIncomingCollapse();
+  }
+  btnCollapseIncomingL.addEventListener('click', toggleIncomingCollapse);
+  btnCollapseIncomingR.addEventListener('click', toggleIncomingCollapse);
+  applyIncomingCollapse();
 
   // ── Logging ────────────────────────────────────────────────────────────
   // capture.on redirects log() output into an array instead of the visible
@@ -1263,6 +1329,13 @@
     failed:     { cls: 'queued',    text: 'Failed' },
   };
 
+  // Tab colour when the incoming list is collapsed down to just its tabs.
+  function tabColorClass(item) {
+    if (['converted', 'remuxed', 'added'].includes(item.jobState)) return 'tab-green';
+    if (['queued', 'converting', 'failed'].includes(item.jobState)) return 'tab-orange';
+    return 'tab-blue';
+  }
+
   function statusPillHTML(item) {
     const spec = PILL[item.jobState];
     if (!spec) return '';
@@ -1281,7 +1354,7 @@
       // Folder tab — carries the filename so a stack of folders is
       // scannable by name alone.
       const tab = document.createElement('div');
-      tab.className = 'folder-tab';
+      tab.className = `folder-tab ${tabColorClass(item)}`;
       tab.innerHTML = `<div class="folder-tab-name">${item.file.name}</div>`;
 
       const row = document.createElement('div');
@@ -1318,6 +1391,7 @@
       const checkbox = row.querySelector('input[type=checkbox]');
       const infoHost = document.createElement('div');
       infoHost.id = `incoming-info-${item.id}`;
+      infoHost.className = 'incoming-info-host';
 
       const paintInfo = () => {
         infoHost.innerHTML = '';
@@ -1808,7 +1882,6 @@
   // ── Render ─────────────────────────────────────────────────────────────
   function render() {
     clipsArea.innerHTML = '';
-    stitcherLogoDivider.hidden = clips.length === 0;
 
     clips.forEach((clip, idx) => {
       const wrap = document.createElement('div');
