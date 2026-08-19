@@ -83,20 +83,84 @@
 
     .section-label { color: var(--muted); font-size: 0.72rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
 
-    /* Incoming (review-before-convert) list */
+    /* Incoming (review-before-convert) list — drawn as manila-style folders:
+       a small tab sits on top of the folder body, and clicking anywhere on
+       the folder opens its info panel. */
     .incoming-section { margin-bottom: 28px; }
-    .incoming-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .incoming-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 12px; }
     .incoming-wrap { display: flex; flex-direction: column; }
+
+    /* The tab. Trapezoid via border trick so it reads as a folder tab
+       rather than just a rounded box stuck on top. */
+    .folder-tab {
+      align-self: flex-start;
+      display: flex; align-items: center; gap: 8px;
+      max-width: 70%;
+      margin-left: 10px; margin-bottom: -1px;
+      padding: 5px 16px 4px 14px;
+      background: var(--card);
+      border: 1px solid var(--border); border-bottom: none;
+      border-radius: 8px 14px 0 0;
+      transform: skewX(-12deg);
+      position: relative; z-index: 1;
+    }
+    /* Un-skew the contents so only the tab shape is slanted, not the text. */
+    .folder-tab > * { transform: skewX(12deg); }
+    .folder-tab-name {
+      font-size: 0.82rem; font-weight: 700; color: var(--text);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+
     .incoming-row {
       display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 0 var(--radius) var(--radius) var(--radius);
       padding: 12px 14px;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, opacity .2s;
     }
+    .incoming-row:hover { border-color: var(--blue); background: rgba(0,200,255,.05); }
+
+    /* Queued / converting / converted folders dim out so the ones still
+       awaiting a decision are the ones that stand out. */
+    .incoming-wrap.is-busy .incoming-row,
+    .incoming-wrap.is-busy .folder-tab { opacity: .45; }
+    .incoming-wrap.is-busy .incoming-row { cursor: default; }
+    .incoming-wrap.is-busy .incoming-row:hover { border-color: var(--border); background: var(--card); }
+
     .incoming-main { flex: 1; min-width: 160px; }
     .incoming-name { font-size: 0.85rem; font-weight: 600; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .incoming-meta { font-size: 0.76rem; color: var(--muted); margin-top: 3px; }
     .incoming-meta.ok { color: var(--green); }
     .incoming-meta.warn { color: var(--amber); }
+
+    /* Prominent "there is information in here" affordance, replacing the
+       easy-to-miss (i) icon. */
+    .info-cue {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 7px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--blue);
+    }
+    .info-cue svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .incoming-row:hover .info-cue { text-decoration: underline; }
+
+    /* Status pill: orange while queued/converting, green once done. */
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 99px;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .status-pill.queued    { background: rgba(255,150,0,.16); color: #ffab3d; border: 1px solid rgba(255,150,0,.42); }
+    .status-pill.converting{ background: rgba(255,150,0,.16); color: #ffab3d; border: 1px solid rgba(255,150,0,.42); }
+    .status-pill.converted { background: rgba(0,232,176,.16); color: var(--green); border: 1px solid rgba(0,232,176,.45); }
+    /* Keeps the pill readable while the rest of the folder is dimmed. */
+    .incoming-wrap.is-busy .status-pill { opacity: 1; }
+    .status-pill .spin { animation: pill-spin 1s linear infinite; transform-origin: 50% 50%; }
+    @keyframes pill-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .status-pill .spin { animation: none; } }
+
     .incoming-convert {
       display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--muted);
       white-space: nowrap; cursor: pointer; flex-shrink: 0;
@@ -1129,6 +1193,16 @@
 
   // ── Incoming review list ──────────────────────────────────────────────
   function incomingStatusLabel(item) {
+    // Once a folder has been through the batch its label describes what
+    // happened, not what was going to happen.
+    switch (item.jobState) {
+      case 'converted': return 'Converted to H.264 MP4 and added to the timeline';
+      case 'remuxed':   return 'Remuxed into MP4 (no re-encode) and added to the timeline';
+      case 'added':     return 'Added to the timeline unchanged';
+      case 'failed':    return 'Conversion failed — see the progress log';
+      case 'converting':return 'Converting now…';
+      case 'queued':    return 'Waiting its turn to convert';
+    }
     if (item.status === 'inspecting') return 'Inspecting…';
     if (item.status === 'error') return 'Could not be read — will be added without conversion';
     if (item.conformant) {
@@ -1143,79 +1217,134 @@
     return fastRemux ? 'Wrong container only — will be remuxed (fast, no re-encode)' : "Your browser can't decode this — will be converted when added";
   }
 
+  // jobState drives the folder's tint + pill: null while the file is still
+  // awaiting a decision, then queued -> converting -> done once the user
+  // commits the batch. Done folders stay in the list as a tinted receipt
+  // rather than vanishing, so the batch's outcome stays readable.
+  const PILL = {
+    queued:     { cls: 'queued',    text: 'Queued to convert' },
+    converting: { cls: 'converting', text: 'Converting…' },
+    added:      { cls: 'converted', text: 'Added' },
+    converted:  { cls: 'converted', text: 'Converted' },
+    remuxed:    { cls: 'converted', text: 'Remuxed' },
+    failed:     { cls: 'queued',    text: 'Failed' },
+  };
+
+  function statusPillHTML(item) {
+    const spec = PILL[item.jobState];
+    if (!spec) return '';
+    const spinner = item.jobState === 'converting'
+      ? '<svg class="spin" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'
+      : '';
+    return `<span class="status-pill ${spec.cls}">${spinner}${spec.text}</span>`;
+  }
+
   function renderIncoming() {
     incomingList.innerHTML = '';
     incoming.forEach(item => {
       const wrap = document.createElement('div');
-      wrap.className = 'incoming-wrap';
+      wrap.className = 'incoming-wrap' + (item.jobState ? ' is-busy' : '');
+
+      // Folder tab — carries the filename so a stack of folders is
+      // scannable by name alone.
+      const tab = document.createElement('div');
+      tab.className = 'folder-tab';
+      tab.innerHTML = `<div class="folder-tab-name">${item.file.name}</div>`;
 
       const row = document.createElement('div');
       row.className = 'incoming-row';
 
-      const metaClass = item.status === 'error' ? 'warn' : (item.status === 'ready' ? (item.conformant ? 'ok' : 'warn') : '');
+      const doneOk = ['converted', 'remuxed', 'added'].includes(item.jobState);
+      const metaClass = doneOk ? 'ok'
+        : (item.jobState === 'failed' || item.status === 'error') ? 'warn'
+        : (item.status === 'ready' ? (item.conformant ? 'ok' : 'warn') : '');
       const notReady = item.status !== 'ready';
+      const settled = !!item.jobState; // queued or beyond: no more editing
 
       row.innerHTML = `
         <div class="incoming-main">
-          <div class="incoming-name">${item.file.name}</div>
           <div class="incoming-meta ${metaClass}">${size(item.file.size)}${item.file.type ? ' · ' + item.file.type : ''} · ${incomingStatusLabel(item)}</div>
+          <span class="info-cue">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            ${item.infoOpen ? 'Hide information' : 'Information / click to open folder'}
+          </span>
         </div>
-        <label class="incoming-convert ${notReady ? 'disabled' : ''}">
-          <input type="checkbox" ${item.convert ? 'checked' : ''} ${notReady ? 'disabled' : ''}>
+        ${statusPillHTML(item)}
+        <label class="incoming-convert ${notReady || settled ? 'disabled' : ''}">
+          <input type="checkbox" ${item.convert ? 'checked' : ''} ${notReady || settled ? 'disabled' : ''}>
           Convert to H.264
         </label>
         <div class="incoming-actions">
-          <button class="icon-btn" title="File info" ${item.status !== 'ready' ? 'disabled' : ''}>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          </button>
           <button class="icon-btn del" title="Remove">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
       `;
 
-      const [infoBtn, delBtn] = row.querySelectorAll('.incoming-actions button');
+      const delBtn = row.querySelector('.incoming-actions button');
       const checkbox = row.querySelector('input[type=checkbox]');
       const infoHost = document.createElement('div');
       infoHost.id = `incoming-info-${item.id}`;
 
-      checkbox.addEventListener('change', () => {
-        item.convert = checkbox.checked;
-        row.querySelector('.incoming-meta').textContent = `${size(item.file.size)}${item.file.type ? ' · ' + item.file.type : ''} · ${incomingStatusLabel(item)}`;
-        row.querySelector('.incoming-meta').className = `incoming-meta ${metaClass}`;
-        if (item.infoOpen) {
-          infoHost.innerHTML = '';
-          infoHost.appendChild(infoPanel(item.probeRaw, { name: item.file.name, statusLabel: incomingStatusLabel(item) }));
-        }
-      });
-      infoBtn.addEventListener('click', () => {
-        item.infoOpen = !item.infoOpen;
+      const paintInfo = () => {
         infoHost.innerHTML = '';
         if (item.infoOpen) infoHost.appendChild(infoPanel(item.probeRaw, { name: item.file.name, statusLabel: incomingStatusLabel(item) }));
+        const cue = row.querySelector('.info-cue');
+        if (cue) cue.lastChild.textContent = item.infoOpen ? 'Hide information' : 'Information / click to open folder';
+      };
+
+      checkbox.addEventListener('change', () => {
+        item.convert = checkbox.checked;
+        const meta = row.querySelector('.incoming-meta');
+        meta.textContent = `${size(item.file.size)}${item.file.type ? ' · ' + item.file.type : ''} · ${incomingStatusLabel(item)}`;
+        meta.className = `incoming-meta ${metaClass}`;
+        if (item.infoOpen) paintInfo();
       });
-      delBtn.addEventListener('click', () => {
+      // The checkbox is inside the folder, so keep its clicks from also
+      // toggling the folder open.
+      checkbox.closest('.incoming-convert').addEventListener('click', e => e.stopPropagation());
+
+      delBtn.addEventListener('click', e => {
+        e.stopPropagation();
         const idx = incoming.findIndex(i => i.id === item.id);
         if (idx !== -1) incoming.splice(idx, 1);
         renderIncoming();
       });
 
+      // Click anywhere on the folder (or its tab) to open the report.
+      const toggleInfo = () => {
+        if (item.probeRaw == null && item.status !== 'error') return;
+        item.infoOpen = !item.infoOpen;
+        paintInfo();
+      };
+      row.addEventListener('click', toggleInfo);
+      tab.addEventListener('click', toggleInfo);
+      tab.style.cursor = 'pointer';
+
+      wrap.appendChild(tab);
       wrap.appendChild(row);
       wrap.appendChild(infoHost);
-      if (item.infoOpen && item.probeRaw != null) infoHost.appendChild(infoPanel(item.probeRaw, { name: item.file.name, statusLabel: incomingStatusLabel(item) }));
+      if (item.infoOpen && item.probeRaw != null) paintInfo();
 
       incomingList.appendChild(wrap);
     });
 
     incomingSection.hidden = incoming.length === 0;
-    const anyReady = incoming.some(i => i.status !== 'inspecting');
-    btnAddToStitcher.disabled = !anyReady || incomingBusy;
+    // Folders already run through the batch are receipts — they don't make
+    // the button live again.
+    const anyActionable = incoming.some(i => i.status !== 'inspecting' && !i.jobState);
+    btnAddToStitcher.disabled = !anyActionable || incomingBusy;
     btnDiscardIncoming.disabled = incoming.length === 0 || incomingBusy;
   }
 
   async function addIncomingToStitcher() {
-    const ready = incoming.filter(i => i.status !== 'inspecting');
+    // Folders from an earlier batch are receipts, not work to redo.
+    const ready = incoming.filter(i => i.status !== 'inspecting' && !i.jobState);
     if (!ready.length || incomingBusy) return;
     incomingBusy = true;
+    // Mark the whole batch queued up front so the user can see exactly
+    // what's waiting its turn, not just whatever is converting right now.
+    ready.forEach(i => { i.jobState = 'queued'; i.infoOpen = false; });
     renderIncoming();
 
     let ffmpegOk = true;
@@ -1224,6 +1353,8 @@
     for (const item of ready) {
       const f = item.file;
       let workingFile = f, normalized = false, fastRemux = false;
+      item.jobState = 'converting';
+      renderIncoming();
       try {
         if (item.convert && ffmpegOk) {
           log(`Converting ${f.name}…`, 'info');
@@ -1243,10 +1374,12 @@
         });
         while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
         log(`Added ${f.name} to the timeline${normalized ? (fastRemux ? ' (remuxed)' : ' (converted)') : ''}.`, 'ok');
-        const idx = incoming.findIndex(i => i.id === item.id);
-        if (idx !== -1) incoming.splice(idx, 1);
+        item.jobState = normalized ? (fastRemux ? 'remuxed' : 'converted') : 'added';
       } catch (e) {
         log(`Failed to add ${f.name}: ${e.message || e}`, 'err');
+        // Left in the list, flagged failed, so a failure is visible rather
+        // than the folder just sitting there looking untouched.
+        item.jobState = 'failed';
       }
       renderIncoming();
       render();
@@ -1267,7 +1400,7 @@
         || clips.some(c => c.origName === f.name && c.origSize === f.size);
       if (dupe) { log(`Skipped duplicate: ${f.name}`, 'warn'); continue; }
 
-      const item = { id: uid(), file: f, status: 'inspecting', probeRaw: null, conformant: false, convert: false, infoOpen: false };
+      const item = { id: uid(), file: f, status: 'inspecting', probeRaw: null, conformant: false, convert: false, infoOpen: false, jobState: null };
       incoming.push(item);
       renderIncoming();
       log(`Inspecting ${f.name}…`, 'info');
