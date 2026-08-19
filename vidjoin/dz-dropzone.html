@@ -1208,7 +1208,11 @@
       if (vLen > 0.1) {
         let vf = `[${i}:v]trim=start=${vs}:end=${ve},setpts=PTS-STARTPTS`;
         vf += `,scale=${W}:${H}:force_original_aspect_ratio=decrease`;
-        vf += `,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2,format=yuv420p`;
+        // setsar=1 after the pad: scaling an odd-width source (1918 px, say)
+        // into an even canvas leaves a non-square sample aspect ratio, and
+        // concat refuses inputs whose SARs disagree ("Input link in0:v0
+        // parameters … do not match"), failing the whole export.
+        vf += `,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p`;
         const fadeHex = (document.getElementById('fadeColorPicker')?.value || '#000000').replace('#','');
         if (d.vFadeIn > 0)  vf += `,fade=t=in:st=0:d=${Math.min(d.vFadeIn, vLen/2)}:color=${fadeHex}`;
         if (d.vFadeOut > 0) vf += `,fade=t=out:st=${Math.max(0, vLen-d.vFadeOut)}:d=${Math.min(d.vFadeOut, vLen/2)}:color=${fadeHex}`;
