@@ -38,14 +38,16 @@
       position: relative;
       display: flex; justify-content: center; align-items: center; gap: 28px;
     }
-    header img.site-logo { height: 72px; width: auto; display: block; }
+    /* 86.4px = 120% of the 72px reference size used for the two new
+       section-divider logos below. */
+    header img.site-logo { height: 86.4px; width: auto; display: block; }
     /* Pulled out of the flex flow so the Stitcher logo centres on the page
        rather than the pair centring together (which pushed it right of
        centre). left:16px matches main's 16px padding, so it lines up with
        the drop zone's left edge below. */
     header img.converter-logo {
       position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-      height: 68px; width: auto; display: block; opacity: .85; transition: .3s;
+      height: 86.4px; width: auto; display: block; opacity: .85; transition: .3s;
     }
     header img.converter-logo:hover { opacity: 1; filter: drop-shadow(0 0 10px rgba(0,200,255,.5)); }
     header .info-link {
@@ -91,6 +93,12 @@
     input[type=file] { display: none; }
 
     .section-label { color: var(--muted); font-size: 0.72rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+
+    /* Section-divider logos: same 72px reference height the header logos
+       used before this update's 120% bump. */
+    .section-logo-row { display: flex; justify-content: center; padding: 4px 0 20px; }
+    .section-logo-row[hidden] { display: none; }
+    .section-logo-row img { height: 72px; width: auto; display: block; opacity: .85; }
 
     /* Incoming (review-before-convert) list — drawn as manila-style folders:
        a small tab sits on top of the folder body, and clicking anywhere on
@@ -215,12 +223,7 @@
     .clip-name { font-size: 0.85rem; font-weight: 600; color: var(--text); word-break: break-all; }
     .clip-name span { color: var(--blue); margin-right: 6px; }
     .clip-res { font-size: 0.72rem; color: var(--muted); margin-top: 2px; letter-spacing: 0.02em; }
-    .clip-badge {
-      display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: .04em;
-      padding: 2px 6px; border-radius: 4px; margin-top: 4px; text-transform: uppercase;
-    }
-    .clip-badge.native { background: rgba(0,232,176,.14); color: var(--green); }
-    .clip-badge.normalized { background: rgba(0,200,255,.14); color: var(--blue); }
+    .clip-side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
     .clip-actions { display: flex; gap: 4px; flex-shrink: 0; }
     .icon-btn {
       background: transparent; border: none; color: var(--muted);
@@ -438,6 +441,7 @@
   <input type="file" id="fileInput" multiple accept="video/*">
 
   <section id="incomingSection" class="incoming-section" hidden>
+    <div class="section-logo-row"><img src="DZ-Video-Converter.png" alt="DZ Video-Converter"></div>
     <div class="section-label">Dropped files — review, then add to the timeline</div>
     <div id="incomingList" class="incoming-list"></div>
     <div class="incoming-bar-actions">
@@ -446,6 +450,7 @@
     </div>
   </section>
 
+  <div id="stitcherLogoDivider" class="section-logo-row" hidden><img src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher"></div>
   <div id="clipsArea"></div>
 
   <div id="previewSection">
@@ -621,6 +626,7 @@
   const btnDiscardIncoming = document.getElementById('btnDiscardIncoming');
   const btnAddToStitcher   = document.getElementById('btnAddToStitcher');
   const clipsArea      = document.getElementById('clipsArea');
+  const stitcherLogoDivider = document.getElementById('stitcherLogoDivider');
   const btnClear       = document.getElementById('btnClear');
   const btnPreview     = document.getElementById('btnPreview');
   const btnMerge       = document.getElementById('btnMerge');
@@ -721,10 +727,28 @@
         }
       };
 
+      // Crops (rather than stretches) the source frame into the fixed
+      // 160x90 thumbnail box, matching the object-fit:cover the <img> tag
+      // applies on top — otherwise every frame gets squashed to a 16:9 box
+      // regardless of the source video's real aspect ratio (e.g. vertical
+      // phone footage comes out squished flat).
       const drawAt = () => {
         const c = document.createElement('canvas');
-        c.width = 160; c.height = 90;
-        c.getContext('2d').drawImage(v, 0, 0, 160, 90);
+        const targetW = 160, targetH = 90;
+        c.width = targetW; c.height = targetH;
+        const ctx = c.getContext('2d');
+        const vw = v.videoWidth || targetW, vh = v.videoHeight || targetH;
+        const targetAspect = targetW / targetH;
+        const srcAspect = vw / vh;
+        let sx, sy, sw, sh;
+        if (srcAspect > targetAspect) {
+          sh = vh; sw = vh * targetAspect;
+          sx = (vw - sw) / 2; sy = 0;
+        } else {
+          sw = vw; sh = vw / targetAspect;
+          sx = 0; sy = (vh - sh) / 2;
+        }
+        ctx.drawImage(v, sx, sy, sw, sh, 0, 0, targetW, targetH);
         return c;
       };
 
@@ -1234,7 +1258,7 @@
     queued:     { cls: 'queued',    text: 'Queued to convert' },
     converting: { cls: 'converting', text: 'Converting…' },
     added:      { cls: 'converted', text: 'Added' },
-    converted:  { cls: 'converted', text: 'Converted' },
+    converted:  { cls: 'converted', text: 'Converted to H.264 MP4' },
     remuxed:    { cls: 'converted', text: 'Remuxed' },
     failed:     { cls: 'queued',    text: 'Failed' },
   };
@@ -1739,7 +1763,7 @@
   }
   function clipBadgeText(clip) {
     if (!clip.normalized) return 'Used as-is';
-    return clip.fastRemux ? 'Remuxed (fast)' : 'Converted to H.264';
+    return clip.fastRemux ? 'Remuxed (fast)' : 'Converted to H.264 MP4';
   }
 
   window.toggleInfo = (id) => {
@@ -1784,6 +1808,7 @@
   // ── Render ─────────────────────────────────────────────────────────────
   function render() {
     clipsArea.innerHTML = '';
+    stitcherLogoDivider.hidden = clips.length === 0;
 
     clips.forEach((clip, idx) => {
       const wrap = document.createElement('div');
@@ -1812,9 +1837,10 @@
           <div>
             <div class="clip-name"><span>#${idx + 1}</span>${clip.origName}</div>
             <div class="clip-res">${estResLabel(clip.nativeW, clip.nativeH)}</div>
-            <span class="clip-badge ${clip.normalized ? 'normalized' : 'native'}">${clipBadgeText(clip)}</span>
           </div>
-          <div class="clip-actions">
+          <div class="clip-side">
+            <span class="status-pill converted">${clipBadgeText(clip)}</span>
+            <div class="clip-actions">
             <button class="icon-btn" title="File info" onclick="toggleInfo('${clip.id}')">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             </button>
@@ -1827,6 +1853,7 @@
             <button class="icon-btn del" title="Remove" onclick="removeClip('${clip.id}')">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
             </button>
+            </div>
           </div>
         </div>
 
