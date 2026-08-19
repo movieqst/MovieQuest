@@ -475,6 +475,10 @@
       padding: 6px 6px 18px;
       scroll-behavior: smooth;
     }
+    .clip-card .filmstrip {
+      background: var(--bg3); border-bottom: 1px solid var(--border);
+      padding: 12px 12px; margin: 0;
+    }
     .filmstrip::-webkit-scrollbar { height: 6px; }
     .filmstrip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     .fs-item {
@@ -2820,6 +2824,8 @@
         <div class="info-tab-row"><button class="info-tab-btn" disabled>Info</button></div>
       </div>
     `;
+    const cap = card.querySelector('.stage-caption');
+    if (cap) cap.insertAdjacentElement('afterend', filmstrip);
     editPanelHost.appendChild(card);
     // While it's empty the panel is a drop target too, on the same path as
     // the drop zone and strip — files land in the Detector either way, so
@@ -2953,6 +2959,11 @@
 
     card.appendChild(stage);
     card.appendChild(origCaption);
+    // The filmstrip is one element that gets moved into whichever panel is
+    // current, rather than re-created per render — it keeps its listeners
+    // and its scroll position that way. It sits between the two screens so
+    // switching clips happens right where you're looking.
+    card.appendChild(filmstrip);
     card.appendChild(previewStage);
     card.appendChild(previewCaption);
     card.appendChild(ctrl);
