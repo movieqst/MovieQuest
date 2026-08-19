@@ -39,7 +39,14 @@
       display: flex; justify-content: center; align-items: center; gap: 28px;
     }
     header img.site-logo { height: 72px; width: auto; display: block; }
-    header img.converter-logo { height: 46px; width: auto; display: block; opacity: .85; transition: .3s; }
+    /* Pulled out of the flex flow so the Stitcher logo centres on the page
+       rather than the pair centring together (which pushed it right of
+       centre). left:16px matches main's 16px padding, so it lines up with
+       the drop zone's left edge below. */
+    header img.converter-logo {
+      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+      height: 68px; width: auto; display: block; opacity: .85; transition: .3s;
+    }
     header img.converter-logo:hover { opacity: 1; filter: drop-shadow(0 0 10px rgba(0,200,255,.5)); }
     header .info-link {
       position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
@@ -52,7 +59,9 @@
     @media (max-width: 720px) {
       header { flex-direction: column; gap: 12px; }
       header .info-link { position: static; transform: none; }
+      header img.converter-logo { position: static; transform: none; }
       header img.site-logo { max-width: 100%; }
+      header img.converter-logo { max-width: 100%; }
     }
 
     #ffmpegBar {
