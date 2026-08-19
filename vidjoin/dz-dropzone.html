@@ -21,10 +21,22 @@
       --green: #00e8b0;
       --red: #ff6b6b;
       --radius: 10px;
-      /* Drop strip width. Floor is ~1in (96 CSS px); it scales with the
-         viewport up to 170px, which is a fifth of the 850px content
-         column. Change this one value to retune the strip. */
-      --dz-w: clamp(96px, 15vw, 170px);
+      /* Two separate numbers, because the strip is wider than the space it
+         reserves in the layout.
+
+         --dz-gutter is what the page actually gives up: body padding-left
+         and the bottom bar's offset. It fixes where the 850px content
+         column lands, so the column's left edge sits at
+         (100vw + gutter - 850) / 2 — i.e. (100vw - 680px) / 2 at 170px.
+
+         --dz-w is how wide the strip is drawn. It reaches 95% of the way
+         to that edge, so it fills the empty side area right up to where
+         the text begins with a sliver of breathing room left over. The
+         extra width simply overlays the empty gutter (the strip outranks
+         the bottom bar on z-index), so nothing has to move to make room.
+         Capped so it stops growing on very wide monitors. */
+      --dz-gutter: 170px;
+      --dz-w: min(calc((100vw - 680px) * 0.475), 600px);
     }
 
     body {
@@ -35,7 +47,7 @@
       padding-bottom: 280px;
       /* Gutter the fixed drop strip lives in. Everything else — header,
          main, the bottom bar — is pushed clear of it by this one value. */
-      padding-left: var(--dz-w);
+      padding-left: var(--dz-gutter);
     }
 
     header {
@@ -103,25 +115,28 @@
     }
     .drop-strip:hover, .drop-strip.drag { border-right-color: var(--blue); background: rgba(0,200,255,.06); }
     .dz-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .drop-strip .icon { font-size: 2.1rem; line-height: 1; }
+    /* Scales with the strip so a wide side area doesn't read as mostly
+       empty space with a tiny label lost in the middle of it. */
+    .drop-strip .icon { font-size: clamp(2.1rem, 3.4vw, 3.6rem); line-height: 1; }
     /* Rotated so the label reads bottom-to-top up the strip — at this width
        horizontal text would wrap to one or two characters a line. */
     .dz-label, .dz-sub {
       writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
     }
     .dz-label {
-      font-size: 1rem; font-weight: 700; color: var(--text);
+      font-size: clamp(1rem, 1.35vw, 1.5rem); font-weight: 700; color: var(--text);
       letter-spacing: .2em; text-transform: uppercase;
     }
-    .dz-sub { font-size: 0.76rem; color: var(--muted); letter-spacing: .08em; }
+    .dz-sub { font-size: clamp(0.76rem, 0.95vw, 1rem); color: var(--muted); letter-spacing: .08em; }
 
-    /* No room for a side strip on a phone, and the top box already covers
-       the job — so the strip goes away entirely rather than folding into a
-       second copy of it. Zeroing --dz-w takes the body gutter and the
-       bottom bar's offset with it. Has to sit after the rules above: same
-       specificity, so the later block is the one that wins. */
-    @media (max-width: 720px) {
-      :root { --dz-w: 0px; }
+    /* Below this width the side area has collapsed to nothing worth
+       filling, and the top box already covers the job — so the strip goes
+       away entirely rather than shrinking into an unusable sliver. Zeroing
+       the gutter reclaims the body padding and the bottom bar's offset.
+       Has to sit after the rules above: same specificity, so the later
+       block is the one that wins. */
+    @media (max-width: 900px) {
+      :root { --dz-gutter: 0px; }
       .drop-strip { display: none; }
     }
 
@@ -497,7 +512,7 @@
 
     /* Bottom bar */
     .bottom-bar {
-      position: fixed; bottom: 0; left: var(--dz-w); right: 0; z-index: 50;
+      position: fixed; bottom: 0; left: var(--dz-gutter); right: 0; z-index: 50;
       background: rgba(10,10,18,.85); backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
       box-shadow: 0 -8px 32px rgba(0,0,0,.5);
@@ -637,7 +652,15 @@
     <div id="incomingList" class="incoming-list"></div>
   </section>
 
-  <div class="section-logo-row"><img src="DZ-Video-Converter.png" alt="DZ Video-Converter"></div>
+  <div class="section-logo-row">
+    <button class="logo-arrow-btn" id="btnCollapseConverterL" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+    <img src="DZ-Video-Converter.png" alt="DZ Video-Converter">
+    <button class="logo-arrow-btn" id="btnCollapseConverterR" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+  </div>
 
   <section id="converterSection" class="incoming-section" hidden>
     <div class="section-label">Converted files — download, or add to the stitcher</div>
@@ -845,6 +868,8 @@
   const editPanelHost  = document.getElementById('editPanelHost');
   const btnCollapseIncomingL = document.getElementById('btnCollapseIncomingL');
   const btnCollapseIncomingR = document.getElementById('btnCollapseIncomingR');
+  const btnCollapseConverterL = document.getElementById('btnCollapseConverterL');
+  const btnCollapseConverterR = document.getElementById('btnCollapseConverterR');
   const btnClear       = document.getElementById('btnClear');
   const btnPreview     = document.getElementById('btnPreview');
   const btnMerge       = document.getElementById('btnMerge');
@@ -867,25 +892,28 @@
   const modalVideo     = document.getElementById('modalVideo');
   const modalTitle     = document.getElementById('modalTitle');
 
-  // ── Incoming list collapse ────────────────────────────────────────────
-  // Arrows flanking the Detector logo roll the dropped-files list up to
-  // just its folder tabs (colour-coded by status) and back down again.
+  // ── Section collapse ──────────────────────────────────────────────────
+  // Arrows flanking a section's logo roll its list up to just the folder
+  // tabs (colour-coded by status) and back down again. The Detector and
+  // the Converter each get their own pair, collapsing independently.
   const ARROW_UP   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>';
   const ARROW_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
-  let incomingCollapsed = false;
-  function applyIncomingCollapse() {
-    incomingList.classList.toggle('collapsed', incomingCollapsed);
-    const icon = incomingCollapsed ? ARROW_DOWN : ARROW_UP;
-    btnCollapseIncomingL.innerHTML = icon;
-    btnCollapseIncomingR.innerHTML = icon;
+  function wireSectionCollapse(list, leftBtn, rightBtn) {
+    if (!list || !leftBtn || !rightBtn) return;
+    let collapsed = false;
+    const apply = () => {
+      list.classList.toggle('collapsed', collapsed);
+      const icon = collapsed ? ARROW_DOWN : ARROW_UP;
+      leftBtn.innerHTML = icon;
+      rightBtn.innerHTML = icon;
+    };
+    const toggle = () => { collapsed = !collapsed; apply(); };
+    leftBtn.addEventListener('click', toggle);
+    rightBtn.addEventListener('click', toggle);
+    apply();
   }
-  function toggleIncomingCollapse() {
-    incomingCollapsed = !incomingCollapsed;
-    applyIncomingCollapse();
-  }
-  btnCollapseIncomingL.addEventListener('click', toggleIncomingCollapse);
-  btnCollapseIncomingR.addEventListener('click', toggleIncomingCollapse);
-  applyIncomingCollapse();
+  wireSectionCollapse(incomingList, btnCollapseIncomingL, btnCollapseIncomingR);
+  wireSectionCollapse(converterList, btnCollapseConverterL, btnCollapseConverterR);
 
   // ── Logging ────────────────────────────────────────────────────────────
   // capture.on redirects log() output into an array instead of the visible
