@@ -508,41 +508,60 @@
       padding: 6px 6px 18px;
       scroll-behavior: smooth;
     }
-    .clip-card .filmstrip {
-      background: var(--bg3); border-bottom: 1px solid var(--border);
-      padding: 12px 12px; margin: 0;
-    }
     .filmstrip::-webkit-scrollbar { height: 6px; }
     .filmstrip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-    /* Each item is a column: the picture, plus a caption on the active one.
-       The selected clip enlarges into a real player and carries the
-       ORIGINAL caption, so the strip doubles as the source screen and
-       there's no separate full-width copy of the same clip above it. */
+
+    /* Inside the editor the strip is three columns: the clips before the
+       selected one stacked on the left, the selected one playing large in
+       the middle, the ones after it stacked on the right. Position in the
+       stack mirrors position on the timeline, so what is coming up sits
+       where you would expect it. */
+    .clip-card .filmstrip {
+      background: var(--bg3); border-bottom: 1px solid var(--border);
+      padding: 12px; margin: 0;
+      display: flex; align-items: stretch; justify-content: center; gap: 10px;
+      overflow: visible;
+    }
+    .fs-side {
+      display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;
+      overflow-y: auto; overflow-x: hidden;
+      /* Never taller than the player it flanks; scrolls past that. */
+      max-height: calc(min(520px, 60vw) * 9 / 16);
+    }
+    .fs-side::-webkit-scrollbar { width: 5px; }
+    .fs-side::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    /* Nearest neighbours read brightest, fading with distance. */
+    .fs-side.before { justify-content: flex-end; }
+    .fs-side.after  { justify-content: flex-start; }
+    .fs-center { display: flex; flex-direction: column; align-items: center; gap: 7px; flex-shrink: 0; }
+
     .fs-item { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .fs-item:not(.dist-0) { cursor: pointer; }
+    .fs-item:not(.fs-active) { cursor: pointer; }
     .fs-media {
       position: relative; border-radius: 8px; overflow: hidden; background: #000;
-      border: 2px solid transparent; opacity: .55;
-      transition: width .25s, height .25s, opacity .2s, border-color .2s, box-shadow .2s;
+      border: 2px solid transparent; opacity: .6;
+      transition: opacity .2s, border-color .2s, box-shadow .2s;
     }
     .fs-media img, .fs-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
     /* The one you're watching letterboxes instead of cropping. */
-    .dist-0 .fs-media video, .dist-0 .fs-media img { object-fit: contain; }
+    .fs-active .fs-media video, .fs-active .fs-media img { object-fit: contain; }
     .fs-media .fs-dur {
-      position: absolute; bottom: 4px; right: 5px;
+      position: absolute; bottom: 3px; right: 4px;
       background: rgba(0,0,0,.8); color: #fff;
-      font-size: 0.62rem; padding: 1px 5px; border-radius: 4px; pointer-events: none;
+      font-size: 0.58rem; padding: 1px 4px; border-radius: 4px; pointer-events: none;
     }
     .fs-media .fs-idx {
-      position: absolute; top: 4px; left: 5px;
+      position: absolute; top: 3px; left: 4px;
       background: rgba(0,0,0,.7); color: var(--blue);
-      font-size: 0.62rem; font-weight: 700; padding: 1px 5px; border-radius: 4px; pointer-events: none;
+      font-size: 0.58rem; font-weight: 700; padding: 1px 4px; border-radius: 4px; pointer-events: none;
     }
-    .dist-0   .fs-media { width: min(520px, 60vw); aspect-ratio: 16/9; height: auto; opacity: 1; border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 6px 24px rgba(0,200,255,.25); }
-    .dist-1   .fs-media { width: 132px; height: 74px;  opacity: .8; }
-    .dist-2   .fs-media { width: 88px;  height: 50px;  opacity: .55; }
-    .dist-far .fs-media { width: 60px;  height: 34px;  opacity: .35; }
-    .fs-item:not(.dist-0):hover .fs-media { opacity: 1; }
+    .fs-side .fs-media { width: 96px; height: 54px; }
+    .fs-side .fs-item:nth-child(1) .fs-media { opacity: .85; }
+    .fs-active .fs-media {
+      width: min(520px, 60vw); aspect-ratio: 16/9; height: auto; opacity: 1;
+      border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 6px 24px rgba(0,200,255,.25);
+    }
+    .fs-item:not(.fs-active):hover .fs-media { opacity: 1; border-color: var(--muted); }
     .fs-caption {
       font-size: 0.64rem; font-weight: 700; letter-spacing: .18em;
       text-transform: uppercase; color: var(--muted);
@@ -2754,45 +2773,60 @@
     if (stageVideoUrl) { URL.revokeObjectURL(stageVideoUrl); stageVideoUrl = null; }
     filmstrip.innerHTML = '';
     filmstrip.hidden = clips.length === 0;
-    const activeIdx = clips.findIndex(c => c.id === activeClipId);
+    if (!clips.length) return;
 
-    clips.forEach((clip, idx) => {
-      const dist = activeIdx === -1 ? 0 : Math.abs(idx - activeIdx);
-      const distClass = dist === 0 ? 'dist-0' : dist === 1 ? 'dist-1' : dist === 2 ? 'dist-2' : 'dist-far';
-      const isActive = dist === 0;
-      const isImage = clip.kind === 'image';
+    let activeIdx = clips.findIndex(c => c.id === activeClipId);
+    if (activeIdx === -1) activeIdx = 0;
 
-      const item = document.createElement('div');
-      item.className = `fs-item ${distClass}`;
-      item.title = clip.origName;
-
-      let media;
-      if (isActive) {
-        stageVideoUrl = URL.createObjectURL(clip.file);
-        media = isImage
-          ? `<img class="stage-still" src="${stageVideoUrl}" alt="${esc(clip.origName)}">`
-          : `<video id="stageVideo-${clip.id}" controls preload="metadata" playsinline
-                    ${clip.thumb ? `poster="${clip.thumb}"` : ''} src="${stageVideoUrl}"></video>`;
-      } else {
-        media = clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : '';
-      }
-
-      item.innerHTML = `
+    // Small flanking thumbnail. Clicking one makes it the active clip.
+    const sideItem = (clip, idx) => {
+      const el = document.createElement('div');
+      el.className = 'fs-item';
+      el.title = clip.origName;
+      el.innerHTML = `
         <div class="fs-media">
-          ${media}
+          ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : ''}
           <span class="fs-idx">#${idx + 1}</span>
           <span class="fs-dur">${clip.duration.toFixed(1)}s</span>
-        </div>
-        ${isActive ? `<div class="fs-caption">Original${isImage ? ' · photo' : ''}</div>` : ''}
-      `;
-      // No click-to-select on the active one — it's already selected, and a
-      // click there belongs to the video's own controls.
-      if (!isActive) item.addEventListener('click', () => setActiveClip(clip.id));
-      filmstrip.appendChild(item);
-    });
+        </div>`;
+      el.addEventListener('click', () => setActiveClip(clip.id));
+      return el;
+    };
 
-    const activeEl = filmstrip.querySelector('.dist-0');
-    if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    // Clips before the selected one, stacked left; the nearest sits closest
+    // to the player, so the column reads outward from the middle.
+    const before = document.createElement('div');
+    before.className = 'fs-side before';
+    clips.slice(0, activeIdx).forEach((c, k) => before.appendChild(sideItem(c, k)));
+
+    const after = document.createElement('div');
+    after.className = 'fs-side after';
+    clips.slice(activeIdx + 1).forEach((c, k) => after.appendChild(sideItem(c, activeIdx + 1 + k)));
+
+    // The selected clip: a real player in the middle, captioned ORIGINAL.
+    const clip = clips[activeIdx];
+    const isImage = clip.kind === 'image';
+    stageVideoUrl = URL.createObjectURL(clip.file);
+    const centre = document.createElement('div');
+    centre.className = 'fs-center';
+    centre.innerHTML = `
+      <div class="fs-item fs-active" title="${esc(clip.origName)}">
+        <div class="fs-media">
+          ${isImage
+            ? `<img src="${stageVideoUrl}" alt="${esc(clip.origName)}">`
+            : `<video id="stageVideo-${clip.id}" controls preload="metadata" playsinline
+                      ${clip.thumb ? `poster="${clip.thumb}"` : ''} src="${stageVideoUrl}"></video>`}
+          <span class="fs-idx">#${activeIdx + 1}</span>
+          <span class="fs-dur">${clip.duration.toFixed(1)}s</span>
+        </div>
+      </div>
+      <div class="fs-caption">Original${isImage ? ' · photo' : ''}</div>
+    `;
+
+    filmstrip.append(before, centre, after);
+    // Keep the clips nearest the player in view when either column overflows.
+    before.scrollTop = before.scrollHeight;
+    after.scrollTop = 0;
   }
 
   function setActiveClip(id) {
