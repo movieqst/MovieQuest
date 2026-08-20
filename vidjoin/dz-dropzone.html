@@ -2571,32 +2571,46 @@
   // from that one list, so the three cannot drift apart.
   function assignInputSlots(list) {
     const slots = [];
+    // One copy of each distinct file in the virtual filesystem, however many
+    // slots read it. ffmpeg is happy to take the same path as several -i
+    // inputs — they stay separate input indices, so the graph is unchanged —
+    // and this is what keeps a twelve-photo slideshow from writing twelve
+    // copies of the same song, or a split clip two copies of its source.
+    const names = new Map();
+    const nameFor = (file, d, role) => {
+      if (names.has(file)) return names.get(file);
+      const n = role === 'audio' ? `aud${names.size}.${audioExt(file)}` : inputName(d, names.size);
+      names.set(file, n);
+      return n;
+    };
     const map = list.map(d => {
       const vIdx = slots.length;
-      slots.push({ d, role: 'video' });
+      slots.push({ d, role: 'video', file: d.file, name: nameFor(d.file, d, 'video') });
       // No separate track: the sound rides on the clip's own input, exactly
       // as it always did.
       let aIdx = vIdx;
-      if (d.audioFile) { aIdx = slots.length; slots.push({ d, role: 'audio' }); }
+      if (d.audioFile) {
+        aIdx = slots.length;
+        slots.push({ d, role: 'audio', file: d.audioFile, name: nameFor(d.audioFile, d, 'audio') });
+      }
       return { vIdx, aIdx };
     });
-    return { slots, map };
+    // Deduplicated write list: [name, file] per distinct file.
+    const files = [...names].map(([file, name]) => [name, file]);
+    return { slots, map, files };
   }
 
   function audioExt(file) {
     const m = /\.([a-z0-9]+)$/i.exec(file && file.name || '');
     return m ? m[1].toLowerCase() : 'm4a';
   }
-  function slotName(slot, k) {
-    if (slot.role === 'audio') return `aud${k}.${audioExt(slot.d.audioFile)}`;
-    return inputName(slot.d, k);
-  }
-  function slotFile(slot) {
-    return slot.role === 'audio' ? slot.d.audioFile : slot.d.file;
-  }
-  function slotArgs(slot, k, fps = 30) {
-    if (slot.role === 'audio') return ['-i', slotName(slot, k)];
-    return inputArgs(slot.d, k, fps);
+  function slotArgs(slot, fps = 30) {
+    if (slot.role === 'audio') return ['-i', slot.name];
+    // A still is bounded by -t per slot, so the same image can appear twice
+    // held for different lengths.
+    if (slot.d.kind !== 'image') return ['-i', slot.name];
+    const secs = Math.max(0.1, Number(slot.d.duration) || DEFAULT_IMAGE_SECONDS);
+    return ['-loop', '1', '-framerate', String(fps), '-t', String(secs), '-i', slot.name];
   }
 
   // ── Filter builder ─────────────────────────────────────────────────────
@@ -2843,13 +2857,13 @@
 
       const ffmpegRelease = await acquireFFmpegLock();
       // One ordering, used for the writes, the graph and the -i list alike.
-      const { slots, map } = assignInputSlots(proc);
+      const { slots, map, files } = assignInputSlots(proc);
       try {
-        for (let k = 0; k < slots.length; k++) {
-          const data = await fetchFile(slotFile(slots[k]));
-          await ffmpeg.writeFile(slotName(slots[k], k), data);
-          setProgress(Math.round((k + 1) / slots.length * 15));
-          log(`  Wrote ${slotName(slots[k], k)}`, 'info');
+        for (let k = 0; k < files.length; k++) {
+          const [name, file] = files[k];
+          await ffmpeg.writeFile(name, await fetchFile(file));
+          setProgress(Math.round((k + 1) / files.length * 15));
+          log(`  Wrote ${name}`, 'info');
         }
 
         const fps = cfg ? cfg.fps : 30;
@@ -2865,7 +2879,7 @@
 
         const args = [
           ...GLOBAL_ARGS,
-          ...slots.flatMap((slot, k) => slotArgs(slot, k, fps)),
+          ...slots.flatMap(slot => slotArgs(slot, fps)),
           '-filter_complex', filterComplex,
           ...(vCount > 0 ? ['-map', '[outv]'] : []),
           ...(aCount > 0 ? ['-map', '[outa]'] : []),
@@ -2917,7 +2931,7 @@
         const data = await ffmpeg.readFile(outName);
         blob = new Blob([data.buffer], { type: 'video/mp4' });
 
-        for (let k = 0; k < slots.length; k++) await ffmpeg.deleteFile(slotName(slots[k], k)).catch(() => {});
+        for (const [name] of files) await ffmpeg.deleteFile(name).catch(() => {});
         await ffmpeg.deleteFile(outName).catch(() => {});
       } finally {
         ffmpegRelease();
@@ -3655,7 +3669,7 @@
     // The preview graph is built from a one-clip list — which is still two
     // inputs when that clip carries its own audio track, so it goes through
     // the same slot assignment the full export uses.
-    const { slots: pSlots, map: pMap } = assignInputSlots([clip]);
+    const { slots: pSlots, map: pMap, files: pFiles } = assignInputSlots([clip]);
     const outName = 'clip_preview_out.mp4';
     try {
       await initFFmpeg();
@@ -3663,13 +3677,11 @@
       let blob;
       try {
         const previewFps = 30;
-        for (let k = 0; k < pSlots.length; k++) {
-          await ffmpeg.writeFile(slotName(pSlots[k], k), await fetchFile(slotFile(pSlots[k])));
-        }
+        for (const [name, file] of pFiles) await ffmpeg.writeFile(name, await fetchFile(file));
         const { filterComplex, vCount, aCount } = buildFilters(480, 270, [clip], previewFps, pMap);
         const args = [
           ...GLOBAL_ARGS,
-          ...pSlots.flatMap((slot, k) => slotArgs(slot, k, previewFps)),
+          ...pSlots.flatMap(slot => slotArgs(slot, previewFps)),
           '-filter_complex', filterComplex,
           ...(vCount > 0 ? ['-map', '[outv]'] : []),
           ...(aCount > 0 ? ['-map', '[outa]'] : []),
@@ -3692,7 +3704,7 @@
         if (code !== 0) throw new Error(`ffmpeg exited with code ${code}`);
         const data = await ffmpeg.readFile(outName);
         blob = new Blob([data.buffer], { type: 'video/mp4' });
-        for (let k = 0; k < pSlots.length; k++) await ffmpeg.deleteFile(slotName(pSlots[k], k)).catch(() => {});
+        for (const [name] of pFiles) await ffmpeg.deleteFile(name).catch(() => {});
         await ffmpeg.deleteFile(outName).catch(() => {});
       } finally {
         release();
