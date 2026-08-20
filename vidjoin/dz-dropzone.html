@@ -3012,11 +3012,26 @@
       log('Move the playhead away from the very start or end to split.', 'warn');
       return;
     }
+    // With a separate track attached, aStart/aEnd are offsets into that
+    // track, not into the video — carrying the video's split point straight
+    // across would cut the music at a moment that means nothing in it. The
+    // track should simply keep playing over the cut, so the second half
+    // picks up exactly where the first leaves off.
+    //
+    // The window is consumed at one source-second per source-second of
+    // picture: speed stretches the window and the clip equally, so the rate
+    // cancels out.
+    let aEndA = Math.min(t, orig.aEnd), aStartB = Math.max(t, orig.aStart);
+    if (orig.audioFile) {
+      const consumed = Math.max(0, t - Math.max(0, orig.vStart));
+      const cut = Math.min(orig.aEnd, orig.aStart + consumed);
+      aEndA = cut; aStartB = cut;
+    }
     const clipA = { ...orig, id: uid(),
-      vEnd: Math.min(t, orig.vEnd), aEnd: Math.min(t, orig.aEnd),
+      vEnd: Math.min(t, orig.vEnd), aEnd: aEndA,
       vFadeOut: 0, aFadeOut: 0 };
     const clipB = { ...orig, id: uid(),
-      vStart: Math.max(t, orig.vStart), aStart: Math.max(t, orig.aStart),
+      vStart: Math.max(t, orig.vStart), aStart: aStartB,
       vFadeIn: 0, aFadeIn: 0 };
     clips.splice(idx, 1, clipA, clipB);
     transitions.splice(idx, 0, { id: uid(), type: 'cut', duration: 0 });
@@ -3459,8 +3474,11 @@
                  onchange="updateImageDuration('${clip.id}', +this.value)">
           s
         </label>` : `
-        <label class="split-row">
-          <input type="checkbox" ${clip.split ? 'checked' : ''} onchange="toggleSplit('${clip.id}',this.checked)">
+        <label class="split-row" title="${clip.audioFile
+            ? 'This clip plays a separate track — trim it in the Sound section below'
+            : 'Trim the picture and the sound to different parts of this clip'}">
+          <input type="checkbox" ${clip.split ? 'checked' : ''} ${clip.audioFile ? 'disabled' : ''}
+                 onchange="toggleSplit('${clip.id}',this.checked)">
           Split audio/video trim
         </label>
         <button class="btn btn-split" id="stageSplit-${clip.id}" title="Cut this clip in two at the playhead of the Original above">
