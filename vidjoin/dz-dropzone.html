@@ -2438,8 +2438,16 @@
       // trimming the head off the video slid the picture out from under the
       // sound by exactly the amount trimmed and left the tail short (the
       // last frame then held while the remaining audio played out).
-      const base = Math.min(vs, as2);
-      const end  = Math.max(ve, ae);
+      //
+      // Only a clip that really does contribute sound has a second window to
+      // reconcile. Every clip is created with aStart/aEnd spanning its whole
+      // source whether it has an audio track or not, so widening the timeline
+      // unconditionally gave silent clips a phantom one: a silent video
+      // trimmed to 3s–8s came out as three seconds of black, the five seconds
+      // asked for, then two more seconds of black.
+      const usesOwnAudio = d.hasAudio !== false && aLen > 0.1;
+      const base = usesOwnAudio ? Math.min(vs, as2) : vs;
+      const end  = usesOwnAudio ? Math.max(ve, ae) : ve;
       const srcSpan = end - base;
       if (srcSpan <= 0.1) continue;
 
