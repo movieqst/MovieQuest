@@ -18,7 +18,13 @@
       --muted: #4a85b8;
       --blue: #00c8ff;
       --amber: #0099dd;
-      --green: #00e8b0;
+      /* "Working on it" states — purple rather than the old orange. */
+      --purple: #b06cff;
+      --purple-rgb: 176,108,255;
+      /* "Done" states — a bright light blue rather than the old green, so
+         the palette stays in one family. */
+      --green: #5ee7ff;
+      --green-rgb: 94,231,255;
       --red: #ff6b6b;
       --radius: 10px;
       /* Two separate numbers, because the strip is wider than the space it
@@ -166,14 +172,41 @@
        host flips to a row — flex-basis plus wrap means the browser drops
        them back on top of each other by itself when the column gets too
        narrow to hold two, rather than needing a breakpoint guess. */
+    /* Stacked by default: detector heading, detector list, converter
+       heading, converter list — the natural document order.
+
+       Two grid modes rearrange that without touching the DOM:
+       .side-by-side puts each stage in its own column, and .detector-empty
+       pairs the two headings on one row and lets the converter list run
+       the full width beneath them, for when there are no dropped files to
+       show on the left. */
     .stages { display: flex; flex-direction: column; }
-    .stages.side-by-side { flex-direction: row; flex-wrap: wrap; gap: 0 26px; align-items: flex-start; }
-    .stages.side-by-side .stage-col { flex: 1 1 300px; min-width: 0; }
+
+    .stages.side-by-side,
+    .stages.detector-empty {
+      display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; align-items: start;
+    }
+    .stages.side-by-side #detectorLogoRow  { grid-column: 1; grid-row: 1; }
+    .stages.side-by-side #incomingSection  { grid-column: 1; grid-row: 2; }
+    .stages.side-by-side #converterLogoRow { grid-column: 2; grid-row: 1; }
+    .stages.side-by-side #converterSection { grid-column: 2; grid-row: 2; }
+
+    .stages.detector-empty #detectorLogoRow  { grid-column: 1; grid-row: 1; }
+    .stages.detector-empty #converterLogoRow { grid-column: 2; grid-row: 1; }
+    .stages.detector-empty #incomingSection  { grid-column: 1; grid-row: 2; }
+    .stages.detector-empty #converterSection { grid-column: 1 / -1; grid-row: 3; }
+
     /* Two columns is a summary view, so the headings ease off slightly —
-       90% of the normal 72px. Enough to keep both columns comfortable
-       without the logos reading as shrunken. */
-    .stages.side-by-side .section-logo-row img { height: 64.8px; }
-    .stages.side-by-side .section-logo-row { padding-bottom: 14px; }
+       90% of the normal 72px. */
+    .stages.side-by-side .section-logo-row img,
+    .stages.detector-empty .section-logo-row img { height: 64.8px; }
+    .stages.side-by-side .section-logo-row,
+    .stages.detector-empty .section-logo-row { padding-bottom: 14px; }
+
+    /* Narrow enough that two columns no longer fit — fall back to one. */
+    @media (max-width: 800px) {
+      .stages.side-by-side, .stages.detector-empty { display: flex; flex-direction: column; }
+    }
 
     .section-logo-row { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 4px 0 20px; }
     .section-logo-row[hidden] { display: none; }
@@ -226,8 +259,8 @@
        done. Shown at all times, but this is what's left to scan once the
        list is collapsed down to just its tabs. */
     .folder-tab.tab-blue   { border-color: rgba(0,200,255,.5); box-shadow: inset 0 0 0 1px rgba(0,200,255,.15); }
-    .folder-tab.tab-orange { border-color: rgba(255,150,0,.55); box-shadow: inset 0 0 0 1px rgba(255,150,0,.18); }
-    .folder-tab.tab-green  { border-color: rgba(0,232,176,.55); box-shadow: inset 0 0 0 1px rgba(0,232,176,.18); }
+    .folder-tab.tab-orange { border-color: rgba(var(--purple-rgb),.6); box-shadow: inset 0 0 0 1px rgba(var(--purple-rgb),.2); }
+    .folder-tab.tab-green  { border-color: rgba(var(--green-rgb),.6); box-shadow: inset 0 0 0 1px rgba(var(--green-rgb),.2); }
 
     /* Collapsed state: hide each folder's body/info panel and lay the tabs
        out as a wrapping strip instead of one-per-line. */
@@ -278,9 +311,9 @@
       font-size: 0.68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
       white-space: nowrap; flex-shrink: 0;
     }
-    .status-pill.queued    { background: rgba(255,150,0,.16); color: #ffab3d; border: 1px solid rgba(255,150,0,.42); }
-    .status-pill.converting{ background: rgba(255,150,0,.16); color: #ffab3d; border: 1px solid rgba(255,150,0,.42); }
-    .status-pill.converted { background: rgba(0,232,176,.16); color: var(--green); border: 1px solid rgba(0,232,176,.45); }
+    .status-pill.queued    { background: rgba(var(--purple-rgb),.16); color: var(--purple); border: 1px solid rgba(var(--purple-rgb),.45); }
+    .status-pill.converting{ background: rgba(var(--purple-rgb),.16); color: var(--purple); border: 1px solid rgba(var(--purple-rgb),.45); }
+    .status-pill.converted { background: rgba(var(--green-rgb),.16); color: var(--green); border: 1px solid rgba(var(--green-rgb),.5); }
     /* Keeps the pill readable while the rest of the folder is dimmed. */
     .incoming-wrap.is-busy .status-pill { opacity: 1; }
     /* The converting pill doubles as its own progress bar: the fill sweeps
@@ -289,7 +322,7 @@
     .status-pill.has-progress { position: relative; overflow: hidden; min-width: 148px; justify-content: center; }
     .status-pill .pill-fill {
       position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
-      background: rgba(255,150,0,.42); transition: width .25s linear;
+      background: rgba(var(--purple-rgb),.45); transition: width .25s linear;
     }
     .status-pill .pill-text { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; }
     .status-pill .spin { animation: pill-spin 1s linear infinite; transform-origin: 50% 50%; }
@@ -322,8 +355,8 @@
     .action-pill:active:not(:disabled) { transform: scale(0.97); }
     .action-pill:disabled { opacity: .35; cursor: not-allowed; }
     .action-pill.red    { color: #ff6b6b;    border-color: rgba(255,107,107,.55); background: rgba(255,107,107,.12); }
-    .action-pill.green  { color: var(--green); border-color: rgba(0,232,176,.5);   background: rgba(0,232,176,.12); }
-    .action-pill.orange { color: #ffab3d;    border-color: rgba(255,150,0,.5);    background: rgba(255,150,0,.14); }
+    .action-pill.green  { color: var(--green); border-color: rgba(var(--green-rgb),.55); background: rgba(var(--green-rgb),.12); }
+    .action-pill.orange { color: var(--purple); border-color: rgba(var(--purple-rgb),.55); background: rgba(var(--purple-rgb),.14); }
 
     /* Clips */
     .clip-card {
@@ -481,28 +514,41 @@
     }
     .filmstrip::-webkit-scrollbar { height: 6px; }
     .filmstrip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-    .fs-item {
-      flex-shrink: 0; cursor: pointer; position: relative;
-      border-radius: 8px; overflow: hidden; background: #000;
+    /* Each item is a column: the picture, plus a caption on the active one.
+       The selected clip enlarges into a real player and carries the
+       ORIGINAL caption, so the strip doubles as the source screen and
+       there's no separate full-width copy of the same clip above it. */
+    .fs-item { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .fs-item:not(.dist-0) { cursor: pointer; }
+    .fs-media {
+      position: relative; border-radius: 8px; overflow: hidden; background: #000;
       border: 2px solid transparent; opacity: .55;
       transition: width .25s, height .25s, opacity .2s, border-color .2s, box-shadow .2s;
     }
-    .fs-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .fs-item .fs-dur {
+    .fs-media img, .fs-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* The one you're watching letterboxes instead of cropping. */
+    .dist-0 .fs-media video, .dist-0 .fs-media img { object-fit: contain; }
+    .fs-media .fs-dur {
       position: absolute; bottom: 4px; right: 5px;
       background: rgba(0,0,0,.8); color: #fff;
-      font-size: 0.62rem; padding: 1px 5px; border-radius: 4px;
+      font-size: 0.62rem; padding: 1px 5px; border-radius: 4px; pointer-events: none;
     }
-    .fs-item .fs-idx {
+    .fs-media .fs-idx {
       position: absolute; top: 4px; left: 5px;
       background: rgba(0,0,0,.7); color: var(--blue);
-      font-size: 0.62rem; font-weight: 700; padding: 1px 5px; border-radius: 4px;
+      font-size: 0.62rem; font-weight: 700; padding: 1px 5px; border-radius: 4px; pointer-events: none;
     }
-    .fs-item.dist-0   { width: 224px; height: 126px; opacity: 1;   border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 6px 24px rgba(0,200,255,.25); }
-    .fs-item.dist-1   { width: 132px; height: 74px;  opacity: .8; }
-    .fs-item.dist-2   { width: 88px;  height: 50px;  opacity: .55; }
-    .fs-item.dist-far { width: 60px;  height: 34px;  opacity: .35; }
-    .fs-item:hover { opacity: 1; }
+    .dist-0   .fs-media { width: min(520px, 60vw); aspect-ratio: 16/9; height: auto; opacity: 1; border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 6px 24px rgba(0,200,255,.25); }
+    .dist-1   .fs-media { width: 132px; height: 74px;  opacity: .8; }
+    .dist-2   .fs-media { width: 88px;  height: 50px;  opacity: .55; }
+    .dist-far .fs-media { width: 60px;  height: 34px;  opacity: .35; }
+    .fs-item:not(.dist-0):hover .fs-media { opacity: 1; }
+    .fs-caption {
+      font-size: 0.64rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    /* Keeps the shrunken neighbours bottom-aligned with the tall active one. */
+    .clip-card .filmstrip { align-items: flex-end; }
 
     /* Edit panel — the one active clip's full controls, below the filmstrip. */
     #editPanelHost { display: flex; flex-direction: column; }
@@ -693,7 +739,7 @@
        title="Drop any video or photo — MP4, MOV, MKV, AVI, WebM, JPEG, PNG, HEIC and more. Each file is inspected automatically; you decide what gets converted before it hits the timeline.">
     <div class="dz-inner">
       <div class="icon">🎬</div>
-      <a class="info-link" id="infoLink" href="h264mp4.html">Why H.264 MP4?</a>
+      <a class="info-link" id="infoLink" href="h264mp4.html" target="_blank" rel="noopener">Why H.264 MP4?</a>
       <div class="dz-label">DZ Drop Zone</div>
       <div class="dz-sub">Drop videos or photos — or click to browse</div>
     </div>
@@ -704,7 +750,7 @@
   <div class="doc-peek" id="docPeek" hidden>
     <div class="doc-peek-hdr">
       <span>Why H.264 MP4?</span>
-      <a href="h264mp4.html">Open full page ↗</a>
+      <a href="h264mp4.html" target="_blank" rel="noopener">Open full page ↗</a>
     </div>
     <iframe id="docPeekFrame" title="Why H.264 MP4?" loading="lazy"></iframe>
   </div>
@@ -715,40 +761,37 @@
   </div>
   <input type="file" id="fileInput" multiple accept="video/*,image/*">
 
+  <!-- Flat children so the grid can place logos and lists
+       independently — that is what lets the Converter span the full
+       width when the Detector is empty. -->
   <div id="stagesWrap" class="stages">
-    <div class="stage-col">
-      <div class="section-logo-row">
-        <button class="logo-arrow-btn" id="btnCollapseIncomingL" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-        </button>
-        <img src="DZ-Video-Detector.png" alt="DZ Video-Detector">
-        <button class="logo-arrow-btn" id="btnCollapseIncomingR" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-        </button>
-      </div>
-
-      <section id="incomingSection" class="incoming-section" hidden>
-        <div class="section-label">Dropped files — review, then convert</div>
-        <div id="incomingList" class="incoming-list"></div>
-      </section>
+    <div class="section-logo-row" id="detectorLogoRow">
+      <button class="logo-arrow-btn" id="btnCollapseIncomingL" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      </button>
+      <img src="DZ-Video-Detector.png" alt="DZ Video-Detector">
+      <button class="logo-arrow-btn" id="btnCollapseIncomingR" title="Collapse/expand the dropped files list" aria-label="Collapse or expand the dropped files list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      </button>
     </div>
+    <section id="incomingSection" class="incoming-section" hidden>
+      <div class="section-label">Dropped files — review, then convert</div>
+      <div id="incomingList" class="incoming-list"></div>
+    </section>
 
-    <div class="stage-col">
-      <div class="section-logo-row">
-        <button class="logo-arrow-btn" id="btnCollapseConverterL" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-        </button>
-        <img src="DZ-Video-Converter.png" alt="DZ Video-Converter">
-        <button class="logo-arrow-btn" id="btnCollapseConverterR" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-        </button>
-      </div>
-
-      <section id="converterSection" class="incoming-section" hidden>
-        <div class="section-label">Converted files — download, or add to the stitcher</div>
-        <div id="converterList" class="incoming-list"></div>
-      </section>
+    <div class="section-logo-row" id="converterLogoRow">
+      <button class="logo-arrow-btn" id="btnCollapseConverterL" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      </button>
+      <img src="DZ-Video-Converter.png" alt="DZ Video-Converter">
+      <button class="logo-arrow-btn" id="btnCollapseConverterR" title="Collapse/expand the converted files list" aria-label="Collapse or expand the converted files list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      </button>
     </div>
+    <section id="converterSection" class="incoming-section" hidden>
+      <div class="section-label">Converted files — download, or add to the stitcher</div>
+      <div id="converterList" class="incoming-list"></div>
+    </section>
   </div>
 
   <div id="stitcherLogoDivider" class="section-logo-row"><img src="DZ-Video-Stitcher.png" alt="DZ Video-Stitcher"></div>
@@ -1028,10 +1071,14 @@
     return isEmpty || sectionCollapsed[key];
   }
   function updateStageLayout() {
-    if (stagesWrap) {
-      stagesWrap.classList.toggle('side-by-side',
-        stageIsShort('incoming') && stageIsShort('converter'));
-    }
+    if (!stagesWrap) return;
+    // Nothing dropped: the two headings pair up on one row and the
+    // converter's list gets the whole width, rather than half of it with an
+    // empty column beside it.
+    const detectorEmpty = incoming.length === 0;
+    const pairable = stageIsShort('incoming') && stageIsShort('converter');
+    stagesWrap.classList.toggle('detector-empty', detectorEmpty && !pairable);
+    stagesWrap.classList.toggle('side-by-side', pairable);
   }
   function wireSectionCollapse(key, list, leftBtn, rightBtn) {
     if (!list || !leftBtn || !rightBtn) return;
@@ -2365,7 +2412,7 @@
     const cfg = getModeConfig(mode);
     const isDL = isDownloadMode(mode);
     prevBadge.textContent  = isDL ? 'HI RES' : 'LOW RES';
-    prevBadge.style.background = isDL ? '#2e7d32' : '#c00';
+    prevBadge.style.background = isDL ? '#0b6b8c' : '#c00';
     prevBadgeLabel.textContent = cfg ? `${cfg.label} — ${cfg.W}×${cfg.H}` : 'Full Quality';
     btnDlPreview.textContent   = isDL ? '⬇ Save to Disk' : '⬇ Save Draft';
     prevHint.innerHTML = isDL
@@ -2402,7 +2449,12 @@
   async function runProcess(mode) {
     if (clips.length < 1) { log('Add at least one clip.', 'err'); return; }
     if (isProcessing) return;
+    if (clipPreviewBusy) {
+      log('A clip preview is still rendering — wait for it to finish, then try again.', 'warn');
+      return;
+    }
     isProcessing = true;
+    refreshActiveClipPreviewUI();
     const isDL      = isDownloadMode(mode);
     const activeBtn = isDL ? btnMerge : btnPreview;
     activeBtn.disabled = btnPreview.disabled = btnMerge.disabled = true;
@@ -2415,17 +2467,25 @@
       log(`Writing ${clips.length} file(s) to virtual FS…`, 'info');
       setProgress(0);
 
+      // One transition per join. If the two lists ever drift out of step the
+      // export used to die on `t.type` of undefined — a bare "Cannot read
+      // properties of undefined" with nothing pointing at the cause, right
+      // after the files had been written. Top up what's missing and treat
+      // every lookup as optional.
+      while (transitions.length < clips.length - 1) {
+        transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
+      }
       const proc = clips.map((c, i) => {
         const cl = { ...c };
-        if (i < transitions.length) {
-          const t = transitions[i];
-          if (t.type === 'vfade' || t.type === 'both') cl.vFadeOut = Math.max(cl.vFadeOut, t.duration);
-          if (t.type === 'afade' || t.type === 'both') cl.aFadeOut = Math.max(cl.aFadeOut, t.duration);
+        const after = transitions[i];
+        if (after) {
+          if (after.type === 'vfade' || after.type === 'both') cl.vFadeOut = Math.max(cl.vFadeOut, after.duration);
+          if (after.type === 'afade' || after.type === 'both') cl.aFadeOut = Math.max(cl.aFadeOut, after.duration);
         }
-        if (i > 0) {
-          const t = transitions[i - 1];
-          if (t.type === 'vfade' || t.type === 'both') cl.vFadeIn = Math.max(cl.vFadeIn, t.duration);
-          if (t.type === 'afade' || t.type === 'both') cl.aFadeIn = Math.max(cl.aFadeIn, t.duration);
+        const before = i > 0 ? transitions[i - 1] : null;
+        if (before) {
+          if (before.type === 'vfade' || before.type === 'both') cl.vFadeIn = Math.max(cl.vFadeIn, before.duration);
+          if (before.type === 'afade' || before.type === 'both') cl.aFadeIn = Math.max(cl.aFadeIn, before.duration);
         }
         return cl;
       });
@@ -2529,6 +2589,8 @@
     } finally {
       isProcessing = false;
       updateButtons();
+      // Re-enable the per-clip render button now the engine is free again.
+      refreshActiveClipPreviewUI();
     }
   }
 
@@ -2686,22 +2748,46 @@
   }
 
   function renderFilmstrip() {
+    // The active item holds a real <video>, so its object URL is created and
+    // released here rather than in the panel — the panel would otherwise
+    // revoke it moments after this function handed it out.
+    if (stageVideoUrl) { URL.revokeObjectURL(stageVideoUrl); stageVideoUrl = null; }
     filmstrip.innerHTML = '';
     filmstrip.hidden = clips.length === 0;
     const activeIdx = clips.findIndex(c => c.id === activeClipId);
 
     clips.forEach((clip, idx) => {
-      const item = document.createElement('div');
       const dist = activeIdx === -1 ? 0 : Math.abs(idx - activeIdx);
       const distClass = dist === 0 ? 'dist-0' : dist === 1 ? 'dist-1' : dist === 2 ? 'dist-2' : 'dist-far';
+      const isActive = dist === 0;
+      const isImage = clip.kind === 'image';
+
+      const item = document.createElement('div');
       item.className = `fs-item ${distClass}`;
       item.title = clip.origName;
+
+      let media;
+      if (isActive) {
+        stageVideoUrl = URL.createObjectURL(clip.file);
+        media = isImage
+          ? `<img class="stage-still" src="${stageVideoUrl}" alt="${esc(clip.origName)}">`
+          : `<video id="stageVideo-${clip.id}" controls preload="metadata" playsinline
+                    ${clip.thumb ? `poster="${clip.thumb}"` : ''} src="${stageVideoUrl}"></video>`;
+      } else {
+        media = clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : '';
+      }
+
       item.innerHTML = `
-        ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : ''}
-        <span class="fs-idx">#${idx + 1}</span>
-        <span class="fs-dur">${clip.duration.toFixed(1)}s</span>
+        <div class="fs-media">
+          ${media}
+          <span class="fs-idx">#${idx + 1}</span>
+          <span class="fs-dur">${clip.duration.toFixed(1)}s</span>
+        </div>
+        ${isActive ? `<div class="fs-caption">Original${isImage ? ' · photo' : ''}</div>` : ''}
       `;
-      item.addEventListener('click', () => setActiveClip(clip.id));
+      // No click-to-select on the active one — it's already selected, and a
+      // click there belongs to the video's own controls.
+      if (!isActive) item.addEventListener('click', () => setActiveClip(clip.id));
       filmstrip.appendChild(item);
     });
 
@@ -2754,7 +2840,6 @@
         </div>
         <span class="stage-badge">no clip</span>
       </div>
-      <div class="stage-caption">Original</div>
       <div class="preview-stage">
         <div class="preview-blank"></div>
         <div class="preview-overlay">
@@ -2824,8 +2909,10 @@
         <div class="info-tab-row"><button class="info-tab-btn" disabled>Info</button></div>
       </div>
     `;
-    const cap = card.querySelector('.stage-caption');
-    if (cap) cap.insertAdjacentElement('afterend', filmstrip);
+    // Same slot as the real panel: after the drop area, before the preview
+    // screen. (It stays hidden while there are no clips.)
+    const ps = card.querySelector('.preview-stage');
+    if (ps) ps.insertAdjacentElement('beforebegin', filmstrip);
     editPanelHost.appendChild(card);
     // While it's empty the panel is a drop target too, on the same path as
     // the drop zone and strip — files land in the Detector either way, so
@@ -2834,9 +2921,6 @@
   }
 
   function renderEditPanel() {
-    // The previous panel's <video> is about to be thrown away with the
-    // innerHTML wipe; its object URL has to go with it.
-    if (stageVideoUrl) { URL.revokeObjectURL(stageVideoUrl); stageVideoUrl = null; }
     editPanelHost.innerHTML = '';
     const clip = clips.find(c => c.id === activeClipId);
     if (!clip) {
@@ -2855,24 +2939,6 @@
 
     const card = document.createElement('div');
     card.className = 'clip-card';
-
-    // Full-width video across the top of the panel, controls underneath.
-    stageVideoUrl = URL.createObjectURL(clip.file);
-    const stage = document.createElement('div');
-    stage.className = 'clip-stage';
-    // A still has no playhead, so it gets a plain <img> and no split button.
-    stage.innerHTML = isImage ? `
-      <img class="stage-still" src="${stageVideoUrl}" alt="${esc(clip.origName)}">
-      <span class="stage-badge">#${idx + 1} · photo · ${clip.duration.toFixed(1)}s</span>
-    ` : `
-      <video id="stageVideo-${clip.id}" controls preload="metadata" playsinline
-             ${clip.thumb ? `poster="${clip.thumb}"` : ''} src="${stageVideoUrl}"></video>
-      <span class="stage-badge">#${idx + 1} · ${clip.duration.toFixed(1)}s</span>
-      <button class="stage-btn" id="stageSplit-${clip.id}" title="Split this clip at the playhead">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="4 8 2 12 4 16"/><polyline points="20 8 22 12 20 16"/></svg>
-        Split here
-      </button>
-    `;
 
     const ctrl = document.createElement('div');
     ctrl.className = 'clip-controls';
@@ -2916,6 +2982,10 @@
           <input type="checkbox" ${clip.split ? 'checked' : ''} onchange="toggleSplit('${clip.id}',this.checked)">
           Split audio/video trim
         </label>
+        <button class="btn btn-split" id="stageSplit-${clip.id}" title="Cut this clip in two at the playhead of the Original above">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="4 8 2 12 4 16"/><polyline points="20 8 22 12 20 16"/></svg>
+          Split here
+        </button>
         <label class="speed-row">
           Speed
           <select onchange="updateSpeed('${clip.id}', +this.value)">
@@ -2942,12 +3012,8 @@
       <div id="infowrap-${clip.id}"></div>
     `;
 
-    // Screen one (the source clip) is captioned ORIGINAL; screen two below
-    // it holds the rendered edit at the same size, captioned EDITED PREVIEW.
-    const origCaption = document.createElement('div');
-    origCaption.className = 'stage-caption';
-    origCaption.textContent = 'Original';
-
+    // The source clip lives in the filmstrip now (its selected item is the
+    // player, captioned ORIGINAL); this is the rendered-edit screen below it.
     const previewStage = document.createElement('div');
     previewStage.className = 'preview-stage';
     previewStage.id = `previewStage-${clip.id}`;
@@ -2957,8 +3023,6 @@
     previewCaption.id = `previewCaption-${clip.id}`;
     previewCaption.textContent = 'Edited preview';
 
-    card.appendChild(stage);
-    card.appendChild(origCaption);
     // The filmstrip is one element that gets moved into whichever panel is
     // current, rather than re-created per render — it keeps its listeners
     // and its scroll position that way. It sits between the two screens so
@@ -2987,6 +3051,11 @@
   // Renders just the active clip's own trim/fade settings through ffmpeg at
   // a small size/fast preset — so a trim or fade can be checked without
   // running the full multi-clip export just to see one clip.
+  function refreshActiveClipPreviewUI() {
+    const clip = clips.find(c => c.id === activeClipId);
+    if (clip) renderClipPreviewUI(clip);
+  }
+
   // The lower of the two screens. Dark with a call-to-action in the middle
   // until something has been rendered; the rendered edit afterwards, with
   // the button coming back over it the moment the clip is edited again.
@@ -3001,14 +3070,18 @@
         : `<div class="preview-blank"></div>`}
       ${needsRender ? `
         <div class="preview-overlay">
-          <button class="btn btn-merge" id="btnPreviewClipEdit" ${clipPreviewBusy ? 'disabled' : ''}>
+          <button class="btn btn-merge" id="btnPreviewClipEdit" ${engineBusy() ? 'disabled' : ''}>
             ${clipPreviewBusy
               ? '<svg class="spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Rendering…'
-              : '<svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Render edited preview'}
+              : isProcessing
+                ? '<svg class="spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Timeline render running…'
+                : '<svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Render edited preview'}
           </button>
-          ${isCurrent && clipPreviewStale
-            ? '<div class="clip-preview-stale">⚠ Edited since this was rendered</div>'
-            : '<div class="preview-hint">Your trim, fades and speed applied — rendered here so you can check the edit before exporting.</div>'}
+          ${isProcessing
+            ? '<div class="clip-preview-stale">The whole timeline is rendering — this unlocks when it finishes.</div>'
+            : isCurrent && clipPreviewStale
+              ? '<div class="clip-preview-stale">⚠ Edited since this was rendered</div>'
+              : '<div class="preview-hint">Your trim, fades and speed applied — rendered here so you can check the edit before exporting.</div>'}
         </div>` : ''}
     `;
     const btn = document.getElementById('btnPreviewClipEdit');
@@ -3027,9 +3100,10 @@
 
   async function previewActiveClipEdit() {
     const clip = clips.find(c => c.id === activeClipId);
-    if (!clip || clipPreviewBusy) return;
+    if (!clip || engineBusy()) return;
     clipPreviewBusy = true;
     renderClipPreviewUI(clip);
+    updateButtons();   // lock the timeline export while this one runs
     // Index 0: the preview graph is built from a one-clip list.
     const inName = inputName(clip, 0);
     const outName = 'clip_preview_out.mp4';
@@ -3079,6 +3153,7 @@
     } finally {
       clipPreviewBusy = false;
       if (activeClipId === clip.id) renderClipPreviewUI(clip);
+      updateButtons();
     }
   }
 
@@ -3200,9 +3275,17 @@
     if (t) { t[key] = val; render(); }
   };
 
+  // The timeline export and the per-clip preview share one FFmpeg engine.
+  // Either can be queued behind the other, and a long export left the clip
+  // preview sitting on "Rendering…" for minutes with no way to tell it was
+  // simply waiting its turn — indistinguishable from a hang. Both controls
+  // now read the same busy flag, so only one long job can be in flight and
+  // whichever control is blocked says why.
+  function engineBusy() { return isProcessing || clipPreviewBusy; }
+
   function updateButtons() {
     const hasClips = clips.length > 0;
-    const dis = !hasClips || isProcessing;
+    const dis = !hasClips || engineBusy();
     btnPreview.disabled      = dis;
     btnMerge.disabled        = dis;
     previewQuality.disabled  = dis;
