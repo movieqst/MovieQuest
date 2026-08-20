@@ -721,6 +721,44 @@
     }
     .btn:disabled { opacity: .4; cursor: not-allowed; }
     .btn:not(:disabled):hover { opacity: .85; }
+
+    /* Sound slot — the separate track a clip can play instead of its own
+       audio. Set apart from the trim controls above it, because it is about
+       a different file. */
+    .sound-slot {
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px;
+      background: rgba(255,255,255,.02);
+    }
+    .sound-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .sound-title {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--green);
+    }
+    .sound-note, .sound-empty { font-size: 0.75rem; color: var(--muted); }
+    .sound-name {
+      flex: 1; min-width: 0; font-size: 0.78rem; color: var(--text);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .sound-fit { font-size: 0.72rem; color: var(--muted); }
+    .sound-pick { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .sound-pick select {
+      flex: 1; min-width: 140px;
+      background: var(--bg3); color: var(--text);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 6px 8px; font-size: 0.78rem;
+    }
+    .btn-sound {
+      background: rgba(var(--green-rgb), .14); color: var(--green);
+      border: 1px solid rgba(var(--green-rgb), .5);
+    }
+    .btn-sound:hover { background: rgba(var(--green-rgb), .26); }
+    .btn-sound-off {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border); padding: 5px 10px; font-size: 0.72rem;
+    }
+    .btn-sound-off:hover { color: var(--red); border-color: var(--red); }
+
     .btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
     .btn-preview { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
     .btn-merge { background: linear-gradient(135deg, #00c8ff, #0055cc); color: #fff; }
@@ -3410,7 +3448,7 @@
       ${isImage ? '' : `
       <div class="timeline-bar">
         <div class="tl-row"><div class="tl-fill video" id="tlv-${clip.id}" style="left:${(clip.vStart/clip.duration)*100}%;width:${((clip.vEnd-clip.vStart)/clip.duration)*100}%"></div></div>
-        <div class="tl-row"><div class="tl-fill audio" id="tla-${clip.id}" style="left:${(clip.aStart/clip.duration)*100}%;width:${((clip.aEnd-clip.aStart)/clip.duration)*100}%"></div></div>
+        <div class="tl-row"><div class="tl-fill audio" id="tla-${clip.id}" style="${audioBarStyle(clip)}"></div></div>
       </div>`}
 
       <div class="opts-row">
@@ -3439,6 +3477,8 @@
       </div>
 
       ${isImage ? '' : `<div id="sliders-${clip.id}"></div>`}
+
+      <div class="sound-slot" id="sound-${clip.id}"></div>
 
       <div class="fade-grid">
         <div class="fade-field"><label>Vid Fade In</label><input type="number" min="0" max="5" step="0.1" value="${clip.vFadeIn}" onchange="updateClip('${clip.id}','vFadeIn',+this.value)"></div>
@@ -3483,6 +3523,7 @@
     });
 
     if (!isImage) renderSliders(clip, document.getElementById(`sliders-${clip.id}`));
+    renderSoundSlot(clip, document.getElementById(`sound-${clip.id}`));
     renderClipPreviewUI(clip);
 
     if (clip.infoOpen) {
@@ -3606,9 +3647,119 @@
     }
   }
 
+  // ── Sound slot ─────────────────────────────────────────────────────────
+  // Every clip can play sound from a separate file: music under a photo, a
+  // voice-over on a silent shot. Shown for photos too, which is the whole
+  // point — a still has no sound of its own to trim.
+  function renderSoundSlot(clip, container) {
+    container.innerHTML = '';
+    const tracks = converterQueue.filter(i => i.kind === 'audio' && ['converted', 'remuxed'].includes(i.jobState));
+
+    if (!clip.audioFile) {
+      const own = clip.kind !== 'image' && clip.hasAudio !== false;
+      container.innerHTML = `
+        <div class="sound-head">
+          <span class="sound-title">Sound</span>
+          <span class="sound-note">${own ? "Playing this clip's own audio" : 'No sound on this clip'}</span>
+        </div>
+        ${tracks.length ? `
+          <div class="sound-pick">
+            <select id="soundpick-${clip.id}">
+              ${tracks.map(t => `<option value="${t.id}">${esc(t.origName)} · ${fmtDuration(t.audioDuration || 0)}</option>`).join('')}
+            </select>
+            <button class="btn btn-sound" onclick="attachPickedAudio('${clip.id}')">
+              ${own ? 'Replace with this track' : 'Add this track'}
+            </button>
+          </div>`
+        : `<div class="sound-empty">Drop an audio file into the Drop Zone to lay music or narration under this clip.</div>`}
+      `;
+      return;
+    }
+
+    const span = clipOutputSpan(clip);
+    const win = Math.max(0, clip.aEnd - clip.aStart);
+    container.innerHTML = `
+      <div class="sound-head">
+        <span class="sound-title">Sound</span>
+        <span class="sound-name" title="${esc(clip.audioName)}">${esc(clip.audioName)}</span>
+        <button class="btn btn-sound-off" onclick="detachAudio('${clip.id}')" title="Go back to this clip's own audio">Remove</button>
+      </div>
+      <div class="sound-fit" id="soundfit-${clip.id}">${soundFitLabel(win, span)}</div>
+      <div id="soundtrim-${clip.id}"></div>
+    `;
+
+    const trimHost = container.querySelector(`#soundtrim-${clip.id}`);
+    const max = Math.max(0.1, Number(clip.audioDuration) || 0);
+    const div = document.createElement('div');
+    div.className = 'slider-group';
+    div.innerHTML = `
+      <div class="slider-label"><span>Track section</span><span id="lbl-snd-${clip.id}">${fmt(clip.aStart)} – ${fmt(clip.aEnd)}</span></div>
+      <div class="range-wrap">
+        <div class="range-track"></div>
+        <input type="range" class="astart" value="${clip.aStart}">
+        <input type="range" class="aend" value="${clip.aEnd}">
+      </div>
+    `;
+    trimHost.appendChild(div);
+    const repaint = () => {
+      document.getElementById(`lbl-snd-${clip.id}`).textContent = `${fmt(clip.aStart)} – ${fmt(clip.aEnd)}`;
+      const fit = document.getElementById(`soundfit-${clip.id}`);
+      if (fit) fit.textContent = soundFitLabel(clip.aEnd - clip.aStart, clipOutputSpan(clip));
+      updateTimeline(clip);
+    };
+    makeRangeSlider(div, {
+      min: 0, max, start: clip.aStart, end: Math.min(clip.aEnd, max),
+      colorClass: 'audio',
+      onChangeStart: v => { clip.aStart = v; repaint(); },
+      onChangeEnd:   v => { clip.aEnd = v; repaint(); },
+    });
+  }
+
+  // Trimming the picture changes the clip's length, which changes how much of
+  // the attached track is heard — so the fit line has to follow along.
+  function refreshSoundFit(clip) {
+    const fit = document.getElementById(`soundfit-${clip.id}`);
+    if (fit) fit.textContent = soundFitLabel(clip.aEnd - clip.aStart, clipOutputSpan(clip));
+  }
+
+  // Says plainly what will happen to the chosen stretch of track, since the
+  // export pads it or cuts it to match the clip rather than changing either.
+  function soundFitLabel(win, span) {
+    if (span <= 0) return '';
+    const d = win - span;
+    if (Math.abs(d) < 0.15) return `Fills the clip exactly (${span.toFixed(1)}s)`;
+    if (d > 0) return `Clip is ${span.toFixed(1)}s — you'll hear the first ${span.toFixed(1)}s of the ${fmtDuration(win)} you picked`;
+    return `Section is ${win.toFixed(1)}s — the clip's last ${(-d).toFixed(1)}s play silent`;
+  }
+
+  window.attachPickedAudio = (clipId) => {
+    const clip = clips.find(c => c.id === clipId);
+    const sel = document.getElementById(`soundpick-${clipId}`);
+    if (!clip || !sel) return;
+    const item = converterQueue.find(i => i.id === sel.value);
+    if (!item) return;
+    attachAudioToClip(clip, item);
+    log(`${item.origName} now plays under ${clip.origName}.`, 'ok');
+    render();
+  };
+
+  window.detachAudio = (clipId) => {
+    const clip = clips.find(c => c.id === clipId);
+    if (!clip) return;
+    const was = clip.audioName;
+    detachAudioFromClip(clip);
+    log(`Removed ${was} from ${clip.origName}.`, 'info');
+    render();
+  };
+
   function renderSliders(clip, container) {
     container.innerHTML = '';
-    if (!clip.split) {
+    // A separate track displaces the clip's own sound entirely, and aStart /
+    // aEnd then address that track — so neither the master slider nor a
+    // split "Audio Trim" may touch them here. The track's own trim lives in
+    // the sound slot below.
+    const attached = !!clip.audioFile;
+    if (attached || !clip.split) {
       const div = document.createElement('div');
       div.className = 'slider-group';
       div.innerHTML = `
@@ -3624,13 +3775,17 @@
         min: 0, max: clip.duration, start: clip.vStart, end: clip.vEnd,
         colorClass: 'video',
         onChangeStart: v => {
-          clip.vStart = clip.aStart = v;
+          clip.vStart = v;
+          if (!attached) clip.aStart = v;
           document.getElementById(`lbl-master-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(clip.vEnd)}`;
+          refreshSoundFit(clip);
           updateTimeline(clip);
         },
         onChangeEnd: v => {
-          clip.vEnd = clip.aEnd = v;
+          clip.vEnd = v;
+          if (!attached) clip.aEnd = v;
           document.getElementById(`lbl-master-${clip.id}`).textContent = `${fmt(clip.vStart)} – ${fmt(clip.vEnd)}`;
+          refreshSoundFit(clip);
           updateTimeline(clip);
         }
       });
@@ -3673,11 +3828,20 @@
     }
   }
 
+  // The audio bar shows where the sound sits across the clip. Sound from the
+  // clip's own file occupies the window it was trimmed to; an attached track
+  // is fitted to the clip, so it always covers the whole of it.
+  function audioBarStyle(clip) {
+    if (clip.audioFile) return 'left:0%;width:100%';
+    const d = clip.duration || 1;
+    return `left:${(clip.aStart / d) * 100}%;width:${((clip.aEnd - clip.aStart) / d) * 100}%`;
+  }
+
   function updateTimeline(clip) {
     const vEl = document.getElementById(`tlv-${clip.id}`);
     const aEl = document.getElementById(`tla-${clip.id}`);
     if (vEl) { vEl.style.left = (clip.vStart/clip.duration*100)+'%'; vEl.style.width = ((clip.vEnd-clip.vStart)/clip.duration*100)+'%'; }
-    if (aEl) { aEl.style.left = (clip.aStart/clip.duration*100)+'%'; aEl.style.width = ((clip.aEnd-clip.aStart)/clip.duration*100)+'%'; }
+    if (aEl) aEl.style.cssText = audioBarStyle(clip);
     markClipEditsDirty(clip);
   }
 
@@ -3699,7 +3863,10 @@
     const v = Math.min(120, Math.max(0.5, Number(val) || DEFAULT_IMAGE_SECONDS));
     clip.duration = v;
     clip.vStart = 0; clip.vEnd = v;
-    clip.aStart = 0; clip.aEnd = v;
+    // With a track attached, aStart/aEnd are a window into that track — the
+    // photo's new display time says nothing about them, and resetting them
+    // here would silently throw the user's chosen section away.
+    if (!clip.audioFile) { clip.aStart = 0; clip.aEnd = v; }
     markClipEditsDirty(clip);
     render();   // filmstrip badge and the timeline total both move with it
   };
@@ -3710,6 +3877,7 @@
     clip.speed = val;
     const out = document.getElementById(`speedout-${id}`);
     if (out) out.textContent = `→ ${clipOutputSpan(clip).toFixed(1)}s`;
+    refreshSoundFit(clip);   // a shorter clip hears less of the track
     markClipEditsDirty(clip);
     updateButtons();   // the timeline's total length just changed
   };
