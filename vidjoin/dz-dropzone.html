@@ -2581,7 +2581,11 @@
         }
 
         const fps = cfg ? cfg.fps : 30;
-        const built = buildFilters(W, H, clips, fps);
+        // `proc`, not `clips`: proc is the copy carrying the fades folded in
+        // from each join's transition. Building from `clips` threw all of
+        // that away, so every cross-fade transition silently exported as a
+        // hard cut.
+        const built = buildFilters(W, H, proc, fps);
         const filterComplex = built.filterComplex;
         vCount = built.vCount; aCount = built.aCount; totalDur = built.totalDur;
         log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
