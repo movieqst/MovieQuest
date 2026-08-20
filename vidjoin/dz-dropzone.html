@@ -3073,10 +3073,10 @@
         // mapping prints — and then frame=0 forever. A core that is merely
         // slow still reports progress. So "nothing at all after this long"
         // is the signal, and it only applies to the very first frame.
-        // Generous, because it is now measured against real encoded frames
-        // rather than a percentage: a healthy core produces frames within
-        // seconds even when the first 1% takes far longer to report.
-        const THREADED_FIRST_FRAME_MS = 30000;
+        // Measured against ffmpeg's own frame counter, so this is time with
+        // the encoder demonstrably not encoding — not merely encoding slowly.
+        // A crawling render still moves the count and is left alone.
+        const THREADED_STALL_MS = 25000;
         // We killed the core on purpose to retry on the other build — told
         // apart from a genuine crash so the retry ladder doesn't treat it as
         // a failure.
@@ -3104,10 +3104,16 @@
           // and never climbs. The progress event is no good as a liveness
           // signal — it fires with 0 before a single frame exists, which is
           // exactly why the first version of this watchdog never fired.
-          let framesOut = 0;
+          let framesOut = 0, lastFrameAt = startedAt;
           ffLogWatcher = (msg) => {
             const m = /frame=\s*(\d+)/.exec(msg);
-            if (m) framesOut = Math.max(framesOut, Number(m[1]));
+            if (!m) return;
+            const n = Number(m[1]);
+            // Only a *rising* count is proof of life. A wedged encode keeps
+            // reprinting its stats line at the same frame, and one seen in
+            // the wild got five frames out before blocking — so "no frames
+            // at all" was too narrow a test.
+            if (n > framesOut) { framesOut = n; lastFrameAt = Date.now(); }
           };
           const onProgress = ({ progress }) => {
             const pct = Math.round(progress * 100);
@@ -3116,11 +3122,11 @@
           };
           const stallTimer = setInterval(() => {
             const idle = Date.now() - lastProgressAt;
-            if (!abandonedThreaded && framesOut === 0 && Date.now() - startedAt > THREADED_FIRST_FRAME_MS
+            if (!abandonedThreaded && Date.now() - lastFrameAt > THREADED_STALL_MS
                 && activeCore && activeCore.label === 'multi-threaded') {
               abandonedThreaded = true;
-              notice('The multi-threaded core produced no frames — switched to the single-threaded one. '
-                   + 'Slower, but it works in this browser.', 'warn');
+              notice(`The multi-threaded core stopped encoding at frame ${framesOut} — switched to the `
+                   + 'single-threaded one. Slower, but it runs to the end in this browser.', 'warn');
               // Rejects the pending exec, which the caller below catches.
               try { engine.terminate(); } catch (e) { /* already gone */ }
               return;
