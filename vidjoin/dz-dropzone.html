@@ -382,26 +382,13 @@
        cover) so odd aspect ratios letterbox instead of being cropped or
        stretched — the old 160px-wide thumbnail sat in a flex row and got
        stretched to the full height of the controls column beside it. */
+    /* Only the empty stitcher renders a .clip-stage — once a clip is loaded
+       the ORIGINAL player is the filmstrip's centre column instead. */
     .clip-stage { position: relative; width: 100%; background: #000; border-bottom: 1px solid var(--border); }
-    .clip-stage video {
-      display: block; width: 100%; aspect-ratio: 16 / 9;
-      max-height: 46vh; object-fit: contain; background: #000;
-    }
     .clip-stage .stage-badge {
       position: absolute; top: 8px; left: 10px;
       background: rgba(0,0,0,.75); color: #fff;
       font-size: 0.7rem; padding: 2px 7px; border-radius: 4px; pointer-events: none;
-    }
-    .clip-stage .stage-btn {
-      position: absolute; top: 6px; right: 8px;
-      background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.25); color: #fff;
-      border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 0.72rem;
-      display: inline-flex; align-items: center; gap: 5px; transition: background .15s;
-    }
-    .clip-stage .stage-btn:hover { background: rgba(0,200,255,.35); }
-    .clip-stage .stage-still {
-      display: block; width: 100%; aspect-ratio: 16 / 9;
-      max-height: 46vh; object-fit: contain; background: #000;
     }
     /* Empty stitcher: everything visible but plainly inert — and itself a
        drop target, so it gets the same dashed edge and drag highlight the
@@ -636,7 +623,9 @@
     .stage-caption.live { color: var(--green); }
 
     .preview-stage { position: relative; background: #000; border-bottom: 1px solid var(--border); }
-    /* Matches .clip-stage video exactly so both screens are the same size. */
+    /* The ORIGINAL player sits in the filmstrip now, so this screen sets its
+       own size: full panel width, 16:9, capped so the controls below it stay
+       on screen. */
     .preview-stage video,
     .preview-stage .preview-blank {
       display: block; width: 100%; aspect-ratio: 16 / 9;
