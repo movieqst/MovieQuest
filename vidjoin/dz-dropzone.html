@@ -17,6 +17,7 @@
       --text: #d0eaff;
       --muted: #4a85b8;
       --blue: #00c8ff;
+      --blue-rgb: 0,200,255;
       --amber: #0099dd;
       /* "Working on it" states — purple rather than the old orange. */
       --purple: #b06cff;
@@ -50,7 +51,9 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding-bottom: 280px;
+      /* Room for the fixed bottom bar. The log inside it is resizable, so
+         this has to move with it or a tall log hides the end of the page. */
+      padding-bottom: calc(190px + var(--log-h, 90px));
       /* Gutter the fixed drop strip lives in. Everything else — header,
          main, the bottom bar — is pushed clear of it by this one value. */
       padding-left: var(--dz-gutter);
@@ -697,8 +700,31 @@
     .progress-wrap.active { display: block; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--amber)); border-radius: 2px; transition: width .3s; width: 0%; }
 
+    /* Grab tab above the log. Dragging it resizes; a plain click toggles
+       between the small default and a tall window, so a long ffmpeg run can
+       be read without hunting for the drag target. */
+    .log-handle {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      height: 16px; margin-bottom: -4px; cursor: ns-resize;
+      border-radius: 6px; touch-action: none; user-select: none;
+      transition: background .15s;
+    }
+    .log-handle:hover, .log-handle:focus-visible { background: rgba(var(--blue-rgb), .1); }
+    .log-handle.dragging { background: rgba(var(--blue-rgb), .16); }
+    .log-grip {
+      width: 42px; height: 4px; border-radius: 2px;
+      background: var(--border); transition: background .15s;
+    }
+    .log-handle:hover .log-grip, .log-handle.dragging .log-grip { background: var(--blue); }
+    .log-handle-hint {
+      font-size: 0.62rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); opacity: 0; transition: opacity .15s;
+      pointer-events: none;
+    }
+    .log-handle:hover .log-handle-hint, .log-handle:focus-visible .log-handle-hint { opacity: 1; }
+
     #statusLog {
-      height: 90px; background: #050508; border: 1px solid var(--border);
+      height: var(--log-h, 90px); background: #050508; border: 1px solid var(--border);
       border-radius: 8px; padding: 10px 12px; overflow-y: auto;
       font-family: monospace; font-size: 0.72rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word;
     }
@@ -921,6 +947,11 @@
   <div class="bottom-bar-inner">
     <div class="progress-wrap" id="progressWrap">
       <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="log-handle" id="logHandle" role="separator" aria-orientation="horizontal"
+         tabindex="0" title="Drag to resize the log — or click to open it up">
+      <span class="log-grip"></span>
+      <span class="log-handle-hint" id="logHandleHint">drag to resize</span>
     </div>
     <div id="statusLog"><span class="info">Ready. Drop any video file into the DZ Drop Zone to begin.</span></div>
     <div class="actions">
@@ -1213,6 +1244,80 @@
     statusLog.scrollTop = statusLog.scrollHeight;
   }
   function clearLog() { statusLog.innerHTML = ''; }
+
+  // ── Resizable log ──────────────────────────────────────────────────────
+  // A long ffmpeg run says more than 90px can hold. The tab above the log
+  // drags to any height and, on a plain click, toggles between the small
+  // default and a tall window — so it can be opened without aiming.
+  const LOG_H_SMALL = 90;
+  const LOG_H_TALL  = 340;
+  const LOG_H_MIN   = 48;
+  const logHandle   = document.getElementById('logHandle');
+  const logHandleHint = document.getElementById('logHandleHint');
+
+  // Never taller than leaves room for the rest of the bar and some page.
+  function logMaxHeight() { return Math.max(LOG_H_MIN, Math.round(window.innerHeight * 0.6)); }
+
+  function setLogHeight(px, remember = true) {
+    const h = Math.round(Math.min(logMaxHeight(), Math.max(LOG_H_MIN, px)));
+    document.documentElement.style.setProperty('--log-h', h + 'px');
+    if (logHandleHint) logHandleHint.textContent = h > LOG_H_SMALL + 20 ? 'drag down to shrink' : 'drag up for a bigger log';
+    if (remember) { try { localStorage.setItem('dz-log-h', String(h)); } catch (e) { /* private mode */ } }
+    return h;
+  }
+  function currentLogHeight() {
+    const v = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--log-h'), 10);
+    return isFinite(v) && v > 0 ? v : LOG_H_SMALL;
+  }
+  function toggleLogHeight() {
+    const wasAtBottom = statusLog.scrollTop + statusLog.clientHeight >= statusLog.scrollHeight - 4;
+    setLogHeight(currentLogHeight() > LOG_H_SMALL + 20 ? LOG_H_SMALL : LOG_H_TALL);
+    // Growing the box reveals older lines; keep the newest in view if that's
+    // where the user already was.
+    if (wasAtBottom) statusLog.scrollTop = statusLog.scrollHeight;
+  }
+
+  // Restore whatever height was left last time — debugging a stubborn render
+  // shouldn't mean re-opening the log on every reload.
+  try {
+    const saved = parseInt(localStorage.getItem('dz-log-h'), 10);
+    setLogHeight(isFinite(saved) && saved > 0 ? saved : LOG_H_SMALL, false);
+  } catch (e) { setLogHeight(LOG_H_SMALL, false); }
+
+  if (logHandle) {
+    let dragFrom = null;   // { y, h, moved }
+    logHandle.addEventListener('pointerdown', e => {
+      dragFrom = { y: e.clientY, h: currentLogHeight(), moved: 0 };
+      logHandle.setPointerCapture(e.pointerId);
+      logHandle.classList.add('dragging');
+      e.preventDefault();
+    });
+    logHandle.addEventListener('pointermove', e => {
+      if (!dragFrom) return;
+      const dy = dragFrom.y - e.clientY;          // up is bigger
+      dragFrom.moved = Math.max(dragFrom.moved, Math.abs(dy));
+      setLogHeight(dragFrom.h + dy);
+    });
+    const endDrag = e => {
+      if (!dragFrom) return;
+      const wasDrag = dragFrom.moved > 4;
+      dragFrom = null;
+      logHandle.classList.remove('dragging');
+      try { logHandle.releasePointerCapture(e.pointerId); } catch (err) { /* already released */ }
+      // A press that never moved is a click, not a resize.
+      if (!wasDrag) toggleLogHeight();
+    };
+    logHandle.addEventListener('pointerup', endDrag);
+    logHandle.addEventListener('pointercancel', endDrag);
+    logHandle.addEventListener('keydown', e => {
+      if (e.key === 'ArrowUp')        { setLogHeight(currentLogHeight() + 24); e.preventDefault(); }
+      else if (e.key === 'ArrowDown') { setLogHeight(currentLogHeight() - 24); e.preventDefault(); }
+      else if (e.key === 'Enter' || e.key === ' ') { toggleLogHeight(); e.preventDefault(); }
+    });
+    // A window that shrank below the stored height would push the controls
+    // off the bottom of the screen.
+    window.addEventListener('resize', () => setLogHeight(currentLogHeight(), false));
+  }
 
   // ── Progress ───────────────────────────────────────────────────────────
   function setProgress(pct) {
