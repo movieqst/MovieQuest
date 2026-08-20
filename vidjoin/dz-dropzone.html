@@ -1245,6 +1245,14 @@
   }
   function clearLog() { statusLog.innerHTML = ''; }
 
+  // A finished render replaces the wall of ffmpeg output with a clean "ready"
+  // line — but anything the user needs to *know* (a fallback to the slower
+  // core, a clip that came out silent) would go with it. Notices are recorded
+  // as they happen and replayed after the wipe.
+  let renderNotices = [];
+  function notice(msg, type = 'warn') { renderNotices.push([msg, type]); log(msg, type); }
+  function replayNotices() { for (const [m, t] of renderNotices) log(m, t); }
+
   // ── Resizable log ──────────────────────────────────────────────────────
   // A long ffmpeg run says more than 90px can hold. The tab above the log
   // drags to any height and, on a plain click, toggles between the small
@@ -1549,6 +1557,13 @@
   // another 30 MB download.
   const coreAssets = new Map(); // coreBase -> { coreURL, wasmURL, workerURL }
   let activeCore = null;        // { base, label } of the build that passed its health check
+  // Set once a threaded render has been seen to wedge. Some browsers (Brave
+  // among them) load the multi-threaded core, pass its health check, then
+  // never produce a single frame from a real graph. After the first time,
+  // don't pay that stall again on every later render.
+  let avoidThreadedCore = false;
+  const CORE_MT = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-mt@0.12.6/dist/esm';
+  const CORE_ST = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
 
   // Loads one FFmpeg core build from the given base URL. Shared by both the
   // multi-threaded and single-threaded attempts in initFFmpeg() below.
@@ -1646,9 +1661,9 @@
       // multi-threaded core first (real multi-core encoding speed); if
       // anything about that fails, fall back to the single-threaded core
       // rather than leaving the tool broken.
-      const mtBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-mt@0.12.6/dist/esm';
-      const stBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
-      if (self.crossOriginIsolated) {
+      const mtBase = CORE_MT;
+      const stBase = CORE_ST;
+      if (self.crossOriginIsolated && !avoidThreadedCore) {
         let mt = null;
         try {
           mt = await loadCore(mtBase, 'multi-threaded');
@@ -1694,6 +1709,19 @@
   // anything that names the real problem. Throw the dead instance away and
   // load a fresh one. Its virtual filesystem starts empty, so callers must
   // rewrite any input files they still need.
+  // Abandon a wedged threaded core and come back on the single-threaded
+  // build, which has no worker pool to get stuck in. The new instance has an
+  // empty filesystem, so callers must rewrite their inputs.
+  async function fallBackToSingleThreaded() {
+    avoidThreadedCore = true;
+    const dead = ffmpeg;
+    ffmpeg = null;
+    try { if (dead) dead.terminate(); } catch (e) { /* already gone */ }
+    ffmpeg = await loadCore(CORE_ST, 'single-threaded');
+    activeCore = { base: CORE_ST, label: 'single-threaded' };
+    log('Reloaded on the single-threaded core.', 'ok');
+  }
+
   async function restartFFmpeg() {
     const dead = ffmpeg;
     ffmpeg = null;
@@ -2928,6 +2956,7 @@
     try {
       await initFFmpeg();
       clearLog();
+      renderNotices = [];
       log('Writing input files to virtual FS…', 'info');
       setProgress(0);
 
@@ -2964,12 +2993,10 @@
       // One ordering, used for the writes, the graph and the -i list alike.
       const { slots, map, files } = assignInputSlots(proc);
       try {
-        for (let k = 0; k < files.length; k++) {
-          const [name, file] = files[k];
-          await ffmpeg.writeFile(name, await fetchFile(file));
-          setProgress(Math.round((k + 1) / files.length * 15));
-          log(`  Wrote ${name}`, 'info');
-        }
+        // Said out loud on every render, not just at load: runProcess clears
+        // the log first, so the line from start-up is long gone by the time
+        // anyone is reading a stuck render and wondering which build it is.
+        log(`Encoding on the ${activeCore ? activeCore.label : 'unknown'} core.`, 'info');
 
         const fps = cfg ? cfg.fps : 30;
         // `proc`, not `clips`: proc is the copy carrying the fades folded in
@@ -3002,36 +3029,81 @@
           outName,
         ];
 
-        const engine = ffmpeg;
-        // Watchdog: a render that stops advancing looks identical to one that
-        // is merely slow, and this one ran for minutes with the progress bar
-        // frozen before anyone could tell it was stuck. Say so out loud.
-        let lastProgressAt = Date.now(), lastPct = -1, stallWarned = false;
-        const onProgress = ({ progress }) => {
-          const pct = Math.round(progress * 100);
-          if (pct !== lastPct) { lastPct = pct; lastProgressAt = Date.now(); stallWarned = false; }
-          setProgress(dampedProgress(pct));
+        // A threaded core that is going to wedge does so before it emits a
+        // single frame: the inputs parse, the graph is built, the stream
+        // mapping prints — and then frame=0 forever. A core that is merely
+        // slow still reports progress. So "nothing at all after this long"
+        // is the signal, and it only applies to the very first frame.
+        const THREADED_FIRST_FRAME_MS = 25000;
+        // We killed the core on purpose to retry on the other build — told
+        // apart from a genuine crash so the retry ladder doesn't treat it as
+        // a failure.
+        let abandonedThreaded = false;
+
+        const attempt = async () => {
+          const engine = ffmpeg;
+          // A fresh core starts with an empty filesystem, so the inputs are
+          // written per attempt rather than once.
+          for (let k = 0; k < files.length; k++) {
+            const [name, file] = files[k];
+            await engine.writeFile(name, await fetchFile(file));
+            setProgress(Math.round((k + 1) / files.length * 15));
+            log(`  Wrote ${name}`, 'info');
+          }
+          setProgress(20);
+
+          // Watchdog: a render that stops advancing looks identical to one
+          // that is merely slow, and this one ran for minutes with the
+          // progress bar frozen before anyone could tell it was stuck.
+          let lastProgressAt = Date.now(), lastPct = -1, stallWarned = false;
+          const onProgress = ({ progress }) => {
+            const pct = Math.round(progress * 100);
+            if (pct !== lastPct) { lastPct = pct; lastProgressAt = Date.now(); stallWarned = false; }
+            setProgress(dampedProgress(pct));
+          };
+          const stallTimer = setInterval(() => {
+            const idle = Date.now() - lastProgressAt;
+            if (!abandonedThreaded && lastPct < 0 && idle > THREADED_FIRST_FRAME_MS
+                && activeCore && activeCore.label === 'multi-threaded') {
+              abandonedThreaded = true;
+              notice('The multi-threaded core produced no frames — switched to the single-threaded one. '
+                   + 'Slower, but it works in this browser.', 'warn');
+              // Rejects the pending exec, which the caller below catches.
+              try { engine.terminate(); } catch (e) { /* already gone */ }
+              return;
+            }
+            if (stallWarned || idle < 90000) return;
+            stallWarned = true;
+            log('This render has not advanced for 90 seconds. If it stays stuck, hit Clear and try again — ' +
+                'a very long clip or a still held for a long time can take a while, but it should still be moving.', 'warn');
+          }, 2000);
+          engine.on('progress', onProgress);
+          let code;
+          try {
+            code = await engine.exec(args);
+          } finally {
+            clearInterval(stallTimer);
+            try { engine.off('progress', onProgress); } catch (e) { /* terminated */ }
+          }
+          if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
         };
-        const stallTimer = setInterval(() => {
-          if (stallWarned || Date.now() - lastProgressAt < 90000) return;
-          stallWarned = true;
-          log('This render has not advanced for 90 seconds. If it stays stuck, hit Clear and try again — ' +
-              'a very long clip or a still held for a long time can take a while, but it should still be moving.', 'warn');
-        }, 10000);
-        engine.on('progress', onProgress);
-        let code;
+
         try {
-          code = await engine.exec(args);
+          await attempt();
         } catch (e) {
-          // The core died mid-encode; reload it so the next attempt isn't
-          // doomed by a poisoned instance.
-          await restartFFmpeg().catch(() => {});
-          throw new Error(`FFmpeg crashed during encoding (${e.message || e})`);
-        } finally {
-          clearInterval(stallTimer);
-          engine.off('progress', onProgress);
+          if (!abandonedThreaded) {
+            // The core died mid-encode; reload it so the next attempt isn't
+            // doomed by a poisoned instance.
+            await restartFFmpeg().catch(() => {});
+            throw new Error(`FFmpeg crashed during encoding (${e.message || e})`);
+          }
+          // Deliberate: come back on the build with no worker pool and run
+          // the identical graph again, rather than making the user work out
+          // that their browser is the problem.
+          abandonedThreaded = false;
+          await fallBackToSingleThreaded();
+          await attempt();
         }
-        if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
 
         const data = await ffmpeg.readFile(outName);
         blob = new Blob([data.buffer], { type: 'video/mp4' });
@@ -3054,6 +3126,7 @@
       previewSection.classList.add('show');
       setTimeout(() => previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
       clearLog();
+      replayNotices();
 
       if (isDL) {
         const maxH2 = clips.reduce((m, c) => Math.max(m, c.nativeH || 0), 0);
