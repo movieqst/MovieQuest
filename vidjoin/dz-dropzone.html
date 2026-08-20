@@ -2366,8 +2366,53 @@
     return ['-loop', '1', '-framerate', String(fps), '-t', String(secs), '-i', inputName(d, i)];
   }
 
+  // ── Input slots ────────────────────────────────────────────────────────
+  // ffmpeg numbers inputs by their -i order, and the filter graph addresses
+  // them by that number ([2:v], [2:a] and so on). That number used to be the
+  // clip's own index, because every clip contributed exactly one input. A
+  // clip carrying a separate audio file contributes two, which breaks the
+  // identity — from there on, every later clip's streams sit at a different
+  // number than its position in the timeline.
+  //
+  // So the ordering is worked out once, up front: a list of slots in -i
+  // order, plus a per-clip map saying which slot its picture and its sound
+  // each come from. Files are written, arguments emitted and the graph built
+  // from that one list, so the three cannot drift apart.
+  function assignInputSlots(list) {
+    const slots = [];
+    const map = list.map(d => {
+      const vIdx = slots.length;
+      slots.push({ d, role: 'video' });
+      // No separate track: the sound rides on the clip's own input, exactly
+      // as it always did.
+      let aIdx = vIdx;
+      if (d.audioFile) { aIdx = slots.length; slots.push({ d, role: 'audio' }); }
+      return { vIdx, aIdx };
+    });
+    return { slots, map };
+  }
+
+  function audioExt(file) {
+    const m = /\.([a-z0-9]+)$/i.exec(file && file.name || '');
+    return m ? m[1].toLowerCase() : 'm4a';
+  }
+  function slotName(slot, k) {
+    if (slot.role === 'audio') return `aud${k}.${audioExt(slot.d.audioFile)}`;
+    return inputName(slot.d, k);
+  }
+  function slotFile(slot) {
+    return slot.role === 'audio' ? slot.d.audioFile : slot.d.file;
+  }
+  function slotArgs(slot, k, fps = 30) {
+    if (slot.role === 'audio') return ['-i', slotName(slot, k)];
+    return inputArgs(slot.d, k, fps);
+  }
+
   // ── Filter builder ─────────────────────────────────────────────────────
-  function buildFilters(W, H, list = clips, fps = 30) {
+  function buildFilters(W, H, list = clips, fps = 30, map = null) {
+    // Falls back to deriving the map when a caller doesn't supply one, so the
+    // graph is never built against a different ordering than the -i list.
+    if (!map) map = assignInputSlots(list).map;
     const chains = [];
     let vConcat = '', aConcat = '';
     let vCount = 0, aCount = 0, totalDur = 0;
@@ -2380,6 +2425,7 @@
     const fadeHex = (document.getElementById('fadeColorPicker')?.value || '#000000').replace('#','');
     for (let i = 0; i < list.length; i++) {
       const d = list[i];
+      const vIdx = map[i].vIdx, aIdx = map[i].aIdx;
       const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
       const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
       const vLen = ve - vs, aLen = ae - as2;
@@ -2408,7 +2454,7 @@
 
       let vf;
       if (vLen > 0.1) {
-        vf = `[${i}:v]trim=start=${vs}:end=${ve},setpts=(PTS-STARTPTS)/${rate}`;
+        vf = `[${vIdx}:v]trim=start=${vs}:end=${ve},setpts=(PTS-STARTPTS)/${rate}`;
         vf += `,scale=${W}:${H}:force_original_aspect_ratio=decrease`;
         // setsar=1 after the pad: scaling an odd-width source (1918 px, say)
         // into an even canvas leaves a non-square sample aspect ratio, and
@@ -2443,7 +2489,7 @@
         if (d.hasAudio === false || aLen <= 0.1) {
           af = `anullsrc=r=48000:cl=stereo,atrim=start=0:end=${span.toFixed(3)},asetpts=PTS-STARTPTS`;
         } else {
-          af = `[${i}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
+          af = `[${aIdx}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
           // atempo shifts tempo without shifting pitch, so a sped-up clip
           // doesn't come out chipmunked.
           for (const t of atempoChain(rate)) af += `,${t}`;
@@ -2572,12 +2618,14 @@
       let vCount, aCount, totalDur, blob;
 
       const ffmpegRelease = await acquireFFmpegLock();
+      // One ordering, used for the writes, the graph and the -i list alike.
+      const { slots, map } = assignInputSlots(proc);
       try {
-        for (let i = 0; i < proc.length; i++) {
-          const data = await fetchFile(proc[i].file);
-          await ffmpeg.writeFile(inputName(proc[i], i), data);
-          setProgress(Math.round((i + 1) / proc.length * 15));
-          log(`  Wrote ${inputName(proc[i], i)}`, 'info');
+        for (let k = 0; k < slots.length; k++) {
+          const data = await fetchFile(slotFile(slots[k]));
+          await ffmpeg.writeFile(slotName(slots[k], k), data);
+          setProgress(Math.round((k + 1) / slots.length * 15));
+          log(`  Wrote ${slotName(slots[k], k)}`, 'info');
         }
 
         const fps = cfg ? cfg.fps : 30;
@@ -2585,7 +2633,7 @@
         // from each join's transition. Building from `clips` threw all of
         // that away, so every cross-fade transition silently exported as a
         // hard cut.
-        const built = buildFilters(W, H, proc, fps);
+        const built = buildFilters(W, H, proc, fps, map);
         const filterComplex = built.filterComplex;
         vCount = built.vCount; aCount = built.aCount; totalDur = built.totalDur;
         log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
@@ -2593,7 +2641,7 @@
 
         const args = [
           ...GLOBAL_ARGS,
-          ...proc.flatMap((d, i) => inputArgs(d, i, fps)),
+          ...slots.flatMap((slot, k) => slotArgs(slot, k, fps)),
           '-filter_complex', filterComplex,
           ...(vCount > 0 ? ['-map', '[outv]'] : []),
           ...(aCount > 0 ? ['-map', '[outa]'] : []),
@@ -2645,7 +2693,7 @@
         const data = await ffmpeg.readFile(outName);
         blob = new Blob([data.buffer], { type: 'video/mp4' });
 
-        for (let i = 0; i < proc.length; i++) await ffmpeg.deleteFile(inputName(proc[i], i)).catch(() => {});
+        for (let k = 0; k < slots.length; k++) await ffmpeg.deleteFile(slotName(slots[k], k)).catch(() => {});
         await ffmpeg.deleteFile(outName).catch(() => {});
       } finally {
         ffmpegRelease();
@@ -3313,20 +3361,24 @@
     clipPreviewBusy = true;
     renderClipPreviewUI(clip);
     updateButtons();   // lock the timeline export while this one runs
-    // Index 0: the preview graph is built from a one-clip list.
-    const inName = inputName(clip, 0);
+    // The preview graph is built from a one-clip list — which is still two
+    // inputs when that clip carries its own audio track, so it goes through
+    // the same slot assignment the full export uses.
+    const { slots: pSlots, map: pMap } = assignInputSlots([clip]);
     const outName = 'clip_preview_out.mp4';
     try {
       await initFFmpeg();
       const release = await acquireFFmpegLock();
       let blob;
       try {
-        await ffmpeg.writeFile(inName, await fetchFile(clip.file));
         const previewFps = 30;
-        const { filterComplex, vCount, aCount } = buildFilters(480, 270, [clip], previewFps);
+        for (let k = 0; k < pSlots.length; k++) {
+          await ffmpeg.writeFile(slotName(pSlots[k], k), await fetchFile(slotFile(pSlots[k])));
+        }
+        const { filterComplex, vCount, aCount } = buildFilters(480, 270, [clip], previewFps, pMap);
         const args = [
           ...GLOBAL_ARGS,
-          ...inputArgs(clip, 0, previewFps),
+          ...pSlots.flatMap((slot, k) => slotArgs(slot, k, previewFps)),
           '-filter_complex', filterComplex,
           ...(vCount > 0 ? ['-map', '[outv]'] : []),
           ...(aCount > 0 ? ['-map', '[outa]'] : []),
@@ -3349,7 +3401,7 @@
         if (code !== 0) throw new Error(`ffmpeg exited with code ${code}`);
         const data = await ffmpeg.readFile(outName);
         blob = new Blob([data.buffer], { type: 'video/mp4' });
-        await ffmpeg.deleteFile(inName).catch(() => {});
+        for (let k = 0; k < pSlots.length; k++) await ffmpeg.deleteFile(slotName(pSlots[k], k)).catch(() => {});
         await ffmpeg.deleteFile(outName).catch(() => {});
       } finally {
         release();
