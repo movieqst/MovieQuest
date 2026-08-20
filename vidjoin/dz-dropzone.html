@@ -2338,8 +2338,14 @@
   // How long this clip runs in the finished video, after trimming and speed.
   function clipOutputSpan(d) {
     const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
-    const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
-    return Math.max(0, Math.max(ve, ae) - Math.min(vs, as2)) / clipSpeed(d);
+    // Mirrors buildFilters: only sound from the clip's own file shares its
+    // clock and can widen the span. A separate track is fitted to the clip,
+    // and a silent clip's untouched audio range describes nothing at all.
+    if (!d.audioFile && d.hasAudio !== false) {
+      const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
+      if (ae - as2 > 0.1) return Math.max(0, Math.max(ve, ae) - Math.min(vs, as2)) / clipSpeed(d);
+    }
+    return Math.max(0, ve - vs) / clipSpeed(d);
   }
   // atempo only accepts 0.5–2.0 in one pass, so anything outside that has to
   // be reached by stacking passes. The UI stays inside the single-pass range,
@@ -2421,13 +2427,18 @@
     // to take the entire export down with it. When *some* clip in the set
     // has audio, silent ones get generated silence of the same length
     // instead, so the concatenated audio stays in step with the video.
-    const anyAudio = list.some(d => d.hasAudio !== false);
+    const anyAudio = list.some(d => d.audioFile || d.hasAudio !== false);
     const fadeHex = (document.getElementById('fadeColorPicker')?.value || '#000000').replace('#','');
     for (let i = 0; i < list.length; i++) {
       const d = list[i];
       const vIdx = map[i].vIdx, aIdx = map[i].aIdx;
       const vs = Math.max(0, d.vStart), ve = Math.min(d.duration, d.vEnd);
-      const as2 = Math.max(0, d.aStart), ae = Math.min(d.duration, d.aEnd);
+      // A clip can carry sound from a separate file — a music bed under a
+      // photo, say. Then aStart/aEnd are a window into *that* file, so they
+      // are bounded by its length, not the picture's.
+      const attached = !!d.audioFile;
+      const aMax = attached ? (Number(d.audioDuration) || 0) : d.duration;
+      const as2 = Math.max(0, d.aStart), ae = Math.min(aMax, d.aEnd);
       const vLen = ve - vs, aLen = ae - as2;
 
       // Split trim can leave the video and audio covering different windows
@@ -2445,7 +2456,11 @@
       // unconditionally gave silent clips a phantom one: a silent video
       // trimmed to 3s–8s came out as three seconds of black, the five seconds
       // asked for, then two more seconds of black.
-      const usesOwnAudio = d.hasAudio !== false && aLen > 0.1;
+      // Attached audio comes off a different clock entirely, so it can't take
+      // part in this reconciliation — it is fitted to the finished clip
+      // further down instead.
+      const usesOwnAudio  = !attached && d.hasAudio !== false && aLen > 0.1;
+      const usesAttached  = attached && aLen > 0.1;
       const base = usesOwnAudio ? Math.min(vs, as2) : vs;
       const end  = usesOwnAudio ? Math.max(ve, ae) : ve;
       const srcSpan = end - base;
@@ -2494,7 +2509,23 @@
 
       if (anyAudio) {
         let af;
-        if (d.hasAudio === false || aLen <= 0.1) {
+        if (usesAttached) {
+          // Separate track: the chosen window of that file is laid down from
+          // the start of the clip and then made to fit exactly. There is no
+          // shared clock to reconcile — "1:30 to 1:38 of this song" says
+          // nothing about where the picture starts — so instead of the
+          // lead/tail padding used above, the window is padded with silence
+          // when it falls short of the clip and cut off when it runs past.
+          af = `[${aIdx}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
+          for (const t of atempoChain(rate)) af += `,${t}`;
+          af += `,apad=pad_dur=${span.toFixed(3)}`;
+          af += `,atrim=end=${span.toFixed(3)},asetpts=PTS-STARTPTS`;
+          // Fades are placed against the finished clip, not the window, so a
+          // "2 second fade out" always lands on the clip's last two seconds
+          // whether the track was trimmed to fit or padded out to reach.
+          if (d.aFadeIn > 0)  af += `,afade=t=in:st=0:d=${Math.min(d.aFadeIn, span/2)}`;
+          if (d.aFadeOut > 0) af += `,afade=t=out:st=${Math.max(0, span-d.aFadeOut)}:d=${Math.min(d.aFadeOut, span/2)}`;
+        } else if (attached || d.hasAudio === false || aLen <= 0.1) {
           af = `anullsrc=r=48000:cl=stereo,atrim=start=0:end=${span.toFixed(3)},asetpts=PTS-STARTPTS`;
         } else {
           af = `[${aIdx}:a]atrim=start=${as2}:end=${ae},asetpts=PTS-STARTPTS`;
