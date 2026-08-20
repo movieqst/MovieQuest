@@ -793,12 +793,12 @@
 
 <main>
   <div class="drop-strip" id="dropStrip"
-       title="Drop any video or photo — MP4, MOV, MKV, AVI, WebM, JPEG, PNG, HEIC and more. Each file is inspected automatically; you decide what gets converted before it hits the timeline.">
+       title="Drop any video, photo or audio track — MP4, MOV, MKV, AVI, WebM, JPEG, PNG, HEIC, MP3, WAV, M4A and more. Each file is inspected automatically; you decide what gets converted before it hits the timeline.">
     <div class="dz-inner">
       <div class="icon">🎬</div>
       <a class="info-link" id="infoLink" href="h264mp4.html" target="_blank" rel="noopener">Why H.264 MP4?</a>
       <div class="dz-label">DZ Drop Zone</div>
-      <div class="dz-sub">Drop videos or photos — or click to browse</div>
+      <div class="dz-sub">Drop videos, photos or audio — or click to browse</div>
     </div>
   </div>
 
@@ -814,9 +814,9 @@
 
   <div class="drop-zone" id="dropZone">
     <div class="icon">🎬</div>
-    <p><strong>DZ Drop Zone</strong><br><small>Drop any video or photo — MP4, MOV, MKV, AVI, WebM, JPEG, PNG, HEIC and more. Each file is inspected automatically; you decide what gets converted before it hits the timeline.</small></p>
+    <p><strong>DZ Drop Zone</strong><br><small>Drop any video, photo or audio track — MP4, MOV, MKV, AVI, WebM, JPEG, PNG, HEIC, MP3, WAV, M4A and more. Each file is inspected automatically; you decide what gets converted before it hits the timeline.</small></p>
   </div>
-  <input type="file" id="fileInput" multiple accept="video/*,image/*">
+  <input type="file" id="fileInput" multiple accept="video/*,image/*,audio/*">
 
   <!-- Flat children so the grid can place logos and lists
        independently — that is what lets the Converter span the full
@@ -1838,12 +1838,37 @@
   }
 
   // ── Incoming review list ──────────────────────────────────────────────
+  const AUDIO_RE = /\.(mp3|wav|m4a|aac|ogg|oga|opus|flac|wma|aiff?)$/i;
+
+  // ffmpeg reports "Duration: 00:03:24.15"; the trim controls need seconds.
+  function hmsToSeconds(hms) {
+    if (!hms) return 0;
+    const parts = String(hms).trim().split(':').map(Number);
+    if (parts.some(n => !isFinite(n))) return 0;
+    return parts.reduce((acc, n) => acc * 60 + n, 0);
+  }
+  // A music track is long enough that raw seconds stop being readable.
+  function fmtDuration(secs) {
+    const t = Math.max(0, Math.round(secs));
+    const m = Math.floor(t / 60), sec = t % 60;
+    return m ? `${m}:${String(sec).padStart(2, '0')}` : `${t}s`;
+  }
+  function probedSeconds(probeRaw) {
+    return hmsToSeconds(parseProbe(probeRaw || '').duration);
+  }
+
   function incomingStatusLabel(item) {
     if (item.status === 'waiting')    return 'Detector… will complete after current video processing';
     if (item.status === 'inspecting') return 'Detector — inspecting now…';
     if (item.kind === 'image') {
       if (item.status === 'error') return 'Could not be read as an image';
       return `Image · ${item.nativeW}×${item.nativeH} PNG — will show for ${item.imageDuration}s`;
+    }
+    if (item.kind === 'audio') {
+      if (item.status === 'error') return 'Could not be read as audio';
+      const info = parseProbe(item.probeRaw || '');
+      const secs = hmsToSeconds(info.duration);
+      return `Audio · ${info.acodec || 'track'}${secs ? ' · ' + fmtDuration(secs) : ''} — attach it to a clip`;
     }
     if (item.status === 'error') return 'Could not be read — you can still try converting it';
     if (isAlreadyH264Mp4(item)) return 'Already H.264 MP4 — no re-encode needed';
@@ -1880,14 +1905,20 @@
       row.className = 'incoming-row';
 
       const isImage = item.kind === 'image';
+      // Sound is fed to the export as its own input and re-encoded there like
+      // everything else, so — as with a still — there is nothing to convert
+      // here either.
+      const isAudio = item.kind === 'audio';
       // A still is already normalised by the time it lands here (browser
       // decode -> PNG at drop time), so there is nothing left to convert.
-      const alreadyH264 = item.status === 'ready' && !isImage && isAlreadyH264Mp4(item);
+      const alreadyH264 = item.status === 'ready' && !isImage && !isAudio && isAlreadyH264Mp4(item);
       const readyImage = item.status === 'ready' && isImage;
+      const readyAudio = item.status === 'ready' && isAudio;
       const metaClass = item.status === 'error' ? 'warn'
-        : (item.status === 'ready' ? ((item.conformant || alreadyH264 || readyImage) ? 'ok' : 'warn') : '');
-      const notReady = item.status === 'inspecting' || item.status === 'waiting' || (isImage && item.status !== 'ready');
-      const goGreen = alreadyH264 || readyImage;
+        : (item.status === 'ready' ? ((item.conformant || alreadyH264 || readyImage || readyAudio) ? 'ok' : 'warn') : '');
+      const notReady = item.status === 'inspecting' || item.status === 'waiting'
+        || ((isImage || isAudio) && item.status !== 'ready');
+      const goGreen = alreadyH264 || readyImage || readyAudio;
 
       row.innerHTML = `
         <div class="incoming-main">
@@ -1905,9 +1936,10 @@
           </label>` : ''}
         <button class="action-pill ${goGreen ? 'green' : 'red'}" ${notReady ? 'disabled' : ''}
           title="${isImage ? 'Already a normalised PNG — sends it straight through'
+            : isAudio ? 'Sends the track straight through, ready to attach to a clip'
             : alreadyH264 ? 'Already H.264 MP4 — sends it straight through, no re-encode'
             : 'Convert this file to H.264 MP4'}">
-          ${isImage ? '✓ PNG image' : alreadyH264 ? '✓ H.264 .MP4' : 'Convert to H.264 .MP4'}
+          ${isImage ? '✓ PNG image' : isAudio ? '✓ Audio track' : alreadyH264 ? '✓ H.264 .MP4' : 'Convert to H.264 .MP4'}
         </button>
         <div class="incoming-actions">
           <button class="icon-btn del" title="Remove">
@@ -1998,10 +2030,12 @@
     const spec = CONVERTER_PILL[item.jobState];
     if (!spec) return '';
     if (item.jobState !== 'converting') {
-      // Stills never went through an encode, so the H.264 wording would be
-      // a lie on those rows.
-      const text = (item.kind === 'image' && ['converted', 'remuxed'].includes(item.jobState))
-        ? 'PNG image ready' : spec.text;
+      // Neither stills nor sound went through an H.264 encode, so that
+      // wording would be a lie on those rows.
+      const settled = ['converted', 'remuxed'].includes(item.jobState);
+      const text = (settled && item.kind === 'image') ? 'PNG image ready'
+        : (settled && item.kind === 'audio') ? 'Audio track ready'
+        : spec.text;
       return `<span class="status-pill ${spec.cls}" id="cpill-${item.id}">${text}</span>`;
     }
     // Only the job that actually holds the engine shows the sweep; queued
@@ -2034,9 +2068,18 @@
     cancelToken(item.token);
     log(`Stopping ${item.origName}…`, 'warn');
   }
+  // A track is never *on* the timeline — it plays underneath clips that are.
+  function audioUseLabel(item) {
+    const n = clips.filter(c => c.audioSourceId === item.id).length;
+    return `playing under ${n} clip${n === 1 ? '' : 's'}`;
+  }
+
   function converterMetaLabel(item) {
     if (item.kind === 'image' && ['converted', 'remuxed'].includes(item.jobState)) {
       return `Image · ${item.nativeW}×${item.nativeH} PNG — shows for ${item.duration}s`;
+    }
+    if (item.kind === 'audio') {
+      return `Audio · ${fmtDuration(item.audioDuration || 0)} track`;
     }
     switch (item.jobState) {
       case 'queued':     return 'Waiting its turn — will start when the current video finishes';
@@ -2052,7 +2095,12 @@
   function renderConverter() {
     converterList.innerHTML = '';
     converterQueue.forEach(item => {
-      const inStitcher = clips.some(c => c.sourceId === item.id);
+      // A track isn't a clip — it's marked as in use when some clip is
+      // playing it underneath.
+      const isAudio = item.kind === 'audio';
+      const inStitcher = isAudio
+        ? clips.some(c => c.audioSourceId === item.id)
+        : clips.some(c => c.sourceId === item.id);
       const wrap = document.createElement('div');
       wrap.className = 'incoming-wrap' + (inStitcher ? ' in-stitcher' : '');
 
@@ -2069,7 +2117,9 @@
 
       row.innerHTML = `
         <div class="incoming-main">
-          <div class="incoming-meta ${metaClass}">${size(item.origSize)} · ${converterMetaLabel(item)}${inStitcher ? ' · <b class="in-stitcher-tag">on the stitcher timeline</b>' : ''}</div>
+          <div class="incoming-meta ${metaClass}">${size(item.origSize)} · ${converterMetaLabel(item)}${inStitcher
+              ? ` · <b class="in-stitcher-tag">${isAudio ? audioUseLabel(item) : 'on the stitcher timeline'}</b>`
+              : (isAudio ? ' — attach it to a clip' : '')}</div>
           <span class="info-cue">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             ${item.infoOpen ? 'Hide information' : 'Information / click to open folder'}
@@ -2078,8 +2128,10 @@
         ${converterPillHTML(item)}
         ${running
           ? `<button class="action-pill red stop-btn">■ Stop</button>`
-          : `<button class="action-pill green" ${done ? '' : 'disabled'}>Download converted file</button>
-             <button class="action-pill orange" ${done ? '' : 'disabled'}>Add to stitcher</button>`}
+          : `<button class="action-pill green" ${done ? '' : 'disabled'}>${isAudio ? 'Download track' : 'Download converted file'}</button>
+             <button class="action-pill orange" ${done ? '' : 'disabled'}
+               title="${isAudio ? 'Play this track under the clip selected in the stitcher' : 'Put this file on the stitcher timeline'}"
+               >${isAudio ? 'Add to selected clip' : 'Add to stitcher'}</button>`}
         <div class="incoming-actions">
           <button class="icon-btn del" title="${running ? 'Stop and remove' : 'Remove'}">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -2103,7 +2155,11 @@
       };
 
       if (dlBtn)  dlBtn.addEventListener('click', e => { e.stopPropagation(); downloadConverterItem(item.id); });
-      if (addBtn) addBtn.addEventListener('click', e => { e.stopPropagation(); addConverterItemToStitcher(item.id); });
+      if (addBtn) addBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        if (isAudio) attachConverterAudioToActiveClip(item.id);
+        else addConverterItemToStitcher(item.id);
+      });
       if (stopBtn) stopBtn.addEventListener('click', e => { e.stopPropagation(); stopConverterItem(item.id); });
       delBtn.addEventListener('click', e => {
         e.stopPropagation();
@@ -2155,6 +2211,20 @@
       token: newCancelToken(),
     };
     converterQueue.push(centry);
+
+    // Sound is handed to the export as an input in whatever format it
+    // arrived in and re-encoded to AAC there along with everything else, so
+    // there is no separate conversion step to run.
+    if (centry.kind === 'audio') {
+      centry.audioDuration = item.audioDuration || probedSeconds(item.probeRaw);
+      centry.duration = centry.audioDuration;
+      centry.hasAudio = true;
+      centry.jobState = 'converted';
+      centry.progress = 1;
+      log(`${item.file.name} ready — ${fmtDuration(centry.audioDuration)}, attach it to a clip.`, 'ok');
+      renderConverter();
+      return;
+    }
 
     // Stills did their conversion in the browser at drop time (decode -> PNG),
     // so there is no encode to run or to queue behind — they land done.
@@ -2219,9 +2289,56 @@
     setTimeout(() => URL.revokeObjectURL(url), 30000);
   }
 
+  // ── Attaching a track to a clip ────────────────────────────────────────
+  // The track is not a clip and never joins the timeline; it rides under one,
+  // which is why this attaches rather than appends. The Converter row keeps
+  // its own copy, so the same track can sit under several clips at once.
+  function attachAudioToClip(clip, item) {
+    clip.audioFile = item.file;
+    clip.audioName = item.origName;
+    clip.audioSourceId = item.id;
+    clip.audioDuration = item.audioDuration || probedSeconds(item.probeRaw);
+    // The whole track to begin with — the panel's trim handles narrow it.
+    clip.aStart = 0;
+    clip.aEnd = clip.audioDuration;
+    // Fades carried over from the clip's own (now unused) sound would be
+    // placed against a completely different piece of audio.
+    clip.aFadeIn = 0;
+    clip.aFadeOut = 0;
+    markClipEditsDirty(clip);
+  }
+
+  function detachAudioFromClip(clip) {
+    clip.audioFile = null;
+    clip.audioName = '';
+    clip.audioSourceId = null;
+    clip.audioDuration = 0;
+    // Back to the clip's own sound, whole.
+    clip.aStart = 0;
+    clip.aEnd = clip.duration;
+    clip.aFadeIn = 0;
+    clip.aFadeOut = 0;
+    markClipEditsDirty(clip);
+  }
+
+  function attachConverterAudioToActiveClip(id) {
+    const item = converterQueue.find(i => i.id === id);
+    if (!item || item.kind !== 'audio') return;
+    const clip = clips.find(c => c.id === activeClipId);
+    if (!clip) {
+      log('Pick a clip in the stitcher first — a track plays under one clip, it does not go on the timeline by itself.', 'warn');
+      return;
+    }
+    attachAudioToClip(clip, item);
+    log(`${item.origName} now plays under ${clip.origName}.`, 'ok');
+    render();
+  }
+
   function addConverterItemToStitcher(id) {
     const item = converterQueue.find(i => i.id === id);
     if (!item || !['converted', 'remuxed'].includes(item.jobState)) return;
+    // A track has no picture, so it can't be a clip in its own right.
+    if (item.kind === 'audio') { attachConverterAudioToActiveClip(id); return; }
     const newClip = {
       id: uid(), file: item.file, origName: item.origName, origSize: item.origSize, probeRaw: item.probeRaw,
       // Which Converter row this came from. Split halves inherit it, so a
@@ -2233,6 +2350,9 @@
       vStart: 0, vEnd: item.duration, aStart: 0, aEnd: item.duration,
       split: false, vFadeIn: 0, vFadeOut: 0, aFadeIn: 0, aFadeOut: 0,
       speed: 1,
+      // Sound from a separate file, laid under this clip. Null means the
+      // clip plays whatever audio its own file carries.
+      audioFile: null, audioName: '', audioSourceId: null, audioDuration: 0,
     };
     clips.push(newClip);
     while (transitions.length < clips.length - 1) transitions.push({ id: uid(), type: 'cut', duration: 1.0 });
@@ -2247,7 +2367,14 @@
     for (const f of Array.from(files)) {
       const looksLikeVideo = f.type.startsWith('video/') || /\.(mp4|mov|mkv|avi|webm|wmv|flv|m4v|mpeg|mpg)$/i.test(f.name);
       const looksLikeImage = f.type.startsWith('image/') || /\.(jpe?g|png|gif|webp|avif|bmp|tiff?|heic|heif)$/i.test(f.name);
-      if (!looksLikeVideo && !looksLikeImage) { log(`Skipped — not a video or image: ${f.name}`, 'warn'); continue; }
+      // Sound on its own: a music bed or voice-over to lay under a photo or
+      // a silent shot. It never becomes a clip of its own — it gets attached
+      // to one.
+      const looksLikeAudio = !looksLikeVideo && (f.type.startsWith('audio/') || AUDIO_RE.test(f.name));
+      if (!looksLikeVideo && !looksLikeImage && !looksLikeAudio) {
+        log(`Skipped — not a video, photo or audio file: ${f.name}`, 'warn');
+        continue;
+      }
       const dupe = incoming.some(i => i.file.name === f.name && i.file.size === f.size)
         || converterQueue.some(i => i.origName === f.name && i.origSize === f.size)
         || clips.some(c => c.origName === f.name && c.origSize === f.size);
@@ -2255,7 +2382,7 @@
 
       const item = {
         id: uid(), file: f, status: 'inspecting', probeRaw: null, conformant: false, infoOpen: false,
-        kind: looksLikeVideo ? 'video' : 'image',
+        kind: looksLikeVideo ? 'video' : looksLikeAudio ? 'audio' : 'image',
         // Stills carry the normalised PNG alongside the original, so the row
         // can still show what the user actually dropped.
         pngFile: null, thumb: null, nativeW: 0, nativeH: 0,
@@ -2263,6 +2390,26 @@
       };
       incoming.push(item);
       renderIncoming();
+
+      if (item.kind === 'audio') {
+        log(`Inspecting ${f.name}…`, 'info');
+        try {
+          item.probeRaw = await probeFile(f, f.name, {
+            onQueued: () => { item.status = 'waiting'; renderIncoming(); },
+            onStart:  () => { item.status = 'inspecting'; renderIncoming(); },
+          });
+          const secs = probedSeconds(item.probeRaw);
+          if (!secs) throw new Error('no readable duration');
+          item.audioDuration = secs;
+          item.status = 'ready';
+          log(`${f.name} ready — ${fmtDuration(secs)} of audio, attach it to any clip.`, 'ok');
+        } catch (e) {
+          item.status = 'error';
+          log(`Could not read ${f.name} as audio: ${e.message || e}`, 'err');
+        }
+        renderIncoming();
+        continue;
+      }
 
       if (item.kind === 'image') {
         try {
@@ -2624,7 +2771,7 @@
     try {
       await initFFmpeg();
       clearLog();
-      log(`Writing ${clips.length} file(s) to virtual FS…`, 'info');
+      log('Writing input files to virtual FS…', 'info');
       setProgress(0);
 
       // One transition per join. If the two lists ever drift out of step the
@@ -3129,7 +3276,7 @@
         <div class="stage-fallback">
           <div>
             <div style="font-size:1.6rem;margin-bottom:8px;">🎬</div>
-            <b>Drop a video or photo here</b><br>
+            <b>Drop a video, photo or audio track here</b><br>
             It goes up to the File Detector first — convert it, then
             <b>Add to stitcher</b> to edit it here.
           </div>
