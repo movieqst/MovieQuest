@@ -3242,10 +3242,48 @@
     if (!playAllToken) return;
     playAllToken = null;
     clearTimeout(playAllTimer); playAllTimer = null;
+    stopPlayAllAudio();
     const v = document.querySelector('#filmstrip .fs-active video');
     if (v) { v.onended = null; v.onerror = null; try { v.pause(); } catch (e) { /* already gone */ } }
     updatePlayAllBtn();
     if (!quiet) log('Stopped playing through the originals.', 'info');
+  }
+
+  // The attached track for the clip currently being played through. Held on
+  // its own element because a still has no media element of its own, and a
+  // video's belongs to the picture.
+  let playAllAudio = null;
+  let playAllAudioUrl = null;
+
+  function stopPlayAllAudio() {
+    if (playAllAudio) {
+      try { playAllAudio.pause(); } catch (e) { /* already gone */ }
+      playAllAudio.src = '';
+      playAllAudio = null;
+    }
+    if (playAllAudioUrl) { URL.revokeObjectURL(playAllAudioUrl); playAllAudioUrl = null; }
+  }
+
+  function startPlayAllAudio(clip) {
+    stopPlayAllAudio();
+    if (!clip.audioFile) return;
+    playAllAudioUrl = URL.createObjectURL(clip.audioFile);
+    const a = new Audio(playAllAudioUrl);
+    playAllAudio = a;
+    const seek = Math.max(0, Number(clip.aStart) || 0);
+    // currentTime set before the metadata arrives is simply dropped, and the
+    // track then plays from its beginning rather than the chosen section.
+    const begin = () => {
+      if (playAllAudio !== a) return;      // clip moved on while it loaded
+      if (seek > 0 && isFinite(a.duration) && seek < a.duration) {
+        try { a.currentTime = seek; } catch (e) { /* not seekable */ }
+      }
+      // Silence is better than the wrong thing: a track that won't decode
+      // shouldn't derail the picture, which is what the run is really showing.
+      a.play().catch(() => {});
+    };
+    if (a.readyState >= 1) begin();
+    else a.addEventListener('loadedmetadata', begin, { once: true });
   }
 
   function startPlayAll() {
@@ -3270,6 +3308,11 @@
 
       const advance = () => { if (playAllToken === token) { playAllIndex++; step(); } };
 
+      // A clip playing a separate track is heard through that track, not its
+      // own audio — the same swap the export makes. Started from the section
+      // chosen in the Sound slot so the play-through matches the edit.
+      startPlayAllAudio(clip);
+
       if (clip.kind === 'image') {
         // Stills have no 'ended' event — hold them for their chosen duration.
         playAllTimer = setTimeout(advance, Math.max(0.2, Number(clip.duration) || DEFAULT_IMAGE_SECONDS) * 1000);
@@ -3277,6 +3320,9 @@
       }
       const v = document.getElementById(`stageVideo-${clip.id}`);
       if (!v) { advance(); return; }
+      // The track stands in for the clip's own sound, so the two must not
+      // play over each other.
+      v.muted = !!clip.audioFile;
       v.onended = advance;
       v.onerror = advance;                                // a clip that won't play shouldn't end the run
       v.play().catch(() => {
