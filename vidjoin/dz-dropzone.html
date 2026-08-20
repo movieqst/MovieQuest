@@ -330,6 +330,16 @@
     @media (prefers-reduced-motion: reduce) { .status-pill .spin { animation: none; } }
 
     .incoming-actions { display: flex; gap: 4px; flex-shrink: 0; }
+
+    /* A converted file that is already on the stitcher timeline fades back,
+       so the rows still waiting to be used are the ones that stand out.
+       Its own controls stay at full strength — the row is still usable. */
+    .incoming-wrap.in-stitcher .folder-tab,
+    .incoming-wrap.in-stitcher .incoming-main { opacity: .42; }
+    .incoming-wrap.in-stitcher .incoming-row { background: rgba(255,255,255,.02); }
+    /* Reads inside the existing meta line rather than as another element in
+       the button row, which had nowhere left to go and wrapped it. */
+    .in-stitcher-tag { color: var(--green); font-weight: 700; }
     /* How long a dropped still shows for, set before it goes through. */
     .img-dur {
       display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
@@ -562,6 +572,23 @@
       border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 6px 24px rgba(0,200,255,.25);
     }
     .fs-item:not(.fs-active):hover .fs-media { opacity: 1; border-color: var(--muted); }
+
+    /* Take a clip off the timeline. Sits opposite the index badge so the two
+       corner markers don't collide. */
+    .fs-remove {
+      position: absolute; top: 3px; right: 3px;
+      width: 18px; height: 18px; padding: 3px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.7); color: #fff;
+      border: 1px solid rgba(255,255,255,.25); border-radius: 5px;
+      cursor: pointer; opacity: 0; transition: opacity .15s, background .15s, color .15s;
+    }
+    .fs-remove svg { width: 100%; height: 100%; }
+    .fs-active .fs-remove { width: 24px; height: 24px; top: 6px; right: 6px; padding: 4px; }
+    .fs-item:hover .fs-remove, .fs-remove:focus-visible { opacity: 1; }
+    .fs-remove:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    /* Touch has no hover, so leave it permanently visible there. */
+    @media (hover: none) { .fs-remove { opacity: .85; } }
     .fs-caption {
       font-size: 0.64rem; font-weight: 700; letter-spacing: .18em;
       text-transform: uppercase; color: var(--muted);
@@ -2007,12 +2034,13 @@
   function renderConverter() {
     converterList.innerHTML = '';
     converterQueue.forEach(item => {
+      const inStitcher = clips.some(c => c.sourceId === item.id);
       const wrap = document.createElement('div');
-      wrap.className = 'incoming-wrap';
+      wrap.className = 'incoming-wrap' + (inStitcher ? ' in-stitcher' : '');
 
       const tab = document.createElement('div');
       tab.className = `folder-tab ${converterTabColorClass(item)}`;
-      tab.innerHTML = `<div class="folder-tab-name">${esc(item.origName)}</div>`;
+      tab.innerHTML = `<div class="folder-tab-name">${inStitcher ? '✓ ' : ''}${esc(item.origName)}</div>`;
 
       const row = document.createElement('div');
       row.className = 'incoming-row';
@@ -2023,7 +2051,7 @@
 
       row.innerHTML = `
         <div class="incoming-main">
-          <div class="incoming-meta ${metaClass}">${size(item.origSize)} · ${converterMetaLabel(item)}</div>
+          <div class="incoming-meta ${metaClass}">${size(item.origSize)} · ${converterMetaLabel(item)}${inStitcher ? ' · <b class="in-stitcher-tag">on the stitcher timeline</b>' : ''}</div>
           <span class="info-cue">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             ${item.infoOpen ? 'Hide information' : 'Information / click to open folder'}
@@ -2178,6 +2206,9 @@
     if (!item || !['converted', 'remuxed'].includes(item.jobState)) return;
     const newClip = {
       id: uid(), file: item.file, origName: item.origName, origSize: item.origSize, probeRaw: item.probeRaw,
+      // Which Converter row this came from. Split halves inherit it, so a
+      // row stays marked as long as any part of it is still on the timeline.
+      sourceId: item.id,
       kind: item.kind || 'video',
       normalized: item.normalized, fastRemux: item.fastRemux, hasAudio: item.hasAudio,
       thumb: item.thumb, duration: item.duration, nativeW: item.nativeW, nativeH: item.nativeH,
@@ -2763,6 +2794,9 @@
     }
     renderFilmstrip();
     renderEditPanel();
+    // Adding or removing a clip changes which Converter rows are marked as
+    // already on the timeline.
+    renderConverter();
     updateButtons();
   }
 
@@ -2788,7 +2822,12 @@
           ${clip.thumb ? `<img src="${clip.thumb}" alt="thumbnail">` : ''}
           <span class="fs-idx">#${idx + 1}</span>
           <span class="fs-dur">${clip.duration.toFixed(1)}s</span>
+          <button class="fs-remove" title="Remove from the stitcher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>`;
+      el.querySelector('.fs-remove').addEventListener('click', e => {
+        e.stopPropagation();          // don't also select the clip we're removing
+        confirmRemoveClip(clip.id);
+      });
       el.addEventListener('click', () => setActiveClip(clip.id));
       return el;
     };
@@ -2818,15 +2857,33 @@
                       ${clip.thumb ? `poster="${clip.thumb}"` : ''} src="${stageVideoUrl}"></video>`}
           <span class="fs-idx">#${activeIdx + 1}</span>
           <span class="fs-dur">${clip.duration.toFixed(1)}s</span>
+          <button class="fs-remove" id="fsRemove-${clip.id}" title="Remove from the stitcher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
       </div>
       <div class="fs-caption">Original${isImage ? ' · photo' : ''}</div>
     `;
+    centre.querySelector('.fs-remove').addEventListener('click', e => {
+      e.stopPropagation();
+      confirmRemoveClip(clip.id);
+    });
 
     filmstrip.append(before, centre, after);
     // Keep the clips nearest the player in view when either column overflows.
     before.scrollTop = before.scrollHeight;
     after.scrollTop = 0;
+  }
+
+  // Removing a clip only takes it off the timeline. The converted file
+  // stays in the Converter list (its row simply un-dims), so it can be put
+  // back at any time — worth saying, since "remove" reads as destructive.
+  function confirmRemoveClip(id) {
+    const clip = clips.find(c => c.id === id);
+    if (!clip) return;
+    const ok = window.confirm(
+      `Remove "${clip.origName}" from the stitcher?\n\n` +
+      `It stays in your converted files, so you can add it back later.`
+    );
+    if (ok) removeClip(id);
   }
 
   function setActiveClip(id) {
