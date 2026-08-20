@@ -949,14 +949,14 @@
 
   // ── Quality tiers ──────────────────────────────────────────────────────
   const PREVIEW_MODES = {
-    p360:  { label: '⚡ Turbo (360p)',  W: 640,  H: 360, fps: 24, crf: 36, audioBr: '80k', mono: false },
-    quick: { label: '⚡ Quick (480p)', W: 854,  H: 480, fps: 24, crf: 32, audioBr: '96k', mono: false },
+    p360:  { label: '⚡ Turbo (360p)',  W: 640,  H: 360, fps: 30, crf: 36, audioBr: '80k', mono: false },
+    quick: { label: '⚡ Quick (480p)', W: 854,  H: 480, fps: 30, crf: 32, audioBr: '96k', mono: false },
   };
   const DOWNLOAD_MODES = {
-    hd720:  { label: '720p HD',       W: 1280, H: 720,  fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 400  },
-    hd1080: { label: '1080p Full HD', W: 1920, H: 1080, fps: 24, crf: 23, audioBr: '128k', mono: false, suggestMinH: 900  },
-    hd1440: { label: '1440p 2K',      W: 2560, H: 1440, fps: 24, crf: 20, audioBr: '192k', mono: false, suggestMinH: 1200 },
-    hd4k:   { label: '4K Ultra HD',   W: 3840, H: 2160, fps: 24, crf: 18, audioBr: '256k', mono: false, suggestMinH: 1800 },
+    hd720:  { label: '720p HD',       W: 1280, H: 720,  fps: 30, crf: 23, audioBr: '128k', mono: false, suggestMinH: 400  },
+    hd1080: { label: '1080p Full HD', W: 1920, H: 1080, fps: 30, crf: 23, audioBr: '128k', mono: false, suggestMinH: 900  },
+    hd1440: { label: '1440p 2K',      W: 2560, H: 1440, fps: 30, crf: 20, audioBr: '192k', mono: false, suggestMinH: 1200 },
+    hd4k:   { label: '4K Ultra HD',   W: 3840, H: 2160, fps: 30, crf: 18, audioBr: '256k', mono: false, suggestMinH: 1800 },
   };
   function getModeConfig(mode) { return PREVIEW_MODES[mode] || DOWNLOAD_MODES[mode] || null; }
   function isDownloadMode(mode) { return !!DOWNLOAD_MODES[mode]; }
@@ -2342,14 +2342,14 @@
   // (rather than baking a video at convert time) is also what lets the
   // display duration stay a live number instead of being frozen into a file.
   function inputName(d, i) { return d.kind === 'image' ? `in${i}.png` : `in${i}.mp4`; }
-  function inputArgs(d, i) {
+  function inputArgs(d, i, fps = 30) {
     if (d.kind !== 'image') return ['-i', inputName(d, i)];
     const secs = Math.max(0.1, Number(d.duration) || DEFAULT_IMAGE_SECONDS);
-    return ['-loop', '1', '-framerate', '30', '-t', String(secs), '-i', inputName(d, i)];
+    return ['-loop', '1', '-framerate', String(fps), '-t', String(secs), '-i', inputName(d, i)];
   }
 
   // ── Filter builder ─────────────────────────────────────────────────────
-  function buildFilters(W, H, list = clips) {
+  function buildFilters(W, H, list = clips, fps = 30) {
     const chains = [];
     let vConcat = '', aConcat = '';
     let vCount = 0, aCount = 0, totalDur = 0;
@@ -2397,6 +2397,13 @@
         // concat refuses inputs whose SARs disagree ("Input link in0:v0
         // parameters … do not match"), failing the whole export.
         vf += `,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p`;
+        // Pin the rate here, before concat. Segments arriving at
+        // different rates (a looped still is the worst case) otherwise
+        // leave concat holding the first input's timebase, and with no
+        // output rate set the encoder emits one frame per timebase tick
+        // — 1e6 fps on a standard MP4 clock, duplicating forever and
+        // never finishing.
+        vf += `,fps=${fps}`;
         // Fades run against the picture itself, so they go on before any
         // lead-in/tail padding is added — and after the speed change, so a
         // "2 second fade" is two seconds of finished video regardless of
@@ -2409,7 +2416,7 @@
       } else {
         // Video trimmed away entirely, but audio survives: hold the slot
         // with blank picture so nothing downstream shifts out of sync.
-        vf = `color=c=0x${fadeHex}:s=${W}x${H}:d=${span.toFixed(3)}:r=30,setsar=1,format=yuv420p`;
+        vf = `color=c=0x${fadeHex}:s=${W}x${H}:d=${span.toFixed(3)}:r=${fps},setsar=1,format=yuv420p`;
       }
       chains.push(vf + `[cv${i}]`); vConcat += `[cv${i}]`; vCount++; totalDur += span;
 
@@ -2555,7 +2562,8 @@
           log(`  Wrote ${inputName(proc[i], i)}`, 'info');
         }
 
-        const built = buildFilters(W, H);
+        const fps = cfg ? cfg.fps : 30;
+        const built = buildFilters(W, H, clips, fps);
         const filterComplex = built.filterComplex;
         vCount = built.vCount; aCount = built.aCount; totalDur = built.totalDur;
         log(`Running FFmpeg (${vCount}v + ${aCount}a tracks)…`, 'info');
@@ -2563,7 +2571,7 @@
 
         const args = [
           ...GLOBAL_ARGS,
-          ...proc.flatMap((d, i) => inputArgs(d, i)),
+          ...proc.flatMap((d, i) => inputArgs(d, i, fps)),
           '-filter_complex', filterComplex,
           ...(vCount > 0 ? ['-map', '[outv]'] : []),
           ...(aCount > 0 ? ['-map', '[outa]'] : []),
@@ -2571,7 +2579,9 @@
           '-preset', isDL ? ENCODE_PRESET : 'ultrafast',
           '-crf',   String(cfg ? cfg.crf : 23),
           '-threads', '0',
-          ...(cfg && cfg.fps < 24 ? ['-r', String(cfg.fps)] : []),
+          // Always pinned, never conditional. The old `cfg.fps < 24` test
+          // was false for every mode, so the output rate was never set at all.
+          '-r', String(fps),
           '-c:a', 'aac',
           '-b:a', cfg ? cfg.audioBr : '128k',
           ...(cfg && cfg.mono ? ['-ac', '1'] : []),
@@ -2580,7 +2590,21 @@
         ];
 
         const engine = ffmpeg;
-        const onProgress = ({ progress }) => setProgress(dampedProgress(Math.round(progress * 100)));
+        // Watchdog: a render that stops advancing looks identical to one that
+        // is merely slow, and this one ran for minutes with the progress bar
+        // frozen before anyone could tell it was stuck. Say so out loud.
+        let lastProgressAt = Date.now(), lastPct = -1, stallWarned = false;
+        const onProgress = ({ progress }) => {
+          const pct = Math.round(progress * 100);
+          if (pct !== lastPct) { lastPct = pct; lastProgressAt = Date.now(); stallWarned = false; }
+          setProgress(dampedProgress(pct));
+        };
+        const stallTimer = setInterval(() => {
+          if (stallWarned || Date.now() - lastProgressAt < 90000) return;
+          stallWarned = true;
+          log('This render has not advanced for 90 seconds. If it stays stuck, hit Clear and try again — ' +
+              'a very long clip or a still held for a long time can take a while, but it should still be moving.', 'warn');
+        }, 10000);
         engine.on('progress', onProgress);
         let code;
         try {
@@ -2591,6 +2615,7 @@
           await restartFFmpeg().catch(() => {});
           throw new Error(`FFmpeg crashed during encoding (${e.message || e})`);
         } finally {
+          clearInterval(stallTimer);
           engine.off('progress', onProgress);
         }
         if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
@@ -3204,14 +3229,16 @@
       let blob;
       try {
         await ffmpeg.writeFile(inName, await fetchFile(clip.file));
-        const { filterComplex, vCount, aCount } = buildFilters(480, 270, [clip]);
+        const previewFps = 30;
+        const { filterComplex, vCount, aCount } = buildFilters(480, 270, [clip], previewFps);
         const args = [
           ...GLOBAL_ARGS,
-          ...inputArgs(clip, 0),
+          ...inputArgs(clip, 0, previewFps),
           '-filter_complex', filterComplex,
           ...(vCount > 0 ? ['-map', '[outv]'] : []),
           ...(aCount > 0 ? ['-map', '[outa]'] : []),
           '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '30', '-threads', '0',
+          '-r', String(previewFps),
           '-c:a', 'aac', '-b:a', '96k',
           '-movflags', '+faststart',
           outName,
