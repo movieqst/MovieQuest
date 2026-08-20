@@ -593,6 +593,28 @@
       font-size: 0.64rem; font-weight: 700; letter-spacing: .18em;
       text-transform: uppercase; color: var(--muted);
     }
+    /* Caption line under the centre player: the label on the left, the
+       play-through-everything control on the right. */
+    .fs-caption-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .fs-playall {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      background: transparent; color: var(--blue);
+      border: 1px solid rgba(0,200,255,.5);
+      font-size: 0.62rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .fs-playall svg { width: 11px; height: 11px; flex: none; }
+    .fs-playall:hover { background: rgba(0,200,255,.14); border-color: var(--blue); }
+    .fs-playall.running {
+      color: var(--red); border-color: rgba(255,107,107,.6);
+      background: rgba(255,107,107,.12);
+    }
+    .fs-playall.running:hover { background: rgba(255,107,107,.22); border-color: var(--red); }
     /* Keeps the shrunken neighbours bottom-aligned with the tall active one. */
     .clip-card .filmstrip { align-items: flex-end; }
 
@@ -990,6 +1012,13 @@
   // the panel re-renders, so the previous one has to be revoked or every
   // re-render leaks the whole decoded file.
   let stageVideoUrl = null;
+  // "Play all originals" walks the timeline in order, showing each clip in
+  // the centre player untrimmed — the converted source, not the edit. The
+  // token identifies one run so a cancelled run can't resume itself from a
+  // callback that was already in flight.
+  let playAllToken = null;
+  let playAllIndex = 0;
+  let playAllTimer = null;
   let clipPreviewStale = true;
   let clipPreviewBusy = false;
   let ffmpeg = null;
@@ -2885,11 +2914,19 @@
           <button class="fs-remove" id="fsRemove-${clip.id}" title="Remove from the stitcher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
       </div>
-      <div class="fs-caption">Original${isImage ? ' · photo' : ''}</div>
+      <div class="fs-caption-row">
+        <span class="fs-caption">Original${isImage ? ' · photo' : ''}</span>
+        <button class="fs-playall${playAllToken ? ' running' : ''}" id="fsPlayAll"
+                title="Play every clip in order, untrimmed — photos hold for their set time">${playAllLabel()}</button>
+      </div>
     `;
     centre.querySelector('.fs-remove').addEventListener('click', e => {
       e.stopPropagation();
       confirmRemoveClip(clip.id);
+    });
+    centre.querySelector('#fsPlayAll').addEventListener('click', e => {
+      e.stopPropagation();
+      playAllToken ? stopPlayAll() : startPlayAll();
     });
 
     filmstrip.append(before, centre, after);
@@ -2911,8 +2948,71 @@
     if (ok) removeClip(id);
   }
 
+  function playAllLabel() {
+    if (!playAllToken) return '<svg class="icon-svg" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg> Play all originals';
+    return '<svg class="icon-svg" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor" stroke="none"/></svg> '
+      + `Stop <b>${playAllIndex + 1}/${clips.length}</b>`;
+  }
+  function updatePlayAllBtn() {
+    const btn = document.getElementById('fsPlayAll');
+    if (btn) { btn.innerHTML = playAllLabel(); btn.classList.toggle('running', !!playAllToken); }
+  }
+
+  function stopPlayAll(quiet) {
+    if (!playAllToken) return;
+    playAllToken = null;
+    clearTimeout(playAllTimer); playAllTimer = null;
+    const v = document.querySelector('#filmstrip .fs-active video');
+    if (v) { v.onended = null; v.onerror = null; try { v.pause(); } catch (e) { /* already gone */ } }
+    updatePlayAllBtn();
+    if (!quiet) log('Stopped playing through the originals.', 'info');
+  }
+
+  function startPlayAll() {
+    if (!clips.length) return;
+    const token = {};
+    playAllToken = token;
+    playAllIndex = 0;
+
+    const step = () => {
+      if (playAllToken !== token) return;                 // superseded or stopped
+      if (playAllIndex >= clips.length) {
+        stopPlayAll(true);
+        log('Played through all clips.', 'ok');
+        return;
+      }
+      const clip = clips[playAllIndex];
+      // render() rebuilds the strip around this clip, which is the point —
+      // the strip tracks along as it plays.
+      activeClipId = clip.id;
+      render();
+      if (playAllToken !== token) return;
+
+      const advance = () => { if (playAllToken === token) { playAllIndex++; step(); } };
+
+      if (clip.kind === 'image') {
+        // Stills have no 'ended' event — hold them for their chosen duration.
+        playAllTimer = setTimeout(advance, Math.max(0.2, Number(clip.duration) || DEFAULT_IMAGE_SECONDS) * 1000);
+        return;
+      }
+      const v = document.getElementById(`stageVideo-${clip.id}`);
+      if (!v) { advance(); return; }
+      v.onended = advance;
+      v.onerror = advance;                                // a clip that won't play shouldn't end the run
+      v.play().catch(() => {
+        // Autoplay refused (no user activation carried through). Stop rather
+        // than silently skipping every clip.
+        log('Your browser blocked continuous playback — press play on the clip to continue.', 'warn');
+        stopPlayAll(true);
+      });
+    };
+    step();
+    updatePlayAllBtn();
+  }
+
   function setActiveClip(id) {
     if (id === activeClipId) return;
+    stopPlayAll(true);   // choosing a clip by hand takes over from the run
     activeClipId = id;
     render();
   }
