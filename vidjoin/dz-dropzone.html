@@ -1562,6 +1562,10 @@
   // never produce a single frame from a real graph. After the first time,
   // don't pay that stall again on every later render.
   let avoidThreadedCore = false;
+  // Set during a render so the watchdog can read ffmpeg's own stats lines.
+  // The progress event is not a reliable liveness signal — it fires with 0
+  // before anything has been encoded — but "frame=" counts real output.
+  let ffLogWatcher = null;
   const CORE_MT = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-mt@0.12.6/dist/esm';
   const CORE_ST = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
 
@@ -1595,6 +1599,7 @@
       };
       ff.on('progress', onDownloadProgress);
       ff.on('log', ({ message }) => {
+        if (ffLogWatcher) { try { ffLogWatcher(message); } catch (e) { /* never break logging */ } }
         if (!message.includes('Aborted()')) log(message, 'info');
       });
 
@@ -1625,8 +1630,22 @@
   // shows up halfway through the user's 200 MB file, after a long wait and
   // with nothing to show for it. Raw video in, so it needs nothing beyond
   // the rawvideo demuxer and libx264 itself.
-  async function coreWorks(ff) {
-    const W = 64, H = 64, frames = 4;
+  // A wedged core does not reject — it simply never answers. Anything that
+  // waits on one needs its own deadline or the page hangs with it.
+  function withTimeout(promise, ms, onTimeout) {
+    return new Promise(resolve => {
+      let settled = false;
+      const t = setTimeout(() => { if (!settled) { settled = true; resolve(onTimeout); } }, ms);
+      promise.then(v => { if (!settled) { settled = true; clearTimeout(t); resolve(v); } },
+                   () => { if (!settled) { settled = true; clearTimeout(t); resolve(onTimeout); } });
+    });
+  }
+
+  async function coreWorks(ff, threaded = false) {
+    // Enough frames that x264 actually engages its worker threads. Four
+    // frames of 64x64 encode inside a single slice, which is why a pool too
+    // small to serve a real render still sailed through this check.
+    const W = 320, H = 240, frames = 48;
     const raw = new Uint8Array(W * H * 1.5 * frames).fill(128);
     const wasCapturing = capture.on;
     capture.on = true;
@@ -1635,7 +1654,10 @@
       const code = await ff.exec([
         ...GLOBAL_ARGS,
         '-f', 'rawvideo', '-pix_fmt', 'yuv420p', '-s', `${W}x${H}`, '-r', '24', '-i', 'healthcheck.raw',
-        '-c:v', 'libx264', '-preset', ENCODE_PRESET, '-crf', '30', '-threads', '0',
+        '-c:v', 'libx264', '-preset', ENCODE_PRESET, '-crf', '30',
+        // Same cap a real render will use, so the check exercises the pool
+        // the way the encode will.
+        '-threads', threaded ? String(Math.max(1, Math.min(MAX_WASM_THREADS, (Number(navigator.hardwareConcurrency) || 4) - 1))) : '0',
         'healthcheck.mp4',
       ]);
       await ff.deleteFile('healthcheck.raw').catch(() => {});
@@ -1670,8 +1692,13 @@
         } catch (e) {
           log(`Multi-threaded core failed to load (${e.message || e}) — falling back to single-threaded.`, 'warn');
         }
-        if (mt && !(await coreWorks(mt))) {
-          log('Multi-threaded core failed its self-test — falling back to single-threaded.', 'warn');
+        if (mt && !(await withTimeout(coreWorks(mt, true), 12000, false))) {
+          // coreWorks redirects log output into the probe capture buffer and
+          // restores it when it finishes — which a hung check never does, so
+          // everything logged afterwards would vanish into it.
+          capture.on = false;
+          log('Multi-threaded core failed or hung on its self-test — falling back to single-threaded.', 'warn');
+          avoidThreadedCore = true;
           try { mt.terminate(); } catch (e) { /* already gone */ }
           mt = null;
         }
@@ -1712,6 +1739,18 @@
   // Abandon a wedged threaded core and come back on the single-threaded
   // build, which has no worker pool to get stuck in. The new instance has an
   // empty filesystem, so callers must rewrite their inputs.
+  // -threads 0 lets x264 take one worker per logical core. The threaded wasm
+  // build's pthread pool is fixed when the core is compiled, so on a machine
+  // with more cores than the pool holds, x264 waits for workers that will
+  // never exist — everything initialises, it prints "threads=6", and then no
+  // frame is ever produced. Ask for a number the pool can certainly serve.
+  const MAX_WASM_THREADS = 4;
+  function encodeThreads() {
+    if (!activeCore || activeCore.label !== 'multi-threaded') return '0';
+    const cores = Number(navigator.hardwareConcurrency) || 4;
+    return String(Math.max(1, Math.min(MAX_WASM_THREADS, cores - 1)));
+  }
+
   async function fallBackToSingleThreaded() {
     avoidThreadedCore = true;
     const dead = ffmpeg;
@@ -3018,7 +3057,7 @@
           '-c:v', 'libx264',
           '-preset', isDL ? ENCODE_PRESET : 'ultrafast',
           '-crf',   String(cfg ? cfg.crf : 23),
-          '-threads', '0',
+          '-threads', encodeThreads(),
           // Always pinned, never conditional. The old `cfg.fps < 24` test
           // was false for every mode, so the output rate was never set at all.
           '-r', String(fps),
@@ -3034,7 +3073,10 @@
         // mapping prints — and then frame=0 forever. A core that is merely
         // slow still reports progress. So "nothing at all after this long"
         // is the signal, and it only applies to the very first frame.
-        const THREADED_FIRST_FRAME_MS = 25000;
+        // Measured against ffmpeg's own frame counter, so this is time with
+        // the encoder demonstrably not encoding — not merely encoding slowly.
+        // A crawling render still moves the count and is left alone.
+        const THREADED_STALL_MS = 25000;
         // We killed the core on purpose to retry on the other build — told
         // apart from a genuine crash so the retry ladder doesn't treat it as
         // a failure.
@@ -3055,7 +3097,24 @@
           // Watchdog: a render that stops advancing looks identical to one
           // that is merely slow, and this one ran for minutes with the
           // progress bar frozen before anyone could tell it was stuck.
-          let lastProgressAt = Date.now(), lastPct = -1, stallWarned = false;
+          const startedAt = Date.now();
+          let lastProgressAt = startedAt, lastPct = -1, stallWarned = false;
+          // ffmpeg's own counter, which is the thing observed going nowhere:
+          // a wedged threaded core prints "frame= 0 fps=0.0 ... speed=N/A"
+          // and never climbs. The progress event is no good as a liveness
+          // signal — it fires with 0 before a single frame exists, which is
+          // exactly why the first version of this watchdog never fired.
+          let framesOut = 0, lastFrameAt = startedAt;
+          ffLogWatcher = (msg) => {
+            const m = /frame=\s*(\d+)/.exec(msg);
+            if (!m) return;
+            const n = Number(m[1]);
+            // Only a *rising* count is proof of life. A wedged encode keeps
+            // reprinting its stats line at the same frame, and one seen in
+            // the wild got five frames out before blocking — so "no frames
+            // at all" was too narrow a test.
+            if (n > framesOut) { framesOut = n; lastFrameAt = Date.now(); }
+          };
           const onProgress = ({ progress }) => {
             const pct = Math.round(progress * 100);
             if (pct !== lastPct) { lastPct = pct; lastProgressAt = Date.now(); stallWarned = false; }
@@ -3063,11 +3122,11 @@
           };
           const stallTimer = setInterval(() => {
             const idle = Date.now() - lastProgressAt;
-            if (!abandonedThreaded && lastPct < 0 && idle > THREADED_FIRST_FRAME_MS
+            if (!abandonedThreaded && Date.now() - lastFrameAt > THREADED_STALL_MS
                 && activeCore && activeCore.label === 'multi-threaded') {
               abandonedThreaded = true;
-              notice('The multi-threaded core produced no frames — switched to the single-threaded one. '
-                   + 'Slower, but it works in this browser.', 'warn');
+              notice(`The multi-threaded core stopped encoding at frame ${framesOut} — switched to the `
+                   + 'single-threaded one. Slower, but it runs to the end in this browser.', 'warn');
               // Rejects the pending exec, which the caller below catches.
               try { engine.terminate(); } catch (e) { /* already gone */ }
               return;
@@ -3083,6 +3142,7 @@
             code = await engine.exec(args);
           } finally {
             clearInterval(stallTimer);
+            ffLogWatcher = null;
             try { engine.off('progress', onProgress); } catch (e) { /* terminated */ }
           }
           if (code !== 0) throw new Error(`FFmpeg exited with code ${code}`);
@@ -3863,7 +3923,7 @@
           '-filter_complex', filterComplex,
           ...(vCount > 0 ? ['-map', '[outv]'] : []),
           ...(aCount > 0 ? ['-map', '[outa]'] : []),
-          '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '30', '-threads', '0',
+          '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '30', '-threads', encodeThreads(),
           '-r', String(previewFps),
           '-c:a', 'aac', '-b:a', '96k',
           '-movflags', '+faststart',
