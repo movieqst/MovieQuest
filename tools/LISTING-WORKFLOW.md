@@ -15,6 +15,9 @@ One physical copy at a time. Movie uploads its photo group; the AI does the rest
   moviequest.ca and the listing description shows it. The main eBay search
   photo is still uploaded to eBay as a normal picture.
 
+- Condition defaults to **Very Good** (case, disc and overall) unless Movie
+  gives a grade; he changes it on eBay if needed.
+
 ## 2. data.json
 New movie → add an item. Existing movie → edit its item. Fields used:
 

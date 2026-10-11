@@ -90,11 +90,13 @@ function tagline(item, copy) {
 
 export function ebayListing(item, copy) {
   const c = copy.condition || {};
-  const grade = c.overall || item.condition || '[ENTER GRADE HERE]';
+  // Movie, 11 Oct: "put all the condition as VERY GOOD for default, and i'll
+  // change it if needed".
+  const grade = c.overall || item.condition || 'Very Good';
   const trivia = Array.isArray(item.trivia) && item.trivia.length
     ? item.trivia
     : (item.tidbits || []).map(text => ({ heading: '', text }));
-  const discs = Array.isArray(c.discs) && c.discs.length ? c.discs : ['...'];
+  const discs = Array.isArray(c.discs) && c.discs.length ? c.discs : [grade];
   const row = (label, value) => `
       <div style="margin-bottom: 8px;">
         <span style="display: inline-block; width: 80px; color: #d32f2f; font-weight: bold; font-size: 13px;">${esc(label)}:</span>
@@ -164,7 +166,7 @@ ${trivia.map((t, i) => `      <div style="${i < trivia.length - 1 ? 'margin-bott
     <!-- CONDITION REPORT -->
     <div style="background: rgb(26, 10, 10); padding: 18px; border-radius: 6px; margin-bottom: 16px; border: 1px solid rgb(139, 0, 0);">
       <h3 style="color: rgb(211, 47, 47); margin: 0px 0px 12px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">🔍 Overall Condition: ${esc(grade)}</h3>
-      <p style="color: rgb(153, 102, 102); margin: 0px 0px 14px; font-size: 12px;"><em>Inspected and photographed by hand. What you see is what you get.</em></p>${row('Case', c.case)}${discs.map((d, i) => row(discs.length > 1 ? `Disc ${i + 1}` : 'Disc', d)).join('')}${row('Inserts', c.inserts)}${row('Notes', c.notes)}
+      <p style="color: rgb(153, 102, 102); margin: 0px 0px 14px; font-size: 12px;"><em>Inspected and photographed by hand. What you see is what you get.</em></p>${row('Case', c.case || grade)}${discs.map((d, i) => row(discs.length > 1 ? `Disc ${i + 1}` : 'Disc', d)).join('')}${row('Inserts', c.inserts)}${row('Notes', c.notes)}
     </div>
 
     <!-- GRADING CHART -->
