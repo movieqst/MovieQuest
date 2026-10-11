@@ -541,6 +541,37 @@
     .img-nav{ width:34px; height:34px; font-size:18px; }
   }
   /* ---------- Metadata box ---------- */
+  /* COPIES: one card per physical copy listed, each with its own slideshow
+     GIF and eBay link (Movie, 11 Oct: "add a new GIF for each new item i
+     list if i list multiple items for the same movie"). */
+  .copies-section{
+    margin-top:24px;
+    background:var(--card);
+    border-radius:10px;
+    padding:24px 28px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.06);
+  }
+  .copies-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .copy-card{
+    position:relative;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .copy-card img{ display:block; width:100%; aspect-ratio:1/1; object-fit:contain; background:#0a0a0a; }
+  .copy-card.is-sold img{ opacity:0.55; }
+  .copy-body{ padding:14px 16px 16px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .copy-edition{ font-weight:700; line-height:1.3; }
+  .copy-meta{ font-family:'JetBrains Mono',monospace; font-size:calc(var(--fs-sm) * 0.85); color:var(--stone); }
+  .copy-body .cta-btn{ margin-top:auto; text-align:center; }
+
   .meta-section{
     margin-top:24px;
     background:var(--card);
@@ -685,6 +716,12 @@
       <div class="flank-poster"><img id="nextFlank2Img" src="" alt=""></div>
       <div class="flank-title" id="nextFlank2Title"></div>
     </a>
+  </div>
+
+  <!-- Copies: one card per copy listed, each with its own slideshow -->
+  <div id="copiesSection" class="copies-section hidden">
+    <div class="meta-title">📀 Copies</div>
+    <div class="copies-grid" id="copiesGrid"></div>
   </div>
 
   <!-- Metadata box -->
@@ -992,6 +1029,55 @@ async function loadItem(){
       priceRowEl.classList.add('hidden');
     }
     document.getElementById('searchLink').href = item.searchUrl || '#';
+
+    // Copies: newest first, each with its slideshow, grade and its own eBay
+    // link (partner-tracked like every other eBay link on the site).
+    const copiesSection = document.getElementById('copiesSection');
+    const copiesGrid = document.getElementById('copiesGrid');
+    copiesGrid.innerHTML = '';
+    const partnerUrl = (copy) => {
+      const m = String(copy.ebayUrl || '').match(/\/itm\/(\d+)/);
+      return m ? `https://www.ebay.ca/itm/${m[1]}?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=${encodeURIComponent(copy.id)}&toolid=10001&mkevt=1` : '';
+    };
+    const shown = copies.filter(c => c.gif || (c.photos && c.photos.length))
+      .slice().sort((a, b) => String(b.added || '').localeCompare(String(a.added || '')));
+    for (const copy of shown) {
+      const card = document.createElement('div');
+      card.className = 'copy-card' + (copy.sold ? ' is-sold' : '');
+      if (copy.sold) {
+        const tag = document.createElement('div');
+        tag.className = 'sold-tag';
+        tag.textContent = 'SOLD';
+        card.appendChild(tag);
+      }
+      const img = document.createElement('img');
+      img.src = copy.gif || copy.photos[0];
+      img.alt = `${item.title}: photos of this copy`;
+      img.loading = 'lazy';
+      card.appendChild(img);
+      const body = document.createElement('div');
+      body.className = 'copy-body';
+      const ed = document.createElement('div');
+      ed.className = 'copy-edition';
+      ed.textContent = [copy.format || item.format, copy.edition].filter(Boolean).join(' · ');
+      body.appendChild(ed);
+      const meta = document.createElement('div');
+      meta.className = 'copy-meta';
+      const grade = (copy.condition && copy.condition.overall) || item.condition || '';
+      meta.textContent = [grade, copy.added ? 'Added ' + copy.added : ''].filter(Boolean).join('  ·  ');
+      body.appendChild(meta);
+      const url = partnerUrl(copy);
+      if (url && !copy.sold) {
+        const a = document.createElement('a');
+        a.className = 'cta-btn cta-primary';
+        a.href = url; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = 'View this copy on eBay →';
+        body.appendChild(a);
+      }
+      card.appendChild(body);
+      copiesGrid.appendChild(card);
+    }
+    copiesSection.classList.toggle('hidden', shown.length === 0);
 
     // Populate metadata box
     const metaSection = document.getElementById('metaSection');
