@@ -3,6 +3,8 @@
 One physical copy at a time. Movie uploads its photo group; the AI does the rest.
 
 ## 1. Photos
+- Photo order (Movie, 11 Oct): FRONT, SIDES (if any), BACK, INSIDE, DISC front
+  (label), DISC back (shiny side). Turn sideways photos upright.
 - Save them as `images/<item-id>-N.jpg`, numbering on from the item's last photo
   (an existing movie keeps all its old photos — new ones are added after them).
 - Make the slideshow GIF for this copy's eBay description:
