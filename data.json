@@ -1085,5 +1085,100 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "gone-girl-2014-bluray",
+    "title": "Gone Girl",
+    "year": 2014,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/gone_girl-2014-bluray-1.jpg",
+    "photos": [
+      "images/gone_girl-2014-bluray-1.jpg",
+      "images/gone_girl-2014-bluray-2.jpg",
+      "images/gone_girl-2014-bluray-3.jpg",
+      "images/gone_girl-2014-bluray-4.jpg",
+      "images/gone_girl-2014-bluray-5.jpg",
+      "images/gone_girl-2014-bluray-6.jpg",
+      "images/gone_girl-2014-bluray-7.jpg",
+      "images/gone_girl-2014-bluray-8.jpg",
+      "images/gone_girl-2014-bluray-9.jpg",
+      "images/gone_girl-2014-bluray-10.jpg",
+      "images/gone_girl-2014-bluray-11.jpg",
+      "images/gone_girl-2014-bluray-12.jpg",
+      "images/gone_girl-2014-bluray-13.jpg"
+    ],
+    "desc": "On the morning of their fifth wedding anniversary, Nick Dunne's wife Amy vanishes from their Missouri home. As the police and the media close in and the perfect marriage starts to crack, Nick becomes the prime suspect, but nothing about Amy is what it seems. David Fincher's twisting thriller stars Ben Affleck and Rosamund Pike, from Gillian Flynn's bestselling novel.",
+    "tidbits": [
+      "Rosamund Pike earned an Academy Award nomination for Best Actress for playing Amy Dunne.",
+      "Gillian Flynn adapted her own bestselling novel for the screen.",
+      "David Fincher is known for shooting many takes of each scene, a habit the cast talked about often during the press tour.",
+      "Much of the film was shot on location in Cape Girardeau, Missouri, which stands in for the story's town of North Carthage."
+    ],
+    "trivia": [
+      {
+        "heading": "Awards",
+        "text": "Rosamund Pike earned an Academy Award nomination for Best Actress for playing Amy Dunne, and the film was a hit with critics and audiences alike."
+      },
+      {
+        "heading": "From Page to Screen",
+        "text": "Gillian Flynn adapted her own bestselling 2012 novel for the screen, keeping its famous twist but reworking parts of the story for film."
+      },
+      {
+        "heading": "Behind the Scenes",
+        "text": "David Fincher is known for shooting many takes of each scene, a habit Ben Affleck and the rest of the cast talked about often during the press tour."
+      },
+      {
+        "heading": "Filming Location",
+        "text": "Much of the film was shot on location in Cape Girardeau, Missouri, which stands in for the story's small town of North Carthage."
+      }
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117211509627?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=gone-girl-2014-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Gone%20Girl%20Blu-ray&campid=5339133571&customid=gone-girl-2014-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Ben Affleck, Rosamund Pike, Neil Patrick Harris, Tyler Perry, Carrie Coon, Kim Dickens",
+    "director": "David Fincher",
+    "producers": "Arnon Milchan, Joshua Donen, Reese Witherspoon, Ceán Chaffin",
+    "company": "20th Century Fox / Regency Enterprises",
+    "titleNote": "Blu-ray with Amazing Amy Book / 2014",
+    "tagline": "Blu-ray / Digipak + Slipcover / Amazing Amy: Tattle Tale Book / David Fincher / 2010s",
+    "copies": [
+      {
+        "id": "gone-girl-2014-bluray-1",
+        "added": "2026-10-11",
+        "format": "Blu-ray",
+        "edition": "Digipak with slipcover and Amazing Amy: Tattle Tale book",
+        "photos": [
+          "images/gone_girl-2014-bluray-1.jpg",
+          "images/gone_girl-2014-bluray-2.jpg",
+          "images/gone_girl-2014-bluray-3.jpg",
+          "images/gone_girl-2014-bluray-4.jpg",
+          "images/gone_girl-2014-bluray-5.jpg",
+          "images/gone_girl-2014-bluray-6.jpg",
+          "images/gone_girl-2014-bluray-7.jpg",
+          "images/gone_girl-2014-bluray-8.jpg",
+          "images/gone_girl-2014-bluray-9.jpg",
+          "images/gone_girl-2014-bluray-10.jpg",
+          "images/gone_girl-2014-bluray-11.jpg",
+          "images/gone_girl-2014-bluray-12.jpg",
+          "images/gone_girl-2014-bluray-13.jpg"
+        ],
+        "gif": "images/gone-girl-2014-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good (slipcover has light corner wear, see photos)",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Amazing Amy: Tattle Tale picture book included",
+          "notes": "Canadian bilingual edition (Gone Girl / Les Apparences). Blu-ray disc in a fold-out digipak with slipcover, plus the Amazing Amy: Tattle Tale picture book from the film. About 149 minutes."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117211509627",
+        "sold": false
+      }
+    ]
   }
 ]
