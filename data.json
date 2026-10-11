@@ -1180,5 +1180,88 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-last-of-the-mohicans-1992-bluray",
+    "title": "The Last of the Mohicans",
+    "year": 1992,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the_last_of_the_mohicans-1992-bluray-1.jpg",
+    "photos": [
+      "images/the_last_of_the_mohicans-1992-bluray-1.jpg",
+      "images/the_last_of_the_mohicans-1992-bluray-2.jpg",
+      "images/the_last_of_the_mohicans-1992-bluray-3.jpg",
+      "images/the_last_of_the_mohicans-1992-bluray-4.jpg",
+      "images/the_last_of_the_mohicans-1992-bluray-5.jpg",
+      "images/the_last_of_the_mohicans-1992-bluray-6.jpg",
+      "images/the_last_of_the_mohicans-1992-bluray-7.jpg"
+    ],
+    "desc": "In 1757, during the French and Indian War, Hawkeye, the adopted son of the Mohicans, falls in love with Cora Munro, the daughter of a proud British colonel, and vows to protect her and her sister as they are pursued across the frontier wilderness. Michael Mann's sweeping epic stars Daniel Day-Lewis and Madeleine Stowe, from the classic novel by James Fenimore Cooper.",
+    "tidbits": [
+      "Daniel Day-Lewis famously lived off the land to prepare for the role, learning to hunt, build canoes and fire a flintlock rifle, and reportedly carried it everywhere he went.",
+      "The film won the Academy Award for Best Sound.",
+      "Most of the film was shot in the mountains of western North Carolina, including the Chimney Rock area, standing in for upstate New York.",
+      "Its soundtrack by Trevor Jones and Randy Edelman, especially the theme \"Promentory,\" became one of the most recognized film scores of the 1990s."
+    ],
+    "trivia": [
+      {
+        "heading": "Method Acting",
+        "text": "Daniel Day-Lewis famously lived off the land to prepare for the role, learning to hunt, build canoes and fire a flintlock rifle, which he reportedly carried with him everywhere."
+      },
+      {
+        "heading": "Awards",
+        "text": "The film won the Academy Award for Best Sound."
+      },
+      {
+        "heading": "Filming Location",
+        "text": "Most of the film was shot in the mountains of western North Carolina, including the Chimney Rock area, standing in for the 18th-century frontier of upstate New York."
+      },
+      {
+        "heading": "The Music",
+        "text": "The score by Trevor Jones and Randy Edelman, especially the theme \"Promentory,\" became one of the most recognized film scores of the 1990s."
+      }
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The%20Last%20of%20the%20Mohicans%20Blu-ray&campid=5339133571&customid=the-last-of-the-mohicans-1992-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Daniel Day-Lewis, Madeleine Stowe, Russell Means, Eric Schweig, Jodhi May, Steven Waddington, Wes Studi",
+    "director": "Michael Mann",
+    "producers": "Michael Mann, Hunt Lowry, James G. Robinson",
+    "company": "Twentieth Century Fox / Morgan Creek",
+    "titleNote": "Director's Definitive Cut / 1992",
+    "tagline": "Blu-ray / Director's Definitive Cut / Unrated / Michael Mann / 1990s",
+    "copies": [
+      {
+        "id": "the-last-of-the-mohicans-1992-bluray-1",
+        "added": "2026-10-11",
+        "format": "Blu-ray",
+        "edition": "Director's Definitive Cut",
+        "photos": [
+          "images/the_last_of_the_mohicans-1992-bluray-1.jpg",
+          "images/the_last_of_the_mohicans-1992-bluray-2.jpg",
+          "images/the_last_of_the_mohicans-1992-bluray-3.jpg",
+          "images/the_last_of_the_mohicans-1992-bluray-4.jpg",
+          "images/the_last_of_the_mohicans-1992-bluray-5.jpg",
+          "images/the_last_of_the_mohicans-1992-bluray-6.jpg",
+          "images/the_last_of_the_mohicans-1992-bluray-7.jpg"
+        ],
+        "gif": "images/the-last-of-the-mohicans-1992-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Director's Definitive Cut (Unrated), Region A. Widescreen 2.40:1, English DTS-HD Master Audio 5.1, English SDH, Spanish and French subtitles, about 114 minutes. Extras: commentary by Michael Mann and the Making of The Last of the Mohicans featurette."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
