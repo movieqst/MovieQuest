@@ -479,7 +479,7 @@ function render(){
   items.forEach(item => {
     const a = document.createElement('a');
     a.className = 'card';
-    a.href = `item.html?id=${encodeURIComponent(item.id)}`;
+    a.href = `movies/${encodeURIComponent(item.id)}/`;
     const fallbackHTML = `<div class="poster-fallback" style="display:none"><div class="pf-title">${item.title}</div>${item.year ? `<div class="pf-year">${item.year}</div>` : ''}</div>`;
     const posterHTML = item.image
       ? `<img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.style.display=\'none\'; const f=this.nextElementSibling; if(f&&f.classList.contains(\'poster-fallback\')){f.style.display=\'flex\';}">${fallbackHTML}`
