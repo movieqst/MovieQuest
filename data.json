@@ -994,5 +994,96 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "south-park-season-19-dvd",
+    "title": "South Park: The Complete Nineteenth Season",
+    "year": 2015,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/south_park_season_19-2015-dvd-1.jpg",
+    "photos": [
+      "images/south_park_season_19-2015-dvd-1.jpg",
+      "images/south_park_season_19-2015-dvd-2.jpg",
+      "images/south_park_season_19-2015-dvd-3.jpg",
+      "images/south_park_season_19-2015-dvd-4.jpg",
+      "images/south_park_season_19-2015-dvd-5.jpg",
+      "images/south_park_season_19-2015-dvd-6.jpg",
+      "images/south_park_season_19-2015-dvd-7.jpg",
+      "images/south_park_season_19-2015-dvd-8.jpg",
+      "images/south_park_season_19-2015-dvd-9.jpg"
+    ],
+    "desc": "South Park's 19th season follows a serialized story for the first time in the show's history. A jacked-up, frat-boy PC Principal arrives at South Park Elementary and the whole town scrambles to keep up, while Mr. Garrison runs for the White House, Randy leads the gentrification of SoDoSoPa, and everyone goes looking for a safe space. All 10 episodes on 2 discs.",
+    "tidbits": [
+      "Season 19 was the first in the show's history to tell one continuing story across all of its episodes.",
+      "PC Principal made his first appearance in the season premiere, \"Stunning and Brave,\" and went on to become a regular.",
+      "Like every South Park episode, each one was written, animated and voiced in about six days, which lets the show react to the news of the week.",
+      "\"Tweek x Craig\" was inspired by real fan art of the two boys drawn as a couple, and the pairing went on to become official in the show."
+    ],
+    "trivia": [
+      {
+        "heading": "A First for South Park",
+        "text": "Season 19 was the first in the show's history to tell one continuing story across all of its episodes, building from PC Principal's arrival to the town's showdown with ads and gentrification."
+      },
+      {
+        "heading": "New Character",
+        "text": "PC Principal made his first appearance in the season premiere, \"Stunning and Brave,\" and went on to become a regular in the seasons that followed."
+      },
+      {
+        "heading": "Behind the Scenes",
+        "text": "Like every South Park episode, each one was written, animated and voiced in about six days, which lets the show react to the news of the week."
+      },
+      {
+        "heading": "Fan Inspired",
+        "text": "\"Tweek x Craig\" was inspired by real fan art of the two boys drawn as a couple, and the pairing went on to become official in the show."
+      }
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=South%20Park%20Season%2019%20DVD&campid=5339133571&customid=south-park-season-19-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "starring": "Trey Parker, Matt Stone, April Stewart, Mona Marshall (voices)",
+    "createdBy": "Trey Parker, Matt Stone",
+    "director": "Trey Parker",
+    "producers": "Trey Parker, Matt Stone, Anne Garefino, Frank C. Agnone II",
+    "company": "Comedy Central / Paramount",
+    "titleNote": "2015",
+    "tagline": "DVD / 2-Disc Set / All 10 Episodes / Comedy Central / TV Series",
+    "runYears": "",
+    "copies": [
+      {
+        "id": "south-park-season-19-dvd-1",
+        "added": "2026-10-11",
+        "format": "DVD",
+        "edition": "The Complete Nineteenth Season, 2 discs",
+        "photos": [
+          "images/south_park_season_19-2015-dvd-1.jpg",
+          "images/south_park_season_19-2015-dvd-2.jpg",
+          "images/south_park_season_19-2015-dvd-3.jpg",
+          "images/south_park_season_19-2015-dvd-4.jpg",
+          "images/south_park_season_19-2015-dvd-5.jpg",
+          "images/south_park_season_19-2015-dvd-6.jpg",
+          "images/south_park_season_19-2015-dvd-7.jpg",
+          "images/south_park_season_19-2015-dvd-8.jpg",
+          "images/south_park_season_19-2015-dvd-9.jpg"
+        ],
+        "gif": "images/south-park-season-19-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None (episode guide printed inside the case)",
+          "notes": "All 10 episodes on 2 discs, about 220 minutes. Region 1, NTSC, widescreen, Dolby Audio, English SDH subtitles. Extras: season commentary by Trey Parker and Matt Stone, deleted scenes, and the South Park: The Fractured But Whole E3 2016 game trailer. Not Rated in the US, 14A in Canada."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
