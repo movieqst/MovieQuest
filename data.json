@@ -825,5 +825,90 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "who-framed-roger-rabbit-1988-bluray",
+    "title": "Who Framed Roger Rabbit",
+    "year": 1988,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/who_framed_roger_rabbit-1988-bluray-1.jpg",
+    "photos": [
+      "images/who_framed_roger_rabbit-1988-bluray-1.jpg",
+      "images/who_framed_roger_rabbit-1988-bluray-2.jpg",
+      "images/who_framed_roger_rabbit-1988-bluray-3.jpg",
+      "images/who_framed_roger_rabbit-1988-bluray-4.jpg",
+      "images/who_framed_roger_rabbit-1988-bluray-5.jpg",
+      "images/who_framed_roger_rabbit-1988-bluray-6.jpg",
+      "images/who_framed_roger_rabbit-1988-bluray-7.jpg"
+    ],
+    "desc": "It's 1947 Hollywood, where cartoon characters live and work alongside people. Down-on-his-luck private eye Eddie Valiant, who hasn't trusted a Toon since one killed his brother, is hired to dig up dirt on Jessica Rabbit, the wife of cartoon superstar Roger Rabbit. When the man Jessica was seen with turns up dead, Roger is framed for murder, and Eddie must team up with the wisecracking rabbit to clear his name and save Toontown. Directed by Robert Zemeckis and starring Bob Hoskins and Christopher Lloyd.",
+    "tidbits": [
+      "This is the only film where Disney's Mickey Mouse and Warner Bros.' Bugs Bunny appear on screen together, and the studios' deal required them to get exactly equal screen time.",
+      "The film won three Academy Awards (Film Editing, Visual Effects and Sound Effects Editing), plus a Special Achievement Oscar for Richard Williams' animation direction.",
+      "Charles Fleischer, the voice of Roger, insisted on wearing a Roger Rabbit costume on set while he delivered his lines from just off camera.",
+      "The story is loosely based on Gary K. Wolf's 1981 novel Who Censored Roger Rabbit?"
+    ],
+    "trivia": [
+      {
+        "heading": "Studio Crossover",
+        "text": "This is the only film where Disney's Mickey Mouse and Warner Bros.' Bugs Bunny appear on screen together. The studios' deal required the two stars to get exactly equal screen time, and Donald Duck and Daffy Duck share a dueling-pianos scene."
+      },
+      {
+        "heading": "Awards",
+        "text": "The film won three Academy Awards (Film Editing, Visual Effects and Sound Effects Editing), plus a Special Achievement Oscar for Richard Williams' animation direction."
+      },
+      {
+        "heading": "Behind the Scenes",
+        "text": "Charles Fleischer, the voice of Roger, insisted on wearing a Roger Rabbit costume on set while he delivered his lines from just off camera, to help Bob Hoskins act against a co-star who wasn't there."
+      },
+      {
+        "heading": "From Page to Screen",
+        "text": "The story is loosely based on Gary K. Wolf's 1981 novel Who Censored Roger Rabbit?, in which the Toons are comic-strip characters who talk in speech balloons."
+      }
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Who%20Framed%20Roger%20Rabbit%20Blu-ray&campid=5339133571&customid=who-framed-roger-rabbit-1988-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Bob Hoskins, Christopher Lloyd, Joanna Cassidy, Charles Fleischer, Stubby Kaye, Alan Tilvern",
+    "director": "Robert Zemeckis",
+    "producers": "Robert Watts, Frank Marshall, Steven Spielberg, Kathleen Kennedy",
+    "company": "Touchstone Pictures / Amblin Entertainment",
+    "youtubeId": "tYkZNPBxZyk",
+    "titleNote": "25th Anniversary Edition / 1988",
+    "tagline": "Blu-ray + DVD / 2-Disc Combo Pack / Steven Spielberg / Robert Zemeckis / 1980s",
+    "copies": [
+      {
+        "id": "who-framed-roger-rabbit-1988-bluray-1",
+        "added": "2026-10-11",
+        "format": "Blu-ray",
+        "edition": "25th Anniversary Edition, Blu-ray + DVD",
+        "photos": [
+          "images/who_framed_roger_rabbit-1988-bluray-1.jpg",
+          "images/who_framed_roger_rabbit-1988-bluray-2.jpg",
+          "images/who_framed_roger_rabbit-1988-bluray-3.jpg",
+          "images/who_framed_roger_rabbit-1988-bluray-4.jpg",
+          "images/who_framed_roger_rabbit-1988-bluray-5.jpg",
+          "images/who_framed_roger_rabbit-1988-bluray-6.jpg",
+          "images/who_framed_roger_rabbit-1988-bluray-7.jpg"
+        ],
+        "gif": "images/who-framed-roger-rabbit-1988-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None pictured",
+          "notes": "2-disc combo pack, both discs included. Disc 1: Blu-ray (Region A/B/C). Disc 2: DVD (Region 1, NTSC). Canadian release (PG / Québec G). About 104 minutes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
