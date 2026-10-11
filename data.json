@@ -910,5 +910,89 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "pulp-fiction-1994-dvd",
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/pulp_fiction-1994-dvd-1.jpg",
+    "photos": [
+      "images/pulp_fiction-1994-dvd-1.jpg",
+      "images/pulp_fiction-1994-dvd-2.jpg",
+      "images/pulp_fiction-1994-dvd-3.jpg",
+      "images/pulp_fiction-1994-dvd-4.jpg",
+      "images/pulp_fiction-1994-dvd-5.jpg",
+      "images/pulp_fiction-1994-dvd-6.jpg",
+      "images/pulp_fiction-1994-dvd-7.jpg"
+    ],
+    "desc": "Two philosophical hit men, a mob boss's restless wife, a washed-up boxer and a pair of diner bandits cross paths in a series of darkly funny, interlocking Los Angeles crime stories told out of order. Quentin Tarantino's landmark film stars John Travolta, Samuel L. Jackson, Uma Thurman and Bruce Willis.",
+    "tidbits": [
+      "Pulp Fiction won the Palme d'Or at the 1994 Cannes Film Festival, and Quentin Tarantino and Roger Avary won the Academy Award for Best Original Screenplay.",
+      "Made for about $8 million, it became the first independent film to earn more than $200 million worldwide.",
+      "The contents of Marsellus Wallace's glowing briefcase are never revealed. Tarantino has said there is no answer.",
+      "The role of Vincent Vega revived John Travolta's career and earned him his first Oscar nomination since Saturday Night Fever."
+    ],
+    "trivia": [
+      {
+        "heading": "Awards",
+        "text": "Pulp Fiction won the Palme d'Or at the 1994 Cannes Film Festival, was nominated for seven Academy Awards including Best Picture, and won Best Original Screenplay for Quentin Tarantino and Roger Avary."
+      },
+      {
+        "heading": "Box Office",
+        "text": "Made for about $8 million, it became the first independent film to earn more than $200 million worldwide."
+      },
+      {
+        "heading": "Mystery",
+        "text": "The contents of Marsellus Wallace's glowing briefcase are never revealed. Fans have argued about it for decades, and Tarantino has said there is no answer."
+      },
+      {
+        "heading": "Comeback",
+        "text": "The role of Vincent Vega revived John Travolta's career and earned him his first Oscar nomination since Saturday Night Fever."
+      }
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Pulp%20Fiction%20DVD&campid=5339133571&customid=pulp-fiction-1994-dvd",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "John Travolta, Samuel L. Jackson, Uma Thurman, Harvey Keitel, Tim Roth, Amanda Plummer, Maria de Medeiros, Ving Rhames, Eric Stoltz, Rosanna Arquette, Christopher Walken, Bruce Willis",
+    "director": "Quentin Tarantino",
+    "producers": "Lawrence Bender, Danny DeVito, Michael Shamberg, Stacey Sher",
+    "company": "Miramax Films / A Band Apart / Jersey Films",
+    "youtubeId": "s7EdQ4FqbhY",
+    "titleNote": "Widescreen / 1994",
+    "tagline": "DVD / Widescreen / Canadian Edition / Quentin Tarantino / 1990s",
+    "copies": [
+      {
+        "id": "pulp-fiction-1994-dvd-1",
+        "added": "2026-10-11",
+        "format": "DVD",
+        "edition": "Widescreen, Alliance Atlantis (Canada)",
+        "photos": [
+          "images/pulp_fiction-1994-dvd-1.jpg",
+          "images/pulp_fiction-1994-dvd-2.jpg",
+          "images/pulp_fiction-1994-dvd-3.jpg",
+          "images/pulp_fiction-1994-dvd-4.jpg",
+          "images/pulp_fiction-1994-dvd-5.jpg",
+          "images/pulp_fiction-1994-dvd-6.jpg",
+          "images/pulp_fiction-1994-dvd-7.jpg"
+        ],
+        "gif": "images/pulp-fiction-1994-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Chapter index insert included",
+          "notes": "Canadian Alliance Atlantis release (ADVD 2560), Region 1. Widescreen 2.35:1, English Dolby Digital 5.1, French Dolby Surround 2.0, English closed captions. Extras: theatrical trailers and deleted scenes introduced by Quentin Tarantino. About 2 h 34 min. The cracked, peeling look on the cover is the printed artwork, not damage."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
