@@ -49,7 +49,9 @@ A copy:
 ## 3. Build
     node tools/build.mjs
 
-Writes `movies/<item-id>/index.html` (one page per movie), `listings/<copy-id>.html`
+Writes `movies/<item-id>/index.html` (one page per movie, with a Copies section:
+one card per copy showing its slideshow GIF, grade and its own eBay link; SOLD
+copies stay up with a SOLD stamp), `listings/<copy-id>.html`
 (the eBay listing for that copy, with a COPY HTML button), `listings/index.html`
 and `sitemap.xml`. The Pages workflow runs it on every deploy too.
 
