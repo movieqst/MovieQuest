@@ -33,6 +33,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      # Movie pages, eBay listings and the sitemap are built from data.json,
+      # so the live site always matches it (tools/build.mjs).
+      - name: Build movie pages and listings
+        run: node tools/build.mjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

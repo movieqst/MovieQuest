@@ -748,5 +748,82 @@
     "producers": "Aaron Spelling, E. Duke Vincent, Carol Mendelsohn, Charles Pratt Jr.",
     "company": "Fox",
     "youtubeId": "f0WfrbxpyTo"
+  },
+  {
+    "id": "the-grand-budapest-hotel-2014-bluray",
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "format": "Blu-ray",
+    "condition": "Like New",
+    "image": "https://moviequest.ca/images/the_grand_budapest_hotel-2014-bluray-1.jpg",
+    "photos": [
+      "images/the_grand_budapest_hotel-2014-bluray-1.jpg",
+      "images/the_grand_budapest_hotel-2014-bluray-2.jpg",
+      "images/the_grand_budapest_hotel-2014-bluray-3.jpg",
+      "images/the_grand_budapest_hotel-2014-bluray-4.jpg"
+    ],
+    "desc": "The adventures of Gustave H., the legendary concierge of a famous European hotel between the wars, and Zero Moustafa, the lobby boy who becomes his most trusted friend. When Gustave is framed for murder over a priceless Renaissance painting, the pair are swept into a battle for a family fortune across a rapidly changing continent. Written and directed by Wes Anderson.",
+    "tidbits": [
+      "The hotel's grand exterior is a hand-built miniature, about 9 feet tall, made at Studio Babelsberg near Berlin.",
+      "The film won four Academy Awards: Production Design, Costume Design, Makeup and Hairstyling, and Alexandre Desplat's Original Score.",
+      "Wes Anderson shot each time period in its own aspect ratio: the 1930s in the boxy 1.37:1, the 1960s in widescreen 2.35:1, and the present day in 1.85:1.",
+      "The story was inspired by the life and writing of Austrian author Stefan Zweig, who is thanked in the end credits."
+    ],
+    "trivia": [
+      {
+        "heading": "Behind the Scenes",
+        "text": "The hotel's lobby and interiors were built inside a disused 1913 department store in Görlitz, Germany, a town so popular with film crews it's nicknamed \"Görliwood.\" The grand exterior is a hand-built miniature, about 9 feet tall, made at Studio Babelsberg near Berlin."
+      },
+      {
+        "heading": "Awards",
+        "text": "The film won four Academy Awards: Production Design, Costume Design, Makeup and Hairstyling, and Alexandre Desplat's Original Score."
+      },
+      {
+        "heading": "Filmmaking",
+        "text": "Wes Anderson shot each time period in its own aspect ratio: the 1930s in the boxy 1.37:1 of old Hollywood, the 1960s in widescreen 2.35:1, and the present day in 1.85:1."
+      },
+      {
+        "heading": "Inspiration",
+        "text": "The story was inspired by the life and writing of Austrian author Stefan Zweig, including his memoir The World of Yesterday. He is thanked in the end credits."
+      }
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The%20Grand%20Budapest%20Hotel%20Blu-ray&campid=5339133571&customid=the-grand-budapest-hotel-2014-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Ralph Fiennes, Tony Revolori, F. Murray Abraham, Adrien Brody, Willem Dafoe, Jeff Goldblum, Harvey Keitel, Jude Law, Bill Murray, Edward Norton, Saoirse Ronan, Léa Seydoux, Tilda Swinton, Owen Wilson",
+    "director": "Wes Anderson",
+    "producers": "Wes Anderson, Scott Rudin, Steven Rales, Jeremy Dawson",
+    "company": "Fox Searchlight Pictures",
+    "youtubeId": "1Fg5iWmQjwk",
+    "tagline": "Blu-ray + Digital HD / Bilingual Canadian Edition / Wes Anderson / 2010s",
+    "copies": [
+      {
+        "id": "the-grand-budapest-hotel-2014-bluray-1",
+        "added": "2026-10-11",
+        "format": "Blu-ray",
+        "edition": "Blu-ray + Digital HD",
+        "photos": [
+          "images/the_grand_budapest_hotel-2014-bluray-1.jpg",
+          "images/the_grand_budapest_hotel-2014-bluray-2.jpg",
+          "images/the_grand_budapest_hotel-2014-bluray-3.jpg",
+          "images/the_grand_budapest_hotel-2014-bluray-4.jpg"
+        ],
+        "gif": "images/the-grand-budapest-hotel-2014-bluray-1.gif",
+        "condition": {
+          "overall": "Like New",
+          "case": "Like New",
+          "discs": [
+            "Like New"
+          ],
+          "inserts": "Digital HD insert included (code from 2014, likely expired, not guaranteed)",
+          "notes": "Canadian bilingual edition (English / French). 1 Blu-ray disc in a 2-disc case, as released. Widescreen 1.85:1, DTS-HD Master Audio 5.1, about 100 minutes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
