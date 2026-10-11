@@ -754,7 +754,7 @@
     "title": "The Grand Budapest Hotel",
     "year": 2014,
     "format": "Blu-ray",
-    "condition": "Like New",
+    "condition": "Very Good",
     "image": "https://moviequest.ca/images/the_grand_budapest_hotel-2014-bluray-1.jpg",
     "photos": [
       "images/the_grand_budapest_hotel-2014-bluray-1.jpg",
@@ -787,7 +787,7 @@
         "text": "The story was inspired by the life and writing of Austrian author Stefan Zweig, including his memoir The World of Yesterday. He is thanked in the end credits."
       }
     ],
-    "storeUrl": "",
+    "storeUrl": "https://www.ebay.ca/itm/117461538254?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=the-grand-budapest-hotel-2014-bluray&toolid=10001&mkevt=1",
     "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The%20Grand%20Budapest%20Hotel%20Blu-ray&campid=5339133571&customid=the-grand-budapest-hotel-2014-bluray",
     "price": null,
     "categories": [
@@ -813,15 +813,15 @@
         ],
         "gif": "images/the-grand-budapest-hotel-2014-bluray-1.gif",
         "condition": {
-          "overall": "Like New",
-          "case": "Like New",
+          "overall": "Very Good",
+          "case": "Very Good",
           "discs": [
-            "Like New"
+            "Very Good"
           ],
           "inserts": "Digital HD insert included (code from 2014, likely expired, not guaranteed)",
           "notes": "Canadian bilingual edition (English / French). 1 Blu-ray disc in a 2-disc case, as released. Widescreen 1.85:1, DTS-HD Master Audio 5.1, about 100 minutes."
         },
-        "ebayUrl": "",
+        "ebayUrl": "https://www.ebay.ca/itm/117461538254",
         "sold": false
       }
     ]
