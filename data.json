@@ -253,7 +253,7 @@
     "year": 2021,
     "format": "Blu-ray",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/dune-2021-1.jpg",
+    "image": "https://moviequest.ca/images/dune-2021-bluray-1.jpg",
     "desc": "Denis Villeneuve's epic adaptation of Frank Herbert's classic novel follows young Paul Atreides as his noble family takes control of the dangerous desert planet Arrakis, the only source of the galaxy's most valuable substance. Starring Timothée Chalamet, Rebecca Ferguson, Zendaya, Oscar Isaac, and Jason Momoa.",
     "tidbits": [
       "Villeneuve had dreamed of adapting Dune since first reading the novel at age 12, and waited until directing Arrival and Blade Runner 2049 before taking it on.",
@@ -268,11 +268,66 @@
     "categories": [
       "2020s"
     ],
-    "starring": "Timothée Chalamet, Rebecca Ferguson, Zendaya, Oscar Isaac, Jason Momoa, Josh Brolin",
+    "starring": "Timothée Chalamet, Rebecca Ferguson, Oscar Isaac, Josh Brolin, Stellan Skarsgård, Dave Bautista, Zendaya, Jason Momoa, Javier Bardem",
     "director": "Denis Villeneuve",
-    "producers": "Mary Parent, Cale Boyter, Denis Villeneuve",
+    "producers": "Mary Parent, Denis Villeneuve, Cale Boyter, Joe Caracciolo Jr.",
     "company": "Legendary Pictures / Warner Bros.",
-    "youtubeId": "n9xhJrPXop4"
+    "youtubeId": "n9xhJrPXop4",
+    "photos": [
+      "images/dune-2021-bluray-1.jpg",
+      "images/dune-2021-bluray-2.jpg",
+      "images/dune-2021-bluray-3.jpg",
+      "images/dune-2021-bluray-4.jpg",
+      "images/dune-2021-bluray-5.jpg"
+    ],
+    "trivia": [
+      {
+        "heading": "A Lifelong Dream",
+        "text": "Denis Villeneuve had dreamed of adapting Dune since first reading the novel at age 12, and waited until after Arrival and Blade Runner 2049 to take it on."
+      },
+      {
+        "heading": "Awards",
+        "text": "The film won six Academy Awards, including Best Cinematography, Best Original Score for Hans Zimmer, Best Sound and Best Visual Effects."
+      },
+      {
+        "heading": "The Music",
+        "text": "Hans Zimmer turned down Christopher Nolan's Tenet so he could score Dune, a novel he had loved since he was a teenager."
+      },
+      {
+        "heading": "Filming Locations",
+        "text": "The deserts of Arrakis were filmed in Jordan and Abu Dhabi, while the ocean world of Caladan was shot along the coast of Norway."
+      }
+    ],
+    "titleNote": "Blu-ray + DVD + Digital / 2021",
+    "tagline": "Blu-ray + DVD + Digital / Bilingual Canadian Edition / Denis Villeneuve / 2020s",
+    "copies": [
+      {
+        "id": "dune-2021-bluray-1",
+        "added": "2026-10-11",
+        "format": "Blu-ray",
+        "edition": "Blu-ray + DVD + Digital",
+        "photos": [
+          "images/dune-2021-bluray-1.jpg",
+          "images/dune-2021-bluray-2.jpg",
+          "images/dune-2021-bluray-3.jpg",
+          "images/dune-2021-bluray-4.jpg",
+          "images/dune-2021-bluray-5.jpg"
+        ],
+        "gif": "images/dune-2021-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Movies Anywhere digital code insert included (not guaranteed)",
+          "notes": "Canadian bilingual edition (Version française incluse). Disc 1: Blu-ray. Disc 2: DVD. About 155 minutes, Dolby Atmos; English, French (Québec) and Spanish audio, English SDH, French and Spanish subtitles. Over an hour of bonus features, including The Royal Houses and Designing the Sandworm."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   },
   {
     "id": "dune-part-two-2024-bluray",
