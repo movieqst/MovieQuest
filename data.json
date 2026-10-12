@@ -1631,5 +1631,90 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "survival-island-2005-dvd",
+    "title": "Survival Island",
+    "year": 2005,
+    "format": "DVD",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/survival-island-2005-dvd-1.jpg",
+    "photos": [
+      "images/survival-island-2005-dvd-1.jpg",
+      "images/survival-island-2005-dvd-2.jpg",
+      "images/survival-island-2005-dvd-3.jpg",
+      "images/survival-island-2005-dvd-4.jpg",
+      "images/survival-island-2005-dvd-5.jpg",
+      "images/survival-island-2005-dvd-6.jpg",
+      "images/survival-island-2005-dvd-7.jpg",
+      "images/survival-island-2005-dvd-8.jpg"
+    ],
+    "desc": "Wealthy businessman Jack Matson and his beautiful wife Jennifer are on a Caribbean yacht vacation when disaster sinks their boat. Washed ashore on a remote island and left for dead, they must fend for themselves, but they are not the only survivors. When their handsome boatman develops a sudden attraction to Jennifer, a primal tale of survival and jealousy unfolds. Starring Billy Zane, Kelly Brook and Juan Pablo Di Pace.",
+    "tidbits": [
+      "Billy Zane and Kelly Brook were a real-life couple when they made the film, and they became engaged soon after.",
+      "It was released in some countries under the title Three.",
+      "The film was shot on location in the Seychelles in the Indian Ocean.",
+      "Director Stewart Raffill also made The Adventures of the Wilderness Family and Mac and Me."
+    ],
+    "trivia": [
+      {
+        "heading": "Real Life Couple",
+        "text": "Billy Zane and Kelly Brook were a real-life couple when they made the film, and they became engaged soon after."
+      },
+      {
+        "heading": "Also Known As",
+        "text": "The film was released in some countries under the title Three, and in Quebec as Survie: Les Naufragés."
+      },
+      {
+        "heading": "Filming Location",
+        "text": "It was shot on location in the Seychelles, whose white beaches and granite boulders stand in for the Caribbean island of the story."
+      },
+      {
+        "heading": "The Director",
+        "text": "Writer-director Stewart Raffill also made The Adventures of the Wilderness Family, The Philadelphia Experiment and Mac and Me."
+      }
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/127831419577?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=survival-island-2005-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Survival%20Island%20Billy%20Zane%20DVD&campid=5339133571&customid=survival-island-2005-dvd",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "Billy Zane, Kelly Brook, Juan Pablo Di Pace",
+    "director": "Stewart Raffill",
+    "producers": "Jimmy de Brabant, Michael Dounaev",
+    "company": "Thema Production / Alliance Atlantis",
+    "titleNote": "Widescreen / 2005",
+    "tagline": "DVD / Bilingual Canadian Edition / Billy Zane / Kelly Brook / 2000s",
+    "copies": [
+      {
+        "id": "survival-island-2005-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "Alliance Atlantis bilingual DVD (Canada)",
+        "photos": [
+          "images/survival-island-2005-dvd-1.jpg",
+          "images/survival-island-2005-dvd-2.jpg",
+          "images/survival-island-2005-dvd-3.jpg",
+          "images/survival-island-2005-dvd-4.jpg",
+          "images/survival-island-2005-dvd-5.jpg",
+          "images/survival-island-2005-dvd-6.jpg",
+          "images/survival-island-2005-dvd-7.jpg",
+          "images/survival-island-2005-dvd-8.jpg"
+        ],
+        "gif": "images/survival-island-2005-dvd-1.gif",
+        "condition": {
+          "overall": "Good - marker marking on front of disc - SEE PHOTOS",
+          "case": "Very Good",
+          "discs": [
+            "Good (marker writing \"MHE 414\" on the label side; playing side clean) - SEE PHOTOS"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Atlantis / CinemaVault Canadian release (catalogue 22252), Survie - Les Naufragés. About 1 hr 34 min, widescreen 1.78:1 enhanced for 16x9, English Dolby Digital 5.1 and 2.0, French 2.0. Extras: filmographies, photo gallery, previews. Rated 18A."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/127831419577",
+        "sold": false
+      }
+    ]
   }
 ]
