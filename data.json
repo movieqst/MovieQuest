@@ -1874,5 +1874,83 @@
         "sold": true
       }
     ]
+  },
+  {
+    "id": "the-good-witch-2008-dvd",
+    "title": "The Good Witch",
+    "year": 2008,
+    "format": "DVD",
+    "condition": "New (factory sealed)",
+    "image": "https://moviequest.ca/images/the-good-witch-2008-dvd-1.jpg",
+    "photos": [
+      "images/the-good-witch-2008-dvd-1.jpg",
+      "images/the-good-witch-2008-dvd-2.jpg",
+      "images/the-good-witch-2008-dvd-3.jpg",
+      "images/the-good-witch-2008-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The%20Good%20Witch%20Catherine%20Bell%20DVD&campid=5339133571&customid=the-good-witch-2008-dvd",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "Catherine Bell, Chris Potter, Catherine Disher, Matthew Knight, Hannah Endicott-Douglas, Peter MacNeill",
+    "director": "Craig Pryce",
+    "producers": "Ian McDougall, Orly Adelson, Frank Siracusa",
+    "company": "Whizbang Films / Rigel Entertainment / Gaiam",
+    "titleNote": "Hallmark Channel / 2008",
+    "tagline": "DVD / Hallmark Channel Movie / Catherine Bell / 2000s",
+    "desc": "A mysterious yet charming woman arrives in a small town and causes a stir when people think she is an actual witch. The town's moral committee, led by the mayor's wife, becomes convinced she is evil and starts a campaign to drive her out, which puts the town sheriff, a struggling widower, in a tough spot as he slowly falls for her. As their relationship grows, she helps the sheriff's children and several members of the community face their problems. But is it common sense or magic that's helping the townsfolk?",
+    "trivia": [
+      {
+        "heading": "Start of a Franchise",
+        "text": "The film was such a hit for the Hallmark Channel that it was followed by six sequel movies and then the TV series Good Witch, which ran for seven seasons from 2015 to 2021."
+      },
+      {
+        "heading": "Grey Gables",
+        "text": "Cassie Nightingale moves into Grey Gables, an old mansion the townspeople believe is haunted, and opens a shop called Bell, Book & Candle."
+      },
+      {
+        "heading": "Made in Ontario",
+        "text": "Although it is set in the small American town of Middleton, the film is a Canadian production that was shot in Ontario."
+      },
+      {
+        "heading": "From JAG to Hallmark",
+        "text": "Catherine Bell, best known for eight seasons as Lt. Col. Sarah MacKenzie on JAG, went on to play Cassie in every Good Witch movie and the series."
+      }
+    ],
+    "tidbits": [
+      "The film was such a hit for the Hallmark Channel that it was followed by six sequel movies and then the TV series Good Witch, which ran for seven seasons from 2015 to 2021.",
+      "Cassie Nightingale moves into Grey Gables, an old mansion the townspeople believe is haunted, and opens a shop called Bell, Book & Candle.",
+      "Although it is set in the small American town of Middleton, the film is a Canadian production that was shot in Ontario.",
+      "Catherine Bell, best known for eight seasons as Lt. Col. Sarah MacKenzie on JAG, went on to play Cassie in every Good Witch movie and the series."
+    ],
+    "sold": true,
+    "copies": [
+      {
+        "id": "the-good-witch-2008-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "Gaiam DVD (05-54419), factory sealed",
+        "photos": [
+          "images/the-good-witch-2008-dvd-1.jpg",
+          "images/the-good-witch-2008-dvd-2.jpg",
+          "images/the-good-witch-2008-dvd-3.jpg",
+          "images/the-good-witch-2008-dvd-4.jpg"
+        ],
+        "gif": "images/the-good-witch-2008-dvd-1.gif",
+        "condition": {
+          "overall": "New (factory sealed)",
+          "case": "New (factory sealed)",
+          "discs": [
+            "New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "Gaiam / Rigel Entertainment release (2009 package, catalogue 05-54419). About 88 minutes, NTSC, 4:3 full frame, Dolby Digital stereo. As seen on Hallmark Channel."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ]
   }
 ]
