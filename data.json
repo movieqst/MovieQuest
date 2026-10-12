@@ -2349,5 +2349,85 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "one-night-with-the-king-2006-bluray",
+    "title": "One Night with the King",
+    "year": 2006,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/one-night-with-the-king-2006-bluray-1.jpg",
+    "photos": [
+      "images/one-night-with-the-king-2006-bluray-1.jpg",
+      "images/one-night-with-the-king-2006-bluray-2.jpg",
+      "images/one-night-with-the-king-2006-bluray-3.jpg",
+      "images/one-night-with-the-king-2006-bluray-4.jpg",
+      "images/one-night-with-the-king-2006-bluray-5.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117181221337?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=one-night-with-the-king-2006-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=One%20Night%20with%20the%20King%20Blu-ray&campid=5339133571&customid=one-night-with-the-king-2006-bluray",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "youtubeId": "X1f1Pi1DHP4",
+    "starring": "Tiffany Dupont, Luke Goss, John Rhys-Davies, John Noble, Tommy 'Tiny' Lister, James Callis, Peter O'Toole, Omar Sharif",
+    "director": "Michael O. Sajbel",
+    "producers": "Richard J. Cook, Stephan Blinn, Lawrence Mortorff",
+    "company": "Gener8Xion Entertainment / 20th Century Fox Home Entertainment",
+    "titleNote": "Widescreen / 2006",
+    "tagline": "Blu-ray / Widescreen / Peter O'Toole / Omar Sharif / 2000s",
+    "desc": "With lush cinematography, a mesmerizing score and an all-star cast that includes Peter O'Toole, Omar Sharif and John Rhys-Davies, One Night with the King is a sweeping epic about Hadassah, the young Jewish orphan who becomes the biblical Esther, Queen of Persia. Born into poverty, Hadassah (Tiffany Dupont) grows up to catch the eye of the powerful King Xerxes and becomes his bride. But when the state decrees that all Jews will be put to death, she struggles to save her people while hiding her own heritage, in an inspiring story about courage, faith and destiny.",
+    "trivia": [
+      {
+        "heading": "The Story of Esther",
+        "text": "The film retells the biblical Book of Esther, in which a young Jewish orphan named Hadassah becomes Queen of Persia and risks her life to save her people."
+      },
+      {
+        "heading": "Based on a Novel",
+        "text": "The screenplay was adapted from Tommy Tenney and Mark Andrew Olsen's novel Hadassah: One Night with the King."
+      },
+      {
+        "heading": "Shot in India",
+        "text": "The film was shot in Rajasthan, India, whose palaces and forts stood in for the ancient Persian court of King Xerxes."
+      },
+      {
+        "heading": "Two Screen Legends",
+        "text": "Peter O'Toole and Omar Sharif, who starred together in Lawrence of Arabia (1962), both appear in supporting roles."
+      }
+    ],
+    "tidbits": [
+      "The film retells the biblical Book of Esther, in which a young Jewish orphan named Hadassah becomes Queen of Persia and risks her life to save her people.",
+      "The screenplay was adapted from Tommy Tenney and Mark Andrew Olsen's novel Hadassah: One Night with the King.",
+      "The film was shot in Rajasthan, India, whose palaces and forts stood in for the ancient Persian court of King Xerxes.",
+      "Peter O'Toole and Omar Sharif, who starred together in Lawrence of Arabia (1962), both appear in supporting roles."
+    ],
+    "copies": [
+      {
+        "id": "one-night-with-the-king-2006-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "20th Century Fox Blu-ray (2013)",
+        "photos": [
+          "images/one-night-with-the-king-2006-bluray-1.jpg",
+          "images/one-night-with-the-king-2006-bluray-2.jpg",
+          "images/one-night-with-the-king-2006-bluray-3.jpg",
+          "images/one-night-with-the-king-2006-bluray-4.jpg",
+          "images/one-night-with-the-king-2006-bluray-5.jpg"
+        ],
+        "gif": "images/one-night-with-the-king-2006-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "20th Century Fox Home Entertainment release (2013, Blu-ray cat. # 2285472). About 123 minutes, widescreen 1.78:1, AVC 25GB single layer, English DTS-HD Master Audio 5.1, English SDH and Spanish subtitles. Extras: audio commentary featuring Matthew Crouch, Richard Cook and Stephan Blinn. Rated PG (US) / G (Canada)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117181221337",
+        "sold": false
+      }
+    ]
   }
 ]
