@@ -2429,5 +2429,84 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "edge-of-tomorrow-2014-bluray",
+    "title": "Edge of Tomorrow",
+    "year": 2014,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/edge-of-tomorrow-2014-bluray-1.jpg",
+    "photos": [
+      "images/edge-of-tomorrow-2014-bluray-1.jpg",
+      "images/edge-of-tomorrow-2014-bluray-2.jpg",
+      "images/edge-of-tomorrow-2014-bluray-3.jpg",
+      "images/edge-of-tomorrow-2014-bluray-4.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/127849735897?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=edge-of-tomorrow-2014-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Edge%20of%20Tomorrow%20Blu-ray&campid=5339133571&customid=edge-of-tomorrow-2014-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "youtubeId": "AQESS9RPijI",
+    "starring": "Tom Cruise, Emily Blunt, Bill Paxton, Brendan Gleeson",
+    "director": "Doug Liman",
+    "producers": "Erwin Stoff, Tom Lassally, Jeffrey Silver, Gregory Jacobs, Jason Hoffs",
+    "company": "Warner Bros. / Village Roadshow Pictures",
+    "titleNote": "Live Die Repeat / 2014",
+    "tagline": "Blu-ray + DVD / Bilingual Canadian Edition / Tom Cruise / Emily Blunt / 2010s",
+    "desc": "An alien race has hit the Earth in an unrelenting assault, unbeatable by any military unit in the world. Major William Cage (Tom Cruise), an officer who has never seen a day of combat, is unceremoniously dropped into what amounts to a suicide mission. Killed within minutes, Cage finds himself thrown into a time loop, forcing him to live out the same brutal combat over and over. But with each battle he becomes able to engage the adversaries with increasing skill, alongside Special Forces warrior Rita Vrataski (Emily Blunt). Live. Die. Repeat.",
+    "trivia": [
+      {
+        "heading": "Based on a Japanese Novel",
+        "text": "The film is adapted from Hiroshi Sakurazaka's 2004 light novel All You Need Is Kill."
+      },
+      {
+        "heading": "Three Titles",
+        "text": "It was released in cinemas as Edge of Tomorrow, but the home video release pushed its tagline, Live Die Repeat, so hard that many fans know it by that name."
+      },
+      {
+        "heading": "Real Exosuits",
+        "text": "The battle suits were practical props weighing up to about 40 kg (85 lb), and Tom Cruise and Emily Blunt trained for months to move in them."
+      },
+      {
+        "heading": "Emily Blunt Bulked Up",
+        "text": "Emily Blunt trained intensively for three months to play the war hero Rita Vrataski, the \"Full Metal Bitch\"."
+      }
+    ],
+    "tidbits": [
+      "The film is adapted from Hiroshi Sakurazaka's 2004 light novel All You Need Is Kill.",
+      "It was released in cinemas as Edge of Tomorrow, but the home video release pushed its tagline, Live Die Repeat, so hard that many fans know it by that name.",
+      "The battle suits were practical props weighing up to about 40 kg (85 lb), and Tom Cruise and Emily Blunt trained for months to move in them.",
+      "Emily Blunt trained intensively for three months to play the war hero Rita Vrataski, the \"Full Metal Bitch\"."
+    ],
+    "copies": [
+      {
+        "id": "edge-of-tomorrow-2014-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Warner Bros. Blu-ray + DVD, bilingual Canadian edition (Live Die Repeat / Vivre Mourir Recommencer)",
+        "photos": [
+          "images/edge-of-tomorrow-2014-bluray-1.jpg",
+          "images/edge-of-tomorrow-2014-bluray-2.jpg",
+          "images/edge-of-tomorrow-2014-bluray-3.jpg",
+          "images/edge-of-tomorrow-2014-bluray-4.jpg"
+        ],
+        "gif": "images/edge-of-tomorrow-2014-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Blu-ray: Very Good",
+            "DVD: Very Good"
+          ],
+          "inserts": "Digital code insert (code not included)",
+          "notes": "Warner Bros. / Village Roadshow Canadian release (2014), bilingual English/French packaging: Live. Die. Repeat. / Edge of Tomorrow, Vivre. Mourir. Recommencer. / Un jour sans lendemain. 2-disc set: Blu-ray + DVD. About 113 minutes, widescreen. Rated PG (Canada)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/127849735897",
+        "sold": false
+      }
+    ]
   }
 ]
