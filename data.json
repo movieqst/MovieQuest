@@ -1794,5 +1794,85 @@
         "sold": true
       }
     ]
+  },
+  {
+    "id": "batman-1989-bluray",
+    "title": "Batman",
+    "year": 1989,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/batman-1989-bluray-1.jpg",
+    "photos": [
+      "images/batman-1989-bluray-1.jpg",
+      "images/batman-1989-bluray-2.jpg",
+      "images/batman-1989-bluray-3.jpg",
+      "images/batman-1989-bluray-4.jpg",
+      "images/batman-1989-bluray-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Batman%201989%20Blu-ray&campid=5339133571&customid=batman-1989-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Jack Nicholson, Michael Keaton, Kim Basinger, Robert Wuhl, Pat Hingle, Billy Dee Williams, Michael Gough, Jack Palance",
+    "director": "Tim Burton",
+    "producers": "Jon Peters, Peter Guber",
+    "company": "Warner Bros. / The Guber-Peters Company",
+    "titleNote": "Tim Burton / 1989",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / Jack Nicholson / Michael Keaton / 1980s",
+    "desc": "Gotham City is overrun by crime, and a mysterious caped vigilante is striking fear into its underworld. Billionaire Bruce Wayne leads a double life as Batman, and his greatest challenge arrives when gangster Jack Napier is transformed into the grinning, homicidal Joker. Tim Burton's dark, gothic take on the DC Comics hero stars Michael Keaton as Batman, Jack Nicholson as the Joker and Kim Basinger as photojournalist Vicki Vale, with songs by Prince and a score by Danny Elfman.",
+    "trivia": [
+      {
+        "heading": "Casting Uproar",
+        "text": "When Michael Keaton, then best known for comedies, was cast as Batman, fans were so upset that Warner Bros. reportedly received around 50,000 letters of protest."
+      },
+      {
+        "heading": "Nicholson's Big Payday",
+        "text": "Jack Nicholson took a lower upfront fee in exchange for a share of the box office and merchandise, a deal said to have earned him around $60 million."
+      },
+      {
+        "heading": "Oscar-Winning Gotham",
+        "text": "Production designer Anton Furst built a huge Gotham City backlot at Pinewood Studios in England, and the work won him the Academy Award for Best Art Direction."
+      },
+      {
+        "heading": "Prince on the Soundtrack",
+        "text": "Prince wrote and recorded a full album of songs for the film, and his single \"Batdance\" went to No. 1 on the Billboard Hot 100."
+      }
+    ],
+    "tidbits": [
+      "When Michael Keaton, then best known for comedies, was cast as Batman, fans were so upset that Warner Bros. reportedly received around 50,000 letters of protest.",
+      "Jack Nicholson took a lower upfront fee in exchange for a share of the box office and merchandise, a deal said to have earned him around $60 million.",
+      "Production designer Anton Furst built a huge Gotham City backlot at Pinewood Studios in England, and the work won him the Academy Award for Best Art Direction.",
+      "Prince wrote and recorded a full album of songs for the film, and his single \"Batdance\" went to No. 1 on the Billboard Hot 100."
+    ],
+    "sold": true,
+    "copies": [
+      {
+        "id": "batman-1989-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Warner Bros. Blu-ray, Canadian bilingual edition",
+        "photos": [
+          "images/batman-1989-bluray-1.jpg",
+          "images/batman-1989-bluray-2.jpg",
+          "images/batman-1989-bluray-3.jpg",
+          "images/batman-1989-bluray-4.jpg",
+          "images/batman-1989-bluray-5.jpg"
+        ],
+        "gif": "images/batman-1989-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Warner Home Video Canadian release (2010), Version française incluse. 126 min, 1080p widescreen 1.85:1, English Dolby TrueHD 5.1 and Dolby Digital 5.1, French 2.0, Spanish (Castilian 5.1, Latin 1.0), English, French and Spanish subtitles. Extras: Tim Burton commentary, On the Set with Bob Kane, Legends of the Dark Knight, Shadows of the Bat parts 1-3, Beyond Batman documentary gallery, 3 Prince music videos, hero and villain profile galleries, Robin storyboard sequence, theatrical trailer. Rated PG (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ]
   }
 ]
