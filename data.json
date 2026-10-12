@@ -2028,5 +2028,82 @@
         "sold": true
       }
     ]
+  },
+  {
+    "id": "commando-1985-dvd",
+    "title": "Commando",
+    "year": 1985,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/commando-1985-dvd-1.jpg",
+    "photos": [
+      "images/commando-1985-dvd-1.jpg",
+      "images/commando-1985-dvd-2.jpg",
+      "images/commando-1985-dvd-3.jpg",
+      "images/commando-1985-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Commando%20Schwarzenegger%20DVD&campid=5339133571&customid=commando-1985-dvd",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Arnold Schwarzenegger, Rae Dawn Chong, Dan Hedaya, Vernon Wells, James Olson, David Patrick Kelly, Alyssa Milano, Bill Duke",
+    "director": "Mark L. Lester",
+    "producers": "Joel Silver",
+    "company": "20th Century Fox / Silver Pictures",
+    "titleNote": "Widescreen / 1985",
+    "tagline": "DVD / Widescreen / Arnold Schwarzenegger / 1980s",
+    "desc": "Retired special forces colonel John Matrix lives a quiet life in the mountains with his young daughter Jenny, until his old enemies kidnap her to force him into carrying out a political assassination. With only hours before his flight lands, Matrix escapes, teams up with a flight attendant named Cindy and sets out on a one-man war to get his daughter back. Arnold Schwarzenegger stars in the classic 1980s action film.",
+    "trivia": [
+      {
+        "heading": "Jenny Matrix",
+        "text": "John Matrix's kidnapped daughter Jenny is played by a young Alyssa Milano, who was starring on the sitcom Who's the Boss? at the time."
+      },
+      {
+        "heading": "\"I Lied\"",
+        "text": "One of the film's best-known lines comes when Matrix dangles Sully over a cliff: \"Remember, Sully, when I promised to kill you last? I lied.\""
+      },
+      {
+        "heading": "The Die Hard Connection",
+        "text": "Commando was written by Steven E. de Souza, who went on to co-write Die Hard. That story is often said to have first been considered as a Commando sequel for Schwarzenegger."
+      },
+      {
+        "heading": "Reunited for Predator",
+        "text": "Producer Joel Silver and Schwarzenegger teamed up again two years later for Predator, and Bill Duke, who plays Cooke here, joined them in that film too."
+      }
+    ],
+    "tidbits": [
+      "John Matrix's kidnapped daughter Jenny is played by a young Alyssa Milano, who was starring on the sitcom Who's the Boss? at the time.",
+      "One of the film's best-known lines comes when Matrix dangles Sully over a cliff: \"Remember, Sully, when I promised to kill you last? I lied.\"",
+      "Commando was written by Steven E. de Souza, who went on to co-write Die Hard. That story is often said to have first been considered as a Commando sequel for Schwarzenegger.",
+      "Producer Joel Silver and Schwarzenegger teamed up again two years later for Predator, and Bill Duke, who plays Cooke here, joined them in that film too."
+    ],
+    "copies": [
+      {
+        "id": "commando-1985-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "20th Century Fox widescreen DVD (1998)",
+        "photos": [
+          "images/commando-1985-dvd-1.jpg",
+          "images/commando-1985-dvd-2.jpg",
+          "images/commando-1985-dvd-3.jpg",
+          "images/commando-1985-dvd-4.jpg"
+        ],
+        "gif": "images/commando-1985-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "20th Century Fox Home Entertainment release (1998, catalogue 4110424). Widescreen, Region 1, about 90 minutes. Rated R. The case has a full-colour inside cover."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
