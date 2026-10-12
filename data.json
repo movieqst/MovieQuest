@@ -1195,7 +1195,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/128129552106",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "lZ1tJqTOnQc"
   },
   {
     "id": "gone-girl-2014-bluray",
@@ -1290,7 +1291,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/117211509627",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "2-_-1nJf8Vg"
   },
   {
     "id": "the-last-of-the-mohicans-1992-bluray",
@@ -1373,7 +1375,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/127945329022",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "c9TED2yeoRo"
   },
   {
     "id": "south-park-season-16-dvd",
@@ -1466,7 +1469,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/128129583903",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "6RleOmm2kuM"
   },
   {
     "id": "dune-1984-bluray",
@@ -1545,7 +1549,8 @@
         "ebayUrl": "",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "pm7Lvg8iwTc"
   },
   {
     "id": "ghost-dog-1999-dvd",
@@ -1630,7 +1635,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/117223239438",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "uLHeMzjQ29E"
   },
   {
     "id": "survival-island-2005-dvd",
@@ -1715,7 +1721,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/127831419577",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "BjZ2N0y96wk"
   },
   {
     "id": "margin-call-2011-dvd",
@@ -1793,7 +1800,8 @@
         "ebayUrl": "",
         "sold": true
       }
-    ]
+    ],
+    "youtubeId": "dBGwWTI8Gjw"
   },
   {
     "id": "batman-1989-bluray",
@@ -1873,7 +1881,8 @@
         "ebayUrl": "",
         "sold": true
       }
-    ]
+    ],
+    "youtubeId": "dgC9Q0uhX70"
   },
   {
     "id": "the-good-witch-2008-dvd",
@@ -1950,6 +1959,315 @@
         },
         "ebayUrl": "",
         "sold": true
+      }
+    ]
+  },
+  {
+    "id": "from-dusk-till-dawn-1996-bluray",
+    "title": "From Dusk Till Dawn",
+    "year": 1996,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/from-dusk-till-dawn-1996-bluray-1.jpg",
+    "photos": [
+      "images/from-dusk-till-dawn-1996-bluray-1.jpg",
+      "images/from-dusk-till-dawn-1996-bluray-2.jpg",
+      "images/from-dusk-till-dawn-1996-bluray-3.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=From%20Dusk%20Till%20Dawn%20Blu-ray&campid=5339133571&customid=from-dusk-till-dawn-1996-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Harvey Keitel, George Clooney, Quentin Tarantino, Juliette Lewis, Cheech Marin, Fred Williamson, Salma Hayek",
+    "director": "Robert Rodriguez",
+    "producers": "Gianni Nunnari, Meir Teper",
+    "company": "Dimension Films / A Band Apart / Los Hooligans Productions / Alliance Films",
+    "titleNote": "Robert Rodriguez / 1996",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / George Clooney / Quentin Tarantino / 1990s",
+    "desc": "George Clooney and Quentin Tarantino star as the Gecko brothers, two dangerous outlaws on a wild crime spree. After kidnapping a former preacher (Harvey Keitel) and his two kids (including Juliette Lewis), the Geckos head south to a seedy Mexican bar to hide out until dawn. But when they meet the bar's truly notorious clientele, they're forced to team up with their hostages to make it out alive. Directed by Robert Rodriguez from a screenplay by Quentin Tarantino.",
+    "trivia": [
+      {
+        "heading": "Tarantino's First Paid Script",
+        "text": "Special effects artist Robert Kurtzman wrote the story and paid Quentin Tarantino $1,500 to turn it into a screenplay around 1990, before Tarantino made Reservoir Dogs."
+      },
+      {
+        "heading": "The Snake Dance",
+        "text": "Salma Hayek, who plays Santanico Pandemonium, has a fear of snakes and reportedly went through therapy so she could perform her famous dance with a live albino python."
+      },
+      {
+        "heading": "Big-Screen Leap for Clooney",
+        "text": "George Clooney made the film while he was starring on ER, and it was one of his first major leading roles in a feature film."
+      },
+      {
+        "heading": "Back as a TV Series",
+        "text": "Robert Rodriguez later turned the story into From Dusk till Dawn: The Series, which ran for three seasons from 2014 to 2016 on his El Rey Network."
+      }
+    ],
+    "tidbits": [
+      "Special effects artist Robert Kurtzman wrote the story and paid Quentin Tarantino $1,500 to turn it into a screenplay around 1990, before Tarantino made Reservoir Dogs.",
+      "Salma Hayek, who plays Santanico Pandemonium, has a fear of snakes and reportedly went through therapy so she could perform her famous dance with a live albino python.",
+      "George Clooney made the film while he was starring on ER, and it was one of his first major leading roles in a feature film.",
+      "Robert Rodriguez later turned the story into From Dusk till Dawn: The Series, which ran for three seasons from 2014 to 2016 on his El Rey Network."
+    ],
+    "sold": true,
+    "copies": [
+      {
+        "id": "from-dusk-till-dawn-1996-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Alliance Films Blu-ray, Canadian bilingual edition",
+        "photos": [
+          "images/from-dusk-till-dawn-1996-bluray-1.jpg",
+          "images/from-dusk-till-dawn-1996-bluray-2.jpg",
+          "images/from-dusk-till-dawn-1996-bluray-3.jpg"
+        ],
+        "gif": "images/from-dusk-till-dawn-1996-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Films / Dimension Home Video Canadian release (2008), La nuit la plus longue. 1 hr 47 min, 1080p widescreen 1.78:1, English DTS and Dolby Digital 5.1, French DTS and Dolby Digital 5.1, English and French SDH subtitles. Rated R (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ],
+    "youtubeId": "jNuIn4T-CLk"
+  },
+  {
+    "id": "commando-1985-dvd",
+    "title": "Commando",
+    "year": 1985,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/commando-1985-dvd-1.jpg",
+    "photos": [
+      "images/commando-1985-dvd-1.jpg",
+      "images/commando-1985-dvd-2.jpg",
+      "images/commando-1985-dvd-3.jpg",
+      "images/commando-1985-dvd-4.jpg",
+      "images/commando-1985-dvd-5.jpg",
+      "images/commando-1985-dvd-6.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Commando%20Schwarzenegger%20DVD&campid=5339133571&customid=commando-1985-dvd",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Arnold Schwarzenegger, Rae Dawn Chong, Dan Hedaya, Vernon Wells, James Olson, David Patrick Kelly, Alyssa Milano, Bill Duke",
+    "director": "Mark L. Lester",
+    "producers": "Joel Silver",
+    "company": "20th Century Fox / Silver Pictures",
+    "titleNote": "Widescreen / 1985",
+    "tagline": "DVD / Widescreen / Arnold Schwarzenegger / 1980s",
+    "desc": "Retired special forces colonel John Matrix lives a quiet life in the mountains with his young daughter Jenny, until his old enemies kidnap her to force him into carrying out a political assassination. With only hours before his flight lands, Matrix escapes, teams up with a flight attendant named Cindy and sets out on a one-man war to get his daughter back. Arnold Schwarzenegger stars in the classic 1980s action film.",
+    "trivia": [
+      {
+        "heading": "Jenny Matrix",
+        "text": "John Matrix's kidnapped daughter Jenny is played by a young Alyssa Milano, who was starring on the sitcom Who's the Boss? at the time."
+      },
+      {
+        "heading": "\"I Lied\"",
+        "text": "One of the film's best-known lines comes when Matrix dangles Sully over a cliff: \"Remember, Sully, when I promised to kill you last? I lied.\""
+      },
+      {
+        "heading": "The Die Hard Connection",
+        "text": "Commando was written by Steven E. de Souza, who went on to co-write Die Hard. That story is often said to have first been considered as a Commando sequel for Schwarzenegger."
+      },
+      {
+        "heading": "Reunited for Predator",
+        "text": "Producer Joel Silver and Schwarzenegger teamed up again two years later for Predator, and Bill Duke, who plays Cooke here, joined them in that film too."
+      }
+    ],
+    "tidbits": [
+      "John Matrix's kidnapped daughter Jenny is played by a young Alyssa Milano, who was starring on the sitcom Who's the Boss? at the time.",
+      "One of the film's best-known lines comes when Matrix dangles Sully over a cliff: \"Remember, Sully, when I promised to kill you last? I lied.\"",
+      "Commando was written by Steven E. de Souza, who went on to co-write Die Hard. That story is often said to have first been considered as a Commando sequel for Schwarzenegger.",
+      "Producer Joel Silver and Schwarzenegger teamed up again two years later for Predator, and Bill Duke, who plays Cooke here, joined them in that film too."
+    ],
+    "copies": [
+      {
+        "id": "commando-1985-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "20th Century Fox widescreen DVD (1998)",
+        "photos": [
+          "images/commando-1985-dvd-1.jpg",
+          "images/commando-1985-dvd-2.jpg",
+          "images/commando-1985-dvd-3.jpg",
+          "images/commando-1985-dvd-4.jpg",
+          "images/commando-1985-dvd-5.jpg",
+          "images/commando-1985-dvd-6.jpg"
+        ],
+        "gif": "images/commando-1985-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "20th Century Fox Home Entertainment release (1998/1999, catalogue 4110424). Widescreen 1.85:1, Region 1 NTSC, about 90 minutes, English Dolby Surround and French stereo, English and Spanish subtitles. Extras: original theatrical trailer. Rated R. The case has a full-colour inside cover."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ],
+    "sold": true,
+    "youtubeId": "yus3Hhe1rW4"
+  },
+  {
+    "id": "bright-lights-big-city-1988-dvd",
+    "title": "Bright Lights, Big City",
+    "year": 1988,
+    "format": "DVD",
+    "condition": "New (factory sealed)",
+    "image": "https://moviequest.ca/images/bright-lights-big-city-1988-dvd-1.jpg",
+    "photos": [
+      "images/bright-lights-big-city-1988-dvd-1.jpg",
+      "images/bright-lights-big-city-1988-dvd-2.jpg",
+      "images/bright-lights-big-city-1988-dvd-3.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Bright%20Lights%20Big%20City%20DVD&campid=5339133571&customid=bright-lights-big-city-1988-dvd",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Michael J. Fox, Kiefer Sutherland, Phoebe Cates, Dianne Wiest, Swoosie Kurtz, Frances Sternhagen, Jason Robards",
+    "director": "James Bridges",
+    "producers": "Mark Rosenberg, Sydney Pollack",
+    "company": "United Artists / Mirage / MGM",
+    "titleNote": "Michael J. Fox / 1988",
+    "tagline": "DVD / MGM / Michael J. Fox / Kiefer Sutherland / 1980s",
+    "desc": "Jamie Conway (Michael J. Fox) is an aspiring writer who trades the wheat fields of Kansas for the imposing skyline of Manhattan, and the seductive party culture hidden within. When Jamie hits the club scene to enliven his nights and deaden his pain, he takes it to the limit, until the limit threatens to take away everything and everyone he's ever loved. Co-starring Kiefer Sutherland, Phoebe Cates and Dianne Wiest, with a soundtrack featuring New Order, Depeche Mode and Prince.",
+    "trivia": [
+      {
+        "heading": "From the Bestseller",
+        "text": "The film is based on Jay McInerney's 1984 debut novel, famous for being written in the second person, and McInerney wrote the screenplay himself."
+      },
+      {
+        "heading": "A Change of Director",
+        "text": "Joyce Chopra was the original director, but she was replaced early in production by James Bridges, who finished the film."
+      },
+      {
+        "heading": "Shot by The Godfather Cameraman",
+        "text": "Cinematographer Gordon Willis, known for The Godfather films and Annie Hall, photographed the movie on location in New York City."
+      },
+      {
+        "heading": "Fox and Sutherland",
+        "text": "Michael J. Fox made the film between Back to the Future movies and while still starring on Family Ties, playing against type opposite Kiefer Sutherland as his party-loving friend Tad."
+      }
+    ],
+    "tidbits": [
+      "The film is based on Jay McInerney's 1984 debut novel, famous for being written in the second person, and McInerney wrote the screenplay himself.",
+      "Joyce Chopra was the original director, but she was replaced early in production by James Bridges, who finished the film.",
+      "Cinematographer Gordon Willis, known for The Godfather films and Annie Hall, photographed the movie on location in New York City.",
+      "Michael J. Fox made the film between Back to the Future movies and while still starring on Family Ties, playing against type opposite Kiefer Sutherland as his party-loving friend Tad."
+    ],
+    "sold": true,
+    "copies": [
+      {
+        "id": "bright-lights-big-city-1988-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "MGM DVD (1004810), factory sealed",
+        "photos": [
+          "images/bright-lights-big-city-1988-dvd-1.jpg",
+          "images/bright-lights-big-city-1988-dvd-2.jpg",
+          "images/bright-lights-big-city-1988-dvd-3.jpg"
+        ],
+        "gif": "images/bright-lights-big-city-1988-dvd-1.gif",
+        "condition": {
+          "overall": "New (factory sealed)",
+          "case": "New (factory sealed)",
+          "discs": [
+            "New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "MGM Home Entertainment release (2003 package, catalogue 1004810). About 1 hr 48 min, standard full frame, English and French stereo surround, Spanish mono, English, French and Spanish subtitles. Extras: original theatrical trailer. Rated R (US) / 14A (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ],
+    "youtubeId": "C05C0KFQ3zA"
+  },
+  {
+    "id": "basic-instinct-2-2006-dvd",
+    "title": "Basic Instinct 2",
+    "year": 2006,
+    "format": "DVD",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/basic-instinct-2-2006-dvd-1.jpg",
+    "photos": [
+      "images/basic-instinct-2-2006-dvd-1.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Basic%20Instinct%202%20Unrated%20DVD&campid=5339133571&customid=basic-instinct-2-2006-dvd",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "youtubeId": "82wmpgVJ7uQ",
+    "starring": "Sharon Stone, David Morrissey, Charlotte Rampling, David Thewlis, Hugh Dancy",
+    "director": "Michael Caton-Jones",
+    "producers": "Mario Kassar, Andrew G. Vajna, Joel B. Michaels",
+    "company": "C2 Pictures / Intermedia / MGM / Sony Pictures Home Entertainment",
+    "titleNote": "Unrated Extended Cut / 2006",
+    "tagline": "DVD / Unrated Extended Cut / Bilingual Canadian Edition / Sharon Stone / 2000s",
+    "desc": "Sharon Stone returns as the seductive and dangerous novelist Catherine Tramell. Now in London, Catherine is under investigation after a man dies in a car crash, and Scotland Yard brings in psychiatrist Dr. Michael Glass (David Morrissey) to evaluate her. Drawn into her games of temptation and manipulation, Glass soon finds his career, his sanity and his life at stake. Sometimes obsession can be murder.",
+    "trivia": [
+      {
+        "heading": "Fourteen Years Later",
+        "text": "The sequel arrived in 2006, fourteen years after the original Basic Instinct, with Sharon Stone returning as novelist Catherine Tramell."
+      },
+      {
+        "heading": "Moved to London",
+        "text": "The story moves from San Francisco to London, where Catherine is investigated by psychiatrist Dr. Michael Glass, played by David Morrissey."
+      },
+      {
+        "heading": "A Long Road to the Screen",
+        "text": "The film spent years in development, with several directors and co-stars attached, before Michael Caton-Jones finally directed it."
+      },
+      {
+        "heading": "Unrated Extended Cut",
+        "text": "This DVD has the unrated extended cut, with footage not seen in theatres, deleted scenes and an alternate ending."
+      }
+    ],
+    "tidbits": [
+      "The sequel arrived in 2006, fourteen years after the original Basic Instinct, with Sharon Stone returning as novelist Catherine Tramell.",
+      "The story moves from San Francisco to London, where Catherine is investigated by psychiatrist Dr. Michael Glass, played by David Morrissey.",
+      "The film spent years in development, with several directors and co-stars attached, before Michael Caton-Jones finally directed it.",
+      "This DVD has the unrated extended cut, with footage not seen in theatres, deleted scenes and an alternate ending."
+    ],
+    "copies": [
+      {
+        "id": "basic-instinct-2-2006-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "Sony Pictures Unrated Extended Cut DVD, bilingual Canadian edition (Version française incluse), factory sealed",
+        "photos": [
+          "images/basic-instinct-2-2006-dvd-1.jpg"
+        ],
+        "gif": "images/basic-instinct-2-2006-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed)",
+          "discs": [
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "Sony Pictures Home Entertainment release (2006, catalogue 15553), Unrated Extended Cut / Montage prolongé intégral. About 116 minutes, anamorphic widescreen 2.40:1, English and French Dolby Digital 5.1, English and French subtitles. Extras: featurette \"Between the Sheets: A Look Inside Basic Instinct 2\", commentary with director Michael Caton-Jones, plus exclusive to the unrated DVD: 10 deleted scenes with optional director's commentary and an alternate ending. Rated 18A (Canada). Still in the original shrink wrap."
+        },
+        "ebayUrl": "",
+        "sold": false
       }
     ]
   }
