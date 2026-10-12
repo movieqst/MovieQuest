@@ -2271,5 +2271,83 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-running-man-1987-bluray",
+    "title": "The Running Man",
+    "year": 1987,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-running-man-1987-bluray-1.jpg",
+    "photos": [
+      "images/the-running-man-1987-bluray-1.jpg",
+      "images/the-running-man-1987-bluray-2.jpg",
+      "images/the-running-man-1987-bluray-3.jpg",
+      "images/the-running-man-1987-bluray-4.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/127875654815?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=the-running-man-1987-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The%20Running%20Man%20Blu-ray&campid=5339133571&customid=the-running-man-1987-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "youtubeId": "HGd8b4Stxfw",
+    "starring": "Arnold Schwarzenegger, Maria Conchita Alonso, Yaphet Kotto, Richard Dawson, Jesse Ventura, Jim Brown",
+    "director": "Paul Michael Glaser",
+    "producers": "Tim Zinnemann, George Linder",
+    "company": "TriStar Pictures / Taft Entertainment / Keith Barish Productions / Maple Pictures",
+    "titleNote": "Widescreen / 1987",
+    "tagline": "Blu-ray / Canadian Edition / Arnold Schwarzenegger / 1980s",
+    "desc": "The year is 2019. Television now rules people's lives, and the most popular audience participation game show is \"The Running Man\", where convicts can win pardons instead of parting gifts by defeating murderous henchmen known as stalkers. The stalkers haven't had much of a challenge lately, until Ben Richards (Arnold Schwarzenegger) comes along.",
+    "trivia": [
+      {
+        "heading": "A Stephen King Story",
+        "text": "The film is based on the 1982 novel The Running Man, which Stephen King published under his pen name Richard Bachman."
+      },
+      {
+        "heading": "A Real Game Show Host",
+        "text": "Villainous host Damon Killian is played by Richard Dawson, the real-life host of Family Feud, who drew on his own game show career for the role."
+      },
+      {
+        "heading": "Set in 2019",
+        "text": "The story takes place in a dystopian 2019, where a TV network runs a deadly game show in which convicts fight for their freedom."
+      },
+      {
+        "heading": "Two Future Governors",
+        "text": "The cast includes Jesse Ventura as the stalker Captain Freedom. Both he and Schwarzenegger later became state governors, of Minnesota and California."
+      }
+    ],
+    "tidbits": [
+      "The film is based on the 1982 novel The Running Man, which Stephen King published under his pen name Richard Bachman.",
+      "Villainous host Damon Killian is played by Richard Dawson, the real-life host of Family Feud, who drew on his own game show career for the role.",
+      "The story takes place in a dystopian 2019, where a TV network runs a deadly game show in which convicts fight for their freedom.",
+      "The cast includes Jesse Ventura as the stalker Captain Freedom. Both he and Schwarzenegger later became state governors, of Minnesota and California."
+    ],
+    "copies": [
+      {
+        "id": "the-running-man-1987-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Maple Pictures / Lionsgate Blu-ray (Canada)",
+        "photos": [
+          "images/the-running-man-1987-bluray-1.jpg",
+          "images/the-running-man-1987-bluray-2.jpg",
+          "images/the-running-man-1987-bluray-3.jpg",
+          "images/the-running-man-1987-bluray-4.jpg"
+        ],
+        "gif": "images/the-running-man-1987-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Maple Pictures / Lionsgate Canadian release (2010, catalogue 20504). 101 minutes, 1080p widescreen 1.78:1, English 7.1 DTS-HD Master Audio, English and Spanish subtitles, English SDH. Extras: audio commentary by director Paul Michael Glaser and producer Tim Zinnemann, audio commentary by executive producer Rob Cohen, \"Game Theory\" featurette, \"Lockdown on Main Street\" featurette, theatrical trailer. Rated R (Canada)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/127875654815",
+        "sold": false
+      }
+    ]
   }
 ]
