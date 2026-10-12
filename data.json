@@ -2106,5 +2106,81 @@
       }
     ],
     "sold": true
+  },
+  {
+    "id": "bright-lights-big-city-1988-dvd",
+    "title": "Bright Lights, Big City",
+    "year": 1988,
+    "format": "DVD",
+    "condition": "New (factory sealed)",
+    "image": "https://moviequest.ca/images/bright-lights-big-city-1988-dvd-1.jpg",
+    "photos": [
+      "images/bright-lights-big-city-1988-dvd-1.jpg",
+      "images/bright-lights-big-city-1988-dvd-2.jpg",
+      "images/bright-lights-big-city-1988-dvd-3.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Bright%20Lights%20Big%20City%20DVD&campid=5339133571&customid=bright-lights-big-city-1988-dvd",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Michael J. Fox, Kiefer Sutherland, Phoebe Cates, Dianne Wiest, Swoosie Kurtz, Frances Sternhagen, Jason Robards",
+    "director": "James Bridges",
+    "producers": "Mark Rosenberg, Sydney Pollack",
+    "company": "United Artists / Mirage / MGM",
+    "titleNote": "Michael J. Fox / 1988",
+    "tagline": "DVD / MGM / Michael J. Fox / Kiefer Sutherland / 1980s",
+    "desc": "Jamie Conway (Michael J. Fox) is an aspiring writer who trades the wheat fields of Kansas for the imposing skyline of Manhattan, and the seductive party culture hidden within. When Jamie hits the club scene to enliven his nights and deaden his pain, he takes it to the limit, until the limit threatens to take away everything and everyone he's ever loved. Co-starring Kiefer Sutherland, Phoebe Cates and Dianne Wiest, with a soundtrack featuring New Order, Depeche Mode and Prince.",
+    "trivia": [
+      {
+        "heading": "From the Bestseller",
+        "text": "The film is based on Jay McInerney's 1984 debut novel, famous for being written in the second person, and McInerney wrote the screenplay himself."
+      },
+      {
+        "heading": "A Change of Director",
+        "text": "Joyce Chopra was the original director, but she was replaced early in production by James Bridges, who finished the film."
+      },
+      {
+        "heading": "Shot by The Godfather Cameraman",
+        "text": "Cinematographer Gordon Willis, known for The Godfather films and Annie Hall, photographed the movie on location in New York City."
+      },
+      {
+        "heading": "Fox and Sutherland",
+        "text": "Michael J. Fox made the film between Back to the Future movies and while still starring on Family Ties, playing against type opposite Kiefer Sutherland as his party-loving friend Tad."
+      }
+    ],
+    "tidbits": [
+      "The film is based on Jay McInerney's 1984 debut novel, famous for being written in the second person, and McInerney wrote the screenplay himself.",
+      "Joyce Chopra was the original director, but she was replaced early in production by James Bridges, who finished the film.",
+      "Cinematographer Gordon Willis, known for The Godfather films and Annie Hall, photographed the movie on location in New York City.",
+      "Michael J. Fox made the film between Back to the Future movies and while still starring on Family Ties, playing against type opposite Kiefer Sutherland as his party-loving friend Tad."
+    ],
+    "sold": true,
+    "copies": [
+      {
+        "id": "bright-lights-big-city-1988-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "MGM DVD (1004810), factory sealed",
+        "photos": [
+          "images/bright-lights-big-city-1988-dvd-1.jpg",
+          "images/bright-lights-big-city-1988-dvd-2.jpg",
+          "images/bright-lights-big-city-1988-dvd-3.jpg"
+        ],
+        "gif": "images/bright-lights-big-city-1988-dvd-1.gif",
+        "condition": {
+          "overall": "New (factory sealed)",
+          "case": "New (factory sealed)",
+          "discs": [
+            "New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "MGM Home Entertainment release (2003 package, catalogue 1004810). About 1 hr 48 min, standard full frame, English and French stereo surround, Spanish mono, English, French and Spanish subtitles. Extras: original theatrical trailer. Rated R (US) / 14A (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ]
   }
 ]
