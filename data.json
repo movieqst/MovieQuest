@@ -2508,5 +2508,83 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "risen-2016-bluray",
+    "title": "Risen",
+    "year": 2016,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/risen-2016-bluray-1.jpg",
+    "photos": [
+      "images/risen-2016-bluray-1.jpg",
+      "images/risen-2016-bluray-2.jpg",
+      "images/risen-2016-bluray-3.jpg",
+      "images/risen-2016-bluray-4.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117132554278?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=risen-2016-bluray&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Risen%20Blu-ray%20Joseph%20Fiennes&campid=5339133571&customid=risen-2016-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "youtubeId": "RBWB5DxWlaM",
+    "starring": "Joseph Fiennes, Tom Felton, Peter Firth, Cliff Curtis, María Botto",
+    "director": "Kevin Reynolds",
+    "producers": "Patrick Aiello, Mickey Liddell, Pete Shilaimon",
+    "company": "Columbia Pictures / Affirm Films / LD Entertainment / Sony Pictures",
+    "titleNote": "La Résurrection du Christ / 2016",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / Joseph Fiennes / Tom Felton / 2010s",
+    "desc": "Witness the manhunt that changed the course of human history. Clavius (Joseph Fiennes), a powerful Roman military tribune, and his aide Lucius (Tom Felton) are tasked with solving the mystery of what happened to Jesus in the weeks following the crucifixion, in order to disprove the rumours of a risen Messiah and prevent an uprising in Jerusalem.",
+    "trivia": [
+      {
+        "heading": "A Detective Story",
+        "text": "The film retells the Resurrection as an investigation, following a Roman tribune ordered to find the missing body of Jesus and stop rumours that he has risen."
+      },
+      {
+        "heading": "From Shakespeare to Rome",
+        "text": "Joseph Fiennes, best known for playing the title role in Shakespeare in Love, stars as the tribune Clavius."
+      },
+      {
+        "heading": "Draco Goes Roman",
+        "text": "Tom Felton, Draco Malfoy in the Harry Potter films, plays Lucius, Clavius's young aide."
+      },
+      {
+        "heading": "Shot in Spain and Malta",
+        "text": "Director Kevin Reynolds, who made Robin Hood: Prince of Thieves, filmed in southern Spain and Malta, which stood in for first-century Judea."
+      }
+    ],
+    "tidbits": [
+      "The film retells the Resurrection as an investigation, following a Roman tribune ordered to find the missing body of Jesus and stop rumours that he has risen.",
+      "Joseph Fiennes, best known for playing the title role in Shakespeare in Love, stars as the tribune Clavius.",
+      "Tom Felton, Draco Malfoy in the Harry Potter films, plays Lucius, Clavius's young aide.",
+      "Director Kevin Reynolds, who made Robin Hood: Prince of Thieves, filmed in southern Spain and Malta, which stood in for first-century Judea."
+    ],
+    "copies": [
+      {
+        "id": "risen-2016-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Sony / Columbia Blu-ray, bilingual Canadian edition (Risen / La Résurrection du Christ)",
+        "photos": [
+          "images/risen-2016-bluray-1.jpg",
+          "images/risen-2016-bluray-2.jpg",
+          "images/risen-2016-bluray-3.jpg",
+          "images/risen-2016-bluray-4.jpg"
+        ],
+        "gif": "images/risen-2016-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Sony Pictures Home Entertainment Canadian release (catalogue 47165), bilingual English/French packaging: Risen / La Résurrection du Christ. About 107 minutes, widescreen. Rated PG-13 (US)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117132554278",
+        "sold": false
+      }
+    ]
   }
 ]
