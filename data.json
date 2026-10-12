@@ -1546,5 +1546,90 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "ghost-dog-1999-dvd",
+    "title": "Ghost Dog: The Way of the Samurai",
+    "year": 1999,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/ghost-dog-1999-dvd-1.jpg",
+    "photos": [
+      "images/ghost-dog-1999-dvd-1.jpg",
+      "images/ghost-dog-1999-dvd-2.jpg",
+      "images/ghost-dog-1999-dvd-3.jpg",
+      "images/ghost-dog-1999-dvd-4.jpg",
+      "images/ghost-dog-1999-dvd-5.jpg",
+      "images/ghost-dog-1999-dvd-6.jpg",
+      "images/ghost-dog-1999-dvd-7.jpg",
+      "images/ghost-dog-1999-dvd-8.jpg"
+    ],
+    "desc": "Ghost Dog is a quiet hitman living on a rooftop with his pigeons, who follows the ancient code of the samurai and serves the low-level mobster who once saved his life. When a job goes wrong and the dysfunctional mafia family turns on him, he must defend himself without breaking the code. Jim Jarmusch's hip-hop infused samurai-gangster film stars Forest Whitaker.",
+    "tidbits": [
+      "Ghost Dog lives by Hagakure, an 18th-century book of samurai teachings, and quotes from it appear on screen throughout the film.",
+      "The RZA of the Wu-Tang Clan composed the score and makes a brief cameo as a samurai.",
+      "Ghost Dog communicates with his boss only by carrier pigeon.",
+      "Jim Jarmusch wrote the role specifically for Forest Whitaker."
+    ],
+    "trivia": [
+      {
+        "heading": "The Code",
+        "text": "Ghost Dog lives by Hagakure, an 18th-century book of samurai teachings, and passages from it appear on screen between scenes throughout the film."
+      },
+      {
+        "heading": "The Music",
+        "text": "The RZA of the Wu-Tang Clan composed the score, and he makes a brief cameo as a samurai in camouflage."
+      },
+      {
+        "heading": "Old School",
+        "text": "Ghost Dog keeps in touch with his boss only by carrier pigeon, sending messages from the rooftop where he lives with his birds."
+      },
+      {
+        "heading": "Written for Him",
+        "text": "Jim Jarmusch wrote the role specifically for Forest Whitaker, who trained in martial arts and studied samurai philosophy to prepare."
+      }
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117223239438?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=ghost-dog-1999-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Ghost%20Dog%20Way%20of%20the%20Samurai%20DVD&campid=5339133571&customid=ghost-dog-1999-dvd",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Forest Whitaker, John Tormey, Cliff Gorman, Henry Silva, Isaach de Bankolé, Tricia Vessey, Camille Winbush",
+    "director": "Jim Jarmusch",
+    "producers": "Richard Guay, Jim Jarmusch",
+    "company": "Plywood Productions / Alliance Atlantis",
+    "titleNote": "Widescreen / 1999",
+    "tagline": "DVD / Widescreen / Canadian Edition / Jim Jarmusch / 1990s",
+    "copies": [
+      {
+        "id": "ghost-dog-1999-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "Alliance Atlantis widescreen DVD (Canada)",
+        "photos": [
+          "images/ghost-dog-1999-dvd-1.jpg",
+          "images/ghost-dog-1999-dvd-2.jpg",
+          "images/ghost-dog-1999-dvd-3.jpg",
+          "images/ghost-dog-1999-dvd-4.jpg",
+          "images/ghost-dog-1999-dvd-5.jpg",
+          "images/ghost-dog-1999-dvd-6.jpg",
+          "images/ghost-dog-1999-dvd-7.jpg",
+          "images/ghost-dog-1999-dvd-8.jpg"
+        ],
+        "gif": "images/ghost-dog-1999-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Chapter index printed inside the case",
+          "notes": "Alliance Atlantis Canadian release (catalogue 11489). About 1 hr 56 min, widescreen 1.85:1 enhanced for 16x9, English Dolby Digital 5.1, English SDH. Extras: 30-minute feature The Odyssey: The Journey into the Life of a Samurai, deleted scenes, music video, isolated music score by the RZA, trailers and TV spots. Rated 14A."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117223239438",
+        "sold": false
+      }
+    ]
   }
 ]
