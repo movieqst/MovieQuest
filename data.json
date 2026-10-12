@@ -389,7 +389,7 @@
     "year": 2000,
     "format": "DVD",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/the_way_of_the_gun-2000-1.jpg",
+    "image": "https://moviequest.ca/images/the-way-of-the-gun-2000-dvd-1.jpg",
     "desc": "Christopher McQuarrie's directorial debut follows two small-time criminals who kidnap the surrogate mother carrying a wealthy man's child, only to find themselves tangled in a much bigger and more dangerous scheme. Ryan Phillippe and Benicio del Toro star alongside Juliette Lewis, Taye Diggs, and James Caan.",
     "tidbits": [
       "McQuarrie's brother, a former Navy SEAL, served as technical advisor on the gunfight scenes, which is why the characters handle their weapons with such disciplined realism.",
@@ -408,7 +408,63 @@
     "director": "Christopher McQuarrie",
     "producers": "Kenneth Kokin",
     "company": "Artisan Entertainment",
-    "youtubeId": "LFtd-9bvydI"
+    "youtubeId": "LFtd-9bvydI",
+    "photos": [
+      "images/the-way-of-the-gun-2000-dvd-1.jpg",
+      "images/the-way-of-the-gun-2000-dvd-2.jpg",
+      "images/the-way-of-the-gun-2000-dvd-3.jpg",
+      "images/the-way-of-the-gun-2000-dvd-4.jpg",
+      "images/the-way-of-the-gun-2000-dvd-5.jpg",
+      "images/the-way-of-the-gun-2000-dvd-6.jpg"
+    ],
+    "trivia": [
+      {
+        "heading": "Directing Debut",
+        "text": "This was Christopher McQuarrie's first film as director, after winning the Oscar for writing The Usual Suspects."
+      },
+      {
+        "heading": "Real Tactics",
+        "text": "McQuarrie's brother, a former Navy SEAL, advised on the gunfights, which is why the characters handle their weapons with such disciplined realism."
+      },
+      {
+        "heading": "Behind the Scenes",
+        "text": "The unusual slow-speed car chase after the kidnapping was Benicio del Toro's idea, inspired by real criminals he had seen on the TV show Cops."
+      },
+      {
+        "heading": "Transformation",
+        "text": "Ryan Phillippe put on roughly 25 pounds of muscle for the role to shake off the boyish image he was known for at the time."
+      }
+    ],
+    "titleNote": "Widescreen / 2000",
+    "tagline": "DVD / Widescreen / Christopher McQuarrie / 2000s",
+    "copies": [
+      {
+        "id": "the-way-of-the-gun-2000-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "Artisan widescreen DVD",
+        "photos": [
+          "images/the-way-of-the-gun-2000-dvd-1.jpg",
+          "images/the-way-of-the-gun-2000-dvd-2.jpg",
+          "images/the-way-of-the-gun-2000-dvd-3.jpg",
+          "images/the-way-of-the-gun-2000-dvd-4.jpg",
+          "images/the-way-of-the-gun-2000-dvd-5.jpg",
+          "images/the-way-of-the-gun-2000-dvd-6.jpg"
+        ],
+        "gif": "images/the-way-of-the-gun-2000-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Artisan Home Entertainment release (catalogue 11589), Region 1. About 119 minutes, 16:9 widescreen 1.85:1, Dolby Digital 5.1, closed captioned. Extras: commentaries by Christopher McQuarrie and composer Joe Kraemer, isolated music track, cast interviews, storyboards and script of a deleted scene. Rated R."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   },
   {
     "id": "scrubs-season-4-dvd",
