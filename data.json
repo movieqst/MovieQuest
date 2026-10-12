@@ -1411,5 +1411,84 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "dune-1984-bluray",
+    "title": "Dune",
+    "year": 1984,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/dune-1984-bluray-1.jpg",
+    "photos": [
+      "images/dune-1984-bluray-1.jpg",
+      "images/dune-1984-bluray-2.jpg",
+      "images/dune-1984-bluray-3.jpg",
+      "images/dune-1984-bluray-4.jpg",
+      "images/dune-1984-bluray-5.jpg"
+    ],
+    "desc": "In the year 10,191, the spice melange is the most precious substance in the universe, and it is found only on the desert planet Arrakis. When House Atreides is betrayed by the Harkonnens and the Emperor, young Paul Atreides flees into the deep desert, where the Fremen and the giant sandworms await his destiny. David Lynch's cult classic adaptation of Frank Herbert's novel stars Kyle MacLachlan, Sting, Francesca Annis, José Ferrer, Max von Sydow and Patrick Stewart.",
+    "tidbits": [
+      "This was Kyle MacLachlan's first film role. He went on to star in David Lynch's Blue Velvet and Twin Peaks.",
+      "The rock band Toto composed the score, with Brian Eno contributing the Prophecy Theme.",
+      "Before David Lynch, Alejandro Jodorowsky and Ridley Scott both tried and failed to bring Dune to the screen.",
+      "The film was shot at Churubusco Studios in Mexico City, using eight sound stages and around 80 sets."
+    ],
+    "trivia": [
+      {
+        "heading": "Screen Debut",
+        "text": "This was Kyle MacLachlan's first film role. He went on to become David Lynch's go-to leading man in Blue Velvet and Twin Peaks."
+      },
+      {
+        "heading": "The Music",
+        "text": "The rock band Toto composed the score, with ambient pioneer Brian Eno contributing the Prophecy Theme."
+      },
+      {
+        "heading": "Long Road to the Screen",
+        "text": "Before David Lynch took it on, Alejandro Jodorowsky and Ridley Scott both tried and failed to bring Frank Herbert's novel to the screen."
+      },
+      {
+        "heading": "Behind the Scenes",
+        "text": "The film was shot at Churubusco Studios in Mexico City, filling eight sound stages with around 80 elaborate sets."
+      }
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Dune%201984%20Blu-ray&campid=5339133571&customid=dune-1984-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Kyle MacLachlan, Francesca Annis, Sting, Sean Young, José Ferrer, Max von Sydow, Patrick Stewart, Linda Hunt, Jürgen Prochnow",
+    "director": "David Lynch",
+    "producers": "Raffaella De Laurentiis, Dino De Laurentiis",
+    "company": "Universal Pictures / Dino De Laurentiis",
+    "titleNote": "David Lynch / 1984",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / David Lynch / 1980s",
+    "copies": [
+      {
+        "id": "dune-1984-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Universal Blu-ray, Canadian bilingual edition",
+        "photos": [
+          "images/dune-1984-bluray-1.jpg",
+          "images/dune-1984-bluray-2.jpg",
+          "images/dune-1984-bluray-3.jpg",
+          "images/dune-1984-bluray-4.jpg",
+          "images/dune-1984-bluray-5.jpg"
+        ],
+        "gif": "images/dune-1984-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good (light wear on one bottom corner)",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Universal Studios Canada release. About 2 hrs 17 min, 1080p widescreen 2.35:1, English DTS-HD Master Audio 5.1, French DTS-HD 2.0, English SDH, Spanish and French subtitles. Extras: deleted scenes, Designing Dune, Dune FX, Dune Models & Miniatures, Dune Wardrobe Design. Rated PG-13 (US) / 14A (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
