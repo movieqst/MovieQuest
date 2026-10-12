@@ -1952,5 +1952,81 @@
         "sold": true
       }
     ]
+  },
+  {
+    "id": "from-dusk-till-dawn-1996-bluray",
+    "title": "From Dusk Till Dawn",
+    "year": 1996,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/from-dusk-till-dawn-1996-bluray-1.jpg",
+    "photos": [
+      "images/from-dusk-till-dawn-1996-bluray-1.jpg",
+      "images/from-dusk-till-dawn-1996-bluray-2.jpg",
+      "images/from-dusk-till-dawn-1996-bluray-3.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=From%20Dusk%20Till%20Dawn%20Blu-ray&campid=5339133571&customid=from-dusk-till-dawn-1996-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Harvey Keitel, George Clooney, Quentin Tarantino, Juliette Lewis, Cheech Marin, Fred Williamson, Salma Hayek",
+    "director": "Robert Rodriguez",
+    "producers": "Gianni Nunnari, Meir Teper",
+    "company": "Dimension Films / A Band Apart / Los Hooligans Productions / Alliance Films",
+    "titleNote": "Robert Rodriguez / 1996",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / George Clooney / Quentin Tarantino / 1990s",
+    "desc": "George Clooney and Quentin Tarantino star as the Gecko brothers, two dangerous outlaws on a wild crime spree. After kidnapping a former preacher (Harvey Keitel) and his two kids (including Juliette Lewis), the Geckos head south to a seedy Mexican bar to hide out until dawn. But when they meet the bar's truly notorious clientele, they're forced to team up with their hostages to make it out alive. Directed by Robert Rodriguez from a screenplay by Quentin Tarantino.",
+    "trivia": [
+      {
+        "heading": "Tarantino's First Paid Script",
+        "text": "Special effects artist Robert Kurtzman wrote the story and paid Quentin Tarantino $1,500 to turn it into a screenplay around 1990, before Tarantino made Reservoir Dogs."
+      },
+      {
+        "heading": "The Snake Dance",
+        "text": "Salma Hayek, who plays Santanico Pandemonium, has a fear of snakes and reportedly went through therapy so she could perform her famous dance with a live albino python."
+      },
+      {
+        "heading": "Big-Screen Leap for Clooney",
+        "text": "George Clooney made the film while he was starring on ER, and it was one of his first major leading roles in a feature film."
+      },
+      {
+        "heading": "Back as a TV Series",
+        "text": "Robert Rodriguez later turned the story into From Dusk till Dawn: The Series, which ran for three seasons from 2014 to 2016 on his El Rey Network."
+      }
+    ],
+    "tidbits": [
+      "Special effects artist Robert Kurtzman wrote the story and paid Quentin Tarantino $1,500 to turn it into a screenplay around 1990, before Tarantino made Reservoir Dogs.",
+      "Salma Hayek, who plays Santanico Pandemonium, has a fear of snakes and reportedly went through therapy so she could perform her famous dance with a live albino python.",
+      "George Clooney made the film while he was starring on ER, and it was one of his first major leading roles in a feature film.",
+      "Robert Rodriguez later turned the story into From Dusk till Dawn: The Series, which ran for three seasons from 2014 to 2016 on his El Rey Network."
+    ],
+    "sold": true,
+    "copies": [
+      {
+        "id": "from-dusk-till-dawn-1996-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Alliance Films Blu-ray, Canadian bilingual edition",
+        "photos": [
+          "images/from-dusk-till-dawn-1996-bluray-1.jpg",
+          "images/from-dusk-till-dawn-1996-bluray-2.jpg",
+          "images/from-dusk-till-dawn-1996-bluray-3.jpg"
+        ],
+        "gif": "images/from-dusk-till-dawn-1996-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Films / Dimension Home Video Canadian release (2008), La nuit la plus longue. 1 hr 47 min, 1080p widescreen 1.78:1, English DTS and Dolby Digital 5.1, French DTS and Dolby Digital 5.1, English and French SDH subtitles. Rated R (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ]
   }
 ]
