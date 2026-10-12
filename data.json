@@ -2198,5 +2198,77 @@
       }
     ],
     "youtubeId": "C05C0KFQ3zA"
+  },
+  {
+    "id": "basic-instinct-2-2006-dvd",
+    "title": "Basic Instinct 2",
+    "year": 2006,
+    "format": "DVD",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/basic-instinct-2-2006-dvd-1.jpg",
+    "photos": [
+      "images/basic-instinct-2-2006-dvd-1.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Basic%20Instinct%202%20Unrated%20DVD&campid=5339133571&customid=basic-instinct-2-2006-dvd",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "youtubeId": "82wmpgVJ7uQ",
+    "starring": "Sharon Stone, David Morrissey, Charlotte Rampling, David Thewlis, Hugh Dancy",
+    "director": "Michael Caton-Jones",
+    "producers": "Mario Kassar, Andrew G. Vajna, Joel B. Michaels",
+    "company": "C2 Pictures / Intermedia / MGM",
+    "titleNote": "Unrated Extended Cut / 2006",
+    "tagline": "DVD / Unrated Extended Cut / Bilingual Canadian Edition / Sharon Stone / 2000s",
+    "desc": "Sharon Stone returns as the seductive and dangerous novelist Catherine Tramell. Now in London, Catherine is under investigation after a man dies in a car crash, and Scotland Yard brings in psychiatrist Dr. Michael Glass (David Morrissey) to evaluate her. Drawn into her games of temptation and manipulation, Glass soon finds his career, his sanity and his life at stake. Sometimes obsession can be murder.",
+    "trivia": [
+      {
+        "heading": "Fourteen Years Later",
+        "text": "The sequel arrived in 2006, fourteen years after the original Basic Instinct, with Sharon Stone returning as novelist Catherine Tramell."
+      },
+      {
+        "heading": "Moved to London",
+        "text": "The story moves from San Francisco to London, where Catherine is investigated by psychiatrist Dr. Michael Glass, played by David Morrissey."
+      },
+      {
+        "heading": "A Long Road to the Screen",
+        "text": "The film spent years in development, with several directors and co-stars attached, before Michael Caton-Jones finally directed it."
+      },
+      {
+        "heading": "Unrated Extended Cut",
+        "text": "This DVD has the unrated extended cut, with footage not seen in theatres, deleted scenes and an alternate ending."
+      }
+    ],
+    "tidbits": [
+      "The sequel arrived in 2006, fourteen years after the original Basic Instinct, with Sharon Stone returning as novelist Catherine Tramell.",
+      "The story moves from San Francisco to London, where Catherine is investigated by psychiatrist Dr. Michael Glass, played by David Morrissey.",
+      "The film spent years in development, with several directors and co-stars attached, before Michael Caton-Jones finally directed it.",
+      "This DVD has the unrated extended cut, with footage not seen in theatres, deleted scenes and an alternate ending."
+    ],
+    "copies": [
+      {
+        "id": "basic-instinct-2-2006-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "Unrated Extended Cut, bilingual Canadian edition (Version française incluse), factory sealed",
+        "photos": [
+          "images/basic-instinct-2-2006-dvd-1.jpg"
+        ],
+        "gif": "images/basic-instinct-2-2006-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed)",
+          "discs": [
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "Unrated Extended Cut / Montage prolongé intégral, bilingual Canadian release (Version française incluse). Footage not seen in theatres, explicit content, exclusive deleted scenes and an alternate ending. Still in the original shrink wrap."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
