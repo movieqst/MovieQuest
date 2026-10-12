@@ -253,7 +253,7 @@
     "year": 2021,
     "format": "Blu-ray",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/dune-2021-1.jpg",
+    "image": "https://moviequest.ca/images/dune-2021-bluray-1.jpg",
     "desc": "Denis Villeneuve's epic adaptation of Frank Herbert's classic novel follows young Paul Atreides as his noble family takes control of the dangerous desert planet Arrakis, the only source of the galaxy's most valuable substance. Starring Timothée Chalamet, Rebecca Ferguson, Zendaya, Oscar Isaac, and Jason Momoa.",
     "tidbits": [
       "Villeneuve had dreamed of adapting Dune since first reading the novel at age 12, and waited until directing Arrival and Blade Runner 2049 before taking it on.",
@@ -268,11 +268,66 @@
     "categories": [
       "2020s"
     ],
-    "starring": "Timothée Chalamet, Rebecca Ferguson, Zendaya, Oscar Isaac, Jason Momoa, Josh Brolin",
+    "starring": "Timothée Chalamet, Rebecca Ferguson, Oscar Isaac, Josh Brolin, Stellan Skarsgård, Dave Bautista, Zendaya, Jason Momoa, Javier Bardem",
     "director": "Denis Villeneuve",
-    "producers": "Mary Parent, Cale Boyter, Denis Villeneuve",
+    "producers": "Mary Parent, Denis Villeneuve, Cale Boyter, Joe Caracciolo Jr.",
     "company": "Legendary Pictures / Warner Bros.",
-    "youtubeId": "n9xhJrPXop4"
+    "youtubeId": "n9xhJrPXop4",
+    "photos": [
+      "images/dune-2021-bluray-1.jpg",
+      "images/dune-2021-bluray-2.jpg",
+      "images/dune-2021-bluray-3.jpg",
+      "images/dune-2021-bluray-4.jpg",
+      "images/dune-2021-bluray-5.jpg"
+    ],
+    "trivia": [
+      {
+        "heading": "A Lifelong Dream",
+        "text": "Denis Villeneuve had dreamed of adapting Dune since first reading the novel at age 12, and waited until after Arrival and Blade Runner 2049 to take it on."
+      },
+      {
+        "heading": "Awards",
+        "text": "The film won six Academy Awards, including Best Cinematography, Best Original Score for Hans Zimmer, Best Sound and Best Visual Effects."
+      },
+      {
+        "heading": "The Music",
+        "text": "Hans Zimmer turned down Christopher Nolan's Tenet so he could score Dune, a novel he had loved since he was a teenager."
+      },
+      {
+        "heading": "Filming Locations",
+        "text": "The deserts of Arrakis were filmed in Jordan and Abu Dhabi, while the ocean world of Caladan was shot along the coast of Norway."
+      }
+    ],
+    "titleNote": "Blu-ray + DVD + Digital / 2021",
+    "tagline": "Blu-ray + DVD + Digital / Bilingual Canadian Edition / Denis Villeneuve / 2020s",
+    "copies": [
+      {
+        "id": "dune-2021-bluray-1",
+        "added": "2026-10-11",
+        "format": "Blu-ray",
+        "edition": "Blu-ray + DVD + Digital",
+        "photos": [
+          "images/dune-2021-bluray-1.jpg",
+          "images/dune-2021-bluray-2.jpg",
+          "images/dune-2021-bluray-3.jpg",
+          "images/dune-2021-bluray-4.jpg",
+          "images/dune-2021-bluray-5.jpg"
+        ],
+        "gif": "images/dune-2021-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Movies Anywhere digital code insert included (not guaranteed)",
+          "notes": "Canadian bilingual edition (Version française incluse). Disc 1: Blu-ray. Disc 2: DVD. About 155 minutes, Dolby Atmos; English, French (Québec) and Spanish audio, English SDH, French and Spanish subtitles. Over an hour of bonus features, including The Royal Houses and Designing the Sandworm."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   },
   {
     "id": "dune-part-two-2024-bluray",
@@ -1353,6 +1408,85 @@
           "notes": "All 14 episodes on 3 discs, about 308 minutes. Region 1, NTSC, widescreen, Dolby Digital, English SDH subtitles. Extras: mini-commentaries by Trey Parker and Matt Stone on every episode, and deleted scenes. Not Rated in the US, 14A in Canada."
         },
         "ebayUrl": "https://www.ebay.ca/itm/128129583903",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "dune-1984-bluray",
+    "title": "Dune",
+    "year": 1984,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/dune-1984-bluray-1.jpg",
+    "photos": [
+      "images/dune-1984-bluray-1.jpg",
+      "images/dune-1984-bluray-2.jpg",
+      "images/dune-1984-bluray-3.jpg",
+      "images/dune-1984-bluray-4.jpg",
+      "images/dune-1984-bluray-5.jpg"
+    ],
+    "desc": "In the year 10,191, the spice melange is the most precious substance in the universe, and it is found only on the desert planet Arrakis. When House Atreides is betrayed by the Harkonnens and the Emperor, young Paul Atreides flees into the deep desert, where the Fremen and the giant sandworms await his destiny. David Lynch's cult classic adaptation of Frank Herbert's novel stars Kyle MacLachlan, Sting, Francesca Annis, José Ferrer, Max von Sydow and Patrick Stewart.",
+    "tidbits": [
+      "This was Kyle MacLachlan's first film role. He went on to star in David Lynch's Blue Velvet and Twin Peaks.",
+      "The rock band Toto composed the score, with Brian Eno contributing the Prophecy Theme.",
+      "Before David Lynch, Alejandro Jodorowsky and Ridley Scott both tried and failed to bring Dune to the screen.",
+      "The film was shot at Churubusco Studios in Mexico City, using eight sound stages and around 80 sets."
+    ],
+    "trivia": [
+      {
+        "heading": "Screen Debut",
+        "text": "This was Kyle MacLachlan's first film role. He went on to become David Lynch's go-to leading man in Blue Velvet and Twin Peaks."
+      },
+      {
+        "heading": "The Music",
+        "text": "The rock band Toto composed the score, with ambient pioneer Brian Eno contributing the Prophecy Theme."
+      },
+      {
+        "heading": "Long Road to the Screen",
+        "text": "Before David Lynch took it on, Alejandro Jodorowsky and Ridley Scott both tried and failed to bring Frank Herbert's novel to the screen."
+      },
+      {
+        "heading": "Behind the Scenes",
+        "text": "The film was shot at Churubusco Studios in Mexico City, filling eight sound stages with around 80 elaborate sets."
+      }
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Dune%201984%20Blu-ray&campid=5339133571&customid=dune-1984-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Kyle MacLachlan, Francesca Annis, Sting, Sean Young, José Ferrer, Max von Sydow, Patrick Stewart, Linda Hunt, Jürgen Prochnow",
+    "director": "David Lynch",
+    "producers": "Raffaella De Laurentiis, Dino De Laurentiis",
+    "company": "Universal Pictures / Dino De Laurentiis",
+    "titleNote": "David Lynch / 1984",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / David Lynch / 1980s",
+    "copies": [
+      {
+        "id": "dune-1984-bluray-1",
+        "added": "2026-10-12",
+        "format": "Blu-ray",
+        "edition": "Universal Blu-ray, Canadian bilingual edition",
+        "photos": [
+          "images/dune-1984-bluray-1.jpg",
+          "images/dune-1984-bluray-2.jpg",
+          "images/dune-1984-bluray-3.jpg",
+          "images/dune-1984-bluray-4.jpg",
+          "images/dune-1984-bluray-5.jpg"
+        ],
+        "gif": "images/dune-1984-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good (light wear on one bottom corner)",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Universal Studios Canada release. About 2 hrs 17 min, 1080p widescreen 2.35:1, English DTS-HD Master Audio 5.1, French DTS-HD 2.0, English SDH, Spanish and French subtitles. Extras: deleted scenes, Designing Dune, Dune FX, Dune Models & Miniatures, Dune Wardrobe Design. Rated PG-13 (US) / 14A (Canada)."
+        },
+        "ebayUrl": "",
         "sold": false
       }
     ]
