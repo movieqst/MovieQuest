@@ -1195,7 +1195,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/128129552106",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "lZ1tJqTOnQc"
   },
   {
     "id": "gone-girl-2014-bluray",
@@ -1290,7 +1291,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/117211509627",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "2-_-1nJf8Vg"
   },
   {
     "id": "the-last-of-the-mohicans-1992-bluray",
@@ -1373,7 +1375,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/127945329022",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "c9TED2yeoRo"
   },
   {
     "id": "south-park-season-16-dvd",
@@ -1466,7 +1469,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/128129583903",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "6RleOmm2kuM"
   },
   {
     "id": "dune-1984-bluray",
@@ -1545,7 +1549,8 @@
         "ebayUrl": "",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "pm7Lvg8iwTc"
   },
   {
     "id": "ghost-dog-1999-dvd",
@@ -1630,7 +1635,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/117223239438",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "uLHeMzjQ29E"
   },
   {
     "id": "survival-island-2005-dvd",
@@ -1715,7 +1721,8 @@
         "ebayUrl": "https://www.ebay.ca/itm/127831419577",
         "sold": false
       }
-    ]
+    ],
+    "youtubeId": "BjZ2N0y96wk"
   },
   {
     "id": "margin-call-2011-dvd",
@@ -1793,7 +1800,8 @@
         "ebayUrl": "",
         "sold": true
       }
-    ]
+    ],
+    "youtubeId": "dBGwWTI8Gjw"
   },
   {
     "id": "batman-1989-bluray",
@@ -1873,7 +1881,8 @@
         "ebayUrl": "",
         "sold": true
       }
-    ]
+    ],
+    "youtubeId": "dgC9Q0uhX70"
   },
   {
     "id": "the-good-witch-2008-dvd",
@@ -2027,7 +2036,8 @@
         "ebayUrl": "",
         "sold": true
       }
-    ]
+    ],
+    "youtubeId": "jNuIn4T-CLk"
   },
   {
     "id": "commando-1985-dvd",
@@ -2109,7 +2119,8 @@
         "sold": true
       }
     ],
-    "sold": true
+    "sold": true,
+    "youtubeId": "yus3Hhe1rW4"
   },
   {
     "id": "bright-lights-big-city-1988-dvd",
@@ -2185,6 +2196,7 @@
         "ebayUrl": "",
         "sold": true
       }
-    ]
+    ],
+    "youtubeId": "C05C0KFQ3zA"
   }
 ]
