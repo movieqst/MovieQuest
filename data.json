@@ -1716,5 +1716,83 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "margin-call-2011-dvd",
+    "title": "Margin Call",
+    "year": 2011,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/margin-call-2011-dvd-1.jpg",
+    "photos": [
+      "images/margin-call-2011-dvd-1.jpg",
+      "images/margin-call-2011-dvd-2.jpg",
+      "images/margin-call-2011-dvd-3.jpg",
+      "images/margin-call-2011-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Margin%20Call%20DVD&campid=5339133571&customid=margin-call-2011-dvd",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Kevin Spacey, Paul Bettany, Jeremy Irons, Zachary Quinto, Penn Badgley, Simon Baker, Mary McDonnell, Demi Moore, Stanley Tucci",
+    "director": "J.C. Chandor",
+    "producers": "Robert Ogden Barnum, Michael Benaroya, Neal Dodson, Joe Jenckes, Corey Moosa, Zachary Quinto",
+    "company": "Before the Door Pictures / Benaroya Pictures / Alliance Films",
+    "titleNote": "Widescreen / 2011",
+    "tagline": "DVD / Bilingual Canadian Edition / Kevin Spacey / Jeremy Irons / 2010s",
+    "desc": "Set in the high-stakes world of the financial industry, Margin Call is a thriller about the key players at an investment firm during one perilous 24-hour period in the early stages of the 2008 financial crisis. When an entry-level analyst uncovers information that could bring down the firm, a roller-coaster ride follows as financial and moral decisions push everyone involved to the brink of disaster.",
+    "trivia": [
+      {
+        "heading": "Oscar-Nominated Debut",
+        "text": "Margin Call was the first feature film from writer-director J.C. Chandor, and his script earned an Academy Award nomination for Best Original Screenplay."
+      },
+      {
+        "heading": "Shot in About 17 Days",
+        "text": "The film was made on a small budget of roughly $3.5 million and shot in about 17 days, mostly on an empty office floor in Manhattan."
+      },
+      {
+        "heading": "Family Ties to Wall Street",
+        "text": "Chandor's father spent decades working at Merrill Lynch, and that background helped shape the film's view of life inside an investment bank."
+      },
+      {
+        "heading": "Produced by Its Star",
+        "text": "Zachary Quinto, who plays analyst Peter Sullivan, also produced the film through his company Before the Door Pictures."
+      }
+    ],
+    "tidbits": [
+      "Margin Call was the first feature film from writer-director J.C. Chandor, and his script earned an Academy Award nomination for Best Original Screenplay.",
+      "The film was made on a small budget of roughly $3.5 million and shot in about 17 days, mostly on an empty office floor in Manhattan.",
+      "Chandor's father spent decades working at Merrill Lynch, and that background helped shape the film's view of life inside an investment bank.",
+      "Zachary Quinto, who plays analyst Peter Sullivan, also produced the film through his company Before the Door Pictures."
+    ],
+    "sold": true,
+    "copies": [
+      {
+        "id": "margin-call-2011-dvd-1",
+        "added": "2026-10-12",
+        "format": "DVD",
+        "edition": "Alliance Films bilingual DVD (Canada)",
+        "photos": [
+          "images/margin-call-2011-dvd-1.jpg",
+          "images/margin-call-2011-dvd-2.jpg",
+          "images/margin-call-2011-dvd-3.jpg",
+          "images/margin-call-2011-dvd-4.jpg"
+        ],
+        "gif": "images/margin-call-2011-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Films Canadian release (catalogue 571599), Marge de manoeuvre. About 1 hr 47 min, widescreen 1.78:1 enhanced for 16x9, English Dolby Digital EX 5.1, French Dolby Digital 5.1, English and French SDH subtitles. Extras: director and producer commentary, \"Revolving Door\": Making Margin Call, \"Missed Calls\": Moments with Cast and Crew, \"From the Deck\" photo gallery, deleted scenes with optional commentary. Rated 14A."
+        },
+        "ebayUrl": "",
+        "sold": true
+      }
+    ]
   }
 ]
