@@ -2646,5 +2646,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "robocop-3-1993-dvd",
+    "title": "RoboCop 3",
+    "year": 1993,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/robocop-3-1993-dvd-1.jpg",
+    "photos": [
+      "images/robocop-3-1993-dvd-1.jpg",
+      "images/robocop-3-1993-dvd-2.jpg",
+      "images/robocop-3-1993-dvd-3.jpg",
+      "images/robocop-3-1993-dvd-4.jpg",
+      "images/robocop-3-1993-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=RoboCop%203%20DVD&campid=5339133571&customid=robocop-3-1993-dvd",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "youtubeId": "VtyhqN4-up8",
+    "starring": "Robert John Burke, Nancy Allen, Rip Torn, John Castle, Jill Hennessy, CCH Pounder, Mako, Remy Ryan",
+    "director": "Fred Dekker",
+    "producers": "Patrick Crowley",
+    "company": "Orion Pictures / MGM Home Entertainment",
+    "titleNote": "Widescreen / 1993",
+    "tagline": "DVD / Widescreen / Robert John Burke / Nancy Allen / 1990s",
+    "desc": "It's Megacop vs. Megacorp when Detroit's cyborg crime-fighter hits the streets to protect the innocent from corporate greed. When the ruthless corporation that runs Motor City starts forcing families out of their homes to clear space for a profitable new real estate project, RoboCop (Robert John Burke) joins forces with a band of freedom fighters to save them. Facing a deadly android and a dangerous gang of thugs, RoboCop's latest arsenal of high-tech weaponry evens the odds as he takes on an entire corporate militia in an all-out war to control Detroit.",
+    "trivia": [
+      {
+        "heading": "A New Man in the Suit",
+        "text": "Peter Weller, who played RoboCop in the first two films, didn't return. Robert John Burke took over the role of Alex Murphy for the third film."
+      },
+      {
+        "heading": "Lewis Is the Constant",
+        "text": "Nancy Allen is the only lead actor to appear in all three original RoboCop films, returning once more as Officer Anne Lewis."
+      },
+      {
+        "heading": "Finished in 1991, Released in 1993",
+        "text": "The film was shot in Atlanta in 1991, but Orion Pictures' financial troubles kept it on the shelf for about two years before it reached theatres."
+      },
+      {
+        "heading": "RoboCop Gets PG-13",
+        "text": "Unlike the first two R-rated films, RoboCop 3 was made for a PG-13 rating to reach a younger audience, so the violence was toned down."
+      },
+      {
+        "heading": "Frank Miller Returns",
+        "text": "Comic book legend Frank Miller, who co-wrote RoboCop 2, came back to co-write this one with director Fred Dekker."
+      },
+      {
+        "heading": "The Classic Theme Is Back",
+        "text": "Basil Poledouris, who composed the original RoboCop score, returned for this film and brought back his famous RoboCop theme."
+      }
+    ],
+    "tidbits": [
+      "Peter Weller, who played RoboCop in the first two films, didn't return. Robert John Burke took over the role of Alex Murphy for the third film.",
+      "Nancy Allen is the only lead actor to appear in all three original RoboCop films, returning once more as Officer Anne Lewis.",
+      "The film was shot in Atlanta in 1991, but Orion Pictures' financial troubles kept it on the shelf for about two years before it reached theatres.",
+      "Unlike the first two R-rated films, RoboCop 3 was made for a PG-13 rating to reach a younger audience, so the violence was toned down.",
+      "Comic book legend Frank Miller, who co-wrote RoboCop 2, came back to co-write this one with director Fred Dekker.",
+      "Basil Poledouris, who composed the original RoboCop score, returned for this film and brought back his famous RoboCop theme."
+    ],
+    "copies": [
+      {
+        "id": "robocop-3-1993-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "MGM DVD, 16x9 widescreen (1.85:1)",
+        "photos": [
+          "images/robocop-3-1993-dvd-1.jpg",
+          "images/robocop-3-1993-dvd-2.jpg",
+          "images/robocop-3-1993-dvd-3.jpg",
+          "images/robocop-3-1993-dvd-4.jpg",
+          "images/robocop-3-1993-dvd-5.jpg"
+        ],
+        "gif": "images/robocop-3-1993-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "MGM Home Entertainment DVD (catalogue 1006779), Region 1 NTSC. 105 minutes, colour, 16x9 widescreen (1.85:1). English Dolby Digital 5.1 surround, French stereo surround; English, French and Spanish subtitles; closed captioned. Special features: original theatrical trailer. Rated PG-13 (US) / 14A (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
