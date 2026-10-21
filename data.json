@@ -2736,5 +2736,97 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "thief-1981-dvd",
+    "title": "Thief",
+    "year": 1981,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/thief-1981-dvd-1.jpg",
+    "photos": [
+      "images/thief-1981-dvd-1.jpg",
+      "images/thief-1981-dvd-2.jpg",
+      "images/thief-1981-dvd-3.jpg",
+      "images/thief-1981-dvd-4.jpg",
+      "images/thief-1981-dvd-5.jpg",
+      "images/thief-1981-dvd-6.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Thief%20James%20Caan%20DVD&campid=5339133571&customid=thief-1981-dvd",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "youtubeId": "TWfJYC0_uSU",
+    "starring": "James Caan, Tuesday Weld, Willie Nelson, Robert Prosky, James Belushi, Dennis Farina",
+    "director": "Michael Mann",
+    "producers": "Jerry Bruckheimer, Ronnie Caan",
+    "company": "United Artists / MGM Home Entertainment",
+    "titleNote": "Special Director's Edition / 1981",
+    "tagline": "DVD / Special Director's Edition / Widescreen / James Caan / 1980s",
+    "desc": "James Caan is at his very best as Frank, a tough, wisecracking professional safecracker trapped between Chicago organized crime and corrupt police in this gripping heist drama. Michael Mann, later the creator of Miami Vice and director of Heat and The Last of the Mohicans, wrote and directed this taut, visually dazzling film. Shot on rain-slicked Chicago streets, Thief captures the suspense and human drama of professional crime with incredibly realistic detail. Co-starring Tuesday Weld, country superstar Willie Nelson and James Belushi.",
+    "trivia": [
+      {
+        "heading": "Michael Mann's Debut",
+        "text": "Thief was Michael Mann's first theatrical feature, years before Miami Vice, Manhunter, Heat and Collateral. He also wrote the screenplay."
+      },
+      {
+        "heading": "Real Safecrackers",
+        "text": "Mann hired real professional thieves as technical advisors, and the burglary scenes use genuine tools and techniques, including a real thermal lance burning through a safe."
+      },
+      {
+        "heading": "Caan's Favourite",
+        "text": "James Caan often said Frank in Thief was one of his favourite roles, second only to Sonny Corleone in The Godfather."
+      },
+      {
+        "heading": "Tangerine Dream Score",
+        "text": "The pulsing electronic soundtrack is by German band Tangerine Dream, and it helped define the moody neon look and sound of 1980s crime films."
+      },
+      {
+        "heading": "Early Screen Appearances",
+        "text": "The film features early screen roles for James Belushi and Dennis Farina, a former Chicago cop who went on to star in Mann's TV series Crime Story."
+      },
+      {
+        "heading": "A Bruckheimer Production",
+        "text": "Thief was co-produced by Jerry Bruckheimer, who later became one of Hollywood's biggest producers with Top Gun, Pirates of the Caribbean and more."
+      }
+    ],
+    "tidbits": [
+      "Thief was Michael Mann's first theatrical feature, years before Miami Vice, Manhunter, Heat and Collateral. He also wrote the screenplay.",
+      "Mann hired real professional thieves as technical advisors, and the burglary scenes use genuine tools and techniques, including a real thermal lance burning through a safe.",
+      "James Caan often said Frank in Thief was one of his favourite roles, second only to Sonny Corleone in The Godfather.",
+      "The pulsing electronic soundtrack is by German band Tangerine Dream, and it helped define the moody neon look and sound of 1980s crime films.",
+      "The film features early screen roles for James Belushi and Dennis Farina, a former Chicago cop who went on to star in Mann's TV series Crime Story.",
+      "Thief was co-produced by Jerry Bruckheimer, who later became one of Hollywood's biggest producers with Top Gun, Pirates of the Caribbean and more."
+    ],
+    "copies": [
+      {
+        "id": "thief-1981-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "MGM Special Director's Edition DVD, widescreen",
+        "photos": [
+          "images/thief-1981-dvd-1.jpg",
+          "images/thief-1981-dvd-2.jpg",
+          "images/thief-1981-dvd-3.jpg",
+          "images/thief-1981-dvd-4.jpg",
+          "images/thief-1981-dvd-5.jpg",
+          "images/thief-1981-dvd-6.jpg"
+        ],
+        "gif": "images/thief-1981-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "MGM Home Entertainment Special Director's Edition DVD (1998, catalogue 907024), Region 1 NTSC. 124 minutes (2 hours 4 minutes), colour, widescreen theatrical release format (Panavision). English Dolby Digital 5.1 surround; English, French and Spanish subtitles; closed captioned. Special features: feature-length audio commentary by Michael Mann and James Caan, footage not shown in theatres, new Dolby Digital 5.1 soundtrack, original theatrical trailer. Rated R (US) / 18A (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
