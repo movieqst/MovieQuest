@@ -3101,5 +3101,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "boston-legal-season-5-dvd",
+    "title": "Boston Legal: Season Five",
+    "year": 2008,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/boston-legal-season-5-dvd-1.jpg",
+    "photos": [
+      "images/boston-legal-season-5-dvd-1.jpg",
+      "images/boston-legal-season-5-dvd-2.jpg",
+      "images/boston-legal-season-5-dvd-3.jpg",
+      "images/boston-legal-season-5-dvd-4.jpg",
+      "images/boston-legal-season-5-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Boston%20Legal%20Season%205%20DVD&campid=5339133571&customid=boston-legal-season-5-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "youtubeId": "ITpan9z2fpI",
+    "runYears": "2004–2008",
+    "createdBy": "David E. Kelley",
+    "starring": "James Spader, William Shatner, Candice Bergen, John Larroquette, Christian Clemenson, Tara Summers, Saffron Burrows",
+    "producers": "David E. Kelley, Bill D'Elia",
+    "company": "David E. Kelley Productions / 20th Century Fox Television / ABC",
+    "titleNote": "Season Five / 2008",
+    "tagline": "DVD / 4-Disc Set / Final Season / James Spader / William Shatner / TV Series",
+    "desc": "In its spectacular fifth and final season, Boston Legal tackles some of today's most inflammatory, and sometimes irreverent, social and moral issues, from teen pregnancy and the death penalty to sex surrogates and Alzheimer's. Now, as Crane, Poole & Schmidt faces financial ruin, its brilliant attorneys face chaotic caseloads filled with malpractice, murder, love and lust. There's a surprise engagement, or two, and of course the bittersweet final act of this remarkable series. Starring Emmy Award winners James Spader, Candice Bergen, John Larroquette and William Shatner.",
+    "trivia": [
+      {
+        "heading": "Born on The Practice",
+        "text": "Alan Shore and Denny Crane were introduced in the final season of David E. Kelley's The Practice in 2004, and Boston Legal spun off with them that fall."
+      },
+      {
+        "heading": "Emmy Winners",
+        "text": "James Spader won the Emmy for Outstanding Lead Actor in a Drama for Alan Shore in 2005 and 2007, and William Shatner won Outstanding Supporting Actor in 2005, after winning a guest Emmy for playing Denny Crane on The Practice."
+      },
+      {
+        "heading": "Scotch on the Balcony",
+        "text": "Almost every episode closes with Denny and Alan on the office balcony with a scotch and a cigar, talking over the case and their friendship."
+      },
+      {
+        "heading": "Till Death Do Us Part",
+        "text": "In the series finale, Denny and Alan get married so Alan can care for Denny as his memory fails, the ultimate act of the show's famous friendship."
+      },
+      {
+        "heading": "The Final Season",
+        "text": "Season five was a shortened final run that wrapped up the series in December 2008, with the two-hour finale shown on ABC."
+      }
+    ],
+    "tidbits": [
+      "Alan Shore and Denny Crane were introduced in the final season of David E. Kelley's The Practice in 2004, and Boston Legal spun off with them that fall.",
+      "James Spader won the Emmy for Outstanding Lead Actor in a Drama for Alan Shore in 2005 and 2007, and William Shatner won Outstanding Supporting Actor in 2005, after winning a guest Emmy for playing Denny Crane on The Practice.",
+      "Almost every episode closes with Denny and Alan on the office balcony with a scotch and a cigar, talking over the case and their friendship.",
+      "In the series finale, Denny and Alan get married so Alan can care for Denny as his memory fails, the ultimate act of the show's famous friendship.",
+      "Season five was a shortened final run that wrapped up the series in December 2008, with the two-hour finale shown on ABC."
+    ],
+    "copies": [
+      {
+        "id": "boston-legal-season-5-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "20th Century Fox 4-disc set with slipcover",
+        "photos": [
+          "images/boston-legal-season-5-dvd-1.jpg",
+          "images/boston-legal-season-5-dvd-2.jpg",
+          "images/boston-legal-season-5-dvd-3.jpg",
+          "images/boston-legal-season-5-dvd-4.jpg",
+          "images/boston-legal-season-5-dvd-5.jpg"
+        ],
+        "gif": "images/boston-legal-season-5-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good, with matching slipcover",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Slipcover",
+          "notes": "20th Century Fox Home Entertainment 4-disc DVD set (2009), Region 1 NTSC. All season five episodes, 557 minutes, colour, widescreen 1.78:1. English Dolby Digital surround; subtitles in English, Spanish, French and Portuguese; closed captioned. Special features: \"Stricken from the Record!\" deleted scenes with an introduction by executive producer/director Bill D'Elia; \"Denny and Alan: Friends to the End\" featurette; \"Denny's Daughter: The Untold Story\" featurette; \"Closing Statement: The Boston Legal Series Finale\" featurette. Rated G (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
