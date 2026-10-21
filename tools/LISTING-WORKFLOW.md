@@ -17,6 +17,8 @@ One physical copy at a time. Movie uploads its photo group; the AI does the rest
 
 - Condition defaults to **Very Good** (case, disc and overall) unless Movie
   gives a grade; he changes it on eBay if needed.
+- `price` on the website is always the full eBay price, never a sale or
+  discounted price (Movie, 21 Oct).
 
 ## 2. data.json
 New movie → add an item. Existing movie → edit its item. Fields used:

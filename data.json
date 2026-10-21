@@ -362,7 +362,7 @@
     "year": 2015,
     "format": "Blu-ray",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/the_revenant-2015-1.jpg",
+    "image": "https://moviequest.ca/images/the-revenant-2015-bluray-1.jpg",
     "desc": "Alejandro G. Iñárritu's brutal survival epic follows frontiersman Hugh Glass as he fights to stay alive after being mauled by a bear and left for dead by his own hunting party. Leonardo DiCaprio won his first Academy Award for the role, alongside Tom Hardy and Domhnall Gleeson.",
     "tidbits": [
       "With the exception of one campfire scene, the entire film was shot using only natural light.",
@@ -371,9 +371,9 @@
       "The bear attack sequence was created entirely through CGI, with stunt performers in harnesses standing in for the animal during filming.",
       "Director Iñárritu insisted on shooting the film in chronological order, believing it would help the cast's performances build naturally scene to scene."
     ],
-    "storeUrl": "",
+    "storeUrl": "https://www.ebay.ca/itm/128149229842?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=the-revenant-2015-bluray&toolid=10001&mkevt=1",
     "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The%20Revenant%202015&campid=5339133571&customid=the-revenant-2015-bluray",
-    "price": null,
+    "price": 10.95,
     "categories": [
       "2010s"
     ],
@@ -381,7 +381,67 @@
     "director": "Alejandro G. Iñárritu",
     "producers": "Arnon Milchan, Steve Golin, Alejandro G. Iñárritu, Mary Parent, James W. Skotchdopole, Keith Redmon",
     "company": "20th Century Fox",
-    "youtubeId": "LoebZZ8K5N0"
+    "youtubeId": "LoebZZ8K5N0",
+    "photos": [
+      "images/the-revenant-2015-bluray-1.jpg",
+      "images/the-revenant-2015-bluray-2.jpg",
+      "images/the-revenant-2015-bluray-3.jpg",
+      "images/the-revenant-2015-bluray-4.jpg",
+      "images/the-revenant-2015-bluray-5.jpg",
+      "images/the-revenant-2015-bluray-6.jpg"
+    ],
+    "titleNote": "Le Revenant / 2015",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / Leonardo DiCaprio / Tom Hardy / 2010s",
+    "trivia": [
+      {
+        "heading": "Natural Light Only",
+        "text": "With the exception of one campfire scene, the entire film was shot using only natural light."
+      },
+      {
+        "heading": "Chasing Winter to Argentina",
+        "text": "When the snow melted too early during the Canadian shoot, the production relocated to southern Argentina to keep filming in winter conditions."
+      },
+      {
+        "heading": "Method in the Cold",
+        "text": "DiCaprio, a vegetarian in real life, ate raw bison liver on camera and slept inside animal carcasses during the freezing shoot."
+      },
+      {
+        "heading": "A Digital Grizzly",
+        "text": "The bear attack sequence was created entirely through CGI, with stunt performers in harnesses standing in for the animal during filming."
+      },
+      {
+        "heading": "Shot in Order",
+        "text": "Director Iñárritu insisted on shooting the film in chronological order, believing it would help the cast's performances build naturally scene to scene."
+      }
+    ],
+    "copies": [
+      {
+        "id": "the-revenant-2015-bluray-1",
+        "added": "2026-10-21",
+        "format": "Blu-ray",
+        "edition": "20th Century Fox Blu-ray, bilingual Canadian edition (The Revenant / Le Revenant)",
+        "photos": [
+          "images/the-revenant-2015-bluray-1.jpg",
+          "images/the-revenant-2015-bluray-2.jpg",
+          "images/the-revenant-2015-bluray-3.jpg",
+          "images/the-revenant-2015-bluray-4.jpg",
+          "images/the-revenant-2015-bluray-5.jpg",
+          "images/the-revenant-2015-bluray-6.jpg"
+        ],
+        "gif": "images/the-revenant-2015-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "No case: original cover art sleeve, disc in paper sleeve",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Digital HD insert (code expired 04/19/2019)",
+          "notes": "20th Century Fox Home Entertainment Canadian release, bilingual English/French packaging: The Revenant / Le Revenant (Blu-ray Cat. # 2311921). 156 minutes, colour, widescreen 2.40:1, 50GB dual layer, AVC @ 26 Mbps. Audio: English DTS-HD Master Audio 7.1, English Descriptive Audio 5.1, Spanish Dolby Digital 5.1, French Dolby Digital 5.1. Subtitles: English SDH, Spanish, French. Special features: A World Unseen documentary. Winner of 3 Oscars including Best Actor (Leonardo DiCaprio)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/128149229842",
+        "sold": false
+      }
+    ]
   },
   {
     "id": "the-way-of-the-gun-2000-dvd",
@@ -2583,6 +2643,555 @@
           "notes": "Sony Pictures Home Entertainment Canadian release (2016, catalogue 47165), bilingual English/French packaging: Risen / La Résurrection du Christ. 107 minutes, 1080p widescreen 2.40:1, English and French DTS-HD Master Audio 5.1, Spanish Dolby Digital 5.1, English audio description; English, English SDH, French and Spanish subtitles. Blu-ray exclusives: deleted scenes, The Battle of the Zealots Deconstructed. Special features: The Mystery of the Resurrection: Making Risen, Creating A.D. Jerusalem, Script to Screen, feature commentary. Rated PG (Canada) / G (Quebec) / PG-13 (US)."
         },
         "ebayUrl": "https://www.ebay.ca/itm/117132554278",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "robocop-3-1993-dvd",
+    "title": "RoboCop 3",
+    "year": 1993,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/robocop-3-1993-dvd-1.jpg",
+    "photos": [
+      "images/robocop-3-1993-dvd-1.jpg",
+      "images/robocop-3-1993-dvd-2.jpg",
+      "images/robocop-3-1993-dvd-3.jpg",
+      "images/robocop-3-1993-dvd-4.jpg",
+      "images/robocop-3-1993-dvd-5.jpg",
+      "images/robocop-3-1993-dvd-6.jpg",
+      "images/robocop-3-1993-dvd-7.jpg",
+      "images/robocop-3-1993-dvd-8.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117479393292?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=robocop-3-1993-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=RoboCop%203%20DVD&campid=5339133571&customid=robocop-3-1993-dvd",
+    "price": 25.95,
+    "categories": [
+      "1990s"
+    ],
+    "youtubeId": "VtyhqN4-up8",
+    "starring": "Robert John Burke, Nancy Allen, Rip Torn, John Castle, Jill Hennessy, CCH Pounder, Mako, Remy Ryan",
+    "director": "Fred Dekker",
+    "producers": "Patrick Crowley",
+    "company": "Orion Pictures / MGM Home Entertainment",
+    "titleNote": "Widescreen / 1993",
+    "tagline": "DVD / Widescreen / Robert John Burke / Nancy Allen / 1990s",
+    "desc": "It's Megacop vs. Megacorp when Detroit's cyborg crime-fighter hits the streets to protect the innocent from corporate greed. When the ruthless corporation that runs Motor City starts forcing families out of their homes to clear space for a profitable new real estate project, RoboCop (Robert John Burke) joins forces with a band of freedom fighters to save them. Facing a deadly android and a dangerous gang of thugs, RoboCop's latest arsenal of high-tech weaponry evens the odds as he takes on an entire corporate militia in an all-out war to control Detroit.",
+    "trivia": [
+      {
+        "heading": "A New Man in the Suit",
+        "text": "Peter Weller, who played RoboCop in the first two films, didn't return. Robert John Burke took over the role of Alex Murphy for the third film."
+      },
+      {
+        "heading": "Lewis Is the Constant",
+        "text": "Nancy Allen is the only lead actor to appear in all three original RoboCop films, returning once more as Officer Anne Lewis."
+      },
+      {
+        "heading": "Finished in 1991, Released in 1993",
+        "text": "The film was shot in Atlanta in 1991, but Orion Pictures' financial troubles kept it on the shelf for about two years before it reached theatres."
+      },
+      {
+        "heading": "RoboCop Gets PG-13",
+        "text": "Unlike the first two R-rated films, RoboCop 3 was made for a PG-13 rating to reach a younger audience, so the violence was toned down."
+      },
+      {
+        "heading": "Frank Miller Returns",
+        "text": "Comic book legend Frank Miller, who co-wrote RoboCop 2, came back to co-write this one with director Fred Dekker."
+      },
+      {
+        "heading": "The Classic Theme Is Back",
+        "text": "Basil Poledouris, who composed the original RoboCop score, returned for this film and brought back his famous RoboCop theme."
+      }
+    ],
+    "tidbits": [
+      "Peter Weller, who played RoboCop in the first two films, didn't return. Robert John Burke took over the role of Alex Murphy for the third film.",
+      "Nancy Allen is the only lead actor to appear in all three original RoboCop films, returning once more as Officer Anne Lewis.",
+      "The film was shot in Atlanta in 1991, but Orion Pictures' financial troubles kept it on the shelf for about two years before it reached theatres.",
+      "Unlike the first two R-rated films, RoboCop 3 was made for a PG-13 rating to reach a younger audience, so the violence was toned down.",
+      "Comic book legend Frank Miller, who co-wrote RoboCop 2, came back to co-write this one with director Fred Dekker.",
+      "Basil Poledouris, who composed the original RoboCop score, returned for this film and brought back his famous RoboCop theme."
+    ],
+    "copies": [
+      {
+        "id": "robocop-3-1993-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "MGM DVD, 16x9 widescreen (1.85:1)",
+        "photos": [
+          "images/robocop-3-1993-dvd-1.jpg",
+          "images/robocop-3-1993-dvd-2.jpg",
+          "images/robocop-3-1993-dvd-3.jpg",
+          "images/robocop-3-1993-dvd-4.jpg",
+          "images/robocop-3-1993-dvd-5.jpg",
+          "images/robocop-3-1993-dvd-6.jpg",
+          "images/robocop-3-1993-dvd-7.jpg",
+          "images/robocop-3-1993-dvd-8.jpg"
+        ],
+        "gif": "images/robocop-3-1993-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "MGM Home Entertainment DVD (catalogue 1006779), Region 1 NTSC. 105 minutes, colour, 16x9 widescreen (1.85:1). English Dolby Digital 5.1 surround, French stereo surround; English, French and Spanish subtitles; closed captioned. Special features: original theatrical trailer. Rated PG-13 (US) / 14A (Canada)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117479393292",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "thief-1981-dvd",
+    "title": "Thief",
+    "year": 1981,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/thief-1981-dvd-1.jpg",
+    "photos": [
+      "images/thief-1981-dvd-1.jpg",
+      "images/thief-1981-dvd-2.jpg",
+      "images/thief-1981-dvd-3.jpg",
+      "images/thief-1981-dvd-4.jpg",
+      "images/thief-1981-dvd-5.jpg",
+      "images/thief-1981-dvd-6.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117479413896?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=thief-1981-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Thief%20James%20Caan%20DVD&campid=5339133571&customid=thief-1981-dvd",
+    "price": 29.95,
+    "categories": [
+      "1980s"
+    ],
+    "youtubeId": "TWfJYC0_uSU",
+    "starring": "James Caan, Tuesday Weld, Willie Nelson, Robert Prosky, James Belushi, Dennis Farina",
+    "director": "Michael Mann",
+    "producers": "Jerry Bruckheimer, Ronnie Caan",
+    "company": "United Artists / MGM Home Entertainment",
+    "titleNote": "Special Director's Edition / 1981",
+    "tagline": "DVD / Special Director's Edition / Widescreen / James Caan / 1980s",
+    "desc": "James Caan is at his very best as Frank, a tough, wisecracking professional safecracker trapped between Chicago organized crime and corrupt police in this gripping heist drama. Michael Mann, later the creator of Miami Vice and director of Heat and The Last of the Mohicans, wrote and directed this taut, visually dazzling film. Shot on rain-slicked Chicago streets, Thief captures the suspense and human drama of professional crime with incredibly realistic detail. Co-starring Tuesday Weld, country superstar Willie Nelson and James Belushi.",
+    "trivia": [
+      {
+        "heading": "Michael Mann's Debut",
+        "text": "Thief was Michael Mann's first theatrical feature, years before Miami Vice, Manhunter, Heat and Collateral. He also wrote the screenplay."
+      },
+      {
+        "heading": "Real Safecrackers",
+        "text": "Mann hired real professional thieves as technical advisors, and the burglary scenes use genuine tools and techniques, including a real thermal lance burning through a safe."
+      },
+      {
+        "heading": "Caan's Favourite",
+        "text": "James Caan often said Frank in Thief was one of his favourite roles, second only to Sonny Corleone in The Godfather."
+      },
+      {
+        "heading": "Tangerine Dream Score",
+        "text": "The pulsing electronic soundtrack is by German band Tangerine Dream, and it helped define the moody neon look and sound of 1980s crime films."
+      },
+      {
+        "heading": "Early Screen Appearances",
+        "text": "The film features early screen roles for James Belushi and Dennis Farina, a former Chicago cop who went on to star in Mann's TV series Crime Story."
+      },
+      {
+        "heading": "A Bruckheimer Production",
+        "text": "Thief was co-produced by Jerry Bruckheimer, who later became one of Hollywood's biggest producers with Top Gun, Pirates of the Caribbean and more."
+      }
+    ],
+    "tidbits": [
+      "Thief was Michael Mann's first theatrical feature, years before Miami Vice, Manhunter, Heat and Collateral. He also wrote the screenplay.",
+      "Mann hired real professional thieves as technical advisors, and the burglary scenes use genuine tools and techniques, including a real thermal lance burning through a safe.",
+      "James Caan often said Frank in Thief was one of his favourite roles, second only to Sonny Corleone in The Godfather.",
+      "The pulsing electronic soundtrack is by German band Tangerine Dream, and it helped define the moody neon look and sound of 1980s crime films.",
+      "The film features early screen roles for James Belushi and Dennis Farina, a former Chicago cop who went on to star in Mann's TV series Crime Story.",
+      "Thief was co-produced by Jerry Bruckheimer, who later became one of Hollywood's biggest producers with Top Gun, Pirates of the Caribbean and more."
+    ],
+    "copies": [
+      {
+        "id": "thief-1981-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "MGM Special Director's Edition DVD, widescreen",
+        "photos": [
+          "images/thief-1981-dvd-1.jpg",
+          "images/thief-1981-dvd-2.jpg",
+          "images/thief-1981-dvd-3.jpg",
+          "images/thief-1981-dvd-4.jpg",
+          "images/thief-1981-dvd-5.jpg",
+          "images/thief-1981-dvd-6.jpg"
+        ],
+        "gif": "images/thief-1981-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "8-page booklet (trivia, production notes and the making of the film)",
+          "notes": "MGM Home Entertainment Special Director's Edition DVD (1998, catalogue 907024), Region 1 NTSC. 124 minutes (2 hours 4 minutes), colour, widescreen theatrical release format (Panavision). English Dolby Digital 5.1 surround; English, French and Spanish subtitles; closed captioned. Special features: feature-length audio commentary by Michael Mann and James Caan, footage not shown in theatres, new Dolby Digital 5.1 soundtrack, original theatrical trailer. Rated R (US) / 18A (Canada)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117479413896",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "chris-sheppard-a-trip-to-the-moon-1993-cd",
+    "title": "Chris Sheppard: A Trip to the Moon",
+    "year": 1993,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/chris-sheppard-a-trip-to-the-moon-1993-cd-1.jpg",
+    "photos": [
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-1.jpg",
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-2.jpg",
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-3.jpg",
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-4.jpg",
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-5.jpg",
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-6.jpg",
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-7.jpg",
+      "images/chris-sheppard-a-trip-to-the-moon-1993-cd-8.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117479422356?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=chris-sheppard-a-trip-to-the-moon-1993-cd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Chris%20Sheppard%20Trip%20To%20The%20Moon%20CD&campid=5339133571&customid=chris-sheppard-a-trip-to-the-moon-1993-cd",
+    "price": 128.95,
+    "categories": [
+      "music"
+    ],
+    "producers": "Concept & compilation: Chris Sheppard and Markus Klinke. Digital mastering: Rettberg Music Productions. Jacket design: Jay Rawson",
+    "titleNote": "Level 4 / 1993",
+    "tagline": "Music CD / Chris Sheppard / Progressive House, Trance & Hardcore / Made in Canada / 1993",
+    "desc": "Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-'90s UK and European club and rave tracks, from Nu-Civilisation's \"Wake Up\" and House Of Gypsies' \"Samba\" to Coco, Steel & Lovebomb on Warp Records, Acen's rave classic \"Trip II The Moon\" and Alpha Team's \"Speed Racer\". A snapshot of the 1992 to 1993 Toronto club scene that Sheppard helped build.",
+    "trivia": [
+      {
+        "heading": "Canada's Dance DJ",
+        "text": "Chris Sheppard was one of the leading figures in Canadian dance music in the 1980s and 1990s, spinning in Toronto clubs and hosting a nationally syndicated dance radio show."
+      },
+      {
+        "heading": "Before Love Inc.",
+        "text": "A few years after this compilation, Sheppard co-founded the Eurodance group Love Inc. with Brad Daymond and singer Simone Denny. Their hit \"Broken Bones\" won Best Video at the 1998 MuchMusic Video Awards."
+      },
+      {
+        "heading": "Where the Title Comes From",
+        "text": "Track 15, \"Trip II The Moon\" by Acen, was a 1992 UK top-40 hit and is regarded as a classic of early-'90s breakbeat hardcore. The Guardian ranked it the second-best track of that era."
+      },
+      {
+        "heading": "Made in Canada",
+        "text": "The CD was compiled by Chris Sheppard and Markus Klinke and released in 1993 by Quality Music & Video of Scarborough, Ontario (catalogue QCD 2020)."
+      }
+    ],
+    "tidbits": [
+      "Chris Sheppard was one of the leading figures in Canadian dance music in the 1980s and 1990s, spinning in Toronto clubs and hosting a nationally syndicated dance radio show.",
+      "A few years after this compilation, Sheppard co-founded the Eurodance group Love Inc. with Brad Daymond and singer Simone Denny. Their hit \"Broken Bones\" won Best Video at the 1998 MuchMusic Video Awards.",
+      "Track 15, \"Trip II The Moon\" by Acen, was a 1992 UK top-40 hit and is regarded as a classic of early-'90s breakbeat hardcore. The Guardian ranked it the second-best track of that era.",
+      "The CD was compiled by Chris Sheppard and Markus Klinke and released in 1993 by Quality Music & Video of Scarborough, Ontario (catalogue QCD 2020)."
+    ],
+    "copies": [
+      {
+        "id": "chris-sheppard-a-trip-to-the-moon-1993-cd-1",
+        "added": "2026-10-21",
+        "format": "CD",
+        "edition": "Quality Music & Video, Canada (QCD 2020)",
+        "photos": [
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-1.jpg",
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-2.jpg",
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-3.jpg",
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-4.jpg",
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-5.jpg",
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-6.jpg",
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-7.jpg",
+          "images/chris-sheppard-a-trip-to-the-moon-1993-cd-8.jpg"
+        ],
+        "gif": "images/chris-sheppard-a-trip-to-the-moon-1993-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Front cover and back tray card",
+          "notes": "Quality Music & Video Canadian release (1993, catalogue QCD 2020, UPC 063961202029), made in Canada. Concept & compilation: Chris Sheppard and Markus Klinke. Jacket design: Jay Rawson. Digital mastering: Rettberg Music Productions. 16 tracks: 1. Wake Up (Shay-Ama) - Nu-Civilisation. 2. House 4 All - The Blunted Dummies. 3. Samba - House Of Gypsies. 4. So Good (marcato mix) - Diesel & Either. 5. We're On A Mission - Franke. 6. Just Can't Help Me - 2 Examples. 7. You Can't Stop The Groove - Coco, Steel & Lovebomb. 8. Feel - The Chameleon Project. 9. Mercurial (stone high mix) - Euphoria UK. 10. Live In Berlin - The Hypnotist. 11. Show Some Love (rhythm invention remix) - Jaco. 12. The Hunter (club mix rumble style) - Herbal Infusion. 13. I Need Your Love - N.R.G.. 14. Nasty (terrorize mix) - Sy-Kick. 15. Trip II The Moon - Acen. 16. Speed Racer (club mix) - Alpha Team."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117479422356",
+        "sold": false
+      }
+    ],
+    "youtubeId": "aTP1mzW0Rdg",
+    "tracks": [
+      {
+        "title": "Wake Up (Shay-Ama)",
+        "artist": "Nu-Civilisation",
+        "credit": "Written by Toby. ℗ 1992 Vista Sounds International, courtesy of Echo Records"
+      },
+      {
+        "title": "House 4 All",
+        "artist": "The Blunted Dummies",
+        "credit": "Written by Caesar/James. ℗ 1992 D.J. Boy Records"
+      },
+      {
+        "title": "Samba",
+        "artist": "House Of Gypsies",
+        "credit": "Written by Terry (Todd Terry). ℗ 1992 Freeze Records, courtesy of Moon Roof Records"
+      },
+      {
+        "title": "So Good (marcato mix)",
+        "artist": "Diesel & Either",
+        "credit": "Written by Scott/Telford. ℗ 1992 Sound of Stockwell"
+      },
+      {
+        "title": "We're On A Mission",
+        "artist": "Franke",
+        "credit": "Written by Pharoah/O'Shaunessy/Donovan. ℗ 1993 China Records"
+      },
+      {
+        "title": "Just Can't Help Me",
+        "artist": "2 Examples",
+        "credit": "Written by Percali. ℗ 1992 Disco Magic UK, courtesy of Dino Music"
+      },
+      {
+        "title": "You Can't Stop The Groove",
+        "artist": "Coco, Steel & Lovebomb",
+        "credit": "Written by Mellor/Woodrow/Waterman. ℗ 1992 Warp Records"
+      },
+      {
+        "title": "Feel",
+        "artist": "The Chameleon Project",
+        "credit": "Written by Chameleon Project. ℗ 1992 Guerilla Records, courtesy of I.R.S. Records"
+      },
+      {
+        "title": "Mercurial (stone high mix)",
+        "artist": "Euphoria UK",
+        "credit": "Written by Sherman/Dray. ℗ 1992 Guerilla Records, courtesy of I.R.S. Records"
+      },
+      {
+        "title": "Live In Berlin",
+        "artist": "The Hypnotist",
+        "credit": "Written by Pound/Smith. ℗ 1992 Rising High Productions, courtesy of Rock Master Productions"
+      },
+      {
+        "title": "Show Some Love (rhythm invention remix)",
+        "artist": "Jaco",
+        "credit": "Written by Jaco. ℗ 1992 Warp Records"
+      },
+      {
+        "title": "The Hunter (club mix rumble style)",
+        "artist": "Herbal Infusion",
+        "credit": "Written by Barnes/Dailey/Jesson. ℗ 1992 Zoom Records"
+      },
+      {
+        "title": "I Need Your Love",
+        "artist": "N.R.G.",
+        "credit": "Written by Warren/Rumney"
+      },
+      {
+        "title": "Nasty (terrorize mix)",
+        "artist": "Sy-Kick",
+        "credit": "Written by French/Carter. ℗ 1992 Hard & Fast, courtesy of General Overseas"
+      },
+      {
+        "title": "Trip II The Moon",
+        "artist": "Acen",
+        "credit": "Written by Razvi. ℗ 1992 Production House Recordings"
+      },
+      {
+        "title": "Speed Racer (club mix)",
+        "artist": "Alpha Team",
+        "credit": "Produced by Alpha Team. ℗ 1992"
+      }
+    ],
+    "artist": "Chris Sheppard (DJ / compiler), Various Artists",
+    "genre": "Electronic: Progressive House, Trance, Breakbeat Hardcore / Rave",
+    "compiledBy": "Chris Sheppard and Markus Klinke",
+    "label": "Quality Music & Video, Canada (QCD 2020, UPC 063961202029)",
+    "released": "1993, Canada"
+  },
+  {
+    "id": "punkd-season-1-dvd",
+    "title": "Punk'd: The Complete First Season",
+    "year": 2003,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/punkd-season-1-dvd-1.jpg",
+    "photos": [
+      "images/punkd-season-1-dvd-1.jpg",
+      "images/punkd-season-1-dvd-2.jpg",
+      "images/punkd-season-1-dvd-3.jpg",
+      "images/punkd-season-1-dvd-4.jpg",
+      "images/punkd-season-1-dvd-5.jpg",
+      "images/punkd-season-1-dvd-6.jpg",
+      "images/punkd-season-1-dvd-7.jpg",
+      "images/punkd-season-1-dvd-8.jpg",
+      "images/punkd-season-1-dvd-9.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/128149239616?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=punkd-season-1-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Punk%27d%20Complete%20First%20Season%20DVD&campid=5339133571&customid=punkd-season-1-dvd",
+    "price": 28.95,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "youtubeId": "WwJeiWgaglQ",
+    "runYears": "2003",
+    "createdBy": "Ashton Kutcher and Jason Goldberg",
+    "starring": "Ashton Kutcher, Dax Shepard, with Justin Timberlake, Frankie Muniz, Kelly Osbourne, Pink",
+    "director": "Ashton Kutcher, Jason Goldberg (creators)",
+    "producers": "Ashton Kutcher, Jason Goldberg",
+    "company": "MTV / Katalyst Films / Paramount Home Entertainment",
+    "titleNote": "MTV 2-Disc Set / 2003",
+    "tagline": "DVD / MTV's DVD Collection / 2-Disc Set / Ashton Kutcher / TV Series",
+    "desc": "They're prettier, wealthier and they get into the best parties. They're celebrities, but what they're not is better than us. Host Ashton Kutcher lets it fly with merciless pranks and practical jokes on unwitting celebrities like Justin Timberlake, Kelly Osbourne and Pink. This 2-disc set includes the complete first season of MTV's Punk'd, plus deleted scenes and bonus footage: home repossessions, redneck in-law houseguests and makeovers from hell.",
+    "trivia": [
+      {
+        "heading": "Timberlake's Tax Nightmare",
+        "text": "The very first episode sent fake government agents to Justin Timberlake's house to seize his home and belongings over $900,000 in unpaid taxes. His near-tears reaction became one of the most famous moments in reality TV."
+      },
+      {
+        "heading": "Frankie Muniz Loses His Porsche",
+        "text": "Malcolm in the Middle star Frankie Muniz was the show's first victim, convinced that his Porsche had been stolen from outside a store."
+      },
+      {
+        "heading": "Created by Ashton",
+        "text": "Ashton Kutcher, then starring on That '70s Show, created the series with Jason Goldberg and hosted every prank. It premiered on MTV on March 17, 2003."
+      },
+      {
+        "heading": "Dax Shepard's Big Break",
+        "text": "Dax Shepard was one of the original Punk'd pranksters before going on to star in Parenthood and host the Armchair Expert podcast."
+      },
+      {
+        "heading": "The Show That Wouldn't Die",
+        "text": "Punk'd was revived on MTV in 2012, on BET in 2015, and on Quibi in 2020 with Chance the Rapper as host."
+      }
+    ],
+    "tidbits": [
+      "The very first episode sent fake government agents to Justin Timberlake's house to seize his home and belongings over $900,000 in unpaid taxes. His near-tears reaction became one of the most famous moments in reality TV.",
+      "Malcolm in the Middle star Frankie Muniz was the show's first victim, convinced that his Porsche had been stolen from outside a store.",
+      "Ashton Kutcher, then starring on That '70s Show, created the series with Jason Goldberg and hosted every prank. It premiered on MTV on March 17, 2003.",
+      "Dax Shepard was one of the original Punk'd pranksters before going on to star in Parenthood and host the Armchair Expert podcast.",
+      "Punk'd was revived on MTV in 2012, on BET in 2015, and on Quibi in 2020 with Chance the Rapper as host."
+    ],
+    "copies": [
+      {
+        "id": "punkd-season-1-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "MTV's DVD Collection, 2-disc set in slipcase (Paramount)",
+        "photos": [
+          "images/punkd-season-1-dvd-1.jpg",
+          "images/punkd-season-1-dvd-2.jpg",
+          "images/punkd-season-1-dvd-3.jpg",
+          "images/punkd-season-1-dvd-4.jpg",
+          "images/punkd-season-1-dvd-5.jpg",
+          "images/punkd-season-1-dvd-6.jpg",
+          "images/punkd-season-1-dvd-7.jpg",
+          "images/punkd-season-1-dvd-8.jpg",
+          "images/punkd-season-1-dvd-9.jpg"
+        ],
+        "gif": "images/punkd-season-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: outer slipcase with two individual cases (one and two); slipcase shows light shelf wear",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Insert in each case, including the disc two episode guide",
+          "notes": "MTV Home Entertainment / Paramount Pictures 2-disc DVD set (2004, catalogue 87368), Region 1 NTSC, full screen, colour, English Dolby Digital surround. The complete first season of Punk'd (2003), 8 episodes. Disc one: episodes 101 to 105. Disc two: episodes 106 to 108 (Jessica Simpson, Pink, Britney Spears, NFL players and more). Special features: commentary featuring Ashton Kutcher, Dax Shepard and co-creator Jason Goldberg; never-before-seen Punk'd segments with Ryan Pinkston in \"Young Executive\" and Al Shearer in \"Blind Tattoo\"; follow the helicopter to deleted scenes; interactive menus hosted by Ashton Kutcher. Rated 14A (Canada), not rated (US)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/128149239616",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "boston-legal-season-5-dvd",
+    "title": "Boston Legal: Season Five",
+    "year": 2008,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/boston-legal-season-5-dvd-1.jpg",
+    "photos": [
+      "images/boston-legal-season-5-dvd-1.jpg",
+      "images/boston-legal-season-5-dvd-2.jpg",
+      "images/boston-legal-season-5-dvd-3.jpg",
+      "images/boston-legal-season-5-dvd-4.jpg",
+      "images/boston-legal-season-5-dvd-5.jpg",
+      "images/boston-legal-season-5-dvd-6.jpg",
+      "images/boston-legal-season-5-dvd-7.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117479463120?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=boston-legal-season-5-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Boston%20Legal%20Season%205%20DVD&campid=5339133571&customid=boston-legal-season-5-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "youtubeId": "ITpan9z2fpI",
+    "runYears": "2004–2008",
+    "createdBy": "David E. Kelley",
+    "starring": "James Spader, William Shatner, Candice Bergen, John Larroquette, Christian Clemenson, Tara Summers, Saffron Burrows",
+    "producers": "David E. Kelley, Bill D'Elia",
+    "company": "David E. Kelley Productions / 20th Century Fox Television / ABC",
+    "titleNote": "Season Five / 2008",
+    "tagline": "DVD / 4-Disc Set / Final Season / James Spader / William Shatner / TV Series",
+    "desc": "In its spectacular fifth and final season, Boston Legal tackles some of today's most inflammatory, and sometimes irreverent, social and moral issues, from teen pregnancy and the death penalty to sex surrogates and Alzheimer's. Now, as Crane, Poole & Schmidt faces financial ruin, its brilliant attorneys face chaotic caseloads filled with malpractice, murder, love and lust. There's a surprise engagement, or two, and of course the bittersweet final act of this remarkable series. Starring Emmy Award winners James Spader, Candice Bergen, John Larroquette and William Shatner.",
+    "trivia": [
+      {
+        "heading": "Born on The Practice",
+        "text": "Alan Shore and Denny Crane were introduced in the final season of David E. Kelley's The Practice in 2004, and Boston Legal spun off with them that fall."
+      },
+      {
+        "heading": "Emmy Winners",
+        "text": "James Spader won the Emmy for Outstanding Lead Actor in a Drama for Alan Shore in 2005 and 2007, and William Shatner won Outstanding Supporting Actor in 2005, after winning a guest Emmy for playing Denny Crane on The Practice."
+      },
+      {
+        "heading": "Scotch on the Balcony",
+        "text": "Almost every episode closes with Denny and Alan on the office balcony with a scotch and a cigar, talking over the case and their friendship."
+      },
+      {
+        "heading": "Till Death Do Us Part",
+        "text": "In the series finale, Denny and Alan get married so Alan can care for Denny as his memory fails, the ultimate act of the show's famous friendship."
+      },
+      {
+        "heading": "The Final Season",
+        "text": "Season five was a shortened final run that wrapped up the series in December 2008, with the two-hour finale shown on ABC."
+      }
+    ],
+    "tidbits": [
+      "Alan Shore and Denny Crane were introduced in the final season of David E. Kelley's The Practice in 2004, and Boston Legal spun off with them that fall.",
+      "James Spader won the Emmy for Outstanding Lead Actor in a Drama for Alan Shore in 2005 and 2007, and William Shatner won Outstanding Supporting Actor in 2005, after winning a guest Emmy for playing Denny Crane on The Practice.",
+      "Almost every episode closes with Denny and Alan on the office balcony with a scotch and a cigar, talking over the case and their friendship.",
+      "In the series finale, Denny and Alan get married so Alan can care for Denny as his memory fails, the ultimate act of the show's famous friendship.",
+      "Season five was a shortened final run that wrapped up the series in December 2008, with the two-hour finale shown on ABC."
+    ],
+    "copies": [
+      {
+        "id": "boston-legal-season-5-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "20th Century Fox 4-disc set with slipcover",
+        "photos": [
+          "images/boston-legal-season-5-dvd-1.jpg",
+          "images/boston-legal-season-5-dvd-2.jpg",
+          "images/boston-legal-season-5-dvd-3.jpg",
+          "images/boston-legal-season-5-dvd-4.jpg",
+          "images/boston-legal-season-5-dvd-5.jpg",
+          "images/boston-legal-season-5-dvd-6.jpg",
+          "images/boston-legal-season-5-dvd-7.jpg"
+        ],
+        "gif": "images/boston-legal-season-5-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good, with matching slipcover",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Slipcover; episode guide printed inside the case",
+          "notes": "20th Century Fox Home Entertainment 4-disc DVD set (2009), Region 1 NTSC, in a clear multi-disc case. All 12 season five episodes, 557 minutes, colour, widescreen 1.78:1. Disc 1: Smoke Signals, Guardians and Gatekeepers, Dances with Wolves, True Love. Disc 2: The Bad Seed, Happy Trails, Mad Cows, Roe, plus \"Denny and Alan: Friends to the End\" featurette. Disc 3: Kill Baby Kill!, Thanksgiving, Juiced, plus \"Denny's Daughter: The Untold Story\" featurette. Disc 4: Made in China / Last Call (series finale), plus \"Closing Statement: The Boston Legal Series Finale\" featurette and \"Stricken from the Record!\" deleted scenes with an introduction by executive producer/director Bill D'Elia. English Dolby Digital surround; subtitles in English, Spanish, French and Portuguese; closed captioned. Rated G (Canada)."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117479463120",
         "sold": false
       }
     ]
