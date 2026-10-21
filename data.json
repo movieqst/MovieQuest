@@ -2905,5 +2905,92 @@
       }
     ],
     "youtubeId": "aTP1mzW0Rdg"
+  },
+  {
+    "id": "punkd-season-1-dvd",
+    "title": "Punk'd: The Complete First Season",
+    "year": 2003,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/punkd-season-1-dvd-1.jpg",
+    "photos": [
+      "images/punkd-season-1-dvd-1.jpg",
+      "images/punkd-season-1-dvd-2.jpg",
+      "images/punkd-season-1-dvd-3.jpg",
+      "images/punkd-season-1-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Punk%27d%20Complete%20First%20Season%20DVD&campid=5339133571&customid=punkd-season-1-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "youtubeId": "WwJeiWgaglQ",
+    "runYears": "2003",
+    "createdBy": "Ashton Kutcher and Jason Goldberg",
+    "starring": "Ashton Kutcher, Dax Shepard, with Justin Timberlake, Frankie Muniz, Kelly Osbourne, Pink",
+    "director": "Ashton Kutcher, Jason Goldberg (creators)",
+    "producers": "Ashton Kutcher, Jason Goldberg",
+    "company": "MTV / Katalyst Films / Paramount Home Entertainment",
+    "titleNote": "MTV 2-Disc Set / 2003",
+    "tagline": "DVD / MTV's DVD Collection / 2-Disc Set / Ashton Kutcher / TV Series",
+    "desc": "They're prettier, wealthier and they get into the best parties. They're celebrities, but what they're not is better than us. Host Ashton Kutcher lets it fly with merciless pranks and practical jokes on unwitting celebrities like Justin Timberlake, Kelly Osbourne and Pink. This 2-disc set includes the complete first season of MTV's Punk'd, plus deleted scenes and bonus footage: home repossessions, redneck in-law houseguests and makeovers from hell.",
+    "trivia": [
+      {
+        "heading": "Timberlake's Tax Nightmare",
+        "text": "The very first episode sent fake government agents to Justin Timberlake's house to seize his home and belongings over $900,000 in unpaid taxes. His near-tears reaction became one of the most famous moments in reality TV."
+      },
+      {
+        "heading": "Frankie Muniz Loses His Porsche",
+        "text": "Malcolm in the Middle star Frankie Muniz was the show's first victim, convinced that his Porsche had been stolen from outside a store."
+      },
+      {
+        "heading": "Created by Ashton",
+        "text": "Ashton Kutcher, then starring on That '70s Show, created the series with Jason Goldberg and hosted every prank. It premiered on MTV on March 17, 2003."
+      },
+      {
+        "heading": "Dax Shepard's Big Break",
+        "text": "Dax Shepard was one of the original Punk'd pranksters before going on to star in Parenthood and host the Armchair Expert podcast."
+      },
+      {
+        "heading": "The Show That Wouldn't Die",
+        "text": "Punk'd was revived on MTV in 2012, on BET in 2015, and on Quibi in 2020 with Chance the Rapper as host."
+      }
+    ],
+    "tidbits": [
+      "The very first episode sent fake government agents to Justin Timberlake's house to seize his home and belongings over $900,000 in unpaid taxes. His near-tears reaction became one of the most famous moments in reality TV.",
+      "Malcolm in the Middle star Frankie Muniz was the show's first victim, convinced that his Porsche had been stolen from outside a store.",
+      "Ashton Kutcher, then starring on That '70s Show, created the series with Jason Goldberg and hosted every prank. It premiered on MTV on March 17, 2003.",
+      "Dax Shepard was one of the original Punk'd pranksters before going on to star in Parenthood and host the Armchair Expert podcast.",
+      "Punk'd was revived on MTV in 2012, on BET in 2015, and on Quibi in 2020 with Chance the Rapper as host."
+    ],
+    "copies": [
+      {
+        "id": "punkd-season-1-dvd-1",
+        "added": "2026-10-21",
+        "format": "DVD",
+        "edition": "MTV's DVD Collection, 2-disc set in slipcase (Paramount)",
+        "photos": [
+          "images/punkd-season-1-dvd-1.jpg",
+          "images/punkd-season-1-dvd-2.jpg",
+          "images/punkd-season-1-dvd-3.jpg",
+          "images/punkd-season-1-dvd-4.jpg"
+        ],
+        "gif": "images/punkd-season-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: outer slipcase with two individual cases (one and two); slipcase shows light shelf wear",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "MTV Home Entertainment / Paramount Pictures 2-disc DVD set (2004), Region 1 NTSC, full screen. The complete first season of Punk'd (2003). Disc one includes episodes 101 to 105. Special features: commentary featuring Ashton Kutcher, Dax Shepard and co-creator Jason Goldberg; never-before-seen Punk'd segments with Ryan Pinkston in \"Young Executive\" and Al Shearer in \"Blind Tattoo\"; follow the helicopter to deleted scenes; interactive menus hosted by Ashton Kutcher. Not rated; some content and language may not be suitable for audiences under 17."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
