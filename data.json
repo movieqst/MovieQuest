@@ -362,7 +362,7 @@
     "year": 2015,
     "format": "Blu-ray",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/the_revenant-2015-1.jpg",
+    "image": "https://moviequest.ca/images/the-revenant-2015-bluray-1.jpg",
     "desc": "Alejandro G. Iñárritu's brutal survival epic follows frontiersman Hugh Glass as he fights to stay alive after being mauled by a bear and left for dead by his own hunting party. Leonardo DiCaprio won his first Academy Award for the role, alongside Tom Hardy and Domhnall Gleeson.",
     "tidbits": [
       "With the exception of one campfire scene, the entire film was shot using only natural light.",
@@ -381,7 +381,61 @@
     "director": "Alejandro G. Iñárritu",
     "producers": "Arnon Milchan, Steve Golin, Alejandro G. Iñárritu, Mary Parent, James W. Skotchdopole, Keith Redmon",
     "company": "20th Century Fox",
-    "youtubeId": "LoebZZ8K5N0"
+    "youtubeId": "LoebZZ8K5N0",
+    "photos": [
+      "images/the-revenant-2015-bluray-1.jpg",
+      "images/the-revenant-2015-bluray-2.jpg",
+      "images/the-revenant-2015-bluray-3.jpg"
+    ],
+    "titleNote": "Le Revenant / 2015",
+    "tagline": "Blu-ray / Bilingual Canadian Edition / Leonardo DiCaprio / Tom Hardy / 2010s",
+    "trivia": [
+      {
+        "heading": "Natural Light Only",
+        "text": "With the exception of one campfire scene, the entire film was shot using only natural light."
+      },
+      {
+        "heading": "Chasing Winter to Argentina",
+        "text": "When the snow melted too early during the Canadian shoot, the production relocated to southern Argentina to keep filming in winter conditions."
+      },
+      {
+        "heading": "Method in the Cold",
+        "text": "DiCaprio, a vegetarian in real life, ate raw bison liver on camera and slept inside animal carcasses during the freezing shoot."
+      },
+      {
+        "heading": "A Digital Grizzly",
+        "text": "The bear attack sequence was created entirely through CGI, with stunt performers in harnesses standing in for the animal during filming."
+      },
+      {
+        "heading": "Shot in Order",
+        "text": "Director Iñárritu insisted on shooting the film in chronological order, believing it would help the cast's performances build naturally scene to scene."
+      }
+    ],
+    "copies": [
+      {
+        "id": "the-revenant-2015-bluray-1",
+        "added": "2026-10-21",
+        "format": "Blu-ray",
+        "edition": "20th Century Fox Blu-ray, bilingual Canadian edition (The Revenant / Le Revenant)",
+        "photos": [
+          "images/the-revenant-2015-bluray-1.jpg",
+          "images/the-revenant-2015-bluray-2.jpg",
+          "images/the-revenant-2015-bluray-3.jpg"
+        ],
+        "gif": "images/the-revenant-2015-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "No case: original cover art sleeve, disc in paper sleeve",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Digital HD insert (code expired 04/19/2019)",
+          "notes": "20th Century Fox Home Entertainment Canadian release, bilingual English/French packaging: The Revenant / Le Revenant (Blu-ray Cat. # 2311921). 156 minutes, colour, widescreen 2.40:1, 50GB dual layer, AVC @ 26 Mbps. Audio: English DTS-HD Master Audio 7.1, English Descriptive Audio 5.1, Spanish Dolby Digital 5.1, French Dolby Digital 5.1. Subtitles: English SDH, Spanish, French. Special features: A World Unseen documentary. Winner of 3 Oscars including Best Actor (Leonardo DiCaprio)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   },
   {
     "id": "the-way-of-the-gun-2000-dvd",
