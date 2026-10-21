@@ -104,7 +104,14 @@ export function ebayListing(item, copy) {
       </div>`;
   const photos = (copy.photos || []).map(abs);
   const titleNote = item.titleNote || [copy.edition, item.year].filter(Boolean).join(' / ');
-  const credits = [
+  const music = item.format === 'CD' || (item.categories || []).includes('music');
+  const credits = music ? [
+    item.artist && `<strong style="color: #ddd;">Artist:</strong> ${esc(item.artist)}`,
+    item.genre && `<strong style="color: #ddd;">Genre:</strong> ${esc(item.genre)}`,
+    item.compiledBy && `<strong style="color: #ddd;">Compiled By:</strong> ${esc(item.compiledBy)}`,
+    item.producers && `<strong style="color: #ddd;">Producers:</strong> ${esc(item.producers)}`,
+    item.label && `<strong style="color: #ddd;">Label:</strong> ${esc(item.label)}`,
+  ].filter(Boolean).join('<br>') : [
     item.starring && `<strong style="color: #ddd;">Starring:</strong> ${esc(item.starring)}`,
     item.createdBy && `<strong style="color: #ddd;">Created By:</strong> ${esc(item.createdBy)}`,
     item.director && `<strong style="color: #ddd;">Directed By:</strong> ${esc(item.director)}`,
@@ -142,7 +149,7 @@ ${copy.gif ? `
     </div>
 ` : ''}
     <!-- SYNOPSIS -->
-    ${box(`${h3('📝 Synopsis')}<p style="margin: 0; line-height: 1.6; font-size: 14px; color: #ccc;">${esc(item.desc || '')}</p>`)}
+    ${box(`${h3(music ? '📝 About This Album' : '📝 Synopsis')}<p style="margin: 0; line-height: 1.6; font-size: 14px; color: #ccc;">${esc(item.desc || '')}</p>`)}
 
     <!-- TECHNICAL DETAILS NOTE -->
     <div style="color: rgb(232, 232, 232); background: rgb(17, 17, 17); padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; border-left: 3px solid rgb(15, 52, 96);">
@@ -153,7 +160,7 @@ ${copy.gif ? `
 ${trivia.length ? `
     <!-- MOVIE MAGAZINE -->
     <div style="color: rgb(232, 232, 232); background: rgb(17, 17, 17); padding: 18px; border-radius: 6px; margin-bottom: 16px; border: 1px solid rgb(34, 34, 34);">
-      <h3 style="margin: 0 0 14px 0; color: #d32f2f; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🎥 Did You Know?</h3>
+      <h3 style="margin: 0 0 14px 0; color: #d32f2f; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">${music ? '🎵' : '🎥'} Did You Know?</h3>
 ${trivia.map((t, i) => `      <div style="${i < trivia.length - 1 ? 'margin-bottom: 12px; ' : ''}padding: 12px; background: #0a0a0a; border-radius: 4px; border-left: 3px solid #d32f2f;">
         ${t.heading ? `<span style="color: #fff; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">${esc(t.heading)}</span>
         <p style="margin: 6px 0 0 0; line-height: 1.5; font-size: 13px; color: #bbb;">` : `<p style="margin: 0; line-height: 1.5; font-size: 13px; color: #bbb;">`}${esc(t.text)}</p>
@@ -161,9 +168,11 @@ ${trivia.map((t, i) => `      <div style="${i < trivia.length - 1 ? 'margin-bott
     </div>
 ` : ''}${credits ? `
     <!-- CAST & CREW -->
-    ${box(`${h3('⭐ Cast &amp; Crew')}<p style="margin: 0; line-height: 1.6; font-size: 13px; color: #bbb;">${credits}</p>`)}
+    ${box(`${h3(music ? '🎧 Artist &amp; Credits' : '⭐ Cast &amp; Crew')}<p style="margin: 0; line-height: 1.6; font-size: 13px; color: #bbb;">${credits}</p>`)}
 ` : ''}
-    <!-- CONDITION REPORT -->
+${Array.isArray(item.tracks) && item.tracks.length ? `    <!-- TRACKLIST -->
+    ${box(`${h3('💿 Tracklist')}<ol style="margin: 0; padding-left: 24px; line-height: 1.6; font-size: 13px; color: #bbb;">${item.tracks.map(t => `<li><strong style="color: #ddd;">${esc(t.title)}</strong>${t.artist ? ` – ${esc(t.artist)}` : ''}</li>`).join('')}</ol>`)}
+` : ''}    <!-- CONDITION REPORT -->
     <div style="background: rgb(26, 10, 10); padding: 18px; border-radius: 6px; margin-bottom: 16px; border: 1px solid rgb(139, 0, 0);">
       <h3 style="color: rgb(211, 47, 47); margin: 0px 0px 12px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">🔍 Overall Condition: ${esc(grade)}</h3>
       <p style="color: rgb(153, 102, 102); margin: 0px 0px 14px; font-size: 12px;"><em>Inspected and photographed by hand. What you see is what you get.</em></p>${row('Case', c.case || grade)}${discs.map((d, i) => row(discs.length > 1 ? `Disc ${i + 1}` : 'Disc', d)).join('')}${row('Inserts', c.inserts)}${row('Notes', c.notes)}

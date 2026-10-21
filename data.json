@@ -2659,7 +2659,10 @@
       "images/robocop-3-1993-dvd-2.jpg",
       "images/robocop-3-1993-dvd-3.jpg",
       "images/robocop-3-1993-dvd-4.jpg",
-      "images/robocop-3-1993-dvd-5.jpg"
+      "images/robocop-3-1993-dvd-5.jpg",
+      "images/robocop-3-1993-dvd-6.jpg",
+      "images/robocop-3-1993-dvd-7.jpg",
+      "images/robocop-3-1993-dvd-8.jpg"
     ],
     "storeUrl": "",
     "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=RoboCop%203%20DVD&campid=5339133571&customid=robocop-3-1993-dvd",
@@ -2720,7 +2723,10 @@
           "images/robocop-3-1993-dvd-2.jpg",
           "images/robocop-3-1993-dvd-3.jpg",
           "images/robocop-3-1993-dvd-4.jpg",
-          "images/robocop-3-1993-dvd-5.jpg"
+          "images/robocop-3-1993-dvd-5.jpg",
+          "images/robocop-3-1993-dvd-6.jpg",
+          "images/robocop-3-1993-dvd-7.jpg",
+          "images/robocop-3-1993-dvd-8.jpg"
         ],
         "gif": "images/robocop-3-1993-dvd-1.gif",
         "condition": {
@@ -2852,12 +2858,10 @@
     "categories": [
       "music"
     ],
-    "starring": "Nu-Civilisation, The Blunted Dummies, House Of Gypsies, Diesel & Either, Franke, 2 Examples, Coco Steel & Lovebomb, The Chameleon Project, Euphoria UK, The Hypnotist, Jaco, Herbal Infusion, N.R.G., Sy-Kick, Acen, Alpha Team",
-    "producers": "Chris Sheppard and Markus Klinke (concept & compilation)",
-    "company": "Quality Music & Video (Canada)",
+    "producers": "Concept & compilation: Chris Sheppard and Markus Klinke. Digital mastering: Rettberg Music Productions. Jacket design: Jay Rawson",
     "titleNote": "Level 4 / 1993",
-    "tagline": "Music CD / Progressive House, Trance & Hardcore / Made in Canada / 1993",
-    "desc": "Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-'90s club tracks, from Nu-Civilisation's \"Wake Up\" to Acen's rave classic \"Trip II The Moon\" and Alpha Team's \"Speed Racer\". Tracklist: 1. Wake Up (Shay-Ama) - Nu-Civilisation. 2. House 4 All - The Blunted Dummies. 3. Samba - House Of Gypsies. 4. So Good (marcato mix) - Diesel & Either. 5. We're On A Mission - Franke. 6. Just Can't Help Me - 2 Examples. 7. You Can't Stop The Groove - Coco, Steel & Lovebomb. 8. Feel - The Chameleon Project. 9. Mercurial (stone high mix) - Euphoria UK. 10. Live In Berlin - The Hypnotist. 11. Show Some Love (rhythm invention remix) - Jaco. 12. The Hunter (club mix rumble style) - Herbal Infusion. 13. I Need Your Love - N.R.G.. 14. Nasty (terrorize mix) - Sy-Kick. 15. Trip II The Moon - Acen. 16. Speed Racer (club mix) - Alpha Team.",
+    "tagline": "Music CD / Chris Sheppard / Progressive House, Trance & Hardcore / Made in Canada / 1993",
+    "desc": "Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-'90s UK and European club and rave tracks, from Nu-Civilisation's \"Wake Up\" and House Of Gypsies' \"Samba\" to Coco, Steel & Lovebomb on Warp Records, Acen's rave classic \"Trip II The Moon\" and Alpha Team's \"Speed Racer\". A snapshot of the 1992 to 1993 Toronto club scene that Sheppard helped build.",
     "trivia": [
       {
         "heading": "Canada's Dance DJ",
@@ -2912,7 +2916,94 @@
         "sold": false
       }
     ],
-    "youtubeId": "aTP1mzW0Rdg"
+    "youtubeId": "aTP1mzW0Rdg",
+    "tracks": [
+      {
+        "title": "Wake Up (Shay-Ama)",
+        "artist": "Nu-Civilisation",
+        "credit": "Written by Toby. ℗ 1992 Vista Sounds International, courtesy of Echo Records"
+      },
+      {
+        "title": "House 4 All",
+        "artist": "The Blunted Dummies",
+        "credit": "Written by Caesar/James. ℗ 1992 D.J. Boy Records"
+      },
+      {
+        "title": "Samba",
+        "artist": "House Of Gypsies",
+        "credit": "Written by Terry (Todd Terry). ℗ 1992 Freeze Records, courtesy of Moon Roof Records"
+      },
+      {
+        "title": "So Good (marcato mix)",
+        "artist": "Diesel & Either",
+        "credit": "Written by Scott/Telford. ℗ 1992 Sound of Stockwell"
+      },
+      {
+        "title": "We're On A Mission",
+        "artist": "Franke",
+        "credit": "Written by Pharoah/O'Shaunessy/Donovan. ℗ 1993 China Records"
+      },
+      {
+        "title": "Just Can't Help Me",
+        "artist": "2 Examples",
+        "credit": "Written by Percali. ℗ 1992 Disco Magic UK, courtesy of Dino Music"
+      },
+      {
+        "title": "You Can't Stop The Groove",
+        "artist": "Coco, Steel & Lovebomb",
+        "credit": "Written by Mellor/Woodrow/Waterman. ℗ 1992 Warp Records"
+      },
+      {
+        "title": "Feel",
+        "artist": "The Chameleon Project",
+        "credit": "Written by Chameleon Project. ℗ 1992 Guerilla Records, courtesy of I.R.S. Records"
+      },
+      {
+        "title": "Mercurial (stone high mix)",
+        "artist": "Euphoria UK",
+        "credit": "Written by Sherman/Dray. ℗ 1992 Guerilla Records, courtesy of I.R.S. Records"
+      },
+      {
+        "title": "Live In Berlin",
+        "artist": "The Hypnotist",
+        "credit": "Written by Pound/Smith. ℗ 1992 Rising High Productions, courtesy of Rock Master Productions"
+      },
+      {
+        "title": "Show Some Love (rhythm invention remix)",
+        "artist": "Jaco",
+        "credit": "Written by Jaco. ℗ 1992 Warp Records"
+      },
+      {
+        "title": "The Hunter (club mix rumble style)",
+        "artist": "Herbal Infusion",
+        "credit": "Written by Barnes/Dailey/Jesson. ℗ 1992 Zoom Records"
+      },
+      {
+        "title": "I Need Your Love",
+        "artist": "N.R.G.",
+        "credit": "Written by Warren/Rumney"
+      },
+      {
+        "title": "Nasty (terrorize mix)",
+        "artist": "Sy-Kick",
+        "credit": "Written by French/Carter. ℗ 1992 Hard & Fast, courtesy of General Overseas"
+      },
+      {
+        "title": "Trip II The Moon",
+        "artist": "Acen",
+        "credit": "Written by Razvi. ℗ 1992 Production House Recordings"
+      },
+      {
+        "title": "Speed Racer (club mix)",
+        "artist": "Alpha Team",
+        "credit": "Produced by Alpha Team. ℗ 1992"
+      }
+    ],
+    "artist": "Chris Sheppard (DJ / compiler), Various Artists",
+    "genre": "Electronic: Progressive House, Trance, Breakbeat Hardcore / Rave",
+    "compiledBy": "Chris Sheppard and Markus Klinke",
+    "label": "Quality Music & Video, Canada (QCD 2020, UPC 063961202029)",
+    "released": "1993, Canada"
   },
   {
     "id": "punkd-season-1-dvd",

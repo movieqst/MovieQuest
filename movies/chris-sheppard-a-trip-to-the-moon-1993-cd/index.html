@@ -7,12 +7,12 @@
      itself lives (movies/<id>/). The build (tools/build.mjs) fills MQ_HEAD. -->
 <base href="../../">
 <title>Chris Sheppard: A Trip to the Moon (1993) CD — Movie Quest Canada</title>
-<meta name="description" content="Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-&#39;90s club tracks, from Nu-Civilisation&#39;s &quot;Wake Up&quot; to Acen&#39;s rave classic &quot;Trip…">
+<meta name="description" content="Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-&#39;90s UK and European club and rave tracks, from Nu-Civilisation&#39;s &quot;Wake Up&quot; and…">
 <link rel="canonical" href="https://moviequest.ca/movies/chris-sheppard-a-trip-to-the-moon-1993-cd/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Movie Quest Canada">
 <meta property="og:title" content="Chris Sheppard: A Trip to the Moon (1993) CD — Movie Quest Canada">
-<meta property="og:description" content="Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-&#39;90s club tracks, from Nu-Civilisation&#39;s &quot;Wake Up&quot; to Acen&#39;s rave classic &quot;Trip…">
+<meta property="og:description" content="Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-&#39;90s UK and European club and rave tracks, from Nu-Civilisation&#39;s &quot;Wake Up&quot; and…">
 <meta property="og:url" content="https://moviequest.ca/movies/chris-sheppard-a-trip-to-the-moon-1993-cd/">
 <meta property="og:image" content="https://moviequest.ca/images/chris-sheppard-a-trip-to-the-moon-1993-cd-1.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -620,6 +620,25 @@
     color:var(--ink);
   }
 
+  .tracks-list{
+    margin:0;
+    padding-left:2.2em;
+    display:grid;
+    gap:8px;
+  }
+  .tracks-list li{
+    font-size:var(--fs-sm);
+    line-height:1.4;
+    color:var(--ink);
+  }
+  .tracks-list .tr-title{ font-weight:700; }
+  .tracks-list .tr-artist{ color:var(--red); font-weight:600; }
+  .tracks-list .tr-credit{
+    display:block;
+    font-size:0.8em;
+    color:var(--stone);
+  }
+
   /* ---------- Trailer box ---------- */
   .trailer-section{
     margin-top:24px;
@@ -675,7 +694,7 @@
   <div id="mqStatic" class="not-found">
     <h1 style="font-family:'Anton',sans-serif;color:var(--ink);">Chris Sheppard: A Trip to the Moon (1993)</h1>
     <p>CD · Very Good</p>
-    <p style="max-width:640px;margin:12px auto 0;">Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-&#39;90s club tracks, from Nu-Civilisation&#39;s &quot;Wake Up&quot; to Acen&#39;s rave classic &quot;Trip II The Moon&quot; and Alpha Team&#39;s &quot;Speed Racer&quot;. Tracklist: 1. Wake Up (Shay-Ama) - Nu-Civilisation. 2. House 4 All - The Blunted Dummies. 3. Samba - House Of Gypsies. 4. So Good (marcato mix) - Diesel &amp; Either. 5. We&#39;re On A Mission - Franke. 6. Just Can&#39;t Help Me - 2 Examples. 7. You Can&#39;t Stop The Groove - Coco, Steel &amp; Lovebomb. 8. Feel - The Chameleon Project. 9. Mercurial (stone high mix) - Euphoria UK. 10. Live In Berlin - The Hypnotist. 11. Show Some Love (rhythm invention remix) - Jaco. 12. The Hunter (club mix rumble style) - Herbal Infusion. 13. I Need Your Love - N.R.G.. 14. Nasty (terrorize mix) - Sy-Kick. 15. Trip II The Moon - Acen. 16. Speed Racer (club mix) - Alpha Team.</p>
+    <p style="max-width:640px;margin:12px auto 0;">Level 4: a compilation of progressive house, trance and hardcore, compiled by Canadian DJ Chris Sheppard. Sixteen early-&#39;90s UK and European club and rave tracks, from Nu-Civilisation&#39;s &quot;Wake Up&quot; and House Of Gypsies&#39; &quot;Samba&quot; to Coco, Steel &amp; Lovebomb on Warp Records, Acen&#39;s rave classic &quot;Trip II The Moon&quot; and Alpha Team&#39;s &quot;Speed Racer&quot;. A snapshot of the 1992 to 1993 Toronto club scene that Sheppard helped build.</p>
   </div>
 
   <div id="not-found" class="not-found hidden">
@@ -743,16 +762,22 @@
     <div class="meta-grid" id="metaGrid"></div>
   </div>
 
+  <!-- Tracklist (music) -->
+  <div id="tracksSection" class="meta-section hidden">
+    <div class="meta-title">💿 Tracklist</div>
+    <ol class="tracks-list" id="tracksList"></ol>
+  </div>
+
   <!-- Trailer box -->
   <div id="trailerSection" class="trailer-section hidden">
-    <div class="trailer-title">▶ Trailer</div>
+    <div class="trailer-title" id="trailerTitle">▶ Trailer</div>
     <div class="trailer-wrap">
       <iframe id="trailerFrame" src="" title="Movie trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 
   <div id="tidbitsSection" class="tidbits-section hidden">
-    <div class="tidbits-title">🎬 Did You Know?</div>
+    <div class="tidbits-title" id="tidbitsTitle">🎬 Did You Know?</div>
     <ul class="tidbits-list" id="tidbitsList"></ul>
   </div>
 </div>
@@ -1095,7 +1120,16 @@ async function loadItem(){
     // Populate metadata box
     const metaSection = document.getElementById('metaSection');
     const metaGrid = document.getElementById('metaGrid');
-    const metaFields = [
+    // Music CDs list artists, label and tracks instead of cast and crew.
+    const isMusic = item.format === 'CD' || (item.categories || []).includes('music');
+    const metaFields = isMusic ? [
+      { key: 'artist',     label: 'Artist' },
+      { key: 'genre',      label: 'Genre' },
+      { key: 'compiledBy', label: 'Compiled By' },
+      { key: 'producers',  label: 'Producers' },
+      { key: 'label',      label: 'Label' },
+      { key: 'released',   label: 'Released' }
+    ] : [
       { key: 'starring',   label: 'Starring' },
       { key: 'director',   label: 'Director' },
       { key: 'producers',  label: 'Producers' },
@@ -1117,6 +1151,35 @@ async function loadItem(){
     } else {
       metaSection.classList.add('hidden');
     }
+
+    const tracksSection = document.getElementById('tracksSection');
+    const tracksList = document.getElementById('tracksList');
+    const tracks = Array.isArray(item.tracks) ? item.tracks : [];
+    tracksList.innerHTML = '';
+    tracks.forEach(t => {
+      const li = document.createElement('li');
+      const title = document.createElement('span');
+      title.className = 'tr-title';
+      title.textContent = t.title;
+      li.appendChild(title);
+      if (t.artist) {
+        li.appendChild(document.createTextNode(' – '));
+        const a = document.createElement('span');
+        a.className = 'tr-artist';
+        a.textContent = t.artist;
+        li.appendChild(a);
+      }
+      if (t.credit) {
+        const c = document.createElement('span');
+        c.className = 'tr-credit';
+        c.textContent = t.credit;
+        li.appendChild(c);
+      }
+      tracksList.appendChild(li);
+    });
+    tracksSection.classList.toggle('hidden', tracks.length === 0);
+    document.getElementById('trailerTitle').textContent = isMusic ? '▶ Listen' : '▶ Trailer';
+    document.getElementById('tidbitsTitle').textContent = isMusic ? '🎵 Did You Know?' : '🎬 Did You Know?';
 
     // Populate trailer box
     const trailerSection = document.getElementById('trailerSection');

@@ -620,6 +620,25 @@
     color:var(--ink);
   }
 
+  .tracks-list{
+    margin:0;
+    padding-left:2.2em;
+    display:grid;
+    gap:8px;
+  }
+  .tracks-list li{
+    font-size:var(--fs-sm);
+    line-height:1.4;
+    color:var(--ink);
+  }
+  .tracks-list .tr-title{ font-weight:700; }
+  .tracks-list .tr-artist{ color:var(--red); font-weight:600; }
+  .tracks-list .tr-credit{
+    display:block;
+    font-size:0.8em;
+    color:var(--stone);
+  }
+
   /* ---------- Trailer box ---------- */
   .trailer-section{
     margin-top:24px;
@@ -743,16 +762,22 @@
     <div class="meta-grid" id="metaGrid"></div>
   </div>
 
+  <!-- Tracklist (music) -->
+  <div id="tracksSection" class="meta-section hidden">
+    <div class="meta-title">💿 Tracklist</div>
+    <ol class="tracks-list" id="tracksList"></ol>
+  </div>
+
   <!-- Trailer box -->
   <div id="trailerSection" class="trailer-section hidden">
-    <div class="trailer-title">▶ Trailer</div>
+    <div class="trailer-title" id="trailerTitle">▶ Trailer</div>
     <div class="trailer-wrap">
       <iframe id="trailerFrame" src="" title="Movie trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 
   <div id="tidbitsSection" class="tidbits-section hidden">
-    <div class="tidbits-title">🎬 Did You Know?</div>
+    <div class="tidbits-title" id="tidbitsTitle">🎬 Did You Know?</div>
     <ul class="tidbits-list" id="tidbitsList"></ul>
   </div>
 </div>
@@ -1095,7 +1120,16 @@ async function loadItem(){
     // Populate metadata box
     const metaSection = document.getElementById('metaSection');
     const metaGrid = document.getElementById('metaGrid');
-    const metaFields = [
+    // Music CDs list artists, label and tracks instead of cast and crew.
+    const isMusic = item.format === 'CD' || (item.categories || []).includes('music');
+    const metaFields = isMusic ? [
+      { key: 'artist',     label: 'Artist' },
+      { key: 'genre',      label: 'Genre' },
+      { key: 'compiledBy', label: 'Compiled By' },
+      { key: 'producers',  label: 'Producers' },
+      { key: 'label',      label: 'Label' },
+      { key: 'released',   label: 'Released' }
+    ] : [
       { key: 'starring',   label: 'Starring' },
       { key: 'director',   label: 'Director' },
       { key: 'producers',  label: 'Producers' },
@@ -1117,6 +1151,35 @@ async function loadItem(){
     } else {
       metaSection.classList.add('hidden');
     }
+
+    const tracksSection = document.getElementById('tracksSection');
+    const tracksList = document.getElementById('tracksList');
+    const tracks = Array.isArray(item.tracks) ? item.tracks : [];
+    tracksList.innerHTML = '';
+    tracks.forEach(t => {
+      const li = document.createElement('li');
+      const title = document.createElement('span');
+      title.className = 'tr-title';
+      title.textContent = t.title;
+      li.appendChild(title);
+      if (t.artist) {
+        li.appendChild(document.createTextNode(' – '));
+        const a = document.createElement('span');
+        a.className = 'tr-artist';
+        a.textContent = t.artist;
+        li.appendChild(a);
+      }
+      if (t.credit) {
+        const c = document.createElement('span');
+        c.className = 'tr-credit';
+        c.textContent = t.credit;
+        li.appendChild(c);
+      }
+      tracksList.appendChild(li);
+    });
+    tracksSection.classList.toggle('hidden', tracks.length === 0);
+    document.getElementById('trailerTitle').textContent = isMusic ? '▶ Listen' : '▶ Trailer';
+    document.getElementById('tidbitsTitle').textContent = isMusic ? '🎵 Did You Know?' : '🎬 Did You Know?';
 
     // Populate trailer box
     const trailerSection = document.getElementById('trailerSection');
