@@ -332,6 +332,7 @@
   }
   .hidden{display:none!important;}
 </style>
+<script src="gc.js"></script>
 </head>
 <body>
 
@@ -358,6 +359,7 @@
     <option value="year-asc">Sort: Oldest first</option>
     <option value="price">Sort: Price low–high</option>
     <option value="random">Sort: Random (mix it up)</option>
+    <option value="popular">Sort: Most popular</option>
   </select>
 </div>
 
@@ -476,6 +478,8 @@ function render(){
   });
 
   switch(sortSelect.value){
+    // Most viewed first; ties (and no data yet) fall back to newly listed.
+    case 'popular':     items.sort((a,b) => (b._views || 0) - (a._views || 0) || byListed(b, a)); break;
     case 'random':      items.sort((a,b) => a._shuffle - b._shuffle); break;
     case 'listed-desc': items.sort((a,b) => byListed(b, a)); break;
     case 'listed-asc':  items.sort(byListed); break;
@@ -549,10 +553,20 @@ async function init(){
   }
 }
 
+// View counts from GoatCounter, fetched once when Most popular is first picked.
+let viewsLoaded = false;
+async function loadViews(){
+  if (viewsLoaded || !window.mqViews) return;
+  viewsLoaded = true;
+  await Promise.all(allItems.map(async item => { item._views = await window.mqViews(item.id); }));
+  if (sortSelect.value === 'popular') render();
+}
+
 // A fresh shuffle each time Random is picked, kept steady while filtering.
 const shuffle = () => allItems.forEach(item => { item._shuffle = Math.random(); });
 sortSelect.addEventListener('change', () => {
   if (sortSelect.value === 'random') shuffle();
+  if (sortSelect.value === 'popular') loadViews();
   render();
 });
 searchInput.addEventListener('input', (e) => {

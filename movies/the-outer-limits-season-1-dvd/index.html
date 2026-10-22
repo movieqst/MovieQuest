@@ -671,6 +671,7 @@
   }
 
 </style>
+<script src="gc.js"></script>
 </head>
 <body>
 
@@ -1060,6 +1061,7 @@ async function loadItem(){
     document.getElementById('soldTag').classList.toggle('hidden', !sold);
     if (item.storeUrl && !sold) {
       storeLinkEl.href = item.storeUrl;
+      storeLinkEl.onclick = () => window.mqCountClick && window.mqCountClick(`ebay/${item.id}`, `eBay: ${item.title}`);
       storeLinkEl.classList.remove('hidden');
       priceRowEl.classList.remove('hidden');
     } else {
@@ -1110,6 +1112,7 @@ async function loadItem(){
         a.className = 'cta-btn cta-primary';
         a.href = url; a.target = '_blank'; a.rel = 'noopener';
         a.textContent = 'View this copy on eBay →';
+        a.onclick = () => window.mqCountClick && window.mqCountClick(`ebay/${copy.id}`, `eBay: ${item.title}`);
         body.appendChild(a);
       }
       card.appendChild(body);
