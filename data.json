@@ -3590,5 +3590,98 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-flintstones-season-1-dvd",
+    "title": "The Flintstones: The Complete First Season",
+    "year": 1960,
+    "years": [
+      1960,
+      1961
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-flintstones-season-1-dvd-1.jpg",
+    "photos": [
+      "images/the-flintstones-season-1-dvd-1.jpg",
+      "images/the-flintstones-season-1-dvd-2.jpg",
+      "images/the-flintstones-season-1-dvd-3.jpg",
+      "images/the-flintstones-season-1-dvd-4.jpg",
+      "images/the-flintstones-season-1-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Flintstones%20Complete%20First%20Season%20DVD%20Golden%20Collection&campid=5339133571&customid=the-flintstones-season-1-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "1960s"
+    ],
+    "runYears": "1960–1961",
+    "createdBy": "William Hanna and Joseph Barbera",
+    "starring": "Alan Reed (Fred), Jean Vander Pyl (Wilma), Mel Blanc (Barney), Bea Benaderet (Betty)",
+    "producers": "William Hanna, Joseph Barbera",
+    "company": "Hanna-Barbera Productions / ABC / Warner Home Video",
+    "titleNote": "Hanna-Barbera Golden Collection / 1960–1961",
+    "tagline": "DVD / Hanna-Barbera Golden Collection / 4-Disc Set / All 28 Episodes / TV Series / 1960–1961",
+    "desc": "Meet the modern Stone Age family that won the hearts of audiences everywhere! The lovable, blustery temperament of Fred Flintstone, the delicious dignity of wife Wilma, the hilarious jabs of neighbour Barney Rubble and his wife Betty, and Dino the pet dinosaur. They're all present and (pre)historically accounted for in this 4-disc set of all 28 episodes from the first season of television's first prime-time animated series, plus bonus features. Yabba dabba doo!",
+    "trivia": [
+      {
+        "heading": "TV's First Prime-Time Cartoon",
+        "text": "The Flintstones premiered on ABC on September 30, 1960, and was the first animated series to air in prime time, running six seasons until 1966."
+      },
+      {
+        "heading": "Modelled on The Honeymooners",
+        "text": "Hanna-Barbera based Fred and Barney's friendship and schemes on Jackie Gleason's sitcom The Honeymooners, moved to the Stone Age."
+      },
+      {
+        "heading": "No \"Meet the Flintstones\" Yet",
+        "text": "The famous theme song didn't arrive until season three. These first-season episodes open with the instrumental \"Rise and Shine\" by Hoyt Curtin."
+      },
+      {
+        "heading": "Yabba Dabba Doo",
+        "text": "Alan Reed, the voice of Fred, is credited with coming up with \"Yabba dabba doo!\". The script reportedly just said \"Yahoo!\"."
+      },
+      {
+        "heading": "Sponsored by Cigarettes",
+        "text": "Winston cigarettes were an original sponsor, and early commercials showed Fred and Barney smoking, a reminder that the show was first aimed at adults."
+      }
+    ],
+    "tidbits": [
+      "The Flintstones premiered on ABC on September 30, 1960, and was the first animated series to air in prime time, running six seasons until 1966.",
+      "Hanna-Barbera based Fred and Barney's friendship and schemes on Jackie Gleason's sitcom The Honeymooners, moved to the Stone Age.",
+      "The famous theme song didn't arrive until season three. These first-season episodes open with the instrumental \"Rise and Shine\" by Hoyt Curtin.",
+      "Alan Reed, the voice of Fred, is credited with coming up with \"Yabba dabba doo!\". The script reportedly just said \"Yahoo!\".",
+      "Winston cigarettes were an original sponsor, and early commercials showed Fred and Barney smoking, a reminder that the show was first aimed at adults."
+    ],
+    "copies": [
+      {
+        "id": "the-flintstones-season-1-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "Hanna-Barbera Golden Collection, 4-disc digipak in outer slipcase with window",
+        "photos": [
+          "images/the-flintstones-season-1-dvd-1.jpg",
+          "images/the-flintstones-season-1-dvd-2.jpg",
+          "images/the-flintstones-season-1-dvd-3.jpg",
+          "images/the-flintstones-season-1-dvd-4.jpg",
+          "images/the-flintstones-season-1-dvd-5.jpg"
+        ],
+        "gif": "images/the-flintstones-season-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: fold-out digipak in outer slipcase; light shelf wear on the slipcase edges",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Outer slipcase",
+          "notes": "Warner Home Video / Hanna-Barbera Golden Collection (2004), Region 1 NTSC, standard full screen. All 28 episodes of season one (1960 to 1961) on 4 discs; disc 4 is double-sided (sides A and B). Includes bonus features."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
