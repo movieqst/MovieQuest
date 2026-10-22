@@ -180,6 +180,18 @@
     font-size:var(--fs-sm);
     color:var(--stone);
   }
+  .sort-wrap{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .price-dir{
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    padding:7px 10px;
+    border-radius:4px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .price-dir.hidden{ display:none; }
   select{
     font-family:'JetBrains Mono',monospace;
     font-size:var(--fs-sm);
@@ -351,16 +363,19 @@
 
 <div class="controls-bar">
   <div class="result-count" id="resultCount">Loading catalogue…</div>
+  <div class="sort-wrap">
   <select id="sortSelect" autocomplete="off">
     <option value="listed-desc" selected>Sort: Newly listed</option>
     <option value="title">Sort: Title A–Z</option>
     <option value="listed-asc">Sort: Oldest listed</option>
     <option value="year-desc">Sort: Newest first</option>
     <option value="year-asc">Sort: Oldest first</option>
-    <option value="price">Sort: Price low–high</option>
+    <option value="price">Sort: Price low/high</option>
     <option value="random">Sort: Random (mix it up)</option>
     <option value="popular">Sort: Most popular</option>
   </select>
+  <button id="priceDir" class="price-dir hidden" type="button" title="Switch price order">▲ Low to high</button>
+  </div>
 </div>
 
 <div class="cards-grid" id="cardsGrid"></div>
@@ -485,7 +500,10 @@ function render(){
     case 'listed-asc':  items.sort(byListed); break;
     case 'year-desc': items.sort((a,b) => yearKey(b, -Infinity) - yearKey(a, -Infinity)); break;
     case 'year-asc':  items.sort((a,b) => yearKey(a) - yearKey(b)); break;
-    case 'price':     items.sort((a,b) => priceKey(a) - priceKey(b)); break;
+    // Low to high, or high to low after a click on the toggle; unpriced items stay last.
+    case 'price':     items.sort((a,b) => priceHigh
+                        ? (a.price == null) - (b.price == null) || priceKey(b) - priceKey(a)
+                        : priceKey(a) - priceKey(b)); break;
     default:          items.sort((a,b) => titleKey(a.title).localeCompare(titleKey(b.title)));
   }
 
@@ -564,7 +582,21 @@ async function loadViews(){
 
 // A fresh shuffle each time Random is picked, kept steady while filtering.
 const shuffle = () => allItems.forEach(item => { item._shuffle = Math.random(); });
+// Price sort starts low to high; the button next to the menu flips it.
+let priceHigh = false;
+const priceDir = document.getElementById('priceDir');
+const showPriceDir = () => {
+  priceDir.classList.toggle('hidden', sortSelect.value !== 'price');
+  priceDir.textContent = priceHigh ? '▼ High to low' : '▲ Low to high';
+};
+priceDir.addEventListener('click', () => {
+  priceHigh = !priceHigh;
+  showPriceDir();
+  render();
+});
 sortSelect.addEventListener('change', () => {
+  if (sortSelect.value === 'price') priceHigh = false;
+  showPriceDir();
   if (sortSelect.value === 'random') shuffle();
   if (sortSelect.value === 'popular') loadViews();
   render();
