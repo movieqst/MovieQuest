@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Every link on this page is relative to the site root, wherever the page
+     itself lives (movies/<id>/). The build (tools/build.mjs) fills MQ_HEAD. -->
+<base href="../../">
+<title>V: The Complete Series (Seasons 1 &amp; 2) (2009) DVD — Movie Quest Canada</title>
+<meta name="description" content="They arrive. Earth&#39;s first alien encounter begins when huge motherships appear over 29 major cities. The visitors, the Vs, are human-like beings who know our languages and bring awesome gifts of heal…">
+<link rel="canonical" href="https://moviequest.ca/movies/v-complete-series-2009-2011-dvd/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Movie Quest Canada">
+<meta property="og:title" content="V: The Complete Series (Seasons 1 &amp; 2) (2009) DVD — Movie Quest Canada">
+<meta property="og:description" content="They arrive. Earth&#39;s first alien encounter begins when huge motherships appear over 29 major cities. The visitors, the Vs, are human-like beings who know our languages and bring awesome gifts of heal…">
+<meta property="og:url" content="https://moviequest.ca/movies/v-complete-series-2009-2011-dvd/">
+<meta property="og:image" content="https://moviequest.ca/images/v-complete-series-2009-2011-dvd-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#131211;
+    --paper:#FAF8F3;
+    --card:#F1ECE0;
+    --red:#C8102E;
+    --red-dark:#98081F;
+    --stone:#6E685C;
+    --line:#E1DACB;
+    --fs-lg:1.5rem;      /* titles: +25% again from last round */
+    --fs-sm:1.05rem;     /* small text: 70% of --fs-lg */
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  a{color:inherit;}
+
+  /* ---------- Header / Marquee ---------- */
+  header{
+    background:var(--ink);
+    color:var(--paper);
+    width:100%;
+    margin:0;
+    padding:14px 28px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:16px;
+    border-bottom:6px solid var(--red);
+  }
+  .logo-link{
+    grid-column:2;
+    justify-self:center;
+    display:block;
+    line-height:0;
+  }
+  .site-logo{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+    border-radius:14px;
+    display:block;
+  }
+  .header-right{
+    grid-column:3;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    justify-self:end;
+  }
+  .search-wrap{
+    position:relative;
+  }
+  #searchInput{
+    background:#1f1e1c;
+    border:1px solid #3a3833;
+    color:var(--paper);
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    padding:10px 14px 10px 34px;
+    border-radius:4px;
+    width:220px;
+    outline:none;
+  }
+  #searchInput::placeholder{color:#8a877e;}
+  .search-wrap::before{
+    content:"⌕";
+    position:absolute;
+    left:12px; top:50%;
+    transform:translateY(-50%);
+    color:#8a877e;
+    font-size:1.1rem;
+  }
+  .store-link{
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    background:var(--red);
+    color:var(--paper);
+    padding:10px 16px;
+    border-radius:4px;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:background 0.15s;
+  }
+  .store-link:hover{background:var(--red-dark);}
+
+  /* ---------- Category strip (film-reel nav) ---------- */
+  .reel-nav{
+    background:var(--ink);
+    padding:0 20px 14px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    border-bottom:1px solid #2a2925;
+  }
+  .reel-tab{
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    font-weight:700;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    color:#c9c4b8;
+    background:#1f1e1c;
+    border:1px solid #34322d;
+    padding:8px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:all 0.15s;
+    position:relative;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .reel-tab::before{
+    content:"○";
+    color:#514f48;
+    margin-right:6px;
+    font-size:0.7rem;
+  }
+  .reel-tab:hover{ border-color:var(--red); color:var(--paper); }
+  .reel-tab.active{
+    background:var(--red);
+    border-color:var(--red);
+    color:var(--paper);
+  }
+  .reel-tab.active::before{ color:var(--paper); }
+
+  .year-strip{
+    background:#0f0e0d;
+    padding:12px 20px;
+    display:none;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .year-strip.visible{ display:flex; }
+  .year-chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    font-weight:500;
+    color:#a29d90;
+    background:transparent;
+    border:1px solid #2f2d28;
+    padding:5px 11px;
+    border-radius:3px;
+    cursor:pointer;
+    transition:all 0.15s;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .year-chip:hover{ color:var(--paper); border-color:var(--stone); }
+  .year-chip.active{
+    color:var(--ink);
+    background:var(--paper);
+    border-color:var(--paper);
+  }
+
+  .container{
+    max-width:1360px;
+    margin:0 auto;
+    padding:30px 24px 60px;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:var(--stone);
+    text-decoration:none;
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    font-weight:700;
+  }
+  .back-link:hover{ color:var(--red); }
+
+  .detail-layout{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+  }
+
+  .flank{
+    width:120px;
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--card);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 2px 0 var(--line);
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .flank:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  }
+  .flank-poster{
+    aspect-ratio:5/7;
+    background:#e5ded0;
+    overflow:hidden;
+  }
+  .flank-poster img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .flank-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:var(--red);
+    padding:8px 10px 0;
+  }
+  .flank-title{
+    font-size:var(--fs-sm);
+    font-weight:700;
+    line-height:1.25;
+    padding:3px 10px 10px;
+  }
+  .flank.next{ text-align:right; }
+  .flank.next .flank-label{ text-align:right; }
+
+  .flank-far{
+    width:90px;
+    opacity:0.68;
+  }
+  .flank-far:hover{ opacity:1; }
+  .flank-far .flank-title{
+    padding-top:10px;
+    font-size:calc(var(--fs-sm) * 0.85);
+  }
+
+  .detail{
+    background:var(--card);
+    border-radius:10px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:300px 1fr;
+    box-shadow:0 8px 30px rgba(0,0,0,0.1);
+    flex:1 1 auto;
+    min-width:0;
+    max-width:820px;
+  }
+  .poster-wrap{
+    position:relative;
+    background:#e5ded0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .poster-wrap img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .poster-fallback{
+    width:100%; height:100%;
+    background:#0c0c0c;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    gap:10px;
+  }
+  .poster-fallback .pf-title{
+    font-family:'Work Sans',sans-serif;
+    font-weight:700;
+    font-size:1.3rem;
+    line-height:1.3;
+  }
+  .poster-fallback .pf-year{
+    font-family:'JetBrains Mono',monospace;
+    font-size:1rem;
+    color:#a29d90;
+  }
+  .flank-poster .poster-fallback{
+    padding:8px;
+    gap:4px;
+  }
+  .flank-poster .poster-fallback .pf-title{
+    font-size:0.72rem;
+    line-height:1.2;
+  }
+  .flank-poster .poster-fallback .pf-year{
+    font-size:0.62rem;
+  }
+  .format-tag{
+    position:absolute;
+    top:0; right:0;
+    background:var(--red);
+    color:var(--paper);
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:var(--fs-sm);
+    letter-spacing:0.5px;
+    padding:7px 14px 7px 18px;
+    clip-path:polygon(18px 0, 100% 0, 100% 100%, 0 100%);
+    z-index:5;
+  }
+
+  /* Image carousel arrows */
+  .img-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(19,18,17,0.7);
+    color:var(--paper);
+    border:none;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+    transition:background 0.15s;
+    padding-bottom:2px;
+  }
+  .img-nav:hover{ background:rgba(19,18,17,0.95); }
+  .img-nav:disabled{
+    opacity:0.25;
+    cursor:not-allowed;
+  }
+  .img-nav.prev{ left:8px; }
+  .img-nav.next{ right:8px; }
+  .img-counter{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(19,18,17,0.7);
+    color:var(--paper);
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    padding:4px 10px;
+    border-radius:12px;
+    z-index:10;
+  }
+
+  .info{
+    padding:28px 32px;
+    display:flex;
+    flex-direction:column;
+  }
+  .item-title{
+    font-family:'Anton',sans-serif;
+    font-size:2.375rem;
+    letter-spacing:0.5px;
+    line-height:1.1;
+    margin-bottom:6px;
+  }
+  .item-meta{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--stone);
+    font-size:var(--fs-sm);
+    margin-bottom:18px;
+  }
+  .item-desc{
+    font-size:1.1rem;
+    line-height:1.6;
+    margin-bottom:24px;
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:24px;
+    padding-bottom:24px;
+    border-bottom:1px dashed var(--line);
+  }
+  .price-value{
+    font-family:'Anton',sans-serif;
+    font-size:2.5rem;
+    color:var(--red);
+  }
+  .price-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    color:var(--stone);
+    text-transform:uppercase;
+  }
+
+  .cta-row{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:auto;
+  }
+  .cta-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 20px;
+    border-radius:6px;
+    font-weight:700;
+    font-size:1.25rem;
+    text-decoration:none;
+    text-align:center;
+    transition:all 0.15s;
+  }
+  .cta-primary{
+    background:var(--red);
+    color:var(--paper);
+  }
+  .cta-primary:hover{ background:var(--red-dark); }
+  .cta-secondary{
+    background:var(--red);
+    color:var(--ink);
+    border:1.5px solid var(--red);
+  }
+  .cta-secondary:hover{ background:var(--red-dark); border-color:var(--red-dark); }
+
+  .tidbits-section{
+    margin-top:24px;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:10px;
+    padding:24px 28px;
+  }
+  .tidbits-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.5rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .tidbits-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .tidbits-list li{
+    padding-left:22px;
+    position:relative;
+    line-height:1.55;
+    font-size:var(--fs-sm);
+    color:#e9e5db;
+  }
+  .tidbits-list li::before{
+    content:"★";
+    position:absolute;
+    left:0; top:1px;
+    color:var(--red);
+    font-size:0.8rem;
+  }
+
+  .not-found{
+    text-align:center;
+    padding:80px 20px;
+    color:var(--stone);
+  }
+  .not-found a{ color:var(--red); text-decoration:none; font-weight:700; }
+
+  .hidden{ display:none !important; }
+
+  /* SOLD: the photos and details stay up, the buy button goes. */
+  .sold-tag{
+    position:absolute;
+    top:0; left:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:var(--fs-sm);
+    letter-spacing:1px;
+    padding:7px 18px 7px 14px;
+    clip-path:polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+    z-index:5;
+  }
+  .tidbits-list li .tb-head{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:#fff;
+    margin-bottom:2px;
+  }
+
+  @media (max-width:900px){
+    .detail-layout{ flex-direction:column; }
+    .flank{
+      width:100%;
+      flex-direction:row;
+      align-items:center;
+    }
+    .flank-poster{
+      width:64px;
+      aspect-ratio:5/7;
+      flex-shrink:0;
+    }
+    .flank-label{ padding:0 0 0 12px; }
+    .flank-title{ padding:2px 12px 0 12px; }
+    .flank.next{ text-align:left; flex-direction:row-reverse; }
+    .flank.next .flank-label{ text-align:left; padding:0 12px 0 0; }
+    .flank.next .flank-title{ text-align:right; padding:2px 12px 0 0; }
+  }
+
+  @media (max-width:640px){
+    header{
+      grid-template-columns:1fr;
+      justify-items:center;
+      padding:14px 16px;
+    }
+    .logo-link{ grid-column:1; }
+    .header-right{ grid-column:1; justify-self:center; }
+    .detail{ grid-template-columns:1fr; }
+    .poster-wrap{ aspect-ratio:5/7; }
+    .info{ padding:22px; }
+    .img-nav{ width:34px; height:34px; font-size:18px; }
+  }
+  /* ---------- Metadata box ---------- */
+  /* COPIES: one card per physical copy listed, each with its own slideshow
+     GIF and eBay link (Movie, 11 Oct: "add a new GIF for each new item i
+     list if i list multiple items for the same movie"). */
+  .copies-section{
+    margin-top:24px;
+    background:var(--card);
+    border-radius:10px;
+    padding:24px 28px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.06);
+  }
+  .copies-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .copy-card{
+    position:relative;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .copy-card img{ display:block; width:100%; aspect-ratio:1/1; object-fit:contain; background:#0a0a0a; }
+  .copy-card.is-sold img{ opacity:0.55; }
+  .copy-body{ padding:14px 16px 16px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .copy-edition{ font-weight:700; line-height:1.3; }
+  .copy-meta{ font-family:'JetBrains Mono',monospace; font-size:calc(var(--fs-sm) * 0.85); color:var(--stone); }
+  .copy-body .cta-btn{ margin-top:auto; text-align:center; }
+
+  .meta-section{
+    margin-top:24px;
+    background:var(--card);
+    border-radius:10px;
+    padding:24px 28px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.06);
+  }
+  .meta-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.5rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .meta-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:14px 28px;
+  }
+  .meta-row{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .meta-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:var(--fs-sm);
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:var(--stone);
+  }
+  .meta-value{
+    font-size:var(--fs-sm);
+    font-weight:600;
+    line-height:1.4;
+    color:var(--ink);
+  }
+
+  .tracks-list{
+    margin:0;
+    padding-left:2.2em;
+    display:grid;
+    gap:8px;
+  }
+  .tracks-list li{
+    font-size:var(--fs-sm);
+    line-height:1.4;
+    color:var(--ink);
+  }
+  .tracks-list .tr-title{ font-weight:700; }
+  .tracks-list .tr-artist{ color:var(--red); font-weight:600; }
+  .tracks-list .tr-credit{
+    display:block;
+    font-size:0.8em;
+    color:var(--stone);
+  }
+
+  /* ---------- Trailer box ---------- */
+  .trailer-section{
+    margin-top:24px;
+    background:var(--ink);
+    border-radius:10px;
+    padding:24px 28px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.1);
+  }
+  .trailer-title{
+    font-family:'Anton',sans-serif;
+    font-size:1.5rem;
+    letter-spacing:0.5px;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .trailer-wrap{
+    position:relative;
+    padding-bottom:56.25%; /* 16:9 */
+    height:0;
+    overflow:hidden;
+    border-radius:8px;
+    background:#0f0e0d;
+  }
+  .trailer-wrap iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    border:none;
+    border-radius:8px;
+  }
+
+</style>
+<script src="gc.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="logo-link" href="./"><img class="site-logo" src="https://moviequest.ca/logo.jpg" alt="Movie Quest Canada"></a>
+  <div class="header-right">
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search titles...">
+    </div>
+    <a class="store-link" href="https://www.ebay.ca/str/moviequest?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=header&toolid=10001&mkevt=1" target="_blank" rel="noopener">Visit eBay Store →</a>
+  </div>
+</header>
+
+<nav class="reel-nav" id="reelNav"></nav>
+<div class="year-strip" id="yearStrip"></div>
+
+<div class="container">
+  <a class="back-link" href="./">← BACK TO CATALOGUE</a>
+
+  <div id="loading" class="not-found">Loading item…</div>
+  <div id="mqStatic" class="not-found">
+    <h1 style="font-family:'Anton',sans-serif;color:var(--ink);">V: The Complete Series (Seasons 1 &amp; 2) (2009)</h1>
+    <p>DVD · Very Good</p>
+    <p style="max-width:640px;margin:12px auto 0;">They arrive. Earth&#39;s first alien encounter begins when huge motherships appear over 29 major cities. The visitors, the Vs, are human-like beings who know our languages and bring awesome gifts of healing and technology. People everywhere welcome them as saviours. But a fledgling resistance is determined to reveal the shocking truth. In season two, the Visitors seem almost godlike among us, led by their mysterious queen Anna, as the Fifth Column fights to uncover the Vs&#39; secret plan. Both seasons of the ABC series: Season One (3 discs, 12 episodes) and Season Two (2 discs, 10 episodes).</p>
+  </div>
+
+  <div id="not-found" class="not-found hidden">
+    <p>Couldn't find that item in the catalogue.</p>
+    <p style="margin-top:10px;"><a href="./">← Return to the catalogue</a></p>
+  </div>
+
+  <div id="detailLayout" class="detail-layout hidden">
+    <a id="prevFlank2" class="flank flank-far prev hidden" href="#">
+      <div class="flank-poster"><img id="prevFlank2Img" src="" alt=""></div>
+      <div class="flank-title" id="prevFlank2Title"></div>
+    </a>
+
+    <a id="prevFlank1" class="flank prev hidden" href="#">
+      <div class="flank-poster"><img id="prevFlank1Img" src="" alt=""></div>
+      <div class="flank-label">← Previous</div>
+      <div class="flank-title" id="prevFlank1Title"></div>
+    </a>
+
+    <div id="detail" class="detail">
+      <div class="poster-wrap">
+        <img id="poster" src="" alt="">
+        <div class="format-tag" id="formatTag"></div>
+        <div class="sold-tag hidden" id="soldTag">SOLD</div>
+        <button class="img-nav prev" id="imgPrev" aria-label="Previous image">‹</button>
+        <button class="img-nav next" id="imgNext" aria-label="Next image">›</button>
+        <div class="img-counter" id="imgCounter"></div>
+      </div>
+      <div class="info">
+        <div class="item-title" id="title"></div>
+        <div class="item-meta" id="meta"></div>
+        <div class="item-desc" id="desc"></div>
+        <div class="price-row" id="priceRow">
+          <div class="price-value" id="price"></div>
+          <div class="price-label">from our store</div>
+        </div>
+        <div class="cta-row">
+          <a class="cta-btn cta-primary" id="storeLink" href="#" target="_blank" rel="noopener">View MOVIE QUEST CANADA eBay Listing →</a>
+          <a class="cta-btn cta-secondary" id="searchLink" href="#" target="_blank" rel="noopener">View ALL eBay Listings →</a>
+        </div>
+      </div>
+    </div>
+
+    <a id="nextFlank1" class="flank next hidden" href="#">
+      <div class="flank-poster"><img id="nextFlank1Img" src="" alt=""></div>
+      <div class="flank-label">Next →</div>
+      <div class="flank-title" id="nextFlank1Title"></div>
+    </a>
+
+    <a id="nextFlank2" class="flank flank-far next hidden" href="#">
+      <div class="flank-poster"><img id="nextFlank2Img" src="" alt=""></div>
+      <div class="flank-title" id="nextFlank2Title"></div>
+    </a>
+  </div>
+
+  <!-- Copies: one card per copy listed, each with its own slideshow -->
+  <div id="copiesSection" class="copies-section hidden">
+    <div class="meta-title">📀 Copies</div>
+    <div class="copies-grid" id="copiesGrid"></div>
+  </div>
+
+  <!-- Metadata box -->
+  <div id="metaSection" class="meta-section hidden">
+    <div class="meta-title">📋 Details</div>
+    <div class="meta-grid" id="metaGrid"></div>
+  </div>
+
+  <!-- Tracklist (music) -->
+  <div id="tracksSection" class="meta-section hidden">
+    <div class="meta-title">💿 Tracklist</div>
+    <ol class="tracks-list" id="tracksList"></ol>
+  </div>
+
+  <!-- Trailer box -->
+  <div id="trailerSection" class="trailer-section hidden">
+    <div class="trailer-title" id="trailerTitle">▶ Trailer</div>
+    <div class="trailer-wrap">
+      <iframe id="trailerFrame" src="" title="Movie trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div id="tidbitsSection" class="tidbits-section hidden">
+    <div class="tidbits-title" id="tidbitsTitle">🎬 Did You Know?</div>
+    <ul class="tidbits-list" id="tidbitsList"></ul>
+  </div>
+</div>
+
+<script>window.MQ_ITEM_ID = "v-complete-series-2009-2011-dvd";</script>
+<script>
+// Category tabs come from categories.json so there is ONE source of truth,
+// shared with index.html. Falls back to an "All" tab if the file can't load.
+let CATEGORIES = [{ code:'all', label:'All' }];
+
+async function loadCategories(){
+  try {
+    const res = await fetch('categories.json');
+    const cfg = await res.json();
+    const tops = Array.isArray(cfg.topCategories) ? cfg.topCategories : [];
+    CATEGORIES = [{ code:'all', label:'All' }, ...tops];
+  } catch (err){
+    console.error('Could not load categories.json — falling back to "All" only.', err);
+  }
+}
+
+const reelNav = document.getElementById('reelNav');
+const yearStrip = document.getElementById('yearStrip');
+const searchInput = document.getElementById('searchInput');
+let openCategory = null;
+
+function buildReelNav(){
+  reelNav.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const tab = document.createElement('a');
+    tab.className = 'reel-tab' + (cat.code === openCategory ? ' active' : '');
+    tab.textContent = cat.label;
+    tab.href = `index.html?cat=${encodeURIComponent(cat.code)}`;
+    if (cat.years){
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCategory = (openCategory === cat.code) ? null : cat.code;
+        buildReelNav();
+        buildYearStrip();
+      });
+    }
+    reelNav.appendChild(tab);
+  });
+}
+
+function buildYearStrip(){
+  const cat = CATEGORIES.find(c => c.code === openCategory);
+  if (!cat || !cat.years){
+    yearStrip.classList.remove('visible');
+    yearStrip.innerHTML = '';
+    return;
+  }
+  yearStrip.classList.add('visible');
+  yearStrip.innerHTML = '';
+  cat.years.forEach(y => {
+    const chip = document.createElement('a');
+    chip.className = 'year-chip';
+    chip.textContent = y;
+    chip.href = `index.html?cat=${encodeURIComponent(cat.code)}&year=${y}`;
+    yearStrip.appendChild(chip);
+  });
+}
+
+loadCategories().then(() => {
+  buildReelNav();
+  buildYearStrip();
+});
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && searchInput.value.trim()){
+    window.location.href = `index.html?q=${encodeURIComponent(searchInput.value.trim())}`;
+  }
+});
+
+let currentImgIndex = 1;
+let imgBaseUrl = '';
+let totalImages = 1;
+// An item's own photo list (data.json "photos"), every photo group it has
+// ever had. When an item has one, the carousel walks it; older items without
+// one keep the probe for -1.jpg, -2.jpg, ... below.
+let photoList = null;
+
+// Shows the real poster image, or a black-background/white-text fallback
+// card (title + year) when the item has no image on file.
+function renderPoster(containerEl, imgEl, item) {
+  if (item.image) {
+    imgEl.src = item.image;
+    imgEl.alt = item.title;
+    imgEl.classList.remove('hidden');
+    imgEl.onerror = () => {
+      imgEl.classList.add('hidden');
+      imgEl.removeAttribute('src');
+      let fb = containerEl.querySelector('.poster-fallback');
+      if (!fb) {
+        fb = document.createElement('div');
+        fb.className = 'poster-fallback';
+        containerEl.appendChild(fb);
+      }
+      fb.innerHTML = `<div class="pf-title">${item.title}</div>${item.year ? `<div class="pf-year">${item.year}</div>` : ''}`;
+    };
+    const fb = containerEl.querySelector('.poster-fallback');
+    if (fb) fb.remove();
+    return true;
+  }
+  imgEl.classList.add('hidden');
+  imgEl.removeAttribute('src');
+  let fb = containerEl.querySelector('.poster-fallback');
+  if (!fb) {
+    fb = document.createElement('div');
+    fb.className = 'poster-fallback';
+    containerEl.appendChild(fb);
+  }
+  fb.innerHTML = `<div class="pf-title">${item.title}</div>${item.year ? `<div class="pf-year">${item.year}</div>` : ''}`;
+  return false;
+}
+
+function initCarousel(imageUrl, photos) {
+  if (Array.isArray(photos) && photos.length) {
+    photoList = photos.slice();
+    currentImgIndex = Math.max(1, photoList.indexOf(imageUrl) + 1);
+    totalImages = photoList.length;
+    updateCounter();
+    updateNavButtons();
+    return;
+  }
+  const match = imageUrl.match(/^(.*-)(\d+)(\.jpg)$/i);
+  if (match) {
+    imgBaseUrl = match[1];
+    currentImgIndex = parseInt(match[2], 10);
+  } else {
+    imgBaseUrl = imageUrl.replace(/\.jpg$/i, '-');
+    currentImgIndex = 1;
+  }
+  updateCounter();
+  probeImages();
+}
+
+function probeImages() {
+  // Probe ahead to find how many images exist
+  let probeIndex = currentImgIndex + 1;
+  function tryProbe() {
+    const img = new Image();
+    img.onload = () => {
+      totalImages = probeIndex;
+      probeIndex++;
+      tryProbe();
+    };
+    img.onerror = () => {
+      updateNavButtons();
+    };
+    img.src = imgBaseUrl + probeIndex + '.jpg';
+  }
+  tryProbe();
+}
+
+function changeImage(delta) {
+  const newIndex = currentImgIndex + delta;
+  if (newIndex < 1) return;
+  if (photoList) {
+    if (newIndex > photoList.length) return;
+    currentImgIndex = newIndex;
+    document.getElementById('poster').src = photoList[newIndex - 1];
+    updateNavButtons();
+    updateCounter();
+    return;
+  }
+
+  const testImg = new Image();
+  testImg.onload = () => {
+    currentImgIndex = newIndex;
+    if (currentImgIndex > totalImages) totalImages = currentImgIndex;
+    document.getElementById('poster').src = testImg.src;
+    updateNavButtons();
+    updateCounter();
+  };
+  testImg.onerror = () => {
+    if (delta > 0) {
+      totalImages = currentImgIndex;
+      updateNavButtons();
+    }
+  };
+  testImg.src = imgBaseUrl + newIndex + '.jpg';
+}
+
+function updateNavButtons() {
+  document.getElementById('imgPrev').disabled = currentImgIndex <= 1;
+  document.getElementById('imgNext').disabled = currentImgIndex >= totalImages;
+}
+
+function updateCounter() {
+  const counter = document.getElementById('imgCounter');
+  if (totalImages > 1) {
+    counter.textContent = currentImgIndex + ' / ' + totalImages;
+    counter.style.display = 'block';
+  } else {
+    counter.style.display = 'none';
+  }
+}
+
+async function loadItem(){
+  // The built page names its own item (tools/build.mjs); ?id= still works.
+  const params = new URLSearchParams(window.location.search);
+  const id = window.MQ_ITEM_ID || params.get('id');
+
+  const loading = document.getElementById('loading');
+  const notFound = document.getElementById('not-found');
+  const detailLayout = document.getElementById('detailLayout');
+
+  try {
+    const res = await fetch('data.json');
+    const data = await res.json();
+    const index = data.findIndex(t => t.id === id);
+    const item = index !== -1 ? data[index] : null;
+
+    if (!item){
+      loading.classList.add('hidden');
+      notFound.classList.remove('hidden');
+      return;
+    }
+
+    loading.classList.add('hidden');
+    const staticBlock = document.getElementById('mqStatic');
+    if (staticBlock) staticBlock.remove();
+    detailLayout.classList.remove('hidden');
+
+    // Populate previous/next flank cards (2 per side, wrapping around the ends).
+    // Neighbours come from the same category where possible and follow the same
+    // A-Z order as the catalogue grid, so "next" means something to the visitor
+    // instead of being whatever happened to sit beside it in data.json.
+    const titleKey = (t) => String(t || '').replace(/^(the|a|an)\s+/i, '').trim().toLowerCase();
+    const myCats = item.categories || [];
+    let ring = data.filter(x => (x.categories || []).some(c => myCats.includes(c)));
+    if (ring.length < 3) ring = data.slice();
+    ring.sort((a, b) => titleKey(a.title).localeCompare(titleKey(b.title)));
+
+    const total = ring.length;
+    const ringIndex = ring.findIndex(x => x.id === item.id);
+    const at = (offset) => (total > 0 && ringIndex !== -1)
+      ? ring[((ringIndex + offset) % total + total) % total]
+      : null;
+
+    const prev1 = total > 1 ? at(-1) : null;
+    const next1 = total > 1 ? at(1) : null;
+    let prev2 = total > 2 ? at(-2) : null;
+    let next2 = total > 2 ? at(2) : null;
+
+    // Avoid showing a duplicate title when the catalogue is small enough that
+    // the 2-away item wraps around to something already shown elsewhere.
+    if (prev2 && (prev2.id === item.id || prev2.id === next1?.id)) prev2 = null;
+    if (next2 && (next2.id === item.id || next2.id === prev1?.id)) next2 = null;
+
+    function fillFlank(prefix, flankItem){
+      const el = document.getElementById(prefix);
+      if (!flankItem){ return; }
+      el.href = `movies/${encodeURIComponent(flankItem.id)}/`;
+      const imgEl = document.getElementById(prefix + 'Img');
+      renderPoster(imgEl.parentElement, imgEl, flankItem);
+      document.getElementById(prefix + 'Title').textContent = flankItem.title;
+      el.classList.remove('hidden');
+    }
+
+    fillFlank('prevFlank1', prev1);
+    fillFlank('prevFlank2', prev2);
+    fillFlank('nextFlank1', next1);
+    fillFlank('nextFlank2', next2);
+
+    document.title = item.title + ' — Movie Quest Canada';
+    const posterEl = document.getElementById('poster');
+    const hasImage = renderPoster(posterEl.parentElement, posterEl, item);
+    document.getElementById('formatTag').textContent = item.format;
+    document.getElementById('title').textContent = item.title;
+    document.getElementById('meta').textContent = [item.year, item.format, item.condition].filter(Boolean).join('  ·  ');
+    document.getElementById('desc').textContent = item.desc || '';
+    document.getElementById('price').textContent = item.price != null ? '$' + Number(item.price).toFixed(2) : '—';
+    const storeLinkEl = document.getElementById('storeLink');
+    const priceRowEl = document.getElementById('priceRow');
+    // Sold: every copy in "copies" is marked sold (or the item says so).
+    const copies = Array.isArray(item.copies) ? item.copies : [];
+    const sold = item.sold === true || (copies.length > 0 && copies.every(c => c.sold));
+    document.getElementById('soldTag').classList.toggle('hidden', !sold);
+    if (item.storeUrl && !sold) {
+      storeLinkEl.href = item.storeUrl;
+      storeLinkEl.onclick = () => window.mqCountClick && window.mqCountClick(`ebay/${item.id}`, `eBay: ${item.title}`);
+      storeLinkEl.classList.remove('hidden');
+      priceRowEl.classList.remove('hidden');
+    } else {
+      storeLinkEl.classList.add('hidden');
+      priceRowEl.classList.add('hidden');
+    }
+    document.getElementById('searchLink').href = item.searchUrl || '#';
+
+    // Copies: newest first, each with its slideshow, grade and its own eBay
+    // link (partner-tracked like every other eBay link on the site).
+    const copiesSection = document.getElementById('copiesSection');
+    const copiesGrid = document.getElementById('copiesGrid');
+    copiesGrid.innerHTML = '';
+    const partnerUrl = (copy) => {
+      const m = String(copy.ebayUrl || '').match(/\/itm\/(\d+)/);
+      return m ? `https://www.ebay.ca/itm/${m[1]}?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=${encodeURIComponent(copy.id)}&toolid=10001&mkevt=1` : '';
+    };
+    const shown = copies.filter(c => c.gif || (c.photos && c.photos.length))
+      .slice().sort((a, b) => String(b.added || '').localeCompare(String(a.added || '')));
+    for (const copy of shown) {
+      const card = document.createElement('div');
+      card.className = 'copy-card' + (copy.sold ? ' is-sold' : '');
+      if (copy.sold) {
+        const tag = document.createElement('div');
+        tag.className = 'sold-tag';
+        tag.textContent = 'SOLD';
+        card.appendChild(tag);
+      }
+      const img = document.createElement('img');
+      img.src = copy.gif || copy.photos[0];
+      img.alt = `${item.title}: photos of this copy`;
+      img.loading = 'lazy';
+      card.appendChild(img);
+      const body = document.createElement('div');
+      body.className = 'copy-body';
+      const ed = document.createElement('div');
+      ed.className = 'copy-edition';
+      ed.textContent = [copy.format || item.format, copy.edition].filter(Boolean).join(' · ');
+      body.appendChild(ed);
+      const meta = document.createElement('div');
+      meta.className = 'copy-meta';
+      const grade = (copy.condition && copy.condition.overall) || item.condition || '';
+      meta.textContent = [grade, copy.added ? 'Added ' + copy.added : ''].filter(Boolean).join('  ·  ');
+      body.appendChild(meta);
+      const url = partnerUrl(copy);
+      if (url && !copy.sold) {
+        const a = document.createElement('a');
+        a.className = 'cta-btn cta-primary';
+        a.href = url; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = 'View this copy on eBay →';
+        a.onclick = () => window.mqCountClick && window.mqCountClick(`ebay/${copy.id}`, `eBay: ${item.title}`);
+        body.appendChild(a);
+      }
+      card.appendChild(body);
+      copiesGrid.appendChild(card);
+    }
+    copiesSection.classList.toggle('hidden', shown.length === 0);
+
+    // Populate metadata box
+    const metaSection = document.getElementById('metaSection');
+    const metaGrid = document.getElementById('metaGrid');
+    // Music CDs list artists, label and tracks instead of cast and crew.
+    const isMusic = item.format === 'CD' || (item.categories || []).includes('music');
+    const metaFields = isMusic ? [
+      { key: 'artist',     label: 'Artist' },
+      { key: 'genre',      label: 'Genre' },
+      { key: 'compiledBy', label: 'Compiled By' },
+      { key: 'producers',  label: 'Producers' },
+      { key: 'label',      label: 'Label' },
+      { key: 'released',   label: 'Released' }
+    ] : [
+      { key: 'starring',   label: 'Starring' },
+      { key: 'director',   label: 'Director' },
+      { key: 'producers',  label: 'Producers' },
+      { key: 'company',    label: 'Company' }
+    ];
+    const hasMeta = metaFields.some(f => item[f.key] && String(item[f.key]).trim());
+    if (hasMeta) {
+      metaGrid.innerHTML = '';
+      metaFields.forEach(f => {
+        const val = item[f.key];
+        if (val && String(val).trim()) {
+          const row = document.createElement('div');
+          row.className = 'meta-row';
+          row.innerHTML = `<div class="meta-label">${f.label}</div><div class="meta-value">${String(val).trim()}</div>`;
+          metaGrid.appendChild(row);
+        }
+      });
+      metaSection.classList.remove('hidden');
+    } else {
+      metaSection.classList.add('hidden');
+    }
+
+    const tracksSection = document.getElementById('tracksSection');
+    const tracksList = document.getElementById('tracksList');
+    const tracks = Array.isArray(item.tracks) ? item.tracks : [];
+    tracksList.innerHTML = '';
+    tracks.forEach(t => {
+      const li = document.createElement('li');
+      const title = document.createElement('span');
+      title.className = 'tr-title';
+      title.textContent = t.title;
+      li.appendChild(title);
+      if (t.artist) {
+        li.appendChild(document.createTextNode(' – '));
+        const a = document.createElement('span');
+        a.className = 'tr-artist';
+        a.textContent = t.artist;
+        li.appendChild(a);
+      }
+      if (t.credit) {
+        const c = document.createElement('span');
+        c.className = 'tr-credit';
+        c.textContent = t.credit;
+        li.appendChild(c);
+      }
+      tracksList.appendChild(li);
+    });
+    tracksSection.classList.toggle('hidden', tracks.length === 0);
+    document.getElementById('trailerTitle').textContent = isMusic ? '▶ Listen' : '▶ Trailer';
+    document.getElementById('tidbitsTitle').textContent = isMusic ? '🎵 Did You Know?' : '🎬 Did You Know?';
+
+    // Populate trailer box
+    const trailerSection = document.getElementById('trailerSection');
+    const trailerFrame = document.getElementById('trailerFrame');
+    const ytId = item.youtubeId ? String(item.youtubeId).trim() : '';
+    if (ytId) {
+      trailerFrame.src = `https://www.youtube.com/embed/${encodeURIComponent(ytId)}`;
+      trailerSection.classList.remove('hidden');
+    } else {
+      trailerFrame.src = '';
+      trailerSection.classList.add('hidden');
+    }
+
+    const tidbitsSection = document.getElementById('tidbitsSection');
+    const tidbitsList = document.getElementById('tidbitsList');
+    // "trivia" carries a heading for each fact (the same boxes as the eBay
+    // listing); older items have plain "tidbits".
+    const trivia = Array.isArray(item.trivia) && item.trivia.length
+      ? item.trivia
+      : (item.tidbits || []).map(t => ({ text: t }));
+    if (trivia.length){
+      tidbitsList.innerHTML = '';
+      trivia.forEach(t => {
+        const li = document.createElement('li');
+        if (t.heading) {
+          const h = document.createElement('span');
+          h.className = 'tb-head';
+          h.textContent = t.heading;
+          li.appendChild(h);
+        }
+        li.appendChild(document.createTextNode(t.text || ''));
+        tidbitsList.appendChild(li);
+      });
+      tidbitsSection.classList.remove('hidden');
+    } else {
+      tidbitsSection.classList.add('hidden');
+    }
+
+    // Initialize image carousel (only relevant when there's a real poster image)
+    const imgPrevEl = document.getElementById('imgPrev');
+    const imgNextEl = document.getElementById('imgNext');
+    const imgCounterEl = document.getElementById('imgCounter');
+    if (hasImage) {
+      imgPrevEl.classList.remove('hidden');
+      imgNextEl.classList.remove('hidden');
+      initCarousel(item.image, item.photos);
+    } else {
+      imgPrevEl.classList.add('hidden');
+      imgNextEl.classList.add('hidden');
+      imgCounterEl.style.display = 'none';
+    }
+    imgPrevEl.addEventListener('click', () => changeImage(-1));
+    imgNextEl.addEventListener('click', () => changeImage(1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!hasImage) return;
+      if (e.key === 'ArrowLeft') changeImage(-1);
+      if (e.key === 'ArrowRight') changeImage(1);
+    });
+
+  } catch (err){
+    loading.textContent = 'Error loading item. Please check that data.json is in the same folder.';
+    console.error(err);
+  }
+}
+
+loadItem();
+</script>
+</body>
+</html>

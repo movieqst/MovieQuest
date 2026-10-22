@@ -3481,5 +3481,96 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "v-complete-series-2009-2011-dvd",
+    "title": "V: The Complete Series (Seasons 1 & 2)",
+    "year": 2009,
+    "years": [
+      2009,
+      2010,
+      2011
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/v-complete-series-2009-2011-dvd-1.jpg",
+    "photos": [
+      "images/v-complete-series-2009-2011-dvd-1.jpg",
+      "images/v-complete-series-2009-2011-dvd-2.jpg",
+      "images/v-complete-series-2009-2011-dvd-3.jpg",
+      "images/v-complete-series-2009-2011-dvd-4.jpg",
+      "images/v-complete-series-2009-2011-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=V%20Complete%20First%20Second%20Season%20DVD%202009&campid=5339133571&customid=v-complete-series-2009-2011-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s",
+      "2010s"
+    ],
+    "runYears": "2009–2011",
+    "createdBy": "Kenneth Johnson (original 1983 series); developed by Scott Peters",
+    "starring": "Elizabeth Mitchell, Morris Chestnut, Joel Gretsch, Logan Huffman, Laura Vandervoort, Morena Baccarin, Lourdes Benedicto, Scott Wolf, Charles Mesure, Jane Badler",
+    "producers": "Scott Peters, Steve Pearlman, Jace Hall, Jeffrey Bell, Scott Rosenbaum",
+    "company": "The Scott Peters Company / HDFilms / Warner Bros. Television / ABC",
+    "titleNote": "Seasons 1 & 2 / 2009–2011",
+    "tagline": "DVD / Complete Series / Seasons 1 & 2 / 5 Discs / Elizabeth Mitchell / TV Series / 2009–2011",
+    "desc": "They arrive. Earth's first alien encounter begins when huge motherships appear over 29 major cities. The visitors, the Vs, are human-like beings who know our languages and bring awesome gifts of healing and technology. People everywhere welcome them as saviours. But a fledgling resistance is determined to reveal the shocking truth. In season two, the Visitors seem almost godlike among us, led by their mysterious queen Anna, as the Fifth Column fights to uncover the Vs' secret plan. Both seasons of the ABC series: Season One (3 discs, 12 episodes) and Season Two (2 discs, 10 episodes).",
+    "trivia": [
+      {
+        "heading": "A Remake of the 1983 Classic",
+        "text": "This series reimagines Kenneth Johnson's 1983 miniseries V, about seemingly friendly alien Visitors who arrive in giant motherships hovering over Earth's major cities."
+      },
+      {
+        "heading": "A Lost and Firefly Reunion",
+        "text": "Elizabeth Mitchell (Juliet on Lost) plays FBI agent Erica Evans, and Morena Baccarin (Inara on Firefly) plays Anna, the Visitors' calm, chilling queen."
+      },
+      {
+        "heading": "Original Stars Return",
+        "text": "Jane Badler, who played the villain Diana in the 1980s series, returns in season two as Diana, Anna's imprisoned mother."
+      },
+      {
+        "heading": "Two Seasons Only",
+        "text": "ABC cancelled V in May 2011 after two seasons and 22 episodes, ending on a cliffhanger. These two sets are the complete series."
+      }
+    ],
+    "tidbits": [
+      "This series reimagines Kenneth Johnson's 1983 miniseries V, about seemingly friendly alien Visitors who arrive in giant motherships hovering over Earth's major cities.",
+      "Elizabeth Mitchell (Juliet on Lost) plays FBI agent Erica Evans, and Morena Baccarin (Inara on Firefly) plays Anna, the Visitors' calm, chilling queen.",
+      "Jane Badler, who played the villain Diana in the 1980s series, returns in season two as Diana, Anna's imprisoned mother.",
+      "ABC cancelled V in May 2011 after two seasons and 22 episodes, ending on a cliffhanger. These two sets are the complete series."
+    ],
+    "copies": [
+      {
+        "id": "v-complete-series-2009-2011-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "Warner Bros. Season One (3-disc) and Season Two (2-disc) sets, each with slipcover",
+        "photos": [
+          "images/v-complete-series-2009-2011-dvd-1.jpg",
+          "images/v-complete-series-2009-2011-dvd-2.jpg",
+          "images/v-complete-series-2009-2011-dvd-3.jpg",
+          "images/v-complete-series-2009-2011-dvd-4.jpg",
+          "images/v-complete-series-2009-2011-dvd-5.jpg"
+        ],
+        "gif": "images/v-complete-series-2009-2011-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: two cases with slipcovers (Season One slipcover is holographic); light shelf wear on the slipcover edges",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Slipcovers",
+          "notes": "Warner Bros. / Warner Home Video. Season One (2010): 3 discs, 12 episodes, 520 minutes, widescreen enhanced for 16x9 TVs, English Dolby Digital 5.1, English SDH, French and Spanish subtitles. Special features: Breaking Story: The World of V; The Actor's Journey from Human to V; An Alien in Human Skin: The Makeup FX of V; executive producers' commentary on \"Fruition\"; The Visual Effects of V; unaired scenes. Season Two (2011): 2 discs, 10 episodes, 425 minutes, widescreen, Dolby Digital; unaired scenes for every episode. Both rated 14A (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
