@@ -357,6 +357,7 @@
     <option value="year-desc">Sort: Newest first</option>
     <option value="year-asc">Sort: Oldest first</option>
     <option value="price">Sort: Price low–high</option>
+    <option value="random">Sort: Random (mix it up)</option>
   </select>
 </div>
 
@@ -475,6 +476,7 @@ function render(){
   });
 
   switch(sortSelect.value){
+    case 'random':      items.sort((a,b) => a._shuffle - b._shuffle); break;
     case 'listed-desc': items.sort((a,b) => byListed(b, a)); break;
     case 'listed-asc':  items.sort(byListed); break;
     case 'year-desc': items.sort((a,b) => yearKey(b, -Infinity) - yearKey(a, -Infinity)); break;
@@ -539,6 +541,7 @@ async function init(){
   try {
     allItems = await itemsPromise;
     allItems.forEach((item, i) => { item._order = i; });
+    shuffle();
     render();
   } catch (err){
     resultCount.textContent = 'Error loading catalogue.';
@@ -546,7 +549,12 @@ async function init(){
   }
 }
 
-sortSelect.addEventListener('change', render);
+// A fresh shuffle each time Random is picked, kept steady while filtering.
+const shuffle = () => allItems.forEach(item => { item._shuffle = Math.random(); });
+sortSelect.addEventListener('change', () => {
+  if (sortSelect.value === 'random') shuffle();
+  render();
+});
 searchInput.addEventListener('input', (e) => {
   searchTerm = e.target.value.toLowerCase().trim();
   render();
