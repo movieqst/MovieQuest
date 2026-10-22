@@ -352,6 +352,8 @@
   <div class="result-count" id="resultCount">Loading catalogue…</div>
   <select id="sortSelect">
     <option value="title">Sort: Title A–Z</option>
+    <option value="listed-desc">Sort: Newly listed</option>
+    <option value="listed-asc">Sort: Oldest listed</option>
     <option value="year-desc">Sort: Newest first</option>
     <option value="year-asc">Sort: Oldest first</option>
     <option value="price">Sort: Price low–high</option>
@@ -445,6 +447,17 @@ const titleKey = (t) => String(t || '').replace(/^(the|a|an)\s+/i, '').trim().to
 const yearKey  = (item, missing = Infinity) => item.year  == null ? missing : item.year;
 const priceKey = (item) => item.price == null ? Infinity : Number(item.price);
 
+// When an item was listed: its latest copy's "added" date, then its place in
+// data.json (new items are appended), so undated older items still order.
+const listedKey = (item) => {
+  const dates = (item.copies || []).map(c => c.added || '').filter(Boolean).sort();
+  return [dates.length ? dates[dates.length - 1] : '', item._order];
+};
+const byListed = (a, b) => {
+  const [da, ia] = listedKey(a), [db, ib] = listedKey(b);
+  return da === db ? ia - ib : (da < db ? -1 : 1);
+};
+
 function formatPrice(p){
   if (p === undefined || p === null) return '—';
   return '$' + Number(p).toFixed(2);
@@ -462,6 +475,8 @@ function render(){
   });
 
   switch(sortSelect.value){
+    case 'listed-desc': items.sort((a,b) => byListed(b, a)); break;
+    case 'listed-asc':  items.sort(byListed); break;
     case 'year-desc': items.sort((a,b) => yearKey(b, -Infinity) - yearKey(a, -Infinity)); break;
     case 'year-asc':  items.sort((a,b) => yearKey(a) - yearKey(b)); break;
     case 'price':     items.sort((a,b) => priceKey(a) - priceKey(b)); break;
@@ -523,6 +538,7 @@ async function init(){
   buildYearStrip();
   try {
     allItems = await itemsPromise;
+    allItems.forEach((item, i) => { item._order = i; });
     render();
   } catch (err){
     resultCount.textContent = 'Error loading catalogue.';
