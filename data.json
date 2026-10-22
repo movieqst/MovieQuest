@@ -3298,5 +3298,91 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "manhunter-1986-dvd",
+    "title": "Manhunter",
+    "year": 1986,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/manhunter-1986-dvd-1.jpg",
+    "photos": [
+      "images/manhunter-1986-dvd-1.jpg",
+      "images/manhunter-1986-dvd-2.jpg",
+      "images/manhunter-1986-dvd-3.jpg",
+      "images/manhunter-1986-dvd-4.jpg",
+      "images/manhunter-1986-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Manhunter%20Limited%20Edition%20DVD%20Anchor%20Bay&campid=5339133571&customid=manhunter-1986-dvd",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "youtubeId": "UyvMq4ZwcBU",
+    "starring": "William Petersen, Kim Greist, Joan Allen, Brian Cox, Dennis Farina, Stephen Lang, Tom Noonan",
+    "director": "Michael Mann",
+    "producers": "Richard Roth, Bernard Williams (executive producer)",
+    "company": "De Laurentiis Entertainment Group / Anchor Bay Entertainment",
+    "titleNote": "Limited Edition 2-Disc / 1986",
+    "tagline": "DVD / Limited Edition 2-Disc Set / Numbered / Michael Mann / 1980s",
+    "desc": "The unforgettable debut of Hannibal Lecter. FBI agent Will Graham (William Petersen) has captured the diabolical Dr. Hannibal Lecter (Brian Cox), nearly losing more than just his mind in the process. But when Graham is called out of retirement to hunt the psychopath known as \"The Tooth Fairy\" (Tom Noonan), he must once again confront the horrors of Hannibal the Cannibal. Joan Allen, Dennis Farina, Kim Greist and Stephen Lang co-star in this shocking thriller directed by Michael Mann and adapted from the novel Red Dragon by Thomas Harris.",
+    "trivia": [
+      {
+        "heading": "The First Hannibal Lecter",
+        "text": "Brian Cox played Hannibal Lecter (spelled \"Lecktor\" in the film) five years before Anthony Hopkins made the role famous in The Silence of the Lambs."
+      },
+      {
+        "heading": "Red Dragon on Screen",
+        "text": "Manhunter is the first film adaptation of Thomas Harris's novel Red Dragon, which was filmed again in 2002 with Anthony Hopkins and Edward Norton."
+      },
+      {
+        "heading": "Michael Mann's Style",
+        "text": "Director Michael Mann was also producing Miami Vice at the time, and Manhunter shares its bold colour palette, synth soundtrack and cool 1980s look."
+      },
+      {
+        "heading": "A Name Change",
+        "text": "The title was changed from Red Dragon to Manhunter, reportedly because producer Dino De Laurentiis's previous film Year of the Dragon had flopped."
+      },
+      {
+        "heading": "From Will Graham to Grissom",
+        "text": "William Petersen, who plays FBI profiler Will Graham, later starred as Gil Grissom on CSI: Crime Scene Investigation."
+      }
+    ],
+    "tidbits": [
+      "Brian Cox played Hannibal Lecter (spelled \"Lecktor\" in the film) five years before Anthony Hopkins made the role famous in The Silence of the Lambs.",
+      "Manhunter is the first film adaptation of Thomas Harris's novel Red Dragon, which was filmed again in 2002 with Anthony Hopkins and Edward Norton.",
+      "Director Michael Mann was also producing Miami Vice at the time, and Manhunter shares its bold colour palette, synth soundtrack and cool 1980s look.",
+      "The title was changed from Red Dragon to Manhunter, reportedly because producer Dino De Laurentiis's previous film Year of the Dragon had flopped.",
+      "William Petersen, who plays FBI profiler Will Graham, later starred as Gil Grissom on CSI: Crime Scene Investigation."
+    ],
+    "copies": [
+      {
+        "id": "manhunter-1986-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "Anchor Bay Limited Edition 2-disc set, numbered 63558 / 100,000",
+        "photos": [
+          "images/manhunter-1986-dvd-1.jpg",
+          "images/manhunter-1986-dvd-2.jpg",
+          "images/manhunter-1986-dvd-3.jpg",
+          "images/manhunter-1986-dvd-4.jpg",
+          "images/manhunter-1986-dvd-5.jpg"
+        ],
+        "gif": "images/manhunter-1986-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "24-page collector's booklet in a \"Confidential\" file folder insert",
+          "notes": "Anchor Bay Entertainment Limited Edition (2001, catalogue DV11692, UPC 013131169294), numbered 63558 of 100,000. Region 1 NTSC, THX digitally mastered, closed captioned. Disc 1: Theatrical Version, 121 minutes, rated R, widescreen 2.35:1 enhanced for 16x9 TVs, Dolby Digital 5.1 surround; featurettes \"The Manhunter Look\" (with cinematographer Dante Spinotti) and \"Inside Manhunter\" (with William Petersen, Joan Allen, Brian Cox and Tom Noonan), theatrical trailer, talent bios. Disc 2: Director's Cut, 124 minutes, not rated, widescreen 2.35:1 enhanced for 16x9 TVs, Dolby Surround 2.0."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
