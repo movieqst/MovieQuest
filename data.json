@@ -3120,7 +3120,7 @@
     ],
     "storeUrl": "https://www.ebay.ca/itm/117479463120?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=boston-legal-season-5-dvd&toolid=10001&mkevt=1",
     "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Boston%20Legal%20Season%205%20DVD&campid=5339133571&customid=boston-legal-season-5-dvd",
-    "price": null,
+    "price": 29.95,
     "categories": [
       "tvseries",
       "2000s"
@@ -3192,6 +3192,292 @@
           "notes": "20th Century Fox Home Entertainment 4-disc DVD set (2009), Region 1 NTSC, in a clear multi-disc case. All 12 season five episodes, 557 minutes, colour, widescreen 1.78:1. Disc 1: Smoke Signals, Guardians and Gatekeepers, Dances with Wolves, True Love. Disc 2: The Bad Seed, Happy Trails, Mad Cows, Roe, plus \"Denny and Alan: Friends to the End\" featurette. Disc 3: Kill Baby Kill!, Thanksgiving, Juiced, plus \"Denny's Daughter: The Untold Story\" featurette. Disc 4: Made in China / Last Call (series finale), plus \"Closing Statement: The Boston Legal Series Finale\" featurette and \"Stricken from the Record!\" deleted scenes with an introduction by executive producer/director Bill D'Elia. English Dolby Digital surround; subtitles in English, Spanish, French and Portuguese; closed captioned. Rated G (Canada)."
         },
         "ebayUrl": "https://www.ebay.ca/itm/117479463120",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "american-dad-volume-2-dvd",
+    "title": "American Dad!: Volume 2",
+    "year": 2006,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/american-dad-volume-2-dvd-11.jpg",
+    "photos": [
+      "images/american-dad-volume-2-dvd-11.jpg",
+      "images/american-dad-volume-2-dvd-1.jpg",
+      "images/american-dad-volume-2-dvd-2.jpg",
+      "images/american-dad-volume-2-dvd-3.jpg",
+      "images/american-dad-volume-2-dvd-15.jpg",
+      "images/american-dad-volume-2-dvd-14.jpg",
+      "images/american-dad-volume-2-dvd-4.jpg",
+      "images/american-dad-volume-2-dvd-5.jpg",
+      "images/american-dad-volume-2-dvd-6.jpg",
+      "images/american-dad-volume-2-dvd-7.jpg",
+      "images/american-dad-volume-2-dvd-8.jpg",
+      "images/american-dad-volume-2-dvd-9.jpg",
+      "images/american-dad-volume-2-dvd-10.jpg",
+      "images/american-dad-volume-2-dvd-12.jpg",
+      "images/american-dad-volume-2-dvd-13.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/128149339011?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=american-dad-volume-2-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=American%20Dad%20Volume%202%20DVD&campid=5339133571&customid=american-dad-volume-2-dvd",
+    "price": 29.95,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2005–2006",
+    "createdBy": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "starring": "Seth MacFarlane, Wendy Schaal, Scott Grimes, Rachael MacFarlane, Dee Bradley Baker",
+    "producers": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "company": "Fuzzy Door Productions / Underdog Productions / 20th Century Fox Television",
+    "titleNote": "Volume 2 / 2005–2006",
+    "tagline": "DVD / 3-Disc Set / Seth MacFarlane / Animated / TV Series / 2005–2006",
+    "desc": "CIA agent Stan Smith will do whatever it takes to protect his family and his country from terrorism, no matter how ridiculous. At home in Langley Falls, Virginia, he lives with his wife Francine, liberal daughter Hayley, nerdy son Steve, Roger the wisecracking alien and Klaus, a German ski jumper trapped in the body of a goldfish. From Family Guy creator Seth MacFarlane, Volume 2 collects 19 episodes on three discs, including \"Tears of a Clooney\", \"Lincoln Lover\", \"Dungeons and Wagons\" and the Christmas special \"The Best Christmas Story Never\", plus over 100 deleted and extended scenes.",
+    "trivia": [
+      {
+        "heading": "A Super Bowl Premiere",
+        "text": "American Dad! premiered on Fox right after Super Bowl XXXIX in February 2005 and drew 15.1 million viewers."
+      },
+      {
+        "heading": "From the Family Guy Team",
+        "text": "The show was created by Seth MacFarlane with Mike Barker and Matt Weitzman. MacFarlane voices both Stan Smith and Roger the alien."
+      },
+      {
+        "heading": "A Skier in a Fishbowl",
+        "text": "Klaus the goldfish is really a former East German Olympic ski jumper whose brain was put into a fish by the CIA."
+      },
+      {
+        "heading": "Censored and Uncensored",
+        "text": "This set includes both the censored and uncensored versions of \"Tears of a Clooney\", where Francine plots to break George Clooney's heart, plus over 100 deleted and extended scenes."
+      }
+    ],
+    "tidbits": [
+      "American Dad! premiered on Fox right after Super Bowl XXXIX in February 2005 and drew 15.1 million viewers.",
+      "The show was created by Seth MacFarlane with Mike Barker and Matt Weitzman. MacFarlane voices both Stan Smith and Roger the alien.",
+      "Klaus the goldfish is really a former East German Olympic ski jumper whose brain was put into a fish by the CIA.",
+      "This set includes both the censored and uncensored versions of \"Tears of a Clooney\", where Francine plots to break George Clooney's heart, plus over 100 deleted and extended scenes."
+    ],
+    "copies": [
+      {
+        "id": "american-dad-volume-2-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "20th Century Fox 3-disc set: outer slipcase with three individual cases",
+        "photos": [
+          "images/american-dad-volume-2-dvd-11.jpg",
+          "images/american-dad-volume-2-dvd-1.jpg",
+          "images/american-dad-volume-2-dvd-2.jpg",
+          "images/american-dad-volume-2-dvd-3.jpg",
+          "images/american-dad-volume-2-dvd-15.jpg",
+          "images/american-dad-volume-2-dvd-14.jpg",
+          "images/american-dad-volume-2-dvd-4.jpg",
+          "images/american-dad-volume-2-dvd-5.jpg",
+          "images/american-dad-volume-2-dvd-6.jpg",
+          "images/american-dad-volume-2-dvd-7.jpg",
+          "images/american-dad-volume-2-dvd-8.jpg",
+          "images/american-dad-volume-2-dvd-9.jpg",
+          "images/american-dad-volume-2-dvd-10.jpg",
+          "images/american-dad-volume-2-dvd-12.jpg",
+          "images/american-dad-volume-2-dvd-13.jpg"
+        ],
+        "gif": "images/american-dad-volume-2-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: three individual cases; outer slipcase shows edge and corner wear",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Outer slipcase",
+          "notes": "20th Century Fox Home Entertainment 3-disc DVD set (2007), Region 1 NTSC. 415 minutes, colour, full frame 1.33:1, dual layer. English Dolby Digital 5.1 surround; subtitles in English, French and Spanish; closed captioned. 19 episodes that aired 11/20/05 to 12/17/06. Disc one: Stannie Get Your Gun, Star Trek, Not Particularly Desperate Housewives, Rough Trade, Finances with Wolves, It's Good to Be the Queen, Roger 'n' Me, Helping Handis. Disc two: With Friends Like Steve's, Tears of a Clooney, Camp Refoogee, The American Dad After School Special, Failure Is Not a Factory-Installed Option, Lincoln Lover, Dungeons and Wagons, Iced, Iced Babies. Disc three: Of Ice and Men, Irregarding Steve, The Best Christmas Story Never. Special features: audio commentary on all episodes; multi-angle scene studies on \"Tears of a Clooney\", \"Dungeons and Wagons\" and \"Irregarding Steve\"; censored and uncensored versions of \"Tears of a Clooney\"; featurettes \"An American Dad! Like No Other\", \"Drawing Roger\" and \"Favorite Scenes\"; over 100 deleted and extended scenes."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/128149339011",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "manhunter-1986-dvd",
+    "title": "Manhunter",
+    "year": 1986,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/manhunter-1986-dvd-6.jpg",
+    "photos": [
+      "images/manhunter-1986-dvd-6.jpg",
+      "images/manhunter-1986-dvd-1.jpg",
+      "images/manhunter-1986-dvd-2.jpg",
+      "images/manhunter-1986-dvd-3.jpg",
+      "images/manhunter-1986-dvd-4.jpg",
+      "images/manhunter-1986-dvd-5.jpg",
+      "images/manhunter-1986-dvd-7.jpg",
+      "images/manhunter-1986-dvd-8.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/128149357940?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=manhunter-1986-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Manhunter%20Limited%20Edition%20DVD%20Anchor%20Bay&campid=5339133571&customid=manhunter-1986-dvd",
+    "price": 49.95,
+    "categories": [
+      "1980s"
+    ],
+    "youtubeId": "UyvMq4ZwcBU",
+    "starring": "William Petersen, Kim Greist, Joan Allen, Brian Cox, Dennis Farina, Stephen Lang, Tom Noonan",
+    "director": "Michael Mann",
+    "producers": "Richard Roth, Bernard Williams (executive producer)",
+    "company": "De Laurentiis Entertainment Group / Anchor Bay Entertainment",
+    "titleNote": "Limited Edition 2-Disc / 1986",
+    "tagline": "DVD / Limited Edition 2-Disc Set / Numbered / Michael Mann / 1980s",
+    "desc": "The unforgettable debut of Hannibal Lecter. FBI agent Will Graham (William Petersen) has captured the diabolical Dr. Hannibal Lecter (Brian Cox), nearly losing more than just his mind in the process. But when Graham is called out of retirement to hunt the psychopath known as \"The Tooth Fairy\" (Tom Noonan), he must once again confront the horrors of Hannibal the Cannibal. Joan Allen, Dennis Farina, Kim Greist and Stephen Lang co-star in this shocking thriller directed by Michael Mann and adapted from the novel Red Dragon by Thomas Harris.",
+    "trivia": [
+      {
+        "heading": "The First Hannibal Lecter",
+        "text": "Brian Cox played Hannibal Lecter (spelled \"Lecktor\" in the film) five years before Anthony Hopkins made the role famous in The Silence of the Lambs."
+      },
+      {
+        "heading": "Red Dragon on Screen",
+        "text": "Manhunter is the first film adaptation of Thomas Harris's novel Red Dragon, which was filmed again in 2002 with Anthony Hopkins and Edward Norton."
+      },
+      {
+        "heading": "Michael Mann's Style",
+        "text": "Director Michael Mann was also producing Miami Vice at the time, and Manhunter shares its bold colour palette, synth soundtrack and cool 1980s look."
+      },
+      {
+        "heading": "A Name Change",
+        "text": "The title was changed from Red Dragon to Manhunter, reportedly because producer Dino De Laurentiis's previous film Year of the Dragon had flopped."
+      },
+      {
+        "heading": "From Will Graham to Grissom",
+        "text": "William Petersen, who plays FBI profiler Will Graham, later starred as Gil Grissom on CSI: Crime Scene Investigation."
+      }
+    ],
+    "tidbits": [
+      "Brian Cox played Hannibal Lecter (spelled \"Lecktor\" in the film) five years before Anthony Hopkins made the role famous in The Silence of the Lambs.",
+      "Manhunter is the first film adaptation of Thomas Harris's novel Red Dragon, which was filmed again in 2002 with Anthony Hopkins and Edward Norton.",
+      "Director Michael Mann was also producing Miami Vice at the time, and Manhunter shares its bold colour palette, synth soundtrack and cool 1980s look.",
+      "The title was changed from Red Dragon to Manhunter, reportedly because producer Dino De Laurentiis's previous film Year of the Dragon had flopped.",
+      "William Petersen, who plays FBI profiler Will Graham, later starred as Gil Grissom on CSI: Crime Scene Investigation."
+    ],
+    "copies": [
+      {
+        "id": "manhunter-1986-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "Anchor Bay Limited Edition 2-disc set, numbered 63558 / 100,000",
+        "photos": [
+          "images/manhunter-1986-dvd-6.jpg",
+          "images/manhunter-1986-dvd-1.jpg",
+          "images/manhunter-1986-dvd-2.jpg",
+          "images/manhunter-1986-dvd-3.jpg",
+          "images/manhunter-1986-dvd-4.jpg",
+          "images/manhunter-1986-dvd-5.jpg",
+          "images/manhunter-1986-dvd-7.jpg",
+          "images/manhunter-1986-dvd-8.jpg"
+        ],
+        "gif": "images/manhunter-1986-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Complete: \"Confidential\" Manhunter Files folder (with printed case notes and Tooth Fairy sketch), FBI case file pages including Will Graham's crime scene walk-through, and a set of photo cards (the 24-page collector's material)",
+          "notes": "Anchor Bay Entertainment Limited Edition (2001, catalogue DV11692, UPC 013131169294), numbered 63558 of 100,000. Region 1 NTSC, THX digitally mastered, closed captioned. Disc 1: Theatrical Version, 121 minutes, rated R, widescreen 2.35:1 enhanced for 16x9 TVs, Dolby Digital 5.1 surround; featurettes \"The Manhunter Look\" (with cinematographer Dante Spinotti) and \"Inside Manhunter\" (with William Petersen, Joan Allen, Brian Cox and Tom Noonan), theatrical trailer, talent bios. Disc 2: Director's Cut, 124 minutes, not rated, widescreen 2.35:1 enhanced for 16x9 TVs, Dolby Surround 2.0."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/128149357940",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "the-outer-limits-season-1-dvd",
+    "title": "The Outer Limits: The Complete First Season",
+    "year": 1995,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-outer-limits-season-1-dvd-5.jpg",
+    "photos": [
+      "images/the-outer-limits-season-1-dvd-5.jpg",
+      "images/the-outer-limits-season-1-dvd-1.jpg",
+      "images/the-outer-limits-season-1-dvd-2.jpg",
+      "images/the-outer-limits-season-1-dvd-3.jpg",
+      "images/the-outer-limits-season-1-dvd-4.jpg",
+      "images/the-outer-limits-season-1-dvd-6.jpg",
+      "images/the-outer-limits-season-1-dvd-7.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117479554614?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=the-outer-limits-season-1-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Outer%20Limits%20Complete%20First%20Season%20DVD&campid=5339133571&customid=the-outer-limits-season-1-dvd",
+    "price": 55.95,
+    "categories": [
+      "tvseries",
+      "1990s"
+    ],
+    "youtubeId": "8dzxGlcErUo",
+    "runYears": "1995",
+    "createdBy": "Revival of the 1963 series created by Leslie Stevens",
+    "starring": "Kevin Conway (Control Voice), with Beau Bridges, Lloyd Bridges, Ryan Reynolds, Josh Brolin, Alyssa Milano, Rebecca De Mornay, Leonard Nimoy",
+    "producers": "Pen Densham, Richard B. Lewis, John Watson",
+    "company": "Trilogy Entertainment / Showtime / MGM Television / Alliance Films (Canada)",
+    "titleNote": "Au-delà du réel, l'aventure continue / 1995",
+    "tagline": "DVD / 6-Disc Set / Bilingual Canadian Edition / Sci-Fi / TV Series / 1995",
+    "desc": "There is nothing wrong with your television. Do not attempt to adjust the picture. The complete first season of The Outer Limits, Sci-Fi's critically acclaimed and most original series, is finally available on DVD! Like the classic 1960s series of the same name, each episode is an imaginative exploration of humanity's greatest hopes and darkest fears, with special guest appearances by Ryan Reynolds, Josh Brolin, Alyssa Milano, Beau Bridges, Rebecca De Mornay and Leonard Nimoy. Winner of the CableACE Award for best dramatic series, this Emmy-nominated show deals with controversial and thought-provoking topics such as genetic manipulation, alien visitation and life after death.",
+    "trivia": [
+      {
+        "heading": "A Revival of a 1960s Classic",
+        "text": "This series revived the original The Outer Limits (1963 to 1965), keeping its famous \"control voice\" opening: \"There is nothing wrong with your television. Do not attempt to adjust the picture.\""
+      },
+      {
+        "heading": "Three Generations of Bridges",
+        "text": "The premiere, \"The Sandkings\", starred Beau Bridges alongside his father Lloyd Bridges and his son Dylan Bridges, adapted from a George R. R. Martin story."
+      },
+      {
+        "heading": "Future Stars",
+        "text": "Season one features early guest roles from Ryan Reynolds and Josh Brolin, plus Alyssa Milano, Rebecca De Mornay and Leonard Nimoy."
+      },
+      {
+        "heading": "Seven Seasons",
+        "text": "The revival ran from 1995 to 2002 on Showtime, Sci-Fi and in syndication, and won the CableACE Award for best dramatic series. Much of it was filmed in and around Vancouver."
+      }
+    ],
+    "tidbits": [
+      "This series revived the original The Outer Limits (1963 to 1965), keeping its famous \"control voice\" opening: \"There is nothing wrong with your television. Do not attempt to adjust the picture.\"",
+      "The premiere, \"The Sandkings\", starred Beau Bridges alongside his father Lloyd Bridges and his son Dylan Bridges, adapted from a George R. R. Martin story.",
+      "Season one features early guest roles from Ryan Reynolds and Josh Brolin, plus Alyssa Milano, Rebecca De Mornay and Leonard Nimoy.",
+      "The revival ran from 1995 to 2002 on Showtime, Sci-Fi and in syndication, and won the CableACE Award for best dramatic series. Much of it was filmed in and around Vancouver."
+    ],
+    "copies": [
+      {
+        "id": "the-outer-limits-season-1-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "Alliance Films bilingual Canadian 6-disc set with slipcover (The Outer Limits / Au-delà du réel, l'aventure continue)",
+        "photos": [
+          "images/the-outer-limits-season-1-dvd-5.jpg",
+          "images/the-outer-limits-season-1-dvd-1.jpg",
+          "images/the-outer-limits-season-1-dvd-2.jpg",
+          "images/the-outer-limits-season-1-dvd-3.jpg",
+          "images/the-outer-limits-season-1-dvd-4.jpg",
+          "images/the-outer-limits-season-1-dvd-6.jpg",
+          "images/the-outer-limits-season-1-dvd-7.jpg"
+        ],
+        "gif": "images/the-outer-limits-season-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: slipcover over a fold-out digipak with clear disc trays; light shelf wear on the slipcover",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Episode/disc guide printed inside the digipak",
+          "notes": "Alliance Films Canadian release (2010, catalogue 114288), bilingual English/French packaging and menus. 6 discs (made in Canada), all 21 first-season episodes (1995), English and French 2.0 stereo, approx. 15 hours 45 minutes, full screen 1.33:1, rated 14A (Canada). Disc 1: The Sandkings Part 1 and Part 2, Valerie 23, Blood Brothers. Disc 2: The Second Soul, White Light Fever, The Choice, Virtual Future. Disc 3: Living Hell, Corner of the Eye, Under the Bed, Dark Matters. Disc 4: The Conversion, Quality of Mercy, The New Breed, The Voyage Home. Disc 5: Caught in the Act, The Message, I, Robot, If These Walls Could Talk. Disc 6: Birthright, The Voice of Reason."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117479554614",
         "sold": false
       }
     ]
