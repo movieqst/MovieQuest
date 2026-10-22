@@ -19,6 +19,9 @@ One physical copy at a time. Movie uploads its photo group; the AI does the rest
   gives a grade; he changes it on eBay if needed.
 - `price` on the website is always the full eBay price, never a sale or
   discounted price (Movie, 21 Oct).
+- The year always goes in or next to the title (`titleNote`, e.g.
+  "Widescreen / 1993"; TV sets use the airing years, e.g. "2005–2006"), since
+  different films share names (Movie, 22 Oct).
 
 ## 2. data.json
 New movie → add an item. Existing movie → edit its item. Fields used:
