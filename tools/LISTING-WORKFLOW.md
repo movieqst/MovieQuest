@@ -5,6 +5,9 @@ One physical copy at a time. Movie uploads its photo group; the AI does the rest
 ## 1. Photos
 - Photo order (Movie, 11 Oct): FRONT, SIDES (if any), BACK, INSIDE, DISC front
   (label), DISC back (shiny side). Turn sideways photos upright.
+- The item's main `image` (the homepage card) is the FRONT COVER, as big as
+  possible: no discs, no backs. For a multi-season set, two fronts side by
+  side is fine (Movie, 22 Oct). Put that photo first in `photos` too.
 - Save them as `images/<item-id>-N.jpg`, numbering on from the item's last photo
   (an existing movie keeps all its old photos — new ones are added after them).
 - Make the slideshow GIF for this copy's eBay description:
@@ -17,6 +20,9 @@ One physical copy at a time. Movie uploads its photo group; the AI does the rest
 
 - Condition defaults to **Very Good** (case, disc and overall) unless Movie
   gives a grade; he changes it on eBay if needed.
+- Damage to a disc or to the cover art / inserts makes it **Good** or lower.
+  Minor damage to the plastic case or slipcover stays **Very Good**, but is
+  always noted in the condition report (Movie, 22 Oct).
 - `price` on the website is always the full eBay price, never a sale or
   discounted price (Movie, 21 Oct).
 - The year always goes in or next to the title (`titleNote`, e.g.
