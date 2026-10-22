@@ -41,3 +41,26 @@ window.mqViews = async function (itemId) {
   const [a, b] = await Promise.all([one(`/movies/${itemId}/`), one(`/movies/${itemId}`)]);
   return a + b;
 };
+
+// Running total of every visit to the site, small in the bottom-left corner
+// ("128 VISITS"), like roughdrafter.com. Hidden until GoatCounter answers.
+(function () {
+  const code = window.MQ_GOATCOUNTER;
+  if (!code) return;
+  const show = async () => {
+    try {
+      const res = await fetch(`https://${code}.goatcounter.com/counter/TOTAL.json`);
+      if (!res.ok) return;
+      const data = await res.json();
+      const n = String(data.count || '').trim();
+      if (!n || n === '0') return;
+      const el = document.createElement('div');
+      el.textContent = `${n} visits`;
+      el.style.cssText = 'position:fixed;left:10px;bottom:8px;z-index:50;pointer-events:none;' +
+        'font:600 9px/1 "JetBrains Mono",monospace;letter-spacing:0.6px;text-transform:uppercase;color:#8a8a8a;';
+      document.body.appendChild(el);
+    } catch (e) {}
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show);
+  else show();
+})();
