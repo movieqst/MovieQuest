@@ -3824,5 +3824,92 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "american-dad-volume-1-dvd",
+    "title": "American Dad!: Volume One",
+    "year": 2005,
+    "years": [
+      2005,
+      2006
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/american-dad-volume-1-dvd-1.jpg",
+    "photos": [
+      "images/american-dad-volume-1-dvd-1.jpg",
+      "images/american-dad-volume-1-dvd-2.jpg",
+      "images/american-dad-volume-1-dvd-3.jpg",
+      "images/american-dad-volume-1-dvd-4.jpg",
+      "images/american-dad-volume-1-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=American%20Dad%20Volume%20One%20DVD&campid=5339133571&customid=american-dad-volume-1-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2005–2006",
+    "createdBy": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "starring": "Seth MacFarlane, Wendy Schaal, Scott Grimes, Rachael MacFarlane, Dee Bradley Baker",
+    "producers": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "company": "Fuzzy Door Productions / Underdog Productions / 20th Century Fox Television",
+    "titleNote": "Volume One / 2005–2006",
+    "tagline": "DVD / 3-Disc Set / Seth MacFarlane / Animated / TV Series / 2005–2006",
+    "desc": "CIA agent Stan Smith will do whatever it takes to protect his family and his country from terrorism, no matter how ridiculous. At home in Langley Falls, Virginia, he lives with his wife Francine, liberal daughter Hayley, nerdy son Steve, Roger the wisecracking alien and Klaus, a German ski jumper trapped in the body of a goldfish. From Family Guy creator Seth MacFarlane, Volume One collects the show's first 13 episodes on three discs, starting with the pilot.",
+    "trivia": [
+      {
+        "heading": "A Super Bowl Premiere",
+        "text": "American Dad! premiered on Fox right after Super Bowl XXXIX on February 6, 2005, drawing 15.1 million viewers."
+      },
+      {
+        "heading": "From the Family Guy Team",
+        "text": "Seth MacFarlane created the show with Mike Barker and Matt Weitzman, and voices both Stan Smith and Roger the alien."
+      },
+      {
+        "heading": "Behind the Glass Booth",
+        "text": "This set includes \"Secrets of the Glass Booth\", a look at the voice cast recording their roles, plus animatic-to-final comparisons."
+      },
+      {
+        "heading": "Where It All Began",
+        "text": "Volume One collects the show's earliest episodes, including the pilot, where CIA agent Stan first takes on terrorism at home in Langley Falls."
+      }
+    ],
+    "tidbits": [
+      "American Dad! premiered on Fox right after Super Bowl XXXIX on February 6, 2005, drawing 15.1 million viewers.",
+      "Seth MacFarlane created the show with Mike Barker and Matt Weitzman, and voices both Stan Smith and Roger the alien.",
+      "This set includes \"Secrets of the Glass Booth\", a look at the voice cast recording their roles, plus animatic-to-final comparisons.",
+      "Volume One collects the show's earliest episodes, including the pilot, where CIA agent Stan first takes on terrorism at home in Langley Falls."
+    ],
+    "copies": [
+      {
+        "id": "american-dad-volume-1-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "20th Century Fox 3-disc set: outer slipcase with three individual cases",
+        "photos": [
+          "images/american-dad-volume-1-dvd-1.jpg",
+          "images/american-dad-volume-1-dvd-2.jpg",
+          "images/american-dad-volume-1-dvd-3.jpg",
+          "images/american-dad-volume-1-dvd-4.jpg",
+          "images/american-dad-volume-1-dvd-5.jpg"
+        ],
+        "gif": "images/american-dad-volume-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: three individual cases; outer slipcase shows edge and corner wear",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Outer slipcase",
+          "notes": "20th Century Fox Home Entertainment 3-disc DVD set (2006), Region 1 NTSC, full frame 1.33:1, English Dolby Digital, English/French/Spanish subtitles. The first 13 episodes, beginning with the pilot. Special features listed for this release: commentaries, \"Secrets of the Glass Booth\" voice-cast featurette, \"American Animatics\" comparisons, a table read, and deleted scenes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
