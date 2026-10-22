@@ -17,6 +17,9 @@ One physical copy at a time. Movie uploads its photo group; the AI does the rest
 
 - Condition defaults to **Very Good** (case, disc and overall) unless Movie
   gives a grade; he changes it on eBay if needed.
+- Damage to a disc or to the cover art / inserts makes it **Good** or lower.
+  Minor damage to the plastic case or slipcover stays **Very Good**, but is
+  always noted in the condition report (Movie, 22 Oct).
 - `price` on the website is always the full eBay price, never a sale or
   discounted price (Movie, 21 Oct).
 - The year always goes in or next to the title (`titleNote`, e.g.
