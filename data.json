@@ -3707,5 +3707,100 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "terminator-sarah-connor-chronicles-season-2-dvd",
+    "title": "Terminator: The Sarah Connor Chronicles – The Complete Second Season",
+    "year": 2008,
+    "years": [
+      2008,
+      2009
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/terminator-sarah-connor-chronicles-season-2-dvd-1.jpg",
+    "photos": [
+      "images/terminator-sarah-connor-chronicles-season-2-dvd-1.jpg",
+      "images/terminator-sarah-connor-chronicles-season-2-dvd-2.jpg",
+      "images/terminator-sarah-connor-chronicles-season-2-dvd-3.jpg",
+      "images/terminator-sarah-connor-chronicles-season-2-dvd-4.jpg",
+      "images/terminator-sarah-connor-chronicles-season-2-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Terminator%20Sarah%20Connor%20Chronicles%20Second%20Season%20DVD&campid=5339133571&customid=terminator-sarah-connor-chronicles-season-2-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2008–2009",
+    "createdBy": "Josh Friedman",
+    "starring": "Lena Headey, Thomas Dekker, Summer Glau, Brian Austin Green, Garret Dillahunt, Shirley Manson, Leven Rambin, Richard T. Jones",
+    "producers": "Mario F. Kassar, Andrew G. Vajna, Joel B. Michaels, James Middleton, John Wirth, Josh Friedman",
+    "company": "The Halcyon Company / C2 Pictures / Bartleby Company / Warner Bros. Television / Fox",
+    "titleNote": "The Complete Second Season / 2008–2009",
+    "tagline": "DVD / 6-Disc Set / Widescreen / Lena Headey / Summer Glau / TV Series / 2008–2009",
+    "desc": "The time: today. The stakes: all our tomorrows. A nascent AI, assisted by deadly cyborgs, continues to edge toward world domination and the ruin of humankind. It fears no one, except John Connor. The machines know John, now 16, is the future leader of the human resistance, and they must find and terminate him. But Sarah Connor is there, protecting and instructing her son as he becomes the man he's destined to be. The hunt is on in a season of powerful revelations, breathless pursuits and bravura effects. Season two's 6-disc action arsenal is locked, loaded, ready to amaze.",
+    "trivia": [
+      {
+        "heading": "Between T2 and T3",
+        "text": "The series picks up after Terminator 2: Judgment Day, with Sarah and John Connor on the run from Skynet's machines, and ignores the events of Terminator 3."
+      },
+      {
+        "heading": "Lena Headey Before Cersei",
+        "text": "Lena Headey played Sarah Connor two years before she became Cersei Lannister on Game of Thrones."
+      },
+      {
+        "heading": "A Firefly Fan Favourite",
+        "text": "Summer Glau, River Tam on Firefly, plays Cameron, the reprogrammed Terminator sent back to protect John."
+      },
+      {
+        "heading": "Shirley Manson of Garbage",
+        "text": "Garbage singer Shirley Manson joined season two as Catherine Weaver, a liquid-metal T-1001 running a tech company."
+      },
+      {
+        "heading": "Cancelled on a Cliffhanger",
+        "text": "Fox cancelled the show in May 2009 after this second season, leaving fans with one of TV's most famous unresolved finales."
+      }
+    ],
+    "tidbits": [
+      "The series picks up after Terminator 2: Judgment Day, with Sarah and John Connor on the run from Skynet's machines, and ignores the events of Terminator 3.",
+      "Lena Headey played Sarah Connor two years before she became Cersei Lannister on Game of Thrones.",
+      "Summer Glau, River Tam on Firefly, plays Cameron, the reprogrammed Terminator sent back to protect John.",
+      "Garbage singer Shirley Manson joined season two as Catherine Weaver, a liquid-metal T-1001 running a tech company.",
+      "Fox cancelled the show in May 2009 after this second season, leaving fans with one of TV's most famous unresolved finales."
+    ],
+    "copies": [
+      {
+        "id": "terminator-sarah-connor-chronicles-season-2-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "Warner Bros. 6-disc widescreen set with slipcover",
+        "photos": [
+          "images/terminator-sarah-connor-chronicles-season-2-dvd-1.jpg",
+          "images/terminator-sarah-connor-chronicles-season-2-dvd-2.jpg",
+          "images/terminator-sarah-connor-chronicles-season-2-dvd-3.jpg",
+          "images/terminator-sarah-connor-chronicles-season-2-dvd-4.jpg",
+          "images/terminator-sarah-connor-chronicles-season-2-dvd-5.jpg"
+        ],
+        "gif": "images/terminator-sarah-connor-chronicles-season-2-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: case with matching slipcover; slipcover shows edge wear and a small torn patch at the bottom of the spine",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Slipcover",
+          "notes": "Warner Home Video (2009, ISBN 1-4198-6386-0, UPC 883929077571), Region 1 NTSC, 6 discs, all 22 season-two episodes, 976 minutes, colour, widescreen enhanced for 16x9 TVs, dual layer. English Dolby Digital 5.1; Portuguese Dolby Surround; subtitles in English, French, Spanish, Portuguese and Thai; English SDH. Rated 14A (Canada). Special features: commentaries on 4 key episodes by executive producer Josh Friedman and cast/crew; The Continuing Chronicles: Terminator 8-part featurette gallery; Terminated Scenes: unaired moments; The Storyboard Process: Cameron Goes Bad; Cameron vs. Rosie fight rehearsal; gag reel."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
