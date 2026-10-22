@@ -3,7 +3,7 @@
 // for https://moviequest.goatcounter.com. Empty turns all counting off.
 // That site must have "Allow adding visitor counts on your website" ticked
 // for the homepage's Most Popular sort to read the numbers.
-window.MQ_GOATCOUNTER = '';
+window.MQ_GOATCOUNTER = 'moviequest';
 
 (function () {
   const code = window.MQ_GOATCOUNTER;
