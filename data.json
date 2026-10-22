@@ -3397,12 +3397,15 @@
     "year": 1995,
     "format": "DVD",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/the-outer-limits-season-1-dvd-1.jpg",
+    "image": "https://moviequest.ca/images/the-outer-limits-season-1-dvd-5.jpg",
     "photos": [
+      "images/the-outer-limits-season-1-dvd-5.jpg",
       "images/the-outer-limits-season-1-dvd-1.jpg",
       "images/the-outer-limits-season-1-dvd-2.jpg",
       "images/the-outer-limits-season-1-dvd-3.jpg",
-      "images/the-outer-limits-season-1-dvd-4.jpg"
+      "images/the-outer-limits-season-1-dvd-4.jpg",
+      "images/the-outer-limits-season-1-dvd-6.jpg",
+      "images/the-outer-limits-season-1-dvd-7.jpg"
     ],
     "storeUrl": "",
     "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Outer%20Limits%20Complete%20First%20Season%20DVD&campid=5339133571&customid=the-outer-limits-season-1-dvd",
@@ -3451,10 +3454,13 @@
         "format": "DVD",
         "edition": "Alliance Films bilingual Canadian 6-disc set with slipcover (The Outer Limits / Au-delà du réel, l'aventure continue)",
         "photos": [
+          "images/the-outer-limits-season-1-dvd-5.jpg",
           "images/the-outer-limits-season-1-dvd-1.jpg",
           "images/the-outer-limits-season-1-dvd-2.jpg",
           "images/the-outer-limits-season-1-dvd-3.jpg",
-          "images/the-outer-limits-season-1-dvd-4.jpg"
+          "images/the-outer-limits-season-1-dvd-4.jpg",
+          "images/the-outer-limits-season-1-dvd-6.jpg",
+          "images/the-outer-limits-season-1-dvd-7.jpg"
         ],
         "gif": "images/the-outer-limits-season-1-dvd-1.gif",
         "condition": {
@@ -3469,7 +3475,7 @@
             "Very Good"
           ],
           "inserts": "Episode/disc guide printed inside the digipak",
-          "notes": "Alliance Films Canadian release (2010, catalogue 114288), bilingual English/French packaging and menus. 6 discs, all 21 first-season episodes (1995), English and French audio, full screen 1.33:1, rated 14A (Canada). Disc 1: The Sandkings Part 1 and Part 2, Valerie 23, Blood Brothers. Disc 2: The Second Soul, White Light Fever, The Choice, Virtual Future. Disc 3: Living Hell, Corner of the Eye, Under the Bed, Dark Matters. Disc 4: The Conversion, Quality of Mercy, The New Breed, The Voyage Home. Disc 5: Caught in the Act, The Message, I, Robot, If These Walls Could Talk. Disc 6: Birthright, The Voice of Reason."
+          "notes": "Alliance Films Canadian release (2010, catalogue 114288), bilingual English/French packaging and menus. 6 discs (made in Canada), all 21 first-season episodes (1995), English and French 2.0 stereo, approx. 15 hours 45 minutes, full screen 1.33:1, rated 14A (Canada). Disc 1: The Sandkings Part 1 and Part 2, Valerie 23, Blood Brothers. Disc 2: The Second Soul, White Light Fever, The Choice, Virtual Future. Disc 3: Living Hell, Corner of the Eye, Under the Bed, Dark Matters. Disc 4: The Conversion, Quality of Mercy, The New Breed, The Voyage Home. Disc 5: Caught in the Act, The Message, I, Robot, If These Walls Could Talk. Disc 6: Birthright, The Voice of Reason."
         },
         "ebayUrl": "",
         "sold": false
