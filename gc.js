@@ -22,17 +22,45 @@ window.mqCountClick = function (name, title) {
   }
 };
 
-// Page views of one movie page, or 0 if none / counting is off.
+// Page views of one movie page, or 0 if none / counting is off. GoatCounter
+// records the path as visited, with or without the trailing slash, so both
+// are added up.
 window.mqViews = async function (itemId) {
   const code = window.MQ_GOATCOUNTER;
   if (!code) return 0;
-  const p = encodeURIComponent(`/movies/${itemId}/`);
-  try {
-    const res = await fetch(`https://${code}.goatcounter.com/counter/${p}.json`);
-    if (!res.ok) return 0;
-    const data = await res.json();
-    return Number(String(data.count || '0').replace(/[^\d]/g, '')) || 0;
-  } catch (e) {
-    return 0;
-  }
+  const one = async (path) => {
+    try {
+      const res = await fetch(`https://${code}.goatcounter.com/counter/${encodeURIComponent(path)}.json`);
+      if (!res.ok) return 0;
+      const data = await res.json();
+      return Number(String(data.count || '0').replace(/[^\d]/g, '')) || 0;
+    } catch (e) {
+      return 0;
+    }
+  };
+  const [a, b] = await Promise.all([one(`/movies/${itemId}/`), one(`/movies/${itemId}`)]);
+  return a + b;
 };
+
+// Running total of every visit to the site, small in the bottom-left corner
+// ("128 VISITS"), like roughdrafter.com. Hidden until GoatCounter answers.
+(function () {
+  const code = window.MQ_GOATCOUNTER;
+  if (!code) return;
+  const show = async () => {
+    try {
+      const res = await fetch(`https://${code}.goatcounter.com/counter/TOTAL.json`);
+      if (!res.ok) return;
+      const data = await res.json();
+      const n = String(data.count || '').trim();
+      if (!n || n === '0') return;
+      const el = document.createElement('div');
+      el.textContent = `${n} visits`;
+      el.style.cssText = 'position:fixed;left:10px;bottom:8px;z-index:50;pointer-events:none;' +
+        'font:600 9px/1 "JetBrains Mono",monospace;letter-spacing:0.6px;text-transform:uppercase;color:#8a8a8a;';
+      document.body.appendChild(el);
+    } catch (e) {}
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show);
+  else show();
+})();

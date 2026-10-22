@@ -3824,5 +3824,213 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "american-dad-volume-1-dvd",
+    "title": "American Dad!: Volume One",
+    "year": 2005,
+    "years": [
+      2005,
+      2006
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/american-dad-volume-1-dvd-1.jpg",
+    "photos": [
+      "images/american-dad-volume-1-dvd-1.jpg",
+      "images/american-dad-volume-1-dvd-6.jpg",
+      "images/american-dad-volume-1-dvd-2.jpg",
+      "images/american-dad-volume-1-dvd-3.jpg",
+      "images/american-dad-volume-1-dvd-7.jpg",
+      "images/american-dad-volume-1-dvd-8.jpg",
+      "images/american-dad-volume-1-dvd-4.jpg",
+      "images/american-dad-volume-1-dvd-5.jpg",
+      "images/american-dad-volume-1-dvd-9.jpg",
+      "images/american-dad-volume-1-dvd-10.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117480696857?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=american-dad-volume-1-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=American%20Dad%20Volume%20One%20DVD&campid=5339133571&customid=american-dad-volume-1-dvd",
+    "price": 24.95,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2005–2006",
+    "createdBy": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "starring": "Seth MacFarlane, Wendy Schaal, Scott Grimes, Rachael MacFarlane, Dee Bradley Baker",
+    "producers": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "company": "Fuzzy Door Productions / Underdog Productions / 20th Century Fox Television",
+    "titleNote": "Volume One / Season 1 / 2005–2006",
+    "tagline": "DVD / Season 1 / 3-Disc Set / Seth MacFarlane / Animated / TV Series / 2005–2006",
+    "desc": "CIA agent Stan Smith will do whatever it takes to protect his family and his country from terrorism, no matter how ridiculous. At home in Langley Falls, Virginia, he lives with his wife Francine, liberal daughter Hayley, nerdy son Steve, Roger the wisecracking alien and Klaus, a German ski jumper trapped in the body of a goldfish. From Family Guy creator Seth MacFarlane, Volume One collects the show's first 13 episodes on three discs, starting with the pilot.",
+    "trivia": [
+      {
+        "heading": "A Super Bowl Premiere",
+        "text": "American Dad! premiered on Fox right after Super Bowl XXXIX on February 6, 2005, drawing 15.1 million viewers."
+      },
+      {
+        "heading": "From the Family Guy Team",
+        "text": "Seth MacFarlane created the show with Mike Barker and Matt Weitzman, and voices both Stan Smith and Roger the alien."
+      },
+      {
+        "heading": "Behind the Glass Booth",
+        "text": "This set includes \"Secrets of the Glass Booth\", a look at the voice cast recording their roles, plus animatic-to-final comparisons."
+      },
+      {
+        "heading": "Where It All Began",
+        "text": "Volume One collects the show's earliest episodes, including the pilot, where CIA agent Stan first takes on terrorism at home in Langley Falls."
+      }
+    ],
+    "tidbits": [
+      "American Dad! premiered on Fox right after Super Bowl XXXIX on February 6, 2005, drawing 15.1 million viewers.",
+      "Seth MacFarlane created the show with Mike Barker and Matt Weitzman, and voices both Stan Smith and Roger the alien.",
+      "This set includes \"Secrets of the Glass Booth\", a look at the voice cast recording their roles, plus animatic-to-final comparisons.",
+      "Volume One collects the show's earliest episodes, including the pilot, where CIA agent Stan first takes on terrorism at home in Langley Falls."
+    ],
+    "copies": [
+      {
+        "id": "american-dad-volume-1-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "20th Century Fox 3-disc set: outer slipcase with three individual cases",
+        "photos": [
+          "images/american-dad-volume-1-dvd-1.jpg",
+          "images/american-dad-volume-1-dvd-6.jpg",
+          "images/american-dad-volume-1-dvd-2.jpg",
+          "images/american-dad-volume-1-dvd-3.jpg",
+          "images/american-dad-volume-1-dvd-7.jpg",
+          "images/american-dad-volume-1-dvd-8.jpg",
+          "images/american-dad-volume-1-dvd-4.jpg",
+          "images/american-dad-volume-1-dvd-5.jpg",
+          "images/american-dad-volume-1-dvd-9.jpg",
+          "images/american-dad-volume-1-dvd-10.jpg"
+        ],
+        "gif": "images/american-dad-volume-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: three individual cases; outer slipcase shows edge and corner wear",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Outer slipcase",
+          "notes": "20th Century Fox Home Entertainment 3-disc DVD set (2006), Region 1 NTSC, full frame 1.33:1, English Dolby Digital, English/French/Spanish subtitles. The first 13 episodes, beginning with the pilot. Special features listed for this release: commentaries, \"Secrets of the Glass Booth\" voice-cast featurette, \"American Animatics\" comparisons, a table read, and deleted scenes."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117480696857",
+        "sold": false
+      }
+    ]
+  },
+  {
+    "id": "star-trek-tng-season-2-dvd",
+    "title": "Star Trek: The Next Generation – Season 2",
+    "year": 1988,
+    "years": [
+      1988,
+      1989
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/star-trek-tng-season-2-dvd-1.jpg",
+    "photos": [
+      "images/star-trek-tng-season-2-dvd-1.jpg",
+      "images/star-trek-tng-season-2-dvd-10.jpg",
+      "images/star-trek-tng-season-2-dvd-2.jpg",
+      "images/star-trek-tng-season-2-dvd-3.jpg",
+      "images/star-trek-tng-season-2-dvd-4.jpg",
+      "images/star-trek-tng-season-2-dvd-5.jpg",
+      "images/star-trek-tng-season-2-dvd-6.jpg",
+      "images/star-trek-tng-season-2-dvd-7.jpg",
+      "images/star-trek-tng-season-2-dvd-8.jpg",
+      "images/star-trek-tng-season-2-dvd-9.jpg",
+      "images/star-trek-tng-season-2-dvd-11.jpg",
+      "images/star-trek-tng-season-2-dvd-12.jpg",
+      "images/star-trek-tng-season-2-dvd-13.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117480671800?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=star-trek-tng-season-2-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Star%20Trek%20Next%20Generation%20Season%202%20DVD&campid=5339133571&customid=star-trek-tng-season-2-dvd",
+    "price": 33.95,
+    "categories": [
+      "tvseries",
+      "1980s"
+    ],
+    "runYears": "1988–1989",
+    "createdBy": "Gene Roddenberry",
+    "starring": "Patrick Stewart, Jonathan Frakes, Brent Spiner, LeVar Burton, Michael Dorn, Marina Sirtis, Wil Wheaton, Diana Muldaur, Whoopi Goldberg",
+    "producers": "Gene Roddenberry, Maurice Hurley, Rick Berman",
+    "company": "Paramount Television / CBS DVD",
+    "titleNote": "Season 2 / 1988–1989",
+    "tagline": "DVD / 6-Disc Set / Patrick Stewart / Sci-Fi / TV Series / 1988–1989",
+    "desc": "In season two of Star Trek: The Next Generation, Captain Jean-Luc Picard (Patrick Stewart) welcomes some new faces aboard the Enterprise, including Dr. Crusher's temporary replacement, Chief Medical Officer Katherine Pulaski (Diana Muldaur), and Guinan (Whoopi Goldberg), the enigmatic bartender. The core crew evolves as they face new and unexpected challenges. Geordi La Forge is transferred from the bridge to become Chief Engineer. In a suspenseful trial, Data must prove that he is a conscious being. Riker is immersed in the warlike culture of the Klingons. And in their most dangerous battle to date, the crew takes on the Borg, a cybernetic hive mind that threatens to assimilate all intelligent life.",
+    "trivia": [
+      {
+        "heading": "First Contact with the Borg",
+        "text": "\"Q Who?\" introduced the Borg, the cybernetic hive mind that became Star Trek's most famous villains."
+      },
+      {
+        "heading": "The Measure of a Man",
+        "text": "In this season's courtroom episode, Captain Picard defends Data's right to be treated as a person rather than Starfleet property. It's often ranked among the best Star Trek episodes ever made."
+      },
+      {
+        "heading": "Ten Forward Opens",
+        "text": "Whoopi Goldberg joined the crew as Guinan, the mysterious bartender of the ship's new lounge, Ten Forward. She asked to be on the show because she was a lifelong Star Trek fan."
+      },
+      {
+        "heading": "A One-Season Doctor",
+        "text": "Diana Muldaur's Dr. Katherine Pulaski replaced Dr. Crusher for this season only. Gates McFadden returned as Crusher in season three."
+      },
+      {
+        "heading": "Geordi Moves to Engineering",
+        "text": "Geordi La Forge became the Enterprise's Chief Engineer this season, the post he held for the rest of the series and the films."
+      }
+    ],
+    "tidbits": [
+      "\"Q Who?\" introduced the Borg, the cybernetic hive mind that became Star Trek's most famous villains.",
+      "In this season's courtroom episode, Captain Picard defends Data's right to be treated as a person rather than Starfleet property. It's often ranked among the best Star Trek episodes ever made.",
+      "Whoopi Goldberg joined the crew as Guinan, the mysterious bartender of the ship's new lounge, Ten Forward. She asked to be on the show because she was a lifelong Star Trek fan.",
+      "Diana Muldaur's Dr. Katherine Pulaski replaced Dr. Crusher for this season only. Gates McFadden returned as Crusher in season three.",
+      "Geordi La Forge became the Enterprise's Chief Engineer this season, the post he held for the rest of the series and the films."
+    ],
+    "copies": [
+      {
+        "id": "star-trek-tng-season-2-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "CBS DVD / Paramount 6-disc set (2013)",
+        "photos": [
+          "images/star-trek-tng-season-2-dvd-1.jpg",
+          "images/star-trek-tng-season-2-dvd-10.jpg",
+          "images/star-trek-tng-season-2-dvd-2.jpg",
+          "images/star-trek-tng-season-2-dvd-3.jpg",
+          "images/star-trek-tng-season-2-dvd-4.jpg",
+          "images/star-trek-tng-season-2-dvd-5.jpg",
+          "images/star-trek-tng-season-2-dvd-6.jpg",
+          "images/star-trek-tng-season-2-dvd-7.jpg",
+          "images/star-trek-tng-season-2-dvd-8.jpg",
+          "images/star-trek-tng-season-2-dvd-9.jpg",
+          "images/star-trek-tng-season-2-dvd-11.jpg",
+          "images/star-trek-tng-season-2-dvd-12.jpg",
+          "images/star-trek-tng-season-2-dvd-13.jpg"
+        ],
+        "gif": "images/star-trek-tng-season-2-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Episode guide printed inside the case",
+          "notes": "CBS DVD / Paramount (2013, catalogue 7912955, ISBN 1-4157-7065-4, UPC 032429129550), Region 1 NTSC. 6 discs, all 22 season-two episodes (1988 to 1989), approx. 16 hrs 39 min, colour, 4x3. English Dolby Digital 5.1 and English stereo; English subtitles; closed captioned. Not rated (US) / PG (Canada). Disc 1: The Child, Where Silence Has Lease, Elementary, Dear Data, The Outrageous Okona. Disc 2: Loud as a Whisper, The Schizoid Man, Unnatural Selection, A Matter of Honor. Disc 3: The Measure of a Man, The Dauphin, Contagion, The Royale. Disc 4: Time Squared, The Icarus Factor, Pen Pals, Q Who?. Disc 5: Samaritan Snare, Up the Long Ladder, Manhunt, The Emissary. Disc 6: Peak Performance, Shades of Gray, plus the Mission Logs special features. Special features (Mission Logs): Mission Overview: Year Two; Selected Crew Analysis; Inside Starfleet Archives; Departmental Briefing: Production; Departmental Briefing: Memorable Missions."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117480671800",
+        "sold": false
+      }
+    ]
   }
 ]
