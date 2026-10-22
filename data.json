@@ -3305,13 +3305,16 @@
     "year": 1986,
     "format": "DVD",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/manhunter-1986-dvd-1.jpg",
+    "image": "https://moviequest.ca/images/manhunter-1986-dvd-6.jpg",
     "photos": [
+      "images/manhunter-1986-dvd-6.jpg",
       "images/manhunter-1986-dvd-1.jpg",
       "images/manhunter-1986-dvd-2.jpg",
       "images/manhunter-1986-dvd-3.jpg",
       "images/manhunter-1986-dvd-4.jpg",
-      "images/manhunter-1986-dvd-5.jpg"
+      "images/manhunter-1986-dvd-5.jpg",
+      "images/manhunter-1986-dvd-7.jpg",
+      "images/manhunter-1986-dvd-8.jpg"
     ],
     "storeUrl": "",
     "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Manhunter%20Limited%20Edition%20DVD%20Anchor%20Bay&campid=5339133571&customid=manhunter-1986-dvd",
@@ -3363,11 +3366,14 @@
         "format": "DVD",
         "edition": "Anchor Bay Limited Edition 2-disc set, numbered 63558 / 100,000",
         "photos": [
+          "images/manhunter-1986-dvd-6.jpg",
           "images/manhunter-1986-dvd-1.jpg",
           "images/manhunter-1986-dvd-2.jpg",
           "images/manhunter-1986-dvd-3.jpg",
           "images/manhunter-1986-dvd-4.jpg",
-          "images/manhunter-1986-dvd-5.jpg"
+          "images/manhunter-1986-dvd-5.jpg",
+          "images/manhunter-1986-dvd-7.jpg",
+          "images/manhunter-1986-dvd-8.jpg"
         ],
         "gif": "images/manhunter-1986-dvd-1.gif",
         "condition": {
