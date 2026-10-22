@@ -3493,11 +3493,16 @@
     ],
     "format": "DVD",
     "condition": "Very Good",
-    "image": "https://moviequest.ca/images/v-complete-series-2009-2011-dvd-1.jpg",
+    "image": "https://moviequest.ca/images/v-complete-series-2009-2011-dvd-6.jpg",
     "photos": [
+      "images/v-complete-series-2009-2011-dvd-6.jpg",
       "images/v-complete-series-2009-2011-dvd-1.jpg",
       "images/v-complete-series-2009-2011-dvd-2.jpg",
       "images/v-complete-series-2009-2011-dvd-3.jpg",
+      "images/v-complete-series-2009-2011-dvd-7.jpg",
+      "images/v-complete-series-2009-2011-dvd-8.jpg",
+      "images/v-complete-series-2009-2011-dvd-9.jpg",
+      "images/v-complete-series-2009-2011-dvd-10.jpg",
       "images/v-complete-series-2009-2011-dvd-4.jpg",
       "images/v-complete-series-2009-2011-dvd-5.jpg"
     ],
@@ -3548,9 +3553,14 @@
         "format": "DVD",
         "edition": "Warner Bros. Season One (3-disc) and Season Two (2-disc) sets, each with slipcover",
         "photos": [
+          "images/v-complete-series-2009-2011-dvd-6.jpg",
           "images/v-complete-series-2009-2011-dvd-1.jpg",
           "images/v-complete-series-2009-2011-dvd-2.jpg",
           "images/v-complete-series-2009-2011-dvd-3.jpg",
+          "images/v-complete-series-2009-2011-dvd-7.jpg",
+          "images/v-complete-series-2009-2011-dvd-8.jpg",
+          "images/v-complete-series-2009-2011-dvd-9.jpg",
+          "images/v-complete-series-2009-2011-dvd-10.jpg",
           "images/v-complete-series-2009-2011-dvd-4.jpg",
           "images/v-complete-series-2009-2011-dvd-5.jpg"
         ],
