@@ -3390,5 +3390,90 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-outer-limits-season-1-dvd",
+    "title": "The Outer Limits: The Complete First Season",
+    "year": 1995,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-outer-limits-season-1-dvd-1.jpg",
+    "photos": [
+      "images/the-outer-limits-season-1-dvd-1.jpg",
+      "images/the-outer-limits-season-1-dvd-2.jpg",
+      "images/the-outer-limits-season-1-dvd-3.jpg",
+      "images/the-outer-limits-season-1-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Outer%20Limits%20Complete%20First%20Season%20DVD&campid=5339133571&customid=the-outer-limits-season-1-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "1990s"
+    ],
+    "youtubeId": "8dzxGlcErUo",
+    "runYears": "1995",
+    "createdBy": "Revival of the 1963 series created by Leslie Stevens",
+    "starring": "Kevin Conway (Control Voice), with Beau Bridges, Lloyd Bridges, Ryan Reynolds, Josh Brolin, Alyssa Milano, Rebecca De Mornay, Leonard Nimoy",
+    "producers": "Pen Densham, Richard B. Lewis, John Watson",
+    "company": "Trilogy Entertainment / Showtime / MGM Television / Alliance Films (Canada)",
+    "titleNote": "Au-delà du réel, l'aventure continue / 1995",
+    "tagline": "DVD / 6-Disc Set / Bilingual Canadian Edition / Sci-Fi / TV Series / 1995",
+    "desc": "There is nothing wrong with your television. Do not attempt to adjust the picture. The complete first season of The Outer Limits, Sci-Fi's critically acclaimed and most original series, is finally available on DVD! Like the classic 1960s series of the same name, each episode is an imaginative exploration of humanity's greatest hopes and darkest fears, with special guest appearances by Ryan Reynolds, Josh Brolin, Alyssa Milano, Beau Bridges, Rebecca De Mornay and Leonard Nimoy. Winner of the CableACE Award for best dramatic series, this Emmy-nominated show deals with controversial and thought-provoking topics such as genetic manipulation, alien visitation and life after death.",
+    "trivia": [
+      {
+        "heading": "A Revival of a 1960s Classic",
+        "text": "This series revived the original The Outer Limits (1963 to 1965), keeping its famous \"control voice\" opening: \"There is nothing wrong with your television. Do not attempt to adjust the picture.\""
+      },
+      {
+        "heading": "Three Generations of Bridges",
+        "text": "The premiere, \"The Sandkings\", starred Beau Bridges alongside his father Lloyd Bridges and his son Dylan Bridges, adapted from a George R. R. Martin story."
+      },
+      {
+        "heading": "Future Stars",
+        "text": "Season one features early guest roles from Ryan Reynolds and Josh Brolin, plus Alyssa Milano, Rebecca De Mornay and Leonard Nimoy."
+      },
+      {
+        "heading": "Seven Seasons",
+        "text": "The revival ran from 1995 to 2002 on Showtime, Sci-Fi and in syndication, and won the CableACE Award for best dramatic series. Much of it was filmed in and around Vancouver."
+      }
+    ],
+    "tidbits": [
+      "This series revived the original The Outer Limits (1963 to 1965), keeping its famous \"control voice\" opening: \"There is nothing wrong with your television. Do not attempt to adjust the picture.\"",
+      "The premiere, \"The Sandkings\", starred Beau Bridges alongside his father Lloyd Bridges and his son Dylan Bridges, adapted from a George R. R. Martin story.",
+      "Season one features early guest roles from Ryan Reynolds and Josh Brolin, plus Alyssa Milano, Rebecca De Mornay and Leonard Nimoy.",
+      "The revival ran from 1995 to 2002 on Showtime, Sci-Fi and in syndication, and won the CableACE Award for best dramatic series. Much of it was filmed in and around Vancouver."
+    ],
+    "copies": [
+      {
+        "id": "the-outer-limits-season-1-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "Alliance Films bilingual Canadian 6-disc set with slipcover (The Outer Limits / Au-delà du réel, l'aventure continue)",
+        "photos": [
+          "images/the-outer-limits-season-1-dvd-1.jpg",
+          "images/the-outer-limits-season-1-dvd-2.jpg",
+          "images/the-outer-limits-season-1-dvd-3.jpg",
+          "images/the-outer-limits-season-1-dvd-4.jpg"
+        ],
+        "gif": "images/the-outer-limits-season-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: slipcover over a fold-out digipak with clear disc trays; light shelf wear on the slipcover",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Episode/disc guide printed inside the digipak",
+          "notes": "Alliance Films Canadian release (2010, catalogue 114288), bilingual English/French packaging. 6 discs, all 21 first-season episodes (1995), English and French audio. Disc 3: Living Hell, Corner of the Eye, Under the Bed, Dark Matters. Disc 4: Conversion, Quality of Mercy, New Breed, Voyage Home. Disc 5: Caught in the Act, The Message, I, Robot, If These Walls Could Talk. Disc 6: Birthright, The Voice of Reason. Discs 1 and 2 open with the two-part premiere \"The Sandkings\"."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
