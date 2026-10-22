@@ -22,17 +22,22 @@ window.mqCountClick = function (name, title) {
   }
 };
 
-// Page views of one movie page, or 0 if none / counting is off.
+// Page views of one movie page, or 0 if none / counting is off. GoatCounter
+// records the path as visited, with or without the trailing slash, so both
+// are added up.
 window.mqViews = async function (itemId) {
   const code = window.MQ_GOATCOUNTER;
   if (!code) return 0;
-  const p = encodeURIComponent(`/movies/${itemId}/`);
-  try {
-    const res = await fetch(`https://${code}.goatcounter.com/counter/${p}.json`);
-    if (!res.ok) return 0;
-    const data = await res.json();
-    return Number(String(data.count || '0').replace(/[^\d]/g, '')) || 0;
-  } catch (e) {
-    return 0;
-  }
+  const one = async (path) => {
+    try {
+      const res = await fetch(`https://${code}.goatcounter.com/counter/${encodeURIComponent(path)}.json`);
+      if (!res.ok) return 0;
+      const data = await res.json();
+      return Number(String(data.count || '0').replace(/[^\d]/g, '')) || 0;
+    } catch (e) {
+      return 0;
+    }
+  };
+  const [a, b] = await Promise.all([one(`/movies/${itemId}/`), one(`/movies/${itemId}`)]);
+  return a + b;
 };
