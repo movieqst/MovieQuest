@@ -3195,5 +3195,88 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "american-dad-volume-2-dvd",
+    "title": "American Dad!: Volume 2",
+    "year": 2006,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/american-dad-volume-2-dvd-1.jpg",
+    "photos": [
+      "images/american-dad-volume-2-dvd-1.jpg",
+      "images/american-dad-volume-2-dvd-2.jpg",
+      "images/american-dad-volume-2-dvd-3.jpg",
+      "images/american-dad-volume-2-dvd-4.jpg",
+      "images/american-dad-volume-2-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=American%20Dad%20Volume%202%20DVD&campid=5339133571&customid=american-dad-volume-2-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2005–2006",
+    "createdBy": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "starring": "Seth MacFarlane, Wendy Schaal, Scott Grimes, Rachael MacFarlane, Dee Bradley Baker",
+    "producers": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "company": "Fuzzy Door Productions / Underdog Productions / 20th Century Fox Television",
+    "titleNote": "Volume 2 / 3-Disc Set",
+    "tagline": "DVD / 3-Disc Set / Seth MacFarlane / Animated / TV Series",
+    "desc": "CIA agent Stan Smith will do whatever it takes to protect his family and his country from terrorism, no matter how ridiculous. At home in Langley Falls, Virginia, he lives with his wife Francine, liberal daughter Hayley, nerdy son Steve, Roger the wisecracking alien and Klaus, a German ski jumper trapped in the body of a goldfish. From Family Guy creator Seth MacFarlane, Volume 2 collects 19 episodes on three discs.",
+    "trivia": [
+      {
+        "heading": "A Super Bowl Premiere",
+        "text": "American Dad! premiered on Fox right after Super Bowl XXXIX in February 2005 and drew 15.1 million viewers."
+      },
+      {
+        "heading": "From the Family Guy Team",
+        "text": "The show was created by Seth MacFarlane with Mike Barker and Matt Weitzman. MacFarlane voices both Stan Smith and Roger the alien."
+      },
+      {
+        "heading": "A Skier in a Fishbowl",
+        "text": "Klaus the goldfish is really a former East German Olympic ski jumper whose brain was put into a fish by the CIA."
+      },
+      {
+        "heading": "Commentary on Every Episode",
+        "text": "This set includes audio commentaries on all 19 episodes, plus multi-angle scene studies and featurettes."
+      }
+    ],
+    "tidbits": [
+      "American Dad! premiered on Fox right after Super Bowl XXXIX in February 2005 and drew 15.1 million viewers.",
+      "The show was created by Seth MacFarlane with Mike Barker and Matt Weitzman. MacFarlane voices both Stan Smith and Roger the alien.",
+      "Klaus the goldfish is really a former East German Olympic ski jumper whose brain was put into a fish by the CIA.",
+      "This set includes audio commentaries on all 19 episodes, plus multi-angle scene studies and featurettes."
+    ],
+    "copies": [
+      {
+        "id": "american-dad-volume-2-dvd-1",
+        "added": "2026-10-22",
+        "format": "DVD",
+        "edition": "20th Century Fox 3-disc set: outer slipcase with three individual cases",
+        "photos": [
+          "images/american-dad-volume-2-dvd-1.jpg",
+          "images/american-dad-volume-2-dvd-2.jpg",
+          "images/american-dad-volume-2-dvd-3.jpg",
+          "images/american-dad-volume-2-dvd-4.jpg",
+          "images/american-dad-volume-2-dvd-5.jpg"
+        ],
+        "gif": "images/american-dad-volume-2-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: three individual cases; outer slipcase shows edge and corner wear",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Outer slipcase",
+          "notes": "20th Century Fox Home Entertainment 3-disc DVD set (2007), Region 1 NTSC. 19 episodes, discs one, two and three in their own cases. Special features listed for this release: audio commentaries on all episodes, multi-angle scene studies on selected episodes, featurettes and deleted scenes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
