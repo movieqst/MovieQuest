@@ -5,6 +5,9 @@ One physical copy at a time. Movie uploads its photo group; the AI does the rest
 ## 1. Photos
 - Photo order (Movie, 11 Oct): FRONT, SIDES (if any), BACK, INSIDE, DISC front
   (label), DISC back (shiny side). Turn sideways photos upright.
+- The item's main `image` (the homepage card) is the FRONT COVER, as big as
+  possible: no discs, no backs. For a multi-season set, two fronts side by
+  side is fine (Movie, 22 Oct). Put that photo first in `photos` too.
 - Save them as `images/<item-id>-N.jpg`, numbering on from the item's last photo
   (an existing movie keeps all its old photos — new ones are added after them).
 - Make the slideshow GIF for this copy's eBay description:
