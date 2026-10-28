@@ -30,7 +30,9 @@ const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 const alive = f => f.present && f.state !== 'withdrawn' && f.state !== 'destroyed';
 const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const tagChip = (tag, cite) => { const c = S.confidence[tag] || S.confidence.reconstruction; return `<button class="chip" style="--c:${c.color}" title="${c.desc} Click for the sources." data-tag="${tag}" data-cite="${esc(cite)}">${c.label}</button>`; };
-const audioFor = (kind, n) => S.audioBase ? S.audioBase + kind + (n !== undefined ? '-' + n : '') + '.mp3' : undefined;
+let voiceId = (S.voices && S.voices[0]) ? S.voices[0].id : '';
+try { const v = localStorage.getItem('kadesh-voice'); if (v && S.voices.some(x => x.id === v)) voiceId = v; } catch (e) {}
+const audioFor = (kind, n) => S.audioBase ? S.audioBase + (voiceId ? voiceId + '/' : '') + kind + (n !== undefined ? '-' + n : '') + '.mp3' : undefined;
 
 function riverXAt(y) {
   const p = B.river;
@@ -422,16 +424,16 @@ function drawMini() {
 
 /* ---------------- narration (voice) ---------------- */
 const Narr = {
-  on: false, audio: null,
+  on: false, audio: null, rate: 1,
   speak(text, file) {
     this.stop(); if (!this.on) return;
-    if (file) { const a = new Audio(file); this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
+    if (file) { const a = new Audio(file); a.playbackRate = this.rate; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
   tts(text) {
     if (!('speechSynthesis' in window)) return;
-    const u = new SpeechSynthesisUtterance(text); u.rate = .92; u.pitch = .85;
+    const u = new SpeechSynthesisUtterance(text); u.rate = .92 * this.rate; u.pitch = .85;
     const vs = speechSynthesis.getVoices(), pref = vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
     if (pref) u.voice = pref; speechSynthesis.speak(u);
     if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
@@ -620,6 +622,13 @@ $('speedSel').onchange = e => speed = +e.target.value;
 $('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); };
 $('explainBtn').onclick = showExplain;
 $('voiceBtn').onclick = () => Narr.toggle();
+if (S.voices && S.voices.length) {
+  const sel = $('voiceSel'); sel.innerHTML = S.voices.map(v => `<option value="${v.id}"${v.id === voiceId ? ' selected' : ''}>${v.name}</option>`).join('');
+  sel.onchange = () => { voiceId = sel.value; try { localStorage.setItem('kadesh-voice', voiceId); } catch (e) {} if (Narr.on) { if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) Narr.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); } };
+} else $('voiceSel').style.display = 'none';
+try { const r = parseFloat(localStorage.getItem('kadesh-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
+$('voiceRate').value = String(Narr.rate);
+$('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('kadesh-voice-rate', String(Narr.rate)); } catch (e) {} };
 $('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, .45, 2.4); clampView(); };
 $('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, .45, 2.4); clampView(); };
 $('introNext').onclick = () => showIntro(introIdx + 1);

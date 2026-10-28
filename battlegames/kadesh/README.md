@@ -50,7 +50,7 @@ accounts tell a story; they are not a battlefield record.
 
 ## Voice narration
 
-Narration is **pre-recorded** in `audio/` (47 MP3 clips: every intro screen,
+Narration is **pre-recorded** in `audio/<narrator>/` (47 MP3 clips per voice: every intro screen,
 battle event, explanation, the outcome and the command-mode captions), so it
 plays in any browser without depending on the operating system's voices. The
 intro's first screen offers *Begin with narration*; the *Voice* button in the
@@ -58,12 +58,15 @@ header toggles it at any time. Lines without a clip (for example "the Re
 division has routed") fall back to the browser's own speech engine, if it has
 one.
 
-The clips were synthesised with [Piper](https://github.com/rhasspy/piper)
-(MIT) using the `en-us-libritts-high` voice, speaker 400. The LibriTTS dataset
-is CC BY 4.0. To re-record after changing any text:
+Several narrators are offered in the header; the list is `scenario.voices` and
+each has its own folder. The clips were synthesised with
+[Piper](https://github.com/rhasspy/piper) (MIT) using the `en-us-libritts-high`
+model (LibriTTS dataset, CC BY 4.0): narrator-1 is speaker 400, narrator-2 is
+speaker 7, narrator-3 is speaker 0. To record a voice, or re-record after
+changing any text:
 
 ```
-PIPER=/path/to/piper MODEL=/path/to/en-us-libritts-high.onnx SPEAKER=400 tools/make-narration.sh
+PIPER=/path/to/piper MODEL=/path/to/en-us-libritts-high.onnx SPEAKER=7 VOICE=narrator-2 tools/make-narration.sh
 ```
 
 File names follow a convention the engine knows (`intro-N`, `event-N`,
