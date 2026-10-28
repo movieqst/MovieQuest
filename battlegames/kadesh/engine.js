@@ -679,6 +679,16 @@ function showIntro(i) {
   introMedia = sl.media || []; mediaIdx = -1; document.querySelector('.dialog.intro').classList.toggle('nomedia', !introMedia.length); showMedia(0);
   if (introStarted) speakSlide(sl);
 }
+// Click on the intro progress bar to replay the narration from that point (and show the picture that belongs there).
+$('introBar').parentElement.style.cursor = 'pointer';
+$('introBar').parentElement.title = 'Click to replay from here';
+$('introBar').parentElement.addEventListener('click', e => {
+  const r = e.currentTarget.getBoundingClientRect(), k = clamp((e.clientX - r.left) / r.width, 0, 1), sl = S.intro[introIdx];
+  introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
+  if (Narr.on && Narr.audio && Narr.audio.duration) { const au = Narr.audio; au.currentTime = k * au.duration; if (au.ended || au.paused) au.play().catch(() => {}); Narr.endedAt = -99; }
+  else introTimer = k * sl.auto;
+  mediaIdx = -1; showMedia(Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer);
+});
 function showMedia(elapsed) {
   let k = -1; introMedia.forEach((m, i) => { if ((m.at || 0) <= elapsed) k = i; });
   if (k === mediaIdx) return; mediaIdx = k; const m = introMedia[k];
@@ -936,7 +946,7 @@ function tick(t) {
     if (introStarted && !introPaused && !sl.choice) {
       // Play the narration (or allow reading time), then light up NEXT NARRATION with a 5-second countdown.
       let tail = false, frac = 0;
-      if (Narr.on && Narr.audio) { const au = Narr.audio; if (au.ended) tail = true; else frac = au.duration ? Math.min(1, au.currentTime / au.duration) : 0; }
+      if (Narr.on && Narr.audio) { const au = Narr.audio; if (au.ended && au.currentTime >= au.duration - .05) tail = true; else frac = au.duration ? Math.min(1, au.currentTime / au.duration) : 0; }
       else if (Narr.on && 'speechSynthesis' in window && speechSynthesis.speaking) frac = .5;
       else { if (!(G && G.active())) introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
       showMedia(Narr.on && Narr.audio ? Narr.audio.currentTime * (Narr.rate || 1) / (Narr.rate || 1) : introTimer);

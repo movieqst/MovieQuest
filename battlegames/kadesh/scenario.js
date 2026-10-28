@@ -84,7 +84,7 @@ window.KADESH_SCENARIO = {
         { at: 0,  file: '03-ramesses-ii-statue.jpg', caption: 'Ramesses II enthroned between the god Amun and the goddess Mut, granite, from the temple of Amun at Karnak.', ref: 'Museo Egizio, Turin, Cat. 767', credit: 'Photo: Museo Egizio, Turin, Wikimedia Commons, CC0' },
         { at: 7,  file: '04-muwatalli-relief.jpg', caption: 'Muwatalli II, the only known portrait of the Hittite king: a weathered rock relief above the Ceyhan river at Sirkeli, in what was the kingdom\u2019s southern reach.', ref: 'Sirkeli H\u00f6y\u00fck, Adana province, Turkey', credit: 'Photo: Volker H\u00f6hfeld, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 14, file: '05-tell-nebi-mend.jpg', caption: 'A stele of Seti I, father of Ramesses, found at Tell Nebi Mend, the mound of ancient Kadesh. Egypt held the city for a time before the Hittites took it back.', ref: 'Tell Nebi Mend, near Homs, Syria; found 1921', credit: 'Photo: G. Loukianoff and M. P\u00e9zard, Ancient Egypt 9 (1924); public domain' },
-        { at: 21, file: '06-near-east-map.jpg', caption: 'The Near East around 1300 BCE: the Hittite Empire in purple, Egypt to the south, and between them the Syrian frontier where Kadesh lay. A modern map.', ref: 'Thomas Lessman, Eastern Hemisphere 1300 BC', credit: 'Map: Thomas A. Lessman, Wikimedia Commons, CC BY-SA 3.0' }
+        { at: 21, file: '06-near-east-map.jpg', caption: 'The main powers around 1274 BCE: the Hittite Empire across Anatolia and northern Syria, Egypt to the south, and Kadesh on the frontier between them. Approximate extents.', ref: 'This game\u2019s reconstruction, drawn on Natural Earth coastlines', credit: 'Map: Battle Games, after Bryce (2005) and Kitchen (1982); coastlines public domain' }
       ],
       focus: { x: 1360, y: 650 }, zoom: 1,
       markers: [ { x: 1365, y: 650, label: 'Kadesh (Tell Nebi Mend)' } ],
@@ -101,7 +101,7 @@ window.KADESH_SCENARIO = {
       media: [
         { at: 0,  file: '07-egyptian-chariot.jpg', caption: 'An Egyptian chariot of the period: light, two-wheeled, six spokes, an open cab of bent wood and leather. From the tomb of Tutankhamun, fifty years before Kadesh.', ref: 'Egyptian Museum, Cairo', credit: 'Photo: Gary Todd, Wikimedia Commons, CC0' },
         { at: 8,  file: '08-egyptian-spearmen-model.jpg', caption: 'Egyptian spearmen with tall shields, a wooden model from the tomb of Mesehti at Asyut. Older than Kadesh by seven centuries, but the equipment changed little.', ref: 'Egyptian Museum, Cairo, CG 258', credit: 'Photo: Roland Unger, Wikimedia Commons, CC BY-SA 3.0' },
-        { at: 15, file: '09-egyptian-archers.jpg', caption: 'Archers in the Egyptian service, from the same tomb.', ref: 'Tomb of Mesehti, Egyptian Museum, Cairo' }
+        { at: 15, file: '09-egyptian-archers.jpg', caption: 'Archers in Egyptian service, from the same tomb at Asyut: bow in one hand, a fistful of arrows in the other.', ref: 'Egyptian Museum, Cairo, CG 257; photographed by Ludwig Borchardt', credit: 'Photo: L. Borchardt, Catalogue g\u00e9n\u00e9ral (1911); public domain' },
       ],
       focus: { x: 1050, y: 520 }, zoom: .8,
       markers: [ { x: 1020, y: 465, label: 'Amun division' }, { x: 1180, y: 1420, label: 'Re division' }, { x: 1480, y: 1760, label: 'Ptah division' } ],
@@ -116,7 +116,7 @@ window.KADESH_SCENARIO = {
     {
       title: 'The Hittite army',
       media: [
-        { at: 0,  file: '10-hittite-chariot-relief.jpg', caption: 'A three-man chariot of the Hittite type, with driver, shield bearer and spearman.', ref: 'Relief from Carchemish, Museum of Anatolian Civilizations, Ankara' },
+        { at: 0,  file: '10-hittite-chariot-relief.jpg', caption: 'Chariots with crews of two or three, archers shooting from the cab, enemies under the wheels: reliefs from Carchemish, a Hittite city on the Euphrates, carved some centuries after Kadesh.', ref: 'Museum of Anatolian Civilizations, Ankara', credit: 'Photo: Dick Osseman, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 8,  file: '11-hattusa-warrior-god.jpg', caption: 'Hittite hieroglyphs at Hattusa, the capital. This chamber was built a century after Kadesh, under Suppiluliuma II.', ref: 'Chamber 2, S\u00fcdburg, Hattusa, Bo\u011fazkale, Turkey, c. 1200 BCE', credit: 'Photo: travellingrunes, Wikimedia Commons, CC BY-SA 2.0' },
         { at: 15, file: '12-hattusa-lion-gate.jpg', caption: 'Hattusa, the Hittite capital, the Lion Gate.', ref: 'Bo\u011fazkale, Turkey' }
       ],
@@ -134,7 +134,7 @@ window.KADESH_SCENARIO = {
       title: 'The deception',
       media: [
         { at: 0,  file: '13-shasu-relief.jpg', caption: 'Shasu nomads as the Egyptians drew them, bound captives on a relief of Seti I.', ref: 'Karnak, north wall of the hypostyle hall' },
-        { at: 10, file: '06-near-east-map.jpg', caption: 'Aleppo lay 200 km north of Kadesh, deep in Hittite territory: the lie that drew Ramesses forward. A modern map.', ref: 'Thomas Lessman, Eastern Hemisphere 1300 BC', credit: 'Map: Thomas A. Lessman, Wikimedia Commons, CC BY-SA 3.0' }
+        { at: 10, file: '06-near-east-map.jpg', caption: 'Aleppo lay 200 km north of Kadesh, deep inside Hittite territory: the lie that drew Ramesses forward.', ref: 'This game\u2019s reconstruction, approximate extents', credit: 'Map: Battle Games, after Bryce (2005) and Kitchen (1982); coastlines public domain' }
       ],
       focus: { x: 1345, y: 1480 }, zoom: .8,
       markers: [ { x: 1345, y: 1585, label: 'Ford of Shabtuna' } ],

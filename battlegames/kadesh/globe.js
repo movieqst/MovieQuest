@@ -264,5 +264,7 @@ window.KadeshGlobe = (() => {
   const active = () => !!st;
   function debugFrame(lon0, lat0) { if (!st) return; st.lon0 = lon0; st.lat0 = lat0; draw(st, 0); return cv.toDataURL('image/png'); }
   function debugTexture() { if (!TEX) buildTexture(); return TEX.toDataURL('image/png'); }
-  return { start, begin, skip, stop, active, debugFrame, debugTexture };
+  // Still frame of the Near East with the ancient borders, at the size the canvas has now (used to make the intro map picture).
+  function renderStill(opts) { if (!st) return; const R0 = Math.min(w, h) * .42; Object.assign(st, { phase: 'still', lon0: opts.lon, lat0: opts.lat, R: R0 * (opts.pull || 5), labels: 0, modern: opts.modern || 0, ancient: opts.ancient === undefined ? 1 : opts.ancient, ox: 0, oy: opts.oy || 0 }); draw(st, 0); return cv.toDataURL('image/jpeg', .92); }
+  return { start, begin, skip, stop, active, debugFrame, debugTexture, renderStill };
 })();
