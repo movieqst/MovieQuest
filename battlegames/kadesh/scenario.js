@@ -84,7 +84,7 @@ window.KADESH_SCENARIO = {
         { at: 0,  file: '03-ramesses-ii-statue.jpg', caption: 'Ramesses II enthroned between the god Amun and the goddess Mut, granite, from the temple of Amun at Karnak.', ref: 'Museo Egizio, Turin, Cat. 767', credit: 'Photo: Museo Egizio, Turin, Wikimedia Commons, CC0' },
         { at: 7,  file: '04-muwatalli-relief.jpg', caption: 'Muwatalli II, the only known portrait of the Hittite king: a weathered rock relief above the Ceyhan river at Sirkeli, in what was the kingdom\u2019s southern reach.', ref: 'Sirkeli H\u00f6y\u00fck, Adana province, Turkey', credit: 'Photo: Volker H\u00f6hfeld, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 14, file: '05-tell-nebi-mend.jpg', caption: 'A stele of Seti I, father of Ramesses, found at Tell Nebi Mend, the mound of ancient Kadesh. Egypt held the city for a time before the Hittites took it back.', ref: 'Tell Nebi Mend, near Homs, Syria; found 1921', credit: 'Photo: G. Loukianoff and M. P\u00e9zard, Ancient Egypt 9 (1924); public domain' },
-        { at: 21, file: '06-near-east-map.jpg', caption: 'Egypt, Hatti and the frontier at Kadesh, c. 1274 BCE.', ref: 'Modern map' }
+        { at: 21, file: '06-near-east-map.jpg', caption: 'The Near East around 1300 BCE: the Hittite Empire in purple, Egypt to the south, and between them the Syrian frontier where Kadesh lay. A modern map.', ref: 'Thomas Lessman, Eastern Hemisphere 1300 BC', credit: 'Map: Thomas A. Lessman, Wikimedia Commons, CC BY-SA 3.0' }
       ],
       focus: { x: 1360, y: 650 }, zoom: 1,
       markers: [ { x: 1365, y: 650, label: 'Kadesh (Tell Nebi Mend)' } ],
@@ -134,7 +134,7 @@ window.KADESH_SCENARIO = {
       title: 'The deception',
       media: [
         { at: 0,  file: '13-shasu-relief.jpg', caption: 'Shasu nomads as the Egyptians drew them, bound captives on a relief of Seti I.', ref: 'Karnak, north wall of the hypostyle hall' },
-        { at: 10, file: '06-near-east-map.jpg', caption: 'Aleppo lies 200 km north of Kadesh: the lie that drew Ramesses forward.', ref: 'Modern map' }
+        { at: 10, file: '06-near-east-map.jpg', caption: 'Aleppo lay 200 km north of Kadesh, deep in Hittite territory: the lie that drew Ramesses forward. A modern map.', ref: 'Thomas Lessman, Eastern Hemisphere 1300 BC', credit: 'Map: Thomas A. Lessman, Wikimedia Commons, CC BY-SA 3.0' }
       ],
       focus: { x: 1345, y: 1480 }, zoom: .8,
       markers: [ { x: 1345, y: 1585, label: 'Ford of Shabtuna' } ],
