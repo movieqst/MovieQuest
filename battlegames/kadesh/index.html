@@ -102,9 +102,10 @@
   .tc-sides{font:500 clamp(12px,1.3vw,16px) system-ui,sans-serif;color:#cfd8dc;margin-top:6px;text-shadow:0 1px 8px #000}
   .tc-note{max-width:620px;margin:16px auto 0;font-size:12px;color:#aebdc1;line-height:1.45;text-shadow:0 1px 6px #000}
   .tc-ref{display:block;font-style:italic;color:#8fa1a8;margin-top:3px}
-  .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px;background:linear-gradient(to top,rgba(5,10,14,.85) 0%,rgba(5,10,14,.35) 55%,rgba(5,10,14,0) 100%)}
+  .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px;background:transparent;pointer-events:none}
+  .overlay>*{pointer-events:auto}
   .overlay.show{display:flex}
-  .overlay.center{align-items:center;background:rgba(5,10,14,.25)}
+  .overlay.center{align-items:center;background:transparent}
   .dialog.intro{width:min(1040px,100%);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
   .dialog.intro.nomedia{grid-template-columns:1fr}.dialog.intro.nomedia .intro-media{display:none}
   .intro-media .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
