@@ -32,6 +32,7 @@ a local file.
 
 Controls: drag / WASD / arrows / minimap to move the camera, mouse wheel to
 zoom, Space to pause, F to follow the action, E to explain the moment.
+Titles use the Cinzel font from Google Fonts when online and Georgia offline.
 
 ## Confidence tags
 
@@ -49,15 +50,40 @@ accounts tell a story; they are not a battlefield record.
 
 ## Voice narration
 
-The *Voice* button speaks the introduction, captions and explanations with the
-browser's built-in speech engine (Web Speech API). Voice quality depends on the
-operating system; some Linux builds ship no voices at all, in which case the
-button does nothing audible.
+Narration is **pre-recorded** in `audio/` (47 MP3 clips: every intro screen,
+battle event, explanation, the outcome and the command-mode captions), so it
+plays in any browser without depending on the operating system's voices. The
+intro's first screen offers *Begin with narration*; the *Voice* button in the
+header toggles it at any time. Lines without a clip (for example "the Re
+division has routed") fall back to the browser's own speech engine, if it has
+one.
 
-Recorded narration can replace it line by line: add an `audio` field with a
-file path to any intro slide or event in `scenario.js`, for example
-`audio: 'audio/intro-01.mp3'`. When the field is present the engine plays the
-file instead of synthesising speech.
+The clips were synthesised with [Piper](https://github.com/rhasspy/piper)
+(MIT) using the `en-us-libritts-high` voice, speaker 400. The LibriTTS dataset
+is CC BY 4.0. To re-record after changing any text:
+
+```
+PIPER=/path/to/piper MODEL=/path/to/en-us-libritts-high.onnx SPEAKER=400 tools/make-narration.sh
+```
+
+File names follow a convention the engine knows (`intro-N`, `event-N`,
+`explain-N`, `outcome`, `cmd-KEY`). To use a human recording for any line, drop
+in a file with that name, or set an explicit `audio` path on the slide or
+event in `scenario.js`.
+
+## Citations
+
+Every confidence tag in the game is a button. Clicking it opens the source
+records behind that kind of claim (the Poem, the Bulletin, the reliefs, the
+Apology of Hattusili III, the treaty, and the modern studies), and, where a
+line has a `cite` field, the specific record for that line. The lists live in
+`scenario.citations`.
+
+## Map navigation
+
+Double-click the minimap to see the whole battlefield; drag a box on the big
+map to zoom into that area, or double-click the minimap again to return.
+Shift-drag draws a zoom box at any time.
 
 ## Adding another battle
 

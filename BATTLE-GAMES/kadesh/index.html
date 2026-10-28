@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Battle of Kadesh — Historical Reenactment & Command</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{--gold:#e9c77a;--ink:#09131a;--panel:#101f29;--line:#38505c;--blue:#3985d7;--red:#d44c3e;--text:#edf1ed}
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;background:#071017;color:var(--text);font:14px/1.4 system-ui,Segoe UI,Arial,sans-serif}
   body{display:flex;flex-direction:column;min-height:600px}
   header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;background:#0b1821;border-bottom:1px solid var(--line);flex-wrap:wrap}
-  .brand{font-family:Georgia,serif;color:var(--gold);font-size:clamp(17px,2vw,24px);letter-spacing:.08em}
+  .brand{font-family:'Cinzel',Georgia,serif;font-weight:700;color:var(--gold);font-size:clamp(18px,2.1vw,26px);letter-spacing:.1em;text-shadow:0 1px 0 #5a4310,0 2px 6px rgba(0,0,0,.6)}
   .subtitle{color:#9fb1b8;font-size:12px;margin-top:2px}
   .top-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
   button,select{cursor:pointer;border:1px solid #526873;border-radius:6px;padding:7px 10px;background:#172a36;color:#f2f4ef;font-weight:600;font-size:13px}
@@ -23,7 +25,7 @@
   .hud{position:absolute;z-index:2;background:#091720ee;border:1px solid #435a64;border-radius:7px;padding:8px 10px;backdrop-filter:blur(4px)}
   #caption{left:12px;top:12px;max-width:min(62%,520px);display:none}
   #caption.show{display:block}
-  #capTitle{font:bold 15px Georgia,serif;color:var(--gold)} #capText{margin:4px 0 6px;font-size:13px;color:#e4ebe6}
+  #capTitle{font:600 14px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.03em} #capText{margin:4px 0 6px;font-size:13px;color:#e4ebe6}
   #minimap-wrap{right:12px;top:12px;width:200px;padding:6px}
   #minimap{width:100%;height:141px;border:1px solid #60747a;border-radius:4px;cursor:crosshair;display:block}
   #zoomBox{position:absolute;left:12px;bottom:44px;z-index:2;display:flex;gap:4px}
@@ -34,11 +36,11 @@
   #timeline .tick.on{background:#fff;box-shadow:0 0 0 3px #e9c77a66}
   #timeline i{position:absolute;top:2px;width:3px;height:16px;background:#ff5040;margin-left:-1px;border-radius:2px;pointer-events:none}
   .tiny{font-size:11px;color:#aebdc1}.muted{color:#8fa1a8;font-size:12px}
-  .chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:1px 6px;border-radius:9px;border:1px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);vertical-align:middle;white-space:nowrap}
+  .chip{cursor:pointer;font-family:inherit;display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:1px 6px;border-radius:9px;border:1px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);vertical-align:middle;white-space:nowrap}
   .side{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:auto;padding-right:2px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px;flex-shrink:0}
-  h2{font:bold 15px Georgia,serif;color:var(--gold);margin:0 0 8px}
-  h4{margin:14px 0 6px;color:var(--gold);font-family:Georgia,serif}
+  h2{font:600 14px 'Cinzel',Georgia,serif;letter-spacing:.04em;color:var(--gold);margin:0 0 8px}
+  h4{margin:14px 0 6px;color:var(--gold);font-family:'Cinzel',Georgia,serif;font-weight:600}
   .keyrow{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;font-size:11px;color:#bfccd0;margin:5px 0}
   .sel b{display:block;margin-bottom:2px}.sel .note{font-size:12px;color:#c9d6d8;margin:6px 0 0}.sel+.sel{margin-top:10px;padding-top:10px;border-top:1px solid #233944}
   .bar{height:6px;background:#0b141a;border-radius:3px;margin:6px 0 4px;overflow:hidden}.bar i{display:block;height:100%}
@@ -60,11 +62,15 @@
   .overlay.center{align-items:center;background:rgba(5,10,14,.6)}
   .dialog{width:min(820px,100%);max-height:88%;overflow:auto;background:#0b1822f2;border:1px solid #4a6472;border-radius:12px;padding:18px 22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
   .kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fb1b8}
-  .dialog h1{font:bold clamp(20px,2.6vw,30px) Georgia,serif;color:var(--gold);margin:4px 0 2px;letter-spacing:.04em}
-  .dialog h3{font:bold 20px Georgia,serif;color:var(--gold);margin:0 0 8px}
+  .dialog h1{font:700 clamp(20px,2.6vw,32px) 'Cinzel',Georgia,serif;color:var(--gold);margin:4px 0 2px;letter-spacing:.08em;text-shadow:0 1px 0 #5a4310,0 2px 8px rgba(0,0,0,.6)}
+  .dialog h3{font:600 19px 'Cinzel',Georgia,serif;color:var(--gold);margin:0 0 8px;letter-spacing:.03em}
   #introSub{color:#c9d6d8;font-style:italic;margin-bottom:8px}
   #introLines p,#debriefBody p,#explainBody{font-size:15px;line-height:1.5;margin:8px 0;color:#eef3ee}
   .lead{font-size:16px;color:var(--gold)}
+  .claim{font-style:italic;color:#c9d6d8;border-left:3px solid var(--gold);padding-left:10px}
+  .refs{padding-left:18px}.refs li{margin:8px 0;font-size:14px}
+  .battle-panel.overview canvas#battle{cursor:crosshair}
+  #voiceStatus{color:#ffb3a7;max-width:260px}
   .progress{height:3px;background:#1d2f3a;border-radius:2px;margin:10px 0 12px;overflow:hidden}.progress i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s linear}
   .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
   .actions .spacer{flex:1}
@@ -90,13 +96,14 @@
     <button id="explainBtn" title="Pause and explain this moment (E)">💡 Explain this moment</button>
     <button id="voiceBtn" title="Spoken narration using your browser's voice">🔇 Voice off</button>
     <button id="resetBtn">↻ Restart</button>
+    <span class="tiny" id="voiceStatus"></span>
   </div>
 </header>
 <main>
   <section class="battle-panel" id="battlePanel">
     <canvas id="battle" aria-label="Scrollable battlefield"></canvas>
     <div class="hud" id="caption"><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
-    <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Red box = visible area · click to jump · wheel to zoom</div></div>
+    <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for the full map, then drag a box to zoom in</div></div>
     <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button></div>
     <div id="timeline" title="Timeline: click a marker to jump to that moment"></div>
 
@@ -107,6 +114,11 @@
         <div id="introSub"></div>
         <div id="introLines"></div>
         <div class="progress"><i id="introBar"></i></div>
+        <div class="actions" id="startGate">
+          <button id="beginVoice" class="primary big">🔊 Begin with narration</button>
+          <button id="beginSilent" class="big">Begin without sound</button>
+          <span class="muted">Narration is pre-recorded, so it plays in any browser.</span>
+        </div>
         <div class="actions" id="introNav">
           <button id="introBack">◀ Back</button>
           <button id="introPause">Ⅱ Pause</button>
@@ -120,6 +132,15 @@
           <span class="spacer"></span>
           <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
         </div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="cite">
+      <div class="dialog">
+        <div class="kicker" id="citeKicker"></div>
+        <h3 id="citeTitle"></h3>
+        <div id="citeBody"></div>
+        <div class="actions"><button id="citeClose" class="primary">Close</button></div>
       </div>
     </div>
 
@@ -179,7 +200,7 @@
     </section>
     <section class="card">
       <h2>Controls</h2>
-      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>+ / −:</b> zoom.<br><b>Voice:</b> uses your browser's built-in speech. Recorded narration can be added later per line.</p>
+      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>+ / −:</b> zoom.<br><b>Voice:</b> pre-recorded narration; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.</p>
     </section>
   </aside>
 </main>

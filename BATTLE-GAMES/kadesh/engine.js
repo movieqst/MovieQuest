@@ -19,8 +19,8 @@ let paused = false, speed = 1, simTime = 0, acc = 0, lastFrame = 0, wall = 0;
 let formations = [], byId = {};
 let eventIndex = 0, currentEvent = null, aiFlags = {}, battleOver = null, fastForward = false;
 let selected = new Set();
-let dragging = false, last = null, dragMoved = false;
-let introIdx = 0, introTimer = 0, introPaused = false;
+let dragging = false, last = null, dragMoved = false, band = null, overview = null;
+let introIdx = 0, introTimer = 0, introPaused = false, introStarted = false;
 let markers = [];
 let TER = null, MINIBASE = null;
 
@@ -28,7 +28,9 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const jitter = (i, k = 0) => { const s = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return s - Math.floor(s); };
 const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 const alive = f => f.present && f.state !== 'withdrawn' && f.state !== 'destroyed';
-const tagChip = tag => { const c = S.confidence[tag] || S.confidence.reconstruction; return `<span class="chip" style="--c:${c.color}" title="${c.desc}">${c.label}</span>`; };
+const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const tagChip = (tag, cite) => { const c = S.confidence[tag] || S.confidence.reconstruction; return `<button class="chip" style="--c:${c.color}" title="${c.desc} Click for the sources." data-tag="${tag}" data-cite="${esc(cite)}">${c.label}</button>`; };
+const audioFor = (kind, n) => S.audioBase ? S.audioBase + kind + (n !== undefined ? '-' + n : '') + '.mp3' : undefined;
 
 function riverXAt(y) {
   const p = B.river;
@@ -46,7 +48,7 @@ function curve(c, pts) {
   const l = pts[pts.length - 1]; c.lineTo(l[0], l[1]);
 }
 function outlined(c, text, x, y, size, opts = {}) {
-  c.save(); c.font = `${opts.weight || 'bold'} ${size}px Georgia, serif`; c.textAlign = opts.align || 'center'; c.textBaseline = 'middle';
+  c.save(); c.font = `${opts.weight || 'bold'} ${size}px ${opts.weight === 'italic' ? 'Georgia, serif' : "'Cinzel', Georgia, serif"}`; c.textAlign = opts.align || 'center'; c.textBaseline = 'middle';
   if (opts.rotate) { c.translate(x, y); c.rotate(opts.rotate); x = 0; y = 0; }
   c.lineWidth = Math.max(2, size / 5); c.strokeStyle = opts.stroke || 'rgba(20,16,8,.85)'; c.lineJoin = 'round'; c.strokeText(text, x, y);
   c.fillStyle = opts.fill || '#f6e9c6'; c.fillText(text, x, y); c.restore();
@@ -262,7 +264,7 @@ function moveFormation(f) {
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
   if (cam.follow && ev.focus) focusOn(ev.focus.x, ev.focus.y);
-  caption(ev.title, ev.text, ev.tag, !fastForward);
+  caption(ev.title, ev.text, ev.tag, !fastForward, ev.audio || audioFor('event', S.events.indexOf(ev) + 1), ev.cite);
   addLog(fmtTime(ev.t) + ' ' + ev.title);
   renderTimeline();
   if (ev.end && !fastForward) endWatch();
@@ -277,7 +279,7 @@ function jumpTo(t) {
   fastForward = true; resetSim(); 
   while (simTime < t) { simTime += DT; stepWatch(); }
   fastForward = false; paused = false; battleOver = null; hideOverlay('debrief');
-  if (currentEvent) caption(currentEvent.title, currentEvent.text, currentEvent.tag, true);
+  if (currentEvent) caption(currentEvent.title, currentEvent.text, currentEvent.tag, true, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1), currentEvent.cite);
   updatePauseBtn(); $('clock').textContent = fmtTime(simTime); render();
   if (currentEvent && currentEvent.end) endWatch();
 }
@@ -286,10 +288,10 @@ function jumpTo(t) {
 function stepCommand() {
   const A = S.ai.hittite;
   if (!aiFlags.start) { aiFlags.start = true; S.events[0].orders.forEach(o => { if (byId[o.id].side === 'egypt') applyOrder(o); }); }
-  if (!aiFlags.inf && simTime >= A.infantryShift.t) { aiFlags.inf = true; applyOrder({ id: 'hit-inf', to: A.infantryShift.to }); applyOrder({ id: 'muwatalli', to: A.kingShift.to }); caption('Captured scouts', 'Two Hittite scouts confess: the enemy army is behind the city. You now command the Egyptian army. Re and Ptah are still on the road; the Hittites will move first.', 'egyptian', true); }
-  if (!aiFlags.w1 && simTime >= A.firstWave.t) { aiFlags.w1 = true; caption('Movement across the river', 'Dust rises south of the city. Something is crossing the Orontes.', 'reconstruction', true); if (cam.follow) focusOn(1450, 1060); ['hit-char-a', 'hit-char-b', 'hit-char-c'].forEach((id, i) => { const f = byId[id]; f.tx = A.firstWave.cross[i].x; f.ty = A.firstWave.cross[i].y; f.state = 'move'; f.speed = 60; f.aiPhase = 'cross'; }); }
+  if (!aiFlags.inf && simTime >= A.infantryShift.t) { aiFlags.inf = true; applyOrder({ id: 'hit-inf', to: A.infantryShift.to }); applyOrder({ id: 'muwatalli', to: A.kingShift.to }); cmdCaption('Captured scouts', 'scouts', 'egyptian', { x: 1050, y: 500 }); }
+  if (!aiFlags.w1 && simTime >= A.firstWave.t) { aiFlags.w1 = true; cmdCaption('Movement across the river', 'crossing', 'reconstruction', { x: 1450, y: 1060 }); ['hit-char-a', 'hit-char-b', 'hit-char-c'].forEach((id, i) => { const f = byId[id]; f.tx = A.firstWave.cross[i].x; f.ty = A.firstWave.cross[i].y; f.state = 'move'; f.speed = 60; f.aiPhase = 'cross'; }); }
   if (!aiFlags.w2 && simTime >= A.secondWave.t) { aiFlags.w2 = true; const f = byId['hit-char2']; f.tx = A.secondWave.cross.x; f.ty = A.secondWave.cross.y; f.state = 'move'; f.aiPhase = 'cross'; }
-  if (!aiFlags.nearin && simTime >= 62) { aiFlags.nearin = true; applyOrder({ id: 'nearin', visible: true, at: { x: 60, y: 560 }, to: { x: 880, y: 480 }, speed: 50 }); caption('The Ne’arin arrive', 'A fresh Egyptian force appears from the west. It is under your command.', 'egyptian', true); }
+  if (!aiFlags.nearin && simTime >= 62) { aiFlags.nearin = true; applyOrder({ id: 'nearin', visible: true, at: { x: 60, y: 560 }, to: { x: 880, y: 480 }, speed: 50 }); cmdCaption('The Ne\u2019arin arrive', 'nearin', 'egyptian', { x: 300, y: 540 }); }
   const egy = formations.filter(f => f.side === 'egypt' && alive(f) && f.state !== 'rout');
   formations.forEach(f => {
     if (f.side !== 'hittite' || !f.ai || !alive(f) || f.state === 'rout') return;
@@ -322,12 +324,12 @@ function combat() {
   formations.forEach(f => {
     if (!alive(f)) return;
     if (f.strength <= 0) { f.strength = 0; f.state = 'destroyed'; addLog(f.name + ' destroyed'); if (selected.has(f.id)) selected.delete(f.id); }
-    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === 'egypt') { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true); if (cam.follow) focusOn(f.x, f.y); } }
+    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === 'egypt') { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true, audioFor('cmd', 'breaks')); if (cam.follow) focusOn(f.x, f.y); } }
   });
 }
 function fog() {
   const egy = formations.filter(f => f.side === 'egypt' && alive(f));
-  formations.forEach(f => { if (f.side === 'hittite' && !f.known && alive(f) && egy.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog('Enemy spotted: ' + f.name); caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true); if (cam.follow) focusOn(f.x, f.y); } });
+  formations.forEach(f => { if (f.side === 'hittite' && !f.known && alive(f) && egy.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog('Enemy spotted: ' + f.name); caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true, audioFor('cmd', 'sighted')); if (cam.follow) focusOn(f.x, f.y); } });
 }
 function checkEnd() {
   if (battleOver || simTime < 25) return;
@@ -399,6 +401,7 @@ function render() {
     ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(m.x, m.y, r + 8, 0, PI * 2); ctx.stroke();
     outlined(ctx, m.label, m.x, m.y - r - 16, 14, { fill: '#fff3c9' });
   });
+  if (band) { ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 2 / view.z; ctx.setLineDash([8 / view.z, 6 / view.z]); ctx.strokeRect(Math.min(band.x0, band.x1), Math.min(band.y0, band.y1), Math.abs(band.x1 - band.x0), Math.abs(band.y1 - band.y0)); ctx.setLineDash([]); ctx.fillStyle = 'rgba(255,211,107,.12)'; ctx.fillRect(Math.min(band.x0, band.x1), Math.min(band.y0, band.y1), Math.abs(band.x1 - band.x0), Math.abs(band.y1 - band.y0)); }
   ctx.restore();
   // scale bar
   const sb = B.scale.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12;
@@ -422,27 +425,46 @@ const Narr = {
   on: false, audio: null,
   speak(text, file) {
     this.stop(); if (!this.on) return;
-    if (file) { this.audio = new Audio(file); this.audio.play().catch(() => this.tts(text)); return; }
+    if (file) { const a = new Audio(file); this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
     this.tts(text);
   },
+  status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
   tts(text) {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(text); u.rate = .92; u.pitch = .85;
     const vs = speechSynthesis.getVoices(), pref = vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
     if (pref) u.voice = pref; speechSynthesis.speak(u);
+    if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
   },
   stop() { if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
-  toggle() { this.on = !this.on; $('voiceBtn').textContent = this.on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', this.on); if (!this.on) this.stop(); else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio); }
+  set(on) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
+  toggle() { this.set(!this.on); }
 };
-function speakSlide(sl) { Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio); }
+function speakSlide(sl) { Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', S.intro.indexOf(sl) + 1)); }
 
 /* ---------------- UI: captions, log, panels ---------------- */
-function caption(title, text, tag, speak) {
-  $('capTitle').textContent = title; $('capText').textContent = text; $('capTag').innerHTML = tagChip(tag);
+function caption(title, text, tag, speak, audio, cite) {
+  $('capTitle').textContent = title; $('capText').textContent = text; $('capTag').innerHTML = tagChip(tag, cite);
   $('caption').classList.add('show');
-  if (speak) { Narr.speak(text, currentEvent && currentEvent.text === text ? currentEvent.audio : undefined); }
+  if (speak) Narr.speak(text, audio);
 }
+function cmdCaption(title, key, tag, focus) {
+  caption(title, S.commandLines[key], tag, true, audioFor('cmd', key));
+  if (focus && cam.follow) focusOn(focus.x, focus.y);
+}
+function openCitations(tag, cite, claim) {
+  const c = S.citations[tag]; if (!c) return;
+  $('citeKicker').textContent = 'Where this comes from'; $('citeTitle').innerHTML = tagChip(tag) + ' ' + c.title;
+  $('citeBody').innerHTML = (claim ? `<p class="claim">\u201c${esc(claim)}\u201d</p>` : '') + (cite ? `<p class="lead">Specific record: ${esc(cite)}</p>` : '') + `<p>${c.intro}</p><ul class="refs">` + c.items.map(i => `<li><b>${i.ref}</b><br><span class="muted">${i.note}</span></li>`).join('') + '</ul>';
+  showOverlay('cite');
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('button.chip'); if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const host = b.parentElement, claim = host && host.tagName === 'P' ? host.textContent.replace(b.textContent, '').trim() : '';
+  openCitations(b.dataset.tag, b.dataset.cite, claim);
+}, true);
 let log = [];
 function addLog(s) { log.unshift(s); log = log.slice(0, 8); $('log').innerHTML = log.map(l => `<div>${l}</div>`).join(''); }
 function fmtTime(t) { return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(Math.floor(t % 60)).padStart(2, '0')}`; }
@@ -462,10 +484,10 @@ function renderArmies() {
   const units = [
     { side: 'egypt', type: 'chariot', name: 'Egyptian chariot', desc: 'Two crew: driver and archer. Light, fast, built to shoot on the move.', tag: 'established' },
     { side: 'egypt', type: 'infantry', name: 'Egyptian spearman', desc: 'Spear, tall shield, bronze axe or khopesh sword. Fights in close ranks.', tag: 'established' },
-    { side: 'egypt', type: 'archers', name: 'Egyptian archer', desc: 'Composite bow. Egypt’s infantry mixed archers with spearmen.', tag: 'established' },
+    { side: 'egypt', type: 'archers', name: 'Egyptian archer', desc: 'Composite bow. Egypt\u2019s infantry mixed archers with spearmen.', tag: 'established' },
     { side: 'hittite', type: 'chariot', name: 'Hittite chariot', desc: 'Three crew: driver, shield bearer, spearman. Heavier, built for shock.', tag: 'established' },
     { side: 'hittite', type: 'infantry', name: 'Hittite spearman', desc: 'Spear and shield, crested helmet. Never crossed the river at Kadesh.', tag: 'egyptian' },
-    { side: 'hittite', type: 'archers', name: 'Allied archer', desc: 'Drawn from Muwatalli’s vassals and allies.', tag: 'reconstruction' }
+    { side: 'hittite', type: 'archers', name: 'Allied archer', desc: 'Drawn from Muwatalli\u2019s vassals and allies.', tag: 'reconstruction' }
   ];
   $('armies').innerHTML = units.map((u, i) => `<div class="ucard"><canvas id="uc${i}" width="84" height="60"></canvas><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}</div></div>`).join('');
   units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 30 : 32, 30, 0, 1, u.type === 'chariot' ? 2.1 : 3.2); });
@@ -483,19 +505,21 @@ function showIntro(i) {
   introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0;
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
   $('introTitle').textContent = sl.title; $('introSub').textContent = sl.subtitle || '';
-  $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag)}</p>`).join('');
+  $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('introChoice').style.display = sl.choice ? 'flex' : 'none';
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   markers = sl.markers || []; if (sl.focus) focusOn(sl.focus.x, sl.focus.y);
-  speakSlide(sl);
+  $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
+  if (introStarted) speakSlide(sl);
 }
-function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
+function beginIntro(voice) { introStarted = true; $('startGate').style.display = 'none'; $('introNav').style.display = 'flex'; introTimer = 0; Narr.set(voice); if (!voice) Narr.stop(); }
+function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
 function startMode(m) {
   mode = m; markers = []; hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m;
   if (m === 'watch') { caption(S.events[0].title, S.events[0].text, S.events[0].tag, false); }
-  else { caption('Command mode', 'You lead the Egyptian army. Click a formation, then right-click where it should go. Shift-click adds to the selection. The Hittite army is hidden until your troops sight it.', 'reconstruction', true); focusOn(1100, 600); }
+  else { cmdCaption('Command mode', 'start', 'reconstruction', { x: 1100, y: 600 }); }
   renderTimeline(); renderSelection();
 }
 function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
@@ -513,14 +537,14 @@ function showDebrief() {
     body = `<p class="lead">${txt}</p><p class="muted">Your battle is a what-if simulation. Nothing about it is a claim about what really happened. Compare it with the historical outcome below.</p><div class="tablewrap"><table><tr><th>Formation</th><th>State</th><th>Strength</th></tr>${rows}</table></div>`;
   }
   $('debriefTitle').textContent = head;
-  $('debriefBody').innerHTML = body + '<h4>The historical outcome</h4>' + S.outcome.map(l => `<p>${l.text} ${tagChip(l.tag)}</p>`).join('');
-  if (Narr.on && battleOver === 'history') Narr.speak(S.outcome.map(l => l.text).join(' '));
+  $('debriefBody').innerHTML = body + '<h4>The historical outcome</h4>' + S.outcome.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
+  if (Narr.on && battleOver === 'history') Narr.speak(S.outcome.map(l => l.text).join(' '), S.outcomeAudio || audioFor('outcome'));
   showOverlay('debrief');
 }
 function showExplain() {
   const ev = currentEvent; if (!ev || !ev.explain) return;
   if (!paused) togglePause(); $('explainTitle').textContent = ev.title; $('explainBody').textContent = ev.explain; showOverlay('explain');
-  Narr.speak(ev.explain);
+  Narr.speak(ev.explain, ev.explainAudio || audioFor('explain', S.events.indexOf(ev) + 1));
 }
 
 /* ---------------- input ---------------- */
@@ -534,7 +558,7 @@ function pickFormation(p) {
 canvas.addEventListener('contextmenu', e => e.preventDefault());
 canvas.addEventListener('pointerdown', e => {
   last = { x: e.clientX, y: e.clientY }; dragMoved = false;
-  if (e.button === 0) { dragging = true; canvas.setPointerCapture(e.pointerId); }
+  if (e.button === 0) { dragging = true; canvas.setPointerCapture(e.pointerId); if (overview || e.shiftKey) { const p = toWorld(e); band = { x0: p.x, y0: p.y, x1: p.x, y1: p.y }; } }
   if (e.button === 2 && mode === 'command' && selected.size) {
     const p = toWorld(e); let k = 0;
     selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout') return; f.tx = clamp(p.x + (k % 3 - 1) * 70, 20, W.w - 20); f.ty = clamp(p.y + Math.floor(k / 3) * 60, 20, W.h - 20); f.state = 'move'; k++; });
@@ -544,10 +568,16 @@ canvas.addEventListener('pointerdown', e => {
 canvas.addEventListener('pointermove', e => {
   if (!dragging) return; const dx = e.clientX - last.x, dy = e.clientY - last.y;
   if (Math.abs(dx) + Math.abs(dy) > 3) dragMoved = true;
+  if (band) { const p = toWorld(e); band.x1 = p.x; band.y1 = p.y; return; }
   if (dragMoved) { view.x -= dx / view.z; view.y -= dy / view.z; clampView(); manualCamera(); last = { x: e.clientX, y: e.clientY }; }
 });
 canvas.addEventListener('pointerup', e => {
+  if (band) {
+    const bx = Math.min(band.x0, band.x1), by = Math.min(band.y0, band.y1), bw = Math.abs(band.x1 - band.x0), bh = Math.abs(band.y1 - band.y0); band = null;
+    if (bw > 20 && bh > 20) { view.z = clamp(Math.min(view.w / bw, view.h / bh), .45, 2.4); view.x = bx + bw / 2 - view.w / view.z / 2; view.y = by + bh / 2 - view.h / view.z / 2; overview = null; $('battlePanel').classList.remove('overview'); clampView(); manualCamera(); dragging = false; return; }
+  }
   if (dragging && !dragMoved && e.button === 0) {
+    if (overview) { toggleOverview(); dragging = false; return; }
     const f = pickFormation(toWorld(e));
     if (!e.shiftKey) selected.clear();
     if (f) { if (mode === 'command' && f.side !== 'egypt') { selected.clear(); selected.add(f.id); } else selected.add(f.id); }
@@ -560,6 +590,12 @@ canvas.addEventListener('wheel', e => {
   const wx = mx / view.z + view.x, wy = my / view.z + view.y, z2 = clamp(view.z * (e.deltaY < 0 ? 1.15 : 1 / 1.15), .45, 2.4);
   view.z = z2; view.x = wx - mx / z2; view.y = wy - my / z2; clampView(); manualCamera();
 }, { passive: false });
+function toggleOverview() {
+  if (overview) { view.x = overview.x; view.y = overview.y; view.z = overview.z; overview = null; }
+  else { overview = { x: view.x, y: view.y, z: view.z }; view.z = Math.min(view.w / W.w, view.h / W.h); view.x = 0; view.y = 0; }
+  clampView(); manualCamera(); $('battlePanel').classList.toggle('overview', !!overview);
+}
+mini.addEventListener('dblclick', e => { e.preventDefault(); toggleOverview(); });
 mini.addEventListener('click', e => { const r = mini.getBoundingClientRect(); view.x = (e.clientX - r.left) / r.width * W.w - view.w / view.z / 2; view.y = (e.clientY - r.top) / r.height * W.h - view.h / view.z / 2; clampView(); manualCamera(); });
 window.addEventListener('keydown', e => {
   if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
@@ -571,7 +607,7 @@ window.addEventListener('keydown', e => {
   if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); }
   if (k === 'e') showExplain();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
-  if (mode === 'intro') { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
+  if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
 });
 
 /* ---------------- buttons ---------------- */
@@ -590,6 +626,9 @@ $('introNext').onclick = () => showIntro(introIdx + 1);
 $('introBack').onclick = () => showIntro(introIdx - 1);
 $('introPause').onclick = togglePause;
 $('introSkip').onclick = () => showIntro(S.intro.length - 1);
+$('beginVoice').onclick = () => beginIntro(true);
+$('beginSilent').onclick = () => beginIntro(false);
+$('citeClose').onclick = () => hideOverlay('cite');
 $('chooseWatch').onclick = () => startMode('watch');
 $('chooseCommand').onclick = () => startMode('command');
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
@@ -605,7 +644,7 @@ function tick(t) {
   if (!lastFrame) lastFrame = t; const dt = Math.min(.1, (t - lastFrame) / 1000); lastFrame = t; wall += dt;
   if (mode === 'intro') {
     const sl = S.intro[introIdx];
-    if (!introPaused && !sl.choice) { introTimer += dt; $('introBar').style.width = Math.min(100, introTimer / sl.auto * 100) + '%'; if (introTimer >= sl.auto) showIntro(introIdx + 1); }
+    if (introStarted && !introPaused && !sl.choice) { introTimer += dt; $('introBar').style.width = Math.min(100, introTimer / sl.auto * 100) + '%'; if (introTimer >= sl.auto) showIntro(introIdx + 1); }
   } else if (!paused && !battleOver) {
     acc += dt * speed;
     while (acc >= DT) { acc -= DT; simTime += DT; if (mode === 'watch') stepWatch(); else stepCommand(); }
@@ -616,6 +655,7 @@ function tick(t) {
 
 /* ---------------- boot ---------------- */
 TER = buildTerrain(); buildMiniBase(); renderBriefing(); renderArmies(); createFormations();
+if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { TER = buildTerrain(); buildMiniBase(); }).catch(() => {});
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();

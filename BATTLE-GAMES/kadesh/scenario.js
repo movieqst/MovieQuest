@@ -95,7 +95,7 @@ window.KADESH_SCENARIO = {
         { text: 'Four divisions, each named for a god: Amun, Re, Ptah and Seth.', tag: 'established' },
         { text: 'Roughly 5,000 men per division, about 20,000 in all, with perhaps 2,000 chariots. No source gives these numbers directly.', tag: 'estimate' },
         { text: 'The Egyptian chariot carried two men, a driver and an archer. It was light and fast, built for shooting on the move.', tag: 'established' },
-        { text: 'A fifth force, the Ne’arin, marched separately. The texts never say where from; most historians think along the coast through Amurru.', tag: 'egyptian' }
+        { text: 'A fifth force, the Ne’arin, marched separately. The texts never say where from; most historians think along the coast through Amurru.', tag: 'egyptian', cite: 'The Poem and relief captions naming the Ne’arin of Amurru (Ramesseum, Abu Simbel)' }
       ]
     },
     {
@@ -104,7 +104,7 @@ window.KADESH_SCENARIO = {
       markers: [ { x: 1900, y: 450, label: 'Hittite army, concealed' } ],
       auto: 22,
       lines: [
-        { text: 'Egyptian texts claim 37,000 infantry and 2,500 chariots in the first charge, with 1,000 more held back. Most historians think these figures are inflated.', tag: 'egyptian' },
+        { text: 'Egyptian texts claim 37,000 infantry and 2,500 chariots in the first charge, with 1,000 more held back. Most historians think these figures are inflated.', tag: 'egyptian', cite: 'The Poem: Lichtheim, AEL II, pp. 57–72; Kitchen, KRI II, pp. 2–147' },
         { text: 'Muwatalli led a coalition of vassals and allies. The Egyptian list names about nineteen peoples, including Aleppo, Carchemish, Arzawa and the Dardany.', tag: 'egyptian' },
         { text: 'The Hittite chariot carried three men: a driver, a shield bearer and a spearman. It was heavier and built for shock.', tag: 'established' },
         { text: 'The whole army waited out of sight behind the city, on the far side of the river.', tag: 'egyptian' }
@@ -116,7 +116,7 @@ window.KADESH_SCENARIO = {
       markers: [ { x: 1345, y: 1585, label: 'Ford of Shabtuna' } ],
       auto: 20,
       lines: [
-        { text: 'South of Kadesh, two Shasu nomads tell Ramesses the Hittites are far away at Aleppo, 200 km to the north.', tag: 'egyptian' },
+        { text: 'South of Kadesh, two Shasu nomads tell Ramesses the Hittites are far away at Aleppo, 200 km to the north.', tag: 'egyptian', cite: 'The Bulletin, opening section: Lichtheim, AEL II, pp. 57–72' },
         { text: 'They were sent by Muwatalli to say exactly that.', tag: 'egyptian' },
         { text: 'Ramesses races ahead with the Amun division, crosses the ford at Shabtuna, and makes camp north-west of the city.', tag: 'egyptian' },
         { text: 'His other divisions are strung out behind him over many kilometres. The spacing shown on this map is our reconstruction.', tag: 'reconstruction' }
@@ -128,7 +128,7 @@ window.KADESH_SCENARIO = {
       markers: [ { x: 1020, y: 465, label: 'The king’s camp' }, { x: 1900, y: 450, label: 'Hittites, behind the city' } ],
       auto: 18,
       lines: [
-        { text: 'Egyptian scouts capture two Hittite spies near the camp. Beaten, they confess: the Hittite army is standing right behind Kadesh.', tag: 'egyptian' },
+        { text: 'Egyptian scouts capture two Hittite spies near the camp. Beaten, they confess: the Hittite army is standing right behind Kadesh.', tag: 'egyptian', cite: 'The Bulletin; relief caption at the Ramesseum and Luxor showing the two scouts being beaten' },
         { text: 'Ramesses sends his vizier racing south to hurry the Re and Ptah divisions forward.', tag: 'egyptian' },
         { text: 'It is already too late.', tag: 'established' }
       ]
@@ -245,7 +245,7 @@ window.KADESH_SCENARIO = {
         { id: 'hit-char-a', to: { x: 1120, y: 900 }, speed: 40 }, { id: 'hit-char-b', to: { x: 1200, y: 880 }, speed: 40 }, { id: 'hit-char-c', to: { x: 1080, y: 960 }, speed: 40 }
       ] },
     { t: 42, title: 'Charge on the camp', tag: 'egyptian', focus: { x: 1040, y: 500 },
-      text: 'The Hittite chariots crash into the Amun camp, driving the fleeing soldiers of Re before them.',
+      text: 'The Hittite chariots crash into the Amun camp, driving the fleeing soldiers of Re before them.', cite: 'The Bulletin; the camp relief at Abu Simbel and the Ramesseum',
       explain: 'The camp was fortified with a wall of shields, according to the reliefs, but it was full of men who were not expecting a fight. Fugitives from Re arrived with the enemy right behind them.',
       orders: [
         { id: 'hit-char-a', to: { x: 1000, y: 520 }, speed: 60 }, { id: 'hit-char-b', to: { x: 1080, y: 565 }, speed: 60 }, { id: 'hit-char-c', to: { x: 1060, y: 440 }, speed: 60 }
@@ -289,7 +289,7 @@ window.KADESH_SCENARIO = {
         { id: 'hit-char2', to: { x: 1480, y: 590 }, speed: 30, strengthTo: 45, over: 10 }
       ] },
     { t: 92, title: 'Into the Orontes', tag: 'egyptian', focus: { x: 1500, y: 580 },
-      text: 'Hittite chariots are pushed back into the Orontes. The reliefs show the prince of Aleppo being held upside down to drain the water from him after he was pulled from the river.',
+      text: 'Hittite chariots are pushed back into the Orontes. The reliefs show the prince of Aleppo being held upside down to drain the water from him after he was pulled from the river.', cite: 'Relief caption (Ramesseum, Abu Simbel): the chief of Aleppo turned upside down by his soldiers to empty him of water',
       explain: 'The reliefs delight in drowning Hittites and tumbling chariots. Some of this is genuine: a chariot force retreating across a river under attack is in real danger.',
       orders: [
         { id: 'hit-char-a', to: { x: 1540, y: 560 }, speed: 20, strengthTo: 15, over: 8 },
@@ -340,10 +340,60 @@ window.KADESH_SCENARIO = {
     { text: 'Muwatalli’s infantry never fought.', tag: 'egyptian' },
     { text: 'Fighting resumed on the second day and Muwatalli proposed a truce.', tag: 'egyptian' },
     { text: 'Ramesses withdrew to Egypt. Kadesh stayed Hittite, and Amurru returned to Hittite control.', tag: 'established' },
-    { text: 'Later Hittite texts claim Muwatalli defeated Ramesses and advanced south into the land of Upi, around Damascus.', tag: 'hittite' },
+    { text: 'Later Hittite texts claim Muwatalli defeated Ramesses and advanced south into the land of Upi, around Damascus.', tag: 'hittite', cite: 'Apology of Hattusili III (CTH 81), § 10; van den Hout, Context of Scripture I, no. 1.77' },
     { text: 'Most historians call it a tactical draw at best for Egypt and a strategic success for the Hittites. Ramesses’s temples call it a glorious victory.', tag: 'established' },
-    { text: 'About fifteen years later, c. 1259 BCE, Ramesses II and Hattusili III sealed the earliest surviving peace treaty known from both sides. A copy hangs at the United Nations.', tag: 'established' }
+    { text: 'About fifteen years later, c. 1259 BCE, Ramesses II and Hattusili III sealed the earliest surviving peace treaty known from both sides. A copy hangs at the United Nations.', tag: 'established', cite: 'Treaty CTH 91: Hittite tablets from Hattusa; Egyptian text at Karnak and the Ramesseum. Beckman, Hittite Diplomatic Texts, no. 15' }
   ],
+
+  /* Recorded narration lives in audio/ (generated by make-narration.sh). Paths follow a convention:
+     intro-N.mp3, event-N.mp3, explain-N.mp3, outcome.mp3, cmd-KEY.mp3. A slide or event may override with its own `audio`. */
+  audioBase: 'audio/',
+
+  /* Fixed captions used in Command mode (so they can be pre-recorded) */
+  commandLines: {
+    start:    'You lead the Egyptian army. Click a formation, then right-click where it should go. Shift-click adds to the selection. The Hittite army is hidden until your troops sight it.',
+    scouts:   'Two Hittite scouts confess: the enemy army is behind the city. You now command the Egyptian army. Re and Ptah are still on the road; the Hittites will move first.',
+    crossing: 'Dust rises south of the city. Something is crossing the Orontes.',
+    nearin:   'A fresh Egyptian force appears from the west. It is under your command.',
+    sighted:  'Enemy formation sighted.',
+    breaks:   'One of your formations has broken and is fleeing the field.'
+  },
+
+  /* ---------- Where each confidence tag comes from: click any tag in the game ---------- */
+  citations: {
+    established: { title: 'Established', intro: 'Accepted by most historians because the Egyptian narrative, the Hittite references and the archaeology agree on it.', items: [
+      { ref: 'K. A. Kitchen, Pharaoh Triumphant: The Life and Times of Ramesses II (Aris & Phillips, 1982), ch. 4', note: 'The standard modern account of the campaign.' },
+      { ref: 'T. Bryce, The Kingdom of the Hittites, 2nd ed. (Oxford, 2005), ch. 9', note: 'The battle seen from the Hittite side.' },
+      { ref: 'M. Healy, Qadesh 1300 BC: Clash of the Warrior Kings (Osprey Campaign 22, 1993)', note: 'Illustrated reconstruction with maps and orders of battle.' },
+      { ref: 'A. J. Spalinger, War in Ancient Egypt: The New Kingdom (Blackwell, 2005), ch. 9', note: 'Analysis of the sources and of the Egyptian army.' },
+      { ref: 'H. Goedicke (ed.), Perspectives on the Battle of Kadesh (Halgo, 1985)', note: 'Essays on the texts and the topography.' },
+      { ref: 'J. H. Breasted, The Battle of Kadesh: A Study in the Earliest Known Military Strategy (Chicago, 1903)', note: 'The first modern reconstruction and the basis of most battle maps. Public domain.' }
+    ] },
+    egyptian: { title: 'Egyptian account', intro: 'Ramesses II had the story carved, with pictures, on at least five temples and copied on papyrus. Two texts survive, the long Poem and the shorter Bulletin, plus captions on the reliefs. They are royal propaganda: the king is the hero and the enemy numbers are suspect.', items: [
+      { ref: 'The Poem (the Poem of Pentaur): Abydos, Karnak, Luxor, the Ramesseum, Abu Simbel; Papyrus Sallier III, British Museum EA 10181', note: 'The long narrative: the deception, the king alone, the Ne’arin, the second day and the truce.' },
+      { ref: 'The Bulletin (also called the Record): Luxor, the Ramesseum, Abu Simbel, Abydos', note: 'The shorter, more factual report: the two Shasu, the camp, the captured scouts, the charge on the camp.' },
+      { ref: 'The reliefs and their captions: Luxor, the Ramesseum, Abu Simbel, Karnak, Abydos', note: 'Pictures of the camp, the Hittite charge, the king in his chariot and the drowning in the Orontes, with named enemy officers.' },
+      { ref: 'M. Lichtheim, Ancient Egyptian Literature, vol. II (California, 1976), pp. 57–72', note: 'Poem and Bulletin in English.' },
+      { ref: 'A. H. Gardiner, The Kadesh Inscriptions of Ramesses II (Oxford, 1960)', note: 'Full edition of every version with commentary.' },
+      { ref: 'K. A. Kitchen, Ramesside Inscriptions II (Blackwell, 1979), pp. 2–147; English in RITA II (1996)', note: 'The standard edition of the hieroglyphic text.' },
+      { ref: 'J. H. Breasted, Ancient Records of Egypt III (Chicago, 1906), §§ 298–351', note: 'Older translation, public domain and widely available online.' }
+    ] },
+    hittite: { title: 'Hittite account', intro: 'No Hittite narrative of the battle survives. The campaign is mentioned briefly in later texts from Hattusa, which claim a Hittite success.', items: [
+      { ref: 'The Apology of Hattusili III (CTH 81), § 10', note: 'Hattusili, Muwatalli’s brother, records the war with Egypt and the Hittite advance into the land of Upi near Damascus. English: Th. van den Hout in Hallo & Younger (eds.), The Context of Scripture I (Brill, 1997), no. 1.77.' },
+      { ref: 'The Egyptian–Hittite peace treaty (CTH 91), c. 1259 BCE', note: 'Hittite version on clay tablets from Hattusa; Egyptian version carved at Karnak and the Ramesseum. English: G. Beckman, Hittite Diplomatic Texts, 2nd ed. (1999), no. 15. A replica hangs at the United Nations in New York.' },
+      { ref: 'Royal correspondence between the courts of Ramesses II and Hattusili III', note: 'Later letters refer back to the battle and dispute each other’s version. Edition: E. Edel, Die \u00e4gyptisch-hethitische Korrespondenz aus Boghazköi (1994).' }
+    ] },
+    estimate: { title: 'Estimate', intro: 'No ancient source gives the size of the Egyptian army or the length of the march. These figures come from modern historians working from the number of divisions, the names of officers and comparison with other campaigns.', items: [
+      { ref: 'M. Healy, Qadesh 1300 BC (Osprey, 1993), orders of battle', note: 'About 20,000 Egyptians in four divisions; the Hittite figures in the Poem treated as exaggerated.' },
+      { ref: 'A. J. Spalinger, War in Ancient Egypt (2005), ch. 9', note: 'Discussion of division sizes and chariot numbers.' },
+      { ref: 'K. A. Kitchen, Pharaoh Triumphant (1982), ch. 4', note: 'The battle is dated to regnal year 5; the absolute year depends on the chronology used.' }
+    ] },
+    reconstruction: { title: 'Reconstruction', intro: 'Choices made for this game so that the battle can be shown and played. They are not claims about what happened.', items: [
+      { ref: 'The map', note: 'A schematic of the Orontes bend at Tell Nebi Mend, after the plans in Breasted (1903) and Healy (1993). Excavations of the site: M. Pézard (1921–22); P. J. Parr, University College London (1975–95).' },
+      { ref: 'Positions, timings and speeds', note: 'Chosen to show the sequence in the Egyptian texts in about two minutes. Real distances were kilometres and the fighting lasted a day.' },
+      { ref: 'Combat results in Command mode', note: 'A simple strength model. Nothing about it is historical.' }
+    ] }
+  },
 
   sources: [
     { title: 'The Poem (Poem of Pentaur) and the Bulletin', note: 'The two Egyptian texts of the battle, carved at Abydos, Karnak, Luxor, the Ramesseum and Abu Simbel, and copied on papyrus.' },
