@@ -351,9 +351,9 @@ window.KADESH_SCENARIO = {
   /* Selectable narrators. Each has its own folder audio/<id>/ with the same clip names.
      All are Piper "en-us-libritts-high" speakers (LibriTTS dataset, CC BY 4.0). */
   voices: [
+    { id: 'narrator-3', name: 'Narrator 3 \u00b7 bright', speaker: 0 },
     { id: 'narrator-1', name: 'Narrator 1 \u00b7 deep',   speaker: 400 },
-    { id: 'narrator-2', name: 'Narrator 2 \u00b7 warm',   speaker: 7 },
-    { id: 'narrator-3', name: 'Narrator 3 \u00b7 bright', speaker: 0 }
+    { id: 'narrator-2', name: 'Narrator 2 \u00b7 warm',   speaker: 7 }
   ],
 
   /* Fixed captions used in Command mode (so they can be pre-recorded) */
