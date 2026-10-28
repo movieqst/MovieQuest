@@ -146,7 +146,8 @@
           </div>
           <div class="actions" id="introChoice" style="display:none">
             <button id="chooseWatch" class="primary big">▶ Watch the reenactment</button>
-            <button id="chooseCommand" class="primary big">⚔ Take command</button>
+            <button id="chooseCommand" class="primary big">⚔ Command Egypt</button>
+          <button id="chooseCommandH" class="primary big">⚔ Command the Hittites</button>
             <span class="spacer"></span>
             <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
           </div>
@@ -208,8 +209,8 @@
     </section>
     <section class="card cmd-only">
       <h2>Orders</h2>
-      <div class="orders"><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back to camp</button></div>
-      <p class="muted">Click a formation, Shift-click to add more, right-click the ground to move. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
+      <div class="orders"><label class="tiny">Side <select id="sideSel"><option value="egypt">Egypt</option><option value="hittite">Hittites</option></select></label><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back</button></div>
+      <p class="muted">Choose your side, then click a formation, Shift-click to add more, right-click the ground to move. As the Hittites you start concealed behind the city with the whole chariot force in hand. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
     </section>
     <section class="card">
       <h2>Battle log</h2>
@@ -231,6 +232,7 @@
 <footer>Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</footer>
 <script src="scenario.js"></script>
 <script src="world.js"></script>
+<script src="borders.js"></script>
 <script src="globe.js"></script>
 <script src="engine.js"></script>
 </body>

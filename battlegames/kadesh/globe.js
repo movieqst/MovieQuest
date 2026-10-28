@@ -4,6 +4,8 @@ window.KadeshGlobe = (() => {
   'use strict';
   const D = Math.PI / 180, KADESH = { lon: 36.52, lat: 34.56 };
   const RINGS = (window.KADESH_WORLD && window.KADESH_WORLD.rings) || [];
+  const BORDERS = window.KADESH_BORDERS || { modern: [], ancient: [] };
+  const NEAR_EAST = { lon: 36.5, lat: 33 };   // centre of the pull-back that shows the whole region
   // Pre-computed per ring: Float32 arrays of lon(rad), cos(lat), sin(lat), plus a lon/lat bounding box.
   const PRE = RINGS.map(r => {
     const n = r.length, lon = new Float32Array(n), cl = new Float32Array(n), sl = new Float32Array(n);
@@ -111,6 +113,29 @@ window.KadeshGlobe = (() => {
     const sh = c.createRadialGradient(cx - R * .45, cy - R * .35, R * .2, cx, cy, R * 1.05); sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(.7, 'rgba(0,0,10,.12)'); sh.addColorStop(1, 'rgba(0,0,15,.6)');
     if (!RASTER && R < 1500) { c.fillStyle = sh; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill(); }
     c.restore();
+    // border overlays: today's countries, then the approximate kingdoms of 1274 BCE
+    if (s.modern > 0 || s.ancient > 0) {
+      c.save(); c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.clip();
+      const path = ring => { let pen = false, any = false; for (let i = 0; i < ring.length; i++) { const p = proj(ring[i][0] * D, Math.cos(ring[i][1] * D), Math.sin(ring[i][1] * D)); if (p) { pen ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); pen = true; any = true; } else pen = false; } return any; };
+      const fs = Math.max(9, Math.min(22, R / 110));
+      if (s.modern > 0) {
+        c.globalAlpha = s.modern; c.strokeStyle = 'rgba(255,255,255,.85)'; c.lineWidth = 1.3; c.setLineDash([]);
+        BORDERS.modern.forEach(co => { co.rings.forEach(r => { c.beginPath(); if (path(r)) c.stroke(); }); });
+        c.font = `600 ${fs * .8}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
+        BORDERS.modern.forEach(co => { if (!co.label) return; const p = proj(co.label[0] * D, Math.cos(co.label[1] * D), Math.sin(co.label[1] * D)); if (!p) return; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText(co.name.toUpperCase(), p[0], p[1]); c.fillStyle = '#ffffff'; c.fillText(co.name.toUpperCase(), p[0], p[1]); });
+        c.globalAlpha = s.modern; c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText('Today\u2019s borders', 16, 22); c.fillStyle = '#dfe9f3'; c.fillText('Today\u2019s borders', 16, 22);
+      }
+      if (s.ancient > 0) {
+        c.globalAlpha = s.ancient;
+        BORDERS.ancient.forEach(k => { c.beginPath(); if (path(k.ring)) { c.closePath(); c.fillStyle = `rgba(${k.color},.26)`; c.fill(); c.setLineDash([7, 5]); c.strokeStyle = `rgba(${k.color},.95)`; c.lineWidth = 2; c.stroke(); c.setLineDash([]); } });
+        BORDERS.ancient.forEach(k => { const p = proj(k.label[0] * D, Math.cos(k.label[1] * D), Math.sin(k.label[1] * D)); if (!p) return;
+          c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(k.name, p[0], p[1]); c.fillStyle = `rgb(${k.color})`; c.fillText(k.name, p[0], p[1]);
+          if (k.sub) { c.font = `italic ${fs * .65}px Georgia, serif`; c.lineWidth = 3; c.strokeText(k.sub, p[0], p[1] + fs * .95); c.fillStyle = '#f6e9c6'; c.fillText(k.sub, p[0], p[1] + fs * .95); } });
+        c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)';
+        const note = 'The main powers around 1274 BCE \u00b7 approximate extents, a reconstruction'; c.strokeText(note, 16, 22); c.fillStyle = '#f3dfad'; c.fillText(note, 16, 22);
+      }
+      c.globalAlpha = 1; c.restore();
+    }
     // labels
     if (s.labels > 0) {
       c.globalAlpha = s.labels;
@@ -131,7 +156,7 @@ window.KadeshGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE_SECS = 7.5, FADE_SECS = 1.6;   // one slow turn, starting and ending on Kadesh
+  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.2, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = 5, CLOSE = 26;
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
@@ -139,10 +164,23 @@ window.KadeshGlobe = (() => {
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
       st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24; st.labels = 0;
-      if (k >= 1) { st.phase = 'dive'; t0 = now; st.lon0 = KADESH.lon; if (cb.onSpun) cb.onSpun(); }
-    } else if (st.phase === 'dive') {
-      const k = Math.min(1, (now - t0) / DIVE_SECS), e = ease(k);
-      st.R = R0 * Math.pow(26, e); st.lat0 = st.lat0 + (KADESH.lat - st.lat0) * Math.min(1, dt * 2.5); st.lon0 = KADESH.lon; st.labels = Math.max(0, Math.min(1, (k - .35) / .3)); st.oy = -h * .05 * e;
+      if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = KADESH.lon; if (cb.onSpun) cb.onSpun(); }
+    } else if (st.phase === 'dive1') {
+      // pull in until the whole Near East fills the view
+      const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
+      st.R = R0 * Math.pow(PULL, e); st.lat0 = 24 + (NEAR_EAST.lat - 24) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;
+      if (k >= 1) { st.phase = 'modern'; t0 = now; }
+    } else if (st.phase === 'modern') {
+      const k = Math.min(1, (now - t0) / MODERN_SECS); st.modern = 1;
+      if (k >= 1) { st.phase = 'ancient'; t0 = now; }
+    } else if (st.phase === 'ancient') {
+      const k = Math.min(1, (now - t0) / (XFADE_SECS + ANCIENT_SECS)), x = Math.min(1, (now - t0) / XFADE_SECS); st.modern = 1 - x; st.ancient = x;
+      if (k >= 1) { st.phase = 'dive2'; t0 = now; }
+    } else if (st.phase === 'dive2') {
+      // drop onto Kadesh
+      const k = Math.min(1, (now - t0) / DIVE2_SECS), e = ease(k);
+      st.R = R0 * PULL * Math.pow(CLOSE / PULL, e); st.lat0 = NEAR_EAST.lat + (KADESH.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (KADESH.lon - NEAR_EAST.lon) * e;
+      st.ancient = Math.max(0, 1 - k / .4); st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = -h * ((cb.lift ? .22 : .04) * (1 - e) + .05 * e);
       if (k >= 1) { st.phase = 'fade'; t0 = now; }
     } else if (st.phase === 'fade') {
       const k = Math.min(1, (now - t0) / FADE_SECS); cv.style.opacity = String(1 - k);
@@ -153,12 +191,12 @@ window.KadeshGlobe = (() => {
   function smooth(k) { return k < .12 ? (k / .12) * (k / .12) * .06 : k > .88 ? 1 - ((1 - k) / .12) * ((1 - k) / .12) * .06 : .06 + (k - .12) / .76 * .88; }
   function start(canvas, callbacks) {
     cv = canvas; c = cv.getContext('2d'); cb = callbacks || {}; size(); window.addEventListener('resize', size);
-    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: KADESH.lon, lat0: 24, R: 100, labels: 0, ox: 0, oy: 0 }; lastT = 0;
+    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: KADESH.lon, lat0: 24, R: 100, labels: 0, modern: 0, ancient: 0, ox: 0, oy: 0 }; lastT = 0;
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
   }
   const nowS = () => performance.now() / 1000;   // same time base as the animation-frame timestamps
   function begin() { if (!st) return; st.phase = 'spin'; st.spinFrom = st.lon0; t0 = nowS(); }
-  function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = nowS(); if (cb.onSpun) cb.onSpun(); } else if (st.phase === 'dive') { st.phase = 'fade'; t0 = nowS(); } }
+  function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = nowS(); if (cb.onSpun) cb.onSpun(); } else if (st.phase !== 'fade') { st.phase = 'fade'; t0 = nowS(); } }
   function stop() { cancelAnimationFrame(raf); raf = 0; st = null; if (cv) { cv.style.display = 'none'; } window.removeEventListener('resize', size); }
   const active = () => !!st;
   function debugFrame(lon0, lat0) { if (!st) return; st.lon0 = lon0; st.lat0 = lat0; draw(st, 0); }

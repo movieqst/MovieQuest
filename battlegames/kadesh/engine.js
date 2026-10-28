@@ -19,6 +19,8 @@ let paused = false, cinematic = false, speed = 1, simTime = 0, acc = 0, lastFram
 let formations = [], byId = {};
 let eventIndex = 0, currentEvent = null, aiFlags = {}, battleOver = null, fastForward = false;
 let selected = new Set();
+let player = 'egypt'; try { const sv = localStorage.getItem('kadesh-side'); if (sv === 'hittite' || sv === 'egypt') player = sv; } catch (e) {}
+const setPlayer = sd => { player = sd; try { localStorage.setItem('kadesh-side', sd); } catch (e) {} const sel = $('sideSel'); if (sel) sel.value = sd; };
 let dragging = false, last = null, dragMoved = false, band = null, overview = null;
 let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStarted = false, introMedia = [], mediaIdx = -1;
 const G = window.KadeshGlobe;
@@ -292,13 +294,14 @@ function jumpTo(t) {
 function stepCommand() {
   const A = S.ai.hittite;
   if (!aiFlags.start) { aiFlags.start = true; S.events[0].orders.forEach(o => { if (byId[o.id].side === 'egypt') applyOrder(o); }); }
-  if (!aiFlags.inf && simTime >= A.infantryShift.t) { aiFlags.inf = true; applyOrder({ id: 'hit-inf', to: A.infantryShift.to }); applyOrder({ id: 'muwatalli', to: A.kingShift.to }); cmdCaption('Captured scouts', 'scouts', 'egyptian', { x: 1050, y: 500 }); }
-  if (!aiFlags.w1 && simTime >= A.firstWave.t) { aiFlags.w1 = true; cmdCaption('Movement across the river', 'crossing', 'reconstruction', { x: 1450, y: 1060 }); ['hit-char-a', 'hit-char-b', 'hit-char-c'].forEach((id, i) => { const f = byId[id]; f.tx = A.firstWave.cross[i].x; f.ty = A.firstWave.cross[i].y; f.state = 'move'; f.speed = 60; f.aiPhase = 'cross'; }); }
-  if (!aiFlags.w2 && simTime >= A.secondWave.t) { aiFlags.w2 = true; const f = byId['hit-char2']; f.tx = A.secondWave.cross.x; f.ty = A.secondWave.cross.y; f.state = 'move'; f.aiPhase = 'cross'; }
+  if (player === 'egypt' && !aiFlags.inf && simTime >= A.infantryShift.t) { aiFlags.inf = true; applyOrder({ id: 'hit-inf', to: A.infantryShift.to }); applyOrder({ id: 'muwatalli', to: A.kingShift.to }); cmdCaption('Captured scouts', 'scouts', 'egyptian', { x: 1050, y: 500 }); }
+  if (player === 'egypt' && !aiFlags.w1 && simTime >= A.firstWave.t) { aiFlags.w1 = true; cmdCaption('Movement across the river', 'crossing', 'reconstruction', { x: 1450, y: 1060 }); ['hit-char-a', 'hit-char-b', 'hit-char-c'].forEach((id, i) => { const f = byId[id]; f.tx = A.firstWave.cross[i].x; f.ty = A.firstWave.cross[i].y; f.state = 'move'; f.speed = 60; f.aiPhase = 'cross'; }); }
+  if (player === 'egypt' && !aiFlags.w2 && simTime >= A.secondWave.t) { aiFlags.w2 = true; const f = byId['hit-char2']; f.tx = A.secondWave.cross.x; f.ty = A.secondWave.cross.y; f.state = 'move'; f.aiPhase = 'cross'; }
   if (!aiFlags.nearin && simTime >= 62) { aiFlags.nearin = true; applyOrder({ id: 'nearin', visible: true, at: { x: 60, y: 560 }, to: { x: 880, y: 480 }, speed: 50 }); cmdCaption('The Ne\u2019arin arrive', 'nearin', 'egyptian', { x: 300, y: 540 }); }
   const egy = formations.filter(f => f.side === 'egypt' && alive(f) && f.state !== 'rout');
+  if (player === 'hittite') aiEgypt(egy);
   formations.forEach(f => {
-    if (f.side !== 'hittite' || !f.ai || !alive(f) || f.state === 'rout') return;
+    if (player !== 'egypt' || f.side !== 'hittite' || !f.ai || !alive(f) || f.state === 'rout') return;
     if (f.aiPhase === 'cross') { if (Math.hypot(f.tx - f.x, f.ty - f.y) < 6) f.aiPhase = 'hunt'; else return; }
     if (f.aiPhase === 'hunt') {
       let best = null, bd = A.huntRange; egy.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
@@ -306,12 +309,24 @@ function stepCommand() {
     }
   });
   const inf = byId['hit-inf'];
-  if (alive(inf) && inf.state !== 'rout') {
+  if (player === 'egypt' && alive(inf) && inf.state !== 'rout') {
     let best = null, bd = A.infantryReact; egy.forEach(e => { if (e.x > riverXAt(e.y) + 30) { const d = dist(e, inf); if (d < bd) { bd = d; best = e; } } });
     if (best) { inf.tx = best.x; inf.ty = best.y; inf.state = 'attack'; inf.aiPhase = 'engaged'; }
     else if (inf.aiPhase === 'engaged') { inf.aiPhase = null; inf.tx = A.infantryShift.to.x; inf.ty = A.infantryShift.to.y; inf.state = 'move'; }
   }
   formations.forEach(moveFormation); combat(); fog(); checkEnd();
+}
+// Egyptian army when the player commands the Hittites: marches as history had it, then reacts to whatever it can see.
+function aiEgypt(egy) {
+  const known = formations.filter(f => f.side === 'hittite' && alive(f) && f.known && f.state !== 'rout');
+  egy.forEach(f => {
+    let best = null, bd = f.type === 'chariot' ? 650 : 260; known.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
+    if (best) {
+      if (f.type === 'chariot') { f.tx = best.x; f.ty = best.y; f.state = 'attack'; f.aiPhase = 'engaged'; }
+      else if (bd < 150) { f.state = 'hold'; f.facing = Math.atan2(best.y - f.y, best.x - f.x); f.aiPhase = 'engaged'; }
+      else if (f.state === 'hold') { f.tx = best.x; f.ty = best.y; f.state = 'attack'; f.aiPhase = 'engaged'; }
+    } else if (f.aiPhase === 'engaged') { f.aiPhase = null; f.state = 'hold'; }
+  });
 }
 const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5 }, infantry: { infantry: 6, chariot: 6, archers: 8 }, archers: { infantry: 5, chariot: 5, archers: 5 } };
 function combat() {
@@ -328,19 +343,21 @@ function combat() {
   formations.forEach(f => {
     if (!alive(f)) return;
     if (f.strength <= 0) { f.strength = 0; f.state = 'destroyed'; addLog(f.name + ' destroyed'); if (selected.has(f.id)) selected.delete(f.id); }
-    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === 'egypt') { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true, audioFor('cmd', 'breaks')); if (cam.follow) focusOn(f.x, f.y); } }
+    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === player) { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true, audioFor('cmd', 'breaks')); if (cam.follow) focusOn(f.x, f.y); } }
   });
 }
 function fog() {
   const egy = formations.filter(f => f.side === 'egypt' && alive(f));
-  formations.forEach(f => { if (f.side === 'hittite' && !f.known && alive(f) && egy.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog('Enemy spotted: ' + f.name); caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true, audioFor('cmd', 'sighted')); if (cam.follow) focusOn(f.x, f.y); } });
+  formations.forEach(f => { if (f.side === 'hittite' && !f.known && alive(f) && egy.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog((player === 'egypt' ? 'Enemy spotted: ' : 'Egyptians have sighted ') + f.name); if (player === 'egypt') { caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true, audioFor('cmd', 'sighted')); if (cam.follow) focusOn(f.x, f.y); } } });
 }
 function checkEnd() {
   if (battleOver || simTime < 25) return;
   const hc = formations.filter(f => f.side === 'hittite' && f.ai), eg = formations.filter(f => f.side === 'egypt' && f.id !== 'seth-inf');
-  if (hc.every(f => !alive(f))) battleOver = 'victory';
-  else if (eg.every(f => !alive(f) || f.state === 'rout')) battleOver = 'defeat';
-  else if (simTime >= S.commandDuration) battleOver = 'stalemate';
+  const hittDone = hc.every(f => !alive(f)), egDone = eg.every(f => !alive(f) || f.state === 'rout');
+  if (player === 'egypt') { if (hittDone) battleOver = 'victory'; else if (egDone) battleOver = 'defeat'; }
+  else { if (egDone) battleOver = 'victory'; else if (hittDone) battleOver = 'defeat'; }
+  if (!battleOver)
+  if (simTime >= S.commandDuration) battleOver = 'stalemate';
   if (battleOver) { paused = true; updatePauseBtn(); showDebrief(); }
 }
 
@@ -360,8 +377,8 @@ function updateCamera() {
 }
 function drawFormation(c, f) {
   if (!f.present || f.state === 'withdrawn' || f.state === 'destroyed') return;
-  if (!f.known && mode === 'command') return;
-  const concealed = !f.known;
+  if (!f.known && mode === 'command' && f.side !== player) return;
+  const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
   // Subtle depth: units nearer the bottom (south) of the map draw a little larger than those far to the north.
   const DEPTH = 0.18, SS = 1.3 * (1 + DEPTH * (f.y / W.h - 0.5)), sx = (f.type === 'chariot' ? 30 : 13) * SS, sy = (f.type === 'chariot' ? 21 : 12) * SS, n = f.cols * f.rows;
@@ -421,7 +438,7 @@ function buildMiniBase() {
 function drawMini() {
   const w = mini.width, h = mini.height, sx = w / W.w, sy = h / W.h;
   mctx.drawImage(MINIBASE, 0, 0);
-  formations.forEach(f => { if (!f.present || !alive(f)) return; if (!f.known && mode === 'command') return; mctx.globalAlpha = f.known ? 1 : .45; mctx.fillStyle = SIDE_ART[f.side].pennant; mctx.strokeStyle = '#fff'; mctx.lineWidth = .8; mctx.beginPath(); mctx.arc(f.x * sx, f.y * sy, f.type === 'chariot' ? 3.6 : 3, 0, PI * 2); mctx.fill(); mctx.stroke(); });
+  formations.forEach(f => { if (!f.present || !alive(f)) return; if (!f.known && mode === 'command' && f.side !== player) return; mctx.globalAlpha = (f.known || (mode === 'command' && f.side === player)) ? 1 : .45; mctx.fillStyle = SIDE_ART[f.side].pennant; mctx.strokeStyle = '#fff'; mctx.lineWidth = .8; mctx.beginPath(); mctx.arc(f.x * sx, f.y * sy, f.type === 'chariot' ? 3.6 : 3, 0, PI * 2); mctx.fill(); mctx.stroke(); });
   mctx.globalAlpha = 1; mctx.strokeStyle = '#ff3030'; mctx.lineWidth = 2.5; mctx.strokeRect(view.x * sx, view.y * sy, view.w / view.z * sx, view.h / view.z * sy);
 }
 
@@ -536,7 +553,7 @@ function beginIntro(voice) {
 }
 let introSpunCb = null;
 function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
-  if (G && window.KADESH_WORLD) G.start($('globe'), { onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
+  if (G && window.KADESH_WORLD) G.start($('globe'), { lift: true, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
 function startMode(m) {
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
@@ -545,6 +562,7 @@ function startMode(m) {
   const begin = () => {
     cinematic = false;
     if (m === 'watch') caption(S.events[0].title, S.events[0].text, S.events[0].tag, false);
+    else if (player === 'hittite') cmdCaption('Command mode', 'starth', 'reconstruction', { x: 1850, y: 650 });
     else cmdCaption('Command mode', 'start', 'reconstruction', { x: 1100, y: 600 });
   };
   // Every start opens on the globe: one turn, then the dive to the Orontes, then the battle begins. Click the globe to skip.
@@ -561,9 +579,9 @@ function showDebrief() {
   let head, body;
   if (battleOver === 'history') { head = 'What the sources say happened next'; body = ''; }
   else {
-    const txt = { victory: 'You broke the Hittite chariot force. Every chariot group that crossed the river was destroyed or driven off.', defeat: 'The Egyptian army has been scattered. Ramesses would have fled or fallen with it.', stalemate: 'Night falls with both armies still in the field: much as it did in 1274 BCE.' }[battleOver];
+    const txt = (player === 'egypt' ? { victory: 'You broke the Hittite chariot force. Every chariot group that crossed the river was destroyed or driven off.', defeat: 'The Egyptian army has been scattered. Ramesses would have fled or fallen with it.', stalemate: 'Night falls with both armies still in the field: much as it did in 1274 BCE.' } : { victory: 'You scattered the Egyptian army. Muwatalli\u2019s gamble, which failed in 1274 BCE, has succeeded in your hands.', defeat: 'Your chariot force has been destroyed or driven back across the Orontes, as it was in 1274 BCE.', stalemate: 'Night falls with both armies still in the field: much as it did in 1274 BCE.' })[battleOver];
     const rows = formations.filter(f => f.known || f.side === 'egypt').map(f => `<tr><td style="color:${f.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</td><td>${f.state}</td><td>${Math.round(f.strength)}%</td></tr>`).join('');
-    head = { victory: 'Egyptian victory', defeat: 'Egyptian defeat', stalemate: 'Stalemate' }[battleOver];
+    head = (player === 'egypt' ? { victory: 'Egyptian victory', defeat: 'Egyptian defeat', stalemate: 'Stalemate' } : { victory: 'Hittite victory', defeat: 'Hittite defeat', stalemate: 'Stalemate' })[battleOver];
     body = `<p class="lead">${txt}</p><p class="muted">Your battle is a what-if simulation. Nothing about it is a claim about what really happened. Compare it with the historical outcome below.</p><div class="tablewrap"><table><tr><th>Formation</th><th>State</th><th>Strength</th></tr>${rows}</table></div>`;
   }
   $('debriefTitle').textContent = head;
@@ -582,7 +600,7 @@ function toWorld(e) { const r = canvas.getBoundingClientRect(); return { x: (e.c
 function manualCamera() { cam.tx = null; cam.follow = false; $('followBtn').classList.remove('active'); }
 function pickFormation(p) {
   let best = null, bd = 1e9;
-  formations.forEach(f => { if (!alive(f) || (!f.known && mode === 'command')) return; const r = Math.max(f.cols, f.rows) * (f.type === 'chariot' ? 15 : 7) + 14; const d = dist(f, p); if (d < r && d < bd) { bd = d; best = f; } });
+  formations.forEach(f => { if (!alive(f) || (!f.known && mode === 'command' && f.side !== player)) return; const r = Math.max(f.cols, f.rows) * (f.type === 'chariot' ? 15 : 7) + 14; const d = dist(f, p); if (d < r && d < bd) { bd = d; best = f; } });
   return best;
 }
 canvas.addEventListener('contextmenu', e => e.preventDefault());
@@ -591,7 +609,7 @@ canvas.addEventListener('pointerdown', e => {
   if (e.button === 0) { dragging = true; canvas.setPointerCapture(e.pointerId); if (overview || e.shiftKey) { const p = toWorld(e); band = { x0: p.x, y0: p.y, x1: p.x, y1: p.y }; } }
   if (e.button === 2 && mode === 'command' && selected.size) {
     const p = toWorld(e); let k = 0;
-    selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout') return; f.tx = clamp(p.x + (k % 3 - 1) * 70, 20, W.w - 20); f.ty = clamp(p.y + Math.floor(k / 3) * 60, 20, W.h - 20); f.state = 'move'; k++; });
+    selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = clamp(p.x + (k % 3 - 1) * 70, 20, W.w - 20); f.ty = clamp(p.y + Math.floor(k / 3) * 60, 20, W.h - 20); f.state = 'move'; k++; });
     addLog('Orders issued');
   }
 });
@@ -610,7 +628,7 @@ canvas.addEventListener('pointerup', e => {
     if (overview) { toggleOverview(); dragging = false; return; }
     const f = pickFormation(toWorld(e));
     if (!e.shiftKey) selected.clear();
-    if (f) { if (mode === 'command' && f.side !== 'egypt') { selected.clear(); selected.add(f.id); } else selected.add(f.id); }
+    if (f) { if (mode === 'command' && f.side !== player) { selected.clear(); selected.add(f.id); } else selected.add(f.id); }
     renderSelection();
   }
   dragging = false;
@@ -676,14 +694,17 @@ $('beginVoice').onclick = () => beginIntro(true);
 $('beginSilent').onclick = () => beginIntro(false);
 $('citeClose').onclick = () => hideOverlay('cite');
 $('chooseWatch').onclick = () => startMode('watch');
-$('chooseCommand').onclick = () => startMode('command');
+$('chooseCommand').onclick = () => { setPlayer('egypt'); startMode('command'); };
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
 $('debriefWatch').onclick = () => startMode('watch');
 $('debriefCommand').onclick = () => startMode('command');
 $('debriefIntro').onclick = startIntro;
-$('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if (f.side === 'egypt' && alive(f) && f.state !== 'rout') selected.add(f.id); }); renderSelection(); };
+$('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if (f.side === player && alive(f) && f.state !== 'rout') selected.add(f.id); }); renderSelection(); };
+$('sideSel').value = player;
+$('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
+$('chooseCommandH').onclick = () => { setPlayer('hittite'); startMode('command'); };
 $('haltBtn').onclick = () => { selected.forEach(id => { const f = byId[id]; if (f.state === 'move' || f.state === 'attack') { f.state = 'hold'; } }); };
-$('retreatBtn').onclick = () => { const r = B.camp; selected.forEach((id, i) => { const f = byId[id]; if (!alive(f) || f.state === 'rout') return; f.tx = r.x + 60 + (i % 3) * 60; f.ty = r.y + 60; f.state = 'move'; }); };
+$('retreatBtn').onclick = () => { const r = player === 'egypt' ? { x: B.camp.x + 60, y: B.camp.y + 60 } : { x: S.ai.hittite.holdPoint.x - 60, y: S.ai.hittite.holdPoint.y - 60 }; let i = 0; selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = r.x + (i % 3) * 60; f.ty = r.y + Math.floor(i / 3) * 60; f.state = 'move'; i++; }); };
 
 /* ---------------- main loop ---------------- */
 function tick(t) {
@@ -695,7 +716,7 @@ function tick(t) {
       let tail = false, frac = 0;
       if (Narr.on && Narr.audio) { const au = Narr.audio; if (au.ended) tail = true; else frac = au.duration ? Math.min(1, au.currentTime / au.duration) : 0; }
       else if (Narr.on && 'speechSynthesis' in window && speechSynthesis.speaking) frac = .5;
-      else { introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
+      else { if (!(G && G.active())) introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
       showMedia(Narr.on && Narr.audio ? Narr.audio.currentTime * (Narr.rate || 1) / (Narr.rate || 1) : introTimer);
       const nb = $('introNext');
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }

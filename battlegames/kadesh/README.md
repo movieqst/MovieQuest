@@ -24,11 +24,14 @@ a local file.
    narrate each event; the camera follows. Timeline markers jump to any moment
    (the simulation is deterministic, so jumps are exact). *Explain this moment*
    pauses and explains the commander's choice.
-3. **Take command** — you control every Egyptian formation. The Hittite army
-   is hidden until your troops sight it; it follows its historical plan (the
-   chariot strike at 0:20, the second wave at 1:10) and then hunts whatever is
-   nearest. A formation below 25% strength routs. The debrief compares your
-   result with the historical outcome.
+3. **Take command** — choose a side. As Egypt you control every Egyptian
+   formation; the Hittite army is hidden until your troops sight it, follows
+   its historical plan (the chariot strike at 0:20, the second wave at 1:10)
+   and then hunts whatever is nearest. As the Hittites you start concealed
+   behind Kadesh with the chariot force and infantry in hand, while the
+   Egyptian divisions march as history had it and react to what they can see.
+   A formation below 25% strength routs. The debrief compares your result with
+   the historical outcome.
 
 Controls: drag / WASD / arrows / minimap to move the camera, mouse wheel to
 zoom, Space to pause, F to follow the action, E to explain the moment.

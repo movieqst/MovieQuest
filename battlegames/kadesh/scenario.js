@@ -395,6 +395,7 @@ window.KADESH_SCENARIO = {
   /* Fixed captions used in Command mode (so they can be pre-recorded) */
   commandLines: {
     start:    'You lead the Egyptian army. Click a formation, then right-click where it should go. Shift-click adds to the selection. The Hittite army is hidden until your troops sight it.',
+    starth:   'You lead the Hittite army. The Egyptians do not know you are here: the Amun division is in camp north-west of the city and Re is strung out on the road to the south. Your chariots are concealed behind Kadesh. Click a formation, then right-click where it should go.',
     scouts:   'Two Hittite scouts confess: the enemy army is behind the city. You now command the Egyptian army. Re and Ptah are still on the road; the Hittites will move first.',
     crossing: 'Dust rises south of the city. Something is crossing the Orontes.',
     nearin:   'A fresh Egyptian force appears from the west. It is under your command.',
