@@ -20,7 +20,8 @@ let formations = [], byId = {};
 let eventIndex = 0, currentEvent = null, aiFlags = {}, battleOver = null, fastForward = false;
 let selected = new Set();
 let dragging = false, last = null, dragMoved = false, band = null, overview = null;
-let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStarted = false;
+let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStarted = false, introMedia = [], mediaIdx = -1;
+const G = window.KadeshGlobe;
 const INTRO_BREAK = 5, CHAPTER_BREAK = 2.5;
 let markers = [];
 let TER = null, MINIBASE = null;
@@ -362,7 +363,8 @@ function drawFormation(c, f) {
   if (!f.known && mode === 'command') return;
   const concealed = !f.known;
   c.save(); if (concealed) c.globalAlpha = .5;
-  const SS = 1.3, sx = (f.type === 'chariot' ? 30 : 13) * SS, sy = (f.type === 'chariot' ? 21 : 12) * SS, n = f.cols * f.rows;
+  // Subtle depth: units nearer the bottom (south) of the map draw a little larger than those far to the north.
+  const DEPTH = 0.18, SS = 1.3 * (1 + DEPTH * (f.y / W.h - 0.5)), sx = (f.type === 'chariot' ? 30 : 13) * SS, sy = (f.type === 'chariot' ? 21 : 12) * SS, n = f.cols * f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', scatter = f.state === 'rout' || f.state === 'scattered';
   const pts = [];
@@ -441,7 +443,7 @@ const Narr = {
   },
   stop() { if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
-  set(on) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
+  set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
   toggle() { this.set(!this.on); }
 };
 function speakSlide(sl) { Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', S.intro.indexOf(sl) + 1)); }
@@ -513,12 +515,30 @@ function showIntro(i) {
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   markers = sl.markers || []; if (sl.focus) focusOn(sl.focus.x, sl.focus.y);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
+  introMedia = sl.media || []; mediaIdx = -1; document.querySelector('.dialog.intro').classList.toggle('nomedia', !introMedia.length); showMedia(0);
   if (introStarted) speakSlide(sl);
 }
-function beginIntro(voice) { introStarted = true; $('startGate').style.display = 'none'; $('introNav').style.display = 'flex'; introTimer = 0; Narr.set(voice); if (!voice) Narr.stop(); }
-function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
+function showMedia(elapsed) {
+  let k = -1; introMedia.forEach((m, i) => { if ((m.at || 0) <= elapsed) k = i; });
+  if (k === mediaIdx) return; mediaIdx = k; const m = introMedia[k];
+  const img = $('introImg'), ph = $('introPh');
+  img.classList.remove('show'); ph.classList.remove('show');
+  if (!m) { $('introCap').textContent = ''; $('introRef').textContent = ''; return; }
+  $('introCap').textContent = m.caption || ''; $('introRef').textContent = [m.ref, m.credit].filter(Boolean).join(' \u00b7 ');
+  ph.textContent = 'Photo to add: ' + (m.file || '') + (m.caption ? ' \u2014 ' + m.caption : '');
+  img.onload = () => { img.classList.add('show'); }; img.onerror = () => { ph.classList.add('show'); };
+  img.src = (S.imageBase || 'images/') + m.file;
+}
+function beginIntro(voice) {
+  Narr.set(voice, true); if (!voice) Narr.stop();
+  const go = () => { introStarted = true; $('startGate').style.display = 'none'; $('introNav').style.display = 'flex'; introTimer = 0; showOverlay('intro'); showIntro(0); };
+  if (G && G.active()) { hideOverlay('intro'); G.begin(); introSpunCb = go; } else go();
+}
+let introSpunCb = null;
+function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
+  if (G && window.KADESH_WORLD) G.start($('globe'), { onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
 function startMode(m) {
-  mode = m; markers = []; hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
+  mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m;
   if (m === 'watch') { caption(S.events[0].title, S.events[0].text, S.events[0].tag, false); }
@@ -632,10 +652,10 @@ $('voiceRate').value = String(Narr.rate);
 $('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('kadesh-voice-rate', String(Narr.rate)); } catch (e) {} };
 $('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, .45, 2.4); clampView(); };
 $('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, .45, 2.4); clampView(); };
-$('introNext').onclick = () => showIntro(introIdx + 1);
+$('introNext').onclick = () => { if (G && G.active()) G.skip(); showIntro(introIdx + 1); };
 $('introBack').onclick = () => showIntro(introIdx - 1);
 $('introPause').onclick = togglePause;
-$('introSkip').onclick = () => showIntro(S.intro.length - 1);
+$('introSkip').onclick = () => { if (G && G.active()) G.skip(); showIntro(S.intro.length - 1); };
 $('beginVoice').onclick = () => beginIntro(true);
 $('beginSilent').onclick = () => beginIntro(false);
 $('citeClose').onclick = () => hideOverlay('cite');
@@ -660,6 +680,7 @@ function tick(t) {
       if (Narr.on && Narr.audio) { const au = Narr.audio; if (au.ended) tail = true; else frac = au.duration ? Math.min(1, au.currentTime / au.duration) : 0; }
       else if (Narr.on && 'speechSynthesis' in window && speechSynthesis.speaking) frac = .5;
       else { introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
+      showMedia(Narr.on && Narr.audio ? Narr.audio.currentTime * (Narr.rate || 1) / (Narr.rate || 1) : introTimer);
       const nb = $('introNext');
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); } }

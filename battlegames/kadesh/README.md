@@ -58,21 +58,51 @@ header toggles it at any time. Lines without a clip (for example "the Re
 division has routed") fall back to the browser's own speech engine, if it has
 one.
 
-Several narrators are offered in the header; the list is `scenario.voices` and
-each has its own folder. The clips were synthesised with
-[Piper](https://github.com/rhasspy/piper) (MIT) using the `en-us-libritts-high`
-model (LibriTTS dataset, CC BY 4.0): narrator-1 is speaker 400, narrator-2 is
-speaker 7, narrator-3 is speaker 0. To record a voice, or re-record after
-changing any text:
+Six narrators are offered in the header; the list is `scenario.voices` and
+each has its own folder under `audio/`. All were synthesised with
+[Piper](https://github.com/rhasspy/piper) (MIT) from the `en-us-libritts-high`
+model (LibriTTS dataset, CC BY 4.0):
+
+| Folder | Picker name | Speaker | Notes |
+|---|---|---|---|
+| bright | Narrator 1 · bright (default) | 0 | |
+| deep | Narrator 2 · deep | 400 | |
+| warm | Narrator 3 · warm | 7 | |
+| clear | Narrator 4 · clear | 25 | |
+| light | Narrator 5 · light | 60 | |
+| computer | Computer · calm | 500 | slowed (`LENGTH=1.3`), flattened (`PIPER_ARGS="--noise-scale 0.4 --noise-w 0.3"`), warm close-mic mix (`AF=...`, see `scenario.voices`) |
+
+To record a voice, or re-record after changing any text:
 
 ```
-PIPER=/path/to/piper MODEL=/path/to/en-us-libritts-high.onnx SPEAKER=7 VOICE=narrator-2 tools/make-narration.sh
+PIPER=/path/to/piper MODEL=/path/to/en-us-libritts-high.onnx SPEAKER=7 VOICE=warm tools/make-narration.sh
 ```
+
+Pronunciations of the names are respelled for the engine in
+`tools/narration-lines.js`, checked against its phonemizer. A human reader
+uses `NARRATION-SCRIPT.md` instead.
 
 File names follow a convention the engine knows (`intro-N`, `event-N`,
 `explain-N`, `outcome`, `cmd-KEY`). To use a human recording for any line, drop
 in a file with that name, or set an explicit `audio` path on the slide or
 event in `scenario.js`.
+
+## Opening shot and slideshow
+
+The introduction opens on the Earth from space (`globe.js`, coastlines from
+`world.js`, Natural Earth data via the world-atlas package, public domain).
+After the start screen the globe makes two turns, the narration begins, and
+the camera dives to the Orontes before fading into the battlefield. Press Next
+or Skip to cut it short.
+
+Each intro screen shows pictures beside the text, timed to the narration
+(`media` on each slide in `scenario.js`, with caption and reference). The
+photos themselves are not in the repository: `images/README.md` lists what to
+fetch and the file names to use. Until a file exists the game shows a
+"Photo to add" card.
+
+Units nearer the south edge of the map draw slightly larger than those far to
+the north, a small depth cue (`DEPTH` in `engine.js`).
 
 ## Citations
 

@@ -65,6 +65,10 @@ window.KADESH_SCENARIO = {
   intro: [
     {
       title: 'BATTLE OF KADESH',
+      media: [
+        { at: 0,  file: '01-ramesseum-battle-relief.jpg', caption: 'The battle as Ramesses II had it carved: the Hittite chariot attack, relief on the Ramesseum, Luxor.', ref: 'Ramesseum, second pylon, c. 1250 BCE' },
+        { at: 12, file: '02-abu-simbel-chariot.jpg', caption: 'Ramesses II in his chariot at Kadesh, Great Temple of Abu Simbel.', ref: 'Abu Simbel, north wall of the great hall' }
+      ],
       subtitle: 'c. 1274 BCE · Orontes River, Syria',
       focus: { x: 1360, y: 650 },
       markers: [ { x: 1365, y: 650, label: 'Kadesh' } ],
@@ -76,6 +80,12 @@ window.KADESH_SCENARIO = {
     },
     {
       title: 'Two empires, one border town',
+      media: [
+        { at: 0,  file: '03-ramesses-ii-statue.jpg', caption: 'Ramesses II, seated statue in granite.', ref: 'Museo Egizio, Turin, from Karnak' },
+        { at: 7,  file: '04-muwatalli-relief.jpg', caption: 'Muwatalli II, the only known portrait of the Hittite king, rock relief at Sirkeli.', ref: 'Sirkeli H\u00f6y\u00fck, Adana province, Turkey' },
+        { at: 14, file: '05-tell-nebi-mend.jpg', caption: 'Tell Nebi Mend, the mound of ancient Kadesh above the Orontes.', ref: 'Near Homs, Syria; excavated 1921\u201322 and 1975\u201395' },
+        { at: 21, file: '06-near-east-map.jpg', caption: 'Egypt, Hatti and the frontier at Kadesh, c. 1274 BCE.', ref: 'Modern map' }
+      ],
       focus: { x: 1360, y: 650 },
       markers: [ { x: 1365, y: 650, label: 'Kadesh (Tell Nebi Mend)' } ],
       auto: 20,
@@ -88,6 +98,11 @@ window.KADESH_SCENARIO = {
     },
     {
       title: 'The Egyptian army',
+      media: [
+        { at: 0,  file: '07-egyptian-chariot.jpg', caption: 'An Egyptian chariot of the period: light, two-wheeled, built for speed.', ref: 'Chariot from the tomb of Tutankhamun, Egyptian Museum, Cairo' },
+        { at: 8,  file: '08-egyptian-spearmen-model.jpg', caption: 'Egyptian spearmen with tall shields, wooden model from a tomb at Asyut.', ref: 'Tomb of Mesehti, Egyptian Museum, Cairo, c. 2000 BCE' },
+        { at: 15, file: '09-egyptian-archers.jpg', caption: 'Archers in the Egyptian service, from the same tomb.', ref: 'Tomb of Mesehti, Egyptian Museum, Cairo' }
+      ],
       focus: { x: 1150, y: 1000 },
       markers: [ { x: 1020, y: 465, label: 'Amun division' }, { x: 1180, y: 1420, label: 'Re division' }, { x: 1480, y: 1760, label: 'Ptah division' } ],
       auto: 22,
@@ -100,6 +115,11 @@ window.KADESH_SCENARIO = {
     },
     {
       title: 'The Hittite army',
+      media: [
+        { at: 0,  file: '10-hittite-chariot-relief.jpg', caption: 'A three-man chariot of the Hittite type, with driver, shield bearer and spearman.', ref: 'Relief from Carchemish, Museum of Anatolian Civilizations, Ankara' },
+        { at: 8,  file: '11-hattusa-warrior-god.jpg', caption: 'A Hittite warrior with axe, short sword and crested helmet, the King\u2019s Gate at Hattusa.', ref: 'Hattusa, Bo\u011fazkale, Turkey' },
+        { at: 15, file: '12-hattusa-lion-gate.jpg', caption: 'Hattusa, the Hittite capital, the Lion Gate.', ref: 'Bo\u011fazkale, Turkey' }
+      ],
       focus: { x: 1880, y: 560 },
       markers: [ { x: 1900, y: 450, label: 'Hittite army, concealed' } ],
       auto: 22,
@@ -112,6 +132,10 @@ window.KADESH_SCENARIO = {
     },
     {
       title: 'The deception',
+      media: [
+        { at: 0,  file: '13-shasu-relief.jpg', caption: 'Shasu nomads as the Egyptians drew them, bound captives on a relief of Seti I.', ref: 'Karnak, north wall of the hypostyle hall' },
+        { at: 10, file: '06-near-east-map.jpg', caption: 'Aleppo lies 200 km north of Kadesh: the lie that drew Ramesses forward.', ref: 'Modern map' }
+      ],
       focus: { x: 1345, y: 1500 },
       markers: [ { x: 1345, y: 1585, label: 'Ford of Shabtuna' } ],
       auto: 20,
@@ -124,6 +148,10 @@ window.KADESH_SCENARIO = {
     },
     {
       title: 'The truth',
+      media: [
+        { at: 0,  file: '14-beaten-spies-relief.jpg', caption: 'The two Hittite spies beaten in the Egyptian camp, as shown on the reliefs.', ref: 'Ramesseum and Luxor temple reliefs' },
+        { at: 8,  file: '15-egyptian-camp-relief.jpg', caption: 'The Egyptian camp with its wall of shields, from the Kadesh reliefs.', ref: 'Abu Simbel and the Ramesseum' }
+      ],
       focus: { x: 1050, y: 500 },
       markers: [ { x: 1020, y: 465, label: 'The king’s camp' }, { x: 1900, y: 450, label: 'Hittites, behind the city' } ],
       auto: 18,
@@ -135,6 +163,10 @@ window.KADESH_SCENARIO = {
     },
     {
       title: 'How to read this reenactment',
+      media: [
+        { at: 0,  file: '16-papyrus-sallier.jpg', caption: 'A papyrus copy of the Poem of Kadesh, written about a century after the battle.', ref: 'Papyrus Sallier III, British Museum EA 10181' },
+        { at: 9,  file: '17-treaty-tablet.jpg', caption: 'The peace treaty of c. 1259 BCE on a clay tablet from Hattusa.', ref: 'Istanbul Archaeology Museums' }
+      ],
       focus: { x: 1250, y: 900 },
       markers: [],
       auto: 18,
@@ -347,13 +379,17 @@ window.KADESH_SCENARIO = {
 
   /* Recorded narration lives in audio/ (generated by make-narration.sh). Paths follow a convention:
      intro-N.mp3, event-N.mp3, explain-N.mp3, outcome.mp3, cmd-KEY.mp3. A slide or event may override with its own `audio`. */
+  imageBase: 'images/',   // photos for the intro slideshow; see images/README.md for what to put there
   audioBase: 'audio/',
   /* Selectable narrators. Each has its own folder audio/<id>/ with the same clip names.
      All are Piper "en-us-libritts-high" speakers (LibriTTS dataset, CC BY 4.0). */
   voices: [
-    { id: 'narrator-3', name: 'Narrator 3 \u00b7 bright', speaker: 0 },
-    { id: 'narrator-1', name: 'Narrator 1 \u00b7 deep',   speaker: 400 },
-    { id: 'narrator-2', name: 'Narrator 2 \u00b7 warm',   speaker: 7 }
+    { id: 'bright',   name: 'Narrator 1 \u00b7 bright', speaker: 0 },
+    { id: 'deep',     name: 'Narrator 2 \u00b7 deep',   speaker: 400 },
+    { id: 'warm',     name: 'Narrator 3 \u00b7 warm',   speaker: 7 },
+    { id: 'clear',    name: 'Narrator 4 \u00b7 clear',  speaker: 25 },
+    { id: 'light',    name: 'Narrator 5 \u00b7 light',  speaker: 60 },
+    { id: 'computer', name: 'Computer \u00b7 calm',     speaker: 500, length: 1.3, piperArgs: '--noise-scale 0.4 --noise-w 0.3', mix: 'highpass=f=90,lowpass=f=4800,bass=g=4:f=140,acompressor=threshold=0.25:ratio=3:attack=20:release=250,volume=1.4,alimiter=limit=0.95' }
   ],
 
   /* Fixed captions used in Command mode (so they can be pre-recorded) */

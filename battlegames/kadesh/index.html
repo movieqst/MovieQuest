@@ -57,9 +57,20 @@
   body[data-mode="watch"] .cmd-only, body[data-mode="intro"] .cmd-only{display:none}
   body[data-mode="command"] .watch-only, body[data-mode="intro"] .watch-only{display:none}
   /* overlays */
+  #globe{position:absolute;inset:0;z-index:4;width:100%;height:100%;display:none}
   .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px;background:linear-gradient(to top,rgba(5,10,14,.85) 0%,rgba(5,10,14,.35) 55%,rgba(5,10,14,0) 100%)}
   .overlay.show{display:flex}
   .overlay.center{align-items:center;background:rgba(5,10,14,.6)}
+  .dialog.intro{width:min(1040px,100%);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
+  .dialog.intro.nomedia{grid-template-columns:1fr}.dialog.intro.nomedia .intro-media{display:none}
+  .intro-media .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
+  .intro-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+  .intro-media img.show{opacity:1;animation:burns 14s ease-in-out forwards}
+  @keyframes burns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,-2%)}}
+  .intro-media .placeholder{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:12px;color:#9fb1b8;background:radial-gradient(circle at 30% 30%,#1a2d3a,#0a1620)}
+  .intro-media .placeholder.show{display:flex}
+  .mcap{font-size:13px;color:#eef3ee;margin-top:8px}.mref{font-size:11px;color:#9fb1b8;margin-top:3px;font-style:italic}
+  @media(max-width:900px){.dialog.intro{grid-template-columns:1fr}.intro-media{order:-1}.intro-media .plate{aspect-ratio:16/7}}
   .dialog{width:min(820px,100%);max-height:88%;overflow:auto;background:#0b1822f2;border:1px solid #4a6472;border-radius:12px;padding:18px 22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
   .kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fb1b8}
   .dialog h1{font:700 clamp(20px,2.6vw,32px) 'Cinzel',Georgia,serif;color:var(--gold);margin:4px 0 2px;letter-spacing:.08em;text-shadow:0 1px 0 #5a4310,0 2px 8px rgba(0,0,0,.6)}
@@ -111,30 +122,38 @@
     <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button></div>
     <div id="timeline" title="Timeline: click a marker to jump to that moment"></div>
 
+    <canvas id="globe" aria-hidden="true"></canvas>
     <div class="overlay" id="intro">
-      <div class="dialog">
-        <div class="kicker" id="introKicker"></div>
-        <h1 id="introTitle"></h1>
-        <div id="introSub"></div>
-        <div id="introLines"></div>
-        <div class="progress"><i id="introBar"></i></div>
-        <div class="actions" id="startGate">
-          <button id="beginVoice" class="primary big">🔊 Begin with narration</button>
-          <button id="beginSilent" class="big">Begin without sound</button>
-          <span class="muted">Narration is pre-recorded, so it plays in any browser.</span>
+      <div class="dialog intro">
+        <div class="intro-text">
+          <div class="kicker" id="introKicker"></div>
+          <h1 id="introTitle"></h1>
+          <div id="introSub"></div>
+          <div id="introLines"></div>
+          <div class="progress"><i id="introBar"></i></div>
+          <div class="actions" id="startGate">
+            <button id="beginVoice" class="primary big">🔊 Begin with narration</button>
+            <button id="beginSilent" class="big">Begin without sound</button>
+            <span class="muted">Narration is pre-recorded, so it plays in any browser.</span>
+          </div>
+          <div class="actions" id="introNav">
+            <button id="introBack">◀ Back</button>
+            <button id="introPause">Ⅱ Pause</button>
+            <button id="introNext" class="primary">Next ▶</button>
+            <span class="spacer"></span>
+            <button id="introSkip">Skip intro ⏭</button>
+          </div>
+          <div class="actions" id="introChoice" style="display:none">
+            <button id="chooseWatch" class="primary big">▶ Watch the reenactment</button>
+            <button id="chooseCommand" class="primary big">⚔ Take command</button>
+            <span class="spacer"></span>
+            <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
+          </div>
         </div>
-        <div class="actions" id="introNav">
-          <button id="introBack">◀ Back</button>
-          <button id="introPause">Ⅱ Pause</button>
-          <button id="introNext" class="primary">Next ▶</button>
-          <span class="spacer"></span>
-          <button id="introSkip">Skip intro ⏭</button>
-        </div>
-        <div class="actions" id="introChoice" style="display:none">
-          <button id="chooseWatch" class="primary big">▶ Watch the reenactment</button>
-          <button id="chooseCommand" class="primary big">⚔ Take command</button>
-          <span class="spacer"></span>
-          <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
+        <div class="intro-media" id="introMedia">
+          <div class="plate"><img id="introImg" alt=""><div class="placeholder" id="introPh"></div></div>
+          <div class="mcap" id="introCap"></div>
+          <div class="mref" id="introRef"></div>
         </div>
       </div>
     </div>
@@ -210,6 +229,8 @@
 </main>
 <footer>Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</footer>
 <script src="scenario.js"></script>
+<script src="world.js"></script>
+<script src="globe.js"></script>
 <script src="engine.js"></script>
 </body>
 </html>
