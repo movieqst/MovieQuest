@@ -425,7 +425,7 @@ function drawMini() {
 
 /* ---------------- narration (voice) ---------------- */
 const Narr = {
-  on: false, audio: null, rate: 1, endedAt: -99,
+  on: false, audio: null, rate: 1.1, endedAt: -99,
   speak(text, file) {
     this.stop(); if (!this.on) return;
     if (file) { const a = new Audio(file); a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
