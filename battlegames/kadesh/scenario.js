@@ -82,7 +82,7 @@ window.KADESH_SCENARIO = {
       title: 'Two empires, one border town',
       media: [
         { at: 0,  file: '03-ramesses-ii-statue.jpg', caption: 'Ramesses II enthroned between the god Amun and the goddess Mut, granite, from the temple of Amun at Karnak.', ref: 'Museo Egizio, Turin, Cat. 767', credit: 'Photo: Museo Egizio, Turin, Wikimedia Commons, CC0' },
-        { at: 7,  file: '04-muwatalli-relief.jpg', caption: 'Muwatalli II, the only known portrait of the Hittite king, rock relief at Sirkeli.', ref: 'Sirkeli H\u00f6y\u00fck, Adana province, Turkey' },
+        { at: 7,  file: '04-muwatalli-relief.jpg', caption: 'Muwatalli II, the only known portrait of the Hittite king: a weathered rock relief above the Ceyhan river at Sirkeli, in what was the kingdom\u2019s southern reach.', ref: 'Sirkeli H\u00f6y\u00fck, Adana province, Turkey', credit: 'Photo: Volker H\u00f6hfeld, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 14, file: '05-tell-nebi-mend.jpg', caption: 'Tell Nebi Mend, the mound of ancient Kadesh above the Orontes.', ref: 'Near Homs, Syria; excavated 1921\u201322 and 1975\u201395' },
         { at: 21, file: '06-near-east-map.jpg', caption: 'Egypt, Hatti and the frontier at Kadesh, c. 1274 BCE.', ref: 'Modern map' }
       ],
