@@ -149,7 +149,7 @@ window.KADESH_SCENARIO = {
     {
       title: 'The truth',
       media: [
-        { at: 0,  file: '14-beaten-spies-relief.jpg', caption: 'The two Hittite spies beaten in the Egyptian camp, as shown on the reliefs.', ref: 'Ramesseum and Luxor temple reliefs' },
+        { at: 0,  file: '14-beaten-spies-relief.jpg', caption: 'The two Hittite spies beaten in the Egyptian camp until they confess, as shown on the Kadesh reliefs. Photographed by the Breasted expedition in 1905.', ref: 'Ramesseum, Luxor', credit: 'Photo: J. H. Breasted expedition, 1905, Oriental Institute, Chicago; public domain' },
         { at: 8,  file: '15-egyptian-camp-relief.jpg', caption: 'The Egyptian camp with its wall of shields, from the Kadesh reliefs.', ref: 'Abu Simbel and the Ramesseum' }
       ],
       focus: { x: 1100, y: 500 }, zoom: .9,
