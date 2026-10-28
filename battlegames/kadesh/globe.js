@@ -201,7 +201,8 @@ window.KadeshGlobe = (() => {
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
       st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24; st.labels = 0;
-      if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = KADESH.lon; if (cb.onSpun) cb.onSpun(); }
+      if (!st.spun && k >= .25) { st.spun = true; if (cb.onSpun) cb.onSpun(); }   // narration starts a quarter of the way round
+      if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = KADESH.lon; }
     } else if (st.phase === 'dive1') {
       // pull in until the whole Near East fills the view
       const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
@@ -233,7 +234,7 @@ window.KadeshGlobe = (() => {
   }
   const nowS = () => performance.now() / 1000;   // same time base as the animation-frame timestamps
   function begin() { if (!st) return; st.phase = 'spin'; st.spinFrom = st.lon0; t0 = nowS(); }
-  function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = nowS(); if (cb.onSpun) cb.onSpun(); } else if (st.phase !== 'fade') { st.phase = 'fade'; t0 = nowS(); } }
+  function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = nowS(); if (!st.spun) { st.spun = true; if (cb.onSpun) cb.onSpun(); } } else if (st.phase !== 'fade') { st.phase = 'fade'; t0 = nowS(); } }
   function stop() { cancelAnimationFrame(raf); raf = 0; st = null; if (cv) { cv.style.display = 'none'; } window.removeEventListener('resize', size); }
   const active = () => !!st;
   function debugFrame(lon0, lat0) { if (!st) return; st.lon0 = lon0; st.lat0 = lat0; draw(st, 0); return cv.toDataURL('image/png'); }
