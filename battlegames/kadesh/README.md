@@ -65,11 +65,11 @@ model (LibriTTS dataset, CC BY 4.0):
 
 | Folder | Picker name | Speaker | Notes |
 |---|---|---|---|
-| bright | Narrator 1 · bright (default) | 0 | |
-| deep | Narrator 2 · deep | 400 | |
-| warm | Narrator 3 · warm | 7 | |
-| clear | Narrator 4 · clear | 25 | |
-| light | Narrator 5 · light | 60 | |
+| clear | Narrator 1 · clear (default) | 25 | |
+| light | Narrator 2 · light | 60 | |
+| bright | Narrator 3 · bright | 0 | |
+| deep | Narrator 4 · deep | 400 | |
+| warm | Narrator 5 · warm | 7 | |
 | computer | Computer · calm | 500 | slowed (`LENGTH=1.3`), flattened (`PIPER_ARGS="--noise-scale 0.4 --noise-w 0.3"`), warm close-mic mix (`AF=...`, see `scenario.voices`) |
 
 To record a voice, or re-record after changing any text:
@@ -114,9 +114,10 @@ line has a `cite` field, the specific record for that line. The lists live in
 
 ## Map navigation
 
-Double-click the minimap to see the whole battlefield; drag a box on the big
-map to zoom into that area, or double-click the minimap again to return.
-Shift-drag draws a zoom box at any time.
+Double-click the minimap (or press the Full button) to toggle fullscreen; the
+camera keeps following the narration. The Map button (or M) shows the whole
+battlefield; drag a box on it to zoom into that area, or press Map again to
+return. Shift-drag draws a zoom box at any time.
 
 ## Adding another battle
 

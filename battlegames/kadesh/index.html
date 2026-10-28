@@ -81,6 +81,7 @@
   .claim{font-style:italic;color:#c9d6d8;border-left:3px solid var(--gold);padding-left:10px}
   .refs{padding-left:18px}.refs li{margin:8px 0;font-size:14px}
   .battle-panel.overview canvas#battle{cursor:crosshair}
+  .battle-panel:fullscreen{border-radius:0;border:0;background:#071017}
   #voiceStatus{color:#ffb3a7;max-width:260px}
   .progress{height:3px;background:#1d2f3a;border-radius:2px;margin:10px 0 12px;overflow:hidden}.progress i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s linear}
   .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -118,8 +119,8 @@
   <section class="battle-panel" id="battlePanel">
     <canvas id="battle" aria-label="Scrollable battlefield"></canvas>
     <div class="hud" id="caption"><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
-    <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for the full map, then drag a box to zoom in</div></div>
-    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button></div>
+    <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
+    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button></div>
     <div id="timeline" title="Timeline: click a marker to jump to that moment"></div>
 
     <canvas id="globe" aria-hidden="true"></canvas>
@@ -223,7 +224,7 @@
     </section>
     <section class="card">
       <h2>Controls</h2>
-      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>+ / −:</b> zoom.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.</p>
+      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.</p>
     </section>
   </aside>
 </main>

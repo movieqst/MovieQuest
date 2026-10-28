@@ -618,7 +618,15 @@ function toggleOverview() {
   else { overview = { x: view.x, y: view.y, z: view.z }; view.z = Math.min(view.w / W.w, view.h / W.h); view.x = 0; view.y = 0; }
   clampView(); manualCamera(); $('battlePanel').classList.toggle('overview', !!overview);
 }
-mini.addEventListener('dblclick', e => { e.preventDefault(); toggleOverview(); });
+function toggleFullscreen() {
+  const el = $('battlePanel');
+  if (document.fullscreenElement) { document.exitFullscreen && document.exitFullscreen(); }
+  else if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+}
+document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggle('active', !!document.fullscreenElement); setTimeout(resize, 50); });
+mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
+$('fsBtn').onclick = toggleFullscreen;
+$('mapBtn').onclick = toggleOverview;
 mini.addEventListener('click', e => { const r = mini.getBoundingClientRect(); view.x = (e.clientX - r.left) / r.width * W.w - view.w / view.z / 2; view.y = (e.clientY - r.top) / r.height * W.h - view.h / view.z / 2; clampView(); manualCamera(); });
 window.addEventListener('keydown', e => {
   if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
@@ -629,6 +637,7 @@ window.addEventListener('keydown', e => {
   if (k === ' ') { e.preventDefault(); togglePause(); }
   if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); }
   if (k === 'e') showExplain();
+  if (k === 'm') toggleOverview();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
   if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
 });

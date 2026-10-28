@@ -11,6 +11,44 @@ window.KadeshGlobe = (() => {
     for (let i = 0; i < n; i++) { const [x, y] = r[i]; lon[i] = x * D; cl[i] = Math.cos(y * D); sl[i] = Math.sin(y * D); if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
     return { n, lon, cl, sl, box: [x0, y0, x1, y1] };
   });
+  // Flat world texture (equirectangular) painted once; the spinning globe is drawn by wrapping it onto the sphere per pixel.
+  const TW = 4096, TH = 2048; let TEX = null, TEXD = null;
+  function buildTexture() {
+    const t = document.createElement('canvas'); t.width = TW; t.height = TH; const g = t.getContext('2d');
+    const oc = g.createLinearGradient(0, 0, 0, TH); oc.addColorStop(0, '#1b5c86'); oc.addColorStop(.5, '#1f6b96'); oc.addColorStop(1, '#174f78'); g.fillStyle = oc; g.fillRect(0, 0, TW, TH);
+    g.fillStyle = '#5a7a46'; g.strokeStyle = 'rgba(30,55,30,.9)'; g.lineWidth = 1.2; g.lineJoin = 'round';
+    RINGS.forEach(r => { g.beginPath(); r.forEach(([x, y], i) => { const px = (x + 180) / 360 * TW, py = (90 - y) / 180 * TH; i ? g.lineTo(px, py) : g.moveTo(px, py); }); g.closePath(); g.fill(); g.stroke(); });
+    // a little relief: lighter uplands band, darker near the poles
+    const sh = g.createLinearGradient(0, 0, 0, TH); sh.addColorStop(0, 'rgba(255,255,255,.25)'); sh.addColorStop(.12, 'rgba(255,255,255,0)'); sh.addColorStop(.88, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(255,255,255,.35)'); g.fillStyle = sh; g.fillRect(0, 0, TW, TH);
+    TEX = t; TEXD = g.getImageData(0, 0, TW, TH).data;
+  }
+  let RAS = null, RASC = null, IMG = null, CACHE = null; // scratch canvas and per-pixel cache for the wrapped globe
+  function buildCache(size, Rr, lat0) {
+    // Geometry that does not change while the globe spins: texture row, longitude offset (in texture pixels) and shading per pixel.
+    const n = size * size, row = new Int32Array(n), lonPix = new Float32Array(n), shade = new Float32Array(n), alpha = new Uint8Array(n);
+    const sin0 = Math.sin(lat0), cos0 = Math.cos(lat0), half = size / 2, lx = -.42, ly = .38, lz = .82, ln = Math.hypot(lx, ly, lz);
+    for (let py = 0; py < size; py++) { const y = (half - py) / Rr; for (let px = 0; px < size; px++) {
+      const x = (px - half) / Rr, rr = x * x + y * y, i = py * size + px; if (rr > 1) { alpha[i] = 0; continue; }
+      const z = Math.sqrt(1 - rr), lat = Math.asin(y * cos0 + z * sin0), lon = Math.atan2(x, z * cos0 - y * sin0);
+      row[i] = Math.min(TH - 1, Math.max(0, ((90 - lat / D) / 180 * (TH - 1)) | 0)) * TW; lonPix[i] = (lon / D + 180) / 360 * TW;
+      shade[i] = (.45 + .55 * Math.max(0, (x * lx + y * ly + z * lz) / ln)) * (.75 + .25 * z); alpha[i] = rr > .985 ? 255 * (1 - (rr - .985) / .015) : 255;
+    } }
+    return { size, lat0, row, lonPix, shade, alpha };
+  }
+  function drawRaster(s, cx, cy) {
+    if (!TEXD) buildTexture();
+    const R = s.R, rs = Math.min(1, 400 / R), size = Math.ceil(2 * R * rs) + 2, lat0 = Math.round(s.lat0 * 4) / 4 * D;
+    if (!RAS || RAS.width !== size) { RAS = document.createElement('canvas'); RAS.width = RAS.height = size; RASC = RAS.getContext('2d'); IMG = RASC.createImageData(size, size); }
+    if (!CACHE || CACHE.size !== size || CACHE.lat0 !== lat0) CACHE = buildCache(size, R * rs, lat0);
+    const d = IMG.data, { row, lonPix, shade, alpha } = CACHE, n = size * size, shift = ((s.lon0 + 180) / 360 * TW) % TW;
+    for (let i = 0, o = 0; i < n; i++, o += 4) {
+      const a = alpha[i]; if (!a) { d[o + 3] = 0; continue; }
+      let u = lonPix[i] + shift - TW / 2; u = u % TW; if (u < 0) u += TW; const t4 = (row[i] + (u | 0)) * 4, f = shade[i];
+      d[o] = TEXD[t4] * f; d[o + 1] = TEXD[t4 + 1] * f; d[o + 2] = TEXD[t4 + 2] * f; d[o + 3] = a;
+    }
+    RASC.putImageData(IMG, 0, 0);
+    const half = size / 2; c.save(); c.imageSmoothingEnabled = true; c.drawImage(RAS, cx - half / rs, cy - half / rs, size / rs, size / rs); c.restore();
+  }
   const LABELS = [
     { lon: 30.5, lat: 27, text: 'EGYPT', size: 1 }, { lon: 34, lat: 39.5, text: 'HATTI', size: 1 }, { lon: 22, lat: 34.5, text: 'MEDITERRANEAN SEA', size: .7, italic: true },
     { lon: 31.2, lat: 30.0, text: 'Memphis', size: .55, dot: true }, { lon: 34.6, lat: 40.0, text: 'Hattusa', size: .55, dot: true }, { lon: 37.15, lat: 36.2, text: 'Aleppo', size: .55, dot: true },
@@ -33,9 +71,11 @@ window.KadeshGlobe = (() => {
     // atmosphere
     const at = c.createRadialGradient(cx, cy, R * .98, cx, cy, R * 1.16); at.addColorStop(0, 'rgba(120,180,255,.55)'); at.addColorStop(.5, 'rgba(90,150,240,.18)'); at.addColorStop(1, 'rgba(60,110,200,0)');
     c.fillStyle = at; c.beginPath(); c.arc(cx, cy, R * 1.16, 0, 6.283); c.fill();
+    const RASTER = R <= Math.min(w, h) * .42 * 1.7;   // whole globe in view: wrap the texture; zoomed in: vector coastlines
     // ocean
     const oc = c.createRadialGradient(cx - R * .35, cy - R * .35, R * .1, cx, cy, R); oc.addColorStop(0, '#2a6f9e'); oc.addColorStop(.6, '#164a72'); oc.addColorStop(1, '#0a2744');
     c.fillStyle = oc; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill();
+    if (RASTER) drawRaster(s, cx, cy);
     c.save(); c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.clip();
     // graticule
     c.strokeStyle = 'rgba(200,230,255,.10)'; c.lineWidth = 1;
@@ -46,13 +86,20 @@ window.KadeshGlobe = (() => {
     const lonW = capDeg / Math.max(.2, cos0);
     c.fillStyle = s.R > 1200 ? '#6b7f4e' : '#587443'; c.strokeStyle = 'rgba(25,45,25,.7)'; c.lineWidth = Math.min(1.5, .3 + R / 4000);
     for (let k = 0; k < PRE.length; k++) {
+      if (RASTER) break;
       const g = PRE[k];
+      if (g.box[3] < -55) continue; // Antarctica and sub-Antarctic islands: never in view, and a half-hidden polar ring would fill the whole disc
       if (capDeg < 999) { const [x0, y0, x1, y1] = g.box; if (y1 < s.lat0 - capDeg || y0 > s.lat0 + capDeg || x1 < s.lon0 - lonW || x0 > s.lon0 + lonW) continue; }
+      // First pass: is any point of this ring on the near side? A ring entirely on the far side must be skipped,
+      // otherwise its points all collapse onto the rim and the fill covers the whole globe.
+      let visible = false;
+      for (let i = 0; i < g.n; i += 2) { const lam = g.lon[i] - lon0; if (sin0 * g.sl[i] + cos0 * g.cl[i] * Math.cos(lam) > 0) { visible = true; break; } }
+      if (!visible) continue;
       c.beginPath(); let any = false;
       for (let i = 0; i < g.n; i++) {
         const lam = g.lon[i] - lon0, cl = g.cl[i], sl = g.sl[i], cosc = sin0 * sl + cos0 * cl * Math.cos(lam);
         let x = R * cl * Math.sin(lam), y = R * (cos0 * sl - sin0 * cl * Math.cos(lam));
-        if (cosc < 0) { const d = Math.hypot(x, y) || 1; x = x / d * R * 1.01; y = y / d * R * 1.01; } // push hidden points to the limb
+        if (cosc < 0) { const d = Math.hypot(x, y) || 1; x = x / d * R * 1.01; y = y / d * R * 1.01; } // push hidden points to the rim
         const px = cx + x, py = cy - y;
         if (!any) { c.moveTo(px, py); any = true; } else c.lineTo(px, py);
       }
@@ -62,7 +109,7 @@ window.KadeshGlobe = (() => {
     if (R > 2500) { const tg = c.createRadialGradient(cx, cy, 0, cx, cy, Math.max(w, h)); tg.addColorStop(0, 'rgba(200,180,120,.18)'); tg.addColorStop(1, 'rgba(200,180,120,0)'); c.fillStyle = tg; c.fillRect(0, 0, w, h); }
     // day/night shading
     const sh = c.createRadialGradient(cx - R * .45, cy - R * .35, R * .2, cx, cy, R * 1.05); sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(.7, 'rgba(0,0,10,.12)'); sh.addColorStop(1, 'rgba(0,0,15,.6)');
-    if (R < 1500) { c.fillStyle = sh; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill(); }
+    if (!RASTER && R < 1500) { c.fillStyle = sh; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill(); }
     c.restore();
     // labels
     if (s.labels > 0) {
@@ -91,7 +138,7 @@ window.KadeshGlobe = (() => {
     if (st.phase === 'idle') { st.lon0 = KADESH.lon; st.R = R0; st.lat0 = 24; st.labels = 0; }
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
-      st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24 + (KADESH.lat - 24) * k * .5; st.labels = 0;
+      st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24; st.labels = 0;
       if (k >= 1) { st.phase = 'dive'; t0 = now; st.lon0 = KADESH.lon; if (cb.onSpun) cb.onSpun(); }
     } else if (st.phase === 'dive') {
       const k = Math.min(1, (now - t0) / DIVE_SECS), e = ease(k);
@@ -113,5 +160,6 @@ window.KadeshGlobe = (() => {
   function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = lastT; if (cb.onSpun) cb.onSpun(); } else if (st.phase === 'dive') { st.phase = 'fade'; t0 = lastT; } }
   function stop() { cancelAnimationFrame(raf); raf = 0; st = null; if (cv) { cv.style.display = 'none'; } window.removeEventListener('resize', size); }
   const active = () => !!st;
-  return { start, begin, skip, stop, active };
+  function debugFrame(lon0, lat0) { if (!st) return; st.lon0 = lon0; st.lat0 = lat0; draw(st, 0); }
+  return { start, begin, skip, stop, active, debugFrame };
 })();
