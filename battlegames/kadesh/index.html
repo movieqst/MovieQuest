@@ -25,19 +25,24 @@
   .hud{position:absolute;z-index:2;background:#091720ee;border:1px solid #435a64;border-radius:7px;padding:8px 10px;backdrop-filter:blur(4px)}
   #caption{left:12px;top:12px;max-width:min(62%,520px);display:none;transition:opacity .3s}
   /* Opacity applies to the panel background only; the text stays solid so it reads at any level. */
-  body[data-textop="50"] #caption{background:rgba(9,23,32,.5);border-color:rgba(67,90,100,.5)}
-  body[data-textop="50"] .dialog.intro{background:rgba(11,24,34,.5);border-color:rgba(74,100,114,.5);box-shadow:none}
-  body[data-textop="15"] #caption{background:rgba(9,23,32,.15);border-color:rgba(67,90,100,.25);backdrop-filter:none}
-  body[data-textop="15"] .dialog.intro{background:rgba(11,24,34,.15);border-color:rgba(74,100,114,.25);box-shadow:none}
-  body[data-textop="50"] #caption:hover,body[data-textop="15"] #caption:hover{background:rgba(9,23,32,.7);border-color:rgba(67,90,100,.7)}
-  body[data-textop="50"] .dialog.intro:hover,body[data-textop="15"] .dialog.intro:hover{background:rgba(11,24,34,.7);border-color:rgba(74,100,114,.7)}
-  #caption,.dialog.intro{transition:background-color .25s,border-color .25s}
-  body[data-textop="15"] #capText,body[data-textop="15"] #introLines p,body[data-textop="15"] #introSub,body[data-textop="15"] .mcap,body[data-textop="15"] .kicker,body[data-textop="50"] #capText,body[data-textop="50"] #introLines p{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
-  body[data-textop="15"] #capTitle,body[data-textop="15"] .dialog.intro h1{text-shadow:0 1px 0 #5a4310,0 2px 8px #000,0 0 12px #000}
-  body[data-textop="0"] #caption{display:none!important}
-  body[data-textop="0"] .dialog.intro{background:transparent;border-color:transparent;box-shadow:none}
-  body[data-textop="0"] .dialog.intro #introLines,body[data-textop="0"] .dialog.intro #introSub,body[data-textop="0"] .dialog.intro .intro-media,body[data-textop="0"] .dialog.intro .progress,body[data-textop="0"] .dialog.intro .kicker{display:none}
-  body[data-textop="0"] .dialog.intro h1{font-size:18px;margin:0 0 6px}
+  /* Text panels over the map: 15% background with solid text, 70% while hovered; an X collapses them to a small button. */
+  #caption{background:rgba(9,23,32,.15);border-color:rgba(67,90,100,.25);backdrop-filter:none}
+  .dialog.intro{background:rgba(11,24,34,.15);border-color:rgba(74,100,114,.25);box-shadow:none}
+  #caption:hover{background:rgba(9,23,32,.7);border-color:rgba(67,90,100,.7)}
+  .dialog.intro:hover{background:rgba(11,24,34,.7);border-color:rgba(74,100,114,.7)}
+  #capText,#introLines p,#introSub,.mcap,.kicker,#capTitle,.dialog.intro h1{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
+  #capTitle,.dialog.intro h1{text-shadow:0 1px 0 #5a4310,0 2px 8px #000,0 0 12px #000}
+  .xbtn{position:absolute;top:6px;right:6px;width:22px;height:22px;padding:0;border-radius:50%;background:rgba(9,23,32,.6);border:1px solid #526873;color:#cfd8dc;font-size:13px;line-height:20px;text-align:center}
+  .xbtn:hover{background:#214e75}
+  #caption{padding-right:34px}.dialog.intro{position:relative}
+  body.textoff #caption{display:none!important}
+  body.textoff .dialog.intro{background:transparent;border-color:transparent;box-shadow:none;width:auto;display:block;padding:0}
+  body.textoff .dialog.intro>*{display:none!important}
+  body.textoff .dialog.intro .intro-mini{display:flex!important;gap:8px;align-items:center}
+  .intro-mini{display:none}
+  #viewTextBtn{position:absolute;left:12px;top:12px;z-index:3;display:none}
+  body.textoff #viewTextBtn{display:inline-block}
+  body.textoff[data-mode="intro"] #viewTextBtn{display:none}
   .dialog.intro{transition:opacity .3s}
   #caption.show{display:block}
   #capTitle{font:600 14px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.03em} #capText{margin:4px 0 6px;font-size:13px;color:#e4ebe6}
@@ -81,7 +86,7 @@
   #globe{position:absolute;inset:0;z-index:4;width:100%;height:100%;display:none}
   .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px;background:linear-gradient(to top,rgba(5,10,14,.85) 0%,rgba(5,10,14,.35) 55%,rgba(5,10,14,0) 100%)}
   .overlay.show{display:flex}
-  .overlay.center{align-items:center;background:rgba(5,10,14,.6)}
+  .overlay.center{align-items:center;background:rgba(5,10,14,.25)}
   .dialog.intro{width:min(1040px,100%);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
   .dialog.intro.nomedia{grid-template-columns:1fr}.dialog.intro.nomedia .intro-media{display:none}
   .intro-media .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
@@ -92,7 +97,14 @@
   .intro-media .placeholder.show{display:flex}
   .mcap{font-size:13px;color:#eef3ee;margin-top:8px}.mref{font-size:11px;color:#9fb1b8;margin-top:3px;font-style:italic}
   @media(max-width:900px){.dialog.intro{grid-template-columns:1fr}.intro-media{order:-1}.intro-media .plate{aspect-ratio:16/7}}
+  .dialog p,.dialog h3,.dialog h4,.dialog .kicker,.dialog li,.dialog td,.dialog th{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
+  body.textoff .overlay.center .dialog>*:not(.xbtn):not(.mini){display:none!important}
+  body.textoff .overlay.center .dialog{background:transparent;border-color:transparent;padding:0}
+  .dialog .mini{display:none;gap:8px;align-items:center}
+  body.textoff .overlay.center .dialog .mini{display:flex!important}
   .dialog{width:min(820px,100%);max-height:88%;overflow:auto;background:#0b1822f2;border:1px solid #4a6472;border-radius:12px;padding:18px 22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .dialog{position:relative;background:rgba(11,24,34,.15);border-color:rgba(74,100,114,.25);box-shadow:none;transition:background-color .25s,border-color .25s}
+  .dialog:hover{background:rgba(11,24,34,.7);border-color:rgba(74,100,114,.7)}
   .kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fb1b8}
   .dialog h1{font:700 clamp(20px,2.6vw,32px) 'Cinzel',Georgia,serif;color:var(--gold);margin:4px 0 2px;letter-spacing:.08em;text-shadow:0 1px 0 #5a4310,0 2px 8px rgba(0,0,0,.6)}
   .dialog h3{font:600 19px 'Cinzel',Georgia,serif;color:var(--gold);margin:0 0 8px;letter-spacing:.03em}
@@ -134,7 +146,6 @@
     <button id="voiceBtn" title="Spoken narration">🔇 Voice off</button>
     <select id="voiceSel" title="Choose the narrator's voice"></select>
     <select id="voiceRate" title="Narration speed"><option value="0.8">Voice 0.8×</option><option value="1">Voice 1×</option><option value="1.1" selected>Voice 1.1×</option><option value="1.2">Voice 1.2×</option><option value="1.3">Voice 1.3×</option><option value="1.5">Voice 1.5×</option><option value="2">Voice 2×</option></select>
-    <button id="textBtn" title="Narration text panel: 50% / 15% / off (T)">📝 Text 80%</button>
     <button id="resetBtn">↻ Restart</button>
     <span class="tiny" id="voiceStatus"></span>
   </div>
@@ -142,7 +153,8 @@
 <main>
   <section class="battle-panel" id="battlePanel">
     <canvas id="battle" aria-label="Scrollable battlefield"></canvas>
-    <div class="hud" id="caption"><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
+    <div class="hud" id="caption"><button class="xbtn" id="capX" title="Hide the narration text">✕</button><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
+    <button id="viewTextBtn" class="hud">📝 View text narration</button>
     <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
     <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="tiltBtn" title="Tilted view: near edge larger, far edge smaller">⛰ Tilt</button></div>
     <div id="timeline" title="Timeline: click a marker to jump to that moment"></div>
@@ -151,6 +163,8 @@
     <canvas id="globe" aria-hidden="true"></canvas>
     <div class="overlay" id="intro">
       <div class="dialog intro">
+        <button class="xbtn" id="introX" title="Hide the text; the narration continues">✕</button>
+        <div class="intro-mini"><button id="introView" class="primary">📝 View text narration</button><button id="introNextMini">Next ▶</button><button id="introSkipMini">Skip intro ⏭</button></div>
         <div class="intro-text">
           <div class="kicker" id="introKicker"></div>
           <h1 id="introTitle"></h1>
@@ -187,6 +201,7 @@
 
     <div class="overlay center" id="cite">
       <div class="dialog">
+        <button class="xbtn" title="Hide the text">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="cite">Close</button></div>
         <div class="kicker" id="citeKicker"></div>
         <h3 id="citeTitle"></h3>
         <div id="citeBody"></div>
@@ -196,6 +211,7 @@
 
     <div class="overlay center" id="explain">
       <div class="dialog">
+        <button class="xbtn" title="Hide the text; the narration continues">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="explain">Continue ▶</button></div>
         <div class="kicker">Explain this moment</div>
         <h3 id="explainTitle"></h3>
         <p id="explainBody"></p>
@@ -205,6 +221,7 @@
 
     <div class="overlay center" id="debrief">
       <div class="dialog">
+        <button class="xbtn" title="Hide the text">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="debrief-watch">▶ Watch again</button><button class="closemini" data-close="debrief-command">⚔ Take command</button></div>
         <div class="kicker">Historical debrief</div>
         <h3 id="debriefTitle"></h3>
         <div id="debriefBody"></div>
@@ -250,7 +267,7 @@
     </section>
     <section class="card">
       <h2>Controls</h2>
-      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.</p>
+      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
     </section>
   </aside>
 </main>

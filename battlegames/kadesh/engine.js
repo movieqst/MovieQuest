@@ -841,10 +841,18 @@ document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggl
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;
 $('mapBtn').onclick = toggleOverview;
-let textOp = '50'; try { const t = localStorage.getItem('kadesh-textop'); if (['50', '15', '0'].includes(t)) textOp = t; } catch (e) {}
-function applyTextOp() { document.body.dataset.textop = textOp; $('textBtn').textContent = textOp === '0' ? '\ud83d\udcdd Text off' : '\ud83d\udcdd Text ' + textOp + '%'; }
-function cycleTextOp() { textOp = textOp === '50' ? '15' : textOp === '15' ? '0' : '50'; try { localStorage.setItem('kadesh-textop', textOp); } catch (e) {} applyTextOp(); }
-$('textBtn').onclick = cycleTextOp; applyTextOp();
+let textOff = false; try { textOff = localStorage.getItem('kadesh-textoff') === '1'; } catch (e) {}
+function setTextOff(off) { textOff = off; document.body.classList.toggle('textoff', off); try { localStorage.setItem('kadesh-textoff', off ? '1' : '0'); } catch (e) {} }
+$('capX').onclick = e => { e.stopPropagation(); setTextOff(true); };
+$('introX').onclick = e => { e.stopPropagation(); setTextOff(true); };
+$('viewTextBtn').onclick = () => setTextOff(false);
+$('introView').onclick = () => setTextOff(false);
+$('introNextMini').onclick = () => $('introNext').click();
+$('introSkipMini').onclick = () => $('introSkip').click();
+document.querySelectorAll('.overlay.center .dialog .xbtn').forEach(b => b.onclick = e => { e.stopPropagation(); setTextOff(true); });
+document.querySelectorAll('.viewtext').forEach(b => b.onclick = () => setTextOff(false));
+document.querySelectorAll('.closemini').forEach(b => b.onclick = () => { const w = b.dataset.close; if (w === 'cite') hideOverlay('cite'); else if (w === 'explain') $('explainClose').click(); else if (w === 'debrief-watch') $('debriefWatch').click(); else if (w === 'debrief-command') $('debriefCommand').click(); });
+setTextOff(textOff);
 // Layout guide for painting the terrain: the current map at full size with every feature boxed and labelled (press G).
 function exportLayoutGuide() {
   const T = document.createElement('canvas'); T.width = W.w; T.height = W.h; const g = T.getContext('2d');
@@ -875,7 +883,7 @@ window.addEventListener('keydown', e => {
   if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); }
   if (k === 'e') showExplain();
   if (k === 'm') toggleOverview();
-  if (k === 't') cycleTextOp();
+  if (k === 't') setTextOff(!textOff);
   if (k === 'g' && e.shiftKey) exportLayoutGuide();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
   if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
