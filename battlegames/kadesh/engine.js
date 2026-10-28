@@ -47,6 +47,45 @@ function riverXAt(y) {
   return p[0][0];
 }
 
+/* ---------------- terrain for movement: water, fords, bridge, city and moat ---------------- */
+const distToPolyline = (x, y, pts) => { let best = 1e9; for (let i = 0; i < pts.length - 1; i++) { const [x1, y1] = pts[i], [x2, y2] = pts[i + 1], dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy || 1; let t = ((x - x1) * dx + (y - y1) * dy) / L; t = clamp(t, 0, 1); const d = Math.hypot(x - (x1 + dx * t), y - (y1 + dy * t)); if (d < best) best = d; } return best; };
+const inRiver = (x, y) => distToPolyline(x, y, B.river) < 34;
+const inTrib = (x, y) => distToPolyline(x, y, B.tributary) < 16;
+const inWater = (x, y) => inRiver(x, y) || inTrib(x, y);
+const MOAT = 30, CITYR = { x0: B.city.x - MOAT, y0: B.city.y - MOAT, x1: B.city.x + B.city.w + MOAT, y1: B.city.y + B.city.h + MOAT };
+const inCity = (x, y) => x > CITYR.x0 && x < CITYR.x1 && y > CITYR.y0 && y < CITYR.y1;
+const westOfRiver = (x, y) => x < riverXAt(y);
+const tribYAt = x => { const p = B.tributary; if (x <= p[0][0] || x >= p[p.length - 1][0]) return null; for (let i = 0; i < p.length - 1; i++) if (x >= p[i][0] && x <= p[i + 1][0]) { const t = (x - p[i][0]) / (p[i + 1][0] - p[i][0]); return p[i][1] + (p[i + 1][1] - p[i][1]) * t; } return null; };
+const crossesTrib = (a, b) => { const ya = tribYAt(a.x), yb = tribYAt(b.x); if (ya === null && yb === null) return false; const sa = ya === null ? null : a.y < ya, sb = yb === null ? null : b.y < yb; if (sa !== null && sb !== null) return sa !== sb; const y0 = ya !== null ? ya : yb, mid = (a.y + b.y) / 2; return (a.y < y0) !== (b.y < y0) && Math.abs(mid - y0) < 120; };
+const segHitsRect = (a, b, r) => { if (inCity(a.x, a.y) || inCity(b.x, b.y)) return true; for (let t = 0; t <= 1; t += .05) { const x = a.x + (b.x - a.x) * t, y = a.y + (b.y - a.y) * t; if (x > r.x0 && x < r.x1 && y > r.y0 && y < r.y1) return true; } return false; };
+// Push a point out of the city and moat to the nearest edge.
+function legal(p) { if (!inCity(p.x, p.y)) return p; const dl = p.x - CITYR.x0, dr = CITYR.x1 - p.x, dt = p.y - CITYR.y0, db = CITYR.y1 - p.y, m = Math.min(dl, dr, dt, db); return m === dl ? { x: CITYR.x0 - 12, y: p.y } : m === dr ? { x: CITYR.x1 + 12, y: p.y } : m === dt ? { x: p.x, y: CITYR.y0 - 12 } : { x: p.x, y: CITYR.y1 + 12 }; }
+// Waypoints from a to b: river only at a ford, the tributary only at the bridge, never through the city or its moat.
+function planPath(a, b) {
+  let legs = [a, b];
+  // river
+  if (!inRiver(a.x, a.y) && !inRiver(b.x, b.y) && westOfRiver(a.x, a.y) !== westOfRiver(b.x, b.y)) {
+    let best = null, bd = 1e9; B.fords.forEach(f => { const d = Math.hypot(a.x - f.x, a.y - f.y) + Math.hypot(b.x - f.x, b.y - f.y); if (d < bd) { bd = d; best = f; } });
+    if (best) { const w = { x: best.x - 55, y: best.y }, ea = { x: best.x + 55, y: best.y }; legs = westOfRiver(a.x, a.y) ? [a, w, ea, b] : [a, ea, w, b]; }
+  }
+  // tributary (per leg)
+  let out = [legs[0]];
+  for (let i = 1; i < legs.length; i++) { const p = out[out.length - 1], q = legs[i]; if (!inTrib(p.x, p.y) && !inTrib(q.x, q.y) && crossesTrib(p, q)) { const br = B.bridge, n = { x: br.x, y: br.y - 34 }, so = { x: br.x, y: br.y + 34 }; if (p.y < q.y) out.push(n, so); else out.push(so, n); } out.push(q); }
+  legs = out;
+  // city and moat (per leg): go round the nearest corner
+  out = [legs[0]];
+  for (let i = 1; i < legs.length; i++) { const p = out[out.length - 1], q = legs[i];
+    if (!inCity(p.x, p.y) && !inCity(q.x, q.y) && segHitsRect(p, q, CITYR)) {
+      const pad = 26, cs = [{ x: CITYR.x0 - pad, y: CITYR.y0 - pad }, { x: CITYR.x1 + pad, y: CITYR.y0 - pad }, { x: CITYR.x0 - pad, y: CITYR.y1 + pad }, { x: CITYR.x1 + pad, y: CITYR.y1 + pad }];
+      // one corner, or two along a side when one is not enough
+      let best = null, bd = 1e9; cs.forEach(c => { if (segHitsRect(p, c, CITYR) || segHitsRect(c, q, CITYR)) return; const d = Math.hypot(p.x - c.x, p.y - c.y) + Math.hypot(c.x - q.x, c.y - q.y); if (d < bd) { bd = d; best = [c]; } });
+      if (!best) { const pairs = [[0, 1], [2, 3], [0, 2], [1, 3]]; pairs.forEach(([i1, i2]) => { for (const [c1, c2] of [[cs[i1], cs[i2]], [cs[i2], cs[i1]]]) { if (segHitsRect(p, c1, CITYR) || segHitsRect(c2, q, CITYR)) continue; const d = Math.hypot(p.x - c1.x, p.y - c1.y) + Math.hypot(c1.x - c2.x, c1.y - c2.y) + Math.hypot(c2.x - q.x, c2.y - q.y); if (d < bd) { bd = d; best = [c1, c2]; } } }); }
+      if (best) out.push(...best);
+    }
+    out.push(q); }
+  return out.slice(1);
+}
+
 /* ---------------- terrain (pre-rendered once) ---------------- */
 function curve(c, pts) {
   c.moveTo(pts[0][0], pts[0][1]);
@@ -334,7 +373,7 @@ function createFormations() {
     state: 'hold', known: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : 16),
     facing: d.facing !== undefined ? d.facing : (d.side === 'egypt' ? -PI / 2 : PI), spread: 1, then: null, aiPhase: null, lastHit: -99
   }));
-  byId = {}; formations.forEach(f => byId[f.id] = f);
+  byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations;
 }
 function applyOrder(o) {
   const f = byId[o.id]; if (!f) return;
@@ -353,10 +392,15 @@ function moveFormation(f) {
     const d = f.strengthTarget - f.strength, step = f.strengthRate * DT;
     if (Math.abs(d) <= step) { f.strength = f.strengthTarget; f.strengthTarget = null; } else f.strength += Math.sign(d) * step;
   }
+  f.inWater = inWater(f.x, f.y);
   if (f.state === 'hold' || f.state === 'loot' || f.state === 'scattered') return;
-  const dx = f.tx - f.x, dy = f.ty - f.y, d = Math.hypot(dx, dy);
-  const sp = f.speed * (f.state === 'rout' ? 1.25 : 1) * DT;
-  if (d > 2) { f.x += dx / d * Math.min(sp, d); f.y += dy / d * Math.min(sp, d); f.facing = Math.atan2(dy, dx); }
+  // (re)plan when the target changes
+  if (!f.path || f.pathTx !== f.tx || f.pathTy !== f.ty) { const g = legal({ x: f.tx, y: f.ty }); f.tx = g.x; f.ty = g.y; f.path = planPath({ x: f.x, y: f.y }, g); f.pathTx = f.tx; f.pathTy = f.ty; }
+  while (f.path.length > 1 && Math.hypot(f.path[0].x - f.x, f.path[0].y - f.y) < 6) f.path.shift();
+  const wp = f.path[0] || { x: f.tx, y: f.ty };
+  const dx = wp.x - f.x, dy = wp.y - f.y, d = Math.hypot(dx, dy), dEnd = Math.hypot(f.tx - f.x, f.ty - f.y);
+  const sp = f.speed * (f.state === 'rout' ? 1.25 : 1) * (f.inWater ? .55 : 1) * DT;
+  if (dEnd > 2) { f.x += dx / d * Math.min(sp, d); f.y += dy / d * Math.min(sp, d); f.facing = Math.atan2(dy, dx); }
   else {
     if (f.then) { f.state = f.then; f.then = null; }
     else if (f.state === 'rout') f.state = mode === 'command' ? 'withdrawn' : 'scattered';
@@ -492,24 +536,26 @@ function drawFormation(c, f) {
   c.save(); if (concealed) c.globalAlpha = .5;
   // In the flat view a subtle depth cue remains: units nearer the south edge draw a little larger. The tilted view does this by projection.
   const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
+  // In the water a formation squeezes into a double file (single for chariots) along its line of march.
+  const FC = f.inWater ? (f.type === 'chariot' ? 1 : 2) : f.cols, FR = f.inWater ? Math.ceil(n / FC) : f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', scatter = f.state === 'rout' || f.state === 'scattered';
   const pts = [];
   for (let i = 0; i < n; i++) {
     if (i >= shown) continue;
-    const col = i % f.cols, row = Math.floor(i / f.cols);
-    let d = -(row - (f.rows - 1) / 2) * sy + (jitter(i, 1) - .5) * 5 * f.spread, a = (col - (f.cols - 1) / 2) * sx + (jitter(i, 2) - .5) * 5 * f.spread;
+    const col = i % FC, row = Math.floor(i / FC);
+    let d = -(row - (FR - 1) / 2) * sy * (f.inWater ? .85 : 1) + (jitter(i, 1) - .5) * 5 * f.spread, a = (col - (FC - 1) / 2) * sx * (f.inWater ? .7 : 1) + (jitter(i, 2) - .5) * 5 * f.spread;
     if (moving) a += Math.sin(wall * 7 + i) * .9;
     pts.push({ x: f.x + cos * d - sin * a, y: f.y + sin * d + cos * a, i, fac: f.facing + (scatter ? (jitter(i, 3) - .5) * 1.4 : 0) });
   }
   pts.sort((p, q) => p.y - q.y).forEach(p => { const q = P(p.x, p.y); drawSprite(c, f, q.x, q.y, p.fac, p.i, SS * q.s, q.k); });
   // standard
-  const pb = P(f.x - cos * ((f.rows / 2) * sy + 4), f.y - sin * ((f.rows / 2) * sy + 4)), fs = pb.s;
+  const pb = P(f.x - cos * ((FR / 2) * sy + 4), f.y - sin * ((FR / 2) * sy + 4)), fs = pb.s;
   c.strokeStyle = '#3b2c1a'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(pb.x, pb.y); c.lineTo(pb.x, pb.y - 16 * fs); c.stroke();
   c.fillStyle = SIDE_ART[f.side].pennant; c.beginPath(); c.moveTo(pb.x, pb.y - 16 * fs); c.lineTo(pb.x + 11 * fs, pb.y - 13 * fs); c.lineTo(pb.x, pb.y - 9 * fs); c.closePath(); c.fill();
   c.strokeStyle = SIDE_ART[f.side].trim; c.lineWidth = .8; c.stroke();
   // label + strength
-  const half = (f.rows / 2) * sy + 10, ly = f.y + Math.max(half, (f.cols / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
+  const half = (FR / 2) * sy + 10, ly = f.y + Math.max(half, (FC / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
   const suffix = f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
   outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'egypt' ? '#dceeff' : '#ffe1d6' });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
@@ -517,7 +563,7 @@ function drawFormation(c, f) {
     c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(pl.x - 21 * ts, pl.y + 9 * ts, 42 * ts * f.strength / 100, 3 * ts);
   }
   const pc = P(f.x, f.y);
-  if (selected.has(f.id)) { c.save(); c.translate(pc.x, pc.y); c.scale(1, pc.k); c.rotate(f.facing + PI / 2); c.strokeStyle = '#fff2a4'; c.lineWidth = 2; c.setLineDash([6, 4]); c.beginPath(); c.ellipse(0, 0, ((f.cols / 2) * sx + 14) * pc.s, ((f.rows / 2) * sy + 14) * pc.s, 0, 0, PI * 2); c.stroke(); c.restore(); }
+  if (selected.has(f.id)) { c.save(); c.translate(pc.x, pc.y); c.scale(1, pc.k); c.rotate(f.facing + PI / 2); c.strokeStyle = '#fff2a4'; c.lineWidth = 2; c.setLineDash([6, 4]); c.beginPath(); c.ellipse(0, 0, ((FC / 2) * sx + 14) * pc.s, ((FR / 2) * sy + 14) * pc.s, 0, 0, PI * 2); c.stroke(); c.restore(); }
   if (mode === 'command' && selected.has(f.id) && f.state === 'move') { const pt = P(f.tx, f.ty); c.strokeStyle = 'rgba(255,242,164,.6)'; c.lineWidth = 1.5; c.setLineDash([4, 6]); c.beginPath(); c.moveTo(pc.x, pc.y); c.lineTo(pt.x, pt.y); c.stroke(); c.setLineDash([]); c.beginPath(); c.arc(pt.x, pt.y, 6 * pt.s, 0, PI * 2); c.stroke(); }
   c.restore();
 }
@@ -786,7 +832,7 @@ let marquee = null, menuTarget = null;
 function ownSelected() { return [...selected].map(id => byId[id]).filter(f => f && alive(f) && f.state !== 'rout' && f.side === player); }
 function orderMove(p, state) {
   const fs = ownSelected(); if (!fs.length) return; const cols = Math.ceil(Math.sqrt(fs.length));
-  fs.forEach((f, k) => { f.tx = clamp(p.x + (k % cols - (cols - 1) / 2) * 90, 20, W.w - 20); f.ty = clamp(p.y + Math.floor(k / cols) * 70, 20, W.h - 20); f.state = state || 'move'; f.aiPhase = null; });
+  fs.forEach((f, k) => { const g = legal({ x: clamp(p.x + (k % cols - (cols - 1) / 2) * 90, 20, W.w - 20), y: clamp(p.y + Math.floor(k / cols) * 70, 20, W.h - 20) }); f.tx = g.x; f.ty = g.y; f.state = state || 'move'; f.aiPhase = null; });
   addLog((state === 'attack' ? 'Attack-move' : 'Move') + ' ordered: ' + fs.length + ' formation' + (fs.length > 1 ? 's' : '')); renderSelection();
 }
 function orderHalt() { ownSelected().forEach(f => { if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; }); addLog('Halt'); renderSelection(); }

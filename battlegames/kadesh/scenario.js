@@ -54,8 +54,10 @@ window.KADESH_SCENARIO = {
     tributary: [ [820,840],[1000,815],[1180,785],[1350,760],[1480,745] ],
     fords: [
       { name: 'Ford of Shabtuna', x: 1345, y: 1585, note: 'Where the Egyptian army crossed to the west bank' },
-      { name: 'Hittite crossing',  x: 1535, y: 1045, note: 'Reconstructed point where the Hittite chariots crossed' }
+      { name: 'Hittite crossing',  x: 1535, y: 1045, note: 'Reconstructed point where the Hittite chariots crossed' },
+      { name: 'Northern ford',     x: 1535, y: 500,  note: 'Reconstructed shallow crossing north of the city, used by the second wave' }
     ],
+    bridge: { x: 1130, y: 796, note: 'Where the road crosses the tributary; the only crossing of the tributary' },
     city: { name: 'KADESH', x: 1270, y: 570, w: 190, h: 160 },
     camp: { name: 'Egyptian camp (Amun)', x: 900, y: 380, w: 240, h: 170 },
     road: [ [1250,1800],[1300,1640],[1345,1585],[1250,1450],[1180,1250],[1150,1000],[1120,800],[1060,620],[1000,560] ],
@@ -312,7 +314,7 @@ window.KADESH_SCENARIO = {
     { t: 70, title: 'The second wave', tag: 'egyptian', focus: { x: 1600, y: 620 },
       text: 'Muwatalli commits a second wave across the river north of the city: the Egyptian account says 1,000 chariots, including his own brothers and allied kings.',
       explain: 'Why not send the infantry? A river crossing under pressure is slow, and the Hittite infantry would have been exposed while fording. Chariots could cross and withdraw quickly.',
-      orders: [ { id: 'hit-char2', visible: true, to: { x: 1460, y: 600 }, speed: 55 } ] },
+      orders: [ { id: 'hit-char2', visible: true, to: { x: 1420, y: 500 }, speed: 55 } ] },
     { t: 78, title: 'Counter-attack', tag: 'reconstruction', focus: { x: 1150, y: 520 },
       text: 'Caught between the Ne’arin and the king’s chariots, the Hittite crews are driven back east toward the river.',
       explain: 'Heavy three-man chariots that have stopped to loot lose their main advantage: speed. Fresh infantry and lighter Egyptian chariots could now take them at a disadvantage.',
@@ -328,7 +330,7 @@ window.KADESH_SCENARIO = {
       explain: 'The Egyptian account gives Ptah credit for the recovery. With fresh infantry arriving and the Ne’arin already engaged, the Hittite chariots were outnumbered on the west bank.',
       orders: [
         { id: 'ptah-inf', to: { x: 1180, y: 720 }, speed: 18 }, { id: 'ptah-char', to: { x: 1240, y: 700 }, speed: 20 },
-        { id: 'hit-char2', to: { x: 1480, y: 590 }, speed: 30, strengthTo: 45, over: 10 }
+        { id: 'hit-char2', to: { x: 1470, y: 500 }, speed: 30, strengthTo: 45, over: 10 }
       ] },
     { t: 92, title: 'Into the Orontes', tag: 'egyptian', focus: { x: 1500, y: 580 },
       text: 'Hittite chariots are pushed back into the Orontes. The reliefs show the prince of Aleppo being held upside down to drain the water from him after he was pulled from the river.', cite: 'Relief caption (Ramesseum, Abu Simbel): the chief of Aleppo turned upside down by his soldiers to empty him of water',
@@ -337,7 +339,7 @@ window.KADESH_SCENARIO = {
         { id: 'hit-char-a', to: { x: 1540, y: 560 }, speed: 20, strengthTo: 15, over: 8 },
         { id: 'hit-char-b', to: { x: 1560, y: 640 }, speed: 20, strengthTo: 15, over: 8 },
         { id: 'hit-char-c', to: { x: 1545, y: 500 }, speed: 20, strengthTo: 15, over: 8 },
-        { id: 'guard', to: { x: 1380, y: 540 }, speed: 30 }, { id: 'amun-char', to: { x: 1400, y: 620 }, speed: 30 }, { id: 'nearin', to: { x: 1300, y: 500 }, speed: 30 }
+        { id: 'guard', to: { x: 1380, y: 510 }, speed: 30 }, { id: 'amun-char', to: { x: 1430, y: 490 }, speed: 30 }, { id: 'nearin', to: { x: 1300, y: 500 }, speed: 30 }
       ] },
     { t: 100, title: 'Across the river', tag: 'egyptian', focus: { x: 1750, y: 700 },
       text: 'The survivors recross the river. Muwatalli’s infantry, the bulk of his army, never fought at all.',
@@ -369,7 +371,7 @@ window.KADESH_SCENARIO = {
       infantryShift: { t: 8,  to: { x: 1880, y: 900 } },
       kingShift:     { t: 8,  to: { x: 1990, y: 880 } },
       firstWave:     { t: 20, cross: [ { x: 1450, y: 1070 }, { x: 1440, y: 1125 }, { x: 1445, y: 1015 } ] },
-      secondWave:    { t: 70, cross: { x: 1460, y: 600 } },
+      secondWave:    { t: 70, cross: { x: 1420, y: 500 } },
       huntRange: 900,
       holdPoint: { x: 1800, y: 900 },
       infantryReact: 420
