@@ -216,7 +216,7 @@ window.KadeshGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.2, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = 5, CLOSE = 26;
+  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = 5, CLOSE = 26;
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
@@ -235,7 +235,9 @@ window.KadeshGlobe = (() => {
       const k = Math.min(1, (now - t0) / MODERN_SECS); st.modern = 1;
       if (k >= 1) { st.phase = 'ancient'; t0 = now; }
     } else if (st.phase === 'ancient') {
-      const k = Math.min(1, (now - t0) / (XFADE_SECS + ANCIENT_SECS)), x = Math.min(1, (now - t0) / XFADE_SECS); st.modern = 1 - x; st.ancient = x;
+      // ancient borders fade in over today's, both show together for a while, then today's fade out
+      const e = now - t0, k = Math.min(1, e / (XFADE_SECS + OVERLAP_SECS + XFADE_SECS + ANCIENT_SECS));
+      st.ancient = Math.min(1, e / XFADE_SECS); st.modern = e < XFADE_SECS + OVERLAP_SECS ? 1 : Math.max(0, 1 - (e - XFADE_SECS - OVERLAP_SECS) / XFADE_SECS);
       if (k >= 1) { st.phase = 'dive2'; t0 = now; }
     } else if (st.phase === 'dive2') {
       // drop onto Kadesh
