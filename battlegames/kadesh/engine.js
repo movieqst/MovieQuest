@@ -118,43 +118,18 @@ function buildTerrain() {
     for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(f.x - 44, f.y + k * 9); c.lineTo(f.x + 44, f.y + k * 9); c.stroke(); }
     c.restore(); outlined(c, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' });
   });
-  // forests
-  B.forests.forEach((fo, fi) => {
-    const n = Math.floor(fo.r * fo.r / 650);
-    for (let i = 0; i < n; i++) {
-      const a = jitter(fi * 1000 + i, 6) * PI * 2, rr = Math.sqrt(jitter(fi * 1000 + i, 7)) * fo.r;
-      const x = fo.x + Math.cos(a) * rr, y = fo.y + Math.sin(a) * rr * .8;
-      if (Math.abs(x - riverXAt(y)) < 60 || x < 10 || x > W.w - 10 || y < 10 || y > W.h - 10) continue;
-      tree(c, x, y, 7 + jitter(i, 8) * 6, i);
-    }
-  });
-  // the city of Kadesh
+  // forests: a shaded floor; the trees themselves stand (see PROPS)
+  B.forests.forEach(fo => { const g = c.createRadialGradient(fo.x, fo.y, 0, fo.x, fo.y, fo.r); g.addColorStop(0, 'rgba(70,95,50,.35)'); g.addColorStop(1, 'rgba(70,95,50,0)'); c.fillStyle = g; c.beginPath(); c.ellipse(fo.x, fo.y, fo.r, fo.r * .8, 0, 0, PI * 2); c.fill(); });
+  // the city of Kadesh: in the terrain only the moat and the ground inside; the walls and buildings are drawn standing (see drawCity)
   const ct = B.city;
   c.fillStyle = '#2f7590'; c.beginPath(); c.roundRect(ct.x - 26, ct.y - 26, ct.w + 52, ct.h + 52, 30); c.fill();
   c.fillStyle = '#4a98ae'; c.beginPath(); c.roundRect(ct.x - 18, ct.y - 18, ct.w + 36, ct.h + 36, 24); c.fill();
   c.fillStyle = '#9a8a62'; c.beginPath(); c.roundRect(ct.x - 8, ct.y - 8, ct.w + 16, ct.h + 16, 10); c.fill();
-  c.fillStyle = '#7d6f50'; c.fillRect(ct.x, ct.y, ct.w, ct.h);
-  c.fillStyle = '#b6a477'; c.fillRect(ct.x + 10, ct.y + 10, ct.w - 20, ct.h - 20);
-  c.strokeStyle = '#4d4230'; c.lineWidth = 3; c.strokeRect(ct.x, ct.y, ct.w, ct.h);
-  c.fillStyle = '#5a4f38'; for (let x = ct.x; x < ct.x + ct.w; x += 12) { c.fillRect(x, ct.y - 3, 6, 5); c.fillRect(x, ct.y + ct.h - 2, 6, 5); }
-  for (let y = ct.y; y < ct.y + ct.h; y += 12) { c.fillRect(ct.x - 3, y, 5, 6); c.fillRect(ct.x + ct.w - 2, y, 5, 6); }
-  [[ct.x, ct.y], [ct.x + ct.w, ct.y], [ct.x, ct.y + ct.h], [ct.x + ct.w, ct.y + ct.h], [ct.x + ct.w / 2, ct.y], [ct.x + ct.w / 2, ct.y + ct.h]].forEach(([x, y]) => {
-    c.fillStyle = 'rgba(30,20,10,.35)'; c.fillRect(x - 10, y - 8, 24, 24); c.fillStyle = '#8c7d5a'; c.fillRect(x - 13, y - 13, 26, 26); c.fillStyle = '#a89868'; c.fillRect(x - 10, y - 10, 14, 14); c.strokeStyle = '#4d4230'; c.lineWidth = 2; c.strokeRect(x - 13, y - 13, 26, 26);
-  });
-  c.fillStyle = '#4a3a26'; c.fillRect(ct.x - 4, ct.y + ct.h / 2 - 12, 12, 24); // west gate
-  for (let gx = 0; gx < 6; gx++) for (let gy = 0; gy < 4; gy++) {
-    const bx = ct.x + 22 + gx * 27, by = ct.y + 22 + gy * 32, k = gx * 7 + gy; c.fillStyle = 'rgba(30,20,10,.35)'; c.fillRect(bx + 3, by + 3, 18, 20);
-    c.fillStyle = k % 3 === 0 ? '#cdbb8a' : k % 3 === 1 ? '#a89566' : '#bfae7e'; c.fillRect(bx, by, 18, 20); c.fillStyle = 'rgba(255,240,200,.5)'; c.fillRect(bx, by, 18, 4);
-  }
-  c.fillStyle = '#8a4a3a'; c.fillRect(ct.x + 70, ct.y + 55, 50, 50); c.fillStyle = '#c97a5a'; c.fillRect(ct.x + 76, ct.y + 61, 38, 38); c.fillStyle = '#e8c070'; c.fillRect(ct.x + 88, ct.y + 73, 14, 14);
+  c.fillStyle = '#b6a477'; c.fillRect(ct.x, ct.y, ct.w, ct.h);
   outlined(c, ct.name, ct.x + ct.w / 2, ct.y + ct.h + 46, 20, { fill: '#f8e9bf' });
-  // the Egyptian camp
+  // the Egyptian camp: trampled ground; shields and tents stand (see drawCamp)
   const cp = B.camp;
   c.fillStyle = 'rgba(210,190,140,.35)'; c.fillRect(cp.x, cp.y, cp.w, cp.h);
-  for (let x = cp.x; x <= cp.x + cp.w; x += 14) { shield(c, x, cp.y, 0); shield(c, x, cp.y + cp.h, 0); }
-  for (let y = cp.y; y <= cp.y + cp.h; y += 14) { shield(c, cp.x, y, 1); shield(c, cp.x + cp.w, y, 1); }
-  for (let i = 0; i < 14; i++) { const tx = cp.x + 18 + (i % 7) * 32, ty = i < 7 ? cp.y + 20 : cp.y + cp.h - 20; tent(c, tx, ty, 10, '#efe3c3'); }
-  tent(c, cp.x + 60, cp.y + cp.h / 2 + 6, 22, '#f3e6c0', true);
   outlined(c, cp.name, cp.x + cp.w / 2, cp.y - 18, 12, { fill: '#dce9ff' });
   // labels
   B.labels.forEach(l => outlined(c, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
@@ -259,6 +234,66 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   if (f.type === 'chariot') figChariot(c, f.side, s, i, moving, d === 'w' ? 'e' : d, step);
   else figInfantry(c, f.side, f.type === 'archers' || (f.type === 'infantry' && i % 3 === 2), s, i, d === 'w' ? 'e' : d, step);
   c.restore();
+}
+
+/* ---------------- standing scenery: drawn in the projected pass so it has height ---------------- */
+const PROPS = [];
+B.forests.forEach((fo, fi) => { const n = Math.floor(fo.r * fo.r / 900); for (let i = 0; i < n; i++) { const a = jitter(fi * 1000 + i, 6) * PI * 2, rr = Math.sqrt(jitter(fi * 1000 + i, 7)) * fo.r; const x = fo.x + Math.cos(a) * rr, y = fo.y + Math.sin(a) * rr * .8; if (Math.abs(x - riverXAt(y)) < 60 || x < 10 || x > W.w - 10 || y < 10 || y > W.h - 10) continue; PROPS.push({ kind: 'tree', x, y, r: 9 + jitter(i, 8) * 8, k: i }); } });
+for (let i = 0; i < 45; i++) { const x = (i * 173 + 100) % W.w, y = (i * 119 + 70) % W.h; if (Math.abs(x - riverXAt(y)) < 65) continue; PROPS.push({ kind: 'tree', x, y, r: 8 + jitter(i, 9) * 5, k: i }); }
+{ const cp = B.camp; for (let x = cp.x; x <= cp.x + cp.w; x += 14) { PROPS.push({ kind: 'shield', x, y: cp.y }); PROPS.push({ kind: 'shield', x, y: cp.y + cp.h }); } for (let y = cp.y + 14; y < cp.y + cp.h; y += 14) { PROPS.push({ kind: 'shield', x: cp.x, y }); PROPS.push({ kind: 'shield', x: cp.x + cp.w, y }); }
+  for (let i = 0; i < 14; i++) PROPS.push({ kind: 'tent', x: cp.x + 18 + (i % 7) * 32, y: i < 7 ? cp.y + 28 : cp.y + cp.h - 14, s: 10 }); PROPS.push({ kind: 'tent', x: cp.x + 60, y: cp.y + cp.h / 2 + 16, s: 22, royal: true }); }
+PROPS.push({ kind: 'city', x: B.city.x + B.city.w / 2, y: B.city.y + B.city.h });
+function drawProp(c, p) {
+  const q = P(p.x, p.y), s = q.s, k = q.k;
+  if (p.kind === 'tree') {
+    const r = p.r * s; c.fillStyle = 'rgba(30,30,15,.28)'; c.beginPath(); c.ellipse(q.x + r * .3, q.y, r * .9, r * .35 * k, 0, 0, PI * 2); c.fill();
+    c.fillStyle = '#5a3d22'; c.fillRect(q.x - r * .12, q.y - r * .9, r * .24, r * .9);
+    c.fillStyle = p.k % 3 === 0 ? '#3f5c30' : '#4a6a36'; c.beginPath(); c.arc(q.x, q.y - r * 1.4, r * .95, 0, PI * 2); c.fill();
+    c.fillStyle = p.k % 2 ? '#64854a' : '#5c7d42'; c.beginPath(); c.arc(q.x - r * .25, q.y - r * 1.65, r * .6, 0, PI * 2); c.fill();
+    c.fillStyle = '#89a85e'; c.beginPath(); c.arc(q.x - r * .4, q.y - r * 1.85, r * .25, 0, PI * 2); c.fill();
+  } else if (p.kind === 'shield') {
+    c.fillStyle = '#3b2c1a'; c.fillRect(q.x - 5 * s, q.y - 9 * s, 10 * s, 9 * s); c.fillStyle = '#d9c38a'; c.beginPath(); c.roundRect(q.x - 4 * s, q.y - 8.5 * s, 8 * s, 7.5 * s, 2 * s); c.fill();
+  } else if (p.kind === 'tent') {
+    const z = p.s * s; c.fillStyle = 'rgba(30,20,10,.3)'; c.beginPath(); c.ellipse(q.x + z * .3, q.y, z * 1.2, z * .4 * k, 0, 0, PI * 2); c.fill();
+    c.fillStyle = p.royal ? '#f3e6c0' : '#efe3c3'; c.beginPath(); c.moveTo(q.x - z, q.y); c.lineTo(q.x, q.y - z * 1.5); c.lineTo(q.x + z, q.y); c.closePath(); c.fill();
+    c.fillStyle = 'rgba(120,90,40,.45)'; c.beginPath(); c.moveTo(q.x, q.y - z * 1.5); c.lineTo(q.x + z, q.y); c.lineTo(q.x + z * .2, q.y); c.closePath(); c.fill(); c.strokeStyle = '#6b5636'; c.lineWidth = 1; c.beginPath(); c.moveTo(q.x - z, q.y); c.lineTo(q.x, q.y - z * 1.5); c.lineTo(q.x + z, q.y); c.stroke();
+    if (p.royal) { c.fillStyle = '#2f6fc4'; c.fillRect(q.x - z * .5, q.y - z * .6, z, z * .14); c.fillStyle = '#e9c77a'; c.fillRect(q.x - z * .5, q.y - z * .4, z, z * .14); c.strokeStyle = '#3b2c1a'; c.lineWidth = 2; c.beginPath(); c.moveTo(q.x, q.y - z * 1.5); c.lineTo(q.x, q.y - z * 2.4); c.stroke(); c.fillStyle = '#2f6fc4'; c.beginPath(); c.moveTo(q.x, q.y - z * 2.4); c.lineTo(q.x + z * .9, q.y - z * 2.15); c.lineTo(q.x, q.y - z * 1.9); c.closePath(); c.fill(); }
+  } else if (p.kind === 'city') drawCity(c);
+}
+function drawCity(c) {
+  const ct = B.city, H = 26, TH2 = 40;                                   // wall height and tower height in world units
+  const wallTop = (x, y) => P(x, y - H), base = (x, y) => P(x, y);
+  const quad = (a, b, c2, d, fill, stroke) => { c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(b.x, b.y); c.lineTo(c2.x, c2.y); c.lineTo(d.x, d.y); c.closePath(); c.fillStyle = fill; c.fill(); if (stroke) { c.strokeStyle = stroke; c.lineWidth = 1; c.stroke(); } };
+  const x0 = ct.x, x1 = ct.x + ct.w, y0 = ct.y, y1 = ct.y + ct.h, xm = ct.x + ct.w / 2;
+  // walls: far (north) face is hidden by the top; draw west, east, then south face in front
+  const faceW = [base(x0, y0), base(x0, y1), wallTop(x0, y1), wallTop(x0, y0)], faceE = [base(x1, y0), base(x1, y1), wallTop(x1, y1), wallTop(x1, y0)];
+  quad(...faceW, '#8a7a56', '#4d4230'); quad(...faceE, '#746648', '#4d4230');
+  // buildings inside (seen over the walls): rows of flat-roofed houses, taller toward the middle, and the citadel
+  for (let gy = 3; gy >= 0; gy--) for (let gx = 0; gx < 6; gx++) {
+    const bx = ct.x + 22 + gx * 27, by = ct.y + 22 + gy * 32 + 20, bw = 18, bd = 20, bh = 14 + ((gx * 7 + gy) % 3) * 5, k = gx * 7 + gy;
+    const fl = [base(bx, by), base(bx + bw, by), P(bx + bw, by - bh), P(bx, by - bh)]; quad(...fl, k % 3 === 0 ? '#b8a478' : k % 3 === 1 ? '#9a8760' : '#ab9a6e', '#5a4d35');
+    const rf = [P(bx, by - bh), P(bx + bw, by - bh), P(bx + bw, by - bd - bh), P(bx, by - bd - bh)]; quad(...rf, k % 3 === 0 ? '#d6c69a' : '#c4b382', '#5a4d35');
+    if (gx === 0 || k % 2) { const sd = [base(bx, by), P(bx, by - bh), P(bx, by - bd - bh), base(bx, by - bd)]; quad(...sd, '#7d6c4c'); }
+  }
+  // citadel / palace
+  { const bx = ct.x + 68, by = ct.y + 115, bw = 54, bd = 50, bh = 34; quad(base(bx, by), base(bx + bw, by), P(bx + bw, by - bh), P(bx, by - bh), '#8a4a3a', '#3a1a14'); quad(P(bx, by - bh), P(bx + bw, by - bh), P(bx + bw, by - bd - bh), P(bx, by - bd - bh), '#c97a5a', '#3a1a14'); quad(base(bx, by), P(bx, by - bh), P(bx, by - bd - bh), base(bx, by - bd), '#6a3a2c');
+    const tx = bx + 20, ty = by - 18, tw = 14, th = 22; quad(P(tx, ty - bh), P(tx + tw, ty - bh), P(tx + tw, ty - bh - th), P(tx, ty - bh - th), '#e8c070', '#5a4020'); quad(P(tx, ty - bh - th), P(tx + tw, ty - bh - th), P(tx + tw, ty - 14 - bh - th), P(tx, ty - 14 - bh - th), '#f3d9a0', '#5a4020'); }
+  // south wall face and gate
+  quad(base(x0, y1), base(x1, y1), wallTop(x1, y1), wallTop(x0, y1), '#a08c62', '#4d4230');
+  quad(wallTop(x0, y0), wallTop(x1, y0), wallTop(x1, y1), wallTop(x0, y1), 'rgba(0,0,0,0)');
+  // wall tops with crenellations
+  const crenel = (ax, ay, bx2, by2) => { const n = Math.round(Math.hypot(bx2 - ax, by2 - ay) / 12); for (let i = 0; i <= n; i++) { const x = ax + (bx2 - ax) * i / n, y = ay + (by2 - ay) * i / n, q = P(x, y - H), s = q.s; c.fillStyle = '#5a4f38'; c.fillRect(q.x - 2.5 * s, q.y - 5 * s, 5 * s, 5 * s); } };
+  crenel(x0, y1, x1, y1); crenel(x0, y0, x0, y1); crenel(x1, y0, x1, y1); crenel(x0, y0, x1, y0);
+  // walkway on the wall top (near face)
+  quad(wallTop(x0, y1), wallTop(x1, y1), P(x1, y1 - 10 - H), P(x0, y1 - 10 - H), '#b0a078');
+  // gate on the west wall
+  { const gy = y0 + ct.h / 2, q0 = base(x0 - 3, gy + 12), q1 = base(x0 - 3, gy - 12), q2 = P(x0 - 3, gy - 12 - H * .7), q3 = P(x0 - 3, gy + 12 - H * .7); quad(q0, q1, q2, q3, '#3a2a1c'); }
+  // towers at corners and mid-walls
+  [[x0, y0], [x1, y0], [x0, y1], [x1, y1], [xm, y0], [xm, y1]].forEach(([x, y]) => {
+    const w = 13, d = 13, b0 = base(x - w, y + d), b1 = base(x + w, y + d), t0 = P(x - w, y + d - TH2), t1 = P(x + w, y + d - TH2), t2 = P(x + w, y - d - TH2), t3 = P(x - w, y - d - TH2);
+    quad(b0, base(x - w, y - d), t3, t0, '#9c8c66', '#4d4230'); quad(base(x + w, y - d), b1, t1, t2, '#7d6e4c', '#4d4230'); quad(b0, b1, t1, t0, '#a89868', '#4d4230'); quad(t0, t1, t2, t3, '#c4b386', '#4d4230');
+    const n = 4; for (let i = 0; i <= n; i++) { const q = P(x - w + 2 * w * i / n, y + d - TH2), s = q.s; c.fillStyle = '#5a4f38'; c.fillRect(q.x - 2 * s, q.y - 5 * s, 4 * s, 5 * s); }
+  });
 }
 
 /* ---------------- formations ---------------- */
@@ -470,7 +505,11 @@ function render() {
       }
     } else ctx.drawImage(TER, view.x * TS, view.y * TS, vw * TS, vh * TS, 0, 0, view.w, view.h);
   }
-  formations.slice().sort((a, b) => a.y - b.y).forEach(f => drawFormation(ctx, f));
+  const scene = [];
+  const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
+  PROPS.forEach(p => { if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
+  formations.forEach(f => scene.push({ y: f.y, f }));
+  scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : drawFormation(ctx, o.f));
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
@@ -492,7 +531,9 @@ function render() {
 }
 function buildMiniBase() {
   MINIBASE = document.createElement('canvas'); MINIBASE.width = mini.width; MINIBASE.height = mini.height;
-  MINIBASE.getContext('2d').drawImage(TER, 0, 0, mini.width, mini.height);
+  const g = MINIBASE.getContext('2d'); g.drawImage(TER, 0, 0, mini.width, mini.height);
+  const sx = mini.width / W.w, sy = mini.height / W.h; g.fillStyle = '#4a6a36'; PROPS.forEach(p => { if (p.kind === 'tree') g.fillRect(p.x * sx - 1, p.y * sy - 1, 2, 2); });
+  g.fillStyle = '#8c7d5a'; g.fillRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy); g.strokeStyle = '#4d4230'; g.lineWidth = 1; g.strokeRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy);
 }
 function drawMini() {
   const w = mini.width, h = mini.height, sx = w / W.w, sy = h / W.h;
