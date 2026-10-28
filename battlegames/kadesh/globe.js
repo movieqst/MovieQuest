@@ -31,7 +31,9 @@ window.KadeshGlobe = (() => {
     g.save(); g.beginPath(); PIECES.forEach(pc => { pc.forEach((pt, i) => { const [px, py] = toTex(pt); i ? g.lineTo(px, py) : g.moveTo(px, py); }); g.closePath(); }); g.clip();
     g.filter = 'blur(16px)'; g.fillStyle = SAND; g.globalAlpha = .92;
     DESERTS.forEach(d => { g.beginPath(); smoothPath(g, d.map(toTex)); g.fill(); });
-    g.globalAlpha = 1; g.filter = 'blur(10px)'; g.fillStyle = '#e9eef2'; ICE.forEach(d => { g.beginPath(); smoothPath(g, d.map(toTex)); g.fill(); });
+    g.globalAlpha = 1; g.filter = 'none'; g.strokeStyle = '#2f7590'; g.lineWidth = 2.2; g.lineCap = 'round'; g.lineJoin = 'round';
+    RIVERS.forEach(r => { g.beginPath(); r.forEach((pt, i) => { const [px, py] = toTex(pt); i ? g.lineTo(px, py) : g.moveTo(px, py); }); g.stroke(); });
+    g.filter = 'blur(10px)'; g.fillStyle = '#e9eef2'; ICE.forEach(d => { g.beginPath(); smoothPath(g, d.map(toTex)); g.fill(); });
     g.fillRect(0, (90 + 60) / 180 * TH, TW, TH); // Antarctica
     g.filter = 'none'; g.restore();
     // a little relief: lighter uplands band, darker near the poles
@@ -80,6 +82,20 @@ window.KadeshGlobe = (() => {
     [[-71,-18],[-69,-18],[-68,-28],[-71,-28]],                                                                            // Atacama
     [[-120,42],[-112,42],[-104,32],[-104,26],[-110,24],[-116,30],[-120,37]],                                              // North American deserts
     [[42,10],[48,8],[51,11],[48,4],[42,6]]                                                                                // Horn of Africa
+  ];
+  // Main rivers (lon,lat), rough courses
+  const RIVERS = [
+    [[31.2,31.5],[31.2,30.0],[31.1,28.0],[30.8,26.5],[32.6,25.7],[32.9,24.1],[32.9,22.0],[31.3,21.0],[30.5,19.6],[33.0,18.5],[33.8,17.5],[33.0,16.0],[32.5,15.6]],   // Nile
+    [[32.5,15.6],[33.5,13.5],[34.5,12.0],[35.5,10.0],[36.5,8.5]],                                                                                                      // Blue Nile
+    [[32.5,15.6],[31.5,12.0],[30.5,9.5],[30.0,6.0],[31.5,3.5],[32.5,1.0]],                                                                                            // White Nile
+    [[38.5,39.5],[38.0,37.8],[38.8,36.8],[39.5,36.0],[40.5,35.0],[41.8,34.3],[43.0,33.5],[44.3,32.5],[45.5,31.5],[46.5,31.0],[47.5,30.5],[48.5,30.0]],                 // Euphrates
+    [[40.0,40.0],[41.0,38.5],[42.2,37.2],[43.0,36.3],[43.8,35.5],[44.2,34.5],[44.4,33.3],[45.5,32.5],[46.5,31.5],[47.5,30.5]],                                         // Tigris
+    [[36.4,33.9],[36.5,34.3],[36.52,34.56],[36.6,35.0],[36.2,35.6],[36.0,36.3],[36.2,36.6]],                                                                           // Orontes
+    [[35.8,33.2],[35.6,32.5],[35.55,31.8],[35.5,31.4]],                                                                                                               // Jordan
+    [[38.5,39.0],[36.5,38.5],[34.5,38.5],[33.5,39.5],[34.5,40.5],[35.5,41.0],[36.0,41.7]],                                                                            // Kizilirmak (Halys)
+    [[40.5,38.0],[42.5,38.5],[44.0,39.5],[46.5,40.5],[48.5,39.7],[49.5,39.3]],                                                                                        // Aras
+    [[21.5,43.0],[25.0,43.7],[28.0,44.2],[29.5,45.0]],                                                                                                                // Danube (lower)
+    [[73.0,34.0],[72.5,32.0],[71.0,29.5],[69.5,27.5],[68.5,25.5],[67.8,24.0]]                                                                                         // Indus
   ];
   const ICE = [ [[-55,60],[-45,60],[-20,70],[-18,80],[-30,83],[-60,82],[-70,78]] ];                                      // Greenland
   const SAND = '#cdb57c', SAND_EDGE = 'rgba(205,181,124,0)';
@@ -142,6 +158,13 @@ window.KadeshGlobe = (() => {
     if (!RASTER) { // zoomed in: paint the deserts over the vector land as well
       c.save(); c.fillStyle = SAND; c.globalAlpha = .85;
       DESERTS.forEach(d => { const pts = d.map(([x, y]) => proj(x * D, Math.cos(y * D), Math.sin(y * D))).filter(Boolean); if (pts.length < 3) return; c.beginPath(); const n = pts.length; for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; i ? c.quadraticCurveTo(a[0], a[1], mx, my) : c.moveTo(mx, my); } c.closePath(); c.fill(); });
+      c.restore();
+    }
+    if (!RASTER) {
+      c.save(); c.strokeStyle = '#2f7590'; c.lineWidth = Math.max(1.5, R / 1400); c.lineCap = 'round'; c.lineJoin = 'round';
+      RIVERS.forEach(r => { c.beginPath(); let pen = false; r.forEach(([x, y]) => { const p = proj(x * D, Math.cos(y * D), Math.sin(y * D)); if (p) { pen ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); pen = true; } else pen = false; }); c.stroke(); });
+      c.strokeStyle = 'rgba(140,210,220,.6)'; c.lineWidth = Math.max(.6, R / 4200);
+      RIVERS.forEach(r => { c.beginPath(); let pen = false; r.forEach(([x, y]) => { const p = proj(x * D, Math.cos(y * D), Math.sin(y * D)); if (p) { pen ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); pen = true; } else pen = false; }); c.stroke(); });
       c.restore();
     }
     // terrain tint near the target when close
