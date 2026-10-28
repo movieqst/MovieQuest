@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Battle of Kadesh — Historical Reenactment & Command</title>
+<style>
+  :root{--gold:#e9c77a;--ink:#09131a;--panel:#101f29;--line:#38505c;--blue:#3985d7;--red:#d44c3e;--text:#edf1ed}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#071017;color:var(--text);font:14px/1.4 system-ui,Segoe UI,Arial,sans-serif}
+  body{display:flex;flex-direction:column;min-height:600px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;background:#0b1821;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .brand{font-family:Georgia,serif;color:var(--gold);font-size:clamp(17px,2vw,24px);letter-spacing:.08em}
+  .subtitle{color:#9fb1b8;font-size:12px;margin-top:2px}
+  .top-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  button,select{cursor:pointer;border:1px solid #526873;border-radius:6px;padding:7px 10px;background:#172a36;color:#f2f4ef;font-weight:600;font-size:13px}
+  button:hover{filter:brightness(1.18)} button.primary{background:#214e75;border-color:#4c94c7} button.active{outline:2px solid var(--gold)} button:disabled{opacity:.4;cursor:default}
+  select{padding:6px 8px}
+  #clock{font:600 13px ui-monospace,Menlo,monospace;color:var(--gold);padding:0 6px}
+  main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:10px;padding:10px;flex:1;min-height:0}
+  .battle-panel{position:relative;min-height:480px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#b5a26c}
+  canvas#battle{position:absolute;inset:0;display:block;width:100%;height:100%;outline:none;touch-action:none}
+  .hud{position:absolute;z-index:2;background:#091720ee;border:1px solid #435a64;border-radius:7px;padding:8px 10px;backdrop-filter:blur(4px)}
+  #caption{left:12px;top:12px;max-width:min(62%,520px);display:none}
+  #caption.show{display:block}
+  #capTitle{font:bold 15px Georgia,serif;color:var(--gold)} #capText{margin:4px 0 6px;font-size:13px;color:#e4ebe6}
+  #minimap-wrap{right:12px;top:12px;width:200px;padding:6px}
+  #minimap{width:100%;height:141px;border:1px solid #60747a;border-radius:4px;cursor:crosshair;display:block}
+  #zoomBox{position:absolute;left:12px;bottom:44px;z-index:2;display:flex;gap:4px}
+  #zoomBox button{padding:4px 9px}
+  #timeline{position:absolute;left:12px;right:12px;bottom:12px;height:22px;z-index:2;background:#091720cc;border:1px solid #435a64;border-radius:11px;display:none}
+  body[data-mode="watch"] #timeline{display:block}
+  #timeline .tick{position:absolute;top:4px;width:12px;height:12px;margin-left:-6px;padding:0;border-radius:50%;background:#e9c77a;border:2px solid #09131a}
+  #timeline .tick.on{background:#fff;box-shadow:0 0 0 3px #e9c77a66}
+  #timeline i{position:absolute;top:2px;width:3px;height:16px;background:#ff5040;margin-left:-1px;border-radius:2px;pointer-events:none}
+  .tiny{font-size:11px;color:#aebdc1}.muted{color:#8fa1a8;font-size:12px}
+  .chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:1px 6px;border-radius:9px;border:1px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);vertical-align:middle;white-space:nowrap}
+  .side{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:auto;padding-right:2px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px;flex-shrink:0}
+  h2{font:bold 15px Georgia,serif;color:var(--gold);margin:0 0 8px}
+  h4{margin:14px 0 6px;color:var(--gold);font-family:Georgia,serif}
+  .keyrow{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;font-size:11px;color:#bfccd0;margin:5px 0}
+  .sel b{display:block;margin-bottom:2px}.sel .note{font-size:12px;color:#c9d6d8;margin:6px 0 0}.sel+.sel{margin-top:10px;padding-top:10px;border-top:1px solid #233944}
+  .bar{height:6px;background:#0b141a;border-radius:3px;margin:6px 0 4px;overflow:hidden}.bar i{display:block;height:100%}
+  #eventList{display:flex;flex-direction:column;gap:3px}
+  #eventList .ev{text-align:left;padding:5px 8px;font-weight:500;font-size:12px;background:#0c1921;display:flex;gap:8px}
+  #eventList .ev span{color:var(--gold);font-family:ui-monospace,monospace}
+  #eventList .ev.on{background:#214e75;border-color:#4c94c7}
+  .orders{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  #log div{font-size:11px;color:#aebdc1;padding:2px 0;border-bottom:1px dashed #233944}
+  .ucard{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:center;border:1px solid #354c57;border-radius:6px;padding:6px;background:#0c1921;margin:6px 0}
+  .ucard canvas{border-radius:4px;display:block}.ucard b{font-size:12px}
+  #sources{padding-left:16px;font-size:11px;color:#bfccd0}#sources li{margin:4px 0}
+  details summary{cursor:pointer;color:var(--gold);font-family:Georgia,serif;font-weight:bold}
+  body[data-mode="watch"] .cmd-only, body[data-mode="intro"] .cmd-only{display:none}
+  body[data-mode="command"] .watch-only, body[data-mode="intro"] .watch-only{display:none}
+  /* overlays */
+  .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px;background:linear-gradient(to top,rgba(5,10,14,.85) 0%,rgba(5,10,14,.35) 55%,rgba(5,10,14,0) 100%)}
+  .overlay.show{display:flex}
+  .overlay.center{align-items:center;background:rgba(5,10,14,.6)}
+  .dialog{width:min(820px,100%);max-height:88%;overflow:auto;background:#0b1822f2;border:1px solid #4a6472;border-radius:12px;padding:18px 22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fb1b8}
+  .dialog h1{font:bold clamp(20px,2.6vw,30px) Georgia,serif;color:var(--gold);margin:4px 0 2px;letter-spacing:.04em}
+  .dialog h3{font:bold 20px Georgia,serif;color:var(--gold);margin:0 0 8px}
+  #introSub{color:#c9d6d8;font-style:italic;margin-bottom:8px}
+  #introLines p,#debriefBody p,#explainBody{font-size:15px;line-height:1.5;margin:8px 0;color:#eef3ee}
+  .lead{font-size:16px;color:var(--gold)}
+  .progress{height:3px;background:#1d2f3a;border-radius:2px;margin:10px 0 12px;overflow:hidden}.progress i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s linear}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .actions .spacer{flex:1}
+  .big{padding:12px 18px;font-size:15px}
+  .tablewrap{max-height:220px;overflow:auto;margin:8px 0;border:1px solid #233944;border-radius:6px}
+  table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:4px 8px;border-bottom:1px solid #233944}th{color:var(--gold)}
+  footer{padding:6px 14px;color:#7f969f;font-size:11px;border-top:1px solid #233944;background:#09131a}
+  @media(max-width:900px){main{grid-template-columns:1fr}.side{overflow:visible}.battle-panel{height:66vh;min-height:420px}#caption{max-width:calc(100% - 230px)}}
+  @media(max-width:600px){header{align-items:flex-start;flex-direction:column}.battle-panel{height:70vh}#minimap-wrap{width:140px}#minimap{height:99px}#caption{max-width:calc(100% - 170px);font-size:12px}.dialog{padding:14px}}
+</style>
+</head>
+<body data-mode="intro">
+<header>
+  <div><div class="brand">BATTLE OF KADESH</div><div class="subtitle">Historical reenactment & command · c. 1274 BCE · runs locally, no install</div></div>
+  <div class="top-actions">
+    <button id="introBtn">📜 Intro</button>
+    <button id="watchBtn" class="primary">▶ Watch reenactment</button>
+    <button id="commandBtn" class="primary">⚔ Take command</button>
+    <button id="pauseBtn">Ⅱ Pause</button>
+    <select id="speedSel" title="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
+    <span id="clock">00:00</span>
+    <button id="followBtn" class="active" title="Camera follows the action (F)">🎥 Follow</button>
+    <button id="explainBtn" title="Pause and explain this moment (E)">💡 Explain this moment</button>
+    <button id="voiceBtn" title="Spoken narration using your browser's voice">🔇 Voice off</button>
+    <button id="resetBtn">↻ Restart</button>
+  </div>
+</header>
+<main>
+  <section class="battle-panel" id="battlePanel">
+    <canvas id="battle" aria-label="Scrollable battlefield"></canvas>
+    <div class="hud" id="caption"><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
+    <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Red box = visible area · click to jump · wheel to zoom</div></div>
+    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button></div>
+    <div id="timeline" title="Timeline: click a marker to jump to that moment"></div>
+
+    <div class="overlay" id="intro">
+      <div class="dialog">
+        <div class="kicker" id="introKicker"></div>
+        <h1 id="introTitle"></h1>
+        <div id="introSub"></div>
+        <div id="introLines"></div>
+        <div class="progress"><i id="introBar"></i></div>
+        <div class="actions" id="introNav">
+          <button id="introBack">◀ Back</button>
+          <button id="introPause">Ⅱ Pause</button>
+          <button id="introNext" class="primary">Next ▶</button>
+          <span class="spacer"></span>
+          <button id="introSkip">Skip intro ⏭</button>
+        </div>
+        <div class="actions" id="introChoice" style="display:none">
+          <button id="chooseWatch" class="primary big">▶ Watch the reenactment</button>
+          <button id="chooseCommand" class="primary big">⚔ Take command</button>
+          <span class="spacer"></span>
+          <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="explain">
+      <div class="dialog">
+        <div class="kicker">Explain this moment</div>
+        <h3 id="explainTitle"></h3>
+        <p id="explainBody"></p>
+        <div class="actions"><button id="explainClose" class="primary">Continue ▶</button></div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="debrief">
+      <div class="dialog">
+        <div class="kicker">Historical debrief</div>
+        <h3 id="debriefTitle"></h3>
+        <div id="debriefBody"></div>
+        <div class="actions" style="margin-top:12px">
+          <button id="debriefWatch" class="primary">▶ Watch again</button>
+          <button id="debriefCommand" class="primary">⚔ Take command</button>
+          <span class="spacer"></span>
+          <button id="debriefIntro">📜 Back to the introduction</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="side">
+    <section class="card">
+      <h2>Battlefield briefing</h2>
+      <p class="muted" id="briefMeta"></p>
+      <div id="confKey"></div>
+    </section>
+    <section class="card">
+      <h2>Selected formation</h2>
+      <div id="selection"></div>
+    </section>
+    <section class="card watch-only">
+      <h2>Battle timeline</h2>
+      <div id="eventList"></div>
+    </section>
+    <section class="card cmd-only">
+      <h2>Orders</h2>
+      <div class="orders"><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back to camp</button></div>
+      <p class="muted">Click a formation, Shift-click to add more, right-click the ground to move. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
+    </section>
+    <section class="card">
+      <h2>Battle log</h2>
+      <div id="log"></div>
+    </section>
+    <section class="card">
+      <h2>The armies</h2>
+      <div id="armies"></div>
+    </section>
+    <section class="card">
+      <details><summary>Sources & further reading</summary><ul id="sources"></ul></details>
+    </section>
+    <section class="card">
+      <h2>Controls</h2>
+      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>+ / −:</b> zoom.<br><b>Voice:</b> uses your browser's built-in speech. Recorded narration can be added later per line.</p>
+    </section>
+  </aside>
+</main>
+<footer>Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</footer>
+<script src="scenario.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
