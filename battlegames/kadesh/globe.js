@@ -156,8 +156,9 @@ window.KadeshGlobe = (() => {
     cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: KADESH.lon, lat0: 24, R: 100, labels: 0, ox: 0, oy: 0 }; lastT = 0;
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
   }
-  function begin() { if (!st) return; st.phase = 'spin'; st.spinFrom = st.lon0; t0 = lastT; }
-  function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = lastT; if (cb.onSpun) cb.onSpun(); } else if (st.phase === 'dive') { st.phase = 'fade'; t0 = lastT; } }
+  const nowS = () => performance.now() / 1000;   // same time base as the animation-frame timestamps
+  function begin() { if (!st) return; st.phase = 'spin'; st.spinFrom = st.lon0; t0 = nowS(); }
+  function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = nowS(); if (cb.onSpun) cb.onSpun(); } else if (st.phase === 'dive') { st.phase = 'fade'; t0 = nowS(); } }
   function stop() { cancelAnimationFrame(raf); raf = 0; st = null; if (cv) { cv.style.display = 'none'; } window.removeEventListener('resize', size); }
   const active = () => !!st;
   function debugFrame(lon0, lat0) { if (!st) return; st.lon0 = lon0; st.lat0 = lat0; draw(st, 0); }

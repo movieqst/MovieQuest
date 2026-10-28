@@ -15,7 +15,7 @@ const PI = Math.PI;
 const view = { x: 0, y: 0, w: 1000, h: 650, z: 1.25 };
 const cam  = { tx: null, ty: null, follow: true };
 let mode = 'intro';             // intro | watch | command
-let paused = false, speed = 1, simTime = 0, acc = 0, lastFrame = 0, wall = 0;
+let paused = false, cinematic = false, speed = 1, simTime = 0, acc = 0, lastFrame = 0, wall = 0;
 let formations = [], byId = {};
 let eventIndex = 0, currentEvent = null, aiFlags = {}, battleOver = null, fastForward = false;
 let selected = new Set();
@@ -540,15 +540,22 @@ function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = 
 function startMode(m) {
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
-  document.body.dataset.mode = m;
-  if (m === 'watch') { caption(S.events[0].title, S.events[0].text, S.events[0].tag, false); }
-  else { cmdCaption('Command mode', 'start', 'reconstruction', { x: 1100, y: 600 }); }
+  document.body.dataset.mode = m; $('caption').classList.remove('show');
   renderTimeline(); renderSelection();
+  const begin = () => {
+    cinematic = false;
+    if (m === 'watch') caption(S.events[0].title, S.events[0].text, S.events[0].tag, false);
+    else cmdCaption('Command mode', 'start', 'reconstruction', { x: 1100, y: 600 });
+  };
+  // Every start opens on the globe: one turn, then the dive to the Orontes, then the battle begins. Click the globe to skip.
+  if (G && window.KADESH_WORLD) { cinematic = true; view.x = 700; view.y = 300; G.start($('globe'), { onSpun: () => {}, onDone: begin }); G.begin(); }
+  else begin();
 }
+$('globe').addEventListener('click', () => { if (G && G.active()) G.skip(); });
 function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
-function togglePause() { if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
+function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
 function showDebrief() {
   Narr.stop(); const d = $('debrief');
   let head, body;
@@ -695,7 +702,7 @@ function tick(t) {
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); } }
       $('introBar').style.width = Math.min(100, frac * 100) + '%';
     }
-  } else if (!paused && !battleOver) {
+  } else if (!paused && !battleOver && !cinematic) {
     acc += dt * speed;
     while (acc >= DT) {
       // In Watch mode, hold at a chapter boundary while the narrator is still speaking the previous one.
