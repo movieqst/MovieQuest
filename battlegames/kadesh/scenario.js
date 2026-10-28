@@ -165,7 +165,7 @@ window.KADESH_SCENARIO = {
       title: 'How to read this reenactment',
       media: [
         { at: 0,  file: '16-papyrus-sallier.jpg', caption: 'A papyrus copy of the Poem of Kadesh, written about a century after the battle.', ref: 'Papyrus Sallier III, British Museum EA 10181' },
-        { at: 9,  file: '17-treaty-tablet.jpg', caption: 'The peace treaty of c. 1259 BCE on a clay tablet from Hattusa.', ref: 'Istanbul Archaeology Museums' }
+        { at: 9,  file: '17-treaty-tablet.jpg', caption: 'The peace treaty of c. 1259 BCE, the Hittite copy on a clay tablet in Akkadian, found at Hattusa in 1906.', ref: 'Museum of the Ancient Orient, Istanbul', credit: 'Photo: Osama Shukir Muhammed Amin, Wikimedia Commons, CC BY-SA 4.0' }
       ],
       focus: { x: 1250, y: 900 }, zoom: .6,
       markers: [],
