@@ -781,11 +781,16 @@ function toggleOverview() {
   else { overview = { x: view.x, y: view.y, z: view.z }; view.z = Math.min(view.w / W.w, view.h * TR() / W.h); view.x = 0; view.y = 0; }
   clampView(); manualCamera(); $('battlePanel').classList.toggle('overview', !!overview);
 }
+function setBig(on) { document.body.classList.toggle('bigmap', on); $('fsBtn').classList.toggle('active', on); setTimeout(resize, 50); }
 function toggleFullscreen() {
   const el = $('battlePanel');
-  if (document.fullscreenElement) { document.exitFullscreen && document.exitFullscreen(); }
-  else if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+  if (document.fullscreenElement) { document.exitFullscreen && document.exitFullscreen(); return; }
+  if (document.body.classList.contains('bigmap')) { setBig(false); return; }
+  // Real fullscreen when the browser allows it; otherwise (embedded previews) expand the map to fill the window.
+  const p = el.requestFullscreen ? el.requestFullscreen() : Promise.reject();
+  p.catch(() => setBig(true));
 }
+window.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('bigmap')) setBig(false); });
 document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggle('active', !!document.fullscreenElement); setTimeout(resize, 50); });
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;

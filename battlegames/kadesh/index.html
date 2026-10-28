@@ -98,6 +98,8 @@
   .refs{padding-left:18px}.refs li{margin:8px 0;font-size:14px}
   .battle-panel.overview canvas#battle{cursor:crosshair}
   .battle-panel:fullscreen{border-radius:0;border:0;background:#071017}
+  body.bigmap .battle-panel{position:fixed;inset:0;z-index:50;border-radius:0;border:0;min-height:0}
+  body.bigmap #fsBtn::after{content:' (Esc to exit)'}
   #voiceStatus{color:#ffb3a7;max-width:260px}
   .progress{height:3px;background:#1d2f3a;border-radius:2px;margin:10px 0 12px;overflow:hidden}.progress i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s linear}
   .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
