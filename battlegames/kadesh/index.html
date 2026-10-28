@@ -35,6 +35,16 @@
   .dialog.intro:hover{background:rgba(11,24,34,.7);border-color:rgba(74,100,114,.7)}
   #capText,#introLines p,#introSub,.mcap,.kicker,#capTitle,.dialog.intro h1{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
   #capTitle,.dialog.intro h1{text-shadow:0 1px 0 #5a4310,0 2px 8px #000,0 0 12px #000}
+  .hidden-controls{display:none}
+  .sep{width:1px;height:22px;background:#2c4452;margin:0 4px}
+  #voiceWrap{position:relative}
+  #voicePop{display:none;position:absolute;right:0;top:36px;z-index:20;background:#0b1822f6;border:1px solid #4a6472;border-radius:8px;padding:10px;min-width:230px;flex-direction:column;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  #voicePop.show{display:flex}
+  #voicePop label{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;color:#aebdc1}
+  #voicePop select{padding:4px 6px}
+  .bulb{position:absolute;top:6px;right:34px;width:22px;height:22px;padding:0;border-radius:50%;background:rgba(9,23,32,.6);border:1px solid #526873;font-size:12px;line-height:20px;text-align:center}
+  .bulb:hover{background:#6b4f12;border-color:var(--gold)}
+  #caption{padding-right:62px}
   .xbtn{position:absolute;top:6px;right:6px;width:22px;height:22px;padding:0;border-radius:50%;background:rgba(9,23,32,.6);border:1px solid #526873;color:#cfd8dc;font-size:13px;line-height:20px;text-align:center}
   .xbtn:hover{background:#214e75}
   #caption{padding-right:34px}.dialog.intro{position:relative}
@@ -171,27 +181,36 @@
     <button id="introBtn">📜 Intro</button>
     <button id="watchBtn" class="primary">▶ Watch reenactment</button>
     <button id="commandBtn" class="primary">⚔ Take command</button>
+    <span class="sep"></span>
     <button id="pauseBtn">Ⅱ Pause</button>
     <button id="ffBtn" title="Fast forward: press for 2×, again for 4×, again for normal (.)">⏩ FF</button>
     <button id="skipBtn" class="watch-only" title="Skip to the next chapter (N)">⏭ Skip</button>
-    <select id="speedSel" title="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
     <span id="clock">00:00</span>
-    <button id="followBtn" class="active" title="Camera follows the action (F)">🎥 Follow</button>
-    <button id="explainBtn" title="Pause and explain this moment (E)">💡 Explain this moment</button>
-    <button id="voiceBtn" title="Spoken narration">🔇 Voice off</button>
-    <select id="voiceSel" title="Choose the narrator's voice"></select>
-    <select id="voiceRate" title="Narration speed"><option value="0.8">Voice 0.8×</option><option value="1">Voice 1×</option><option value="1.1" selected>Voice 1.1×</option><option value="1.2">Voice 1.2×</option><option value="1.3">Voice 1.3×</option><option value="1.5">Voice 1.5×</option><option value="2">Voice 2×</option></select>
-    <button id="resetBtn">↻ Restart</button>
-    <span class="tiny" id="voiceStatus"></span>
+    <span class="sep"></span>
+    <div id="voiceWrap">
+      <button id="voiceMenuBtn" title="Narration: on/off, narrator, speed">🔊 Voice</button>
+      <div id="voicePop">
+        <button id="voiceBtn" title="Spoken narration">🔇 Voice off</button>
+        <label>Narrator <select id="voiceSel" title="Choose the narrator's voice"></select></label>
+        <label>Speed <select id="voiceRate" title="Narration speed"><option value="0.8">0.8×</option><option value="1">1×</option><option value="1.1" selected>1.1×</option><option value="1.2">1.2×</option><option value="1.3">1.3×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+        <span class="tiny" id="voiceStatus"></span>
+      </div>
+    </div>
+    <span class="hidden-controls">
+      <select id="speedSel"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
+      <button id="followBtn" class="active">Follow</button>
+      <button id="explainBtn">Explain</button>
+      <button id="resetBtn">Restart</button>
+    </span>
   </div>
 </header>
 <main>
   <section class="battle-panel" id="battlePanel">
     <canvas id="battle" aria-label="Scrollable battlefield"></canvas>
-    <div class="hud" id="caption"><button class="xbtn" id="capX" title="Hide the narration text">✕</button><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
+    <div class="hud" id="caption"><button class="xbtn" id="capX" title="Hide the narration text">✕</button><button id="capExplain" class="bulb watch-only" title="Pause and explain this moment (E)">💡</button><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
     <button id="viewTextBtn" class="hud">📝 View text narration</button>
     <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
-    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="tiltBtn" title="Tilted view: near edge larger, far edge smaller">⛰ Tilt</button><button id="artBtn" class="active" title="Painted battlefield (click for the drawn map)">🎨 Art</button></div>
+    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="artBtn" class="active" title="Painted battlefield (click for the drawn map)">🎨 Art</button></div>
     <div id="timeline" title="Timeline: click anywhere to jump to that moment"></div>
     <div id="ctxMenu" class="hud"></div>
 
@@ -287,7 +306,7 @@
     </section>
     <section class="card">
       <h2>Controls</h2>
-      <p class="muted"><b>Select:</b> left-click a formation, or drag a box around several (Ctrl-drag adds to the selection).<br><b>Orders:</b> with formations selected, right-click anywhere on the map for the command menu. Attack, move, face, halt and fall back apply to every formation you have selected.<br><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>N:</b> next chapter · <b>. (full stop):</b> fast forward · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
+      <p class="muted"><b>Select:</b> left-click a formation, or drag a box around several (Ctrl-drag adds to the selection).<br><b>Orders:</b> with formations selected, right-click anywhere on the map for the command menu. Attack, move, face, halt and fall back apply to every formation you have selected.<br><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom. The camera follows the narration until you move it; press <b>F</b> to follow again.<br><b>Space:</b> pause · <b>R:</b> restart · <b>E:</b> explain this moment (also the 💡 on the caption) · <b>N:</b> next chapter · <b>. (full stop):</b> fast forward · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
     </section>
     <section class="card">
       <h2>Battlefield briefing</h2>

@@ -511,7 +511,7 @@ function resize() {
 }
 /* ---- tilted view: the map is seen from a camera leaning back, so the far (north) edge is smaller and the near (south) edge larger.
    P(x,y) maps world to screen (with the pixel scale s and vertical squash k at that depth); U(sx,sy) is the inverse. ---- */
-let TILT = .45; try { const t = localStorage.getItem('kadesh-tilt'); if (t === '0') TILT = 0; } catch (e) {}
+let TILT = .45;   // the battlefield is always shown tilted
 const SQ = .88;                                              // vertical foreshortening of sprites when tilted
 const tiltOn = () => TILT > 0;
 const TR = () => tiltOn() ? (TILT / Math.log(1 + TILT)) / SQ : 1;   // how much more map height the tilted window shows
@@ -645,7 +645,7 @@ const Narr = {
   },
   stop() { if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
-  set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
+  set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '\ud83d\udd0a Voice' : '\ud83d\udd07 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
   toggle() { this.set(!this.on); }
 };
 function speakSlide(sl) { Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', S.intro.indexOf(sl) + 1)); }
@@ -942,8 +942,7 @@ function exportLayoutGuide() {
   const a = document.createElement('a'); a.download = 'kadesh-layout-guide.png'; a.href = T.toDataURL('image/png'); a.click();
 }
 window.exportLayoutGuide = exportLayoutGuide;
-$('tiltBtn').classList.toggle('active', tiltOn());
-$('tiltBtn').onclick = () => { TILT = tiltOn() ? 0 : .45; try { localStorage.setItem('kadesh-tilt', TILT ? '1' : '0'); } catch (e) {} $('tiltBtn').classList.toggle('active', tiltOn()); clampView(); };
+
 mini.addEventListener('click', e => { const r = mini.getBoundingClientRect(); view.x = (e.clientX - r.left) / r.width * W.w - VW() / 2; view.y = (e.clientY - r.top) / r.height * W.h - VH() / 2; clampView(); manualCamera(); });
 window.addEventListener('keydown', e => {
   if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
@@ -957,6 +956,7 @@ window.addEventListener('keydown', e => {
   if (k === 'm') toggleOverview();
   if (k === 't') setTextOff(!textOff);
   if (k === 'n') skipChapter();
+  if (k === 'r') $('resetBtn').click();
   if (k === '>' || k === '.') $('ffBtn').click();
   if (k === 'g' && e.shiftKey) exportLayoutGuide();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
@@ -977,6 +977,9 @@ function skipChapter() { if (mode !== 'watch') return; const next = S.events.fin
 $('skipBtn').onclick = skipChapter;
 $('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); };
 $('explainBtn').onclick = showExplain;
+$('capExplain').onclick = e => { e.stopPropagation(); showExplain(); };
+$('voiceMenuBtn').onclick = e => { e.stopPropagation(); $('voicePop').classList.toggle('show'); };
+document.addEventListener('click', e => { if (!e.target.closest('#voiceWrap')) $('voicePop').classList.remove('show'); });
 $('voiceBtn').onclick = () => Narr.toggle();
 if (S.voices && S.voices.length) {
   const sel = $('voiceSel'); sel.innerHTML = S.voices.map(v => `<option value="${v.id}"${v.id === voiceId ? ' selected' : ''}>${v.name}</option>`).join('');
