@@ -644,7 +644,8 @@ function renderArmies() {
     { side: 'hittite', type: 'infantry', name: 'Hittite spearman', desc: 'Spear and shield, crested helmet. Never crossed the river at Kadesh.', tag: 'egyptian' },
     { side: 'hittite', type: 'archers', name: 'Allied archer', desc: 'Drawn from Muwatalli\u2019s vassals and allies.', tag: 'reconstruction' }
   ];
-  $('armies').innerHTML = units.map((u, i) => `<div class="ucard"><canvas id="uc${i}" width="84" height="60"></canvas><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}</div></div>`).join('');
+  const PN = u => (u.side === 'egypt' ? 'egyptian' : 'hittite') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'archers' ? 'archer' : 'spearman');
+  $('armies').innerHTML = units.map((u, i) => `<div class="ucard"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}</div></div>`).join('');
   units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 36 : 40, 54, 0, 1, u.type === 'chariot' ? 2.2 : 2.1);
     setTimeout(() => { c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 42 : 42, 56, 0, u.type === 'archers' ? 2 : 1, u.type === 'chariot' ? 1.8 : 2); }, 1500); });
 }
