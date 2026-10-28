@@ -83,7 +83,7 @@ window.KADESH_SCENARIO = {
       media: [
         { at: 0,  file: '03-ramesses-ii-statue.jpg', caption: 'Ramesses II enthroned between the god Amun and the goddess Mut, granite, from the temple of Amun at Karnak.', ref: 'Museo Egizio, Turin, Cat. 767', credit: 'Photo: Museo Egizio, Turin, Wikimedia Commons, CC0' },
         { at: 7,  file: '04-muwatalli-relief.jpg', caption: 'Muwatalli II, the only known portrait of the Hittite king: a weathered rock relief above the Ceyhan river at Sirkeli, in what was the kingdom\u2019s southern reach.', ref: 'Sirkeli H\u00f6y\u00fck, Adana province, Turkey', credit: 'Photo: Volker H\u00f6hfeld, Wikimedia Commons, CC BY-SA 4.0' },
-        { at: 14, file: '05-tell-nebi-mend.jpg', caption: 'Tell Nebi Mend, the mound of ancient Kadesh above the Orontes.', ref: 'Near Homs, Syria; excavated 1921\u201322 and 1975\u201395' },
+        { at: 14, file: '05-tell-nebi-mend.jpg', caption: 'A stele of Seti I, father of Ramesses, found at Tell Nebi Mend, the mound of ancient Kadesh. Egypt held the city for a time before the Hittites took it back.', ref: 'Tell Nebi Mend, near Homs, Syria; excavated 1921\u201322', credit: 'Photo: M. P\u00e9zard, Qadesh (1931); public domain' },
         { at: 21, file: '06-near-east-map.jpg', caption: 'Egypt, Hatti and the frontier at Kadesh, c. 1274 BCE.', ref: 'Modern map' }
       ],
       focus: { x: 1360, y: 650 }, zoom: 1,
@@ -150,7 +150,7 @@ window.KADESH_SCENARIO = {
       title: 'The truth',
       media: [
         { at: 0,  file: '14-beaten-spies-relief.jpg', caption: 'The two Hittite spies beaten in the Egyptian camp until they confess, as shown on the Kadesh reliefs. Photographed by the Breasted expedition in 1905.', ref: 'Ramesseum, Luxor', credit: 'Photo: J. H. Breasted expedition, 1905, Oriental Institute, Chicago; public domain' },
-        { at: 8,  file: '15-egyptian-camp-relief.jpg', caption: 'The Egyptian camp with its wall of shields, from the Kadesh reliefs.', ref: 'Abu Simbel and the Ramesseum' }
+        { at: 8,  file: '15-egyptian-camp-relief.jpg', caption: 'The battle carved course by course across the first pylon of the Ramesseum: chariots, horses and fallen men fill every block.', ref: 'Ramesseum, Luxor, first pylon', credit: 'Photo: CyArk, Wikimedia Commons, CC BY-SA 3.0' },
       ],
       focus: { x: 1100, y: 500 }, zoom: .9,
       markers: [ { x: 1020, y: 465, label: 'The king’s camp' }, { x: 1900, y: 450, label: 'Hittites, behind the city' } ],
