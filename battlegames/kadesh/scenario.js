@@ -67,7 +67,7 @@ window.KADESH_SCENARIO = {
       title: 'BATTLE OF KADESH',
       media: [
         { at: 0,  file: '01-ramesseum-battle-relief.jpg', caption: 'The battle as Ramesses II had it carved: the king in his chariot, bow drawn, with the Hittites in disorder before him. Relief on the Ramesseum, Luxor.', ref: 'Ramesseum, second pylon, c. 1250 BCE', credit: 'Photo: Roland Unger, Wikimedia Commons, CC BY-SA 3.0' },
-        { at: 12, file: '02-abu-simbel-chariot.jpg', caption: 'Ramesses II striking an enemy, relief in the Great Temple of Abu Simbel.', ref: 'Abu Simbel, great hall', credit: 'Photo: Mustang Joe, Wikimedia Commons, CC0' }
+        { at: 12, file: '02-abu-simbel-chariot.jpg', caption: 'Ramesses II charging in his chariot at Kadesh, his pet lion running beside the horses. Relief in the Great Temple of Abu Simbel.', ref: 'Abu Simbel, great hall, north wall', credit: 'Photo: Wikimedia Commons (licence as on the file page)' }
       ],
       subtitle: 'c. 1274 BCE · Orontes River, Syria',
       focus: { x: 1360, y: 650 }, zoom: 1.25,
