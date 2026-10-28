@@ -117,7 +117,7 @@ window.KADESH_SCENARIO = {
       title: 'The Hittite army',
       media: [
         { at: 0,  file: '10-hittite-chariot-relief.jpg', caption: 'A three-man chariot of the Hittite type, with driver, shield bearer and spearman.', ref: 'Relief from Carchemish, Museum of Anatolian Civilizations, Ankara' },
-        { at: 8,  file: '11-hattusa-warrior-god.jpg', caption: 'A Hittite warrior with axe, short sword and crested helmet, the King\u2019s Gate at Hattusa.', ref: 'Hattusa, Bo\u011fazkale, Turkey' },
+        { at: 8,  file: '11-hattusa-warrior-god.jpg', caption: 'Hittite hieroglyphs at Hattusa, the capital. This chamber was built a century after Kadesh, under Suppiluliuma II.', ref: 'Chamber 2, S\u00fcdburg, Hattusa, Bo\u011fazkale, Turkey, c. 1200 BCE', credit: 'Photo: travellingrunes, Wikimedia Commons, CC BY-SA 2.0' },
         { at: 15, file: '12-hattusa-lion-gate.jpg', caption: 'Hattusa, the Hittite capital, the Lion Gate.', ref: 'Bo\u011fazkale, Turkey' }
       ],
       focus: { x: 1880, y: 620 }, zoom: .9,
