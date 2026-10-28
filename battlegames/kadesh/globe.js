@@ -224,9 +224,11 @@ window.KadeshGlobe = (() => {
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
       st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24; st.labels = 0;
+      if (cb.onSpinProgress) cb.onSpinProgress(k);
       if (!st.spun && k >= .25) { st.spun = true; if (cb.onSpun) cb.onSpun(); }   // narration starts a quarter of the way round
       if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = KADESH.lon; }
     } else if (st.phase === 'dive1') {
+      if (cb.onSpinProgress) cb.onSpinProgress(1);
       // pull in until the whole Near East fills the view
       const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
       st.R = R0 * Math.pow(PULL, e); st.lat0 = 24 + (NEAR_EAST.lat - 24) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;

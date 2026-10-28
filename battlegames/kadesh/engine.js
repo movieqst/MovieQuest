@@ -702,14 +702,29 @@ function showMedia(elapsed) {
 }
 function beginIntro(voice) {
   Narr.set(voice, true); if (!voice) Narr.stop();
+  $('playBig').classList.remove('show');
   const go = () => { introStarted = true; $('startGate').style.display = 'none'; $('introNav').style.display = 'flex'; introTimer = 0; showOverlay('intro'); showIntro(0); };
-  if (G && G.active()) { hideOverlay('intro'); G.begin(); introSpunCb = go; } else go();
+  if (G && G.active()) { hideOverlay('intro'); showTitleCard(); G.begin(); introSpunCb = go; } else go();
 }
+function showTitleCard() {
+  const t = S.titleCard; if (!t) return; const el = $('titleCard');
+  el.innerHTML = `<div class="tc-title">${t.title}</div><div class="tc-date">${t.date}</div><div class="tc-place">${t.place}</div><div class="tc-sides">${t.sides}</div>` +
+    (t.dateNote ? `<div class="tc-note">${t.dateNote}${t.dateRef ? ' <span class="tc-ref">' + t.dateRef + '</span>' : ''}</div>` : '');
+  el.classList.add('show'); el.style.opacity = '1';
+}
+function titleCardProgress(k) {
+  // visible through the turn; fades out over the last 12% of the spin, just before the dive
+  const el = $('titleCard'); if (!el.classList.contains('show')) return;
+  const o = k < .88 ? 1 : Math.max(0, 1 - (k - .88) / .12); el.style.opacity = String(o);
+  if (k >= 1) el.classList.remove('show');
+}
+$('playBig').onclick = () => beginIntro(true);
 let introSpunCb = null;
 function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
-  if (G && window.KADESH_WORLD) G.start($('globe'), { lift: true, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
+  $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
+  if (G && window.KADESH_WORLD) G.start($('globe'), { lift: true, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
-  const skipGlobe = opts && opts.skipGlobe;
+  const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m; $('caption').classList.remove('show');

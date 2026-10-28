@@ -23,6 +23,15 @@ window.KADESH_SCENARIO = {
   place: 'Orontes River, near modern Homs, Syria',
   tagline: 'Egypt vs. the Hittite Empire',
   duration: 124,          // seconds of reenactment at 1x speed
+  /* Title card shown over the turning globe before the dive */
+  titleCard: {
+    title: 'BATTLE OF KADESH',
+    date: 'c. 1274 BCE',
+    dateNote: 'Year 5 of Ramesses II. The absolute date depends on the chronology used: 1274 is the most common, 1275 and 1285 are also given.',
+    dateRef: 'Kitchen, Pharaoh Triumphant (1982); von Beckerath, Chronologie (1997)',
+    place: 'The Orontes River, Syria',
+    sides: 'Egypt under Ramesses II  \u00b7  the Hittite Empire under Muwatalli II'
+  },
   commandDuration: 240,   // seconds before a command-mode battle is called a stalemate
   world: { w: 2400, h: 1800 },
 
