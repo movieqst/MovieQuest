@@ -127,7 +127,7 @@ window.KADESH_SCENARIO = {
       media: [
         { at: 0,  file: '10-hittite-chariot-relief.jpg', caption: 'Chariots with crews of two or three, archers shooting from the cab, enemies under the wheels: reliefs from Carchemish, a Hittite city on the Euphrates, carved some centuries after Kadesh.', ref: 'Museum of Anatolian Civilizations, Ankara', credit: 'Photo: Dick Osseman, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 8,  file: '11-hattusa-warrior-god.jpg', caption: 'Hittite hieroglyphs at Hattusa, the capital. This chamber was built a century after Kadesh, under Suppiluliuma II.', ref: 'Chamber 2, S\u00fcdburg, Hattusa, Bo\u011fazkale, Turkey, c. 1200 BCE', credit: 'Photo: travellingrunes, Wikimedia Commons, CC BY-SA 2.0' },
-        { at: 15, file: '12-hattusa-lion-gate.jpg', caption: 'Hattusa, the Hittite capital, the Lion Gate.', ref: 'Bo\u011fazkale, Turkey' }
+        { at: 15, file: '12-hattusa-lion-gate.jpg', caption: 'The Lion Gate of Hattusa, the Hittite capital in central Anatolia, 700 km north of Kadesh.', ref: 'Hattusa, Bo\u011fazkale, Turkey', credit: 'Photo: KapuskaCoFabli, Wikimedia Commons, CC BY-SA 4.0' }
       ],
       focus: { x: 1880, y: 620 }, zoom: .9,
       markers: [ { x: 1900, y: 450, label: 'Hittite army, concealed' } ],
