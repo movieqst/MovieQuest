@@ -19,7 +19,21 @@ window.KadeshGlobe = (() => {
     const t = document.createElement('canvas'); t.width = TW; t.height = TH; const g = t.getContext('2d');
     const oc = g.createLinearGradient(0, 0, 0, TH); oc.addColorStop(0, '#1b5c86'); oc.addColorStop(.5, '#1f6b96'); oc.addColorStop(1, '#174f78'); g.fillStyle = oc; g.fillRect(0, 0, TW, TH);
     g.fillStyle = '#5a7a46'; g.strokeStyle = 'rgba(30,55,30,.9)'; g.lineWidth = 1.2; g.lineJoin = 'round';
-    RINGS.forEach(r => { g.beginPath(); r.forEach(([x, y], i) => { const px = (x + 180) / 360 * TW, py = (90 - y) / 180 * TH; i ? g.lineTo(px, py) : g.moveTo(px, py); }); g.closePath(); g.fill(); g.stroke(); });
+    const toTex = ([x, y]) => [(x + 180) / 360 * TW, (90 - y) / 180 * TH];
+    const smoothPath = (g, pts) => { const n = pts.length; for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; i ? g.quadraticCurveTo(a[0], a[1], mx, my) : g.moveTo(mx, my); } g.closePath(); };
+    // Rings that touch the antimeridian jump from +180 to -180 between two points; on the flat map that step would draw a
+    // line across the whole width and fill a stripe. Split such rings at the jumps and close each piece on its own.
+    const seam = r => { const j = []; for (let i = 0; i < r.length; i++) { const a = r[i][0], b = r[(i + 1) % r.length][0]; if (Math.abs(a - b) > 180) j.push(i + 1); } return j; };
+    const piecesOf = r => { const jumps = seam(r); if (!jumps.length) return [r]; const rot = r.slice(jumps[0]).concat(r.slice(0, jumps[0])); const js = seam(rot), out = []; let prev = 0; js.forEach(j => { if (j > prev) out.push(rot.slice(prev, j)); prev = j; }); if (prev < rot.length) out.push(rot.slice(prev)); return out.filter(pc => pc.length >= 3); };
+    const PIECES = []; RINGS.forEach(r => piecesOf(r).forEach(pc => PIECES.push(pc)));
+    PIECES.forEach(pc => { g.beginPath(); pc.forEach((pt, i) => { const [px, py] = toTex(pt); i ? g.lineTo(px, py) : g.moveTo(px, py); }); g.closePath(); g.fill(); g.stroke(); });
+    // deserts in sand, soft-edged; ice sheets
+    g.save(); g.beginPath(); PIECES.forEach(pc => { pc.forEach((pt, i) => { const [px, py] = toTex(pt); i ? g.lineTo(px, py) : g.moveTo(px, py); }); g.closePath(); }); g.clip();
+    g.filter = 'blur(16px)'; g.fillStyle = SAND; g.globalAlpha = .92;
+    DESERTS.forEach(d => { g.beginPath(); smoothPath(g, d.map(toTex)); g.fill(); });
+    g.globalAlpha = 1; g.filter = 'blur(10px)'; g.fillStyle = '#e9eef2'; ICE.forEach(d => { g.beginPath(); smoothPath(g, d.map(toTex)); g.fill(); });
+    g.fillRect(0, (90 + 60) / 180 * TH, TW, TH); // Antarctica
+    g.filter = 'none'; g.restore();
     // a little relief: lighter uplands band, darker near the poles
     const sh = g.createLinearGradient(0, 0, 0, TH); sh.addColorStop(0, 'rgba(255,255,255,.25)'); sh.addColorStop(.12, 'rgba(255,255,255,0)'); sh.addColorStop(.88, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(255,255,255,.35)'); g.fillStyle = sh; g.fillRect(0, 0, TW, TH);
     TEX = t; TEXD = g.getImageData(0, 0, TW, TH).data;
@@ -51,6 +65,24 @@ window.KadeshGlobe = (() => {
     RASC.putImageData(IMG, 0, 0);
     const half = size / 2; c.save(); c.imageSmoothingEnabled = true; c.drawImage(RAS, cx - half / rs, cy - half / rs, size / rs, size / rs); c.restore();
   }
+  // Approximate desert regions (lon,lat), painted sand over the land; ice for Greenland and Antarctica.
+  const DESERTS = [
+    [[-17,16],[-17,30],[-5,33],[10,33],[20,32],[30,31],[35,31],[37,24],[35,17],[30,15],[20,15],[10,15],[0,16]],          // Sahara
+    [[35,31],[39,32],[44,30],[48,29],[52,24],[57,20],[54,17],[48,15],[44,16],[40,19],[36,27]],                            // Arabia
+    [[36,33.5],[38.5,35],[41,35.5],[44,34],[46,31],[44,30],[39,32]],                                                     // Syrian desert
+    [[51,36],[57,37],[61,35],[62,30],[58,28],[53,30],[51,33]],                                                            // Iranian plateau
+    [[68,29],[72,30],[74,27],[71,24],[68,25]],                                                                            // Thar
+    [[53,42],[60,45],[66,44],[66,39],[60,37],[55,38]],                                                                    // Karakum / Kyzylkum
+    [[76,41],[85,42],[90,41],[88,38],[80,37],[76,38]],                                                                    // Taklamakan
+    [[95,45],[105,45],[112,43],[110,40],[100,39],[95,41]],                                                                // Gobi
+    [[13,-17],[18,-17],[26,-20],[26,-28],[20,-30],[14,-27]],                                                              // Kalahari / Namib
+    [[115,-20],[120,-18],[135,-18],[140,-22],[138,-30],[128,-32],[118,-30],[114,-25]],                                    // Australian interior
+    [[-71,-18],[-69,-18],[-68,-28],[-71,-28]],                                                                            // Atacama
+    [[-120,42],[-112,42],[-104,32],[-104,26],[-110,24],[-116,30],[-120,37]],                                              // North American deserts
+    [[42,10],[48,8],[51,11],[48,4],[42,6]]                                                                                // Horn of Africa
+  ];
+  const ICE = [ [[-55,60],[-45,60],[-20,70],[-18,80],[-30,83],[-60,82],[-70,78]] ];                                      // Greenland
+  const SAND = '#cdb57c', SAND_EDGE = 'rgba(205,181,124,0)';
   const LABELS = [
     { lon: 30.5, lat: 27, text: 'EGYPT', size: 1 }, { lon: 34, lat: 39.5, text: 'HATTI', size: 1 }, { lon: 22, lat: 34.5, text: 'MEDITERRANEAN SEA', size: .7, italic: true },
     { lon: 31.2, lat: 30.0, text: 'Memphis', size: .55, dot: true }, { lon: 34.6, lat: 40.0, text: 'Hattusa', size: .55, dot: true }, { lon: 37.15, lat: 36.2, text: 'Aleppo', size: .55, dot: true },
@@ -106,6 +138,11 @@ window.KadeshGlobe = (() => {
         if (!any) { c.moveTo(px, py); any = true; } else c.lineTo(px, py);
       }
       c.closePath(); c.fill(); if (R > 600) c.stroke();
+    }
+    if (!RASTER) { // zoomed in: paint the deserts over the vector land as well
+      c.save(); c.fillStyle = SAND; c.globalAlpha = .85;
+      DESERTS.forEach(d => { const pts = d.map(([x, y]) => proj(x * D, Math.cos(y * D), Math.sin(y * D))).filter(Boolean); if (pts.length < 3) return; c.beginPath(); const n = pts.length; for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; i ? c.quadraticCurveTo(a[0], a[1], mx, my) : c.moveTo(mx, my); } c.closePath(); c.fill(); });
+      c.restore();
     }
     // terrain tint near the target when close
     if (R > 2500) { const tg = c.createRadialGradient(cx, cy, 0, cx, cy, Math.max(w, h)); tg.addColorStop(0, 'rgba(200,180,120,.18)'); tg.addColorStop(1, 'rgba(200,180,120,0)'); c.fillStyle = tg; c.fillRect(0, 0, w, h); }
@@ -199,6 +236,7 @@ window.KadeshGlobe = (() => {
   function skip() { if (!st) return; if (st.phase === 'idle' || st.phase === 'spin') { st.phase = 'fade'; t0 = nowS(); if (cb.onSpun) cb.onSpun(); } else if (st.phase !== 'fade') { st.phase = 'fade'; t0 = nowS(); } }
   function stop() { cancelAnimationFrame(raf); raf = 0; st = null; if (cv) { cv.style.display = 'none'; } window.removeEventListener('resize', size); }
   const active = () => !!st;
-  function debugFrame(lon0, lat0) { if (!st) return; st.lon0 = lon0; st.lat0 = lat0; draw(st, 0); }
-  return { start, begin, skip, stop, active, debugFrame };
+  function debugFrame(lon0, lat0) { if (!st) return; st.lon0 = lon0; st.lat0 = lat0; draw(st, 0); return cv.toDataURL('image/png'); }
+  function debugTexture() { if (!TEX) buildTexture(); return TEX.toDataURL('image/png'); }
+  return { start, begin, skip, stop, active, debugFrame, debugTexture };
 })();

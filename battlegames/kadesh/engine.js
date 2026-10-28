@@ -530,7 +530,10 @@ function showIntro(i) {
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('introChoice').style.display = sl.choice ? 'flex' : 'none';
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
-  markers = sl.markers || []; if (sl.focus) focusOn(sl.focus.x, sl.focus.y);
+  markers = sl.markers || [];
+  if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
+  // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
+  if (sl.focus) focusOn(sl.focus.x, sl.focus.y + (view.h / view.z) * .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; document.querySelector('.dialog.intro').classList.toggle('nomedia', !introMedia.length); showMedia(0);
   if (introStarted) speakSlide(sl);
