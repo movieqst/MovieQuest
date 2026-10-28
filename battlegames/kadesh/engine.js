@@ -698,7 +698,8 @@ function beginIntro(voice) {
 let introSpunCb = null;
 function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
   if (G && window.KADESH_WORLD) G.start($('globe'), { lift: true, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); showOverlay('intro'); $('caption').classList.remove('show'); showIntro(0); }
-function startMode(m) {
+function startMode(m, opts) {
+  const skipGlobe = opts && opts.skipGlobe;
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m; $('caption').classList.remove('show');
@@ -710,7 +711,7 @@ function startMode(m) {
     else cmdCaption('Command mode', 'start', 'reconstruction', { x: 1100, y: 600 });
   };
   // Every start opens on the globe: one turn, then the dive to the Orontes, then the battle begins. Click the globe to skip.
-  if (G && window.KADESH_WORLD) { cinematic = true; view.x = 700; view.y = 300; G.start($('globe'), { onSpun: () => {}, onDone: begin }); G.begin(); }
+  if (G && window.KADESH_WORLD && !skipGlobe) { cinematic = true; view.x = 700; view.y = 300; G.start($('globe'), { onSpun: () => {}, onDone: begin }); G.begin(); }
   else begin();
 }
 $('globe').addEventListener('click', () => { if (G && G.active()) G.skip(); });
@@ -906,8 +907,8 @@ $('introSkip').onclick = () => { if (G && G.active()) G.skip(); showIntro(S.intr
 $('beginVoice').onclick = () => beginIntro(true);
 $('beginSilent').onclick = () => beginIntro(false);
 $('citeClose').onclick = () => hideOverlay('cite');
-$('chooseWatch').onclick = () => startMode('watch');
-$('chooseCommand').onclick = () => { setPlayer('egypt'); startMode('command'); };
+$('chooseWatch').onclick = () => startMode('watch', { skipGlobe: true });
+$('chooseCommand').onclick = () => { setPlayer('egypt'); startMode('command', { skipGlobe: true }); };
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
 $('debriefWatch').onclick = () => startMode('watch');
 $('debriefCommand').onclick = () => startMode('command');
@@ -915,7 +916,7 @@ $('debriefIntro').onclick = startIntro;
 $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if (f.side === player && alive(f) && f.state !== 'rout') selected.add(f.id); }); renderSelection(); };
 $('sideSel').value = player;
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
-$('chooseCommandH').onclick = () => { setPlayer('hittite'); startMode('command'); };
+$('chooseCommandH').onclick = () => { setPlayer('hittite'); startMode('command', { skipGlobe: true }); };
 $('haltBtn').onclick = () => { selected.forEach(id => { const f = byId[id]; if (f.state === 'move' || f.state === 'attack') { f.state = 'hold'; } }); };
 $('retreatBtn').onclick = () => { const r = player === 'egypt' ? { x: B.camp.x + 60, y: B.camp.y + 60 } : { x: S.ai.hittite.holdPoint.x - 60, y: S.ai.hittite.holdPoint.y - 60 }; let i = 0; selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = r.x + (i % 3) * 60; f.ty = r.y + Math.floor(i / 3) * 60; f.state = 'move'; i++; }); };
 

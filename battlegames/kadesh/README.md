@@ -98,8 +98,9 @@ The introduction opens on the Earth from space (`globe.js`, coastlines from
 `world.js`, Natural Earth data via the world-atlas package, public domain).
 After the start screen the globe, already centred on Syria, makes one slow turn; a quarter of the way round the narration begins, and
 the camera dives to the Orontes before fading into the battlefield. Press Next
-or Skip to cut it short. The same turn-and-dive plays before every start of
-Watch or Command mode; click the globe to skip it.
+or Skip to cut it short. The same turn-and-dive plays when Watch or Command mode is started from the
+header or the debrief; coming straight from the introduction goes directly
+into the battle. Click the globe to skip it.
 
 Each intro screen shows pictures beside the text, timed to the narration
 (`media` on each slide in `scenario.js`, with caption and reference). The
