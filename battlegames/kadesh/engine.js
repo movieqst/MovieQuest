@@ -740,7 +740,7 @@ function startMode(m, opts) {
   // The globe belongs to the introduction only; a battle starts straight away.
   begin();
 }
-$('globe').addEventListener('click', () => { if (G && G.active()) G.skip(); });
+$('globe').addEventListener('click', () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } });
 function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
@@ -941,10 +941,10 @@ $('voiceRate').value = String(Narr.rate);
 $('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('kadesh-voice-rate', String(Narr.rate)); } catch (e) {} };
 $('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, .45, 2.4); clampView(); };
 $('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, .45, 2.4); clampView(); };
-$('introNext').onclick = () => { if (G && G.active()) G.skip(); showIntro(introIdx + 1); };
+$('introNext').onclick = () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } showIntro(introIdx + 1); };
 $('introBack').onclick = () => showIntro(introIdx - 1);
 $('introPause').onclick = togglePause;
-$('introSkip').onclick = () => { if (G && G.active()) G.skip(); showIntro(S.intro.length - 1); };
+$('introSkip').onclick = () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } showIntro(S.intro.length - 1); };
 $('beginVoice').onclick = () => beginIntro(true);
 $('beginSilent').onclick = () => beginIntro(false);
 $('citeClose').onclick = () => hideOverlay('cite');
