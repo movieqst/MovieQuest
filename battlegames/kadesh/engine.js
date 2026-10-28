@@ -989,8 +989,10 @@ TER = buildTerrain(); buildMiniBase(); renderBriefing(); renderArmies(); createF
 { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height);
     g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
     B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
-    TER = T; buildMiniBase(); PAINTED = true; }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
-if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { TER = buildTerrain(); buildMiniBase(); }).catch(() => {});
+    PAINTEDTER = T; TER = T; buildMiniBase(); PAINTED = true; }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
+let PAINTEDTER = null;
+// When the title font finishes loading, redo the drawn labels; never overwrite a painting that has already arrived.
+if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { if (PAINTED && PAINTEDTER) { TER = PAINTEDTER; } else { TER = buildTerrain(); } buildMiniBase(); }).catch(() => {});
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();
