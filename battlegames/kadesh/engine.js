@@ -711,8 +711,8 @@ function startMode(m, opts) {
     else cmdCaption('Command mode', 'start', 'reconstruction', { x: 1100, y: 600 });
   };
   // Every start opens on the globe: one turn, then the dive to the Orontes, then the battle begins. Click the globe to skip.
-  if (G && window.KADESH_WORLD && !skipGlobe) { cinematic = true; view.x = 700; view.y = 300; G.start($('globe'), { onSpun: () => {}, onDone: begin }); G.begin(); }
-  else begin();
+  // The globe belongs to the introduction only; a battle starts straight away.
+  begin();
 }
 $('globe').addEventListener('click', () => { if (G && G.active()) G.skip(); });
 function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
