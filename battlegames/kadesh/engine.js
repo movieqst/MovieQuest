@@ -221,8 +221,8 @@ function spriteChariot(c, side, s, i, moving) {
   if (side === 'egypt') { c.strokeStyle = '#4e3424'; c.lineWidth = .8 * s; c.beginPath(); c.arc(1 * s, -2.5 * s, 3 * s, -1.3, 1.3); c.stroke(); } // bow
   else { c.strokeStyle = '#5a3b22'; c.lineWidth = 1 * s; c.beginPath(); c.moveTo(-5 * s, 3 * s); c.lineTo(6 * s, 5 * s); c.stroke(); c.fillStyle = A.shieldStroke; c.beginPath(); c.arc(-4 * s, -3 * s, 2.4 * s, 0, PI * 2); c.fill(); c.fillStyle = A.shield; c.beginPath(); c.arc(-4 * s, -3 * s, 1.6 * s, 0, PI * 2); c.fill(); }
 }
-function drawSprite(c, f, x, y, facing, i, s = 1) {
-  c.save(); c.translate(x, y); c.rotate(facing);
+function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
+  c.save(); c.translate(x, y); c.scale(1, k); c.rotate(facing);
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout';
   if (f.type === 'chariot') spriteChariot(c, f.side, s, i, moving);
   else spriteInfantry(c, f.side, f.type === 'archers' || (f.type === 'infantry' && i % 3 === 2), s, i);
@@ -367,11 +367,23 @@ function resize() {
   canvas.width = Math.max(1, Math.floor(r.width * dpr)); canvas.height = Math.max(1, Math.floor(r.height * dpr));
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0); view.w = r.width; view.h = r.height; clampView(); render();
 }
-function clampView() { view.x = clamp(view.x, 0, Math.max(0, W.w - view.w / view.z)); view.y = clamp(view.y, 0, Math.max(0, W.h - view.h / view.z)); }
+/* ---- tilted view: the map is seen from a camera leaning back, so the far (north) edge is smaller and the near (south) edge larger.
+   P(x,y) maps world to screen (with the pixel scale s and vertical squash k at that depth); U(sx,sy) is the inverse. ---- */
+let TILT = .45; try { const t = localStorage.getItem('kadesh-tilt'); if (t === '0') TILT = 0; } catch (e) {}
+const SQ = .88;                                              // vertical foreshortening of sprites when tilted
+const tiltOn = () => TILT > 0;
+const TR = () => tiltOn() ? (TILT / Math.log(1 + TILT)) / SQ : 1;   // how much more map height the tilted window shows
+const VW = () => view.w / view.z, VH = () => view.h / view.z * TR();
+const sAt = v => tiltOn() ? 1 / (1 + TILT * (1 - v)) : 1;
+const ysAt = v => tiltOn() ? view.h * Math.log((1 + TILT) / (1 + TILT * (1 - v))) / Math.log(1 + TILT) : v * view.h;
+const vAt = ys => tiltOn() ? 1 - ((1 + TILT) / Math.exp(ys / view.h * Math.log(1 + TILT)) - 1) / TILT : ys / view.h;
+function P(x, y) { const vw = VW(), vh = VH(), v = (y - view.y) / vh, s = sAt(v); return { x: view.w / 2 + (x - view.x - vw / 2) / vw * view.w * s, y: ysAt(v), s: view.z * s, k: tiltOn() ? SQ : 1 }; }
+function U(sx, sy) { const vw = VW(), vh = VH(), v = vAt(sy), s = sAt(v); return { x: view.x + vw / 2 + (sx - view.w / 2) / (view.w * s) * vw, y: view.y + v * vh }; }
+function clampView() { view.x = clamp(view.x, 0, Math.max(0, W.w - VW())); view.y = clamp(view.y, 0, Math.max(0, W.h - VH())); }
 function focusOn(x, y) { cam.tx = x; cam.ty = y; }
 function updateCamera() {
   if (cam.tx === null) return;
-  const gx = clamp(cam.tx - view.w / view.z / 2, 0, Math.max(0, W.w - view.w / view.z)), gy = clamp(cam.ty - view.h / view.z / 2, 0, Math.max(0, W.h - view.h / view.z));
+  const gx = clamp(cam.tx - VW() / 2, 0, Math.max(0, W.w - VW())), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()));
   view.x += (gx - view.x) * .08; view.y += (gy - view.y) * .08;
   if (Math.abs(gx - view.x) < .5 && Math.abs(gy - view.y) < .5) { view.x = gx; view.y = gy; cam.tx = null; }
 }
@@ -380,8 +392,8 @@ function drawFormation(c, f) {
   if (!f.known && mode === 'command' && f.side !== player) return;
   const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
-  // Subtle depth: units nearer the bottom (south) of the map draw a little larger than those far to the north.
-  const DEPTH = 0.18, SS = 1.3 * (1 + DEPTH * (f.y / W.h - 0.5)), sx = (f.type === 'chariot' ? 30 : 13) * SS, sy = (f.type === 'chariot' ? 21 : 12) * SS, n = f.cols * f.rows;
+  // In the flat view a subtle depth cue remains: units nearer the south edge draw a little larger. The tilted view does this by projection.
+  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'chariot' ? 21 : 12) * 1.3, n = f.cols * f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', scatter = f.state === 'rout' || f.state === 'scattered';
   const pts = [];
@@ -392,40 +404,55 @@ function drawFormation(c, f) {
     if (moving) a += Math.sin(wall * 7 + i) * .9;
     pts.push({ x: f.x + cos * d - sin * a, y: f.y + sin * d + cos * a, i, fac: f.facing + (scatter ? (jitter(i, 3) - .5) * 1.4 : 0) });
   }
-  pts.sort((p, q) => p.y - q.y).forEach(p => drawSprite(c, f, p.x, p.y, p.fac, p.i, SS));
+  pts.sort((p, q) => p.y - q.y).forEach(p => { const q = P(p.x, p.y); drawSprite(c, f, q.x, q.y, p.fac, p.i, SS * q.s, q.k); });
   // standard
-  const bx = f.x - cos * ((f.rows / 2) * sy + 4), by = f.y - sin * ((f.rows / 2) * sy + 4);
-  c.strokeStyle = '#3b2c1a'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(bx, by); c.lineTo(bx, by - 16); c.stroke();
-  c.fillStyle = SIDE_ART[f.side].pennant; c.beginPath(); c.moveTo(bx, by - 16); c.lineTo(bx + 11, by - 13); c.lineTo(bx, by - 9); c.closePath(); c.fill();
+  const pb = P(f.x - cos * ((f.rows / 2) * sy + 4), f.y - sin * ((f.rows / 2) * sy + 4)), fs = pb.s;
+  c.strokeStyle = '#3b2c1a'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(pb.x, pb.y); c.lineTo(pb.x, pb.y - 16 * fs); c.stroke();
+  c.fillStyle = SIDE_ART[f.side].pennant; c.beginPath(); c.moveTo(pb.x, pb.y - 16 * fs); c.lineTo(pb.x + 11 * fs, pb.y - 13 * fs); c.lineTo(pb.x, pb.y - 9 * fs); c.closePath(); c.fill();
   c.strokeStyle = SIDE_ART[f.side].trim; c.lineWidth = .8; c.stroke();
   // label + strength
-  const half = (f.rows / 2) * sy + 10, ly = f.y + Math.max(half, (f.cols / 2) * sx * Math.abs(sin) + 8) + 6;
-  const suffix = f.state === 'rout' ? ' · routed' : f.state === 'scattered' ? ' · scattered' : f.state === 'loot' ? ' · plundering' : concealed ? ' · concealed' : '';
-  outlined(c, f.division + suffix, f.x, ly, 11, { fill: f.side === 'egypt' ? '#dceeff' : '#ffe1d6' });
+  const half = (f.rows / 2) * sy + 10, ly = f.y + Math.max(half, (f.cols / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
+  const suffix = f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
+  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'egypt' ? '#dceeff' : '#ffe1d6' });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
-    c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(f.x - 22, ly + 8, 44, 5);
-    c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(f.x - 21, ly + 9, 42 * f.strength / 100, 3);
+    c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(pl.x - 22 * ts, pl.y + 8 * ts, 44 * ts, 5 * ts);
+    c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(pl.x - 21 * ts, pl.y + 9 * ts, 42 * ts * f.strength / 100, 3 * ts);
   }
-  if (selected.has(f.id)) { c.strokeStyle = '#fff2a4'; c.lineWidth = 2; c.setLineDash([6, 4]); c.beginPath(); c.ellipse(f.x, f.y, (f.cols / 2) * sx + 14, (f.rows / 2) * sy + 14, f.facing + PI / 2, 0, PI * 2); c.stroke(); c.setLineDash([]); }
-  if (mode === 'command' && selected.has(f.id) && f.state === 'move') { c.strokeStyle = 'rgba(255,242,164,.6)'; c.lineWidth = 1.5; c.setLineDash([4, 6]); c.beginPath(); c.moveTo(f.x, f.y); c.lineTo(f.tx, f.ty); c.stroke(); c.setLineDash([]); c.beginPath(); c.arc(f.tx, f.ty, 6, 0, PI * 2); c.stroke(); }
+  const pc = P(f.x, f.y);
+  if (selected.has(f.id)) { c.save(); c.translate(pc.x, pc.y); c.scale(1, pc.k); c.rotate(f.facing + PI / 2); c.strokeStyle = '#fff2a4'; c.lineWidth = 2; c.setLineDash([6, 4]); c.beginPath(); c.ellipse(0, 0, ((f.cols / 2) * sx + 14) * pc.s, ((f.rows / 2) * sy + 14) * pc.s, 0, 0, PI * 2); c.stroke(); c.restore(); }
+  if (mode === 'command' && selected.has(f.id) && f.state === 'move') { const pt = P(f.tx, f.ty); c.strokeStyle = 'rgba(255,242,164,.6)'; c.lineWidth = 1.5; c.setLineDash([4, 6]); c.beginPath(); c.moveTo(pc.x, pc.y); c.lineTo(pt.x, pt.y); c.stroke(); c.setLineDash([]); c.beginPath(); c.arc(pt.x, pt.y, 6 * pt.s, 0, PI * 2); c.stroke(); }
   c.restore();
 }
 function render() {
   updateCamera(); clampView();
-  const z = view.z;
-  ctx.clearRect(0, 0, view.w, view.h);
-  ctx.save(); ctx.scale(z, z); ctx.translate(-view.x, -view.y);
-  const vw = view.w / z, vh = view.h / z;
-  if (TER) ctx.drawImage(TER, view.x * TS, view.y * TS, vw * TS, vh * TS, view.x, view.y, vw, vh);
+  const z = view.z, vw = VW(), vh = VH();
+  ctx.fillStyle = '#0e1a22'; ctx.fillRect(0, 0, view.w, view.h);
+  if (TER) {
+    if (tiltOn()) {
+      // Draw the pre-rendered terrain in thin horizontal strips, each sampling a wider span of the map the further north it is.
+      const STRIP = 3;
+      for (let y0 = 0; y0 < view.h; y0 += STRIP) {
+        const y1 = Math.min(view.h, y0 + STRIP), v0 = vAt(y0), v1 = vAt(y1), sm = sAt((v0 + v1) / 2);
+        const wy0 = view.y + v0 * vh, wy1 = view.y + v1 * vh, ww = vw / sm, wxl = view.x + vw / 2 - ww / 2;
+        ctx.drawImage(TER, wxl * TS, wy0 * TS, ww * TS, (wy1 - wy0) * TS, 0, y0, view.w, y1 - y0);
+      }
+    } else ctx.drawImage(TER, view.x * TS, view.y * TS, vw * TS, vh * TS, 0, 0, view.w, view.h);
+  }
   formations.slice().sort((a, b) => a.y - b.y).forEach(f => drawFormation(ctx, f));
   markers.forEach(m => {
-    const r = 26 + 8 * Math.sin(wall * 3); ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(m.x, m.y, r, 0, PI * 2); ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(m.x, m.y, r + 8, 0, PI * 2); ctx.stroke();
-    outlined(ctx, m.label, m.x, m.y - r - 16, 14, { fill: '#fff3c9' });
+    const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
+    ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
+    ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
+    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
   });
-  if (band) { ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 2 / view.z; ctx.setLineDash([8 / view.z, 6 / view.z]); ctx.strokeRect(Math.min(band.x0, band.x1), Math.min(band.y0, band.y1), Math.abs(band.x1 - band.x0), Math.abs(band.y1 - band.y0)); ctx.setLineDash([]); ctx.fillStyle = 'rgba(255,211,107,.12)'; ctx.fillRect(Math.min(band.x0, band.x1), Math.min(band.y0, band.y1), Math.abs(band.x1 - band.x0), Math.abs(band.y1 - band.y0)); }
-  ctx.restore();
-  // scale bar
+  if (band) {
+    const x0 = Math.min(band.x0, band.x1), y0 = Math.min(band.y0, band.y1), x1 = Math.max(band.x0, band.x1), y1 = Math.max(band.y0, band.y1);
+    const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
+    ctx.beginPath(); c4.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.closePath();
+    ctx.fillStyle = 'rgba(255,211,107,.12)'; ctx.fill(); ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 2; ctx.setLineDash([8, 6]); ctx.stroke(); ctx.setLineDash([]);
+  }
+  // scale bar (at the near edge of the view)
   const sb = B.scale.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12;
   ctx.fillRect(view.w - sb - 24, sy0 - 20, sb + 16, 20);
   ctx.fillStyle = '#e9c77a'; ctx.fillRect(view.w - sb - 16, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'right'; ctx.fillText(B.scale.label, view.w - 16, sy0 - 10);
@@ -439,7 +466,8 @@ function drawMini() {
   const w = mini.width, h = mini.height, sx = w / W.w, sy = h / W.h;
   mctx.drawImage(MINIBASE, 0, 0);
   formations.forEach(f => { if (!f.present || !alive(f)) return; if (!f.known && mode === 'command' && f.side !== player) return; mctx.globalAlpha = (f.known || (mode === 'command' && f.side === player)) ? 1 : .45; mctx.fillStyle = SIDE_ART[f.side].pennant; mctx.strokeStyle = '#fff'; mctx.lineWidth = .8; mctx.beginPath(); mctx.arc(f.x * sx, f.y * sy, f.type === 'chariot' ? 3.6 : 3, 0, PI * 2); mctx.fill(); mctx.stroke(); });
-  mctx.globalAlpha = 1; mctx.strokeStyle = '#ff3030'; mctx.lineWidth = 2.5; mctx.strokeRect(view.x * sx, view.y * sy, view.w / view.z * sx, view.h / view.z * sy);
+  mctx.globalAlpha = 1; mctx.strokeStyle = '#ff3030'; mctx.lineWidth = 2.5; const q = [U(0, 0), U(view.w, 0), U(view.w, view.h), U(0, view.h)];
+  mctx.beginPath(); q.forEach((p, i) => i ? mctx.lineTo(p.x * sx, p.y * sy) : mctx.moveTo(p.x * sx, p.y * sy)); mctx.closePath(); mctx.stroke();
 }
 
 /* ---------------- narration (voice) ---------------- */
@@ -533,7 +561,7 @@ function showIntro(i) {
   markers = sl.markers || [];
   if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
-  if (sl.focus) focusOn(sl.focus.x, sl.focus.y + (view.h / view.z) * .27);
+  if (sl.focus) focusOn(sl.focus.x, sl.focus.y + VH() * .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; document.querySelector('.dialog.intro').classList.toggle('nomedia', !introMedia.length); showMedia(0);
   if (introStarted) speakSlide(sl);
@@ -599,7 +627,7 @@ function showExplain() {
 }
 
 /* ---------------- input ---------------- */
-function toWorld(e) { const r = canvas.getBoundingClientRect(); return { x: (e.clientX - r.left) / view.z + view.x, y: (e.clientY - r.top) / view.z + view.y }; }
+function toWorld(e) { const r = canvas.getBoundingClientRect(); return U(e.clientX - r.left, e.clientY - r.top); }
 function manualCamera() { cam.tx = null; cam.follow = false; $('followBtn').classList.remove('active'); }
 function pickFormation(p) {
   let best = null, bd = 1e9;
@@ -620,12 +648,12 @@ canvas.addEventListener('pointermove', e => {
   if (!dragging) return; const dx = e.clientX - last.x, dy = e.clientY - last.y;
   if (Math.abs(dx) + Math.abs(dy) > 3) dragMoved = true;
   if (band) { const p = toWorld(e); band.x1 = p.x; band.y1 = p.y; return; }
-  if (dragMoved) { view.x -= dx / view.z; view.y -= dy / view.z; clampView(); manualCamera(); last = { x: e.clientX, y: e.clientY }; }
+  if (dragMoved) { const r = canvas.getBoundingClientRect(), a = U(last.x - r.left, last.y - r.top), b2 = U(e.clientX - r.left, e.clientY - r.top); view.x -= b2.x - a.x; view.y -= b2.y - a.y; clampView(); manualCamera(); last = { x: e.clientX, y: e.clientY }; }
 });
 canvas.addEventListener('pointerup', e => {
   if (band) {
     const bx = Math.min(band.x0, band.x1), by = Math.min(band.y0, band.y1), bw = Math.abs(band.x1 - band.x0), bh = Math.abs(band.y1 - band.y0); band = null;
-    if (bw > 20 && bh > 20) { view.z = clamp(Math.min(view.w / bw, view.h / bh), .45, 2.4); view.x = bx + bw / 2 - view.w / view.z / 2; view.y = by + bh / 2 - view.h / view.z / 2; overview = null; $('battlePanel').classList.remove('overview'); clampView(); manualCamera(); dragging = false; return; }
+    if (bw > 20 && bh > 20) { view.z = clamp(Math.min(view.w / bw, view.h * TR() / bh), .45, 2.4); view.x = bx + bw / 2 - VW() / 2; view.y = by + bh / 2 - VH() / 2; overview = null; $('battlePanel').classList.remove('overview'); clampView(); manualCamera(); dragging = false; return; }
   }
   if (dragging && !dragMoved && e.button === 0) {
     if (overview) { toggleOverview(); dragging = false; return; }
@@ -638,12 +666,12 @@ canvas.addEventListener('pointerup', e => {
 });
 canvas.addEventListener('wheel', e => {
   e.preventDefault(); const r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
-  const wx = mx / view.z + view.x, wy = my / view.z + view.y, z2 = clamp(view.z * (e.deltaY < 0 ? 1.15 : 1 / 1.15), .45, 2.4);
-  view.z = z2; view.x = wx - mx / z2; view.y = wy - my / z2; clampView(); manualCamera();
+  const wp = U(mx, my), z2 = clamp(view.z * (e.deltaY < 0 ? 1.15 : 1 / 1.15), .45, 2.4);
+  view.z = z2; const v = vAt(my), sv = sAt(v); view.x = wp.x - VW() / 2 - (mx - view.w / 2) / (view.w * sv) * VW(); view.y = wp.y - v * VH(); clampView(); manualCamera();
 }, { passive: false });
 function toggleOverview() {
   if (overview) { view.x = overview.x; view.y = overview.y; view.z = overview.z; overview = null; }
-  else { overview = { x: view.x, y: view.y, z: view.z }; view.z = Math.min(view.w / W.w, view.h / W.h); view.x = 0; view.y = 0; }
+  else { overview = { x: view.x, y: view.y, z: view.z }; view.z = Math.min(view.w / W.w, view.h * TR() / W.h); view.x = 0; view.y = 0; }
   clampView(); manualCamera(); $('battlePanel').classList.toggle('overview', !!overview);
 }
 function toggleFullscreen() {
@@ -655,7 +683,9 @@ document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggl
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;
 $('mapBtn').onclick = toggleOverview;
-mini.addEventListener('click', e => { const r = mini.getBoundingClientRect(); view.x = (e.clientX - r.left) / r.width * W.w - view.w / view.z / 2; view.y = (e.clientY - r.top) / r.height * W.h - view.h / view.z / 2; clampView(); manualCamera(); });
+$('tiltBtn').classList.toggle('active', tiltOn());
+$('tiltBtn').onclick = () => { TILT = tiltOn() ? 0 : .45; try { localStorage.setItem('kadesh-tilt', TILT ? '1' : '0'); } catch (e) {} $('tiltBtn').classList.toggle('active', tiltOn()); clampView(); };
+mini.addEventListener('click', e => { const r = mini.getBoundingClientRect(); view.x = (e.clientX - r.left) / r.width * W.w - VW() / 2; view.y = (e.clientY - r.top) / r.height * W.h - VH() / 2; clampView(); manualCamera(); });
 window.addEventListener('keydown', e => {
   if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
   const k = e.key.toLowerCase(); let moved = false; const st = 40 / view.z;
