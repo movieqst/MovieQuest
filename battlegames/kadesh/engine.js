@@ -66,12 +66,30 @@ function tree(c, x, y, r, k) {
   c.fillStyle = '#89a85e'; c.beginPath(); c.arc(x - r * .4, y - r * .42, r * .25, 0, PI * 2); c.fill();
 }
 function waterBand(c, pts, w) {
-  c.lineCap = 'round'; c.lineJoin = 'round';
-  c.beginPath(); curve(c, pts); c.strokeStyle = 'rgba(110,95,60,.55)'; c.lineWidth = w + 16; c.stroke();
-  c.beginPath(); curve(c, pts); c.strokeStyle = '#2f7590'; c.lineWidth = w; c.stroke();
-  c.beginPath(); curve(c, pts); c.strokeStyle = '#4a98ae'; c.lineWidth = w * .62; c.stroke();
-  c.beginPath(); curve(c, pts); c.strokeStyle = 'rgba(140,210,220,.55)'; c.lineWidth = w * .18; c.stroke();
-  c.save(); c.setLineDash([6, 26]); c.lineDashOffset = 7; c.beginPath(); curve(c, pts); c.strokeStyle = 'rgba(200,240,245,.5)'; c.lineWidth = 1.6; c.stroke(); c.restore();
+  // Organic river: resample the centreline, wobble it, give each side its own bank, then layer water, shallows, sandbars, reeds and ripples.
+  const dense = []; for (let i = 0; i < pts.length - 1; i++) { const [x1, y1] = pts[i], [x2, y2] = pts[i + 1], n = Math.max(2, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / 10)); for (let k = 0; k < n; k++) { const t = k / n; dense.push([x1 + (x2 - x1) * t, y1 + (y2 - y1) * t]); } } dense.push(pts[pts.length - 1]);
+  const sm = []; for (let i = 0; i < dense.length; i++) { let ax = 0, ay = 0, n = 0; for (let k = -4; k <= 4; k++) { const p = dense[clamp(i + k, 0, dense.length - 1)]; ax += p[0]; ay += p[1]; n++; } sm.push([ax / n, ay / n]); }
+  const nrm = i => { const a = sm[Math.max(0, i - 1)], b = sm[Math.min(sm.length - 1, i + 1)]; const dx = b[0] - a[0], dy = b[1] - a[1], d = Math.hypot(dx, dy) || 1; return [-dy / d, dx / d]; };
+  const wid = i => w * (1 + .22 * Math.sin(i * .11) + .12 * Math.sin(i * .037 + 1.3));
+  const edge = (side, extra, wob) => sm.map((p, i) => { const [nx, ny] = nrm(i), hw = wid(i) / 2 + extra + wob * (Math.sin(i * .9 + side) * 1.6 + Math.sin(i * .23 + side * 2) * 2.2); return [p[0] + nx * hw * side, p[1] + ny * hw * side]; });
+  const poly = (L, R) => { c.beginPath(); L.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); for (let i = R.length - 1; i >= 0; i--) c.lineTo(R[i][0], R[i][1]); c.closePath(); };
+  // damp banks
+  poly(edge(1, 16, 1.4), edge(-1, 16, 1.4)); c.fillStyle = 'rgba(120,100,62,.55)'; c.fill();
+  poly(edge(1, 8, 1.2), edge(-1, 8, 1.2)); c.fillStyle = '#8c7a52'; c.fill();
+  // water
+  poly(edge(1, 0, 1), edge(-1, 0, 1)); c.fillStyle = '#2b6d88'; c.fill();
+  c.save(); c.clip();
+  poly(edge(1, -w * .18, .6), edge(-1, -w * .18, .6)); c.fillStyle = '#3f8aa3'; c.fill();
+  poly(edge(1, -w * .36, .4), edge(-1, -w * .36, .4)); c.fillStyle = '#2a6f8e'; c.fill();
+  // shallows along the inside of bends and a few sandbars
+  for (let i = 30; i < sm.length - 30; i += 47) { const [nx, ny] = nrm(i), sd = i % 2 ? 1 : -1, hw = wid(i) / 2, p = sm[i]; c.fillStyle = 'rgba(205,181,124,.9)'; c.beginPath(); c.ellipse(p[0] + nx * hw * .55 * sd, p[1] + ny * hw * .55 * sd, 11 + (i % 5) * 3, 5, Math.atan2(ny, nx) + PI / 2, 0, PI * 2); c.fill(); c.fillStyle = 'rgba(120,190,200,.35)'; c.beginPath(); c.ellipse(p[0] + nx * hw * .5 * sd, p[1] + ny * hw * .5 * sd, 20 + (i % 5) * 4, 9, Math.atan2(ny, nx) + PI / 2, 0, PI * 2); c.fill(); }
+  // ripples and glints
+  c.strokeStyle = 'rgba(190,235,245,.45)'; c.lineWidth = 1;
+  for (let i = 4; i < sm.length - 4; i += 6) { const [nx, ny] = nrm(i), p = sm[i], off = (Math.sin(i * .7) * .5) * wid(i) * .6, tx = -ny, ty = nx, len = 4 + (i % 4) * 2; c.beginPath(); c.moveTo(p[0] + nx * off - tx * len, p[1] + ny * off - ty * len); c.quadraticCurveTo(p[0] + nx * (off + 2), p[1] + ny * (off + 2), p[0] + nx * off + tx * len, p[1] + ny * off + ty * len); c.stroke(); }
+  c.restore();
+  // bank line and reeds
+  [1, -1].forEach(sd => { const E = edge(sd, 0, 1); c.beginPath(); E.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); c.strokeStyle = 'rgba(60,70,40,.55)'; c.lineWidth = 1.5; c.stroke();
+    for (let i = 3; i < E.length - 3; i += 5) { if (jitter(i, sd + 10) < .45) continue; const [nx, ny] = nrm(i), p = E[i], bx = p[0] + nx * sd * (2 + jitter(i, 3) * 6), by = p[1] + ny * sd * (2 + jitter(i, 3) * 6); c.strokeStyle = jitter(i, 4) < .5 ? '#5f7a3a' : '#7a9a48'; c.lineWidth = 1.2; for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + k * 2.5 + jitter(i + k, 5) * 2 - 1, by - 7 - jitter(i + k, 6) * 6); c.stroke(); } } });
 }
 function buildTerrain() {
   const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS;
