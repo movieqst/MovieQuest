@@ -30,8 +30,10 @@ a local file.
    and then hunts whatever is nearest. As the Hittites you start concealed
    behind Kadesh with the chariot force and infantry in hand, while the
    Egyptian divisions march as history had it and react to what they can see.
-   A formation below 25% strength routs. The debrief compares your result with
-   the historical outcome.
+   Select a formation by clicking it, or drag a box around several (Ctrl-drag
+   adds). Right-click the map for the order menu: attack-move, move, face,
+   halt, fall back. A formation below 25% strength routs. The debrief compares
+   your result with the historical outcome.
 
 Controls: drag / WASD / arrows / minimap to move the camera, mouse wheel to
 zoom, Space to pause, F to follow the action, E to explain the moment.

@@ -549,6 +549,12 @@ function render() {
     ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
   });
+  if (marquee) {
+    const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
+    const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
+    ctx.beginPath(); c4.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.closePath();
+    ctx.fillStyle = 'rgba(120,200,255,.12)'; ctx.fill(); ctx.strokeStyle = '#8fd0ff'; ctx.lineWidth = 1.5; ctx.stroke();
+  }
   if (band) {
     const x0 = Math.min(band.x0, band.x1), y0 = Math.min(band.y0, band.y1), x1 = Math.max(band.x0, band.x1), y1 = Math.max(band.y0, band.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
@@ -743,24 +749,63 @@ function pickFormation(p) {
 }
 canvas.addEventListener('contextmenu', e => e.preventDefault());
 canvas.addEventListener('pointerdown', e => {
-  last = { x: e.clientX, y: e.clientY }; dragMoved = false;
-  if (e.button === 0) { dragging = true; canvas.setPointerCapture(e.pointerId); if (overview || e.shiftKey) { const p = toWorld(e); band = { x0: p.x, y0: p.y, x1: p.x, y1: p.y }; } }
-  if (e.button === 2 && mode === 'command' && selected.size) {
-    const p = toWorld(e); let k = 0;
-    selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = clamp(p.x + (k % 3 - 1) * 70, 20, W.w - 20); f.ty = clamp(p.y + Math.floor(k / 3) * 60, 20, W.h - 20); f.state = 'move'; k++; });
-    addLog('Orders issued');
-  }
+  e.preventDefault(); last = { x: e.clientX, y: e.clientY }; dragMoved = false;
+  hideMenu();
+  if (e.button === 0) { dragging = true; canvas.setPointerCapture(e.pointerId); const p = toWorld(e); if (overview || e.shiftKey) band = { x0: p.x, y0: p.y, x1: p.x, y1: p.y }; else if (mode === 'command') marquee = { x0: p.x, y0: p.y, x1: p.x, y1: p.y, add: e.ctrlKey || e.metaKey }; }
+  if (e.button === 2 && mode === 'command') { const p = toWorld(e); const r = canvas.getBoundingClientRect(); showMenu(e.clientX - r.left, e.clientY - r.top, p); }
 });
+/* ---- marquee selection and the right-click order menu (command mode) ---- */
+let marquee = null, menuTarget = null;
+function ownSelected() { return [...selected].map(id => byId[id]).filter(f => f && alive(f) && f.state !== 'rout' && f.side === player); }
+function orderMove(p, state) {
+  const fs = ownSelected(); if (!fs.length) return; const cols = Math.ceil(Math.sqrt(fs.length));
+  fs.forEach((f, k) => { f.tx = clamp(p.x + (k % cols - (cols - 1) / 2) * 90, 20, W.w - 20); f.ty = clamp(p.y + Math.floor(k / cols) * 70, 20, W.h - 20); f.state = state || 'move'; f.aiPhase = null; });
+  addLog((state === 'attack' ? 'Attack-move' : 'Move') + ' ordered: ' + fs.length + ' formation' + (fs.length > 1 ? 's' : '')); renderSelection();
+}
+function orderHalt() { ownSelected().forEach(f => { if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; }); addLog('Halt'); renderSelection(); }
+function orderFace(p) { ownSelected().forEach(f => { f.facing = Math.atan2(p.y - f.y, p.x - f.x); f.state = 'hold'; }); addLog('Facing changed'); renderSelection(); }
+function orderFallBack() { $('retreatBtn').click(); }
+function showMenu(sx, sy, p) {
+  menuTarget = p; const m = $('ctxMenu'), fs = ownSelected(), enemy = pickFormation(p), onEnemy = enemy && enemy.side !== player;
+  const items = [];
+  if (fs.length) {
+    items.push({ t: onEnemy ? '\u2694 Attack ' + enemy.division : '\u2694 Attack-move here', f: () => orderMove(onEnemy ? { x: enemy.x, y: enemy.y } : p, 'attack') });
+    items.push({ t: '\u27a1 Move here', f: () => orderMove(p, 'move') });
+    items.push({ t: '\u21bb Face this way', f: () => orderFace(p) });
+    items.push({ t: '\u25a0 Halt / hold ground', f: orderHalt });
+    items.push({ t: '\u21a9 Fall back', f: orderFallBack });
+    items.push({ sep: true });
+  }
+  items.push({ t: '\u2611 Select all ' + (player === 'egypt' ? 'Egyptian' : 'Hittite') + ' formations', f: () => $('selectAll').click() });
+  if (enemy && enemy.side === player) items.push({ t: '\u2610 Select ' + enemy.name, f: () => { selected.clear(); selected.add(enemy.id); renderSelection(); } });
+  if (selected.size) items.push({ t: '\u2715 Deselect', f: () => { selected.clear(); renderSelection(); } });
+  items.push({ t: '\ud83c\udfa5 Look here', f: () => { manualCamera(); focusOn(p.x, p.y); } });
+  m.innerHTML = (fs.length ? `<div class="mhead">${fs.length} formation${fs.length > 1 ? 's' : ''} selected</div>` : '<div class="mhead">No formation selected</div>') + items.map((it, i) => it.sep ? '<hr>' : `<button data-i="${i}">${it.t}</button>`).join('');
+  m.querySelectorAll('button').forEach(b => b.onclick = ev => { ev.stopPropagation(); items[+b.dataset.i].f(); hideMenu(); });
+  const pw = panel.getBoundingClientRect(); m.style.display = 'block'; m.style.left = Math.min(sx, pw.width - 240) + 'px'; m.style.top = Math.min(sy, pw.height - m.offsetHeight - 10) + 'px';
+}
+function hideMenu() { const m = $('ctxMenu'); if (m) m.style.display = 'none'; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') hideMenu(); });
 canvas.addEventListener('pointermove', e => {
   if (!dragging) return; const dx = e.clientX - last.x, dy = e.clientY - last.y;
   if (Math.abs(dx) + Math.abs(dy) > 3) dragMoved = true;
   if (band) { const p = toWorld(e); band.x1 = p.x; band.y1 = p.y; return; }
-  if (dragMoved) { const r = canvas.getBoundingClientRect(), a = U(last.x - r.left, last.y - r.top), b2 = U(e.clientX - r.left, e.clientY - r.top); view.x -= b2.x - a.x; view.y -= b2.y - a.y; clampView(); manualCamera(); last = { x: e.clientX, y: e.clientY }; }
+  if (marquee) { const p = toWorld(e); marquee.x1 = p.x; marquee.y1 = p.y; if (Math.abs(dx) + Math.abs(dy) > 3) dragMoved = true; return; }
+  if (dragMoved && !marquee) { const r = canvas.getBoundingClientRect(), a = U(last.x - r.left, last.y - r.top), b2 = U(e.clientX - r.left, e.clientY - r.top); view.x -= b2.x - a.x; view.y -= b2.y - a.y; clampView(); manualCamera(); last = { x: e.clientX, y: e.clientY }; }
 });
 canvas.addEventListener('pointerup', e => {
   if (band) {
     const bx = Math.min(band.x0, band.x1), by = Math.min(band.y0, band.y1), bw = Math.abs(band.x1 - band.x0), bh = Math.abs(band.y1 - band.y0); band = null;
     if (bw > 20 && bh > 20) { view.z = clamp(Math.min(view.w / bw, view.h * TR() / bh), .45, 2.4); view.x = bx + bw / 2 - VW() / 2; view.y = by + bh / 2 - VH() / 2; overview = null; $('battlePanel').classList.remove('overview'); clampView(); manualCamera(); dragging = false; return; }
+  }
+  if (marquee) {
+    const mq = marquee; marquee = null;
+    const x0 = Math.min(mq.x0, mq.x1), y0 = Math.min(mq.y0, mq.y1), x1 = Math.max(mq.x0, mq.x1), y1 = Math.max(mq.y0, mq.y1);
+    if (dragMoved && (x1 - x0 > 8 || y1 - y0 > 8)) {
+      if (!mq.add) selected.clear();
+      formations.forEach(f => { if (alive(f) && f.side === player && f.x >= x0 && f.x <= x1 && f.y >= y0 && f.y <= y1) selected.add(f.id); });
+      renderSelection(); dragging = false; return;
+    }
   }
   if (dragging && !dragMoved && e.button === 0) {
     if (overview) { toggleOverview(); dragging = false; return; }
