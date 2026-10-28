@@ -173,7 +173,7 @@ window.KADESH_SCENARIO = {
     {
       title: 'How to read this reenactment',
       media: [
-        { at: 0,  file: '16-papyrus-sallier.jpg', caption: 'A papyrus copy of the Poem of Kadesh, written about a century after the battle.', ref: 'Papyrus Sallier III, British Museum EA 10181' },
+        { at: 0,  file: '16-papyrus-sallier.jpg', caption: 'Hieratic script on a Ramesside papyrus, the kind of document the Poem of Kadesh survives on. The Poem itself is on Papyrus Sallier III in the British Museum, written about a century after the battle.', ref: 'Papyrus Butler (British Museum EA 10274), verso; Sallier III is EA 10181', credit: 'Photo: Wikimedia Commons, licence as on the file page' },
         { at: 9,  file: '17-treaty-tablet.jpg', caption: 'The peace treaty of c. 1259 BCE, the Hittite copy on a clay tablet in Akkadian, found at Hattusa in 1906.', ref: 'Museum of the Ancient Orient, Istanbul', credit: 'Photo: Osama Shukir Muhammed Amin, Wikimedia Commons, CC BY-SA 4.0' }
       ],
       focus: { x: 1250, y: 900 }, zoom: .6,
