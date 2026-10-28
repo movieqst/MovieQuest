@@ -94,6 +94,18 @@
   #playBig:hover{transform:scale(1.07);background:rgba(33,78,117,.75)}
   #playBig span{position:absolute;left:52px;top:36px;width:0;height:0;border-left:44px solid #e9c77a;border-top:30px solid transparent;border-bottom:30px solid transparent}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 12px rgba(233,199,122,.12),0 10px 40px rgba(0,0,0,.6)}50%{box-shadow:0 0 0 22px rgba(233,199,122,.05),0 10px 40px rgba(0,0,0,.6)}}
+  #playGame{position:absolute;left:50%;top:50%;width:132px;height:132px;margin:-66px 0 0 -66px;z-index:6;border-radius:50%;border:3px solid rgba(233,199,122,.9);background:rgba(9,23,32,.55);padding:0;display:none;box-shadow:0 0 0 12px rgba(233,199,122,.12),0 10px 40px rgba(0,0,0,.6);transition:transform .2s,background .2s}
+  #playGame.show{display:block;animation:pulse 1.8s ease-in-out infinite}
+  #playGame:hover{transform:scale(1.07);background:rgba(33,78,117,.75)}
+  #playGame span{position:absolute;left:52px;top:36px;width:0;height:0;border-left:44px solid #e9c77a;border-top:30px solid transparent;border-bottom:30px solid transparent}
+  #playMenu{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;display:none;flex-direction:column;gap:10px;min-width:300px;padding:18px 20px;background:rgba(11,24,34,.92);border:1px solid #4a6472;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  #playMenu.show{display:flex}
+  body.choice .dialog.intro{max-width:560px;margin-left:auto}
+  body.choice .dialog.intro .intro-media{display:none}
+  body.choice .dialog.intro{grid-template-columns:1fr}
+  #playMenu .pm-title{font:700 20px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.08em;text-align:center;margin-bottom:4px}
+  #playMenu button{padding:12px 16px;font-size:15px;text-align:left}
+  #playMenu #pmClose{background:transparent;border-color:#3a5260;text-align:center;font-weight:500}
   #titleCard{position:absolute;left:0;right:0;top:9%;z-index:6;text-align:center;pointer-events:none;display:none;opacity:0;transition:opacity .4s;padding:0 24px}
   #titleCard.show{display:block}
   .tc-title{font:800 clamp(30px,5vw,64px) 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.12em;text-shadow:0 2px 0 #5a4310,0 4px 18px rgba(0,0,0,.9)}
@@ -183,6 +195,14 @@
 
     <canvas id="globe" aria-hidden="true"></canvas>
     <button id="playBig" title="Begin with narration" aria-label="Begin with narration"><span></span></button>
+    <button id="playGame" title="Play" aria-label="Play"><span></span></button>
+    <div id="playMenu">
+      <div class="pm-title">BATTLE OF KADESH</div>
+      <button id="pmWatch" class="primary">▶ Play the reenactment</button>
+      <button id="pmEgypt" class="primary">⚔ Play as Egypt</button>
+      <button id="pmHittite" class="primary">⚔ Play as the Hittites</button>
+      <button id="pmClose">Back</button>
+    </div>
     <div id="titleCard"></div>
     <div class="overlay" id="intro">
       <div class="dialog intro">

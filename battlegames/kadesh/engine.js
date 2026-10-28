@@ -670,7 +670,7 @@ function showIntro(i) {
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
   $('introTitle').textContent = sl.title; $('introSub').textContent = sl.subtitle || '';
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
-  $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('introChoice').style.display = sl.choice ? 'flex' : 'none';
+  $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   markers = sl.markers || [];
   if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
@@ -725,7 +725,7 @@ function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = 
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
   if (G && window.KADESH_WORLD) G.start($('globe'), { lift: true, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
-  const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show');
+  const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m; $('caption').classList.remove('show');
@@ -958,6 +958,11 @@ $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if 
 $('sideSel').value = player;
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
 $('chooseCommandH').onclick = () => { setPlayer('hittite'); startMode('command', { skipGlobe: true }); };
+$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.add('show'); };
+$('pmClose').onclick = () => { $('playMenu').classList.remove('show'); $('playGame').classList.add('show'); };
+$('pmWatch').onclick = () => $('chooseWatch').click();
+$('pmEgypt').onclick = () => $('chooseCommand').click();
+$('pmHittite').onclick = () => $('chooseCommandH').click();
 $('haltBtn').onclick = () => { selected.forEach(id => { const f = byId[id]; if (f.state === 'move' || f.state === 'attack') { f.state = 'hold'; } }); };
 $('retreatBtn').onclick = () => { const r = player === 'egypt' ? { x: B.camp.x + 60, y: B.camp.y + 60 } : { x: S.ai.hittite.holdPoint.x - 60, y: S.ai.hittite.holdPoint.y - 60 }; let i = 0; selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = r.x + (i % 3) * 60; f.ty = r.y + Math.floor(i / 3) * 60; f.state = 'move'; i++; }); };
 
