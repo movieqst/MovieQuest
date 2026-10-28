@@ -142,7 +142,7 @@ window.KADESH_SCENARIO = {
     {
       title: 'The deception',
       media: [
-        { at: 0,  file: '13-shasu-relief.jpg', caption: 'Shasu nomads as the Egyptians drew them, bound captives on a relief of Seti I.', ref: 'Karnak, north wall of the hypostyle hall' },
+        { at: 0,  file: '13-shasu-relief.jpg', caption: 'Seti I, father of Ramesses, scattering Shasu nomads on the road to Gaza: a drawing of the relief on the north wall at Karnak, made by the Lepsius expedition in the 1840s.', ref: 'Karnak, north exterior wall of the hypostyle hall', credit: 'Drawing: R. Lepsius, Denkm\u00e4ler aus Aegypten und Aethiopien (1853); public domain' },
         { at: 10, file: '06-near-east-map.jpg', caption: 'Aleppo lay 200 km north of Kadesh, deep inside Hittite territory: the lie that drew Ramesses forward.', ref: 'This game\u2019s reconstruction, approximate extents', credit: 'Map: Battle Games, after Bryce (2005) and Kitchen (1982); coastlines public domain' }
       ],
       focus: { x: 1345, y: 1480 }, zoom: .8,
