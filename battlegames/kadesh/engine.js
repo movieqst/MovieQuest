@@ -245,7 +245,20 @@ function figChariot(c, side, s, i, moving, dir, step) {
     crewAt(crew === 2 ? [-2.6 * s, 2.6 * s] : [-3.4 * s, 0, 3.4 * s], -9.5 * s, .95 * s);
   }
 }
+/* Painted sprite sheets (images/units/<side>-<type>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
+   Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
+const SHEETS = {};
+const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, chariot: { cw: 240, ch: 200, h: 30 } };
+['egyptian-spearman', 'egyptian-archer', 'egyptian-chariot', 'hittite-spearman', 'hittite-archer', 'hittite-chariot'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const sheetFor = (side, type, i) => SHEETS[(side === 'egypt' ? 'egyptian' : 'hittite') + '-' + (type === 'chariot' ? 'chariot' : (type === 'archers' || (type === 'infantry' && i % 3 === 2)) ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
+  const sh = sheetFor(f.side, f.type, i);
+  if (sh) {
+    const spec = SHEET_SPEC[f.type === 'chariot' ? 'chariot' : 'infantry'], d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
+    const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
+    const scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
+    c.save(); c.translate(x, y); if (k !== 1) c.scale(1, 1); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore(); return;
+  }
   c.save(); c.translate(x, y);
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', d = dirOf(facing), step = moving ? wall * 8 + i * 1.7 : 0;
   if (d === 'w') c.scale(-1, 1);
@@ -517,9 +530,10 @@ function render() {
       // Draw the pre-rendered terrain in thin horizontal strips, each sampling a wider span of the map the further north it is.
       const STRIP = 3;
       for (let y0 = 0; y0 < view.h; y0 += STRIP) {
-        const y1 = Math.min(view.h, y0 + STRIP), v0 = vAt(y0), v1 = vAt(y1), sm = sAt((v0 + v1) / 2);
+        const y1 = Math.min(view.h, y0 + STRIP), v0 = vAt(y0), v1 = vAt(y1 + 1), sm = sAt((v0 + v1) / 2);
         const wy0 = view.y + v0 * vh, wy1 = view.y + v1 * vh, ww = vw / sm, wxl = view.x + vw / 2 - ww / 2;
-        ctx.drawImage(TER, wxl * TS, wy0 * TS, ww * TS, (wy1 - wy0) * TS, 0, y0, view.w, y1 - y0);
+        // strips overlap by one pixel so sub-pixel sampling never leaves a dark seam
+        ctx.drawImage(TER, wxl * TS, wy0 * TS, ww * TS, Math.max(1, (wy1 - wy0) * TS), 0, y0, view.w, y1 - y0 + 1);
       }
     } else ctx.drawImage(TER, view.x * TS, view.y * TS, vw * TS, vh * TS, 0, 0, view.w, view.h);
   }
@@ -631,7 +645,8 @@ function renderArmies() {
     { side: 'hittite', type: 'archers', name: 'Allied archer', desc: 'Drawn from Muwatalli\u2019s vassals and allies.', tag: 'reconstruction' }
   ];
   $('armies').innerHTML = units.map((u, i) => `<div class="ucard"><canvas id="uc${i}" width="84" height="60"></canvas><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}</div></div>`).join('');
-  units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 36 : 40, 54, 0, 1, u.type === 'chariot' ? 2.2 : 2.1); });
+  units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 36 : 40, 54, 0, 1, u.type === 'chariot' ? 2.2 : 2.1);
+    setTimeout(() => { c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 42 : 42, 56, 0, u.type === 'archers' ? 2 : 1, u.type === 'chariot' ? 1.8 : 2); }, 1500); });
 }
 function renderBriefing() {
   $('briefMeta').innerHTML = `<b>${S.date}</b> · ${S.place}<br>${S.tagline}`;
@@ -774,6 +789,10 @@ document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggl
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;
 $('mapBtn').onclick = toggleOverview;
+let textOp = '80'; try { const t = localStorage.getItem('kadesh-textop'); if (['80', '50', '0'].includes(t)) textOp = t; } catch (e) {}
+function applyTextOp() { document.body.dataset.textop = textOp; $('textBtn').textContent = textOp === '0' ? '\ud83d\udcdd Text off' : '\ud83d\udcdd Text ' + textOp + '%'; }
+function cycleTextOp() { textOp = textOp === '80' ? '50' : textOp === '50' ? '0' : '80'; try { localStorage.setItem('kadesh-textop', textOp); } catch (e) {} applyTextOp(); }
+$('textBtn').onclick = cycleTextOp; applyTextOp();
 // Layout guide for painting the terrain: the current map at full size with every feature boxed and labelled (press G).
 function exportLayoutGuide() {
   const T = document.createElement('canvas'); T.width = W.w; T.height = W.h; const g = T.getContext('2d');
@@ -804,6 +823,7 @@ window.addEventListener('keydown', e => {
   if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); }
   if (k === 'e') showExplain();
   if (k === 'm') toggleOverview();
+  if (k === 't') cycleTextOp();
   if (k === 'g' && e.shiftKey) exportLayoutGuide();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
   if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
