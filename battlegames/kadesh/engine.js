@@ -26,7 +26,7 @@ let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStart
 const G = window.KadeshGlobe;
 const INTRO_BREAK = 5, CHAPTER_BREAK = 2.5;
 let markers = [];
-let TER = null, MINIBASE = null;
+let TER = null, MINIBASE = null, PAINTED = false;
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const jitter = (i, k = 0) => { const s = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return s - Math.floor(s); };
@@ -525,7 +525,7 @@ function render() {
   }
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
-  PROPS.forEach(p => { if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
+  PROPS.forEach(p => { if (PAINTED && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
   formations.forEach(f => scene.push({ y: f.y, f }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : drawFormation(ctx, o.f));
   markers.forEach(m => {
@@ -774,6 +774,23 @@ document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggl
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;
 $('mapBtn').onclick = toggleOverview;
+// Layout guide for painting the terrain: the current map at full size with every feature boxed and labelled (press G).
+function exportLayoutGuide() {
+  const T = document.createElement('canvas'); T.width = W.w; T.height = W.h; const g = T.getContext('2d');
+  g.drawImage(TER, 0, 0, W.w, W.h);
+  g.strokeStyle = '#ff2a2a'; g.lineWidth = 4; g.font = 'bold 28px system-ui'; g.fillStyle = '#ff2a2a'; g.textAlign = 'left';
+  const box = (x, y, w, h, t) => { g.strokeRect(x, y, w, h); g.fillText(t, x + 6, y - 10); };
+  box(B.city.x - 26, B.city.y - 26, B.city.w + 52, B.city.h + 52, 'KADESH: walled city on a mound, moat, citadel');
+  box(B.camp.x, B.camp.y, B.camp.w, B.camp.h, 'EGYPTIAN CAMP: shield wall, tents, royal tent');
+  B.fords.forEach(f => box(f.x - 60, f.y - 30, 120, 60, 'FORD: ' + f.name));
+  B.forests.forEach(fo => { g.beginPath(); g.ellipse(fo.x, fo.y, fo.r, fo.r * .8, 0, 0, PI * 2); g.stroke(); g.fillText('FOREST', fo.x - 50, fo.y); });
+  B.hills.forEach(h => { g.beginPath(); g.ellipse(h.x, h.y, h.rx, h.ry, 0, 0, PI * 2); g.stroke(); g.fillText('HILL', h.x - 25, h.y); });
+  g.strokeStyle = '#00e5ff'; g.lineWidth = 6; g.beginPath(); curve(g, B.river); g.stroke(); g.beginPath(); curve(g, B.tributary); g.stroke(); g.fillStyle = '#00e5ff'; g.fillText('RIVER CENTRELINE (Orontes, flows south to north)', 1560, 1300);
+  g.strokeStyle = '#ffd400'; g.lineWidth = 6; g.beginPath(); curve(g, B.road); g.stroke(); g.fillStyle = '#ffd400'; g.fillText('ROAD', 1200, 1320);
+  g.fillStyle = '#ff2a2a'; g.font = 'bold 40px system-ui'; g.fillText('N (north is up) \u2191   map ' + W.w + ' x ' + W.h + ' px, paint at 2x = ' + W.w * 2 + ' x ' + W.h * 2, 40, 60);
+  const a = document.createElement('a'); a.download = 'kadesh-layout-guide.png'; a.href = T.toDataURL('image/png'); a.click();
+}
+window.exportLayoutGuide = exportLayoutGuide;
 $('tiltBtn').classList.toggle('active', tiltOn());
 $('tiltBtn').onclick = () => { TILT = tiltOn() ? 0 : .45; try { localStorage.setItem('kadesh-tilt', TILT ? '1' : '0'); } catch (e) {} $('tiltBtn').classList.toggle('active', tiltOn()); clampView(); };
 mini.addEventListener('click', e => { const r = mini.getBoundingClientRect(); view.x = (e.clientX - r.left) / r.width * W.w - VW() / 2; view.y = (e.clientY - r.top) / r.height * W.h - VH() / 2; clampView(); manualCamera(); });
@@ -787,6 +804,7 @@ window.addEventListener('keydown', e => {
   if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); }
   if (k === 'e') showExplain();
   if (k === 'm') toggleOverview();
+  if (k === 'g' && e.shiftKey) exportLayoutGuide();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
   if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
 });
@@ -861,6 +879,12 @@ function tick(t) {
 
 /* ---------------- boot ---------------- */
 TER = buildTerrain(); buildMiniBase(); renderBriefing(); renderArmies(); createFormations();
+// Optional painted terrain (images/terrain.jpg, painted to the layout guide): when present it replaces the drawn ground.
+// Labels, river course and props still come from the scenario, so the painting must follow the guide's positions.
+{ const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height);
+    g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
+    B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
+    TER = T; buildMiniBase(); PAINTED = true; }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
 if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { TER = buildTerrain(); buildMiniBase(); }).catch(() => {});
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
