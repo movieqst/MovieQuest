@@ -20,7 +20,8 @@ let formations = [], byId = {};
 let eventIndex = 0, currentEvent = null, aiFlags = {}, battleOver = null, fastForward = false;
 let selected = new Set();
 let dragging = false, last = null, dragMoved = false, band = null, overview = null;
-let introIdx = 0, introTimer = 0, introPaused = false, introStarted = false;
+let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStarted = false;
+const INTRO_BREAK = 5, CHAPTER_BREAK = 2.5;
 let markers = [];
 let TER = null, MINIBASE = null;
 
@@ -424,10 +425,10 @@ function drawMini() {
 
 /* ---------------- narration (voice) ---------------- */
 const Narr = {
-  on: false, audio: null, rate: 1,
+  on: false, audio: null, rate: 1, endedAt: -99,
   speak(text, file) {
     this.stop(); if (!this.on) return;
-    if (file) { const a = new Audio(file); a.playbackRate = this.rate; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
+    if (file) { const a = new Audio(file); a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
@@ -504,7 +505,7 @@ function renderBriefing() {
 function showOverlay(id) { $(id).classList.add('show'); }
 function hideOverlay(id) { $(id).classList.remove('show'); }
 function showIntro(i) {
-  introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0;
+  introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
   $('introTitle').textContent = sl.title; $('introSub').textContent = sl.subtitle || '';
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
@@ -653,10 +654,24 @@ function tick(t) {
   if (!lastFrame) lastFrame = t; const dt = Math.min(.1, (t - lastFrame) / 1000); lastFrame = t; wall += dt;
   if (mode === 'intro') {
     const sl = S.intro[introIdx];
-    if (introStarted && !introPaused && !sl.choice) { introTimer += dt; $('introBar').style.width = Math.min(100, introTimer / sl.auto * 100) + '%'; if (introTimer >= sl.auto) showIntro(introIdx + 1); }
+    if (introStarted && !introPaused && !sl.choice) {
+      // Play the narration (or allow reading time), then light up NEXT NARRATION with a 5-second countdown.
+      let tail = false, frac = 0;
+      if (Narr.on && Narr.audio) { const au = Narr.audio; if (au.ended) tail = true; else frac = au.duration ? Math.min(1, au.currentTime / au.duration) : 0; }
+      else if (Narr.on && 'speechSynthesis' in window && speechSynthesis.speaking) frac = .5;
+      else { introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
+      const nb = $('introNext');
+      if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
+      else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); } }
+      $('introBar').style.width = Math.min(100, frac * 100) + '%';
+    }
   } else if (!paused && !battleOver) {
     acc += dt * speed;
-    while (acc >= DT) { acc -= DT; simTime += DT; if (mode === 'watch') stepWatch(); else stepCommand(); }
+    while (acc >= DT) {
+      // In Watch mode, hold at a chapter boundary while the narrator is still speaking the previous one.
+      if (mode === 'watch' && Narr.on && Narr.audio && (!Narr.audio.ended || wall - Narr.endedAt < CHAPTER_BREAK) && eventIndex < S.events.length && S.events[eventIndex].t <= simTime + DT) { acc = 0; break; }
+      acc -= DT; simTime += DT; if (mode === 'watch') stepWatch(); else stepCommand();
+    }
     $('clock').textContent = fmtTime(simTime); const now = $('tlNow'); if (now) now.style.left = (simTime / S.duration * 100) + '%';
   }
   render(); requestAnimationFrame(tick);

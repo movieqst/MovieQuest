@@ -75,6 +75,8 @@
   .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
   .actions .spacer{flex:1}
   .big{padding:12px 18px;font-size:15px}
+  button.ready{background:#6b4f12;border-color:var(--gold);outline:2px solid var(--gold);animation:glow 1s ease-in-out infinite alternate}
+  @keyframes glow{from{box-shadow:0 0 0 0 rgba(233,199,122,.2)}to{box-shadow:0 0 14px 4px rgba(233,199,122,.55)}}
   .tablewrap{max-height:220px;overflow:auto;margin:8px 0;border:1px solid #233944;border-radius:6px}
   table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:4px 8px;border-bottom:1px solid #233944}th{color:var(--gold)}
   footer{padding:6px 14px;color:#7f969f;font-size:11px;border-top:1px solid #233944;background:#09131a}
