@@ -91,7 +91,7 @@ event in `scenario.js`.
 
 The introduction opens on the Earth from space (`globe.js`, coastlines from
 `world.js`, Natural Earth data via the world-atlas package, public domain).
-After the start screen the globe makes two turns, the narration begins, and
+After the start screen the globe, already centred on Syria, makes one slow turn; the narration begins, and
 the camera dives to the Orontes before fading into the battlefield. Press Next
 or Skip to cut it short.
 

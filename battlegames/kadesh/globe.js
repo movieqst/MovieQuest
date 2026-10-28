@@ -84,14 +84,14 @@ window.KadeshGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const SPIN_TURNS = 2, SPIN_SECS = 11, DIVE_SECS = 7.5, FADE_SECS = 1.6;
+  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE_SECS = 7.5, FADE_SECS = 1.6;   // one slow turn, starting and ending on Kadesh
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
-    if (st.phase === 'idle') { st.lon0 -= 5 * dt; st.R = R0; st.lat0 = 18; st.labels = 0; }
+    if (st.phase === 'idle') { st.lon0 = KADESH.lon; st.R = R0; st.lat0 = 24; st.labels = 0; }
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
-      st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 18 + (KADESH.lat - 18) * k * .5; st.labels = 0;
+      st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24 + (KADESH.lat - 24) * k * .5; st.labels = 0;
       if (k >= 1) { st.phase = 'dive'; t0 = now; st.lon0 = KADESH.lon; if (cb.onSpun) cb.onSpun(); }
     } else if (st.phase === 'dive') {
       const k = Math.min(1, (now - t0) / DIVE_SECS), e = ease(k);
@@ -106,7 +106,7 @@ window.KadeshGlobe = (() => {
   function smooth(k) { return k < .12 ? (k / .12) * (k / .12) * .06 : k > .88 ? 1 - ((1 - k) / .12) * ((1 - k) / .12) * .06 : .06 + (k - .12) / .76 * .88; }
   function start(canvas, callbacks) {
     cv = canvas; c = cv.getContext('2d'); cb = callbacks || {}; size(); window.addEventListener('resize', size);
-    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: 60, lat0: 18, R: 100, labels: 0, ox: 0, oy: 0 }; lastT = 0;
+    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: KADESH.lon, lat0: 24, R: 100, labels: 0, ox: 0, oy: 0 }; lastT = 0;
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
   }
   function begin() { if (!st) return; st.phase = 'spin'; st.spinFrom = st.lon0; t0 = lastT; }
