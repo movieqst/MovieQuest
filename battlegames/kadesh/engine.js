@@ -26,7 +26,7 @@ let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStart
 const G = window.KadeshGlobe;
 const INTRO_BREAK = 5, CHAPTER_BREAK = 2.5;
 let markers = [];
-let TER = null, MINIBASE = null, PAINTED = false;
+let TER = null, MINIBASE = null, PAINTED = false, PAINTEDTER = null, DRAWNTER = null, artOn = true; try { artOn = localStorage.getItem('kadesh-art') !== '0'; } catch (e) {}
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const jitter = (i, k = 0) => { const s = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return s - Math.floor(s); };
@@ -252,7 +252,7 @@ const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, 
 ['egyptian-spearman', 'egyptian-archer', 'egyptian-chariot', 'hittite-spearman', 'hittite-archer', 'hittite-chariot'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 const sheetFor = (side, type, i) => SHEETS[(side === 'egypt' ? 'egyptian' : 'hittite') + '-' + (type === 'chariot' ? 'chariot' : (type === 'archers' || (type === 'infantry' && i % 3 === 2)) ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
-  const sh = sheetFor(f.side, f.type, i);
+  const sh = artOn ? sheetFor(f.side, f.type, i) : null;
   if (sh) {
     const spec = SHEET_SPEC[f.type === 'chariot' ? 'chariot' : 'infantry'], d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
     const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
@@ -539,7 +539,7 @@ function render() {
   }
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
-  PROPS.forEach(p => { if (PAINTED && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
+  PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
   formations.forEach(f => scene.push({ y: f.y, f }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : drawFormation(ctx, o.f));
   markers.forEach(m => {
@@ -983,16 +983,21 @@ function tick(t) {
 }
 
 /* ---------------- boot ---------------- */
-TER = buildTerrain(); buildMiniBase(); renderBriefing(); renderArmies(); createFormations();
+TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderArmies(); createFormations();
 // Optional painted terrain (images/terrain.jpg, painted to the layout guide): when present it replaces the drawn ground.
 // Labels, river course and props still come from the scenario, so the painting must follow the guide's positions.
 { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height);
     g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
     B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
-    PAINTEDTER = T; TER = T; buildMiniBase(); PAINTED = true; }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
-let PAINTEDTER = null;
+    PAINTEDTER = T; applyArt(); }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
+function applyArt() {
+  if (artOn && PAINTEDTER) { TER = PAINTEDTER; PAINTED = true; }
+  else { if (!DRAWNTER) DRAWNTER = buildTerrain(); TER = DRAWNTER; PAINTED = false; }
+  buildMiniBase(); document.body.classList.toggle('drawnmode', !artOn); const b = $('artBtn'); if (b) { b.classList.toggle('active', artOn); b.textContent = artOn ? '\ud83c\udfa8 Art' : '\u270f Drawn'; b.title = artOn ? 'Painted battlefield (click for the drawn map)' : 'Drawn battlefield (click for the painting)'; }
+}
+$('artBtn').onclick = () => { artOn = !artOn; try { localStorage.setItem('kadesh-art', artOn ? '1' : '0'); } catch (e) {} applyArt(); };
 // When the title font finishes loading, redo the drawn labels; never overwrite a painting that has already arrived.
-if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { if (PAINTED && PAINTEDTER) { TER = PAINTEDTER; } else { TER = buildTerrain(); } buildMiniBase(); }).catch(() => {});
+if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { DRAWNTER = buildTerrain(); applyArt(); }).catch(() => {});
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();

@@ -78,6 +78,7 @@
   .ucard{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:center;border:1px solid #354c57;border-radius:6px;padding:6px;background:#0c1921;margin:6px 0}
   .ucard canvas{border-radius:4px;display:block}.ucard b{font-size:12px}
   .pwrap{position:relative;width:84px;height:60px}.pwrap .portrait{position:absolute;inset:0;width:84px;height:60px;object-fit:cover;border-radius:4px;display:none}.pwrap .portrait.show{display:block}
+  body.drawnmode .pwrap .portrait{display:none!important}
   #sources{padding-left:16px;font-size:11px;color:#bfccd0}#sources li{margin:4px 0}
   details summary{cursor:pointer;color:var(--gold);font-family:Georgia,serif;font-weight:bold}
   body[data-mode="watch"] .cmd-only, body[data-mode="intro"] .cmd-only{display:none}
@@ -169,7 +170,7 @@
     <div class="hud" id="caption"><button class="xbtn" id="capX" title="Hide the narration text">✕</button><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
     <button id="viewTextBtn" class="hud">📝 View text narration</button>
     <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
-    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="tiltBtn" title="Tilted view: near edge larger, far edge smaller">⛰ Tilt</button></div>
+    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="tiltBtn" title="Tilted view: near edge larger, far edge smaller">⛰ Tilt</button><button id="artBtn" class="active" title="Painted battlefield (click for the drawn map)">🎨 Art</button></div>
     <div id="timeline" title="Timeline: click a marker to jump to that moment"></div>
     <div id="ctxMenu" class="hud"></div>
 
@@ -282,7 +283,7 @@
     </section>
     <section class="card">
       <h2>Controls</h2>
-      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
+      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
     </section>
   </aside>
 </main>
