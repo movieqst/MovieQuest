@@ -99,7 +99,7 @@ window.KADESH_SCENARIO = {
     {
       title: 'The Egyptian army',
       media: [
-        { at: 0,  file: '07-egyptian-chariot.jpg', caption: 'An Egyptian chariot of the period: light, two-wheeled, built for speed.', ref: 'Chariot from the tomb of Tutankhamun, Egyptian Museum, Cairo' },
+        { at: 0,  file: '07-egyptian-chariot.jpg', caption: 'An Egyptian chariot of the period: light, two-wheeled, six spokes, an open cab of bent wood and leather. From the tomb of Tutankhamun, fifty years before Kadesh.', ref: 'Egyptian Museum, Cairo', credit: 'Photo: Gary Todd, Wikimedia Commons, CC0' },
         { at: 8,  file: '08-egyptian-spearmen-model.jpg', caption: 'Egyptian spearmen with tall shields, wooden model from a tomb at Asyut.', ref: 'Tomb of Mesehti, Egyptian Museum, Cairo, c. 2000 BCE' },
         { at: 15, file: '09-egyptian-archers.jpg', caption: 'Archers in the Egyptian service, from the same tomb.', ref: 'Tomb of Mesehti, Egyptian Museum, Cairo' }
       ],
