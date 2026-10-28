@@ -55,7 +55,8 @@
   #ctxMenu button:hover{background:#214e75}
   #ctxMenu hr{border:0;border-top:1px solid #233944;margin:4px 0}
   #zoomBox button{padding:4px 9px}
-  #timeline{position:absolute;left:12px;right:12px;bottom:12px;height:22px;z-index:2;background:#091720cc;border:1px solid #435a64;border-radius:11px;display:none}
+  #timeline{position:absolute;left:12px;right:12px;bottom:12px;height:22px;z-index:2;background:#091720cc;border:1px solid #435a64;border-radius:11px;display:none;cursor:pointer}
+  #timeline:hover{background:#0f2634ee;border-color:#5c7a8a}
   body[data-mode="watch"] #timeline{display:block}
   #timeline .tick{position:absolute;top:4px;width:12px;height:12px;margin-left:-6px;padding:0;border-radius:50%;background:#e9c77a;border:2px solid #09131a}
   #timeline .tick.on{background:#fff;box-shadow:0 0 0 3px #e9c77a66}
@@ -153,6 +154,8 @@
     <button id="watchBtn" class="primary">▶ Watch reenactment</button>
     <button id="commandBtn" class="primary">⚔ Take command</button>
     <button id="pauseBtn">Ⅱ Pause</button>
+    <button id="ffBtn" title="Fast forward: press for 2×, again for 4×, again for normal (.)">⏩ FF</button>
+    <button id="skipBtn" class="watch-only" title="Skip to the next chapter (N)">⏭ Skip</button>
     <select id="speedSel" title="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
     <span id="clock">00:00</span>
     <button id="followBtn" class="active" title="Camera follows the action (F)">🎥 Follow</button>
@@ -171,7 +174,7 @@
     <button id="viewTextBtn" class="hud">📝 View text narration</button>
     <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
     <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="tiltBtn" title="Tilted view: near edge larger, far edge smaller">⛰ Tilt</button><button id="artBtn" class="active" title="Painted battlefield (click for the drawn map)">🎨 Art</button></div>
-    <div id="timeline" title="Timeline: click a marker to jump to that moment"></div>
+    <div id="timeline" title="Timeline: click anywhere to jump to that moment"></div>
     <div id="ctxMenu" class="hud"></div>
 
     <canvas id="globe" aria-hidden="true"></canvas>
@@ -283,7 +286,7 @@
     </section>
     <section class="card">
       <h2>Controls</h2>
-      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
+      <p class="muted"><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom.<br><b>Space:</b> pause · <b>F:</b> follow the action · <b>E:</b> explain this moment · <b>N:</b> next chapter · <b>. (full stop):</b> fast forward · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
     </section>
   </aside>
 </main>

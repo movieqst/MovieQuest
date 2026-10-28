@@ -638,6 +638,7 @@ function renderTimeline() {
   const tl = $('timeline'); if (!tl) return;
   tl.innerHTML = S.events.map(e => `<button class="tick${currentEvent === e ? ' on' : ''}" style="left:${e.t / S.duration * 100}%" data-t="${e.t}" title="${fmtTime(e.t)} ${e.title}"></button>`).join('') + `<i id="tlNow" style="left:${simTime / S.duration * 100}%"></i>`;
   tl.querySelectorAll('.tick').forEach(b => b.onclick = ev => { ev.stopPropagation(); jumpTo(+b.dataset.t); });
+  tl.onclick = ev => { const r = tl.getBoundingClientRect(); jumpTo(clamp((ev.clientX - r.left) / r.width, 0, 1) * S.duration); };
   $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
 }
@@ -909,6 +910,8 @@ window.addEventListener('keydown', e => {
   if (k === 'e') showExplain();
   if (k === 'm') toggleOverview();
   if (k === 't') setTextOff(!textOff);
+  if (k === 'n') skipChapter();
+  if (k === '>' || k === '.') $('ffBtn').click();
   if (k === 'g' && e.shiftKey) exportLayoutGuide();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
   if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
@@ -920,7 +923,12 @@ $('watchBtn').onclick = () => startMode('watch');
 $('commandBtn').onclick = () => startMode('command');
 $('pauseBtn').onclick = togglePause;
 $('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode); };
-$('speedSel').onchange = e => speed = +e.target.value;
+$('speedSel').onchange = e => { speed = +e.target.value; $('ffBtn').classList.toggle('active', speed > 1); $('ffBtn').textContent = speed > 1 ? '\u23e9 ' + speed + '\u00d7' : '\u23e9 FF'; };
+// FF: 1x -> 2x -> 4x -> back to 1x
+$('ffBtn').onclick = () => { speed = speed >= 4 ? 1 : speed >= 2 ? 4 : 2; $('speedSel').value = String(speed); $('speedSel').onchange({ target: $('speedSel') }); };
+// Skip: jump to the start of the next chapter (Watch mode)
+function skipChapter() { if (mode !== 'watch') return; const next = S.events.find(e => e.t > simTime + .01); if (next) jumpTo(next.t); }
+$('skipBtn').onclick = skipChapter;
 $('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); };
 $('explainBtn').onclick = showExplain;
 $('voiceBtn').onclick = () => Narr.toggle();
