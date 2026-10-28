@@ -177,13 +177,14 @@ window.KADESH_SCENARIO = {
       ]
     },
     {
-      title: 'Choose your experience',
+      title: 'The trap is sprung. What happens next?',
       focus: { x: 1250, y: 900 },
       markers: [],
       choice: true,
       lines: [
-        { text: 'Watch the reenactment: the researched version of the battle, narrated, the same every time.', tag: 'established' },
-        { text: 'Take command: lead the Egyptian army from the moment the trap is sprung. The Hittites follow their historical plan, then react to you.', tag: 'reconstruction' }
+        { text: 'The story continues on the battlefield. Choose how to see it.', tag: 'established' },
+        { text: 'Watch the reenactment: the whole battle in sixteen narrated chapters, from the chariots crossing the Orontes to the second day and the truce, then a debrief on what the sources say really happened.', tag: 'established' },
+        { text: 'Take command: lead one of the armies from this moment and see whether you can change the outcome. The debrief then compares your battle with history.', tag: 'reconstruction' }
       ]
     }
   ],
