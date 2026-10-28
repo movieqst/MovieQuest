@@ -24,8 +24,13 @@
   canvas#battle{position:absolute;inset:0;display:block;width:100%;height:100%;outline:none;touch-action:none}
   .hud{position:absolute;z-index:2;background:#091720ee;border:1px solid #435a64;border-radius:7px;padding:8px 10px;backdrop-filter:blur(4px)}
   #caption{left:12px;top:12px;max-width:min(62%,520px);display:none;transition:opacity .3s}
-  body[data-textop="50"] #caption,body[data-textop="50"] .dialog.intro{opacity:.5}
-  body[data-textop="50"] .dialog.intro:hover,body[data-textop="50"] #caption:hover{opacity:.95}
+  /* Opacity applies to the panel background only; the text stays solid so it reads at any level. */
+  body[data-textop="50"] #caption{background:rgba(9,23,32,.5);border-color:rgba(67,90,100,.5)}
+  body[data-textop="50"] .dialog.intro{background:rgba(11,24,34,.5);border-color:rgba(74,100,114,.5);box-shadow:none}
+  body[data-textop="15"] #caption{background:rgba(9,23,32,.15);border-color:rgba(67,90,100,.25);backdrop-filter:none}
+  body[data-textop="15"] .dialog.intro{background:rgba(11,24,34,.15);border-color:rgba(74,100,114,.25);box-shadow:none}
+  body[data-textop="15"] #capText,body[data-textop="15"] #introLines p,body[data-textop="15"] #introSub,body[data-textop="15"] .mcap,body[data-textop="15"] .kicker,body[data-textop="50"] #capText,body[data-textop="50"] #introLines p{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
+  body[data-textop="15"] #capTitle,body[data-textop="15"] .dialog.intro h1{text-shadow:0 1px 0 #5a4310,0 2px 8px #000,0 0 12px #000}
   body[data-textop="0"] #caption{display:none!important}
   body[data-textop="0"] .dialog.intro{background:transparent;border-color:transparent;box-shadow:none}
   body[data-textop="0"] .dialog.intro #introLines,body[data-textop="0"] .dialog.intro #introSub,body[data-textop="0"] .dialog.intro .intro-media,body[data-textop="0"] .dialog.intro .progress,body[data-textop="0"] .dialog.intro .kicker{display:none}
@@ -119,7 +124,7 @@
     <button id="voiceBtn" title="Spoken narration">🔇 Voice off</button>
     <select id="voiceSel" title="Choose the narrator's voice"></select>
     <select id="voiceRate" title="Narration speed"><option value="0.8">Voice 0.8×</option><option value="1">Voice 1×</option><option value="1.1" selected>Voice 1.1×</option><option value="1.2">Voice 1.2×</option><option value="1.3">Voice 1.3×</option><option value="1.5">Voice 1.5×</option><option value="2">Voice 2×</option></select>
-    <button id="textBtn" title="Narration text: 80% / 50% / off (T)">📝 Text 80%</button>
+    <button id="textBtn" title="Narration text panel: 50% / 15% / off (T)">📝 Text 80%</button>
     <button id="resetBtn">↻ Restart</button>
     <span class="tiny" id="voiceStatus"></span>
   </div>

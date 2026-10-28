@@ -790,9 +790,9 @@ document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggl
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;
 $('mapBtn').onclick = toggleOverview;
-let textOp = '50'; try { const t = localStorage.getItem('kadesh-textop'); if (['80', '50', '0'].includes(t)) textOp = t; } catch (e) {}
+let textOp = '50'; try { const t = localStorage.getItem('kadesh-textop'); if (['50', '15', '0'].includes(t)) textOp = t; } catch (e) {}
 function applyTextOp() { document.body.dataset.textop = textOp; $('textBtn').textContent = textOp === '0' ? '\ud83d\udcdd Text off' : '\ud83d\udcdd Text ' + textOp + '%'; }
-function cycleTextOp() { textOp = textOp === '50' ? '80' : textOp === '80' ? '0' : '50'; try { localStorage.setItem('kadesh-textop', textOp); } catch (e) {} applyTextOp(); }
+function cycleTextOp() { textOp = textOp === '50' ? '15' : textOp === '15' ? '0' : '50'; try { localStorage.setItem('kadesh-textop', textOp); } catch (e) {} applyTextOp(); }
 $('textBtn').onclick = cycleTextOp; applyTextOp();
 // Layout guide for painting the terrain: the current map at full size with every feature boxed and labelled (press G).
 function exportLayoutGuide() {
