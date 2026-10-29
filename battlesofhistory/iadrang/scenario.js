@@ -108,7 +108,7 @@ window.BATTLE_SCENARIO = {
       title: 'Plei Me',
       media: [
         { at: 0,  file: '06-plei-me-camp.jpg', caption: 'The Special Forces camp at Plei Me, besieged by the North Vietnamese 33rd Regiment from 19 October 1965. The siege was the bait for an ambush of the relief column.', ref: 'Plei Me, Gia Lai province, October 1965', credit: 'US Army, public domain' },
-        { at: 12, file: '07-1st-cav-sky-soldiers.jpg', caption: 'Troopers of the 1st Cavalry Division in the Highlands, late 1965. From 27 October the division searched westward for the regiments that had attacked Plei Me.', ref: 'Pleiku province, 1965', credit: 'US Army, public domain' }
+        { at: 12, file: '07-1st-cav-sky-soldiers.jpg', caption: 'Troopers of the 1st Cavalry Division, the horse-head patch on the shoulder, with a visitor: Moshe Dayan, the Israeli general, who joined US patrols in 1966 to study the new war. The division searched the Highlands westward from Plei Me through October and November 1965.', ref: 'South Vietnam, August 1966', credit: 'Photo: Israel Press and Photo Agency, Dan Hadani collection, Wikimedia Commons, CC BY 4.0' }
       ],
       focus: { x: 1300, y: 880 }, zoom: .9,
       auto: 24,
@@ -591,11 +591,11 @@ window.BATTLE_SCENARIO = {
         { text: 'In this game the weapons company fires over the heads of the rifle companies at long range and should stay inside the perimeter.', tag: 'reconstruction' }
       ] },
     { side: 'us', type: 'heli', name: 'UH-1 Huey', desc: 'The lift ship and the gunship. Sixteen transports carried the battalion in; the same crews flew out the wounded.', tag: 'established',
-      photos: ['01-huey-landing-xray.jpg', '09-uh1d-troop-lift.jpg', '03-1st-cav-an-khe.jpg'],
+      photos: ['01-huey-landing-xray.jpg', '09-uh1d-troop-lift.jpg', { file: '19-crandall-2012.jpg', caption: 'Bruce Crandall, retired colonel and Medal of Honor recipient, with a Black Hawk of the 1st Air Cavalry Brigade in Afghanistan in 2012. On 14 November 1965 he flew his Huey into X-Ray 22 times.', ref: 'Afghanistan, 28 March 2012', credit: 'Photo: Sgt. Felix Acevedo, US Army, public domain (Wikimedia Commons)' }, '03-1st-cav-an-khe.jpg'],
       lines: [
         { text: 'The UH-1D carried eight to ten combat-loaded soldiers and cruised at about 200 km/h. Sixteen of them, from Company A of the 229th Assault Helicopter Battalion, lifted the 1st Battalion into X-Ray in five trips over four hours.', tag: 'established' },
         { text: 'Rocket-firing Hueys of the aerial rocket artillery fired on the landing zone edges before the first lift and on the attackers through the battle.', tag: 'us' },
-        { text: 'Major Bruce Crandall and Captain Ed Freeman flew into the clearing under fire again and again with ammunition and water and flew out the wounded when the medical evacuation helicopters refused the landing zone. Both received the Medal of Honor, Freeman in 2001 and Crandall in 2007.', tag: 'established' },
+        { text: 'Major Bruce Crandall and Captain Ed Freeman flew into the clearing under fire again and again with ammunition and water and flew out the wounded when the medical evacuation helicopters refused the landing zone. Both received the Medal of Honor, Freeman in 2001 and Crandall in 2007.', tag: 'established', cite: 'Medal of Honor citations, Freeman (2001) and Crandall (2007); Moore & Galloway, ch. 11' },
         { text: 'The North Vietnamese account says the helicopters were the Americans’ strength and their weakness: the landing zone had to be held at any cost, so the regiments knew exactly where to attack.', tag: 'pavn', cite: 'Nguyen Huu An, New Battlefield' },
         { text: 'In this game helicopters bring each company in on its historical lift and take the battalion out at the end. They are not ordered directly.', tag: 'reconstruction' }
       ] },
