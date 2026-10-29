@@ -113,8 +113,6 @@
   body.choice .dialog.intro{max-width:460px;margin-right:auto;margin-left:0}
   body.choice .dialog.intro h1{font-size:22px}
   body.choice .dialog.intro #introLines p{font-size:13px;margin:5px 0}
-  body.choice .dialog.intro .intro-media{display:none}
-  body.choice .dialog.intro{grid-template-columns:1fr}
   #playMenu .pm-title{font:700 20px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.08em;text-align:center;margin-bottom:4px}
   #playMenu button{padding:12px 16px;font-size:15px;text-align:left}
   #playMenu #pmClose{background:transparent;border-color:#3a5260;text-align:center;font-weight:500}
@@ -130,8 +128,9 @@
   .overlay>*{pointer-events:auto}
   .overlay.show{display:flex}
   .overlay.center{align-items:center;background:transparent}
-  .dialog.intro{width:min(1040px,100%);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
-  .dialog.intro.nomedia{grid-template-columns:1fr}.dialog.intro.nomedia .intro-media{display:none}
+  .dialog.intro{width:min(760px,100%)}
+  body:not([data-mode="intro"]) .intro-only{display:none}
+  #mediaCard.nomedia{display:none}
   .intro-media .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
   .intro-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
   .intro-media img.show{opacity:1;animation:burns 14s ease-in-out forwards}
@@ -139,7 +138,7 @@
   .intro-media .placeholder{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:12px;color:#9fb1b8;background:radial-gradient(circle at 30% 30%,#1a2d3a,#0a1620)}
   .intro-media .placeholder.show{display:flex}
   .mcap{font-size:13px;color:#eef3ee;margin-top:8px}.mref{font-size:11px;color:#9fb1b8;margin-top:3px;font-style:italic}
-  @media(max-width:900px){.dialog.intro{grid-template-columns:1fr}.intro-media{order:-1}.intro-media .plate{aspect-ratio:16/7}}
+  @media(max-width:900px){.intro-media .plate{aspect-ratio:16/9}}
   .dialog p,.dialog h3,.dialog h4,.dialog .kicker,.dialog li,.dialog td,.dialog th{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
   body.textoff .overlay.center .dialog>*:not(.xbtn):not(.mini){display:none!important}
   body.textoff .overlay.center .dialog{background:transparent;border-color:transparent;padding:0}
@@ -255,11 +254,6 @@
             <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
           </div>
         </div>
-        <div class="intro-media" id="introMedia">
-          <div class="plate"><img id="introImg" alt=""><div class="placeholder" id="introPh"></div></div>
-          <div class="mcap" id="introCap"></div>
-          <div class="mref" id="introRef"></div>
-        </div>
       </div>
     </div>
 
@@ -300,6 +294,14 @@
   </section>
 
   <aside class="side">
+    <section class="card intro-only" id="mediaCard">
+      <h2>From the record</h2>
+      <div class="intro-media" id="introMedia">
+        <div class="plate"><img id="introImg" alt=""><div class="placeholder" id="introPh"></div></div>
+        <div class="mcap" id="introCap"></div>
+        <div class="mref" id="introRef"></div>
+      </div>
+    </section>
     <section class="card">
       <h2>The armies</h2>
       <div id="armies"></div>

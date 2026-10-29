@@ -723,7 +723,7 @@ function showIntro(i) {
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
   if (sl.focus) focusOn(sl.focus.x, sl.focus.y + VH() * .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
-  introMedia = sl.media || []; mediaIdx = -1; document.querySelector('.dialog.intro').classList.toggle('nomedia', !introMedia.length); showMedia(0);
+  introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); showMedia(0);
   if (introStarted) speakSlide(sl);
 }
 // Click on the intro progress bar to replay the narration from that point (and show the picture that belongs there).
