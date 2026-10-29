@@ -77,7 +77,7 @@ window.BATTLE_SCENARIO = {
     {
       title: 'BATTLE OF THE IA DRANG',
       media: [
-        { at: 0,  file: '01-huey-landing-xray.jpg', caption: 'A UH-1 Huey of the 1st Cavalry Division comes in to LZ X-Ray under fire, 14 November 1965. The pilot is Major Bruce Crandall, whose crews flew in ammunition and flew out the wounded all day.', ref: 'US Army photograph, 1965', credit: 'US Army, public domain' },
+        { at: 0,  file: '01-huey-landing-xray.jpg', caption: 'Major Bruce Crandall\u2019s UH-1D climbs away after dropping a load of infantrymen in the Ia Drang valley, November 1965. His crews flew ammunition into X-Ray and the wounded out all through the battle.', ref: 'Ia Drang valley, November 1965; US Army photograph', credit: 'Photo: United States Army, public domain (Wikimedia Commons, File:Bruce Crandall\u2019s UH-1D.jpg)' },
         { at: 12, file: '02-ia-drang-campaign-map.jpg', caption: 'The Pleiku campaign of October and November 1965: Plei Me, the Chu Pong massif and the Ia Drang valley, where the landing zones X-Ray and Albany lay.', ref: 'US Army Center of Military History', credit: 'US Army, public domain' }
       ],
       subtitle: '14–18 November 1965 · Central Highlands, South Vietnam',

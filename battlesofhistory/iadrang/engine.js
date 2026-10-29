@@ -239,7 +239,13 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
     const spec = ut.spec, d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
     const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
     const scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
-    c.save(); c.translate(x, y); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore(); return;
+    c.save(); c.translate(x, y); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh);
+    if (ut.kind === 'air') { // spinning rotor over the painted body
+      const side_ = d === 'e' || d === 'w', rx = dw * .5, ry = dw * .5 * (side_ ? .5 : .62), hy = -dh * .62;
+      c.fillStyle = 'rgba(30,30,30,.16)'; c.beginPath(); c.ellipse(0, hy, rx, ry, 0, 0, PI * 2); c.fill();
+      c.strokeStyle = 'rgba(25,25,25,.8)'; c.lineWidth = Math.max(1, 1.1 * s); for (let k = 0; k < 2; k++) { const a2 = wall * 40 + i + k * PI; c.beginPath(); c.moveTo(0, hy); c.lineTo(Math.cos(a2) * rx, hy + Math.sin(a2) * ry); c.stroke(); }
+    }
+    c.restore(); return;
   }
   c.save(); c.translate(x, y);
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', d = dirOf(facing), step = moving ? wall * 8 + i * 1.7 : 0;
