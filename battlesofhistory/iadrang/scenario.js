@@ -109,7 +109,7 @@ window.BATTLE_SCENARIO = {
     {
       title: 'Plei Me',
       media: [
-        { at: 0,  file: '06-plei-me-camp.jpg', caption: 'The Special Forces camp at Plei Me, besieged by the North Vietnamese 33rd Regiment from 19 October 1965. The siege was the bait for an ambush of the relief column.', ref: 'Plei Me, Gia Lai province, October 1965', credit: 'US Army, public domain' },
+        { at: 0,  file: '06-plei-me-camp.jpg', caption: 'The Special Forces camp at Plei Me as it looked from the air: a triangle of earth and sandbags on a bare hilltop, a bunker at each corner, an airstrip beside it. The North Vietnamese 33rd Regiment besieged it from 19 October 1965 as bait for an ambush of the relief column.', ref: 'Painted for this game after the 1965 reconnaissance photographs', credit: 'Painting: Battle Games, original artwork' },
         { at: 12, file: '07-1st-cav-sky-soldiers.jpg', caption: 'Troopers of the 1st Cavalry Division, the horse-head patch on the shoulder, with a visitor: Moshe Dayan, the Israeli general, who joined US patrols in 1966 to study the new war. The division searched the Highlands westward from Plei Me through October and November 1965.', ref: 'South Vietnam, August 1966', credit: 'Photo: Israel Press and Photo Agency, Dan Hadani collection, Wikimedia Commons, CC BY 4.0' },
         { at: 20, file: '22-art-map-highlands.jpg', caption: 'The campaign area: Pleiku, the Special Forces camp at Plei Me, the Chu Pong massif against the Cambodian border, the Ia Drang running west, and the two clearings, X-Ray at the foot of the mountain and Albany to its north.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' }
       ],
