@@ -23,7 +23,7 @@
   .battle-panel{position:relative;min-height:480px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#b5a26c}
   canvas#battle{position:absolute;inset:0;display:block;width:100%;height:100%;outline:none;touch-action:none;user-select:none;-webkit-user-select:none}
   .hud{position:absolute;z-index:2;background:#091720ee;border:1px solid #435a64;border-radius:7px;padding:8px 10px;backdrop-filter:blur(4px)}
-  #caption{left:50%;transform:translateX(-50%);bottom:44px;top:auto;width:min(760px,calc(100% - 24px));display:none;transition:opacity .3s;text-align:left}
+  #caption{left:50%;transform:translateX(-50%);bottom:90px;top:auto;width:min(760px,calc(100% - 24px));display:none;transition:opacity .3s;text-align:left}
   body[data-mode="command"] #caption{bottom:14px}
   #viewTextBtn{left:50%;transform:translateX(-50%);top:auto;bottom:44px}
   body[data-mode="command"] #viewTextBtn{bottom:14px}
@@ -62,6 +62,19 @@
   #minimap-wrap{right:12px;top:12px;width:200px;padding:6px}
   #minimap{width:100%;height:141px;border:1px solid #60747a;border-radius:4px;cursor:crosshair;display:block}
   #zoomBox{position:absolute;left:12px;bottom:44px;z-index:3;display:flex;gap:4px}
+  #ctrlStrip{position:absolute;right:12px;bottom:44px;z-index:3;display:flex;gap:6px;align-items:center;padding:6px}
+  body[data-mode="command"] #ctrlStrip,body[data-mode="command"] #zoomBox{bottom:14px}
+  #ctrlStrip span{display:flex;gap:6px;align-items:center}
+  body[data-mode="intro"] .battle-only{display:none!important}
+  body:not([data-mode="intro"]) #introNav{display:none!important}
+  /* faded HUD: faint until the mouse is over it, like the text panels */
+  .fade,#zoomBox,#minimap-wrap{opacity:.45;transition:opacity .25s}
+  .fade:hover,#zoomBox:hover,#minimap-wrap:hover{opacity:1}
+  #ctrlStrip.lit{opacity:1}
+  #caption{bottom:90px}
+  body[data-mode="command"] #caption{bottom:60px}
+  #viewTextBtn{bottom:90px}
+  body[data-mode="command"] #viewTextBtn{bottom:60px}
   #ctxMenu{display:none;z-index:6;padding:4px;min-width:220px;background:#0b1822f6}
   #ctxMenu .mhead{font-size:11px;color:#9fb1b8;padding:4px 8px 6px;border-bottom:1px solid #233944;margin-bottom:3px}
   #ctxMenu button{display:block;width:100%;text-align:left;background:transparent;border:0;padding:6px 10px;font-weight:500;font-size:13px;border-radius:4px}
@@ -124,7 +137,7 @@
   .tc-sides{font:500 clamp(12px,1.3vw,16px) system-ui,sans-serif;color:#cfd8dc;margin-top:6px;text-shadow:0 1px 8px #000}
   .tc-note{max-width:620px;margin:16px auto 0;font-size:12px;color:#aebdc1;line-height:1.45;text-shadow:0 1px 6px #000}
   .tc-ref{display:block;font-style:italic;color:#8fa1a8;margin-top:3px}
-  .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px;background:transparent;pointer-events:none}
+  .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px 16px 90px;background:transparent;pointer-events:none}
   .overlay>*{pointer-events:auto}
   .overlay.show{display:flex}
   .overlay.center{align-items:center;background:transparent}
@@ -181,11 +194,6 @@
     <button id="watchBtn" class="primary">▶ Watch reenactment</button>
     <button id="commandBtn" class="primary">⚔ Take command</button>
     <span class="sep"></span>
-    <button id="pauseBtn">Ⅱ Pause</button>
-    <button id="ffBtn" title="Fast forward: press for 2×, again for 4×, again for normal (.)">⏩ FF</button>
-    <button id="skipBtn" class="watch-only" title="Skip to the next chapter (N)">⏭ Skip</button>
-    <span id="clock">00:00</span>
-    <span class="sep"></span>
     <div id="voiceWrap">
       <button id="voiceMenuBtn" title="Narration: on/off, narrator, speed">🔊 Voice</button>
       <div id="voicePop">
@@ -211,6 +219,20 @@
     <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
     <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="artBtn" class="active" title="Painted battlefield (click for the drawn map)">🎨 Art</button></div>
     <div id="timeline" title="Timeline: click anywhere to jump to that moment"></div>
+    <div id="ctrlStrip" class="hud fade">
+      <span class="intro-only" id="introNav">
+        <button id="introBack">◀ Back</button>
+        <button id="introPause">Ⅱ Pause</button>
+        <button id="introNext" class="primary">Next ▶</button>
+        <button id="introSkip">Skip intro ⏭</button>
+      </span>
+      <span class="battle-only">
+        <button id="pauseBtn">Ⅱ Pause</button>
+        <button id="ffBtn" title="Fast forward: press for 2×, again for 4×, again for normal (.)">⏩ FF</button>
+        <button id="skipBtn" class="watch-only" title="Skip to the next chapter (N)">⏭ Skip</button>
+        <span id="clock">00:00</span>
+      </span>
+    </div>
     <div id="ctxMenu" class="hud"></div>
 
     <canvas id="globe" aria-hidden="true"></canvas>
@@ -238,13 +260,6 @@
             <button id="beginVoice" class="primary big">🔊 Begin with narration</button>
             <button id="beginSilent" class="big">Begin without sound</button>
             <span class="muted">Narration is pre-recorded, so it plays in any browser.</span>
-          </div>
-          <div class="actions" id="introNav">
-            <button id="introBack">◀ Back</button>
-            <button id="introPause">Ⅱ Pause</button>
-            <button id="introNext" class="primary">Next ▶</button>
-            <span class="spacer"></span>
-            <button id="introSkip">Skip intro ⏭</button>
           </div>
           <div class="actions" id="introChoice" style="display:none">
             <button id="chooseWatch" class="primary big">▶ Watch the battle unfold</button>

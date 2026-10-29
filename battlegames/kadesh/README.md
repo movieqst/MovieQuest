@@ -37,7 +37,7 @@ a local file.
 
 Controls: drag / WASD / arrows / minimap to move the camera, mouse wheel to
 zoom, Space to pause, F to follow the action, E to explain the moment.
-Titles use the Cinzel font from Google Fonts when online and Georgia offline. The header keeps the three modes, the playback strip and a Voice menu; Follow (F), Explain (E or the bulb on the caption) and Restart (R) are keys.
+Titles use the Cinzel font from Google Fonts when online and Georgia offline. The header keeps the three modes and a Voice menu; the playback controls (Pause, FF, Skip, the clock, and Back/Next during the intro) sit in a faded strip at the bottom right of the map, with the zoom buttons and minimap faded the same way until the mouse is over them; Follow (F), Explain (E or the bulb on the caption) and Restart (R) are keys.
 
 ## Confidence tags
 

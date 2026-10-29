@@ -608,9 +608,9 @@ function render() {
     ctx.fillStyle = 'rgba(255,211,107,.12)'; ctx.fill(); ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 2; ctx.setLineDash([8, 6]); ctx.stroke(); ctx.setLineDash([]);
   }
   // scale bar (at the near edge of the view)
-  const sb = B.scale.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12;
-  ctx.fillRect(view.w - sb - 24, sy0 - 20, sb + 16, 20);
-  ctx.fillStyle = '#e9c77a'; ctx.fillRect(view.w - sb - 16, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'right'; ctx.fillText(B.scale.label, view.w - 16, sy0 - 10);
+  const sb = B.scale.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55;
+  ctx.fillRect(300, sy0 - 20, sb + 16, 20);
+  ctx.fillStyle = '#e9c77a'; ctx.fillRect(308, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'left'; ctx.fillText(B.scale.label, 308, sy0 - 10); ctx.restore();
   drawMini();
 }
 function buildMiniBase() {
@@ -716,7 +716,7 @@ function showIntro(i) {
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
   $('introTitle').textContent = sl.title; $('introSub').textContent = sl.subtitle || '';
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
-  $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
+  $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('ctrlStrip').classList.toggle('lit', false); $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   markers = sl.markers || [];
   if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
@@ -1028,8 +1028,8 @@ function tick(t) {
       else { if (!(G && G.active())) introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
       showMedia(Narr.on && Narr.audio ? Narr.audio.currentTime * (Narr.rate || 1) / (Narr.rate || 1) : introTimer);
       const nb = $('introNext');
-      if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
-      else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); } }
+      if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
+      else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
       $('introBar').style.width = Math.min(100, frac * 100) + '%';
     }
   } else if (!paused && !battleOver && !cinematic) {
