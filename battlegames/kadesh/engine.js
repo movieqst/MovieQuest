@@ -52,7 +52,7 @@ const distToPolyline = (x, y, pts) => { let best = 1e9; for (let i = 0; i < pts.
 const inRiver = (x, y) => distToPolyline(x, y, B.river) < 34;
 const inTrib = (x, y) => distToPolyline(x, y, B.tributary) < 16;
 const inWater = (x, y) => inRiver(x, y) || inTrib(x, y);
-const MOAT = 30, CITYR = { x0: B.city.x - MOAT, y0: B.city.y - MOAT, x1: B.city.x + B.city.w + MOAT, y1: B.city.y + B.city.h + MOAT };
+const MOAT = 30, KEEP = 75, CITYR = { x0: B.city.x - MOAT - KEEP, y0: B.city.y - MOAT - KEEP, x1: B.city.x + B.city.w + MOAT + KEEP, y1: B.city.y + B.city.h + MOAT + KEEP };
 const inCity = (x, y) => x > CITYR.x0 && x < CITYR.x1 && y > CITYR.y0 && y < CITYR.y1;
 const westOfRiver = (x, y) => x < riverXAt(y);
 const tribYAt = x => { const p = B.tributary; if (x <= p[0][0] || x >= p[p.length - 1][0]) return null; for (let i = 0; i < p.length - 1; i++) if (x >= p[i][0] && x <= p[i + 1][0]) { const t = (x - p[i][0]) / (p[i + 1][0] - p[i][0]); return p[i][1] + (p[i + 1][1] - p[i][1]) * t; } return null; };

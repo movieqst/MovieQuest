@@ -314,32 +314,32 @@ window.KADESH_SCENARIO = {
     { t: 70, title: 'The second wave', tag: 'egyptian', focus: { x: 1600, y: 620 },
       text: 'Muwatalli commits a second wave across the river north of the city: the Egyptian account says 1,000 chariots, including his own brothers and allied kings.',
       explain: 'Why not send the infantry? A river crossing under pressure is slow, and the Hittite infantry would have been exposed while fording. Chariots could cross and withdraw quickly.',
-      orders: [ { id: 'hit-char2', visible: true, to: { x: 1420, y: 500 }, speed: 55 } ] },
+      orders: [ { id: 'hit-char2', visible: true, to: { x: 1400, y: 440 }, speed: 55 } ] },
     { t: 78, title: 'Counter-attack', tag: 'reconstruction', focus: { x: 1150, y: 520 },
       text: 'Caught between the Ne’arin and the king’s chariots, the Hittite crews are driven back east toward the river.',
       explain: 'Heavy three-man chariots that have stopped to loot lose their main advantage: speed. Fresh infantry and lighter Egyptian chariots could now take them at a disadvantage.',
       orders: [
         { id: 'nearin', state: 'attack', to: { x: 980, y: 490 }, speed: 40 },
-        { id: 'hit-char-a', to: { x: 1400, y: 560 }, speed: 22, strengthTo: 35, over: 12 },
-        { id: 'hit-char-b', to: { x: 1420, y: 630 }, speed: 22, strengthTo: 35, over: 12 },
-        { id: 'hit-char-c', to: { x: 1380, y: 500 }, speed: 22, strengthTo: 35, over: 12 },
-        { id: 'hit-char2', to: { x: 1250, y: 520 }, speed: 50 }
+        { id: 'hit-char-a', to: { x: 1150, y: 560 }, speed: 22, strengthTo: 35, over: 12 },
+        { id: 'hit-char-b', to: { x: 1160, y: 660 }, speed: 22, strengthTo: 35, over: 12 },
+        { id: 'hit-char-c', to: { x: 1200, y: 470 }, speed: 22, strengthTo: 35, over: 12 },
+        { id: 'hit-char2', to: { x: 1250, y: 440 }, speed: 50 }
       ] },
     { t: 86, title: 'Ptah arrives', tag: 'egyptian', focus: { x: 1250, y: 900 },
       text: 'The Ptah division reaches the field from the south. The pendulum has swung.',
       explain: 'The Egyptian account gives Ptah credit for the recovery. With fresh infantry arriving and the Ne’arin already engaged, the Hittite chariots were outnumbered on the west bank.',
       orders: [
         { id: 'ptah-inf', to: { x: 1180, y: 720 }, speed: 18 }, { id: 'ptah-char', to: { x: 1240, y: 700 }, speed: 20 },
-        { id: 'hit-char2', to: { x: 1470, y: 500 }, speed: 30, strengthTo: 45, over: 10 }
+        { id: 'hit-char2', to: { x: 1440, y: 430 }, speed: 30, strengthTo: 45, over: 10 }
       ] },
     { t: 92, title: 'Into the Orontes', tag: 'egyptian', focus: { x: 1500, y: 580 },
       text: 'Hittite chariots are pushed back into the Orontes. The reliefs show the prince of Aleppo being held upside down to drain the water from him after he was pulled from the river.', cite: 'Relief caption (Ramesseum, Abu Simbel): the chief of Aleppo turned upside down by his soldiers to empty him of water',
       explain: 'The reliefs delight in drowning Hittites and tumbling chariots. Some of this is genuine: a chariot force retreating across a river under attack is in real danger.',
       orders: [
-        { id: 'hit-char-a', to: { x: 1540, y: 560 }, speed: 20, strengthTo: 15, over: 8 },
-        { id: 'hit-char-b', to: { x: 1560, y: 640 }, speed: 20, strengthTo: 15, over: 8 },
-        { id: 'hit-char-c', to: { x: 1545, y: 500 }, speed: 20, strengthTo: 15, over: 8 },
-        { id: 'guard', to: { x: 1380, y: 510 }, speed: 30 }, { id: 'amun-char', to: { x: 1430, y: 490 }, speed: 30 }, { id: 'nearin', to: { x: 1300, y: 500 }, speed: 30 }
+        { id: 'hit-char-a', to: { x: 1530, y: 450 }, speed: 20, strengthTo: 15, over: 8 },
+        { id: 'hit-char-b', to: { x: 1500, y: 850 }, speed: 20, strengthTo: 15, over: 8 },
+        { id: 'hit-char-c', to: { x: 1555, y: 390 }, speed: 20, strengthTo: 15, over: 8 },
+        { id: 'guard', to: { x: 1380, y: 430 }, speed: 30 }, { id: 'amun-char', to: { x: 1300, y: 420 }, speed: 30 }, { id: 'nearin', to: { x: 1200, y: 460 }, speed: 30 }
       ] },
     { t: 100, title: 'Across the river', tag: 'egyptian', focus: { x: 1750, y: 700 },
       text: 'The survivors recross the river. Muwatalli’s infantry, the bulk of his army, never fought at all.',
@@ -371,7 +371,7 @@ window.KADESH_SCENARIO = {
       infantryShift: { t: 8,  to: { x: 1880, y: 900 } },
       kingShift:     { t: 8,  to: { x: 1990, y: 880 } },
       firstWave:     { t: 20, cross: [ { x: 1450, y: 1070 }, { x: 1440, y: 1125 }, { x: 1445, y: 1015 } ] },
-      secondWave:    { t: 70, cross: { x: 1420, y: 500 } },
+      secondWave:    { t: 70, cross: { x: 1400, y: 440 } },
       huntRange: 900,
       holdPoint: { x: 1800, y: 900 },
       infantryReact: 420
