@@ -139,7 +139,7 @@ window.BATTLE_SCENARIO = {
       title: 'The North Vietnamese army',
       media: [
         { at: 0,  file: '11-pavn-infantry.jpg', caption: 'Soldiers of the People’s Army of Vietnam on the march. The 66th Regiment reached the Chu Pong in early November 1965 after two months on the trail.', ref: 'Vietnam, 1960s', credit: 'Public domain (Vietnam News Agency)' },
-        { at: 10, file: '12-nguyen-huu-an.jpg', caption: 'Nguyen Huu An, the field commander at the Ia Drang, later a general and a historian of the battle. He met Moore and Galloway in Hanoi in 1993 and walked the ground with them.', ref: 'Hanoi, 1990s', credit: 'Public domain (Vietnam)' },
+        { at: 10, file: '12-nguyen-huu-an.jpg', caption: 'Nguyen Huu An, the field commander at the Ia Drang, seen ten years later as a major general inspecting a tank brigade before the 1975 offensive. He met Moore and Galloway in Hanoi in 1993 and walked the X-Ray clearing with them.', ref: 'Vietnam, 1975; from the Communist Party of Vietnam newspaper archive', credit: 'Photo: public domain in Vietnam (Wikimedia Commons, Thieu-tuong-Huu-An.jpg)' },
         { at: 20, file: '13-ak47-rpg.jpg', caption: 'The AK-47 rifle and the RPG-2 rocket launcher: the weapons of the PAVN assault companies, with 82 mm mortars and 12.7 mm machine guns in the heavy weapons units.', ref: 'Museum display', credit: 'Wikimedia Commons' }
       ],
       focus: { x: 500, y: 800 }, zoom: .9,
