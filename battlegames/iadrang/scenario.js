@@ -53,7 +53,7 @@ window.BATTLE_SCENARIO = {
     rifle:   { name: 'Rifle company',      side: 'us',   kind: 'foot', speed: 14, range: 95,  fig: 'rifle',   sheet: 'us-rifle',    spec: { cw: 160, ch: 160, h: 26 }, dmg: { assault: 5, heavy: 5, recon: 6, rifle: 5, weapons: 5 }, cover: 1 },
     weapons: { name: 'Weapons company',    side: 'us',   kind: 'foot', speed: 10, range: 300, fig: 'weapons', sheet: 'us-weapons',  spec: { cw: 160, ch: 160, h: 26 }, dmg: { assault: 4, heavy: 5, recon: 3, rifle: 4, weapons: 4 }, cover: 1, indirect: true },
     heli:    { name: 'UH-1 Huey',          side: 'us',   kind: 'air',  speed: 240, range: 0, fig: 'heli',    sheet: 'us-huey',     spec: { cw: 240, ch: 200, h: 34 } },
-    assault: { name: 'Assault battalion',  side: 'pavn', kind: 'foot', speed: 17, range: 55,  fig: 'assault', sheet: 'pavn-assault', spec: { cw: 160, ch: 160, h: 26 }, dmg: { rifle: 6, weapons: 8, recon: 4, assault: 5, heavy: 5 }, cover: 1, belt: 1.5 },
+    assault: { name: 'Assault battalion',  side: 'pavn', kind: 'foot', speed: 18, range: 60,  fig: 'assault', sheet: 'pavn-assault', spec: { cw: 160, ch: 160, h: 26 }, dmg: { rifle: 7, weapons: 9, recon: 4, assault: 5, heavy: 5 }, cover: 1, belt: 1.6 },
     heavy:   { name: 'Heavy weapons',      side: 'pavn', kind: 'foot', speed: 8,  range: 260, fig: 'heavy',   sheet: 'pavn-heavy',  spec: { cw: 160, ch: 160, h: 26 }, dmg: { rifle: 4, weapons: 4, recon: 2, assault: 3, heavy: 3 }, cover: 1, indirect: true },
     recon:   { name: 'Reconnaissance',     side: 'pavn', kind: 'foot', speed: 22, range: 45,  fig: 'recon',   sheet: 'pavn-recon',  spec: { cw: 160, ch: 160, h: 26 }, dmg: { rifle: 2, weapons: 3, recon: 3, assault: 2, heavy: 2 }, cover: 1, stealth: true }
   },
@@ -410,10 +410,10 @@ window.BATTLE_SCENARIO = {
       spotRange: 260, nightSpot: 140, beltRange: 70,
       pavn: {
         waves: [
-          { t: 24,  ids: ['9bn-a'], target: 'nearest' }, { t: 40,  ids: ['9bn-b'], target: 'nearest' }, { t: 60,  ids: ['7bn-a'], target: 'lz' },
-          { t: 120, ids: ['7bn-b'], target: 'nearest' }, { t: 140, ids: ['7bn-a', '7bn-b', 'h15'], target: 'lz' }, { t: 200, ids: ['8bn'], target: 'lz' }
+          { t: 24,  ids: ['9bn-a', '9bn-b'], target: 'nearest' }, { t: 62,  ids: ['7bn-a', '7bn-b'], target: 'lz' },
+          { t: 118, ids: ['9bn-a', '9bn-b'], target: 'nearest' }, { t: 140, ids: ['7bn-a', '7bn-b', 'h15'], target: 'lz' }, { t: 200, ids: ['8bn', '9bn-a'], target: 'lz' }, { t: 236, ids: ['8bn', '7bn-a', 'h15'], target: 'lz' }
         ],
-        withdrawAt: 35, withdrawTo: { x: 420, y: 1000 }, regroupAfter: 40, hwFrom: { x: 640, y: 980 }
+        withdrawAt: 30, withdrawTo: { x: 420, y: 1000 }, regroupAfter: 30, hwFrom: { x: 640, y: 980 }
       },
       us: {
         lifts: [ { t: 1, id: 'b-co' }, { t: 2, id: 'cp' }, { t: 22, id: 'a-co' }, { t: 44, id: 'c-co' }, { t: 60, id: 'd-co' }, { t: 100, id: 'b27' }, { t: 160, id: 'a27' }, { t: 175, id: 'tully', walk: { x: 2380, y: 700 } } ],
