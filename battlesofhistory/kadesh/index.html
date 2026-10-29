@@ -231,6 +231,9 @@
   footer{padding:6px 14px;color:#7f969f;font-size:11px;border-top:1px solid #233944;background:#09131a}
   @media(max-width:900px){main{grid-template-columns:1fr}.side{overflow:visible}.battle-panel{height:66vh;min-height:420px}#caption{max-width:calc(100% - 230px)}}
   @media(max-width:600px){header{align-items:flex-start;flex-direction:column}.battle-panel{height:70vh}#minimap-wrap{width:140px}#minimap{height:99px}#caption{max-width:calc(100% - 170px);font-size:12px}.dialog{padding:14px}}
+  a.home{font-size:12px;letter-spacing:.04em;color:#e8f0ea;text-decoration:none;display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:#101f29;white-space:nowrap}a.home:hover{border-color:var(--gold);color:var(--gold)}
+  a.hud-home{display:none;padding:4px 8px;font-size:12px}
+  .battle-panel:fullscreen a.hud-home,body.bigmap a.hud-home{display:inline-block}
 </style>
 </head>
 <body data-mode="intro">
@@ -256,6 +259,8 @@
       <button id="explainBtn">Explain</button>
       <button id="resetBtn">Restart</button>
     </span>
+    <span class="sep"></span>
+    <a class="home" href="../index.html" title="All the battles">◀ Battles of History</a>
   </div>
 </header>
 <main>
@@ -282,6 +287,7 @@
         <span id="clock">00:00</span>
       </span>
       <button id="armiesBtn" title="The armies: full write-ups and photographs of every unit">⚔ Armies</button>
+      <a class="home hud-home" href="../index.html" title="All the battles">◀ Battles</a>
     </div>
     <div id="ctxMenu" class="hud"></div>
 

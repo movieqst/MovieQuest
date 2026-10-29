@@ -237,6 +237,9 @@
   .ugal img.pulse,#bigPhoto img.pulse{object-fit:contain}
   .intro-media img.pulse.show,.ugal img.pulse.show,#bigPhoto img.pulse.show{display:block;animation:heartbeat 1.6s ease-in-out infinite}
   @keyframes heartbeat{0%{opacity:0}18%{opacity:1}36%{opacity:.25}50%{opacity:1}70%{opacity:0}100%{opacity:0}}
+  a.home{font-size:12px;letter-spacing:.04em;color:#e8f0ea;text-decoration:none;display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:#101f29;white-space:nowrap}a.home:hover{border-color:var(--gold);color:var(--gold)}
+  a.hud-home{display:none;padding:4px 8px;font-size:12px}
+  .battle-panel:fullscreen a.hud-home,body.bigmap a.hud-home{display:inline-block}
 </style>
 </head>
 <body data-mode="intro">
@@ -262,6 +265,8 @@
       <button id="explainBtn">Explain</button>
       <button id="resetBtn">Restart</button>
     </span>
+    <span class="sep"></span>
+    <a class="home" href="../index.html" title="All the battles">◀ Battles of History</a>
   </div>
 </header>
 <main>
@@ -288,6 +293,7 @@
         <span id="clock">00:00</span>
       </span>
       <button id="armiesBtn" title="The armies: full write-ups and photographs of every unit">⚔ Armies</button>
+      <a class="home hud-home" href="../index.html" title="All the battles">◀ Battles</a>
     </div>
     <div id="ctxMenu" class="hud"></div>
 

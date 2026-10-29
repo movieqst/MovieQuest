@@ -24,6 +24,6 @@ window.BATTLES = [
     blurb: 'The first battle between the US Army and the North Vietnamese regulars: three days in a clearing below a mountain at LZ X-Ray, then the ambush of a column on the way to LZ Albany.',
     cover: 'images/17-xray-perimeter.jpg',
     coverCredit: 'US Army photograph, public domain',
-    status: 'in progress'
+    status: 'ready'
   }
 ];
