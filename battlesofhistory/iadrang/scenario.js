@@ -156,7 +156,7 @@ window.BATTLE_SCENARIO = {
       title: 'The ground',
       media: [
         { at: 0,  file: '14-chu-pong-massif.jpg', caption: 'The Chu Pong massif, rising 500 metres above the valley floor, with the border of Cambodia along its far side.', ref: 'Ia Drang valley, Gia Lai province', credit: 'Wikimedia Commons' },
-        { at: 12, file: '15-termite-mound.jpg', caption: 'A termite mound of the Highlands, head high and hard as brick. Moore put his command post behind one; the North Vietnamese used them as cover too.', ref: 'Central Highlands', credit: 'Wikimedia Commons' }
+        { at: 12, file: '15-termite-mound.jpg', caption: 'A termite mound, taller than a man and hard as brick. The clearing at X-Ray had several; Moore put his command post behind the biggest, and both sides used them as cover.', ref: 'A termite mound of the kind found across the dry tropics', credit: 'Photo: Wikimedia Commons (Termites mound.jpg), Creative Commons licence; see the file page for the photographer' }
       ],
       focus: { x: 1150, y: 950 }, zoom: 1.3,
       markers: [ { x: 980, y: 880, label: 'Dry creek bed' }, { x: 1300, y: 880, label: 'The clearing' } ],
