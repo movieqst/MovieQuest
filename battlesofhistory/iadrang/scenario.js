@@ -79,7 +79,8 @@ window.BATTLE_SCENARIO = {
       title: 'BATTLE OF THE IA DRANG',
       media: [
         { at: 0,  file: '01-huey-landing-xray.jpg', caption: 'Major Bruce Crandall\u2019s UH-1D climbs away after dropping a load of infantrymen in the Ia Drang valley, November 1965. His crews flew ammunition into X-Ray and the wounded out all through the battle.', ref: 'Ia Drang valley, November 1965; US Army photograph', credit: 'Photo: United States Army, public domain (Wikimedia Commons, File:Bruce Crandall\u2019s UH-1D.jpg)' },
-        { at: 12, file: '02-ia-drang-campaign-map.jpg', caption: 'The battle of the Ia Drang, 14 to 20 November 1965: Plei Me, the Chu Pong, LZ X-Ray and LZ Albany, the artillery at Falcon, and the sanctuaries across the Cambodian border. The note at the bottom warns that the whole area is heavy forest broken by elephant grass.', ref: 'US Army map of the Ia Drang campaign', credit: 'Map: United States Army, public domain (Wikimedia Commons, Iadrang-map.jpg)' }
+        { at: 12, file: '02-ia-drang-campaign-map.jpg', caption: 'The battle of the Ia Drang, 14 to 20 November 1965: Plei Me, the Chu Pong, LZ X-Ray and LZ Albany, the artillery at Falcon, and the sanctuaries across the Cambodian border. The note at the bottom warns that the whole area is heavy forest broken by elephant grass.', ref: 'US Army map of the Ia Drang campaign', credit: 'Map: United States Army, public domain (Wikimedia Commons, Iadrang-map.jpg)' },
+        { at: 22, file: '21-art-map-sea.jpg', caption: 'South-East Asia in 1965: Vietnam divided at the 17th parallel, with Laos, Cambodia and Thailand. The red ring marks the Ia Drang valley in the Central Highlands, beside the Cambodian border west of Pleiku.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' }
       ],
       subtitle: '14–18 November 1965 · Central Highlands, South Vietnam',
       focus: { x: 1300, y: 880 }, zoom: 1.1,
@@ -109,7 +110,8 @@ window.BATTLE_SCENARIO = {
       title: 'Plei Me',
       media: [
         { at: 0,  file: '06-plei-me-camp.jpg', caption: 'The Special Forces camp at Plei Me, besieged by the North Vietnamese 33rd Regiment from 19 October 1965. The siege was the bait for an ambush of the relief column.', ref: 'Plei Me, Gia Lai province, October 1965', credit: 'US Army, public domain' },
-        { at: 12, file: '07-1st-cav-sky-soldiers.jpg', caption: 'Troopers of the 1st Cavalry Division, the horse-head patch on the shoulder, with a visitor: Moshe Dayan, the Israeli general, who joined US patrols in 1966 to study the new war. The division searched the Highlands westward from Plei Me through October and November 1965.', ref: 'South Vietnam, August 1966', credit: 'Photo: Israel Press and Photo Agency, Dan Hadani collection, Wikimedia Commons, CC BY 4.0' }
+        { at: 12, file: '07-1st-cav-sky-soldiers.jpg', caption: 'Troopers of the 1st Cavalry Division, the horse-head patch on the shoulder, with a visitor: Moshe Dayan, the Israeli general, who joined US patrols in 1966 to study the new war. The division searched the Highlands westward from Plei Me through October and November 1965.', ref: 'South Vietnam, August 1966', credit: 'Photo: Israel Press and Photo Agency, Dan Hadani collection, Wikimedia Commons, CC BY 4.0' },
+        { at: 20, file: '22-art-map-highlands.jpg', caption: 'The campaign area: Pleiku, the Special Forces camp at Plei Me, the Chu Pong massif against the Cambodian border, the Ia Drang running west, and the two clearings, X-Ray at the foot of the mountain and Albany to its north.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' }
       ],
       focus: { x: 1300, y: 880 }, zoom: .9,
       auto: 24,
@@ -156,8 +158,9 @@ window.BATTLE_SCENARIO = {
     {
       title: 'The ground',
       media: [
-        { at: 0,  file: '14-chu-pong-massif.jpg', caption: 'The Chu Pong massif, rising 500 metres above the valley floor, with the border of Cambodia along its far side.', ref: 'Ia Drang valley, Gia Lai province', credit: 'Wikimedia Commons' },
-        { at: 12, file: '15-termite-mound.jpg', caption: 'A termite mound, taller than a man and hard as brick. The clearing at X-Ray had several; Moore put his command post behind the biggest, and both sides used them as cover.', ref: 'A termite mound of the kind found across the dry tropics', credit: 'Photo: Ayandoh Solomon, Wikimedia Commons, CC BY 4.0' }
+        { at: 0,  file: '23-art-chu-pong.jpg', caption: 'The Chu Pong massif as it would have looked from the valley floor: a long forested ridge rising 500 metres above dry grassland, with the Cambodian border along its far side.', ref: 'Painted for this game', credit: 'Painting: Battle Games, original artwork' },
+        { at: 7,  file: '24-art-clearing.jpg', caption: 'A clearing the size of a football field at the foot of the mountain, seen from a helicopter: dry grass, bare earth, a few termite mounds, and the trees all round. This is what the first lift saw at 10:48 on 14 November.', ref: 'Painted for this game', credit: 'Painting: Battle Games, original artwork' },
+        { at: 15, file: '15-termite-mound.jpg', caption: 'A termite mound, taller than a man and hard as brick. The clearing at X-Ray had several; Moore put his command post behind the biggest, and both sides used them as cover.', ref: 'A termite mound of the kind found across the dry tropics', credit: 'Photo: Ayandoh Solomon, Wikimedia Commons, CC BY 4.0' }
       ],
       focus: { x: 1150, y: 950 }, zoom: 1.3,
       markers: [ { x: 980, y: 880, label: 'Dry creek bed' }, { x: 1300, y: 880, label: 'The clearing' } ],
@@ -601,7 +604,7 @@ window.BATTLE_SCENARIO = {
         { text: 'In this game helicopters bring each company in on its historical lift and take the battalion out at the end. They are not ordered directly.', tag: 'reconstruction' }
       ] },
     { side: 'us', type: 'weapons', name: 'Artillery and air support', desc: '105 mm howitzers at LZ Falcon, fighter-bombers, napalm and, for the first time in close support, B-52s.', tag: 'established', nosprite: true, portrait: 'us-support',
-      photos: ['10-105mm-howitzer.jpg', '18-arc-light-map.jpg', '14-chu-pong-massif.jpg'],
+      photos: ['10-105mm-howitzer.jpg', '18-arc-light-map.jpg', '23-art-chu-pong.jpg'],
       lines: [
         { text: 'Two batteries of 105 mm howitzers, twelve guns, at LZ Falcon eight kilometres east fired more than four thousand rounds in the first twenty-four hours and about eight thousand in all. A round took about five seconds to arrive after the call.', tag: 'us', cite: 'Moore, After Action Report; Carland, Stemming the Tide, ch. 5' },
         { text: 'Air Force, Navy and Marine fighter-bombers flew more than three hundred sorties over X-Ray, with bombs, rockets, cannon and napalm. The air force controller with the battalion, Lieutenant Charlie Hastings, directed them from the command post.', tag: 'us' },
@@ -619,7 +622,7 @@ window.BATTLE_SCENARIO = {
         { text: 'In this game assault infantry does extra damage within seventy metres of the enemy, where American fire support cannot be used without hitting its own side, and withdraws to the mountain when it is worn down.', tag: 'reconstruction' }
       ] },
     { side: 'pavn', type: 'heavy', name: 'PAVN heavy weapons', desc: '12.7 mm machine guns and 82 mm mortars on the slope. Long range, slow to move.', tag: 'established',
-      photos: ['13-ak47-rpg.jpg', '20-rpg2-grenade.jpg', '14-chu-pong-massif.jpg'],
+      photos: ['13-ak47-rpg.jpg', '20-rpg2-grenade.jpg', '23-art-chu-pong.jpg'],
       lines: [
         { text: 'Each battalion had a heavy weapons company with 82 mm mortars, 12.7 mm heavy machine guns and recoilless rifles, carried down the trail in pieces.', tag: 'established' },
         { text: 'Machine guns dug in among the termite mounds on the finger of the mountain stopped both attempts to reach the lost platoon on the first day. Mortar rounds fell on the clearing through the whole battle and hit the helicopters as they landed.', tag: 'us', cite: 'Moore, After Action Report' },
