@@ -140,7 +140,7 @@ window.BATTLE_SCENARIO = {
       media: [
         { at: 0,  file: '11-pavn-infantry.jpg', caption: 'Soldiers of the People’s Army of Vietnam on the march. The 66th Regiment reached the Chu Pong in early November 1965 after two months on the trail.', ref: 'Vietnam, 1960s', credit: 'Public domain (Vietnam News Agency)' },
         { at: 10, file: '12-nguyen-huu-an.jpg', caption: 'Nguyen Huu An, the field commander at the Ia Drang, seen ten years later as a major general inspecting a tank brigade before the 1975 offensive. He met Moore and Galloway in Hanoi in 1993 and walked the X-Ray clearing with them.', ref: 'Vietnam, 1975; from the Communist Party of Vietnam newspaper archive', credit: 'Photo: public domain in Vietnam (Wikimedia Commons, Thieu-tuong-Huu-An.jpg)' },
-        { at: 20, file: '13-ak47-rpg.jpg', caption: 'The AK-47 rifle and the RPG-2 rocket launcher: the weapons of the PAVN assault companies, with 82 mm mortars and 12.7 mm machine guns in the heavy weapons units.', ref: 'Museum display', credit: 'Wikimedia Commons' }
+        { at: 20, file: '13-ak47-rpg.jpg', caption: 'A soldier firing the RPG-2 rocket launcher from the prone position, from a Polish army manual. With the AK-47 it was the weapon of the PAVN assault companies at the Ia Drang; the heavy weapons companies carried 82 mm mortars and 12.7 mm machine guns.', ref: 'S. Torecki, R\u0119czny granatnik przeciwpancerny rgppanc-2, TBiU 37 (Warsaw, 1975)', credit: 'Photo: Polish army manual, public domain in Poland and the United States (Wikimedia Commons)' }
       ],
       focus: { x: 500, y: 800 }, zoom: .9,
       markers: [ { x: 420, y: 760, label: 'Chu Pong massif' } ],
@@ -609,7 +609,7 @@ window.BATTLE_SCENARIO = {
         { text: 'In Command mode as the Americans, artillery and air strikes are on the right-click menu. They land after a delay, on everyone inside the circle, friend or enemy.', tag: 'reconstruction' }
       ] },
     { side: 'pavn', type: 'assault', name: 'PAVN assault infantry', desc: 'AK-47, grenades, RPG-2. Attacks fast and close, in waves, and withdraws into the mountain.', tag: 'established',
-      photos: ['11-pavn-infantry.jpg', '13-ak47-rpg.jpg', '04-ho-chi-minh-trail.jpg'],
+      photos: ['11-pavn-infantry.jpg', '13-ak47-rpg.jpg', { file: '20-rpg2-grenade.jpg', caption: 'The RPG-2 launcher with its PG-2 grenade: a shaped charge on a stick, fired from the shoulder, effective to about 150 metres. The Vietnamese called it the B-40.', ref: 'S. Torecki, TBiU 37 (Warsaw, 1975)', credit: 'Photo: Polish army manual, public domain (Wikimedia Commons, RPG2 and PG2 TBiU 37.jpg)' }, '04-ho-chi-minh-trail.jpg'],
       lines: [
         { text: 'The regiments of the B3 Front were regulars of the People’s Army of Vietnam, conscripts and volunteers from the North who had walked south for two months. The 66th Regiment reached the Chu Pong in early November 1965 and had not yet fought.', tag: 'established' },
         { text: 'An assault company carried AK-47 rifles, grenades, RPG-2 rocket launchers and light machine guns. The American account describes men in khaki with pith helmets attacking at a run, firing from the hip, and tied into the trees as snipers.', tag: 'us', cite: 'Moore & Galloway, ch. 8–12' },
@@ -618,7 +618,7 @@ window.BATTLE_SCENARIO = {
         { text: 'In this game assault infantry does extra damage within seventy metres of the enemy, where American fire support cannot be used without hitting its own side, and withdraws to the mountain when it is worn down.', tag: 'reconstruction' }
       ] },
     { side: 'pavn', type: 'heavy', name: 'PAVN heavy weapons', desc: '12.7 mm machine guns and 82 mm mortars on the slope. Long range, slow to move.', tag: 'established',
-      photos: ['13-ak47-rpg.jpg', '14-chu-pong-massif.jpg'],
+      photos: ['13-ak47-rpg.jpg', '20-rpg2-grenade.jpg', '14-chu-pong-massif.jpg'],
       lines: [
         { text: 'Each battalion had a heavy weapons company with 82 mm mortars, 12.7 mm heavy machine guns and recoilless rifles, carried down the trail in pieces.', tag: 'established' },
         { text: 'Machine guns dug in among the termite mounds on the finger of the mountain stopped both attempts to reach the lost platoon on the first day. Mortar rounds fell on the clearing through the whole battle and hit the helicopters as they landed.', tag: 'us', cite: 'Moore, After Action Report' },
