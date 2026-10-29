@@ -724,7 +724,7 @@ function showUnitPhoto(k) {
   $('unitCap').textContent = m.caption || ''; $('unitRef').textContent = [m.ref, m.credit].filter(Boolean).join(' · ');
   p.textContent = 'Photo to add: ' + (m.file || '') + (m.caption ? ' — ' + m.caption : '');
   img.onload = () => img.classList.add('show'); img.onerror = () => p.classList.add('show');
-  img.src = (S.imageBase || 'images/') + m.file;
+  img.src = (S.imageBase || 'images/') + m.file; setPulse($('unitPulse'), m);
 }
 function renderBriefing() {
   $('briefMeta').innerHTML = `<b>${S.date}</b> · ${S.place}<br>${S.tagline}`;
@@ -761,17 +761,20 @@ $('introBar').parentElement.addEventListener('click', e => {
   else introTimer = k * sl.auto;
   mediaIdx = -1; showMedia(Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer);
 });
+// media.pulse: a second file shown over the first with a heartbeat fade (used for the glowing trail map)
+function setPulse(el, m) { if (!el) return; if (m && m.pulse) { el.src = (S.imageBase || 'images/') + m.pulse; el.classList.add('show'); } else { el.classList.remove('show'); el.removeAttribute('src'); } }
 function showMedia(elapsed) {
   let k = -1; introMedia.forEach((m, i) => { if ((m.at || 0) <= elapsed) k = i; });
   if (k === mediaIdx) return; mediaIdx = k; const m = introMedia[k];
   const img = $('introImg'), ph = $('introPh');
   img.classList.remove('show'); ph.classList.remove('show');
-  if (!m) { $('introCap').textContent = ''; $('introRef').textContent = ''; return; }
+  if (!m) { $('introCap').textContent = ''; $('introRef').textContent = ''; setPulse($('introPulse'), null); return; }
   $('introCap').textContent = m.caption || ''; $('introRef').textContent = [m.ref, m.credit].filter(Boolean).join(' · ');
   if (document.body.classList.contains('fsmedia')) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
   ph.textContent = 'Photo to add: ' + (m.file || '') + (m.caption ? ' — ' + m.caption : '');
   img.onload = () => { img.classList.add('show'); }; img.onerror = () => { ph.classList.add('show'); };
   img.src = (S.imageBase || 'images/') + m.file; if (swapped) $('bigPhotoImg').src = img.src;
+  setPulse($('introPulse'), m); if (swapped) setPulse($('bigPhotoPulse'), m);
 }
 function beginIntro(voice) {
   Narr.set(voice, true); if (!voice) Narr.stop();
@@ -960,8 +963,8 @@ function fitSwappedMap() {
 function swapPhoto(on) {
   if (on && !document.body.classList.contains('fsmedia')) return;
   swapped = on; document.body.classList.toggle('swapped', on);
-  if (on) { const m = introMedia[mediaIdx]; if (m) $('bigPhotoImg').src = (S.imageBase || 'images/') + m.file; requestAnimationFrame(fitSwappedMap); }
-  else { canvas.style.transform = ''; const plate = $('fsMediaWrap').querySelector('.plate'); if (plate) plate.style.minHeight = ''; }
+  if (on) { const m = introMedia[mediaIdx]; if (m) { $('bigPhotoImg').src = (S.imageBase || 'images/') + m.file; setPulse($('bigPhotoPulse'), m); } requestAnimationFrame(fitSwappedMap); }
+  else { setPulse($('bigPhotoPulse'), null); canvas.style.transform = ''; const plate = $('fsMediaWrap').querySelector('.plate'); if (plate) plate.style.minHeight = ''; }
   if (document.body.classList.contains('fsmedia')) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
 }
 $('swapBtn').onclick = e => { e.stopPropagation(); swapPhoto(!swapped); };
