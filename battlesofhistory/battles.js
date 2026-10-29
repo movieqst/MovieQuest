@@ -37,6 +37,6 @@ window.BATTLES = [
     blurb: 'The first fight of D-Day: six gliders land beside two bridges at a quarter past midnight, 181 men take both in minutes, and hold them until the commandos arrive from the beach.',
     cover: 'images/32-art-bridge-night.jpg',
     coverCredit: 'Painting: Battle Games, original artwork',
-    status: 'coming soon'
+    status: 'ready'
   }
 ];
