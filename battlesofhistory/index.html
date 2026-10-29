@@ -12,7 +12,13 @@
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--ink);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
   body{min-height:100vh;background:radial-gradient(1200px 600px at 50% -10%,#1c3340 0%,var(--ink) 60%)}
-  header{padding:56px 16px 24px;text-align:center}
+  header{padding:56px 16px 24px;text-align:center;position:relative}
+  /* Poster banner: images/poster.jpg (painted for this page) sits behind the title when present. */
+  body.poster header{min-height:min(52vw,520px);display:flex;flex-direction:column;justify-content:flex-start;padding-top:48px;background:url('images/poster.jpg') center 35%/cover no-repeat;border-bottom:1px solid #1b2b35}
+  body.poster header::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,19,26,.55) 0%,rgba(9,19,26,.15) 35%,rgba(9,19,26,.1) 70%,rgba(9,19,26,1) 100%)}
+  body.poster header>*{position:relative}
+  body.poster .tag{color:#dfe6e3;text-shadow:0 1px 3px #000,0 0 10px rgba(0,0,0,.8);background:rgba(9,19,26,.35);padding:6px 12px;border-radius:8px}
+  body.poster h1{text-shadow:0 2px 0 #5a4310,0 4px 18px rgba(0,0,0,.9),0 0 30px rgba(0,0,0,.7)}
   h1{font:800 clamp(30px,5vw,54px) 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.14em;margin:0;text-shadow:0 1px 0 #5a4310,0 3px 12px rgba(0,0,0,.7)}
   .tag{color:var(--muted);margin:10px auto 0;max-width:640px;font-size:15px}
   .tag b{color:var(--text);font-weight:600}
@@ -43,6 +49,10 @@
 </header>
 <main id="list"></main>
 <footer>Battle Games · positions, timings and maps are reconstructions; the history is tagged by confidence · <a href="https://github.com/movieqst/MovieQuest/tree/main/battlesofhistory">source on GitHub</a></footer>
+<script>
+  // Use the painted poster as the header background once images/poster.jpg exists.
+  (function () { const im = new Image(); im.onload = () => document.body.classList.add('poster'); im.src = 'images/poster.jpg'; })();
+</script>
 <script src="battles.js"></script>
 <script>
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
