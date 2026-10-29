@@ -143,7 +143,7 @@
   .overlay.center{align-items:center;background:transparent}
   /* The intro card grows with the panel so its text runs in longer lines and the box gets shorter; in fullscreen it is wider still and tighter */
   .dialog.intro{width:min(1100px,100%)}
-  .battle-panel:fullscreen .dialog.intro,body.bigmap .dialog.intro{width:min(1500px,calc(100% - 700px));min-width:900px;padding:12px 20px 10px}
+  .battle-panel:fullscreen .dialog.intro,body.bigmap .dialog.intro{width:calc(100% - 8px);max-width:none;padding:12px 20px 10px}
   .battle-panel:fullscreen .dialog.intro h1,body.bigmap .dialog.intro h1{font-size:clamp(18px,1.9vw,26px);margin:2px 0}
   .battle-panel:fullscreen #introLines p,body.bigmap #introLines p{font-size:14px;line-height:1.4;margin:5px 0}
   .battle-panel:fullscreen .dialog.intro .progress,body.bigmap .dialog.intro .progress{margin:6px 0 4px}
@@ -175,14 +175,14 @@
   .refs{padding-left:18px}.refs li{margin:8px 0;font-size:14px}
   .battle-panel.overview canvas#battle{cursor:crosshair}
   .battle-panel:fullscreen{border-radius:0;border:0;background:#071017}
-  .battle-panel:fullscreen #caption,body.bigmap #caption{width:min(1500px,calc(100% - 700px));min-width:900px}
+  .battle-panel:fullscreen #caption,body.bigmap #caption{width:calc(100% - 24px)}
   body.bigmap .battle-panel{position:fixed;inset:0;z-index:50;border-radius:0;border:0;min-height:0}
   /* In fullscreen the side column is hidden, so during the intro the slideshow moves to a card above the minimap */
   #fsMediaWrap{display:none;right:12px;top:12px;width:300px;padding:8px 10px 10px;z-index:3;opacity:.85}
   #fsMediaWrap:hover{opacity:1}
   #fsMediaWrap h3{font:600 13px 'Cinzel',Georgia,serif;color:var(--gold);margin:0 0 6px;letter-spacing:.04em}
   body.fsmedia #fsMediaWrap{display:block}
-  body.fsmedia #minimap-wrap{top:auto;bottom:90px}
+  body.fsmedia #minimap-wrap{top:var(--mm-top,330px)}
   body.fsmedia #fsMediaWrap .mcap{font-size:12px}#fsMediaWrap .mref{font-size:10px}
   body.bigmap #fsBtn::after{content:' (Esc to exit)'}
   #voiceStatus{color:#ffb3a7;max-width:260px}

@@ -743,6 +743,7 @@ function showMedia(elapsed) {
   img.classList.remove('show'); ph.classList.remove('show');
   if (!m) { $('introCap').textContent = ''; $('introRef').textContent = ''; return; }
   $('introCap').textContent = m.caption || ''; $('introRef').textContent = [m.ref, m.credit].filter(Boolean).join(' \u00b7 ');
+  if (document.body.classList.contains('fsmedia')) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
   ph.textContent = 'Photo to add: ' + (m.file || '') + (m.caption ? ' \u2014 ' + m.caption : '');
   img.onload = () => { img.classList.add('show'); }; img.onerror = () => { ph.classList.add('show'); };
   img.src = (S.imageBase || 'images/') + m.file;
@@ -905,6 +906,7 @@ function placeMedia() {
   const big = !!document.fullscreenElement || document.body.classList.contains('bigmap'), on = big && mode === 'intro' && introMedia.length > 0;
   const m = $('introMedia'); if (on && m.parentElement !== $('fsMediaWrap')) $('fsMediaWrap').appendChild(m); else if (!on && m.parentElement !== $('mediaCard')) $('mediaCard').appendChild(m);
   document.body.classList.toggle('fsmedia', on);
+  if (on) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
 }
 function toggleFullscreen() {
   const el = $('battlePanel');
