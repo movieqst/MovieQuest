@@ -347,7 +347,7 @@ function moveFormation(f) {
     const d = f.strengthTarget - f.strength, step = f.strengthRate * DT;
     if (Math.abs(d) <= step) { f.strength = f.strengthTarget; f.strengthTarget = null; } else f.strength += Math.sign(d) * step;
   }
-  f.ground = groundAt(f.x, f.y);
+  f.ground = groundAt(f.x, f.y); f.onBridge = onBridge(f.x, f.y) || bridges().some(b => Math.abs(f.y - b.y) < b.h && Math.abs(f.x - b.x) < b.w / 2 + 30);
   if (f.state === 'dig') { if (!f.dug) { f.digT += DT; if (f.digT >= 4) f.dug = true; } return; }
   f.digT = 0;
   if (f.state === 'hold' || f.state === 'scattered') return;
@@ -596,14 +596,15 @@ function drawFormation(c, f) {
   const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
   const SS = 1.3, sx = 13 * 1.3, sy = 14 * 1.3, n = f.cols * f.rows;
-  const FC = f.cols, FR = f.rows;
+  // on a bridge deck the formation squeezes into a double file (single for vehicles) along its line of march
+  const onDeck = f.onBridge, FC = onDeck ? (UT[f.type].kind === 'vehicle' ? 1 : 2) : f.cols, FR = onDeck ? Math.ceil(n / FC) : f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', scatter = f.state === 'rout' || f.state === 'scattered';
   const pts = [];
   for (let i = 0; i < n; i++) {
     if (i >= shown) continue;
     const col = i % FC, row = Math.floor(i / FC);
-    let d = -(row - (FR - 1) / 2) * sy + (jitter(i, 1) - .5) * 7 * f.spread, a = (col - (FC - 1) / 2) * sx + (jitter(i, 2) - .5) * 7 * f.spread;
+    let d = -(row - (FR - 1) / 2) * sy * (onDeck ? .8 : 1) + (jitter(i, 1) - .5) * (onDeck ? 2 : 7) * f.spread, a = (col - (FC - 1) / 2) * sx * (onDeck ? .6 : 1) + (jitter(i, 2) - .5) * (onDeck ? 2 : 7) * f.spread;
     if (moving) a += Math.sin(wall * 7 + i) * .9;
     pts.push({ x: f.x + cos * d - sin * a, y: f.y + sin * d + cos * a, i, fac: f.facing + (scatter ? (jitter(i, 3) - .5) * 1.4 : (jitter(i, 4) - .5) * .5) });
   }

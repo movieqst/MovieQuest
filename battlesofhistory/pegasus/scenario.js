@@ -71,8 +71,8 @@ window.BATTLE_SCENARIO = {
         { at: 14, file: '01-pegasus-bridge-1944.jpg', caption: 'The same bridge three days later: British transport crossing, a sentry on the tower, and the Horsa gliders still lying in the field beyond. The bridge was renamed Pegasus after the flying-horse badge of the airborne forces.', ref: 'Bénouville, 9 June 1944; Imperial War Museum B 5288', credit: 'Photo: Sgt Christie, No 5 Army Film & Photographic Unit; Crown copyright expired, public domain' }
       ],
       subtitle: 'Night of 5–6 June 1944 · Bénouville, Normandy',
-      focus: { x: 905, y: 870 }, zoom: 1.2,
-      markers: [ { x: 905, y: 870, label: 'The canal bridge' }, { x: 1465, y: 860, label: 'The river bridge' } ],
+      focus: { x: 865, y: 730 }, zoom: 1.2,
+      markers: [ { x: 865, y: 730, label: 'The canal bridge' }, { x: 1525, y: 720, label: 'The river bridge' } ],
       auto: 28,
       lines: [
         { text: 'The first fight of D-Day, and one of the most precise operations of the war: six gliders, 181 men, two bridges, and sixteen minutes past midnight.', tag: 'established' },
@@ -85,7 +85,7 @@ window.BATTLE_SCENARIO = {
         { at: 0,  file: '30-art-map-normandy.jpg', caption: 'Normandy on 6 June 1944: the five invasion beaches along the coast, Caen inland, and the River Orne and the Caen Canal running side by side from Caen to the sea at Ouistreham. The red ring is the pair of bridges at Bénouville, the only crossings between Caen and the coast.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' },
         { at: 18, file: '12-blackening-faces-harwell.jpg', caption: 'Men of the 6th Airborne Division blackening their faces at RAF Harwell on the evening of 5 June. Howard’s six gliders took off from this airfield at four minutes to eleven that night.', ref: 'RAF Harwell, 5 June 1944; Imperial War Museum H 39066', credit: 'Photo: Capt E. G. Malindine, War Office; Crown copyright expired, public domain' }
       ],
-      focus: { x: 1180, y: 860 }, zoom: .8,
+      focus: { x: 1180, y: 720 }, zoom: .8,
       auto: 40,
       lines: [
         { text: 'The Allied landings of 6 June 1944 put five armies on the beaches of Normandy. The eastern end of the line was Sword Beach, and east of Sword ran two waterways side by side from Caen to the sea: the Caen Canal and the River Orne.', tag: 'established' },
@@ -100,8 +100,8 @@ window.BATTLE_SCENARIO = {
         { at: 14, file: '07-horsa-under-tow.jpg', caption: 'An Airspeed Horsa glider on tow behind an Albemarle. The six Horsas were towed across the Channel by Halifax bombers and released at 6,000 feet over the coast, seven miles from the bridges.', ref: 'British Air Ministry photograph', credit: 'Crown copyright expired, public domain' },
         { at: 26, file: '13-horsa-replica-museum.jpg', caption: 'A full-size replica of a Horsa at the Memorial Pegasus museum. Twenty metres of plywood and fabric carrying thirty men, two pilots and their kit, landing at ninety miles an hour with no engine and no second chance.', ref: 'Memorial Pegasus, Ranville', credit: 'Photo: René Hourdry, 2023, CC0' }
       ],
-      focus: { x: 1180, y: 1150 }, zoom: 1,
-      markers: [ { x: 1180, y: 1150, label: 'LZ X' }, { x: 1730, y: 640, label: 'LZ Y' } ],
+      focus: { x: 1180, y: 1010 }, zoom: 1,
+      markers: [ { x: 1180, y: 1010, label: 'LZ X' }, { x: 1790, y: 500, label: 'LZ Y' } ],
       auto: 46,
       lines: [
         { text: 'The task went to D Company of the 2nd Ox and Bucks, an airlanding battalion of the 6th Airborne Division, under Major John Howard: 139 of his own men, thirty sappers of the Royal Engineers, and twelve glider pilots of the Glider Pilot Regiment. 181 men in six Horsas, three for each bridge.', tag: 'british', cite: 'Howard, report on Operation Deadstick; Ambrose, Pegasus Bridge, ch. 2' },
@@ -116,8 +116,8 @@ window.BATTLE_SCENARIO = {
         { at: 0,  file: '09-german-antitank-guns.jpg', caption: 'German anti-tank guns captured in Normandy, summer 1944. The garrison at the canal bridge had one gun of this family in a sandbagged pit at the east end, a 50 mm PaK 38, with a concrete pillbox and machine-gun trenches beside it.', ref: 'Normandy, 1944; National Archives of Canada', credit: 'Public domain (Archives Normandie 1939-45)' },
         { at: 16, file: '10-panzer-iv-normandy.jpg', caption: 'A captured Panzer IV of the kind the 21st Panzer Division sent down the road to the bridge at half past one in the morning. This one was taken by the British 27th Armoured Brigade in July.', ref: 'Normandy, 3 July 1944; Imperial War Museum B 6344', credit: 'Photo: Sgt J. Mapham; Crown copyright expired, public domain' }
       ],
-      focus: { x: 1000, y: 900 }, zoom: 1.3,
-      markers: [ { x: 1005, y: 920, label: 'Gun pit and pillbox' } ],
+      focus: { x: 1000, y: 760 }, zoom: 1.3,
+      markers: [ { x: 1005, y: 780, label: 'Gun pit and pillbox' } ],
       auto: 44,
       lines: [
         { text: 'The bridges were guarded by about fifty men of the 716th Infantry Division, a coastal-defence formation of older men and conscripts from across occupied Europe, under Major Hans Schmidt, with a 50 mm anti-tank gun, machine guns in trenches, and the bridges wired for demolition.', tag: 'german', cite: 'Schmidt’s account in Ambrose, Pegasus Bridge, ch. 4; 716th Infantry Division war diary' },
@@ -133,8 +133,8 @@ window.BATTLE_SCENARIO = {
         { at: 16, file: '33-art-cafe.jpg', caption: 'Café Gondrée, the small café at the west end of the canal bridge, at first light. Its owners had passed information on the garrison to the Resistance for months; at dawn Georges Gondrée dug up ninety-eight bottles of champagne he had buried in the garden.', ref: 'Painted for this game', credit: 'Painting: Battle Games, original artwork' },
         { at: 28, file: '06-cafe-gondree.jpg', caption: 'The café as it is today, the first house in France to be liberated, and a place of pilgrimage for the veterans every June.', ref: 'Bénouville', credit: 'Photo: Rundvald, 2009, public domain' }
       ],
-      focus: { x: 905, y: 870 }, zoom: 1.4,
-      markers: [ { x: 800, y: 800, label: 'Café Gondrée' } ],
+      focus: { x: 865, y: 730 }, zoom: 1.4,
+      markers: [ { x: 800, y: 660, label: 'Café Gondrée' } ],
       auto: 40,
       lines: [
         { text: 'The canal bridge was a steel lifting bridge, a bascule, with a counterweight tower at its west end, carrying the road from Bénouville on the west bank to the strip of land between the waterways. The river bridge, four hundred yards east, was a plain girder bridge to Ranville.', tag: 'established' },
@@ -148,8 +148,8 @@ window.BATTLE_SCENARIO = {
         { at: 0,  file: '02-horsa-glider-benouville.jpg', caption: 'Glider number 1 as it lay three days later, fifty yards from the canal bridge, its nose crushed into the barbed wire. Wallwork and his co-pilot were thrown through the windscreen and were the first British soldiers on French soil on D-Day.', ref: 'Bénouville, 8 June 1944; Imperial War Museum B 5232', credit: 'Photo: Sgt Christie; Crown copyright expired, public domain' },
         { at: 16, file: '08-brotheridge-grave.jpg', caption: 'The grave of Lieutenant Den Brotheridge at Ranville. He led the first platoon across the bridge and was hit by a burst from the machine gun on the far side: the first Allied soldier killed by enemy fire on D-Day. His daughter was born a fortnight later.', ref: 'Ranville churchyard', credit: 'Photo: Dennis Peeters, 2010, public domain' }
       ],
-      focus: { x: 1000, y: 1000 }, zoom: 1.2,
-      markers: [ { x: 1030, y: 1020, label: 'Glider 1' } ],
+      focus: { x: 1000, y: 860 }, zoom: 1.2,
+      markers: [ { x: 1030, y: 880, label: 'Glider 1' } ],
       auto: 38,
       lines: [
         { text: 'The operation was named Deadstick, the pilots’ word for landing with no engine. The gliders cast off over the coast at 00:07 and came down through cloud, turning twice by stopwatch, to arrive out of the dark at ninety miles an hour, braked by a parachute and a skid.', tag: 'british', cite: 'Ambrose, Pegasus Bridge, ch. 5' },
@@ -157,7 +157,7 @@ window.BATTLE_SCENARIO = {
         { text: 'Choose how to see it: watch the night unfold as the two sides tell it, or take command of the bridges, or of the garrison and the tanks that must take them back.', tag: 'reconstruction' }
       ]
     },
-    { title: 'Choose', choice: true, focus: { x: 1180, y: 870 }, zoom: 1, auto: 9999, lines: [ { text: 'Watch the battle unfold, or take command.', tag: 'reconstruction' } ] }
+    { title: 'Choose', choice: true, focus: { x: 1180, y: 730 }, zoom: 1, auto: 9999, lines: [ { text: 'Watch the battle unfold, or take command.', tag: 'reconstruction' } ] }
   ],
 
   parts: [
@@ -168,89 +168,90 @@ window.BATTLE_SCENARIO = {
     commandDuration: 300,
     world: { w: 2400, h: 1800 },
     clockStart: '6 June · 00:16',
-    heliFrom: { x: 1700, y: -120 },            // gliders come in from the north-east, over the coast
-    rally: { brit: { x: 1180, y: 1000 }, ger: { x: 400, y: 1500 } },
+    heliFrom: { x: 1760, y: -260 },            // gliders come in from the north-east, over the coast
+    rally: { brit: { x: 1180, y: 860 }, ger: { x: 400, y: 1360 } },
     battlefield: {
       scale: { px: 100, label: '≈ 100 m (schematic)' },
       features: [
-        { kind: 'water', pts: [[905,0],[905,1800]], width: 36, name: 'Caen Canal' },
-        { kind: 'water', pts: [[1430,0],[1445,300],[1470,700],[1460,1000],[1500,1400],[1520,1800]], width: 30, name: 'River Orne' },
-        { kind: 'bridge', id: 'canal', name: 'Canal bridge', x: 905, y: 870, w: 110, h: 50, prop: 'pegasus-bridge' },
-        { kind: 'bridge', id: 'river', name: 'River bridge', x: 1465, y: 860, w: 90, h: 46 },
-        { kind: 'road', pts: [[0,880],[870,870],[940,870],[1430,860],[1500,860],[2400,850]] },
-        { kind: 'road', pts: [[530,1800],[560,1400],[600,1100],[700,900]] },
-        { kind: 'road', pts: [[700,900],[660,700],[600,420],[560,0]] },
-        { kind: 'road', pts: [[1900,850],[1950,1100],[2000,1800]] },
-        { kind: 'village', x: 250, y: 900, w: 500, h: 520, name: 'Bénouville' },
-        { kind: 'village', x: 380, y: 420, w: 420, h: 380, name: 'Le Port' },
-        { kind: 'village', x: 1750, y: 700, w: 560, h: 560, name: 'Ranville' },
-        { kind: 'building', x: 760, y: 770, w: 80, h: 60, name: 'Café Gondrée' },
-        { kind: 'pillbox', x: 1005, y: 920, r: 26, name: 'Pillbox and gun pit' },
-        { kind: 'trench', pts: [[975,800],[1030,790]], name: 'MG trench' },
-        { kind: 'lz', id: 'x', name: 'LZ X', poly: [[980,960],[1380,980],[1180,1420]], x: 1180, y: 1120, r: 200 },
-        { kind: 'lz', id: 'y', name: 'LZ Y', poly: [[1540,560],[1900,520],[1750,820]], x: 1730, y: 640, r: 160 },
-        { kind: 'pond', x: 1240, y: 1280, rx: 60, ry: 40 },
-        { kind: 'woods', x: 1200, y: 330, rx: 180, ry: 110 }, { kind: 'woods', x: 1180, y: 1600, rx: 200, ry: 110 }, { kind: 'woods', x: 2000, y: 300, rx: 260, ry: 140 }, { kind: 'woods', x: 2050, y: 1550, rx: 240, ry: 130 }, { kind: 'woods', x: 150, y: 150, rx: 120, ry: 90 },
+        { kind: 'water', pts: [[865,0],[865,1800]], width: 100, name: 'Caen Canal' },
+        { kind: 'water', pts: [[1460,0],[1478,150],[1500,450],[1522,750],[1560,1000],[1590,1200],[1650,1500],[1695,1725],[1705,1800]], width: 80, name: 'River Orne' },
+        { kind: 'bridge', id: 'canal', name: 'Canal bridge', x: 865, y: 732, w: 120, h: 34 },
+        { kind: 'bridge', id: 'river', name: 'River bridge', x: 1526, y: 738, w: 140, h: 34 },
+        { kind: 'road', pts: [[0,738],[800,732],[930,732],[1455,738],[1600,738],[2400,728]] },
+        { kind: 'road', pts: [[640,1800],[650,1350],[660,1000],[700,760]] },
+        { kind: 'road', pts: [[700,760],[690,600],[680,330],[670,0]] },
+        { kind: 'road', pts: [[1950,728],[1960,1100],[1980,1800]] },
+        { kind: 'village', x: 150, y: 810, w: 480, h: 540, name: 'B\u00e9nouville' },
+        { kind: 'village', x: 300, y: 330, w: 400, h: 270, name: 'Le Port' },
+        { kind: 'village', x: 1890, y: 700, w: 510, h: 650, name: 'Ranville' },
+        { kind: 'building', x: 720, y: 620, w: 70, h: 50, name: 'Caf\u00e9 Gondr\u00e9e' },
+        { kind: 'pillbox', x: 995, y: 670, r: 26, name: 'Pillbox' },
+        { kind: 'pillbox', x: 990, y: 815, r: 24, name: 'Gun pit' },
+        { kind: 'trench', pts: [[940,640],[1040,650]], name: 'MG trench' },
+        { kind: 'lz', id: 'x', name: 'LZ X', poly: [[1060,900],[1500,930],[1300,1425]], x: 1290, y: 1120, r: 200 },
+        { kind: 'lz', id: 'y', name: 'LZ Y', poly: [[1560,470],[1900,450],[1760,700]], x: 1740, y: 560, r: 150 },
+        { kind: 'pond', x: 1305, y: 1245, rx: 60, ry: 45 },
+        { kind: 'woods', x: 1180, y: 250, rx: 180, ry: 100 }, { kind: 'woods', x: 1200, y: 1620, rx: 200, ry: 100 }, { kind: 'woods', x: 2050, y: 250, rx: 260, ry: 130 }, { kind: 'woods', x: 2100, y: 1580, rx: 240, ry: 120 }, { kind: 'woods', x: 150, y: 150, rx: 120, ry: 90 },
         { kind: 'hedges', step: 220 }
       ],
       labels: [
-        { x: 905, y: 1700, text: 'CAEN CANAL', rotate: -1.57 }, { x: 1540, y: 1500, text: 'RIVER ORNE', rotate: -1.45 },
-        { x: 500, y: 1160, text: 'Bénouville', small: true }, { x: 590, y: 610, text: 'Le Port', small: true }, { x: 2030, y: 980, text: 'Ranville', small: true },
-        { x: 905, y: 820, text: 'Canal bridge', small: true }, { x: 1465, y: 815, text: 'River bridge', small: true },
-        { x: 1180, y: 1160, text: 'LZ X', small: true }, { x: 1730, y: 660, text: 'LZ Y', small: true },
-        { x: 200, y: 40, text: 'to Ouistreham and Sword Beach 6 km ↑', small: true }, { x: 540, y: 1770, text: 'to Caen 9 km ↓', small: true }
+        { x: 865, y: 1700, text: 'CAEN CANAL', rotate: -1.57 }, { x: 1690, y: 1560, text: 'RIVER ORNE', rotate: -1.3 },
+        { x: 400, y: 1090, text: 'B\u00e9nouville', small: true }, { x: 500, y: 480, text: 'Le Port', small: true }, { x: 2150, y: 1020, text: 'Ranville', small: true },
+        { x: 865, y: 690, text: 'Canal bridge', small: true }, { x: 1526, y: 695, text: 'River bridge', small: true },
+        { x: 1290, y: 1150, text: 'LZ X', small: true }, { x: 1740, y: 580, text: 'LZ Y', small: true },
+        { x: 220, y: 40, text: 'to Ouistreham and Sword Beach 6 km \u2191', small: true }, { x: 640, y: 1770, text: 'to Caen 9 km \u2193', small: true }
       ]
     },
 
     formations: [
       // British: the three canal-bridge gliders, the two river-bridge gliders, the sappers, then the paras and the commandos
-      { id: 'g1',  side: 'brit', name: 'No 25 Platoon (Brotheridge), glider 1', division: 'Glider 1', type: 'airlanding', cols: 5, rows: 3, power: 1.2, x: 1030, y: 1020, offmap: true, glider: true,
+      { id: 'g1',  side: 'brit', name: 'No 25 Platoon (Brotheridge), glider 1', division: 'Glider 1', type: 'airlanding', cols: 5, rows: 3, power: 1.2, x: 1030, y: 880, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Wallwork’s glider, down at 00:16 forty-seven yards from the bridge. Brotheridge led it over the bridge and was killed on the far side.' },
-      { id: 'g2',  side: 'brit', name: 'No 24 Platoon (Wood), glider 2', division: 'Glider 2', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1090, y: 1070, offmap: true, glider: true,
+      { id: 'g2',  side: 'brit', name: 'No 24 Platoon (Wood), glider 2', division: 'Glider 2', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1090, y: 930, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed a minute later, broke its back in a ditch. Cleared the trenches on the east bank. Lieutenant Wood was wounded in both legs.' },
-      { id: 'g3',  side: 'brit', name: 'No 14 Platoon (Smith), glider 3', division: 'Glider 3', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1140, y: 1120, offmap: true, glider: true,
+      { id: 'g3',  side: 'brit', name: 'No 14 Platoon (Smith), glider 3', division: 'Glider 3', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1140, y: 980, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed in the pond; one man drowned, the only death in the landings. Crossed the bridge to hold the west bank and the café.' },
-      { id: 'hq',  side: 'brit', name: 'Major Howard and company HQ', division: 'Howard', type: 'airlanding', cols: 3, rows: 2, power: 1.0, x: 1000, y: 990, offmap: true,
+      { id: 'hq',  side: 'brit', name: 'Major Howard and company HQ', division: 'Howard', type: 'airlanding', cols: 3, rows: 2, power: 1.0, x: 1000, y: 850, offmap: true,
         count: 'About 10 men', confidence: 'british', note: 'Howard set up beside the pillbox on the east bank, from where he could see both bridges, and sent the signal Ham and Jam: both bridges taken intact.' },
-      { id: 'sap', side: 'brit', name: 'Royal Engineers (Neilson)', division: 'Sappers', type: 'airlanding', cols: 4, rows: 2, power: .8, x: 1060, y: 1000, offmap: true,
+      { id: 'sap', side: 'brit', name: 'Royal Engineers (Neilson)', division: 'Sappers', type: 'airlanding', cols: 4, rows: 2, power: .8, x: 1060, y: 860, offmap: true,
         count: '30 sappers', confidence: 'british', note: 'Searched the bridges for the demolition charges and found the chambers empty: the explosives were in a shed nearby and had never been fitted.' },
-      { id: 'piat', side: 'brit', name: 'PIAT team (Sergeant Thornton)', division: 'PIAT', type: 'piat', cols: 2, rows: 1, power: 1.0, x: 1010, y: 980, offmap: true,
+      { id: 'piat', side: 'brit', name: 'PIAT team (Sergeant Thornton)', division: 'PIAT', type: 'piat', cols: 2, rows: 1, power: 1.0, x: 1010, y: 840, offmap: true,
         count: '2 men, one PIAT, two bombs', confidence: 'british', note: 'Wagger Thornton lay in a ditch at the T-junction in Bénouville and hit the leading tank with his first bomb. The second tank turned back. It was the moment of the night.' },
-      { id: 'g4',  side: 'brit', name: 'No 17 Platoon (Fox), glider 5', division: 'Glider 5', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1700, y: 700, offmap: true, glider: true,
+      { id: 'g4',  side: 'brit', name: 'No 17 Platoon (Fox), glider 5', division: 'Glider 5', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1760, y: 560, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed three hundred yards from the river bridge and rushed it. A machine gun fired a few bursts and the crew ran. The bridge was taken without loss.' },
-      { id: 'g5',  side: 'brit', name: 'No 23 Platoon (Sweeney), glider 6', division: 'Glider 6', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1620, y: 760, offmap: true, glider: true,
+      { id: 'g5',  side: 'brit', name: 'No 23 Platoon (Sweeney), glider 6', division: 'Glider 6', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1680, y: 620, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed seven hundred yards short and arrived at the river bridge at the run to find Fox already across. Glider 4, Priday’s, was released in the wrong place and landed on the River Dives eight miles east.' },
-      { id: 'pA',  side: 'brit', name: 'A Company, 7th Parachute Battalion', division: 'A Coy 7 Para', type: 'para', cols: 6, rows: 3, power: 1.0, x: 2100, y: 120, offmap: true,
+      { id: 'pA',  side: 'brit', name: 'A Company, 7th Parachute Battalion', division: 'A Coy 7 Para', type: 'para', cols: 6, rows: 3, power: 1.0, x: 2160, y: -20, offmap: true,
         count: 'About 60 men who found the rendezvous', confidence: 'british', note: 'The battalion was scattered in the drop; a third of it never reached the bridges. A Company held Bénouville through the morning against the counter-attacks.' },
-      { id: 'pB',  side: 'brit', name: 'B Company, 7th Parachute Battalion', division: 'B Coy 7 Para', type: 'para', cols: 6, rows: 3, power: 1.0, x: 2150, y: 200, offmap: true,
+      { id: 'pB',  side: 'brit', name: 'B Company, 7th Parachute Battalion', division: 'B Coy 7 Para', type: 'para', cols: 6, rows: 3, power: 1.0, x: 2210, y: 60, offmap: true,
         count: 'About 60 men', confidence: 'british', note: 'Took Le Port and fought the snipers in the church tower; a PIAT bomb through the tower finally silenced them.' },
-      { id: 'pC',  side: 'brit', name: 'C Company and HQ, 7th Parachute Battalion (Pine-Coffin)', division: 'C Coy 7 Para', type: 'para', cols: 5, rows: 3, power: 1.0, x: 2200, y: 280, offmap: true,
+      { id: 'pC',  side: 'brit', name: 'C Company and HQ, 7th Parachute Battalion (Pine-Coffin)', division: 'C Coy 7 Para', type: 'para', cols: 5, rows: 3, power: 1.0, x: 2260, y: 140, offmap: true,
         count: 'About 80 men', confidence: 'british', note: 'Lieutenant Colonel Pine-Coffin reached the canal bridge at about 03:00 and took command of the position from Howard.' },
-      { id: 'cmdo', side: 'brit', name: 'No 6 Commando with Lord Lovat and Piper Millin', division: 'Lovat', type: 'commando', cols: 7, rows: 3, power: 1.2, x: 560, y: -60, offmap: true, speed: 18,
+      { id: 'cmdo', side: 'brit', name: 'No 6 Commando with Lord Lovat and Piper Millin', division: 'Lovat', type: 'commando', cols: 7, rows: 3, power: 1.2, x: 560, y: -200, offmap: true, speed: 18,
         count: 'About 400 men of the 1st Special Service Brigade', confidence: 'british', note: 'Landed on Sword at 08:40, marched inland, and reached the canal bridge at 13:00 with the pipes playing, two minutes behind the time Lovat had promised.', speed: 30 },
       // Germans: the garrison, the gun, Schmidt, the tanks, the dawn counter-attack, the gunboat
-      { id: 'gar', side: 'ger', name: 'Bridge garrison, 716th Infantry Division', division: 'Garrison', type: 'infantry', cols: 5, rows: 3, power: .8, x: 1000, y: 830, hidden: true, ai: 'hold', strength: 60,
+      { id: 'gar', side: 'ger', name: 'Bridge garrison, 716th Infantry Division', division: 'Garrison', type: 'infantry', cols: 5, rows: 3, power: .8, x: 1000, y: 690, hidden: true, ai: 'hold', strength: 60,
         count: 'About 50 men, most asleep in the village', confidence: 'german', note: 'Older men and conscripts from across Europe. Two sentries were on the bridge; the rest were in their billets when the gliders came down.' },
-      { id: 'gun', side: 'ger', name: '50 mm anti-tank gun', division: 'PaK 38', type: 'gun', cols: 2, rows: 1, power: 1.0, x: 1005, y: 920, hidden: true, ai: 'hold', strength: 25,
+      { id: 'gun', side: 'ger', name: '50 mm anti-tank gun', division: 'PaK 38', type: 'gun', cols: 2, rows: 1, power: 1.0, x: 1005, y: 780, hidden: true, ai: 'hold', strength: 25,
         count: 'One gun in a sandbagged pit', confidence: 'german', note: 'Never fired in the assault; its crew was overrun as they ran to it. Howard’s men used it the next day.' },
-      { id: 'rgar', side: 'ger', name: 'River bridge sentries', division: 'Sentries', type: 'infantry', cols: 2, rows: 2, power: .7, x: 1510, y: 880, hidden: true, ai: 'hold',
+      { id: 'rgar', side: 'ger', name: 'River bridge sentries', division: 'Sentries', type: 'infantry', cols: 2, rows: 2, power: .7, x: 1570, y: 740, hidden: true, ai: 'hold',
         count: 'A handful of men', confidence: 'british', note: 'A machine gun fired a few bursts and the crew ran. The river bridge cost the British nothing.' },
-      { id: 'schmidt', side: 'ger', name: 'Major Schmidt’s staff car', division: 'Schmidt', type: 'infantry', cols: 2, rows: 1, power: .6, x: 2360, y: 850, hidden: true, speed: 40, ai: 'script',
+      { id: 'schmidt', side: 'ger', name: 'Major Schmidt’s staff car', division: 'Schmidt', type: 'infantry', cols: 2, rows: 1, power: .6, x: 2420, y: 710, hidden: true, speed: 40, ai: 'script',
         count: 'The garrison commander and his driver', confidence: 'german', note: 'Schmidt had been in Ranville with a lady friend. He drove into the British at the river bridge at half past midnight, was wounded and captured, and told his captors in English that they would be thrown back into the sea.' },
-      { id: 'pz1', side: 'ger', name: 'Panzer IV, 21st Panzer Division (lead)', division: 'Panzer 1', type: 'panzer', cols: 1, rows: 1, power: 1.0, x: 560, y: 1780, hidden: true, speed: 28, ai: 'wave',
+      { id: 'pz1', side: 'ger', name: 'Panzer IV, 21st Panzer Division (lead)', division: 'Panzer 1', type: 'panzer', cols: 1, rows: 1, power: 1.0, x: 560, y: 1640, hidden: true, speed: 28, ai: 'wave',
         count: 'One tank', confidence: 'british', note: 'Came up the road from the south with infantry behind it at about 01:30. Thornton’s PIAT bomb set it on fire; its ammunition cooked off for an hour and lit the whole crossroads.' },
-      { id: 'pz2', side: 'ger', name: 'Panzer IV, 21st Panzer Division (second)', division: 'Panzer 2', type: 'panzer', cols: 1, rows: 1, power: 1.0, x: 540, y: 1795, hidden: true, speed: 28, ai: 'wave',
+      { id: 'pz2', side: 'ger', name: 'Panzer IV, 21st Panzer Division (second)', division: 'Panzer 2', type: 'panzer', cols: 1, rows: 1, power: 1.0, x: 540, y: 1655, hidden: true, speed: 28, ai: 'wave',
         count: 'One tank', confidence: 'british', note: 'Saw the lead tank burn and withdrew. The German armour did not try the road to the bridge again that night.' },
-      { id: 'ginf1', side: 'ger', name: 'Panzergrenadiers, 192nd Regiment, 21st Panzer Division', division: '192 PzGren', type: 'infantry', cols: 6, rows: 3, power: 1.1, x: 300, y: 1780, hidden: true, ai: 'wave',
+      { id: 'ginf1', side: 'ger', name: 'Panzergrenadiers, 192nd Regiment, 21st Panzer Division', division: '192 PzGren', type: 'infantry', cols: 6, rows: 3, power: 1.1, x: 300, y: 1640, hidden: true, ai: 'wave',
         count: 'A company, perhaps 100 men', confidence: 'estimate', note: 'The dawn counter-attack on Bénouville from the south, with mortar fire, which the 7th Parachute Battalion held off in the village for most of the morning.' },
-      { id: 'ginf2', side: 'ger', name: 'Infantry, 716th Division, from Le Port', division: '716 Inf', type: 'infantry', cols: 5, rows: 3, power: .9, x: 420, y: 120, hidden: true, ai: 'wave',
+      { id: 'ginf2', side: 'ger', name: 'Infantry, 716th Division, from Le Port', division: '716 Inf', type: 'infantry', cols: 5, rows: 3, power: .9, x: 420, y: -20, hidden: true, ai: 'wave',
         count: 'Snipers and a platoon', confidence: 'british', note: 'Snipers in the church tower of Le Port and infantry in the houses harassed the bridge all morning.' },
-      { id: 'boat', side: 'ger', name: 'Gunboat from Ouistreham', division: 'Gunboat', type: 'boat', cols: 1, rows: 1, power: 1.0, x: 905, y: -60, hidden: true, speed: 30, ai: 'script',
+      { id: 'boat', side: 'ger', name: 'Gunboat from Ouistreham', division: 'Gunboat', type: 'boat', cols: 1, rows: 1, power: 1.0, x: 865, y: -200, hidden: true, speed: 30, ai: 'script',
         count: 'Two boats, one with a 20 mm gun', confidence: 'british', note: 'Came down the canal from the sea at about 09:00. A PIAT bomb hit the leading boat, which ran into the bank; the second turned back.' }
     ],
 
     events: [
-      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1060, y: 1030 },
+      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1060, y: 890 },
         text: 'Sixteen minutes past midnight. Out of the dark at ninety miles an hour, the first Horsa hits the ground, bounces, smashes through the wire and stops with its nose forty-seven yards from the canal bridge. The second and third land within a minute. Nobody on the bridge has heard a thing.',
         explain: 'The gliders were released at 6,000 feet over the coast and flew seven miles by stopwatch, making two timed turns in cloud. Wallwork, in the lead, aimed for the wire at the end of the field to stop the glider before the embankment: he hit it, and the two pilots went through the windscreen. Everyone aboard was stunned for a few seconds; some of the men thought they were dead.',
         orders: [
@@ -258,98 +259,98 @@ window.BATTLE_SCENARIO = {
           { id: 'g2', lift: 'glider', delay: 4 }, { id: 'g3', lift: 'glider', delay: 7 },
           { id: 'gar', visible: false, state: 'hold' }, { id: 'gun', visible: false, state: 'hold' }
         ] },
-      { t: 14, title: 'Over the bridge', tag: 'british', clock: '00:18', focus: { x: 940, y: 880 },
+      { t: 14, title: 'Over the bridge', tag: 'british', clock: '00:18', focus: { x: 940, y: 740 },
         text: 'Brotheridge’s platoon is out of the wreck and running for the bridge. A sentry fires a flare; the platoon charges across, firing from the hip, grenades into the pillbox and the trenches. Brotheridge is hit by a burst from the machine gun at the far end and falls at the west bank. The bridge is taken in three minutes.',
         explain: 'The plan was speed: no stealth after the landing, just the shortest run to the bridge before the sentries could reach the detonator. Corporal Bailey put a grenade through the slit of the pillbox; Lieutenant Wood’s platoon cleared the trenches on the east bank. Den Brotheridge, hit in the neck, died within the hour, the first Allied soldier killed by enemy fire on D-Day.',
         orders: [
-          { id: 'g1', to: { x: 840, y: 850 }, speed: 22, state: 'attack' }, { id: 'g2', to: { x: 1000, y: 840 }, speed: 20, state: 'attack', delay: 2 }, { id: 'g3', to: { x: 960, y: 900 }, speed: 20, state: 'attack', delay: 4 },
+          { id: 'g1', to: { x: 770, y: 745 }, speed: 22, state: 'attack' }, { id: 'g2', to: { x: 1000, y: 700 }, speed: 20, state: 'attack', delay: 2 }, { id: 'g3', to: { x: 960, y: 760 }, speed: 20, state: 'attack', delay: 4 },
           { id: 'gar', visible: true, state: 'hold', strengthTo: 30, over: 10 }, { id: 'gun', visible: true, strengthTo: 0, over: 8 },
-          { id: 'g1', strengthTo: 88, over: 8 }, { id: 'hq', to: { x: 1000, y: 960 }, speed: 16, delay: 3, then: 'hold' }, { id: 'sap', to: { x: 930, y: 930 }, speed: 16, delay: 3, then: 'hold' }, { id: 'piat', to: { x: 860, y: 900 }, speed: 14, delay: 4, then: 'hold' }
+          { id: 'g1', strengthTo: 88, over: 8 }, { id: 'hq', to: { x: 1000, y: 820 }, speed: 16, delay: 3, then: 'hold' }, { id: 'sap', to: { x: 930, y: 790 }, speed: 16, delay: 3, then: 'hold' }, { id: 'piat', to: { x: 735, y: 765 }, speed: 14, delay: 4, then: 'hold' }
         ] },
-      { t: 26, title: 'Ham and Jam', tag: 'established', clock: '00:21', focus: { x: 1600, y: 780 },
+      { t: 26, title: 'Ham and Jam', tag: 'established', clock: '00:21', focus: { x: 1660, y: 640 },
         text: 'Four hundred yards east, two gliders have landed beside the river bridge. Fox’s platoon rushes it; a machine gun fires a few bursts and the crew run. Sweeney’s platoon arrives at the run from a field seven hundred yards short. The sappers report the demolition chambers empty. Howard’s radio sends the code words: Ham, the canal bridge; Jam, the river bridge. Both taken intact.',
         explain: 'The explosives were stored in a shed and had never been fitted to the bridges, against standing orders, because the garrison did not expect an attack. The sappers cut every wire they could find anyway. The sixth glider, Priday’s, had been cast off in the wrong place and landed on the River Dives, eight miles away; its platoon fought its way back over two days.',
         orders: [
           { id: 'g4', lift: 'glider', delay: 0 }, { id: 'g5', lift: 'glider', delay: 2 },
-          { id: 'rgar', visible: true, state: 'rout', to: { x: 1900, y: 900 }, speed: 30, delay: 5, then: 'withdrawn' },
-          { id: 'g4', to: { x: 1520, y: 850 }, speed: 22, state: 'attack', delay: 4, then: 'dig' }, { id: 'g5', to: { x: 1420, y: 890 }, speed: 22, state: 'move', delay: 7, then: 'dig' },
-          { id: 'gar', state: 'rout', to: { x: 300, y: 600 }, speed: 24, delay: 4, then: 'withdrawn' },
-          { id: 'g1', to: { x: 820, y: 860 }, state: 'dig', delay: 6 }, { id: 'g2', to: { x: 1010, y: 820 }, state: 'dig', delay: 6 }, { id: 'g3', to: { x: 780, y: 920 }, state: 'dig', delay: 6 }
+          { id: 'rgar', visible: true, state: 'rout', to: { x: 1960, y: 760 }, speed: 30, delay: 5, then: 'withdrawn' },
+          { id: 'g4', to: { x: 1580, y: 710 }, speed: 22, state: 'attack', delay: 4, then: 'dig' }, { id: 'g5', to: { x: 1480, y: 750 }, speed: 22, state: 'move', delay: 7, then: 'dig' },
+          { id: 'gar', state: 'rout', to: { x: 300, y: 460 }, speed: 24, delay: 4, then: 'withdrawn' },
+          { id: 'g1', to: { x: 765, y: 770 }, state: 'dig', delay: 6 }, { id: 'g2', to: { x: 1010, y: 690 }, state: 'dig', delay: 6 }, { id: 'g3', to: { x: 770, y: 665 }, state: 'dig', delay: 6 }
         ] },
-      { t: 40, title: 'The staff car', tag: 'german', clock: '00:30', focus: { x: 1700, y: 860 },
+      { t: 40, title: 'The staff car', tag: 'german', clock: '00:30', focus: { x: 1760, y: 720 },
         text: 'A staff car and a motorcycle come down the road from Ranville at speed: Major Schmidt, commanding the bridge garrison, returning from an evening in the town. The British at the river bridge shoot up both. Schmidt is wounded and captured, and tells his captors in good English that they will all be thrown back into the sea.',
         explain: 'Schmidt was the one German officer who knew the demolition plan. Captured within fifteen minutes of the landing, he could not raise the alarm or order the charges fitted. The German side had no commander at the bridges for the rest of the night; the counter-attacks that came were organised from outside.',
-        orders: [ { id: 'schmidt', visible: true, to: { x: 1560, y: 860 }, speed: 45, state: 'move' }, { id: 'schmidt', strengthTo: 0, over: 6, delay: 5 } ] },
-      { t: 54, title: 'The drop', tag: 'established', clock: '00:50', focus: { x: 2000, y: 300 },
+        orders: [ { id: 'schmidt', visible: true, to: { x: 1620, y: 720 }, speed: 45, state: 'move' }, { id: 'schmidt', strengthTo: 0, over: 6, delay: 5 } ] },
+      { t: 54, title: 'The drop', tag: 'established', clock: '00:50', focus: { x: 2060, y: 160 },
         text: 'Half an hour later the sky to the north-east fills with the 7th Parachute Battalion, dropping to take over the bridges. The drop is scattered by wind and flak; companies land miles apart and in the flooded fields. A third of the battalion will never reach the rendezvous.',
         explain: 'The 6th Airborne Division dropped east of the Orne to seal off the flank of the invasion. The 7th Battalion’s job was the bridges, and it got there, but with 200 men instead of 600, and without its mortars and machine guns, which had come down in the water. Howard’s company would have to hold longer than planned.',
-        orders: [ { id: 'pA', visible: true, at: { x: 2100, y: 120 }, to: { x: 1780, y: 560 }, speed: 26 }, { id: 'pB', visible: true, at: { x: 2200, y: 240 }, to: { x: 1900, y: 640 }, speed: 26, delay: 6 }, { id: 'pC', visible: true, at: { x: 2300, y: 180 }, to: { x: 1960, y: 760 }, speed: 26, delay: 12 } ] },
-      { t: 70, title: 'Tanks', tag: 'british', clock: '01:30', focus: { x: 640, y: 1000 },
+        orders: [ { id: 'pA', visible: true, at: { x: 2160, y: -20 }, to: { x: 1840, y: 420 }, speed: 26 }, { id: 'pB', visible: true, at: { x: 2260, y: 100 }, to: { x: 1960, y: 500 }, speed: 26, delay: 6 }, { id: 'pC', visible: true, at: { x: 2360, y: 40 }, to: { x: 2020, y: 620 }, speed: 26, delay: 12 } ] },
+      { t: 70, title: 'Tanks', tag: 'british', clock: '01:30', focus: { x: 640, y: 860 },
         text: 'Engines in Bénouville. Two tanks of the 21st Panzer Division come up the road from the south with infantry behind them, toward the T-junction a hundred yards from the bridge. Sergeant Thornton is in a ditch at the junction with the company’s last PIAT and two bombs. He lets the lead tank come to thirty yards and fires. It stops, burns, and its ammunition explodes for the next hour.',
         explain: 'The PIAT was a spring-loaded tube that threw a three-pound bomb a hundred yards, and it was feared for its unreliability. Thornton later said he was shaking so much he was sure he would miss. The burning tank lit the crossroads and blocked the road; the second tank withdrew, and the Germans, hearing the explosions, believed the British had anti-tank guns. No tank tried the road again that night.',
         orders: [
-          { id: 'pz1', visible: true, to: { x: 700, y: 900 }, speed: 28, state: 'attack' }, { id: 'pz2', visible: true, to: { x: 640, y: 1100 }, speed: 26, state: 'move', delay: 2 },
-          { id: 'piat', to: { x: 740, y: 880 }, speed: 14, state: 'dig' },
-          { id: 'pz1', strengthTo: 0, over: 3, delay: 9 }, { fire: { kind: 'burn', at: { x: 700, y: 905 }, r: 40, delay: 9, dmg: 0 } },
-          { id: 'pz2', to: { x: 560, y: 1780 }, speed: 26, state: 'move', delay: 12, then: 'withdrawn' }
+          { id: 'pz1', visible: true, to: { x: 700, y: 760 }, speed: 28, state: 'attack' }, { id: 'pz2', visible: true, to: { x: 640, y: 960 }, speed: 26, state: 'move', delay: 2 },
+          { id: 'piat', to: { x: 740, y: 740 }, speed: 14, state: 'dig' },
+          { id: 'pz1', strengthTo: 0, over: 3, delay: 9 }, { fire: { kind: 'burn', at: { x: 700, y: 765 }, r: 40, delay: 9, dmg: 0 } },
+          { id: 'pz2', to: { x: 560, y: 1640 }, speed: 26, state: 'move', delay: 12, then: 'withdrawn' }
         ] },
-      { t: 86, title: 'Holding the west bank', tag: 'british', clock: '02:00', focus: { x: 800, y: 880 },
+      { t: 86, title: 'Holding the west bank', tag: 'british', clock: '02:00', focus: { x: 800, y: 740 },
         text: 'Howard’s platoons hold the crossroads, the café and the trenches on both banks. German patrols probe from Bénouville and Le Port and are driven off. The wounded are carried into the café, where the Gondrée family hand out the champagne they have kept buried since 1940.',
         explain: 'Howard had fewer than 150 men to hold two bridges and the approaches on both sides, with no artillery. He pulled the platoons into tight positions at the bridge ends, kept the PIAT at the crossroads, and waited for the paratroopers. The German response was piecemeal: no one above the garrison knew yet what had happened.',
-        orders: [ { id: 'ginf2', visible: true, to: { x: 700, y: 700 }, speed: 13, state: 'attack' }, { id: 'ginf2', strengthTo: 70, over: 10, delay: 6 }, { id: 'ginf2', to: { x: 520, y: 500 }, speed: 13, state: 'move', delay: 9, then: 'hold' } ] },
-      { t: 102, title: 'The paratroopers arrive', tag: 'british', clock: '03:00', focus: { x: 1300, y: 860 },
+        orders: [ { id: 'ginf2', visible: true, to: { x: 700, y: 560 }, speed: 13, state: 'attack' }, { id: 'ginf2', strengthTo: 70, over: 10, delay: 6 }, { id: 'ginf2', to: { x: 520, y: 360 }, speed: 13, state: 'move', delay: 9, then: 'hold' } ] },
+      { t: 102, title: 'The paratroopers arrive', tag: 'british', clock: '03:00', focus: { x: 1300, y: 720 },
         text: 'Lieutenant Colonel Pine-Coffin crosses the river bridge with what he has gathered of the 7th Battalion, about two hundred men, and takes over the position. A Company goes into Bénouville, B Company into Le Port. Howard’s company falls back to the bridges as the reserve.',
         explain: 'From this point the bridges were held by a battalion rather than a company, but a weak one: no mortars, no machine guns, few radios. The paratroopers’ task was to hold the west bank, the villages, so that the Germans could not reach the bridges with their guns. It was in the villages, not at the bridges, that most of the day’s fighting happened.',
         orders: [
-          { id: 'pC', to: { x: 1200, y: 900 }, speed: 30, then: 'dig' }, { id: 'pA', to: { x: 560, y: 1050 }, speed: 34, then: 'dig' }, { id: 'pB', to: { x: 600, y: 640 }, speed: 34, then: 'dig' },
-          { id: 'g1', to: { x: 960, y: 940 }, speed: 15, state: 'move', delay: 8, then: 'dig' }, { id: 'g3', to: { x: 860, y: 940 }, speed: 15, state: 'move', delay: 8, then: 'dig' }, { id: 'piat', to: { x: 620, y: 960 }, speed: 14, state: 'move', delay: 8, then: 'dig' }
+          { id: 'pC', to: { x: 1200, y: 760 }, speed: 30, then: 'dig' }, { id: 'pA', to: { x: 560, y: 910 }, speed: 34, then: 'dig' }, { id: 'pB', to: { x: 600, y: 500 }, speed: 34, then: 'dig' },
+          { id: 'g1', to: { x: 965, y: 800 }, speed: 15, state: 'move', delay: 8, then: 'dig' }, { id: 'g3', to: { x: 770, y: 800 }, speed: 15, state: 'move', delay: 8, then: 'dig' }, { id: 'piat', to: { x: 620, y: 820 }, speed: 14, state: 'move', delay: 8, then: 'dig' }
         ] },
-      { t: 122, title: 'Dawn attack', tag: 'established', clock: '05:30', light: 'dawn', focus: { x: 480, y: 1150 },
+      { t: 122, title: 'Dawn attack', tag: 'established', clock: '05:30', light: 'dawn', focus: { x: 480, y: 1010 },
         text: 'First light. German infantry of the 21st Panzer Division attack Bénouville from the south with mortar fire, and press into the village. A Company of the paratroopers fights them house to house and holds. Snipers in the church tower at Le Port pick at anyone who moves on the bridge.',
         explain: 'The 21st Panzer Division had finally been released, but its main body was sent west of the Orne toward the beaches, not at the bridges. What came to Bénouville was a battalion-sized attack supported by mortars, enough to press the paratroopers hard for several hours but not to break through to the bridge.',
         orders: [
-          { id: 'ginf1', visible: true, to: { x: 480, y: 1150 }, speed: 13, state: 'attack' }, { id: 'ginf2', to: { x: 620, y: 620 }, speed: 13, state: 'attack', delay: 3 },
-          { fire: { kind: 'arty', at: { x: 520, y: 1080 }, r: 60, delay: 2, dmg: 18 } }, { fire: { kind: 'arty', at: { x: 600, y: 1000 }, r: 60, delay: 6, dmg: 18 } },
+          { id: 'ginf1', visible: true, to: { x: 480, y: 1010 }, speed: 13, state: 'attack' }, { id: 'ginf2', to: { x: 620, y: 480 }, speed: 13, state: 'attack', delay: 3 },
+          { fire: { kind: 'arty', at: { x: 520, y: 940 }, r: 60, delay: 2, dmg: 18 } }, { fire: { kind: 'arty', at: { x: 600, y: 860 }, r: 60, delay: 6, dmg: 18 } },
           { id: 'pA', strengthTo: 55, over: 16 }, { id: 'pB', strengthTo: 70, over: 16 }, { id: 'ginf1', strengthTo: 50, over: 16 }, { id: 'ginf2', strengthTo: 45, over: 16 }
         ] },
-      { t: 146, title: 'The gunboat', tag: 'british', clock: '09:00', focus: { x: 905, y: 500 },
+      { t: 146, title: 'The gunboat', tag: 'british', clock: '09:00', focus: { x: 865, y: 360 },
         text: 'Two German gunboats come down the canal from Ouistreham, the leading one firing a 20 mm cannon at the bridge. A PIAT bomb from the east bank hits it below the wheelhouse; it slews into the bank and its crew are taken prisoner. The second boat turns back for the sea.',
         explain: 'The boats were from the naval base at Ouistreham, sent to find out what was happening at the bridge. It was the second time that morning the PIAT, the weapon nobody trusted, had decided a fight. The commandos landing on Sword at that moment were four hours away.',
-        orders: [ { id: 'boat', visible: true, to: { x: 905, y: 780 }, speed: 30, state: 'attack' }, { id: 'boat', strengthTo: 0, over: 4, delay: 7 }, { fire: { kind: 'burn', at: { x: 905, y: 700 }, r: 30, delay: 8, dmg: 0 } } ] },
-      { t: 162, title: 'The bomb', tag: 'british', clock: '10:00', light: 'day', focus: { x: 905, y: 870 },
+        orders: [ { id: 'boat', visible: true, to: { x: 865, y: 640 }, speed: 30, state: 'attack' }, { id: 'boat', strengthTo: 0, over: 4, delay: 7 }, { fire: { kind: 'burn', at: { x: 865, y: 560 }, r: 30, delay: 8, dmg: 0 } } ] },
+      { t: 162, title: 'The bomb', tag: 'british', clock: '10:00', light: 'day', focus: { x: 865, y: 730 },
         text: 'A German fighter-bomber comes in low along the canal and drops a bomb on the canal bridge. It hits the tower, bounces off, and falls into the water without exploding. The bridge is not touched again from the air.',
         explain: 'A hit would have cut the road to the beaches for the airborne division. The dud was pure luck, and both accounts record it. Through the morning the Germans tried the bridge with tanks, infantry, a gunboat, snipers and an aircraft, and every attempt was too small and too late.',
-        orders: [ { fire: { kind: 'dud', at: { x: 905, y: 870 }, r: 30, delay: 3, dmg: 0 } }, { id: 'ginf1', to: { x: 440, y: 1300 }, speed: 13, state: 'attack', strengthTo: 35, over: 12 }, { id: 'pA', strengthTo: 45, over: 12 } ] },
-      { t: 182, title: 'Noon', tag: 'established', clock: '12:00', focus: { x: 560, y: 1000 },
+        orders: [ { fire: { kind: 'dud', at: { x: 865, y: 730 }, r: 30, delay: 3, dmg: 0 } }, { id: 'ginf1', to: { x: 440, y: 1160 }, speed: 13, state: 'attack', strengthTo: 35, over: 12 }, { id: 'pA', strengthTo: 45, over: 12 } ] },
+      { t: 182, title: 'Noon', tag: 'established', clock: '12:00', focus: { x: 560, y: 860 },
         text: 'The attacks on Bénouville slacken. The paratroopers are down to half strength in the village and have lost most of their officers, but the Germans have not reached the bridge. From the north comes the sound of the fighting at Sword, and then, faintly, bagpipes.',
         explain: 'Lovat’s brigade had landed at 08:40 and fought its way through Colleville and the gun batteries behind the beach. Lovat had promised Howard he would be at the bridge by noon. He was two minutes late, and apologised for it.',
-        orders: [ { id: 'ginf1', to: { x: 300, y: 1500 }, speed: 13, state: 'move', then: 'hold' }, { id: 'ginf2', to: { x: 440, y: 400 }, speed: 13, state: 'move', then: 'hold' } ] },
-      { t: 206, title: 'The commandos', tag: 'established', clock: '13:00', focus: { x: 905, y: 700 },
+        orders: [ { id: 'ginf1', to: { x: 300, y: 1360 }, speed: 13, state: 'move', then: 'hold' }, { id: 'ginf2', to: { x: 440, y: 260 }, speed: 13, state: 'move', then: 'hold' } ] },
+      { t: 206, title: 'The commandos', tag: 'established', clock: '13:00', focus: { x: 865, y: 560 },
         text: 'At one o’clock Lord Lovat’s commandos come down the road from Le Port, green berets instead of helmets, Piper Bill Millin playing Blue Bonnets over the Border at their head. They cross the canal bridge under sniper fire at a walk, as Lovat ordered, losing several men on the span, and shake hands with the airborne on the far side.',
         explain: 'Lovat marched his men across at the walk, pipes playing, as a point: the beach and the bridge were joined. The snipers in Le Port were still active and the crossing cost lives. Howard’s report records the relief at 13:00; Lovat’s own account says 13:02 and apologises for the delay.',
-        orders: [ { id: 'cmdo', visible: true, at: { x: 560, y: -60 }, to: { x: 870, y: 870 }, speed: 40, state: 'move' }, { id: 'cmdo', to: { x: 1300, y: 870 }, speed: 30, state: 'move', delay: 14, then: 'hold' }, { id: 'cmdo', strengthTo: 94, over: 10, delay: 12 } ] },
-      { t: 228, title: 'Relieved', tag: 'established', clock: '21:00', light: 'dusk', focus: { x: 1200, y: 870 }, end: true,
+        orders: [ { id: 'cmdo', visible: true, at: { x: 560, y: -200 }, to: { x: 870, y: 730 }, speed: 40, state: 'move' }, { id: 'cmdo', to: { x: 1300, y: 730 }, speed: 30, state: 'move', delay: 14, then: 'hold' }, { id: 'cmdo', strengthTo: 94, over: 10, delay: 12 } ] },
+      { t: 228, title: 'Relieved', tag: 'established', clock: '21:00', light: 'dusk', focus: { x: 1200, y: 730 }, end: true,
         text: 'The commandos cross the river bridge to Ranville and the rest of the brigade follows through the afternoon. In the evening the Warwickshires of the 3rd Division arrive from the beach to take over the bridges, and Howard’s company marches to Ranville. It has lost two killed and fourteen wounded on the bridges. The 7th Battalion has lost sixty.',
         explain: 'The bridges stayed in British hands for the rest of the campaign and the 6th Airborne Division held the flank east of the Orne for two months. The canal bridge was renamed Pegasus after the airborne badge; the river bridge, later, Horsa. Howard’s company fought on in Normandy until September, and lost many more.',
-        orders: [ { id: 'cmdo', to: { x: 1700, y: 860 }, speed: 30, state: 'move', then: 'hold' }, { id: 'g1', to: { x: 1200, y: 940 }, speed: 15, state: 'move', then: 'hold' }, { id: 'g3', to: { x: 1150, y: 980 }, speed: 15, state: 'move', then: 'hold' } ] }
+        orders: [ { id: 'cmdo', to: { x: 1760, y: 720 }, speed: 30, state: 'move', then: 'hold' }, { id: 'g1', to: { x: 1200, y: 800 }, speed: 15, state: 'move', then: 'hold' }, { id: 'g3', to: { x: 1150, y: 840 }, speed: 15, state: 'move', then: 'hold' } ] }
     ],
 
     /* Command mode: the British player holds the bridges; the German player tries to take them back before the commandos arrive. */
     ai: {
       spotRange: 220, nightSpot: 130, beltRange: 60,
       attacker: 'ger', defender: 'brit',
-      objectives: [ { id: 'canal', x: 905, y: 870, r: 90, name: 'Canal bridge' }, { id: 'river', x: 1465, y: 860, r: 80, name: 'River bridge' } ],
+      objectives: [ { id: 'canal', x: 865, y: 732, r: 90, name: 'Canal bridge' }, { id: 'river', x: 1526, y: 738, r: 80, name: 'River bridge' } ],
       ger: {
         waves: [
           { t: 20, ids: ['gar'], target: 'canal' }, { t: 40, ids: ['schmidt'], target: 'river' }, { t: 70, ids: ['pz1', 'pz2'], target: 'canal' },
           { t: 86, ids: ['ginf2'], target: 'canal' }, { t: 122, ids: ['ginf1', 'ginf2'], target: 'canal' }, { t: 146, ids: ['boat'], target: 'canal' }, { t: 175, ids: ['ginf1', 'pz2'], target: 'canal' }
         ],
-        withdrawAt: 30, withdrawTo: { x: 400, y: 1500 }, regroupAfter: 35
+        withdrawAt: 30, withdrawTo: { x: 400, y: 1360 }, regroupAfter: 35
       },
       brit: {
         lifts: [ { t: 0, id: 'g1', glider: true }, { t: .5, id: 'hq', glider: true }, { t: 1, id: 'sap', glider: true }, { t: 1, id: 'piat', glider: true }, { t: 4, id: 'g2', glider: true }, { t: 7, id: 'g3', glider: true }, { t: 26, id: 'g4', glider: true }, { t: 28, id: 'g5', glider: true },
-                 { t: 54, id: 'pA', walk: { x: 2100, y: 120 } }, { t: 60, id: 'pB', walk: { x: 2200, y: 240 } }, { t: 66, id: 'pC', walk: { x: 2300, y: 180 } }, { t: 206, id: 'cmdo', walk: { x: 560, y: -60 } } ],
-        perimeter: { g1: { x: 820, y: 860 }, g2: { x: 1010, y: 820 }, g3: { x: 780, y: 920 }, hq: { x: 1000, y: 960 }, sap: { x: 930, y: 930 }, piat: { x: 740, y: 880 }, g4: { x: 1520, y: 850 }, g5: { x: 1420, y: 890 }, pA: { x: 560, y: 1050 }, pB: { x: 600, y: 640 }, pC: { x: 1200, y: 900 }, cmdo: { x: 1300, y: 870 } },
+                 { t: 54, id: 'pA', walk: { x: 2160, y: -20 } }, { t: 60, id: 'pB', walk: { x: 2260, y: 100 } }, { t: 66, id: 'pC', walk: { x: 2360, y: 40 } }, { t: 206, id: 'cmdo', walk: { x: 560, y: -200 } } ],
+        perimeter: { g1: { x: 765, y: 770 }, g2: { x: 1010, y: 690 }, g3: { x: 770, y: 665 }, hq: { x: 1000, y: 820 }, sap: { x: 930, y: 790 }, piat: { x: 740, y: 740 }, g4: { x: 1580, y: 710 }, g5: { x: 1480, y: 750 }, pA: { x: 560, y: 910 }, pB: { x: 600, y: 500 }, pC: { x: 1200, y: 760 }, cmdo: { x: 1300, y: 730 } },
         fireEvery: 0, airEvery: 0
       }
     },
