@@ -684,10 +684,15 @@ window.BATTLE_SCENARIO = {
      intro-N.mp3, event-<part>-N.mp3, explain-<part>-N.mp3, outcome-<part>.mp3, cmd-KEY.mp3. */
   imageBase: 'images/',
   audioBase: 'audio/',
-  /* One narrator for now. The Kadesh voices (light 60, bright 0, deep 400, warm 7, computer 500) can be added
-     by running tools/make-narration.sh with those speaker numbers and listing them here. */
+  /* Selectable narrators. Each has its own folder audio/<id>/ with the same clip names.
+     All are Piper "en-us-libritts-high" speakers (LibriTTS dataset, CC BY 4.0). */
   voices: [
-    { id: 'clear', name: 'Narrator \u00b7 clear', speaker: 25 }
+    { id: 'clear',    name: 'Narrator 1 \u00b7 clear',  speaker: 25 },
+    { id: 'light',    name: 'Narrator 2 \u00b7 light',  speaker: 60 },
+    { id: 'bright',   name: 'Narrator 3 \u00b7 bright', speaker: 0 },
+    { id: 'deep',     name: 'Narrator 4 \u00b7 deep',   speaker: 400 },
+    { id: 'warm',     name: 'Narrator 5 \u00b7 warm',   speaker: 7 },
+    { id: 'computer', name: 'Computer \u00b7 calm',     speaker: 500, length: 1.3, piperArgs: '--noise-scale 0.4 --noise-w 0.3', mix: 'highpass=f=90,lowpass=f=4800,bass=g=4:f=140,acompressor=threshold=0.25:ratio=3:attack=20:release=250,volume=1.4,alimiter=limit=0.95' }
   ],
   /* Fixed captions used in Command mode (so they can be pre-recorded) */
   commandLines: {
