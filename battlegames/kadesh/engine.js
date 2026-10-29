@@ -723,7 +723,7 @@ function showIntro(i) {
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
   if (sl.focus) focusOn(sl.focus.x, sl.focus.y + VH() * .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
-  introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); showMedia(0);
+  introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
   if (introStarted) speakSlide(sl);
 }
 // Click on the intro progress bar to replay the narration from that point (and show the picture that belongs there).
@@ -774,7 +774,7 @@ function startMode(m, opts) {
   const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
-  document.body.dataset.mode = m; $('caption').classList.remove('show');
+  document.body.dataset.mode = m; $('caption').classList.remove('show'); placeMedia();
   renderTimeline(); renderSelection();
   const begin = () => {
     cinematic = false;
@@ -899,7 +899,13 @@ function toggleOverview() {
   else { overview = { x: view.x, y: view.y, z: view.z }; view.z = Math.min(view.w / W.w, view.h * TR() / W.h); view.x = 0; view.y = 0; }
   clampView(); manualCamera(); $('battlePanel').classList.toggle('overview', !!overview);
 }
-function setBig(on) { document.body.classList.toggle('bigmap', on); $('fsBtn').classList.toggle('active', on); setTimeout(resize, 50); }
+function setBig(on) { document.body.classList.toggle('bigmap', on); $('fsBtn').classList.toggle('active', on); setTimeout(resize, 50); placeMedia(); }
+// The slideshow lives in the side column; in fullscreen during the intro it moves onto the map above the minimap.
+function placeMedia() {
+  const big = !!document.fullscreenElement || document.body.classList.contains('bigmap'), on = big && mode === 'intro' && introMedia.length > 0;
+  const m = $('introMedia'); if (on && m.parentElement !== $('fsMediaWrap')) $('fsMediaWrap').appendChild(m); else if (!on && m.parentElement !== $('mediaCard')) $('mediaCard').appendChild(m);
+  document.body.classList.toggle('fsmedia', on);
+}
 function toggleFullscreen() {
   const el = $('battlePanel');
   if (document.fullscreenElement) { document.exitFullscreen && document.exitFullscreen(); return; }
@@ -909,7 +915,7 @@ function toggleFullscreen() {
   p.catch(() => setBig(true));
 }
 window.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('bigmap')) setBig(false); });
-document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggle('active', !!document.fullscreenElement); setTimeout(resize, 50); });
+document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggle('active', !!document.fullscreenElement); setTimeout(resize, 50); placeMedia(); });
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;
 $('mapBtn').onclick = toggleOverview;

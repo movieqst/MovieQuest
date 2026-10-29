@@ -171,6 +171,13 @@
   .battle-panel.overview canvas#battle{cursor:crosshair}
   .battle-panel:fullscreen{border-radius:0;border:0;background:#071017}
   body.bigmap .battle-panel{position:fixed;inset:0;z-index:50;border-radius:0;border:0;min-height:0}
+  /* In fullscreen the side column is hidden, so during the intro the slideshow moves to a card above the minimap */
+  #fsMediaWrap{display:none;right:12px;top:12px;width:300px;padding:8px 10px 10px;z-index:3;opacity:.85}
+  #fsMediaWrap:hover{opacity:1}
+  #fsMediaWrap h3{font:600 13px 'Cinzel',Georgia,serif;color:var(--gold);margin:0 0 6px;letter-spacing:.04em}
+  body.fsmedia #fsMediaWrap{display:block}
+  body.fsmedia #minimap-wrap{top:auto;bottom:90px}
+  body.fsmedia #fsMediaWrap .mcap{font-size:12px}#fsMediaWrap .mref{font-size:10px}
   body.bigmap #fsBtn::after{content:' (Esc to exit)'}
   #voiceStatus{color:#ffb3a7;max-width:260px}
   .progress{height:8px;background:#1d2f3a;border-radius:4px;margin:10px 0 12px;overflow:hidden;border:1px solid #2c4452}.progress:hover{background:#27404f}.progress i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s linear}
@@ -216,6 +223,7 @@
     <canvas id="battle" aria-label="Scrollable battlefield"></canvas>
     <div class="hud" id="caption"><button class="xbtn" id="capX" title="Hide the narration text">✕</button><button id="capExplain" class="bulb watch-only" title="Pause and explain this moment (E)">💡</button><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
     <button id="viewTextBtn" class="hud">📝 View text narration</button>
+    <div class="hud fade" id="fsMediaWrap"><h3>From the record</h3></div>
     <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
     <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="artBtn" class="active" title="Painted battlefield (click for the drawn map)">🎨 Art</button></div>
     <div id="timeline" title="Timeline: click anywhere to jump to that moment"></div>
