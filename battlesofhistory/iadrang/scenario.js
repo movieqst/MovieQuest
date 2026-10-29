@@ -123,7 +123,8 @@ window.BATTLE_SCENARIO = {
       media: [
         { at: 0,  file: '08-hal-moore.jpg', caption: 'Lieutenant Colonel Harold G. Moore, commanding the 1st Battalion, 7th Cavalry. He landed with the first lift and was the last man of his battalion to leave.', ref: 'US Army photograph', credit: 'US Army, public domain' },
         { at: 10, file: '09-uh1d-troop-lift.jpg', caption: 'UH-1D Hueys landing infantry. Sixteen helicopters carried the battalion to X-Ray, eight to ten men at a time, on a round trip of about thirty minutes.', ref: 'Vietnam, 1965–66', credit: 'US Army, public domain' },
-        { at: 20, file: '10-105mm-howitzer.jpg', caption: 'A 105 mm howitzer battery. Two batteries at LZ Falcon, eight kilometres east, fired more than four thousand rounds around X-Ray.', ref: 'Vietnam, 1965', credit: 'US Army, public domain' }
+        { at: 20, file: '10-105mm-howitzer.jpg', caption: 'A 105 mm howitzer battery. Two batteries at LZ Falcon, eight kilometres east, fired more than four thousand rounds around X-Ray.', ref: 'Vietnam, 1965', credit: 'US Army, public domain' },
+        { at: 30, file: '18-arc-light-map.jpg', caption: 'The Arc Light boxes: each shaded square is a map grid bombed by B-52s on the date written in it, 15 to 20 November, across the Chu Pong west of X-Ray.', ref: 'Map of Arc Light strikes, Pleiku campaign, November 1965', credit: 'Wikimedia Commons (Arc Light operation at Chu Pong November 1965.jpg)' }
       ],
       focus: { x: 1300, y: 880 }, zoom: 1.2,
       markers: [ { x: 1300, y: 880, label: 'LZ X-Ray' } ],
@@ -169,7 +170,7 @@ window.BATTLE_SCENARIO = {
     {
       title: 'The gamble',
       media: [
-        { at: 0,  file: '16-xray-sketch-map.jpg', caption: 'The battalion’s own sketch of X-Ray: the clearing, the creek bed, the positions of the companies and the lost platoon on the finger of the mountain.', ref: 'Moore, After Action Report, December 1965', credit: 'US Army, public domain' },
+        { at: 0,  file: '16-xray-sketch-map.jpg', caption: 'The X-Ray perimeter on the night of 14 November, from the battalion\u2019s after-action report: C Company on the south, A and B toward the mountain, B Company of the 2nd Battalion on the east, the mortars pooled inside, and the top of the Chu Pong off to the north-west.', ref: 'Moore, After Action Report, 1st Bn 7th Cav, December 1965', credit: 'Sketch: United States Army, public domain (Wikimedia Commons)' },
         { at: 12, file: '17-xray-perimeter.jpg', caption: 'Troopers of the 1st Cavalry in the perimeter at X-Ray. The battle was fought at the range of a thrown grenade.', ref: 'LZ X-Ray, November 1965', credit: 'US Army, public domain' }
       ],
       focus: { x: 1300, y: 880 }, zoom: 1.1,
@@ -599,7 +600,7 @@ window.BATTLE_SCENARIO = {
         { text: 'In this game helicopters bring each company in on its historical lift and take the battalion out at the end. They are not ordered directly.', tag: 'reconstruction' }
       ] },
     { side: 'us', type: 'weapons', name: 'Artillery and air support', desc: '105 mm howitzers at LZ Falcon, fighter-bombers, napalm and, for the first time in close support, B-52s.', tag: 'established', nosprite: true,
-      photos: ['10-105mm-howitzer.jpg', '14-chu-pong-massif.jpg'],
+      photos: ['10-105mm-howitzer.jpg', '18-arc-light-map.jpg', '14-chu-pong-massif.jpg'],
       lines: [
         { text: 'Two batteries of 105 mm howitzers, twelve guns, at LZ Falcon eight kilometres east fired more than four thousand rounds in the first twenty-four hours and about eight thousand in all. A round took about five seconds to arrive after the call.', tag: 'us', cite: 'Moore, After Action Report; Carland, Stemming the Tide, ch. 5' },
         { text: 'Air Force, Navy and Marine fighter-bombers flew more than three hundred sorties over X-Ray, with bombs, rockets, cannon and napalm. The air force controller with the battalion, Lieutenant Charlie Hastings, directed them from the command post.', tag: 'us' },
