@@ -92,7 +92,7 @@ window.BATTLE_SCENARIO = {
     {
       title: 'A new kind of war',
       media: [
-        { at: 0,  file: '03-1st-cav-an-khe.jpg', caption: 'The 1st Cavalry Division (Airmobile) arrives at An Khe in September 1965: the first division built around helicopters, with more than 400 aircraft.', ref: 'An Khe base camp, Binh Dinh province, 1965', credit: 'US Army, public domain' },
+        { at: 0,  file: '03-1st-cav-an-khe.jpg', caption: 'CH-47 Chinooks lined up at Qui Nhon on 13 September 1965, waiting to carry the 1st Cavalry Division (Airmobile) inland to its new base at An Khe. The first division built around the helicopter had more than 400 aircraft.', ref: 'Qui Nhon, 13 September 1965; US Army photograph, NARA 111-CCV-104-CC32062', credit: 'Photo: SSG Lyle Boggess, United States Army, public domain (Wikimedia Commons)' },
         { at: 9,  file: '04-ho-chi-minh-trail.jpg', caption: 'North Vietnamese regiments walked south for two months along the Ho Chi Minh trail through Laos and Cambodia to reach the Central Highlands.', ref: 'Ho Chi Minh trail, 1960s', credit: 'Public domain' },
         { at: 18, file: '05-westmoreland-1965.jpg', caption: 'General William Westmoreland, commanding US forces in Vietnam. In 1965 he moved from defending bases to seeking out and destroying North Vietnamese units.', ref: 'MACV, Saigon, 1965', credit: 'US Army, public domain' }
       ],
@@ -171,7 +171,7 @@ window.BATTLE_SCENARIO = {
       title: 'The gamble',
       media: [
         { at: 0,  file: '16-xray-sketch-map.jpg', caption: 'The X-Ray perimeter on the night of 14 November, from the battalion\u2019s after-action report: C Company on the south, A and B toward the mountain, B Company of the 2nd Battalion on the east, the mortars pooled inside, and the top of the Chu Pong off to the north-west.', ref: 'Moore, After Action Report, 1st Bn 7th Cav, December 1965', credit: 'Sketch: United States Army, public domain (Wikimedia Commons)' },
-        { at: 12, file: '17-xray-perimeter.jpg', caption: 'Troopers of the 1st Cavalry in the perimeter at X-Ray. The battle was fought at the range of a thrown grenade.', ref: 'LZ X-Ray, November 1965', credit: 'US Army, public domain' }
+        { at: 12, file: '17-xray-perimeter.jpg', caption: 'A rifle squad of the 1st Squadron, 9th Cavalry, the division\u2019s air cavalry scouts, runs from a Huey in Vietnam. At X-Ray every company came in this way, eight to ten men a helicopter, into a clearing the enemy was watching.', ref: 'Vietnam, 1965 to 1972; US Army photograph', credit: 'Photo: United States Army, public domain (Wikimedia Commons, Infantry 1-9 US Cavalry exiting UH-1D.jpg)' }
       ],
       focus: { x: 1300, y: 880 }, zoom: 1.1,
       markers: [ { x: 1300, y: 880, label: 'LZ X-Ray' } ],
