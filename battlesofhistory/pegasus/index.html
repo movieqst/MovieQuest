@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pegasus Bridge — coming soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#e9c77a;--ink:#09131a;--line:#38505c;--text:#edf1ed;--muted:#9fb1b8}
+  *{box-sizing:border-box}html,body{margin:0;background:var(--ink);color:var(--text);font:15px/1.5 system-ui,sans-serif;min-height:100vh}
+  header{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid #233944;background:#0a151d}
+  .brand{font:700 clamp(18px,2.1vw,26px) 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.1em}
+  a.home{font-size:12px;color:var(--text);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:#101f29}a.home:hover{border-color:var(--gold);color:var(--gold)}
+  .hero{position:relative;height:min(56vw,620px);background:url('images/32-art-bridge-night.jpg') center/cover no-repeat}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,19,26,.1) 50%,rgba(9,19,26,1) 100%)}
+  .hero .t{position:absolute;left:16px;right:16px;bottom:24px;text-align:center}
+  h1{font:800 clamp(26px,4.5vw,48px) 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.12em;margin:0;text-shadow:0 2px 0 #5a4310,0 4px 18px #000}
+  .sub{color:var(--text);text-shadow:0 1px 4px #000;margin-top:6px}
+  main{max-width:820px;margin:0 auto;padding:10px 16px 50px}
+  .soon{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(233,199,122,.5);border-radius:9px;padding:3px 10px;margin-bottom:12px}
+  p{color:var(--muted)}
+  .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:18px}
+  .gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header><div class="brand">PEGASUS BRIDGE</div><a class="home" href="../index.html">◀ Battles of History</a></header>
+<div class="hero"><div class="t"><h1>PEGASUS BRIDGE</h1><div class="sub">Night of 5–6 June 1944 · Bénouville and Ranville, Normandy</div></div></div>
+<main>
+  <span class="soon">Coming soon</span>
+  <p>Six Horsa gliders land beside two bridges at sixteen minutes past midnight. D Company, 2nd Oxfordshire and Buckinghamshire Light Infantry, under Major John Howard, takes both bridges in a quarter of an hour and holds them through the night against counter-attacks, until Lord Lovat's commandos march in from Sword Beach at one in the afternoon.</p>
+  <p>The battle is in production: the painted battlefield, the sprite sheets and the photographs are in; the narrated introduction, the reenactment and the command game follow.</p>
+  <div class="gal">
+    <img src="images/01-pegasus-bridge-1944.jpg" alt="The canal bridge, June 1944">
+    <img src="images/02-horsa-glider-benouville.jpg" alt="A Horsa glider by the bridge">
+    <img src="images/03-john-howard.jpg" alt="Major John Howard">
+    <img src="images/05-lovat-sword-beach.jpg" alt="Commandos landing on Sword Beach">
+    <img src="images/06-cafe-gondree.jpg" alt="Café Gondrée">
+    <img src="images/10-panzer-iv-normandy.jpg" alt="A captured Panzer IV">
+  </div>
+</main>
+</body>
+</html>

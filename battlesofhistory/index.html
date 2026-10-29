@@ -30,6 +30,7 @@
   .era{position:absolute;top:10px;left:12px;z-index:1;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(9,19,26,.75);padding:3px 8px;border-radius:9px;border:1px solid rgba(233,199,122,.4)}
   .status{position:absolute;top:10px;right:12px;z-index:1;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:9px;background:rgba(9,19,26,.75);border:1px solid var(--line);color:var(--muted)}
   .status.ready{color:#5fcf8a;border-color:rgba(95,207,138,.5)}
+  .status.soon{color:#e9c77a;border-color:rgba(233,199,122,.5)}
   .cover .title{position:absolute;left:14px;right:14px;bottom:10px;z-index:1}
   .cover h2{font:700 22px 'Cinzel',Georgia,serif;color:var(--gold);margin:0;letter-spacing:.06em;text-shadow:0 1px 0 #5a4310,0 2px 8px #000}
   .cover .date{color:var(--text);font-size:13px;text-shadow:0 1px 3px #000}
@@ -89,7 +90,7 @@
     <a class="card" href="${esc(b.folder)}/index.html">
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')">
         <span class="era">${esc(b.era)}</span>
-        <span class="status ${b.status === 'ready' ? 'ready' : ''}">${esc(b.status)}</span>
+        <span class="status ${b.status === 'ready' ? 'ready' : b.status === 'coming soon' ? 'soon' : ''}">${esc(b.status)}</span>
         <div class="title"><h2>${esc(b.title)}</h2><div class="date">${esc(b.date)} · ${esc(b.place)}</div></div>
       </div>
       <div class="body">

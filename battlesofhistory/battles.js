@@ -26,5 +26,17 @@ window.BATTLES = [
     cover: 'images/17-xray-perimeter.jpg',
     coverCredit: 'US Army photograph, public domain',
     status: 'ready'
+  },
+  {
+    folder: 'pegasus',
+    era: 'Second World War',
+    title: 'Pegasus Bridge',
+    date: '5–6 June 1944', year: 1944,
+    place: 'Bénouville and Ranville, Normandy',
+    sides: 'British 6th Airborne Division vs. the German 716th Infantry and 21st Panzer Divisions',
+    blurb: 'The first fight of D-Day: six gliders land beside two bridges at a quarter past midnight, 181 men take both in minutes, and hold them until the commandos arrive from the beach.',
+    cover: 'images/32-art-bridge-night.jpg',
+    coverCredit: 'Painting: Battle Games, original artwork',
+    status: 'coming soon'
   }
 ];
