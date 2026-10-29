@@ -599,7 +599,7 @@ window.BATTLE_SCENARIO = {
         { text: 'The North Vietnamese account says the helicopters were the Americans’ strength and their weakness: the landing zone had to be held at any cost, so the regiments knew exactly where to attack.', tag: 'pavn', cite: 'Nguyen Huu An, New Battlefield' },
         { text: 'In this game helicopters bring each company in on its historical lift and take the battalion out at the end. They are not ordered directly.', tag: 'reconstruction' }
       ] },
-    { side: 'us', type: 'weapons', name: 'Artillery and air support', desc: '105 mm howitzers at LZ Falcon, fighter-bombers, napalm and, for the first time in close support, B-52s.', tag: 'established', nosprite: true,
+    { side: 'us', type: 'weapons', name: 'Artillery and air support', desc: '105 mm howitzers at LZ Falcon, fighter-bombers, napalm and, for the first time in close support, B-52s.', tag: 'established', nosprite: true, portrait: 'us-support',
       photos: ['10-105mm-howitzer.jpg', '18-arc-light-map.jpg', '14-chu-pong-massif.jpg'],
       lines: [
         { text: 'Two batteries of 105 mm howitzers, twelve guns, at LZ Falcon eight kilometres east fired more than four thousand rounds in the first twenty-four hours and about eight thousand in all. A round took about five seconds to arrive after the call.', tag: 'us', cite: 'Moore, After Action Report; Carland, Stemming the Tide, ch. 5' },
