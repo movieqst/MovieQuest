@@ -746,7 +746,7 @@ function showMedia(elapsed) {
   if (document.body.classList.contains('fsmedia')) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
   ph.textContent = 'Photo to add: ' + (m.file || '') + (m.caption ? ' \u2014 ' + m.caption : '');
   img.onload = () => { img.classList.add('show'); }; img.onerror = () => { ph.classList.add('show'); };
-  img.src = (S.imageBase || 'images/') + m.file;
+  img.src = (S.imageBase || 'images/') + m.file; if (swapped) $('bigPhotoImg').src = img.src;
 }
 function beginIntro(voice) {
   Narr.set(voice, true); if (!voice) Narr.stop();
@@ -901,11 +901,36 @@ function toggleOverview() {
   clampView(); manualCamera(); $('battlePanel').classList.toggle('overview', !!overview);
 }
 function setBig(on) { document.body.classList.toggle('bigmap', on); $('fsBtn').classList.toggle('active', on); setTimeout(resize, 50); placeMedia(); }
+// Swap view: the current photo fills the panel and the live map shrinks into the photo's slot in the corner card.
+let swapped = false;
+function fitSwappedMap() {
+  if (!swapped) return; const plate = $('fsMediaWrap').querySelector('.plate'); if (!plate) return;
+  const pr = plate.getBoundingClientRect(), br = panel.getBoundingClientRect(), sc = pr.width / br.width;
+  plate.style.minHeight = Math.round(br.height * sc) + 'px';
+  canvas.style.transform = `translate(${Math.round(pr.left - br.left)}px, ${Math.round(pr.top - br.top)}px) scale(${sc})`;
+}
+function swapPhoto(on) {
+  if (on && !document.body.classList.contains('fsmedia')) return;
+  swapped = on; document.body.classList.toggle('swapped', on);
+  if (on) { const m = introMedia[mediaIdx]; if (m) $('bigPhotoImg').src = (S.imageBase || 'images/') + m.file; requestAnimationFrame(fitSwappedMap); }
+  else { canvas.style.transform = ''; const plate = $('fsMediaWrap').querySelector('.plate'); if (plate) plate.style.minHeight = ''; }
+  if (document.body.classList.contains('fsmedia')) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
+}
+$('swapBtn').onclick = e => { e.stopPropagation(); swapPhoto(!swapped); };
+$('bigPhotoBack').onclick = () => swapPhoto(false);
+$('introMedia').querySelector('.plate').addEventListener('click', () => {
+  if (swapped) return;
+  if (document.body.classList.contains('fsmedia')) swapPhoto(true);
+  else { toggleFullscreen(); setTimeout(() => swapPhoto(true), 400); }   // from the side column: go big first, then swap
+});
+canvas.addEventListener('pointerdown', e => { if (swapped) { e.stopImmediatePropagation(); e.preventDefault(); } }, true);
+canvas.addEventListener('click', e => { if (swapped) { e.stopImmediatePropagation(); swapPhoto(false); } }, true);
+window.addEventListener('resize', fitSwappedMap);
 // The slideshow lives in the side column; in fullscreen during the intro it moves onto the map above the minimap.
 function placeMedia() {
   const big = !!document.fullscreenElement || document.body.classList.contains('bigmap'), on = big && mode === 'intro' && introMedia.length > 0;
   const m = $('introMedia'); if (on && m.parentElement !== $('fsMediaWrap')) $('fsMediaWrap').appendChild(m); else if (!on && m.parentElement !== $('mediaCard')) $('mediaCard').appendChild(m);
-  document.body.classList.toggle('fsmedia', on);
+  document.body.classList.toggle('fsmedia', on); if (!on && swapped) swapPhoto(false);
   if (on) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
 }
 function toggleFullscreen() {
