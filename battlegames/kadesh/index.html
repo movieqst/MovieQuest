@@ -104,8 +104,30 @@
   #log div{font-size:11px;color:#aebdc1;padding:2px 0;border-bottom:1px dashed #233944}
   .ucard{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:center;border:1px solid #354c57;border-radius:6px;padding:6px;background:#0c1921;margin:6px 0}
   .ucard canvas{border-radius:4px;display:block}.ucard b{font-size:12px}
+  .ucard{cursor:pointer;transition:border-color .15s,background-color .15s}.ucard:hover{border-color:var(--gold);background:#112430}
+  .ucard .more{font-size:10px;color:var(--gold);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+  #cite{z-index:6}
+  .dialog.unit{width:min(1100px,100%);background:rgba(11,24,34,.72);border-color:rgba(74,100,114,.6)}
+  .dialog.unit:hover{background:rgba(11,24,34,.92)}
+  body.unitopen #intro,body.unitopen #caption,body.unitopen #viewTextBtn,body.unitopen #fsMediaWrap{visibility:hidden}
+  .battle-panel:fullscreen .dialog.unit,body.bigmap .dialog.unit{width:calc(100% - 24px);max-height:calc(100% - 24px)}
+  .ugrid{display:grid;grid-template-columns:minmax(260px,46%) 1fr;gap:18px;align-items:start}
+  .ugal .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
+  .ugal .plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;background:#05080c}.ugal .plate img.show{display:block}
+  .ugal .placeholder{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:12px;color:#9fb1b8;background:radial-gradient(circle at 30% 30%,#1a2d3a,#0a1620)}.ugal .placeholder.show{display:flex}
+  .thumbs{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  .thumbs button{padding:0;border:2px solid #354c57;border-radius:5px;background:#0a1620;width:64px;height:48px;overflow:hidden;cursor:pointer}
+  .thumbs button img{width:100%;height:100%;object-fit:cover;display:block}.thumbs button.on{border-color:var(--gold)}
+  .thumbs button.sprite{display:flex;align-items:center;justify-content:center}
+  .utext p{margin:0 0 9px;font-size:13.5px;line-height:1.5}
+  .utext .uhead{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+  .utext .uhead canvas{border-radius:4px;background:#c0ad75;flex:none}
+  .utext .uhead .side{font-size:12px;color:#9fb1b8}
+  .dialog.unit .actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  @media(max-width:900px){.ugrid{grid-template-columns:1fr}}
   .pwrap{position:relative;width:84px;height:60px}.pwrap .portrait{position:absolute;inset:0;width:84px;height:60px;object-fit:cover;border-radius:4px;display:none}.pwrap .portrait.show{display:block}
   body.drawnmode .pwrap .portrait{display:none!important}
+  body.drawnmode .uhead .portrait{display:none!important}body.drawnmode .uhead canvas{display:block!important}
   #sources{padding-left:16px;font-size:11px;color:#bfccd0}#sources li{margin:4px 0}
   details summary{cursor:pointer;color:var(--gold);font-family:Georgia,serif;font-weight:bold}
   body[data-mode="watch"] .cmd-only, body[data-mode="intro"] .cmd-only{display:none}
@@ -259,6 +281,7 @@
         <button id="skipBtn" class="watch-only" title="Skip to the next chapter (N)">⏭ Skip</button>
         <span id="clock">00:00</span>
       </span>
+      <button id="armiesBtn" title="The armies: full write-ups and photographs of every unit">⚔ Armies</button>
     </div>
     <div id="ctxMenu" class="hud"></div>
 
@@ -306,6 +329,24 @@
         <h3 id="citeTitle"></h3>
         <div id="citeBody"></div>
         <div class="actions"><button id="citeClose" class="primary">Close</button></div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="unit">
+      <div class="dialog unit">
+        <button class="xbtn" title="Hide the text">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="unit">Close</button></div>
+        <div class="kicker" id="unitKicker"></div>
+        <h3 id="unitTitle"></h3>
+        <div class="ugrid">
+          <div class="ugal">
+            <div class="plate" id="unitPlate"><img id="unitImg" alt=""><div class="placeholder" id="unitPh"></div></div>
+            <div class="mcap" id="unitCap"></div>
+            <div class="mref" id="unitRef"></div>
+            <div class="thumbs" id="unitThumbs"></div>
+          </div>
+          <div class="utext" id="unitBody"></div>
+        </div>
+        <div class="actions"><button id="unitPrev" class="ghost">◀ Previous unit</button><button id="unitNext" class="ghost">Next unit ▶</button><button id="unitClose" class="primary">Close</button></div>
       </div>
     </div>
 

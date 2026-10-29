@@ -416,6 +416,68 @@ window.KADESH_SCENARIO = {
   },
 
   /* ---------- Where each confidence tag comes from: click any tag in the game ---------- */
+  // The armies panel. Click a card to open the write-up below it. `photos` are file names
+  // from the intro slideshow (captions and credits are looked up there) or new entries
+  // { file, caption, ref, credit } for pictures that only appear here.
+  units: [
+    { side: 'egypt', type: 'chariot', name: 'Egyptian chariot', desc: 'Two crew: driver and archer. Light, fast, built to shoot on the move.', tag: 'established',
+      photos: ['07-egyptian-chariot.jpg', '02-abu-simbel-chariot.jpg', '01-ramesseum-battle-relief.jpg'],
+      lines: [
+        { text: 'A cab of bent wood and leather on two six-spoked wheels, the axle set at the very back for a stable, fast ride. Two horses pulled it. Surviving examples weigh about 35 kg, light enough for one man to carry.', tag: 'established', cite: 'Six chariots from the tomb of Tutankhamun (Cairo); a chariot from a Theban tomb (Museo Egizio, Florence)' },
+        { text: 'Two men rode in it: the driver, who also held a shield, and the warrior, who shot a composite bow. Bow cases and quivers were strapped to the sides of the cab.', tag: 'established' },
+        { text: 'It was a moving archery platform, not a battering ram. Egyptian chariots fought other chariots at a distance and harassed infantry; they did not charge into a shield wall.', tag: 'established', cite: 'Spalinger, War in Ancient Egypt (2005), ch. 1; Healy, Qadesh 1300 BC (1993)' },
+        { text: 'Each army division is thought to have had its own chariot force, perhaps several hundred vehicles. The Egyptian texts give no total.', tag: 'estimate', cite: 'Healy, Qadesh 1300 BC, orders of battle' },
+        { text: 'At Kadesh, Ramesses says he mounted his chariot and charged the Hittite chariots alone, driving them into the Orontes. The reliefs show the king in his cab, reins tied around his waist, bow drawn.', tag: 'egyptian', cite: 'The Poem, Kitchen RITA II, §§ 90–140; reliefs at Abu Simbel and the Ramesseum' },
+        { text: 'The chariots in this game move at the speed of a trotting horse and slow to a walk in the river fords, where the reliefs show Hittite vehicles overturned in the water.', tag: 'reconstruction' }
+      ] },
+    { side: 'egypt', type: 'infantry', name: 'Egyptian spearman', desc: 'Spear, tall shield, bronze axe or khopesh sword. Fights in close ranks.', tag: 'established',
+      photos: ['08-egyptian-spearmen-model.jpg', '15-egyptian-camp-relief.jpg'],
+      lines: [
+        { text: 'The foot soldier carried a spear with a bronze head, a tall shield of hide on a wooden frame with a rounded top, and a bronze axe or a khopesh, the sickle-shaped sword. Most wore a linen kilt and no armour; helmets were rare.', tag: 'established', cite: 'Mesehti model (Cairo CG 258); weapons in the Egyptian Museum, Cairo, and the British Museum' },
+        { text: 'The army marched in divisions named after gods: Amun, Re, Ptah and Set. Each division had its own infantry and chariots and was commanded in the name of a prince or a general.', tag: 'egyptian', cite: 'The Bulletin and the Poem name the four divisions' },
+        { text: 'Modern historians put a division at about 5,000 men, divided into companies of around 250 under a standard-bearer. No Egyptian text gives these numbers for Kadesh.', tag: 'estimate', cite: 'Healy (1993); Spalinger (2005), ch. 9' },
+        { text: 'The division of Amun was in camp, building a wall of shields, when the Hittite chariots struck. The division of Re was caught strung out on the march and broke. Ptah arrived in the afternoon.', tag: 'egyptian', cite: 'The Bulletin, Kitchen RITA II, §§ 1–30' },
+        { text: 'The camp relief shows the shield wall, tents, pack donkeys and a lion on a leash. Spearmen fight on foot among the chariots, and Egyptian officers are shown beating the two captured Hittite scouts.', tag: 'egyptian', cite: 'Camp scene, Abu Simbel and the Ramesseum' },
+        { text: 'Spearmen in this game hold their ground against chariots when they stand in close ranks, and scatter when caught on the move: the difference between Amun and Re on the day.', tag: 'reconstruction' }
+      ] },
+    { side: 'egypt', type: 'archers', name: 'Egyptian archer', desc: 'Composite bow. Egypt’s infantry mixed archers with spearmen.', tag: 'established',
+      photos: ['09-egyptian-archers.jpg', '13-shasu-relief.jpg'],
+      lines: [
+        { text: 'The composite bow of wood, horn and sinew reached Egypt with the Hyksos three centuries before Kadesh. It could shoot a reed arrow with a bronze or flint head well over a hundred metres. Simpler self bows of a single stave stayed in use beside it.', tag: 'established', cite: 'Bows and arrows from the tomb of Tutankhamun; W. McLeod, Composite Bows from the Tomb of Tutankhamun (1970)' },
+        { text: 'Nubian archers had served Egypt for centuries. The model from the tomb of Mesehti shows a company of forty of them, bows in one hand and a fistful of arrows in the other.', tag: 'established', cite: 'Mesehti model (Cairo CG 257)' },
+        { text: 'Egyptian infantry fought as mixed companies of archers and spearmen: the archers shot over the shield wall while the spearmen held it.', tag: 'established', cite: 'Spalinger, War in Ancient Egypt (2005), ch. 1' },
+        { text: 'The Poem also names Sherden, sea-raiders captured earlier in the reign and enrolled as the king’s guard. The reliefs show them with round shields, long swords and horned helmets.', tag: 'egyptian', cite: 'The Poem, Kitchen RITA II, § 10; reliefs at Abu Simbel' },
+        { text: 'This game shows archers as separate formations so that their fire can be seen. On the day they would have stood inside the spearmen’s companies.', tag: 'reconstruction' }
+      ] },
+    { side: 'hittite', type: 'chariot', name: 'Hittite chariot', desc: 'Three crew: driver, shield bearer, spearman. Heavier, built for shock.', tag: 'established',
+      photos: ['10-hittite-chariot-relief.jpg', '01-ramesseum-battle-relief.jpg', '14-beaten-spies-relief.jpg'],
+      lines: [
+        { text: 'The Egyptian reliefs draw the Hittite chariot with three men aboard, the driver, a shield bearer and a spearman, in a heavier cab with the axle under its middle. Some historians think this is an Egyptian exaggeration; others take it as accurate.', tag: 'egyptian', cite: 'Kadesh reliefs at Abu Simbel, Luxor and the Ramesseum; Healy (1993) on the debate' },
+        { text: 'Hittite chariotry was built to close with the enemy. A spear-armed crew had to reach striking distance, which is why the ambush on the division of Re worked: it hit infantry in column before they could form a line.', tag: 'established', cite: 'Bryce, Kingdom of the Hittites (2005), ch. 9' },
+        { text: 'The Poem claims 2,500 Hittite chariots in the first charge and a thousand more held in reserve, with 37,000 foot soldiers. Modern historians treat the numbers as inflated, though they agree the chariot force was very large.', tag: 'egyptian', cite: 'The Poem, Kitchen RITA II, §§ 60–70' },
+        { text: 'The chariot crews were the elite of the Hittite army. Horses were trained by a written programme: the Kikkuli text from Hattusa lays out a seven-month course of exercise and feeding.', tag: 'established', cite: 'Kikkuli text (CTH 284), Hattusa; A. Nyland, The Kikkuli Method (2009)' },
+        { text: 'The reliefs name Hittite officers who fell: the king’s brother, his shield bearer, the chief of his bodyguard. The prince of Aleppo is shown held upside down to empty the river water out of him.', tag: 'egyptian', cite: 'Relief captions, Kitchen RITA II, reliefs §§ R1–R30' },
+        { text: 'In this game the second wave of a thousand chariots is released from the east bank when you order it, as the Poem says Muwatalli did when the first charge faltered.', tag: 'reconstruction' }
+      ] },
+    { side: 'hittite', type: 'infantry', name: 'Hittite spearman', desc: 'Spear and shield, crested helmet. Never crossed the river at Kadesh.', tag: 'egyptian',
+      photos: ['11-hattusa-warrior-god.jpg', '12-hattusa-lion-gate.jpg', '04-muwatalli-relief.jpg'],
+      lines: [
+        { text: 'Hittite texts divide the army into chariotry and foot soldiers. The Egyptian reliefs show the foot with spears, long robes and a shield shaped like a figure of eight; a few wear crested helmets.', tag: 'egyptian', cite: 'Kadesh reliefs; Bryce, Kingdom of the Hittites (2005), ch. 9' },
+        { text: 'The best Hittite picture of their own arms is the warrior carved on the King’s Gate at Hattusa: a short kilt, an axe, a sword with a curved blade, and a helmet with cheek pieces and a long plume. He is probably a god rather than a soldier.', tag: 'established', cite: 'King’s Gate relief, Hattusa; original in the Museum of Anatolian Civilizations, Ankara' },
+        { text: 'The coalition was drawn from across Anatolia and Syria. The Poem lists Arzawa, Masa, Pitassa, Kizzuwatna, Carchemish, Ugarit, Aleppo, Kadesh itself and others: sixteen or more named lands.', tag: 'egyptian', cite: 'The Poem, Kitchen RITA II, §§ 40–55' },
+        { text: 'By the Egyptian account the Hittite infantry stood with Muwatalli on the east bank beside the city and never crossed the Orontes. Only the chariots fought. No Hittite text describes the battle.', tag: 'egyptian', cite: 'The Poem and the Bulletin; Hattusili III, Apology § 10, mentions the campaign only' },
+        { text: 'Historians have long asked why Muwatalli held his foot soldiers back. The usual answers are that the river was the problem, or that he thought the chariots had already won.', tag: 'estimate', cite: 'Bryce (2005), ch. 9; Kitchen, Pharaoh Triumphant (1982), ch. 4' },
+        { text: 'In Command mode you can send the Hittite spearmen across the river by the fords or the bridge: something that did not happen in 1274 BCE.', tag: 'reconstruction' }
+      ] },
+    { side: 'hittite', type: 'archers', name: 'Allied archer', desc: 'Drawn from Muwatalli’s vassals and allies.', tag: 'reconstruction',
+      photos: ['10-hittite-chariot-relief.jpg', '06-near-east-map.jpg'],
+      lines: [
+        { text: 'Muwatalli’s allies and vassals brought their own contingents, and the Syrian cities had long fielded archers. How these troops were armed at Kadesh is not recorded.', tag: 'egyptian', cite: 'The Poem’s list of allies, Kitchen RITA II, §§ 40–55' },
+        { text: 'The reliefs from Carchemish, a Hittite city on the Euphrates, show archers shooting from chariots and on foot, some centuries after Kadesh. The composite bow was used across the whole Near East by this time.', tag: 'established', cite: 'Carchemish reliefs, Museum of Anatolian Civilizations, Ankara' },
+        { text: 'Letters from the Amarna archive, a century before Kadesh, show Syrian princes asking Egypt for archers by name, and sending them: the standard garrison troop of the region.', tag: 'established', cite: 'Amarna letters EA 71, EA 76 and others; W. Moran, The Amarna Letters (1992)' },
+        { text: 'The allied archer is a reconstruction for this game: it gives the Hittite side missile troops to answer the Egyptian bowmen. In the sources only the Hittite chariots fought.', tag: 'reconstruction' }
+      ] }
+  ],
   citations: {
     established: { title: 'Established', intro: 'Accepted by most historians because the Egyptian narrative, the Hittite references and the archaeology agree on it.', items: [
       { ref: 'K. A. Kitchen, Pharaoh Triumphant: The Life and Times of Ramesses II (Aris & Phillips, 1982), ch. 4', note: 'The standard modern account of the campaign.' },

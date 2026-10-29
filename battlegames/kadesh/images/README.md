@@ -34,3 +34,22 @@ The game displays the reference and the credit under the picture.
 | 17-treaty-tablet.jpg | Egyptian–Hittite peace treaty tablet | Istanbul Archaeology Museums |
 
 Sizes: 1200 px on the long side is plenty. JPEG keeps the folder small.
+
+## Unit write-ups
+
+The armies panel reuses the pictures above (see `units[].photos` in
+`scenario.js`). Good additions to look for on Commons, if you want each unit
+to have its own set:
+
+| Unit | Subject | Where |
+|---|---|---|
+| Egyptian chariot | Chariot from a Theban tomb, c. 1400 BCE | Museo Egizio, Florence |
+| Egyptian chariot | Ramesses II charging, Kadesh relief, Hittite chariots overturned | Abu Simbel, Great Temple |
+| Egyptian spearman | Bronze khopesh sword, New Kingdom | British Museum or Louvre |
+| Egyptian spearman | Shield and spear of the New Kingdom | Egyptian Museum, Cairo |
+| Egyptian archer | Composite bow and arrows of Tutankhamun | Egyptian Museum, Cairo |
+| Egyptian archer | Sherden guards with horned helmets, Medinet Habu | Medinet Habu, Luxor |
+| Hittite chariot | Hittite three-man chariot, Kadesh relief | Abu Simbel or Luxor temple |
+| Hittite spearman | King's Gate warrior (original) | Museum of Anatolian Civilizations, Ankara |
+| Hittite spearman | Hittite bronze sword and spearheads | Museum of Anatolian Civilizations, Ankara |
+| Allied archer | Archer relief from Tell Halaf or Carchemish | Ankara or Pergamon Museum, Berlin |

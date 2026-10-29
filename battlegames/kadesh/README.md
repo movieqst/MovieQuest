@@ -118,6 +118,24 @@ Apology of Hattusili III, the treaty, and the modern studies), and, where a
 line has a `cite` field, the specific record for that line. The lists live in
 `scenario.citations`.
 
+## The armies: unit write-ups
+
+Each card in **The armies** opens a full write-up: a large photograph with its
+caption, museum and credit, thumbnails of the other photographs for that
+unit, the painted portrait, and a paragraph-by-paragraph account with
+confidence tags and citations (equipment, organisation, numbers, what the
+unit did at Kadesh, and what this game changes). Previous / Next step
+through all six units and Escape closes the panel. The **⚔ Armies** button in
+the control strip opens the same panel in fullscreen, where the side column is
+hidden. Opening it during the introduction pauses the narration until it is
+closed.
+
+The content is `scenario.units`: each unit has `lines` (text, tag, optional
+`cite`) and `photos`. A photo entry can be the file name of an intro
+slideshow picture, in which case its caption and credit are looked up there,
+or a new `{ file, caption, ref, credit }` for a picture that only appears in
+the write-up. Drop the file into `images/` and add it to the list.
+
 ## Map navigation
 
 Double-click the minimap (or press the Full button) to toggle fullscreen; the

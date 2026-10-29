@@ -688,19 +688,47 @@ function renderTimeline() {
   $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
 }
+const PN = u => (u.side === 'egypt' ? 'egyptian' : 'hittite') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'archers' ? 'archer' : 'spearman');
+function unitSprite(c, u, big) {
+  const w = c.canvas.width, h = c.canvas.height; c.fillStyle = '#c0ad75'; c.fillRect(0, 0, w, h);
+  drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' ? 1.8 : 2) * (big ? h / 60 : 1));
+}
 function renderArmies() {
-  const units = [
-    { side: 'egypt', type: 'chariot', name: 'Egyptian chariot', desc: 'Two crew: driver and archer. Light, fast, built to shoot on the move.', tag: 'established' },
-    { side: 'egypt', type: 'infantry', name: 'Egyptian spearman', desc: 'Spear, tall shield, bronze axe or khopesh sword. Fights in close ranks.', tag: 'established' },
-    { side: 'egypt', type: 'archers', name: 'Egyptian archer', desc: 'Composite bow. Egypt\u2019s infantry mixed archers with spearmen.', tag: 'established' },
-    { side: 'hittite', type: 'chariot', name: 'Hittite chariot', desc: 'Three crew: driver, shield bearer, spearman. Heavier, built for shock.', tag: 'established' },
-    { side: 'hittite', type: 'infantry', name: 'Hittite spearman', desc: 'Spear and shield, crested helmet. Never crossed the river at Kadesh.', tag: 'egyptian' },
-    { side: 'hittite', type: 'archers', name: 'Allied archer', desc: 'Drawn from Muwatalli\u2019s vassals and allies.', tag: 'reconstruction' }
-  ];
-  const PN = u => (u.side === 'egypt' ? 'egyptian' : 'hittite') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'archers' ? 'archer' : 'spearman');
-  $('armies').innerHTML = units.map((u, i) => `<div class="ucard"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}</div></div>`).join('');
-  units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 36 : 40, 54, 0, 1, u.type === 'chariot' ? 2.2 : 2.1);
-    setTimeout(() => { c.fillStyle = '#c0ad75'; c.fillRect(0, 0, 84, 60); drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, u.type === 'chariot' ? 42 : 42, 56, 0, u.type === 'archers' ? 2 : 1, u.type === 'chariot' ? 1.8 : 2); }, 1500); });
+  const units = S.units || [];
+  $('armies').innerHTML = units.map((u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`).join('');
+  units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); unitSprite(c, u); setTimeout(() => unitSprite(c, u), 1500); });
+  $('armies').querySelectorAll('.ucard').forEach(el => el.onclick = e => { if (e.target.closest('button.chip')) return; openUnit(+el.dataset.unit); });
+}
+// Unit write-up overlay. Photos are looked up by file name across the intro slides so
+// captions and credits are kept in one place.
+let unitIdx = -1, unitPhoto = 0;
+function mediaByFile(f) { for (const sl of S.intro) for (const m of (sl.media || [])) if (m.file === f) return m; return null; }
+function unitPhotos(u) { return (u.photos || []).map(p => typeof p === 'string' ? (mediaByFile(p) || { file: p }) : p); }
+function openUnit(i) {
+  const units = S.units || []; if (!units.length) return;
+  unitIdx = (i + units.length) % units.length; const u = units[unitIdx]; unitPhoto = 0;
+  $('unitKicker').textContent = (u.side === 'egypt' ? 'Egyptian army' : 'Hittite army and allies') + ' · ' + (unitIdx + 1) + ' / ' + units.length;
+  $('unitTitle').innerHTML = `<span style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</span> ${tagChip(u.tag)}`;
+  const base = S.imageBase || 'images/';
+  $('unitBody').innerHTML = `<div class="uhead"><canvas id="unitSprite" width="112" height="80"></canvas><img class="portrait" alt="" style="width:112px;height:80px;object-fit:cover;border-radius:4px;display:none" src="${base}portraits/${PN(u)}.jpg" onload="this.style.display='block';this.previousElementSibling.style.display='none'"><div class="side">${u.desc}</div></div>` + (u.lines || []).map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
+  unitSprite($('unitSprite').getContext('2d'), u, true);
+  const ph = unitPhotos(u);
+  $('unitThumbs').innerHTML = ph.map((m, k) => `<button data-k="${k}" title="${esc(m.caption || m.file || '')}"><img alt="" src="${base}${m.file}"></button>`).join('');
+  $('unitThumbs').querySelectorAll('button').forEach(b => b.onclick = () => showUnitPhoto(+b.dataset.k));
+  showUnitPhoto(0);
+  if (!$('unit').classList.contains('show') && mode === 'intro' && introStarted && !introPaused && !cinematic) { togglePause(); unitPausedIntro = true; }
+  document.body.classList.add('unitopen'); showOverlay('unit');
+}
+function showUnitPhoto(k) {
+  const u = (S.units || [])[unitIdx]; if (!u) return; const ph = unitPhotos(u); unitPhoto = k;
+  const img = $('unitImg'), p = $('unitPh'); img.classList.remove('show'); p.classList.remove('show');
+  $('unitThumbs').querySelectorAll('button').forEach(b => b.classList.toggle('on', +b.dataset.k === k));
+  const m = ph[k];
+  if (!m) { $('unitCap').textContent = 'No photograph yet.'; $('unitRef').textContent = ''; p.textContent = 'Photo to add'; p.classList.add('show'); return; }
+  $('unitCap').textContent = m.caption || ''; $('unitRef').textContent = [m.ref, m.credit].filter(Boolean).join(' · ');
+  p.textContent = 'Photo to add: ' + (m.file || '') + (m.caption ? ' — ' + m.caption : '');
+  img.onload = () => img.classList.add('show'); img.onerror = () => p.classList.add('show');
+  img.src = (S.imageBase || 'images/') + m.file;
 }
 function renderBriefing() {
   $('briefMeta').innerHTML = `<b>${S.date}</b> · ${S.place}<br>${S.tagline}`;
@@ -710,7 +738,8 @@ function renderBriefing() {
 
 /* ---------------- overlays: intro, debrief, explain ---------------- */
 function showOverlay(id) { $(id).classList.add('show'); }
-function hideOverlay(id) { $(id).classList.remove('show'); }
+let unitPausedIntro = false;
+function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
 function showIntro(i) {
   introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
@@ -859,7 +888,7 @@ function showMenu(sx, sy, p) {
   const pw = panel.getBoundingClientRect(); m.style.display = 'block'; m.style.left = Math.min(sx, pw.width - 240) + 'px'; m.style.top = Math.min(sy, pw.height - m.offsetHeight - 10) + 'px';
 }
 function hideMenu() { const m = $('ctxMenu'); if (m) m.style.display = 'none'; }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') hideMenu(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { hideMenu(); if ($('unit').classList.contains('show')) hideOverlay('unit'); } });
 canvas.addEventListener('pointermove', e => {
   if (!dragging) return; const dx = e.clientX - last.x, dy = e.clientY - last.y;
   if (Math.abs(dx) + Math.abs(dy) > 3) dragMoved = true;
@@ -956,7 +985,7 @@ $('introNextMini').onclick = () => $('introNext').click();
 $('introSkipMini').onclick = () => $('introSkip').click();
 document.querySelectorAll('.overlay.center .dialog .xbtn').forEach(b => b.onclick = e => { e.stopPropagation(); setTextOff(true); });
 document.querySelectorAll('.viewtext').forEach(b => b.onclick = () => setTextOff(false));
-document.querySelectorAll('.closemini').forEach(b => b.onclick = () => { const w = b.dataset.close; if (w === 'cite') hideOverlay('cite'); else if (w === 'explain') $('explainClose').click(); else if (w === 'debrief-watch') $('debriefWatch').click(); else if (w === 'debrief-command') $('debriefCommand').click(); });
+document.querySelectorAll('.closemini').forEach(b => b.onclick = () => { const w = b.dataset.close; if (w === 'cite') hideOverlay('cite'); else if (w === 'unit') hideOverlay('unit'); else if (w === 'explain') $('explainClose').click(); else if (w === 'debrief-watch') $('debriefWatch').click(); else if (w === 'debrief-command') $('debriefCommand').click(); });
 setTextOff(textOff);
 // Layout guide for painting the terrain: the current map at full size with every feature boxed and labelled (press G).
 function exportLayoutGuide() {
@@ -1030,6 +1059,11 @@ $('introSkip').onclick = () => { if (G && G.active()) { G.skip(); $('titleCard')
 $('beginVoice').onclick = () => beginIntro(true);
 $('beginSilent').onclick = () => beginIntro(false);
 $('citeClose').onclick = () => hideOverlay('cite');
+$('unitClose').onclick = () => hideOverlay('unit');
+$('armiesBtn').onclick = () => { if ($('unit').classList.contains('show')) hideOverlay('unit'); else openUnit(unitIdx < 0 ? 0 : unitIdx); };
+$('unitPrev').onclick = () => openUnit(unitIdx - 1);
+$('unitNext').onclick = () => openUnit(unitIdx + 1);
+$('unitPlate').onclick = () => { const u = (S.units || [])[unitIdx]; if (!u) return; const n = unitPhotos(u).length; if (n > 1) showUnitPhoto((unitPhoto + 1) % n); };
 $('chooseWatch').onclick = () => startMode('watch', { skipGlobe: true });
 $('chooseCommand').onclick = () => { setPlayer('egypt'); startMode('command', { skipGlobe: true }); };
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
