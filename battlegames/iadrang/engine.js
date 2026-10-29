@@ -104,7 +104,7 @@ function drawLabels(c) {
   feats('mound').forEach(m => { if (m.name) outlined(c, m.name, m.x, m.y + 26, 11, { weight: 'italic', fill: '#efe3c3' }); });
   (B.labels || []).forEach(l => outlined(c, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3d6', weight: l.small ? 'italic' : 'bold' }));
 }
-function buildTerrain() {
+function buildTerrain(noLabels) {
   const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS;
   const c = T.getContext('2d'); c.scale(TS, TS);
   // dry-season ground: tawny grass with olive patches
@@ -146,7 +146,7 @@ function buildTerrain() {
     c.beginPath(); curve(c, cr.pts); c.strokeStyle = '#c9b683'; c.lineWidth = cr.width * .7; c.stroke();
     for (let i = 0; i < cr.pts.length - 1; i++) { const [x1, y1] = cr.pts[i], [x2, y2] = cr.pts[i + 1], n = Math.ceil(Math.hypot(x2 - x1, y2 - y1) / 18); for (let k = 0; k < n; k++) { const t = k / n, x = x1 + (x2 - x1) * t + (jitter(i * 50 + k, 31) - .5) * cr.width * 1.4, y = y1 + (y2 - y1) * t + (jitter(i * 50 + k, 32) - .5) * cr.width * 1.4; c.fillStyle = k % 3 ? 'rgba(120,110,85,.8)' : 'rgba(180,170,140,.9)'; c.beginPath(); c.ellipse(x, y, 2.5 + jitter(k, 33) * 3, 1.5 + jitter(k, 34) * 2, 0, 0, PI * 2); c.fill(); } }
     c.restore(); });
-  drawLabels(c);
+  if (!noLabels) drawLabels(c);
   return T;
 }
 
@@ -1016,6 +1016,17 @@ function exportLayoutGuide() {
   const a = document.createElement('a'); a.download = S.id + '-' + PART.id + '-layout-guide.png'; a.href = T.toDataURL('image/png'); a.click();
 }
 window.exportLayoutGuide = exportLayoutGuide;
+// Scene model for the painter: the drawn map with its trees and mounds, flat, full size, no labels or outlines (Shift+H).
+function exportSceneModel() {
+  const T = document.createElement('canvas'); T.width = W.w; T.height = W.h; const g = T.getContext('2d');
+  const saveTer = TER, saveTilt = TILT, sv = Object.assign({}, view);
+  const plain = buildTerrain(true); g.drawImage(plain, 0, 0, W.w, W.h);
+  TILT = 0; view.x = 0; view.y = 0; view.w = W.w; view.h = W.h; view.z = 1;
+  PROPS.slice().sort((a, b) => a.y - b.y).forEach(p => drawProp(g, p));
+  TILT = saveTilt; Object.assign(view, sv); TER = saveTer;
+  const a = document.createElement('a'); a.download = S.id + '-' + PART.id + '-scene.png'; a.href = T.toDataURL('image/png'); a.click();
+}
+window.exportSceneModel = exportSceneModel;
 window.__dbg = { strikes: () => strikes, helis: () => helis, part: () => PART.id, light: () => light, layoutGuide: () => { const T = document.createElement('canvas'); T.width = W.w; T.height = W.h; return T; } };
 mini.addEventListener('click', e => { const r = mini.getBoundingClientRect(); view.x = (e.clientX - r.left) / r.width * W.w - VW() / 2; view.y = (e.clientY - r.top) / r.height * W.h - VH() / 2; clampView(); manualCamera(); });
 window.addEventListener('keydown', e => {
@@ -1033,6 +1044,7 @@ window.addEventListener('keydown', e => {
   if (k === 'r') $('resetBtn').click();
   if (k === '>' || k === '.') $('ffBtn').click();
   if (k === 'g' && e.shiftKey) exportLayoutGuide();
+  if (k === 'h' && e.shiftKey) exportSceneModel();
   if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
   if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
 });
