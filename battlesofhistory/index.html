@@ -40,12 +40,43 @@
   .credit{display:block;margin-top:8px;font-size:10.5px;color:#6f8691;font-style:italic}
   footer{text-align:center;color:#7f969f;font-size:12px;padding:10px 16px 30px;border-top:1px solid #1b2b35;max-width:1100px;margin:0 auto}
   footer a{color:var(--muted)}
+  /* Timeline between the poster and the cards */
+  #tlwrap{max-width:1100px;margin:18px auto 6px;padding:0 16px}
+  #tlbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+  #tlbar .lbl{font:600 13px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.1em}
+  #tlbar .ctl{display:flex;gap:6px}#tlbar button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer;font:inherit;font-size:12px}#tlbar button:hover{border-color:var(--gold)}
+  #tl{position:relative;height:230px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,#0d1b24,#0a151d);cursor:grab;user-select:none;touch-action:none}
+  #tl.drag{cursor:grabbing}
+  #tltrack{position:absolute;top:0;bottom:0;left:0;will-change:transform}
+  #tltrack .axis{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,rgba(233,199,122,.25),var(--gold) 6%,var(--gold) 94%,rgba(233,199,122,.25))}
+  #tltrack .tick{position:absolute;top:50%;width:1px;height:12px;margin-top:-6px;background:rgba(233,199,122,.7)}
+  #tltrack .tick.minor{height:6px;margin-top:-3px;background:rgba(233,199,122,.35)}
+  #tltrack .tick span{position:absolute;top:14px;left:0;transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap}
+  #tltrack .now{position:absolute;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#5fcf8a;box-shadow:0 0 10px #5fcf8a}
+  #tltrack .now span{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:10px;color:#5fcf8a;white-space:nowrap}
+  .mini{position:absolute;width:118px;margin-left:-59px;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.5);transition:transform .12s,border-color .12s;z-index:1}
+  .mini:hover{transform:scale(1.06);border-color:var(--gold);z-index:3}
+  .mini.up{bottom:calc(50% + 14px)}.mini.down{top:calc(50% + 14px)}
+  .mini .th{height:58px;background:#0a1620 center/cover no-repeat}
+  .mini .t{font:600 10.5px 'Cinzel',Georgia,serif;color:var(--gold);padding:4px 6px 0;line-height:1.2}
+  .mini .d{font-size:10px;color:var(--muted);padding:0 6px 5px}
+  .mini .pin{position:absolute;left:50%;width:1px;height:14px;background:var(--gold)}
+  .mini.up .pin{top:100%}.mini.down .pin{bottom:100%}
+  .mini .dot{position:absolute;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+  .mini.up .dot{top:calc(100% + 10px)}.mini.down .dot{bottom:calc(100% + 10px)}
+  #tlhint{font-size:11px;color:#6f8691;margin:6px 2px 0}
+  @media(max-width:600px){#tl{height:200px}.mini{width:96px;margin-left:-48px}.mini .th{height:46px}}
 </style>
 </head>
 <body>
 <header>
   <h1>BATTLES OF HISTORY</h1>
 </header>
+<section id="tlwrap">
+  <div id="tlbar"><span class="lbl">TIMELINE</span><span class="ctl"><button id="tlOut" title="Zoom out">−</button><button id="tlIn" title="Zoom in">+</button><button id="tlFit" title="Show the whole timeline">Fit</button></span></div>
+  <div id="tl"><div id="tltrack"></div></div>
+  <div id="tlhint">Scroll or pinch to zoom, drag to move. Click a battle to open it.</div>
+</section>
 <main id="list"></main>
 <script>
   // Use the painted poster as the header background once images/poster.jpg exists.
@@ -68,6 +99,48 @@
         <span class="credit">${esc(b.coverCredit)}</span>
       </div>
     </a>`).join('');
+</script>
+<script>
+/* Timeline: linear years from a round number before the earliest battle up to today. Zoom and drag;
+   battles alternate above and below the line, and overlapping ones separate as you zoom in. */
+(function () {
+  const B = (window.BATTLES || []).filter(b => typeof b.year === 'number').sort((a, b) => a.year - b.year);
+  const tl = document.getElementById('tl'), track = document.getElementById('tltrack'); if (!B.length) { document.getElementById('tlwrap').style.display = 'none'; return; }
+  const NOW = new Date().getFullYear();
+  const first = Math.min(...B.map(b => b.year)), span0 = NOW - first;
+  const roundDown = (y, step) => Math.floor(y / step) * step;
+  const step0 = span0 > 2000 ? 500 : span0 > 500 ? 100 : 50;
+  const START = roundDown(first, step0) - step0 * .5;            // a round number before the first battle, plus a little room
+  const END = NOW + span0 * .08;                                   // and room after today for the last card
+  const yrLabel = y => y < 0 ? (-y) + ' BCE' : y <= 0 ? '1 CE' : String(y);
+  let zoom = 1, off = 0, W = 0;                                    // zoom factor, horizontal offset in px, visible width
+  const px = y => (y - START) / (END - START) * W * zoom;          // year -> x in the track
+  function build() {
+    W = tl.clientWidth; track.style.width = Math.round(W * zoom) + 'px';
+    const pxPerYear = W * zoom / (END - START);
+    const steps = [1, 2, 5, 10, 25, 50, 100, 250, 500, 1000]; let step = steps.find(s => s * pxPerYear >= 90) || 1000; const minor = step / (step % 5 === 0 ? 5 : 2);
+    let html = '<div class="axis"></div>';
+    for (let y = roundDown(START, minor); y <= END; y += minor) { if (y < START) continue; const major = Math.abs(y / step - Math.round(y / step)) < 1e-9; html += `<div class="tick${major ? '' : ' minor'}" style="left:${px(y).toFixed(1)}px">${major ? '<span>' + yrLabel(y) + '</span>' : ''}</div>`; }
+    html += `<div class="now" style="left:${px(NOW).toFixed(1)}px"><span>today</span></div>`;
+    B.forEach((b, i) => { html += `<a class="mini ${i % 2 ? 'down' : 'up'}" href="${esc(b.folder)}/index.html" style="left:${px(b.year).toFixed(1)}px" title="${esc(b.title)} · ${esc(b.date)}"><div class="th" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')"></div><div class="t">${esc(b.title)}</div><div class="d">${esc(b.date)}</div><i class="pin"></i><i class="dot"></i></a>`; });
+    track.innerHTML = html; place();
+  }
+  function place() { const max = Math.max(0, W * zoom - W); off = Math.max(-max, Math.min(0, off)); track.style.transform = `translateX(${off}px)`; }
+  function zoomAt(f, cx) { const z2 = Math.max(1, Math.min(400, zoom * f)); if (z2 === zoom) return; const worldX = (cx - off) / zoom; zoom = z2; off = cx - worldX * zoom; build(); }
+  document.getElementById('tlIn').onclick = () => zoomAt(1.6, W / 2); document.getElementById('tlOut').onclick = () => zoomAt(1 / 1.6, W / 2);
+  document.getElementById('tlFit').onclick = () => { zoom = 1; off = 0; build(); };
+  tl.addEventListener('wheel', e => { e.preventDefault(); const r = tl.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 1 / 1.25, e.clientX - r.left); }, { passive: false });
+  let drag = null;
+  tl.addEventListener('pointerdown', e => { drag = { x: e.clientX, off, moved: false }; tl.setPointerCapture(e.pointerId); tl.classList.add('drag'); });
+  tl.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 4) drag.moved = true; off = drag.off + dx; place(); });
+  tl.addEventListener('pointerup', e => { if (drag && drag.moved) { const stop = ev => { ev.preventDefault(); ev.stopPropagation(); }; tl.addEventListener('click', stop, { capture: true, once: true }); } drag = null; tl.classList.remove('drag'); });
+  // pinch zoom on touch screens
+  let pinch = null;
+  tl.addEventListener('touchstart', e => { if (e.touches.length === 2) pinch = { d: Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY), zoom }; }, { passive: true });
+  tl.addEventListener('touchmove', e => { if (pinch && e.touches.length === 2) { const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY), r = tl.getBoundingClientRect(), cx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left; zoomAt(pinch.zoom * d / pinch.d / zoom, cx); } }, { passive: true });
+  tl.addEventListener('touchend', () => { pinch = null; });
+  new ResizeObserver(() => build()).observe(tl); build();
+})();
 </script>
 </body>
 </html>
