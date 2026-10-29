@@ -197,6 +197,10 @@ window.BattleGlobe = (() => {
       }
       c.globalAlpha = 1; c.restore();
     }
+    // early pins: pulse over the border overlays from the moment the political boundaries appear
+    const early = Math.max(0, Math.min(1, Math.max(s.modern, s.ancient))) * (1 - s.labels);
+    if (early > 0) { c.globalAlpha = early; LABELS.forEach(L => { if (!L.early) return; const p = proj(L.lon * D, Math.cos(L.lat * D), Math.sin(L.lat * D)); if (!p) return; const r = 7 + 4 * Math.sin(now * 4 + L.lon); c.strokeStyle = '#ffd36b'; c.lineWidth = 2; c.beginPath(); c.arc(p[0], p[1], r, 0, 6.283); c.stroke(); c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 6; c.beginPath(); c.arc(p[0], p[1], r + 6, 0, 6.283); c.stroke();
+      const fs = Math.max(10, Math.min(16, R / 300)); c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; const ty = p[1] + (L.below ? r + 6 + fs * .8 : -(r + 6 + fs * .7)); c.strokeText(L.text, p[0], ty); c.fillStyle = '#ffd36b'; c.fillText(L.text, p[0], ty); }); c.globalAlpha = 1; }
     // labels
     if (s.labels > 0) {
       c.globalAlpha = s.labels;
@@ -206,7 +210,7 @@ window.BattleGlobe = (() => {
         c.font = `${L.italic ? 'italic ' : ''}${L.pin ? '700' : '600'} ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
         if (L.dot) { c.fillStyle = '#f6e9c6'; c.beginPath(); c.arc(p[0], p[1], 3, 0, 6.283); c.fill(); }
         if (L.pin) { const r = 10 + 5 * Math.sin(now * 4); c.strokeStyle = '#ffd36b'; c.lineWidth = 2.5; c.beginPath(); c.arc(p[0], p[1], r, 0, 6.283); c.stroke(); c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 7; c.beginPath(); c.arc(p[0], p[1], r + 7, 0, 6.283); c.stroke(); }
-        const ty = p[1] + (L.dot ? fs : L.pin ? -fs * 1.6 : 0);
+        const ty = p[1] + (L.dot ? fs : L.pin ? (L.below ? fs * 1.6 : -fs * 1.6) : 0);
         c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(L.text, p[0], ty); c.fillStyle = L.pin ? '#ffd36b' : '#f6e9c6'; c.fillText(L.text, p[0], ty);
       });
       c.globalAlpha = 1;

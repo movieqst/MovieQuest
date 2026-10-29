@@ -67,8 +67,9 @@ window.BATTLE_SCENARIO = {
     labels: [
       { lon: 105.85, lat: 21.03, text: 'Hanoi', size: .55, dot: true }, { lon: 106.7, lat: 10.8, text: 'Saigon', size: .55, dot: true },
       { lon: 108.0, lat: 13.98, text: 'Pleiku', size: .55, dot: true }, { lon: 108.65, lat: 13.9, text: 'An Khe', size: .5, dot: true },
-      { lon: 107.6, lat: 13.45, text: 'Cambodia', size: .55, italic: true },
-      { lon: 107.72, lat: 13.57, text: 'IA DRANG', size: .85, pin: true }
+      { lon: 107.1, lat: 13.2, text: 'Cambodia', size: .55, italic: true },
+      { lon: 107.62, lat: 13.52, text: 'CHU PONG MASSIF', size: .6, pin: true, early: true, below: true },
+      { lon: 107.72, lat: 13.57, text: 'IA DRANG', size: .85, pin: true, early: true }
     ]
   },
 
