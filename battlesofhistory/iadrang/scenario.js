@@ -93,7 +93,7 @@ window.BATTLE_SCENARIO = {
       title: 'A new kind of war',
       media: [
         { at: 0,  file: '03-1st-cav-an-khe.jpg', caption: 'CH-47 Chinooks lined up at Qui Nhon on 13 September 1965, waiting to carry the 1st Cavalry Division (Airmobile) inland to its new base at An Khe. The first division built around the helicopter had more than 400 aircraft.', ref: 'Qui Nhon, 13 September 1965; US Army photograph, NARA 111-CCV-104-CC32062', credit: 'Photo: SSG Lyle Boggess, United States Army, public domain (Wikimedia Commons)' },
-        { at: 9,  file: '04-ho-chi-minh-trail.jpg', caption: 'North Vietnamese regiments walked south for two months along the Ho Chi Minh trail through Laos and Cambodia to reach the Central Highlands.', ref: 'Ho Chi Minh trail, 1960s', credit: 'Public domain' },
+        { at: 9,  file: '04-ho-chi-minh-trail.jpg', caption: 'Porters push loaded bicycles along a stream bed on the Ho Chi Minh trail. The regiments that fought at the Ia Drang walked this way for two months, through Laos and Cambodia, to reach the Central Highlands.', ref: 'From R. W. Stewart, Deepening Involvement, 1945–1965, US Army Center of Military History', credit: 'Photo: United States Army, public domain (Wikimedia Commons, Ho chi minh trail.jpg)' },
         { at: 18, file: '05-westmoreland-1965.jpg', caption: 'General William Westmoreland, commanding US forces in Vietnam. In 1965 he moved from defending bases to seeking out and destroying North Vietnamese units.', ref: 'MACV, Saigon, 1965', credit: 'US Army, public domain' }
       ],
       focus: { x: 1300, y: 880 }, zoom: .9,
