@@ -78,7 +78,7 @@ window.BATTLE_SCENARIO = {
       title: 'BATTLE OF THE IA DRANG',
       media: [
         { at: 0,  file: '01-huey-landing-xray.jpg', caption: 'Major Bruce Crandall\u2019s UH-1D climbs away after dropping a load of infantrymen in the Ia Drang valley, November 1965. His crews flew ammunition into X-Ray and the wounded out all through the battle.', ref: 'Ia Drang valley, November 1965; US Army photograph', credit: 'Photo: United States Army, public domain (Wikimedia Commons, File:Bruce Crandall\u2019s UH-1D.jpg)' },
-        { at: 12, file: '02-ia-drang-campaign-map.jpg', caption: 'The Pleiku campaign of October and November 1965: Plei Me, the Chu Pong massif and the Ia Drang valley, where the landing zones X-Ray and Albany lay.', ref: 'US Army Center of Military History', credit: 'US Army, public domain' }
+        { at: 12, file: '02-ia-drang-campaign-map.jpg', caption: 'The battle of the Ia Drang, 14 to 20 November 1965: Plei Me, the Chu Pong, LZ X-Ray and LZ Albany, the artillery at Falcon, and the sanctuaries across the Cambodian border. The note at the bottom warns that the whole area is heavy forest broken by elephant grass.', ref: 'US Army map of the Ia Drang campaign', credit: 'Map: United States Army, public domain (Wikimedia Commons, Iadrang-map.jpg)' }
       ],
       subtitle: '14–18 November 1965 · Central Highlands, South Vietnam',
       focus: { x: 1300, y: 880 }, zoom: 1.1,
