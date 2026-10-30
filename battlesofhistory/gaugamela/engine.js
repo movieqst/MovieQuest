@@ -210,8 +210,8 @@ function tent(c, x, y, s, col, royal) {
 
 /* ---------------- unit sprites (drawn facing +x, origin at the feet) ---------------- */
 const SIDE_ART = {
-  macedon:   { glow: 'rgba(50,130,255,', skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' },
-  persia: { glow: 'rgba(235,55,45,', skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' }
+  macedon:   { skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' },
+  persia: { skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' }
 };
 /* Upright three-quarter-view figures (origin at the feet, drawn facing one of four directions). */
 const dirOf = facing => { const a = ((facing % (2 * PI)) + 2 * PI) % (2 * PI); return a < PI / 4 || a > 7 * PI / 4 ? 'e' : a < 3 * PI / 4 ? 's' : a < 5 * PI / 4 ? 'w' : 'n'; };
@@ -558,12 +558,6 @@ function drawFormation(c, f) {
     if (moving) a += Math.sin(wall * 7 + i) * .9;
     pts.push({ x: f.x + cos * d - sin * a, y: f.y + sin * d + cos * a, i, fac: f.facing + (scatter ? (jitter(i, 3) - .5) * 1.4 : 0) });
   }
-  // A soft glow on the ground in the side's colour (blue Macedonians, red Persians) so the armies are told apart at a glance.
-  if (pts.length) { const sp = pts.map(p => P(p.x, p.y)); let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
-    sp.forEach(q => { x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y); });
-    const m = 16 * sp[0].s, cx = (x0 + x1) / 2, cy = (y0 + y1) / 2 - 6 * sp[0].s, rx = (x1 - x0) / 2 + m, ry = (y1 - y0) / 2 + m * .8, col = SIDE_ART[f.side].glow;
-    c.save(); c.translate(cx, cy); c.scale(1, ry / rx); const g = c.createRadialGradient(0, 0, 0, 0, 0, rx);
-    g.addColorStop(0, col + '.6)'); g.addColorStop(.7, col + '.32)'); g.addColorStop(1, col + '0)'); c.fillStyle = g; c.beginPath(); c.arc(0, 0, rx, 0, PI * 2); c.fill(); c.restore(); }
   pts.sort((p, q) => p.y - q.y).forEach(p => { const q = P(p.x, p.y); drawSprite(c, f, q.x, q.y, p.fac, p.i, SS * q.s, q.k); });
   // standard
   const pb = P(f.x - cos * ((FR / 2) * sy + 4), f.y - sin * ((FR / 2) * sy + 4)), fs = pb.s;
