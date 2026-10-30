@@ -121,7 +121,7 @@ window.GAUGAMELA_SCENARIO = {
       media: [
         { at: 0, file: '10-persepolis-guards.jpg', caption: 'Palace guards with spears, carved along the stairway of the Apadana, the great audience hall at Persepolis.', ref: 'Persepolis, Iran, 5th century BCE', credit: 'Photo: Diego Delso, delso.photo, License CC BY-SA' },
         { at: 12, file: '11-susa-archers.jpg', caption: 'Frieze of archers in glazed brick from the palace of Darius I at Susa. Royal guardsmen of the Persian kings.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' },
-        { at: 24, file: '12-apadana-bactrians.jpg', caption: 'A delegation from Bactria bringing a camel, relief from the Apadana at Persepolis. Arrian places Bactrian horsemen on Darius’s left at Gaugamela.', ref: 'Persepolis, Iran, 5th century BCE', credit: '' }
+        { at: 24, file: '12-apadana-delegations.jpg', caption: 'Delegations of the subject peoples, with a camel and a bull, bring gifts to the king. Relief from Persepolis. Darius’s army at Gaugamela was drawn from peoples like these, from across the empire.', ref: 'Persepolis, Iran, 5th century BCE', credit: 'Photo: Diego Delso, delso.photo, License CC BY-SA' }
       ],
       focus: { x: 1200, y: 480 }, zoom: .9,
       markers: [],
@@ -390,13 +390,13 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'The chariots needed open ground and a straight run. Light troops and gaps in the ranks were the answer.', tag: 'ancient', cite: 'Arrian III.13' }
       ] },
     { side: 'persia', type: 'cavalry', name: 'Bactrian and Saka cavalry', desc: 'Mounted lancers and archers from the eastern provinces.', tag: 'ancient',
-      photos: ['12-apadana-bactrians.jpg'],
+      photos: [],
       lines: [
         { text: 'The Persian cavalry from the eastern provinces, under Bessus according to Arrian, was on the left.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'Persian cavalry should not be shown as heavily armoured knights. The sources do not describe that, and the evidence does not support it.', tag: 'estimate' }
       ] },
     { side: 'persia', type: 'infantry', name: 'Persian infantry', desc: 'Foot soldiers from many peoples of the empire, in the centre.', tag: 'ancient',
-      photos: ['10-persepolis-guards.jpg', '11-susa-archers.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
+      photos: ['10-persepolis-guards.jpg', '11-susa-archers.jpg', '12-apadana-delegations.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
       lines: [
         { text: 'Arrian lists contingents from across the Persian empire, from Babylon to the eastern provinces, placed in the centre and massed behind it.', tag: 'ancient', cite: 'Arrian III.8, III.11' },
         { text: 'The ancient numbers for the Persian army are not reliable, and no modern total is agreed.', tag: 'estimate' },
