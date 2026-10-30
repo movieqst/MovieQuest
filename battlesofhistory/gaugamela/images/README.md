@@ -29,7 +29,7 @@ shown, and paste the credit line into that entry's `credit` field in
 | 12-apadana-bactrians.jpg | 4 | Bactrian delegation with camel, Apadana relief | Persepolis |
 | 13-ptolemy-coin.jpg | 5 | Tetradrachm struck under Ptolemy I (Alexander in elephant scalp) | Bibliothèque nationale de France |
 | 14-babylonian-diary.jpg | 5 | Astronomical diary for 331 BCE (BM 36761) | British Museum |
-| 15-le-brun-arbela.jpg | 6 | Charles Le Brun, *The Battle of Arbela* (1669) | Musée du Louvre |
+| 15-le-brun-arbela.jpg | 6 | Gobelins tapestry after Charles Le Brun, *The Battle of Arbela* | (tapestry) |
 
 Sizes: 1200 px on the long side is plenty. JPEG keeps the folder small.
 

@@ -150,7 +150,7 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'How to read this reenactment',
       media: [
-        { at: 0, file: '15-le-brun-arbela.jpg', caption: 'Charles Le Brun, The Battle of Arbela, painted in 1669: one artist’s imagination of the battle, two thousand years later. Like this map, every picture of the battle is a reconstruction.', ref: 'Musée du Louvre, Paris', credit: '' }
+        { at: 0, file: '15-le-brun-arbela.jpg', caption: 'The Battle of Arbela, a Gobelins tapestry woven to a design by Charles Le Brun for Louis XIV: one artist’s imagination of the battle, two thousand years later. Like this map, every picture of the battle is a reconstruction.', ref: 'Tapestry after Charles Le Brun, designed between 1660 and 1672', credit: 'Wikimedia Commons, public domain' }
       ],
       focus: { x: 1200, y: 900 }, zoom: .7,
       markers: [],
