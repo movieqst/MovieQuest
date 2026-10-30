@@ -135,7 +135,7 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'The sources',
       media: [
-        { at: 0, file: '13-ptolemy-coin.jpg', caption: 'Ptolemy I, who fought with Alexander and later wrote a history of his campaigns. Arrian used it; it is now lost.', ref: 'Tetradrachm of Ptolemy I, Egypt', credit: '' },
+        { at: 0, file: '13-ptolemy-coin.jpg', caption: 'A silver coin struck in Alexandria under Ptolemy I, showing Alexander in an elephant-scalp headdress. Ptolemy fought with Alexander and later wrote a history of his campaigns. Arrian used it; it is now lost.', ref: 'Tetradrachm, Alexandria, between 305 and 282 BCE; Bibliothèque nationale de France, FG M2157', credit: 'Photo: Marie-Lan Nguyen, Wikimedia Commons, CC BY 2.5' },
         { at: 16, file: '14-babylonian-diary.jpg', caption: 'The Babylonian astronomical diary for 331 BCE. Among its notes on the sky and the markets, it records the battle and Alexander’s arrival in Babylon.', ref: 'Clay tablet; British Museum, BM 36761', credit: '' }
       ],
       focus: { x: 1200, y: 900 }, zoom: .8,

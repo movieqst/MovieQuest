@@ -27,7 +27,7 @@ shown, and paste the credit line into that entry's `credit` field in
 | 10-persepolis-guards.jpg | 4 | Persian and Median guards, Apadana relief | Persepolis |
 | 11-susa-archers.jpg | 4 | Frieze of archers, glazed brick, Susa | Musée du Louvre |
 | 12-apadana-bactrians.jpg | 4 | Bactrian delegation with camel, Apadana relief | Persepolis |
-| 13-ptolemy-coin.jpg | 5 | Tetradrachm of Ptolemy I with his portrait | coin collections |
+| 13-ptolemy-coin.jpg | 5 | Tetradrachm struck under Ptolemy I (Alexander in elephant scalp) | Bibliothèque nationale de France |
 | 14-babylonian-diary.jpg | 5 | Astronomical diary for 331 BCE (BM 36761) | British Museum |
 | 15-le-brun-arbela.jpg | 6 | Charles Le Brun, *The Battle of Arbela* (1669) | Musée du Louvre |
 
