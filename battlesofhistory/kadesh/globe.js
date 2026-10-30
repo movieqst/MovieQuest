@@ -121,7 +121,9 @@ window.KadeshGlobe = (() => {
     // atmosphere
     const at = c.createRadialGradient(cx, cy, R * .98, cx, cy, R * 1.16); at.addColorStop(0, 'rgba(120,180,255,.55)'); at.addColorStop(.5, 'rgba(90,150,240,.18)'); at.addColorStop(1, 'rgba(60,110,200,0)');
     c.fillStyle = at; c.beginPath(); c.arc(cx, cy, R * 1.16, 0, 6.283); c.fill();
-    const RASTER = R <= Math.min(w, h) * .42 * 1.7;   // whole globe in view: wrap the texture; zoomed in: vector coastlines
+    // Whole globe in view: wrap the texture. Zoomed in: vector coastlines, but only once the view is close enough to cull
+    // rings outside it (capDeg below); before that, a ring crossing the horizon can flash a green fill over the whole disc.
+    const RASTER = R <= Math.max(Math.min(w, h) * .42 * 1.7, Math.hypot(w, h) / 2);
     // ocean
     const oc = c.createRadialGradient(cx - R * .35, cy - R * .35, R * .1, cx, cy, R); oc.addColorStop(0, '#2a6f9e'); oc.addColorStop(.6, '#164a72'); oc.addColorStop(1, '#0a2744');
     c.fillStyle = oc; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill();
