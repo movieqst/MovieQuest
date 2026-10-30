@@ -22,7 +22,7 @@ shown, and paste the credit line into that entry's `credit` field in
 | 05-persian-daric.jpg | 2 | Achaemenid gold daric, king as archer | coin collections |
 | 06-persian-empire-map.jpg | 2 | Map of the Achaemenid empire. **Pick one that does not mark a site for the battle** — the site is not known | modern map |
 | 07-alexander-sarcophagus.jpg | 3 | Alexander Sarcophagus, battle side | Istanbul Archaeology Museums |
-| 08-sarcophagus-alexander.jpg | 3 | Alexander Sarcophagus, detail of the rider in the lion-skin helmet | Istanbul |
+| 08-sarcophagus-alexander.jpg | 3 | ARTIST RENDERING (AI-generated) of the rider in the lion-skin helmet, after the Alexander Sarcophagus | — |
 | 09-kinch-tomb.jpg | 3 | Kinch Tomb, entrance (the painting itself is lost; Kinch's 1897 drawing would be better if found) | Lefkadia, Macedonia |
 | 10-persepolis-guards.jpg | 4 | Persian and Median guards, Apadana relief | Persepolis |
 | 11-susa-archers.jpg | 4 | Frieze of archers, glazed brick, Susa | Musée du Louvre |
