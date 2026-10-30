@@ -664,7 +664,7 @@ function drawNight(c) {
 function render() {
   updateCamera(); clampView();
   const z = view.z, vw = VW(), vh = VH();
-  ctx.fillStyle = '#9d945f'; ctx.fillRect(0, 0, view.w, view.h);   // beyond the map edge the tilted view shows plain ground
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, view.w, view.h);   // beyond the map edge: black
   if (TER) {
     if (tiltOn()) {
       const STRIP = 3;

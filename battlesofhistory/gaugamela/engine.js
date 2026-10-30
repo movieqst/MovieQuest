@@ -575,7 +575,7 @@ function drawFormation(c, f) {
 function render() {
   updateCamera(); clampView();
   const z = view.z, vw = VW(), vh = VH();
-  ctx.fillStyle = '#0e1a22'; ctx.fillRect(0, 0, view.w, view.h);
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, view.w, view.h);
   if (TER) {
     if (tiltOn()) {
       // Draw the pre-rendered terrain in thin horizontal strips, each sampling a wider span of the map the further north it is.
