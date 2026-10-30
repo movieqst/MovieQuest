@@ -87,7 +87,7 @@ window.GAUGAMELA_SCENARIO = {
       title: 'Two kings, one empire',
       media: [
         { at: 0, file: '03-mosaic-alexander.jpg', caption: 'Alexander bareheaded on his horse Bucephalus, detail of the Alexander Mosaic.', ref: 'Museo Archeologico Nazionale, Naples', credit: 'Wikimedia Commons (Alexander_the_Great_mosaic.jpg), public domain' },
-        { at: 8, file: '04-alexander-coin.jpg', caption: 'Silver tetradrachm struck by Lysimachus, one of Alexander’s generals, after Alexander’s death. The portrait shows Alexander with the ram’s horns of the god Ammon.', ref: 'Coin, about 297–281 BCE', credit: '' },
+        { at: 8, file: '04-alexander-coin.jpg', caption: 'Silver tetradrachm struck by Lysimachus, one of Alexander’s generals, after Alexander’s death. The portrait shows Alexander with the ram’s horns of the god Ammon.', ref: 'Silver tetradrachm, Lampsakos mint, about 297–282 BCE', credit: 'Photo: Classical Numismatic Group, Wikimedia Commons, CC BY-SA 3.0' },
         { at: 15, file: '05-persian-daric.jpg', caption: 'A gold daric, the coin of the Persian kings. It shows the king as an archer. Persian kings minted them from about 500 BCE until Alexander’s conquest.', ref: 'Achaemenid gold coin', credit: '' },
         { at: 22, file: '06-persian-empire-map.jpg', caption: 'The Persian empire of the Achaemenid kings, the empire Darius III ruled and Alexander conquered. A modern map.', ref: 'Modern map', credit: '' }
       ],
