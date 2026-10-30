@@ -71,8 +71,8 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'BATTLE OF GAUGAMELA',
       media: [
-        { at: 0, file: '01-alexander-mosaic.jpg', caption: 'The Alexander Mosaic: Alexander charges at Darius, who turns to flee in his chariot. A Roman floor mosaic of about 100 BCE, probably copied from a Greek painting made within a generation of Alexander. Whether it shows Issus or Gaugamela is debated.', ref: 'House of the Faun, Pompeii; Museo Archeologico Nazionale, Naples', credit: '' },
-        { at: 13, file: '02-mosaic-darius.jpg', caption: 'Darius III in his chariot, detail of the Alexander Mosaic. The Greek writers say he fled the field; the Babylonian diary may tell it differently.', ref: 'Museo Archeologico Nazionale, Naples', credit: '' }
+        { at: 0, file: '01-alexander-mosaic.jpg', caption: 'The Alexander Mosaic: Alexander charges at Darius, who turns to flee in his chariot. A Roman floor mosaic of about 100 BCE, probably copied from a Greek painting made within a generation of Alexander. Whether it shows Issus or Gaugamela is debated.', ref: 'House of the Faun, Pompeii; Museo Archeologico Nazionale, Naples', credit: 'Photo: Lucas (ancientartpodcast.org), Wikimedia Commons, CC BY-SA 2.0' },
+        { at: 13, file: '02-mosaic-darius.jpg', caption: 'Darius III in his chariot, detail of the Alexander Mosaic. The Greek writers say he fled the field; the Babylonian diary may tell it differently.', ref: 'Museo Archeologico Nazionale, Naples', credit: 'Photo: Lucas (ancientartpodcast.org), Wikimedia Commons, CC BY-SA 2.0' }
       ],
       subtitle: '1 October 331 BCE · northern Mesopotamia',
       focus: { x: 1200, y: 900 }, zoom: 1,
