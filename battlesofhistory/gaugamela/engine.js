@@ -1,8 +1,14 @@
-/* Battle of Kadesh — reenactment & command engine.
+/* Battles of History — reenactment & command engine (Gaugamela build; battle-neutral except where noted).
    Reads window.GAUGAMELA_SCENARIO (scenario.js). Plain 2D Canvas, no libraries. */
 (() => {
 'use strict';
 const S = window.GAUGAMELA_SCENARIO, W = S.world, B = S.battlefield;
+/* A battle may leave out its river, road, fords, city or camp. Missing lists become empty; a missing city or camp
+   becomes an empty box far off the map, so the drawing code can still read it and draw nothing. */
+['river', 'tributary', 'fords', 'forests', 'hills', 'labels', 'road', 'fields'].forEach(k => { B[k] = B[k] || []; });
+if (!B.city) B.city = { name: '', x: -1e5, y: -1e5, w: 0, h: 0 };
+if (!B.camp) B.camp = { name: '', x: -1e5, y: -1e5, w: 0, h: 0 };
+if (!B.bridge) B.bridge = { x: -1e5, y: -1e5 };
 const $ = id => document.getElementById(id);
 const canvas = $('battle'), ctx = canvas.getContext('2d');
 const mini = $('minimap'), mctx = mini.getContext('2d');
@@ -19,7 +25,7 @@ let paused = false, cinematic = false, speed = 1, simTime = 0, acc = 0, lastFram
 let formations = [], byId = {};
 let eventIndex = 0, currentEvent = null, aiFlags = {}, battleOver = null, fastForward = false;
 let selected = new Set();
-let player = 'egypt'; try { const sv = localStorage.getItem('gaugamela-side'); if (sv === 'hittite' || sv === 'egypt') player = sv; } catch (e) {}
+let player = 'macedon'; try { const sv = localStorage.getItem('gaugamela-side'); if (sv === 'persia' || sv === 'macedon') player = sv; } catch (e) {}
 const setPlayer = sd => { player = sd; try { localStorage.setItem('gaugamela-side', sd); } catch (e) {} const sel = $('sideSel'); if (sel) sel.value = sd; };
 let dragging = false, last = null, dragMoved = false, band = null, overview = null;
 let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStarted = false, introMedia = [], mediaIdx = -1;
@@ -40,6 +46,7 @@ const audioFor = (kind, n) => S.audioBase ? S.audioBase + (voiceId ? voiceId + '
 
 function riverXAt(y) {
   const p = B.river;
+  if (!p.length) return Infinity;
   for (let i = 0; i < p.length - 1; i++) {
     const [x1, y1] = p[i], [x2, y2] = p[i + 1];
     if ((y <= y1 && y >= y2) || (y >= y1 && y <= y2)) { const t = (y - y1) / ((y2 - y1) || 1); return x1 + (x2 - x1) * t; }
@@ -55,7 +62,7 @@ const inWater = (x, y) => inRiver(x, y) || inTrib(x, y);
 const MOAT = 30, KEEP = 75, CITYR = { x0: B.city.x - MOAT - KEEP, y0: B.city.y - MOAT - KEEP, x1: B.city.x + B.city.w + MOAT + KEEP, y1: B.city.y + B.city.h + MOAT + KEEP };
 const inCity = (x, y) => x > CITYR.x0 && x < CITYR.x1 && y > CITYR.y0 && y < CITYR.y1;
 const westOfRiver = (x, y) => x < riverXAt(y);
-const tribYAt = x => { const p = B.tributary; if (x <= p[0][0] || x >= p[p.length - 1][0]) return null; for (let i = 0; i < p.length - 1; i++) if (x >= p[i][0] && x <= p[i + 1][0]) { const t = (x - p[i][0]) / (p[i + 1][0] - p[i][0]); return p[i][1] + (p[i + 1][1] - p[i][1]) * t; } return null; };
+const tribYAt = x => { const p = B.tributary; if (!p.length || x <= p[0][0] || x >= p[p.length - 1][0]) return null; for (let i = 0; i < p.length - 1; i++) if (x >= p[i][0] && x <= p[i + 1][0]) { const t = (x - p[i][0]) / (p[i + 1][0] - p[i][0]); return p[i][1] + (p[i + 1][1] - p[i][1]) * t; } return null; };
 const crossesTrib = (a, b) => { const ya = tribYAt(a.x), yb = tribYAt(b.x); if (ya === null && yb === null) return false; const sa = ya === null ? null : a.y < ya, sb = yb === null ? null : b.y < yb; if (sa !== null && sb !== null) return sa !== sb; const y0 = ya !== null ? ya : yb, mid = (a.y + b.y) / 2; return (a.y < y0) !== (b.y < y0) && Math.abs(mid - y0) < 120; };
 const segHitsRect = (a, b, r) => { if (inCity(a.x, a.y) || inCity(b.x, b.y)) return true; for (let t = 0; t <= 1; t += .05) { const x = a.x + (b.x - a.x) * t, y = a.y + (b.y - a.y) * t; if (x > r.x0 && x < r.x1 && y > r.y0 && y < r.y1) return true; } return false; };
 // Push a point out of the city and moat to the nearest edge.
@@ -142,7 +149,7 @@ function buildTerrain() {
     c.fillStyle = g; c.fillRect(x - r, y - r, r * 2, r * 2);
   }
   // cultivated fields around the city and along the river
-  const fields = [[1030, 640, 120, 70, .1], [1130, 470, 110, 60, -.05], [1180, 820, 130, 60, .15], [1360, 820, 110, 70, -.1], [1620, 560, 120, 70, .08], [1680, 700, 110, 60, -.12], [1600, 900, 120, 60, .2], [1250, 1150, 110, 60, -.05], [1700, 380, 100, 60, .05], [1120, 320, 110, 60, -.15]];
+  const fields = B.fields;
   const fcol = ['#c9b26a', '#a9b06a', '#b89f5c', '#8fa05a', '#cdbb7b'];
   fields.forEach((f, i) => {
     c.save(); c.translate(f[0], f[1]); c.rotate(f[4]); c.fillStyle = fcol[i % fcol.length]; c.fillRect(-f[2] / 2, -f[3] / 2, f[2], f[3]);
@@ -157,9 +164,9 @@ function buildTerrain() {
     if (i % 9 === 0) { c.fillStyle = 'rgba(70,60,40,.5)'; c.beginPath(); c.ellipse(x + 8, y + 3, 2.5, 1.6, 0, 0, PI * 2); c.fill(); }
   }
   // road
-  c.save(); c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); curve(c, B.road); c.strokeStyle = 'rgba(90,75,45,.5)'; c.lineWidth = 16; c.stroke();
+  if (B.road.length) { c.save(); c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); curve(c, B.road); c.strokeStyle = 'rgba(90,75,45,.5)'; c.lineWidth = 16; c.stroke();
   c.beginPath(); curve(c, B.road); c.strokeStyle = '#d6c28e'; c.lineWidth = 11; c.stroke();
-  c.setLineDash([10, 14]); c.beginPath(); curve(c, B.road); c.strokeStyle = 'rgba(120,100,60,.5)'; c.lineWidth = 2; c.stroke(); c.restore();
+  c.setLineDash([10, 14]); c.beginPath(); curve(c, B.road); c.strokeStyle = 'rgba(120,100,60,.5)'; c.lineWidth = 2; c.stroke(); c.restore(); }
   // hills
   B.hills.forEach((h, i) => {
     c.fillStyle = 'rgba(40,30,15,.22)'; c.beginPath(); c.ellipse(h.x + 10, h.y + 10, h.rx, h.ry, 0, 0, PI * 2); c.fill();
@@ -168,8 +175,8 @@ function buildTerrain() {
     c.strokeStyle = 'rgba(90,75,45,.6)'; c.lineWidth = 1.5; for (let k = 0; k < 4; k++) { c.beginPath(); c.moveTo(h.x - h.rx * .7 + k * h.rx * .35, h.y + h.ry * .3); c.lineTo(h.x - h.rx * .5 + k * h.rx * .35, h.y - h.ry * .2); c.stroke(); }
   });
   // water
-  waterBand(c, B.tributary, 22);
-  waterBand(c, B.river, 58);
+  if (B.tributary.length) waterBand(c, B.tributary, 22);
+  if (B.river.length) waterBand(c, B.river, 58);
   B.fords.forEach(f => {
     c.save(); c.strokeStyle = 'rgba(230,220,180,.75)'; c.lineWidth = 3; c.setLineDash([4, 6]);
     for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(f.x - 44, f.y + k * 9); c.lineTo(f.x + 44, f.y + k * 9); c.stroke(); }
@@ -177,14 +184,14 @@ function buildTerrain() {
   });
   // forests: a shaded floor; the trees themselves stand (see PROPS)
   B.forests.forEach(fo => { const g = c.createRadialGradient(fo.x, fo.y, 0, fo.x, fo.y, fo.r); g.addColorStop(0, 'rgba(70,95,50,.35)'); g.addColorStop(1, 'rgba(70,95,50,0)'); c.fillStyle = g; c.beginPath(); c.ellipse(fo.x, fo.y, fo.r, fo.r * .8, 0, 0, PI * 2); c.fill(); });
-  // the city of Kadesh: in the terrain only the moat and the ground inside; the walls and buildings are drawn standing (see drawCity)
+  // a walled city, if the battle has one: in the terrain only the moat and the ground inside; the walls and buildings are drawn standing (see drawCity)
   const ct = B.city;
   c.fillStyle = '#2f7590'; c.beginPath(); c.roundRect(ct.x - 26, ct.y - 26, ct.w + 52, ct.h + 52, 30); c.fill();
   c.fillStyle = '#4a98ae'; c.beginPath(); c.roundRect(ct.x - 18, ct.y - 18, ct.w + 36, ct.h + 36, 24); c.fill();
   c.fillStyle = '#9a8a62'; c.beginPath(); c.roundRect(ct.x - 8, ct.y - 8, ct.w + 16, ct.h + 16, 10); c.fill();
   c.fillStyle = '#b6a477'; c.fillRect(ct.x, ct.y, ct.w, ct.h);
   outlined(c, ct.name, ct.x + ct.w / 2, ct.y + ct.h + 46, 20, { fill: '#f8e9bf' });
-  // the Egyptian camp: trampled ground; shields and tents stand (see drawCamp)
+  // the Macedonian camp: trampled ground; shields and tents stand (see drawCamp)
   const cp = B.camp;
   c.fillStyle = 'rgba(210,190,140,.35)'; c.fillRect(cp.x, cp.y, cp.w, cp.h);
   outlined(c, cp.name, cp.x + cp.w / 2, cp.y - 18, 12, { fill: '#dce9ff' });
@@ -203,13 +210,13 @@ function tent(c, x, y, s, col, royal) {
 
 /* ---------------- unit sprites (drawn facing +x, origin at the feet) ---------------- */
 const SIDE_ART = {
-  egypt:   { skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' },
-  hittite: { skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' }
+  macedon:   { skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' },
+  persia: { skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' }
 };
 /* Upright three-quarter-view figures (origin at the feet, drawn facing one of four directions). */
 const dirOf = facing => { const a = ((facing % (2 * PI)) + 2 * PI) % (2 * PI); return a < PI / 4 || a > 7 * PI / 4 ? 'e' : a < 3 * PI / 4 ? 's' : a < 5 * PI / 4 ? 'w' : 'n'; };
 function figInfantry(c, side, archer, s, i, dir, step) {
-  const A = SIDE_ART[side], hit = side === 'hittite', skin = A.skin, cloth = hit ? '#8a3a30' : '#f4efe2', cloth2 = hit ? '#6a2a22' : '#ddd3bb';
+  const A = SIDE_ART[side], hit = side === 'persia', skin = A.skin, cloth = hit ? '#8a3a30' : '#f4efe2', cloth2 = hit ? '#6a2a22' : '#ddd3bb';
   c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, 5 * s, 2 * s, 0, 0, PI * 2); c.fill();
   const side_ = dir === 'e' || dir === 'w', back = dir === 'n', sw = Math.sin(step) * 1.6 * s;
   // legs
@@ -248,7 +255,7 @@ function figInfantry(c, side, archer, s, i, dir, step) {
   }
 }
 function figChariot(c, side, s, i, moving, dir, step) {
-  const A = SIDE_ART[side], crew = side === 'hittite' ? 3 : 2, sw = moving ? Math.sin(step) * 1.8 * s : 0;
+  const A = SIDE_ART[side], crew = side === 'persia' ? 3 : 2, sw = moving ? Math.sin(step) * 1.8 * s : 0;
   c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(1 * s, .6 * s, (dir === 'e' || dir === 'w' ? 15 : 9) * s, 3.4 * s, 0, 0, PI * 2); c.fill();
   if (moving) { c.fillStyle = 'rgba(210,190,140,.35)'; c.beginPath(); c.arc(-12 * s, -1 * s, 3.5 * s, 0, PI * 2); c.arc(-15 * s, -3 * s, 2.6 * s, 0, PI * 2); c.fill(); }
   const wheelSide = (x, y, r) => { c.fillStyle = A.wheel; c.beginPath(); c.arc(x, y, r, 0, PI * 2); c.fill(); c.strokeStyle = '#8a7a5a'; c.lineWidth = .7 * s; for (let k = 0; k < 3; k++) { const a = k * PI / 3 + (moving ? wall * 9 : 0); c.beginPath(); c.moveTo(x - Math.cos(a) * r, y - Math.sin(a) * r); c.lineTo(x + Math.cos(a) * r, y + Math.sin(a) * r); c.stroke(); } c.strokeStyle = '#2a1a0c'; c.lineWidth = .9 * s; c.beginPath(); c.arc(x, y, r, 0, PI * 2); c.stroke(); };
@@ -265,7 +272,7 @@ function figChariot(c, side, s, i, moving, dir, step) {
     c.fillStyle = A.cab; c.beginPath(); c.moveTo(-10 * s, -5.5 * s); c.lineTo(-10 * s, -12.5 * s); c.quadraticCurveTo(-6 * s, -13.5 * s, -1.5 * s, -11.5 * s); c.lineTo(-1.5 * s, -5.5 * s); c.closePath(); c.fill(); c.strokeStyle = A.trim; c.lineWidth = .9 * s; c.stroke();
     c.fillStyle = A.cabLight; c.fillRect(-9.2 * s, -11.8 * s, 1.6 * s, 5.6 * s);
     crewAt(crew === 2 ? [-7.6 * s, -4.2 * s] : [-8 * s, -5.6 * s, -3.2 * s], -12 * s, s);
-    if (side === 'egypt') { c.strokeStyle = '#4e3424'; c.lineWidth = .9 * s; c.beginPath(); c.arc(-2.5 * s, -15.5 * s, 3.2 * s, -PI / 2, PI / 2); c.stroke(); }
+    if (side === 'macedon') { c.strokeStyle = '#4e3424'; c.lineWidth = .9 * s; c.beginPath(); c.arc(-2.5 * s, -15.5 * s, 3.2 * s, -PI / 2, PI / 2); c.stroke(); }
     else { c.strokeStyle = '#5a3b22'; c.lineWidth = 1 * s; c.beginPath(); c.moveTo(-6 * s, -14 * s); c.lineTo(4 * s, -19 * s); c.stroke(); c.fillStyle = A.shieldStroke; c.beginPath(); c.arc(-5.6 * s, -14.6 * s, 2.3 * s, 0, PI * 2); c.fill(); c.fillStyle = A.shield; c.beginPath(); c.arc(-5.6 * s, -14.6 * s, 1.5 * s, 0, PI * 2); c.fill(); }
     wheelSide(-6 * s, -3.2 * s, 3.6 * s);
     horse(8 * s, 0, A.horse, false);
@@ -288,8 +295,8 @@ function figChariot(c, side, s, i, moving, dir, step) {
    Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
 const SHEETS = {};
 const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, chariot: { cw: 240, ch: 200, h: 30 } };
-['egyptian-spearman', 'egyptian-archer', 'egyptian-chariot', 'hittite-spearman', 'hittite-archer', 'hittite-chariot'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
-const sheetFor = (side, type, i) => SHEETS[(side === 'egypt' ? 'egyptian' : 'hittite') + '-' + (type === 'chariot' ? 'chariot' : (type === 'archers' || (type === 'infantry' && i % 3 === 2)) ? 'archer' : 'spearman')];
+[].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const sheetFor = (side, type, i) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : (type === 'archers' || (type === 'infantry' && i % 3 === 2)) ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   const sh = artOn ? sheetFor(f.side, f.type, i) : null;
   if (sh) {
@@ -370,8 +377,8 @@ function drawCity(c) {
 function createFormations() {
   formations = S.formations.map(d => Object.assign({}, d, {
     tx: d.x, ty: d.y, strength: 100, strengthTarget: null, strengthRate: 0,
-    state: 'hold', known: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : 16),
-    facing: d.facing !== undefined ? d.facing : (d.side === 'egypt' ? -PI / 2 : PI), spread: 1, then: null, aiPhase: null, lastHit: -99
+    state: 'hold', known: !d.hidden, aiKnown: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : d.type === 'cavalry' ? 40 : 16),
+    facing: d.facing !== undefined ? d.facing : (d.side === 'macedon' ? -PI / 2 : PI), spread: 1, then: null, aiPhase: null, lastHit: -99
   }));
   byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations;
 }
@@ -433,36 +440,35 @@ function jumpTo(t) {
 }
 
 /* ---------------- command mode ---------------- */
+// The side the computer commands is always the one the player is not. Its plan (S.ai.plans) is a list of timed orders
+// as history had them; afterwards each formation reacts to the enemies it has spotted.
+const aiSide = () => player === 'macedon' ? 'persia' : 'macedon';
 function stepCommand() {
-  const A = S.ai.hittite;
-  if (!aiFlags.start) { aiFlags.start = true; S.events[0].orders.forEach(o => { if (byId[o.id].side === 'egypt') applyOrder(o); }); }
-  if (player === 'egypt' && !aiFlags.inf && simTime >= A.infantryShift.t) { aiFlags.inf = true; applyOrder({ id: 'hit-inf', to: A.infantryShift.to }); applyOrder({ id: 'muwatalli', to: A.kingShift.to }); cmdCaption('Captured scouts', 'scouts', 'egyptian', { x: 1050, y: 500 }); }
-  if (player === 'egypt' && !aiFlags.w1 && simTime >= A.firstWave.t) { aiFlags.w1 = true; cmdCaption('Movement across the river', 'crossing', 'reconstruction', { x: 1450, y: 1060 }); ['hit-char-a', 'hit-char-b', 'hit-char-c'].forEach((id, i) => { const f = byId[id]; f.tx = A.firstWave.cross[i].x; f.ty = A.firstWave.cross[i].y; f.state = 'move'; f.speed = 60; f.aiPhase = 'cross'; }); }
-  if (player === 'egypt' && !aiFlags.w2 && simTime >= A.secondWave.t) { aiFlags.w2 = true; const f = byId['hit-char2']; f.tx = A.secondWave.cross.x; f.ty = A.secondWave.cross.y; f.state = 'move'; f.aiPhase = 'cross'; }
-  if (!aiFlags.nearin && simTime >= 62) { aiFlags.nearin = true; applyOrder({ id: 'nearin', visible: true, at: { x: 60, y: 560 }, to: { x: 880, y: 480 }, speed: 50 }); cmdCaption('The Ne\u2019arin arrive', 'nearin', 'egyptian', { x: 300, y: 540 }); }
-  const egy = formations.filter(f => f.side === 'egypt' && alive(f) && f.state !== 'rout');
-  if (player === 'hittite') aiEgypt(egy);
+  const ai = aiSide(), plan = (S.ai.plans && S.ai.plans[ai]) || [];
+  plan.forEach((st, i) => {
+    const key = 'plan' + i;
+    if (aiFlags[key] || simTime < st.t) return;
+    aiFlags[key] = true;
+    st.orders.forEach(o => { applyOrder(o); if (o.hunt && byId[o.id]) byId[o.id].aiPhase = 'cross'; });
+    if (st.caption) caption(st.caption.title, st.caption.text, st.caption.tag, true);
+  });
+  const enemies = formations.filter(f => f.side === player && alive(f) && f.aiKnown && f.state !== 'rout');
+  aiReact(ai, enemies);
   formations.forEach(f => {
-    if (player !== 'egypt' || f.side !== 'hittite' || !f.ai || !alive(f) || f.state === 'rout') return;
+    if (f.side !== ai || !f.hunter || !alive(f) || f.state === 'rout') return;
     if (f.aiPhase === 'cross') { if (Math.hypot(f.tx - f.x, f.ty - f.y) < 6) f.aiPhase = 'hunt'; else return; }
     if (f.aiPhase === 'hunt') {
-      let best = null, bd = A.huntRange; egy.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
-      if (best) { f.tx = best.x; f.ty = best.y; f.state = 'attack'; } else { f.tx = A.holdPoint.x; f.ty = A.holdPoint.y; f.state = 'move'; }
+      let best = null, bd = S.ai.huntRange; enemies.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
+      if (best) { f.tx = best.x; f.ty = best.y; f.state = 'attack'; } else { f.tx = S.ai.holdPoint.x; f.ty = S.ai.holdPoint.y; f.state = 'move'; }
     }
   });
-  const inf = byId['hit-inf'];
-  if (player === 'egypt' && alive(inf) && inf.state !== 'rout') {
-    let best = null, bd = A.infantryReact; egy.forEach(e => { if (e.x > riverXAt(e.y) + 30) { const d = dist(e, inf); if (d < bd) { bd = d; best = e; } } });
-    if (best) { inf.tx = best.x; inf.ty = best.y; inf.state = 'attack'; inf.aiPhase = 'engaged'; }
-    else if (inf.aiPhase === 'engaged') { inf.aiPhase = null; inf.tx = A.infantryShift.to.x; inf.ty = A.infantryShift.to.y; inf.state = 'move'; }
-  }
   formations.forEach(moveFormation); combat(); fog(); checkEnd();
 }
-// Egyptian army when the player commands the Hittites: marches as history had it, then reacts to whatever it can see.
-function aiEgypt(egy) {
-  const known = formations.filter(f => f.side === 'hittite' && alive(f) && f.known && f.state !== 'rout');
-  egy.forEach(f => {
-    let best = null, bd = f.type === 'chariot' ? 650 : 260; known.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
+// The computer side without a hunting role: charges the nearest enemy it has spotted (chariots from further off), or holds.
+function aiReact(side, enemies) {
+  formations.forEach(f => {
+    if (f.side !== side || f.hunter || !alive(f) || f.state === 'rout') return;
+    let best = null, bd = f.type === 'chariot' ? 650 : 260; enemies.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
     if (best) {
       if (f.type === 'chariot') { f.tx = best.x; f.ty = best.y; f.state = 'attack'; f.aiPhase = 'engaged'; }
       else if (bd < 150) { f.state = 'hold'; f.facing = Math.atan2(best.y - f.y, best.x - f.x); f.aiPhase = 'engaged'; }
@@ -470,7 +476,7 @@ function aiEgypt(egy) {
     } else if (f.aiPhase === 'engaged') { f.aiPhase = null; f.state = 'hold'; }
   });
 }
-const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5 }, infantry: { infantry: 6, chariot: 6, archers: 8 }, archers: { infantry: 5, chariot: 5, archers: 5 } };
+const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5, cavalry: 5 }, infantry: { infantry: 6, chariot: 6, archers: 8, cavalry: 4 }, archers: { infantry: 5, chariot: 5, archers: 5, cavalry: 5 }, cavalry: { infantry: 5, chariot: 5, archers: 6, cavalry: 5 } };
 function combat() {
   const live = formations.filter(f => alive(f) && f.state !== 'rout');
   live.forEach(a => live.forEach(d => {
@@ -489,17 +495,16 @@ function combat() {
   });
 }
 function fog() {
-  const egy = formations.filter(f => f.side === 'egypt' && alive(f));
-  formations.forEach(f => { if (f.side === 'hittite' && !f.known && alive(f) && egy.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog((player === 'egypt' ? 'Enemy spotted: ' : 'Egyptians have sighted ') + f.name); if (player === 'egypt') { caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true, audioFor('cmd', 'sighted')); if (cam.follow) focusOn(f.x, f.y); } } });
+  const ai = aiSide(), mine = formations.filter(f => f.side === player && alive(f)), theirs = formations.filter(f => f.side === ai && alive(f));
+  theirs.forEach(f => { if (!f.known && mine.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog('Enemy spotted: ' + f.name); caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true, audioFor('cmd', 'sighted')); if (cam.follow) focusOn(f.x, f.y); } });
+  mine.forEach(f => { if (!f.aiKnown && theirs.some(e => dist(e, f) < S.ai.spotRange)) f.aiKnown = true; });
 }
 function checkEnd() {
   if (battleOver || simTime < 25) return;
-  const hc = formations.filter(f => f.side === 'hittite' && f.ai), eg = formations.filter(f => f.side === 'egypt' && f.id !== 'seth-inf');
-  const hittDone = hc.every(f => !alive(f)), egDone = eg.every(f => !alive(f) || f.state === 'rout');
-  if (player === 'egypt') { if (hittDone) battleOver = 'victory'; else if (egDone) battleOver = 'defeat'; }
-  else { if (egDone) battleOver = 'victory'; else if (hittDone) battleOver = 'defeat'; }
-  if (!battleOver)
-  if (simTime >= S.commandDuration) battleOver = 'stalemate';
+  const ai = aiSide(), mine = formations.filter(f => f.side === player && f.present), theirs = formations.filter(f => f.side === ai && f.present);
+  if (theirs.every(f => !alive(f))) battleOver = 'victory';
+  else if (mine.every(f => !alive(f) || f.state === 'rout')) battleOver = 'defeat';
+  if (!battleOver && simTime >= S.commandDuration) battleOver = 'stalemate';
   if (battleOver) { paused = true; updatePauseBtn(); showDebrief(); }
 }
 
@@ -557,7 +562,7 @@ function drawFormation(c, f) {
   // label + strength
   const half = (FR / 2) * sy + 10, ly = f.y + Math.max(half, (FC / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
   const suffix = f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
-  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'egypt' ? '#dceeff' : '#ffe1d6' });
+  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'macedon' ? '#dceeff' : '#ffe1d6' });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
     c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(pl.x - 22 * ts, pl.y + 8 * ts, 44 * ts, 5 * ts);
     c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(pl.x - 21 * ts, pl.y + 9 * ts, 42 * ts * f.strength / 100, 3 * ts);
@@ -678,7 +683,7 @@ function fmtTime(t) { return `${String(Math.floor(t / 60)).padStart(2, '0')}:${S
 function renderSelection() {
   const box = $('selection');
   if (!selected.size) { box.innerHTML = '<p class="muted">Click a formation on the map to see who they are.</p>'; return; }
-  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</b><div class="tiny">${f.type} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
+  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</b><div class="tiny">${f.type} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
 }
 function renderTimeline() {
   const tl = $('timeline'); if (!tl) return;
@@ -688,14 +693,14 @@ function renderTimeline() {
   $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
 }
-const PN = u => (u.side === 'egypt' ? 'egyptian' : 'hittite') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'archers' ? 'archer' : 'spearman');
+const PN = u => (u.side === 'macedon' ? 'macedonian' : 'persia') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'archers' ? 'archer' : 'spearman');
 function unitSprite(c, u, big) {
   const w = c.canvas.width, h = c.canvas.height; c.fillStyle = '#c0ad75'; c.fillRect(0, 0, w, h);
   drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' ? 1.8 : 2) * (big ? h / 60 : 1));
 }
 function renderArmies() {
   const units = S.units || [];
-  $('armies').innerHTML = units.map((u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`).join('');
+  $('armies').innerHTML = units.map((u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`).join('');
   units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); unitSprite(c, u); setTimeout(() => unitSprite(c, u), 1500); });
   $('armies').querySelectorAll('.ucard').forEach(el => el.onclick = e => { if (e.target.closest('button.chip')) return; openUnit(+el.dataset.unit); });
 }
@@ -707,8 +712,8 @@ function unitPhotos(u) { return (u.photos || []).map(p => typeof p === 'string' 
 function openUnit(i) {
   const units = S.units || []; if (!units.length) return;
   unitIdx = (i + units.length) % units.length; const u = units[unitIdx]; unitPhoto = 0;
-  $('unitKicker').textContent = (u.side === 'egypt' ? 'Egyptian army' : 'Hittite army and allies') + ' · ' + (unitIdx + 1) + ' / ' + units.length;
-  $('unitTitle').innerHTML = `<span style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</span> ${tagChip(u.tag)}`;
+  $('unitKicker').textContent = (u.side === 'macedon' ? 'Macedonian army' : 'Persian army and allies') + ' · ' + (unitIdx + 1) + ' / ' + units.length;
+  $('unitTitle').innerHTML = `<span style="color:${u.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</span> ${tagChip(u.tag)}`;
   const base = S.imageBase || 'images/';
   $('unitBody').innerHTML = `<div class="uhead"><canvas id="unitSprite" width="112" height="80"></canvas><img class="portrait" alt="" style="width:112px;height:80px;object-fit:cover;border-radius:4px;display:none" src="${base}portraits/${PN(u)}.jpg" onload="this.style.display='block';this.previousElementSibling.style.display='none'"><div class="side">${u.desc}</div></div>` + (u.lines || []).map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   unitSprite($('unitSprite').getContext('2d'), u, true);
@@ -809,10 +814,9 @@ function startMode(m, opts) {
   const begin = () => {
     cinematic = false;
     if (m === 'watch') caption(S.events[0].title, S.events[0].text, S.events[0].tag, false);
-    else if (player === 'hittite') cmdCaption('Command mode', 'starth', 'reconstruction', { x: 1850, y: 650 });
-    else cmdCaption('Command mode', 'start', 'reconstruction', { x: 1100, y: 600 });
+    else cmdCaption('Command mode', player, 'reconstruction', S.commandFocus || { x: S.world.w / 2, y: S.world.h / 2 });
   };
-  // Every start opens on the globe: one turn, then the dive to the Orontes, then the battle begins. Click the globe to skip.
+  // Every start opens on the globe: one turn, then the dive to the region, then the battle begins. Click the globe to skip.
   // The globe belongs to the introduction only; a battle starts straight away.
   begin();
 }
@@ -826,9 +830,9 @@ function showDebrief() {
   let head, body;
   if (battleOver === 'history') { head = 'What the sources say happened next'; body = ''; }
   else {
-    const txt = (player === 'egypt' ? { victory: 'You broke the Hittite chariot force. Every chariot group that crossed the river was destroyed or driven off.', defeat: 'The Egyptian army has been scattered. Ramesses would have fled or fallen with it.', stalemate: 'Night falls with both armies still in the field: much as it did in 1274 BCE.' } : { victory: 'You scattered the Egyptian army. Muwatalli\u2019s gamble, which failed in 1274 BCE, has succeeded in your hands.', defeat: 'Your chariot force has been destroyed or driven back across the Orontes, as it was in 1274 BCE.', stalemate: 'Night falls with both armies still in the field: much as it did in 1274 BCE.' })[battleOver];
-    const rows = formations.filter(f => f.known || f.side === 'egypt').map(f => `<tr><td style="color:${f.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</td><td>${f.state}</td><td>${Math.round(f.strength)}%</td></tr>`).join('');
-    head = (player === 'egypt' ? { victory: 'Egyptian victory', defeat: 'Egyptian defeat', stalemate: 'Stalemate' } : { victory: 'Hittite victory', defeat: 'Hittite defeat', stalemate: 'Stalemate' })[battleOver];
+    const txt = S.debrief[player][battleOver].text;
+    const rows = formations.filter(f => f.known || f.side === 'macedon').map(f => `<tr><td style="color:${f.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</td><td>${f.state}</td><td>${Math.round(f.strength)}%</td></tr>`).join('');
+    head = S.debrief[player][battleOver].title;
     body = `<p class="lead">${txt}</p><p class="muted">Your battle is a what-if simulation. Nothing about it is a claim about what really happened. Compare it with the historical outcome below.</p><div class="tablewrap"><table><tr><th>Formation</th><th>State</th><th>Strength</th></tr>${rows}</table></div>`;
   }
   $('debriefTitle').textContent = head;
@@ -879,7 +883,7 @@ function showMenu(sx, sy, p) {
     items.push({ t: '\u21a9 Fall back', f: orderFallBack });
     items.push({ sep: true });
   }
-  items.push({ t: '\u2611 Select all ' + (player === 'egypt' ? 'Egyptian' : 'Hittite') + ' formations', f: () => $('selectAll').click() });
+  items.push({ t: '\u2611 Select all ' + (player === 'macedon' ? 'Macedonian' : 'Persian') + ' formations', f: () => $('selectAll').click() });
   if (enemy && enemy.side === player) items.push({ t: '\u2610 Select ' + enemy.name, f: () => { selected.clear(); selected.add(enemy.id); renderSelection(); } });
   if (selected.size) items.push({ t: '\u2715 Deselect', f: () => { selected.clear(); renderSelection(); } });
   items.push({ t: '\ud83c\udfa5 Look here', f: () => { manualCamera(); focusOn(p.x, p.y); } });
@@ -993,12 +997,12 @@ function exportLayoutGuide() {
   g.drawImage(TER, 0, 0, W.w, W.h);
   g.strokeStyle = '#ff2a2a'; g.lineWidth = 4; g.font = 'bold 28px system-ui'; g.fillStyle = '#ff2a2a'; g.textAlign = 'left';
   const box = (x, y, w, h, t) => { g.strokeRect(x, y, w, h); g.fillText(t, x + 6, y - 10); };
-  box(B.city.x - 26, B.city.y - 26, B.city.w + 52, B.city.h + 52, 'KADESH: walled city on a mound, moat, citadel');
-  box(B.camp.x, B.camp.y, B.camp.w, B.camp.h, 'EGYPTIAN CAMP: shield wall, tents, royal tent');
+  box(B.city.x - 26, B.city.y - 26, B.city.w + 52, B.city.h + 52, 'CITY: ' + (B.city.name || 'none'));
+  box(B.camp.x, B.camp.y, B.camp.w, B.camp.h, 'CAMP: ' + (B.camp.name || 'none'));
   B.fords.forEach(f => box(f.x - 60, f.y - 30, 120, 60, 'FORD: ' + f.name));
   B.forests.forEach(fo => { g.beginPath(); g.ellipse(fo.x, fo.y, fo.r, fo.r * .8, 0, 0, PI * 2); g.stroke(); g.fillText('FOREST', fo.x - 50, fo.y); });
   B.hills.forEach(h => { g.beginPath(); g.ellipse(h.x, h.y, h.rx, h.ry, 0, 0, PI * 2); g.stroke(); g.fillText('HILL', h.x - 25, h.y); });
-  g.strokeStyle = '#00e5ff'; g.lineWidth = 6; g.beginPath(); curve(g, B.river); g.stroke(); g.beginPath(); curve(g, B.tributary); g.stroke(); g.fillStyle = '#00e5ff'; g.fillText('RIVER CENTRELINE (Orontes, flows south to north)', 1560, 1300);
+  g.strokeStyle = '#00e5ff'; g.lineWidth = 6; g.beginPath(); curve(g, B.river); g.stroke(); g.beginPath(); curve(g, B.tributary); g.stroke(); g.fillStyle = '#00e5ff'; g.fillText('RIVER CENTRELINE', 1560, 1300);
   g.strokeStyle = '#ffd400'; g.lineWidth = 6; g.beginPath(); curve(g, B.road); g.stroke(); g.fillStyle = '#ffd400'; g.fillText('ROAD', 1200, 1320);
   g.fillStyle = '#ff2a2a'; g.font = 'bold 40px system-ui'; g.fillText('N (north is up) \u2191   map ' + W.w + ' x ' + W.h + ' px, paint at 2x = ' + W.w * 2 + ' x ' + W.h * 2, 40, 60);
   const a = document.createElement('a'); a.download = 'gaugamela-layout-guide.png'; a.href = T.toDataURL('image/png'); a.click();
@@ -1065,7 +1069,7 @@ $('unitPrev').onclick = () => openUnit(unitIdx - 1);
 $('unitNext').onclick = () => openUnit(unitIdx + 1);
 $('unitPlate').onclick = () => { const u = (S.units || [])[unitIdx]; if (!u) return; const n = unitPhotos(u).length; if (n > 1) showUnitPhoto((unitPhoto + 1) % n); };
 $('chooseWatch').onclick = () => startMode('watch', { skipGlobe: true });
-$('chooseCommand').onclick = () => { setPlayer('egypt'); startMode('command', { skipGlobe: true }); };
+$('chooseCommand').onclick = () => { setPlayer('macedon'); startMode('command', { skipGlobe: true }); };
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
 $('debriefWatch').onclick = () => startMode('watch');
 $('debriefCommand').onclick = () => startMode('command');
@@ -1073,14 +1077,14 @@ $('debriefIntro').onclick = startIntro;
 $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if (f.side === player && alive(f) && f.state !== 'rout') selected.add(f.id); }); renderSelection(); };
 $('sideSel').value = player;
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
-$('chooseCommandH').onclick = () => { setPlayer('hittite'); startMode('command', { skipGlobe: true }); };
+$('chooseCommandH').onclick = () => { setPlayer('persia'); startMode('command', { skipGlobe: true }); };
 $('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.add('show'); };
 $('pmClose').onclick = () => { $('playMenu').classList.remove('show'); $('playGame').classList.add('show'); };
 $('pmWatch').onclick = () => $('chooseWatch').click();
-$('pmEgypt').onclick = () => $('chooseCommand').click();
-$('pmHittite').onclick = () => $('chooseCommandH').click();
+$('pmMacedon').onclick = () => $('chooseCommand').click();
+$('pmPersian').onclick = () => $('chooseCommandH').click();
 $('haltBtn').onclick = () => { selected.forEach(id => { const f = byId[id]; if (f.state === 'move' || f.state === 'attack') { f.state = 'hold'; } }); };
-$('retreatBtn').onclick = () => { const r = player === 'egypt' ? { x: B.camp.x + 60, y: B.camp.y + 60 } : { x: S.ai.hittite.holdPoint.x - 60, y: S.ai.hittite.holdPoint.y - 60 }; let i = 0; selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = r.x + (i % 3) * 60; f.ty = r.y + Math.floor(i / 3) * 60; f.state = 'move'; i++; }); };
+$('retreatBtn').onclick = () => { const r = S.sides[player].rally; let i = 0; selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = r.x + (i % 3) * 60; f.ty = r.y + Math.floor(i / 3) * 60; f.state = 'move'; i++; }); };
 
 /* ---------------- main loop ---------------- */
 function tick(t) {

@@ -1,11 +1,11 @@
-/* Opening shot: the Earth from space, two slow turns, then a dive to the Orontes.
+/* Opening shot: the Earth from space, two slow turns, then a dive to Mesopotamia.
    Orthographic projection drawn by hand on a 2D canvas; land from world.js. */
 window.GaugamelaGlobe = (() => {
   'use strict';
-  const D = Math.PI / 180, KADESH = { lon: 36.52, lat: 34.56 };
+  const D = Math.PI / 180, REGION = { lon: 43.6, lat: 35.8 };
   const RINGS = (window.GAUGAMELA_WORLD && window.GAUGAMELA_WORLD.rings) || [];
-  const BORDERS = window.KADESH_BORDERS || { modern: [], ancient: [] };
-  const NEAR_EAST = { lon: 36.5, lat: 33 };   // centre of the pull-back that shows the whole region
+  const BORDERS = window.GAUGAMELA_BORDERS || { modern: [], ancient: [] };
+  const NEAR_EAST = { lon: 44, lat: 33 };   // centre of the pull-back that shows the whole region
   // Pre-computed per ring: Float32 arrays of lon(rad), cos(lat), sin(lat), plus a lon/lat bounding box.
   const PRE = RINGS.map(r => {
     const n = r.length, lon = new Float32Array(n), cl = new Float32Array(n), sl = new Float32Array(n);
@@ -90,7 +90,6 @@ window.GaugamelaGlobe = (() => {
     [[32.5,15.6],[31.5,12.0],[30.5,9.5],[30.0,6.0],[31.5,3.5],[32.5,1.0]],                                                                                            // White Nile
     [[38.5,39.5],[38.0,37.8],[38.8,36.8],[39.5,36.0],[40.5,35.0],[41.8,34.3],[43.0,33.5],[44.3,32.5],[45.5,31.5],[46.5,31.0],[47.5,30.5],[48.5,30.0]],                 // Euphrates
     [[40.0,40.0],[41.0,38.5],[42.2,37.2],[43.0,36.3],[43.8,35.5],[44.2,34.5],[44.4,33.3],[45.5,32.5],[46.5,31.5],[47.5,30.5]],                                         // Tigris
-    [[36.4,33.9],[36.5,34.3],[36.52,34.56],[36.6,35.0],[36.2,35.6],[36.0,36.3],[36.2,36.6]],                                                                           // Orontes
     [[35.8,33.2],[35.6,32.5],[35.55,31.8],[35.5,31.4]],                                                                                                               // Jordan
     [[38.5,39.0],[36.5,38.5],[34.5,38.5],[33.5,39.5],[34.5,40.5],[35.5,41.0],[36.0,41.7]],                                                                            // Kizilirmak (Halys)
     [[40.5,38.0],[42.5,38.5],[44.0,39.5],[46.5,40.5],[48.5,39.7],[49.5,39.3]],                                                                                        // Aras
@@ -100,9 +99,9 @@ window.GaugamelaGlobe = (() => {
   const ICE = [ [[-55,60],[-45,60],[-20,70],[-18,80],[-30,83],[-60,82],[-70,78]] ];                                      // Greenland
   const SAND = '#cdb57c', SAND_EDGE = 'rgba(205,181,124,0)';
   const LABELS = [
-    { lon: 30.5, lat: 27, text: 'EGYPT', size: 1 }, { lon: 34, lat: 39.5, text: 'HATTI', size: 1 }, { lon: 22, lat: 34.5, text: 'MEDITERRANEAN SEA', size: .7, italic: true },
-    { lon: 31.2, lat: 30.0, text: 'Memphis', size: .55, dot: true }, { lon: 34.6, lat: 40.0, text: 'Hattusa', size: .55, dot: true }, { lon: 37.15, lat: 36.2, text: 'Aleppo', size: .55, dot: true },
-    { lon: 36.52, lat: 34.56, text: 'KADESH', size: .85, pin: true }
+    { lon: 30.5, lat: 27, text: 'EGYPT', size: 1 }, { lon: 53, lat: 32, text: 'PERSIA', size: 1 }, { lon: 22, lat: 34.5, text: 'MEDITERRANEAN SEA', size: .7, italic: true },
+    { lon: 44.42, lat: 32.54, text: 'Babylon', size: .55, dot: true }, { lon: 44.01, lat: 36.19, text: 'Arbela (Erbil)', size: .55, dot: true },
+    { lon: REGION.lon, lat: REGION.lat, text: 'NORTHERN MESOPOTAMIA', size: .85, pin: true }
   ];
   let cv, c, w, h, raf = 0, stars = [], cb = {}, st = null, t0 = 0, lastT = 0, dpr = 1;
   const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
@@ -220,18 +219,18 @@ window.GaugamelaGlobe = (() => {
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
-    if (st.phase === 'idle') { st.lon0 = KADESH.lon; st.R = R0; st.lat0 = 24; st.labels = 0; }
+    if (st.phase === 'idle') { st.lon0 = REGION.lon; st.R = R0; st.lat0 = 24; st.labels = 0; }
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
       st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24; st.labels = 0;
       if (cb.onSpinProgress) cb.onSpinProgress(k);
       if (!st.spun && k >= .25) { st.spun = true; if (cb.onSpun) cb.onSpun(); }   // narration starts a quarter of the way round
-      if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = KADESH.lon; }
+      if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = REGION.lon; }
     } else if (st.phase === 'dive1') {
       if (cb.onSpinProgress) cb.onSpinProgress(1);
       // pull in until the whole Near East fills the view
       const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
-      st.R = R0 * Math.pow(PULL, e); st.lat0 = 24 + (NEAR_EAST.lat - 24) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;
+      st.R = R0 * Math.pow(PULL, e); st.lat0 = 24 + (NEAR_EAST.lat - 24) * e; st.lon0 = REGION.lon + (NEAR_EAST.lon - REGION.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;
       if (k >= 1) { st.phase = 'modern'; t0 = now; }
     } else if (st.phase === 'modern') {
       const k = Math.min(1, (now - t0) / MODERN_SECS); st.modern = 1;
@@ -242,9 +241,9 @@ window.GaugamelaGlobe = (() => {
       st.ancient = Math.min(1, e / XFADE_SECS); st.modern = e < XFADE_SECS + OVERLAP_SECS ? 1 : Math.max(0, 1 - (e - XFADE_SECS - OVERLAP_SECS) / XFADE_SECS);
       if (k >= 1) { st.phase = 'dive2'; t0 = now; }
     } else if (st.phase === 'dive2') {
-      // drop onto Kadesh
+      // drop onto the region
       const k = Math.min(1, (now - t0) / DIVE2_SECS), e = ease(k);
-      st.R = R0 * PULL * Math.pow(CLOSE / PULL, e); st.lat0 = NEAR_EAST.lat + (KADESH.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (KADESH.lon - NEAR_EAST.lon) * e;
+      st.R = R0 * PULL * Math.pow(CLOSE / PULL, e); st.lat0 = NEAR_EAST.lat + (REGION.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (REGION.lon - NEAR_EAST.lon) * e;
       st.ancient = Math.max(0, 1 - k / .4); st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = -h * ((cb.lift ? .22 : .04) * (1 - e) + .05 * e);
       if (k >= 1) { st.phase = 'fade'; t0 = now; }
     } else if (st.phase === 'fade') {
@@ -256,7 +255,7 @@ window.GaugamelaGlobe = (() => {
   function smooth(k) { return k < .12 ? (k / .12) * (k / .12) * .06 : k > .88 ? 1 - ((1 - k) / .12) * ((1 - k) / .12) * .06 : .06 + (k - .12) / .76 * .88; }
   function start(canvas, callbacks) {
     cv = canvas; c = cv.getContext('2d'); cb = callbacks || {}; size(); window.addEventListener('resize', size);
-    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: KADESH.lon, lat0: 24, R: 100, labels: 0, modern: 0, ancient: 0, ox: 0, oy: 0 }; lastT = 0;
+    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: REGION.lon, lat0: 24, R: 100, labels: 0, modern: 0, ancient: 0, ox: 0, oy: 0 }; lastT = 0;
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
   }
   const nowS = () => performance.now() / 1000;   // same time base as the animation-frame timestamps

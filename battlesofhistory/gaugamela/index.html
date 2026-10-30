@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Battle of Kadesh — Historical Reenactment & Command</title>
+<title>Battle of Gaugamela — Historical Reenactment & Command</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -238,7 +238,7 @@
 </head>
 <body data-mode="intro">
 <header>
-  <div><div class="brand">BATTLE OF KADESH</div><div class="subtitle">Historical reenactment & command · c. 1274 BCE · runs locally, no install</div></div>
+  <div><div class="brand">BATTLE OF GAUGAMELA</div><div class="subtitle">Historical reenactment & command · 1 October 331 BCE · runs locally, no install</div></div>
   <div class="top-actions">
     <button id="introBtn">📜 Intro</button>
     <button id="watchBtn" class="primary">▶ Watch reenactment</button>
@@ -295,10 +295,10 @@
     <button id="playBig" title="Begin with narration" aria-label="Begin with narration"><span></span></button>
     <button id="playGame" title="Play" aria-label="Play"><span></span></button>
     <div id="playMenu">
-      <div class="pm-title">BATTLE OF KADESH</div>
+      <div class="pm-title">BATTLE OF GAUGAMELA</div>
       <button id="pmWatch" class="primary">▶ Play the reenactment</button>
-      <button id="pmEgypt" class="primary">⚔ Play as Egypt</button>
-      <button id="pmHittite" class="primary">⚔ Play as the Hittites</button>
+      <button id="pmMacedon" class="primary">⚔ Play as Macedon</button>
+      <button id="pmPersian" class="primary">⚔ Play as Persia</button>
       <button id="pmClose">Back</button>
     </div>
     <div id="titleCard"></div>
@@ -319,8 +319,8 @@
           </div>
           <div class="actions" id="introChoice" style="display:none">
             <button id="chooseWatch" class="primary big">▶ Watch the battle unfold</button>
-            <button id="chooseCommand" class="primary big">⚔ Command Egypt</button>
-          <button id="chooseCommandH" class="primary big">⚔ Command the Hittites</button>
+            <button id="chooseCommand" class="primary big">⚔ Command Macedon</button>
+          <button id="chooseCommandH" class="primary big">⚔ Command Persia</button>
             <span class="spacer"></span>
             <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
           </div>
@@ -397,7 +397,7 @@
     </section>
     <section class="card">
       <h2>Controls</h2>
-      <p class="muted"><b>Select:</b> left-click a formation, or drag a box around several (Ctrl-drag adds to the selection).<br><b>Orders:</b> with formations selected, right-click anywhere on the map for the command menu. Attack, move, face, halt and fall back apply to every formation you have selected.<br><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom. The camera follows the narration until you move it; press <b>F</b> to follow again.<br><b>Space:</b> pause · <b>R:</b> restart · <b>E:</b> explain this moment (also the 💡 on the caption) · <b>N:</b> next chapter · <b>. (full stop):</b> fast forward · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Egyptian account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
+      <p class="muted"><b>Select:</b> left-click a formation, or drag a box around several (Ctrl-drag adds to the selection).<br><b>Orders:</b> with formations selected, right-click anywhere on the map for the command menu. Attack, move, face, halt and fall back apply to every formation you have selected.<br><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom. The camera follows the narration until you move it; press <b>F</b> to follow again.<br><b>Space:</b> pause · <b>R:</b> restart · <b>E:</b> explain this moment (also the 💡 on the caption) · <b>N:</b> next chapter · <b>. (full stop):</b> fast forward · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Ancient account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
     </section>
     <section class="card">
       <h2>Battlefield briefing</h2>
@@ -414,8 +414,8 @@
     </section>
     <section class="card cmd-only">
       <h2>Orders</h2>
-      <div class="orders"><label class="tiny">Side <select id="sideSel"><option value="egypt">Egypt</option><option value="hittite">Hittites</option></select></label><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back</button></div>
-      <p class="muted">Choose your side. Click a formation or drag a box around several to select them (Ctrl-drag adds). Right-click the map for the order menu: attack-move, move, face, halt, fall back. Pan with the arrow keys, the minimap or the wheel; Shift-drag draws a zoom box. As the Hittites you start concealed behind the city with the whole chariot force in hand. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
+      <div class="orders"><label class="tiny">Side <select id="sideSel"><option value="macedon">Macedonians</option><option value="persia">Persians</option></select></label><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back</button></div>
+      <p class="muted">Choose your side. Click a formation or drag a box around several to select them (Ctrl-drag adds). Right-click the map for the order menu: attack-move, move, face, halt, fall back. Pan with the arrow keys, the minimap or the wheel; Shift-drag draws a zoom box. As the Persians you hold the centre and the chariot force; the Macedonians advance as history had it until they sight you. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
     </section>
     <section class="card">
       <h2>Battle log</h2>
