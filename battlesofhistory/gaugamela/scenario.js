@@ -159,7 +159,7 @@ window.GAUGAMELA_SCENARIO = {
     { id: 'thess',   side: 'macedon', name: 'Thessalian cavalry (Parmenion)', division: 'Parmenion', type: 'cavalry', cols: 6, rows: 2, power: 1.0, x: 560,  y: 1260,
       count: 'Part of the Macedonian horse (estimate c. 7,000 in all)', confidence: 'ancient',
       note: 'Parmenion’s left wing bore the heaviest pressure from the Persian right, according to Arrian.' },
-    { id: 'agri',    side: 'macedon', name: 'Agrianian javelinmen', division: 'Light troops', type: 'infantry', cols: 4, rows: 3, power: 0.8, x: 880, y: 1230,
+    { id: 'agri',    side: 'macedon', name: 'Agrianian javelinmen', division: 'Light troops', type: 'archers', cols: 4, rows: 3, power: 0.8, x: 880, y: 1230,
       count: 'Light infantry screen', confidence: 'ancient',
       note: 'Light troops helped to blunt the chariot charge, according to Arrian.' },
     { id: 'phal',    side: 'macedon', name: 'Phalanx (pezhetairoi)', division: 'Centre', type: 'infantry', cols: 10, rows: 5, power: 1.3, x: 1080, y: 1300,
