@@ -396,14 +396,14 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'Persian cavalry should not be shown as heavily armoured knights. The sources do not describe that, and the evidence does not support it.', tag: 'estimate' }
       ] },
     { side: 'persia', type: 'infantry', name: 'Persian infantry', desc: 'Foot soldiers from many peoples of the empire, in the centre.', tag: 'ancient',
-      photos: ['10-persepolis-guards.jpg', '11-susa-archers.jpg'],
+      photos: ['10-persepolis-guards.jpg', '11-susa-archers.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
       lines: [
         { text: 'Arrian lists contingents from across the Persian empire, from Babylon to the eastern provinces, placed in the centre and massed behind it.', tag: 'ancient', cite: 'Arrian III.8, III.11' },
         { text: 'The ancient numbers for the Persian army are not reliable, and no modern total is agreed.', tag: 'estimate' },
         { text: 'Historians think Darius relied mainly on his cavalry. How much of the infantry actually fought is not clear.', tag: 'estimate' }
       ] },
     { side: 'persia', type: 'infantry', name: 'Darius and the royal guard', desc: 'The Great King in the centre, among his guards and kinsmen.', tag: 'established',
-      photos: ['02-mosaic-darius.jpg', '11-susa-archers.jpg', '05-persian-daric.jpg'],
+      photos: ['02-mosaic-darius.jpg', '11-susa-archers.jpg', '05-persian-daric.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
       lines: [
         { text: 'Darius III stood in the centre of his army, the usual place for a Persian king. Arrian says his kinsmen and the Persian guards were around him.', tag: 'ancient', cite: 'Arrian II.8, III.11' },
         { text: 'Among the guards Arrian names the “apple-bearers”, picked spearmen whose spears had golden apples on the butt.', tag: 'ancient', cite: 'Arrian III.11; Herodotus VII.41' },

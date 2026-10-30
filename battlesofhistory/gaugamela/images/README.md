@@ -38,3 +38,4 @@ Sizes: 1200 px on the long side is plenty. JPEG keeps the folder small.
 The armies panel reuses the pictures above (see `units[].photos` in
 `scenario.js`). The Agrianian javelinmen and the Armenian and Cappadocian
 cavalry have no picture yet.
+| 16-susa-archer-detail.jpg | Head of an archer from the Susa frieze (unit write-ups only) | Musée du Louvre |
