@@ -75,7 +75,7 @@ window.GAUGAMELA_SCENARIO = {
         { at: 13, file: '02-mosaic-darius.jpg', caption: 'Darius III in his chariot, detail of the Alexander Mosaic. The Greek writers say he fled the field; the Babylonian diary may tell it differently.', ref: 'Museo Archeologico Nazionale, Naples', credit: 'Photo: Berthold Werner, Wikimedia Commons, CC BY-SA 3.0' }
       ],
       subtitle: '1 October 331 BCE · northern Mesopotamia',
-      focus: { x: 1200, y: 900 }, zoom: 1,
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 14,
       lines: [
@@ -91,7 +91,7 @@ window.GAUGAMELA_SCENARIO = {
         { at: 15, file: '05-persian-daric.jpg', caption: 'A gold daric, the coin of the Persian kings. It shows the king as an archer. Persian kings minted them from about 500 BCE until Alexander’s conquest.', ref: 'Achaemenid gold daric, 5th century BCE', credit: 'Photo: Deflim, Wikimedia Commons, public domain' },
         { at: 22, file: '06-persian-empire-map.jpg', caption: 'The Persian empire of the Achaemenid kings at its greatest extent, under Darius I about 500 BCE. Darius III still ruled most of it when Alexander invaded. A modern map.', ref: 'Modern map; satrapies after Encyclopaedia Iranica', credit: 'Map: Cattette, Wikimedia Commons, CC BY-SA 4.0' }
       ],
-      focus: { x: 1200, y: 900 }, zoom: 1,
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 18,
       lines: [
@@ -138,7 +138,7 @@ window.GAUGAMELA_SCENARIO = {
         { at: 0, file: '13-ptolemy-coin.jpg', caption: 'A silver coin struck in Alexandria under Ptolemy I, showing Alexander in an elephant-scalp headdress. Ptolemy fought with Alexander and later wrote a history of his campaigns. Arrian used it; it is now lost.', ref: 'Tetradrachm, Alexandria, between 305 and 282 BCE; Bibliothèque nationale de France, FG M2157', credit: 'Photo: Marie-Lan Nguyen, Wikimedia Commons, CC BY 2.5' },
         { at: 16, file: '14-babylonian-diary.jpg', caption: 'A Babylonian astronomical diary: a clay tablet of nightly notes on the sky, the weather and the markets, with the news of the day. This one, for 323–322 BCE, records the death of Alexander. The diary for 331 BCE, which records Gaugamela, is a tablet of the same kind.', ref: 'Clay tablet; British Museum, BM 45962', credit: 'Photo: Shaunnol, Wikimedia Commons, public domain' }
       ],
-      focus: { x: 1200, y: 900 }, zoom: .8,
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 18,
       lines: [
@@ -152,7 +152,7 @@ window.GAUGAMELA_SCENARIO = {
       media: [
         { at: 0, file: '15-le-brun-arbela.jpg', caption: 'The Battle of Arbela, a Gobelins tapestry woven to a design by Charles Le Brun for Louis XIV: one artist’s imagination of the battle, two thousand years later. Like this map, every picture of the battle is a reconstruction.', ref: 'Tapestry after Charles Le Brun, designed between 1660 and 1672', credit: 'Wikimedia Commons, public domain' }
       ],
-      focus: { x: 1200, y: 900 }, zoom: .7,
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 16,
       lines: [
@@ -162,7 +162,7 @@ window.GAUGAMELA_SCENARIO = {
     },
     {
       title: 'The armies are drawn up. What happens next?',
-      focus: { x: 1200, y: 900 },
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       choice: true,
       lines: [
@@ -255,7 +255,8 @@ window.GAUGAMELA_SCENARIO = {
       explain: 'The Greek accounts describe a wedge toward Darius. The exact shape of the gap and the route of the charge are interpretations, not a record.',
       cite: 'Arrian III.14; the route is a reconstruction',
       orders: [
-        { id: 'comp', to: { x: 1330, y: 560 }, speed: 36 }, { id: 'hyp', to: { x: 1320, y: 700 }, speed: 22 },
+        { id: 'comp', via: [{ x: 1880, y: 900 }], to: { x: 1330, y: 560 }, speed: 36 }, { id: 'hyp', via: [{ x: 1770, y: 980 }], to: { x: 1320, y: 700 }, speed: 22 },
+        // both go round the east end of the chariot line, not through it
         { id: 'darius', state: 'hold' }
       ] },
     { t: 55, title: 'The Persian centre breaks', tag: 'disputed', focus: { x: 1180, y: 380 },

@@ -387,7 +387,8 @@ function applyOrder(o) {
   const f = byId[o.id]; if (!f) return;
   if (o.visible !== undefined) { f.known = o.visible; if (o.visible) f.present = true; }
   if (o.at) { f.x = o.at.x; f.y = o.at.y; }
-  if (o.to) { f.tx = o.to.x; f.ty = o.to.y; f.state = o.state || 'move'; } else if (o.state) f.state = o.state;
+  // `via`: waypoints taken in order before `to`, e.g. to go round the end of a line rather than through it.
+  if (o.to) { f.route = (o.via || []).concat([o.to]); const n = f.route.shift(); f.tx = n.x; f.ty = n.y; f.state = o.state || 'move'; } else if (o.state) f.state = o.state;
   if (o.speed) f.speed = o.speed;
   if (o.strength !== undefined) { f.strength = o.strength; f.strengthTarget = null; }
   if (o.strengthTo !== undefined) { f.strengthTarget = o.strengthTo; f.strengthRate = Math.abs(f.strength - o.strengthTo) / (o.over || 5); }
@@ -409,6 +410,7 @@ function moveFormation(f) {
   const dx = wp.x - f.x, dy = wp.y - f.y, d = Math.hypot(dx, dy), dEnd = Math.hypot(f.tx - f.x, f.ty - f.y);
   const sp = f.speed * (f.state === 'rout' ? 1.25 : 1) * (f.inWater ? .55 : 1) * DT;
   if (dEnd > 2) { f.x += dx / d * Math.min(sp, d); f.y += dy / d * Math.min(sp, d); f.facing = Math.atan2(dy, dx); }
+  else if (f.route && f.route.length) { const n = f.route.shift(); f.tx = n.x; f.ty = n.y; }
   else {
     if (f.then) { f.state = f.then; f.then = null; }
     else if (f.state === 'rout') f.state = mode === 'command' ? 'withdrawn' : 'scattered';
@@ -493,7 +495,7 @@ function combat() {
   formations.forEach(f => {
     if (!alive(f)) return;
     if (f.strength <= 0) { f.strength = 0; f.state = 'destroyed'; addLog(f.name + ' destroyed'); if (selected.has(f.id)) selected.delete(f.id); }
-    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === player) { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true, audioFor('cmd', 'breaks')); if (cam.follow) focusOn(f.x, f.y); } }
+    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; f.route = null; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === player) { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true, audioFor('cmd', 'breaks')); if (cam.follow) focusOn(f.x, f.y); } }
   });
 }
 function fog() {
@@ -534,16 +536,17 @@ const OVER = () => VH() * .35;
 // When the whole width is in view, the map is centred and black shows on both sides.
 const xLo = () => VW() > W.w ? (W.w - VW()) / 2 : 0, xHi = () => VW() > W.w ? (W.w - VW()) / 2 : W.w - VW();
 function clampView() { view.x = clamp(view.x, xLo(), xHi()); view.y = clamp(view.y, 0, Math.max(0, W.h - VH()) + OVER()); }
-// Zoom at which the whole battlefield fits above the caption box.
-const fitZ = () => Math.min(view.w / W.w, vAt(view.h * .76) * view.h * TR() / W.h);
-function focusOn(x, y) { cam.tx = x; cam.ty = y; cam.fit = false; }
+// Zoom at which the whole battlefield fits in the top part `k` of the screen, above the caption box.
+const fitZ = (k = .76) => Math.min(view.w / W.w, vAt(view.h * k) * view.h * TR() / W.h);
+function focusOn(x, y) { cam.tx = x; cam.ty = y; cam.fit = false; cam.fy = null; }
 // Ease out to the whole battlefield, top edge at the top of the screen.
-function showWholeMap() { cam.fit = true; cam.tz = fitZ(); cam.tx = W.w / 2; cam.ty = 0; }
+function showWholeMap(k) { cam.fit = true; cam.tz = fitZ(k); cam.tx = W.w / 2; cam.ty = 0; }
 // Frame a point in the upper part of the screen, above the caption box.
-function frame(x, y, k = .22) { focusOn(x, y + VH() * k); }
+function frame(x, y, k = .22) { focusOn(x, y + VH() * k); cam.fy = y; cam.fk = k; }
 function updateCamera() {
   if (cam.tz !== null) { view.z += (cam.tz - view.z) * .08; if (Math.abs(cam.tz - view.z) < .002) { view.z = cam.tz; cam.tz = null; } }
   if (cam.fit) cam.ty = VH() / 2;
+  else if (cam.fy !== null && cam.fy !== undefined && cam.tx !== null) cam.ty = cam.fy + VH() * cam.fk;   // keep the framing right while the zoom eases
   if (cam.tx === null) return;
   const gx = clamp(cam.tx - VW() / 2, xLo(), xHi()), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
   view.x += (gx - view.x) * .08; view.y += (gy - view.y) * .08;
@@ -775,9 +778,9 @@ function showIntro(i) {
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('ctrlStrip').classList.toggle('lit', false); $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   markers = sl.markers || [];
-  if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
+  if (sl.zoom && sl.zoom !== 'fit') cam.tz = clamp(sl.zoom, .45, 2.4);
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
-  if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
+  if (sl.zoom === 'fit') showWholeMap(.6); else if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
   if (introStarted) speakSlide(sl);
@@ -888,7 +891,7 @@ let marquee = null, menuTarget = null;
 function ownSelected() { return [...selected].map(id => byId[id]).filter(f => f && alive(f) && f.state !== 'rout' && f.side === player); }
 function orderMove(p, state) {
   const fs = ownSelected(); if (!fs.length) return; const cols = Math.ceil(Math.sqrt(fs.length));
-  fs.forEach((f, k) => { const g = legal({ x: clamp(p.x + (k % cols - (cols - 1) / 2) * 90, 20, W.w - 20), y: clamp(p.y + Math.floor(k / cols) * 70, 20, W.h - 20) }); f.tx = g.x; f.ty = g.y; f.state = state || 'move'; f.aiPhase = null; });
+  fs.forEach((f, k) => { const g = legal({ x: clamp(p.x + (k % cols - (cols - 1) / 2) * 90, 20, W.w - 20), y: clamp(p.y + Math.floor(k / cols) * 70, 20, W.h - 20) }); f.route = null; f.tx = g.x; f.ty = g.y; f.state = state || 'move'; f.aiPhase = null; });
   addLog((state === 'attack' ? 'Attack-move' : 'Move') + ' ordered: ' + fs.length + ' formation' + (fs.length > 1 ? 's' : '')); renderSelection();
 }
 function orderHalt() { ownSelected().forEach(f => { if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; }); addLog('Halt'); renderSelection(); }
