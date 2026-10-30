@@ -45,10 +45,10 @@ window.BATTLES = [
     title: 'Battle of Gaugamela',
     date: '1 October 331 BCE', year: -331,
     place: 'Near Gaugamela, northern Mesopotamia',
-    sides: 'Macedonian army under Alexander III vs. Achaemenid Persian army under Darius III',
-    blurb: 'Alexander advances obliquely across the plain, draws the Persian cavalry outward, and drives toward Darius. Watch the reconstructed battle or command the Macedonian army.',
+    sides: 'Macedonian army under Alexander III vs. Persian army under Darius III',
+    blurb: 'Alexander’s oblique advance, the scythed chariots, and the break in the Persian centre, on a plain whose site is not known. Watch the reconstruction or command either army.',
     cover: '',
-    coverCredit: 'Original schematic reconstruction; illustrated cover in development',
-    status: 'in progress'
+    coverCredit: 'Schematic reconstruction; no picture yet',
+    status: 'ready'
   }
 ];
