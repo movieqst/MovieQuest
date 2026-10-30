@@ -19,7 +19,8 @@ const PI = Math.PI;
 
 /* ---------------- state ---------------- */
 const view = { x: 0, y: 0, w: 1000, h: 650, z: 1.25 };
-const cam  = { tx: null, ty: null, follow: true };
+const WATCH_Z = 1.25;   // the zoom watch-mode chapters return to after the opening view of the whole map
+const cam  = { tx: null, ty: null, tz: null, fit: false, follow: true };
 let mode = 'intro';             // intro | watch | command
 let paused = false, cinematic = false, speed = 1, simTime = 0, acc = 0, lastFrame = 0, wall = 0;
 let formations = [], byId = {};
@@ -418,7 +419,8 @@ function moveFormation(f) {
 /* ---------------- watch mode ---------------- */
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
-  if (cam.follow && ev.focus) frame(ev.focus.x, ev.focus.y);
+  if (cam.follow && ev.zoom === 'fit') showWholeMap();
+  else if (cam.follow && ev.focus) { if (ev.zoom || view.z < WATCH_Z - .01) cam.tz = ev.zoom || WATCH_Z; frame(ev.focus.x, ev.focus.y); }
   caption(ev.title, ev.text, ev.tag, !fastForward, ev.audio || audioFor('event', S.events.indexOf(ev) + 1), ev.cite);
   addLog(fmtTime(ev.t) + ' ' + ev.title);
   renderTimeline();
@@ -529,13 +531,21 @@ function U(sx, sy) { const vw = VW(), vh = VH(), v = vAt(sy), s = sAt(v); return
 // The view may run a little past the south edge of the map, so that what the camera frames can sit in the upper part
 // of the screen, clear of the caption at the bottom. Beyond the edge the background is plain black.
 const OVER = () => VH() * .35;
-function clampView() { view.x = clamp(view.x, 0, Math.max(0, W.w - VW())); view.y = clamp(view.y, 0, Math.max(0, W.h - VH()) + OVER()); }
-function focusOn(x, y) { cam.tx = x; cam.ty = y; }
+// When the whole width is in view, the map is centred and black shows on both sides.
+const xLo = () => VW() > W.w ? (W.w - VW()) / 2 : 0, xHi = () => VW() > W.w ? (W.w - VW()) / 2 : W.w - VW();
+function clampView() { view.x = clamp(view.x, xLo(), xHi()); view.y = clamp(view.y, 0, Math.max(0, W.h - VH()) + OVER()); }
+// Zoom at which the whole battlefield fits above the caption box.
+const fitZ = () => Math.min(view.w / W.w, vAt(view.h * .76) * view.h * TR() / W.h);
+function focusOn(x, y) { cam.tx = x; cam.ty = y; cam.fit = false; }
+// Ease out to the whole battlefield, top edge at the top of the screen.
+function showWholeMap() { cam.fit = true; cam.tz = fitZ(); cam.tx = W.w / 2; cam.ty = 0; }
 // Frame a point in the upper part of the screen, above the caption box.
 function frame(x, y, k = .22) { focusOn(x, y + VH() * k); }
 function updateCamera() {
+  if (cam.tz !== null) { view.z += (cam.tz - view.z) * .08; if (Math.abs(cam.tz - view.z) < .002) { view.z = cam.tz; cam.tz = null; } }
+  if (cam.fit) cam.ty = VH() / 2;
   if (cam.tx === null) return;
-  const gx = clamp(cam.tx - VW() / 2, 0, Math.max(0, W.w - VW())), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
+  const gx = clamp(cam.tx - VW() / 2, xLo(), xHi()), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
   view.x += (gx - view.x) * .08; view.y += (gy - view.y) * .08;
   if (Math.abs(gx - view.x) < .5 && Math.abs(gy - view.y) < .5) { view.x = gx; view.y = gy; cam.tx = null; }
 }
@@ -860,7 +870,7 @@ function showExplain() {
 
 /* ---------------- input ---------------- */
 function toWorld(e) { const r = canvas.getBoundingClientRect(); return U(e.clientX - r.left, e.clientY - r.top); }
-function manualCamera() { cam.tx = null; cam.follow = false; $('followBtn').classList.remove('active'); }
+function manualCamera() { cam.tx = null; cam.tz = null; cam.fit = false; cam.follow = false; $('followBtn').classList.remove('active'); }
 function pickFormation(p) {
   let best = null, bd = 1e9;
   formations.forEach(f => { if (!alive(f) || (!f.known && mode === 'command' && f.side !== player)) return; const r = Math.max(f.cols, f.rows) * (f.type === 'chariot' ? 15 : 7) + 14; const d = dist(f, p); if (d < r && d < bd) { bd = d; best = f; } });

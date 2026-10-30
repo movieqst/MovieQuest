@@ -227,7 +227,7 @@ window.GAUGAMELA_SCENARIO = {
 
   /* ---------- Watch mode: the historical sequence, in order ---------- */
   events: [
-    { t: 0, title: 'Deployment', tag: 'ancient', focus: { x: 1200, y: 1120 },
+    { t: 0, title: 'Deployment', tag: 'ancient', focus: { x: 1200, y: 1120 }, zoom: 'fit',
       text: 'Darius spreads his army across the plain: his cavalry is out on both wings, the chariots stand in front of the centre, and the royal guard is behind them. Alexander has the phalanx in the centre, the Companions on the right and Parmenion on the left.',
       explain: 'Why deploy like this? Darius had the ground levelled for his cavalry and chariots, and his wings were longer than Alexander’s line. Arrian describes the deployment; the exact frontage is not known.',
       cite: 'Arrian III.8–11',
