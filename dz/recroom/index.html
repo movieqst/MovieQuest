@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Rec Room — DZ Drop Zone</title>
+
+<!--
+  THE REC ROOM — the second viewing area
+  =====================================================================
+
+  A big screen with the stack underneath and a speaker either side, lit
+  from behind by neon the user picks. Same job as the Drive-In: somewhere
+  to actually watch what came out of the apps. Different room.
+
+  Three things here are load-bearing and worth knowing before editing:
+
+  - THE WHOLE UNIT IS SIZED IN vh, off one --u scale. A living room that
+    needs scrolling isn't a living room, so the TV, the stack and the
+    speakers all derive from viewport height and the layout never grows
+    past one screen. Change --u and everything moves together; set a
+    pixel size on one part and it will drift away from the rest at other
+    window sizes.
+
+  - THE METERS ARE REAL. A ChannelSplitter feeds one analyser per channel,
+    so the left and right meters show the actual left and right of
+    whatever is playing, and the woofers move with the actual bass. This
+    is why createMediaElementSource has to reconnect to destination --
+    routing an element into a graph and not connecting it onward makes it
+    silent. See ensureAudio().
+
+  - createMediaElementSource CAN ONLY BE CALLED ONCE PER ELEMENT. Calling
+    it again throws and takes the audio with it, so it is created once and
+    the <video> src is swapped underneath it. Don't "simplify" this by
+    building a fresh element per file.
+
+  Everything folder-related is an enhancement, exactly as in the Drive-In:
+  with no folder the shelf explains itself and dropping a file still works.
+-->
+
+<style>
+  :root {
+    --u: 1vh;                       /* the one scale everything derives from */
+    --neon: #ff2fb0;
+    --neon-soft: #ff2fb055;
+    --neon-dim: #ff2fb022;
+    --glow: 1;                      /* 0 .. 1.4, the intensity steps */
+    --wall: #0c0c11;
+    --case: #17171d;
+    --case-lip: #26262f;
+    --ink: #d8d3e6;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; overflow: hidden;
+    background: var(--wall);
+    color: var(--ink);
+    font: 500 14px/1.4 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── the room ──────────────────────────────────────────────────── */
+
+  .room {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    /* The floor is a band at the bottom rather than a separate element --
+       one gradient is cheaper than a stacking context that everything
+       else then has to sit above. */
+    background:
+      linear-gradient(to bottom, #08080c 0%, #0c0c11 58%, #101018 72%, #08080b 100%);
+  }
+
+  /* The bias light. A blurred slab BEHIND the unit, not a border on it:
+     backlighting is light thrown onto the wall, and a glow that hugs the
+     cabinet edges reads as a sticker instead. */
+  /* MUST BE WIDER THAN THE CABINET. Backlighting is the light that spills
+     PAST the unit onto the wall, so a slab narrower than the screen is
+     completely hidden behind it and the neon looks broken -- which is
+     exactly what happened when this was sized in fixed vh while the screen
+     went to 70vw. Both passes track the same viewport width the column
+     does, so the spill stays proportional at any window size. */
+  .bias {
+    position: absolute; z-index: 0;
+    width: min(96vw, calc(var(--u) * 168)); height: calc(var(--u) * 88);
+    top: 50%; left: 50%; transform: translate(-50%, -52%);
+    background: radial-gradient(58% 54% at 50% 50%, var(--neon) 0%, transparent 74%);
+    filter: blur(calc(var(--u) * 6));
+    opacity: calc(0.85 * var(--glow));
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: background .35s ease, opacity .35s ease;
+  }
+  /* A second, tighter pass so the wall just behind the screen is hottest.
+     Two soft passes beat one hard one -- a single gradient bright enough at
+     the centre has a visible edge where it ends. */
+  .bias.inner {
+    width: min(84vw, calc(var(--u) * 140)); height: calc(var(--u) * 68);
+    filter: blur(calc(var(--u) * 3.5));
+    opacity: calc(0.72 * var(--glow));
+  }
+  /* And a slash of it on the floor, which is what sells the light as coming
+     from behind the furniture rather than from nowhere. */
+  .bias.floor {
+    width: min(80vw, calc(var(--u) * 132)); height: calc(var(--u) * 16);
+    transform: translate(-50%, 0);
+    top: auto; bottom: calc(var(--u) * 2);
+    background: radial-gradient(50% 60% at 50% 50%, var(--neon) 0%, transparent 76%);
+    filter: blur(calc(var(--u) * 4));
+    opacity: calc(0.5 * var(--glow));
+  }
+
+  .unit {
+    position: relative; z-index: 1;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 0; width: 100%;
+    padding: 0 calc(var(--u) * 8);
+  }
+
+  /* ── speakers ──────────────────────────────────────────────────── */
+
+  .speaker {
+    width: calc(var(--u) * 13); height: calc(var(--u) * 64);
+    border-radius: calc(var(--u) * 0.8);
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 3px),
+      linear-gradient(105deg, #1b1b22 0%, #121218 42%, #0d0d12 100%);
+    border: 1px solid #24242e;
+    box-shadow:
+      inset 0 1px 0 #33333f,
+      0 0 calc(var(--u) * 2.4) var(--neon-dim),
+      0 calc(var(--u) * 1.4) calc(var(--u) * 3) rgba(0,0,0,.6);
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--u) * 2) 0 calc(var(--u) * 2.4);
+  }
+  .cone {
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 42% 38%, #3a3a46 0%, #1d1d25 46%, #0a0a0e 74%, #16161d 100%);
+    border: 1px solid #2b2b36;
+    box-shadow: inset 0 0 calc(var(--u) * 1.2) rgba(0,0,0,.85);
+    position: relative;
+    /* transform-origin default is fine; the pulse is a scale, so a cone
+       never moves off its own centre and the grille stays put. */
+    will-change: transform;
+  }
+  .cone::after {
+    content: ''; position: absolute; inset: 34%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 36%, #4a4a58, #16161d 70%);
+  }
+  .tweeter { width: calc(var(--u) * 4); height: calc(var(--u) * 4); }
+  .woofer  { width: calc(var(--u) * 9.4); height: calc(var(--u) * 9.4); }
+  .badge {
+    font-size: calc(var(--u) * 1.25); letter-spacing: .28em;
+    color: #6a6a7d; text-transform: uppercase;
+  }
+
+  /* ── the middle column: screen over stack ──────────────────────── */
+
+  /* The screen is the point of the room, so it takes 70% of the window's
+     WIDTH -- with a height-derived cap, because on a short wide window 70vw
+     of 16:9 is taller than the window and would push the stack off the
+     floor. min() picks whichever constraint bites first. The column owns
+     that width and the TV and stack both size off it, so the three stay in
+     proportion at every window shape. */
+  .column {
+    display: flex; flex-direction: column; align-items: center;
+    gap: calc(var(--u) * 1.6);
+    /* 120 is the widest screen that still leaves room for everything under
+       it: 120vh wide is 67.5vh of glass, plus the cabinet's padding and
+       footer (~4vh), the stack (~21vh) and the gaps -- which lands just
+       inside 100vh with a little air. Raise it and the stack starts falling
+       off the bottom on short windows. */
+    width: min(70vw, calc(var(--u) * 120));
+  }
+
+  /* The aspect ratio lives on .glass, NOT on .tv. .tv is a flex item, flex
+     items get min-height:auto, and the footer strip inside it is content --
+     so an aspect-ratio on .tv is a suggestion the footer can overrule, and
+     the cabinet quietly grows taller than 16:9 until the stack is pushed
+     off the bottom of the window. Sizing the glass and letting the cabinet
+     be content-height cannot drift that way. */
+
+  /* The halo. A wall wash alone stays a vague cloud however bright it gets;
+     what reads as bias lighting is a defined shape of light around the set.
+     Attaching it to .tv means it tracks the cabinet at every window size --
+     the earlier free-floating slab had to guess, and guessed wrong the
+     moment the screen went to 70vw. z-index:-1 puts it under .tv's own
+     background, so only the part beyond the negative inset shows: a rim of
+     light escaping from behind the telly, which is the real thing. */
+  .tv::before {
+    content: ''; position: absolute; z-index: -1;
+    inset: calc(var(--u) * -2.6);
+    border-radius: calc(var(--u) * 2.6);
+    background: var(--neon);
+    filter: blur(calc(var(--u) * 2.6));
+    opacity: calc(0.55 * var(--glow));
+    transition: background .35s ease, opacity .35s ease;
+  }
+  .tv {
+    position: relative;
+    width: 100%;
+    padding: calc(var(--u) * 0.9);
+    border-radius: calc(var(--u) * 1);
+    background: linear-gradient(160deg, #202029 0%, #101016 60%, #0a0a0f 100%);
+    border: 1px solid #2c2c38;
+    box-shadow:
+      inset 0 1px 0 #3a3a49,
+      0 0 calc(var(--u) * 3) var(--neon-dim),
+      0 calc(var(--u) * 1.6) calc(var(--u) * 4) rgba(0,0,0,.66);
+  }
+  .glass {
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    border-radius: calc(var(--u) * 0.5);
+    overflow: hidden;
+    background:
+      radial-gradient(120% 90% at 50% 42%, var(--neon-dim) 0%, transparent 62%),
+      #04040a;
+    box-shadow: inset 0 0 calc(var(--u) * 2.5) rgba(0,0,0,.9);
+  }
+  .glass video { width: 100%; height: 100%; object-fit: contain; background: #000; display: block; }
+  .idle {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: #5d5870; font-size: calc(var(--u) * 1.9); line-height: 1.7;
+    padding: 0 8%;
+  }
+  /* `display:flex` on .idle and the UA's `[hidden]{display:none}` have the
+     SAME specificity, and this stylesheet comes later, so it wins and the
+     idle text stays painted over the video. Every element given a display
+     here needs its own [hidden] rule. */
+  .idle[hidden], .glass video[hidden] { display: none; }
+  .tvfoot {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: calc(var(--u) * 0.7) calc(var(--u) * 0.6) 0;
+    font-size: calc(var(--u) * 1.15); letter-spacing: .3em; color: #55556a;
+  }
+  .pwr {
+    width: calc(var(--u) * 0.8); height: calc(var(--u) * 0.8); border-radius: 50%;
+    background: var(--neon); box-shadow: 0 0 calc(var(--u) * 1.2) var(--neon);
+  }
+
+  /* ── retro VCR ─────────────────────────────────────────────────── */
+
+  .stack {
+    width: 72%; display: flex; flex-direction: column; justify-content: center;
+    gap: 0; position: relative;
+  }
+  .gear { display: none; }
+
+  .vcr {
+    position: relative;
+    width: 100%; height: calc(var(--u) * 8.2);
+    background: linear-gradient(180deg, #0f0f15 0%, #0a0a0e 100%);
+    border: 1px solid #1a1a22; border-radius: calc(var(--u) * 0.3);
+    box-shadow: inset 0 1px 0 #1f1f28, 0 0 calc(var(--u) * 2) var(--neon-dim),
+      0 calc(var(--u) * 0.8) calc(var(--u) * 2) rgba(0,0,0,.7);
+    display: flex; align-items: center; padding: calc(var(--u) * 1.2) calc(var(--u) * 1.6);
+    gap: calc(var(--u) * 1.4);
+    margin-top: auto;
+  }
+
+  .vhs-tape {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--u) * 20);
+    height: calc(var(--u) * 11);
+    background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 5%, #3a3a3a 95%, #1a1a1a 100%);
+    border: 2px solid #0a0a0a;
+    border-radius: calc(var(--u) * 0.4);
+    padding: calc(var(--u) * 0.8);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    box-shadow:
+      0 calc(var(--u) * 0.4) 0 rgba(255,255,255,.1) inset,
+      0 calc(var(--u) * 1.6) calc(var(--u) * 4) rgba(0,0,0,1);
+    cursor: pointer;
+    transition: transform .15s ease;
+  }
+  .vhs-tape:hover { transform: translate(-50%, -50%) translateY(calc(var(--u) * -0.5)); }
+
+  /* VHS tape poking out from left side of VCR */
+  .vhs-tape-eject {
+    position: absolute;
+    left: calc(var(--u) * -8.5);
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(var(--u) * 8.5);
+    height: calc(var(--u) * 5.2);
+    background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 5%, #3a3a3a 95%, #1a1a1a 100%);
+    border: 2px solid #0a0a0a;
+    border-radius: calc(var(--u) * 0.3);
+    padding: calc(var(--u) * 0.4);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    box-shadow:
+      0 calc(var(--u) * 0.4) 0 rgba(255,255,255,.1) inset,
+      0 calc(var(--u) * 1.6) calc(var(--u) * 4) rgba(0,0,0,1);
+    z-index: 5;
+  }
+
+  .vhs-eject-label {
+    width: 100%;
+    height: calc(var(--u) * 3.2);
+    background: linear-gradient(135deg, #c41e3a 0%, #a01830 50%, #8b0000 100%);
+    border: 2px solid #ffdd00;
+    border-radius: calc(var(--u) * 0.2);
+    padding: calc(var(--u) * 0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: calc(var(--u) * 0.75);
+    font-weight: 900;
+    color: #ffff00;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.9);
+    letter-spacing: .08em;
+    overflow: hidden;
+    word-break: break-word;
+    line-height: 0.9;
+  }
+
+  .vhs-eject-reels {
+    width: 100%;
+    height: calc(var(--u) * 1.6);
+    display: flex; gap: calc(var(--u) * 0.8); justify-content: center; align-items: center;
+    margin-top: calc(var(--u) * 0.2);
+    background: linear-gradient(to bottom, rgba(0,0,0,.3), transparent);
+  }
+
+  .reel-small {
+    width: calc(var(--u) * 1.2);
+    height: calc(var(--u) * 1.2);
+    background: radial-gradient(circle at 35% 35%, #777, #333 40%, #111 100%);
+    border-radius: 50%;
+    border: 1px solid #000;
+    box-shadow: inset 0 2px 4px rgba(150,150,150,.3), inset 0 -2px 4px rgba(0,0,0,.8);
+    position: relative;
+  }
+  .reel-small::before {
+    content: '';
+    position: absolute;
+    inset: 30%;
+    background: radial-gradient(circle at 40% 40%, #222, #000);
+    border-radius: 50%;
+    border: 1px solid #000;
+  }
+
+  .vhs-label {
+    width: 100%;
+    height: calc(var(--u) * 6.8);
+    background: linear-gradient(135deg, #c41e3a 0%, #a01830 50%, #8b0000 100%);
+    border: 2px solid #ffdd00;
+    border-radius: calc(var(--u) * 0.2);
+    padding: calc(var(--u) * 0.6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: calc(var(--u) * 1.3);
+    font-weight: 900;
+    color: #ffff00;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.9), 0 0 8px rgba(0,0,0,.5);
+    letter-spacing: .12em;
+    overflow: hidden;
+    word-break: break-word;
+    line-height: 1.1;
+  }
+
+  .vhs-reels {
+    width: calc(100% - calc(var(--u) * 1.6));
+    height: calc(var(--u) * 3.2);
+    display: flex; gap: calc(var(--u) * 2); justify-content: center; align-items: center;
+    margin-top: calc(var(--u) * 0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,.3), transparent);
+    border-radius: calc(var(--u) * 0.2);
+  }
+
+  .reel {
+    width: calc(var(--u) * 2.4);
+    height: calc(var(--u) * 2.4);
+    background:
+      radial-gradient(circle at 35% 35%, #777, #333 40%, #111 100%);
+    border-radius: 50%;
+    border: 2px solid #000;
+    position: relative;
+    box-shadow:
+      inset 0 2px 4px rgba(150,150,150,.3),
+      inset 0 -2px 4px rgba(0,0,0,.8),
+      0 2px 4px rgba(0,0,0,.6);
+  }
+  .reel::before {
+    content: '';
+    position: absolute;
+    inset: 30%;
+    background: radial-gradient(circle at 40% 40%, #222, #000);
+    border-radius: 50%;
+    border: 1px solid #000;
+  }
+  .reel::after {
+    content: '';
+    position: absolute;
+    inset: 10%;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, #444 0deg 12deg, #222 12deg 24deg);
+    opacity: 0.6;
+  }
+
+  .vcr-display {
+    flex: 0 0 auto;
+    margin-left: auto;
+    width: calc(var(--u) * 12);
+    background: #000; border: 1px solid #0d0d12;
+    border-radius: 2px; padding: calc(var(--u) * 0.6) calc(var(--u) * 0.9);
+    text-align: center; min-height: calc(var(--u) * 2);
+    font: 700 calc(var(--u) * 2.2)/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color: #ff0000; text-shadow: 0 0 calc(var(--u) * 0.8) #ff0000;
+    letter-spacing: .12em;
+    cursor: pointer; user-select: none;
+  }
+
+  .vcr-display.blinking { animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0.3; } }
+
+  .vcr-power {
+    width: calc(var(--u) * 1.2); height: calc(var(--u) * 1.2); border-radius: 50%;
+    background: #cc0000; box-shadow: 0 0 calc(var(--u) * 1) #ff3333 inset,
+      0 0 calc(var(--u) * 1.4) #ff0000;
+    flex: 0 0 auto; position: relative;
+  }
+  .vcr-power::before {
+    content: ''; position: absolute; inset: 20%;
+    background: #ff6666; border-radius: 50%; filter: blur(2px);
+  }
+
+  .vcr-color {
+    width: calc(var(--u) * 1.2); height: calc(var(--u) * 1.2); border-radius: 50%;
+    background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+    border: 1px solid #333; cursor: pointer;
+    flex: 0 0 auto; transition: transform .1s ease;
+  }
+  .vcr-color:hover { transform: scale(1.1); }
+  .vcr-color:active { transform: scale(0.95); }
+
+  .color-preview {
+    position: fixed; inset: 0;
+    display: none; align-items: center; justify-content: center;
+    z-index: 100; pointer-events: none;
+  }
+  .color-preview.show { display: flex; pointer-events: auto; }
+  .color-preview-swatch {
+    width: calc(var(--u) * 8); height: calc(var(--u) * 8);
+    border-radius: 50%;
+    border: 2px solid #333;
+    box-shadow: 0 0 calc(var(--u) * 3) currentColor;
+    animation: popIn .2s ease;
+  }
+  @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+  /* Hidden meter elements (kept for JS compatibility, not displayed) */
+  .meters { display: none; }
+  .meter { display: none; }
+  .meter .ch { display: none; }
+  .seg { display: none; }
+  .dial { display: none; }
+  .reels { display: none; }
+  .reel { display: none; }
+  .disc { display: none; }
+  .lcd { display: none; }
+
+  /* ── the shelf of videos, right side ───────────────────────────── */
+  /* Same behaviour as the Drive-In: dark until the cursor comes near the
+     right edge. pointer-events stays off while faded so it can't eat
+     clicks meant for the room behind it. */
+
+  .shelf {
+    position: fixed; top: 0; right: 0; z-index: 6;
+    width: min(21vw, 300px); height: 100%;
+    padding: calc(var(--u) * 2.4) calc(var(--u) * 1.8);
+    overflow-y: auto;
+    background: linear-gradient(to left, rgba(8,8,13,.94), rgba(8,8,13,.6) 70%, transparent);
+    opacity: .1; pointer-events: none;
+    transition: opacity .28s ease;
+  }
+  .shelf.awake, .shelf:focus-within { opacity: 1; pointer-events: auto; }
+  .shelf-title {
+    font-size: calc(var(--u) * 1.4); letter-spacing: .26em; text-transform: uppercase;
+    color: var(--neon); margin-bottom: calc(var(--u) * 1.6);
+  }
+  .shelf-note { font-size: calc(var(--u) * 1.4); color: #8d8aa0; line-height: 1.7; }
+  .shelf-note a { color: var(--neon); }
+  .tape {
+    display: flex; align-items: center; gap: calc(var(--u) * 1);
+    width: 100%; margin-bottom: calc(var(--u) * .9);
+    padding: calc(var(--u) * .7); border-radius: calc(var(--u) * .5);
+    background: #14141b; border: 1px solid #24242e; color: var(--ink);
+    font: inherit; font-size: calc(var(--u) * 1.35); text-align: left; cursor: pointer;
+  }
+  .tape:hover { border-color: var(--neon); }
+  .tape.on { border-color: var(--neon); box-shadow: 0 0 calc(var(--u) * 1.4) var(--neon-soft); }
+  .tape .tn {
+    width: calc(var(--u) * 8); height: calc(var(--u) * 4.5); flex: 0 0 auto;
+    object-fit: cover; background: #0a0a0f; border-radius: 2px;
+  }
+  .tape .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ── controls, bottom left ─────────────────────────────────────── */
+
+  .controls {
+    position: fixed; left: calc(var(--u) * 2); bottom: calc(var(--u) * 2); z-index: 7;
+    display: none; flex-direction: column; gap: calc(var(--u) * 1);
+    font-size: calc(var(--u) * 1.25);
+  }
+  .row { display: flex; align-items: center; gap: calc(var(--u) * .7); }
+  .row .lbl { letter-spacing: .2em; text-transform: uppercase; color: #6d6a80; }
+  .swatch {
+    width: calc(var(--u) * 2.2); height: calc(var(--u) * 2.2); border-radius: 50%;
+    border: 2px solid transparent; cursor: pointer; padding: 0;
+  }
+  .swatch.sel { border-color: #fff; }
+  .step {
+    background: #14141b; border: 1px solid #2a2a34; color: var(--ink);
+    border-radius: calc(var(--u) * .4); cursor: pointer;
+    font: inherit; padding: calc(var(--u) * .3) calc(var(--u) * .9);
+  }
+  .step:hover { border-color: var(--neon); }
+  .pct { min-width: calc(var(--u) * 4.4); text-align: center; color: #8d8aa0; }
+
+  .back {
+    position: fixed; left: calc(var(--u) * 2); top: calc(var(--u) * 2); z-index: 7;
+    color: #7d7a90; text-decoration: none; font-size: calc(var(--u) * 1.35);
+    letter-spacing: .16em; text-transform: uppercase;
+  }
+  .back:hover { color: var(--neon); }
+
+  body.dragging .glass { outline: 2px dashed var(--neon); outline-offset: calc(var(--u) * -1); }
+
+  /* Small windows: the unit would be postage-stamp sized, so drop the
+     speakers and let the screen have the room. */
+  /* ── SUNY remote in front of VCR ──────────────────────────────── */
+  .remote {
+    position: fixed; left: calc(50% + min(35vw, calc(var(--u) * 60)) + var(--u) * 1); bottom: calc(var(--u) * 1.2);
+    transform-origin: bottom left;
+    width: calc(var(--u) * 8.4);
+    background: linear-gradient(135deg, #1a1a22 0%, #0d0d12 100%);
+    border: 1px solid #33333f;
+    border-radius: calc(var(--u) * 0.6);
+    padding: calc(var(--u) * 0.8);
+    display: flex; flex-direction: column; gap: calc(var(--u) * 0.6);
+    box-shadow: 0 0 calc(var(--u) * 2) var(--neon-dim);
+    z-index: 8;
+    transition: transform .2s ease;
+  }
+  .remote:hover { transform: scale(3); }
+  .remote-brand {
+    text-align: center; font-size: calc(var(--u) * 1.2); font-weight: 900;
+    letter-spacing: .28em; color: var(--neon); text-shadow: 0 0 calc(var(--u) * 0.8) var(--neon);
+    margin-bottom: calc(var(--u) * 0.4);
+  }
+  .remote-display {
+    background: #0b0b11; border: 1px solid #26262f; border-radius: 2px;
+    padding: calc(var(--u) * 0.4); text-align: center;
+    font-size: calc(var(--u) * 0.8); color: var(--neon);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    text-shadow: 0 0 calc(var(--u) * 0.6) var(--neon-soft);
+    min-height: calc(var(--u) * 2.2);
+    overflow: hidden; word-break: break-word;
+  }
+  .remote-buttons {
+    display: flex; flex-direction: column; gap: calc(var(--u) * 0.4);
+  }
+  .remote button {
+    background: radial-gradient(circle at 35% 30%, #3d3d4a, #1a1a22);
+    border: 1px solid #33333f; border-radius: 2px;
+    color: #9a9aaa; cursor: pointer; font-size: calc(var(--u) * 0.9);
+    padding: calc(var(--u) * 0.35); text-transform: uppercase; letter-spacing: .06em;
+    transition: all .12s ease;
+  }
+  .remote button:hover { color: var(--neon); border-color: var(--neon); box-shadow: 0 0 calc(var(--u) * 0.6) var(--neon-soft); }
+  .remote button:active { transform: scale(0.95); }
+  .remote-vol-row { display: flex; gap: calc(var(--u) * 0.2); }
+  .remote-vol-row button { flex: 1; }
+  .remote-info { font-size: calc(var(--u) * 0.65); color: #55556a; text-align: center; line-height: 1.3; }
+
+  @media (max-width: 900px), (max-height: 520px) {
+    .speaker { display: none; }
+    .column { width: min(92vw, calc(var(--u) * 100)); }
+    .stack { width: 88%; }
+    .shelf { width: min(60vw, 300px); }
+    .remote { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back" href="../">&larr; Drop Zone</a>
+
+<div class="room">
+  <div class="bias"></div>
+  <div class="bias inner"></div>
+  <div class="bias floor"></div>
+
+  <div class="unit">
+    <div class="speaker">
+      <div class="cone tweeter" data-cone="hi"></div>
+      <div class="cone woofer" data-cone="lo"></div>
+      <div class="badge">DZ</div>
+    </div>
+
+    <div class="column">
+      <div class="tv">
+        <div class="glass">
+          <video id="screen" hidden playsinline controls></video>
+          <div class="idle" id="idle">Pick something from the shelf on the right,<br>or drop a video anywhere in the room</div>
+        </div>
+        <div class="tvfoot"><span>DZ&nbsp;VISION</span><span class="pwr"></span></div>
+      </div>
+
+      <div class="stack">
+        <div class="vcr">
+          <div class="vhs-tape" id="vhsTape" title="Click to edit title">
+            <div class="vhs-label" id="vhsLabel">BATMAN</div>
+            <div class="vhs-reels">
+              <div class="reel"></div>
+              <div class="reel"></div>
+            </div>
+          </div>
+          <!-- Cassette poking out from left -->
+          <div class="vhs-tape-eject">
+            <div class="vhs-eject-label">BATMAN</div>
+            <div class="vhs-eject-reels">
+              <div class="reel-small"></div>
+              <div class="reel-small"></div>
+            </div>
+          </div>
+          <div class="vcr-display" id="vcrDisplay" title="Click to set the time">12:00</div>
+          <div class="vcr-power"></div>
+          <div class="vcr-color" id="vcrColor" title="Change neon color"></div>
+        </div>
+        <!-- Hidden elements for JS compat -->
+        <div class="gear" style="display:none;">
+          <span class="name">Amp</span>
+          <span class="dial" id="dial"></span>
+          <div class="meters">
+            <div class="meter" id="mL"><span class="ch">L</span></div>
+            <div class="meter" id="mR"><span class="ch">R</span></div>
+          </div>
+        </div>
+        <div class="gear" style="display:none;">
+          <span class="name">Deck</span>
+          <div class="reels">
+            <span class="reel spin"></span>
+            <span class="reel spin"></span>
+          </div>
+          <div class="meters"><div class="meter" id="mT"></div></div>
+          <span class="lcd" id="clock">--:--</span>
+        </div>
+        <div class="gear" style="display:none;">
+          <span class="name">Disc</span>
+          <span class="disc spin"></span>
+          <span class="lcd" id="trk">NO DISC</span>
+          <div class="meters"><div class="meter" id="mB"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="speaker">
+      <div class="cone tweeter" data-cone="hi"></div>
+      <div class="cone woofer" data-cone="lo"></div>
+      <div class="badge">DZ</div>
+    </div>
+  </div>
+</div>
+
+<div class="color-preview" id="colorPreview">
+  <div class="color-preview-swatch" id="colorSwatch"></div>
+</div>
+
+<div class="remote">
+  <div class="remote-brand">SUNY</div>
+  <div class="remote-display" id="remoteDisplay">─────</div>
+  <div class="remote-buttons">
+    <button id="btnSkipPrev" type="button" title="Previous">⏮ Prev</button>
+    <button id="btnPlayPause" type="button" title="Play/Pause">⏯ Play</button>
+    <button id="btnSkipNext" type="button" title="Next">Next ⏭</button>
+    <div class="remote-vol-row">
+      <button id="btnVolDown" type="button" title="Volume Down">− Vol</button>
+      <button id="btnVolUp" type="button" title="Volume Up">Vol +</button>
+    </div>
+    <button id="btnMute" type="button" title="Mute">🔇 Mute</button>
+  </div>
+  <div class="remote-info" id="remoteInfo">Ready</div>
+</div>
+
+<aside class="shelf" id="shelf" tabindex="0">
+  <div class="shelf-title">Your videos</div>
+  <div class="shelf-note" id="shelfNote">Looking for your folder…</div>
+</aside>
+
+<div class="controls">
+  <div class="row">
+    <span class="lbl">Neon</span>
+    <span id="swatches"></span>
+  </div>
+  <div class="row">
+    <span class="lbl">Glow</span>
+    <button class="step" id="glowDown" type="button" aria-label="Dimmer">&#9660;</button>
+    <span class="pct" id="glowPct">100%</span>
+    <button class="step" id="glowUp" type="button" aria-label="Brighter">&#9650;</button>
+  </div>
+</div>
+
+<input type="file" id="picker" accept="video/*,image/*,audio/*" hidden>
+
+<script src="../folder.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var root = document.documentElement;
+  var screenEl = document.getElementById('screen');
+  var idle = document.getElementById('idle');
+
+  // ── neon ────────────────────────────────────────────────────────
+  // Named rather than a colour input: six that suit the room beats a
+  // full picker that lets someone choose a brown backlight.
+  var COLOURS = [
+    ['Hot pink',   '#ff2fb0'],
+    ['Cyan',       '#22e6ff'],
+    ['Violet',     '#8b5cff'],
+    ['Lime',       '#7bff45'],
+    ['Amber',      '#ffa22b'],
+    ['Ice',        '#dfe9ff'],
+  ];
+  var GLOWS = [0, 0.35, 0.7, 1, 1.4];
+
+  var colourIx = 0, glowIx = 3;
+
+  function applyNeon() {
+    var hex = COLOURS[colourIx][1];
+    root.style.setProperty('--neon', hex);
+    // 55 is a third of full opacity in hex -- the soft variant is used for
+    // shadows, which look wrong at the same strength as the line itself.
+    root.style.setProperty('--neon-soft', hex + '55');
+    // A third variant, for rim light on the cabinets. Anything strong
+    // enough to see on a glowing line is far too strong on an edge.
+    root.style.setProperty('--neon-dim', hex + '22');
+    root.style.setProperty('--glow', String(GLOWS[glowIx]));
+    document.getElementById('glowPct').textContent =
+      Math.round(GLOWS[glowIx] / GLOWS[GLOWS.length - 1] * 100) + '%';
+    Array.prototype.forEach.call(document.querySelectorAll('.swatch'), function (s, i) {
+      s.classList.toggle('sel', i === colourIx);
+    });
+    try {
+      localStorage.setItem('dz-recroom-neon', String(colourIx));
+      localStorage.setItem('dz-recroom-glow', String(glowIx));
+    } catch (e) { /* private mode: works, just won't be remembered */ }
+  }
+
+  (function buildSwatches() {
+    var wrap = document.getElementById('swatches');
+    COLOURS.forEach(function (c, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'swatch'; b.title = c[0];
+      b.setAttribute('aria-label', c[0]);
+      b.style.background = c[1];
+      b.addEventListener('click', function () { colourIx = i; applyNeon(); });
+      wrap.appendChild(b);
+    });
+  })();
+
+  document.getElementById('glowUp').addEventListener('click', function () {
+    glowIx = Math.min(GLOWS.length - 1, glowIx + 1); applyNeon();
+  });
+  document.getElementById('glowDown').addEventListener('click', function () {
+    glowIx = Math.max(0, glowIx - 1); applyNeon();
+  });
+
+  try {
+    var sc = parseInt(localStorage.getItem('dz-recroom-neon'), 10);
+    if (sc >= 0 && sc < COLOURS.length) colourIx = sc;
+    var sg = parseInt(localStorage.getItem('dz-recroom-glow'), 10);
+    if (sg >= 0 && sg < GLOWS.length) glowIx = sg;
+  } catch (e) { /* ignore */ }
+  applyNeon();
+
+  // ── meters ──────────────────────────────────────────────────────
+
+  var SEGS = 14;
+  function buildMeter(el, n) {
+    var segs = [];
+    for (var i = 0; i < n; i++) {
+      var s = document.createElement('span');
+      s.className = 'seg' + (i >= n - 2 ? ' r' : i >= n - 5 ? ' y' : '');
+      el.appendChild(s);
+      segs.push(s);
+    }
+    return segs;
+  }
+  var segL = buildMeter(document.getElementById('mL'), SEGS);
+  var segR = buildMeter(document.getElementById('mR'), SEGS);
+  var segT = buildMeter(document.getElementById('mT'), 10);
+  var segB = buildMeter(document.getElementById('mB'), 10);
+
+  function paint(segs, level) {
+    var lit = Math.round(level * segs.length);
+    for (var i = 0; i < segs.length; i++) segs[i].classList.toggle('on', i < lit);
+  }
+
+  // ── the audio graph ─────────────────────────────────────────────
+  //
+  // createMediaElementSource takes the element's audio OUT of the normal
+  // path, so nothing is heard until the graph is connected back to
+  // destination. It also may only be called ONCE for a given element --
+  // a second call throws -- which is why the node is built once here and
+  // the <video> src is swapped underneath it for every file.
+
+  var ac = null, anL = null, anR = null, dataL = null, dataR = null;
+
+  function ensureAudio() {
+    if (ac) { if (ac.state === 'suspended') ac.resume().catch(function () {}); return; }
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    try {
+      ac = new AC();
+      var src = ac.createMediaElementSource(screenEl);
+      var split = ac.createChannelSplitter(2);
+      anL = ac.createAnalyser(); anR = ac.createAnalyser();
+      anL.fftSize = anR.fftSize = 256;
+      anL.smoothingTimeConstant = anR.smoothingTimeConstant = 0.75;
+      src.connect(split);
+      split.connect(anL, 0);
+      split.connect(anR, 1);
+      src.connect(ac.destination);        // without this the room is silent
+      dataL = new Uint8Array(anL.frequencyBinCount);
+      dataR = new Uint8Array(anR.frequencyBinCount);
+    } catch (e) {
+      ac = null; anL = anR = null;        // meters fall back to the idle drift
+    }
+  }
+
+  function bandAvg(data, from, to) {
+    var sum = 0, n = 0;
+    for (var i = from; i < to && i < data.length; i++) { sum += data[i]; n++; }
+    return n ? (sum / n) / 255 : 0;
+  }
+
+  // What the meters do with nothing playing. A dead stack looks broken, and
+  // a random one looks like a screensaver -- this is a slow wander that
+  // reads as idle rather than as signal.
+  function drift(t, phase) {
+    return 0.12 + 0.1 * (Math.sin(t / 1400 + phase) * 0.5 + 0.5)
+                + 0.05 * (Math.sin(t / 430 + phase * 2.3) * 0.5 + 0.5);
+  }
+
+  var cones = document.querySelectorAll('[data-cone]');
+  var dial = document.getElementById('dial');
+  var clock = document.getElementById('clock');
+
+  function frame(t) {
+    var live = ac && anL && !screenEl.paused && !screenEl.muted && !screenEl.hidden;
+    var l, r, bass, treble;
+
+    if (live) {
+      anL.getByteFrequencyData(dataL);
+      anR.getByteFrequencyData(dataR);
+      l = bandAvg(dataL, 1, 40);
+      r = bandAvg(dataR, 1, 40);
+      bass = (bandAvg(dataL, 1, 6) + bandAvg(dataR, 1, 6)) / 2;
+      treble = (bandAvg(dataL, 40, 100) + bandAvg(dataR, 40, 100)) / 2;
+    } else {
+      l = drift(t, 0); r = drift(t, 1.7);
+      bass = drift(t, 0.9) * 0.7; treble = drift(t, 2.4) * 0.6;
+    }
+
+    paint(segL, l); paint(segR, r);
+    paint(segT, treble); paint(segB, bass);
+
+    // The woofers move a lot more than the tweeters, because they do.
+    Array.prototype.forEach.call(cones, function (c) {
+      var lo = c.getAttribute('data-cone') === 'lo';
+      var amt = lo ? bass * 0.09 : treble * 0.035;
+      c.style.transform = 'scale(' + (1 + amt).toFixed(4) + ')';
+    });
+
+    // The needle is a pseudo-element and can't be transformed on its own
+    // from script, so the whole knob turns -- which is what a knob does
+    // anyway, and its body is a radial gradient so the rotation reads only
+    // on the needle.
+    dial.style.transform = 'rotate(' + (-50 + (l + r) / 2 * 100).toFixed(1) + 'deg)';
+
+    if (screenEl.duration && isFinite(screenEl.duration)) {
+      var s = Math.max(0, Math.floor(screenEl.currentTime));
+      clock.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' +
+                          String(s % 60).padStart(2, '0');
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // ── playing something ───────────────────────────────────────────
+
+  var showingUrl = null;
+  var trk = document.getElementById('trk');
+
+  function playFile(file, row) {
+    if (showingUrl) URL.revokeObjectURL(showingUrl);
+    showingUrl = URL.createObjectURL(file);
+
+    if (/^image\//.test(file.type)) {
+      // A still has no audio to meter, so the stack goes back to idling.
+      screenEl.hidden = true;
+      screenEl.pause();
+      document.body.classList.remove('playing');
+      idle.hidden = false;
+      idle.textContent = '';
+      idle.style.background = '#04040a url("' + showingUrl + '") center/contain no-repeat';
+      trk.textContent = 'STILL';
+    } else if (/^audio\//.test(file.type)) {
+      // Audio file: use video element for playback (meters work on its audio)
+      // but hide the visual display
+      screenEl.hidden = true;
+      idle.hidden = false;
+      idle.textContent = '♪ ' + (file.name || '').slice(0, 20).toUpperCase();
+      idle.style.background = 'linear-gradient(135deg, rgba(255,47,177,.2), rgba(45,90,200,.2))';
+      screenEl.src = showingUrl;
+      trk.textContent = (file.name || '').slice(0, 14).toUpperCase().replace(/\.[^.]+$/, '') || 'PLAYING';
+      document.body.classList.add('playing');
+      ensureAudio();
+      screenEl.play().catch(function () {
+        screenEl.muted = true;
+        screenEl.play().catch(function () {});
+      });
+    } else {
+      idle.hidden = true;
+      idle.style.background = '';
+      screenEl.hidden = false;
+      screenEl.src = showingUrl;
+      trk.textContent = (file.name || '').slice(0, 14).toUpperCase() || 'PLAYING';
+      document.body.classList.add('playing');
+      // The click that got here is the user gesture the AudioContext needs.
+      ensureAudio();
+      screenEl.play().catch(function () {
+        // Autoplay refused: muting is the usual way through, and the meters
+        // notice muted audio and idle rather than sitting flat at zero.
+        screenEl.muted = true;
+        screenEl.play().catch(function () {});
+      });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.tape.on'),
+      function (el) { el.classList.remove('on'); });
+    if (row) row.classList.add('on');
+  }
+
+  screenEl.addEventListener('play', function () {
+    document.body.classList.add('playing');
+    ensureAudio();
+  });
+  screenEl.addEventListener('pause', function () { document.body.classList.remove('playing'); });
+  screenEl.addEventListener('ended', function () { document.body.classList.remove('playing'); });
+
+  // ── the shelf, read from the folder ─────────────────────────────
+
+  var shelf = document.getElementById('shelf');
+  var note = document.getElementById('shelfNote');
+  function say(html) { note.innerHTML = html; note.hidden = false; }
+
+  function buildShelf(files) {
+    Array.prototype.forEach.call(shelf.querySelectorAll('.tape'), function (el) { el.remove(); });
+    if (!files.length) {
+      say('Nothing in <b>Videos</b> yet. Drop one in the room, or save one ' +
+          'from <a href="../dzvidstitch/">DZVidStitch</a>.');
+      return;
+    }
+    note.hidden = true;
+    files.forEach(function (f) {
+      var row = document.createElement('button');
+      row.type = 'button'; row.className = 'tape';
+      var tn = document.createElement('img'); tn.className = 'tn'; tn.alt = '';
+      var nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = f.name;
+      row.appendChild(tn); row.appendChild(nm);
+      row.addEventListener('click', function () {
+        // The shelf stays lit while anything inside it has focus (that's
+        // what keeps it reachable by keyboard), so a clicked tape would
+        // hold it open over the film. Dropping focus after a mouse click
+        // lets it fade; tabbing to a tape still keeps it open.
+        row.blur();
+        f.handle.getFile().then(function (file) { playFile(file, row); }).catch(function () {});
+      });
+      shelf.appendChild(row);
+
+      // A real frame off the file, so the shelf reads as tapes rather than
+      // filenames. Seeking past zero avoids the black first frame.
+      f.handle.getFile().then(function (file) {
+        var v = document.createElement('video');
+        var u = URL.createObjectURL(file);
+        var done = false;
+        var finish = function () { if (!done) { done = true; URL.revokeObjectURL(u); } };
+        v.muted = true; v.preload = 'metadata';
+        v.onloadeddata = function () {
+          try {
+            var c = document.createElement('canvas');
+            c.width = 96; c.height = 54;
+            c.getContext('2d').drawImage(v, 0, 0, 96, 54);
+            tn.src = c.toDataURL('image/jpeg', .7);
+          } catch (e) { /* a codec the canvas won't take */ }
+          finish();
+        };
+        v.onerror = finish;
+        setTimeout(finish, 5000);   // a codec this browser can't decode never fires either
+        v.src = u; v.currentTime = 0.6;
+      }).catch(function () {});
+    });
+  }
+
+  // :hover can't wake a pointer-events:none panel, so the cursor's position
+  // does it instead -- same as the Drive-In.
+  addEventListener('mousemove', function (e) {
+    var zone = Math.max(260, innerWidth * 0.21);
+    shelf.classList.toggle('awake', e.clientX > innerWidth - zone);
+  });
+  addEventListener('mouseleave', function () { shelf.classList.remove('awake'); });
+
+  function loadShelf() {
+    if (!window.DZFolder || !DZFolder.isSupported()) {
+      say('A folder needs Chrome, Edge, Brave or Opera on a computer. You can ' +
+          'still drop a video into the room.');
+      return;
+    }
+    DZFolder.reconnect(false).then(function (dir) {
+      if (!dir) {
+        say('No folder connected. Connect one in the <a href="../">Drop Zone</a> ' +
+            'and your videos turn up here.');
+        return;
+      }
+      return DZFolder.list(2).then(function (tree) {
+        var videos = tree.dirs.filter(function (d) { return d.name === 'Videos'; })[0];
+        if (!videos) { buildShelf([]); return; }
+        // Videos/ and Videos/Edited/ together -- an export and the clip it
+        // came from belong on the same shelf.
+        var all = videos.files.concat(videos.dirs.reduce(function (a, d) {
+          return a.concat(d.files);
+        }, []));
+        all.sort(function (a, b) { return b.modified - a.modified; });
+        buildShelf(all);
+      });
+    }).catch(function () { say('That folder could not be read just now.'); });
+  }
+  loadShelf();
+
+  // ── dropping into the room ──────────────────────────────────────
+
+  var picker = document.getElementById('picker');
+  function take(files) {
+    var f = Array.prototype.filter.call(files || [], function (x) {
+      return /^(video|image|audio)\//.test(x.type);
+    })[0];
+    if (f) playFile(f, null);
+  }
+  // Both dragover AND drop must be cancelled, on window rather than on the
+  // screen: a near miss would otherwise let the browser navigate away to the
+  // file and replace the whole room with a bare video player.
+  var depth = 0;
+  function hasFiles(e) {
+    return e.dataTransfer &&
+      Array.prototype.indexOf.call(e.dataTransfer.types || [], 'Files') !== -1;
+  }
+  addEventListener('dragenter', function (e) {
+    if (!hasFiles(e)) return;
+    e.preventDefault(); depth++; document.body.classList.add('dragging');
+  });
+  addEventListener('dragover', function (e) {
+    if (!hasFiles(e)) return;
+    e.preventDefault(); e.dataTransfer.dropEffect = 'copy';
+  });
+  addEventListener('dragleave', function () {
+    depth = Math.max(0, depth - 1);
+    if (!depth) document.body.classList.remove('dragging');
+  });
+  addEventListener('drop', function (e) {
+    if (!hasFiles(e)) return;
+    e.preventDefault(); depth = 0;
+    document.body.classList.remove('dragging');
+    take(e.dataTransfer.files);
+  });
+  idle.addEventListener('click', function () { picker.click(); });
+  picker.addEventListener('change', function () { take(picker.files); });
+
+  // ── remote control buttons ──────────────────────────────────────
+  var remoteDisplay = document.getElementById('remoteDisplay');
+  var remoteInfo = document.getElementById('remoteInfo');
+  var shelfTapes = [];
+  var currentTapeIx = -1;
+
+  function updateRemoteDisplay() {
+    if (screenEl.hidden && idle.hidden) {
+      remoteDisplay.textContent = '─────';
+      remoteInfo.textContent = 'Ready';
+    } else if (screenEl.hidden) {
+      remoteDisplay.textContent = idle.textContent.slice(0, 20);
+      remoteInfo.textContent = 'Playing';
+    } else {
+      remoteDisplay.textContent = (screenEl.src ? 'Playing…' : '─────');
+      remoteInfo.textContent = screenEl.paused ? 'Paused' : 'Playing';
+    }
+  }
+
+  document.getElementById('btnPlayPause').addEventListener('click', function () {
+    if (screenEl.paused) screenEl.play();
+    else screenEl.pause();
+    updateRemoteDisplay();
+  });
+
+  document.getElementById('btnMute').addEventListener('click', function () {
+    screenEl.muted = !screenEl.muted;
+    updateRemoteDisplay();
+  });
+
+  document.getElementById('btnVolUp').addEventListener('click', function () {
+    screenEl.volume = Math.min(1, screenEl.volume + 0.1);
+  });
+
+  document.getElementById('btnVolDown').addEventListener('click', function () {
+    screenEl.volume = Math.max(0, screenEl.volume - 0.1);
+  });
+
+  document.getElementById('btnSkipNext').addEventListener('click', function () {
+    shelfTapes = Array.prototype.slice.call(shelf.querySelectorAll('.tape'));
+    if (!shelfTapes.length) return;
+    currentTapeIx = shelfTapes.findIndex(function (t) { return t.classList.contains('on'); });
+    currentTapeIx = (currentTapeIx + 1) % shelfTapes.length;
+    shelfTapes[currentTapeIx].click();
+  });
+
+  document.getElementById('btnSkipPrev').addEventListener('click', function () {
+    shelfTapes = Array.prototype.slice.call(shelf.querySelectorAll('.tape'));
+    if (!shelfTapes.length) return;
+    currentTapeIx = shelfTapes.findIndex(function (t) { return t.classList.contains('on'); });
+    currentTapeIx = (currentTapeIx - 1 + shelfTapes.length) % shelfTapes.length;
+    shelfTapes[currentTapeIx].click();
+  });
+
+  screenEl.addEventListener('play', updateRemoteDisplay);
+  screenEl.addEventListener('pause', updateRemoteDisplay);
+
+  // ── VHS Tape title editor ──────────────────────────────────────
+  var vhsTape = document.getElementById('vhsTape');
+  var vhsLabel = document.getElementById('vhsLabel');
+  var currentTitle = 'BATMAN';
+
+  vhsTape.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var newTitle = prompt('VHS Title:', currentTitle);
+    if (newTitle && newTitle.trim()) {
+      currentTitle = newTitle.trim().toUpperCase().slice(0, 20);
+      vhsLabel.textContent = currentTitle;
+      try {
+        localStorage.setItem('dz-recroom-vhs-title', currentTitle);
+      } catch (e) { /* private mode */ }
+    }
+  });
+
+  try {
+    var savedTitle = localStorage.getItem('dz-recroom-vhs-title');
+    if (savedTitle) {
+      currentTitle = savedTitle;
+      vhsLabel.textContent = currentTitle;
+    }
+  } catch (e) { /* ignore */ }
+
+  // ── VCR display and easter eggs ───────────────────────────────
+  var vcrDisplay = document.getElementById('vcrDisplay');
+  var vcrColor = document.getElementById('vcrColor');
+  var clockSet = false;
+
+  // Blinking 12:00 animation
+  vcrDisplay.classList.add('blinking');
+
+  // Clock easter egg: click display to set actual time
+  vcrDisplay.addEventListener('click', function () {
+    clockSet = !clockSet;
+    if (clockSet) {
+      var updateClock = setInterval(function () {
+        var now = new Date();
+        var h = String(now.getHours()).padStart(2, '0');
+        var m = String(now.getMinutes()).padStart(2, '0');
+        vcrDisplay.textContent = h + ':' + m;
+        vcrDisplay.classList.remove('blinking');
+      }, 1000);
+      if (screenEl.src) screenEl.addEventListener('ended', function () { clearInterval(updateClock); });
+    } else {
+      vcrDisplay.textContent = '12:00';
+      vcrDisplay.classList.add('blinking');
+    }
+  });
+
+  // Color button: cycle through full spectrum
+  var SPECTRUM = [
+    ['Red',     '#ff0000'],
+    ['Orange',  '#ff7700'],
+    ['Yellow',  '#ffff00'],
+    ['Green',   '#00ff00'],
+    ['Cyan',    '#00ffff'],
+    ['Blue',    '#0066ff'],
+    ['Purple',  '#9933ff'],
+    ['Magenta', '#ff00ff'],
+  ];
+  var specIx = 0;
+  var colorPreview = document.getElementById('colorPreview');
+  var colorSwatch = document.getElementById('colorSwatch');
+
+  function showColorPreview(hex) {
+    colorSwatch.style.background = hex;
+    colorSwatch.style.color = hex;
+    colorSwatch.style.boxShadow = '0 0 ' + (3 * 1) + 'vh ' + hex;
+    colorPreview.classList.add('show');
+    setTimeout(function () {
+      colorPreview.classList.remove('show');
+    }, 1200);
+  }
+
+  vcrColor.addEventListener('click', function () {
+    specIx = (specIx + 1) % SPECTRUM.length;
+    var hex = SPECTRUM[specIx][1];
+    root.style.setProperty('--neon', hex);
+    root.style.setProperty('--neon-soft', hex + '55');
+    root.style.setProperty('--neon-dim', hex + '22');
+    showColorPreview(hex);
+  });
+
+  vcrColor.addEventListener('mouseenter', function () {
+    var hex = SPECTRUM[specIx][1];
+    showColorPreview(hex);
+  });
+})();
+</script>
+</body>
+</html>
