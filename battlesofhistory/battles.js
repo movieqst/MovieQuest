@@ -47,8 +47,8 @@ window.BATTLES = [
     place: 'Near Gaugamela, northern Mesopotamia',
     sides: 'Macedonian army under Alexander III vs. Persian army under Darius III',
     blurb: 'Alexander’s oblique advance, the scythed chariots, and the break in the Persian centre, on a plain whose site is not known. Watch the reconstruction or command either army.',
-    cover: '',
-    coverCredit: 'Schematic reconstruction; no picture yet',
+    cover: 'images/cover.jpg',
+    coverCredit: 'Original illustration for this project',
     status: 'ready'
   }
 ];
