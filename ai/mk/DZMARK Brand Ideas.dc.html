@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <style>
+    @font-face { font-family: 'Barlow Condensed'; src: local('Barlow Condensed'); }
+    body { margin: 0; background: #0c0c0d; }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:#0c0c0d;padding:50px 30px;display:flex;flex-direction:column;gap:50px;font-family:'Barlow Condensed',sans-serif;">
+
+  <div style="display:flex;flex-direction:column;gap:16px;align-items:center;background:#1a2420;border:1px solid #3a4a42;padding:50px 20px;">
+    <div style="font-size:64px;font-weight:800;letter-spacing:0.08em;color:#c9c4a8;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;">DZ<span style="color:#8a9a8a;">MARK</span></div>
+    <div style="font-size:16px;letter-spacing:0.35em;color:#5c6e6e;text-transform:uppercase;">Drop Zone · Mark Zone</div>
+    <div style="font-size:11px;letter-spacing:0.2em;color:#3a4a42;text-transform:uppercase;margin-top:6px;">Option 1 — Stencil Block</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;align-items:center;background:#141614;border:2px solid #8a9a8a;padding:50px 20px;position:relative;">
+    <div style="position:absolute;top:14px;left:14px;width:16px;height:16px;border-top:2px solid #8a9a8a;border-left:2px solid #8a9a8a;"></div>
+    <div style="position:absolute;top:14px;right:14px;width:16px;height:16px;border-top:2px solid #8a9a8a;border-right:2px solid #8a9a8a;"></div>
+    <div style="position:absolute;bottom:14px;left:14px;width:16px;height:16px;border-bottom:2px solid #8a9a8a;border-left:2px solid #8a9a8a;"></div>
+    <div style="position:absolute;bottom:14px;right:14px;width:16px;height:16px;border-bottom:2px solid #8a9a8a;border-right:2px solid #8a9a8a;"></div>
+    <div style="font-size:58px;font-weight:700;letter-spacing:0.15em;color:#f2f1e8;text-transform:uppercase;">DZMARK</div>
+    <div style="font-size:15px;letter-spacing:0.3em;color:#8a9a8a;text-transform:uppercase;">Drop Zone · Mark Zone</div>
+    <div style="font-size:11px;letter-spacing:0.2em;color:#5c6e6e;text-transform:uppercase;margin-top:6px;">Option 2 — Targeting Reticle Corners</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;align-items:center;background:#1f1a14;border:1px solid #a4211d;padding:50px 20px;">
+    <div style="display:flex;align-items:baseline;gap:2px;">
+      <span style="font-size:64px;font-weight:800;color:#a4211d;letter-spacing:0.05em;">DZ</span>
+      <span style="font-size:64px;font-weight:300;color:#f2c879;letter-spacing:0.05em;">MARK</span>
+    </div>
+    <div style="font-size:16px;letter-spacing:0.35em;color:#c17f3e;text-transform:uppercase;">Drop Zone · Mark Zone</div>
+    <div style="font-size:11px;letter-spacing:0.2em;color:#8a4b28;text-transform:uppercase;margin-top:6px;">Option 3 — Two-Weight Contrast (gingerbread-toned)</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;align-items:center;background:#2a2f22;border:3px dashed #d4c05a;padding:50px 20px;transform:rotate(-1deg);">
+    <div style="font-size:66px;font-weight:800;letter-spacing:0.04em;color:#e2ff00;text-transform:uppercase;transform:rotate(1.5deg);text-shadow:3px 3px 0 #1a1c14;">DZMARK</div>
+    <div style="font-size:16px;letter-spacing:0.15em;color:#d4c05a;text-transform:uppercase;font-style:italic;">"Drop Zone, Mark Zone — Sir, Yes Sir!"</div>
+    <div style="font-size:11px;letter-spacing:0.2em;color:#7a8060;text-transform:uppercase;margin-top:6px;">Option 4 — Cartoon Bootcamp (morale-booster, playful stencil wobble)</div>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>
