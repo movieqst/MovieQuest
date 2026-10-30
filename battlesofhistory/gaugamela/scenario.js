@@ -71,8 +71,8 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'BATTLE OF GAUGAMELA',
       media: [
-        { at: 0, file: '01-alexander-mosaic.jpg', caption: 'The Alexander Mosaic: Alexander charges at Darius, who turns to flee in his chariot. A Roman floor mosaic of about 100 BCE, probably copied from a Greek painting made within a generation of Alexander. Whether it shows Issus or Gaugamela is debated.', ref: 'House of the Faun, Pompeii; Museo Archeologico Nazionale, Naples', credit: '' },
-        { at: 13, file: '02-mosaic-darius.jpg', caption: 'Darius III in his chariot, detail of the Alexander Mosaic. The Greek writers say he fled the field; the Babylonian diary may tell it differently.', ref: 'Museo Archeologico Nazionale, Naples', credit: '' }
+        { at: 0, file: '01-alexander-mosaic.jpg', caption: 'The Alexander Mosaic: Alexander charges at Darius, who turns to flee in his chariot. A Roman floor mosaic of about 100 BCE, probably copied from a Greek painting made within a generation of Alexander. Whether it shows Issus or Gaugamela is debated.', ref: 'House of the Faun, Pompeii; Museo Archeologico Nazionale, Naples', credit: 'Photo: Lucas (ancientartpodcast.org), Wikimedia Commons, CC BY-SA 2.0' },
+        { at: 13, file: '02-mosaic-darius.jpg', caption: 'Darius III in his chariot, detail of the Alexander Mosaic. The Greek writers say he fled the field; the Babylonian diary may tell it differently.', ref: 'Museo Archeologico Nazionale, Naples', credit: 'Photo: Berthold Werner, Wikimedia Commons, CC BY-SA 3.0' }
       ],
       subtitle: '1 October 331 BCE · northern Mesopotamia',
       focus: { x: 1200, y: 900 }, zoom: 1,
@@ -87,9 +87,9 @@ window.GAUGAMELA_SCENARIO = {
       title: 'Two kings, one empire',
       media: [
         { at: 0, file: '03-mosaic-alexander.jpg', caption: 'Alexander bareheaded on his horse Bucephalus, detail of the Alexander Mosaic.', ref: 'Museo Archeologico Nazionale, Naples', credit: 'Wikimedia Commons (Alexander_the_Great_mosaic.jpg), public domain' },
-        { at: 8, file: '04-alexander-coin.jpg', caption: 'Silver tetradrachm struck by Lysimachus, one of Alexander’s generals, after Alexander’s death. The portrait shows Alexander with the ram’s horns of the god Ammon.', ref: 'Coin, about 297–281 BCE', credit: '' },
-        { at: 15, file: '05-persian-daric.jpg', caption: 'A gold daric, the coin of the Persian kings. It shows the king as an archer. Persian kings minted them from about 500 BCE until Alexander’s conquest.', ref: 'Achaemenid gold coin', credit: '' },
-        { at: 22, file: '06-persian-empire-map.jpg', caption: 'The Persian empire of the Achaemenid kings, the empire Darius III ruled and Alexander conquered. A modern map.', ref: 'Modern map', credit: '' }
+        { at: 8, file: '04-alexander-coin.jpg', caption: 'Silver tetradrachm struck by Lysimachus, one of Alexander’s generals, after Alexander’s death. The portrait shows Alexander with the ram’s horns of the god Ammon.', ref: 'Silver tetradrachm, Lampsakos mint, about 297–282 BCE', credit: 'Photo: Classical Numismatic Group, Wikimedia Commons, CC BY-SA 3.0' },
+        { at: 15, file: '05-persian-daric.jpg', caption: 'A gold daric, the coin of the Persian kings. It shows the king as an archer. Persian kings minted them from about 500 BCE until Alexander’s conquest.', ref: 'Achaemenid gold daric, 5th century BCE', credit: 'Photo: Deflim, Wikimedia Commons, public domain' },
+        { at: 22, file: '06-persian-empire-map.jpg', caption: 'The Persian empire of the Achaemenid kings at its greatest extent, under Darius I about 500 BCE. Darius III still ruled most of it when Alexander invaded. A modern map.', ref: 'Modern map; satrapies after Encyclopaedia Iranica', credit: 'Map: Cattette, Wikimedia Commons, CC BY-SA 4.0' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 1,
       markers: [],
@@ -103,7 +103,7 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'The Macedonian army',
       media: [
-        { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: '' },
+        { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: 'Photo: Dosseman, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 11, file: '08-sarcophagus-alexander.jpg', caption: 'The horseman in a lion-skin helmet on the Alexander Sarcophagus is usually identified as Alexander.', ref: 'Istanbul Archaeology Museums', credit: '' },
         { at: 22, file: '09-kinch-tomb.jpg', caption: 'A Macedonian horseman rides down a Persian foot soldier. Tomb painting from Lefkadia, near Naousa, about 300 BCE, recorded by K. F. Kinch in 1897.', ref: 'Kinch Tomb, Lefkadia, Macedonia', credit: '' }
       ],
@@ -119,8 +119,8 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'The Persian army',
       media: [
-        { at: 0, file: '10-persepolis-guards.jpg', caption: 'Persian and Median guards with spears, relief from the Apadana, the great audience hall at Persepolis.', ref: 'Persepolis, Iran, 5th century BCE', credit: '' },
-        { at: 12, file: '11-susa-archers.jpg', caption: 'Frieze of archers in glazed brick from the palace of Darius I at Susa. Royal guardsmen of the Persian kings.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris', credit: '' },
+        { at: 0, file: '10-persepolis-guards.jpg', caption: 'Palace guards with spears, carved along the stairway of the Apadana, the great audience hall at Persepolis.', ref: 'Persepolis, Iran, 5th century BCE', credit: 'Photo: Diego Delso, delso.photo, License CC BY-SA' },
+        { at: 12, file: '11-susa-archers.jpg', caption: 'Frieze of archers in glazed brick from the palace of Darius I at Susa. Royal guardsmen of the Persian kings.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' },
         { at: 24, file: '12-apadana-bactrians.jpg', caption: 'A delegation from Bactria bringing a camel, relief from the Apadana at Persepolis. Arrian places Bactrian horsemen on Darius’s left at Gaugamela.', ref: 'Persepolis, Iran, 5th century BCE', credit: '' }
       ],
       focus: { x: 1200, y: 480 }, zoom: .9,
