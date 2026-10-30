@@ -695,7 +695,14 @@ function unitSprite(c, u, big) {
 }
 function renderArmies() {
   const units = S.units || [];
-  $('armies').innerHTML = units.map((u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`).join('');
+  const card = (u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'egypt' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`;
+  // Each side shows its first two cards; the rest fold away under a "more" button.
+  $('armies').innerHTML = [...new Set(units.map(u => u.side))].map(sd => {
+    const idx = units.map((u, i) => i).filter(i => units[i].side === sd), rest = idx.slice(2);
+    return idx.slice(0, 2).map(i => card(units[i], i)).join('') + (rest.length ? `<div class="umore" hidden>${rest.map(i => card(units[i], i)).join('')}</div><button class="ufold" data-n="${rest.length}"></button>` : '');
+  }).join('');
+  $('armies').querySelectorAll('.ufold').forEach(b => { const n = +b.dataset.n, label = open => open ? '\u25b4 Show fewer' : `\u25be ${n} more unit${n > 1 ? 's' : ''}`; b.textContent = label(false);
+    b.onclick = () => { const m = b.previousElementSibling, open = m.hidden; m.hidden = !open; b.textContent = label(open); }; });
   units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); unitSprite(c, u); setTimeout(() => unitSprite(c, u), 1500); });
   $('armies').querySelectorAll('.ucard').forEach(el => el.onclick = e => { if (e.target.closest('button.chip')) return; openUnit(+el.dataset.unit); });
 }
