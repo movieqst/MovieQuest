@@ -294,13 +294,13 @@ function figChariot(c, side, s, i, moving, dir, step) {
 /* Painted sprite sheets (images/units/<side>-<type>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
    Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
 const SHEETS = {};
-const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, chariot: { cw: 240, ch: 200, h: 30 } };
-[].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
-const sheetFor = (side, type, i) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : (type === 'archers' || (type === 'infantry' && i % 3 === 2)) ? 'archer' : 'spearman')];
+const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 } };
+['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'persia-spearman', 'persia-chariot', 'persia-cavalry'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const sheetFor = (side, type) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : type === 'cavalry' ? 'cavalry' : type === 'archers' ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
-  const sh = artOn ? sheetFor(f.side, f.type, i) : null;
+  const sh = artOn ? sheetFor(f.side, f.type) : null;
   if (sh) {
-    const spec = SHEET_SPEC[f.type === 'chariot' ? 'chariot' : 'infantry'], d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
+    const spec = SHEET_SPEC[f.type === 'chariot' ? 'chariot' : f.type === 'cavalry' ? 'cavalry' : 'infantry'], d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
     const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
     const scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
     c.save(); c.translate(x, y); if (k !== 1) c.scale(1, 1); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore(); return;
