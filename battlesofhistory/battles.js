@@ -38,5 +38,17 @@ window.BATTLES = [
     cover: 'images/32-art-bridge-night.jpg',
     coverCredit: 'Painting: Battle Games, original artwork',
     status: 'ready'
+  },
+  {
+    folder: 'gaugamela',
+    era: 'Classical Antiquity',
+    title: 'Battle of Gaugamela',
+    date: '1 October 331 BCE', year: -331,
+    place: 'Near Gaugamela, northern Mesopotamia',
+    sides: 'Macedonian army under Alexander III vs. Achaemenid Persian army under Darius III',
+    blurb: 'Alexander advances obliquely across the plain, draws the Persian cavalry outward, and drives toward Darius. Watch the reconstructed battle or command the Macedonian army.',
+    cover: '',
+    coverCredit: 'Original schematic reconstruction; illustrated cover in development',
+    status: 'in progress'
   }
 ];
