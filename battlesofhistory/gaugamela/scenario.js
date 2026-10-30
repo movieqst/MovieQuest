@@ -325,7 +325,8 @@ window.GAUGAMELA_SCENARIO = {
     { text: 'Darius was murdered by Bessus in 330 BCE, and Alexander went on to Babylon, Susa and Persepolis.', tag: 'established' }
   ],
 
-  /* ---------- The armies panel. `photos` are file names from the intro slideshow; none exist yet, so each shows a placeholder. ---------- */
+  /* ---------- The armies panel. `photos` are file names from the intro slideshow; none exist yet, so each shows a placeholder.
+     Each side shows its first two cards; the rest open from a "more" button. ---------- */
   units: [
     { side: 'macedon', type: 'infantry', name: 'Macedonian phalanx', desc: 'Long sarissa pikes, shield and helmet. The centre of Alexander’s army.', tag: 'established',
       photos: [],
@@ -340,6 +341,27 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'The Companions were the king’s own cavalry, drawn from the Macedonian nobility. Arrian says they fought with thrusting spears and swords.', tag: 'ancient', cite: 'Arrian III.11–14' },
         { text: 'Cavalry does not ride through a formed spear wall. Its charge works when the enemy line is already broken.', tag: 'estimate' }
       ] },
+    { side: 'macedon', type: 'archers', name: 'Agrianian javelinmen', desc: 'Light infantry from the hills north of Macedon, armed with javelins.', tag: 'ancient',
+      photos: [],
+      lines: [
+        { text: 'The Agrianians were a hill people from the north of Macedon. They fought as light troops with javelins and were among Alexander’s most trusted soldiers.', tag: 'ancient', cite: 'Arrian III.12' },
+        { text: 'Arrian says the Agrianians and other javelin-men met the scythed chariots, threw their javelins, seized the reins and pulled the drivers down.', tag: 'ancient', cite: 'Arrian III.13' },
+        { text: 'In this game the javelinmen are fast and fragile. They are best used against the chariots, not against formed infantry.', tag: 'reconstruction' }
+      ] },
+    { side: 'macedon', type: 'infantry', name: 'Hypaspists', desc: 'Elite foot soldiers between the phalanx and the Companion cavalry.', tag: 'ancient',
+      photos: [],
+      lines: [
+        { text: 'The hypaspists, the “shield-bearers”, were the king’s elite infantry. Arrian says Nicanor, a son of Parmenion, commanded them.', tag: 'ancient', cite: 'Arrian III.11' },
+        { text: 'They stood between the phalanx and the cavalry on the right, linking the slow pike line to Alexander’s fast-moving horse.', tag: 'ancient', cite: 'Arrian III.11' },
+        { text: 'Their equipment is debated. Some historians think they carried a shorter spear than the phalanx, others that they were armed in the same way.', tag: 'disputed' }
+      ] },
+    { side: 'macedon', type: 'cavalry', name: 'Thessalian cavalry', desc: 'Horsemen from Thessaly, with Parmenion on the left wing.', tag: 'ancient',
+      photos: [],
+      lines: [
+        { text: 'Thessaly, south of Macedon, was famous for its horses and its horsemen. Its cavalry fought on the left wing under Parmenion.', tag: 'ancient', cite: 'Arrian III.11' },
+        { text: 'The left wing took the heaviest pressure from the Persian right. Arrian praises the Thessalian horse for how they fought there.', tag: 'ancient', cite: 'Arrian III.15' },
+        { text: 'In this game the Thessalians must hold the left long enough for Alexander’s charge on the right to decide the battle.', tag: 'reconstruction' }
+      ] },
     { side: 'persia', type: 'chariot', name: 'Scythed chariot', desc: 'A horse-drawn chariot with blades on its wheels, sent against the front.', tag: 'ancient',
       photos: [],
       lines: [
@@ -351,6 +373,34 @@ window.GAUGAMELA_SCENARIO = {
       lines: [
         { text: 'The Persian cavalry from the eastern provinces, under Bessus according to Arrian, was on the left.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'Persian cavalry should not be shown as heavily armoured knights. The sources do not describe that, and the evidence does not support it.', tag: 'estimate' }
+      ] },
+    { side: 'persia', type: 'infantry', name: 'Persian infantry', desc: 'Foot soldiers from many peoples of the empire, in the centre.', tag: 'ancient',
+      photos: [],
+      lines: [
+        { text: 'Arrian lists contingents from across the Persian empire, from Babylon to the eastern provinces, placed in the centre and massed behind it.', tag: 'ancient', cite: 'Arrian III.8, III.11' },
+        { text: 'The ancient numbers for the Persian army are not reliable, and no modern total is agreed.', tag: 'estimate' },
+        { text: 'Historians think Darius relied mainly on his cavalry. How much of the infantry actually fought is not clear.', tag: 'estimate' }
+      ] },
+    { side: 'persia', type: 'infantry', name: 'Darius and the royal guard', desc: 'The Great King in the centre, among his guards and kinsmen.', tag: 'established',
+      photos: [],
+      lines: [
+        { text: 'Darius III stood in the centre of his army, the usual place for a Persian king. Arrian says his kinsmen and the Persian guards were around him.', tag: 'ancient', cite: 'Arrian II.8, III.11' },
+        { text: 'Among the guards Arrian names the “apple-bearers”, picked spearmen whose spears had golden apples on the butt.', tag: 'ancient', cite: 'Arrian III.11; Herodotus VII.41' },
+        { text: 'Whether Darius fled before his army or was left by it is disputed. The Greek accounts and the Babylonian diary can be read differently.', tag: 'disputed' }
+      ] },
+    { side: 'persia', type: 'infantry', name: 'Greek mercenaries', desc: 'Greek hired soldiers fighting for the Persian king.', tag: 'ancient',
+      photos: [],
+      lines: [
+        { text: 'Arrian places Greek mercenaries on either side of Darius and his guard, facing the Macedonian phalanx.', tag: 'ancient', cite: 'Arrian III.11' },
+        { text: 'Greeks had served Persian kings for generations. Many had already fought against Alexander at Issus two years before.', tag: 'ancient', cite: 'Arrian II.8' },
+        { text: 'Their number at Gaugamela is not known.', tag: 'estimate' }
+      ] },
+    { side: 'persia', type: 'cavalry', name: 'Armenian and Cappadocian cavalry', desc: 'Horsemen from the north-west of the empire, on the Persian right.', tag: 'ancient',
+      photos: [],
+      lines: [
+        { text: 'Arrian places Armenian and Cappadocian horse in front of the Persian right wing, facing Parmenion. Other accounts give the command of the right to Mazaeus.', tag: 'ancient', cite: 'Arrian III.11; Diodorus XVII.60' },
+        { text: 'The Persian right pressed Parmenion hard. Arrian says Parmenion sent to Alexander for help; whether Alexander turned back is disputed.', tag: 'disputed' },
+        { text: 'In this game they start hidden in the dust of the advance and appear when your troops come close.', tag: 'reconstruction' }
       ] }
   ],
 
