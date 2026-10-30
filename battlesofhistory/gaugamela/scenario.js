@@ -103,7 +103,7 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'The Macedonian army',
       media: [
-        { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: '' },
+        { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: 'Photo: Dosseman, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 11, file: '08-sarcophagus-alexander.jpg', caption: 'The horseman in a lion-skin helmet on the Alexander Sarcophagus is usually identified as Alexander.', ref: 'Istanbul Archaeology Museums', credit: '' },
         { at: 22, file: '09-kinch-tomb.jpg', caption: 'A Macedonian horseman rides down a Persian foot soldier. Tomb painting from Lefkadia, near Naousa, about 300 BCE, recorded by K. F. Kinch in 1897.', ref: 'Kinch Tomb, Lefkadia, Macedonia', credit: '' }
       ],
