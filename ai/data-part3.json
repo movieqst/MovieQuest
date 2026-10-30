@@ -1,0 +1,1545 @@
+{
+  "apps": [
+    {
+      "name": "Lambda",
+      "icon": "\u03bb",
+      "desc": "GPU cloud and on-prem infrastructure built for machine learning researchers and enterprises training large AI models.",
+      "rating": "N.R",
+      "traffic": 400000,
+      "url": "lambda.ai",
+      "free": false,
+      "categories": [
+        "supercomputer",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "Lambda provides NVIDIA GPU-dense infrastructure for AI research and development teams, offering both on-demand public cloud access and dedicated private cloud deployments . The company is pioneering 'AI factories'\u2014next-generation data centers purpose-built for GPU workloads\u2014with Lambda's facilities operating at 130 to 240 kW per rack compared to traditional data centers at 2 to 15 kW per rack . This reimagining of data center infrastructure supports the massive power and cooling requirements of modern AI training .\n\nLambda's public cloud offers on-demand GPU leasing from hours to a year, providing immediate access to the latest NVIDIA GPU technology . For larger needs, Lambda's private cloud offers dedicated AI factory contracts ranging from about 64 to tens of thousands of GPUs, enabling enterprises to train models at scale without managing the complexities of high-performance compute orchestration . The platform includes managed Kubernetes with native GPU and InfiniBand support, S3-compatible storage, and enterprise-grade observability .\n\nLambda's multi-cloud architecture enables seamless operations across AWS, Google Cloud, Azure, and OCI, with zero data-transfer fees for moving data in and out of Lambda . The platform is SOC 2 Type II certified, features SSO login, and offers industry-leading SLAs with 24/7 infrastructure monitoring . Lambda's long-term vision is 'one GPU per person'\u2014democratizing compute as a force multiplier for human progress, advancing innovation in healthcare, education, and beyond . Customers include ML researchers, enterprises, and organizations requiring dedicated, high-performance GPU infrastructure .",
+      "benefits": [
+        "Both public cloud (on-demand GPU leasing) and private cloud (64 to tens of thousands of dedicated GPUs) options provide flexibility for teams of all sizes .",
+        "Next-generation AI factories operating at 130-240 kW per rack support the density and cooling requirements of massive AI training clusters .",
+        "Zero data-transfer fees and seamless integration with AWS, Azure, GCP, and OCI enable true multi-cloud AI infrastructure ."
+      ],
+      "drawbacks": [
+        "Public cloud on-demand pricing can be expensive for long-running workloads; private cloud contracts require significant commitment .",
+        "Lambda's specialized infrastructure is designed for AI/ML workloads and not suitable for general-purpose cloud computing .",
+        "Private cloud contracts for enterprise customers require sales engagement; public cloud may have capacity limitations during periods of high demand ."
+      ],
+      "order": 126
+    },
+    {
+      "name": "Nscale",
+      "icon": "\ud83d\udda5\ufe0f",
+      "desc": "Vertically integrated European AI cloud provider building GPU superclusters and full-stack AI infrastructure at scale.",
+      "rating": "N.R",
+      "traffic": 200000,
+      "url": "nscale.com",
+      "free": false,
+      "categories": [
+        "supercomputer",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "Nscale is a vertically integrated AI cloud provider headquartered in Europe, purpose-built to deliver enterprise-grade AI infrastructure at massive scale . The company offers a comprehensive suite of AI solutions including owned and colocated data centres, GPU clusters, orchestration, AI services, managed software, and private cloud enhancements . Its architecture spans GW+ greenfield data centres across Europe and North America, enabling customers to run efficient and scalable AI training, fine-tuning, and inferencing workloads .\n\nNscale has emerged as a major player in the global AI infrastructure market, signing landmark agreements with Microsoft to deploy approximately 200,000 NVIDIA GB300 GPUs across Europe and the U.S. . This includes a ~240MW hyperscale AI campus in Texas delivering 104,000 GPUs from Q3 2026, plus deployments in Portugal, the UK, and Norway . The company also announced Stargate UK with OpenAI and NVIDIA, and Stargate Norway with Aker ASA, positioning itself as a key sovereign AI infrastructure provider for Europe .\n\nNscale raised the largest Series B in UK and European history at $1.1 billion in September 2025, led by Aker ASA with participation from NVIDIA, Dell, Fidelity, Blue Owl, and others . The company's vertically integrated model and access to low-cost renewable energy enable it to deliver state-of-the-art AI infrastructure more quickly and at lower cost than industry benchmarks. With a leadership team that has built over 50 data centers and scaled multi-billion-dollar infrastructure businesses, Nscale is setting a new standard for how the next wave of AI infrastructure is delivered globally .",
+      "benefits": [
+        "Vertically integrated AI infrastructure platform covering everything from greenfield data centers and GPU clusters to managed software and AI services.",
+        "Signed massive contracts with Microsoft for ~200,000 NVIDIA GB300 GPUs across Europe and the U.S., demonstrating world-class execution capability.",
+        "$1.1 billion Series B (largest in European history) with backing from NVIDIA, Dell, Fidelity, and Aker provides strong financial runway."
+      ],
+      "drawbacks": [
+        "Pricing is not publicly disclosed; requires contacting Nscale for custom enterprise quotes.",
+        "As a relatively young company (founded ~2020), Nscale has a shorter track record than established cloud providers like AWS or Azure.",
+        "The company's focus on hyperscale infrastructure is built for enterprise customers\u2014not suitable for individual developers or small teams."
+      ],
+      "order": 127
+    },
+    {
+      "name": "TensorWave",
+      "icon": "\ud83d\udce1",
+      "desc": "AI and HPC cloud built exclusively on AMD Instinct GPUs, offering liquid-cooled clusters for large-scale training.",
+      "rating": "N.R",
+      "traffic": 80000,
+      "url": "tensorwave.com",
+      "free": false,
+      "categories": [
+        "supercomputer",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "TensorWave is a specialized AI cloud built exclusively on AMD Instinct GPUs, offering high-performance, memory-intensive infrastructure for frontier-scale AI training and inference workloads . The company differentiates itself by providing access to AMD's latest accelerator technologies\u2014including MI455X, MI355X, MI325X, and MI300X GPUs\u2014without vendor lock-in, delivering what it calls 'leading price to performance' for AI workloads . TensorWave operates one of the world's largest all-AMD GPU clouds and is expanding rapidly to meet global enterprise demand .\n\nIn June 2026, TensorWave raised a $350 million Series B at a $1.55 billion valuation, co-led by Magnetar and AMD Ventures, with continued participation from Maverick Silicon, Nexus Venture Partners, and Western Frontier . The platform announced adoption of the AMD Helios rackscale solution in July 2026, a 72-GPU system integrating AMD Instinct GPUs, 6th Gen AMD EPYC CPUs, AMD Pensando networking, and ROCm software into a unified rack-scale platform . At rack scale, AMD Helios delivers up to 2.9 exaFLOPS peak 4-bit performance with 31 TB of HBM4 memory and 1.7 PB/s memory bandwidth .\n\nTensorWave's platform includes plug-and-play compatibility with 2+ million supported libraries and frameworks, hands-on expert support, 24/7 infrastructure monitoring, and enterprise-grade security (SOC 2 Type II, ISO 27001, HIPAA) . The company is actively deploying across multiple datacenter locations with comprehensive monitoring for critical training and inference workloads. Customers include AI-native pioneers like Featherless AI, which cited TensorWave's deep AMD expertise as a key differentiator .",
+      "benefits": [
+        "Exclusive AMD Instinct GPU cloud offering competitive price-to-performance with access to next-generation MI455X and MI355X accelerators.",
+        "AMD Helios rack-scale architecture delivers 2.9 exaFLOPS peak 4-bit and 31 TB HBM4 memory at scale, enabling multi-trillion-parameter training.",
+        "Backed by $350 million Series B ($1.55B valuation) with AMD Ventures participation, supporting rapid global infrastructure expansion."
+      ],
+      "drawbacks": [
+        "AMD GPU ecosystem is less mature than NVIDIA's CUDA ecosystem; some AI frameworks and libraries may have limited ROCm optimization.",
+        "Pricing is not publicly disclosed; requires contacting TensorWave for custom enterprise quotes.",
+        "As a specialist AMD cloud, TensorWave is not suitable for teams requiring NVIDIA-specific features like NVLink or CUDA-only libraries."
+      ],
+      "order": 128
+    },
+    {
+      "name": "MeluXina-AI",
+      "icon": "\ud83c\uddf1\ud83c\uddfa",
+      "desc": "Luxembourg's EuroHPC AI-optimized supercomputer delivering multi-exaflop performance for AI model training and research.",
+      "rating": "N.R",
+      "traffic": 20000,
+      "url": "luxprovide.lu",
+      "free": false,
+      "categories": [
+        "supercomputer",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "MeluXina-AI is Luxembourg's new AI-optimized supercomputer, selected as one of the first seven European 'AI Factories' under the EuroHPC Joint Undertaking initiative . The supercomputer is equipped with more than 2,100 GPU-AI accelerators and will deliver multi-exaflop AI computational power to train and fine-tune specialized and optimized AI models . It will be hosted and operated by LuxProvide, the same organization that operates Luxembourg's existing MeluXina supercomputer, and will be located in Bissen, Luxembourg, adjacent to its predecessor .\n\nThe Luxembourg AI Factory (L-AIF) is a collaborative effort involving LuxProvide, Luxinnovation (the national innovation agency), the Luxembourg National Data Service (LNDS), the University of Luxembourg, and the Luxembourg Institute of Science and Technology (LIST) . MeluXina-AI will serve as a national strategic asset with 50% of computing capacity reserved for the EuroHPC network and European countries, and 50% dedicated to national needs . The project received \u20ac60 million in funding from the Luxembourg State .\n\nThe AI Factory will provide startups, SMEs, and researchers with comprehensive support including access to AI-optimized HPC resources, training, and technical expertise . It will actively lead and develop the AI journey of early-stage startups, scaleups, and SMEs with a focus on finance, space, cybersecurity, and the green economy . The facility is intended to create a robust and interconnected network of AI hubs across Europe, acting as a one-stop-shop for AI innovation, and will be deployed in 2025 alongside other AI Factories in Germany, Spain, Finland, Greece, Italy, and Sweden .",
+      "benefits": [
+        "Over 2,100 GPU-AI accelerators delivering multi-exaflop AI computational power for training and fine-tuning specialized AI models.",
+        "50% of capacity reserved for national strategic needs while 50% contributes to the pan-European EuroHPC research network.",
+        "Comprehensive AI Factory ecosystem includes access to HPC resources, training, technical expertise, and data services for startups, SMEs, and researchers."
+      ],
+      "drawbacks": [
+        "Capacity allocation is split between European and national use; availability for commercial workloads may be limited.",
+        "Pricing and access mechanisms are not publicly disclosed; researchers and businesses must apply through the EuroHPC or national AI Factory programs.",
+        "As a national infrastructure project, MeluXina-AI is not designed for general commercial cloud use\u2014it serves research and strategic AI development."
+      ],
+      "order": 129
+    },
+    {
+      "name": "Oracle Cloud Infrastructure (OCI)",
+      "icon": "\ud83d\udd3a",
+      "desc": "Oracle Cloud Infrastructure, offering enterprise cloud computing including large-scale GPU clusters for AI workloads.",
+      "rating": "N.R",
+      "traffic": 800000,
+      "url": "oracle.com/cloud",
+      "free": false,
+      "categories": [
+        "supercomputer",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "Oracle Cloud Infrastructure (OCI) is Oracle's enterprise cloud platform, offering a comprehensive suite of cloud services including computing, storage, networking, and databases . For AI workloads, OCI provides purpose-built infrastructure with bare metal GPU instances, ultra-low-latency RDMA cluster networking (2.5-9.1 microseconds), and high-performance storage options including up to 61.44 TB of NVMe SSD capacity . OCI supports NVIDIA Blackwell (GB200 NVL72, HGX B200), Hopper (H200, H100), and AMD MI300X GPUs .\n\nOCI Supercluster is designed for large-scale AI training, scaling from a few GPUs to zettascale clusters with up to 131,072 NVIDIA Blackwell GPUs . Key features include zero hypervisor overhead on bare metal instances, high-performance Lustre and Oracle-managed file storage with terabytes per second throughput, and custom-designed RoCE v2 networking with up to 3,200 Gb/sec cluster network bandwidth . The platform integrates with OCI Data Science for end-to-end ML workflows and model management .\n\nOCI has been selected as the cloud infrastructure partner for Stargate, the OpenAI-led U.S. AI infrastructure project, and recently announced OCI Zettascale10, a next-generation supercluster delivering 16 zettaFLOPS across multigigawatt data centers . OCI also offers Oracle Multicloud Universal Credits, enabling customers to procure OCI services across AWS, Azure, and Google Cloud with a single consumption model . OCI is SOC, HIPAA, and GDPR compliant, with sovereign AI capabilities for regulated industries and governments .",
+      "benefits": [
+        "OCI Supercluster scales to 131,072 NVIDIA Blackwell GPUs with 2.5-microsecond RDMA latency and industry-leading bare metal performance.",
+        "Selected as Stargate's cloud infrastructure partner, demonstrating world-class capability for the largest AI deployments.",
+        "Multicloud Universal Credits and distributed cloud architecture enable deployment across AWS, Azure, and Google Cloud with consistent governance."
+      ],
+      "drawbacks": [
+        "Oracle's cloud ecosystem is less mature than AWS for non-database workloads, with fewer third-party integrations and AI services.",
+        "Enterprise-focused platform with complex licensing and pricing that can be difficult to navigate for smaller teams.",
+        "While OCI offers competitive pricing, scaling to zettascale capacity requires significant financial commitment and enterprise contracts."
+      ],
+      "order": 130
+    },
+    {
+      "name": "OCI Zettascale10",
+      "icon": "\u26a1",
+      "desc": "Oracle's flagship AI supercomputer connecting hundreds of thousands of NVIDIA GPUs across data centers for extreme-scale AI training.",
+      "rating": "N.R",
+      "traffic": 50000,
+      "url": "oracle.com/cloud/zettascale",
+      "free": false,
+      "categories": [
+        "supercomputer",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "OCI Zettascale10 is Oracle's flagship next-generation AI supercomputer, announced in October 2025 as a powerful evolution of the first Zettascale-class cloud computing cluster introduced in September 2024 . The platform delivers 16 zettaFLOPS of peak performance across multigigawatt clusters spanning multiple data centers, integrating up to 800,000 NVIDIA GPUs connected through Oracle's innovative Acceleron RoCE network fabric . The first Zettascale10 supercomputer is deployed in Abilene, Texas, serving as the foundation for the Stargate flagship supercluster in partnership with OpenAI .\n\nThe platform's power comes from a fundamental rethinking of network architecture. Oracle Acceleron RoCE uses built-in switching on modern GPU NICs, allowing each NIC to connect simultaneously to multiple switches across separate network planes . This creates a flatter, more resilient network fabric that dramatically improves reliability\u2014when problems occur, traffic moves to other planes without expensive checkpoint restarts . The architecture delivers consistent GPU-to-GPU latency across the entire cluster, and reduces network layers, costs, and energy consumption compared to traditional three-tier designs .\n\nOCI Zettascale10 was developed in collaboration with OpenAI, with the architecture deployed at the Abilene Stargate site. Oracle is now accepting orders for Zettascale10, with availability targeted for the second half of 2026, supporting up to 800,000 NVIDIA GPUs . The platform represents a new category of AI infrastructure, moving beyond individual supercomputers to interconnected multigigawatt data center campuses purpose-built for the most demanding frontier AI workloads.",
+      "benefits": [
+        "16 zettaFLOPS peak performance across multigigawatt clusters with up to 800,000 NVIDIA GPUs\u2014unprecedented scale for frontier AI training.",
+        "Oracle Acceleron RoCE network architecture delivers consistent performance, 2x potential networking capacity, and reliability through isolated network planes.",
+        "Developed in collaboration with OpenAI and deployed at the flagship Stargate Abilene site, demonstrating production-grade readiness."
+      ],
+      "drawbacks": [
+        "Targeted at the largest AI workloads\u2014excessive overkill for most enterprise and all individual use cases.",
+        "Pricing and access are not publicly disclosed; orders require enterprise contracts with significant commitment.",
+        "Availability is Q2 2026 at the earliest, and initial capacity is likely reserved for marquee customers like OpenAI."
+      ],
+      "order": 131
+    },
+    {
+      "name": "Project Ceiba",
+      "icon": "\ud83c\udf33",
+      "desc": "Joint AWS and NVIDIA supercomputer initiative built to power NVIDIA's own AI research using tens of thousands of GPUs.",
+      "rating": "N.R",
+      "traffic": 50000,
+      "url": "aws.amazon.com",
+      "free": false,
+      "categories": [
+        "supercomputer",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "Project Ceiba is a groundbreaking collaboration between AWS and NVIDIA to construct one of the world's fastest AI supercomputers, hosted exclusively on AWS, to power NVIDIA's internal research and development in AI . The supercomputer is built on NVIDIA's latest GB200 NVL72 architecture\u2014a liquid-cooled, rack-scale system featuring fifth-generation NVLink\u2014scaling to 20,736 NVIDIA Blackwell GPUs connected to 10,368 NVIDIA Grace CPUs . Project Ceiba is capable of processing 414 exaflops of AI compute, making it approximately 375 times more powerful than Frontier (the current world's fastest supercomputer), with a single second of computation equivalent to over 1,660 years of one calculation per second from every human on Earth .\n\nProject Ceiba is the first system to leverage the massive scale-out capabilities enabled by fourth-generation AWS Elastic Fabric Adapter (EFA) networking, providing 1,600 Gbps per superchip of low-latency, high-bandwidth throughput . To address the unprecedented power density, AWS pioneered liquid cooling at scale in its data centers, delivering efficient and sustainable high-performance computing solutions . The system incorporates industry-leading security features including the NVIDIA Blackwell GPU architecture's secure communication between GPUs, integrated with AWS Nitro System and EFA technologies, enabling end-to-end encrypted data for generative AI workloads .\n\nNVIDIA's research and development teams will use Project Ceiba to drive advancements across large language models, graphics (images, videos, 3D generation), simulation, digital biology, robotics, autonomous vehicles, and climate prediction with NVIDIA Earth-2 . The supercomputer is available through NVIDIA's DGX Cloud architecture, an end-to-end scalable AI platform available on AWS . As of 2026, Project Ceiba has been updated to include GB300s as well as the original GB200 configuration .",
+      "benefits": [
+        "414 exaflops of AI compute\u2014375x more powerful than Frontier, the world's fastest supercomputer, with 20,736 NVIDIA Blackwell GPUs.",
+        "4th-generation AWS EFA networking with 1,600 Gbps per superchip and pioneering liquid cooling at scale for efficient HPC.",
+        "Powering NVIDIA's own AI research across LLMs, digital biology, robotics, autonomous vehicles, and climate prediction."
+      ],
+      "drawbacks": [
+        "Built exclusively for NVIDIA's internal research\u2014not available as a commercial cloud service for external customers.",
+        "Massive scale and specialized infrastructure make this an extreme outlier, not representative of typical AI deployment.",
+        "As an internal NVIDIA research system, detailed performance metrics and operational data are not publicly released."
+      ],
+      "order": 132
+    },
+    {
+      "name": "InVideo AI",
+      "icon": "\ud83c\udfac",
+      "desc": "Prompt-to-video AI platform that drafts full scripted videos with voiceover, captions, and 200+ generative models built in.",
+      "rating": 10,
+      "traffic": 1500000,
+      "url": "invideo.io",
+      "free": true,
+      "categories": [
+        "video-gen",
+        "storyboard"
+      ],
+      "affiliate": false,
+      "order": 133,
+      "overview": "InVideo AI has grown from a template-based online video editor into a full AI video creation platform built around a prompt-to-video agent. You start by typing what you want \u2014 a product ad, a faceless YouTube explainer, a social short \u2014 and the AI agent drafts a full script, storyboard, voiceover, captions, and matching visuals in one pass, pulling from a library of 200+ underlying image, video, audio, and music models, including Veo 3.1, Sora 2, Kling 3.0, Seedance 2.0, Nano Banana Pro, and ElevenLabs music. From there you can regenerate individual scenes, swap in AI avatars and cloned voices, adjust pacing, or drop in stock footage from iStock, all inside a browser-based editor that stays closer to a traditional timeline than a pure chat interface.\n\nDay to day, the experience feels less like fighting software and more like directing an assistant: describe the video, review the draft, and refine what doesn't work rather than building every clip from scratch. That said, the platform runs on a credit system with several separate pools \u2014 AI generation minutes, iStock downloads, voice clones, and background removals all draw from their own allowances that don't roll over month to month. Heavy users report that one pool (often iStock downloads or voice clones) runs out before the others, which is worth planning around rather than assuming one 'credits' number covers everything.\n\nPricing in 2026 runs four paid tiers plus a free plan: Free (10 AI minutes/week, 720p, watermarked), Plus (~$20/month annual, ~$25 monthly \u2014 75 AI credits/month, watermark-free), Max (~$48/month annual, ~$60 monthly \u2014 390 credits/month, more concurrency and iStock downloads), and Generative (~$100\u2013120/month \u2014 800 credits/month, native access to Sora 2 and Veo 3.1). A Team plan and custom Enterprise pricing sit above that. Annual billing is meaningfully cheaper than paying monthly on every tier, and every paid plan removes the InVideo watermark that the free plan carries.",
+      "benefits": [
+        "The prompt-to-video agent genuinely speeds up the blank-page problem \u2014 script, voiceover, captions, and scene selection arrive together instead of being assembled piece by piece",
+        "Bundles 200+ generative models (Sora 2, Veo 3.1, Kling 3.0, Seedance 2.0, ElevenLabs music, and more) plus AI avatars and voice cloning under one subscription, avoiding the cost and hassle of separate tool subscriptions"
+      ],
+      "drawbacks": [
+        "The multi-pool credit system (separate allowances for AI minutes, iStock downloads, voice clones, and background removal, none of which roll over) means one pool can run dry mid-month even while others sit unused",
+        "Only the Generative tier ($100\u2013120/month) includes native Sora 2 and Veo 3.1 access, so getting the platform's top-tier video models requires jumping past the more affordable Plus and Max plans"
+      ]
+    },
+    {
+      "name": "Vidu",
+      "icon": "\ud83c\udfa5",
+      "desc": "AI video generator known for fast, low-cost generation, multi-reference character consistency, and strong anime-style output.",
+      "rating": 10,
+      "traffic": 400000,
+      "url": "vidu.com",
+      "free": true,
+      "categories": [
+        "video-gen",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "order": 134,
+      "overview": "Vidu is an AI video generation platform built by Shengshu Technology, a Beijing-based startup founded by Tsinghua University researchers and backed by Baidu, Ant Group, and other major Chinese investors. Using it feels similar to other prompt-to-video tools \u2014 type a description or upload reference images, and Vidu generates a clip in roughly 10 seconds at up to 1080p \u2014 but its standout feature is multi-reference consistency: feed it multiple reference images of a character, object, or style, and it keeps that subject visually consistent across separate generations, which is harder to pull off on many rival platforms. The tool has built a particular reputation for strong anime-style output and fast iteration, and with 10+ million users across 200+ countries, it has carved out a niche between premium Western tools (Runway, Sora) and cheaper budget generators.\n\nDay to day, the workflow is quick and low-friction: describe or reference what you want, generate, and either accept the clip or spend more credits regenerating. Off-peak mode offers unlimited generation at slower processing speed, which is a genuinely useful way to test prompts and quality before spending credits on faster, priority-queue generation. The tradeoff is that Vidu's per-clip duration is short by design \u2014 typically 4-8 seconds per generation \u2014 so producing a longer continuous scene means stitching multiple clips together in separate editing software rather than generating one long take natively.\n\nPricing is built around a free plan (800 credits/month, up to ~200 videos, unlimited off-peak generation, no card required) plus three paid tiers: Standard (~$8/month annual, ~$10 monthly \u2014 800 credits), Premium/Pro (~$28/month annual, ~$35 monthly \u2014 2,000-4,000 credits, unlocks Cinema-quality output and longer generation up to 32 seconds), and Ultimate (~$79/month annual, ~$99 monthly \u2014 8,000 credits, up to 200 videos/day, priority processing). Custom Enterprise plans run up to roughly $1,399/month with API access and negotiated credit pools for agencies and production houses. Independent cost breakdowns put Vidu at 3-7x cheaper per second of finished video than Western competitors like Sora and Runway at comparable quality, making it one of the most budget-friendly ways to get into AI video generation.",
+      "benefits": [
+        "Multi-reference consistency lets you lock a character, object, or art style across multiple separate generations \u2014 a genuine differentiator from platforms where every clip looks slightly different",
+        "One of the cheapest ways into AI video by a wide margin (3-7x less per second than Sora or Runway at comparable quality), with a genuinely usable free tier and unlimited off-peak generation for testing prompts before spending credits"
+      ],
+      "drawbacks": [
+        "Per-clip generation is short (typically 4-8 seconds, up to 32 seconds only on the Pro tier), so longer continuous scenes require stitching multiple generations together in separate editing software",
+        "Cinema-quality output and the longest generation durations are locked behind the Premium/Pro tier and above, so the free and Standard plans only show a fraction of what the platform can actually do"
+      ]
+    },
+    {
+      "name": "Text-to-Speech Online",
+      "icon": "\ud83d\udde3\ufe0f",
+      "desc": "Web-based text-to-speech tool for generating spoken audio from text.",
+      "rating": 9.9,
+      "traffic": 200000,
+      "url": "text-to-speech.online",
+      "free": true,
+      "categories": [
+        "voice",
+        "notai"
+      ],
+      "affiliate": false,
+      "order": 135,
+      "overview": "Text-to-Speech Online is a browser-based TTS tool intended for quickly converting text into audio, often used for narration, accessibility, and content creation.",
+      "benefits": [
+        "Simple web UI; low friction to generate TTS",
+        "Useful for quick narration drafts and accessibility use cases"
+      ],
+      "drawbacks": [
+        "Voice quality varies by engine/voice options",
+        "Commercial usage rights and export limits depend on plan/terms"
+      ]
+    },
+    {
+      "name": "Mistral Le Chat",
+      "icon": "\ud83e\udde0",
+      "desc": "Mistral's consumer assistant (rebranded to \"Vibe\") with Free and paid tiers.",
+      "rating": "N.R",
+      "traffic": 800000,
+      "url": "chat.mistral.ai",
+      "free": true,
+      "categories": [
+        "conversational",
+        "code"
+      ],
+      "affiliate": false,
+      "order": 136,
+      "overview": "Mistral's consumer assistant experience at chat.mistral.ai (formerly branded \"Le Chat\", now \"Vibe\") offers a general-purpose assistant for writing, productivity, and coding use cases.",
+      "benefits": [
+        "Free tier available for trying it",
+        "Strong option if you prefer Mistral ecosystem/models",
+        "General-purpose assistant interface"
+      ],
+      "drawbacks": [
+        "Limits/quotas vary by plan and may not be obvious until use",
+        "Model/tooling feature set can change over time"
+      ]
+    },
+    {
+      "name": "Luma Dream Machine",
+      "icon": "\ud83c\udf9e\ufe0f",
+      "desc": "AI video generation product from Luma Labs (text/image to video).",
+      "rating": "N.R",
+      "traffic": 800000,
+      "url": "lumalabs.ai",
+      "free": true,
+      "categories": [
+        "video-gen",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "order": 137,
+      "overview": "Dream Machine by Luma Labs is a generative video tool that produces videos from prompts and/or images, oriented toward creators and rapid ideation.",
+      "benefits": [
+        "Strong creative iteration workflow",
+        "Helpful for concepting, storyboards, and short clips"
+      ],
+      "drawbacks": [
+        "Consistency and control can be challenging in generative video",
+        "Usage is typically credit/queue based"
+      ]
+    },
+    {
+      "name": "Hailuo AI",
+      "icon": "\ud83c\udfac",
+      "desc": "AI video generation platform (text/image to video) at hailuoai.video.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "hailuoai.video",
+      "free": true,
+      "categories": [
+        "video-gen",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "order": 138,
+      "overview": "Hailuo AI is positioned as a generative video platform for creating videos from prompts and possibly images, with typical creator-style workflows and plan limits.",
+      "benefits": [
+        "Purpose-built for AI video creation",
+        "Useful for rapid creative prototyping"
+      ],
+      "drawbacks": [
+        "Quality/control depends on model capabilities and settings",
+        "Plan limits/credits require budgeting for production use"
+      ]
+    },
+    {
+      "name": "Meshy AI",
+      "icon": "\ud83e\uddf1",
+      "desc": "AI 3D generation platform for turning text/images into 3D assets.",
+      "rating": "N.R",
+      "traffic": 400000,
+      "url": "meshy.ai",
+      "free": true,
+      "categories": [
+        "architectural",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "order": 139,
+      "overview": "Meshy focuses on AI-assisted 3D asset creation, typically offering workflows like text-to-3D and image-to-3D, and often outputs meshes/textures suitable for iteration and downstream editing.",
+      "benefits": [
+        "Speeds up early 3D asset ideation",
+        "Can reduce time to first mesh for concept work"
+      ],
+      "drawbacks": [
+        "Meshes often need cleanup/retopo for production",
+        "Texture/UV quality may vary; manual work still common"
+      ]
+    },
+    {
+      "name": "Tripo AI",
+      "icon": "\ud83e\uddca",
+      "desc": "AI 3D generator (text/image to 3D) with Studio and API offerings.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "tripo3d.ai",
+      "free": true,
+      "categories": [
+        "architectural",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "order": 140,
+      "overview": "Tripo provides 3D generation via a Studio product and developer APIs, typically credit-based. It targets creators and developers needing programmatic text/image to 3D workflows.",
+      "benefits": [
+        "Has both UI (Studio) and developer API paths",
+        "Good for rapid 3D prototyping"
+      ],
+      "drawbacks": [
+        "Outputs often require post-processing for production pipelines",
+        "Credit-based usage can be hard to forecast"
+      ]
+    },
+    {
+      "name": "Flowise",
+      "icon": "\ud83e\udde9",
+      "desc": "Open-source visual builder for LLM apps/agents (node-based) with APIs and SDKs.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "flowiseai.com",
+      "free": true,
+      "categories": [
+        "code",
+        "conversational"
+      ],
+      "affiliate": false,
+      "order": 141,
+      "overview": "Flowise is an open-source, node-based visual builder for LLM workflows (often used for RAG and agentic flows). It's commonly used to prototype and deploy chatflows with integrations and API access.",
+      "benefits": [
+        "Fast prototyping with a visual graph editor",
+        "Open-source/self-host options",
+        "Common fit for RAG workflows and tool integrations"
+      ],
+      "drawbacks": [
+        "Production hardening (security, scaling, secrets) is on you when self-hosting",
+        "Graph complexity can grow quickly without conventions"
+      ]
+    },
+    {
+      "name": "Langflow",
+      "icon": "\ud83e\udde9",
+      "desc": "Open-source, Python-based visual builder for AI apps (agents + RAG), with built-in API/MCP patterns.",
+      "rating": "N.R",
+      "traffic": 250000,
+      "url": "langflow.org",
+      "free": true,
+      "categories": [
+        "code",
+        "conversational"
+      ],
+      "affiliate": false,
+      "order": 142,
+      "overview": "Langflow is an open-source, Python-based visual framework for building AI workflows and applications with a drag-and-drop editor, commonly used for RAG and agent-style systems.",
+      "benefits": [
+        "Visual workflow building with Python extensibility",
+        "Good fit for prototyping RAG/agent flows"
+      ],
+      "drawbacks": [
+        "Self-hosting requires security/ops maturity for production",
+        "Quality depends on chosen models, embeddings, and retrieval setup"
+      ]
+    },
+    {
+      "name": "CrewAI",
+      "icon": "\ud83d\udc65",
+      "desc": "Framework for orchestrating multiple AI agents (\"crews\") with roles and tasks for automation workflows.",
+      "rating": "N.R",
+      "traffic": 150000,
+      "url": "crewai.com",
+      "free": true,
+      "categories": [
+        "code",
+        "conversational"
+      ],
+      "affiliate": false,
+      "order": 143,
+      "overview": "CrewAI is a framework oriented around coordinating multiple agents with roles, tools, and tasks\u2014useful for building agentic automations that decompose work across specialized agents.",
+      "benefits": [
+        "Clear multi-agent orchestration concept (roles/tasks)",
+        "Extensible with tools and integrations"
+      ],
+      "drawbacks": [
+        "Agent workflows can be brittle without evaluation/guardrails",
+        "Costs can rise with multi-agent, multi-step executions"
+      ]
+    },
+    {
+      "name": "Open WebUI",
+      "icon": "\ud83d\udda7",
+      "desc": "Self-hosted web UI for chatting with local/remote models; commonly paired with local model runtimes.",
+      "rating": "N.R",
+      "traffic": 400000,
+      "url": "openwebui.com",
+      "free": true,
+      "categories": [
+        "conversational",
+        "local"
+      ],
+      "affiliate": false,
+      "order": 144,
+      "overview": "Open WebUI provides a self-hostable chat UI to interact with LLM backends (often local runtimes) and can serve as a lightweight internal chat front-end for teams or individuals.",
+      "benefits": [
+        "Self-hostable and privacy-friendly",
+        "Useful UI layer over local model servers"
+      ],
+      "drawbacks": [
+        "Security is your responsibility when exposed to networks",
+        "Feature set depends on connected backend/model capabilities"
+      ]
+    },
+    {
+      "name": "Ollama",
+      "icon": "\ud83e\udd99",
+      "desc": "Local LLM runtime for running models on your machine and serving them to apps.",
+      "rating": "N.R",
+      "traffic": 600000,
+      "url": "ollama.com",
+      "free": true,
+      "categories": [
+        "local"
+      ],
+      "affiliate": false,
+      "order": 145,
+      "overview": "Ollama is widely used to run LLMs locally and expose them for use by developer tools and UIs, enabling privacy-focused and offline-friendly workflows depending on the model and hardware.",
+      "benefits": [
+        "Local-first privacy and control",
+        "Common integration target for many apps/UIs"
+      ],
+      "drawbacks": [
+        "Limited by local hardware (RAM/VRAM)",
+        "Requires careful network configuration to avoid accidental exposure"
+      ]
+    },
+    {
+      "name": "LM Studio",
+      "icon": "\ud83d\udda5\ufe0f",
+      "desc": "Desktop app for running LLMs locally; can expose a local API server for integrations.",
+      "rating": "N.R",
+      "traffic": 400000,
+      "url": "lmstudio.ai",
+      "free": true,
+      "categories": [
+        "local"
+      ],
+      "affiliate": false,
+      "order": 146,
+      "overview": "LM Studio provides a desktop experience for downloading/running local models and often includes a local server mode so other apps can call the model via an API interface.",
+      "benefits": [
+        "User-friendly local model management",
+        "Useful for local testing and integration via API server mode"
+      ],
+      "drawbacks": [
+        "Performance constrained by local hardware",
+        "Model quality varies; configuration still matters"
+      ]
+    },
+    {
+      "name": "Tavily",
+      "icon": "\ud83d\udd0e",
+      "desc": "Search API designed for LLM/RAG use cases (retrieval augmentation).",
+      "rating": "N.R",
+      "traffic": 150000,
+      "url": "tavily.com",
+      "free": true,
+      "categories": [
+        "conversational",
+        "code"
+      ],
+      "affiliate": false,
+      "order": 147,
+      "overview": "Tavily provides a search API that is commonly used to ground LLM applications with fresh web results, supporting RAG-style retrieval augmentation and agent browsing workflows.",
+      "benefits": [
+        "Purpose-built for LLM grounding and RAG pipelines",
+        "API-based integration for apps and agents"
+      ],
+      "drawbacks": [
+        "Requires careful prompt/retrieval design to avoid noisy sources",
+        "API usage costs can grow with heavy retrieval"
+      ]
+    },
+    {
+      "name": "Jina AI",
+      "icon": "\ud83e\uddec",
+      "desc": "AI infrastructure/tooling company; offers components and services for retrieval/search and multimodal pipelines.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "jina.ai",
+      "free": true,
+      "categories": [
+        "conversational",
+        "code"
+      ],
+      "affiliate": false,
+      "order": 148,
+      "overview": "Jina AI provides developer-facing infrastructure and tooling often used for retrieval, embeddings, and search/RAG workflows, positioned for building AI systems that need robust data access and indexing.",
+      "benefits": [
+        "Developer-oriented building blocks for retrieval/search",
+        "Useful for production-grade RAG components"
+      ],
+      "drawbacks": [
+        "Choosing the right components/services requires technical evaluation",
+        "Costs/complexity depend on scale and deployment choice"
+      ]
+    },
+    {
+      "name": "Consensus",
+      "icon": "\ud83d\udcda",
+      "desc": "AI research assistant/search engine focused on scientific papers and evidence-backed answers.",
+      "rating": "N.R",
+      "traffic": 600000,
+      "url": "consensus.app",
+      "free": true,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "order": 149,
+      "overview": "Consensus is a research-oriented AI assistant that focuses on finding and summarizing scientific literature and returning evidence-backed answers to questions.",
+      "benefits": [
+        "Good for quick literature discovery and evidence-oriented summaries",
+        "Useful starting point for research questions"
+      ],
+      "drawbacks": [
+        "Not a substitute for reading and critically appraising papers",
+        "Coverage/recency depends on indexed sources and retrieval quality"
+      ]
+    },
+    {
+      "name": "SciSpace",
+      "icon": "\ud83d\udcc4",
+      "desc": "AI research assistant with Chat-with-PDF and literature workflows for reading and writing.",
+      "rating": "N.R",
+      "traffic": 500000,
+      "url": "scispace.com",
+      "free": true,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "order": 150,
+      "overview": "SciSpace provides research workflows such as chat-with-PDF, summarization, and writing/citation assistance oriented around scientific papers and academic documents.",
+      "benefits": [
+        "Useful for paper reading and comprehension",
+        "Chat-with-PDF workflow speeds up navigation of long documents"
+      ],
+      "drawbacks": [
+        "Accuracy depends on PDF quality and retrieval/citation handling",
+        "Users still need to verify claims in the original papers"
+      ]
+    },
+    {
+      "name": "Glean",
+      "icon": "\ud83d\udd0d",
+      "desc": "Enterprise workplace search + AI assistant connecting across company apps and knowledge sources.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "glean.com",
+      "free": false,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "order": 151,
+      "overview": "Glean is positioned as an enterprise search and workplace AI assistant that connects across internal tools (docs, tickets, chat, etc.) to help employees find answers and information quickly.",
+      "benefits": [
+        "Unifies knowledge discovery across many workplace systems",
+        "Enterprise-oriented approach for internal knowledge"
+      ],
+      "drawbacks": [
+        "Typically sales-led; evaluation may require enterprise process",
+        "Quality depends on connector coverage and access controls"
+      ]
+    },
+    {
+      "name": "Harvey AI",
+      "icon": "\u2696\ufe0f",
+      "desc": "Legal AI copilot for research, drafting, and document workflows with enterprise controls.",
+      "rating": "N.R",
+      "traffic": 100000,
+      "url": "harvey.ai",
+      "free": false,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "order": 152,
+      "overview": "Harvey is positioned as an AI assistant for legal work, focused on legal research and drafting workflows for law firms and in-house legal teams, with enterprise-grade controls and governance.",
+      "benefits": [
+        "Legal-focused positioning and workflows",
+        "Enterprise posture for governance and security"
+      ],
+      "drawbacks": [
+        "Not self-serve for many teams; procurement may be required",
+        "Legal outputs require careful verification and responsible use"
+      ]
+    },
+    {
+      "name": "Clay",
+      "icon": "\ud83e\udde9",
+      "desc": "Go-to-market / sales prospecting and enrichment platform with AI-assisted workflows.",
+      "rating": "N.R",
+      "traffic": 200000,
+      "url": "clay.com",
+      "free": true,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "order": 153,
+      "overview": "Clay is commonly used for lead sourcing, enrichment, and GTM workflows, combining data sources and automation with AI to build prospect lists and personalize outreach inputs.",
+      "benefits": [
+        "Powerful enrichment + workflow automation for GTM",
+        "Can accelerate research and personalization steps"
+      ],
+      "drawbacks": [
+        "Data quality depends on sources and matching logic",
+        "Costs can scale with enrichment volume and credits"
+      ]
+    },
+    {
+      "name": "Browser Use",
+      "icon": "\ud83e\udded",
+      "desc": "Tooling/library for letting agents use a browser to complete tasks (web automation for AI agents).",
+      "rating": "N.R",
+      "traffic": 150000,
+      "url": "browser-use.com",
+      "free": true,
+      "categories": [
+        "code",
+        "conversational"
+      ],
+      "affiliate": false,
+      "order": 154,
+      "overview": "Browser Use provides tooling intended to make it easier for AI agents to interact with websites and browser sessions programmatically for task execution and web automation.",
+      "benefits": [
+        "Useful building block for agentic browsing workflows",
+        "Can enable automated web tasks with agent control loops"
+      ],
+      "drawbacks": [
+        "Web automation is brittle across site changes and anti-bot measures",
+        "Security risks if agents can click/submit actions without guardrails"
+      ]
+    },
+    {
+      "name": "Continue.dev",
+      "icon": "\ud83e\uddd1\u200d\ud83d\udcbb",
+      "desc": "Open-source AI coding assistant for VS Code/JetBrains/CLI supporting multiple model providers.",
+      "rating": "N.R",
+      "traffic": 150000,
+      "url": "continue.dev",
+      "free": true,
+      "categories": [
+        "code"
+      ],
+      "affiliate": false,
+      "order": 155,
+      "overview": "Continue is an open-source coding assistant that integrates into popular IDEs, supports multiple LLM providers (including local), and offers chat/edit workflows with configurable context injection.",
+      "benefits": [
+        "Open-source and configurable across providers",
+        "Strong IDE integration and developer workflow fit",
+        "Works with local models for privacy-conscious setups"
+      ],
+      "drawbacks": [
+        "Quality depends on model choice and context settings",
+        "Usage costs depend on connected hosted model providers"
+      ]
+    },
+    {
+      "name": "OpenHands",
+      "icon": "\ud83d\ude4c",
+      "desc": "Open platform for coding agents including a local visual workspace (\"Agent Canvas\").",
+      "rating": "N.R",
+      "traffic": 150000,
+      "url": "all-hands.dev",
+      "free": true,
+      "categories": [
+        "code",
+        "conversational"
+      ],
+      "affiliate": false,
+      "order": 156,
+      "overview": "OpenHands is positioned as an open platform for running coding agents with a visual workspace (Agent Canvas) and developer tooling for agentic workflows.",
+      "benefits": [
+        "Open-source foundation enables self-hosting and inspection",
+        "Agent workspace concept can simplify iterative agent runs"
+      ],
+      "drawbacks": [
+        "Agents need strong review and permission boundaries",
+        "Operational overhead if self-hosting for teams"
+      ]
+    },
+    {
+      "name": "Hedra",
+      "icon": "\ud83c\udfad",
+      "desc": "AI video/character content creation platform (creator-oriented generative media).",
+      "rating": "N.R",
+      "traffic": 150000,
+      "url": "hedra.com",
+      "free": true,
+      "categories": [
+        "video-gen",
+        "audio",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "order": 157,
+      "overview": "Hedra is positioned as a creator-facing generative media product, oriented around creating character/video content with AI-driven workflows.",
+      "benefits": [
+        "Creator-friendly tooling for quick media generation",
+        "Useful for rapid experimentation"
+      ],
+      "drawbacks": [
+        "Consistency and IP/usage considerations require attention",
+        "Plan limits/credits can affect production use"
+      ]
+    },
+    {
+      "name": "Fal.ai",
+      "icon": "\u26a1",
+      "desc": "Developer platform for running generative media models (serverless inference / fast deployments).",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "fal.ai",
+      "free": false,
+      "categories": [
+        "video-gen",
+        "image-gen",
+        "code"
+      ],
+      "affiliate": false,
+      "order": 158,
+      "overview": "fal.ai provides developer infrastructure to run and deploy generative AI models (often image/video) with API access and performance-oriented serving.",
+      "benefits": [
+        "Developer-friendly model serving for generative media",
+        "Can reduce infra burden versus self-hosting GPUs"
+      ],
+      "drawbacks": [
+        "Costs depend on usage and model choice",
+        "Requires engineering to integrate safely and reliably"
+      ]
+    },
+    {
+      "name": "ComfyUI",
+      "icon": "\ud83e\uddec",
+      "desc": "Node-based UI for Stable Diffusion and related image generation workflows (high control).",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "comfy.org",
+      "free": true,
+      "categories": [
+        "image-gen",
+        "code"
+      ],
+      "affiliate": false,
+      "order": 159,
+      "overview": "ComfyUI is a node/graph-based interface for image generation workflows (commonly Stable Diffusion/SDXL), offering high control via composable nodes and reproducible pipelines.",
+      "benefits": [
+        "Highly controllable and modular workflow system",
+        "Great for advanced pipelines (ControlNet, upscalers, compositing)"
+      ],
+      "drawbacks": [
+        "Steeper learning curve than simpler UIs",
+        "Local setup and GPU requirements can be significant"
+      ]
+    },
+    {
+      "name": "Fooocus",
+      "icon": "\ud83d\uddbc\ufe0f",
+      "desc": "Simplified SDXL image generation UI emphasizing strong defaults (minimal tuning).",
+      "rating": "N.R",
+      "traffic": 150000,
+      "url": "github.com/lllyasviel/Fooocus",
+      "free": true,
+      "categories": [
+        "image-gen"
+      ],
+      "affiliate": false,
+      "order": 160,
+      "overview": "Fooocus is an open-source SDXL-focused image generation UI designed for ease of use and strong defaults, reducing the need for deep parameter tuning compared to advanced node-based tools.",
+      "benefits": [
+        "Beginner-friendly compared with advanced SD tooling",
+        "Runs locally and is free/open-source",
+        "Strong defaults speed up iteration"
+      ],
+      "drawbacks": [
+        "Less flexible than node-based workflows for advanced users",
+        "Local GPU/VRAM constraints still apply"
+      ]
+    },
+    {
+      "name": "Jan AI",
+      "icon": "\ud83e\udde0",
+      "desc": "Local-first desktop app for running and managing AI models/assistants on-device.",
+      "rating": "N.R",
+      "traffic": 250000,
+      "url": "jan.ai",
+      "free": true,
+      "categories": [
+        "conversational",
+        "local"
+      ],
+      "affiliate": false,
+      "order": 161,
+      "overview": "Jan is positioned as a local-first AI assistant desktop application that helps users run models and build a private assistant experience, typically integrating with local runtimes and/or provider backends depending on configuration.",
+      "benefits": [
+        "Local-first posture for privacy-conscious users",
+        "Desktop UX can simplify local model usage"
+      ],
+      "drawbacks": [
+        "Local hardware constraints (RAM/VRAM)",
+        "Feature depth depends on backend/model compatibility"
+      ]
+    },
+    {
+      "name": "AnythingLLM",
+      "icon": "\ud83d\udce6",
+      "desc": "RAG/document chat app that can run locally or self-host; supports multiple model providers/backends.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "anythingllm.com",
+      "free": true,
+      "categories": [
+        "conversational",
+        "local"
+      ],
+      "affiliate": false,
+      "order": 162,
+      "overview": "AnythingLLM is positioned as a flexible RAG/document chat solution you can run locally or self-host for multi-user use, connecting to different inference backends and supporting knowledge-base style workflows.",
+      "benefits": [
+        "Good for personal/team knowledge bases with RAG",
+        "Flexible across local and hosted model providers",
+        "Self-hosting option for privacy and control"
+      ],
+      "drawbacks": [
+        "RAG quality depends on ingestion settings and document quality",
+        "Self-hosting requires security and maintenance work"
+      ]
+    },
+    {
+      "name": "OpenRouter",
+      "icon": "\ud83d\udee3\ufe0f",
+      "desc": "OpenAI-compatible API gateway to access many models/providers with routing and credit-based billing.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "openrouter.ai",
+      "free": true,
+      "categories": [
+        "supercomputer",
+        "code"
+      ],
+      "affiliate": false,
+      "order": 163,
+      "overview": "OpenRouter offers an OpenAI-compatible API surface that routes requests to multiple model providers, typically with routing features and credit-based billing to simplify experimentation and deployment across models.",
+      "benefits": [
+        "One API for many models/providers",
+        "Routing and fallback options can improve reliability",
+        "Simplifies model switching and evaluation"
+      ],
+      "drawbacks": [
+        "Costs depend on chosen models and usage patterns",
+        "Adds a dependency layer versus direct-to-provider integrations"
+      ]
+    },
+    {
+      "name": "LiteLLM",
+      "icon": "\ud83d\udd0c",
+      "desc": "Open-source LLM gateway/proxy to unify many provider APIs; adds routing, logging, and governance features.",
+      "rating": "N.R",
+      "traffic": 200000,
+      "url": "litellm.ai",
+      "free": true,
+      "categories": [
+        "supercomputer",
+        "code"
+      ],
+      "affiliate": false,
+      "order": 164,
+      "overview": "LiteLLM provides a proxy/gateway layer that normalizes different LLM provider APIs and can add production features such as routing, logging, spend tracking, guardrails, and keys/governance in front of LLM usage.",
+      "benefits": [
+        "Unifies provider differences behind one interface",
+        "Helpful production controls (logging, cost tracking, routing)",
+        "Self-hostable for enterprise/security needs"
+      ],
+      "drawbacks": [
+        "Additional operational complexity (deployment, upgrades, secrets, uptime)",
+        "Still pay underlying model/provider costs plus your infra"
+      ]
+    },
+    {
+      "name": "Black Forest Labs",
+      "icon": "\ud83c\udf32",
+      "desc": "Frontier German AI lab behind FLUX, expanding into physical AI.",
+      "rating": "N.R",
+      "traffic": 800000,
+      "url": "bfl.ai",
+      "free": false,
+      "categories": [
+        "image-gen"
+      ],
+      "affiliate": false,
+      "overview": "Black Forest Labs (BFL) is the German frontier AI research lab founded in 2024 by Robin Rombach, Andreas Blattmann, and Patrick Esser \u2014 the researchers who originally created Stable Diffusion. Based in Freiburg, the company builds the FLUX family of models, which has become the de facto standard for open-weight and API-based image generation. Rather than a consumer app, bfl.ai is the company's official hub: a playground and API platform for generating and editing images directly with the latest FLUX models, alongside developer documentation at docs.bfl.ai. As of mid-2026 the company is valued at roughly $3.25 billion, backed by Andreessen Horowitz and other investors, with Martin Scorsese serving as an advisor.\n\nPricing on bfl.ai runs on a simple credit system where 1 credit equals $0.01, applied identically across the Playground and API. FLUX.2 pricing scales by output megapixel \u2014 roughly $0.03/MP for standard text-to-image generation and about $0.045/MP for editing \u2014 while older FLUX.1 tiers range from about $0.01 per image (schnell) up to $0.06 (pro ultra). There's no traditional monthly subscription; users top up credits and spend them as they generate, and the lightweight schnell/klein variants remain free to self-host under Apache 2.0 for anyone with the hardware to run them locally.\n\nIn 2026 BFL has pushed well beyond static images, framing its mission as building general \"visual intelligence.\" The company recently unveiled Flux 3, a model trained jointly on images, video, and audio that can also predict physical outcomes \u2014 the foundation for its new robotics push alongside partner Mimic Robotics and manufacturing trials with Audi. This positions BFL as much more than an image generator today: it's a research lab moving from generative media into physical AI and robotics, with FLUX still at the core of its commercial offering.",
+      "benefits": [
+        "Straightforward, transparent credit-based pricing (1 credit = $0.01, same rate on API and Playground) with direct access to the newest FLUX models the moment they ship, plus free open-weight variants for self-hosting",
+        "Founded by Stable Diffusion's original creators and now expanding well beyond image generation into video, audio, and physical AI/robotics, backed by a $3.25 billion valuation and serious investor and advisor support"
+      ],
+      "drawbacks": [
+        "Built as a developer/API-first platform rather than a polished consumer app \u2014 there's no traditional subscription plan, which makes it less approachable for casual users who just want simple, predictable pricing",
+        "The company's rapid pivot toward robotics and physical AI means some of its newest capabilities (like Flux 3 and Flux-mimic) are still early-stage and not yet broadly available outside trial partnerships"
+      ],
+      "order": 165
+    },
+    {
+      "name": "Giphy",
+      "icon": "\ud83c\udf9e",
+      "desc": "The web's largest GIF search engine and creation platform, now with AI-assisted GIF and sticker generation.",
+      "rating": "N.R",
+      "traffic": 5000000,
+      "url": "giphy.com",
+      "free": true,
+      "categories": [
+        "image-gen",
+        "notai"
+      ],
+      "affiliate": false,
+      "overview": "Giphy is the most widely used platform for searching, sharing, and creating GIFs and stickers, powering the GIF search experience inside apps like iMessage, Slack, Instagram, and X. As of mid-2026, the platform has layered in AI-assisted tools that let users generate original GIFs and stickers from text prompts, in addition to its core library of billions of user-uploaded and branded GIFs. It's used more as a content-discovery and communication utility than a creative studio, though its AI generation tools have made it a lightweight option for quick, shareable animated content.",
+      "benefits": [
+        "Massive, instantly searchable library of GIFs and stickers with deep integration across major messaging and social platforms, making it the default choice for reaction content",
+        "AI-assisted generation adds the ability to create original, on-brand GIFs and stickers from a text prompt without needing separate animation software"
+      ],
+      "drawbacks": [
+        "AI generation quality and controls are far more limited than dedicated AI video/image tools, since Giphy's core product remains search and discovery rather than generation",
+        "Monetization for creators is limited, and most of the platform's value still comes from its existing GIF library rather than net-new AI-generated content"
+      ],
+      "order": 166
+    },
+    {
+      "name": "NaturalReaders",
+      "icon": "\ud83d\udcd6",
+      "desc": "Text-to-speech reader that converts documents, PDFs, and web pages into natural-sounding audio with a range of AI voices.",
+      "rating": 9.8,
+      "traffic": 1000000,
+      "url": "naturalreaders.com",
+      "free": true,
+      "categories": [
+        "voice"
+      ],
+      "affiliate": false,
+      "overview": "NaturalReaders is a text-to-speech platform that converts written content such as documents, PDFs, web pages, and pasted text into spoken audio using natural-sounding AI voices. It's commonly used for proofreading, accessibility, and studying, offering browser extensions, desktop apps, and mobile apps so people can listen to content while multitasking. The platform provides a range of voices and languages, along with adjustable reading speed and highlighting that follows along with the audio.",
+      "benefits": [
+        "Wide range of natural-sounding AI voices and languages, useful for accessibility, proofreading, and hands-free reading",
+        "Available across browser extension, desktop, and mobile, making it easy to listen to content from almost any source",
+        "Free tier covers core text-to-speech functionality without requiring a subscription"
+      ],
+      "drawbacks": [
+        "Premium voices, faster processing, and some file-conversion features are locked behind paid plans",
+        "Like most TTS tools, pronunciation of unusual names, jargon, or non-standard text can occasionally sound unnatural"
+      ],
+      "order": 167
+    },
+    {
+      "name": "Elicit",
+      "icon": "\ud83d\udd0d",
+      "desc": "AI research assistant that searches academic literature, extracts key findings, and summarizes papers to speed up literature reviews.",
+      "rating": "N.R",
+      "traffic": 300000,
+      "url": "elicit.com",
+      "free": true,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "Elicit is an AI-powered research assistant built to help academics, students, and researchers work through the literature review process faster. Given a research question, it searches a database of millions of academic papers, surfaces the most relevant ones, and extracts key details like study design, sample size, and findings into a structured, comparable table. It's positioned less as a general chatbot and more as a purpose-built workflow tool for evidence synthesis, systematic reviews, and early-stage research exploration.",
+      "benefits": [
+        "Automatically extracts and tabulates findings across many papers at once, dramatically cutting down manual literature review time",
+        "Purpose-built for academic research workflows, with structured outputs (tables, summaries) rather than generic chat responses",
+        "Free tier covers core search and summarization features, making it accessible to students and independent researchers"
+      ],
+      "drawbacks": [
+        "Focused specifically on academic literature, so it's not a general-purpose research or writing tool outside that context",
+        "Like any AI summarization tool, extracted findings should be verified against the original papers before being relied on"
+      ],
+      "order": 168
+    },
+    {
+      "name": "Google Antigravity",
+      "icon": "\ud83d\ude80",
+      "desc": "Google's agentic development platform and AI-powered IDE that lets autonomous agents plan, execute, and verify complex coding tasks.",
+      "rating": "N.R",
+      "traffic": 1000000,
+      "url": "antigravity.google",
+      "free": true,
+      "categories": [
+        "code",
+        "local"
+      ],
+      "affiliate": false,
+      "overview": "Google Antigravity is an agentic software development platform built as a heavily modified fork of VS Code, running locally on macOS, Windows, and Linux. It offers two ways to work: a traditional Editor View with AI-powered tab completions and inline commands, and an agent-first mode where autonomous agents can plan, execute, and verify multi-step coding tasks with minimal supervision. The platform supports multiple underlying models, including Google's own Gemini 3 family alongside Anthropic's Claude and OpenAI's GPT-OSS, and introduces an 'Artifacts' system so agents produce human-verifiable deliverables rather than opaque code diffs.",
+      "benefits": [
+        "Runs locally as a full desktop IDE with an agent-first workflow, letting agents plan and carry out complex, multi-step coding tasks autonomously",
+        "Model-flexible: supports Gemini 3 Pro with generous free-tier rate limits, plus Claude and GPT-OSS models, rather than locking users to one provider",
+        "Built-in 'Artifacts' and verification layers aim to make agent work auditable and trustworthy rather than a black box"
+      ],
+      "drawbacks": [
+        "Still in public preview, so features, pricing, and stability are actively evolving and may change",
+        "As with any agentic coding tool, autonomous multi-step changes still need human review before being trusted in production"
+      ],
+      "order": 169
+    },
+    {
+      "name": "Mammouth AI",
+      "icon": "\ud83e\udda3",
+      "desc": "Multi-model AI aggregator giving access to 30+ leading LLMs and image models under one subscription.",
+      "rating": 10,
+      "traffic": 300000,
+      "url": "mammouth.ai",
+      "free": false,
+      "categories": [
+        "conversational",
+        "niche"
+      ],
+      "affiliate": false,
+      "overview": "Mammouth AI is a multi-model aggregator platform that gives users access to dozens of leading AI models \u2014 including GPT, Claude, Gemini, Llama, Mistral, DeepSeek, Qwen, and Kimi for text, plus Midjourney, Stable Diffusion, FLUX, and Nano Banana for images \u2014 through a single subscription rather than juggling separate accounts for each provider. The platform is organized around project-based workspaces (\"Projects Mammouths\") that keep custom instructions, chat history, and uploaded files together per task or client, along with document analysis, one-click reprompting to compare model outputs, and voice chat. It's positioned as a cost-saving alternative to subscribing to ChatGPT, Claude, and other AI products individually.",
+      "benefits": [
+        "Single subscription unlocks 30+ text and image models, which can be meaningfully cheaper than paying for several individual AI subscriptions",
+        "Project-based workspaces with persistent context, file uploads, and one-click model comparison make it easy to pick the best model for a given task without switching apps"
+      ],
+      "drawbacks": [
+        "No meaningful free tier \u2014 most real usage requires a paid plan, and unused monthly credits for premium models and image generation expire rather than rolling over",
+        "As an aggregator, it depends entirely on the underlying providers' models, so quality and feature availability shift whenever those partners update or restrict their own APIs"
+      ],
+      "order": 170
+    },
+    {
+      "name": "Open Design",
+      "icon": "\ud83c\udfa8",
+      "desc": "Open-source, local-first AI design platform that turns existing coding-agent CLIs into design engines for prototypes, slides, and brand systems.",
+      "rating": "N.R",
+      "traffic": 50000,
+      "url": "open-design.ai",
+      "free": true,
+      "categories": [
+        "storyboard",
+        "image-gen",
+        "local"
+      ],
+      "affiliate": false,
+      "overview": "Open Design is an open-source, local-first AI design platform positioned as a transparent alternative to closed tools like Claude Design. Rather than shipping its own AI agent, it delegates execution to coding-agent CLIs a developer already has installed \u2014 Claude Code, Codex, Cursor, Gemini CLI, OpenCode, Qwen, or GitHub Copilot CLI \u2014 and turns them into design engines that can generate web, desktop, and mobile prototypes, presentations (exportable as PPTX), and brand visuals from prompts. It ships with dozens of preset brand-grade design systems and built-in \"skills,\" runs locally with SQLite-based project persistence, and is released under the Apache-2.0 license for full self-hosting and inspection.",
+      "benefits": [
+        "Fully open-source and local-first \u2014 runs entirely on a developer's machine using coding-agent CLIs they already have, with no vendor lock-in or proprietary agent required",
+        "Ships with dozens of ready-made, brand-grade design systems and reusable skills, letting teams produce consistent prototypes, decks, and visuals fast without starting from a blank canvas"
+      ],
+      "drawbacks": [
+        "Requires at least one coding-agent CLI (Claude Code, Cursor, Gemini CLI, etc.) already installed and configured, so it's not a zero-setup tool for non-technical users",
+        "As a newly released project (2026), it has a much smaller community, track record, and polish than established design tools"
+      ],
+      "order": 171
+    },
+    {
+      "name": "Devin",
+      "icon": "\ud83e\udd16",
+      "desc": "Agentic AI software engineer that plans, writes, tests, and ships code across multi-step development tasks.",
+      "rating": "N.R",
+      "traffic": 200000,
+      "url": "app.devin.ai",
+      "free": false,
+      "categories": [
+        "code",
+        "local"
+      ],
+      "affiliate": false,
+      "overview": "Devin, from Cognition, is an agentic AI software engineer built for higher-autonomy development work than a standard in-IDE chat assistant. Given a task, it can plan a multi-step approach, write and edit code across a codebase, run and iterate on tests, and carry work through to a finished result with less step-by-step supervision than typical coding copilots. It's positioned for scoped engineering tasks \u2014 bug fixes, feature implementation, migrations \u2014 that a team wants handled end-to-end rather than suggested inline.",
+      "benefits": [
+        "Designed for multi-step, agentic task execution rather than just question-and-answer coding help, so it can carry a scoped task through to completion",
+        "Can meaningfully speed up well-defined engineering work by handling planning, implementation, and testing in one autonomous run"
+      ],
+      "drawbacks": [
+        "Autonomous agent output still requires strong human review and guardrails before merging into production",
+        "Access and pricing are not purely self-serve for teams, and typically involve a sales conversation rather than an instant signup"
+      ],
+      "order": 172
+    },
+    {
+      "name": "mnml.ai",
+      "icon": "\ud83c\udfd7\ufe0f",
+      "desc": "AI architecture rendering platform that turns sketches, 3D models, and CAD files into photorealistic exterior, interior, and landscape visuals.",
+      "rating": 9.5,
+      "traffic": 200000,
+      "url": "mnml.ai",
+      "free": true,
+      "categories": [
+        "storyboard",
+        "image-gen",
+        "architectural"
+      ],
+      "affiliate": false,
+      "overview": "mnml.ai is an AI rendering platform built specifically for architects, interior designers, and design studios. It converts hand-drawn sketches, SketchUp/Revit/Blender/3ds Max models, and clay viewport captures into finished renders in seconds, powered by its own ArchDiffusion model line. Beyond core sketch-to-render, the platform bundles more than a dozen modules: exterior and interior redesign, landscape and masterplan visualization, text-to-render concept generation, style transfer, inpainting-based edits, a render enhancer/upscaler for output from traditional engines like V-Ray or Lumion, and short 10-second animation generation from a still render. It's positioned as a fast concept and client-presentation layer that sits alongside, rather than replaces, traditional rendering software.",
+      "benefits": [
+        "Purpose-built for architecture and interior workflows, with direct compatibility for SketchUp, Revit, Blender, 3ds Max, Lumion, V-Ray, and Twinmotion files rather than being a generic image generator",
+        "Wide module set (masterplan, landscape, exterior, interior, animation, render enhancement) covers most of a design studio's visualization needs in one subscription"
+      ],
+      "drawbacks": [
+        "As with most AI renderers, output can drift from exact source geometry unless carefully constrained, so results still need review before client delivery",
+        "Full commercial use and higher-resolution export require a paid plan, with free usage limited to a small number of credits"
+      ],
+      "order": 173
+    },
+    {
+      "name": "ArchiVinci",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "desc": "London-based AI architectural visualization platform focused on geometry-preserving renders from sketches, photos, floor plans, and 3D model screenshots.",
+      "rating": 9.5,
+      "traffic": 150000,
+      "url": "archivinci.com",
+      "free": true,
+      "categories": [
+        "storyboard",
+        "image-gen",
+        "architectural"
+      ],
+      "affiliate": false,
+      "overview": "ArchiVinci is an AI-powered architectural visualization platform that turns sketches, photos, floor plans, elevations, and 3D model screenshots into photorealistic renders directly in the browser. It covers the full visualization workflow in one place: interior, exterior, exact-render, landscape, and masterplan modules, plus HDRI panoramas, a render enhancer/upscaler trained specifically on architectural imagery, an ArchiGPT design assistant for natural-language edits, and a dedicated tool for modifying facades, windows, and materials on existing exteriors. Its stated differentiator versus general-purpose image generators is geometry preservation \u2014 keeping proportions, openings, and structure faithful to the source input rather than inventing new massing, which matters when renders are shown to clients or planning authorities.",
+      "benefits": [
+        "Emphasizes geometry and material fidelity over generic photorealism, with alerts when a prompt risks distorting the original structure \u2014 useful when renders need to stay accurate for planning or client review",
+        "One platform covers the full visualization pipeline (interior, exterior, landscape, masterplan, panorama, upscaling, animation) rather than requiring separate tools for each stage"
+      ],
+      "drawbacks": [
+        "Coin/credit-based pricing across its tools can make costs harder to predict for heavy, iterative use",
+        "As a specialized architecture tool, it's less useful outside that niche than broader general-purpose image generators"
+      ],
+      "order": 174
+    },
+    {
+      "name": "PromeAI",
+      "icon": "\ud83c\udfa8",
+      "desc": "AI creative studio that turns sketches, photos, and text prompts into photorealistic renders and short videos across architecture, interior, product, and fashion design.",
+      "rating": 9.5,
+      "traffic": 400000,
+      "url": "promeai.pro",
+      "free": true,
+      "categories": [
+        "video-editor",
+        "image-gen",
+        "architectural"
+      ],
+      "affiliate": false,
+      "overview": "PromeAI, built by Team LibAI, is a broad AI creative platform that happens to be widely used in architecture and interior design workflows alongside product design, fashion, and general concept art. Its core sketch-rendering engine turns hand-drawn or CAD sketches into photorealistic renders in roughly ten seconds, with over a thousand style presets spanning architectural, interior, and artistic looks. Beyond rendering, it bundles text-to-image generation, image editing (inpainting, outpainting, background replacement), image variation for design alternatives, and image-to-video conversion, all in one browser-based workspace on a coin-based credit system.",
+      "benefits": [
+        "Very fast sketch-to-render turnaround (roughly ten seconds) with an unusually large library of style presets covering both architectural and general creative use",
+        "Combines rendering, editing, and video generation in a single subscription, which suits teams that need more than pure architectural visualization"
+      ],
+      "drawbacks": [
+        "Because it's a generalist platform rather than an architecture-first tool, it can lack some of the geometry-preservation controls that dedicated architecture renderers offer",
+        "The credit-based system means heavier users need to budget carefully, and higher-resolution/commercial output sits behind paid tiers"
+      ],
+      "order": 175
+    },
+    {
+      "name": "ReRender AI",
+      "icon": "\ud83c\udfe0",
+      "desc": "Cloud-based AI architectural rendering tool that turns Revit, SketchUp, and Rhino models or sketches into photorealistic visuals in seconds.",
+      "rating": 9.5,
+      "traffic": 150000,
+      "url": "rerenderai.com",
+      "free": true,
+      "categories": [
+        "storyboard",
+        "image-gen",
+        "architectural"
+      ],
+      "affiliate": false,
+      "overview": "ReRender AI is a cloud-based rendering platform aimed at architects, interior designers, and real estate developers who need fast, realistic visuals without a traditional rendering pipeline. Users upload sketches, screenshots, or 3D model viewports (from tools like Revit, SketchUp, or Rhino), and the platform generates finished interior or exterior renders, typically in under 30 seconds. Output can be adjusted using preset styles or custom prompts covering lighting, materials, mood, time of day, and season, and it's marketed as a faster alternative to setting up renders in engines like Enscape or Lumion.",
+      "benefits": [
+        "Very quick turnaround from raw viewport captures or sketches to finished renders, useful for rapid client iteration",
+        "A small daily free-render allowance lets studios trial the tool before committing to a paid plan"
+      ],
+      "drawbacks": [
+        "As a narrower, single-purpose tool, it offers less breadth (no masterplan, landscape, or 3D asset modules) than larger all-in-one architecture AI platforms",
+        "Heavier or high-resolution production use requires a paid subscription beyond the free daily renders"
+      ],
+      "order": 176
+    },
+    {
+      "name": "Krea AI",
+      "icon": "\ud83e\uddea",
+      "desc": "General-purpose real-time AI creative suite aggregating 60+ image, video, and upscaling models, popular with architects for renders and fast visual iteration.",
+      "rating": 9.5,
+      "traffic": 800000,
+      "url": "krea.ai",
+      "free": true,
+      "categories": [
+        "video-editor",
+        "image-gen",
+        "architectural"
+      ],
+      "affiliate": false,
+      "overview": "Krea AI is a browser-based creative suite rather than an architecture-specific tool, but it's frequently used by architects and designers for rendering and visualization work. It aggregates dozens of third-party models \u2014 including Flux, Veo, Kling, Runway, Luma, and Ideogram \u2014 behind one subscription and one interface, alongside a real-time canvas that generates as you sketch or type instead of the usual prompt-and-wait cycle. Its enhancer supports upscaling up to 22K resolution using integrated Topaz tools, which is one reason architecture and product-visualization users adopt it for high-resolution output alongside its image, video, and 3D generation features.",
+      "benefits": [
+        "Real-time generation canvas and access to 60+ underlying models in one subscription avoid juggling separate accounts for image, video, and upscaling needs",
+        "High-resolution upscaling (up to 22K) is strong for large-format architectural prints and presentation boards"
+      ],
+      "drawbacks": [
+        "It's a general creative platform, not an architecture-trained renderer, so it lacks geometry-preservation safeguards that dedicated architecture tools build in",
+        "Complex compositions and very high-resolution outputs can still need multiple iterations to get right, per user reviews"
+      ],
+      "order": 177
+    },
+    {
+      "name": "MyArchitectAI",
+      "icon": "\ud83d\udcd0",
+      "desc": "AI rendering and animation tool for architects that enhances existing renders and turns still images into camera-motion walkthrough videos.",
+      "rating": 9.5,
+      "traffic": 100000,
+      "url": "myarchitectai.com",
+      "free": true,
+      "categories": [
+        "video-gen",
+        "architectural"
+      ],
+      "affiliate": false,
+      "overview": "MyArchitectAI is an AI rendering tool aimed squarely at architecture and interior visualization. Users upload an interior or architectural render (JPG/PNG/WebP, no 3D model required), and its enhancer engine sharpens detail and realism while preserving the original geometry and textures, with a creativity slider to control how much the AI is allowed to change. It also offers an animation module that turns a single still render into a walkthrough-style video using 30+ preset camera movements (orbit, dolly, pan, flythrough) or a custom described motion, delivered as an MP4 in under two minutes.",
+      "benefits": [
+        "Works directly from any rendered image with no 3D model or CAD file needed, lowering the barrier for quick enhancement or animation",
+        "The still-to-video camera animation feature is a fast way to produce shareable walkthrough clips from renders that already exist"
+      ],
+      "drawbacks": [
+        "It's an enhancement/animation layer rather than a full sketch-to-render generator, so it depends on already having a base render or design image",
+        "As a smaller, newer tool, its style and camera-motion library is narrower than larger all-in-one architecture AI platforms"
+      ],
+      "order": 178
+    },
+    {
+      "name": "PicLumen",
+      "icon": "\ud83d\uddbc\ufe0f",
+      "desc": "Free general-purpose AI image generator with multiple models and editing tools, commonly used for concept art, product, and interior visuals.",
+      "rating": 9.5,
+      "traffic": 600000,
+      "url": "piclumen.com",
+      "free": true,
+      "categories": [
+        "image-gen",
+        "architectural"
+      ],
+      "affiliate": false,
+      "overview": "PicLumen is a web-based, general-purpose AI image generator rather than an architecture-specific tool. It offers text-to-image and image-to-image generation across multiple fine-tuned models (including realistic, anime, and line-art styles, plus FLUX and Pony Diffusion), with commercial-use licensing on generated output. Additional tools cover background removal, upscaling, colorization, and inpainting-style edits. Its free tier includes an unrestricted 'relaxed queue' for generation, which has made it popular for interior concepts, product visuals, and other design mockups alongside general art and marketing use.",
+      "benefits": [
+        "A genuinely usable free tier with unlimited relaxed-queue generation, unusual among AI image generators that typically cap free usage tightly",
+        "Multiple specialized models and editing tools (upscaling, background removal, colorization) in one place for quick concept and mockup work"
+      ],
+      "drawbacks": [
+        "It's a general image generator, not trained on architectural geometry, so it's better suited to concept and mood visuals than precise, client-ready architectural renders",
+        "Faster 'priority' generation and some advanced editing tools are limited or slower on the free tier"
+      ],
+      "order": 179
+    },
+    {
+      "name": "3D AI Studio",
+      "icon": "\ud83e\uddf1",
+      "desc": "AI 3D model generator that creates textured furniture, decor, and building/massing assets from images, text, or sketches for architecture and game workflows.",
+      "rating": 9.5,
+      "traffic": 250000,
+      "url": "3daistudio.com",
+      "free": true,
+      "categories": [
+        "architectural",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "overview": "3D AI Studio is an AI-powered 3D content platform used by over a million designers, developers, and creators. In architecture and interior workflows specifically, it's positioned as the go-to tool for generating the furniture, decor, fixtures, and architectural props a scene needs \u2014 turning a text description, catalog photo, or sketch into an editable, textured 3D model rather than a flat render. It also handles building massing and facade elements, and for full building concepts it offers a two-step workflow that turns a hand-drawn sketch into a photorealistic image first, then converts that image into an interactive 3D model. Generated assets export to formats like GLB, OBJ, FBX, and USDZ for use in Blender, SketchUp, game engines, or AR/VR.",
+      "benefits": [
+        "Produces genuinely editable, texturable 3D assets (not just flat images), which fills a real gap in most AI rendering pipelines that only output pictures",
+        "Broad export format support (GLB, OBJ, FBX, USDZ, STL) makes assets portable across Blender, SketchUp, game engines, and 3D printing"
+      ],
+      "drawbacks": [
+        "It generates individual assets and building elements rather than full photorealistic scene renders, so it's typically paired with a separate rendering tool for finished architectural visuals",
+        "The first model is free but ongoing use, higher polygon counts, and batch processing require a paid plan"
+      ],
+      "order": 180
+    },
+    {
+      "name": "Pixelcut",
+      "icon": "\u2702\ufe0f",
+      "desc": "AI photo and video editor for product photography \u2014 background removal, magic eraser, upscaling, and AI-generated product scenes.",
+      "rating": "N.R",
+      "traffic": 2000000,
+      "url": "pixelcut.ai",
+      "free": true,
+      "categories": [
+        "image-editor",
+        "video-editor"
+      ],
+      "affiliate": false,
+      "overview": "Pixelcut is an AI photo and video editing platform built primarily for e-commerce sellers, marketers, and social content creators, used by tens of millions of people through its web app and mobile apps. Core tools include instant background removal, a magic eraser for removing unwanted objects, an image upscaler, and an AI product photoshoot generator that places a product photo into dozens of AI-generated backgrounds and styles (with matching shadows and lighting) instead of a studio shoot. It also offers batch editing for processing many product images at once, basic video tools including a background remover for video and an animate feature that adds motion to still product shots, and an AI copywriting assistant for product descriptions.",
+      "benefits": [
+        "Turns a single product photo into many polished, on-brand marketing images in seconds, replacing the need for a studio photoshoot for most small e-commerce sellers",
+        "Batch editing can process dozens of images at once, which is a real time-saver for stores refreshing an entire catalog"
+      ],
+      "drawbacks": [
+        "Its video tools are noticeably less capable than dedicated video-editing platforms, better suited to quick social clips than polished production",
+        "Complex products with fine detail (transparent materials, stray reflections) can still need manual touch-ups after the AI pass"
+      ],
+      "order": 181
+    },
+    {
+      "name": "Magnific",
+      "icon": "\ud83d\udd0d",
+      "desc": "AI creative suite (formerly Freepik) for image/video upscaling, generative enhancement, and design \u2014 built on Magnific's upscaling technology plus 40+ AI models.",
+      "rating": "N.R",
+      "traffic": 1000000,
+      "url": "magnific.com",
+      "free": true,
+      "categories": [
+        "image-editor",
+        "video-editor"
+      ],
+      "affiliate": false,
+      "overview": "Magnific began as a standalone AI image upscaler known for adding convincing extra detail and texture rather than just sharpening pixels. After Freepik acquired it in 2024, the two brands merged and fully rebranded as Magnific in 2026, folding the upscaler into a much larger creative suite: AI image and video generation across 40+ underlying models (including Flux, Kling, and Google Veo), a video upscaler (up to 4K), mockup generation, collaborative 'Spaces,' and Freepik's original library of 250M+ stock photos, vectors, and templates. The upscaler itself offers a Creative mode (the original Magnific engine, for AI-enhanced added detail) and a Precision mode for more faithful enlargement, scaling up to 16x/10K depending on the tool.",
+      "benefits": [
+        "The Magnific upscaling engine remains a standout for adding believable fine detail and texture to low-res or AI-generated images, not just sharpening them",
+        "Bundles generation, upscaling, video, and a huge stock-asset library into one subscription, useful for teams that previously needed separate tools for each"
+      ],
+      "drawbacks": [
+        "At very high scale factors or large-format print sizes, output can show over-sharpening or texture artifacts compared to more specialized print-upscaling tools",
+        "The platform has grown large and multi-purpose since the Freepik merger, which can make it feel less focused than the original single-purpose Magnific upscaler"
+      ],
+      "order": 182
+    },
+    {
+      "name": "Storyboarder.ai",
+      "icon": "\ud83d\udcfd\ufe0f",
+      "desc": "AI-powered storyboard generator that turns scripts into visual sequences, animatics, and pitch decks in minutes.",
+      "rating": "N.R",
+      "traffic": 200000,
+      "url": "storyboarder.ai",
+      "free": true,
+      "categories": [
+        "storyboard",
+        "video-gen",
+        "image-gen"
+      ],
+      "affiliate": false,
+      "overview": "Storyboarder.ai is a comprehensive AI-powered pre-production platform built for filmmakers, agencies, and creative professionals. Trusted by over 250,000 creators worldwide, it streamlines the entire pre-visualization process by transforming scripts or simple ideas into complete storyboards, shot lists, and animatics. The platform is designed to be intuitive, allowing users to focus on storytelling rather than the technical complexities of traditional storyboarding.\n\nThe core workflow begins with uploading a script in virtually any format (PDF, FDX, Fountain, Word, or plain text), or simply describing a concept. The AI then generates a scene breakdown, a detailed shot list, and corresponding storyboard images. A key differentiator is its robust character and location consistency, ensuring visual elements remain coherent across every frame\u2014a common challenge with many AI image generators. Users can refine their storyboards using a suite of powerful editing tools, including a unique 3D Camera-Angle Tool to adjust framing, an inpainting feature for local edits, and a sketch-to-image function to elevate rough drawings into polished panels. The platform also supports custom art styles by allowing users to upload reference images.\n\nBeyond static images, Storyboarder.ai offers a powerful Image-to-Video and Animatic feature. Users can generate dynamic, cinematic clips from their storyboard frames, complete with AI-driven camera movement and audio. Two video models are available: a standard version and \"Video 2.0,\" which provides smoother motion, sharper prompt adherence, and the ability to create multi-cut sequences up to 15 seconds long. The final output can be exported as a professional PDF, an MP4 animatic, or a polished pitch deck with one click. The platform operates on a project-based subscription model with unlimited image generation on all paid plans, eliminating the frustration of credit systems.\n\nPricing is structured across a free plan and three paid tiers. The Free Plan allows users to explore the tool with 2 projects and up to 9 shots/images per project. While it offers full access to features for exploration, additional shots are locked until an upgrade. The paid plans are: Starter (for individuals with lighter needs \u2014 5 projects/month, scripts up to 10 pages), Pro Unlimited (offers unlimited projects and scripts up to 30 pages), and Production Unlimited (the top tier with unlimited everything, including script length). All paid plans include unlimited image generation and watermark-free commercial-use exports. Annual billing provides a discount, and enterprise plans are available upon request.",
+      "benefits": [
+        "End-to-end pre-production pipeline: Transforms scripts directly into shot lists, storyboards, and animatics, significantly reducing manual labor and time.",
+        "True character and location consistency: Maintains visual coherence across frames\u2014a feature many competing AI storyboard tools cannot reliably perform.",
+        "Unlimited image generation on all paid plans: No credit system or per-image fees, allowing for unlimited iteration and experimentation."
+      ],
+      "drawbacks": [
+        "Free tier limitations: The free plan is restricted to 2 projects and only 9 images per project, which is very limited for serious pre-production work.",
+        "Video generation is not unlimited: While image generation is unlimited, the powerful animatic features (Image-to-Video) come with a limited number of free generations on paid plans, with add-ons required for heavy video production.",
+        "Pricing page is not transparently listed: The official help center notes that current pricing details are on a separate page, which can make it difficult to quickly compare plans without navigating away."
+      ],
+      "order": 183
+    },
+    {
+      "name": "Removal.ai",
+      "icon": "\ud83d\uddbc\ufe0f",
+      "desc": "AI-powered background remover offering bulk processing, a free online photo editor, and professional manual editing services.",
+      "rating": 10,
+      "traffic": 300000,
+      "url": "removal.ai",
+      "free": true,
+      "categories": [
+        "image-editor"
+      ],
+      "affiliate": false,
+      "overview": "Removal.ai is a specialized AI tool designed for quickly and automatically removing backgrounds from images. Its primary service is a fully automated background remover that processes images in seconds, making it a valuable asset for e-commerce sellers, photographers, designers, and content creators who need clean cutouts for product photos, portraits, or other visual content. The core value proposition is its simplicity and speed, enabling users to achieve professional results without manual effort.\n\nThe platform offers several key features beyond its basic background remover. It includes a bulk background remover that can process up to 100 images at once, with credits deducted at a fixed rate of 0.5 credit per image. Crucially, Removal.ai also provides a powerful free online photo editor that activates after the background is removed. This editor allows users to replace the background with a solid color or a new image, add text with full typography controls, apply shadow effects, and make manual adjustments with an eraser tool. For users with complex images that the AI cannot handle perfectly, Removal.ai offers an alternative: professional manual editing services, where a team of experts can handle difficult tasks, with results typically delivered within 24 hours.\n\nPricing for Removal.ai is structured as a freemium model. The Free Plan offers 1 free credit for one high-resolution image removal. This allows users to test the service at no cost. Beyond the free credit, the platform offers paid plans to accommodate higher usage. While specific per-tier pricing details are not immediately clear from the surface of the website, sources indicate there is a paid monthly plan, and businesses requiring more capacity can contact sales for custom plans, including Unlimited API Access. Bulk processing is a key feature for paid users, allowing for efficient workflows and costing 0.5 credits per image. Self-serve checkout is available, indicating a straightforward upgrade path from the free tier.",
+      "benefits": [
+        "Fast and effective automated background removal: Provides a free, instant, and fully automated solution for quickly cutting out image backgrounds.",
+        "Comprehensive free photo editor: Offers a robust suite of editing tools after background removal, including background replacement, text addition, and shadow effects.",
+        "Bulk processing capability: Can handle up to 100 images at once, streamlining workflows for professional users."
+      ],
+      "drawbacks": [
+        "Free tier is very limited: Only offers 1 free credit, which is only enough to test the service on a single image.",
+        "Pricing transparency is poor: The structure for paid plans is difficult to find and clearly enumerate from the public website, with many details requiring a sales conversation.",
+        "AI may fail on complex images: The tool struggles with images where it cannot clearly identify the foreground, requiring users to fall back on the paid professional editing service."
+      ],
+      "order": 184
+    },
+    {
+      "name": "JotForm",
+      "icon": "\ud83d\udcdd",
+      "desc": "No-code form builder with AI-powered form creation, e-signatures, payment collection, and 10,000+ templates.",
+      "rating": 10,
+      "traffic": 2000000,
+      "url": "jotform.com",
+      "free": true,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "order": 185,
+      "overview": "JotForm is one of the most established no-code form builders on the web, with over 20 million users and 10,000+ pre-built templates covering everything from contact forms and event registrations to payment collection, surveys, and e-signatures. As of mid-2026, the platform has evolved well beyond simple data collection into a full workflow automation suite: JotForm AI lets users describe a form in plain language and generates a complete, field-ready form with conditional logic already configured, while AI Form Copilot assists throughout editing by refining questions, adjusting logic, and optimizing layout in real time. JotForm Sign adds native e-signature workflows with multi-step signing sequences and audit trails, and the platform supports payment collection through Stripe, PayPal, and Square directly inside forms.\n\nThe drag-and-drop builder is genuinely accessible to non-technical users, and the template library is one of the deepest in the category. Conditional logic, approval routing, and 150+ native integrations (Salesforce, HubSpot, Google Sheets, Slack, Mailchimp, Airtable, and dozens more) mean most teams can build sophisticated workflows without touching code or paying for Zapier. JotForm also offers an App Builder that turns forms into lightweight mobile apps, though these can only be shared via link or QR code rather than published to app stores.\n\nPricing in 2026 runs five tiers: Starter (Free \u2014 5 forms, 100 monthly submissions, 100 MB storage, 10 payment submissions, 10 signed documents, JotForm branded), Bronze (~$34/month annual \u2014 25 forms, 1,000 submissions, 1 GB, 100 payments, 100 signed docs), Silver (~$39/month annual \u2014 50 forms, 2,500 submissions, 10 GB, 250 payments, 250 signed docs), Gold (~$99/month annual \u2014 100 forms, 10,000 submissions, 100 GB, 1,000 payments, 1,000 signed docs, HIPAA compliance), and Enterprise (custom \u2014 unlimited everything, multi-user access, SSO, API access, sandbox mode, dedicated support). Annual billing is required for the listed prices; month-to-month costs more. Enterprise contracts average around $23,483/year according to spend data.",
+      "benefits": [
+        "JotForm AI generates complete forms from plain-language descriptions with conditional logic and smart field suggestions already built in, dramatically lowering the barrier for non-technical users",
+        "150+ native integrations including Salesforce, HubSpot, Stripe, PayPal, Square, Google Sheets, and Slack eliminate the need for middleware in most workflows",
+        "Massive template library with 10,000+ pre-built forms covering virtually every use case, plus native e-signature (JotForm Sign) and payment collection without leaving the platform"
+      ],
+      "drawbacks": [
+        "Every plan below Enterprise is single-user by design, meaning teams who need multi-user access, SSO, or user management must negotiate a custom Enterprise contract",
+        "Submission limits reset monthly and can be exhausted quickly during marketing campaigns or high-traffic events, forcing mid-cycle upgrades",
+        "The App Builder cannot publish to iOS or Android app stores, only shareable links and QR codes, which limits distribution for mobile-first use cases"
+      ]
+    },
+    {
+      "name": "JotForm QR Code Generator",
+      "icon": "\ud83d\udcf1",
+      "desc": "Free, no-signup QR code generator supporting 50+ data types with brand customization and logo upload.",
+      "rating": 10,
+      "traffic": 1000000,
+      "url": "jotform.com/qr-code-generator",
+      "free": true,
+      "categories": [
+        "niche"
+      ],
+      "affiliate": false,
+      "order": 186,
+      "overview": "JotForm QR Code Generator is a standalone, browser-based tool for creating custom QR codes without signing up for an account or entering payment details. As of mid-2026, it supports over 50 link types beyond simple URLs \u2014 Wi-Fi credentials, phone numbers, email addresses, vCards, PayPal links, SMS messages, and social media profiles \u2014 making it genuinely versatile for business cards, event signage, restaurant menus, and payment collection. The interface is deliberately minimal: paste your link or data, pick a layout style, customize colors to match branding, add a text label so users know what to expect, upload a logo for the center of the code, and download a high-resolution PNG in under a minute.\n\nThe tool is completely free with no usage caps, no watermarks, and no expiry \u2014 a genuine differentiator in a category where most competitors gate dynamic editing, analytics, or high-res exports behind paid tiers. However, it generates static QR codes only: once downloaded, the encoded data cannot be changed without generating a new code and reprinting materials. There is also no built-in scan tracking or analytics, and downloads are PNG-only \u2014 no SVG, EPS, or PDF vector formats for large-format print work.\n\nFor users already inside the JotForm ecosystem, the platform offers deeper QR functionality through its form builder: a dynamic QR code widget can generate unique codes based on form responses (for example, displaying a different coupon QR depending on which answer a user selects), and every JotForm form can be shared via an auto-generated QR code directly from the Publish tab. But the standalone generator at jotform.com/qr-code-generator/ is positioned as a quick, zero-friction entry point for anyone who just needs a clean, branded QR code fast \u2014 not a full campaign management platform.",
+      "benefits": [
+        "Completely free with no signup, no usage limits, no watermarks, and no expiry \u2014 one of the only QR generators with genuinely zero friction for casual and business use",
+        "Supports 50+ data types including Wi-Fi, vCard, PayPal, SMS, email, and social media links \u2014 far more versatile than URL-only generators",
+        "Clean customization with brand colors, logo upload, text labels, and pattern styles that produce professional-looking codes suitable for print and signage"
+      ],
+      "drawbacks": [
+        "Static QR codes only \u2014 once printed or shared, the destination cannot be edited without generating and redistributing an entirely new code",
+        "No scan tracking, analytics, or geographic/device data \u2014 impossible to measure campaign performance or engagement without a separate tool",
+        "PNG download only with no vector format support (SVG, EPS, PDF), which limits scalability for large-format printing like billboards or vehicle wraps"
+      ]
+    },
+    {
+      "name": "Claude Code",
+      "icon": "\ud83d\udcbb",
+      "desc": "Anthropic's terminal-native AI coding agent that reads, writes, and executes code across your entire codebase.",
+      "rating": 10.0,
+      "traffic": 2000000,
+      "url": "claude.ai/code",
+      "free": false,
+      "categories": [
+        "code"
+      ],
+      "affiliate": false,
+      "overview": "Claude Code is Anthropic's terminal-native AI coding agent, designed for developers who want deep, autonomous integration with their codebase directly from the command line. Unlike IDE plugins that offer autocomplete or chat windows, Claude Code operates as a standalone terminal application that can read entire repositories, understand cross-file dependencies, write and modify code across multiple files, run tests, and execute shell commands \u2014 all within a single session. It uses Claude 3.7 Sonnet or Opus as its underlying model, with support for extended thinking mode on complex architectural decisions. The agent can initialize projects, refactor large codebases, debug failing tests, and even handle deployment workflows through natural language commands. As of mid-2026, Claude Code is available to Claude Pro ($20/month), Max 5x ($100/month), and Max 20x ($200/month) subscribers, as well as Team and Enterprise plans. It integrates deeply with Git, automatically staging changes and generating descriptive commit messages. The tool is particularly valued for its ability to handle 'horizontal' refactoring tasks \u2014 changes that touch dozens of files \u2014 that would be tedious and error-prone in traditional IDEs. User feedback highlights its strength on large, complex codebases where understanding relationships between distant files matters more than single-line completions.",
+      "benefits": [
+        "Terminal-native design means zero IDE lock-in \u2014 works with any editor (Vim, Emacs, VS Code, JetBrains) since all interaction happens in a separate terminal window or tmux pane",
+        "Excels at cross-file, architectural refactoring that spans dozens of files \u2014 a genuine differentiator from autocomplete-focused tools that only see the current file",
+        "Deep Git integration with automatic staging and descriptive commits makes it easy to review, revert, or audit every AI change using standard Git workflows"
+      ],
+      "drawbacks": [
+        "Requires a paid Claude subscription (minimum $20/month Pro) with no standalone pricing \u2014 users must pay for the full Claude chat product even if they only want the coding agent",
+        "Terminal-only interface excludes developers who prefer fully graphical workflows or are uncomfortable with command-line environments",
+        "Like all autonomous coding agents, it can make subtle logical errors that compile but fail \u2014 careful code review remains essential before merging"
+      ],
+      "order": 187
+    },
+    {
+      "name": "Claude Design",
+      "icon": "\ud83c\udfa8",
+      "desc": "Anthropic's AI-powered design and prototyping tool for generating interactive apps, documents, and visual artifacts from natural language.",
+      "rating": 10.0,
+      "traffic": 400000,
+      "url": "claude.ai",
+      "free": true,
+      "categories": [
+        "image-gen",
+        "storyboard"
+      ],
+      "affiliate": false,
+      "overview": "Claude Design (powered by Claude Artifacts) is Anthropic's built-in generative design and prototyping capability, available directly within the Claude chat interface. Rather than outputting only text, Claude can generate interactive React components, SVG graphics, HTML prototypes, data visualizations, presentation slides, and full mini-applications that render live inside the conversation. Users describe what they want \u2014 a dashboard mockup, an interactive chart, a landing page concept, a game prototype \u2014 and Claude produces working, editable code artifacts that can be previewed, iterated on, and exported. As of mid-2026, Artifacts support React, HTML/CSS, SVG, Mermaid diagrams, and Python data visualizations, with one-click export to CodeSandbox or GitHub. The feature is available on Claude's Free, Pro, and Max tiers, making it one of the few genuinely capable design-to-code tools with a usable free tier. While not a replacement for Figma or professional design software, Claude Design excels at rapid prototyping, internal tool generation, and creating interactive proof-of-concepts that would otherwise require a developer and designer. It's particularly popular among product managers, founders, and educators who need to visualize ideas quickly without learning design tools or hiring engineers.",
+      "benefits": [
+        "Generates live, interactive prototypes (React apps, SVG graphics, data visualizations) that render directly in the chat \u2014 not static images, but working code you can click, test, and iterate on",
+        "Available on the free tier of Claude, making it one of the most accessible design-to-code tools for prototyping without any subscription cost",
+        "One-click export to CodeSandbox and GitHub means prototypes can be handed off to engineering teams as a starting point rather than recreated from scratch"
+      ],
+      "drawbacks": [
+        "Not a professional design tool \u2014 lacks the precision, asset libraries, and collaborative features of Figma, Sketch, or Adobe XD; best for rapid prototyping rather than production UI delivery",
+        "Complex multi-page applications or designs requiring custom backends exceed its scope; it's optimized for single-view components and simple interactive demos",
+        "Output quality depends heavily on the underlying Claude model tier \u2014 free-tier users may hit rate limits during extended design sessions, and complex visual reasoning tasks perform better on Opus than Sonnet"
+      ],
+      "order": 188
+    }
+  ]
+}

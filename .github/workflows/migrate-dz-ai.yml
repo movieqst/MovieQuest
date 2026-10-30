@@ -1,0 +1,35 @@
+name: One-time copy DZ and AI into MovieQuest draft
+on:
+  push:
+    branches: [migration/dz-ai-consolidation]
+    paths: [.github/workflows/migrate-dz-ai.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  copy:
+    if: github.ref == 'refs/heads/migration/dz-ai-consolidation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Copy public source repositories without changing originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/dzmarkup/dzdropzone.git /tmp/dz-source
+          git clone --depth 1 https://github.com/movieqst/AI-DASHBD.git /tmp/ai-source
+          mkdir -p dz ai
+          rsync -a --exclude='.git/' --exclude='.github/' --exclude='CNAME' /tmp/dz-source/ dz/
+          rsync -a --exclude='.git/' --exclude='.github/' --exclude='CNAME' /tmp/ai-source/ ai/
+          test -f dz/index.html
+          test -f dz/dzdocu/index.html
+          test -f dz/dzmarkup/index.html
+          test -f ai/index.html
+          git add dz ai
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Copy complete DZ suite and AI Dashboard into MovieQuest folders'
+            git push origin HEAD:migration/dz-ai-consolidation
+          fi
