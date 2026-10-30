@@ -295,7 +295,7 @@ function figChariot(c, side, s, i, moving, dir, step) {
    Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
 const SHEETS = {};
 const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, chariot: { cw: 240, ch: 200, h: 30 } };
-[].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+['macedonian-spearman'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 const sheetFor = (side, type, i) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : (type === 'archers' || (type === 'infantry' && i % 3 === 2)) ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   const sh = artOn ? sheetFor(f.side, f.type, i) : null;
