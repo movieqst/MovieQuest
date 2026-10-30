@@ -120,7 +120,7 @@ window.GAUGAMELA_SCENARIO = {
       title: 'The Persian army',
       media: [
         { at: 0, file: '10-persepolis-guards.jpg', caption: 'Palace guards with spears, carved along the stairway of the Apadana, the great audience hall at Persepolis.', ref: 'Persepolis, Iran, 5th century BCE', credit: 'Photo: Diego Delso, delso.photo, License CC BY-SA' },
-        { at: 12, file: '11-susa-archers.jpg', caption: 'Frieze of archers in glazed brick from the palace of Darius I at Susa. Royal guardsmen of the Persian kings.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris', credit: '' },
+        { at: 12, file: '11-susa-archers.jpg', caption: 'Frieze of archers in glazed brick from the palace of Darius I at Susa. Royal guardsmen of the Persian kings.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' },
         { at: 24, file: '12-apadana-bactrians.jpg', caption: 'A delegation from Bactria bringing a camel, relief from the Apadana at Persepolis. Arrian places Bactrian horsemen on Darius’s left at Gaugamela.', ref: 'Persepolis, Iran, 5th century BCE', credit: '' }
       ],
       focus: { x: 1200, y: 480 }, zoom: .9,
