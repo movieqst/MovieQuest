@@ -136,7 +136,7 @@ window.GAUGAMELA_SCENARIO = {
       title: 'The sources',
       media: [
         { at: 0, file: '13-ptolemy-coin.jpg', caption: 'A silver coin struck in Alexandria under Ptolemy I, showing Alexander in an elephant-scalp headdress. Ptolemy fought with Alexander and later wrote a history of his campaigns. Arrian used it; it is now lost.', ref: 'Tetradrachm, Alexandria, between 305 and 282 BCE; Bibliothèque nationale de France, FG M2157', credit: 'Photo: Marie-Lan Nguyen, Wikimedia Commons, CC BY 2.5' },
-        { at: 16, file: '14-babylonian-diary.jpg', caption: 'The Babylonian astronomical diary for 331 BCE. Among its notes on the sky and the markets, it records the battle and Alexander’s arrival in Babylon.', ref: 'Clay tablet; British Museum, BM 36761', credit: '' }
+        { at: 16, file: '14-babylonian-diary.jpg', caption: 'A Babylonian astronomical diary: a clay tablet of nightly notes on the sky, the weather and the markets, with the news of the day. This one, for 323–322 BCE, records the death of Alexander. The diary for 331 BCE, which records Gaugamela, is a tablet of the same kind.', ref: 'Clay tablet; British Museum, BM 45962', credit: 'Photo: Shaunnol, Wikimedia Commons, public domain' }
       ],
       focus: { x: 1200, y: 900 }, zoom: .8,
       markers: [],

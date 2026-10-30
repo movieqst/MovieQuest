@@ -28,7 +28,7 @@ shown, and paste the credit line into that entry's `credit` field in
 | 11-susa-archers.jpg | 4 | Frieze of archers, glazed brick, Susa | Musée du Louvre |
 | 12-apadana-delegations.jpg | 4 | Delegations of the subject peoples, Persepolis reliefs | Persepolis |
 | 13-ptolemy-coin.jpg | 5 | Tetradrachm struck under Ptolemy I (Alexander in elephant scalp) | Bibliothèque nationale de France |
-| 14-babylonian-diary.jpg | 5 | Astronomical diary for 331 BCE (BM 36761) | British Museum |
+| 14-babylonian-diary.jpg | 5 | Astronomical diary for 323–322 BCE (BM 45962); a photo of the 331 BCE diary (BM 36761) would be better if found | British Museum |
 | 15-le-brun-arbela.jpg | 6 | Gobelins tapestry after Charles Le Brun, *The Battle of Arbela* | (tapestry) |
 
 Sizes: 1200 px on the long side is plenty. JPEG keeps the folder small.
