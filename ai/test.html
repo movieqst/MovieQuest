@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Path test</h1>
+  <script>
+    fetch('./support.js').then(r => {
+      document.body.innerHTML += '<p>support.js: ' + (r.ok ? 'OK' : 'FAIL ' + r.status) + '</p>';
+    });
+    fetch('./_ds/industry-d2fd2168-52fe-46e0-884d-4a7d5e106dde/styles.css').then(r => {
+      document.body.innerHTML += '<p>styles.css: ' + (r.ok ? 'OK' : 'FAIL ' + r.status) + '</p>';
+    });
+  </script>
+</body>
+</html>

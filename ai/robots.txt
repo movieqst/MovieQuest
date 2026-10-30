@@ -1,0 +1,8 @@
+# robots.txt for aidashbd.com
+# Allow all search engine crawlers
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://aidashbd.com/sitemap.xml
