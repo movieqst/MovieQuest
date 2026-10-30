@@ -105,7 +105,7 @@ window.GAUGAMELA_SCENARIO = {
       media: [
         { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: 'Photo: Dosseman, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 11, file: '08-sarcophagus-alexander.jpg', caption: 'The horseman in a lion-skin helmet on the Alexander Sarcophagus is usually identified as Alexander.', ref: 'Istanbul Archaeology Museums', credit: '' },
-        { at: 22, file: '09-kinch-tomb.jpg', caption: 'A Macedonian horseman rides down a Persian foot soldier. Tomb painting from Lefkadia, near Naousa, about 300 BCE, recorded by K. F. Kinch in 1897.', ref: 'Kinch Tomb, Lefkadia, Macedonia', credit: '' }
+        { at: 22, file: '09-kinch-tomb.jpg', caption: 'The Kinch Tomb at Lefkadia, a Macedonian tomb of about 300 BCE. Inside it was a painting of a Macedonian horseman attacking a Persian foot soldier. The painting is now lost; it survives only in the drawing made when the tomb was first published in 1897.', ref: 'Kinch Tomb, Lefkadia (ancient Mieza), Macedonia', credit: 'Photo: Carole Raddato, Wikimedia Commons, CC BY-SA 2.0' }
       ],
       focus: { x: 1200, y: 1250 }, zoom: .9,
       markers: [],
@@ -357,7 +357,7 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'In this game the phalanx holds its ground when it is attacked head-on. It is vulnerable to a flank attack.', tag: 'reconstruction' }
       ] },
     { side: 'macedon', type: 'cavalry', name: 'Companion cavalry', desc: 'Alexander’s elite horse, on the right.', tag: 'ancient',
-      photos: ['03-mosaic-alexander.jpg', '08-sarcophagus-alexander.jpg', '09-kinch-tomb.jpg'],
+      photos: ['03-mosaic-alexander.jpg', '08-sarcophagus-alexander.jpg'],
       lines: [
         { text: 'The Companions were the king’s own cavalry, drawn from the Macedonian nobility. Arrian says they fought with thrusting spears and swords.', tag: 'ancient', cite: 'Arrian III.11–14' },
         { text: 'Cavalry does not ride through a formed spear wall. Its charge works when the enemy line is already broken.', tag: 'estimate' }
@@ -377,7 +377,7 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'Their equipment is debated. Some historians think they carried a shorter spear than the phalanx, others that they were armed in the same way.', tag: 'disputed' }
       ] },
     { side: 'macedon', type: 'cavalry', name: 'Thessalian cavalry', desc: 'Horsemen from Thessaly, with Parmenion on the left wing.', tag: 'ancient',
-      photos: ['09-kinch-tomb.jpg'],
+      photos: [],
       lines: [
         { text: 'Thessaly, south of Macedon, was famous for its horses and its horsemen. Its cavalry fought on the left wing under Parmenion.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'The left wing took the heaviest pressure from the Persian right. Arrian praises the Thessalian horse for how they fought there.', tag: 'ancient', cite: 'Arrian III.15' },
