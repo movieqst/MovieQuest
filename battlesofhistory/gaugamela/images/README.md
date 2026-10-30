@@ -23,13 +23,13 @@ shown, and paste the credit line into that entry's `credit` field in
 | 06-persian-empire-map.jpg | 2 | Map of the Achaemenid empire. **Pick one that does not mark a site for the battle** — the site is not known | modern map |
 | 07-alexander-sarcophagus.jpg | 3 | Alexander Sarcophagus, battle side | Istanbul Archaeology Museums |
 | 08-sarcophagus-alexander.jpg | 3 | Alexander Sarcophagus, detail of the rider in the lion-skin helmet | Istanbul |
-| 09-kinch-tomb.jpg | 3 | Kinch Tomb painting, Macedonian horseman and Persian foot soldier (Kinch's 1897 watercolour) | Lefkadia, Macedonia |
+| 09-kinch-tomb.jpg | 3 | Kinch Tomb, entrance (the painting itself is lost; Kinch's 1897 drawing would be better if found) | Lefkadia, Macedonia |
 | 10-persepolis-guards.jpg | 4 | Persian and Median guards, Apadana relief | Persepolis |
 | 11-susa-archers.jpg | 4 | Frieze of archers, glazed brick, Susa | Musée du Louvre |
-| 12-apadana-bactrians.jpg | 4 | Bactrian delegation with camel, Apadana relief | Persepolis |
-| 13-ptolemy-coin.jpg | 5 | Tetradrachm of Ptolemy I with his portrait | coin collections |
-| 14-babylonian-diary.jpg | 5 | Astronomical diary for 331 BCE (BM 36761) | British Museum |
-| 15-le-brun-arbela.jpg | 6 | Charles Le Brun, *The Battle of Arbela* (1669) | Musée du Louvre |
+| 12-apadana-delegations.jpg | 4 | Delegations of the subject peoples, Persepolis reliefs | Persepolis |
+| 13-ptolemy-coin.jpg | 5 | Tetradrachm struck under Ptolemy I (Alexander in elephant scalp) | Bibliothèque nationale de France |
+| 14-babylonian-diary.jpg | 5 | Astronomical diary for 323–322 BCE (BM 45962); a photo of the 331 BCE diary (BM 36761) would be better if found | British Museum |
+| 15-le-brun-arbela.jpg | 6 | Gobelins tapestry after Charles Le Brun, *The Battle of Arbela* | (tapestry) |
 
 Sizes: 1200 px on the long side is plenty. JPEG keeps the folder small.
 
@@ -38,3 +38,4 @@ Sizes: 1200 px on the long side is plenty. JPEG keeps the folder small.
 The armies panel reuses the pictures above (see `units[].photos` in
 `scenario.js`). The Agrianian javelinmen and the Armenian and Cappadocian
 cavalry have no picture yet.
+| 16-susa-archer-detail.jpg | Head of an archer from the Susa frieze (unit write-ups only) | Musée du Louvre |

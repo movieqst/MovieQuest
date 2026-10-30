@@ -105,7 +105,7 @@ window.GAUGAMELA_SCENARIO = {
       media: [
         { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: 'Photo: Dosseman, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 11, file: '08-sarcophagus-alexander.jpg', caption: 'The horseman in a lion-skin helmet on the Alexander Sarcophagus is usually identified as Alexander.', ref: 'Istanbul Archaeology Museums', credit: '' },
-        { at: 22, file: '09-kinch-tomb.jpg', caption: 'A Macedonian horseman rides down a Persian foot soldier. Tomb painting from Lefkadia, near Naousa, about 300 BCE, recorded by K. F. Kinch in 1897.', ref: 'Kinch Tomb, Lefkadia, Macedonia', credit: '' }
+        { at: 22, file: '09-kinch-tomb.jpg', caption: 'The Kinch Tomb at Lefkadia, a Macedonian tomb of about 300 BCE. Inside it was a painting of a Macedonian horseman attacking a Persian foot soldier. The painting is now lost; it survives only in the drawing made when the tomb was first published in 1897.', ref: 'Kinch Tomb, Lefkadia (ancient Mieza), Macedonia', credit: 'Photo: Carole Raddato, Wikimedia Commons, CC BY-SA 2.0' }
       ],
       focus: { x: 1200, y: 1250 }, zoom: .9,
       markers: [],
@@ -121,7 +121,7 @@ window.GAUGAMELA_SCENARIO = {
       media: [
         { at: 0, file: '10-persepolis-guards.jpg', caption: 'Palace guards with spears, carved along the stairway of the Apadana, the great audience hall at Persepolis.', ref: 'Persepolis, Iran, 5th century BCE', credit: 'Photo: Diego Delso, delso.photo, License CC BY-SA' },
         { at: 12, file: '11-susa-archers.jpg', caption: 'Frieze of archers in glazed brick from the palace of Darius I at Susa. Royal guardsmen of the Persian kings.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' },
-        { at: 24, file: '12-apadana-bactrians.jpg', caption: 'A delegation from Bactria bringing a camel, relief from the Apadana at Persepolis. Arrian places Bactrian horsemen on Darius’s left at Gaugamela.', ref: 'Persepolis, Iran, 5th century BCE', credit: '' }
+        { at: 24, file: '12-apadana-delegations.jpg', caption: 'Delegations of the subject peoples, with a camel and a bull, bring gifts to the king. Relief from Persepolis. Darius’s army at Gaugamela was drawn from peoples like these, from across the empire.', ref: 'Persepolis, Iran, 5th century BCE', credit: 'Photo: Diego Delso, delso.photo, License CC BY-SA' }
       ],
       focus: { x: 1200, y: 480 }, zoom: .9,
       markers: [],
@@ -135,8 +135,8 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'The sources',
       media: [
-        { at: 0, file: '13-ptolemy-coin.jpg', caption: 'Ptolemy I, who fought with Alexander and later wrote a history of his campaigns. Arrian used it; it is now lost.', ref: 'Tetradrachm of Ptolemy I, Egypt', credit: '' },
-        { at: 16, file: '14-babylonian-diary.jpg', caption: 'The Babylonian astronomical diary for 331 BCE. Among its notes on the sky and the markets, it records the battle and Alexander’s arrival in Babylon.', ref: 'Clay tablet; British Museum, BM 36761', credit: '' }
+        { at: 0, file: '13-ptolemy-coin.jpg', caption: 'A silver coin struck in Alexandria under Ptolemy I, showing Alexander in an elephant-scalp headdress. Ptolemy fought with Alexander and later wrote a history of his campaigns. Arrian used it; it is now lost.', ref: 'Tetradrachm, Alexandria, between 305 and 282 BCE; Bibliothèque nationale de France, FG M2157', credit: 'Photo: Marie-Lan Nguyen, Wikimedia Commons, CC BY 2.5' },
+        { at: 16, file: '14-babylonian-diary.jpg', caption: 'A Babylonian astronomical diary: a clay tablet of nightly notes on the sky, the weather and the markets, with the news of the day. This one, for 323–322 BCE, records the death of Alexander. The diary for 331 BCE, which records Gaugamela, is a tablet of the same kind.', ref: 'Clay tablet; British Museum, BM 45962', credit: 'Photo: Shaunnol, Wikimedia Commons, public domain' }
       ],
       focus: { x: 1200, y: 900 }, zoom: .8,
       markers: [],
@@ -150,7 +150,7 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'How to read this reenactment',
       media: [
-        { at: 0, file: '15-le-brun-arbela.jpg', caption: 'Charles Le Brun, The Battle of Arbela, painted in 1669: one artist’s imagination of the battle, two thousand years later. Like this map, every picture of the battle is a reconstruction.', ref: 'Musée du Louvre, Paris', credit: '' }
+        { at: 0, file: '15-le-brun-arbela.jpg', caption: 'The Battle of Arbela, a Gobelins tapestry woven to a design by Charles Le Brun for Louis XIV: one artist’s imagination of the battle, two thousand years later. Like this map, every picture of the battle is a reconstruction.', ref: 'Tapestry after Charles Le Brun, designed between 1660 and 1672', credit: 'Wikimedia Commons, public domain' }
       ],
       focus: { x: 1200, y: 900 }, zoom: .7,
       markers: [],
@@ -357,7 +357,7 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'In this game the phalanx holds its ground when it is attacked head-on. It is vulnerable to a flank attack.', tag: 'reconstruction' }
       ] },
     { side: 'macedon', type: 'cavalry', name: 'Companion cavalry', desc: 'Alexander’s elite horse, on the right.', tag: 'ancient',
-      photos: ['03-mosaic-alexander.jpg', '08-sarcophagus-alexander.jpg', '09-kinch-tomb.jpg'],
+      photos: ['03-mosaic-alexander.jpg', '08-sarcophagus-alexander.jpg'],
       lines: [
         { text: 'The Companions were the king’s own cavalry, drawn from the Macedonian nobility. Arrian says they fought with thrusting spears and swords.', tag: 'ancient', cite: 'Arrian III.11–14' },
         { text: 'Cavalry does not ride through a formed spear wall. Its charge works when the enemy line is already broken.', tag: 'estimate' }
@@ -377,7 +377,7 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'Their equipment is debated. Some historians think they carried a shorter spear than the phalanx, others that they were armed in the same way.', tag: 'disputed' }
       ] },
     { side: 'macedon', type: 'cavalry', name: 'Thessalian cavalry', desc: 'Horsemen from Thessaly, with Parmenion on the left wing.', tag: 'ancient',
-      photos: ['09-kinch-tomb.jpg'],
+      photos: [],
       lines: [
         { text: 'Thessaly, south of Macedon, was famous for its horses and its horsemen. Its cavalry fought on the left wing under Parmenion.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'The left wing took the heaviest pressure from the Persian right. Arrian praises the Thessalian horse for how they fought there.', tag: 'ancient', cite: 'Arrian III.15' },
@@ -390,20 +390,20 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'The chariots needed open ground and a straight run. Light troops and gaps in the ranks were the answer.', tag: 'ancient', cite: 'Arrian III.13' }
       ] },
     { side: 'persia', type: 'cavalry', name: 'Bactrian and Saka cavalry', desc: 'Mounted lancers and archers from the eastern provinces.', tag: 'ancient',
-      photos: ['12-apadana-bactrians.jpg'],
+      photos: [],
       lines: [
         { text: 'The Persian cavalry from the eastern provinces, under Bessus according to Arrian, was on the left.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'Persian cavalry should not be shown as heavily armoured knights. The sources do not describe that, and the evidence does not support it.', tag: 'estimate' }
       ] },
     { side: 'persia', type: 'infantry', name: 'Persian infantry', desc: 'Foot soldiers from many peoples of the empire, in the centre.', tag: 'ancient',
-      photos: ['10-persepolis-guards.jpg', '11-susa-archers.jpg'],
+      photos: ['10-persepolis-guards.jpg', '11-susa-archers.jpg', '12-apadana-delegations.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
       lines: [
         { text: 'Arrian lists contingents from across the Persian empire, from Babylon to the eastern provinces, placed in the centre and massed behind it.', tag: 'ancient', cite: 'Arrian III.8, III.11' },
         { text: 'The ancient numbers for the Persian army are not reliable, and no modern total is agreed.', tag: 'estimate' },
         { text: 'Historians think Darius relied mainly on his cavalry. How much of the infantry actually fought is not clear.', tag: 'estimate' }
       ] },
     { side: 'persia', type: 'infantry', name: 'Darius and the royal guard', desc: 'The Great King in the centre, among his guards and kinsmen.', tag: 'established',
-      photos: ['02-mosaic-darius.jpg', '11-susa-archers.jpg', '05-persian-daric.jpg'],
+      photos: ['02-mosaic-darius.jpg', '11-susa-archers.jpg', '05-persian-daric.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
       lines: [
         { text: 'Darius III stood in the centre of his army, the usual place for a Persian king. Arrian says his kinsmen and the Persian guards were around him.', tag: 'ancient', cite: 'Arrian II.8, III.11' },
         { text: 'Among the guards Arrian names the “apple-bearers”, picked spearmen whose spears had golden apples on the butt.', tag: 'ancient', cite: 'Arrian III.11; Herodotus VII.41' },

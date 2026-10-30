@@ -411,7 +411,7 @@ function moveFormation(f) {
 /* ---------------- watch mode ---------------- */
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
-  if (cam.follow && ev.focus) focusOn(ev.focus.x, ev.focus.y);
+  if (cam.follow && ev.focus) frame(ev.focus.x, ev.focus.y);
   caption(ev.title, ev.text, ev.tag, !fastForward, ev.audio || audioFor('event', S.events.indexOf(ev) + 1), ev.cite);
   addLog(fmtTime(ev.t) + ' ' + ev.title);
   renderTimeline();
@@ -521,11 +521,16 @@ const ysAt = v => tiltOn() ? view.h * Math.log((1 + TILT) / (1 + TILT * (1 - v))
 const vAt = ys => tiltOn() ? 1 - ((1 + TILT) / Math.exp(ys / view.h * Math.log(1 + TILT)) - 1) / TILT : ys / view.h;
 function P(x, y) { const vw = VW(), vh = VH(), v = (y - view.y) / vh, s = sAt(v); return { x: view.w / 2 + (x - view.x - vw / 2) / vw * view.w * s, y: ysAt(v), s: view.z * s, k: tiltOn() ? SQ : 1 }; }
 function U(sx, sy) { const vw = VW(), vh = VH(), v = vAt(sy), s = sAt(v); return { x: view.x + vw / 2 + (sx - view.w / 2) / (view.w * s) * vw, y: view.y + v * vh }; }
-function clampView() { view.x = clamp(view.x, 0, Math.max(0, W.w - VW())); view.y = clamp(view.y, 0, Math.max(0, W.h - VH())); }
+// The view may run a little past the south edge of the map, so that what the camera frames can sit in the upper part
+// of the screen, clear of the caption at the bottom. Beyond the edge the background is plain black.
+const OVER = () => VH() * .35;
+function clampView() { view.x = clamp(view.x, 0, Math.max(0, W.w - VW())); view.y = clamp(view.y, 0, Math.max(0, W.h - VH()) + OVER()); }
 function focusOn(x, y) { cam.tx = x; cam.ty = y; }
+// Frame a point in the upper part of the screen, above the caption box.
+function frame(x, y, k = .22) { focusOn(x, y + VH() * k); }
 function updateCamera() {
   if (cam.tx === null) return;
-  const gx = clamp(cam.tx - VW() / 2, 0, Math.max(0, W.w - VW())), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()));
+  const gx = clamp(cam.tx - VW() / 2, 0, Math.max(0, W.w - VW())), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
   view.x += (gx - view.x) * .08; view.y += (gy - view.y) * .08;
   if (Math.abs(gx - view.x) < .5 && Math.abs(gy - view.y) < .5) { view.x = gx; view.y = gy; cam.tx = null; }
 }
@@ -658,7 +663,7 @@ function caption(title, text, tag, speak, audio, cite) {
 }
 function cmdCaption(title, key, tag, focus) {
   caption(title, S.commandLines[key], tag, true, audioFor('cmd', key));
-  if (focus && cam.follow) focusOn(focus.x, focus.y);
+  if (focus && cam.follow) frame(focus.x, focus.y);
 }
 function openCitations(tag, cite, claim) {
   const c = S.citations[tag]; if (!c) return;
@@ -757,7 +762,7 @@ function showIntro(i) {
   markers = sl.markers || [];
   if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
-  if (sl.focus) focusOn(sl.focus.x, sl.focus.y + VH() * .27);
+  if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
   if (introStarted) speakSlide(sl);
@@ -1020,7 +1025,7 @@ window.addEventListener('keydown', e => {
   if (['arrowup', 'w'].includes(k)) { view.y -= st; moved = true; } if (['arrowdown', 's'].includes(k)) { view.y += st; moved = true; }
   if (moved) { e.preventDefault(); clampView(); manualCamera(); }
   if (k === ' ') { e.preventDefault(); togglePause(); }
-  if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); }
+  if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) frame(currentEvent.focus.x, currentEvent.focus.y); }
   if (k === 'e') showExplain();
   if (k === 'm') toggleOverview();
   if (k === 't') setTextOff(!textOff);
@@ -1044,7 +1049,7 @@ $('ffBtn').onclick = () => { speed = speed >= 4 ? 1 : speed >= 2 ? 4 : 2; $('spe
 // Skip: jump to the start of the next chapter (Watch mode)
 function skipChapter() { if (mode !== 'watch') return; const next = S.events.find(e => e.t > simTime + .01); if (next) jumpTo(next.t); }
 $('skipBtn').onclick = skipChapter;
-$('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); };
+$('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) frame(currentEvent.focus.x, currentEvent.focus.y); };
 $('explainBtn').onclick = showExplain;
 $('capExplain').onclick = e => { e.stopPropagation(); showExplain(); };
 $('voiceMenuBtn').onclick = e => { e.stopPropagation(); $('voicePop').classList.toggle('show'); };
