@@ -39,3 +39,4 @@ The armies panel reuses the pictures above (see `units[].photos` in
 `scenario.js`). The Agrianian javelinmen and the Armenian and Cappadocian
 cavalry have no picture yet.
 | 16-susa-archer-detail.jpg | Head of an archer from the Susa frieze (unit write-ups only) | Musée du Louvre |
+| 17-bactrian-delegation.jpg | Bactrian delegation with a two-humped camel, Persepolis (unit write-ups only) | Persepolis |

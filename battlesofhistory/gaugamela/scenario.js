@@ -391,7 +391,7 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'The chariots needed open ground and a straight run. Light troops and gaps in the ranks were the answer.', tag: 'ancient', cite: 'Arrian III.13' }
       ] },
     { side: 'persia', type: 'cavalry', name: 'Bactrian and Saka cavalry', desc: 'Mounted lancers and archers from the eastern provinces.', tag: 'ancient',
-      photos: [],
+      photos: [{ file: '17-bactrian-delegation.jpg', caption: 'Bactrians in Median-style coats and trousers lead a two-humped Bactrian camel, relief from the Apadana staircase at Persepolis. Arrian places Bactrian horsemen on Darius’s left at Gaugamela.', ref: 'Persepolis, Iran, 5th century BCE; identification after D. N. Wilber, Persepolis', credit: 'Photo: A. Davey, Wikimedia Commons, CC BY 2.0' }],
       lines: [
         { text: 'The Persian cavalry from the eastern provinces, under Bessus according to Arrian, was on the left.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'Persian cavalry should not be shown as heavily armoured knights. The sources do not describe that, and the evidence does not support it.', tag: 'estimate' }
