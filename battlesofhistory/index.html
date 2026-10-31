@@ -14,11 +14,13 @@
   body{min-height:100vh;background:radial-gradient(1200px 600px at 50% -10%,#1c3340 0%,var(--ink) 60%)}
   header{padding:56px 16px 24px;text-align:center;position:relative}
   /* Poster banner: images/poster.jpg (painted for this page) sits behind the title when present. */
-  body.poster header{min-height:min(52vw,520px);display:flex;flex-direction:column;justify-content:flex-start;padding-top:48px;background:url('images/poster.jpg') center 35%/cover no-repeat;border-bottom:1px solid #1b2b35}
+  body.poster header{min-height:min(52vw,520px);display:flex;flex-direction:column;justify-content:flex-start;padding-top:48px;background:var(--banner,url('images/poster.jpg')) center 35%/cover no-repeat;border-bottom:1px solid #1b2b35}
   body.poster header::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,19,26,.55) 0%,rgba(9,19,26,.15) 35%,rgba(9,19,26,.1) 70%,rgba(9,19,26,1) 100%)}
   body.poster header>*{position:relative}
   body.poster .tag{color:#dfe6e3;text-shadow:0 1px 3px #000,0 0 10px rgba(0,0,0,.8);background:rgba(9,19,26,.35);padding:6px 12px;border-radius:8px}
   body.poster h1{text-shadow:0 2px 0 #5a4310,0 4px 18px rgba(0,0,0,.9),0 0 30px rgba(0,0,0,.7)}
+  /* Banners whose painting has its quiet ground at the bottom: the title moves down onto it */
+  body.poster.title-bottom header{justify-content:flex-end;padding-top:0;padding-bottom:28px}
   h1{font:800 clamp(30px,5vw,54px) 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.14em;margin:0;text-shadow:0 1px 0 #5a4310,0 3px 12px rgba(0,0,0,.7)}
   .tag{color:var(--muted);margin:10px auto 0;max-width:640px;font-size:15px}
   .tag b{color:var(--text);font-weight:600}
@@ -35,7 +37,8 @@
   .cover h2{font:700 22px 'Cinzel',Georgia,serif;color:var(--gold);margin:0;letter-spacing:.06em;text-shadow:0 1px 0 #5a4310,0 2px 8px #000}
   .cover .date{color:var(--text);font-size:13px;text-shadow:0 1px 3px #000}
   .body{padding:12px 14px 14px}
-  .sides{font-size:13px;color:var(--text);margin:0 0 6px}
+  .sides{font-size:20px;font-weight:700;line-height:1.3;color:var(--text);margin:0 0 6px}
+  .sides .vs{color:var(--text);font-weight:400;font-size:15px}
   .blurb{font-size:13.5px;color:var(--muted);margin:0 0 10px}
   .go{display:inline-block;font-weight:600;color:#fff;background:#214e75;border:1px solid #4c94c7;border-radius:8px;padding:6px 12px;font-size:13px}
   .credit{display:block;margin-top:8px;font-size:10.5px;color:#6f8691;font-style:italic}
@@ -81,25 +84,49 @@
 <main id="list"></main>
 <script>
   // Use the painted poster as the header background once images/poster.jpg exists.
-  (function () { const im = new Image(); im.onload = () => document.body.classList.add('poster'); im.src = 'images/poster.jpg'; })();
+  /* Random banner on each visit. Add a banner by putting its file in images/banners/ and adding a line here.
+     titlePos 'top' keeps the title at the top; 'bottom' moves it onto the quiet ground at the foot of the painting. */
+  const BANNERS = [
+    { src: 'images/poster.jpg', titlePos: 'top' },
+    { src: 'images/banners/waterloo-dawn.jpg', titlePos: 'bottom' }
+  ];
+  (function () {
+    const show = b => {
+      document.documentElement.style.setProperty('--banner', `url('${b.src}')`);
+      document.body.classList.add('poster');
+      if (b.titlePos === 'bottom') document.body.classList.add('title-bottom');
+    };
+    const pick = BANNERS[Math.floor(Math.random() * BANNERS.length)];
+    const im = new Image();
+    im.onload = () => show(pick);
+    im.onerror = () => { const fb = new Image(); fb.onload = () => show(BANNERS[0]); fb.src = BANNERS[0].src; };
+    im.src = pick.src;
+  })();
 </script>
 <script src="battles.js"></script>
 <script>
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-  document.getElementById('list').innerHTML = (window.BATTLES || []).map(b => `
-    <a class="card" href="${esc(b.folder)}/index.html">
+  // Two sides, split on 'vs.': the first in red, the second in blue. Text without 'vs.' is shown as it is.
+  // Side colours: the battle's own colours (sideColors in battles.js). A battle without them gets a pair worked out from its folder name,
+  // so it is the same on every visit.
+  const SIDE_PALETTE = ['#2e8b57', '#d4a017', '#8e44ad', '#16a085', '#e67e22', '#2980b9', '#c0392b', '#7f8c8d'];
+  const hashOf = t => [...String(t)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+  const pickSideColors = b => { if (b.sideColors) return b.sideColors; const h = hashOf(b.folder || b.title); const i = h % SIDE_PALETTE.length; let j = Math.floor(h / SIDE_PALETTE.length) % (SIDE_PALETTE.length - 1); if (j >= i) j++; return [SIDE_PALETTE[i], SIDE_PALETTE[j]]; };
+  const sidesHTML = (t, colors) => { const m = String(t || '').split(/\s+vs\.?\s+/i); const [ca, cb] = colors || ['#ff6a5c', '#6aa6ff']; return m.length === 2 ? `<span style="color:${ca}">${esc(m[0])}</span> <span class="vs">vs.</span> <span style="color:${cb}">${esc(m[1])}</span>` : esc(t); };
+  document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.year || 0) - (a.year || 0)).map(b => `
+    ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')">
         <span class="era">${esc(b.era)}</span>
         <span class="status ${b.status === 'ready' ? 'ready' : b.status === 'coming soon' ? 'soon' : ''}">${esc(b.status)}</span>
         <div class="title"><h2>${esc(b.title)}</h2><div class="date">${esc(b.date)} · ${esc(b.place)}</div></div>
       </div>
       <div class="body">
-        <p class="sides">${esc(b.sides)}</p>
+        <p class="sides">${sidesHTML(b.sides, pickSideColors(b))}</p>
         <p class="blurb">${esc(b.blurb)}</p>
         <span class="go">Open the battle ▶</span>
         <span class="credit">${esc(b.coverCredit)}</span>
       </div>
-    </a>`).join('');
+    ${b.status === 'ready' ? '</a>' : '</div>'}`).join('');
 </script>
 <script>
 /* Timeline: linear years from a round number before the earliest battle up to today. Zoom and drag;

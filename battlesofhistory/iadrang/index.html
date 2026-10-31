@@ -73,6 +73,7 @@
   #ctrlStrip.lit{opacity:1}
   #caption{bottom:90px}
   body[data-mode="command"] #caption{bottom:60px}
+  @media(max-width:1100px){#caption{left:0;right:0;transform:none;width:100%;bottom:0;margin:0;border-radius:0 0 8px 8px}body[data-mode="command"] #caption{bottom:0}}
   #viewTextBtn{bottom:90px}
   body[data-mode="command"] #viewTextBtn{bottom:60px}
   #ctxMenu{display:none;z-index:6;padding:4px;min-width:220px;background:#0b1822f6}
@@ -172,6 +173,8 @@
   .battle-panel:fullscreen .dialog.intro .progress,body.bigmap .dialog.intro .progress{margin:6px 0 4px}
   body:not([data-mode="intro"]) .intro-only{display:none}
   #mediaCard.nomedia{display:none}
+  /* Narrow screens (iPad): the picture and its caption sit in the bottom-right corner, above the play controls */
+  @media(max-width:1100px){#mediaCard:not(.nomedia){position:fixed;right:12px;bottom:92px;width:min(300px,44%);z-index:4;padding:8px;background:rgba(9,23,32,.78);border:1px solid #435a64;border-radius:8px}#mediaCard .mcap{margin-top:4px}}
   .intro-media .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
   .intro-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
   .intro-media img.show{opacity:1;animation:burns 14s ease-in-out forwards}
