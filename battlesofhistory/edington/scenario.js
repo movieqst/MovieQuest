@@ -234,6 +234,10 @@ window.EDINGTON_SCENARIO = {
 
   /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Edington, which happened in May 878, between the West Saxons of Alfred the Great and the Viking Great Army of Guthrum.',
+  /* Establishing pictures, between the globe and the battle map (see showEstablishing in engine.js). */
+  establishing: [
+    { file: 'establish-1-wiltshire.jpg', secs: 5, credit: 'Artist rendering: the Wiltshire downs, 878. Battle Games, AI-generated. The exact site of the battle is not known.' }
+  ],
   imageBase: 'images/',
   audioBase: 'audio/',
   voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],

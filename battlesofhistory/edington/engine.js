@@ -864,10 +864,25 @@ function titleCardProgress(k) {
 }
 $('playBig').onclick = () => beginIntro(true);
 let introSpunCb = null;
-function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
+// Establishing pictures (S.establishing: [{ file, secs, credit }]): after the globe's dive, before the battle map, each
+// fades in, holds for `secs` (about 5) while the narration carries on, and fades out. Skipped when the globe is skipped.
+let establishT = [];
+function showEstablishing() {
+  const list = S.establishing || [], el = $('establish'); if (!list.length || !el) return;
+  establishT.forEach(clearTimeout); establishT = []; const img = el.querySelector('img'), cap = el.querySelector('.ecap');
+  let at = 0; el.classList.add('show'); requestAnimationFrame(() => el.classList.add('on'));
+  list.forEach((m, i) => {
+    establishT.push(setTimeout(() => { img.style.opacity = 0; establishT.push(setTimeout(() => { img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; }, i ? 600 : 0)); }, at * 1000));
+    at += (m.secs || 5);
+  });
+  establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
+}
+function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
+function startIntro() { hideEstablishing(); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
-  if (G && window.EDINGTON_WORLD) G.start($('globe'), { lift: true, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
+  if (G && window.EDINGTON_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
+  hideEstablishing();
   const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
