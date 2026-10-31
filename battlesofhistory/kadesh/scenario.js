@@ -50,32 +50,34 @@ window.KADESH_SCENARIO = {
 
   battlefield: {
     scale: { px: 60, label: '≈ 1 km (schematic)' },
-    /* Redrawn to the real site (Tell Nebi Mend), from satellite views: the Orontes winds north about 500 m east of the
-       mound, then on past Alhouz toward Mudan. A smaller stream (the al-Muqadiyah) rises at the spring pool of Ain
-       at-Tannour about 3 km south, winds north along the west side of the mound, curves round its north side and joins
-       the Orontes at the old water mill just north-east of it. So the city stands in the fork between the two waters.
-       Distances are squeezed to fit the map. */
-    river: [ [1290,1800],[1320,1720],[1305,1650],[1345,1585],[1400,1530],[1395,1460],[1440,1390],[1500,1330],[1490,1250],[1530,1170],[1560,1100],[1535,1045],
-             [1550,980],[1590,910],[1565,840],[1520,780],[1515,700],[1530,620],[1510,550],[1540,470],[1520,380],[1490,300],[1505,220],[1470,140],[1480,0] ],
-    tributary: [ [1255,890],[1230,840],[1225,790],[1205,740],[1215,690],[1195,640],[1205,590],[1225,540],[1270,505],[1340,490],[1420,482],[1480,485],[1540,470] ],
+    /* Redrawn to the real site (Tell Nebi Mend), from satellite views. The Orontes winds north past the east side of the
+       mound and on toward Alhouz and Mudan; south of the city it swings away to the east. A smaller stream (the
+       al-Muqadiyah) rises at the spring pool of Ain at-Tannour, about 1.5 to 2 km west of the river, winds north-east,
+       runs along the west side of the mound, curves round its north side and joins the Orontes at the old water mill.
+       So the city stands in the fork, and the road from the Shabtuna ford runs up the strip between the two waters,
+       where the Re division was caught. Distances are squeezed to fit the map. */
+    river: [ [1780,1800],[1810,1720],[1770,1650],[1750,1590],[1700,1530],[1725,1460],[1675,1400],[1695,1330],[1645,1270],[1670,1200],[1620,1140],[1640,1090],[1610,1050],
+             [1590,980],[1605,910],[1560,840],[1520,780],[1515,700],[1530,620],[1510,550],[1540,470],[1520,380],[1490,300],[1505,220],[1470,140],[1480,0] ],
+    tributary: [ [1000,1450],[1030,1380],[1010,1310],[1060,1250],[1050,1180],[1100,1120],[1090,1050],[1140,990],[1130,920],[1180,860],[1170,800],[1205,740],[1215,690],[1195,640],[1205,590],[1225,540],[1270,505],[1340,490],[1420,482],[1480,485],[1540,470] ],
+    streamFords: [ { name: 'Stream ford', x: 1055, y: 1215, note: 'Reconstructed shallow crossing of the stream south of the road bridge' } ],
     fords: [
-      { name: 'Ford of Shabtuna', x: 1345, y: 1585, note: 'Where the Egyptian army crossed to the west bank' },
-      { name: 'Hittite crossing',  x: 1535, y: 1045, note: 'Reconstructed point where the Hittite chariots crossed' },
+      { name: 'Ford of Shabtuna', x: 1750, y: 1590, note: 'Where the Egyptian army crossed to the west bank' },
+      { name: 'Hittite crossing',  x: 1610, y: 1050, note: 'Reconstructed point where the Hittite chariots crossed' },
       { name: 'Northern ford',     x: 1520, y: 380,  note: 'Reconstructed shallow crossing north of the city, below where the stream joins the river; used by the second wave' }
     ],
-    bridge: { x: 1205, y: 665, note: 'A crossing over the stream to the city\u2019s west side; the only crossing of the stream' },
+    bridge: { x: 1179, y: 853, note: 'Where the road crosses the al-Muqadiyah stream on its way to the camp; the only bridge' },
     city: { name: 'KADESH', x: 1270, y: 570, w: 190, h: 160 },
     camp: { name: 'Egyptian camp (Amun)', x: 900, y: 380, w: 240, h: 170 },
-    road: [ [1420,1800],[1390,1700],[1345,1585],[1270,1480],[1190,1300],[1130,1100],[1070,900],[1030,760],[1000,640],[1000,560] ],
-    forests: [ {x:1000,y:1500,r:170}, {x:850,y:1650,r:140}, {x:1150,y:1700,r:120}, {x:250,y:300,r:150}, {x:2200,y:1500,r:160}, {x:1900,y:150,r:130} ],
+    road: [ [1880,1800],[1820,1700],[1750,1590],[1640,1480],[1500,1330],[1380,1180],[1300,1050],[1240,950],[1179,853],[1100,760],[1040,640],[1000,560] ],
+    forests: [ {x:760,y:1450,r:170}, {x:850,y:1680,r:140}, {x:1150,y:1700,r:120}, {x:250,y:300,r:150}, {x:2200,y:1500,r:160}, {x:1900,y:150,r:130} ],
     hills: [ {x:300,y:900,rx:120,ry:60}, {x:520,y:1150,rx:90,ry:45}, {x:2150,y:1100,rx:130,ry:60}, {x:1950,y:1650,rx:110,ry:50}, {x:600,y:150,rx:100,ry:45} ],
     labels: [
-      { x: 1600, y: 1420, text: 'ORONTES', rotate: -1.1 },
-      { x: 950,  y: 1330, text: 'Forest of Labwi', small: true },
-      { x: 1160, y: 800,  text: 'al-Muqadiyah stream', small: true, rotate: -1.45 },
-      { x: 1262, y: 975,  text: 'spring of Ain at-Tannour', small: true },
+      { x: 1840, y: 1330, text: 'ORONTES', rotate: -1.3 },
+      { x: 760,  y: 1240, text: 'Forest of Labwi', small: true },
+      { x: 1000, y: 1120, text: 'al-Muqadiyah stream', small: true, rotate: -1.15 },
+      { x: 1000, y: 1530, text: 'spring of Ain at-Tannour', small: true },
       { x: 150,  y: 560,  text: '← to Amurru and the coast', small: true },
-      { x: 1500, y: 1790, text: 'to Shabtuna and Egypt ↓', small: true },
+      { x: 1990, y: 1790, text: 'to Shabtuna and Egypt ↓', small: true },
       { x: 1900, y: 60,   text: 'to Aleppo ↑', small: true },
       { x: 1330, y: 100,  text: 'to Lake of Homs ↑ (its dam came later)', small: true }
     ]
@@ -124,7 +126,7 @@ window.KADESH_SCENARIO = {
         { at: 15, file: '09-egyptian-archers.jpg', caption: 'Archers in Egyptian service, from the same tomb at Asyut: bow in one hand, a fistful of arrows in the other.', ref: 'Egyptian Museum, Cairo, CG 257; photographed by Ludwig Borchardt', credit: 'Photo: L. Borchardt, Catalogue g\u00e9n\u00e9ral (1911); public domain' },
       ],
       focus: { x: 1050, y: 520 }, zoom: .8,
-      markers: [ { x: 1020, y: 465, label: 'Amun division' }, { x: 1180, y: 1420, label: 'Re division' }, { x: 1480, y: 1760, label: 'Ptah division' } ],
+      markers: [ { x: 1020, y: 465, label: 'Amun division' }, { x: 1180, y: 1420, label: 'Re division' }, { x: 1900, y: 1760, label: 'Ptah division' } ],
       auto: 22,
       lines: [
         { text: 'Four divisions, each named for a god: Amun, Re, Ptah and Seth.', tag: 'established' },
@@ -156,8 +158,8 @@ window.KADESH_SCENARIO = {
         { at: 0,  file: '13-shasu-relief.jpg', caption: 'Seti I, father of Ramesses, scattering Shasu nomads on the road to Gaza: a drawing of the relief on the north wall at Karnak, made by the Lepsius expedition in the 1840s.', ref: 'Karnak, north exterior wall of the hypostyle hall', credit: 'Drawing: R. Lepsius, Denkm\u00e4ler aus Aegypten und Aethiopien (1853); public domain' },
         { at: 10, file: '06-near-east-map.jpg', caption: 'Aleppo lay 200 km north of Kadesh, deep inside Hittite territory: the lie that drew Ramesses forward.', ref: 'This game\u2019s reconstruction, approximate extents', credit: 'Map: Battle Games, after Bryce (2005) and Kitchen (1982); coastlines public domain' }
       ],
-      focus: { x: 1345, y: 1480 }, zoom: .8,
-      markers: [ { x: 1345, y: 1585, label: 'Ford of Shabtuna' } ],
+      focus: { x: 1700, y: 1500 }, zoom: .8,
+      markers: [ { x: 1750, y: 1590, label: 'Ford of Shabtuna' } ],
       auto: 20,
       lines: [
         { text: 'South of Kadesh, two Shasu nomads tell Ramesses the Hittites are far away at Aleppo, 200 km to the north.', tag: 'egyptian', cite: 'The Bulletin, opening section: Lichtheim, AEL II, pp. 57–72' },
@@ -227,13 +229,13 @@ window.KADESH_SCENARIO = {
     { id: 're-char',   side: 'egypt',   name: 'Re division (chariots)', division: 'Re', type: 'chariot',  cols: 3, rows: 2, power: 1.0, x: 1120, y: 1500, speed: 12,
       count: 'c. 500 chariots', confidence: 'estimate',
       note: 'Marching with the Re division when the attack came.' },
-    { id: 'ptah-inf',  side: 'egypt',   name: 'Ptah division (infantry)', division: 'Ptah', type: 'infantry', cols: 6, rows: 4, power: 1.0, x: 1480, y: 1765, speed: 14,
+    { id: 'ptah-inf',  side: 'egypt',   name: 'Ptah division (infantry)', division: 'Ptah', type: 'infantry', cols: 6, rows: 4, power: 1.0, x: 1900, y: 1765, speed: 14,
       count: 'c. 4,000 men', confidence: 'estimate',
       note: 'Still south of the Orontes when the battle began. Its arrival late in the day helped turn the tide.' },
-    { id: 'ptah-char', side: 'egypt',   name: 'Ptah division (chariots)', division: 'Ptah', type: 'chariot',  cols: 3, rows: 2, power: 1.0, x: 1420, y: 1705, speed: 14,
+    { id: 'ptah-char', side: 'egypt',   name: 'Ptah division (chariots)', division: 'Ptah', type: 'chariot',  cols: 3, rows: 2, power: 1.0, x: 1890, y: 1690, speed: 14,
       count: 'c. 500 chariots', confidence: 'estimate',
       note: 'Marching with the Ptah division.' },
-    { id: 'seth-inf',  side: 'egypt',   name: 'Seth division (never engaged)', division: 'Seth', type: 'infantry', cols: 6, rows: 2, power: 1.0, x: 1720, y: 1782, speed: 10,
+    { id: 'seth-inf',  side: 'egypt',   name: 'Seth division (never engaged)', division: 'Seth', type: 'infantry', cols: 6, rows: 2, power: 1.0, x: 2130, y: 1782, speed: 10,
       count: 'c. 5,000 men', confidence: 'estimate',
       note: 'The rearmost division. It took no part in the fighting, according to the Egyptian account.' },
     { id: 'nearin',    side: 'egypt',   name: 'The Ne’arin', division: 'Ne’arin', type: 'infantry', cols: 5, rows: 3, power: 1.2, x: 60, y: 560, speed: 50, hidden: true,
@@ -266,8 +268,8 @@ window.KADESH_SCENARIO = {
       text: 'Ramesses has camped north-west of Kadesh with the Amun division. Re is strung out on the road behind him, Ptah is still crossing at Shabtuna and Seth is far to the south. He believes the Hittites are 200 km away at Aleppo.',
       explain: 'Why rush ahead? Ramesses trusted the two Shasu who said the enemy was at Aleppo. Reaching Kadesh first would let him begin a siege before the Hittites arrived. The Egyptian account blames the deception, not the king, for the gap between his divisions.',
       orders: [
-        { id: 're-inf', to: { x: 1150, y: 980 }, speed: 12 }, { id: 're-char', to: { x: 1100, y: 1000 }, speed: 12 },
-        { id: 'ptah-inf', to: { x: 1250, y: 1000 }, speed: 14 }, { id: 'ptah-char', to: { x: 1210, y: 1010 }, speed: 14 }
+        { id: 're-inf', to: { x: 1230, y: 1000 }, speed: 12 }, { id: 're-char', to: { x: 1190, y: 1035 }, speed: 12 },
+        { id: 'ptah-inf', to: { x: 1330, y: 1250 }, speed: 14 }, { id: 'ptah-char', to: { x: 1280, y: 1290 }, speed: 14 }
       ] },
     { t: 8, title: 'Captured scouts', tag: 'egyptian', focus: { x: 1050, y: 500 },
       text: 'Two Hittite scouts are captured and beaten until they confess: the Hittite army is standing behind the city. Ramesses sends his vizier racing south to hurry the Re and Ptah divisions.',
@@ -277,7 +279,7 @@ window.KADESH_SCENARIO = {
         { id: 'hit-char-a', to: { x: 1790, y: 930 }, speed: 25 }, { id: 'hit-char-b', to: { x: 1860, y: 1000 }, speed: 25 }, { id: 'hit-char-c', to: { x: 1800, y: 1060 }, speed: 25 },
         { id: 'hit-char2', to: { x: 1940, y: 870 }, speed: 25 }
       ] },
-    { t: 20, title: 'The chariots cross', tag: 'egyptian', focus: { x: 1500, y: 1050 },
+    { t: 20, title: 'The chariots cross', tag: 'egyptian', focus: { x: 1560, y: 1050 },
       text: 'Muwatalli sends his chariots across the Orontes south of Kadesh. The Egyptian account claims 2,500 chariots in this first wave.',
       explain: 'Why chariots alone? A chariot force could cross and strike fast while the infantry stayed safe behind the river. The target was not the camp but the Re division, caught in the open on the march.',
       orders: [
@@ -287,7 +289,7 @@ window.KADESH_SCENARIO = {
       text: 'The Hittite chariots sweep west onto the marching column of the Re division. Re is in line of march, not in battle formation.',
       explain: 'A column on the march cannot fight. Its men are spread along the road, its chariots are not harnessed for battle, and it has no flank guard. This is the moment the Hittite plan was built around.',
       orders: [
-        { id: 'hit-char-a', to: { x: 1215, y: 1040 }, speed: 70 }, { id: 'hit-char-b', to: { x: 1200, y: 1110 }, speed: 70 }, { id: 'hit-char-c', to: { x: 1230, y: 975 }, speed: 70 }
+        { id: 'hit-char-a', to: { x: 1215, y: 1040 }, speed: 70 }, { id: 'hit-char-b', to: { x: 1200, y: 1110 }, speed: 70 }, { id: 'hit-char-c', to: { x: 1200, y: 975 }, speed: 70 }
       ] },
     { t: 30, title: 'Re breaks', tag: 'egyptian', focus: { x: 1150, y: 950 },
       text: 'Taken in the flank, the Re division shatters. Survivors flee north toward the king’s camp with Hittite chariots on their heels.',
@@ -295,7 +297,7 @@ window.KADESH_SCENARIO = {
       orders: [
         { id: 're-inf', state: 'rout', to: { x: 1020, y: 620 }, speed: 36, spread: 2.6, strengthTo: 25, over: 6 },
         { id: 're-char', state: 'rout', to: { x: 880, y: 1000 }, speed: 50, spread: 2.2, strengthTo: 40, over: 6 },
-        { id: 'hit-char-a', to: { x: 1120, y: 900 }, speed: 40 }, { id: 'hit-char-b', to: { x: 1200, y: 880 }, speed: 40 }, { id: 'hit-char-c', to: { x: 1080, y: 960 }, speed: 40 }
+        { id: 'hit-char-a', to: { x: 1090, y: 880 }, speed: 40 }, { id: 'hit-char-b', to: { x: 1200, y: 880 }, speed: 40 }, { id: 'hit-char-c', to: { x: 1080, y: 960 }, speed: 40 }
       ] },
     { t: 42, title: 'Charge on the camp', tag: 'egyptian', focus: { x: 1040, y: 500 },
       text: 'The Hittite chariots crash into the Amun camp, driving the fleeing soldiers of Re before them.', cite: 'The Bulletin; the camp relief at Abu Simbel and the Ramesseum',

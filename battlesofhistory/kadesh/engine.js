@@ -58,10 +58,11 @@ const westOfRiver = (x, y) => x < riverXAt(y);
 // The stream can run any way (at Kadesh it runs north, then turns east): a leg crosses it if it cuts any of its segments.
 const segsCross = (a, b, c, d) => { const o = (p, q, r) => Math.sign((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x)); return o(a, b, c) !== o(a, b, d) && o(c, d, a) !== o(c, d, b); };
 const crossesTrib = (a, b) => { const p = B.tributary; for (let i = 0; i < p.length - 1; i++) if (segsCross(a, b, { x: p[i][0], y: p[i][1] }, { x: p[i + 1][0], y: p[i + 1][1] })) return true; return false; };
-// The two ends of the bridge, 34 px either side of the stream, square to its course there.
-const bridgeEnds = (() => { const br = B.bridge, p = B.tributary; let bi = 0, bd = 1e9; for (let i = 0; i < p.length - 1; i++) { const d = distToPolyline(br.x, br.y, [p[i], p[i + 1]]); if (d < bd) { bd = d; bi = i; } }
+// Crossings of the stream: the bridge plus any stream fords. Each has two ends 34 px either side of the water, square to its course.
+const crossEnds = c => { const p = B.tributary; let bi = 0, bd = 1e9; for (let i = 0; i < p.length - 1; i++) { const d = distToPolyline(c.x, c.y, [p[i], p[i + 1]]); if (d < bd) { bd = d; bi = i; } }
   const dx = p[bi + 1][0] - p[bi][0], dy = p[bi + 1][1] - p[bi][1], L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L;
-  return [{ x: br.x + nx * 34, y: br.y + ny * 34 }, { x: br.x - nx * 34, y: br.y - ny * 34 }]; })();
+  return [{ x: c.x + nx * 34, y: c.y + ny * 34 }, { x: c.x - nx * 34, y: c.y - ny * 34 }]; };
+const STREAM_X = [B.bridge].concat(B.streamFords || []).map(c => ({ c, ends: crossEnds(c) })), bridgeEnds = STREAM_X[0].ends;
 const segHitsRect = (a, b, r) => { if (inCity(a.x, a.y) || inCity(b.x, b.y)) return true; for (let t = 0; t <= 1; t += .05) { const x = a.x + (b.x - a.x) * t, y = a.y + (b.y - a.y) * t; if (x > r.x0 && x < r.x1 && y > r.y0 && y < r.y1) return true; } return false; };
 // Push a point out of the city and moat to the nearest edge.
 function legal(p) { if (!inCity(p.x, p.y)) return p; const dl = p.x - CITYR.x0, dr = CITYR.x1 - p.x, dt = p.y - CITYR.y0, db = CITYR.y1 - p.y, m = Math.min(dl, dr, dt, db); return m === dl ? { x: CITYR.x0 - 12, y: p.y } : m === dr ? { x: CITYR.x1 + 12, y: p.y } : m === dt ? { x: p.x, y: CITYR.y0 - 12 } : { x: p.x, y: CITYR.y1 + 12 }; }
@@ -75,7 +76,7 @@ function planPath(a, b) {
   }
   // tributary (per leg)
   let out = [legs[0]];
-  for (let i = 1; i < legs.length; i++) { const p = out[out.length - 1], q = legs[i]; if (!inTrib(p.x, p.y) && !inTrib(q.x, q.y) && crossesTrib(p, q)) { const [e1, e2] = bridgeEnds; if (Math.hypot(p.x - e1.x, p.y - e1.y) < Math.hypot(p.x - e2.x, p.y - e2.y)) out.push(e1, e2); else out.push(e2, e1); } out.push(q); }
+  for (let i = 1; i < legs.length; i++) { const p = out[out.length - 1], q = legs[i]; if (!inTrib(p.x, p.y) && !inTrib(q.x, q.y) && crossesTrib(p, q)) { let bx = STREAM_X[0], bd = 1e9; STREAM_X.forEach(x => { const d = Math.hypot(p.x - x.c.x, p.y - x.c.y) + Math.hypot(q.x - x.c.x, q.y - x.c.y); if (d < bd) { bd = d; bx = x; } }); const [e1, e2] = bx.ends; if (Math.hypot(p.x - e1.x, p.y - e1.y) < Math.hypot(p.x - e2.x, p.y - e2.y)) out.push(e1, e2); else out.push(e2, e1); } out.push(q); }
   legs = out;
   // city and moat (per leg): go round the nearest corner
   out = [legs[0]];
@@ -182,6 +183,8 @@ function buildTerrain() {
     for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(f.x - 44, f.y + k * 9); c.lineTo(f.x + 44, f.y + k * 9); c.stroke(); }
     c.restore(); outlined(c, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' });
   });
+  // stream fords: stepping stones across the water
+  STREAM_X.slice(1).forEach(x => { const [e1, e2] = x.ends; c.save(); c.fillStyle = 'rgba(225,215,180,.85)'; for (let k = 0; k <= 6; k++) { const t = k / 6; c.beginPath(); c.ellipse(e1.x + (e2.x - e1.x) * t, e1.y + (e2.y - e1.y) * t, 5, 4, 0, 0, PI * 2); c.fill(); } c.restore(); });
   // the bridge over the stream: a plank deck square to the water
   { const [e1, e2] = bridgeEnds, ang = Math.atan2(e2.y - e1.y, e2.x - e1.x); c.save(); c.translate(B.bridge.x, B.bridge.y); c.rotate(ang);
     c.fillStyle = 'rgba(30,20,10,.35)'; c.fillRect(-30, -9, 64, 22); c.fillStyle = '#7a5a34'; c.fillRect(-32, -11, 64, 22);
@@ -1072,10 +1075,11 @@ function exportLayoutGuide() {
   box(B.camp.x, B.camp.y, B.camp.w, B.camp.h, 'EGYPTIAN CAMP: shield wall, tents, royal tent');
   B.fords.forEach(f => box(f.x - 60, f.y - 30, 120, 60, 'FORD: ' + f.name));
   box(B.bridge.x - 40, B.bridge.y - 30, 80, 60, 'BRIDGE');
+  (B.streamFords || []).forEach(f => box(f.x - 40, f.y - 30, 80, 60, 'FORD: ' + f.name));
   box(B.tributary[0][0] - 50, B.tributary[0][1] - 10, 110, 70, 'SPRING POOL');
   B.forests.forEach(fo => { g.beginPath(); g.ellipse(fo.x, fo.y, fo.r, fo.r * .8, 0, 0, PI * 2); g.stroke(); g.fillText('FOREST', fo.x - 50, fo.y); });
   B.hills.forEach(h => { g.beginPath(); g.ellipse(h.x, h.y, h.rx, h.ry, 0, 0, PI * 2); g.stroke(); g.fillText('HILL', h.x - 25, h.y); });
-  g.strokeStyle = '#00e5ff'; g.lineWidth = 6; g.beginPath(); curve(g, B.river); g.stroke(); g.beginPath(); curve(g, B.tributary); g.stroke(); g.fillStyle = '#00e5ff'; g.fillText('RIVER CENTRELINE (Orontes, flows south to north)', 1560, 1300); g.fillText('STREAM: rises at the spring pool, flows north, joins the river', 1330, 960);
+  g.strokeStyle = '#00e5ff'; g.lineWidth = 6; g.beginPath(); curve(g, B.river); g.stroke(); g.beginPath(); curve(g, B.tributary); g.stroke(); g.fillStyle = '#00e5ff'; g.fillText('RIVER CENTRELINE (Orontes, flows south to north)', 1560, 1300); g.fillText('STREAM (left cyan line): rises at the spring pool, winds north, joins the river', 40, 1000);
   g.strokeStyle = '#ffd400'; g.lineWidth = 6; g.beginPath(); curve(g, B.road); g.stroke(); g.fillStyle = '#ffd400'; g.fillText('ROAD', 1200, 1320);
   g.fillStyle = '#ff2a2a'; g.font = 'bold 40px system-ui'; g.fillText('N (north is up) \u2191   map ' + W.w + ' x ' + W.h + ' px, paint at 2x = ' + W.w * 2 + ' x ' + W.h * 2, 40, 60);
   const a = document.createElement('a'); a.download = 'kadesh-layout-guide.png'; a.href = T.toDataURL('image/png'); a.click();

@@ -25,12 +25,17 @@ largest 4:3 it can and I will upscale.
 >
 > Use the attached layout image as the exact plan. Keep every feature in the
 > same place and at the same size as the coloured outlines:
-> - The Orontes River follows the long cyan line, winding from the bottom
->   (south) toward the top (north) in gentle bends: a slow river with muddy
->   banks, reeds, sandbars and shallows, and a strip of green irrigated
->   fields along both banks. A smaller stream (the al-Muqadiyah) follows the
->   shorter cyan line in from the west and joins the Orontes just north of
->   the city, so the city stands in the fork between the two waters.
+> - The Orontes River follows the long cyan line on the right, winding from
+>   the bottom right (south-east) toward the top (north) in tight bends and loops: a
+>   slow river with muddy banks, reeds, sandbars and shallows, and a strip of
+>   green irrigated fields along both banks.
+> - A smaller stream (the al-Muqadiyah) follows the second cyan line on the
+>   left. It rises at a round spring pool (the box marked SPRING POOL, lower
+>   left of centre), winds north-east well apart from the river, closes in
+>   on it near the city, runs along the west side of the city, curves round the city's north side and joins the river at
+>   the north-east corner. It is narrower than the river, in a small ravine
+>   with dark green trees and bushes along its banks. The city stands in the
+>   fork between the two waters.
 > - Kadesh, in the red box beside the river, is a fortified Bronze Age city on
 >   a low mound (a tell) with mud-brick walls, square towers, a citadel, and a
 >   water-filled moat all round: on the south side it is a dug canal
@@ -39,8 +44,9 @@ largest 4:3 it can and I will upscale.
 >   top).
 > - The Egyptian camp box is a rectangle of trampled ground with faint tent
 >   marks, no tents (the game draws them).
-> - The three ford boxes are shallow, stony crossings with ripples. Where the
->   yellow road crosses the stream, paint a small wooden or stone bridge.
+> - The FORD boxes are shallow, stony crossings with ripples (three on the
+>   river, one with stepping stones on the stream). The BRIDGE box is a small
+>   wooden bridge where the yellow road crosses the stream.
 > - The yellow line is a dusty dirt road with wheel ruts.
 > - Red ellipses marked FOREST are groves of oak, pine and tamarisk; those
 >   marked HILL are low rocky rises with scrub.
@@ -50,7 +56,8 @@ largest 4:3 it can and I will upscale.
 > Finish as a seamless painting with no vignette, frame or border.
 
 If the result moves the river or city, reply: "Keep the river exactly on the
-cyan line and the city inside the red box; do not reinterpret the layout."
+cyan lines (river and stream) and the city inside the red box; do not
+reinterpret the layout."
 
 ---
 
