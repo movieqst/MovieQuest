@@ -313,7 +313,7 @@ function figChariot(c, side, s, i, moving, dir, step) {
 /* Painted sprite sheets (images/units/<side>-<type>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
    Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
 const SHEETS = {};
-const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 }, elephant: { cw: 240, ch: 200, h: 46 } };
+const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 }, elephant: { cw: 240, ch: 200, h: 72 } };
 ['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'persia-spearman', 'persia-chariot', 'persia-cavalry', 'persia-elephant'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 const sheetFor = (side, type) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : type === 'elephant' ? 'elephant' : type === 'cavalry' ? 'cavalry' : type === 'archers' ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
@@ -579,7 +579,7 @@ function drawFormation(c, f) {
   const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
   // In the flat view a subtle depth cue remains: units nearer the south edge draw a little larger. The tilted view does this by projection.
-  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'elephant' ? 44 : f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'elephant' ? 30 : f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
+  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'elephant' ? 62 : f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'elephant' ? 30 : f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
   // In the water a formation squeezes into a double file (single for chariots) along its line of march.
   const FC = f.inWater ? (f.type === 'chariot' ? 1 : 2) : f.cols, FR = f.inWater ? Math.ceil(n / FC) : f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
