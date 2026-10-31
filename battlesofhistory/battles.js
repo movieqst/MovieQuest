@@ -112,7 +112,7 @@ window.BATTLES = [
     sideColors: ['#c0392b', '#2e5aa8'],
     blurb: 'Cut off by the German advance, the British and French hold a shrinking pocket around Dunkirk while ships, from destroyers to the little ships, carry more than 330,000 men off the beaches and the mole.',
     cover: 'images/cover.jpg',
-    coverCredit: 'Picture to come',
+    coverCredit: 'Troops evacuated from Dunkirk on a destroyer about to berth at Dover, 31 May 1940. Photo: Puttnam and Malindine, War Office official photographers. Imperial War Museum (H 1637), public domain (Crown copyright expired)',
     status: 'in progress'
   }
 ];
