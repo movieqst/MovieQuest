@@ -89,3 +89,9 @@ Instead the game plays these small sheets over the painting. The waves are done 
 
 The black background lets the flames glow; the white background lets the smoke's darkness become its see-through
 edge. Neither needs a green screen.
+
+**Smoke frames received (`images/fx/smoke-frames-4x4.jpg`).** ChatGPT returned 16 small whole-map frames with the
+smoke rolling. They line up with `map2.jpg` (each frame covers map2 from about x 13–1871, y 13–1398, at 0.148 of
+map2's scale), so the game lifts only the smoke from each frame (darkening against the frames' clean sea) and
+crossfades the 16 layers over the full-size painting. The map underneath stays sharp and still. The flames will
+flicker in code, or from the flame sheet above if one is made.
