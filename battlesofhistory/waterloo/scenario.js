@@ -167,7 +167,7 @@ window.WATERLOO_SCENARIO = {
     {
       title: 'The armies are drawn up. What happens next?',
       media: [
-        { at: 0, file: '14-wellington-blucher-maclise.jpg', caption: 'The meeting of Wellington and Blücher after the battle, by Daniel Maclise (1861). Where and how they met is told in different ways.', ref: 'Palace of Westminster, London', credit: '' }
+        { at: 0, file: '14-wellington-blucher-maclise.jpg', caption: 'The meeting of Wellington and Blücher after the battle, near the inn of La Belle Alliance: Charles William Sharpe’s 1879 engraving of Daniel Maclise’s great wall painting in the Palace of Westminster. Where and how the two commanders met is told in different ways.', ref: 'Engraving by C. W. Sharpe, 1879, after Daniel Maclise (painting 1861)', credit: 'Wikimedia Commons, public domain' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
