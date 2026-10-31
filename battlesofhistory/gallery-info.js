@@ -88,7 +88,7 @@ window.GALLERY_INFO = {
   'gaugamela/14-babylonian-diary.jpg': ['document', 'clay tablet', -322, null, null],
   'gaugamela/15-le-brun-arbela.jpg': ['art', 'tapestry', 1666, null, null],
   'gaugamela/16-susa-archer-detail.jpg': ['art', 'glazed-brick frieze', -510, null, null],
-  'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, null, null],
+  'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
   // Waterloo
   'waterloo/01-pieneman-waterloo.jpg': ['art', 'painting', 1824, 'De_Slag_bij_Waterloo_Rijksmuseum_SK-A-1115.jpeg', null],
   'waterloo/02-napoleon-david.jpg': ['art', 'painting', 1812, 'Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project_2.jpg', null],
