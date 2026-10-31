@@ -100,5 +100,19 @@ window.BATTLES = [
     cover: 'images/cover.jpg',
     coverCredit: 'Tang dynasty figure of a warrior on an armoured horse, from the tomb of Crown Prince Li Chongrun. Photo: Gary Lee Todd, Wikimedia Commons, CC BY-SA 4.0',
     status: 'in progress'
+  },
+  {
+    folder: 'dunkirk',
+    order: 8,
+    era: 'Second World War',
+    title: 'Dunkirk',
+    date: '26 May – 4 June 1940', year: 1940,
+    place: 'Dunkirk and its beaches, northern France',
+    sides: 'The British Expeditionary Force and the French army vs. the German army and Luftwaffe',
+    sideColors: ['#c0392b', '#2e5aa8'],
+    blurb: 'Cut off by the German advance, the British and French hold a shrinking pocket around Dunkirk while ships, from destroyers to the little ships, carry more than 330,000 men off the beaches and the mole.',
+    cover: 'images/cover.jpg',
+    coverCredit: 'Picture to come',
+    status: 'in progress'
   }
 ];
