@@ -398,7 +398,7 @@ window.WATERLOO_SCENARIO = {
      Each side shows its first two cards; the rest open from the "more units" button. */
   units: [
     { side: 'allied', type: 'infantry', sheet: 'british-infantry', portrait: 'british-infantry', name: 'British line infantry', desc: 'Redcoats with the Brown Bess musket. In square, the answer to cavalry.', tag: 'established',
-      photos: ['03-wellington-lawrence.jpg'],
+      photos: ['03-wellington-lawrence.jpg', '04-hougoumont.jpg'],
       lines: [
         { text: 'Most of Wellington’s infantry waited behind the crest of the ridge, many lying down, out of sight of the French guns.', tag: 'established', cite: 'Britannica, Battle of Waterloo' },
         { text: 'Against cavalry the infantry formed square: a hollow box several ranks deep, with bayonets outward. No square of Wellington’s was broken by the French cavalry that day.', tag: 'established', cite: 'Britannica, Battle of Waterloo' },
@@ -435,7 +435,7 @@ window.WATERLOO_SCENARIO = {
         { text: 'Plancenoit changed hands several times before the Prussians held it in the evening, and their pursuit turned the French retreat into a rout.', tag: 'established' }
       ] },
     { side: 'french', type: 'infantry', sheet: 'french-infantry', portrait: 'french-infantry', name: 'French line infantry', desc: 'Blue-coated infantry, attacking in column.', tag: 'established',
-      photos: ['04-hougoumont.jpg'],
+      photos: [{ file: '17-hougoumont-south-gate.jpg', caption: 'The south gate of Hougoumont, the side the French attacked from. A plaque on the wall to the right of the gate remembers the Coldstream Guards, who helped hold the farm all day.', ref: 'Hougoumont, Braine-l’Alleud, Belgium; photographed 2016', credit: 'Photo: Alfa Fallsa, Wikimedia Commons, CC BY-SA 4.0' }, '04-hougoumont.jpg'],
       lines: [
         { text: 'French line infantry wore blue coats and carried the Charleville musket. They usually attacked in columns and fought in lines.', tag: 'established' },
         { text: 'In d’Erlon’s attack whole divisions advanced in battalions packed one behind another, a broad, deep mass that was slow to deploy and hard to miss.', tag: 'established' },
