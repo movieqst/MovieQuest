@@ -676,6 +676,7 @@ function drawMini() {
 // One audio element for the whole narration. iPad and iPhone Safari only allow audio to start after a tap, and only on
 // the element that the tap started, so every clip reuses this element; the first tap anywhere unlocks it.
 const narrEl = new Audio();
+const NARR_LEAD = 1.5;   // seconds of quiet before each clip, so the narrator does not cut in (the clips start almost at once)
 // The unlock plays a moment of silence, and pauses only if that silence is still what the element holds: the same tap may
 // already have started a narration clip on it, which must not be stopped.
 const SILENT = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
@@ -684,7 +685,7 @@ const Narr = {
   on: false, audio: null, rate: 1.1, endedAt: -99,
   speak(text, file) {
     this.stop(); if (!this.on) return;
-    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
+    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; clearTimeout(this.leadT); this.leadT = setTimeout(() => { if (this.audio === a) a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; this.tts(text); } }); }, NARR_LEAD * 1000); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
@@ -695,7 +696,7 @@ const Narr = {
     if (pref) u.voice = pref; speechSynthesis.speak(u);
     if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
   },
-  stop() { if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
+  stop() { clearTimeout(this.leadT); if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
   set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '\ud83d\udd0a Voice' : '\ud83d\udd07 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
   toggle() { this.set(!this.on); }
