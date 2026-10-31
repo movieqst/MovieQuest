@@ -40,6 +40,7 @@ window.BattleGlobe = (() => {
     const sh = g.createLinearGradient(0, 0, 0, TH); sh.addColorStop(0, 'rgba(255,255,255,.25)'); sh.addColorStop(.12, 'rgba(255,255,255,0)'); sh.addColorStop(.88, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(255,255,255,.35)'); g.fillStyle = sh; g.fillRect(0, 0, TW, TH);
     TEX = t; TEXD = g.getImageData(0, 0, TW, TH).data;
   }
+  let DS = null;   // scratch canvas for the soft desert layer when zoomed in
   let RAS = null, RASC = null, IMG = null, CACHE = null; // scratch canvas and per-pixel cache for the wrapped globe
   function buildCache(size, Rr, lat0) {
     // Geometry that does not change while the globe spins: texture row, longitude offset (in texture pixels) and shading per pixel.
@@ -125,6 +126,7 @@ window.BattleGlobe = (() => {
     // Whole globe in view: wrap the texture. Zoomed in: vector coastlines, but only once the view is close enough to cull
     // rings outside it (capDeg below); before that, a ring crossing the horizon can flash a green fill over the whole disc.
     const RASTER = R <= Math.max(Math.min(w, h) * .42 * 1.7, Math.hypot(w, h) / 2);
+    const LAND = new Path2D();   // the visible coastlines, so the deserts can be cut at the shore when zoomed in
     // ocean
     const oc = c.createRadialGradient(cx - R * .35, cy - R * .35, R * .1, cx, cy, R); oc.addColorStop(0, '#2a6f9e'); oc.addColorStop(.6, '#164a72'); oc.addColorStop(1, '#0a2744');
     c.fillStyle = oc; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill();
@@ -154,14 +156,18 @@ window.BattleGlobe = (() => {
         let x = R * cl * Math.sin(lam), y = R * (cos0 * sl - sin0 * cl * Math.cos(lam));
         if (cosc < 0) { const d = Math.hypot(x, y) || 1; x = x / d * R * 1.01; y = y / d * R * 1.01; } // push hidden points to the rim
         const px = cx + x, py = cy - y;
-        if (!any) { c.moveTo(px, py); any = true; } else c.lineTo(px, py);
+        if (!any) { c.moveTo(px, py); LAND.moveTo(px, py); any = true; } else { c.lineTo(px, py); LAND.lineTo(px, py); }
       }
-      c.closePath(); c.fill(); if (R > 600) c.stroke();
+      c.closePath(); LAND.closePath(); c.fill(); if (R > 600) c.stroke();
     }
-    if (!RASTER) { // zoomed in: paint the deserts over the vector land as well
-      c.save(); c.fillStyle = SAND; c.globalAlpha = .85;
-      DESERTS.forEach(d => { const pts = d.map(([x, y]) => proj(x * D, Math.cos(y * D), Math.sin(y * D))).filter(Boolean); if (pts.length < 3) return; c.beginPath(); const n = pts.length; for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; i ? c.quadraticCurveTo(a[0], a[1], mx, my) : c.moveTo(mx, my); } c.closePath(); c.fill(); });
-      c.restore();
+    if (!RASTER) { // zoomed in: paint the deserts over the vector land as well, soft-edged and cut at the coast like the globe texture.
+      // Drawn blurred at a quarter of the size (cheap) and scaled up, then clipped to the coastlines.
+      const q = 4, dw = Math.ceil(w / q), dh = Math.ceil(h / q);
+      if (!DS || DS.width !== dw || DS.height !== dh) { DS = document.createElement('canvas'); DS.width = dw; DS.height = dh; }
+      const dc = DS.getContext('2d'); dc.setTransform(1, 0, 0, 1, 0, 0); dc.clearRect(0, 0, dw, dh); dc.setTransform(1 / q, 0, 0, 1 / q, 0, 0);
+      dc.filter = `blur(${Math.max(1, Math.round(Math.min(60, R * .0245) / q))}px)`; dc.fillStyle = SAND;
+      DESERTS.forEach(d => { const pts = d.map(([x, y]) => proj(x * D, Math.cos(y * D), Math.sin(y * D))).filter(Boolean); if (pts.length < 3) return; dc.beginPath(); const n = pts.length; for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; i ? dc.quadraticCurveTo(a[0], a[1], mx, my) : dc.moveTo(mx, my); } dc.closePath(); dc.fill(); });
+      dc.filter = 'none'; c.save(); c.clip(LAND); c.globalAlpha = .92; c.drawImage(DS, 0, 0, w, h); c.restore();
     }
     if (!RASTER) {
       c.save(); c.strokeStyle = '#2f7590'; c.lineWidth = Math.max(1.5, R / 1400); c.lineCap = 'round'; c.lineJoin = 'round';
