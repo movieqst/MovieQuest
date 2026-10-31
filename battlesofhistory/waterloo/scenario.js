@@ -73,7 +73,10 @@ window.WATERLOO_SCENARIO = {
   intro: [
     {
       title: 'BATTLE OF WATERLOO',
-      media: [],
+      media: [
+        { at: 0, file: '01-pieneman-waterloo.jpg', caption: 'The Battle of Waterloo by Jan Willem Pieneman, painted in 1824. Wellington, centre, receives news of the Prussian advance. The scene is posed: a painter’s reconstruction, not an eyewitness view.', ref: 'Rijksmuseum, Amsterdam', credit: '' },
+        { at: 12, file: '02-napoleon-david.jpg', caption: 'Napoleon in his study, by Jacques-Louis David (1812). Three years later he escaped from Elba and returned to power for the Hundred Days.', ref: 'National Gallery of Art, Washington', credit: '' }
+      ],
       subtitle: '18 June 1815 · south of Brussels',
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
@@ -86,7 +89,11 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'The ridge',
-      media: [],
+      media: [
+        { at: 0, file: '03-wellington-lawrence.jpg', caption: 'The Duke of Wellington, by Sir Thomas Lawrence (1815–16), painted soon after the battle.', ref: 'Apsley House, London', credit: '' },
+        { at: 10, file: '04-hougoumont.jpg', caption: 'The farm of Hougoumont today. Its walls, gate and chapel still stand.', ref: 'Braine-l’Alleud, Belgium', credit: '' },
+        { at: 20, file: '05-la-haye-sainte.jpg', caption: 'La Haye Sainte today, beside the Brussels road.', ref: 'On the Brussels–Charleroi road, Belgium', credit: '' }
+      ],
       focus: { x: 1100, y: 750 }, zoom: .8,
       markers: [],
       auto: 18,
@@ -99,7 +106,10 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'The French army',
-      media: [],
+      media: [
+        { at: 0, file: '06-ney-gerard.jpg', caption: 'Marshal Michel Ney, by François Gérard. He led the French attacks on the ridge in the afternoon.', ref: 'Portrait, early 19th century', credit: '' },
+        { at: 14, file: '07-cuirassiers-philippoteaux.jpg', caption: 'French cuirassiers charging the British squares, by Félix Philippoteaux (1874). Painted sixty years later; the uniforms are carefully drawn, the scene is imagined.', ref: 'Victoria and Albert Museum, London', credit: '' }
+      ],
       focus: { x: 1250, y: 1250 }, zoom: .8,
       markers: [],
       auto: 18,
@@ -111,7 +121,11 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'The Prussians',
-      media: [],
+      media: [
+        { at: 0, file: '08-blucher.jpg', caption: 'Field Marshal Gebhard Leberecht von Blücher, commander of the Prussian army, then 72 years old.', ref: 'Portrait, early 19th century', credit: '' },
+        { at: 12, file: '09-plancenoit-northen.jpg', caption: 'Prussians storm Plancenoit, by Adolph Northen (1864). A later painting of the fighting in the village.', ref: 'Painting, 1864', credit: '' },
+        { at: 22, file: '10-grouchy.jpg', caption: 'Marshal Emmanuel de Grouchy, who followed the Prussians to Wavre and never reached Waterloo.', ref: 'Portrait, early 19th century', credit: '' }
+      ],
       focus: { x: 2000, y: 1400 }, zoom: .8,
       markers: [],
       auto: 16,
@@ -123,7 +137,10 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'The sources',
-      media: [],
+      media: [
+        { at: 0, file: '11-siborne-model.jpg', caption: 'William Siborne’s great model of the battle, built in the 1830s from letters he collected from surviving officers. Its account of the Prussian part was argued over at the time.', ref: 'National Army Museum, London', credit: '' },
+        { at: 12, file: '12-mercer-journal.jpg', caption: 'Captain Cavalié Mercer’s journal, one of the most vivid eyewitness accounts, published in 1870, more than fifty years after the battle.', ref: 'Title page, 1870 edition', credit: '' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 16,
@@ -135,7 +152,9 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'How to read this reenactment',
-      media: [],
+      media: [
+        { at: 0, file: '13-scotland-forever.jpg', caption: 'Scotland Forever! by Lady Butler (1881): the charge of the Scots Greys, painted 66 years later. A famous image, and a reconstruction like this map.', ref: 'Leeds Art Gallery', credit: '' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 14,
@@ -146,6 +165,9 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'The armies are drawn up. What happens next?',
+      media: [
+        { at: 0, file: '14-wellington-blucher-maclise.jpg', caption: 'The meeting of Wellington and Blücher after the battle, by Daniel Maclise (1861). Where and how they met is told in different ways.', ref: 'Palace of Westminster, London', credit: '' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       choice: true,
@@ -196,11 +218,11 @@ window.WATERLOO_SCENARIO = {
       count: 'Part of about 72,000 French (estimate)', confidence: 'established', note: 'Its attacks on Hougoumont began the battle and went on all day.' },
     { id: 'derlon',    side: 'french', name: 'd’Erlon’s I Corps', division: 'I Corps', type: 'infantry', cols: 10, rows: 4, power: 1.2, x: 1550, y: 1230,
       count: 'Four infantry divisions', confidence: 'established', note: 'Attacked the Allied left-centre in the early afternoon in broad, deep formations.' },
-    { id: 'bat-1',     side: 'french', name: 'Grand battery (west)', division: 'Grand battery', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1320, y: 1120,
+    { id: 'bat-1',     side: 'french', name: 'Grand battery (west)', division: '', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1320, y: 1120,
       count: 'The number of guns is disputed: about 40 to 84', confidence: 'disputed', note: 'On a low rise in front of d’Erlon’s corps. Three gun figures stand for each part of the battery.' },
     { id: 'bat-2',     side: 'french', name: 'Grand battery (centre)', division: 'Grand battery', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1480, y: 1120,
       count: 'Part of the grand battery', confidence: 'disputed', note: 'Part of the grand battery.' },
-    { id: 'bat-3',     side: 'french', name: 'Grand battery (east)', division: 'Grand battery', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1640, y: 1120,
+    { id: 'bat-3',     side: 'french', name: 'Grand battery (east)', division: '', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1640, y: 1120,
       count: 'Part of the grand battery', confidence: 'disputed', note: 'Part of the grand battery.' },
     { id: 'cuir',      side: 'french', name: 'Milhaud’s cuirassiers', division: 'Cuirassiers', type: 'cavalry', cols: 6, rows: 2, power: 1.2, x: 950, y: 1350, sheet: 'french-cuirassier',
       count: 'Heavy cavalry corps', confidence: 'established', note: 'Led the massed cavalry charges of the afternoon.' },
@@ -371,19 +393,80 @@ window.WATERLOO_SCENARIO = {
     { text: 'The stories of the day, such as the Hougoumont gate and the Scots Greys charge, are told from both sides, and not always accurately.', tag: 'account' }
   ],
 
-  /* Armies panel: units shown with their drawn figures until painted sprites are added */
+  /* Armies panel: one card per kind of unit. `sheet` is the painted figure shown until a portrait (images/portraits/<portrait>.jpg) exists.
+     Each side shows its first two cards; the rest open from the "more units" button. */
   units: [
-    { side: 'allied', type: 'infantry', name: 'British infantry square', desc: 'Redcoats in a hollow square of bayonets. The infantry’s answer to cavalry.', tag: 'established',
-      photos: [],
+    { side: 'allied', type: 'infantry', sheet: 'british-infantry', portrait: 'british-infantry', name: 'British line infantry', desc: 'Redcoats with the Brown Bess musket. In square, the answer to cavalry.', tag: 'established',
+      photos: ['03-wellington-lawrence.jpg'],
       lines: [
-        { text: 'A square of infantry, with the front ranks kneeling, was the standard defence against cavalry. Musket fire and bayonets were the main protection.', tag: 'established', cite: 'Cambridge, Cuirassiers and hollow squares' },
-        { text: 'The Brown Bess musket was a smoothbore flintlock, and its rate of fire in good conditions was about three rounds a minute, according to modern estimates.', tag: 'estimate', cite: 'Military collectors’ sources; check a military history before quoting' }
+        { text: 'Most of Wellington’s infantry waited behind the crest of the ridge, many lying down, out of sight of the French guns.', tag: 'established', cite: 'Britannica, Battle of Waterloo' },
+        { text: 'Against cavalry the infantry formed square: a hollow box several ranks deep, with bayonets outward. No square of Wellington’s was broken by the French cavalry that day.', tag: 'established', cite: 'Britannica, Battle of Waterloo' },
+        { text: 'A trained soldier with the Brown Bess smoothbore could fire about two or three rounds a minute.', tag: 'estimate' },
+        { text: 'In this game, infantry that halts is hard for cavalry to break, but a square is a dense target for the guns.', tag: 'reconstruction' }
       ] },
-    { side: 'french', type: 'cavalry', name: 'French cuirassier', desc: 'Heavy cavalry in breastplates, who charged the Allied squares.', tag: 'account',
+    { side: 'allied', type: 'cavalry', sheet: 'scots-greys', portrait: 'scots-greys', name: 'Union Brigade (Scots Greys)', desc: 'Heavy dragoons from England, Scotland and Ireland.', tag: 'established',
+      photos: ['13-scotland-forever.jpg'],
+      lines: [
+        { text: 'The Union Brigade was named for its three regiments: the Royal Dragoons from England, the Scots Greys and the Inniskilling Dragoons from Ireland.', tag: 'established' },
+        { text: 'Its charge broke d’Erlon’s attack. Sergeant Charles Ewart of the Greys took the eagle of the French 45th Line, and the Royals took the eagle of the 105th.', tag: 'established', cite: 'Britannica; National Army Museum' },
+        { text: 'The brigade rode on into the grand battery and lost heavily to the French lancers and cuirassiers. How far it got is disputed.', tag: 'disputed' }
+      ] },
+    { side: 'allied', type: 'infantry', sheet: 'british-infantry', portrait: 'kgl-rifleman', name: 'King’s German Legion', desc: 'Hanoverians in British service. Its riflemen held La Haye Sainte.', tag: 'established',
+      photos: ['05-la-haye-sainte.jpg'],
+      lines: [
+        { text: 'The King’s German Legion was raised from Hanoverian soldiers who joined the British army after Napoleon occupied Hanover.', tag: 'established' },
+        { text: 'Its 2nd Light Battalion, under Major George Baring, held the farm of La Haye Sainte beside the Brussels road for most of the day.', tag: 'established' },
+        { text: 'Baring wrote that the ammunition for their rifles never reached them. In the early evening they were driven out of the farm.', tag: 'account', cite: 'Baring’s own account' }
+      ] },
+    { side: 'allied', type: 'artillery', sheet: 'british-artillery', portrait: 'british-artillery', name: 'Royal Artillery', desc: 'Foot batteries and horse artillery troops on the crest.', tag: 'established',
       photos: [],
       lines: [
-        { text: 'The cuirassiers wore breastplates. They were the heavy cavalry of the French army, and they rode up the slope in wave after wave.', tag: 'account', cite: 'Wikipedia, The British Squares Receiving the Charge of the French Cuirassiers' },
-        { text: 'The sources say the cavalry could not break the squares without infantry or artillery support, and eventually fell back.', tag: 'account' }
+        { text: 'Wellington’s guns were mostly 9-pounders and 6-pounders, many of them in fast-moving troops of horse artillery.', tag: 'established' },
+        { text: 'Close in, the gunners fired canister: a tin of musket balls that burst from the muzzle like a giant shotgun. At longer range they fired solid roundshot.', tag: 'established' },
+        { text: 'The crews were ordered to shelter in the nearest square when cavalry came close, and to run back to the guns as it fell back. Captain Mercer wrote that he kept his men at their guns instead.', tag: 'account', cite: 'Mercer, Journal of the Waterloo Campaign' },
+        { text: 'In this game a battery must stop and unlimber before it can fire, and falls silent while cavalry is on its guns.', tag: 'reconstruction' }
+      ] },
+    { side: 'allied', type: 'infantry', sheet: 'prussian-infantry', portrait: 'prussian-infantry', name: 'Prussian infantry', desc: 'Line infantry and Landwehr of Blücher’s army.', tag: 'established',
+      photos: ['09-plancenoit-northen.jpg', '08-blucher.jpg'],
+      lines: [
+        { text: 'Blücher’s army mixed regular line regiments with the Landwehr, the militia raised during the war of 1813.', tag: 'established' },
+        { text: 'Bülow’s corps marched from Wavre along narrow, muddy lanes, which is why it arrived only in the late afternoon.', tag: 'established' },
+        { text: 'Plancenoit changed hands several times before the Prussians held it in the evening, and their pursuit turned the French retreat into a rout.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'infantry', sheet: 'french-infantry', portrait: 'french-infantry', name: 'French line infantry', desc: 'Blue-coated infantry, attacking in column.', tag: 'established',
+      photos: ['04-hougoumont.jpg'],
+      lines: [
+        { text: 'French line infantry wore blue coats and carried the Charleville musket. They usually attacked in columns and fought in lines.', tag: 'established' },
+        { text: 'In d’Erlon’s attack whole divisions advanced in battalions packed one behind another, a broad, deep mass that was slow to deploy and hard to miss.', tag: 'established' },
+        { text: 'At Hougoumont, Reille’s infantry fought all day for a farm that was meant to be a side attack.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'cavalry', sheet: 'french-cuirassier', portrait: 'french-cuirassier', name: 'Cuirassiers', desc: 'Heavy cavalry in steel breastplates and helmets.', tag: 'established',
+      photos: ['07-cuirassiers-philippoteaux.jpg', '06-ney-gerard.jpg'],
+      lines: [
+        { text: 'Cuirassiers wore steel breastplates and helmets. They were the heavy cavalry of the French army.', tag: 'established' },
+        { text: 'In the afternoon Marshal Ney sent them against the Allied squares in charge after charge, with too little infantry or artillery to follow up.', tag: 'established' },
+        { text: 'The charges did not break a single square, and the French cavalry was worn out before the Imperial Guard attacked.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'cavalry', sheet: 'french-lancer', portrait: 'french-lancer', name: 'Lancers', desc: 'Light cavalry with a lance about 2.75 metres long.', tag: 'established',
+      photos: [],
+      lines: [
+        { text: 'A lance could reach past a sabre, or down to a man on the ground. Lancers were feared by cavalry caught in disorder.', tag: 'established' },
+        { text: 'Jacquinot’s lancers counter-charged the Union Brigade among the guns of the grand battery and caused heavy losses.', tag: 'established' },
+        { text: 'The red lancers of the Imperial Guard rode in the great cavalry charges of the afternoon.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'artillery', sheet: 'french-artillery', portrait: 'french-artillery', name: 'French artillery', desc: 'The grand battery and the guns of the corps.', tag: 'established',
+      photos: [],
+      lines: [
+        { text: 'Napoleon was trained as an artillery officer, and he massed his guns. The grand battery stood on a low rise facing the Allied left-centre.', tag: 'established' },
+        { text: 'How many guns it had is disputed: sources give from about 40 to 84.', tag: 'disputed' },
+        { text: 'Witnesses say much of the roundshot buried itself in ground softened by the night’s rain instead of bouncing on through the ranks.', tag: 'account' }
+      ] },
+    { side: 'french', type: 'infantry', sheet: 'french-infantry', portrait: 'imperial-guard', name: 'Imperial Guard', desc: 'Napoleon’s elite reserve, veterans picked from the line.', tag: 'established',
+      photos: ['02-napoleon-david.jpg'],
+      lines: [
+        { text: 'The Imperial Guard was Napoleon’s elite reserve. Its soldiers were veterans picked from the rest of the army.', tag: 'established' },
+        { text: 'In the evening battalions of the Middle Guard attacked the Allied right-centre. Musketry and cannon fire drove them back, and their retreat set off the collapse of the French army.', tag: 'established' },
+        { text: 'The Young Guard and the Old Guard fought the Prussians in Plancenoit. The famous words attributed to Guard officers at the end of the day are disputed.', tag: 'disputed' }
       ] }
   ],
 

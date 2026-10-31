@@ -316,8 +316,9 @@ function figChariot(c, side, s, i, moving, dir, step) {
    Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1.
    A formation may name its own sheet (`sheet`, e.g. the Prussians or the Scots Greys); otherwise it follows its side and type. */
 const SHEETS = {};
+let armiesRedraw = null;   // set by renderArmies: redraws the card figures when a sheet arrives
 const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 }, elephant: { cw: 240, ch: 200, h: 72 }, artillery: { cw: 384, ch: 256, h: 34 } };
-['british-infantry', 'french-infantry', 'prussian-infantry', 'french-cuirassier', 'french-lancer', 'scots-greys', 'british-artillery', 'french-artillery'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+['british-infantry', 'french-infantry', 'prussian-infantry', 'french-cuirassier', 'french-lancer', 'scots-greys', 'british-artillery', 'french-artillery'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; if (armiesRedraw) armiesRedraw(); }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 const SHEET_BY = { allied: { infantry: 'british-infantry', archers: 'british-infantry', cavalry: 'scots-greys', artillery: 'british-artillery' },
                    french: { infantry: 'french-infantry', archers: 'french-infantry', cavalry: 'french-cuirassier', artillery: 'french-artillery' } };
 const sheetFor = f => SHEETS[f.sheet || (SHEET_BY[f.side] || {})[f.type]];
@@ -838,7 +839,7 @@ function renderTimeline() {
   $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
 }
-const PN = u => (u.side === 'allied' ? 'allied' : 'french') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'elephant' ? 'elephant' : u.type === 'cavalry' ? 'cavalry' : u.type === 'archers' ? 'archer' : 'spearman');
+const PN = u => u.portrait || ((SHEET_BY[u.side] || {})[u.type] || u.side + '-' + u.type);   // portrait file name; the painted figure is the fallback
 function unitSprite(c, u, big) {
   const w = c.canvas.width, h = c.canvas.height; c.fillStyle = '#c0ad75'; c.fillRect(0, 0, w, h);
   drawSprite(c, { side: u.side, type: u.type, sheet: u.sheet, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' || u.type === 'artillery' ? 1.5 : 2) * (big ? h / 60 : 1));
@@ -853,7 +854,7 @@ function renderArmies() {
   }).join('');
   $('armies').querySelectorAll('.ufold').forEach(b => { const n = +b.dataset.n, label = open => open ? '\u25b4 Show fewer' : `\u25be ${n} more unit${n > 1 ? 's' : ''}`; b.textContent = label(false);
     b.onclick = () => { const m = b.previousElementSibling, open = m.hidden; m.hidden = !open; b.textContent = label(open); }; });
-  units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); unitSprite(c, u); setTimeout(() => unitSprite(c, u), 1500); });
+  armiesRedraw = () => units.forEach((u, i) => { const el = $('uc' + i); if (el) unitSprite(el.getContext('2d'), u); }); armiesRedraw();
   $('armies').querySelectorAll('.ucard').forEach(el => el.onclick = e => { if (e.target.closest('button.chip')) return; openUnit(+el.dataset.unit); });
 }
 // Unit write-up overlay. Photos are looked up by file name across the intro slides so
