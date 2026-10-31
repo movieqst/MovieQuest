@@ -38,7 +38,7 @@
   .cover .date{color:var(--text);font-size:13px;text-shadow:0 1px 3px #000}
   .body{padding:12px 14px 14px}
   .sides{font-size:20px;font-weight:700;line-height:1.3;color:var(--text);margin:0 0 6px}
-  .sides .side-a{color:#ff6a5c}.sides .side-b{color:#6aa6ff}.sides .vs{color:var(--text);font-weight:400;font-size:15px}
+  .sides .vs{color:var(--text);font-weight:400;font-size:15px}
   .blurb{font-size:13.5px;color:var(--muted);margin:0 0 10px}
   .go{display:inline-block;font-weight:600;color:#fff;background:#214e75;border:1px solid #4c94c7;border-radius:8px;padding:6px 12px;font-size:13px}
   .credit{display:block;margin-top:8px;font-size:10.5px;color:#6f8691;font-style:italic}
@@ -107,7 +107,10 @@
 <script>
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   // Two sides, split on 'vs.': the first in red, the second in blue. Text without 'vs.' is shown as it is.
-  const sidesHTML = t => { const m = String(t || '').split(/\s+vs\.?\s+/i); return m.length === 2 ? `<span class="side-a">${esc(m[0])}</span> <span class="vs">vs.</span> <span class="side-b">${esc(m[1])}</span>` : esc(t); };
+  // Side colours: the battle's own uniform colours when it has them (sideColors in battles.js); otherwise two picked at random from the palette.
+  const SIDE_PALETTE = ['#2e8b57', '#d4a017', '#8e44ad', '#16a085', '#e67e22', '#2980b9', '#c0392b', '#7f8c8d'];
+  const pickSideColors = b => b.sideColors || (() => { const i = Math.floor(Math.random() * SIDE_PALETTE.length); let j = Math.floor(Math.random() * (SIDE_PALETTE.length - 1)); if (j >= i) j++; return [SIDE_PALETTE[i], SIDE_PALETTE[j]]; })();
+  const sidesHTML = (t, colors) => { const m = String(t || '').split(/\s+vs\.?\s+/i); const [ca, cb] = colors || ['#ff6a5c', '#6aa6ff']; return m.length === 2 ? `<span style="color:${ca}">${esc(m[0])}</span> <span class="vs">vs.</span> <span style="color:${cb}">${esc(m[1])}</span>` : esc(t); };
   document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.year || 0) - (a.year || 0)).map(b => `
     ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')">
@@ -116,7 +119,7 @@
         <div class="title"><h2>${esc(b.title)}</h2><div class="date">${esc(b.date)} · ${esc(b.place)}</div></div>
       </div>
       <div class="body">
-        <p class="sides">${sidesHTML(b.sides)}</p>
+        <p class="sides">${sidesHTML(b.sides, pickSideColors(b))}</p>
         <p class="blurb">${esc(b.blurb)}</p>
         <span class="go">Open the battle ▶</span>
         <span class="credit">${esc(b.coverCredit)}</span>
