@@ -105,7 +105,7 @@
 <script src="battles.js"></script>
 <script>
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-  document.getElementById('list').innerHTML = (window.BATTLES || []).map(b => `
+  document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.year || 0) - (a.year || 0)).map(b => `
     <a class="card" href="${esc(b.folder)}/index.html">
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')">
         <span class="era">${esc(b.era)}</span>
