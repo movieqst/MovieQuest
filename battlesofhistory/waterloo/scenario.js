@@ -502,7 +502,7 @@ window.WATERLOO_SCENARIO = {
   },
 
   /* Library of sources (library.html): public-domain books and records kept on this site so the citations still work if
-     outside links change. `local` is the copy stored in sources/ (null until it is added); `gutenberg` and `archive` are
+     outside links change. `local` is our PDF of a printed copy in sources/ (null until it is added); `gutenberg` and `archive` are
      the places it came from. A search link stands in until the exact book page is known. */
   library: [
     { title: 'Journal of the Waterloo Campaign', author: 'Cavalié Mercer', year: 1870, kind: 'Eyewitness journal',

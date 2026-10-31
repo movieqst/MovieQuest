@@ -21,7 +21,7 @@
 <body><main>
   <a href="index.html">◀ Back to the battle</a>
   <h1>Library of sources</h1>
-  <p class="lead">Public-domain books and records behind the Battle of Waterloo. Where we keep our own copy, it is linked first, so it still works if an outside site moves.</p>
+  <p class="lead">Public-domain books and records behind the Battle of Waterloo. Each book is kept here as a PDF of an original printed copy, so it still opens if an outside site moves.</p>
   <div id="lib"></div>
   <p class="small">The pictures in the game are kept on this site too; each one shows its source and licence under it.</p>
 </main>
@@ -31,7 +31,7 @@
   document.getElementById('lib').innerHTML = (S.library || []).map(b => `<div class="book"><h2>${esc(b.title)}</h2>
     <div class="meta">${esc(b.author)} · ${b.year} · ${esc(b.kind)}</div><div>${esc(b.about)}</div>
     <div class="small" style="margin-top:6px">Used in the game: ${esc(b.citedIn)} · ${esc(b.rights)}</div>
-    <div class="links">${b.local ? `<a class="own" href="sources/${esc(b.local)}">Our copy ▸</a>` : '<span>Our copy: to be added</span>'}
+    <div class="links">${b.local ? `<a class="own" href="sources/${esc(b.local)}" target="_blank" rel="noopener">📄 Read the book (PDF) ▸</a>` : '<span>📄 PDF: to be added</span>'}
       ${b.gutenberg ? `<a href="${esc(b.gutenberg)}" target="_blank" rel="noopener">Project Gutenberg</a>` : ''}
       ${b.archive ? `<a href="${esc(b.archive)}" target="_blank" rel="noopener">Internet Archive</a>` : ''}</div></div>`).join('');
 </script>

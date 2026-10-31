@@ -1,5 +1,11 @@
 # Waterloo sources library
 
-Our own copies of public-domain books and records, listed in `scenario.js` (`library`) and shown on `library.html`.
-Prefer Project Gutenberg's plain text (`.txt`, small) or its HTML zip; keep a scanned PDF only for the key books, as
-scans are large (the whole site should stay well under 1 GB). Name files by author and year, e.g. `mercer-1870-journal.txt`.
+Our own PDF copies of public-domain books and records, listed in `scenario.js` (`library`) and shown on `library.html`.
+
+How a book gets here:
+1. On archive.org, open the book and use **Download options → PDF** (a scan of a printed copy, with searchable text).
+2. Make it small: `python3 ../../tools/shrink-pdf.py BIG.pdf sources/mercer-1870-journal.pdf` (keeps the text layer).
+3. Set the entry's `local` to the file name, and its `archive` link to the book's own archive.org page.
+
+Keep each PDF under about 40 MB (GitHub refuses files over 100 MB, and the whole site should stay well under 1 GB).
+Name files author-year-short-title.pdf.
