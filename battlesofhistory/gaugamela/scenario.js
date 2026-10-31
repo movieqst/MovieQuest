@@ -220,6 +220,9 @@ window.GAUGAMELA_SCENARIO = {
     { id: 'merc',    side: 'persia', name: 'Greek mercenaries (reported)', division: 'Centre', type: 'infantry', cols: 4, rows: 3, power: 1.1, x: 1330, y: 470,
       count: 'Reported near the centre', confidence: 'ancient',
       note: 'Arrian and other sources report Greek mercenaries with Darius. Their number is not known.' },
+    { id: 'eleph',   side: 'persia', name: 'War elephants', division: 'Elephants', type: 'elephant', cols: 3, rows: 1, power: 1.2, x: 1050, y: 640, facing: 1.5708, aiHold: true,
+      count: 'Arrian reports about 15', confidence: 'ancient',
+      note: 'Arrian places the elephants in front of Darius with the chariots. No reliable account shows them fighting; they were captured after the battle. Three figures stand for them here.' },
     { id: 'darius',  side: 'persia', name: 'Darius and the royal guard', division: 'Centre', type: 'infantry', cols: 5, rows: 2, power: 1.2, x: 1180, y: 330,
       count: 'The king’s guard', confidence: 'established',
       note: 'Darius stood in the centre. Whether he fled first, or was abandoned by his army, is disputed.' }
@@ -281,7 +284,7 @@ window.GAUGAMELA_SCENARIO = {
       text: 'The Persian army withdraws. Darius escapes and the Macedonians hold the field. The result is not in doubt, though the sources disagree about the rest.',
       explain: 'The battle decided who would rule the Persian empire, but Darius lived on for almost another two years. He was murdered in 330 BCE by Bessus, one of his own commanders.',
       cite: 'Arrian III.15; Iranica, Badian; World History Encyclopedia',
-      orders: [] }
+      orders: [{ id: 'eleph', state: 'captured' }] }
   ],
 
   /* ---------- Command mode: the computer's plans for the side the player does not take ---------- */
@@ -423,6 +426,14 @@ window.GAUGAMELA_SCENARIO = {
         { text: 'Arrian places Armenian and Cappadocian horse in front of the Persian right wing, facing Parmenion. Other accounts give the command of the right to Mazaeus.', tag: 'ancient', cite: 'Arrian III.11; Diodorus XVII.60' },
         { text: 'The Persian right pressed Parmenion hard. Arrian says Parmenion sent to Alexander for help; whether Alexander turned back is disputed.', tag: 'disputed' },
         { text: 'In this game they start hidden in the dust of the advance and appear when your troops come close.', tag: 'reconstruction' }
+      ] },
+    { side: 'persia', type: 'elephant', name: 'War elephants', desc: 'About fifteen elephants with Darius, in front of the centre.', tag: 'ancient',
+      photos: [],
+      lines: [
+        { text: 'Arrian says Darius had about fifteen elephants, brought from the Indian borderlands, placed with the chariots in front of the king.', tag: 'ancient', cite: 'Arrian III.8, III.11' },
+        { text: 'No account we can rely on shows the elephants taking part in the fighting. Arrian lists them among what was captured after the battle.', tag: 'ancient', cite: 'Arrian III.15' },
+        { text: 'Horses not used to elephants were afraid of their sight and smell, and the Macedonians would meet that problem again in India. Whether it mattered at Gaugamela is not known.', tag: 'estimate' },
+        { text: 'In the reenactment they stand still and are captured at the end. In Command mode the Persian player may use them: a what-if, slow and strong, feared by horses.', tag: 'reconstruction' }
       ] }
   ],
 
