@@ -369,6 +369,8 @@ window.WATERLOO_SCENARIO = {
   },
 
   /* Recorded narration lives in audio/<voice>/ (clear: Narrator 1). Clips missing for a line fall back to the browser’s voice. */
+  /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
+  welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Waterloo, which happened on the 18th of June 1815, between Wellington’s Allied army with Blücher’s Prussians, and Napoleon’s French army.',
   imageBase: 'images/',
   audioBase: 'audio/',
   voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],

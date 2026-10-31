@@ -683,9 +683,13 @@ const SILENT = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AA
 ['pointerdown', 'keydown', 'touchend'].forEach(t => document.addEventListener(t, () => { if (narrEl.src) return; narrEl.src = SILENT; narrEl.play().then(() => { if (narrEl.src === SILENT) narrEl.pause(); }).catch(() => {}); }, { once: true }));
 const Narr = {
   on: false, audio: null, rate: 1.1, endedAt: -99,
-  speak(text, file) {
-    this.stop(); if (!this.on) return;
-    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; clearTimeout(this.leadT); this.leadT = setTimeout(() => { if (this.audio === a) a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; this.tts(text); } }); }, NARR_LEAD * 1000); return; }
+  // `next` runs when this line has been spoken (used to chain the welcome line into the first slide). `quiet`: if the clip
+  // is missing, skip the line instead of reading it with the browser's voice.
+  speak(text, file, next, quiet) {
+    this.stop(); if (!this.on) return; this.next = next || null;
+    const done = () => { const n = this.next; this.next = null; if (n) n(); };
+    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; done(); }; this.audio = a; clearTimeout(this.leadT); this.leadT = setTimeout(() => { if (this.audio === a) a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; quiet ? done() : this.tts(text); } }); }, NARR_LEAD * 1000); return; }
+    if (quiet) { done(); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
@@ -693,15 +697,17 @@ const Narr = {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(text); u.rate = .92 * this.rate; u.pitch = .85;
     const vs = speechSynthesis.getVoices(), pref = vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
-    if (pref) u.voice = pref; speechSynthesis.speak(u);
+    if (pref) u.voice = pref; u.onend = () => { const n = this.next; this.next = null; if (n) n(); }; speechSynthesis.speak(u);
     if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
   },
-  stop() { clearTimeout(this.leadT); if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
+  stop() { clearTimeout(this.leadT); this.next = null; if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
   set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '\ud83d\udd0a Voice' : '\ud83d\udd07 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
   toggle() { this.set(!this.on); }
 };
-function speakSlide(sl) { Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', S.intro.indexOf(sl) + 1)); }
+// The first slide opens with the welcome line (S.welcome, clip welcome.mp3) when it has been recorded.
+function speakSlide(sl) { const i = S.intro.indexOf(sl), go = () => Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', i + 1));
+  if (i === 0 && S.welcome) Narr.speak(S.welcome, audioFor('welcome'), go, true); else go(); }
 
 /* ---------------- UI: captions, log, panels ---------------- */
 function caption(title, text, tag, speak, audio, cite) {

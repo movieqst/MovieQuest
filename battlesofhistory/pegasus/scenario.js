@@ -477,6 +477,8 @@ window.BATTLE_SCENARIO = {
     { title: 'von Luck, Panzer Commander (1989)', note: 'the German armour on D-Day' }
   ],
 
+  /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
+  welcome: 'Welcome to Battles of History. Today we are learning about the battle for Pegasus Bridge, which happened on the night of the 5th to the 6th of June 1944, between the British 6th Airborne Division and the German army defending Normandy.',
   imageBase: 'images/',
   audioBase: 'audio/',
   /* One narrator for now. */
