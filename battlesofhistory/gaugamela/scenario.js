@@ -103,7 +103,7 @@ window.GAUGAMELA_SCENARIO = {
     {
       title: 'The Macedonian army',
       media: [
-        { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: 'Photo: Dosseman, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 0, file: '07-alexander-sarcophagus.jpg', caption: 'Macedonians and Persians in battle on the Alexander Sarcophagus, carved in the late 4th century BCE, within a few decades of Gaugamela. The rider in the lion-skin helmet at the far left is usually identified as Alexander; the next picture imagines him close up.', ref: 'Royal necropolis of Sidon; Istanbul Archaeology Museums', credit: 'Photo: Dosseman, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 11, file: '08-sarcophagus-alexander.jpg', caption: 'ARTIST RENDERING. Alexander as the horseman in a lion-skin helmet, after the Alexander Sarcophagus. Not a photograph: the face, colours and details are imagined.', ref: 'After the Alexander Sarcophagus, Istanbul Archaeology Museums', credit: 'Artist rendering: Battle Games, AI-generated' },
         { at: 22, file: '09-kinch-tomb.jpg', caption: 'The Kinch Tomb at Lefkadia, a Macedonian tomb of about 300 BCE. Inside it was a painting of a Macedonian horseman attacking a Persian foot soldier. The painting is now lost; it survives only in the drawing made when the tomb was first published in 1897.', ref: 'Kinch Tomb, Lefkadia (ancient Mieza), Macedonia', credit: 'Photo: Carole Raddato, Wikimedia Commons, CC BY-SA 2.0' }
       ],

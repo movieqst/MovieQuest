@@ -317,6 +317,7 @@ const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, 
 ['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'persia-spearman', 'persia-chariot', 'persia-cavalry', 'persia-elephant'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 const sheetFor = (side, type) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : type === 'elephant' ? 'elephant' : type === 'cavalry' ? 'cavalry' : type === 'archers' ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
+  if (!(s > 0)) return;   // beyond the horizon of a very short, tilted view: nothing to draw
   const sh = artOn ? sheetFor(f.side, f.type) : null;
   if (sh) {
     const spec = SHEET_SPEC[f.type] || SHEET_SPEC.infantry, d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
@@ -1181,4 +1182,6 @@ if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();
 requestAnimationFrame(tick);
+// For the shared page add-ons (../phone.js, ../subtitles.js): the narrator and the full-map switch.
+window.BattlePage = { Narr, setBig };
 })();

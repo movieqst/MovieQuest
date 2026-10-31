@@ -293,6 +293,7 @@ function figBoat(c, s, dir) {
 const SHEETS = {};
 Object.keys(UT).forEach(t => { const sh = UT[t].sheet; if (!sh || SHEETS[sh] !== undefined) return; SHEETS[sh] = null; const im = new Image(); im.onload = () => { SHEETS[sh] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + sh + '.png'; });
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
+  if (!(s > 0)) return;   // beyond the horizon of a very short, tilted view: nothing to draw
   const ut = UT[f.type]; if (!ut) return; const sh = artOn && ut.sheet ? SHEETS[ut.sheet] : null;
   if (sh) {
     const spec = ut.spec, d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
@@ -1272,4 +1273,6 @@ if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();
 requestAnimationFrame(tick);
+// For the shared page add-ons (../phone.js, ../subtitles.js): the narrator and the full-map switch.
+window.BattlePage = { Narr, setBig };
 })();
