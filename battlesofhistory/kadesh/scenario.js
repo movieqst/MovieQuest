@@ -405,7 +405,7 @@ window.KADESH_SCENARIO = {
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Kadesh, which happened in about 1274 BCE, between the Egyptian army of Ramesses the Second and the Hittite army of Muwatalli the Second.',
   /* Establishing pictures, between the globe and the battle map (see showEstablishing in engine.js). */
   establishing: [
-    { file: 'establish-1-near-east.jpg', secs: 5, pulse: { x: .592, y: .400 }, credit: 'Artist rendering: Egypt, the Hittite Empire and Kadesh on the Orontes. Battle Games, AI-generated; borders approximate.' }
+    { file: 'establish-1-near-east.jpg', secs: 5, pulse: { x: .639, y: .378 }, credit: 'Artist rendering: Egypt, the Hittite Empire (Hatti) and Kadesh on the Orontes. Battle Games, AI-generated; borders approximate.' }
   ],
   imageBase: 'images/',   // photos for the intro slideshow; see images/README.md for what to put there
   audioBase: 'audio/',
