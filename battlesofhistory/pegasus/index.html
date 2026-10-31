@@ -254,6 +254,8 @@
   #ctxMenu .mgrid button:disabled{opacity:.35;transform:none}
   #ctxMenu .mlabel{font-size:12px;color:#9fb1b8;padding:6px 8px 4px;min-height:16px;max-width:236px}#ctxMenu .mlabel.on{color:#e9c77a;font-weight:600}
   #ctxMenu button:disabled{opacity:.4;cursor:default}
+  /* Shown on the black panel until the game has drawn its first frame (the canvas then covers it). */
+  .battle-panel::before{content:'LOADING\2026';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 clamp(40px,9vw,120px) 'Cinzel',Georgia,serif;letter-spacing:.08em;color:#1a1d20;pointer-events:none}
 </style>
 </head>
 <body data-mode="intro">
