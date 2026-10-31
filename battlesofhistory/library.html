@@ -21,7 +21,9 @@
 <body><main>
   <a id="back" href="index.html">◀ Back to the battle</a>
   <h1>Library of sources</h1>
-  <p class="lead">Public-domain books and records behind the Battle of Waterloo. Each book is kept here as a PDF of an original printed copy, so it still opens if an outside site moves.</p>
+  <p><label class="small">Battle <select id="bsel" onchange="location.search='?battle='+this.value"><option value="kadesh">Kadesh</option><option value="gaugamela">Gaugamela</option><option value="waterloo">Waterloo</option><option value="pegasus">Pegasus Bridge</option><option value="iadrang">Ia Drang</option></select></label> · <a href="gallery.html">🖼 Gallery of pictures</a></p>
+  <p class="lead" id="lead"></p>
+  <p class="small">Each book we keep is a PDF of a printed copy, so it still opens if an outside site moves. Modern works still in copyright are listed with a link only.</p>
   <div id="lib"></div>
   <p class="small">The pictures in the game are kept on this site too; each one shows its source and licence under it.</p>
 </main>
@@ -30,6 +32,7 @@
   const B = (new URLSearchParams(location.search).get('battle') || 'waterloo').replace(/[^a-z0-9-]/g, '');
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   document.getElementById('back').href = B + '/index.html';
+  document.getElementById('bsel').value = B;
   const sc = document.createElement('script'); sc.src = B + '/scenario.js';
   sc.onload = () => {
     const S = window[Object.keys(window).find(k => /SCENARIO$/.test(k))]; if (!S) return;

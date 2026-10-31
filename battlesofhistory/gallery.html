@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery — Battles of History</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#e9c77a;--panel:#101f29;--line:#38505c;--text:#edf1ed;--muted:#9fb1b8}
+  html,body{margin:0;background:#071017;color:var(--text);font:15px/1.5 system-ui,sans-serif}
+  main{max-width:1200px;margin:0 auto;padding:16px 16px 40px}
+  h1{font:600 clamp(22px,4vw,32px) 'Cinzel',Georgia,serif;color:var(--gold);margin:6px 0 2px}
+  a{color:#9fc8ff}
+  .muted{color:var(--muted)} .small{font-size:12px;color:var(--muted)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin:12px 0}
+  .filters label{font-size:13px;color:var(--muted)}
+  select,input{background:#0b1821;color:var(--text);border:1px solid var(--line);border-radius:6px;padding:5px 7px;font:inherit;font-size:13px}
+  input[type=number]{width:84px} input[type=search]{min-width:160px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips button{background:#0b1821;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:13px;cursor:pointer}
+  .chips button.on{border-color:var(--gold);color:var(--gold)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+  .item{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column}
+  .item:hover{border-color:var(--gold)}
+  .item img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#05080c;display:block}
+  .item .t{padding:6px 8px 8px;font-size:12px;line-height:1.35}
+  .badge{display:inline-block;font-size:10px;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:4px;color:var(--muted)}
+  .badge.art{color:#e9c77a;border-color:#7a6838}.badge.photo{color:#9fc8ff;border-color:#35587a}.badge.map{color:#8fd9a8;border-color:#386a4c}
+  .badge.document{color:#d9b3ff;border-color:#5c4478}.badge.game{color:#ffb3a7;border-color:#7a4038}.badge.need{color:#ffcf6b;border-color:#7a5a20}
+  #view{position:fixed;inset:0;background:rgba(3,8,12,.985);display:none;z-index:10;overflow:auto}
+  #view.show{display:block}
+  #view .in{max-width:1100px;margin:0 auto;padding:16px}
+  #view img{max-width:100%;max-height:70vh;display:block;margin:0 auto 10px;border-radius:6px}
+  #view .links{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+  #view .links a,#view .links span{border:1px solid var(--line);border-radius:6px;padding:4px 10px;text-decoration:none;font-size:13px}
+  #view .links span{border-style:dashed;color:#ffcf6b}
+  #close{float:right;background:none;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+</style></head>
+<body><main>
+  <a href="index.html">◀ Battles of History</a>
+  <h1>Gallery</h1>
+  <p class="muted" style="margin:0">Every picture from the battles in one place: art made by people of the past, photographs, maps and documents, and the artwork made for this game. Click a picture for its story, its licence and links to where it came from.</p>
+  <div class="filters">
+    <div class="chips" id="kinds"></div>
+    <label>Battle <select id="battle"><option value="">All battles</option></select></label>
+    <label>From <input type="number" id="from" placeholder="year"></label>
+    <label>to <input type="number" id="to" placeholder="year"></label>
+    <span class="small">BCE as minus, e.g. −1300</span>
+    <label><input type="search" id="q" placeholder="Search: Napoleon, relief, Louvre…"></label>
+    <label><input type="checkbox" id="need"> Needs reference</label>
+  </div>
+  <p class="small" id="count"></p>
+  <div class="grid" id="grid"></div>
+</main>
+<div id="view"><div class="in"><button id="close">✕ Close</button><div id="vbody"></div></div></div>
+<script src="gallery-info.js"></script>
+<script>
+  const BATTLES = [['kadesh', 'Kadesh'], ['gaugamela', 'Gaugamela'], ['waterloo', 'Waterloo'], ['pegasus', 'Pegasus Bridge'], ['iadrang', 'Ia Drang']];
+  const KINDS = [['', 'All'], ['art', 'Art & artefacts'], ['photo', 'Photographs'], ['map', 'Maps'], ['document', 'Documents'], ['game', 'Made for this game']];
+  const KLABEL = { art: 'Art', photo: 'Photograph', map: 'Map', document: 'Document', game: 'Made for this game' };
+  const $ = id => document.getElementById(id), esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const yr = y => y == null ? 'date not known' : y < 0 ? (-y) + ' BCE' : String(y);
+  const commonsUrl = f => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(f.replace(/ /g, '_')).replace(/%2C/g, ',').replace(/%27/g, "'");
+  const params = new URLSearchParams(location.search);
+  let ITEMS = [], kind = params.get('kind') || '';
+
+  // Each battle's scenario.js defines one global; load them one at a time and read each before the next.
+  function loadBattle(folder, title) {
+    return new Promise(res => {
+      Object.keys(window).filter(k => /SCENARIO$/.test(k)).forEach(k => delete window[k]);
+      const s = document.createElement('script'); s.src = folder + '/scenario.js';
+      s.onload = () => { const S = window[Object.keys(window).find(k => /SCENARIO$/.test(k))]; res(S ? collect(folder, title, S) : []); };
+      s.onerror = () => res([]); document.head.appendChild(s);
+    });
+  }
+  function collect(folder, title, S) {
+    const seen = new Map(), base = folder + '/' + (S.imageBase || 'images/');
+    const slides = (S.intro || []).concat(...(S.parts || []).map(p => p.intro || []));
+    slides.forEach(sl => (sl.media || []).forEach(m => { if (!seen.has(m.file)) seen.set(m.file, Object.assign({ where: 'Intro: ' + sl.title }, m)); }));
+    (S.units || []).forEach(u => (u.photos || []).forEach(p => { const m = typeof p === 'string' ? { file: p } : p; if (!seen.has(m.file)) seen.set(m.file, Object.assign({ where: 'Armies: ' + u.name }, m)); else if (!seen.get(m.file).caption && m.caption) Object.assign(seen.get(m.file), m); }));
+    return [...seen.values()].map(m => {
+      const info = (window.GALLERY_INFO || {})[folder + '/' + m.file] || [], credit = m.credit || '';
+      const guessKind = /AI-generated|original artwork|Battle Games/i.test(credit) ? 'game' : /^Map/i.test(credit) ? 'map' : /^Photo/i.test(credit) ? 'photo' : 'art';
+      const fromCredit = (credit.match(/Commons,?\s*(?:File:)?([^,()]+\.(?:jpe?g|png|tif|gif))/i) || [])[1];
+      return { folder, battle: title, file: m.file, src: base + m.file, caption: m.caption || '', ref: m.ref || '', credit, where: m.where,
+        kind: info[0] || guessKind, what: info[1] || '', year: info[2] === undefined ? null : info[2], commons: info[3] || fromCredit || null, link: info[4] || null,
+        rendering: /AI-generated|ARTIST RENDERING/i.test(credit + m.caption) };
+    });
+  }
+  function render() {
+    const b = $('battle').value, q = $('q').value.trim().toLowerCase(), from = $('from').value === '' ? -1e9 : +$('from').value, to = $('to').value === '' ? 1e9 : +$('to').value, need = $('need').checked;
+    const list = ITEMS.filter(it => (!b || it.folder === b) && (!kind || it.kind === kind) && (!need || it.kind !== 'game' && !it.commons && !it.link)
+      && (it.year == null ? ($('from').value === '' && $('to').value === '') : it.year >= from && it.year <= to)
+      && (!q || (it.caption + ' ' + it.ref + ' ' + it.credit + ' ' + it.what + ' ' + it.battle).toLowerCase().includes(q)));
+    $('count').textContent = list.length + ' of ' + ITEMS.length + ' pictures';
+    $('grid').innerHTML = list.map(it => `<div class="item" data-i="${ITEMS.indexOf(it)}"><img loading="lazy" alt="" src="${esc(it.src)}" onerror="this.closest('.item').style.display='none'">
+      <div class="t"><span class="badge ${it.kind}">${esc(KLABEL[it.kind] || it.kind)}</span>${it.commons || it.link || it.kind === 'game' ? '' : '<span class="badge need">needs reference</span>'}
+      <div>${esc(it.what)}${it.what ? ' · ' : ''}${esc(yr(it.year))} · ${esc(it.battle)}</div></div></div>`).join('');
+    $('grid').querySelectorAll('.item').forEach(el => el.onclick = () => open(ITEMS[+el.dataset.i]));
+    history.replaceState(null, '', '?' + new URLSearchParams(Object.entries({ battle: b, kind }).filter(([, v]) => v)).toString());
+  }
+  function open(it) {
+    const search = 'https://commons.wikimedia.org/w/index.php?search=' + encodeURIComponent((it.caption.split(/[.:]/)[0] || it.file).slice(0, 80));
+    $('vbody').innerHTML = `<img alt="" src="${esc(it.src)}">
+      <div><span class="badge ${it.kind}">${esc(KLABEL[it.kind] || it.kind)}</span>${it.rendering ? '<span class="badge game">artist rendering, not a record</span>' : ''} <span class="small">${esc(it.what)} · ${esc(yr(it.year))} · ${esc(it.battle)} · ${esc(it.where)}</span></div>
+      <p>${esc(it.caption) || '<span class="muted">No caption yet.</span>'}</p>
+      <p class="small">${esc(it.ref)}${it.ref && it.credit ? ' · ' : ''}${esc(it.credit)}</p>
+      <div class="links">${it.commons ? `<a href="${esc(commonsUrl(it.commons))}" target="_blank" rel="noopener">Wikimedia Commons page ▸</a>` : it.kind === 'game' ? '' : `<span>Commons page: needs reference</span><a href="${esc(search)}" target="_blank" rel="noopener">Search Commons</a>`}
+        ${it.link ? `<a href="${esc(it.link)}" target="_blank" rel="noopener">Source page ▸</a>` : ''}
+        <a href="${esc(it.folder)}/index.html">Open the battle ▸</a><a href="library.html?battle=${esc(it.folder)}">Library of sources ▸</a></div>`;
+    $('view').classList.add('show'); $('view').scrollTop = 0;
+  }
+  $('close').onclick = () => $('view').classList.remove('show');
+  $('view').onclick = e => { if (e.target === $('view')) $('view').classList.remove('show'); };
+  addEventListener('keydown', e => { if (e.key === 'Escape') $('view').classList.remove('show'); });
+  $('kinds').innerHTML = KINDS.map(([k, l]) => `<button data-k="${k}">${l}</button>`).join('');
+  $('kinds').querySelectorAll('button').forEach(bt => bt.onclick = () => { kind = bt.dataset.k; $('kinds').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === bt)); render(); });
+  $('kinds').querySelector(`[data-k="${kind}"]`).classList.add('on');
+  $('battle').innerHTML += BATTLES.map(([f, t]) => `<option value="${f}">${t}</option>`).join('');
+  $('battle').value = params.get('battle') || '';
+  ['battle', 'from', 'to', 'q', 'need'].forEach(id => $(id).addEventListener('input', render));
+  (async () => { for (const [f, t] of BATTLES) ITEMS = ITEMS.concat(await loadBattle(f, t)); ITEMS.sort((a, b) => (a.year == null ? 1e9 : a.year) - (b.year == null ? 1e9 : b.year)); render(); })();
+</script>
+</body></html>

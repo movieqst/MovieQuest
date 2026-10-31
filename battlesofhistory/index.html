@@ -72,6 +72,8 @@
   .mini.up .dot{top:calc(100% + 10px)}.mini.down .dot{bottom:calc(100% + 10px)}
   #tlhint{font-size:11px;color:#6f8691;margin:6px 2px 0}
   @media(max-width:600px){#tl{height:200px}.mini{width:96px;margin-left:-48px}.mini .th{height:46px}}
+  .bhbar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;max-width:1100px;margin:10px auto 24px;padding:14px 16px;border-top:1px solid #1b2b35}
+  .bhbar a{color:#e9c77a;text-decoration:none;font-weight:600;font-size:15px}.bhbar a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -84,6 +86,7 @@
   <div id="tlhint">Scroll or pinch to zoom, drag to move. Click a battle to open it.</div>
 </section>
 <main id="list"></main>
+<nav class="bhbar"><a href="library.html">📚 Library of sources</a><a href="gallery.html?kind=art">🖼 Art gallery</a><a href="gallery.html?kind=photo">📷 Photographs</a><a href="gallery.html">All pictures</a></nav>
 <script>
   // Use the painted poster as the header background once images/poster.jpg exists.
   /* Random banner on each visit. Add a banner by putting its file in images/banners/ and adding a line here.
