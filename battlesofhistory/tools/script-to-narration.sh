@@ -4,6 +4,7 @@
 # Needs: piper (pip install piper-tts), the en_US-libritts-high voice, node and ffmpeg.
 # Defaults: PIPER=~/.local/bin/piper MODEL=~/piper-voice/en_US-libritts-high.onnx SPEAKER=25 (Narrator 1 · clear).
 # Clip names and texts follow the engine: intro-N = title + lines; event-N, explain-N; outcome; cmd-KEY.
+# ONLY="intro-2 event-4" records just the named clips (replacing them).
 # Names are respelled for the synthesiser only; the script's wording is not changed.
 set -euo pipefail
 SCRIPT=${1:?usage: script-to-narration.sh NARRATION-SCRIPT.md OUT_DIR}; OUT=${2:?usage: script-to-narration.sh NARRATION-SCRIPT.md OUT_DIR}
@@ -16,7 +17,8 @@ var fs = require('fs'), src = fs.readFileSync(process.argv[2], 'utf8').split(/\r
 var say = function (t) { return String(t)
   .replace(/\bBlücher\b/g, 'Bloocher').replace(/\bBülow\b/g, 'Boolow').replace(/\bHougoumont\b/g, 'Oogoomon').replace(/\bLa Haye Sainte\b/g, 'La Hay Sant')
   .replace(/\bMont-Saint-Jean\b/g, 'Mon San Zhon').replace(/\bd[’']Erlon/g, 'dairlon').replace(/\bPlancenoit\b/g, 'Plahnsenwah').replace(/\bLobau\b/g, 'Lobo')
-  .replace(/\bLigny\b/g, 'Leenyee').replace(/\bcuirassiers\b/g, 'kweerasseers').replace(/\bUxbridge\b/g, 'Uxbridge')
+  .replace(/\bLigny\b/g, 'Leenyee').replace(/\bcuirassiers\b/g, 'kweerasseers').replace(/\bGrouchy\b/g, 'Grooshee').replace(/\bWavre\b/g, 'Wahvruh').replace(/\bZieten\b/g, 'Tseeten').replace(/\bReille\b/g, 'Ray')
+  .replace(/\bVandeleur\b/g, 'Vandeler').replace(/\bNey\b/g, 'Nay').replace(/\bJérôme\b/g, 'Zhayrome').replace(/\bOhain\b/g, 'Oh-an')
   .replace(/(\d+):00\b/g, '$1 hundred').replace(/(\d+):(\d\d)/g, '$1 $2').replace(/·/g, ',').replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/–/g, ' to ').replace(/\s+/g, ' ').trim(); };
 var clips = [], cur = null;
 var push = function (name, title) { cur = { name: name, parts: title ? [/[.?!]$/.test(title) ? title : title + '.'] : [] }; clips.push(cur); };
@@ -34,7 +36,8 @@ clips.forEach(function (c) { if (c.parts.length) process.stdout.write(c.name + '
 JS
 echo "$(wc -l < "$TMP/lines.tsv") clips to record into $OUT"
 while IFS=$'\t' read -r name text; do
-  [ -s "$OUT/$name.mp3" ] && [ -z "${FORCE:-}" ] && { echo "$OUT/$name.mp3 (already there)"; continue; }
+  [ -n "${ONLY:-}" ] && ! [[ " $ONLY " == *" $name "* ]] && continue   # ONLY="intro-2 event-4 ..." records just those clips
+  [ -s "$OUT/$name.mp3" ] && [ -z "${FORCE:-}" ] && [ -z "${ONLY:-}" ] && { echo "$OUT/$name.mp3 (already there)"; continue; }
   printf '%s\n' "$text" | "$PIPER" -m "$MODEL" -s "$SPEAKER" --length-scale "$LENGTH" --sentence-silence 0.35 $PIPER_ARGS -f "$TMP/$name.wav" >/dev/null 2>&1
   ffmpeg -nostdin -loglevel error -y -i "$TMP/$name.wav" -af "$AF" -ac 1 -ar 22050 -codec:a libmp3lame -b:a 48k "$OUT/$name.mp3"
   echo "$OUT/$name.mp3"

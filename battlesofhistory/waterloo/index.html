@@ -20,7 +20,7 @@
   select{padding:6px 8px}
   #clock{font:600 13px ui-monospace,Menlo,monospace;color:var(--gold);padding:0 6px}
   main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:10px;padding:10px;flex:1;min-height:0}
-  .battle-panel{position:relative;min-height:480px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#b5a26c}
+  .battle-panel{position:relative;min-height:480px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#000}
   canvas#battle{position:absolute;inset:0;display:block;width:100%;height:100%;outline:none;touch-action:none;user-select:none;-webkit-user-select:none}
   .hud{position:absolute;z-index:2;background:#091720ee;border:1px solid #435a64;border-radius:7px;padding:8px 10px;backdrop-filter:blur(4px)}
   #caption{left:50%;transform:translateX(-50%);bottom:90px;top:auto;width:min(1100px,calc(100% - 24px));display:none;transition:opacity .3s;text-align:left}
@@ -106,6 +106,7 @@
   .ucard canvas{border-radius:4px;display:block}.ucard b{font-size:12px}
   .ucard{cursor:pointer;transition:border-color .15s,background-color .15s}.ucard:hover{border-color:var(--gold);background:#112430}
   .ucard .more{font-size:10px;color:var(--gold);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+  #armies .ufold{display:block;width:100%;margin:0 0 8px;padding:4px;font-size:11px;letter-spacing:.04em;background:none;border:1px dashed #354c57;border-radius:6px;color:var(--gold);cursor:pointer}#armies .ufold:hover{border-color:var(--gold);background:#112430}
   #cite{z-index:6}
   .dialog.unit{width:min(1100px,100%);background:rgba(11,24,34,.72);border-color:rgba(74,100,114,.6)}
   .dialog.unit:hover{background:rgba(11,24,34,.92)}
@@ -238,7 +239,7 @@
 </head>
 <body data-mode="intro">
 <header>
-  <div><div class="brand">BATTLE OF WATERLOO</div><div class="subtitle">Historical reenactment & command · 1 October 331 BCE · runs locally, no install</div></div>
+  <div><div class="brand">BATTLE OF WATERLOO</div><div class="subtitle">Historical reenactment & command · 18 June 1815 · runs locally, no install</div></div>
   <div class="top-actions">
     <button id="introBtn">📜 Intro</button>
     <button id="watchBtn" class="primary">▶ Watch reenactment</button>
@@ -422,7 +423,7 @@
       <div id="log"></div>
     </section>
     <section class="card">
-      <details><summary>Sources & further reading</summary><ul id="sources"></ul></details>
+      <details><summary>Sources & further reading</summary><ul id="sources"></ul><p class="tiny"><a href="library.html">📚 Library of sources: the old books themselves ▸</a></p></details>
     </section>
   </aside>
 </main>
@@ -432,5 +433,7 @@
 <script src="borders.js"></script>
 <script src="globe.js"></script>
 <script src="engine.js"></script>
+<script src="../phone.js"></script>
+<script src="../subtitles.js"></script>
 </body>
 </html>

@@ -40,6 +40,7 @@ window.WaterlooGlobe = (() => {
     const sh = g.createLinearGradient(0, 0, 0, TH); sh.addColorStop(0, 'rgba(255,255,255,.25)'); sh.addColorStop(.12, 'rgba(255,255,255,0)'); sh.addColorStop(.88, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(255,255,255,.35)'); g.fillStyle = sh; g.fillRect(0, 0, TW, TH);
     TEX = t; TEXD = g.getImageData(0, 0, TW, TH).data;
   }
+  let DS = null;   // scratch canvas for the soft desert layer when zoomed in
   let RAS = null, RASC = null, IMG = null, CACHE = null; // scratch canvas and per-pixel cache for the wrapped globe
   function buildCache(size, Rr, lat0) {
     // Geometry that does not change while the globe spins: texture row, longitude offset (in texture pixels) and shading per pixel.
@@ -85,6 +86,11 @@ window.WaterlooGlobe = (() => {
   ];
   // Main rivers (lon,lat), rough courses
   const RIVERS = [
+    [[9.2,47.65],[8.2,47.6],[7.6,47.6],[7.6,48.6],[8.2,49.0],[8.4,49.5],[8.3,50.0],[7.6,50.3],[7.1,50.7],[6.8,51.2],[6.6,51.8],[6.1,51.85],[5.4,51.95],[4.5,51.9],[4.1,51.95]],   // Rhine
+    [[5.6,48.1],[5.2,48.9],[4.9,49.6],[4.85,50.15],[4.9,50.45],[5.6,50.6],[5.7,51.0],[6.0,51.4],[5.8,51.75],[5.0,51.8],[4.5,51.7]],   // Meuse
+    [[3.3,49.9],[3.5,50.4],[3.6,50.9],[4.1,51.1],[4.3,51.3],[3.8,51.4]],   // Scheldt
+    [[3.8,50.1],[4.2,50.3],[4.6,50.4],[4.86,50.47]],   // Sambre (Charleroi, where the campaign began)
+    [[4.7,47.8],[4.0,48.3],[2.6,48.4],[2.35,48.85],[1.9,49.0],[1.0,49.3],[0.2,49.45]],   // Seine
     [[31.2,31.5],[31.2,30.0],[31.1,28.0],[30.8,26.5],[32.6,25.7],[32.9,24.1],[32.9,22.0],[31.3,21.0],[30.5,19.6],[33.0,18.5],[33.8,17.5],[33.0,16.0],[32.5,15.6]],   // Nile
     [[32.5,15.6],[33.5,13.5],[34.5,12.0],[35.5,10.0],[36.5,8.5]],                                                                                                      // Blue Nile
     [[32.5,15.6],[31.5,12.0],[30.5,9.5],[30.0,6.0],[31.5,3.5],[32.5,1.0]],                                                                                            // White Nile
@@ -120,7 +126,10 @@ window.WaterlooGlobe = (() => {
     // atmosphere
     const at = c.createRadialGradient(cx, cy, R * .98, cx, cy, R * 1.16); at.addColorStop(0, 'rgba(120,180,255,.55)'); at.addColorStop(.5, 'rgba(90,150,240,.18)'); at.addColorStop(1, 'rgba(60,110,200,0)');
     c.fillStyle = at; c.beginPath(); c.arc(cx, cy, R * 1.16, 0, 6.283); c.fill();
-    const RASTER = R <= Math.min(w, h) * .42 * 1.7;   // whole globe in view: wrap the texture; zoomed in: vector coastlines
+    // Whole globe in view: wrap the texture. Zoomed in: vector coastlines, but only once the view is close enough to cull
+    // rings outside it (capDeg below); before that, a ring crossing the horizon can flash a green fill over the whole disc.
+    const RASTER = R <= Math.max(Math.min(w, h) * .42 * 1.7, Math.hypot(w, h) / 2);
+    const LAND = new Path2D();   // the visible coastlines, so the deserts can be cut at the shore when zoomed in
     // ocean
     const oc = c.createRadialGradient(cx - R * .35, cy - R * .35, R * .1, cx, cy, R); oc.addColorStop(0, '#2a6f9e'); oc.addColorStop(.6, '#164a72'); oc.addColorStop(1, '#0a2744');
     c.fillStyle = oc; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill();
@@ -150,14 +159,18 @@ window.WaterlooGlobe = (() => {
         let x = R * cl * Math.sin(lam), y = R * (cos0 * sl - sin0 * cl * Math.cos(lam));
         if (cosc < 0) { const d = Math.hypot(x, y) || 1; x = x / d * R * 1.01; y = y / d * R * 1.01; } // push hidden points to the rim
         const px = cx + x, py = cy - y;
-        if (!any) { c.moveTo(px, py); any = true; } else c.lineTo(px, py);
+        if (!any) { c.moveTo(px, py); LAND.moveTo(px, py); any = true; } else { c.lineTo(px, py); LAND.lineTo(px, py); }
       }
-      c.closePath(); c.fill(); if (R > 600) c.stroke();
+      c.closePath(); LAND.closePath(); c.fill(); if (R > 600) c.stroke();
     }
-    if (!RASTER) { // zoomed in: paint the deserts over the vector land as well
-      c.save(); c.fillStyle = SAND; c.globalAlpha = .85;
-      DESERTS.forEach(d => { const pts = d.map(([x, y]) => proj(x * D, Math.cos(y * D), Math.sin(y * D))).filter(Boolean); if (pts.length < 3) return; c.beginPath(); const n = pts.length; for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; i ? c.quadraticCurveTo(a[0], a[1], mx, my) : c.moveTo(mx, my); } c.closePath(); c.fill(); });
-      c.restore();
+    if (!RASTER) { // zoomed in: paint the deserts over the vector land as well, soft-edged and cut at the coast like the globe texture.
+      // Drawn blurred at a quarter of the size (cheap) and scaled up, then clipped to the coastlines.
+      const q = 4, dw = Math.ceil(w / q), dh = Math.ceil(h / q);
+      if (!DS || DS.width !== dw || DS.height !== dh) { DS = document.createElement('canvas'); DS.width = dw; DS.height = dh; }
+      const dc = DS.getContext('2d'); dc.setTransform(1, 0, 0, 1, 0, 0); dc.clearRect(0, 0, dw, dh); dc.setTransform(1 / q, 0, 0, 1 / q, 0, 0);
+      dc.filter = `blur(${Math.max(1, Math.round(Math.min(60, R * .0245) / q))}px)`; dc.fillStyle = SAND;
+      DESERTS.forEach(d => { const pts = d.map(([x, y]) => proj(x * D, Math.cos(y * D), Math.sin(y * D))).filter(Boolean); if (pts.length < 3) return; dc.beginPath(); const n = pts.length; for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; i ? dc.quadraticCurveTo(a[0], a[1], mx, my) : dc.moveTo(mx, my); } dc.closePath(); dc.fill(); });
+      dc.filter = 'none'; c.save(); c.clip(LAND); c.globalAlpha = .92; c.drawImage(DS, 0, 0, w, h); c.restore();
     }
     if (!RASTER) {
       c.save(); c.strokeStyle = '#2f7590'; c.lineWidth = Math.max(1.5, R / 1400); c.lineCap = 'round'; c.lineJoin = 'round';
@@ -172,7 +185,7 @@ window.WaterlooGlobe = (() => {
     const sh = c.createRadialGradient(cx - R * .45, cy - R * .35, R * .2, cx, cy, R * 1.05); sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(.7, 'rgba(0,0,10,.12)'); sh.addColorStop(1, 'rgba(0,0,15,.6)');
     if (!RASTER && R < 1500) { c.fillStyle = sh; c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.fill(); }
     c.restore();
-    // border overlays: today's countries, then the approximate kingdoms of 1274 BCE
+    // border overlays: today's countries, then the approximate borders of June 1815
     if (s.modern > 0 || s.ancient > 0) {
       c.save(); c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.clip();
       const path = ring => { let pen = false, any = false; for (let i = 0; i < ring.length; i++) { const p = proj(ring[i][0] * D, Math.cos(ring[i][1] * D), Math.sin(ring[i][1] * D)); if (p) { pen ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); pen = true; any = true; } else pen = false; } return any; };
@@ -191,7 +204,7 @@ window.WaterlooGlobe = (() => {
           c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(k.name, p[0], p[1]); c.fillStyle = `rgb(${k.color})`; c.fillText(k.name, p[0], p[1]);
           if (k.sub) { c.font = `italic ${fs * .65}px Georgia, serif`; c.lineWidth = 3; c.strokeText(k.sub, p[0], p[1] + fs * .95); c.fillStyle = '#f6e9c6'; c.fillText(k.sub, p[0], p[1] + fs * .95); } });
         c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)';
-        const note = 'The main powers around 1274 BCE \u00b7 approximate extents, a reconstruction'; c.strokeText(note, 16, 22); c.fillStyle = '#f3dfad'; c.fillText(note, 16, 22);
+        const note = 'Europe in June 1815 \u00b7 approximate borders, a reconstruction'; c.strokeText(note, 16, 22); c.fillStyle = '#f3dfad'; c.fillText(note, 16, 22);
       }
       c.globalAlpha = 1; c.restore();
     }

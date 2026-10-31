@@ -637,7 +637,7 @@ const Narr = {
   on: false, audio: null, rate: 1.1, endedAt: -99,
   speak(text, file) {
     this.stop(); if (!this.on) return;
-    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
+    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },

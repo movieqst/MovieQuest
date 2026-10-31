@@ -41,6 +41,8 @@
   .sides .vs{color:var(--text);font-weight:400;font-size:15px}
   .blurb{font-size:13.5px;color:var(--muted);margin:0 0 10px}
   .go{display:inline-block;font-weight:600;color:#fff;background:#214e75;border:1px solid #4c94c7;border-radius:8px;padding:6px 12px;font-size:13px}
+  /* In-progress cards: the button and its text sit at half strength until the battle is ready */
+  .card:not(a) .go{opacity:.5}
   .credit{display:block;margin-top:8px;font-size:10.5px;color:#6f8691;font-style:italic}
   footer{text-align:center;color:#7f969f;font-size:12px;padding:10px 16px 30px;border-top:1px solid #1b2b35;max-width:1100px;margin:0 auto}
   footer a{color:var(--muted)}
@@ -107,11 +109,8 @@
 <script>
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   // Two sides, split on 'vs.': the first in red, the second in blue. Text without 'vs.' is shown as it is.
-  // Side colours: the battle's own colours (sideColors in battles.js). A battle without them gets a pair worked out from its folder name,
-  // so it is the same on every visit.
-  const SIDE_PALETTE = ['#2e8b57', '#d4a017', '#8e44ad', '#16a085', '#e67e22', '#2980b9', '#c0392b', '#7f8c8d'];
-  const hashOf = t => [...String(t)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
-  const pickSideColors = b => { if (b.sideColors) return b.sideColors; const h = hashOf(b.folder || b.title); const i = h % SIDE_PALETTE.length; let j = Math.floor(h / SIDE_PALETTE.length) % (SIDE_PALETTE.length - 1); if (j >= i) j++; return [SIDE_PALETTE[i], SIDE_PALETTE[j]]; };
+  // Side colours: the first side is always red and the second always blue, on every card.
+  const pickSideColors = b => b.sideColors || ['#c0392b', '#2e5aa8'];
   const sidesHTML = (t, colors) => { const m = String(t || '').split(/\s+vs\.?\s+/i); const [ca, cb] = colors || ['#ff6a5c', '#6aa6ff']; return m.length === 2 ? `<span style="color:${ca}">${esc(m[0])}</span> <span class="vs">vs.</span> <span style="color:${cb}">${esc(m[1])}</span>` : esc(t); };
   document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.order || 0) - (a.order || 0)).map(b => `
     ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
@@ -123,7 +122,7 @@
       <div class="body">
         <p class="sides">${sidesHTML(b.sides, pickSideColors(b))}</p>
         <p class="blurb">${esc(b.blurb)}</p>
-        <span class="go">Open the battle ▶</span>
+        <span class="go">${b.status === 'ready' ? 'Open the battle ▶' : 'Not open yet'}</span>
         <span class="credit">${esc(b.coverCredit)}</span>
       </div>
     ${b.status === 'ready' ? '</a>' : '</div>'}`).join('');

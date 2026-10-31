@@ -18,8 +18,8 @@
   Prussians arrive from the east. The map is a schematic reconstruction, not a survey. There is no
   Lion's Mound: it was built after the battle.
 
-  Cannon: batteries are placed as `archers`-type formations until the cannon rules are added (see
-  the placeholder note on each battery). Nothing about the batteries' fire is historical yet.
+  Cannon: batteries are `artillery` formations. They fire roundshot at long range and canister close in, only while
+  unlimbered, and take time to limber and unlimber. The rules are a game model; ranges and rates are not to scale.
 */
 window.WATERLOO_SCENARIO = {
   id: 'waterloo',
@@ -27,7 +27,7 @@ window.WATERLOO_SCENARIO = {
   date: '18 June 1815',
   place: 'Mont-Saint-Jean ridge, south of Brussels (site: the ridge, schematic)',
   tagline: 'Napoleon vs. Wellington and Blücher',
-  duration: 110,          // seconds of reenactment at 1x speed
+  duration: 165,          // seconds of reenactment at 1x speed
   titleCard: {
     title: 'BATTLE OF WATERLOO',
     date: '18 June 1815',
@@ -39,6 +39,9 @@ window.WATERLOO_SCENARIO = {
   commandDuration: 300,
   commandFocus: { x: 1200, y: 900 },
   world: { w: 2400, h: 1800 },
+  /* Troops behind the crest (north of the Ohain road) are half-hidden from roundshot: Wellington's reverse slope.
+     Formations marked `fortified` (the farm garrisons) fight from behind walls and take far less from guns and assaults. */
+  cover: { side: 'allied', yMax: 700, k: .5 },
 
   confidence: {
     established:    { label: 'Established',     color: '#5fcf8a', desc: 'Generally accepted by historians.' },
@@ -59,10 +62,10 @@ window.WATERLOO_SCENARIO = {
     river: [], tributary: [], fords: [], bridge: null, city: null, camp: null, road: [],
     forests: [], hills: [], fields: [],
     labels: [
-      { x: 1200, y: 40,   text: 'Allied side (north)', small: true },
-      { x: 1200, y: 1780, text: 'French side (south)', small: true },
-      { x: 1290, y: 690,  text: 'sunken road (Ohain road)', small: true },
-      { x: 1210, y: 300,  text: 'Brussels road', small: true }
+      { x: 1200, y: 40, text: 'Allied side (north)', small: true }, { x: 1200, y: 1780, text: 'French side (south)', small: true },
+      { x: 1650, y: 665, text: 'Ohain road (sunken, on the crest)', small: true }, { x: 1225, y: 300, text: 'Brussels road', small: true, rotate: -1.5708 },
+      { x: 1900, y: 1330, text: 'Papelotte', small: true }, { x: 2160, y: 1740, text: 'Plancenoit', small: true },
+      { x: 1290, y: 1470, text: 'La Belle Alliance (Napoleon)', small: true }, { x: 1200, y: 150, text: 'Mont-Saint-Jean', small: true }
     ]
   },
 
@@ -70,9 +73,12 @@ window.WATERLOO_SCENARIO = {
   intro: [
     {
       title: 'BATTLE OF WATERLOO',
-      media: [],
+      media: [
+        { at: 0, file: '01-pieneman-waterloo.jpg', caption: 'The Battle of Waterloo by Jan Willem Pieneman, painted in 1824. Wellington, centre, receives news of the Prussian advance. The scene is posed: a painter’s reconstruction, not an eyewitness view.', ref: 'Rijksmuseum, Amsterdam, SK-A-1115', credit: 'Jan Willem Pieneman, 1824. Rijksmuseum, Wikimedia Commons, public domain' },
+        { at: 12, file: '02-napoleon-david.jpg', caption: 'Napoleon in his study, by Jacques-Louis David (1812). Three years later he escaped from Elba and returned to power for the Hundred Days.', ref: 'National Gallery of Art, Washington (Samuel H. Kress Collection)', credit: 'Jacques-Louis David, 1812. Wikimedia Commons (Google Art Project), public domain' }
+      ],
       subtitle: '18 June 1815 · south of Brussels',
-      focus: { x: 1200, y: 900 }, zoom: 1,
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 14,
       lines: [
@@ -83,43 +89,60 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'The ridge',
-      media: [],
-      focus: { x: 1200, y: 700 }, zoom: 1,
+      media: [
+        { at: 0, file: '03-wellington-lawrence.jpg', caption: 'The Duke of Wellington, by Sir Thomas Lawrence (1815–16), painted soon after the battle.', ref: 'Apsley House, London (Wellington Collection), WM.1567-1948', credit: 'Sir Thomas Lawrence, about 1815–16. Wikimedia Commons, public domain' },
+        { at: 10, file: '04-hougoumont.jpg', caption: 'Hougoumont today: the courtyard and the little chapel, which survived when the château beside it burned during the battle. The broken wall beside the chapel is what is left of the château.', ref: 'Braine-l’Alleud, Belgium; photographed 2017', credit: 'Photo: Nenea hartia, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 20, file: '05-la-haye-sainte.jpg', caption: 'La Haye Sainte beside the Brussels road, a few years after the battle: a lithograph after a drawing by Mogford. The two memorials on the ridge beyond were put up after 1815.', ref: 'Lithograph, between about 1820 and 1850; Rijksmuseum, RP-P-OB-87.253', credit: 'Rijksmuseum, Wikimedia Commons, public domain (CC0)' },
+        { at: 28, file: '15-la-haye-sainte-1816.jpg', caption: 'The farmhouse at La Haye Sainte in 1816, the year after the battle, drawn by Robert Hills on a tour of the battlefield. The walls are still pocked with shot.', ref: 'Robert Hills, Sketches in Flanders and Holland (1816), engraved by D. Havell', credit: 'Wikimedia Commons, public domain' }
+      ],
+      focus: { x: 1100, y: 750 }, zoom: .8,
       markers: [],
       auto: 18,
       lines: [
         { text: 'Wellington placed most of his infantry on the reverse slope of the ridge, out of sight and out of the range of the French guns.', tag: 'account', cite: 'Britannica, Battle of Waterloo' },
         { text: 'The sunken road along the crest, bordered by hedges, was the line the French had to reach.', tag: 'account', cite: 'Britannica, The first hours of battle' },
-        { text: 'Hougoumont, a walled farm complex, stood on the Allied right. La Haye Sainte, a farm on the Brussels road, stood in the centre.', tag: 'established' }
+        { text: 'Hougoumont, a walled farm complex, stood on the Allied right. La Haye Sainte, a farm on the Brussels road, stood in the centre.', tag: 'established' },
+        { text: 'It had rained hard all night. The French attack did not begin until the late morning, when the ground had dried a little.', tag: 'account', cite: 'Britannica, Battle of Waterloo; the reasons for the delay are debated' }
       ]
     },
     {
       title: 'The French army',
-      media: [],
-      focus: { x: 1200, y: 1200 }, zoom: .9,
+      media: [
+        { at: 0, file: '06-ney-gerard.jpg', caption: 'Marshal Michel Ney, engraved by Henry Richard Cook in 1817 after a portrait by François Gérard. Ney led the French attacks on the ridge in the afternoon. He was shot for treason in Paris that December.', ref: 'Engraving by H. R. Cook, 1817, after François Gérard', credit: 'Wikimedia Commons, public domain' },
+        { at: 14, file: '07-cuirassiers-philippoteaux.jpg', caption: 'French cuirassiers charging the British squares, by Félix Philippoteaux (1874). Painted sixty years later; the uniforms are carefully drawn, the scene is imagined.', ref: 'Victoria and Albert Museum, London, 64-1880', credit: 'Félix Philippoteaux, 1874. Wikimedia Commons, public domain' }
+      ],
+      focus: { x: 1250, y: 1250 }, zoom: .8,
       markers: [],
       auto: 18,
       lines: [
         { text: 'Napoleon massed the guns of the army in a grand battery opposite the centre-left of the Allied line. The number of guns is disputed: sources give between about forty and eighty.', tag: 'disputed', cite: 'Wikipedia, Grand Battery; sources differ' },
-        { text: 'The infantry of d’Erlon’s corps went forward, and cuirassiers and lancers rode up the slope behind them.', tag: 'account' },
+        { text: 'D’Erlon’s infantry corps attacked the Allied left. Later in the afternoon, cuirassiers and lancers charged the Allied right-centre again and again.', tag: 'established' },
         { text: 'The French army numbered about 72,000, the Allied about 68,000, and the Prussians about 50,000. These are common estimates; the sources do not agree.', tag: 'estimate', cite: 'Napoleonguide orders of battle; Wikipedia infobox' }
       ]
     },
     {
       title: 'The Prussians',
-      media: [],
-      focus: { x: 1900, y: 1200 }, zoom: .9,
+      media: [
+        { at: 0, file: '08-blucher.jpg', caption: 'Field Marshal Gebhard Leberecht von Blücher, commander of the Prussian army, then 72 years old. Two days before Waterloo he was ridden over by cavalry at Ligny, and still led his army to Wellington’s aid.', ref: 'French lithograph, 19th century; KU Leuven Libraries, PA00467', credit: 'KU Leuven Libraries, Wikimedia Commons, public domain' },
+        { at: 12, file: '09-plancenoit-northen.jpg', caption: 'Prussian infantry storm Plancenoit, held by the Young Guard, by Adolph Northen (1864). Painted almost fifty years later: the painter was born after the battle.', ref: 'Adolph Northen, Prussian Attack on Plancenoit, 1864', credit: 'Adolph Northen, 1864. Wikimedia Commons, public domain' },
+        { at: 22, file: '10-grouchy.jpg', caption: 'Emmanuel Grouchy, here as a general of the Empire, before Napoleon made him a marshal in 1815. At Waterloo he was following the Prussians to Wavre with about 33,000 men, and never reached the battle.', ref: 'Engraving by J. N. Joly after Constance Mayer; Bibliothèque nationale de France (Gallica)', credit: 'BnF Gallica, Wikimedia Commons, public domain' }
+      ],
+      focus: { x: 2000, y: 1400 }, zoom: .8,
       markers: [],
       auto: 16,
       lines: [
         { text: 'Blücher had been beaten at Ligny two days before. His army withdrew, and then came toward Waterloo.', tag: 'established', cite: 'Britannica, The Battles of Quatre-Bras and Ligny' },
-        { text: 'The first Prussians, Bülow’s corps, reached the French right in the late afternoon. The exact time is disputed; the sources give between about 16:30 and 17:00.', tag: 'disputed' }
+        { text: 'The first Prussians, Bülow’s corps, reached the French right in the late afternoon. The exact time is disputed; the sources give between about 16:30 and 17:00.', tag: 'disputed' },
+        { text: 'Napoleon had sent Marshal Grouchy with about 33,000 men to follow the Prussians. Grouchy fought their rearguard at Wavre and never reached Waterloo.', tag: 'established', cite: 'Britannica, Battle of Waterloo' }
       ]
     },
     {
       title: 'The sources',
-      media: [],
-      focus: { x: 1200, y: 900 }, zoom: .8,
+      media: [
+        { at: 0, file: '11-siborne-map.jpg', caption: 'Map of the battlefield from Waterloo Letters (1891): letters that surviving British officers wrote to William Siborne in the 1830s, when he was building his model of the battle. South is at the top: La Belle Alliance above, Hougoumont at the right, La Haye Sainte on the Brussels road, Mont-Saint-Jean at the bottom.', ref: 'H. T. Siborne (ed.), Waterloo Letters (London, 1891); Internet Archive', credit: 'Internet Archive Book Images, Wikimedia Commons, no known copyright restrictions (published 1891)' },
+        { at: 12, file: '12-mercer-journal.jpg', caption: 'The original binding of Captain Cavalié Mercer’s Journal of the Waterloo Campaign, with the badge of the Royal Artillery. Written from notes kept at the time, it was published in 1870, two years after his death. The whole of volume 1, with his account of the battle, is in our Library of sources.', ref: 'Cavalié Mercer, Journal of the Waterloo Campaign (Blackwood, 1870), vol. 1', credit: 'Project Gutenberg eBook #75872, from scans by the Internet Archive; public domain' }
+      ],
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 16,
       lines: [
@@ -130,174 +153,212 @@ window.WATERLOO_SCENARIO = {
     },
     {
       title: 'How to read this reenactment',
-      media: [],
-      focus: { x: 1200, y: 900 }, zoom: .7,
+      media: [
+        { at: 0, file: '13-scotland-forever.jpg', caption: 'Scotland Forever! by Lady Butler (1881): the charge of the Scots Greys, painted 66 years later. A famous image, and an imagined scene: like this map, a reconstruction.', ref: 'Leeds Art Gallery, LEEAG.PA.1888.0002', credit: 'Elizabeth Thompson, Lady Butler, 1881. Wikimedia Commons, public domain' }
+      ],
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 14,
       lines: [
-        { text: 'Positions, timings and movements on this map are a reconstruction. The ancient and modern accounts tell a story; the map shows where the story puts the troops.', tag: 'reconstruction' },
+        { text: 'Positions, timings and movements on this map are a reconstruction. The eyewitness and modern accounts tell a story; the map shows where the story puts the troops.', tag: 'reconstruction' },
         { text: 'Press “Explain this moment” at any point to read why a commander may have acted as he did.', tag: 'reconstruction' }
       ]
     },
     {
       title: 'The armies are drawn up. What happens next?',
-      focus: { x: 1200, y: 900 },
+      media: [
+        { at: 0, file: '14-wellington-blucher-maclise.jpg', caption: 'The meeting of Wellington and Blücher after the battle, near the inn of La Belle Alliance: Charles William Sharpe’s 1879 engraving of Daniel Maclise’s great wall painting in the Palace of Westminster. Where and how the two commanders met is told in different ways.', ref: 'Engraving by C. W. Sharpe, 1879, after Daniel Maclise (painting 1861)', credit: 'Wikimedia Commons, public domain' }
+      ],
+      focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       choice: true,
       lines: [
         { text: 'The story continues on the ridge. Choose how to see it.', tag: 'established' },
-        { text: 'Watch the reenactment: the battle in narrated chapters, from the grand battery to the last attack, then a debrief on what the sources say.', tag: 'established' },
+        { text: 'Watch the reenactment: the battle in narrated chapters, from the first shots at Hougoumont to the last attack of the Imperial Guard, then a debrief on what the sources say.', tag: 'established' },
         { text: 'Take command: lead one of the armies from the start and see whether you can change the outcome. The debrief then compares your battle with history.', tag: 'reconstruction' }
       ]
     }
   ],
 
   /* ---------- Formations (shared by both modes). `power` is a game balance value, not a count of men. ---------- */
+  /* ---------- Formations (shared by both modes) ----------
+     Positions follow the painted map: the Ohain road runs along the crest at y ≈ 700, the Brussels road down the centre
+     at x ≈ 1200, Hougoumont at the left (west), La Haye Sainte beside the road, Papelotte at the right, Plancenoit at the
+     bottom right. North is up: the Allied army faces south, the French north. `power` is a game balance value, not a count. */
   formations: [
-    // Allied, on the reverse slope and behind the crest
-    { id: 'picton',  side: 'allied', name: 'British infantry, left (Picton)', division: 'Left', type: 'infantry', cols: 6, rows: 3, power: 1.2, x: 640, y: 760, hidden: true,
-      count: 'Part of the Allied infantry (estimate: about 54,000 foot in all)', confidence: 'account',
-      note: 'Picton’s division held the left of the ridge. Its squares were charged by the French cuirassiers.' },
-    { id: 'allied-c', side: 'allied', name: 'Allied infantry, centre', division: 'Centre', type: 'infantry', cols: 6, rows: 3, power: 1.1, x: 1000, y: 760, hidden: true,
-      count: 'Part of the Allied infantry', confidence: 'established',
-      note: 'The centre of the Allied line behind the crest. Sources differ on the exact units there.' },
-    { id: 'allied-h', side: 'allied', name: 'Hanoverian and Brunswick infantry', division: 'Right', type: 'infantry', cols: 5, rows: 3, power: 1.0, x: 1420, y: 760, hidden: true,
-      count: 'Part of the Allied infantry', confidence: 'account',
-      note: 'Some of these troops were new to battle, and the sources describe them differently.' },
-    { id: 'uxbridge', side: 'allied', name: 'Allied cavalry (Uxbridge)', division: 'Cavalry', type: 'cavalry', cols: 6, rows: 2, power: 1.3, x: 1550, y: 700, hidden: true,
-      count: 'Part of the Allied cavalry (estimate: about 13,000 horse)', confidence: 'account',
-      note: 'Uxbridge’s cavalry drove back the French cuirassiers after their first charge.' },
-    { id: 'greys',   side: 'allied', name: 'Scots Greys (Union Brigade)', division: 'Cavalry', type: 'cavalry', cols: 4, rows: 2, power: 1.2, x: 1700, y: 730, hidden: true,
-      count: 'One brigade of heavy cavalry', confidence: 'disputed',
-      note: 'The Scots Greys charged d’Erlon’s infantry. Accounts disagree on how far they got. Reported losses were heavy.' },
-    { id: 'hougo',   side: 'allied', name: 'Hougoumont garrison (Guards, Nassau, Hanoverians)', division: 'Hougoumont', type: 'infantry', cols: 3, rows: 3, power: 1.2, x: 800, y: 1005,
-      count: 'Light companies of the Guards and Nassau troops', confidence: 'established',
-      note: 'Colonel Macdonell held the farm. The north gate was closed on the French attackers, which Wellington credited with saving the position.' },
-    { id: 'lhs',     side: 'allied', name: 'La Haye Sainte garrison (King’s German Legion)', division: 'La Haye Sainte', type: 'infantry', cols: 2, rows: 3, power: 1.0, x: 1295, y: 910,
-      count: 'The 2nd Light Battalion, King’s German Legion, under Major Baring', confidence: 'account',
-      note: 'The farm held most of the day until its ammunition ran out, at about 18:00. The number who survived is not reliably known.' },
-    { id: 'allied-guns', side: 'allied', name: 'Allied batteries on the crest', division: 'Artillery', type: 'archers', cols: 2, rows: 1, power: 1.0, x: 1000, y: 660,
-      count: 'British artillery on the ridge (PLACEHOLDER: cannon rules to follow)', confidence: 'estimate',
-      note: 'British batteries were placed on the ridge. Their fire is a placeholder until the cannon rules are added.' },
+    // Allied: the garrisons in front, the line behind the crest, the cavalry and reserves further back.
+    { id: 'hougo',     side: 'allied', name: 'Hougoumont garrison (Guards, Nassauers, Hanoverians)', division: 'Hougoumont', type: 'infantry', cols: 4, rows: 3, power: 1.3, x: 620, y: 930, aiHold: true, fortified: true,
+      count: 'A few battalions, fed in through the day', confidence: 'established',
+      note: 'Light companies of the Foot Guards held the château and its walls, with Nassau and Hanoverian troops in the woods and orchard.' },
+    { id: 'lhs',       side: 'allied', name: 'La Haye Sainte garrison (2nd Light Battalion, King’s German Legion)', division: 'La Haye Sainte', type: 'infantry', cols: 3, rows: 3, power: 1.1, x: 1300, y: 915, aiHold: true, fortified: true,
+      count: 'About 400 at first, reinforced later', confidence: 'established',
+      note: 'Major Baring’s riflemen held the farm until their ammunition ran out in the early evening.' },
+    { id: 'guards-b',  side: 'allied', name: 'British Foot Guards (Maitland)', division: 'Guards', type: 'infantry', cols: 6, rows: 2, power: 1.2, x: 930, y: 600, hidden: true,
+      count: 'Two battalions of the 1st Foot Guards', confidence: 'established', note: 'Behind the crest on the Allied right-centre, where the Imperial Guard attacked in the evening.' },
+    { id: 'alten',     side: 'allied', name: 'Alten’s division (British, King’s German Legion, Hanoverians)', division: 'Centre', type: 'infantry', cols: 8, rows: 3, power: 1.1, x: 1150, y: 600, hidden: true,
+      count: 'Part of about 68,000 Allied troops (estimate)', confidence: 'established', note: 'The centre of the line, either side of the Brussels road.' },
+    { id: 'picton',    side: 'allied', name: 'Picton’s division (British and Netherlands)', division: 'Left centre', type: 'infantry', cols: 8, rows: 3, power: 1.0, x: 1520, y: 620, hidden: true,
+      count: 'Part of the Allied total (estimate)', confidence: 'established', note: 'Behind the hedges of the Ohain road, east of the Brussels road. d’Erlon’s attack fell on them.' },
+    { id: 'reserve',   side: 'allied', name: 'Brunswick and Nassau reserves', division: 'Reserve', type: 'infantry', cols: 6, rows: 2, power: 0.9, x: 800, y: 430, hidden: true,
+      count: 'Reserve', confidence: 'established', note: 'Fed into the line during the afternoon.' },
+    { id: 'household', side: 'allied', name: 'Household Brigade (Life Guards, Blues, Dragoon Guards)', division: 'Household Brigade', type: 'cavalry', cols: 5, rows: 2, power: 1.1, x: 1050, y: 440, hidden: true,
+      count: 'Heavy cavalry brigade', confidence: 'established', note: 'Charged west of the Brussels road beside the Union Brigade.' },
+    { id: 'greys',     side: 'allied', name: 'Union Brigade (Royals, Scots Greys, Inniskillings)', division: 'Union Brigade', type: 'cavalry', cols: 5, rows: 2, power: 1.1, x: 1600, y: 460, hidden: true, sheet: 'scots-greys',
+      count: 'Heavy cavalry brigade', confidence: 'established', note: 'The English, Scottish and Irish heavy dragoons whose charge broke d’Erlon’s attack.' },
+    { id: 'guns-r',    side: 'allied', name: 'Allied batteries, right of the road', division: 'Allied guns', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.0, x: 950, y: 690,
+      count: 'Several foot and horse batteries', confidence: 'established', note: 'On the crest. The crews ran into the squares when cavalry came close, and returned to their guns when it fell back.' },
+    { id: 'guns-l',    side: 'allied', name: 'Allied batteries, left of the road', division: 'Allied guns', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.0, x: 1500, y: 690,
+      count: 'Several batteries', confidence: 'established', note: 'On the crest above Picton’s division.' },
+    { id: 'zieten',    side: 'allied', name: 'Prussian I Corps (Zieten)', division: 'Zieten', type: 'infantry', cols: 8, rows: 2, power: 1.1, x: 2350, y: 450, offmap: true, sheet: 'prussian-infantry',
+      count: 'Part of about 50,000 Prussians engaged (estimate)', confidence: 'established', note: 'Reached Wellington’s far left in the early evening.' },
+    { id: 'bulow',     side: 'allied', name: 'Prussian IV Corps (Bülow)', division: 'Bülow', type: 'infantry', cols: 8, rows: 3, power: 1.2, x: 2350, y: 1450, offmap: true, sheet: 'prussian-infantry',
+      count: 'The first Prussian corps to arrive', confidence: 'established', note: 'Attacked Plancenoit, behind the French right, from the late afternoon.' },
 
-    // French, south of the ridge
-    { id: 'bat-1',   side: 'french', name: 'Grand battery (1)', division: 'Artillery', type: 'archers', cols: 2, rows: 1, power: 1.0, x: 820,  y: 1250,
-      count: 'Disputed: 40 to 84 guns in the grand battery', confidence: 'disputed',
-      note: 'PLACEHOLDER: the grand battery is shown as ranged formations until the cannon rules are added.' },
-    { id: 'bat-2',   side: 'french', name: 'Grand battery (2)', division: 'Artillery', type: 'archers', cols: 2, rows: 1, power: 1.0, x: 1040, y: 1250,
-      count: 'Part of the grand battery', confidence: 'disputed',
-      note: 'PLACEHOLDER, as above.' },
-    { id: 'bat-3',   side: 'french', name: 'Grand battery (3)', division: 'Artillery', type: 'archers', cols: 2, rows: 1, power: 1.0, x: 1290, y: 1250,
-      count: 'Part of the grand battery', confidence: 'disputed',
-      note: 'PLACEHOLDER, as above.' },
-    { id: 'derlon',  side: 'french', name: 'd’Erlon’s infantry corps', division: 'I Corps', type: 'infantry', cols: 6, rows: 4, power: 1.0, x: 1400, y: 1150,
-      count: 'Part of the French infantry (estimate: about 72,000 in the army)', confidence: 'account',
-      note: 'The first wave of French infantry. It was caught by the Scots Greys, according to the Allied accounts.' },
-    { id: 'cuir',    side: 'french', name: 'Cuirassiers', division: 'Cavalry', type: 'cavalry', cols: 6, rows: 2, power: 1.2, x: 1000, y: 1150, hunter: true,
-      count: 'Part of the French cavalry', confidence: 'account',
-      note: 'The cuirassiers charged the Allied squares. Infantry in square held; the cavalry could not break them without infantry or artillery support.' },
-    { id: 'lancers', side: 'french', name: 'Lancers', division: 'Cavalry', type: 'cavalry', cols: 6, rows: 2, power: 1.1, x: 1550, y: 1100, hunter: true,
-      count: 'Part of the French cavalry', confidence: 'account',
-      note: 'Lancers rode with the cuirassiers. Their exact role is not clear in the sources.' },
-    { id: 'guard',   side: 'french', name: 'Imperial Guard', division: 'Guard', type: 'infantry', cols: 6, rows: 3, power: 1.2, x: 1700, y: 1300, hidden: true,
-      count: 'The Guard (estimate: about 20,000 in the Guard)', confidence: 'account',
-      note: 'The Guard’s last attack went in late in the day. The reported words attributed to its officers are disputed, and are not shown as fact.' },
-    { id: 'lobau',   side: 'french', name: 'Lobau’s corps (to Plancenoit)', division: 'VI Corps', type: 'infantry', cols: 5, rows: 3, power: 1.0, x: 2000, y: 1150, hidden: true,
-      count: 'Part of the French right', confidence: 'account',
-      note: 'Sent against the Prussians at Plancenoit, to hold the French right.' },
-
-    // Prussians, arriving from the east
-    { id: 'bulow',   side: 'allied', name: 'Prussian IV Corps (Bülow)', division: 'Prussians', type: 'infantry', cols: 6, rows: 3, power: 1.0, x: 2300, y: 1420, offmap: true,
-      count: 'About 50,000 Prussians in all (estimate). Bülow’s corps arrived first.', confidence: 'established',
-      note: 'The first Prussians to reach the French right. The exact time of arrival is disputed.' }
+    // French: Reille on the left (west), the grand battery and d’Erlon on the right of the road, the cavalry and the Guard behind.
+    { id: 'reille',    side: 'french', name: 'Reille’s II Corps (Jérôme’s division at Hougoumont)', division: 'II Corps', type: 'infantry', cols: 8, rows: 3, power: 1.0, x: 650, y: 1250,
+      count: 'Part of about 72,000 French (estimate)', confidence: 'established', note: 'Its attacks on Hougoumont began the battle and went on all day.' },
+    { id: 'derlon',    side: 'french', name: 'd’Erlon’s I Corps', division: 'I Corps', type: 'infantry', cols: 10, rows: 4, power: 1.2, x: 1550, y: 1230,
+      count: 'Four infantry divisions', confidence: 'established', note: 'Attacked the Allied left-centre in the early afternoon in broad, deep formations.' },
+    { id: 'bat-1',     side: 'french', name: 'Grand battery (west)', division: '', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1320, y: 1120,
+      count: 'The number of guns is disputed: about 40 to 84', confidence: 'disputed', note: 'On a low rise in front of d’Erlon’s corps. Three gun figures stand for each part of the battery.' },
+    { id: 'bat-2',     side: 'french', name: 'Grand battery (centre)', division: 'Grand battery', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1480, y: 1120,
+      count: 'Part of the grand battery', confidence: 'disputed', note: 'Part of the grand battery.' },
+    { id: 'bat-3',     side: 'french', name: 'Grand battery (east)', division: '', type: 'artillery', holdFire: true, cols: 3, rows: 1, power: 1.1, x: 1640, y: 1120,
+      count: 'Part of the grand battery', confidence: 'disputed', note: 'Part of the grand battery.' },
+    { id: 'cuir',      side: 'french', name: 'Milhaud’s cuirassiers', division: 'Cuirassiers', type: 'cavalry', cols: 6, rows: 2, power: 1.2, x: 950, y: 1350, sheet: 'french-cuirassier',
+      count: 'Heavy cavalry corps', confidence: 'established', note: 'Led the massed cavalry charges of the afternoon.' },
+    { id: 'lancers',   side: 'french', name: 'Jacquinot’s lancers', division: 'Lancers', type: 'cavalry', cols: 5, rows: 2, power: 1.0, x: 1850, y: 1250, sheet: 'french-lancer',
+      count: 'Light cavalry', confidence: 'established', note: 'Counter-charged the Union Brigade when it rode into the grand battery.' },
+    { id: 'lobau',     side: 'french', name: 'Lobau’s VI Corps', division: 'VI Corps', type: 'infantry', cols: 6, rows: 2, power: 1.0, x: 1450, y: 1450, hidden: true,
+      count: 'Reserve corps', confidence: 'established', note: 'Sent east to hold off the Prussians at Plancenoit.' },
+    { id: 'yguard',    side: 'french', name: 'Young Guard', division: 'Young Guard', type: 'infantry', cols: 6, rows: 2, power: 1.1, x: 1250, y: 1580, hidden: true,
+      count: 'Part of the Imperial Guard', confidence: 'established', note: 'Sent to Plancenoit, which changed hands several times.' },
+    { id: 'guard',     side: 'french', name: 'Imperial Guard (Middle Guard)', division: 'Imperial Guard', type: 'infantry', cols: 6, rows: 3, power: 1.4, x: 1150, y: 1500, hidden: true,
+      count: 'Several battalions in the last attack', confidence: 'established', note: 'Its attack on the Allied right-centre in the evening was the last French attack of the day.' }
   ],
 
-  /* ---------- Watch mode: the historical sequence, in order ---------- */
+  /* ---------- Watch mode: the day in narrated chapters ----------
+     Times of day are those most historians give; several are disputed and the chapters say so. */
   events: [
-    { t: 0, title: 'The ridge', tag: 'account', focus: { x: 1200, y: 800 },
+    { t: 0, title: 'The ridge', tag: 'account', focus: { x: 1200, y: 800 }, zoom: 'fit',
       text: 'Wellington’s infantry lies on the reverse slope. The guns stand on the crest. The French army waits on the far side of the valley.',
       explain: 'Why the reverse slope? Infantry behind the crest could not be shelled. They could stand up and fire when the French came over the top.',
       cite: 'Britannica, The first hours of battle',
       orders: [] },
-    { t: 12, title: 'The grand battery opens', tag: 'disputed', focus: { x: 1040, y: 1100 },
+    { t: 12, title: 'Hougoumont', tag: 'established', focus: { x: 650, y: 1000 },
+      text: 'The battle opens at Hougoumont, on the Allied right, in the late morning. Reille’s infantry attacks the walled farm, and the fighting there goes on all day.',
+      explain: 'Many historians think the attack was meant to draw in Wellington’s reserves. Instead it drew in more and more French battalions. The defenders closed the north gate after the French forced it: a famous story, told differently by different witnesses.',
+      cite: 'Britannica, Battle of Waterloo; National Army Museum, Hougoumont',
+      orders: [ { id: 'reille', to: { x: 660, y: 1030 }, speed: 16, state: 'attack' }, { id: 'guns-r', fire: true } ] },
+    { t: 26, title: 'The grand battery opens', tag: 'disputed', focus: { x: 1450, y: 950 },
       text: 'The French grand battery fires on the Allied line. The number of guns is disputed.',
       explain: 'Napoleon massed the guns to break the Allied line before the infantry attack. How many guns there were, and how much damage they did, is not agreed.',
       cite: 'Wikipedia, Grand Battery (sources differ)',
-      orders: [] },
-    { t: 26, title: 'The cuirassiers climb the slope', tag: 'account', focus: { x: 1200, y: 800 },
-      text: 'Cuirassiers and lancers ride up the slope toward the squares of the Allied infantry.',
-      explain: 'The cavalry was meant to finish what the guns had started. On the slope they met squares and the fire of British gunners.',
-      cite: 'Britannica, The first hours of battle',
+      orders: [ { id: 'bat-1', fire: true }, { id: 'bat-2', fire: true }, { id: 'bat-3', fire: true }, { id: 'guns-l', fire: true } ] },
+    { t: 40, title: 'd’Erlon’s attack', tag: 'established', focus: { x: 1450, y: 850 },
+      text: 'D’Erlon’s corps advances against the Allied left-centre, east of the Brussels road. Picton’s division meets it at the hedges along the crest.',
+      explain: 'D’Erlon’s divisions advanced in unusually broad, deep formations, which were slow to deploy and made big targets. Sir Thomas Picton was killed leading the counter-attack.',
+      cite: 'Britannica, Battle of Waterloo',
+      orders: [ { id: 'derlon', to: { x: 1500, y: 770 }, speed: 14, state: 'attack' }, { id: 'picton', visible: true, state: 'hold' } ] },
+    { t: 54, title: 'The Union Brigade charges', tag: 'established', focus: { x: 1500, y: 900 },
+      text: 'Uxbridge sends the heavy cavalry over the crest. The Union Brigade, with the Scots Greys, breaks d’Erlon’s attack and captures two eagles.',
+      explain: 'Carried away, the cavalry rode on into the grand battery and was cut up by French lancers and cuirassiers. How far it got, and how many guns it put out of action, is disputed.',
+      cite: 'Britannica, Battle of Waterloo; National Army Museum',
       orders: [
-        { id: 'cuir', to: { x: 1000, y: 880 }, speed: 40 }, { id: 'lancers', to: { x: 1450, y: 900 }, speed: 40 }
+        { id: 'greys', visible: true, via: [{ x: 1520, y: 760 }], to: { x: 1490, y: 1090 }, speed: 48, state: 'attack' },
+        { id: 'household', visible: true, to: { x: 1150, y: 880 }, speed: 42, state: 'attack' },
+        { id: 'derlon', to: { x: 1560, y: 1230 }, speed: 28, state: 'move', strengthTo: 50, over: 5 },
+        { id: 'lancers', to: { x: 1500, y: 1080 }, speed: 46, state: 'attack' }
       ] },
-    { t: 40, title: 'Squares hold', tag: 'account', focus: { x: 800, y: 780 },
+    { t: 68, title: 'Ney’s cavalry charges', tag: 'established', focus: { x: 1000, y: 800 },
+      text: 'Marshal Ney sends wave after wave of cuirassiers and lancers up the slope between Hougoumont and La Haye Sainte, against the Allied right-centre.',
+      explain: 'Why Ney attacked is disputed: he may have taken movement behind the crest for a retreat. The charges went in without infantry to support them.',
+      cite: 'Britannica, Battle of Waterloo',
+      orders: [
+        { id: 'greys', to: { x: 1600, y: 470 }, speed: 30, state: 'move', strengthTo: 35, over: 4 },
+        { id: 'household', to: { x: 1050, y: 450 }, speed: 30, state: 'move', strengthTo: 55, over: 4 },
+        { id: 'lancers', via: [{ x: 1250, y: 1150 }], to: { x: 1130, y: 700 }, speed: 40, state: 'attack' },
+        { id: 'cuir', visible: true, to: { x: 960, y: 700 }, speed: 40, state: 'attack' },
+        { id: 'guards-b', visible: true, state: 'hold' }, { id: 'alten', visible: true, state: 'hold' }
+      ] },
+    { t: 82, title: 'Squares hold', tag: 'account', focus: { x: 1000, y: 780 },
       text: 'The Allied infantry forms square. The French cavalry cannot break the squares, and falls back.',
       explain: 'A square with bayonets outward was the infantry’s answer to cavalry. Without infantry or guns to follow up, the cavalry could not break it.',
-      cite: 'Wikipedia, The British Squares Receiving the Charge of the French Cuirassiers (painting-based; use for the image, not as a source for the numbers)',
+      cite: 'Britannica, Battle of Waterloo',
       orders: [
-        { id: 'cuir', to: { x: 1000, y: 1000 }, speed: 30, state: 'move' },
-        { id: 'picton', visible: true, state: 'hold' }, { id: 'allied-c', visible: true, state: 'hold' }
+        { id: 'cuir', to: { x: 950, y: 1250 }, speed: 30, state: 'move', strengthTo: 55, over: 5 },
+        { id: 'lancers', to: { x: 1800, y: 1250 }, speed: 30, state: 'move', strengthTo: 50, over: 5 }
       ] },
-    { t: 55, title: 'Hougoumont and La Haye Sainte', tag: 'account', focus: { x: 1050, y: 950 },
-      text: 'The French attack the two farms on the Brussels road and at the centre. The garrisons hold their walls.',
-      explain: 'Hougoumont drew French troops away from the centre all day. La Haye Sainte was held until its ammunition ran out. A fortified position can tie down an attacker far larger than its garrison.',
-      cite: 'Wikipedia, Hougoumont; Bexhill Museum, King’s German Legion (local history)',
-      orders: [
-        { id: 'derlon', to: { x: 1330, y: 1020 }, speed: 18 }, { id: 'hougo', state: 'hold' }, { id: 'lhs', state: 'hold' }
-      ] },
-    { t: 70, title: 'The Scots Greys charge', tag: 'disputed', focus: { x: 1500, y: 900 },
-      text: 'Uxbridge’s heavy cavalry, including the Scots Greys, charges d’Erlon’s infantry. Accounts disagree on how far they got.',
-      explain: 'The charge is well attested, and the losses were heavy. Whether the Greys reached the French infantry or were stopped by the press of men is disputed.',
-      cite: 'Scotland’s Waterloo Day (group site; check the figures against a standard source)',
-      orders: [
-        { id: 'greys', visible: true, to: { x: 1400, y: 1050 }, speed: 45 },
-        { id: 'uxbridge', visible: true, to: { x: 1550, y: 1000 }, speed: 40 }
-      ] },
-    { t: 85, title: 'The Prussians at Plancenoit', tag: 'account', focus: { x: 1950, y: 1200 },
+    { t: 96, title: 'The Prussians at Plancenoit', tag: 'account', focus: { x: 2000, y: 1450 },
       text: 'Bülow’s Prussians come in from the east and attack Plancenoit, on the French right. Lobau’s corps is sent to hold them.',
       explain: 'The Prussian arrival forced Napoleon to commit troops to his right, away from the centre. The exact time is disputed; the sources give between about 16:30 and 17:00.',
-      cite: 'Britannica, The first hours of battle; the time is disputed',
+      cite: 'Britannica, Battle of Waterloo; the time is disputed',
       orders: [
-        { id: 'bulow', visible: true, to: { x: 2000, y: 1300 }, speed: 30 },
-        { id: 'lobau', visible: true, to: { x: 1990, y: 1220 }, speed: 30 }
+        { id: 'bulow', visible: true, to: { x: 2150, y: 1600 }, speed: 30, state: 'attack' },
+        { id: 'lobau', visible: true, to: { x: 2040, y: 1520 }, speed: 25 },
+        { id: 'yguard', visible: true, to: { x: 2100, y: 1660 }, speed: 22 }
       ] },
-    { t: 100, title: 'The last attack', tag: 'account', focus: { x: 1200, y: 800 },
+    { t: 110, title: 'La Haye Sainte falls', tag: 'established', focus: { x: 1300, y: 850 },
+      text: 'Out of ammunition, the King’s German Legion is driven out of La Haye Sainte. French guns and skirmishers come up close to the centre of the Allied line.',
+      explain: 'Major Baring’s men held the farm for most of the day, until their rifle ammunition ran out. With the farm lost, the Allied centre was at its weakest of the day.',
+      cite: 'Britannica, Battle of Waterloo; Baring’s own account',
+      orders: [
+        { id: 'lhs', to: { x: 1250, y: 620 }, speed: 22, state: 'move', strengthTo: 25, over: 4 },
+        { id: 'derlon', via: [{ x: 1420, y: 1000 }], to: { x: 1320, y: 900 }, speed: 18, state: 'attack' }
+      ] },
+    { t: 124, title: 'Zieten reaches the Allied left', tag: 'established', focus: { x: 1900, y: 650 },
+      text: 'Zieten’s Prussian corps reaches Wellington’s far left. The Allied light cavalry on that flank can now move to the centre.',
+      explain: 'Zieten’s arrival freed Vivian’s and Vandeleur’s cavalry brigades to steady the Allied centre, shortly before the Imperial Guard attacked.',
+      cite: 'Britannica, Battle of Waterloo',
+      orders: [ { id: 'zieten', visible: true, to: { x: 2050, y: 620 }, speed: 30 } ] },
+    { t: 138, title: 'The last attack', tag: 'account', focus: { x: 1000, y: 800 },
       text: 'The Imperial Guard goes forward in the last French attack. Wellington’s reserves meet it on the crest.',
       explain: 'The Guard’s attack is the last throw of the day. The words attributed to its officers are disputed, and the Record does not repeat them as fact.',
-      cite: 'Napoleonguide; Britannica',
-      orders: [
-        { id: 'guard', visible: true, to: { x: 1200, y: 980 }, speed: 30 }
-      ] },
-    { t: 108, title: 'The aftermath', tag: 'established', focus: { x: 1200, y: 900 }, end: true,
+      cite: 'Britannica, Battle of Waterloo',
+      orders: [ { id: 'guard', visible: true, via: [{ x: 1150, y: 1150 }], to: { x: 960, y: 720 }, speed: 22, state: 'attack' }, { id: 'guards-b', visible: true, state: 'hold' } ] },
+    { t: 152, title: 'The aftermath', tag: 'established', focus: { x: 1200, y: 900 }, zoom: 'fit', end: true,
       text: 'The French attack is broken. The Prussians press on, and the French army retreats south. Napoleon abdicated three days later.',
       explain: 'The battle ended the Napoleonic Wars. Its result is not in doubt; the detail of who did what, and when, is what the sources argue about.',
       cite: 'Britannica, Battle of Waterloo',
-      orders: [] }
+      orders: [
+        { id: 'guard', to: { x: 1200, y: 1700 }, speed: 36, state: 'rout', strengthTo: 30, over: 4 },
+        { id: 'derlon', to: { x: 1500, y: 1700 }, speed: 30, state: 'rout' }, { id: 'reille', to: { x: 800, y: 1700 }, speed: 30, state: 'rout' },
+        { id: 'guards-b', to: { x: 1000, y: 1000 }, speed: 20 }, { id: 'alten', to: { x: 1200, y: 1000 }, speed: 20 }, { id: 'picton', to: { x: 1500, y: 1000 }, speed: 20 },
+        { id: 'bulow', to: { x: 1900, y: 1500 }, speed: 25 }, { id: 'zieten', to: { x: 1900, y: 1000 }, speed: 25 }
+      ] }
   ],
 
   /* ---------- Command mode: the computer’s plans for the side the player does not take ---------- */
   ai: {
     plans: {
-      /* When the player takes the Allies, the French are run by the computer. */
+      /* When the player takes the Allies, the French are run by the computer, roughly to the day’s timetable. */
       french: [
-        { t: 0,  orders: [] },
-        { t: 20, orders: [ { id: 'cuir', to: { x: 1000, y: 900 }, speed: 40, hunt: true }, { id: 'lancers', to: { x: 1450, y: 920 }, speed: 40, hunt: true } ],
-          caption: { title: 'French cavalry advances', text: 'The cuirassiers and lancers are moving up the slope toward your squares.', tag: 'account' } },
-        { t: 60, orders: [ { id: 'derlon', to: { x: 1330, y: 1020 }, speed: 18 } ] }
+        { t: 0,   orders: [] },
+        { t: 8,   orders: [ { id: 'reille', to: { x: 660, y: 1030 }, speed: 16, state: 'attack' } ],
+          caption: { title: 'Hougoumont attacked', text: 'Reille’s infantry is attacking Hougoumont on your right.', tag: 'reconstruction' } },
+        { t: 30,  orders: [ { id: 'derlon', to: { x: 1500, y: 720 }, speed: 14, state: 'attack' } ],
+          caption: { title: 'd’Erlon advances', text: 'A French corps is advancing on your left-centre, east of the Brussels road.', tag: 'reconstruction' } },
+        { t: 70,  orders: [ { id: 'cuir', to: { x: 960, y: 680 }, speed: 40, hunt: true }, { id: 'lancers', to: { x: 1130, y: 690 }, speed: 40, hunt: true } ],
+          caption: { title: 'Cavalry on the slope', text: 'Massed French cavalry is coming up the slope on your right-centre. Infantry in the open is in danger.', tag: 'reconstruction' } },
+        { t: 110, orders: [ { id: 'lobau', to: { x: 2040, y: 1520 }, speed: 25 }, { id: 'yguard', to: { x: 2100, y: 1660 }, speed: 22 } ] },
+        { t: 160, orders: [ { id: 'guard', via: [{ x: 1150, y: 1150 }], to: { x: 960, y: 700 }, speed: 22, state: 'attack', hunt: true } ],
+          caption: { title: 'The Imperial Guard', text: 'The Imperial Guard is advancing on your right-centre.', tag: 'reconstruction' } }
       ],
-      /* When the player takes the French, the Allies are run by the computer. */
+      /* When the player takes the French, the Allies are run by the computer: the line holds, the cavalry counter-attacks,
+         and the Prussians arrive on the French right. */
       allied: [
-        { t: 0,  orders: [] },
-        { t: 30, orders: [ { id: 'greys', visible: true, to: { x: 1400, y: 1000 }, speed: 35 } ],
-          caption: { title: 'Allied cavalry moves', text: 'Uxbridge’s heavy cavalry is coming off the ridge toward d’Erlon’s infantry.', tag: 'account' } },
-        { t: 70, orders: [ { id: 'bulow', visible: true, to: { x: 2000, y: 1300 }, speed: 30 } ],
-          caption: { title: 'Prussians coming', text: 'Bülow’s corps is advancing from the east toward Plancenoit.', tag: 'established' } }
+        { t: 0,   orders: [] },
+        { t: 60,  orders: [ { id: 'greys', visible: true, to: { x: 1500, y: 950 }, speed: 40, hunt: true }, { id: 'household', visible: true, to: { x: 1150, y: 900 }, speed: 40, hunt: true } ],
+          caption: { title: 'Allied cavalry charges', text: 'Uxbridge’s heavy cavalry is coming over the crest.', tag: 'reconstruction' } },
+        { t: 100, orders: [ { id: 'bulow', visible: true, to: { x: 2150, y: 1600 }, speed: 30, state: 'attack', hunt: true } ],
+          caption: { title: 'Prussians on your right', text: 'Bülow’s Prussian corps is attacking Plancenoit, behind your right.', tag: 'reconstruction' } },
+        { t: 150, orders: [ { id: 'zieten', visible: true, to: { x: 2050, y: 620 }, speed: 30 } ],
+          caption: { title: 'More Prussians', text: 'Zieten’s Prussian corps has reached the Allied left.', tag: 'reconstruction' } }
       ]
     },
     huntRange: 900,
     holdPoint: { x: 1200, y: 900 },
-    spotRange: 340
+    spotRange: 380
   },
 
   /* Captions shown when a command battle begins, by the player’s side */
@@ -333,19 +394,80 @@ window.WATERLOO_SCENARIO = {
     { text: 'The stories of the day, such as the Hougoumont gate and the Scots Greys charge, are told from both sides, and not always accurately.', tag: 'account' }
   ],
 
-  /* Armies panel: units shown with their drawn figures until painted sprites are added */
+  /* Armies panel: one card per kind of unit. `sheet` is the painted figure shown until a portrait (images/portraits/<portrait>.jpg) exists.
+     Each side shows its first two cards; the rest open from the "more units" button. */
   units: [
-    { side: 'allied', type: 'infantry', name: 'British infantry square', desc: 'Redcoats in a hollow square of bayonets. The infantry’s answer to cavalry.', tag: 'established',
-      photos: [],
+    { side: 'allied', type: 'infantry', sheet: 'british-infantry', portrait: 'british-infantry', name: 'British line infantry', desc: 'Redcoats with the Brown Bess musket. In square, the answer to cavalry.', tag: 'established',
+      photos: ['03-wellington-lawrence.jpg', '04-hougoumont.jpg'],
       lines: [
-        { text: 'A square of infantry, with the front ranks kneeling, was the standard defence against cavalry. Musket fire and bayonets were the main protection.', tag: 'established', cite: 'Cambridge, Cuirassiers and hollow squares' },
-        { text: 'The Brown Bess musket was a smoothbore flintlock, and its rate of fire in good conditions was about three rounds a minute, according to modern estimates.', tag: 'estimate', cite: 'Military collectors’ sources; check a military history before quoting' }
+        { text: 'Most of Wellington’s infantry waited behind the crest of the ridge, many lying down, out of sight of the French guns.', tag: 'established', cite: 'Britannica, Battle of Waterloo' },
+        { text: 'Against cavalry the infantry formed square: a hollow box several ranks deep, with bayonets outward. No square of Wellington’s was broken by the French cavalry that day.', tag: 'established', cite: 'Britannica, Battle of Waterloo' },
+        { text: 'A trained soldier with the Brown Bess smoothbore could fire about two or three rounds a minute.', tag: 'estimate' },
+        { text: 'In this game, infantry that halts is hard for cavalry to break, but a square is a dense target for the guns.', tag: 'reconstruction' }
       ] },
-    { side: 'french', type: 'cavalry', name: 'French cuirassier', desc: 'Heavy cavalry in breastplates, who charged the Allied squares.', tag: 'account',
+    { side: 'allied', type: 'cavalry', sheet: 'scots-greys', portrait: 'scots-greys', name: 'Union Brigade (Scots Greys)', desc: 'Heavy dragoons from England, Scotland and Ireland.', tag: 'established',
+      photos: ['13-scotland-forever.jpg'],
+      lines: [
+        { text: 'The Union Brigade was named for its three regiments: the Royal Dragoons from England, the Scots Greys and the Inniskilling Dragoons from Ireland.', tag: 'established' },
+        { text: 'Its charge broke d’Erlon’s attack. Sergeant Charles Ewart of the Greys took the eagle of the French 45th Line, and the Royals took the eagle of the 105th.', tag: 'established', cite: 'Britannica; National Army Museum' },
+        { text: 'The brigade rode on into the grand battery and lost heavily to the French lancers and cuirassiers. How far it got is disputed.', tag: 'disputed' }
+      ] },
+    { side: 'allied', type: 'infantry', sheet: 'british-infantry', portrait: 'kgl-rifleman', name: 'King’s German Legion', desc: 'Hanoverians in British service. Its riflemen held La Haye Sainte.', tag: 'established',
+      photos: ['15-la-haye-sainte-1816.jpg', { file: '16-la-haye-sainte-rouse.jpg', caption: 'La Haye Sainte after the battle, from William Mudford’s history of the campaign: carts take away the wounded while the dead are buried. Mudford’s caption says the farm was taken when its defenders had used up their ammunition.', ref: 'William Mudford, An Historical Account of the Campaign in the Netherlands (Colburn, 1817); engraved by James Rouse', credit: 'Wikimedia Commons, public domain' }, '05-la-haye-sainte.jpg'],
+      lines: [
+        { text: 'The King’s German Legion was raised from Hanoverian soldiers who joined the British army after Napoleon occupied Hanover.', tag: 'established' },
+        { text: 'Its 2nd Light Battalion, under Major George Baring, held the farm of La Haye Sainte beside the Brussels road for most of the day.', tag: 'established' },
+        { text: 'Baring wrote that the ammunition for their rifles never reached them. In the early evening they were driven out of the farm.', tag: 'account', cite: 'Baring’s own account' }
+      ] },
+    { side: 'allied', type: 'artillery', sheet: 'british-artillery', portrait: 'british-artillery', name: 'Royal Artillery', desc: 'Foot batteries and horse artillery troops on the crest.', tag: 'established',
       photos: [],
       lines: [
-        { text: 'The cuirassiers wore breastplates. They were the heavy cavalry of the French army, and they rode up the slope in wave after wave.', tag: 'account', cite: 'Wikipedia, The British Squares Receiving the Charge of the French Cuirassiers' },
-        { text: 'The sources say the cavalry could not break the squares without infantry or artillery support, and eventually fell back.', tag: 'account' }
+        { text: 'Wellington’s guns were mostly 9-pounders and 6-pounders, many of them in fast-moving troops of horse artillery.', tag: 'established' },
+        { text: 'Close in, the gunners fired canister: a tin of musket balls that burst from the muzzle like a giant shotgun. At longer range they fired solid roundshot.', tag: 'established' },
+        { text: 'The crews were ordered to shelter in the nearest square when cavalry came close, and to run back to the guns as it fell back. Captain Mercer wrote that he kept his men at their guns instead.', tag: 'account', cite: 'Mercer, Journal of the Waterloo Campaign' },
+        { text: 'In this game a battery must stop and unlimber before it can fire, and falls silent while cavalry is on its guns.', tag: 'reconstruction' }
+      ] },
+    { side: 'allied', type: 'infantry', sheet: 'prussian-infantry', portrait: 'prussian-infantry', name: 'Prussian infantry', desc: 'Line infantry and Landwehr of Blücher’s army.', tag: 'established',
+      photos: ['09-plancenoit-northen.jpg', '08-blucher.jpg'],
+      lines: [
+        { text: 'Blücher’s army mixed regular line regiments with the Landwehr, the militia raised during the war of 1813.', tag: 'established' },
+        { text: 'Bülow’s corps marched from Wavre along narrow, muddy lanes, which is why it arrived only in the late afternoon.', tag: 'established' },
+        { text: 'Plancenoit changed hands several times before the Prussians held it in the evening, and their pursuit turned the French retreat into a rout.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'infantry', sheet: 'french-infantry', portrait: 'french-infantry', name: 'French line infantry', desc: 'Blue-coated infantry, attacking in column.', tag: 'established',
+      photos: [{ file: '17-hougoumont-south-gate.jpg', caption: 'The south gate of Hougoumont, the side the French attacked from. A plaque on the wall to the right of the gate remembers the Coldstream Guards, who helped hold the farm all day.', ref: 'Hougoumont, Braine-l’Alleud, Belgium; photographed 2016', credit: 'Photo: Alfa Fallsa, Wikimedia Commons, CC BY-SA 4.0' }, '04-hougoumont.jpg'],
+      lines: [
+        { text: 'French line infantry wore blue coats and carried the Charleville musket. They usually attacked in columns and fought in lines.', tag: 'established' },
+        { text: 'In d’Erlon’s attack whole divisions advanced in battalions packed one behind another, a broad, deep mass that was slow to deploy and hard to miss.', tag: 'established' },
+        { text: 'At Hougoumont, Reille’s infantry fought all day for a farm that was meant to be a side attack.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'cavalry', sheet: 'french-cuirassier', portrait: 'french-cuirassier', name: 'Cuirassiers', desc: 'Heavy cavalry in steel breastplates and helmets.', tag: 'established',
+      photos: ['07-cuirassiers-philippoteaux.jpg', '06-ney-gerard.jpg'],
+      lines: [
+        { text: 'Cuirassiers wore steel breastplates and helmets. They were the heavy cavalry of the French army.', tag: 'established' },
+        { text: 'In the afternoon Marshal Ney sent them against the Allied squares in charge after charge, with too little infantry or artillery to follow up.', tag: 'established' },
+        { text: 'The charges did not break a single square, and the French cavalry was worn out before the Imperial Guard attacked.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'cavalry', sheet: 'french-lancer', portrait: 'french-lancer', name: 'Lancers', desc: 'Light cavalry with a lance about 2.75 metres long.', tag: 'established',
+      photos: [],
+      lines: [
+        { text: 'A lance could reach past a sabre, or down to a man on the ground. Lancers were feared by cavalry caught in disorder.', tag: 'established' },
+        { text: 'Jacquinot’s lancers counter-charged the Union Brigade among the guns of the grand battery and caused heavy losses.', tag: 'established' },
+        { text: 'The red lancers of the Imperial Guard rode in the great cavalry charges of the afternoon.', tag: 'established' }
+      ] },
+    { side: 'french', type: 'artillery', sheet: 'french-artillery', portrait: 'french-artillery', name: 'French artillery', desc: 'The grand battery and the guns of the corps.', tag: 'established',
+      photos: [],
+      lines: [
+        { text: 'Napoleon was trained as an artillery officer, and he massed his guns. The grand battery stood on a low rise facing the Allied left-centre.', tag: 'established' },
+        { text: 'How many guns it had is disputed: sources give from about 40 to 84.', tag: 'disputed' },
+        { text: 'Witnesses say much of the roundshot buried itself in ground softened by the night’s rain instead of bouncing on through the ranks.', tag: 'account' }
+      ] },
+    { side: 'french', type: 'infantry', sheet: 'french-infantry', portrait: 'imperial-guard', name: 'Imperial Guard', desc: 'Napoleon’s elite reserve, veterans picked from the line.', tag: 'established',
+      photos: ['02-napoleon-david.jpg'],
+      lines: [
+        { text: 'The Imperial Guard was Napoleon’s elite reserve. Its soldiers were veterans picked from the rest of the army.', tag: 'established' },
+        { text: 'In the evening battalions of the Middle Guard attacked the Allied right-centre. Musketry and cannon fire drove them back, and their retreat set off the collapse of the French army.', tag: 'established' },
+        { text: 'The Young Guard and the Old Guard fought the Prussians in Plancenoit. The famous words attributed to Guard officers at the end of the day are disputed.', tag: 'disputed' }
       ] }
   ],
 
@@ -364,7 +486,8 @@ window.WATERLOO_SCENARIO = {
     disputed: { title: 'Disputed', intro: 'The sources or the scholars disagree. The game shows the disagreement rather than choosing a side.', items: [
       { ref: 'Number of guns in the grand battery', note: 'Sources give between about 40 and 84. See Wikipedia, Grand Battery.' },
       { ref: 'Time of the Prussian arrival', note: 'Sources give between about 16:30 and 17:00; some give 17:00. See Britannica.' },
-      { ref: 'The Scots Greys charge', note: 'Accounts differ on how far they got and what the losses were.' },
+      { ref: 'The Union Brigade in the grand battery', note: 'That the charge broke d’Erlon’s attack is established. How far the brigade got into the guns, and how many it put out of action, is disputed.' },
+      { ref: 'Why Ney launched the cavalry charges', note: 'He may have taken Allied movement behind the crest for a retreat; the sources do not settle it.' },
       { ref: 'The words attributed to the Imperial Guard', note: 'Disputed; not shown as fact.' }
     ] },
     estimate: { title: 'Estimate', intro: 'Modern estimates, not counts. Use them as a range.', items: [
@@ -372,10 +495,37 @@ window.WATERLOO_SCENARIO = {
     ] },
     reconstruction: { title: 'Reconstruction', intro: 'Choices made for this game so that the battle can be shown and played. They are not claims about what happened.', items: [
       { ref: 'The map', note: 'A schematic ridge, two farms, a road, and Plancenoit. Positions are from the sources’ descriptions; exact ground is not known.' },
-      { ref: 'Positions, timings and speeds', note: 'Chosen to show the sequence of the day in about two minutes. The real battle lasted about ten hours.' },
+      { ref: 'Positions, timings and speeds', note: 'Chosen to show the sequence of the day in under three minutes. The real battle lasted about nine hours, from the late morning to nightfall.' },
+      { ref: 'Cannon', note: 'Ranges, reload times and the effect of roundshot and canister are a game model, not to scale.' },
       { ref: 'Combat results in Command mode', note: 'A simple strength model. Nothing about it is historical.' }
     ] }
   },
+
+  /* Library of sources (library.html): public-domain books and records kept on this site so the citations still work if
+     outside links change. `local` is our PDF of a printed copy in sources/ (null until it is added); `gutenberg` and `archive` are
+     the places it came from. A search link stands in until the exact book page is known. */
+  library: [
+    { title: 'Journal of the Waterloo Campaign', author: 'Cavalié Mercer', year: 1870, kind: 'Eyewitness journal',
+      about: 'A captain of the Royal Horse Artillery. His troop stood on the ridge through the French cavalry charges; his account of keeping his gunners at their guns is one of the most vivid of the day. Written from notes kept at the time, published fifty years later.',
+      citedIn: 'Royal Artillery card; the sources slide', rights: 'Published 1870; Mercer died 1868. Public domain.',
+      local: 'mercer-1870-journal-vol1.pdf', localNote: 'Volume 1, which covers the battle (about pages 180–230 of our PDF). Made from Project Gutenberg eBook #75872; volume 2 is still to add.', gutenberg: 'https://www.gutenberg.org/ebooks/75872', archive: 'https://archive.org/search?query=Mercer+Journal+of+the+Waterloo+Campaign' },
+    { title: 'Waterloo Letters', author: 'H. T. Siborne (editor)', year: 1891, kind: 'Officers’ letters',
+      about: 'Letters written in the 1830s by surviving British officers to William Siborne, who was building his model of the battle. Each man describes what he saw from where he stood.',
+      citedIn: 'The map on the sources slide', rights: 'Published 1891. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Waterloo+Letters+Siborne', archive: 'https://archive.org/search?query=Waterloo+Letters+Siborne' },
+    { title: 'History of the War in France and Belgium in 1815', author: 'William Siborne', year: 1844, kind: 'History',
+      about: 'The first full British history of the campaign, written from the officers’ letters. Its account of the Prussian part was argued over at the time.',
+      citedIn: 'Background for the chapters', rights: 'Published 1844. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Siborne+Waterloo+Campaign', archive: 'https://archive.org/search?query=Siborne+History+of+the+War+in+France+and+Belgium' },
+    { title: 'An Historical Account of the Campaign in the Netherlands in 1815', author: 'William Mudford', year: 1817, kind: 'History with plates',
+      about: 'Published two years after the battle, with coloured plates of the farms and the field. Our engraving of La Haye Sainte after the battle comes from it.',
+      citedIn: 'King’s German Legion card', rights: 'Published 1817. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Mudford+Campaign+in+the+Netherlands', archive: 'https://archive.org/search?query=Mudford+Historical+Account+of+the+Campaign+in+the+Netherlands' },
+    { title: 'Sketches in Flanders and Holland', author: 'Robert Hills', year: 1816, kind: 'Travel sketches',
+      about: 'A painter’s tour of the battlefield the year after the battle. Our 1816 drawing of La Haye Sainte comes from it.',
+      citedIn: 'The ridge slide; King’s German Legion card', rights: 'Published 1816. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Hills+Sketches+in+Flanders+and+Holland', archive: 'https://archive.org/search?query=Hills+Sketches+in+Flanders+and+Holland' }
+  ],
 
   sources: [
     { title: 'Britannica, Battle of Waterloo', note: 'Overview and the first hours of the battle.' },

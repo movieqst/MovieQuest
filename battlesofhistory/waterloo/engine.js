@@ -19,7 +19,8 @@ const PI = Math.PI;
 
 /* ---------------- state ---------------- */
 const view = { x: 0, y: 0, w: 1000, h: 650, z: 1.25 };
-const cam  = { tx: null, ty: null, follow: true };
+const WATCH_Z = 1.25;   // the zoom watch-mode chapters return to after the opening view of the whole map
+const cam  = { tx: null, ty: null, tz: null, fit: false, follow: true };
 let mode = 'intro';             // intro | watch | command
 let paused = false, cinematic = false, speed = 1, simTime = 0, acc = 0, lastFrame = 0, wall = 0;
 let formations = [], byId = {};
@@ -209,14 +210,15 @@ function tent(c, x, y, s, col, royal) {
 }
 
 /* ---------------- unit sprites (drawn facing +x, origin at the feet) ---------------- */
+// Allied in red (the British redcoats), French in blue.
 const SIDE_ART = {
-  allied:   { skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' },
-  french: { skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' }
+  allied: { skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' },
+  french: { skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' }
 };
 /* Upright three-quarter-view figures (origin at the feet, drawn facing one of four directions). */
 const dirOf = facing => { const a = ((facing % (2 * PI)) + 2 * PI) % (2 * PI); return a < PI / 4 || a > 7 * PI / 4 ? 'e' : a < 3 * PI / 4 ? 's' : a < 5 * PI / 4 ? 'w' : 'n'; };
 function figInfantry(c, side, archer, s, i, dir, step) {
-  const A = SIDE_ART[side], hit = side === 'french', skin = A.skin, cloth = hit ? '#8a3a30' : '#f4efe2', cloth2 = hit ? '#6a2a22' : '#ddd3bb';
+  const A = SIDE_ART[side], hit = side === 'allied', skin = A.skin, cloth = hit ? '#8a3a30' : '#f4efe2', cloth2 = hit ? '#6a2a22' : '#ddd3bb';
   c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, 5 * s, 2 * s, 0, 0, PI * 2); c.fill();
   const side_ = dir === 'e' || dir === 'w', back = dir === 'n', sw = Math.sin(step) * 1.6 * s;
   // legs
@@ -253,6 +255,24 @@ function figInfantry(c, side, archer, s, i, dir, step) {
     if (side_) { c.moveTo(3.2 * s, -16.5 * s); c.lineTo(3.2 * s, -6.5 * s); } else { c.moveTo(4.2 * s + Math.cos(-1.25) * 5 * s, -11.5 * s + Math.sin(-1.25) * 5 * s); c.lineTo(4.2 * s + Math.cos(1.25) * 5 * s, -11.5 * s + Math.sin(1.25) * 5 * s); }
     c.stroke(); c.fillStyle = '#7a5a30'; c.fillRect(-4.6 * s, -16 * s, 1.8 * s, 6 * s); // quiver
   }
+}
+/* Drawn stand-in for the elephant until a painted sheet (images/units/french-elephant.png) is present. */
+function figElephant(c, side, s, moving, dir, step) {
+  const A = SIDE_ART[side], side_on = dir === 'e', bob = moving ? Math.sin(step) * .8 * s : 0;
+  c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, (side_on ? 15 : 10) * s, 3.6 * s, 0, 0, PI * 2); c.fill();
+  c.fillStyle = '#7d7a74'; c.strokeStyle = '#4c4a45'; c.lineWidth = .8 * s;
+  const legs = side_on ? [-8, -4, 5, 9] : [-6, -2, 2, 6];
+  legs.forEach((x, k) => { const sw = moving ? Math.sin(step + k * 1.6) * 1.2 * s : 0; c.fillRect(x * s - 1.6 * s + sw, -9 * s, 3.2 * s, 9 * s); });
+  c.beginPath(); c.ellipse(0, -14 * s + bob, (side_on ? 13 : 9) * s, 8 * s, 0, 0, PI * 2); c.fill(); c.stroke();
+  c.fillStyle = A.cab; c.fillRect((side_on ? -7 : -6) * s, -21 * s + bob, (side_on ? 14 : 12) * s, 6 * s);
+  c.fillStyle = '#7d7a74';
+  if (side_on) { c.beginPath(); c.ellipse(13 * s, -15 * s + bob, 5 * s, 5.5 * s, 0, 0, PI * 2); c.fill(); c.stroke();
+    c.lineWidth = 2.4 * s; c.strokeStyle = '#7d7a74'; c.beginPath(); c.moveTo(16 * s, -13 * s + bob); c.quadraticCurveTo(20 * s, -7 * s, 18 * s, -2 * s); c.stroke();
+    c.strokeStyle = '#f2ead3'; c.lineWidth = 1.2 * s; c.beginPath(); c.moveTo(15 * s, -11 * s + bob); c.lineTo(19 * s, -10 * s + bob); c.stroke(); }
+  else { c.beginPath(); c.ellipse(0, dir === 'n' ? -18 * s + bob : -12 * s + bob, 5.5 * s, 5.5 * s, 0, 0, PI * 2); c.fill(); c.stroke();
+    if (dir !== 'n') { c.lineWidth = 2.4 * s; c.strokeStyle = '#7d7a74'; c.beginPath(); c.moveTo(0, -9 * s + bob); c.lineTo(0, -2 * s); c.stroke(); } }
+  c.fillStyle = A.skin; c.beginPath(); c.arc(side_on ? 6 * s : 0, -23.5 * s + bob, 2 * s, 0, PI * 2); c.fill();
+  c.fillStyle = A.cab; c.fillRect((side_on ? 4.6 : -1.4) * s, -22 * s + bob, 2.8 * s, 3 * s);
 }
 function figChariot(c, side, s, i, moving, dir, step) {
   const A = SIDE_ART[side], crew = side === 'french' ? 3 : 2, sw = moving ? Math.sin(step) * 1.8 * s : 0;
@@ -291,16 +311,105 @@ function figChariot(c, side, s, i, moving, dir, step) {
     crewAt(crew === 2 ? [-2.6 * s, 2.6 * s] : [-3.4 * s, 0, 3.4 * s], -9.5 * s, .95 * s);
   }
 }
-/* Painted sprite sheets (images/units/<side>-<type>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
-   Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
+/* Painted sprite sheets (images/units/<name>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
+   Gun sheets differ: one facing (east, mirrored for west), and the rows are actions: move, push (limber/unlimber), load, fire.
+   Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1.
+   A formation may name its own sheet (`sheet`, e.g. the Prussians or the Scots Greys); otherwise it follows its side and type. */
 const SHEETS = {};
-const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 } };
-[].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
-const sheetFor = (side, type) => SHEETS[(side === 'allied' ? 'allied' : 'french') + '-' + (type === 'chariot' ? 'chariot' : type === 'cavalry' ? 'cavalry' : type === 'archers' ? 'archer' : 'spearman')];
+let armiesRedraw = null;   // set by renderArmies: redraws the card figures when a sheet arrives
+const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 }, elephant: { cw: 240, ch: 200, h: 72 }, artillery: { cw: 384, ch: 256, h: 34 } };
+['british-infantry', 'french-infantry', 'prussian-infantry', 'french-cuirassier', 'french-lancer', 'scots-greys', 'british-artillery', 'french-artillery'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; if (armiesRedraw) armiesRedraw(); }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const SHEET_BY = { allied: { infantry: 'british-infantry', archers: 'british-infantry', cavalry: 'scots-greys', artillery: 'british-artillery' },
+                   french: { infantry: 'french-infantry', archers: 'french-infantry', cavalry: 'french-cuirassier', artillery: 'french-artillery' } };
+const sheetFor = f => SHEETS[f.sheet || (SHEET_BY[f.side] || {})[f.type]];
+/* ---------------- artillery ----------------
+   A battery is a formation of gun figures (three guns stand for a whole battery). It fires only when unlimbered: a battery
+   ordered to move first limbers up, moves slowly, and must unlimber again before it can fire. It fires volleys on a reload
+   cycle at the nearest enemy it can see: roundshot at long range, canister (a can of musket balls) close in, which is far
+   deadlier. Troops behind the crest of a ridge (`S.cover`) are half-hidden from roundshot. Crews do not fight hand to hand:
+   when cavalry is on top of the guns they take shelter and the battery falls silent, and enemy troops in contact damage it.
+   Numbers are a game model, not to scale. */
+const GUN = { range: 620, canister: 190, reload: 2.6, limber: 1.6, unlimber: 2.2, round: 2.6, canisterDmg: 9, shelter: 60 };
+const SMOKE = [];   // world-space smoke puffs and dust: { x, y, t0, life, r, kind }
+function gunInit(f) { f.gun = { deployed: true, phase: 'ready', t: 0, cd: 1 + (f.cols || 3) * .3 * Math.random(), lastShot: -99, aim: null }; }
+const gunFacesWest = f => f.gun && f.gun.aim ? f.gun.aim.x < f.x - 8 : Math.cos(f.facing) < -.2;
+// Pose for gun figure i: which row and frame of the sheet. Guns in a battery fire one after another, a quarter second apart.
+function gunPose(f, i) {
+  const g = f.gun || { phase: 'ready', lastShot: -99, cd: 0 }, since = simTime - g.lastShot - i * .25;
+  if (g.phase === 'moving') return { row: 0, frame: Math.floor(wall * 6 + i) % 4 };
+  if (g.phase === 'limber' || g.phase === 'unlimber') return { row: 1, frame: Math.floor(wall * 4 + i) % 4 };
+  if (since >= 0 && since < .8) return { row: 3, frame: since < .12 ? 1 : since < .45 ? 2 : 3 };
+  if (since >= .8 && g.cd > .4) return { row: 2, frame: Math.floor(wall * 3 + i) % 4 };
+  return { row: 3, frame: 0 };
+}
+function drawGunSheet(c, sh, f, x, y, i, s) {
+  const spec = SHEET_SPEC.artillery, pose = gunPose(f, i), scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
+  c.save(); c.translate(x, y); if (gunFacesWest(f)) c.scale(-1, 1);
+  c.drawImage(sh, pose.frame * spec.cw, pose.row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore();
+}
+// Drawn stand-in for a gun and its crew, facing east (the caller mirrors it for west).
+function figGun(c, side, s, i, row) {
+  const A = SIDE_ART[side], recoil = row === 3 ? -1.5 * s : 0;
+  c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, 14 * s, 3.2 * s, 0, 0, PI * 2); c.fill();
+  c.strokeStyle = side === 'french' ? '#4c5a66' : '#55603a'; c.lineWidth = 2.6 * s; c.beginPath(); c.moveTo(-12 * s + recoil, -1 * s); c.lineTo(2 * s + recoil, -5 * s); c.stroke();
+  c.fillStyle = '#b08a3a'; c.save(); c.translate(3 * s + recoil, -6 * s); c.rotate(-.08); c.fillRect(-5 * s, -1.6 * s, 15 * s, 3.2 * s); c.restore();
+  c.strokeStyle = '#3a2c1c'; c.lineWidth = 1.2 * s; c.beginPath(); c.arc(2 * s + recoil, -4 * s, 4.2 * s, 0, PI * 2); c.stroke();
+  [-9, -4].forEach((dx, k) => { c.fillStyle = A.cab; c.fillRect((dx - 1.4) * s, -12 * s, 2.8 * s, 6 * s); c.fillStyle = A.skin; c.beginPath(); c.arc(dx * s, -13.5 * s, 1.5 * s, 0, PI * 2); c.fill();
+    c.fillStyle = '#1d1d1d'; c.fillRect((dx - 1.3) * s, -17 * s, 2.6 * s, 2.6 * s); c.fillStyle = '#e8e2d2'; c.fillRect((dx - 1.2) * s, -6 * s, 1 * s, 6 * s); c.fillRect((dx + .2) * s, -6 * s, 1 * s, 6 * s); });
+}
+// Can this side see that formation? In Command mode each side has its own picture; in the reenactment, what the narration shows.
+function sees(side, t) { if (!alive(t) || !t.present) return false; if (mode !== 'command') return t.known; return side === player ? t.known : t.aiKnown; }
+// One volley per battery when it is ready. `apply` = false in the reenactment: the guns fire for the eye, the script decides losses.
+function artillery(apply) {
+  formations.forEach(f => {
+    if (f.type !== 'artillery' || !alive(f) || !f.gun || f.state === 'rout' || f.state === 'captured' || f.holdFire) return;
+    const g = f.gun; if (!g.deployed) return;
+    g.cd -= DT; if (g.cd > 0) return;
+    let best = null, bd = GUN.range, near = false;
+    formations.forEach(t => { if (t.side === f.side || !alive(t) || t.state === 'captured') return; const d = dist(f, t);
+      if (d < GUN.shelter && (t.type === 'cavalry' || t.type === 'infantry')) near = true;
+      const dd = t.type === 'artillery' ? d * 1.6 : d;   // gunners were told to fire at troops, not at the enemy's guns
+      if (dd < bd && d < GUN.range && sees(f.side, t)) { bd = dd; best = t; } });
+    if (best) bd = dist(f, best);
+    if (near) { g.cd = .5; return; }                       // crews take shelter while enemy troops are on the guns
+    if (!best) { g.cd = .4; g.aim = null; return; }
+    g.aim = { x: best.x, y: best.y }; g.lastShot = simTime; g.cd = GUN.reload * (.9 + .2 * Math.random());
+    const canister = bd < GUN.canister, n = f.cols * f.rows;
+    for (let i = 0; i < n; i++) {
+      const west = best.x < f.x - 8, mx = f.x + (i - (n - 1) / 2) * 52 + (west ? -26 : 26), my = f.y - 9;   // at the muzzle
+      SMOKE.push({ x: mx, y: my, t0: simTime + i * .25, life: 3.2, r: 10, kind: 'smoke' });
+      SMOKE.push({ x: best.x + (Math.random() - .5) * 60, y: best.y + (Math.random() - .5) * 30, t0: simTime + .2 + i * .25, life: 1.2, r: canister ? 14 : 8, kind: canister ? 'spray' : 'dust' });
+    }
+    if (!apply) return;
+    let dmg = (canister ? GUN.canisterDmg * (1 - .5 * bd / GUN.canister) : GUN.round * (1 - .4 * bd / GUN.range)) * (f.power || 1) * (f.strength / 100);
+    if (!canister && S.cover && best.side === S.cover.side && best.y < S.cover.yMax) dmg *= S.cover.k;   // behind the crest
+    if (best.state === 'hold' && best.type === 'infantry') dmg *= 1.2;   // a square or a halted line is a dense target
+    if (best.fortified) dmg *= .12;                                      // behind the thick walls of a farm
+    best.strength -= dmg; best.lastHit = simTime;
+  });
+  for (let k = SMOKE.length - 1; k >= 0; k--) if (simTime - SMOKE[k].t0 > SMOKE[k].life || simTime < SMOKE[k].t0 - 5) SMOKE.splice(k, 1);
+}
+function drawSmoke(c) {
+  SMOKE.forEach(p => { const a = simTime - p.t0; if (a < 0) return; const k = a / p.life, q = P(p.x + a * 6, p.y - a * 4); if (!(q.s > 0)) return;
+    if (p.kind === 'smoke') {
+      if (a < .12) { const fl = c.createRadialGradient(q.x, q.y, 0, q.x, q.y, 9 * q.s); fl.addColorStop(0, 'rgba(255,240,180,.95)'); fl.addColorStop(1, 'rgba(255,150,40,0)'); c.fillStyle = fl; c.beginPath(); c.arc(q.x, q.y, 9 * q.s, 0, PI * 2); c.fill(); }
+      // a soft, drifting cloud of powder smoke: a few overlapping puffs that grow and fade
+      [[0, 0, 1], [-6, -4, .8], [7, -6, .7], [2, -11, .6]].forEach(([ox, oy, w]) => { const r = (p.r + a * 11) * w * q.s, cx = q.x + ox * q.s * (1 + a), cy = q.y + oy * q.s * (1 + a * .6);
+        const g = c.createRadialGradient(cx, cy, 0, cx, cy, r); g.addColorStop(0, `rgba(232,230,224,${.42 * (1 - k)})`); g.addColorStop(.6, `rgba(215,213,206,${.22 * (1 - k)})`); g.addColorStop(1, 'rgba(210,208,200,0)');
+        c.fillStyle = g; c.beginPath(); c.arc(cx, cy, r, 0, PI * 2); c.fill(); });
+    } else if (p.kind === 'dust') {
+      c.fillStyle = `rgba(120,95,60,${.5 * (1 - k)})`; c.beginPath(); c.arc(q.x, q.y, (p.r + a * 10) * q.s, 0, PI * 2); c.fill();
+    } else {
+      c.strokeStyle = `rgba(80,70,55,${.6 * (1 - k)})`; c.lineWidth = 1; for (let m = 0; m < 7; m++) { const ang = m / 7 * PI * 2; c.beginPath(); c.moveTo(q.x, q.y); c.lineTo(q.x + Math.cos(ang) * (p.r + a * 20) * q.s, q.y + Math.sin(ang) * (p.r + a * 20) * .5 * q.s); c.stroke(); }
+    }
+  });
+}
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
-  const sh = artOn ? sheetFor(f.side, f.type) : null;
+  if (!(s > 0)) return;   // beyond the horizon of a very short, tilted view: nothing to draw
+  const sh = artOn ? sheetFor(f) : null;
+  if (sh && f.type === 'artillery') { drawGunSheet(c, sh, f, x, y, i, s); return; }
   if (sh) {
-    const spec = SHEET_SPEC[f.type === 'chariot' ? 'chariot' : f.type === 'cavalry' ? 'cavalry' : 'infantry'], d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
+    const spec = SHEET_SPEC[f.type] || SHEET_SPEC.infantry, d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
     const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
     const scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
     c.save(); c.translate(x, y); if (k !== 1) c.scale(1, 1); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore(); return;
@@ -308,7 +417,9 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   c.save(); c.translate(x, y);
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', d = dirOf(facing), step = moving ? wall * 8 + i * 1.7 : 0;
   if (d === 'w') c.scale(-1, 1);
+  if (f.type === 'artillery') { if (d === 'w') c.scale(-1, 1); if (gunFacesWest(f)) c.scale(-1, 1); figGun(c, f.side, s, i, gunPose(f, i).row); c.restore(); return; }
   if (f.type === 'chariot') figChariot(c, f.side, s, i, moving, d === 'w' ? 'e' : d, step);
+  else if (f.type === 'elephant') figElephant(c, f.side, s, moving, d === 'w' ? 'e' : d, step);
   else figInfantry(c, f.side, f.type === 'archers' || (f.type === 'infantry' && i % 3 === 2), s, i, d === 'w' ? 'e' : d, step);
   c.restore();
 }
@@ -377,20 +488,24 @@ function drawCity(c) {
 function createFormations() {
   formations = S.formations.map(d => Object.assign({}, d, {
     tx: d.x, ty: d.y, strength: 100, strengthTarget: null, strengthRate: 0,
-    state: 'hold', known: !d.hidden, aiKnown: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : d.type === 'cavalry' ? 40 : 16),
-    facing: d.facing !== undefined ? d.facing : (d.side === 'allied' ? -PI / 2 : PI), spread: 1, then: null, aiPhase: null, lastHit: -99
+    state: 'hold', known: !d.hidden, aiKnown: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : d.type === 'cavalry' ? 40 : d.type === 'elephant' ? 14 : d.type === 'artillery' ? 10 : 16),
+    facing: d.facing !== undefined ? d.facing : (d.side === 'allied' ? PI / 2 : -PI / 2), spread: 1,   // the Allies hold the north, facing south
+    holdFire: mode === 'watch' && !!d.holdFire, then: null, aiPhase: null, lastHit: -99
   }));
+  formations.forEach(f => { if (f.type === 'artillery') gunInit(f); }); SMOKE.length = 0;
   byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations;
 }
 function applyOrder(o) {
   const f = byId[o.id]; if (!f) return;
   if (o.visible !== undefined) { f.known = o.visible; if (o.visible) f.present = true; }
   if (o.at) { f.x = o.at.x; f.y = o.at.y; }
-  if (o.to) { f.tx = o.to.x; f.ty = o.to.y; f.state = o.state || 'move'; } else if (o.state) f.state = o.state;
+  // `via`: waypoints taken in order before `to`, e.g. to go round the end of a line rather than through it.
+  if (o.to) { f.route = (o.via || []).concat([o.to]); const n = f.route.shift(); f.tx = n.x; f.ty = n.y; f.state = o.state || 'move'; } else if (o.state) f.state = o.state;
   if (o.speed) f.speed = o.speed;
   if (o.strength !== undefined) { f.strength = o.strength; f.strengthTarget = null; }
   if (o.strengthTo !== undefined) { f.strengthTarget = o.strengthTo; f.strengthRate = Math.abs(f.strength - o.strengthTo) / (o.over || 5); }
   if (o.spread) f.spread = o.spread;
+  if (o.fire !== undefined) f.holdFire = !o.fire;
   f.then = o.then || null;
 }
 function moveFormation(f) {
@@ -400,7 +515,14 @@ function moveFormation(f) {
     if (Math.abs(d) <= step) { f.strength = f.strengthTarget; f.strengthTarget = null; } else f.strength += Math.sign(d) * step;
   }
   f.inWater = inWater(f.x, f.y);
-  if (f.state === 'hold' || f.state === 'loot' || f.state === 'scattered') return;
+  if (f.type === 'artillery' && f.gun) {
+    const g = f.gun, wantsMove = (f.state === 'move' || f.state === 'attack' || f.state === 'rout') && Math.hypot(f.tx - f.x, f.ty - f.y) > 2;
+    if (wantsMove && g.deployed) { g.phase = 'limber'; g.t += DT; if (g.t < GUN.limber) return; g.deployed = false; g.t = 0; }
+    if (wantsMove) g.phase = 'moving';
+    else if (!g.deployed) { g.phase = 'unlimber'; g.t += DT; if (g.t >= GUN.unlimber) { g.deployed = true; g.t = 0; g.phase = 'ready'; g.cd = .5; if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; } return; }
+    else { g.phase = 'ready'; g.t = 0; }
+  }
+  if (f.state === 'hold' || f.state === 'loot' || f.state === 'scattered' || f.state === 'captured') return;
   // (re)plan when the target changes
   if (!f.path || f.pathTx !== f.tx || f.pathTy !== f.ty) { const g = legal({ x: f.tx, y: f.ty }); f.tx = g.x; f.ty = g.y; f.path = planPath({ x: f.x, y: f.y }, g); f.pathTx = f.tx; f.pathTy = f.ty; }
   while (f.path.length > 1 && Math.hypot(f.path[0].x - f.x, f.path[0].y - f.y) < 6) f.path.shift();
@@ -408,6 +530,7 @@ function moveFormation(f) {
   const dx = wp.x - f.x, dy = wp.y - f.y, d = Math.hypot(dx, dy), dEnd = Math.hypot(f.tx - f.x, f.ty - f.y);
   const sp = f.speed * (f.state === 'rout' ? 1.25 : 1) * (f.inWater ? .55 : 1) * DT;
   if (dEnd > 2) { f.x += dx / d * Math.min(sp, d); f.y += dy / d * Math.min(sp, d); f.facing = Math.atan2(dy, dx); }
+  else if (f.route && f.route.length) { const n = f.route.shift(); f.tx = n.x; f.ty = n.y; }
   else {
     if (f.then) { f.state = f.then; f.then = null; }
     else if (f.state === 'rout') f.state = mode === 'command' ? 'withdrawn' : 'scattered';
@@ -418,7 +541,8 @@ function moveFormation(f) {
 /* ---------------- watch mode ---------------- */
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
-  if (cam.follow && ev.focus) focusOn(ev.focus.x, ev.focus.y);
+  if (cam.follow && ev.zoom === 'fit') showWholeMap();
+  else if (cam.follow && ev.focus) { if (ev.zoom || view.z < WATCH_Z - .01) cam.tz = ev.zoom || WATCH_Z; frame(ev.focus.x, ev.focus.y); }
   caption(ev.title, ev.text, ev.tag, !fastForward, ev.audio || audioFor('event', S.events.indexOf(ev) + 1), ev.cite);
   addLog(fmtTime(ev.t) + ' ' + ev.title);
   renderTimeline();
@@ -426,7 +550,7 @@ function fireEvent(ev) {
 }
 function stepWatch() {
   while (eventIndex < S.events.length && S.events[eventIndex].t <= simTime) fireEvent(S.events[eventIndex++]);
-  formations.forEach(moveFormation);
+  formations.forEach(moveFormation); artillery(false);
   if (simTime >= S.duration && !battleOver && !fastForward) endWatch();
 }
 function endWatch() { battleOver = 'history'; paused = true; showDebrief(); }
@@ -462,12 +586,12 @@ function stepCommand() {
       if (best) { f.tx = best.x; f.ty = best.y; f.state = 'attack'; } else { f.tx = S.ai.holdPoint.x; f.ty = S.ai.holdPoint.y; f.state = 'move'; }
     }
   });
-  formations.forEach(moveFormation); combat(); fog(); checkEnd();
+  formations.forEach(moveFormation); artillery(true); combat(); fog(); checkEnd();
 }
 // The computer side without a hunting role: charges the nearest enemy it has spotted (chariots from further off), or holds.
 function aiReact(side, enemies) {
   formations.forEach(f => {
-    if (f.side !== side || f.hunter || !alive(f) || f.state === 'rout') return;
+    if (f.side !== side || f.hunter || f.aiHold || f.type === 'artillery' || !alive(f) || f.state === 'rout') return;   // aiHold: stays put, as the sources have it; guns fire where they stand
     let best = null, bd = f.type === 'chariot' ? 650 : 260; enemies.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
     if (best) {
       if (f.type === 'chariot') { f.tx = best.x; f.ty = best.y; f.state = 'attack'; f.aiPhase = 'engaged'; }
@@ -476,22 +600,25 @@ function aiReact(side, enemies) {
     } else if (f.aiPhase === 'engaged') { f.aiPhase = null; f.state = 'hold'; }
   });
 }
-const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5, cavalry: 5 }, infantry: { infantry: 6, chariot: 6, archers: 8, cavalry: 4 }, archers: { infantry: 5, chariot: 5, archers: 5, cavalry: 5 }, cavalry: { infantry: 5, chariot: 5, archers: 6, cavalry: 5 } };
+// Elephants (a what-if in Command mode: the sources do not show them fighting) hit hard, frighten horses, and are hard for cavalry to hurt.
+const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5, cavalry: 5, elephant: 3, artillery: 6 }, infantry: { infantry: 6, chariot: 6, archers: 8, cavalry: 4, elephant: 4, artillery: 6 }, archers: { infantry: 5, chariot: 5, archers: 5, cavalry: 5, elephant: 5, artillery: 4 }, cavalry: { infantry: 5, chariot: 5, archers: 6, cavalry: 5, elephant: 2, artillery: 9 },
+  elephant: { infantry: 7, chariot: 7, archers: 7, cavalry: 9, elephant: 5, artillery: 8 } };
 function combat() {
-  const live = formations.filter(f => alive(f) && f.state !== 'rout');
+  const live = formations.filter(f => alive(f) && f.state !== 'rout' && f.state !== 'captured');
   live.forEach(a => live.forEach(d => {
-    if (a.side === d.side) return;
+    if (a.side === d.side || a.type === 'artillery') return;   // guns fire in artillery(), they do not fight hand to hand
     const range = a.type === 'archers' ? 150 : 62; if (dist(a, d) > range) return;
     let dmg = DMG[a.type][d.type] * (a.power || 1) * (a.strength / 100) * DT;
     if (a.type === 'chariot' && d.state === 'move') dmg *= 1.3;
     if (d.state === 'hold' && d.type !== 'chariot') dmg *= .7;
+    if (d.fortified && d.state === 'hold') dmg *= .45;   // a walled farm (Hougoumont, La Haye Sainte)
     d.strength -= dmg; d.lastHit = simTime;
     if (a.state === 'hold') a.facing = Math.atan2(d.y - a.y, d.x - a.x);
   }));
   formations.forEach(f => {
     if (!alive(f)) return;
     if (f.strength <= 0) { f.strength = 0; f.state = 'destroyed'; addLog(f.name + ' destroyed'); if (selected.has(f.id)) selected.delete(f.id); }
-    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === player) { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true, audioFor('cmd', 'breaks')); if (cam.follow) focusOn(f.x, f.y); } }
+    else if (f.strength < 25 && f.state !== 'rout') { f.state = 'rout'; f.route = null; const r = S.sides[f.side].rally; f.tx = r.x; f.ty = r.y; f.spread = 2.4; f.then = 'withdrawn'; addLog(f.name + ' routs'); if (f.side === player) { caption('A formation breaks', f.name + ' has routed and is fleeing the field.', 'reconstruction', true, audioFor('cmd', 'breaks')); if (cam.follow) focusOn(f.x, f.y); } }
   });
 }
 function fog() {
@@ -526,11 +653,25 @@ const ysAt = v => tiltOn() ? view.h * Math.log((1 + TILT) / (1 + TILT * (1 - v))
 const vAt = ys => tiltOn() ? 1 - ((1 + TILT) / Math.exp(ys / view.h * Math.log(1 + TILT)) - 1) / TILT : ys / view.h;
 function P(x, y) { const vw = VW(), vh = VH(), v = (y - view.y) / vh, s = sAt(v); return { x: view.w / 2 + (x - view.x - vw / 2) / vw * view.w * s, y: ysAt(v), s: view.z * s, k: tiltOn() ? SQ : 1 }; }
 function U(sx, sy) { const vw = VW(), vh = VH(), v = vAt(sy), s = sAt(v); return { x: view.x + vw / 2 + (sx - view.w / 2) / (view.w * s) * vw, y: view.y + v * vh }; }
-function clampView() { view.x = clamp(view.x, 0, Math.max(0, W.w - VW())); view.y = clamp(view.y, 0, Math.max(0, W.h - VH())); }
-function focusOn(x, y) { cam.tx = x; cam.ty = y; }
+// The view may run a little past the south edge of the map, so that what the camera frames can sit in the upper part
+// of the screen, clear of the caption at the bottom. Beyond the edge the background is plain black.
+const OVER = () => VH() * .35;
+// When the whole width is in view, the map is centred and black shows on both sides.
+const xLo = () => VW() > W.w ? (W.w - VW()) / 2 : 0, xHi = () => VW() > W.w ? (W.w - VW()) / 2 : W.w - VW();
+function clampView() { view.x = clamp(view.x, xLo(), xHi()); view.y = clamp(view.y, 0, Math.max(0, W.h - VH()) + OVER()); }
+// Zoom at which the whole battlefield fits in the top part `k` of the screen, above the caption box.
+const fitZ = (k = .76) => Math.min(view.w / W.w, vAt(view.h * k) * view.h * TR() / W.h);
+function focusOn(x, y) { cam.tx = x; cam.ty = y; cam.fit = false; cam.fy = null; }
+// Ease out to the whole battlefield, top edge at the top of the screen.
+function showWholeMap(k) { cam.fit = true; cam.tz = fitZ(k); cam.tx = W.w / 2; cam.ty = 0; }
+// Frame a point in the upper part of the screen, above the caption box.
+function frame(x, y, k = .22) { focusOn(x, y + VH() * k); cam.fy = y; cam.fk = k; }
 function updateCamera() {
+  if (cam.tz !== null) { view.z += (cam.tz - view.z) * .08; if (Math.abs(cam.tz - view.z) < .002) { view.z = cam.tz; cam.tz = null; } }
+  if (cam.fit) cam.ty = VH() / 2;
+  else if (cam.fy !== null && cam.fy !== undefined && cam.tx !== null) cam.ty = cam.fy + VH() * cam.fk;   // keep the framing right while the zoom eases
   if (cam.tx === null) return;
-  const gx = clamp(cam.tx - VW() / 2, 0, Math.max(0, W.w - VW())), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()));
+  const gx = clamp(cam.tx - VW() / 2, xLo(), xHi()), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
   view.x += (gx - view.x) * .08; view.y += (gy - view.y) * .08;
   if (Math.abs(gx - view.x) < .5 && Math.abs(gy - view.y) < .5) { view.x = gx; view.y = gy; cam.tx = null; }
 }
@@ -540,7 +681,7 @@ function drawFormation(c, f) {
   const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
   // In the flat view a subtle depth cue remains: units nearer the south edge draw a little larger. The tilted view does this by projection.
-  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
+  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'artillery' ? 40 : f.type === 'elephant' ? 62 : f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'artillery' ? 26 : f.type === 'elephant' ? 30 : f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
   // In the water a formation squeezes into a double file (single for chariots) along its line of march.
   const FC = f.inWater ? (f.type === 'chariot' ? 1 : 2) : f.cols, FR = f.inWater ? Math.ceil(n / FC) : f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
@@ -561,8 +702,8 @@ function drawFormation(c, f) {
   c.strokeStyle = SIDE_ART[f.side].trim; c.lineWidth = .8; c.stroke();
   // label + strength
   const half = (FR / 2) * sy + 10, ly = f.y + Math.max(half, (FC / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
-  const suffix = f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
-  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'allied' ? '#dceeff' : '#ffe1d6' });
+  const suffix = f.gun && f.gun.phase === 'limber' ? ' \u00b7 limbering' : f.gun && f.gun.phase === 'unlimber' ? ' \u00b7 unlimbering' : f.state === 'captured' ? ' \u00b7 captured' : f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
+  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'allied' ? '#ffe1d6' : '#dceeff' });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
     c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(pl.x - 22 * ts, pl.y + 8 * ts, 44 * ts, 5 * ts);
     c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(pl.x - 21 * ts, pl.y + 9 * ts, 42 * ts * f.strength / 100, 3 * ts);
@@ -575,7 +716,7 @@ function drawFormation(c, f) {
 function render() {
   updateCamera(); clampView();
   const z = view.z, vw = VW(), vh = VH();
-  ctx.fillStyle = '#0e1a22'; ctx.fillRect(0, 0, view.w, view.h);
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, view.w, view.h);
   if (TER) {
     if (tiltOn()) {
       // Draw the pre-rendered terrain in thin horizontal strips, each sampling a wider span of the map the further north it is.
@@ -593,6 +734,7 @@ function render() {
   PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
   formations.forEach(f => scene.push({ y: f.y, f }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : drawFormation(ctx, o.f));
+  drawSmoke(ctx);
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
@@ -641,7 +783,7 @@ const Narr = {
   on: false, audio: null, rate: 1.1, endedAt: -99,
   speak(text, file) {
     this.stop(); if (!this.on) return;
-    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
+    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
@@ -667,7 +809,7 @@ function caption(title, text, tag, speak, audio, cite) {
 }
 function cmdCaption(title, key, tag, focus) {
   caption(title, S.commandLines[key], tag, true, audioFor('cmd', key));
-  if (focus && cam.follow) focusOn(focus.x, focus.y);
+  if (focus && cam.follow) frame(focus.x, focus.y);
 }
 function openCitations(tag, cite, claim) {
   const c = S.citations[tag]; if (!c) return;
@@ -687,7 +829,7 @@ function fmtTime(t) { return `${String(Math.floor(t / 60)).padStart(2, '0')}:${S
 function renderSelection() {
   const box = $('selection');
   if (!selected.size) { box.innerHTML = '<p class="muted">Click a formation on the map to see who they are.</p>'; return; }
-  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</b><div class="tiny">${f.type} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
+  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'allied' ? '#ffb3a7' : '#9fc8ff'}">${f.name}</b><div class="tiny">${f.type}${f.gun ? ' (' + (f.gun.deployed ? 'unlimbered, can fire' : 'limbered, cannot fire') + ')' : ''} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
 }
 function renderTimeline() {
   const tl = $('timeline'); if (!tl) return;
@@ -697,15 +839,22 @@ function renderTimeline() {
   $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
 }
-const PN = u => (u.side === 'allied' ? 'allied' : 'french') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'cavalry' ? 'cavalry' : u.type === 'archers' ? 'archer' : 'spearman');
+const PN = u => u.portrait || ((SHEET_BY[u.side] || {})[u.type] || u.side + '-' + u.type);   // portrait file name; the painted figure is the fallback
 function unitSprite(c, u, big) {
   const w = c.canvas.width, h = c.canvas.height; c.fillStyle = '#c0ad75'; c.fillRect(0, 0, w, h);
-  drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' ? 1.8 : 2) * (big ? h / 60 : 1));
+  drawSprite(c, { side: u.side, type: u.type, sheet: u.sheet, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' || u.type === 'artillery' ? 1.5 : 2) * (big ? h / 60 : 1));
 }
 function renderArmies() {
   const units = S.units || [];
-  $('armies').innerHTML = units.map((u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`).join('');
-  units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); unitSprite(c, u); setTimeout(() => unitSprite(c, u), 1500); });
+  const card = (u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'allied' ? '#ffb3a7' : '#9fc8ff'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`;
+  // Each side shows its first two cards; the rest fold away under a "more" button.
+  $('armies').innerHTML = [...new Set(units.map(u => u.side))].map(sd => {
+    const idx = units.map((u, i) => i).filter(i => units[i].side === sd), rest = idx.slice(2);
+    return idx.slice(0, 2).map(i => card(units[i], i)).join('') + (rest.length ? `<div class="umore" hidden>${rest.map(i => card(units[i], i)).join('')}</div><button class="ufold" data-n="${rest.length}"></button>` : '');
+  }).join('');
+  $('armies').querySelectorAll('.ufold').forEach(b => { const n = +b.dataset.n, label = open => open ? '\u25b4 Show fewer' : `\u25be ${n} more unit${n > 1 ? 's' : ''}`; b.textContent = label(false);
+    b.onclick = () => { const m = b.previousElementSibling, open = m.hidden; m.hidden = !open; b.textContent = label(open); }; });
+  armiesRedraw = () => units.forEach((u, i) => { const el = $('uc' + i); if (el) unitSprite(el.getContext('2d'), u); }); armiesRedraw();
   $('armies').querySelectorAll('.ucard').forEach(el => el.onclick = e => { if (e.target.closest('button.chip')) return; openUnit(+el.dataset.unit); });
 }
 // Unit write-up overlay. Photos are looked up by file name across the intro slides so
@@ -716,8 +865,8 @@ function unitPhotos(u) { return (u.photos || []).map(p => typeof p === 'string' 
 function openUnit(i) {
   const units = S.units || []; if (!units.length) return;
   unitIdx = (i + units.length) % units.length; const u = units[unitIdx]; unitPhoto = 0;
-  $('unitKicker').textContent = (u.side === 'allied' ? 'Allied army' : 'French army and allies') + ' · ' + (unitIdx + 1) + ' / ' + units.length;
-  $('unitTitle').innerHTML = `<span style="color:${u.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</span> ${tagChip(u.tag)}`;
+  $('unitKicker').textContent = (u.side === 'allied' ? 'Allied army' : 'French army') + ' · ' + (unitIdx + 1) + ' / ' + units.length;
+  $('unitTitle').innerHTML = `<span style="color:${u.side === 'allied' ? '#ffb3a7' : '#9fc8ff'}">${u.name}</span> ${tagChip(u.tag)}`;
   const base = S.imageBase || 'images/';
   $('unitBody').innerHTML = `<div class="uhead"><canvas id="unitSprite" width="112" height="80"></canvas><img class="portrait" alt="" style="width:112px;height:80px;object-fit:cover;border-radius:4px;display:none" src="${base}portraits/${PN(u)}.jpg" onload="this.style.display='block';this.previousElementSibling.style.display='none'"><div class="side">${u.desc}</div></div>` + (u.lines || []).map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   unitSprite($('unitSprite').getContext('2d'), u, true);
@@ -757,9 +906,9 @@ function showIntro(i) {
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('ctrlStrip').classList.toggle('lit', false); $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   markers = sl.markers || [];
-  if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
+  if (sl.zoom && sl.zoom !== 'fit') cam.tz = clamp(sl.zoom, .45, 2.4);
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
-  if (sl.focus) focusOn(sl.focus.x, sl.focus.y + VH() * .27);
+  if (sl.zoom === 'fit') showWholeMap(.6); else if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
   if (introStarted) speakSlide(sl);
@@ -835,7 +984,7 @@ function showDebrief() {
   if (battleOver === 'history') { head = 'What the sources say happened next'; body = ''; }
   else {
     const txt = S.debrief[player][battleOver].text;
-    const rows = formations.filter(f => f.known || f.side === 'allied').map(f => `<tr><td style="color:${f.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</td><td>${f.state}</td><td>${Math.round(f.strength)}%</td></tr>`).join('');
+    const rows = formations.filter(f => f.known || f.side === 'allied').map(f => `<tr><td style="color:${f.side === 'allied' ? '#ffb3a7' : '#9fc8ff'}">${f.name}</td><td>${f.state}</td><td>${Math.round(f.strength)}%</td></tr>`).join('');
     head = S.debrief[player][battleOver].title;
     body = `<p class="lead">${txt}</p><p class="muted">Your battle is a what-if simulation. Nothing about it is a claim about what really happened. Compare it with the historical outcome below.</p><div class="tablewrap"><table><tr><th>Formation</th><th>State</th><th>Strength</th></tr>${rows}</table></div>`;
   }
@@ -852,7 +1001,7 @@ function showExplain() {
 
 /* ---------------- input ---------------- */
 function toWorld(e) { const r = canvas.getBoundingClientRect(); return U(e.clientX - r.left, e.clientY - r.top); }
-function manualCamera() { cam.tx = null; cam.follow = false; $('followBtn').classList.remove('active'); }
+function manualCamera() { cam.tx = null; cam.tz = null; cam.fit = false; cam.follow = false; $('followBtn').classList.remove('active'); }
 function pickFormation(p) {
   let best = null, bd = 1e9;
   formations.forEach(f => { if (!alive(f) || (!f.known && mode === 'command' && f.side !== player)) return; const r = Math.max(f.cols, f.rows) * (f.type === 'chariot' ? 15 : 7) + 14; const d = dist(f, p); if (d < r && d < bd) { bd = d; best = f; } });
@@ -870,7 +1019,7 @@ let marquee = null, menuTarget = null;
 function ownSelected() { return [...selected].map(id => byId[id]).filter(f => f && alive(f) && f.state !== 'rout' && f.side === player); }
 function orderMove(p, state) {
   const fs = ownSelected(); if (!fs.length) return; const cols = Math.ceil(Math.sqrt(fs.length));
-  fs.forEach((f, k) => { const g = legal({ x: clamp(p.x + (k % cols - (cols - 1) / 2) * 90, 20, W.w - 20), y: clamp(p.y + Math.floor(k / cols) * 70, 20, W.h - 20) }); f.tx = g.x; f.ty = g.y; f.state = state || 'move'; f.aiPhase = null; });
+  fs.forEach((f, k) => { const g = legal({ x: clamp(p.x + (k % cols - (cols - 1) / 2) * 90, 20, W.w - 20), y: clamp(p.y + Math.floor(k / cols) * 70, 20, W.h - 20) }); f.route = null; f.tx = g.x; f.ty = g.y; f.state = state || 'move'; f.aiPhase = null; });
   addLog((state === 'attack' ? 'Attack-move' : 'Move') + ' ordered: ' + fs.length + ' formation' + (fs.length > 1 ? 's' : '')); renderSelection();
 }
 function orderHalt() { ownSelected().forEach(f => { if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; }); addLog('Halt'); renderSelection(); }
@@ -1021,7 +1170,7 @@ window.addEventListener('keydown', e => {
   if (['arrowup', 'w'].includes(k)) { view.y -= st; moved = true; } if (['arrowdown', 's'].includes(k)) { view.y += st; moved = true; }
   if (moved) { e.preventDefault(); clampView(); manualCamera(); }
   if (k === ' ') { e.preventDefault(); togglePause(); }
-  if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); }
+  if (k === 'f') { cam.follow = true; $('followBtn').classList.add('active'); if (currentEvent && currentEvent.focus) frame(currentEvent.focus.x, currentEvent.focus.y); }
   if (k === 'e') showExplain();
   if (k === 'm') toggleOverview();
   if (k === 't') setTextOff(!textOff);
@@ -1045,7 +1194,7 @@ $('ffBtn').onclick = () => { speed = speed >= 4 ? 1 : speed >= 2 ? 4 : 2; $('spe
 // Skip: jump to the start of the next chapter (Watch mode)
 function skipChapter() { if (mode !== 'watch') return; const next = S.events.find(e => e.t > simTime + .01); if (next) jumpTo(next.t); }
 $('skipBtn').onclick = skipChapter;
-$('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) focusOn(currentEvent.focus.x, currentEvent.focus.y); };
+$('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) frame(currentEvent.focus.x, currentEvent.focus.y); };
 $('explainBtn').onclick = showExplain;
 $('capExplain').onclick = e => { e.stopPropagation(); showExplain(); };
 $('voiceMenuBtn').onclick = e => { e.stopPropagation(); $('voicePop').classList.toggle('show'); };
@@ -1124,7 +1273,7 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
 // Optional painted terrain (images/terrain.jpg, painted to the layout guide): when present it replaces the drawn ground.
 // Labels, river course and props still come from the scenario, so the painting must follow the guide's positions.
 { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height);
-    g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
+    g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); if (B.city) outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); if (B.camp) outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
     B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
     PAINTEDTER = T; applyArt(); }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
 function applyArt() {
@@ -1139,4 +1288,6 @@ if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();
 requestAnimationFrame(tick);
+// For the shared page add-ons (../phone.js, ../subtitles.js): the narrator and the full-map switch.
+window.BattlePage = { Narr, setBig };
 })();
