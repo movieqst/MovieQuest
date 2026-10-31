@@ -941,8 +941,22 @@ function showMenu(sx, sy, p) {
   if (enemy && enemy.side === player) items.push({ t: '\u2610 Select ' + enemy.name, f: () => { selected.clear(); selected.add(enemy.id); renderSelection(); } });
   if (selected.size) items.push({ t: '\u2715 Deselect', f: () => { selected.clear(); renderSelection(); } });
   items.push({ t: '\ud83c\udfa5 Look here', f: () => { manualCamera(); focusOn(p.x, p.y); } });
-  m.innerHTML = (fs.length ? `<div class="mhead">${fs.length} formation${fs.length > 1 ? 's' : ''} selected</div>` : '<div class="mhead">No formation selected</div>') + items.map((it, i) => it.sep ? '<hr>' : `<button data-i="${i}">${it.t}</button>`).join('');
-  m.querySelectorAll('button').forEach(b => b.onclick = ev => { ev.stopPropagation(); items[+b.dataset.i].f(); hideMenu(); });
+  // Two looks for the order menu: picture buttons (the default; the order's name shows when the pointer is over one) or a text
+  // list. The 'Text' box in the menu's header switches between them and is remembered in this browser.
+  let textMenu = false; try { textMenu = localStorage.getItem('bh-textmenu') === '1'; } catch (e) {}
+  const ICON = { '⚔': '⚔️', '➡': '🏃', '↻': '🧭', '■': '🛑', '↩': '↩️', '☑': '✅', '☐': '☑️', '✕': '❌' };
+  const split = t => { const m = String(t).match(/^(\S+)\s+([\s\S]*)$/); return m ? [ICON[m[1]] || m[1], m[2]] : ['•', t]; };
+  const head = (fs.length ? `${fs.length} formation${fs.length > 1 ? 's' : ''} selected` : 'No formation selected');
+  m.classList.toggle('icons', !textMenu);
+  m.innerHTML = `<div class="mhead"><span>${head}</span><label class="mtext" title="Show the orders as a text list"><input type="checkbox" ${textMenu ? 'checked' : ''}> Text</label></div>`
+    + (textMenu ? items.map((it, i) => it.sep ? '<hr>' : `<button data-i="${i}"${it.off ? ' disabled' : ''}>${it.t}</button>`).join('')
+      : '<div class="mgrid">' + items.map((it, i) => { if (it.sep) return '</div><div class="mgrid">'; const [ic, label] = split(it.t);
+        return `<button data-i="${i}" data-label="${label.replace(/"/g, '&quot;')}" title="${label.replace(/"/g, '&quot;')}"${it.off ? ' disabled' : ''}>${ic}</button>`; }).join('') + '</div><div class="mlabel">Point at a button to see the order</div>');
+  m.querySelector('.mtext input').onchange = ev => { textMenu = ev.target.checked; try { localStorage.setItem('bh-textmenu', textMenu ? '1' : '0'); } catch (e) {} showMenu(sx, sy, p); };
+  m.querySelector('.mtext').onclick = ev => ev.stopPropagation();
+  const lab = m.querySelector('.mlabel');
+  if (lab) m.querySelectorAll('.mgrid button').forEach(b => { b.onmouseenter = b.onfocus = () => { lab.textContent = b.dataset.label + (b.disabled ? '' : ''); lab.classList.add('on'); }; b.onmouseleave = () => { lab.textContent = 'Point at a button to see the order'; lab.classList.remove('on'); }; });
+  m.querySelectorAll('button[data-i]').forEach(b => b.onclick = ev => { ev.stopPropagation(); items[+b.dataset.i].f(); hideMenu(); });
   const pw = panel.getBoundingClientRect(); m.style.display = 'block'; m.style.left = Math.min(sx, pw.width - 240) + 'px'; m.style.top = Math.min(sy, pw.height - m.offsetHeight - 10) + 'px';
 }
 function hideMenu() { const m = $('ctxMenu'); if (m) m.style.display = 'none'; }
