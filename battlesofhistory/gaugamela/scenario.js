@@ -354,7 +354,7 @@ window.GAUGAMELA_SCENARIO = {
      Each side shows its first two cards; the rest open from a "more" button. ---------- */
   units: [
     { side: 'macedon', type: 'infantry', name: 'Macedonian phalanx', desc: 'Long sarissa pikes, shield and helmet. The centre of Alexander’s army.', tag: 'established',
-      photos: ['07-alexander-sarcophagus.jpg'],
+      photos: [{ file: '18-susa-archers-aod455.jpg', caption: 'Four royal guardsmen in glazed brick from the palace of Darius I at Susa, with spears, bows and quivers, in the patterned robes of the king’s guard.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 455', credit: 'Photo: Laurens R. Krol, Wikimedia Commons, CC BY 4.0' }, '07-alexander-sarcophagus.jpg'],
       lines: [
         { text: 'The pezhetairoi, the foot companions, carried the sarissa, a pike about six metres long, held in both hands. Their shield was smaller than the classic hoplite shield and hung from a strap.', tag: 'established', cite: 'Arrian III.11; Polybius XVIII.12–14 on the later sarissa' },
         { text: 'The phalanx was strong to the front and weak on its flanks. A phalanx that was pushed sideways lost its order, and the Macedonians knew it.', tag: 'estimate' },
