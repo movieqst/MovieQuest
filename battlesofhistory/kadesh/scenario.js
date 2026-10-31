@@ -50,25 +50,34 @@ window.KADESH_SCENARIO = {
 
   battlefield: {
     scale: { px: 60, label: '≈ 1 km (schematic)' },
-    river: [ [1300,1800],[1340,1600],[1420,1400],[1500,1200],[1540,1000],[1520,800],[1500,650],[1540,480],[1600,300],[1620,0] ],
-    tributary: [ [820,840],[1000,815],[1180,785],[1350,760],[1480,745] ],
+    /* Redrawn to the real site (Tell Nebi Mend), from satellite views: the Orontes winds north about 500 m east of the
+       mound, then on past Alhouz toward Mudan. A smaller stream (the al-Muqadiyah) rises at the spring pool of Ain
+       at-Tannour about 3 km south, winds north along the west side of the mound, curves round its north side and joins
+       the Orontes at the old water mill just north-east of it. So the city stands in the fork between the two waters.
+       Distances are squeezed to fit the map. */
+    river: [ [1290,1800],[1320,1720],[1305,1650],[1345,1585],[1400,1530],[1395,1460],[1440,1390],[1500,1330],[1490,1250],[1530,1170],[1560,1100],[1535,1045],
+             [1550,980],[1590,910],[1565,840],[1520,780],[1515,700],[1530,620],[1510,550],[1540,470],[1520,380],[1490,300],[1505,220],[1470,140],[1480,0] ],
+    tributary: [ [1255,890],[1230,840],[1225,790],[1205,740],[1215,690],[1195,640],[1205,590],[1225,540],[1270,505],[1340,490],[1420,482],[1480,485],[1540,470] ],
     fords: [
       { name: 'Ford of Shabtuna', x: 1345, y: 1585, note: 'Where the Egyptian army crossed to the west bank' },
       { name: 'Hittite crossing',  x: 1535, y: 1045, note: 'Reconstructed point where the Hittite chariots crossed' },
-      { name: 'Northern ford',     x: 1535, y: 500,  note: 'Reconstructed shallow crossing north of the city, used by the second wave' }
+      { name: 'Northern ford',     x: 1520, y: 380,  note: 'Reconstructed shallow crossing north of the city, below where the stream joins the river; used by the second wave' }
     ],
-    bridge: { x: 1130, y: 796, note: 'Where the road crosses the tributary; the only crossing of the tributary' },
+    bridge: { x: 1205, y: 665, note: 'A crossing over the stream to the city\u2019s west side; the only crossing of the stream' },
     city: { name: 'KADESH', x: 1270, y: 570, w: 190, h: 160 },
     camp: { name: 'Egyptian camp (Amun)', x: 900, y: 380, w: 240, h: 170 },
-    road: [ [1250,1800],[1300,1640],[1345,1585],[1250,1450],[1180,1250],[1150,1000],[1120,800],[1060,620],[1000,560] ],
+    road: [ [1420,1800],[1390,1700],[1345,1585],[1270,1480],[1190,1300],[1130,1100],[1070,900],[1030,760],[1000,640],[1000,560] ],
     forests: [ {x:1000,y:1500,r:170}, {x:850,y:1650,r:140}, {x:1150,y:1700,r:120}, {x:250,y:300,r:150}, {x:2200,y:1500,r:160}, {x:1900,y:150,r:130} ],
     hills: [ {x:300,y:900,rx:120,ry:60}, {x:520,y:1150,rx:90,ry:45}, {x:2150,y:1100,rx:130,ry:60}, {x:1950,y:1650,rx:110,ry:50}, {x:600,y:150,rx:100,ry:45} ],
     labels: [
       { x: 1600, y: 1420, text: 'ORONTES', rotate: -1.1 },
       { x: 950,  y: 1330, text: 'Forest of Labwi', small: true },
+      { x: 1160, y: 800,  text: 'al-Muqadiyah stream', small: true, rotate: -1.45 },
+      { x: 1262, y: 975,  text: 'spring of Ain at-Tannour', small: true },
       { x: 150,  y: 560,  text: '← to Amurru and the coast', small: true },
       { x: 1500, y: 1790, text: 'to Shabtuna and Egypt ↓', small: true },
-      { x: 1900, y: 60,   text: 'to Aleppo ↑', small: true }
+      { x: 1900, y: 60,   text: 'to Aleppo ↑', small: true },
+      { x: 1330, y: 100,  text: 'to Lake of Homs ↑ (its dam came later)', small: true }
     ]
   },
 
@@ -321,7 +330,7 @@ window.KADESH_SCENARIO = {
       orders: [
         { id: 'nearin', state: 'attack', to: { x: 980, y: 490 }, speed: 40 },
         { id: 'hit-char-a', to: { x: 1150, y: 560 }, speed: 22, strengthTo: 35, over: 12 },
-        { id: 'hit-char-b', to: { x: 1160, y: 660 }, speed: 22, strengthTo: 35, over: 12 },
+        { id: 'hit-char-b', to: { x: 1170, y: 520 }, speed: 22, strengthTo: 35, over: 12 },
         { id: 'hit-char-c', to: { x: 1200, y: 470 }, speed: 22, strengthTo: 35, over: 12 },
         { id: 'hit-char2', to: { x: 1250, y: 440 }, speed: 50 }
       ] },
@@ -329,7 +338,7 @@ window.KADESH_SCENARIO = {
       text: 'The Ptah division reaches the field from the south. The pendulum has swung.',
       explain: 'The Egyptian account gives Ptah credit for the recovery. With fresh infantry arriving and the Ne’arin already engaged, the Hittite chariots were outnumbered on the west bank.',
       orders: [
-        { id: 'ptah-inf', to: { x: 1180, y: 720 }, speed: 18 }, { id: 'ptah-char', to: { x: 1240, y: 700 }, speed: 20 },
+        { id: 'ptah-inf', to: { x: 960, y: 600 }, speed: 18 }, { id: 'ptah-char', to: { x: 1040, y: 590 }, speed: 20 },
         { id: 'hit-char2', to: { x: 1440, y: 430 }, speed: 30, strengthTo: 45, over: 10 }
       ] },
     { t: 92, title: 'Into the Orontes', tag: 'egyptian', focus: { x: 1500, y: 580 },
