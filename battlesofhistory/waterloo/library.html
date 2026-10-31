@@ -31,6 +31,7 @@
   document.getElementById('lib').innerHTML = (S.library || []).map(b => `<div class="book"><h2>${esc(b.title)}</h2>
     <div class="meta">${esc(b.author)} · ${b.year} · ${esc(b.kind)}</div><div>${esc(b.about)}</div>
     <div class="small" style="margin-top:6px">Used in the game: ${esc(b.citedIn)} · ${esc(b.rights)}</div>
+    ${b.localNote ? `<div class="small">${esc(b.localNote)}</div>` : ''}
     <div class="links">${b.local ? `<a class="own" href="sources/${esc(b.local)}" target="_blank" rel="noopener">📄 Read the book (PDF) ▸</a>` : '<span>📄 PDF: to be added</span>'}
       ${b.gutenberg ? `<a href="${esc(b.gutenberg)}" target="_blank" rel="noopener">Project Gutenberg</a>` : ''}
       ${b.archive ? `<a href="${esc(b.archive)}" target="_blank" rel="noopener">Internet Archive</a>` : ''}</div></div>`).join('');

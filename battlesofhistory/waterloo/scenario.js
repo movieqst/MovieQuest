@@ -140,7 +140,7 @@ window.WATERLOO_SCENARIO = {
       title: 'The sources',
       media: [
         { at: 0, file: '11-siborne-map.jpg', caption: 'Map of the battlefield from Waterloo Letters (1891): letters that surviving British officers wrote to William Siborne in the 1830s, when he was building his model of the battle. South is at the top: La Belle Alliance above, Hougoumont at the right, La Haye Sainte on the Brussels road, Mont-Saint-Jean at the bottom.', ref: 'H. T. Siborne (ed.), Waterloo Letters (London, 1891); Internet Archive', credit: 'Internet Archive Book Images, Wikimedia Commons, no known copyright restrictions (published 1891)' },
-        { at: 12, file: '12-mercer-journal.jpg', caption: 'Captain Cavalié Mercer’s journal, one of the most vivid eyewitness accounts, published in 1870, more than fifty years after the battle.', ref: 'Title page, 1870 edition', credit: '' }
+        { at: 12, file: '12-mercer-journal.jpg', caption: 'The original binding of Captain Cavalié Mercer’s Journal of the Waterloo Campaign, with the badge of the Royal Artillery. Written from notes kept at the time, it was published in 1870, two years after his death. The whole of volume 1, with his account of the battle, is in our Library of sources.', ref: 'Cavalié Mercer, Journal of the Waterloo Campaign (Blackwood, 1870), vol. 1', credit: 'Project Gutenberg eBook #75872, from scans by the Internet Archive; public domain' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
@@ -508,7 +508,7 @@ window.WATERLOO_SCENARIO = {
     { title: 'Journal of the Waterloo Campaign', author: 'Cavalié Mercer', year: 1870, kind: 'Eyewitness journal',
       about: 'A captain of the Royal Horse Artillery. His troop stood on the ridge through the French cavalry charges; his account of keeping his gunners at their guns is one of the most vivid of the day. Written from notes kept at the time, published fifty years later.',
       citedIn: 'Royal Artillery card; the sources slide', rights: 'Published 1870; Mercer died 1868. Public domain.',
-      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Mercer+Journal+of+the+Waterloo+Campaign', archive: 'https://archive.org/search?query=Mercer+Journal+of+the+Waterloo+Campaign' },
+      local: 'mercer-1870-journal-vol1.pdf', localNote: 'Volume 1, which covers the battle (about pages 180–230 of our PDF). Made from Project Gutenberg eBook #75872; volume 2 is still to add.', gutenberg: 'https://www.gutenberg.org/ebooks/75872', archive: 'https://archive.org/search?query=Mercer+Journal+of+the+Waterloo+Campaign' },
     { title: 'Waterloo Letters', author: 'H. T. Siborne (editor)', year: 1891, kind: 'Officers’ letters',
       about: 'Letters written in the 1830s by surviving British officers to William Siborne, who was building his model of the battle. Each man describes what he saw from where he stood.',
       citedIn: 'The map on the sources slide', rights: 'Published 1891. Public domain.',
