@@ -12,7 +12,7 @@ CC BY / CC BY-SA (modern photos), and put the credit line in that entry's `credi
 | 02-napoleon-david.jpg | 1 | Jacques-Louis David, The Emperor Napoleon in His Study at the Tuileries (1812) |
 | 03-wellington-lawrence.jpg | 2 | Thomas Lawrence, Arthur Wellesley, 1st Duke of Wellington (1815–16), Apsley House |
 | 04-hougoumont.jpg | 2 | Hougoumont farm (photo), Braine-l'Alleud |
-| 05-la-haye-sainte.jpg | 2 | La Haye Sainte farm (photo) |
+| 05-la-haye-sainte.jpg | 2 | La Haye Sainte, lithograph after Mogford (Rijksmuseum RP-P-OB-87.253) |
 | 06-ney-gerard.jpg | 3 | François Gérard, portrait of Marshal Michel Ney |
 | 07-cuirassiers-philippoteaux.jpg | 3 | Félix Philippoteaux, The Battle of Waterloo: The British Squares Receiving the Charge of the French Cuirassiers (1874) |
 | 08-blucher.jpg | 4 | portrait of Gebhard Leberecht von Blücher |

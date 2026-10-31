@@ -92,7 +92,7 @@ window.WATERLOO_SCENARIO = {
       media: [
         { at: 0, file: '03-wellington-lawrence.jpg', caption: 'The Duke of Wellington, by Sir Thomas Lawrence (1815–16), painted soon after the battle.', ref: 'Apsley House, London (Wellington Collection), WM.1567-1948', credit: 'Sir Thomas Lawrence, about 1815–16. Wikimedia Commons, public domain' },
         { at: 10, file: '04-hougoumont.jpg', caption: 'Hougoumont today: the courtyard and the little chapel, which survived when the château beside it burned during the battle. The broken wall beside the chapel is what is left of the château.', ref: 'Braine-l’Alleud, Belgium; photographed 2017', credit: 'Photo: Nenea hartia, Wikimedia Commons, CC BY-SA 4.0' },
-        { at: 20, file: '05-la-haye-sainte.jpg', caption: 'La Haye Sainte today, beside the Brussels road.', ref: 'On the Brussels–Charleroi road, Belgium', credit: '' }
+        { at: 20, file: '05-la-haye-sainte.jpg', caption: 'La Haye Sainte beside the Brussels road, a few years after the battle: a lithograph after a drawing by Mogford. The two memorials on the ridge beyond were put up after 1815.', ref: 'Lithograph, between about 1820 and 1850; Rijksmuseum, RP-P-OB-87.253', credit: 'Rijksmuseum, Wikimedia Commons, public domain (CC0)' }
       ],
       focus: { x: 1100, y: 750 }, zoom: .8,
       markers: [],
