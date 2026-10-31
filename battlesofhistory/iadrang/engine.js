@@ -623,11 +623,15 @@ function drawMini() {
 }
 
 /* ---------------- narration (voice) ---------------- */
+// One audio element for the whole narration. iPad and iPhone Safari only allow audio to start after a tap, and only on
+// the element that the tap started, so every clip reuses this element; the first tap anywhere unlocks it.
+const narrEl = new Audio();
+['pointerdown', 'keydown', 'touchend'].forEach(t => document.addEventListener(t, () => { narrEl.play().then(() => narrEl.pause()).catch(() => {}); }, { once: true }));
 const Narr = {
   on: false, audio: null, rate: 1.1, endedAt: -99,
   speak(text, file) {
     this.stop(); if (!this.on) return;
-    if (file) { const a = new Audio(file); a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
+    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(() => { if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
