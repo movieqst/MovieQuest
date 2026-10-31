@@ -139,7 +139,7 @@ window.WATERLOO_SCENARIO = {
     {
       title: 'The sources',
       media: [
-        { at: 0, file: '11-siborne-model.jpg', caption: 'William Siborne’s great model of the battle, built in the 1830s from letters he collected from surviving officers. Its account of the Prussian part was argued over at the time.', ref: 'National Army Museum, London', credit: '' },
+        { at: 0, file: '11-siborne-map.jpg', caption: 'Map of the battlefield from Waterloo Letters (1891): letters that surviving British officers wrote to William Siborne in the 1830s, when he was building his model of the battle. South is at the top: La Belle Alliance above, Hougoumont at the right, La Haye Sainte on the Brussels road, Mont-Saint-Jean at the bottom.', ref: 'H. T. Siborne (ed.), Waterloo Letters (London, 1891); Internet Archive', credit: 'Internet Archive Book Images, Wikimedia Commons, no known copyright restrictions (published 1891)' },
         { at: 12, file: '12-mercer-journal.jpg', caption: 'Captain Cavalié Mercer’s journal, one of the most vivid eyewitness accounts, published in 1870, more than fifty years after the battle.', ref: 'Title page, 1870 edition', credit: '' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',

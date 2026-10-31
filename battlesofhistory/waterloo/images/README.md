@@ -18,7 +18,7 @@ CC BY / CC BY-SA (modern photos), and put the credit line in that entry's `credi
 | 08-blucher.jpg | 4 | portrait of Gebhard Leberecht von Blücher |
 | 09-plancenoit-northen.jpg | 4 | Adolph Northen, Prussian attack on Plancenoit (1864) |
 | 10-grouchy.jpg | 4 | portrait of Emmanuel de Grouchy |
-| 11-siborne-model.jpg | 5 | William Siborne's Waterloo model, National Army Museum |
+| 11-siborne-map.jpg | 5 | Map of the battlefield from Waterloo Letters (1891) |
 | 12-mercer-journal.jpg | 5 | Mercer, Journal of the Waterloo Campaign (1870), title page |
 | 13-scotland-forever.jpg | 6 | Elizabeth Thompson, Lady Butler, Scotland Forever! (1881) |
 | 15-la-haye-sainte-1816.jpg | 2 | Robert Hills, farmhouse at La Haye Sainte (1816) |
