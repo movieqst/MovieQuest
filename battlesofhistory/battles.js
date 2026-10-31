@@ -69,8 +69,8 @@ window.BATTLES = [
     sides: 'Wellington’s Anglo-Allied army and Blücher’s Prussians vs. Napoleon’s Armée du Nord',   // first side red (the redcoats), second blue
     sideColors: ['#c0392b', '#2e5aa8'],
     blurb: 'The last battle of Napoleon’s return: a ridge held by redcoat squares, cuirassiers breaking up the slope, and the Prussians arriving late in the day. Watch the reconstruction or command either army.',
-    cover: 'images/13-scotland-forever.jpg',
-    coverCredit: 'Scotland Forever! by Elizabeth Thompson, Lady Butler, 1881. Leeds Art Gallery; public domain',
+    cover: 'images/18-sadler-waterloo.jpg',
+    coverCredit: 'The Battle of Waterloo by William Sadler, 1815; public domain',
     status: 'ready'
   }
 ];

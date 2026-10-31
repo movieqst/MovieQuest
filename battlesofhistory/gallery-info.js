@@ -108,5 +108,6 @@ window.GALLERY_INFO = {
   'waterloo/14-wellington-blucher-maclise.jpg': ['art', 'engraving', 1879, null, null],
   'waterloo/15-la-haye-sainte-1816.jpg': ['art', 'engraving', 1816, null, null],
   'waterloo/16-la-haye-sainte-rouse.jpg': ['art', 'coloured engraving', 1817, 'Plate_K_from_\'An_Historical_Account_of_the_Campaign_in_the_Netherlands\'_by_William_Mudford_(1817).jpg', null],
+  'waterloo/18-sadler-waterloo.jpg': ['art', 'painting', 1815, 'Battle_of_Waterloo_1815.PNG', null],
   'waterloo/17-hougoumont-south-gate.jpg': ['photo', 'site today', 2016, '18_June_1815_–_Waterloo_–_Hougoumont._The_Southern_Gate.jpg', null]
 };
