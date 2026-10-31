@@ -413,7 +413,7 @@ window.WATERLOO_SCENARIO = {
         { text: 'The brigade rode on into the grand battery and lost heavily to the French lancers and cuirassiers. How far it got is disputed.', tag: 'disputed' }
       ] },
     { side: 'allied', type: 'infantry', sheet: 'british-infantry', portrait: 'kgl-rifleman', name: 'King’s German Legion', desc: 'Hanoverians in British service. Its riflemen held La Haye Sainte.', tag: 'established',
-      photos: ['15-la-haye-sainte-1816.jpg', '05-la-haye-sainte.jpg'],
+      photos: ['15-la-haye-sainte-1816.jpg', { file: '16-la-haye-sainte-rouse.jpg', caption: 'La Haye Sainte after the battle, from William Mudford’s history of the campaign: carts take away the wounded while the dead are buried. Mudford’s caption says the farm was taken when its defenders had used up their ammunition.', ref: 'William Mudford, An Historical Account of the Campaign in the Netherlands (Colburn, 1817); engraved by James Rouse', credit: 'Wikimedia Commons, public domain' }, '05-la-haye-sainte.jpg'],
       lines: [
         { text: 'The King’s German Legion was raised from Hanoverian soldiers who joined the British army after Napoleon occupied Hanover.', tag: 'established' },
         { text: 'Its 2nd Light Battalion, under Major George Baring, held the farm of La Haye Sainte beside the Brussels road for most of the day.', tag: 'established' },

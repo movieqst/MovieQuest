@@ -22,6 +22,7 @@ CC BY / CC BY-SA (modern photos), and put the credit line in that entry's `credi
 | 12-mercer-journal.jpg | 5 | Mercer, Journal of the Waterloo Campaign (1870), title page |
 | 13-scotland-forever.jpg | 6 | Elizabeth Thompson, Lady Butler, Scotland Forever! (1881) |
 | 15-la-haye-sainte-1816.jpg | 2 | Robert Hills, farmhouse at La Haye Sainte (1816) |
+| 16-la-haye-sainte-rouse.jpg | card | La Haye Sainte after the battle, Rouse, in Mudford (1817) |
 | 14-wellington-blucher-maclise.jpg | 7 | Daniel Maclise, The Meeting of Wellington and Blücher after Waterloo |
 
 ## Unit portraits (armies panel)
