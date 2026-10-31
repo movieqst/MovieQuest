@@ -25,18 +25,28 @@ largest 4:3 it can and I will upscale.
 >
 > Use the attached layout image as the exact plan. Keep every feature in the
 > same place and at the same size as the coloured outlines:
-> - The Orontes River follows the cyan line, flowing from the bottom (south)
->   toward the top (north), a broad slow river with muddy banks, reeds,
->   sandbars and shallows; a smaller tributary comes in from the west below
->   the city.
+> - The Orontes River follows the long cyan line on the right, winding from
+>   the bottom right (south-east) toward the top (north) in tight bends and loops: a
+>   slow river with muddy banks, reeds, sandbars and shallows, and a strip of
+>   green irrigated fields along both banks.
+> - A smaller stream (the al-Muqadiyah) follows the second cyan line on the
+>   left. It rises at a round spring pool (the box marked SPRING POOL, lower
+>   left of centre), winds north-east well apart from the river, closes in
+>   on it near the city, runs along the west side of the city, curves round the city's north side and joins the river at
+>   the north-east corner. It is narrower than the river, in a small ravine
+>   with dark green trees and bushes along its banks. The city stands in the
+>   fork between the two waters.
 > - Kadesh, in the red box beside the river, is a fortified Bronze Age city on
 >   a low mound (a tell) with mud-brick walls, square towers, a citadel, and a
->   water-filled moat on the land side. Paint only the mound, moat and
+>   water-filled moat all round: on the south side it is a dug canal
+>   linking the stream to the river, which makes the city an island. Paint only the mound, moat and
 >   ground; keep walls low in the picture (the game draws standing walls on
 >   top).
 > - The Egyptian camp box is a rectangle of trampled ground with faint tent
 >   marks, no tents (the game draws them).
-> - The two ford boxes are shallow, stony crossings with ripples.
+> - The FORD boxes are shallow, stony crossings with ripples (three on the
+>   river, one with stepping stones on the stream). The BRIDGE box is a small
+>   wooden bridge where the yellow road crosses the stream.
 > - The yellow line is a dusty dirt road with wheel ruts.
 > - Red ellipses marked FOREST are groves of oak, pine and tamarisk; those
 >   marked HILL are low rocky rises with scrub.
@@ -46,7 +56,8 @@ largest 4:3 it can and I will upscale.
 > Finish as a seamless painting with no vignette, frame or border.
 
 If the result moves the river or city, reply: "Keep the river exactly on the
-cyan line and the city inside the red box; do not reinterpret the layout."
+cyan lines (river and stream) and the city inside the red box; do not
+reinterpret the layout."
 
 ---
 
@@ -118,3 +129,29 @@ These are **photographs of real objects and places**, not generated art.
 See `README.md` in this folder for the list and where to find them on
 Wikimedia Commons. Do not generate these: a made-up "relief" would be
 passed off as evidence, which the game's confidence tags promise not to do.
+
+---
+
+## 5. Establishing map (shown for 5 seconds between the globe and the battlefield)  →  `images/establish-1-near-east.jpg`
+
+Size: 1672 × 941 pixels (16:9). Attach a Google Maps satellite screenshot of the
+eastern Mediterranean (Egypt to southern Turkey) as a geography reference.
+
+> Paint an illustrated antique-style map of the eastern Mediterranean world
+> around 1274 BCE, north up, in warm parchment and ochre tones with soft relief
+> shading, like a museum atlas plate. Follow the attached satellite map for the
+> real coastline: the Nile delta and valley at the bottom left, Cyprus, the
+> Levant coast running north, the bend of the coast into Anatolia at the top.
+> Show the Lebanon mountains as a ridge parallel to the coast and the Orontes
+> River rising in the Bekaa valley behind them and flowing **north** past
+> Kadesh, then turning west to the sea near Antioch. Kadesh is a small walled
+> city on the Orontes about 25 km south-west of modern Homs and about 30 km
+> inland, opposite the gap in the mountains between Tripoli and Homs. Make
+> Kadesh clearly visible. Shade Egypt's lands (the Nile, Sinai and Canaan)
+> in a soft blue tint and the Hittite Empire (Anatolia and northern Syria down
+> to just north of Kadesh) in a soft red tint, with Kadesh on the frontier
+> between them. Label only: EGYPT, HATTI, KADESH, Orontes, Nile, Mediterranean
+> Sea. No modern borders, no modern cities.
+
+The game draws its own pulsing ring on Kadesh: when the new picture comes back,
+tell me and I will move the ring onto the painted city.

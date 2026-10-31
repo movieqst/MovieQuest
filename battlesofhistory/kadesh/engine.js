@@ -55,8 +55,14 @@ const inWater = (x, y) => inRiver(x, y) || inTrib(x, y);
 const MOAT = 30, KEEP = 75, CITYR = { x0: B.city.x - MOAT - KEEP, y0: B.city.y - MOAT - KEEP, x1: B.city.x + B.city.w + MOAT + KEEP, y1: B.city.y + B.city.h + MOAT + KEEP };
 const inCity = (x, y) => x > CITYR.x0 && x < CITYR.x1 && y > CITYR.y0 && y < CITYR.y1;
 const westOfRiver = (x, y) => x < riverXAt(y);
-const tribYAt = x => { const p = B.tributary; if (x <= p[0][0] || x >= p[p.length - 1][0]) return null; for (let i = 0; i < p.length - 1; i++) if (x >= p[i][0] && x <= p[i + 1][0]) { const t = (x - p[i][0]) / (p[i + 1][0] - p[i][0]); return p[i][1] + (p[i + 1][1] - p[i][1]) * t; } return null; };
-const crossesTrib = (a, b) => { const ya = tribYAt(a.x), yb = tribYAt(b.x); if (ya === null && yb === null) return false; const sa = ya === null ? null : a.y < ya, sb = yb === null ? null : b.y < yb; if (sa !== null && sb !== null) return sa !== sb; const y0 = ya !== null ? ya : yb, mid = (a.y + b.y) / 2; return (a.y < y0) !== (b.y < y0) && Math.abs(mid - y0) < 120; };
+// The stream can run any way (at Kadesh it runs north, then turns east): a leg crosses it if it cuts any of its segments.
+const segsCross = (a, b, c, d) => { const o = (p, q, r) => Math.sign((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x)); return o(a, b, c) !== o(a, b, d) && o(c, d, a) !== o(c, d, b); };
+const crossesTrib = (a, b) => { const p = B.tributary; for (let i = 0; i < p.length - 1; i++) if (segsCross(a, b, { x: p[i][0], y: p[i][1] }, { x: p[i + 1][0], y: p[i + 1][1] })) return true; return false; };
+// Crossings of the stream: the bridge plus any stream fords. Each has two ends 34 px either side of the water, square to its course.
+const crossEnds = c => { const p = B.tributary; let bi = 0, bd = 1e9; for (let i = 0; i < p.length - 1; i++) { const d = distToPolyline(c.x, c.y, [p[i], p[i + 1]]); if (d < bd) { bd = d; bi = i; } }
+  const dx = p[bi + 1][0] - p[bi][0], dy = p[bi + 1][1] - p[bi][1], L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L;
+  return [{ x: c.x + nx * 34, y: c.y + ny * 34 }, { x: c.x - nx * 34, y: c.y - ny * 34 }]; };
+const STREAM_X = [B.bridge].concat(B.streamFords || []).map(c => ({ c, ends: crossEnds(c) })), bridgeEnds = STREAM_X[0].ends;
 const segHitsRect = (a, b, r) => { if (inCity(a.x, a.y) || inCity(b.x, b.y)) return true; for (let t = 0; t <= 1; t += .05) { const x = a.x + (b.x - a.x) * t, y = a.y + (b.y - a.y) * t; if (x > r.x0 && x < r.x1 && y > r.y0 && y < r.y1) return true; } return false; };
 // Push a point out of the city and moat to the nearest edge.
 function legal(p) { if (!inCity(p.x, p.y)) return p; const dl = p.x - CITYR.x0, dr = CITYR.x1 - p.x, dt = p.y - CITYR.y0, db = CITYR.y1 - p.y, m = Math.min(dl, dr, dt, db); return m === dl ? { x: CITYR.x0 - 12, y: p.y } : m === dr ? { x: CITYR.x1 + 12, y: p.y } : m === dt ? { x: p.x, y: CITYR.y0 - 12 } : { x: p.x, y: CITYR.y1 + 12 }; }
@@ -70,7 +76,7 @@ function planPath(a, b) {
   }
   // tributary (per leg)
   let out = [legs[0]];
-  for (let i = 1; i < legs.length; i++) { const p = out[out.length - 1], q = legs[i]; if (!inTrib(p.x, p.y) && !inTrib(q.x, q.y) && crossesTrib(p, q)) { const br = B.bridge, n = { x: br.x, y: br.y - 34 }, so = { x: br.x, y: br.y + 34 }; if (p.y < q.y) out.push(n, so); else out.push(so, n); } out.push(q); }
+  for (let i = 1; i < legs.length; i++) { const p = out[out.length - 1], q = legs[i]; if (!inTrib(p.x, p.y) && !inTrib(q.x, q.y) && crossesTrib(p, q)) { let bx = STREAM_X[0], bd = 1e9; STREAM_X.forEach(x => { const d = Math.hypot(p.x - x.c.x, p.y - x.c.y) + Math.hypot(q.x - x.c.x, q.y - x.c.y); if (d < bd) { bd = d; bx = x; } }); const [e1, e2] = bx.ends; if (Math.hypot(p.x - e1.x, p.y - e1.y) < Math.hypot(p.x - e2.x, p.y - e2.y)) out.push(e1, e2); else out.push(e2, e1); } out.push(q); }
   legs = out;
   // city and moat (per leg): go round the nearest corner
   out = [legs[0]];
@@ -169,12 +175,20 @@ function buildTerrain() {
   });
   // water
   waterBand(c, B.tributary, 22);
+  // the spring pool where the stream rises (Ain at-Tannour at Kadesh)
+  { const [sx, sy] = B.tributary[0]; c.fillStyle = '#2f7590'; c.beginPath(); c.ellipse(sx + 6, sy + 22, 46, 30, -.3, 0, PI * 2); c.fill(); c.fillStyle = '#4a98ae'; c.beginPath(); c.ellipse(sx + 6, sy + 22, 36, 22, -.3, 0, PI * 2); c.fill(); }
   waterBand(c, B.river, 58);
   B.fords.forEach(f => {
     c.save(); c.strokeStyle = 'rgba(230,220,180,.75)'; c.lineWidth = 3; c.setLineDash([4, 6]);
     for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(f.x - 44, f.y + k * 9); c.lineTo(f.x + 44, f.y + k * 9); c.stroke(); }
     c.restore(); outlined(c, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' });
   });
+  // stream fords: stepping stones across the water
+  STREAM_X.slice(1).forEach(x => { const [e1, e2] = x.ends; c.save(); c.fillStyle = 'rgba(225,215,180,.85)'; for (let k = 0; k <= 6; k++) { const t = k / 6; c.beginPath(); c.ellipse(e1.x + (e2.x - e1.x) * t, e1.y + (e2.y - e1.y) * t, 5, 4, 0, 0, PI * 2); c.fill(); } c.restore(); });
+  // the bridge over the stream: a plank deck square to the water
+  { const [e1, e2] = bridgeEnds, ang = Math.atan2(e2.y - e1.y, e2.x - e1.x); c.save(); c.translate(B.bridge.x, B.bridge.y); c.rotate(ang);
+    c.fillStyle = 'rgba(30,20,10,.35)'; c.fillRect(-30, -9, 64, 22); c.fillStyle = '#7a5a34'; c.fillRect(-32, -11, 64, 22);
+    c.strokeStyle = '#4e3820'; c.lineWidth = 1.5; for (let k = -28; k <= 28; k += 7) { c.beginPath(); c.moveTo(k, -11); c.lineTo(k, 11); c.stroke(); } c.restore(); }
   // forests: a shaded floor; the trees themselves stand (see PROPS)
   B.forests.forEach(fo => { const g = c.createRadialGradient(fo.x, fo.y, 0, fo.x, fo.y, fo.r); g.addColorStop(0, 'rgba(70,95,50,.35)'); g.addColorStop(1, 'rgba(70,95,50,0)'); c.fillStyle = g; c.beginPath(); c.ellipse(fo.x, fo.y, fo.r, fo.r * .8, 0, 0, PI * 2); c.fill(); });
   // the city of Kadesh: in the terrain only the moat and the ground inside; the walls and buildings are drawn standing (see drawCity)
@@ -824,10 +838,33 @@ function titleCardProgress(k) {
 }
 $('playBig').onclick = () => beginIntro(true);
 let introSpunCb = null;
-function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
+// Establishing pictures (S.establishing: [{ file, secs, credit, pulse: { x, y } }]): after the globe's dive, before the battle
+// map, each fades in, holds for `secs` (about 5) while the narration carries on, and fades out. `pulse` (fractions of the
+// picture's width and height) puts a pulsing ring on the picture, e.g. on the battle's town.
+let establishT = [];
+function placePulse(m) {
+  const el = $('establish'), img = el.querySelector('img'), ring = el.querySelector('.epulse');
+  if (!m.pulse || !img.naturalWidth) { ring.style.display = 'none'; return; }
+  const W = el.clientWidth, H = el.clientHeight, k = Math.min(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * k, h = img.naturalHeight * k;
+  ring.style.left = ((W - w) / 2 + m.pulse.x * w) + 'px'; ring.style.top = ((H - h) / 2 + m.pulse.y * h) + 'px'; ring.style.display = 'block';
+}
+function showEstablishing() {
+  const list = S.establishing || [], el = $('establish'); if (!list.length || !el) return;
+  establishT.forEach(clearTimeout); establishT = []; const img = el.querySelector('img'), cap = el.querySelector('.ecap');
+  let at = 0; el.classList.add('show'); requestAnimationFrame(() => el.classList.add('on'));
+  list.forEach((m, i) => {
+    establishT.push(setTimeout(() => { img.style.opacity = 0; el.querySelector('.epulse').style.display = 'none';
+      establishT.push(setTimeout(() => { img.onload = () => placePulse(m); img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; if (img.complete) placePulse(m); }, i ? 600 : 0)); }, at * 1000));
+    at += (m.secs || 5);
+  });
+  establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
+}
+function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
+function startIntro() { hideEstablishing(); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
-  if (G && window.KADESH_WORLD) G.start($('globe'), { lift: true, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
+  if (G && window.KADESH_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
+  hideEstablishing();
   const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
@@ -1037,9 +1074,12 @@ function exportLayoutGuide() {
   box(B.city.x - 26, B.city.y - 26, B.city.w + 52, B.city.h + 52, 'KADESH: walled city on a mound, moat, citadel');
   box(B.camp.x, B.camp.y, B.camp.w, B.camp.h, 'EGYPTIAN CAMP: shield wall, tents, royal tent');
   B.fords.forEach(f => box(f.x - 60, f.y - 30, 120, 60, 'FORD: ' + f.name));
+  box(B.bridge.x - 40, B.bridge.y - 30, 80, 60, 'BRIDGE');
+  (B.streamFords || []).forEach(f => box(f.x - 40, f.y - 30, 80, 60, 'FORD: ' + f.name));
+  box(B.tributary[0][0] - 50, B.tributary[0][1] - 10, 110, 70, 'SPRING POOL');
   B.forests.forEach(fo => { g.beginPath(); g.ellipse(fo.x, fo.y, fo.r, fo.r * .8, 0, 0, PI * 2); g.stroke(); g.fillText('FOREST', fo.x - 50, fo.y); });
   B.hills.forEach(h => { g.beginPath(); g.ellipse(h.x, h.y, h.rx, h.ry, 0, 0, PI * 2); g.stroke(); g.fillText('HILL', h.x - 25, h.y); });
-  g.strokeStyle = '#00e5ff'; g.lineWidth = 6; g.beginPath(); curve(g, B.river); g.stroke(); g.beginPath(); curve(g, B.tributary); g.stroke(); g.fillStyle = '#00e5ff'; g.fillText('RIVER CENTRELINE (Orontes, flows south to north)', 1560, 1300);
+  g.strokeStyle = '#00e5ff'; g.lineWidth = 6; g.beginPath(); curve(g, B.river); g.stroke(); g.beginPath(); curve(g, B.tributary); g.stroke(); g.fillStyle = '#00e5ff'; g.fillText('RIVER CENTRELINE (Orontes, flows south to north)', 1560, 1300); g.fillText('STREAM (left cyan line): rises at the spring pool, winds north, joins the river', 40, 1000);
   g.strokeStyle = '#ffd400'; g.lineWidth = 6; g.beginPath(); curve(g, B.road); g.stroke(); g.fillStyle = '#ffd400'; g.fillText('ROAD', 1200, 1320);
   g.fillStyle = '#ff2a2a'; g.font = 'bold 40px system-ui'; g.fillText('N (north is up) \u2191   map ' + W.w + ' x ' + W.h + ' px, paint at 2x = ' + W.w * 2 + ' x ' + W.h * 2, 40, 60);
   const a = document.createElement('a'); a.download = 'kadesh-layout-guide.png'; a.href = T.toDataURL('image/png'); a.click();
