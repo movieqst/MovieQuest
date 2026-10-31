@@ -50,7 +50,9 @@ window.EDINGTON_SCENARIO = {
   battlefield: {
     scale: { px: 60, label: 'schematic, not to scale' },
     river: [], tributary: [], fords: [], bridge: null, city: null, camp: null, road: [],
-    forests: [], hills: [], fields: [],
+    forests: [{ x: 300, y: 1650, r: 160 }, { x: 2150, y: 1550, r: 140 }],
+    hills: [],
+    fields: [],
     labels: [
       { x: 1200, y: 40, text: 'Toward the Viking stronghold', small: true },
       { x: 400, y: 1780, text: 'From Iley and Egbert’s Stone', small: true },
@@ -148,15 +150,15 @@ window.EDINGTON_SCENARIO = {
 
   /* Formations: a first draft for the map, to be placed when the map is drawn. `power` is a game balance value, not a count. */
   formations: [
-    { id: 'alfred',   side: 'saxon',  name: 'Alfred and his household', division: 'Alfred', type: 'infantry', cols: 5, rows: 3, power: 1.3, x: 1200, y: 1250,
+    { id: 'alfred',   side: 'saxon',  name: 'Alfred and his household', division: 'Alfred', type: 'infantry', cols: 5, rows: 3, power: 1.3, x: 1200, y: 1560,
       count: 'The king’s companions', confidence: 'reconstruction', note: 'Alfred fought in the line with his own men. Where he stood is not recorded.' },
-    { id: 'somerset', side: 'saxon',  name: 'Men of Somerset', division: 'Somerset', type: 'infantry', cols: 8, rows: 3, power: 1.0, x: 850, y: 1250,
+    { id: 'somerset', side: 'saxon',  name: 'Men of Somerset', division: 'Somerset', type: 'infantry', cols: 8, rows: 3, power: 1.0, x: 850, y: 1560,
       count: 'Part of the army (no figure)', confidence: 'account', note: 'The men who had held out with Alfred at Athelney.' },
-    { id: 'wiltshire', side: 'saxon', name: 'Men of Wiltshire', division: 'Wiltshire', type: 'infantry', cols: 8, rows: 3, power: 1.0, x: 1550, y: 1250,
+    { id: 'wiltshire', side: 'saxon', name: 'Men of Wiltshire', division: 'Wiltshire', type: 'infantry', cols: 8, rows: 3, power: 1.0, x: 1550, y: 1560,
       count: 'Part of the army (no figure)', confidence: 'account', note: 'Came to Egbert’s Stone to join the king.' },
-    { id: 'hampshire', side: 'saxon', name: 'Men of Hampshire', division: 'Hampshire', type: 'infantry', cols: 6, rows: 3, power: .9, x: 1200, y: 1450,
+    { id: 'hampshire', side: 'saxon', name: 'Men of Hampshire', division: 'Hampshire', type: 'infantry', cols: 6, rows: 3, power: .9, x: 1200, y: 1700,
       count: 'Part of the army (no figure)', confidence: 'account', note: 'From the part of Hampshire west of the sea.' },
-    { id: 'saxbows',  side: 'saxon',  name: 'Bowmen and javelin men', division: 'Skirmishers', type: 'archers', cols: 6, rows: 1, power: .7, x: 1200, y: 1120,
+    { id: 'saxbows',  side: 'saxon',  name: 'Bowmen and javelin men', division: 'Skirmishers', type: 'archers', cols: 6, rows: 1, power: .7, x: 1200, y: 1450,
       count: 'A few', confidence: 'reconstruction', note: 'Archers and throwers are known from the period; their part in this battle is not recorded.' },
     { id: 'guthrum',  side: 'viking', name: 'Guthrum and his warband', division: 'Guthrum', type: 'infantry', cols: 5, rows: 3, power: 1.3, x: 1200, y: 600,
       count: 'The king’s own men', confidence: 'reconstruction', note: 'Guthrum survived the battle; where he stood is not recorded.' },
@@ -172,31 +174,31 @@ window.EDINGTON_SCENARIO = {
     { t: 0, title: 'The march to Ethandun', tag: 'account', focus: { x: 800, y: 1400 }, zoom: 'fit',
       text: 'From Egbert’s Stone the army marched one day to Iley, and the next morning on to Ethandun, where the Viking army was waiting.',
       explain: 'Gathering an army from three shires in one place, then marching at once, gave the Vikings little warning. The Chronicle gives the route; where Iley lay is not certain.',
-      cite: 'Anglo-Saxon Chronicle, 878; Asser ch. 55–56', orders: [] },
+      cite: 'Anglo-Saxon Chronicle, 878; Asser ch. 55–56', orders: [ { id: 'alfred', to: { x: 1200, y: 1250 }, speed: 18 }, { id: 'somerset', to: { x: 850, y: 1250 }, speed: 18 }, { id: 'wiltshire', to: { x: 1550, y: 1250 }, speed: 18 }, { id: 'hampshire', to: { x: 1200, y: 1430 }, speed: 18 }, { id: 'saxbows', to: { x: 1200, y: 1130 }, speed: 18 } ] },
     { t: 12, title: 'The shield walls form', tag: 'established', focus: { x: 1200, y: 900 },
       text: 'Both armies form their shield walls: overlapping round shields, spears levelled, the best men in the front rank.',
       explain: 'A shield wall was strong while it held together. Battles were usually decided when one side’s line gave way, not by single heroes.',
-      cite: 'General knowledge of early medieval warfare', orders: [] },
+      cite: 'General knowledge of early medieval warfare', orders: [ { id: 'vleft', to: { x: 850, y: 720 }, speed: 12 }, { id: 'guthrum', to: { x: 1200, y: 720 }, speed: 12 }, { id: 'vright', to: { x: 1550, y: 720 }, speed: 12 }, { id: 'vbows', to: { x: 1200, y: 860 }, speed: 12 } ] },
     { t: 26, title: 'Missiles', tag: 'reconstruction', focus: { x: 1200, y: 900 },
       text: 'Before the lines meet, arrows, spears and throwing axes fly across the gap.',
       explain: 'Throwing weapons and bows are known from the period. The sources do not describe them at Ethandun; this chapter is a reconstruction.',
-      cite: 'Reconstruction', orders: [] },
-    { t: 40, title: 'The clash', tag: 'account', focus: { x: 1200, y: 900 },
+      cite: 'Reconstruction', orders: [ { id: 'saxbows', to: { x: 1200, y: 990 }, speed: 20 }, { id: 'vbows', to: { x: 1200, y: 880 }, speed: 20 } ] },
+    { t: 40, title: 'The clash', tag: 'account', focus: { x: 1200, y: 640 },
       text: 'Alfred’s army closes with the whole Viking army. Asser writes that he fought fiercely, with a dense shield wall.',
       explain: 'Asser’s Latin phrase is densa testudine, a close-packed wall of shields. It is the only detail of the fighting that a near-contemporary source gives.',
-      cite: 'Asser, Life of King Alfred, ch. 56', orders: [] },
-    { t: 56, title: 'A long struggle', tag: 'account', focus: { x: 1200, y: 900 },
+      cite: 'Asser, Life of King Alfred, ch. 56', orders: [ { id: 'saxbows', to: { x: 1200, y: 1500 }, speed: 30 }, { id: 'vbows', to: { x: 1200, y: 560 }, speed: 30 }, { id: 'alfred', to: { x: 1200, y: 790 }, speed: 34, state: 'attack' }, { id: 'somerset', to: { x: 850, y: 790 }, speed: 34, state: 'attack' }, { id: 'wiltshire', to: { x: 1550, y: 790 }, speed: 34, state: 'attack' }, { id: 'hampshire', to: { x: 1200, y: 930 }, speed: 30 } ] },
+    { t: 56, title: 'A long struggle', tag: 'account', focus: { x: 1200, y: 640 },
       text: 'The two lines push, stab and hold. Asser says the fighting went on for a long time.',
       explain: 'In a shield-wall fight the men at the front were relieved by those behind. Exhaustion, losses and nerve decided when a line would break.',
-      cite: 'Asser, Life of King Alfred, ch. 56', orders: [] },
+      cite: 'Asser, Life of King Alfred, ch. 56', orders: [ { id: 'alfred', state: 'hold', strengthTo: 75, over: 14 }, { id: 'somerset', state: 'hold', strengthTo: 70, over: 14 }, { id: 'wiltshire', state: 'hold', strengthTo: 72, over: 14 }, { id: 'guthrum', strengthTo: 60, over: 14 }, { id: 'vleft', strengthTo: 55, over: 14 }, { id: 'vright', strengthTo: 55, over: 14 } ] },
     { t: 72, title: 'The Viking line breaks', tag: 'account', focus: { x: 1200, y: 700 },
       text: 'At last the Viking army gives way and flees. The West Saxons cut down many of them as they run.',
       explain: 'Most killing in battles of this kind happened after a line broke, as men fled. The number of dead is not recorded.',
-      cite: 'Anglo-Saxon Chronicle, 878; Asser ch. 56', orders: [] },
+      cite: 'Anglo-Saxon Chronicle, 878; Asser ch. 56', orders: [ { id: 'vleft', state: 'rout', to: { x: 900, y: 150 }, speed: 32, strengthTo: 30, over: 6, spread: 2.2 }, { id: 'vright', state: 'rout', to: { x: 1500, y: 150 }, speed: 32, strengthTo: 30, over: 6, spread: 2.2 }, { id: 'guthrum', state: 'rout', to: { x: 1250, y: 120 }, speed: 30, strengthTo: 40, over: 6 }, { id: 'vbows', state: 'rout', to: { x: 1200, y: 100 }, speed: 30 }, { id: 'alfred', to: { x: 1200, y: 600 }, speed: 18, state: 'attack' }, { id: 'somerset', to: { x: 850, y: 620 }, speed: 18, state: 'attack' }, { id: 'wiltshire', to: { x: 1550, y: 620 }, speed: 18, state: 'attack' } ] },
     { t: 88, title: 'Pursuit to the stronghold', tag: 'disputed', focus: { x: 1200, y: 300 },
       text: 'Alfred pursues the survivors to their stronghold and takes the animals and men he finds outside it.',
       explain: 'The Chronicle says only “the fortress”. It is usually taken to be Chippenham, but some historians argue for a hill fort near the battlefield.',
-      cite: 'Anglo-Saxon Chronicle, 878; Asser ch. 56', orders: [] },
+      cite: 'Anglo-Saxon Chronicle, 878; Asser ch. 56', orders: [ { id: 'alfred', to: { x: 1200, y: 330 }, speed: 20 }, { id: 'somerset', to: { x: 950, y: 360 }, speed: 20 }, { id: 'wiltshire', to: { x: 1450, y: 360 }, speed: 20 }, { id: 'hampshire', to: { x: 1200, y: 520 }, speed: 20 } ] },
     { t: 104, title: 'The siege', tag: 'account', focus: { x: 1200, y: 300 },
       text: 'For fourteen days the West Saxons besiege the stronghold. Hungry, cold and afraid, the Vikings ask for peace.',
       explain: 'The Vikings gave Alfred hostages and swore oaths, and promised to leave his kingdom. Unusually, they gave hostages without taking any in return.',
@@ -207,7 +209,23 @@ window.EDINGTON_SCENARIO = {
       cite: 'Anglo-Saxon Chronicle, 878 and 880; Asser ch. 56', orders: [] }
   ],
 
-  ai: { plans: { saxon: [{ t: 0, orders: [] }], viking: [{ t: 0, orders: [] }] }, huntRange: 700, holdPoint: { x: 1200, y: 900 }, spotRange: 380 },
+  ai: {
+    plans: {
+      /* The player leads the West Saxons: the Vikings hold the high ground, shoot, then counter-attack. */
+      viking: [
+        { t: 0, orders: [ { id: 'vleft', to: { x: 850, y: 720 }, speed: 12 }, { id: 'guthrum', to: { x: 1200, y: 720 }, speed: 12 }, { id: 'vright', to: { x: 1550, y: 720 }, speed: 12 }, { id: 'vbows', to: { x: 1200, y: 860 }, speed: 12 } ] },
+        { t: 90, orders: [ { id: 'guthrum', to: { x: 1200, y: 1100 }, speed: 14, state: 'attack', hunt: true }, { id: 'vleft', to: { x: 850, y: 1100 }, speed: 14, state: 'attack', hunt: true }, { id: 'vright', to: { x: 1550, y: 1100 }, speed: 14, state: 'attack', hunt: true } ],
+          caption: { title: 'The Vikings come down the hill', text: 'Guthrum’s shield wall is advancing on your line.', tag: 'reconstruction' } }
+      ],
+      /* The player leads the Vikings: the West Saxons march up and attack. */
+      saxon: [
+        { t: 0, orders: [ { id: 'alfred', to: { x: 1200, y: 1250 }, speed: 18 }, { id: 'somerset', to: { x: 850, y: 1250 }, speed: 18 }, { id: 'wiltshire', to: { x: 1550, y: 1250 }, speed: 18 }, { id: 'hampshire', to: { x: 1200, y: 1430 }, speed: 18 }, { id: 'saxbows', to: { x: 1200, y: 1130 }, speed: 18 } ] },
+        { t: 45, orders: [ { id: 'alfred', to: { x: 1200, y: 760 }, speed: 15, state: 'attack', hunt: true }, { id: 'somerset', to: { x: 850, y: 760 }, speed: 15, state: 'attack', hunt: true }, { id: 'wiltshire', to: { x: 1550, y: 760 }, speed: 15, state: 'attack', hunt: true } ],
+          caption: { title: 'Alfred attacks', text: 'The West Saxon shield wall is coming up the slope.', tag: 'reconstruction' } }
+      ]
+    },
+    huntRange: 700, holdPoint: { x: 1200, y: 900 }, spotRange: 420
+  },
 
   commandLines: {
     saxon: 'You command the West Saxons. Hold your shield wall together, wear the Viking line down, and break it.',
