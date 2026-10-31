@@ -108,7 +108,7 @@ window.WATERLOO_SCENARIO = {
     {
       title: 'The French army',
       media: [
-        { at: 0, file: '06-ney-gerard.jpg', caption: 'Marshal Michel Ney, by François Gérard. He led the French attacks on the ridge in the afternoon.', ref: 'Portrait, early 19th century', credit: '' },
+        { at: 0, file: '06-ney-gerard.jpg', caption: 'Marshal Michel Ney, engraved by Henry Richard Cook in 1817 after a portrait by François Gérard. Ney led the French attacks on the ridge in the afternoon. He was shot for treason in Paris that December.', ref: 'Engraving by H. R. Cook, 1817, after François Gérard', credit: 'Wikimedia Commons, public domain' },
         { at: 14, file: '07-cuirassiers-philippoteaux.jpg', caption: 'French cuirassiers charging the British squares, by Félix Philippoteaux (1874). Painted sixty years later; the uniforms are carefully drawn, the scene is imagined.', ref: 'Victoria and Albert Museum, London', credit: '' }
       ],
       focus: { x: 1250, y: 1250 }, zoom: .8,
