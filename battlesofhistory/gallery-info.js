@@ -89,6 +89,7 @@ window.GALLERY_INFO = {
   'gaugamela/15-le-brun-arbela.jpg': ['art', 'tapestry', 1666, null, null],
   'gaugamela/16-susa-archer-detail.jpg': ['art', 'glazed-brick frieze', -510, null, null],
   'gaugamela/18-susa-archers-aod455.jpg': ['art', 'glazed-brick frieze', -510, '2017-07-30, France, Paris DSC 2934 DxO.jpg', null],
+  'gaugamela/19-susa-frieze-louvre.jpg': ['photo', 'museum photo', 2016, 'Frise des lanciers (31434534865).jpg', null],
   'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
   // Waterloo
   'waterloo/01-pieneman-waterloo.jpg': ['art', 'painting', 1824, 'De_Slag_bij_Waterloo_Rijksmuseum_SK-A-1115.jpeg', null],
