@@ -306,10 +306,10 @@ window.WATERLOO_SCENARIO = {
     french: 'You command the French army. Your grand battery is in the valley; the Allied infantry is hidden on the ridge. The Prussians are coming from the east.'
   },
 
-  /* Recorded narration lives in audio/ (not yet recorded). The browser’s own voice is used until clips exist. */
+  /* Recorded narration lives in audio/<voice>/ (clear: Narrator 1). Clips missing for a line fall back to the browser’s voice. */
   imageBase: 'images/',
   audioBase: 'audio/',
-  voices: [],
+  voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],
 
   /* What the debrief says at the end of a command battle */
   debrief: {
