@@ -1086,7 +1086,8 @@ window.addEventListener('keydown', e => {
 /* ---------------- buttons ---------------- */
 $('introBtn').onclick = startIntro;
 $('watchBtn').onclick = () => startMode('watch');
-$('commandBtn').onclick = () => startMode('command');
+// Take command: ask which side to lead (the same menu as the start screen, without the reenactment button).
+$('commandBtn').onclick = () => { $('playMenu').classList.add('show', 'cmdpick'); };
 $('pauseBtn').onclick = togglePause;
 $('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode); };
 $('speedSel').onchange = e => { speed = +e.target.value; $('ffBtn').classList.toggle('active', speed > 1); $('ffBtn').textContent = speed > 1 ? '\u23e9 ' + speed + '\u00d7' : '\u23e9 FF'; };
@@ -1132,8 +1133,8 @@ $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if 
 $('sideSel').value = player;
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
 $('chooseCommandH').onclick = () => { setPlayer('persia'); startMode('command', { skipGlobe: true }); };
-$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.add('show'); };
-$('pmClose').onclick = () => { $('playMenu').classList.remove('show'); $('playGame').classList.add('show'); };
+$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.remove('cmdpick'); $('playMenu').classList.add('show'); };
+$('pmClose').onclick = () => { const fromCmd = $('playMenu').classList.contains('cmdpick'); $('playMenu').classList.remove('show', 'cmdpick'); if (!fromCmd) $('playGame').classList.add('show'); };
 $('pmWatch').onclick = () => $('chooseWatch').click();
 $('pmMacedon').onclick = () => $('chooseCommand').click();
 $('pmPersian').onclick = () => $('chooseCommandH').click();

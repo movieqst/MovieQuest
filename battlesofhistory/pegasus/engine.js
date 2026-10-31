@@ -1181,7 +1181,8 @@ window.addEventListener('keydown', e => {
 /* ---------------- buttons ---------------- */
 $('introBtn').onclick = startIntro;
 $('watchBtn').onclick = () => startMode('watch');
-$('commandBtn').onclick = () => startMode('command');
+// Take command: ask which side to lead (the same menu as the start screen, without the reenactment button).
+$('commandBtn').onclick = () => { $('playMenu').classList.add('show', 'cmdpick'); };
 $('pauseBtn').onclick = togglePause;
 $('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode); };
 $('speedSel').onchange = e => { speed = +e.target.value; $('ffBtn').classList.toggle('active', speed > 1); $('ffBtn').textContent = speed > 1 ? '⏩ ' + speed + '×' : '⏩ FF'; };
@@ -1227,8 +1228,8 @@ $('partSel').onchange = () => { if (mode !== 'intro') startMode(mode, { part: +$
 $('chooseWatch').onclick = () => startMode('watch', { part: 0 });
 $('chooseCommand').onclick = () => { setPlayer(SIDE_IDS[0]); startMode('command', { part: 0 }); };
 $('chooseCommandH').onclick = () => { setPlayer(SIDE_IDS[1]); startMode('command', { part: 0 }); };
-$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.add('show'); };
-$('pmClose').onclick = () => { $('playMenu').classList.remove('show'); $('playGame').classList.add('show'); };
+$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.remove('cmdpick'); $('playMenu').classList.add('show'); };
+$('pmClose').onclick = () => { const fromCmd = $('playMenu').classList.contains('cmdpick'); $('playMenu').classList.remove('show', 'cmdpick'); if (!fromCmd) $('playGame').classList.add('show'); };
 $('pmWatch').onclick = () => startMode('watch', { part: chosenPart() });
 $('pmSideA').onclick = () => { setPlayer(SIDE_IDS[0]); startMode('command', { part: chosenPart() }); };
 $('pmSideB').onclick = () => { setPlayer(SIDE_IDS[1]); startMode('command', { part: chosenPart() }); };

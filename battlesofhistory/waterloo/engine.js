@@ -329,9 +329,13 @@ const sheetFor = f => SHEETS[f.sheet || (SHEET_BY[f.side] || {})[f.type]];
    deadlier. Troops behind the crest of a ridge (`S.cover`) are half-hidden from roundshot. Crews do not fight hand to hand:
    when cavalry is on top of the guns they take shelter and the battery falls silent, and enemy troops in contact damage it.
    Numbers are a game model, not to scale. */
-const GUN = { range: 620, canister: 190, reload: 2.6, limber: 1.6, unlimber: 2.2, round: 2.6, canisterDmg: 9, shelter: 60 };
+const GUN = { lay: 1.5, range: 620, canister: 190, reload: 2.6, limber: 1.6, unlimber: 2.2, round: 2.6, canisterDmg: 9, shelter: 60 };
 const SMOKE = [];   // world-space smoke puffs and dust: { x, y, t0, life, r, kind }
-function gunInit(f) { f.gun = { deployed: true, phase: 'ready', t: 0, cd: 1 + (f.cols || 3) * .3 * Math.random(), lastShot: -99, aim: null }; }
+// Fire orders (Command mode, the player's batteries): 'will' = fire at the nearest enemy in sight (the default and the computer's way);
+// 'aim' = lay the guns on one target, then wait; 'fire' = one volley at it as soon as the guns are laid, then wait again;
+// 'auto' = keep firing at it until it is gone or out of range; 'hold' = cease fire.
+// Laying the guns on a new target takes GUN.lay seconds; a target must be in sight and within range.
+function gunInit(f) { f.gun = { deployed: true, phase: 'ready', t: 0, cd: 1 + (f.cols || 3) * .3 * Math.random(), lastShot: -99, aim: null, mode: 'will', target: null, laid: 0 }; }
 const gunFacesWest = f => f.gun && f.gun.aim ? f.gun.aim.x < f.x - 8 : Math.cos(f.facing) < -.2;
 // Pose for gun figure i: which row and frame of the sheet. Guns in a battery fire one after another, a quarter second apart.
 function gunPose(f, i) {
@@ -364,6 +368,18 @@ function artillery(apply) {
   formations.forEach(f => {
     if (f.type !== 'artillery' || !alive(f) || !f.gun || f.state === 'rout' || f.state === 'captured' || f.holdFire) return;
     const g = f.gun; if (!g.deployed) return;
+    if (g.mode === 'hold') return;
+    if (g.mode === 'aim' || g.mode === 'fire' || g.mode === 'auto') {                        // a battery laid on one target by the player
+      const t = byId[g.target];
+      if (!t || !alive(t) || t.state === 'captured' || !sees(f.side, t)) { g.mode = 'will'; g.target = null; if (f.side === player) addLog(f.division + ': target lost, firing at will'); return; }
+      g.aim = { x: t.x, y: t.y }; f.facing = Math.atan2(t.y - f.y, t.x - f.x); const was = g.laid; g.laid += DT;
+      if (was < GUN.lay && g.laid >= GUN.lay && selected.has(f.id)) { renderSelection(); if (g.mode === 'aim') addLog(f.division + ': guns laid on ' + t.division + ', ready to fire'); }
+      if (g.mode === 'aim' || g.laid < GUN.lay) return;
+      g.cd -= DT; if (g.cd > 0) return;
+      const d = dist(f, t); if (d > GUN.range) { g.cd = .5; return; }   // out of range: hold, laid, until it comes back in
+      if (formations.some(e => e.side !== f.side && alive(e) && dist(f, e) < GUN.shelter && (e.type === 'cavalry' || e.type === 'infantry'))) { g.cd = .5; return; }
+      volley(f, t, d, apply); if (g.mode === 'fire') { g.mode = 'aim'; if (selected.has(f.id)) renderSelection(); } return;
+    }
     g.cd -= DT; if (g.cd > 0) return;
     let best = null, bd = GUN.range, near = false;
     formations.forEach(t => { if (t.side === f.side || !alive(t) || t.state === 'captured') return; const d = dist(f, t);
@@ -373,21 +389,33 @@ function artillery(apply) {
     if (best) bd = dist(f, best);
     if (near) { g.cd = .5; return; }                       // crews take shelter while enemy troops are on the guns
     if (!best) { g.cd = .4; g.aim = null; return; }
-    g.aim = { x: best.x, y: best.y }; g.lastShot = simTime; g.cd = GUN.reload * (.9 + .2 * Math.random());
-    const canister = bd < GUN.canister, n = f.cols * f.rows;
-    for (let i = 0; i < n; i++) {
-      const west = best.x < f.x - 8, mx = f.x + (i - (n - 1) / 2) * 52 + (west ? -26 : 26), my = f.y - 9;   // at the muzzle
-      SMOKE.push({ x: mx, y: my, t0: simTime + i * .25, life: 3.2, r: 10, kind: 'smoke' });
-      SMOKE.push({ x: best.x + (Math.random() - .5) * 60, y: best.y + (Math.random() - .5) * 30, t0: simTime + .2 + i * .25, life: 1.2, r: canister ? 14 : 8, kind: canister ? 'spray' : 'dust' });
-    }
-    if (!apply) return;
-    let dmg = (canister ? GUN.canisterDmg * (1 - .5 * bd / GUN.canister) : GUN.round * (1 - .4 * bd / GUN.range)) * (f.power || 1) * (f.strength / 100);
-    if (!canister && S.cover && best.side === S.cover.side && best.y < S.cover.yMax) dmg *= S.cover.k;   // behind the crest
-    if (best.state === 'hold' && best.type === 'infantry') dmg *= 1.2;   // a square or a halted line is a dense target
-    if (best.fortified) dmg *= .12;                                      // behind the thick walls of a farm
-    best.strength -= dmg; best.lastHit = simTime;
+    volley(f, best, bd, apply);
   });
   for (let k = SMOKE.length - 1; k >= 0; k--) if (simTime - SMOKE[k].t0 > SMOKE[k].life || simTime < SMOKE[k].t0 - 5) SMOKE.splice(k, 1);
+}
+// One volley from battery f at target t, bd away. Canister (close in) sprays the target. Roundshot: each gun's ball lands
+// somewhere around the point aimed at (the further the shot, the wider the spread) and hurts any troops or guns near where
+// it lands, whichever side they are on. `apply` = false in the reenactment: the shots are for the eye only.
+const BALL = { spread: .14, hit: 70 };
+function volley(f, best, bd, apply) {
+  const g = f.gun, n = f.cols * f.rows, canister = bd < GUN.canister;
+  g.aim = { x: best.x, y: best.y }; g.lastShot = simTime; g.cd = GUN.reload * (.9 + .2 * Math.random());
+  const base = (canister ? GUN.canisterDmg * (1 - .5 * bd / GUN.canister) : GUN.round * (1 - .4 * bd / GUN.range)) * (f.power || 1) * (f.strength / 100);
+  const hurt = (t, dmg) => {
+    if (!canister && S.cover && t.side === S.cover.side && t.y < S.cover.yMax) dmg *= S.cover.k;   // behind the crest
+    if (t.state === 'hold' && t.type === 'infantry') dmg *= 1.2;                                      // a square or a halted line is a dense target
+    if (t.fortified) dmg *= .12;                                                                       // behind the thick walls of a farm
+    t.strength -= dmg; t.lastHit = simTime;
+  };
+  for (let i = 0; i < n; i++) {
+    const west = best.x < f.x - 8, mx = f.x + (i - (n - 1) / 2) * 52 + (west ? -26 : 26), my = f.y - 9, at = simTime + i * .25;   // at the muzzle
+    SMOKE.push({ x: mx, y: my, t0: at, life: 3.2, r: 10, kind: 'smoke' });
+    if (canister) { SMOKE.push({ x: best.x + (Math.random() - .5) * 60, y: best.y + (Math.random() - .5) * 30, t0: at + .2, life: 1.2, r: 14, kind: 'spray' }); continue; }
+    const sp = bd * BALL.spread, a = Math.random() * PI * 2, r = sp * Math.sqrt(Math.random()), ix = best.x + Math.cos(a) * r, iy = best.y + Math.sin(a) * r * .6;
+    SMOKE.push({ x: ix, y: iy, t0: at + .25, life: 1.4, r: 9, kind: 'dust' });
+    if (apply) formations.forEach(t => { if (!alive(t) || t === f || t.state === 'captured') return; const d = Math.hypot(t.x - ix, t.y - iy); if (d < BALL.hit) hurt(t, base / n * 1.6 * (1 - d / BALL.hit)); });
+  }
+  if (apply && canister) hurt(best, base);
 }
 function drawSmoke(c) {
   SMOKE.forEach(p => { const a = simTime - p.t0; if (a < 0) return; const k = a / p.life, q = P(p.x + a * 6, p.y - a * 4); if (!(q.s > 0)) return;
@@ -493,7 +521,7 @@ function createFormations() {
     holdFire: mode === 'watch' && !!d.holdFire, then: null, aiPhase: null, lastHit: -99
   }));
   formations.forEach(f => { if (f.type === 'artillery') gunInit(f); }); SMOKE.length = 0;
-  byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations;
+  byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations; window.__sel = selected;
 }
 function applyOrder(o) {
   const f = byId[o.id]; if (!f) return;
@@ -735,6 +763,10 @@ function render() {
   formations.forEach(f => scene.push({ y: f.y, f }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : drawFormation(ctx, o.f));
   drawSmoke(ctx);
+  // aim lines from the player's selected batteries to their targets: dashed while laying, solid once the guns are on
+  formations.forEach(f => { const g = f.gun, t = g && g.target && byId[g.target]; if (!t || f.side !== player || !selected.has(f.id) || !alive(t)) return;
+    const a = P(f.x, f.y - 8), b = P(t.x, t.y - 8), laid = g.laid >= GUN.lay; ctx.save(); ctx.strokeStyle = g.mode === 'auto' || g.mode === 'fire' ? '#ff6a4a' : '#ffd36b'; ctx.lineWidth = 2;
+    ctx.setLineDash(laid ? [] : [8, 6]); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); ctx.setLineDash([]); ctx.beginPath(); ctx.arc(b.x, b.y, 14 * b.s, 0, PI * 2); ctx.stroke(); ctx.restore(); });
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
@@ -832,7 +864,7 @@ function fmtTime(t) { return `${String(Math.floor(t / 60)).padStart(2, '0')}:${S
 function renderSelection() {
   const box = $('selection');
   if (!selected.size) { box.innerHTML = '<p class="muted">Click a formation on the map to see who they are.</p>'; return; }
-  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'allied' ? '#ffb3a7' : '#9fc8ff'}">${f.name}</b><div class="tiny">${f.type}${f.gun ? ' (' + (f.gun.deployed ? 'unlimbered, can fire' : 'limbered, cannot fire') + ')' : ''} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
+  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'allied' ? '#ffb3a7' : '#9fc8ff'}">${f.name}</b><div class="tiny">${f.type}${f.gun ? ' (' + (!f.gun.deployed ? 'limbered, cannot fire' : f.gun.target && byId[f.gun.target] ? ({ aim: f.gun.laid < GUN.lay ? 'laying guns on ' : 'aimed at ', fire: 'firing a volley at ', auto: 'autofire at ' }[f.gun.mode] || '') + byId[f.gun.target].division : { hold: 'ceasefire', will: 'firing at will' }[f.gun.mode] || '') + ')' : ''} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
 }
 function renderTimeline() {
   const tl = $('timeline'); if (!tl) return;
@@ -1028,6 +1060,15 @@ function orderMove(p, state) {
 function orderHalt() { ownSelected().forEach(f => { if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; }); addLog('Halt'); renderSelection(); }
 function orderFace(p) { ownSelected().forEach(f => { f.facing = Math.atan2(p.y - f.y, p.x - f.x); f.state = 'hold'; }); addLog('Facing changed'); renderSelection(); }
 function orderFallBack() { $('retreatBtn').click(); }
+// Gun orders for the selected batteries. Aim: turn and lay the guns on a target in sight and in range (takes GUN.lay seconds).
+// Fire: one volley as soon as the guns are laid. Autofire: keep firing at the target until it is gone or out of range.
+const ownGuns = () => ownSelected().filter(f => f.type === 'artillery' && f.gun);
+function orderAim(t) { ownGuns().forEach(f => { if (dist(f, t) > GUN.range) { addLog(f.division + ': ' + t.division + ' is out of range'); return; }
+  if (f.gun.target !== t.id) f.gun.laid = 0; f.gun.target = t.id; f.gun.mode = 'aim'; if (f.state === 'move' || f.state === 'attack') { f.tx = f.x; f.ty = f.y; f.state = 'hold'; } });
+  addLog('Aim at ' + t.division); renderSelection(); }
+window.__gunOrders = { orderAim: t => orderAim(t), orderGunMode: m => orderGunMode(m), screenOf: id => P(byId[id].x, byId[id].y) };   // for tests
+function orderGunMode(mode) { ownGuns().forEach(f => { if ((mode === 'fire' || mode === 'auto') && !f.gun.target) return; f.gun.mode = mode; if (mode === 'hold' || mode === 'will') f.gun.target = null; });
+  addLog({ fire: 'Fire!', auto: 'Autofire', hold: 'Cease fire', will: 'Fire at will' }[mode]); renderSelection(); }
 function showMenu(sx, sy, p) {
   menuTarget = p; const m = $('ctxMenu'), fs = ownSelected(), enemy = pickFormation(p), onEnemy = enemy && enemy.side !== player;
   const items = [];
@@ -1037,13 +1078,27 @@ function showMenu(sx, sy, p) {
     items.push({ t: '\u21bb Face this way', f: () => orderFace(p) });
     items.push({ t: '\u25a0 Halt / hold ground', f: orderHalt });
     items.push({ t: '\u21a9 Fall back', f: orderFallBack });
+    const guns = fs.filter(f => f.type === 'artillery' && f.gun);
+    if (guns.length) {
+      items.push({ sep: true });
+      if (onEnemy && sees(player, enemy)) {
+        const inRange = guns.some(f => dist(f, enemy) <= GUN.range);
+        items.push({ t: '\ud83c\udfaf Aim at ' + enemy.division + (inRange ? '' : ' (out of range)'), f: () => orderAim(enemy), off: !inRange });
+      }
+      if (guns.some(f => f.gun.target)) {
+        items.push({ t: '\ud83d\udca5 Fire (one volley)', f: () => orderGunMode('fire') });
+        items.push({ t: '\ud83d\udd01 Autofire (keep firing)', f: () => orderGunMode('auto') });
+      }
+      items.push({ t: '\u270b Cease fire', f: () => orderGunMode('hold') });
+      items.push({ t: '\ud83c\udfb2 Fire at will (choose own targets)', f: () => orderGunMode('will') });
+    }
     items.push({ sep: true });
   }
   items.push({ t: '\u2611 Select all ' + (player === 'allied' ? 'Allied' : 'French') + ' formations', f: () => $('selectAll').click() });
   if (enemy && enemy.side === player) items.push({ t: '\u2610 Select ' + enemy.name, f: () => { selected.clear(); selected.add(enemy.id); renderSelection(); } });
   if (selected.size) items.push({ t: '\u2715 Deselect', f: () => { selected.clear(); renderSelection(); } });
   items.push({ t: '\ud83c\udfa5 Look here', f: () => { manualCamera(); focusOn(p.x, p.y); } });
-  m.innerHTML = (fs.length ? `<div class="mhead">${fs.length} formation${fs.length > 1 ? 's' : ''} selected</div>` : '<div class="mhead">No formation selected</div>') + items.map((it, i) => it.sep ? '<hr>' : `<button data-i="${i}">${it.t}</button>`).join('');
+  m.innerHTML = (fs.length ? `<div class="mhead">${fs.length} formation${fs.length > 1 ? 's' : ''} selected</div>` : '<div class="mhead">No formation selected</div>') + items.map((it, i) => it.sep ? '<hr>' : `<button data-i="${i}"${it.off ? ' disabled' : ''}>${it.t}</button>`).join('');
   m.querySelectorAll('button').forEach(b => b.onclick = ev => { ev.stopPropagation(); items[+b.dataset.i].f(); hideMenu(); });
   const pw = panel.getBoundingClientRect(); m.style.display = 'block'; m.style.left = Math.min(sx, pw.width - 240) + 'px'; m.style.top = Math.min(sy, pw.height - m.offsetHeight - 10) + 'px';
 }
@@ -1188,7 +1243,8 @@ window.addEventListener('keydown', e => {
 /* ---------------- buttons ---------------- */
 $('introBtn').onclick = startIntro;
 $('watchBtn').onclick = () => startMode('watch');
-$('commandBtn').onclick = () => startMode('command');
+// Take command: ask which side to lead (the same menu as the start screen, without the reenactment button).
+$('commandBtn').onclick = () => { $('playMenu').classList.add('show', 'cmdpick'); };
 $('pauseBtn').onclick = togglePause;
 $('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode); };
 $('speedSel').onchange = e => { speed = +e.target.value; $('ffBtn').classList.toggle('active', speed > 1); $('ffBtn').textContent = speed > 1 ? '\u23e9 ' + speed + '\u00d7' : '\u23e9 FF'; };
@@ -1234,8 +1290,8 @@ $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if 
 $('sideSel').value = player;
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
 $('chooseCommandH').onclick = () => { setPlayer('french'); startMode('command', { skipGlobe: true }); };
-$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.add('show'); };
-$('pmClose').onclick = () => { $('playMenu').classList.remove('show'); $('playGame').classList.add('show'); };
+$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.remove('cmdpick'); $('playMenu').classList.add('show'); };
+$('pmClose').onclick = () => { const fromCmd = $('playMenu').classList.contains('cmdpick'); $('playMenu').classList.remove('show', 'cmdpick'); if (!fromCmd) $('playGame').classList.add('show'); };
 $('pmWatch').onclick = () => $('chooseWatch').click();
 $('pmAllied').onclick = () => $('chooseCommand').click();
 $('pmFrench').onclick = () => $('chooseCommandH').click();
