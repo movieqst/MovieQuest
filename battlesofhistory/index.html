@@ -106,7 +106,7 @@
 <script>
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.year || 0) - (a.year || 0)).map(b => `
-    <a class="card" href="${esc(b.folder)}/index.html">
+    ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')">
         <span class="era">${esc(b.era)}</span>
         <span class="status ${b.status === 'ready' ? 'ready' : b.status === 'coming soon' ? 'soon' : ''}">${esc(b.status)}</span>
@@ -118,7 +118,7 @@
         <span class="go">Open the battle ▶</span>
         <span class="credit">${esc(b.coverCredit)}</span>
       </div>
-    </a>`).join('');
+    ${b.status === 'ready' ? '</a>' : '</div>'}`).join('');
 </script>
 <script>
 /* Timeline: linear years from a round number before the earliest battle up to today. Zoom and drag;
