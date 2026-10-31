@@ -501,6 +501,32 @@ window.WATERLOO_SCENARIO = {
     ] }
   },
 
+  /* Library of sources (library.html): public-domain books and records kept on this site so the citations still work if
+     outside links change. `local` is the copy stored in sources/ (null until it is added); `gutenberg` and `archive` are
+     the places it came from. A search link stands in until the exact book page is known. */
+  library: [
+    { title: 'Journal of the Waterloo Campaign', author: 'Cavalié Mercer', year: 1870, kind: 'Eyewitness journal',
+      about: 'A captain of the Royal Horse Artillery. His troop stood on the ridge through the French cavalry charges; his account of keeping his gunners at their guns is one of the most vivid of the day. Written from notes kept at the time, published fifty years later.',
+      citedIn: 'Royal Artillery card; the sources slide', rights: 'Published 1870; Mercer died 1868. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Mercer+Journal+of+the+Waterloo+Campaign', archive: 'https://archive.org/search?query=Mercer+Journal+of+the+Waterloo+Campaign' },
+    { title: 'Waterloo Letters', author: 'H. T. Siborne (editor)', year: 1891, kind: 'Officers’ letters',
+      about: 'Letters written in the 1830s by surviving British officers to William Siborne, who was building his model of the battle. Each man describes what he saw from where he stood.',
+      citedIn: 'The map on the sources slide', rights: 'Published 1891. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Waterloo+Letters+Siborne', archive: 'https://archive.org/search?query=Waterloo+Letters+Siborne' },
+    { title: 'History of the War in France and Belgium in 1815', author: 'William Siborne', year: 1844, kind: 'History',
+      about: 'The first full British history of the campaign, written from the officers’ letters. Its account of the Prussian part was argued over at the time.',
+      citedIn: 'Background for the chapters', rights: 'Published 1844. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Siborne+Waterloo+Campaign', archive: 'https://archive.org/search?query=Siborne+History+of+the+War+in+France+and+Belgium' },
+    { title: 'An Historical Account of the Campaign in the Netherlands in 1815', author: 'William Mudford', year: 1817, kind: 'History with plates',
+      about: 'Published two years after the battle, with coloured plates of the farms and the field. Our engraving of La Haye Sainte after the battle comes from it.',
+      citedIn: 'King’s German Legion card', rights: 'Published 1817. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Mudford+Campaign+in+the+Netherlands', archive: 'https://archive.org/search?query=Mudford+Historical+Account+of+the+Campaign+in+the+Netherlands' },
+    { title: 'Sketches in Flanders and Holland', author: 'Robert Hills', year: 1816, kind: 'Travel sketches',
+      about: 'A painter’s tour of the battlefield the year after the battle. Our 1816 drawing of La Haye Sainte comes from it.',
+      citedIn: 'The ridge slide; King’s German Legion card', rights: 'Published 1816. Public domain.',
+      local: null, gutenberg: 'https://www.gutenberg.org/ebooks/search/?query=Hills+Sketches+in+Flanders+and+Holland', archive: 'https://archive.org/search?query=Hills+Sketches+in+Flanders+and+Holland' }
+  ],
+
   sources: [
     { title: 'Britannica, Battle of Waterloo', note: 'Overview and the first hours of the battle.' },
     { title: 'Napoleonguide, Waterloo orders of battle', note: 'Corps and strength figures.' },
