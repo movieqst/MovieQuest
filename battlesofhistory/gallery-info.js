@@ -11,7 +11,7 @@
      link:    another source page (museum, library, Gutenberg), or null */
 window.GALLERY_INFO = {
   // Kadesh
-  'kadesh/01-ramesseum-battle-relief.jpg': ['art', 'relief', -1250, null, null],
+  'kadesh/01-ramesseum-battle-relief.jpg': ['art', 'relief', -1250, 'RamesseumPM10.jpg', null],
   'kadesh/02-abu-simbel-chariot.jpg': ['art', 'relief', -1260, null, null],
   'kadesh/03-ramesses-ii-statue.jpg': ['art', 'sculpture', -1270, null, null],
   'kadesh/04-muwatalli-relief.jpg': ['art', 'rock relief', -1280, null, null],
