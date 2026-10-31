@@ -255,6 +255,24 @@ function figInfantry(c, side, archer, s, i, dir, step) {
     c.stroke(); c.fillStyle = '#7a5a30'; c.fillRect(-4.6 * s, -16 * s, 1.8 * s, 6 * s); // quiver
   }
 }
+/* Drawn stand-in for the elephant until a painted sheet (images/units/persia-elephant.png) is present. */
+function figElephant(c, side, s, moving, dir, step) {
+  const A = SIDE_ART[side], side_on = dir === 'e', bob = moving ? Math.sin(step) * .8 * s : 0;
+  c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, (side_on ? 15 : 10) * s, 3.6 * s, 0, 0, PI * 2); c.fill();
+  c.fillStyle = '#7d7a74'; c.strokeStyle = '#4c4a45'; c.lineWidth = .8 * s;
+  const legs = side_on ? [-8, -4, 5, 9] : [-6, -2, 2, 6];
+  legs.forEach((x, k) => { const sw = moving ? Math.sin(step + k * 1.6) * 1.2 * s : 0; c.fillRect(x * s - 1.6 * s + sw, -9 * s, 3.2 * s, 9 * s); });
+  c.beginPath(); c.ellipse(0, -14 * s + bob, (side_on ? 13 : 9) * s, 8 * s, 0, 0, PI * 2); c.fill(); c.stroke();
+  c.fillStyle = A.cab; c.fillRect((side_on ? -7 : -6) * s, -21 * s + bob, (side_on ? 14 : 12) * s, 6 * s);
+  c.fillStyle = '#7d7a74';
+  if (side_on) { c.beginPath(); c.ellipse(13 * s, -15 * s + bob, 5 * s, 5.5 * s, 0, 0, PI * 2); c.fill(); c.stroke();
+    c.lineWidth = 2.4 * s; c.strokeStyle = '#7d7a74'; c.beginPath(); c.moveTo(16 * s, -13 * s + bob); c.quadraticCurveTo(20 * s, -7 * s, 18 * s, -2 * s); c.stroke();
+    c.strokeStyle = '#f2ead3'; c.lineWidth = 1.2 * s; c.beginPath(); c.moveTo(15 * s, -11 * s + bob); c.lineTo(19 * s, -10 * s + bob); c.stroke(); }
+  else { c.beginPath(); c.ellipse(0, dir === 'n' ? -18 * s + bob : -12 * s + bob, 5.5 * s, 5.5 * s, 0, 0, PI * 2); c.fill(); c.stroke();
+    if (dir !== 'n') { c.lineWidth = 2.4 * s; c.strokeStyle = '#7d7a74'; c.beginPath(); c.moveTo(0, -9 * s + bob); c.lineTo(0, -2 * s); c.stroke(); } }
+  c.fillStyle = A.skin; c.beginPath(); c.arc(side_on ? 6 * s : 0, -23.5 * s + bob, 2 * s, 0, PI * 2); c.fill();
+  c.fillStyle = A.cab; c.fillRect((side_on ? 4.6 : -1.4) * s, -22 * s + bob, 2.8 * s, 3 * s);
+}
 function figChariot(c, side, s, i, moving, dir, step) {
   const A = SIDE_ART[side], crew = side === 'persia' ? 3 : 2, sw = moving ? Math.sin(step) * 1.8 * s : 0;
   c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(1 * s, .6 * s, (dir === 'e' || dir === 'w' ? 15 : 9) * s, 3.4 * s, 0, 0, PI * 2); c.fill();
@@ -295,13 +313,13 @@ function figChariot(c, side, s, i, moving, dir, step) {
 /* Painted sprite sheets (images/units/<side>-<type>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
    Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
 const SHEETS = {};
-const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 } };
-['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'persia-spearman', 'persia-chariot', 'persia-cavalry'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
-const sheetFor = (side, type) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : type === 'cavalry' ? 'cavalry' : type === 'archers' ? 'archer' : 'spearman')];
+const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 }, elephant: { cw: 240, ch: 200, h: 46 } };
+['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'persia-spearman', 'persia-chariot', 'persia-cavalry', 'persia-elephant'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const sheetFor = (side, type) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : type === 'elephant' ? 'elephant' : type === 'cavalry' ? 'cavalry' : type === 'archers' ? 'archer' : 'spearman')];
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   const sh = artOn ? sheetFor(f.side, f.type) : null;
   if (sh) {
-    const spec = SHEET_SPEC[f.type === 'chariot' ? 'chariot' : f.type === 'cavalry' ? 'cavalry' : 'infantry'], d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
+    const spec = SHEET_SPEC[f.type] || SHEET_SPEC.infantry, d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
     const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
     const scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
     c.save(); c.translate(x, y); if (k !== 1) c.scale(1, 1); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore(); return;
@@ -310,6 +328,7 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', d = dirOf(facing), step = moving ? wall * 8 + i * 1.7 : 0;
   if (d === 'w') c.scale(-1, 1);
   if (f.type === 'chariot') figChariot(c, f.side, s, i, moving, d === 'w' ? 'e' : d, step);
+  else if (f.type === 'elephant') figElephant(c, f.side, s, moving, d === 'w' ? 'e' : d, step);
   else figInfantry(c, f.side, f.type === 'archers' || (f.type === 'infantry' && i % 3 === 2), s, i, d === 'w' ? 'e' : d, step);
   c.restore();
 }
@@ -378,7 +397,7 @@ function drawCity(c) {
 function createFormations() {
   formations = S.formations.map(d => Object.assign({}, d, {
     tx: d.x, ty: d.y, strength: 100, strengthTarget: null, strengthRate: 0,
-    state: 'hold', known: !d.hidden, aiKnown: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : d.type === 'cavalry' ? 40 : 16),
+    state: 'hold', known: !d.hidden, aiKnown: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : d.type === 'cavalry' ? 40 : d.type === 'elephant' ? 14 : 16),
     facing: d.facing !== undefined ? d.facing : (d.side === 'macedon' ? -PI / 2 : PI), spread: 1, then: null, aiPhase: null, lastHit: -99
   }));
   byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations;
@@ -402,7 +421,7 @@ function moveFormation(f) {
     if (Math.abs(d) <= step) { f.strength = f.strengthTarget; f.strengthTarget = null; } else f.strength += Math.sign(d) * step;
   }
   f.inWater = inWater(f.x, f.y);
-  if (f.state === 'hold' || f.state === 'loot' || f.state === 'scattered') return;
+  if (f.state === 'hold' || f.state === 'loot' || f.state === 'scattered' || f.state === 'captured') return;
   // (re)plan when the target changes
   if (!f.path || f.pathTx !== f.tx || f.pathTy !== f.ty) { const g = legal({ x: f.tx, y: f.ty }); f.tx = g.x; f.ty = g.y; f.path = planPath({ x: f.x, y: f.y }, g); f.pathTx = f.tx; f.pathTy = f.ty; }
   while (f.path.length > 1 && Math.hypot(f.path[0].x - f.x, f.path[0].y - f.y) < 6) f.path.shift();
@@ -471,7 +490,7 @@ function stepCommand() {
 // The computer side without a hunting role: charges the nearest enemy it has spotted (chariots from further off), or holds.
 function aiReact(side, enemies) {
   formations.forEach(f => {
-    if (f.side !== side || f.hunter || !alive(f) || f.state === 'rout') return;
+    if (f.side !== side || f.hunter || f.aiHold || !alive(f) || f.state === 'rout') return;   // aiHold: stays put, as the sources have it
     let best = null, bd = f.type === 'chariot' ? 650 : 260; enemies.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
     if (best) {
       if (f.type === 'chariot') { f.tx = best.x; f.ty = best.y; f.state = 'attack'; f.aiPhase = 'engaged'; }
@@ -480,9 +499,11 @@ function aiReact(side, enemies) {
     } else if (f.aiPhase === 'engaged') { f.aiPhase = null; f.state = 'hold'; }
   });
 }
-const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5, cavalry: 5 }, infantry: { infantry: 6, chariot: 6, archers: 8, cavalry: 4 }, archers: { infantry: 5, chariot: 5, archers: 5, cavalry: 5 }, cavalry: { infantry: 5, chariot: 5, archers: 6, cavalry: 5 } };
+// Elephants (a what-if in Command mode: the sources do not show them fighting) hit hard, frighten horses, and are hard for cavalry to hurt.
+const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5, cavalry: 5, elephant: 3 }, infantry: { infantry: 6, chariot: 6, archers: 8, cavalry: 4, elephant: 4 }, archers: { infantry: 5, chariot: 5, archers: 5, cavalry: 5, elephant: 5 }, cavalry: { infantry: 5, chariot: 5, archers: 6, cavalry: 5, elephant: 2 },
+  elephant: { infantry: 7, chariot: 7, archers: 7, cavalry: 9, elephant: 5 } };
 function combat() {
-  const live = formations.filter(f => alive(f) && f.state !== 'rout');
+  const live = formations.filter(f => alive(f) && f.state !== 'rout' && f.state !== 'captured');
   live.forEach(a => live.forEach(d => {
     if (a.side === d.side) return;
     const range = a.type === 'archers' ? 150 : 62; if (dist(a, d) > range) return;
@@ -558,7 +579,7 @@ function drawFormation(c, f) {
   const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
   // In the flat view a subtle depth cue remains: units nearer the south edge draw a little larger. The tilted view does this by projection.
-  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
+  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'elephant' ? 44 : f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'elephant' ? 30 : f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
   // In the water a formation squeezes into a double file (single for chariots) along its line of march.
   const FC = f.inWater ? (f.type === 'chariot' ? 1 : 2) : f.cols, FR = f.inWater ? Math.ceil(n / FC) : f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
@@ -579,7 +600,7 @@ function drawFormation(c, f) {
   c.strokeStyle = SIDE_ART[f.side].trim; c.lineWidth = .8; c.stroke();
   // label + strength
   const half = (FR / 2) * sy + 10, ly = f.y + Math.max(half, (FC / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
-  const suffix = f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
+  const suffix = f.state === 'captured' ? ' \u00b7 captured' : f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
   outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'macedon' ? '#dceeff' : '#ffe1d6' });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
     c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(pl.x - 22 * ts, pl.y + 8 * ts, 44 * ts, 5 * ts);
@@ -711,7 +732,7 @@ function renderTimeline() {
   $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
 }
-const PN = u => (u.side === 'macedon' ? 'macedonian' : 'persia') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'cavalry' ? 'cavalry' : u.type === 'archers' ? 'archer' : 'spearman');
+const PN = u => (u.side === 'macedon' ? 'macedonian' : 'persia') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'elephant' ? 'elephant' : u.type === 'cavalry' ? 'cavalry' : u.type === 'archers' ? 'archer' : 'spearman');
 function unitSprite(c, u, big) {
   const w = c.canvas.width, h = c.canvas.height; c.fillStyle = '#c0ad75'; c.fillRect(0, 0, w, h);
   drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' ? 1.8 : 2) * (big ? h / 60 : 1));
