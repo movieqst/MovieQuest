@@ -74,7 +74,7 @@ window.WATERLOO_SCENARIO = {
     {
       title: 'BATTLE OF WATERLOO',
       media: [
-        { at: 0, file: '01-pieneman-waterloo.jpg', caption: 'The Battle of Waterloo by Jan Willem Pieneman, painted in 1824. Wellington, centre, receives news of the Prussian advance. The scene is posed: a painter’s reconstruction, not an eyewitness view.', ref: 'Rijksmuseum, Amsterdam', credit: '' },
+        { at: 0, file: '01-pieneman-waterloo.jpg', caption: 'The Battle of Waterloo by Jan Willem Pieneman, painted in 1824. Wellington, centre, receives news of the Prussian advance. The scene is posed: a painter’s reconstruction, not an eyewitness view.', ref: 'Rijksmuseum, Amsterdam, SK-A-1115', credit: 'Jan Willem Pieneman, 1824. Rijksmuseum, Wikimedia Commons, public domain' },
         { at: 12, file: '02-napoleon-david.jpg', caption: 'Napoleon in his study, by Jacques-Louis David (1812). Three years later he escaped from Elba and returned to power for the Hundred Days.', ref: 'National Gallery of Art, Washington', credit: '' }
       ],
       subtitle: '18 June 1815 · south of Brussels',
