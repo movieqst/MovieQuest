@@ -118,4 +118,5 @@
   ['battle', 'from', 'to', 'q', 'need'].forEach(id => $(id).addEventListener('input', render));
   (async () => { for (const [f, t] of BATTLES) ITEMS = ITEMS.concat(await loadBattle(f, t)); ITEMS.sort((a, b) => (a.year == null ? 1e9 : a.year) - (b.year == null ? 1e9 : b.year)); render(); })();
 </script>
+<script src="stats.js"></script>
 </body></html>
