@@ -671,6 +671,14 @@ window.BATTLE_SCENARIO = {
       { ref: 'The belt rule and the fire support', note: 'Game rules that stand for the methods both sides describe: assault infantry is strongest when close, and American fire support hits anyone inside its circle.' }
     ] }
   },
+  /* Library of sources (../library.html?battle=iadrang): public-domain books kept here as PDFs (`local`, in sources/) with links to
+     where they came from; modern works still in copyright are listed with a link only. */
+  library: [
+    { title: "After Action Report, Ia Drang Valley Operation, 1st Battalion 7th Cavalry", author: "Lt. Col. Harold G. Moore", year: "1965", kind: "Official report", about: "Moore’s own report on the fight at Landing Zone X-Ray, written weeks after the battle, with his sketch maps.", citedIn: "The X-Ray sketch map and the X-Ray chapters", rights: "A US Army report: a work of the US government, public domain.", local: null, archive: "https://archive.org/search?query=Ia+Drang+After+Action+Report+Moore+1965" },
+    { title: "Stemming the Tide: May 1965 to October 1966", author: "John M. Carland, US Army Center of Military History", year: "2000", kind: "Official history", about: "The US Army’s official history of the first year of the big war, including the Pleiku campaign.", citedIn: "Background", rights: "Published by the US Army: a work of the US government, public domain.", local: null, archive: "https://archive.org/search?query=Stemming+the+Tide+Carland+Center+of+Military+History" },
+    { title: "We Were Soldiers Once… and Young", author: "Harold G. Moore and Joseph L. Galloway", year: "1992", kind: "History", about: "The fullest account of the battle, from both sides.", citedIn: "Most chapters", rights: "Still in copyright: listed for reference.", local: null, linkOnly: true }
+  ],
+
   sources: [
     { title: 'Moore & Galloway, We Were Soldiers Once… and Young (1992)', note: 'the fullest account, from both sides' },
     { title: 'Moore, After Action Report, 1st Bn 7th Cav (1965)', note: 'the original report, declassified' },

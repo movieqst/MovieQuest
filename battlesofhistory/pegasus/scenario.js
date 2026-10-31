@@ -461,6 +461,13 @@ window.BATTLE_SCENARIO = {
       { ref: 'The German player', note: 'The Germans never had a single commander at the bridges that night. Command mode gives you one, and the tanks and infantry that history sent piecemeal.' }
     ] }
   },
+  /* Library of sources (../library.html?battle=pegasus): public-domain books kept here as PDFs (`local`, in sources/) with links to
+     where they came from; modern works still in copyright are listed with a link only. */
+  library: [
+    { title: "By Air to Battle: the official account of the British Airborne Divisions", author: "Air Ministry and War Office (HMSO)", year: "1945", kind: "Official account", about: "The wartime official account of the airborne forces, including the coup de main on the Orne bridges.", citedIn: "Background", rights: "Crown copyright on published works lasts 50 years, so it has expired.", local: null, archive: "https://archive.org/search?query=By+Air+to+Battle+1945+airborne+divisions" },
+    { title: "Pegasus Bridge", author: "Stephen E. Ambrose", year: "1985", kind: "History", about: "The standard account, from both sides, built on interviews with the men.", citedIn: "Most chapters", rights: "Still in copyright: listed for reference.", local: null, linkOnly: true }
+  ],
+
   sources: [
     { title: 'Ambrose, Pegasus Bridge (1985)', note: 'the standard account, from both sides' },
     { title: 'Howard, Report on Operation Deadstick (1944)', note: 'the original report' },
