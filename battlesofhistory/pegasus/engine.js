@@ -732,15 +732,20 @@ function drawMini() {
 // One audio element for the whole narration. iPad and iPhone Safari only allow audio to start after a tap, and only on
 // the element that the tap started, so every clip reuses this element; the first tap anywhere unlocks it.
 const narrEl = new Audio();
+const NARR_LEAD = 1.5;   // seconds of quiet before each clip, so the narrator does not cut in (the clips start almost at once)
 // The unlock plays a moment of silence, and pauses only if that silence is still what the element holds: the same tap may
 // already have started a narration clip on it, which must not be stopped.
 const SILENT = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 ['pointerdown', 'keydown', 'touchend'].forEach(t => document.addEventListener(t, () => { if (narrEl.src) return; narrEl.src = SILENT; narrEl.play().then(() => { if (narrEl.src === SILENT) narrEl.pause(); }).catch(() => {}); }, { once: true }));
 const Narr = {
   on: false, audio: null, rate: 1.1, endedAt: -99,
-  speak(text, file) {
-    this.stop(); if (!this.on) return;
-    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; }; this.audio = a; a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; this.tts(text); } }); return; }
+  // `next` runs when this line has been spoken (used to chain the welcome line into the first slide). `quiet`: if the clip
+  // is missing, skip the line instead of reading it with the browser's voice.
+  speak(text, file, next, quiet) {
+    this.stop(); if (!this.on) return; this.next = next || null;
+    const done = () => { const n = this.next; this.next = null; if (n) n(); };
+    if (file) { const a = narrEl; a.src = file; a.playbackRate = this.rate; a.onended = () => { this.endedAt = wall; done(); }; this.audio = a; clearTimeout(this.leadT); this.leadT = setTimeout(() => { if (this.audio === a) a.play().then(() => this.status('')).catch(err => { if (err && err.name === 'AbortError') return; /* a newer clip took over the element */ if (this.audio === a) { this.audio = null; quiet ? done() : this.tts(text); } }); }, NARR_LEAD * 1000); return; }
+    if (quiet) { done(); return; }
     this.tts(text);
   },
   status(msg) { const el = $('voiceStatus'); if (el) el.textContent = msg; },
@@ -748,15 +753,17 @@ const Narr = {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(text); u.rate = .92 * this.rate; u.pitch = .85;
     const vs = speechSynthesis.getVoices(), pref = vs.find(v => /en.(US)/i.test(v.lang) && /male|david|mark|alex/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
-    if (pref) u.voice = pref; speechSynthesis.speak(u);
+    if (pref) u.voice = pref; u.onend = () => { const n = this.next; this.next = null; if (n) n(); }; speechSynthesis.speak(u);
     if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
   },
-  stop() { if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
+  stop() { clearTimeout(this.leadT); this.next = null; if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
   set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '🔊 Voice' : '🔇 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, evAudio(currentEvent)); },
   toggle() { this.set(!this.on); }
 };
-function speakSlide(sl) { Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', S.intro.indexOf(sl) + 1)); }
+// The first slide opens with the welcome line (S.welcome, clip welcome.mp3) when it has been recorded.
+function speakSlide(sl) { const i = S.intro.indexOf(sl), go = () => Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', i + 1));
+  if (i === 0 && S.welcome) Narr.speak(S.welcome, audioFor('welcome'), go, true); else go(); }
 
 /* ---------------- UI: captions, log, panels ---------------- */
 function caption(title, text, tag, speak, audio, cite) {
@@ -1026,8 +1033,22 @@ function showMenu(sx, sy, p) {
   if (enemy && enemy.side === player) items.push({ t: '☐ Select ' + enemy.name, f: () => { selected.clear(); selected.add(enemy.id); renderSelection(); } });
   if (selected.size) items.push({ t: '✕ Deselect', f: () => { selected.clear(); renderSelection(); } });
   items.push({ t: '🎥 Look here', f: () => { manualCamera(); focusOn(p.x, p.y); } });
-  m.innerHTML = (fs.length ? `<div class="mhead">${fs.length} formation${fs.length > 1 ? 's' : ''} selected</div>` : '<div class="mhead">No formation selected</div>') + items.map((it, i) => it.sep ? '<hr>' : `<button data-i="${i}"${it.off ? ' disabled' : ''}>${it.t}</button>`).join('');
-  m.querySelectorAll('button').forEach(b => b.onclick = ev => { ev.stopPropagation(); items[+b.dataset.i].f(); hideMenu(); });
+  // Two looks for the order menu: picture buttons (the default; the order's name shows when the pointer is over one) or a text
+  // list. The 'Text' box in the menu's header switches between them and is remembered in this browser.
+  let textMenu = false; try { textMenu = localStorage.getItem('bh-textmenu') === '1'; } catch (e) {}
+  const ICON = { '⚔': '⚔️', '➡': '🏃', '↻': '🧭', '■': '🛑', '↩': '↩️', '☑': '✅', '☐': '☑️', '✕': '❌' };
+  const split = t => { const m = String(t).match(/^(\S+)\s+([\s\S]*)$/); return m ? [ICON[m[1]] || m[1], m[2]] : ['•', t]; };
+  const head = (fs.length ? `${fs.length} formation${fs.length > 1 ? 's' : ''} selected` : 'No formation selected');
+  m.classList.toggle('icons', !textMenu);
+  m.innerHTML = `<div class="mhead"><span>${head}</span><label class="mtext" title="Show the orders as a text list"><input type="checkbox" ${textMenu ? 'checked' : ''}> Text</label></div>`
+    + (textMenu ? items.map((it, i) => it.sep ? '<hr>' : `<button data-i="${i}"${it.off ? ' disabled' : ''}>${it.t}</button>`).join('')
+      : '<div class="mgrid">' + items.map((it, i) => { if (it.sep) return '</div><div class="mgrid">'; const [ic, label] = split(it.t);
+        return `<button data-i="${i}" data-label="${label.replace(/"/g, '&quot;')}" title="${label.replace(/"/g, '&quot;')}"${it.off ? ' disabled' : ''}>${ic}</button>`; }).join('') + '</div><div class="mlabel">Point at a button to see the order</div>');
+  m.querySelector('.mtext input').onchange = ev => { textMenu = ev.target.checked; try { localStorage.setItem('bh-textmenu', textMenu ? '1' : '0'); } catch (e) {} showMenu(sx, sy, p); };
+  m.querySelector('.mtext').onclick = ev => ev.stopPropagation();
+  const lab = m.querySelector('.mlabel');
+  if (lab) m.querySelectorAll('.mgrid button').forEach(b => { b.onmouseenter = b.onfocus = () => { lab.textContent = b.dataset.label + (b.disabled ? '' : ''); lab.classList.add('on'); }; b.onmouseleave = () => { lab.textContent = 'Point at a button to see the order'; lab.classList.remove('on'); }; });
+  m.querySelectorAll('button[data-i]').forEach(b => b.onclick = ev => { ev.stopPropagation(); items[+b.dataset.i].f(); hideMenu(); });
   const pw = panel.getBoundingClientRect(); m.style.display = 'block'; m.style.left = Math.min(sx, pw.width - 260) + 'px'; m.style.top = Math.min(sy, pw.height - m.offsetHeight - 10) + 'px';
 }
 function hideMenu() { const m = $('ctxMenu'); if (m) m.style.display = 'none'; }
@@ -1181,7 +1202,8 @@ window.addEventListener('keydown', e => {
 /* ---------------- buttons ---------------- */
 $('introBtn').onclick = startIntro;
 $('watchBtn').onclick = () => startMode('watch');
-$('commandBtn').onclick = () => startMode('command');
+// Take command: ask which side to lead (the same menu as the start screen, without the reenactment button).
+$('commandBtn').onclick = () => { $('playMenu').classList.add('show', 'cmdpick'); };
 $('pauseBtn').onclick = togglePause;
 $('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode); };
 $('speedSel').onchange = e => { speed = +e.target.value; $('ffBtn').classList.toggle('active', speed > 1); $('ffBtn').textContent = speed > 1 ? '⏩ ' + speed + '×' : '⏩ FF'; };
@@ -1227,8 +1249,8 @@ $('partSel').onchange = () => { if (mode !== 'intro') startMode(mode, { part: +$
 $('chooseWatch').onclick = () => startMode('watch', { part: 0 });
 $('chooseCommand').onclick = () => { setPlayer(SIDE_IDS[0]); startMode('command', { part: 0 }); };
 $('chooseCommandH').onclick = () => { setPlayer(SIDE_IDS[1]); startMode('command', { part: 0 }); };
-$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.add('show'); };
-$('pmClose').onclick = () => { $('playMenu').classList.remove('show'); $('playGame').classList.add('show'); };
+$('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.remove('cmdpick'); $('playMenu').classList.add('show'); };
+$('pmClose').onclick = () => { const fromCmd = $('playMenu').classList.contains('cmdpick'); $('playMenu').classList.remove('show', 'cmdpick'); if (!fromCmd) $('playGame').classList.add('show'); };
 $('pmWatch').onclick = () => startMode('watch', { part: chosenPart() });
 $('pmSideA').onclick = () => { setPlayer(SIDE_IDS[0]); startMode('command', { part: chosenPart() }); };
 $('pmSideB').onclick = () => { setPlayer(SIDE_IDS[1]); startMode('command', { part: chosenPart() }); };

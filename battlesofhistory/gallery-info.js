@@ -88,7 +88,9 @@ window.GALLERY_INFO = {
   'gaugamela/14-babylonian-diary.jpg': ['document', 'clay tablet', -322, null, null],
   'gaugamela/15-le-brun-arbela.jpg': ['art', 'tapestry', 1666, null, null],
   'gaugamela/16-susa-archer-detail.jpg': ['art', 'glazed-brick frieze', -510, null, null],
-  'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, null, null],
+  'gaugamela/18-susa-archers-aod455.jpg': ['art', 'glazed-brick frieze', -510, '2017-07-30, France, Paris DSC 2934 DxO.jpg', null],
+  'gaugamela/19-susa-frieze-louvre.jpg': ['photo', 'museum photo', 2016, 'Frise des lanciers (31434534865).jpg', null],
+  'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
   // Waterloo
   'waterloo/01-pieneman-waterloo.jpg': ['art', 'painting', 1824, 'De_Slag_bij_Waterloo_Rijksmuseum_SK-A-1115.jpeg', null],
   'waterloo/02-napoleon-david.jpg': ['art', 'painting', 1812, 'Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project_2.jpg', null],
@@ -106,5 +108,6 @@ window.GALLERY_INFO = {
   'waterloo/14-wellington-blucher-maclise.jpg': ['art', 'engraving', 1879, null, null],
   'waterloo/15-la-haye-sainte-1816.jpg': ['art', 'engraving', 1816, null, null],
   'waterloo/16-la-haye-sainte-rouse.jpg': ['art', 'coloured engraving', 1817, 'Plate_K_from_\'An_Historical_Account_of_the_Campaign_in_the_Netherlands\'_by_William_Mudford_(1817).jpg', null],
+  'waterloo/18-sadler-waterloo.jpg': ['art', 'painting', 1815, 'Battle_of_Waterloo_1815.PNG', null],
   'waterloo/17-hougoumont-south-gate.jpg': ['photo', 'site today', 2016, '18_June_1815_–_Waterloo_–_Hougoumont._The_Southern_Gate.jpg', null]
 };

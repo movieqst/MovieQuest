@@ -242,6 +242,20 @@
   a.hud-home{display:none;padding:4px 8px;font-size:12px}
   .battle-panel:fullscreen a.hud-home,body.bigmap a.hud-home{display:inline-block}
   footer .bhbar{display:inline-flex;flex-wrap:wrap;gap:6px 14px;margin-right:14px}footer .bhbar a{color:var(--gold);text-decoration:none;font-weight:600}footer .bhbar a:hover{text-decoration:underline}
+  #playMenu.cmdpick #pmWatch{display:none}
+  #ctxMenu .mhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  #ctxMenu .mtext{font-size:11px;color:#9fb1b8;cursor:pointer;white-space:nowrap}#ctxMenu .mtext input{vertical-align:middle;margin:0 2px 0 0}
+  #ctxMenu.icons{min-width:0;width:auto;max-width:252px}
+  #ctxMenu .mgrid{display:flex;flex-wrap:wrap;gap:4px;padding:4px 4px 6px;border-bottom:1px solid #233944}
+  #ctxMenu .mgrid:empty{display:none}
+  #ctxMenu .mgrid button{width:42px;height:42px;padding:0;display:flex;align-items:center;justify-content:center;font-size:23px;line-height:1;text-align:center;
+    background:#12283a;border:1px solid #2c4a5c;border-radius:10px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.25);transition:transform .08s}
+  #ctxMenu .mgrid button:hover,#ctxMenu .mgrid button:focus{background:#214e75;border-color:#e9c77a;transform:translateY(-2px) scale(1.06)}
+  #ctxMenu .mgrid button:disabled{opacity:.35;transform:none}
+  #ctxMenu .mlabel{font-size:12px;color:#9fb1b8;padding:6px 8px 4px;min-height:16px;max-width:236px}#ctxMenu .mlabel.on{color:#e9c77a;font-weight:600}
+  #ctxMenu button:disabled{opacity:.4;cursor:default}
+  /* Shown on the black panel until the game has drawn its first frame (the canvas then covers it). */
+  .battle-panel::before{content:'LOADING\2026';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 clamp(40px,9vw,120px) 'Cinzel',Georgia,serif;letter-spacing:.08em;color:#1a1d20;pointer-events:none}
 </style>
 </head>
 <body data-mode="intro">

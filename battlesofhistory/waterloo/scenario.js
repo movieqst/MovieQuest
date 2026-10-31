@@ -75,6 +75,7 @@ window.WATERLOO_SCENARIO = {
       title: 'BATTLE OF WATERLOO',
       media: [
         { at: 0, file: '01-pieneman-waterloo.jpg', caption: 'The Battle of Waterloo by Jan Willem Pieneman, painted in 1824. Wellington, centre, receives news of the Prussian advance. The scene is posed: a painter’s reconstruction, not an eyewitness view.', ref: 'Rijksmuseum, Amsterdam, SK-A-1115', credit: 'Jan Willem Pieneman, 1824. Rijksmuseum, Wikimedia Commons, public domain' },
+        { at: 7, file: '18-sadler-waterloo.jpg', caption: 'The Battle of Waterloo by the Irish painter William Sadler, painted in June 1815, the month of the battle: the redcoats, the smoke and the burning farm under a stormy sky. A painter’s view of the day, not an eyewitness record.', ref: 'William Sadler, The Battle of Waterloo, 1815, oil on canvas', credit: 'William Sadler, 1815. Wikimedia Commons, public domain' },
         { at: 12, file: '02-napoleon-david.jpg', caption: 'Napoleon in his study, by Jacques-Louis David (1812). Three years later he escaped from Elba and returned to power for the Hundred Days.', ref: 'National Gallery of Art, Washington (Samuel H. Kress Collection)', credit: 'Jacques-Louis David, 1812. Wikimedia Commons (Google Art Project), public domain' }
       ],
       subtitle: '18 June 1815 · south of Brussels',
@@ -368,6 +369,8 @@ window.WATERLOO_SCENARIO = {
   },
 
   /* Recorded narration lives in audio/<voice>/ (clear: Narrator 1). Clips missing for a line fall back to the browser’s voice. */
+  /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
+  welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Waterloo, which happened on the 18th of June 1815, between Wellington’s Allied army with Blücher’s Prussians, and Napoleon’s French army.',
   imageBase: 'images/',
   audioBase: 'audio/',
   voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],
