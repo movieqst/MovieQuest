@@ -91,7 +91,7 @@ window.WATERLOO_SCENARIO = {
       title: 'The ridge',
       media: [
         { at: 0, file: '03-wellington-lawrence.jpg', caption: 'The Duke of Wellington, by Sir Thomas Lawrence (1815–16), painted soon after the battle.', ref: 'Apsley House, London (Wellington Collection), WM.1567-1948', credit: 'Sir Thomas Lawrence, about 1815–16. Wikimedia Commons, public domain' },
-        { at: 10, file: '04-hougoumont.jpg', caption: 'The farm of Hougoumont today. Its walls, gate and chapel still stand.', ref: 'Braine-l’Alleud, Belgium', credit: '' },
+        { at: 10, file: '04-hougoumont.jpg', caption: 'Hougoumont today: the courtyard and the little chapel, which survived when the château beside it burned during the battle. The broken wall beside the chapel is what is left of the château.', ref: 'Braine-l’Alleud, Belgium; photographed 2017', credit: 'Photo: Nenea hartia, Wikimedia Commons, CC BY-SA 4.0' },
         { at: 20, file: '05-la-haye-sainte.jpg', caption: 'La Haye Sainte today, beside the Brussels road.', ref: 'On the Brussels–Charleroi road, Belgium', credit: '' }
       ],
       focus: { x: 1100, y: 750 }, zoom: .8,
