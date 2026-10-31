@@ -72,5 +72,33 @@ window.BATTLES = [
     cover: 'images/18-sadler-waterloo.jpg',
     coverCredit: 'The Battle of Waterloo by William Sadler, 1815; public domain',
     status: 'ready'
+  },
+  {
+    folder: 'edington',
+    order: 7,
+    era: 'Viking Age',
+    title: 'Battle of Edington',
+    date: 'May 878', year: 878,
+    place: 'Ethandun, Wessex (probably near Edington, Wiltshire; the site is debated)',
+    sides: 'The West Saxons under Alfred the Great vs. the Viking Great Army under Guthrum',
+    sideColors: ['#c0392b', '#2e5aa8'],
+    blurb: 'Alfred, driven into the Somerset marshes, gathers the men of Wessex and meets Guthrum’s army at Ethandun. A shield-wall battle that saved the last English kingdom.',
+    cover: 'images/cover.jpg',
+    coverCredit: 'Artist rendering: the shield walls meet at Ethandun. Battle Games, AI-generated',
+    status: 'in progress'
+  },
+  {
+    folder: 'talas',
+    order: 6,
+    era: 'Tang and Abbasid',
+    title: 'Battle of Talas',
+    date: 'July 751', year: 751,
+    place: 'Near the Talas river, Central Asia (today on the Kazakhstan–Kyrgyzstan border; the exact site is not known)',
+    sides: 'The Abbasid Caliphate and its allies vs. Tang China under Gao Xianzhi',
+    sideColors: ['#c0392b', '#2e5aa8'],
+    blurb: 'At the edge of two empires, a Tang army meets the forces of the new Abbasid Caliphate. Their Karluk allies change sides, and the Tang army is broken.',
+    cover: 'images/cover.jpg',
+    coverCredit: 'Tang dynasty figure of a warrior on an armoured horse, from the tomb of Crown Prince Li Chongrun. Photo: Gary Lee Todd, Wikimedia Commons, CC BY-SA 4.0',
+    status: 'in progress'
   }
 ];
