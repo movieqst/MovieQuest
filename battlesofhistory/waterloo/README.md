@@ -7,8 +7,6 @@ The game itself is not built yet. This folder holds what is ready:
   made with `../tools/script-to-narration.sh`. If the script changes, re-record with
   `bash ../tools/script-to-narration.sh NARRATION-SCRIPT.md audio/clear` (add `FORCE=1` to redo existing clips).
 
-Notes for the build:
-- Waterloo needs artillery as a new unit type (the French grand battery, the Allied guns on the crest).
-- Three script lines to check before release: intro-6 says "ancient" accounts (1815); event-5 places both farms
-  "on the Brussels road" (Hougoumont is on the Allied right); event-6 (Scots Greys) comes after the cavalry
-  attacks of events 3 and 4, though historically it came before them.
+Narration: `NARRATION-SCRIPT.md` is generated from `scenario.js` with `node ../tools/scenario-to-script.js scenario.js > NARRATION-SCRIPT.md`.
+Edit the scenario, regenerate the script, then record only the missing clips: `script-to-narration.sh` skips clips that
+already exist, so delete a clip whose text changed before recording.

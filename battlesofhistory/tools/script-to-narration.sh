@@ -16,7 +16,8 @@ var fs = require('fs'), src = fs.readFileSync(process.argv[2], 'utf8').split(/\r
 var say = function (t) { return String(t)
   .replace(/\bBlücher\b/g, 'Bloocher').replace(/\bBülow\b/g, 'Boolow').replace(/\bHougoumont\b/g, 'Oogoomon').replace(/\bLa Haye Sainte\b/g, 'La Hay Sant')
   .replace(/\bMont-Saint-Jean\b/g, 'Mon San Zhon').replace(/\bd[’']Erlon/g, 'dairlon').replace(/\bPlancenoit\b/g, 'Plahnsenwah').replace(/\bLobau\b/g, 'Lobo')
-  .replace(/\bLigny\b/g, 'Leenyee').replace(/\bcuirassiers\b/g, 'kweerasseers').replace(/\bUxbridge\b/g, 'Uxbridge')
+  .replace(/\bLigny\b/g, 'Leenyee').replace(/\bcuirassiers\b/g, 'kweerasseers').replace(/\bGrouchy\b/g, 'Grooshee').replace(/\bWavre\b/g, 'Wahvruh').replace(/\bZieten\b/g, 'Tseeten').replace(/\bReille\b/g, 'Ray')
+  .replace(/\bVandeleur\b/g, 'Vandeler').replace(/\bNey\b/g, 'Nay').replace(/\bJérôme\b/g, 'Zhayrome').replace(/\bOhain\b/g, 'Oh-an')
   .replace(/(\d+):00\b/g, '$1 hundred').replace(/(\d+):(\d\d)/g, '$1 $2').replace(/·/g, ',').replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/–/g, ' to ').replace(/\s+/g, ' ').trim(); };
 var clips = [], cur = null;
 var push = function (name, title) { cur = { name: name, parts: title ? [/[.?!]$/.test(title) ? title : title + '.'] : [] }; clips.push(cur); };
