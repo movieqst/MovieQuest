@@ -62,3 +62,30 @@ image; do not reinterpret the layout."* (I can also trace the game's map from th
 >   Ruytingen and Kwinte Bank.
 >
 > The dashed coloured lines are shipping routes for the game: do not paint them. No ships, no text, no frame.
+
+---
+
+## 4. Animation pieces for map 2 (the painting stays still; the game animates on top)
+
+ChatGPT cannot redraw the same painting exactly, so whole-map "frames" would make the fields and coast wobble.
+Instead the game plays these small sheets over the painting. The waves are done in code over the sea only.
+
+**Flames**  →  `images/fx/flames.png`  (attach `map2.jpg` for style)
+
+> Make an animation sprite sheet of oil-tank fire flames, for a game, matching the painted, slightly top-down style of
+> the attached Dunkirk map. Grid: 4 columns x 2 rows = 8 frames, every cell exactly the same size, on a solid pure
+> BLACK background. Each frame is the same cluster of tall orange-yellow flames rising from the same base point at the
+> bottom-centre of the cell; frame to frame the flames flicker and change shape slightly, so the 8 frames play as a
+> smooth loop. Same size, same base position and same viewing angle in every frame. No smoke, no tanks, no ground,
+> no text, no borders between cells.
+
+**Smoke**  →  `images/fx/smoke.png`  (attach `map2.jpg` for style)
+
+> Make a sprite sheet of thick black oil smoke puffs, for a game, matching the painted style of the attached Dunkirk
+> map. Grid: 4 columns x 2 rows = 8 different puffs, every cell exactly the same size, on a solid pure WHITE
+> background. Each cell holds one rounded, billowing puff of dark grey-black smoke, centred, with soft edges that fade
+> out to the white; the 8 puffs are all different shapes, from small and dense to large and wispy. Nothing else: no
+> fire, no ground, no text, no borders between cells.
+
+The black background lets the flames glow; the white background lets the smoke's darkness become its see-through
+edge. Neither needs a green screen.
