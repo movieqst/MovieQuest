@@ -145,9 +145,9 @@ eastern Mediterranean (Egypt to southern Turkey) as a geography reference.
 > Show the Lebanon mountains as a ridge parallel to the coast and the Orontes
 > River rising in the Bekaa valley behind them and flowing **north** past
 > Kadesh, then turning west to the sea near Antioch. Kadesh is a small walled
-> city on the Orontes about 25 km south-west of modern Homs, just south of a
-> small lake, about 30 km inland from the coast at the gap in the mountains
-> (between Tripoli and Homs). Shade Egypt's lands (the Nile, Sinai and Canaan)
+> city on the Orontes about 25 km south-west of modern Homs and about 30 km
+> inland, opposite the gap in the mountains between Tripoli and Homs. Make
+> Kadesh clearly visible. Shade Egypt's lands (the Nile, Sinai and Canaan)
 > in a soft blue tint and the Hittite Empire (Anatolia and northern Syria down
 > to just north of Kadesh) in a soft red tint, with Kadesh on the frontier
 > between them. Label only: EGYPT, HATTI, KADESH, Orontes, Nile, Mediterranean
