@@ -11,11 +11,11 @@
      link:    another source page (museum, library, Gutenberg), or null */
 window.GALLERY_INFO = {
   // Kadesh
-  'kadesh/01-ramesseum-battle-relief.jpg': ['art', 'relief', -1250, null, null],
+  'kadesh/01-ramesseum-battle-relief.jpg': ['art', 'relief', -1250, 'RamesseumPM10.jpg', null],
   'kadesh/02-abu-simbel-chariot.jpg': ['art', 'relief', -1260, null, null],
   'kadesh/03-ramesses-ii-statue.jpg': ['art', 'sculpture', -1270, null, null],
   'kadesh/04-muwatalli-relief.jpg': ['art', 'rock relief', -1280, null, null],
-  'kadesh/05-tell-nebi-mend.jpg': ['photo', 'excavation photo', 1921, null, null],
+  'kadesh/05-tell-nebi-mend.jpg': ['photo', 'excavation photo', 1921, 'Seti I stele fragment from Tell Nebi Mend.jpg', null],
   'kadesh/06-near-east-map.jpg': ['map', 'map made for this game', 2026, null, null],
   'kadesh/07-egyptian-chariot.jpg': ['art', 'chariot (object)', -1325, null, null],
   'kadesh/08-egyptian-spearmen-model.jpg': ['art', 'tomb model', -2000, null, null],
@@ -24,8 +24,8 @@ window.GALLERY_INFO = {
   'kadesh/11-hattusa-warrior-god.jpg': ['art', 'relief', -1200, null, null],
   'kadesh/12-hattusa-lion-gate.jpg': ['art', 'sculpture', -1350, null, null],
   'kadesh/13-shasu-relief.jpg': ['art', 'drawing of a relief', 1853, null, null],
-  'kadesh/14-beaten-spies-relief.jpg': ['art', 'relief', -1250, null, null],
-  'kadesh/15-egyptian-camp-relief.jpg': ['art', 'relief', -1250, null, null],
+  'kadesh/14-beaten-spies-relief.jpg': ['art', 'relief', -1250, 'Ancient carving - Shasu spies being beaten by Egyptians.png', null],
+  'kadesh/15-egyptian-camp-relief.jpg': ['art', 'relief', -1250, 'Cyark Ramesseum first pylon 2.jpg', null],
   'kadesh/16-papyrus-sallier.jpg': ['document', 'papyrus', -1250, null, null],
   'kadesh/17-treaty-tablet.jpg': ['document', 'clay tablet', -1259, null, null],
   // Ia Drang
@@ -94,7 +94,7 @@ window.GALLERY_INFO = {
   'waterloo/02-napoleon-david.jpg': ['art', 'painting', 1812, 'Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project_2.jpg', null],
   'waterloo/03-wellington-lawrence.jpg': ['art', 'painting', 1815, 'Sir_Arthur_Wellesley,_1st_Duke_of_Wellington.png', null],
   'waterloo/04-hougoumont.jpg': ['photo', 'site today', 2017, 'Hougoumont_farm.06.jpg', null],
-  'waterloo/05-la-haye-sainte.jpg': ['art', 'lithograph', 1835, null, 'http://hdl.handle.net/10934/RM0001.COLLECT.519060'],
+  'waterloo/05-la-haye-sainte.jpg': ['art', 'lithograph', 1835, 'Hoeve_La_Haye-Sainte_La_Haye_Sainte_(titel_op_object),_RP-P-OB-87.253.jpg', 'http://hdl.handle.net/10934/RM0001.COLLECT.519060'],
   'waterloo/06-ney-gerard.jpg': ['art', 'engraving', 1817, 'Portrait_of_Michel_Ney_French_general_duc_d\'Elchingen._1857.jpg', null],
   'waterloo/07-cuirassiers-philippoteaux.jpg': ['art', 'painting', 1874, 'Charge_of_the_French_Cuirassiers_at_Waterloo.jpg', null],
   'waterloo/08-blucher.jpg': ['art', 'lithograph', null, 'Blücher,_PA00467.jpg', null],
