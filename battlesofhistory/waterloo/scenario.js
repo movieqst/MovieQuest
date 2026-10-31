@@ -92,7 +92,8 @@ window.WATERLOO_SCENARIO = {
       media: [
         { at: 0, file: '03-wellington-lawrence.jpg', caption: 'The Duke of Wellington, by Sir Thomas Lawrence (1815–16), painted soon after the battle.', ref: 'Apsley House, London (Wellington Collection), WM.1567-1948', credit: 'Sir Thomas Lawrence, about 1815–16. Wikimedia Commons, public domain' },
         { at: 10, file: '04-hougoumont.jpg', caption: 'Hougoumont today: the courtyard and the little chapel, which survived when the château beside it burned during the battle. The broken wall beside the chapel is what is left of the château.', ref: 'Braine-l’Alleud, Belgium; photographed 2017', credit: 'Photo: Nenea hartia, Wikimedia Commons, CC BY-SA 4.0' },
-        { at: 20, file: '05-la-haye-sainte.jpg', caption: 'La Haye Sainte beside the Brussels road, a few years after the battle: a lithograph after a drawing by Mogford. The two memorials on the ridge beyond were put up after 1815.', ref: 'Lithograph, between about 1820 and 1850; Rijksmuseum, RP-P-OB-87.253', credit: 'Rijksmuseum, Wikimedia Commons, public domain (CC0)' }
+        { at: 20, file: '05-la-haye-sainte.jpg', caption: 'La Haye Sainte beside the Brussels road, a few years after the battle: a lithograph after a drawing by Mogford. The two memorials on the ridge beyond were put up after 1815.', ref: 'Lithograph, between about 1820 and 1850; Rijksmuseum, RP-P-OB-87.253', credit: 'Rijksmuseum, Wikimedia Commons, public domain (CC0)' },
+        { at: 28, file: '15-la-haye-sainte-1816.jpg', caption: 'The farmhouse at La Haye Sainte in 1816, the year after the battle, drawn by Robert Hills on a tour of the battlefield. The walls are still pocked with shot.', ref: 'Robert Hills, Sketches in Flanders and Holland (1816), engraved by D. Havell', credit: 'Wikimedia Commons, public domain' }
       ],
       focus: { x: 1100, y: 750 }, zoom: .8,
       markers: [],
@@ -412,7 +413,7 @@ window.WATERLOO_SCENARIO = {
         { text: 'The brigade rode on into the grand battery and lost heavily to the French lancers and cuirassiers. How far it got is disputed.', tag: 'disputed' }
       ] },
     { side: 'allied', type: 'infantry', sheet: 'british-infantry', portrait: 'kgl-rifleman', name: 'King’s German Legion', desc: 'Hanoverians in British service. Its riflemen held La Haye Sainte.', tag: 'established',
-      photos: ['05-la-haye-sainte.jpg'],
+      photos: ['15-la-haye-sainte-1816.jpg', '05-la-haye-sainte.jpg'],
       lines: [
         { text: 'The King’s German Legion was raised from Hanoverian soldiers who joined the British army after Napoleon occupied Hanover.', tag: 'established' },
         { text: 'Its 2nd Light Battalion, under Major George Baring, held the farm of La Haye Sainte beside the Brussels road for most of the day.', tag: 'established' },
