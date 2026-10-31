@@ -61,7 +61,9 @@ window.EDINGTON_SCENARIO = {
   intro: [
     {
       title: 'BATTLE OF EDINGTON',
-      media: [],
+      media: [
+        { at: 0, file: '01-shieldwall-rendering.jpg', caption: 'ARTIST RENDERING. The two shield walls meet at Ethandun, under the dragon banner of Wessex. Asser says Alfred fought with a dense shield wall; the faces, colours and details here are imagined.', ref: 'After Asser, Life of King Alfred, ch. 56', credit: 'Artist rendering: Battle Games, AI-generated' }
+      ],
       subtitle: 'May 878 · Wessex',
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],

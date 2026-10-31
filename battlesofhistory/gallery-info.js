@@ -91,6 +91,8 @@ window.GALLERY_INFO = {
   'gaugamela/18-susa-archers-aod455.jpg': ['art', 'glazed-brick frieze', -510, '2017-07-30, France, Paris DSC 2934 DxO.jpg', null],
   'gaugamela/19-susa-frieze-louvre.jpg': ['photo', 'museum photo', 2016, 'Frise des lanciers (31434534865).jpg', null],
   'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
+  // Edington
+  'edington/01-shieldwall-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
   // Waterloo
   'waterloo/01-pieneman-waterloo.jpg': ['art', 'painting', 1824, 'De_Slag_bij_Waterloo_Rijksmuseum_SK-A-1115.jpeg', null],
   'waterloo/02-napoleon-david.jpg': ['art', 'painting', 1812, 'Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project_2.jpg', null],

@@ -52,7 +52,7 @@
 <div id="view"><div class="in"><button id="close">✕ Close</button><div id="vbody"></div></div></div>
 <script src="gallery-info.js"></script>
 <script>
-  const BATTLES = [['kadesh', 'Kadesh'], ['gaugamela', 'Gaugamela'], ['waterloo', 'Waterloo'], ['pegasus', 'Pegasus Bridge'], ['iadrang', 'Ia Drang']];
+  const BATTLES = [['kadesh', 'Kadesh'], ['gaugamela', 'Gaugamela'], ['edington', 'Edington'], ['waterloo', 'Waterloo'], ['pegasus', 'Pegasus Bridge'], ['iadrang', 'Ia Drang']];
   const KINDS = [['', 'All'], ['art', 'Art & artefacts'], ['photo', 'Photographs'], ['map', 'Maps'], ['document', 'Documents'], ['game', 'Made for this game']];
   const KLABEL = { art: 'Art', photo: 'Photograph', map: 'Map', document: 'Document', game: 'Made for this game' };
   const $ = id => document.getElementById(id), esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
