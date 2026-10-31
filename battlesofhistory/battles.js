@@ -66,7 +66,7 @@ window.BATTLES = [
     title: 'Battle of Waterloo',
     date: '18 June 1815', year: 1815,
     place: 'Mont-Saint-Jean ridge, south of Brussels',
-    sides: 'Napoleon’s Armée du Nord vs. Wellington’s Anglo-Allied army and Blücher’s Prussians',
+    sides: 'Wellington’s Anglo-Allied army and Blücher’s Prussians vs. Napoleon’s Armée du Nord',   // first side red (the redcoats), second blue
     sideColors: ['#c0392b', '#2e5aa8'],
     blurb: 'The last battle of Napoleon’s return: a ridge held by redcoat squares, cuirassiers breaking up the slope, and the Prussians arriving late in the day. Watch the reconstruction or command either army.',
     cover: 'images/cover.jpg',
