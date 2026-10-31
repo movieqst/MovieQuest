@@ -235,6 +235,7 @@
   a.home{font-size:12px;letter-spacing:.04em;color:#e8f0ea;text-decoration:none;display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:#101f29;white-space:nowrap}a.home:hover{border-color:var(--gold);color:var(--gold)}
   a.hud-home{display:none;padding:4px 8px;font-size:12px}
   .battle-panel:fullscreen a.hud-home,body.bigmap a.hud-home{display:inline-block}
+  footer .bhbar{display:inline-flex;flex-wrap:wrap;gap:6px 14px;margin-right:14px}footer .bhbar a{color:var(--gold);text-decoration:none;font-weight:600}footer .bhbar a:hover{text-decoration:underline}
 </style>
 </head>
 <body data-mode="intro">
@@ -423,11 +424,11 @@
       <div id="log"></div>
     </section>
     <section class="card">
-      <details><summary>Sources & further reading</summary><ul id="sources"></ul></details>
+      <details><summary>Sources & further reading</summary><ul id="sources"></ul><p class="tiny"><a href="../library.html?battle=gaugamela">📚 Library of sources: the old books themselves ▸</a></p></details>
     </section>
   </aside>
 </main>
-<footer>Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</footer>
+<footer><nav class="bhbar"><a href="../library.html?battle=gaugamela">📚 Library</a><a href="../gallery.html?battle=gaugamela&kind=art">🖼 Art gallery</a><a href="../gallery.html?battle=gaugamela&kind=photo">📷 Photographs</a><a href="../gallery.html">All battles’ pictures</a></nav><span class="bhnote">Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</span></footer>
 <script src="scenario.js"></script>
 <script src="world.js"></script>
 <script src="borders.js"></script>
