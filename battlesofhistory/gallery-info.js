@@ -24,7 +24,7 @@ window.GALLERY_INFO = {
   'kadesh/11-hattusa-warrior-god.jpg': ['art', 'relief', -1200, null, null],
   'kadesh/12-hattusa-lion-gate.jpg': ['art', 'sculpture', -1350, null, null],
   'kadesh/13-shasu-relief.jpg': ['art', 'drawing of a relief', 1853, null, null],
-  'kadesh/14-beaten-spies-relief.jpg': ['art', 'relief', -1250, null, null],
+  'kadesh/14-beaten-spies-relief.jpg': ['art', 'relief', -1250, 'Ancient carving - Shasu spies being beaten by Egyptians.png', null],
   'kadesh/15-egyptian-camp-relief.jpg': ['art', 'relief', -1250, 'Cyark Ramesseum first pylon 2.jpg', null],
   'kadesh/16-papyrus-sallier.jpg': ['document', 'papyrus', -1250, null, null],
   'kadesh/17-treaty-tablet.jpg': ['document', 'clay tablet', -1259, null, null],
