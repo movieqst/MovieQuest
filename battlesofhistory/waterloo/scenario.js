@@ -125,7 +125,7 @@ window.WATERLOO_SCENARIO = {
       media: [
         { at: 0, file: '08-blucher.jpg', caption: 'Field Marshal Gebhard Leberecht von Blücher, commander of the Prussian army, then 72 years old. Two days before Waterloo he was ridden over by cavalry at Ligny, and still led his army to Wellington’s aid.', ref: 'French lithograph, 19th century; KU Leuven Libraries, PA00467', credit: 'KU Leuven Libraries, Wikimedia Commons, public domain' },
         { at: 12, file: '09-plancenoit-northen.jpg', caption: 'Prussians storm Plancenoit, by Adolph Northen (1864). A later painting of the fighting in the village.', ref: 'Painting, 1864', credit: '' },
-        { at: 22, file: '10-grouchy.jpg', caption: 'Marshal Emmanuel de Grouchy, who followed the Prussians to Wavre and never reached Waterloo.', ref: 'Portrait, early 19th century', credit: '' }
+        { at: 22, file: '10-grouchy.jpg', caption: 'Emmanuel Grouchy, here as a general of the Empire, before Napoleon made him a marshal in 1815. At Waterloo he was following the Prussians to Wavre with about 33,000 men, and never reached the battle.', ref: 'Engraving by J. N. Joly after Constance Mayer; Bibliothèque nationale de France (Gallica)', credit: 'BnF Gallica, Wikimedia Commons, public domain' }
       ],
       focus: { x: 2000, y: 1400 }, zoom: .8,
       markers: [],
