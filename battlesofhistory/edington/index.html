@@ -1,3 +1,460 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Battle of Edington — coming soon</title>
-<style>html,body{margin:0;background:#071017;color:#edf1ed;font:16px/1.5 system-ui,sans-serif}main{max-width:720px;margin:60px auto;padding:0 16px;text-align:center}h1{font:600 32px Georgia,serif;color:#e9c77a}a{color:#9fc8ff}</style></head>
-<body><main><h1>Battle of Edington, 878</h1><p>This battle is in preparation. It is not open yet.</p><p><a href="../index.html">◀ Battles of History</a></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Battle of Edington — Historical Reenactment & Command</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#e9c77a;--ink:#09131a;--panel:#101f29;--line:#38505c;--blue:#3985d7;--red:#d44c3e;--text:#edf1ed}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#071017;color:var(--text);font:14px/1.4 system-ui,Segoe UI,Arial,sans-serif}
+  body{display:flex;flex-direction:column;min-height:600px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;background:#0b1821;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .brand{font-family:'Cinzel',Georgia,serif;font-weight:700;color:var(--gold);font-size:clamp(18px,2.1vw,26px);letter-spacing:.1em;text-shadow:0 1px 0 #5a4310,0 2px 6px rgba(0,0,0,.6)}
+  .subtitle{color:#9fb1b8;font-size:12px;margin-top:2px}
+  .top-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  button,select{cursor:pointer;border:1px solid #526873;border-radius:6px;padding:7px 10px;background:#172a36;color:#f2f4ef;font-weight:600;font-size:13px}
+  button:hover{filter:brightness(1.18)} button.primary{background:#214e75;border-color:#4c94c7} button.active{outline:2px solid var(--gold)} button:disabled{opacity:.4;cursor:default}
+  select{padding:6px 8px}
+  #clock{font:600 13px ui-monospace,Menlo,monospace;color:var(--gold);padding:0 6px}
+  main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:10px;padding:10px;flex:1;min-height:0}
+  .battle-panel{position:relative;min-height:480px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#000}
+  canvas#battle{position:absolute;inset:0;display:block;width:100%;height:100%;outline:none;touch-action:none;user-select:none;-webkit-user-select:none}
+  .hud{position:absolute;z-index:2;background:#091720ee;border:1px solid #435a64;border-radius:7px;padding:8px 10px;backdrop-filter:blur(4px)}
+  #caption{left:50%;transform:translateX(-50%);bottom:90px;top:auto;width:min(1100px,calc(100% - 24px));display:none;transition:opacity .3s;text-align:left}
+  body[data-mode="command"] #caption{bottom:14px}
+  #viewTextBtn{left:50%;transform:translateX(-50%);top:auto;bottom:44px}
+  body[data-mode="command"] #viewTextBtn{bottom:14px}
+  /* Opacity applies to the panel background only; the text stays solid so it reads at any level. */
+  /* Text panels over the map: 15% background with solid text, 70% while hovered; an X collapses them to a small button. */
+  #caption{background:rgba(9,23,32,.15);border-color:rgba(67,90,100,.25);backdrop-filter:none}
+  .dialog.intro{background:rgba(11,24,34,.15);border-color:rgba(74,100,114,.25);box-shadow:none}
+  #caption:hover{background:rgba(9,23,32,.7);border-color:rgba(67,90,100,.7)}
+  .dialog.intro:hover{background:rgba(11,24,34,.7);border-color:rgba(74,100,114,.7)}
+  #capText,#introLines p,#introSub,.mcap,.kicker,#capTitle,.dialog.intro h1{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
+  #capTitle,.dialog.intro h1{text-shadow:0 1px 0 #5a4310,0 2px 8px #000,0 0 12px #000}
+  .hidden-controls{display:none}
+  .sep{width:1px;height:22px;background:#2c4452;margin:0 4px}
+  #voiceWrap{position:relative}
+  #voicePop{display:none;position:absolute;right:0;top:36px;z-index:20;background:#0b1822f6;border:1px solid #4a6472;border-radius:8px;padding:10px;min-width:230px;flex-direction:column;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  #voicePop.show{display:flex}
+  #voicePop label{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;color:#aebdc1}
+  #voicePop select{padding:4px 6px}
+  .bulb{position:absolute;top:6px;right:34px;width:22px;height:22px;padding:0;border-radius:50%;background:rgba(9,23,32,.6);border:1px solid #526873;font-size:12px;line-height:20px;text-align:center}
+  .bulb:hover{background:#6b4f12;border-color:var(--gold)}
+  #caption{padding-right:62px}
+  .xbtn{position:absolute;top:6px;right:6px;width:22px;height:22px;padding:0;border-radius:50%;background:rgba(9,23,32,.6);border:1px solid #526873;color:#cfd8dc;font-size:13px;line-height:20px;text-align:center}
+  .xbtn:hover{background:#214e75}
+  #caption{padding-right:34px}.dialog.intro{position:relative}
+  body.textoff #caption{display:none!important}
+  body.textoff .dialog.intro{background:transparent;border-color:transparent;box-shadow:none;width:auto;display:block;padding:0}
+  body.textoff .dialog.intro>*{display:none!important}
+  body.textoff .dialog.intro .intro-mini{display:flex!important;gap:8px;align-items:center}
+  .intro-mini{display:none}
+  #viewTextBtn{position:absolute;left:12px;top:12px;z-index:3;display:none}
+  body.textoff #viewTextBtn{display:inline-block}
+  body.textoff[data-mode="intro"] #viewTextBtn{display:none}
+  .dialog.intro{transition:opacity .3s}
+  #caption.show{display:block}
+  #capTitle{font:600 14px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.03em} #capText{margin:4px 0 6px;font-size:13px;color:#e4ebe6}
+  #minimap-wrap{right:12px;top:12px;width:200px;padding:6px}
+  #minimap{width:100%;height:141px;border:1px solid #60747a;border-radius:4px;cursor:crosshair;display:block}
+  #zoomBox{position:absolute;left:12px;bottom:44px;z-index:3;display:flex;gap:4px}
+  #ctrlStrip{position:absolute;right:12px;bottom:44px;z-index:3;display:flex;gap:6px;align-items:center;padding:6px}
+  body[data-mode="command"] #ctrlStrip,body[data-mode="command"] #zoomBox{bottom:14px}
+  #ctrlStrip span{display:flex;gap:6px;align-items:center}
+  body[data-mode="intro"] .battle-only{display:none!important}
+  body:not([data-mode="intro"]) #introNav{display:none!important}
+  /* faded HUD: faint until the mouse is over it, like the text panels */
+  .fade,#zoomBox,#minimap-wrap{opacity:.45;transition:opacity .25s}
+  .fade:hover,#zoomBox:hover,#minimap-wrap:hover{opacity:1}
+  #ctrlStrip.lit{opacity:1}
+  #caption{bottom:90px}
+  body[data-mode="command"] #caption{bottom:60px}
+  #viewTextBtn{bottom:90px}
+  body[data-mode="command"] #viewTextBtn{bottom:60px}
+  #ctxMenu{display:none;z-index:6;padding:4px;min-width:220px;background:#0b1822f6}
+  #ctxMenu .mhead{font-size:11px;color:#9fb1b8;padding:4px 8px 6px;border-bottom:1px solid #233944;margin-bottom:3px}
+  #ctxMenu button{display:block;width:100%;text-align:left;background:transparent;border:0;padding:6px 10px;font-weight:500;font-size:13px;border-radius:4px}
+  #ctxMenu button:hover{background:#214e75}
+  #ctxMenu hr{border:0;border-top:1px solid #233944;margin:4px 0}
+  #zoomBox button{padding:4px 9px}
+  #timeline{position:absolute;left:12px;right:12px;bottom:12px;height:22px;z-index:2;background:#091720cc;border:1px solid #435a64;border-radius:11px;display:none;cursor:pointer}
+  #timeline:hover{background:#0f2634ee;border-color:#5c7a8a}
+  body[data-mode="watch"] #timeline{display:block}
+  #timeline .tick{position:absolute;top:4px;width:12px;height:12px;margin-left:-6px;padding:0;border-radius:50%;background:#e9c77a;border:2px solid #09131a}
+  #timeline .tick.on{background:#fff;box-shadow:0 0 0 3px #e9c77a66}
+  #timeline i{position:absolute;top:2px;width:3px;height:16px;background:#ff5040;margin-left:-1px;border-radius:2px;pointer-events:none}
+  .tiny{font-size:11px;color:#aebdc1}.muted{color:#8fa1a8;font-size:12px}
+  .chip{cursor:pointer;font-family:inherit;display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:1px 6px;border-radius:9px;border:1px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);vertical-align:middle;white-space:nowrap}
+  .side{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:auto;padding-right:2px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px;flex-shrink:0}
+  h2{font:600 14px 'Cinzel',Georgia,serif;letter-spacing:.04em;color:var(--gold);margin:0 0 8px}
+  h4{margin:14px 0 6px;color:var(--gold);font-family:'Cinzel',Georgia,serif;font-weight:600}
+  .keyrow{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;font-size:11px;color:#bfccd0;margin:5px 0}
+  .sel b{display:block;margin-bottom:2px}.sel .note{font-size:12px;color:#c9d6d8;margin:6px 0 0}.sel+.sel{margin-top:10px;padding-top:10px;border-top:1px solid #233944}
+  .bar{height:6px;background:#0b141a;border-radius:3px;margin:6px 0 4px;overflow:hidden}.bar i{display:block;height:100%}
+  #eventList{display:flex;flex-direction:column;gap:3px}
+  #eventList .ev{text-align:left;padding:5px 8px;font-weight:500;font-size:12px;background:#0c1921;display:flex;gap:8px}
+  #eventList .ev span{color:var(--gold);font-family:ui-monospace,monospace}
+  #eventList .ev.on{background:#214e75;border-color:#4c94c7}
+  .orders{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  #log div{font-size:11px;color:#aebdc1;padding:2px 0;border-bottom:1px dashed #233944}
+  .ucard{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:center;border:1px solid #354c57;border-radius:6px;padding:6px;background:#0c1921;margin:6px 0}
+  .ucard canvas{border-radius:4px;display:block}.ucard b{font-size:12px}
+  .ucard{cursor:pointer;transition:border-color .15s,background-color .15s}.ucard:hover{border-color:var(--gold);background:#112430}
+  .ucard .more{font-size:10px;color:var(--gold);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+  #armies .ufold{display:block;width:100%;margin:0 0 8px;padding:4px;font-size:11px;letter-spacing:.04em;background:none;border:1px dashed #354c57;border-radius:6px;color:var(--gold);cursor:pointer}#armies .ufold:hover{border-color:var(--gold);background:#112430}
+  #cite{z-index:6}
+  .dialog.unit{width:min(1100px,100%);background:rgba(11,24,34,.72);border-color:rgba(74,100,114,.6)}
+  .dialog.unit:hover{background:rgba(11,24,34,.92)}
+  body.unitopen #intro,body.unitopen #caption,body.unitopen #viewTextBtn,body.unitopen #fsMediaWrap{visibility:hidden}
+  .battle-panel:fullscreen .dialog.unit,body.bigmap .dialog.unit{width:calc(100% - 24px);max-height:calc(100% - 24px)}
+  .ugrid{display:grid;grid-template-columns:minmax(260px,46%) 1fr;gap:18px;align-items:start}
+  .ugal .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
+  .ugal .plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;background:#05080c}.ugal .plate img.show{display:block}
+  .ugal .placeholder{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:12px;color:#9fb1b8;background:radial-gradient(circle at 30% 30%,#1a2d3a,#0a1620)}.ugal .placeholder.show{display:flex}
+  .thumbs{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  .thumbs button{padding:0;border:2px solid #354c57;border-radius:5px;background:#0a1620;width:64px;height:48px;overflow:hidden;cursor:pointer}
+  .thumbs button img{width:100%;height:100%;object-fit:cover;display:block}.thumbs button.on{border-color:var(--gold)}
+  .thumbs button.sprite{display:flex;align-items:center;justify-content:center}
+  .utext p{margin:0 0 9px;font-size:13.5px;line-height:1.5}
+  .utext .uhead{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+  .utext .uhead canvas{border-radius:4px;background:#c0ad75;flex:none}
+  .utext .uhead .side{font-size:12px;color:#9fb1b8}
+  .dialog.unit .actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  @media(max-width:900px){.ugrid{grid-template-columns:1fr}}
+  .pwrap{position:relative;width:84px;height:60px}.pwrap .portrait{position:absolute;inset:0;width:84px;height:60px;object-fit:cover;border-radius:4px;display:none}.pwrap .portrait.show{display:block}
+  body.drawnmode .pwrap .portrait{display:none!important}
+  body.drawnmode .uhead .portrait{display:none!important}body.drawnmode .uhead canvas{display:block!important}
+  #sources{padding-left:16px;font-size:11px;color:#bfccd0}#sources li{margin:4px 0}
+  details summary{cursor:pointer;color:var(--gold);font-family:Georgia,serif;font-weight:bold}
+  body[data-mode="watch"] .cmd-only, body[data-mode="intro"] .cmd-only{display:none}
+  body[data-mode="command"] .watch-only, body[data-mode="intro"] .watch-only{display:none}
+  /* overlays */
+  #globe{position:absolute;inset:0;z-index:4;width:100%;height:100%;display:none}
+  #playBig{position:absolute;left:50%;top:50%;width:132px;height:132px;margin:-66px 0 0 -66px;z-index:6;border-radius:50%;border:3px solid rgba(233,199,122,.9);background:rgba(9,23,32,.55);padding:0;display:none;box-shadow:0 0 0 12px rgba(233,199,122,.12),0 10px 40px rgba(0,0,0,.6);transition:transform .2s,background .2s}
+  #playBig.show{display:block;animation:pulse 1.8s ease-in-out infinite}
+  #playBig:hover{transform:scale(1.07);background:rgba(33,78,117,.75)}
+  #playBig span{position:absolute;left:52px;top:36px;width:0;height:0;border-left:44px solid #e9c77a;border-top:30px solid transparent;border-bottom:30px solid transparent}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 12px rgba(233,199,122,.12),0 10px 40px rgba(0,0,0,.6)}50%{box-shadow:0 0 0 22px rgba(233,199,122,.05),0 10px 40px rgba(0,0,0,.6)}}
+  #playGame{position:absolute;left:50%;top:50%;width:132px;height:132px;margin:-66px 0 0 -66px;z-index:6;border-radius:50%;border:3px solid rgba(233,199,122,.9);background:rgba(9,23,32,.55);padding:0;display:none;box-shadow:0 0 0 12px rgba(233,199,122,.12),0 10px 40px rgba(0,0,0,.6);transition:transform .2s,background .2s}
+  #playGame.show{display:block;animation:pulse 1.8s ease-in-out infinite}
+  #playGame:hover{transform:scale(1.07);background:rgba(33,78,117,.75)}
+  #playGame span{position:absolute;left:52px;top:36px;width:0;height:0;border-left:44px solid #e9c77a;border-top:30px solid transparent;border-bottom:30px solid transparent}
+  #playMenu{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;display:none;flex-direction:column;gap:10px;min-width:300px;padding:18px 20px;background:rgba(11,24,34,.92);border:1px solid #4a6472;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  #playMenu.show{display:flex}
+  body.choice .dialog.intro{max-width:460px;margin-right:auto;margin-left:0}
+  body.choice .dialog.intro h1{font-size:22px}
+  body.choice .dialog.intro #introLines p{font-size:13px;margin:5px 0}
+  #playMenu .pm-title{font:700 20px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.08em;text-align:center;margin-bottom:4px}
+  #playMenu button{padding:12px 16px;font-size:15px;text-align:left}
+  #playMenu #pmClose{background:transparent;border-color:#3a5260;text-align:center;font-weight:500}
+  #titleCard{position:absolute;left:0;right:0;top:9%;z-index:6;text-align:center;pointer-events:none;display:none;opacity:0;transition:opacity .4s;padding:0 24px}
+  #titleCard.show{display:block}
+  .tc-title{font:800 clamp(30px,5vw,64px) 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.12em;text-shadow:0 2px 0 #5a4310,0 4px 18px rgba(0,0,0,.9)}
+  .tc-date{font:600 clamp(20px,2.6vw,34px) 'Cinzel',Georgia,serif;color:#f6e9c6;letter-spacing:.08em;margin-top:6px;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+  .tc-place{font:italic clamp(14px,1.6vw,20px) Georgia,serif;color:#dfe9f3;margin-top:8px;text-shadow:0 1px 8px #000}
+  .tc-sides{font:500 clamp(12px,1.3vw,16px) system-ui,sans-serif;color:#cfd8dc;margin-top:6px;text-shadow:0 1px 8px #000}
+  .tc-note{max-width:620px;margin:16px auto 0;font-size:12px;color:#aebdc1;line-height:1.45;text-shadow:0 1px 6px #000}
+  .tc-ref{display:block;font-style:italic;color:#8fa1a8;margin-top:3px}
+  .overlay{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:16px 16px 90px;background:transparent;pointer-events:none}
+  .overlay>*{pointer-events:auto}
+  .overlay.show{display:flex}
+  .overlay.center{align-items:center;background:transparent}
+  /* The intro card grows with the panel so its text runs in longer lines and the box gets shorter; in fullscreen it is wider still and tighter */
+  .dialog.intro{width:min(1100px,100%)}
+  .battle-panel:fullscreen .dialog.intro,body.bigmap .dialog.intro{width:calc(100% - 8px);max-width:none;padding:12px 20px 10px}
+  .battle-panel:fullscreen .dialog.intro h1,body.bigmap .dialog.intro h1{font-size:clamp(18px,1.9vw,26px);margin:2px 0}
+  .battle-panel:fullscreen #introLines p,body.bigmap #introLines p{font-size:14px;line-height:1.4;margin:5px 0}
+  .battle-panel:fullscreen .dialog.intro .progress,body.bigmap .dialog.intro .progress{margin:6px 0 4px}
+  body:not([data-mode="intro"]) .intro-only{display:none}
+  #mediaCard.nomedia{display:none}
+  .intro-media .plate{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#0a1620;border:1px solid #3a5260}
+  .intro-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+  .intro-media img.show{opacity:1;animation:burns 14s ease-in-out forwards}
+  @keyframes burns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,-2%)}}
+  .intro-media .placeholder{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:12px;color:#9fb1b8;background:radial-gradient(circle at 30% 30%,#1a2d3a,#0a1620)}
+  .intro-media .placeholder.show{display:flex}
+  .mcap{font-size:13px;color:#eef3ee;margin-top:8px}.mref{font-size:11px;color:#9fb1b8;margin-top:3px;font-style:italic}
+  @media(max-width:900px){.intro-media .plate{aspect-ratio:16/9}}
+  .dialog p,.dialog h3,.dialog h4,.dialog .kicker,.dialog li,.dialog td,.dialog th{text-shadow:0 1px 2px #000,0 0 8px rgba(0,0,0,.9)}
+  body.textoff .overlay.center .dialog>*:not(.xbtn):not(.mini){display:none!important}
+  body.textoff .overlay.center .dialog{background:transparent;border-color:transparent;padding:0}
+  .dialog .mini{display:none;gap:8px;align-items:center}
+  body.textoff .overlay.center .dialog .mini{display:flex!important}
+  .dialog{width:min(820px,100%);max-height:88%;overflow:auto;background:#0b1822f2;border:1px solid #4a6472;border-radius:12px;padding:18px 22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .dialog{position:relative;background:rgba(11,24,34,.15);border-color:rgba(74,100,114,.25);box-shadow:none;transition:background-color .25s,border-color .25s}
+  .dialog:hover{background:rgba(11,24,34,.7);border-color:rgba(74,100,114,.7)}
+  .kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fb1b8}
+  .dialog h1{font:700 clamp(20px,2.6vw,32px) 'Cinzel',Georgia,serif;color:var(--gold);margin:4px 0 2px;letter-spacing:.08em;text-shadow:0 1px 0 #5a4310,0 2px 8px rgba(0,0,0,.6)}
+  .dialog h3{font:600 19px 'Cinzel',Georgia,serif;color:var(--gold);margin:0 0 8px;letter-spacing:.03em}
+  #introSub{color:#c9d6d8;font-style:italic;margin-bottom:8px}
+  #introLines p,#debriefBody p,#explainBody{font-size:15px;line-height:1.5;margin:8px 0;color:#eef3ee}
+  .lead{font-size:16px;color:var(--gold)}
+  .claim{font-style:italic;color:#c9d6d8;border-left:3px solid var(--gold);padding-left:10px}
+  .refs{padding-left:18px}.refs li{margin:8px 0;font-size:14px}
+  .battle-panel.overview canvas#battle{cursor:crosshair}
+  .battle-panel:fullscreen{border-radius:0;border:0;background:#071017}
+  .battle-panel:fullscreen #caption,body.bigmap #caption{width:calc(100% - 24px)}
+  body.bigmap .battle-panel{position:fixed;inset:0;z-index:50;border-radius:0;border:0;min-height:0}
+  /* In fullscreen the side column is hidden, so during the intro the slideshow moves to a card above the minimap */
+  #fsMediaWrap{display:none;right:12px;top:12px;width:300px;padding:8px 10px 10px;z-index:3;opacity:.85}
+  #fsMediaWrap h3{display:flex;justify-content:space-between;align-items:center}
+  .tinybtn{padding:2px 8px;font-size:11px;font-weight:500}
+  .intro-media .plate{cursor:zoom-in}
+  /* Swap: the photo fills the panel and the live map shrinks into the photo's slot; click the small map (or ⇄ Map) to swap back */
+  #bigPhoto{position:absolute;inset:0;z-index:1;display:none;background:#05080c}
+  #bigPhoto img{width:100%;height:100%;object-fit:contain}
+  #bigPhotoBack{position:absolute;left:12px;top:12px;z-index:2}
+  body.swapped #bigPhoto{display:block}
+  body.swapped canvas#battle{z-index:4;transform-origin:0 0;cursor:pointer;border:2px solid var(--gold);border-radius:6px;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+  body.swapped #fsMediaWrap .plate img,body.swapped #fsMediaWrap .plate .placeholder{visibility:hidden}
+  body.swapped #fsMediaWrap .plate{cursor:default}
+  body.swapped #fsMediaWrap{opacity:1}
+  #fsMediaWrap:hover{opacity:1}
+  #fsMediaWrap h3{font:600 13px 'Cinzel',Georgia,serif;color:var(--gold);margin:0 0 6px;letter-spacing:.04em}
+  body.fsmedia #fsMediaWrap{display:block}
+  body.fsmedia #minimap-wrap{top:var(--mm-top,330px)}
+  body.fsmedia #fsMediaWrap .mcap{font-size:12px}#fsMediaWrap .mref{font-size:10px}
+  body.bigmap #fsBtn::after{content:' (Esc to exit)'}
+  #voiceStatus{color:#ffb3a7;max-width:260px}
+  .progress{height:8px;background:#1d2f3a;border-radius:4px;margin:10px 0 12px;overflow:hidden;border:1px solid #2c4452}.progress:hover{background:#27404f}.progress i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s linear}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .actions .spacer{flex:1}
+  .big{padding:12px 18px;font-size:15px}
+  button.ready{background:#6b4f12;border-color:var(--gold);outline:2px solid var(--gold);animation:glow 1s ease-in-out infinite alternate}
+  @keyframes glow{from{box-shadow:0 0 0 0 rgba(233,199,122,.2)}to{box-shadow:0 0 14px 4px rgba(233,199,122,.55)}}
+  .tablewrap{max-height:220px;overflow:auto;margin:8px 0;border:1px solid #233944;border-radius:6px}
+  table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:4px 8px;border-bottom:1px solid #233944}th{color:var(--gold)}
+  footer{padding:6px 14px;color:#7f969f;font-size:11px;border-top:1px solid #233944;background:#09131a}
+  @media(max-width:900px){main{grid-template-columns:1fr}.side{overflow:visible}.battle-panel{height:66vh;min-height:420px}#caption{max-width:calc(100% - 230px)}}
+  @media(max-width:600px){header{align-items:flex-start;flex-direction:column}.battle-panel{height:70vh}#minimap-wrap{width:140px}#minimap{height:99px}#caption{max-width:calc(100% - 170px);font-size:12px}.dialog{padding:14px}}
+  a.home{font-size:12px;letter-spacing:.04em;color:#e8f0ea;text-decoration:none;display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:#101f29;white-space:nowrap}a.home:hover{border-color:var(--gold);color:var(--gold)}
+  a.hud-home{display:none;padding:4px 8px;font-size:12px}
+  .battle-panel:fullscreen a.hud-home,body.bigmap a.hud-home{display:inline-block}
+  footer .bhbar{display:inline-flex;flex-wrap:wrap;gap:6px 14px;margin-right:14px}footer .bhbar a{color:var(--gold);text-decoration:none;font-weight:600}footer .bhbar a:hover{text-decoration:underline}
+  #playMenu.cmdpick #pmWatch{display:none}
+  #ctxMenu .mhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  #ctxMenu .mtext{font-size:11px;color:#9fb1b8;cursor:pointer;white-space:nowrap}#ctxMenu .mtext input{vertical-align:middle;margin:0 2px 0 0}
+  #ctxMenu.icons{min-width:0;width:auto;max-width:252px}
+  #ctxMenu .mgrid{display:flex;flex-wrap:wrap;gap:4px;padding:4px 4px 6px;border-bottom:1px solid #233944}
+  #ctxMenu .mgrid:empty{display:none}
+  #ctxMenu .mgrid button{width:42px;height:42px;padding:0;display:flex;align-items:center;justify-content:center;font-size:23px;line-height:1;text-align:center;
+    background:#12283a;border:1px solid #2c4a5c;border-radius:10px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.25);transition:transform .08s}
+  #ctxMenu .mgrid button:hover,#ctxMenu .mgrid button:focus{background:#214e75;border-color:#e9c77a;transform:translateY(-2px) scale(1.06)}
+  #ctxMenu .mgrid button:disabled{opacity:.35;transform:none}
+  #ctxMenu .mlabel{font-size:12px;color:#9fb1b8;padding:6px 8px 4px;min-height:16px;max-width:236px}#ctxMenu .mlabel.on{color:#e9c77a;font-weight:600}
+  #ctxMenu button:disabled{opacity:.4;cursor:default}
+  /* Shown on the black panel until the game has drawn its first frame (the canvas then covers it). */
+  .battle-panel::before{content:'LOADING\2026';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 clamp(40px,9vw,120px) 'Cinzel',Georgia,serif;letter-spacing:.08em;color:#1a1d20;pointer-events:none}
+  /* Establishing pictures: shown between the globe and the battle map, over the map and under the narration text. */
+  #establish{position:absolute;inset:0;z-index:4;display:none;opacity:0;transition:opacity 1.2s ease;background:#000;pointer-events:none}
+  #establish.show{display:block}#establish.on{opacity:1}
+  #establish img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity 1.2s ease}
+  #establish .ecap{position:absolute;right:10px;bottom:8px;font-size:11px;color:#e8e2d2;background:rgba(0,0,0,.55);padding:2px 8px;border-radius:4px}
+</style>
+</head>
+<body data-mode="intro">
+<header>
+  <div><div class="brand">BATTLE OF EDINGTON</div><div class="subtitle">Historical reenactment & command · May 878 · runs locally, no install</div></div>
+  <div class="top-actions">
+    <button id="introBtn">📜 Intro</button>
+    <button id="watchBtn" class="primary">▶ Watch reenactment</button>
+    <button id="commandBtn" class="primary">⚔ Take command</button>
+    <span class="sep"></span>
+    <div id="voiceWrap">
+      <button id="voiceMenuBtn" title="Narration: on/off, narrator, speed">🔊 Voice</button>
+      <div id="voicePop">
+        <button id="voiceBtn" title="Spoken narration">🔇 Voice off</button>
+        <label>Narrator <select id="voiceSel" title="Choose the narrator's voice"></select></label>
+        <label>Speed <select id="voiceRate" title="Narration speed"><option value="0.8">0.8×</option><option value="1">1×</option><option value="1.1" selected>1.1×</option><option value="1.2">1.2×</option><option value="1.3">1.3×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+        <span class="tiny" id="voiceStatus"></span>
+      </div>
+    </div>
+    <span class="hidden-controls">
+      <select id="speedSel"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
+      <button id="followBtn" class="active">Follow</button>
+      <button id="explainBtn">Explain</button>
+      <button id="resetBtn">Restart</button>
+    </span>
+    <span class="sep"></span>
+    <a class="home" href="../index.html" title="All the battles">◀ Battles of History</a>
+  </div>
+</header>
+<main>
+  <section class="battle-panel" id="battlePanel">
+    <canvas id="battle" aria-label="Scrollable battlefield"></canvas>
+    <div class="hud" id="caption"><button class="xbtn" id="capX" title="Hide the narration text">✕</button><button id="capExplain" class="bulb watch-only" title="Pause and explain this moment (E)">💡</button><div id="capTitle"></div><div id="capText"></div><span id="capTag"></span></div>
+    <button id="viewTextBtn" class="hud">📝 View text narration</button>
+    <div id="bigPhoto"><img id="bigPhotoImg" alt=""><button id="bigPhotoBack" title="Back to the map">⇄ Map</button></div>
+    <div class="hud fade" id="fsMediaWrap"><h3>From the record <button id="swapBtn" class="tinybtn" title="Enlarge the photo; the map shrinks into this corner">⇄ Enlarge</button></h3></div>
+    <div class="hud" id="minimap-wrap"><canvas id="minimap" width="300" height="212"></canvas><div class="tiny">Click to jump · double-click for fullscreen · Map button for the whole battlefield</div></div>
+    <div id="zoomBox"><button id="zoomIn" title="Zoom in (+)">+</button><button id="zoomOut" title="Zoom out (−)">−</button><button id="mapBtn" title="Whole battlefield; drag a box to zoom back in (M)">🗺 Map</button><button id="fsBtn" title="Fullscreen (or double-click the minimap)">⛶ Full</button><button id="artBtn" class="active" title="Painted battlefield (click for the drawn map)">🎨 Art</button></div>
+    <div id="timeline" title="Timeline: click anywhere to jump to that moment"></div>
+    <div id="ctrlStrip" class="hud fade">
+      <span class="intro-only" id="introNav">
+        <button id="introBack">◀ Back</button>
+        <button id="introPause">Ⅱ Pause</button>
+        <button id="introNext" class="primary">Next ▶</button>
+        <button id="introSkip">Skip intro ⏭</button>
+      </span>
+      <span class="battle-only">
+        <button id="pauseBtn">Ⅱ Pause</button>
+        <button id="ffBtn" title="Fast forward: press for 2×, again for 4×, again for normal (.)">⏩ FF</button>
+        <button id="skipBtn" class="watch-only" title="Skip to the next chapter (N)">⏭ Skip</button>
+        <span id="clock">00:00</span>
+      </span>
+      <button id="armiesBtn" title="The armies: full write-ups and photographs of every unit">⚔ Armies</button>
+      <a class="home hud-home" href="../index.html" title="All the battles">◀ Battles</a>
+    </div>
+    <div id="ctxMenu" class="hud"></div>
+
+    <canvas id="globe" aria-hidden="true"></canvas>
+    <div id="establish" aria-hidden="true"><img alt=""><span class="ecap"></span></div>
+    <button id="playBig" title="Begin with narration" aria-label="Begin with narration"><span></span></button>
+    <button id="playGame" title="Play" aria-label="Play"><span></span></button>
+    <div id="playMenu">
+      <div class="pm-title">BATTLE OF EDINGTON</div>
+      <button id="pmWatch" class="primary">▶ Play the reenactment</button>
+      <button id="pmSaxon" class="primary">⚔ Play as the West Saxons</button>
+      <button id="pmViking" class="primary">⚔ Play as the Vikings</button>
+      <button id="pmClose">Back</button>
+    </div>
+    <div id="titleCard"></div>
+    <div class="overlay" id="intro">
+      <div class="dialog intro">
+        <button class="xbtn" id="introX" title="Hide the text; the narration continues">✕</button>
+        <div class="intro-mini"><button id="introView" class="primary">📝 View text narration</button><button id="introNextMini">Next ▶</button><button id="introSkipMini">Skip intro ⏭</button></div>
+        <div class="intro-text">
+          <div class="kicker" id="introKicker"></div>
+          <h1 id="introTitle"></h1>
+          <div id="introSub"></div>
+          <div id="introLines"></div>
+          <div class="progress"><i id="introBar"></i></div>
+          <div class="actions" id="startGate">
+            <button id="beginVoice" class="primary big">🔊 Begin with narration</button>
+            <button id="beginSilent" class="big">Begin without sound</button>
+            <span class="muted">Narration is pre-recorded, so it plays in any browser.</span>
+          </div>
+          <div class="actions" id="introChoice" style="display:none">
+            <button id="chooseWatch" class="primary big">▶ Watch the battle unfold</button>
+            <button id="chooseCommand" class="primary big">⚔ Command the West Saxons</button>
+          <button id="chooseCommandH" class="primary big">⚔ Command the Vikings</button>
+            <span class="spacer"></span>
+            <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="cite">
+      <div class="dialog">
+        <button class="xbtn" title="Hide the text">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="cite">Close</button></div>
+        <div class="kicker" id="citeKicker"></div>
+        <h3 id="citeTitle"></h3>
+        <div id="citeBody"></div>
+        <div class="actions"><button id="citeClose" class="primary">Close</button></div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="unit">
+      <div class="dialog unit">
+        <button class="xbtn" title="Hide the text">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="unit">Close</button></div>
+        <div class="kicker" id="unitKicker"></div>
+        <h3 id="unitTitle"></h3>
+        <div class="ugrid">
+          <div class="ugal">
+            <div class="plate" id="unitPlate"><img id="unitImg" alt=""><div class="placeholder" id="unitPh"></div></div>
+            <div class="mcap" id="unitCap"></div>
+            <div class="mref" id="unitRef"></div>
+            <div class="thumbs" id="unitThumbs"></div>
+          </div>
+          <div class="utext" id="unitBody"></div>
+        </div>
+        <div class="actions"><button id="unitPrev" class="ghost">◀ Previous unit</button><button id="unitNext" class="ghost">Next unit ▶</button><button id="unitClose" class="primary">Close</button></div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="explain">
+      <div class="dialog">
+        <button class="xbtn" title="Hide the text; the narration continues">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="explain">Continue ▶</button></div>
+        <div class="kicker">Explain this moment</div>
+        <h3 id="explainTitle"></h3>
+        <p id="explainBody"></p>
+        <div class="actions"><button id="explainClose" class="primary">Continue ▶</button></div>
+      </div>
+    </div>
+
+    <div class="overlay center" id="debrief">
+      <div class="dialog">
+        <button class="xbtn" title="Hide the text">✕</button><div class="mini"><button class="primary viewtext">📝 View text</button><button class="closemini" data-close="debrief-watch">▶ Watch again</button><button class="closemini" data-close="debrief-command">⚔ Take command</button></div>
+        <div class="kicker">Historical debrief</div>
+        <h3 id="debriefTitle"></h3>
+        <div id="debriefBody"></div>
+        <div class="actions" style="margin-top:12px">
+          <button id="debriefWatch" class="primary">▶ Watch again</button>
+          <button id="debriefCommand" class="primary">⚔ Take command</button>
+          <span class="spacer"></span>
+          <button id="debriefIntro">📜 Back to the introduction</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="side">
+    <section class="card intro-only" id="mediaCard">
+      <h2>From the record</h2>
+      <div class="intro-media" id="introMedia">
+        <div class="plate"><img id="introImg" alt=""><div class="placeholder" id="introPh"></div></div>
+        <div class="mcap" id="introCap"></div>
+        <div class="mref" id="introRef"></div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>The armies</h2>
+      <div id="armies"></div>
+    </section>
+    <section class="card">
+      <h2>Controls</h2>
+      <p class="muted"><b>Select:</b> left-click a formation, or drag a box around several (Ctrl-drag adds to the selection).<br><b>Orders:</b> with formations selected, right-click anywhere on the map for the command menu. Attack, move, face, halt and fall back apply to every formation you have selected.<br><b>Camera:</b> drag, WASD / arrow keys, minimap click, mouse wheel to zoom. The camera follows the narration until you move it; press <b>F</b> to follow again.<br><b>Space:</b> pause · <b>R:</b> restart · <b>E:</b> explain this moment (also the 💡 on the caption) · <b>N:</b> next chapter · <b>. (full stop):</b> fast forward · <b>M:</b> whole map · <b>+ / −:</b> zoom · double-click the minimap for fullscreen · <b>Art / Drawn:</b> switch between the painted battlefield with painted units and the computer-drawn version.<br><b>Voice:</b> pre-recorded narration with a choice of narrators in the header; falls back to your browser's speech engine for lines without a clip.<br><b>Tags:</b> click any coloured tag (Established, Ancient account…) to see the source records behind it.<br><b>Text panels:</b> faint by default, solid while the mouse is over them; the ✕ hides a panel and "View text narration" brings it back.</p>
+    </section>
+    <section class="card">
+      <h2>Battlefield briefing</h2>
+      <p class="muted" id="briefMeta"></p>
+      <div id="confKey"></div>
+    </section>
+    <section class="card">
+      <h2>Selected formation</h2>
+      <div id="selection"></div>
+    </section>
+    <section class="card watch-only">
+      <h2>Battle timeline</h2>
+      <div id="eventList"></div>
+    </section>
+    <section class="card cmd-only">
+      <h2>Orders</h2>
+      <div class="orders"><label class="tiny">Side <select id="sideSel"><option value="saxon">West Saxons</option><option value="viking">Vikings</option></select></label><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back</button></div>
+      <p class="muted">Choose your side. Click a formation or drag a box around several to select them (Ctrl-drag adds). Right-click the map for the order menu: attack-move, move, face, halt, fall back. Pan with the arrow keys, the minimap or the wheel; Shift-drag draws a zoom box. As the Vikings you hold the centre and the chariot force; the West Saxons advance as history had it until they sight you. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
+    </section>
+    <section class="card">
+      <h2>Battle log</h2>
+      <div id="log"></div>
+    </section>
+    <section class="card">
+      <details><summary>Sources & further reading</summary><ul id="sources"></ul><p class="tiny"><a href="../library.html?battle=edington">📚 Library of sources: the old books themselves ▸</a></p></details>
+    </section>
+  </aside>
+</main>
+<footer><nav class="bhbar"><a href="../library.html?battle=edington">📚 Library</a><a href="../gallery.html?battle=edington&kind=art">🖼 Art gallery</a><a href="../gallery.html?battle=edington&kind=photo">📷 Photographs</a><a href="../gallery.html">All battles’ pictures</a></nav><span class="bhnote">Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</span></footer>
+<script src="scenario.js"></script>
+<script src="world.js"></script>
+<script src="borders.js"></script>
+<script src="globe.js"></script>
+<script src="engine.js"></script>
+<script src="../phone.js"></script>
+<script src="../subtitles.js"></script>
+</body>
+</html>
