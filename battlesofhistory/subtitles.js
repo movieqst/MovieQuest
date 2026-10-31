@@ -1,4 +1,4 @@
-/* Movie-style subtitles for tablets: the narration box is replaced by two small lines along the bottom of the map
+/* Movie-style subtitles for tablets and phones: the narration box is replaced by two small lines along the bottom of the map
    that follow the narrator sentence by sentence. Tap them to open the full text with its confidence tags.
    On by default on touch tablets; anywhere, ?subs=1 turns it on and ?subs=0 off (remembered in this browser).
    Shared by every battle: it reads the page's own caption and intro text, so no engine changes are needed. */
@@ -10,7 +10,7 @@
   try { if (q === '1' || q === '0') localStorage.setItem('bh-subs', q); } catch (e) {}
   let pref = q; try { if (pref === null) pref = localStorage.getItem('bh-subs'); } catch (e) {}
   const tablet = () => matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) >= 600;
-  const on = () => pref === '1' || (pref !== '0' && tablet());
+  const on = () => pref === '1' || (pref !== '0' && (tablet() || document.body.classList.contains('phone')));   // phones: see phone.js
   if (!on()) return;
   document.body.classList.add('subs');
 
@@ -59,7 +59,7 @@
     if (k !== key) { key = k; parts = sentences(s.text); const tot = parts.reduce((n, p) => n + p.length, 0) || 1; let acc = 0; weights = parts.map(p => (acc += p.length) / tot); t0 = performance.now(); shown = -1; box.querySelector('.st').textContent = s.title; closeOpen(); }
     // Progress through the text: the narrator's clip when one is playing, otherwise reading speed (about 15 characters a second).
     let f;
-    const a = typeof Narr !== 'undefined' && Narr.audio;
+    const a = window.BattlePage && window.BattlePage.Narr.audio;
     if (a && a.duration && isFinite(a.duration)) f = a.currentTime / a.duration;
     else f = (performance.now() - t0) / 1000 * 15 / (parts.reduce((n, p) => n + p.length, 0) || 1);
     let i = weights.findIndex(w => f < w); if (i < 0) i = parts.length - 1;
