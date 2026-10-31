@@ -154,7 +154,7 @@ window.WATERLOO_SCENARIO = {
     {
       title: 'How to read this reenactment',
       media: [
-        { at: 0, file: '13-scotland-forever.jpg', caption: 'Scotland Forever! by Lady Butler (1881): the charge of the Scots Greys, painted 66 years later. A famous image, and a reconstruction like this map.', ref: 'Leeds Art Gallery', credit: '' }
+        { at: 0, file: '13-scotland-forever.jpg', caption: 'Scotland Forever! by Lady Butler (1881): the charge of the Scots Greys, painted 66 years later. A famous image, and a reconstruction like this map: in the real charge the horses did not gallop flat out over the ground at the start.', ref: 'Leeds Art Gallery, LEEAG.PA.1888.0002', credit: 'Elizabeth Thompson, Lady Butler, 1881. Wikimedia Commons, public domain' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
