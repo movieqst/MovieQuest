@@ -513,6 +513,14 @@ window.KADESH_SCENARIO = {
     ] }
   },
 
+  /* Library of sources (../library.html?battle=kadesh): public-domain books kept here as PDFs (`local`, in sources/) with links to
+     where they came from; modern works still in copyright are listed with a link only. */
+  library: [
+    { title: "The Battle of Kadesh: a study in the earliest known military strategy", author: "James Henry Breasted", year: "1903", kind: "Study", about: "The first full modern study of the battle, from the Egyptian texts and reliefs.", citedIn: "Modern studies", rights: "Published 1903. Public domain.", local: null, gutenberg: "https://www.gutenberg.org/ebooks/search/?query=Breasted+Battle+of+Kadesh", archive: "https://archive.org/search?query=Breasted+Battle+of+Kadesh+1903" },
+    { title: "Ancient Records of Egypt, vol. III", author: "James Henry Breasted (translator)", year: "1906", kind: "Translated texts", about: "English translations of the Egyptian texts of the reign of Ramesses II, including the Poem and the Bulletin of Kadesh.", citedIn: "The Poem and the Bulletin", rights: "Published 1906. Public domain.", local: null, gutenberg: "https://www.gutenberg.org/ebooks/search/?query=Breasted+Ancient+Records+of+Egypt", archive: "https://archive.org/search?query=Breasted+Ancient+Records+of+Egypt+volume+III" },
+    { title: "Pharaoh Triumphant", author: "K. A. Kitchen", year: "1982", kind: "Modern study", about: "The life and times of Ramesses II.", citedIn: "Modern studies", rights: "Still in copyright: listed for reference.", local: null, linkOnly: true }
+  ],
+
   sources: [
     { title: 'The Poem (Poem of Pentaur) and the Bulletin', note: 'The two Egyptian texts of the battle, carved at Abydos, Karnak, Luxor, the Ramesseum and Abu Simbel, and copied on papyrus.' },
     { title: 'The temple reliefs', note: 'Picture-narratives of the camp, the Hittite charge, the king’s stand and the drowning of the Hittites in the Orontes.' },
