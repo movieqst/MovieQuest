@@ -4,7 +4,9 @@
 (() => {
 'use strict';
 const S = window.BATTLE_SCENARIO;
-let PART = S.parts[0], partIdx = 0, W = PART.world, B = PART.battlefield;
+// the introduction is shown on the first playable part's map (X-Ray); a lead-up part (watchOnly) opens Watch mode
+const INTRO_PART = Math.max(0, S.parts.findIndex(p => !p.watchOnly));
+let PART = S.parts[INTRO_PART], partIdx = INTRO_PART, W = PART.world, B = PART.battlefield;
 const $ = id => document.getElementById(id);
 const canvas = $('battle'), ctx = canvas.getContext('2d');
 const mini = $('minimap'), mctx = mini.getContext('2d');
@@ -268,9 +270,9 @@ function createFormations() {
 function applyOrder(o) {
   if (o.delay) { pending.push({ due: simTime + o.delay, o: Object.assign({}, o, { delay: 0 }) }); return; }
   if (o.fire) { callFire(o.fire); return; }
-  if (o.heli) { spawnHeli({ kind: o.heli, to: o.to }); return; }
+  if (o.heli) { spawnHeli({ kind: o.heli, to: o.to, from: o.from }); return; }
   const f = byId[o.id]; if (!f) return;
-  if (o.lift) { spawnHeli({ kind: 'lift', f, out: o.lift === 'out' }); if (o.then) f.then = o.then; return; }
+  if (o.lift) { spawnHeli({ kind: 'lift', f, out: o.lift === 'out', from: o.from }); if (o.then) f.then = o.then; return; }
   if (o.visible !== undefined) { f.known = o.visible; if (o.visible) f.present = true; }
   if (o.at) { f.x = o.at.x; f.y = o.at.y; f.path = null; }
   if (o.to) { f.tx = o.to.x; f.ty = o.to.y; f.state = o.state || 'move'; f.dug = false; } else if (o.state) { f.state = o.state; if (o.state !== 'dig') f.dug = false; }
@@ -306,10 +308,29 @@ function moveFormation(f) {
 }
 
 /* ---------------- fire support: strikes that land after a delay on everyone inside the circle ---------------- */
+const PLANESHEET = new Image(); PLANESHEET.src = (S.imageBase || 'images/') + 'units/a1-skyraider.png';
+let planes = [];
+function spawnPlanes(st) {
+  const a = st.planeDir !== undefined ? st.planeDir : (PART.planeDir !== undefined ? PART.planeDir : PI), L = 900 * (PART.figScale || 1) + 500, sp = 520;
+  for (let k = 0; k < 2; k++) { const off = (k ? 1 : -1) * 40, ox = -Math.sin(a) * off, oy = Math.cos(a) * off, hitAt = st.t0 + st.delay - .25 + k * .5;
+    planes.push({ a, x0: st.x + ox - Math.cos(a) * L, y0: st.y + oy - Math.sin(a) * L, tc: hitAt, L, sp, k }); }
+}
+function drawPlanes(c) {
+  planes = planes.filter(p => simTime < p.tc + p.L / p.sp + 1);
+  if (!PLANESHEET.complete || !PLANESHEET.naturalWidth) return;
+  const FS = PART.figScale || 1;
+  planes.forEach(p => {
+    const d = (simTime - p.tc) * p.sp + p.L; if (d < 0) return;
+    const x = p.x0 + Math.cos(p.a) * d, y = p.y0 + Math.sin(p.a) * d, g = P(x, y), q = P(x, y - 90 * FS), w = 95 * FS * g.s, fr = Math.floor(wall * 14 + p.k) % 2;
+    c.save(); c.globalAlpha = .22; c.translate(g.x + 10 * g.s, g.y); c.rotate(p.a); c.drawImage(PLANESHEET, fr * 256, 0, 256, 256, -w / 2, -w / 2, w, w); c.restore();   // shadow
+    c.save(); c.translate(q.x, q.y); c.rotate(p.a); c.drawImage(PLANESHEET, fr * 256, 0, 256, 256, -w / 2, -w / 2, w, w); c.restore();
+  });
+}
 function callFire(o) {
   if (o.kind === 'arclight' && o.along) { const [a, b] = o.along, n = o.n || 8; for (let i = 0; i < n; i++) { const t = i / (n - 1); strikes.push({ kind: 'arclight', x: a[0] + (b[0] - a[0]) * t + (jitter(i, 51) - .5) * 80, y: a[1] + (b[1] - a[1]) * t, r: o.r || 130, t0: simTime, delay: (o.delay || 0) + i * .35, dmg: o.dmg || 55, done: false }); } return; }
   const sp = (PART.support || {})[o.kind] || {};
-  strikes.push({ kind: o.kind, x: o.at.x, y: o.at.y, r: o.r || sp.r || 70, t0: simTime, delay: o.delay !== undefined ? o.delay : (sp.delay || 4), dmg: o.dmg || sp.dmg || 30, done: false, by: o.by });
+  const st = { kind: o.kind, x: o.at.x, y: o.at.y, r: o.r || sp.r || 70, t0: simTime, delay: o.delay !== undefined ? o.delay : (sp.delay || 4), dmg: o.dmg || sp.dmg || 30, done: false, by: o.by, planeDir: o.planeDir };
+  strikes.push(st); if (o.kind === 'air' || o.kind === 'napalm') spawnPlanes(st);
 }
 function stepStrikes() {
   const mul = mode === 'watch' ? .35 : 1;
@@ -325,7 +346,7 @@ function stepStrikes() {
 
 /* ---------------- helicopters: lifts in and out, medevac and gunship runs ---------------- */
 function spawnHeli(o) {
-  const from = PART.heliFrom || { x: W.w + 60, y: W.h / 2 };
+  const from = o.from || PART.heliFrom || { x: W.w + 60, y: W.h / 2 };
   let to = o.to; if (o.kind === 'lift') { const f = o.f; to = { x: f.x, y: f.y }; if (!o.out) { f.present = false; } }
   helis.push({ kind: o.kind, f: o.f || null, out: !!o.out, x: from.x, y: from.y, from, to, phase: 'in', t: 0, alt: 70, facing: Math.atan2(to.y - from.y, to.x - from.x), id: Math.random() });
 }
@@ -350,6 +371,7 @@ function stepLight() { const d = light.target - light.cur; light.cur += Math.sig
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
   if (ev.clock) clockLabel = ev.clock; if (ev.light) setLight(ev.light);
+  if (cam.follow && ev.zoom) { view.z = clamp(ev.zoom, .3, 2.4); clampView(); }
   if (cam.follow && ev.focus) frame(ev.focus.x, ev.focus.y);
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((ev.clock || fmtTime(ev.t)) + ' ' + ev.title);
@@ -362,7 +384,11 @@ function stepWatch() {
   stepSim();
   if (simTime >= PART.duration && !battleOver && !fastForward) endWatch();
 }
-function endWatch() { battleOver = 'history'; paused = true; showDebrief(); }
+function endWatch() {
+  // a lead-up part (autoNext) runs straight on into the next part instead of stopping at a debrief
+  if (PART.autoNext && partIdx < S.parts.length - 1) { battleOver = 'history'; paused = true; setTimeout(() => startMode('watch', { part: partIdx + 1 }), 600); return; }
+  battleOver = 'history'; paused = true; showDebrief();
+}
 function jumpTo(t) {
   fastForward = true; resetSim();
   while (simTime < t) { simTime += DT; stepWatch(); }
@@ -479,6 +505,7 @@ function resize() {
 }
 /* ---- tilted view: the map is seen from a camera leaning back, so the far (north) edge is smaller and the near (south) edge larger. ---- */
 let TILT = .45;
+const TILT_DEFAULT = .45;   // a part may set tilt: 0 to be seen straight from above (the campaign map)
 const SQ = .88;
 const tiltOn = () => TILT > 0;
 const TR = () => tiltOn() ? (TILT / Math.log(1 + TILT)) / SQ : 1;
@@ -506,7 +533,7 @@ function drawFormation(c, f) {
   if (!f.known && mode === 'command' && f.side !== player) return;
   const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
-  const SS = 1.3, sx = 13 * 1.3, sy = 14 * 1.3, n = f.cols * f.rows;
+  const FS = PART.figScale || 1, SS = 1.3 * FS, sx = 13 * 1.3 * FS, sy = 14 * 1.3 * FS, n = f.cols * f.rows;
   const FC = f.cols, FR = f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', scatter = f.state === 'rout' || f.state === 'scattered';
@@ -540,7 +567,7 @@ function drawFormation(c, f) {
   c.restore();
 }
 function drawHeli(c, h) {
-  const g = P(h.x, h.y), q = P(h.x, h.y - h.alt), s = g.s * 1.6;
+  const FS = PART.figScale || 1, g = P(h.x, h.y), q = P(h.x, h.y - h.alt * FS), s = g.s * 1.6 * FS;
   c.save(); c.globalAlpha = .25; c.fillStyle = '#000'; c.beginPath(); c.ellipse(g.x + 6 * s, g.y, 14 * s, 5 * s * g.k, 0, 0, PI * 2); c.fill(); c.restore();
   drawSprite(c, { type: 'heli', side: 'us', state: 'move' }, q.x, q.y, h.facing, 0, s, q.k);
 }
@@ -587,7 +614,7 @@ function render() {
   formations.forEach(f => scene.push({ y: f.y, f }));
   helis.forEach(h => scene.push({ y: h.y + 400, h }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.h ? drawHeli(ctx, o.h) : drawFormation(ctx, o.f));
-  drawStrikes(ctx);
+  drawStrikes(ctx); drawPlanes(ctx);
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
@@ -844,30 +871,33 @@ function showEstablishing() {
   establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
 }
 function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
-function startIntro() { hideEstablishing(); if (partIdx !== 0) loadPart(0); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
+function startIntro() { hideEstablishing(); if (partIdx !== INTRO_PART) loadPart(INTRO_PART); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
   if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function loadPart(i) {
   partIdx = clamp(i, 0, S.parts.length - 1); PART = S.parts[partIdx]; W = PART.world; B = PART.battlefield;
+  TILT = PART.tilt !== undefined ? PART.tilt : TILT_DEFAULT;
   buildProps(); DRAWNTER = buildTerrain(); PAINTEDTER = PAINTS[PART.id] || null; applyArt(); clockLabel = PART.clockStart || '';
   const ps = $('partSel'); if (ps) ps.value = String(partIdx); document.querySelectorAll('input[name=pmPart]').forEach(r => r.checked = +r.value === partIdx);
   $('partTitle').textContent = PART.title + ' · ' + PART.subtitle;
 }
 function startMode(m, opts) {
   hideEstablishing();
-  const part = opts && opts.part !== undefined ? opts.part : partIdx; if (part !== partIdx) loadPart(part);
+  let part = opts && opts.part !== undefined ? opts.part : partIdx;
+  if (m === 'command' && S.parts[part].watchOnly) part = S.parts.findIndex(p => !p.watchOnly);
+  if (part !== partIdx) loadPart(part);
   $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m; $('caption').classList.remove('show'); placeMedia();
   renderTimeline(); renderSelection(); renderSupport();
   cinematic = false; light.cur = light.target = 0;
-  const lz = lzOf(); view.z = 1.1; focusOn(lz.x, lz.y); view.x = lz.x - VW() / 2; view.y = lz.y - VH() / 2; clampView();
+  const lz = lzOf(); view.z = PART.startZoom || 1.1; focusOn(lz.x, lz.y); view.x = lz.x - VW() / 2; view.y = lz.y - VH() / 2; clampView();
   if (m === 'watch') { const e0 = PART.events[0]; caption(e0.title, e0.text, e0.tag, false); }
   else cmdCaption('Command mode', player === 'us' ? 'startus' : 'startpavn', 'reconstruction');
 }
 $('globe').addEventListener('click', () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } });
-function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; pending = []; strikes = []; effects = []; helis = []; light.cur = light.target = 0; clockLabel = PART.clockStart || ''; support = {}; renderSelection(); renderTimeline(); updateClock(); }
+function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; pending = []; strikes = []; effects = []; helis = []; planes = []; light.cur = light.target = 0; clockLabel = PART.clockStart || ''; support = {}; renderSelection(); renderTimeline(); updateClock(); }
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
 function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
@@ -1124,7 +1154,7 @@ window.addEventListener('keydown', e => {
 
 /* ---------------- buttons ---------------- */
 $('introBtn').onclick = startIntro;
-$('watchBtn').onclick = () => startMode('watch');
+$('watchBtn').onclick = () => startMode('watch', mode === 'intro' ? { part: 0 } : undefined);   // from the introduction, Watch starts at the beginning (the lead-up)
 // Take command: ask which side to lead (the same menu as the start screen, without the reenactment button).
 $('commandBtn').onclick = () => { $('playMenu').classList.add('show', 'cmdpick'); };
 $('pauseBtn').onclick = togglePause;
@@ -1219,7 +1249,7 @@ $('artBtn').onclick = () => { artOn = !artOn; try { localStorage.setItem(LS('art
 // Optional painted terrain per part (images/terrain-<part>.jpg, painted to that part's layout guide): replaces the drawn ground; labels still come from the scenario.
 S.parts.forEach(p => { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = p.world.w * TS; T.height = p.world.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height); g.scale(TS, TS);
     const saveB = B; B = p.battlefield; drawLabels(g); B = saveB; PAINTS[p.id] = T; if (PART === p) { PAINTEDTER = T; applyArt(); } }; img.src = (S.imageBase || 'images/') + 'terrain-' + p.id + '.jpg'; });
-renderBriefing(); renderArmies(); loadPart(0); createFormations();
+renderBriefing(); renderArmies(); loadPart(INTRO_PART); createFormations();
 if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Oswald'").then(() => { DRAWNTER = buildTerrain(); applyArt(); }).catch(() => {});
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
