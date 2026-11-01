@@ -538,7 +538,7 @@ function P(x, y) { const vw = VW(), vh = VH(), v = (y - view.y) / vh, s = sAt(v)
 function U(sx, sy) { const vw = VW(), vh = VH(), v = vAt(sy), s = sAt(v); return { x: view.x + vw / 2 + (sx - view.w / 2) / (view.w * s) * vw, y: view.y + v * vh }; }
 // The view may run a little past the south edge of the map, so that what the camera frames can sit in the upper part
 // of the screen, clear of the caption at the bottom. Beyond the edge the background is plain black.
-const OVER = () => VH() * .35;
+const OVER = () => document.body.classList.contains('dl') ? 0 : VH() * .35;   // the desktop layout keeps the caption off the map
 function clampView() { view.x = clamp(view.x, 0, Math.max(0, W.w - VW())); view.y = clamp(view.y, 0, Math.max(0, W.h - VH()) + OVER()); }
 function focusOn(x, y) { cam.tx = x; cam.ty = y; }
 // Frame a point in the upper part of the screen, above the caption box.
