@@ -113,7 +113,7 @@ window.GALLERY_INFO = {
   'dunkirk/09-matilda-side.jpg': ['photo', 'museum object', 2011, 'Matilda_II_Tank,_Bovington_Tank_Museum_-_Dorset._(5977195830).jpg', null],
   'dunkirk/10-rommel-1940.jpg': ['photo', 'wartime photo', 1940, 'Bundesarchiv_Bild_146-1970-076-43,_Paris,_Erwin_Rommel_bei_Siegesparade.jpg', null],
   'dunkirk/11-cundall-withdrawal.jpg': ['art', 'painting', 1940, 'The_Withdrawal_from_Dunkirk,_June_1940_Art.IWMARTLD305.jpg', null],
-  'dunkirk/12-medway-queen.jpg': ['photo', 'ship today', 2010, null, null],
+  'dunkirk/12-medway-queen.jpg': ['photo', 'ship today', 2016, '2016_Medway_Queen,_Gillingham_Pier3498c.JPG', null],
   'dunkirk/13-churchill-karsh.jpg': ['photo', 'portrait', 1941, 'Sir_Winston_Churchill_-_19086236948.jpg', null],
   'dunkirk/14-bourrasque-sinking.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_1940_HU2280.jpg', null],
   'dunkirk/15-oil-smoke.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_and_the_Retreat_From_France_1940_C1720.jpg', null],
