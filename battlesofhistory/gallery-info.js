@@ -108,6 +108,7 @@ window.GALLERY_INFO = {
   'dunkirk/01-destroyer-dover.jpg': ['photo', 'wartime photo', 1940, 'Troops_evacuated_from_Dunkirk_on_a_destroyer_about_to_berth_at_Dover,_31_May_1940._H1637.jpg', null],
   'dunkirk/05-dover-castle.jpg': ['photo', 'site today', 2012, 'Dover_Castle_(EH)_20-04-2012_(7216973888).jpg', null],
   'dunkirk/06-dover-tunnel-entrance.jpg': ['photo', 'site today', 2012, 'Dover_Castle_(EH)_20-04-2012_(7217036336).jpg', null],
+  'dunkirk/07-panzer-iv-1940.jpg': ['photo', 'wartime photo', 1940, 'Bundesarchiv_Bild_101I-124-0250-39,_Im_Westen,_Panzer_IV.jpg', null],
   'dunkirk/03-gort.jpg': ['art', 'portrait', 1940, 'General_the_Viscount_Gort_Vc,_Gcb,_Cbe,_Dso,_Mvo,_Mc_Art.IWMARTLD730.jpg', null],
   'dunkirk/02-beach-queues.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_26-29_May_1940_NYP68075.jpg', null],
   // Waterloo

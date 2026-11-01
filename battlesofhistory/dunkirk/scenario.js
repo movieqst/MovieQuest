@@ -137,6 +137,9 @@ window.DUNKIRK_SCENARIO = {
     {
       title: 'The trap',
       map: 'campaign',
+      media: [
+        { at: 0, file: '07-panzer-iv-1940.jpg', caption: 'A German Panzer IV on exercise in the west in March 1940, two months before the invasion. Tanks like this, massed in ten panzer divisions, broke through at Sedan and raced to the Channel coast.', ref: 'German Federal Archives (Bundesarchiv), Bild 101I-124-0250-39', credit: 'Photo: Hinz, Bundesarchiv, Bild 101I-124-0250-39, CC BY-SA 3.0 DE' }
+      ],
       focus: m1(50.75, 2.6), zoom: .5,
       markers: [ Object.assign(m1(50.62, 3.3), { label: 'British and French armies' }), Object.assign(m1(50.45, 1.9), { label: 'German tanks reach the sea, 20 May' }) ],
       auto: 20,
