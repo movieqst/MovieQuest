@@ -42,6 +42,11 @@
   body.dl #dlNav{display:flex;gap:6px}
   body.dl #dlNav>*{flex:1;text-align:center;padding:7px 6px;font-size:12px;border:1px solid #526873;border-radius:6px;background:#172a36;color:#f2f4ef;font-weight:600;text-decoration:none;white-space:nowrap}
   body.dl #dlNav>*:hover{filter:brightness(1.18)}
+  body.dl #dlNav>#fsBtn,body.dl #dlNav>#voiceWrap{flex:none}
+  body.dl #dlNav>#voiceWrap{padding:0;border:0;background:none;display:flex}
+  body.dl #dlNav #voiceMenuBtn{padding:7px 8px;font-size:12px;white-space:nowrap}
+  body.dl #dlNav #voicePop{right:auto;left:50%;transform:translateX(-50%);top:38px}
+  body.dl #dlNav>a.home,body.dl #dlNav>#dlHideTop{flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis}
   body.dl #mmCard{box-shadow:none}
   /* the right sidebar: buttons and minimap fixed at the top, everything below scrolls on its own */
   body.dl aside.side{overflow:hidden}
@@ -112,10 +117,12 @@
   const rtop = document.createElement('div'); rtop.id = 'dlRightTop'; right.insertBefore(rtop, right.firstChild);
   const nav = document.createElement('div'); nav.id = 'dlNav'; rtop.appendChild(nav);
   const homeLink = top && top.querySelector(':scope > a.home');
-  if (homeLink) { homeLink.textContent = '\u25c0 Battles of History'; nav.appendChild(homeLink); top.querySelectorAll('.sep').forEach((sp, i, all) => { if (i === all.length - 1) sp.remove(); }); }
+  if (homeLink) { homeLink.textContent = '\u25c0 Battles'; homeLink.title = 'Back to Battles of History'; nav.appendChild(homeLink); top.querySelectorAll('.sep').forEach((sp, i, all) => { if (i === all.length - 1) sp.remove(); }); }
+  // Full and Voice sit between "Battles of History" and "Hide controls", so they stay reachable with the top bar hidden
+  { const fsb = $('fsBtn'), vw = $('voiceWrap'); if (fsb) nav.appendChild(fsb); if (vw) nav.appendChild(vw); }
   const hide = document.createElement('button'); hide.id = 'dlHideTop'; nav.appendChild(hide);
   let hidden = false; try { hidden = localStorage.getItem('bh-hidetop') === '1'; } catch (e) {}
-  const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Show controls' : '\u25b4 Hide controls'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
+  const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Show' : '\u25b4 Hide'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
   hide.onclick = () => setHidden(!hidden); setHidden(hidden);
   if (mmw) { const card = document.createElement('section'); card.className = 'card'; card.id = 'mmCard'; card.innerHTML = '<h2>Battlefield map</h2>'; card.appendChild(mmw); rtop.appendChild(card); }
   // everything else in the right sidebar goes into its own scrolling area below the minimap
