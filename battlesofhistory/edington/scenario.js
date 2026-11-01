@@ -91,7 +91,10 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'Athelney',
-      media: [],
+      media: [
+        { at: 0, file: '04-alfred-jewel-front.jpg', caption: 'The Alfred Jewel: a figure in coloured enamel under a polished rock crystal, set in gold. It was found in 1693 at North Petherton, a few miles from Athelney, and was probably the handle of a pointer used to follow the words while reading.', ref: 'Ashmolean Museum, Oxford, AN1836 p.135.371', credit: 'Photo: user Geni, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 9, file: '05-alfred-jewel-side.jpg', caption: 'Its gold rim spells out in Old English \u00c6LFRED MEC HEHT GEWYRCAN, \u201cAlfred ordered me to be made\u201d. The base ends in the head of a beast.', ref: 'Ashmolean Museum, Oxford', credit: 'Photo: Richard M Buck, Wikimedia Commons, CC BY-SA 3.0' }
+      ],
       focus: { x: 400, y: 1500 }, zoom: .8,
       markers: [],
       auto: 18,
