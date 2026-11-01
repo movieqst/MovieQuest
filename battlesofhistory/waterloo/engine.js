@@ -524,6 +524,9 @@ function createFormations() {
   byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations; window.__sel = selected;
 }
 function applyOrder(o) {
+  if (o.leader) { const L = leaders.find(l => l.id === o.leader); if (!L) return;
+    if (o.at) { L.x = L.tx = o.at.x; L.y = L.ty = o.at.y; } if (o.to) { L.tx = o.to.x; L.ty = o.to.y; }
+    if (o.visible !== undefined) L.shown = o.visible; if (o.speed) L.speed = o.speed; return; }
   const f = byId[o.id]; if (!f) return;
   if (o.visible !== undefined) { f.known = o.visible; if (o.visible) f.present = true; }
   if (o.at) { f.x = o.at.x; f.y = o.at.y; }
@@ -576,9 +579,25 @@ function fireEvent(ev) {
   renderTimeline();
   if (ev.end && !fastForward) endWatch();
 }
+/* ---------------- leaders: the commanders, a bigger figure on a gold disc with the name below.
+   Each has its own painted sheet (images/units/leader-<id>.png, 240x200 cells like the cavalry); until it arrives a
+   rider of the side's cavalry stands in. Moved by event orders { leader: 'ney', to: {x, y} }. They take no part in the fighting. */
+let leaders = [];
+(S.leaders || []).forEach(L => { const im = new Image(); im.onload = () => { SHEETS['leader-' + L.id] = im; }; im.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '.png'; });
+function createLeaders() { leaders = (S.leaders || []).map(L => Object.assign({}, L, { tx: L.x, ty: L.y, shown: !L.hidden, facing: L.facing !== undefined ? L.facing : -PI / 2, state: 'hold' })); }
+function moveLeaders() { leaders.forEach(L => { const dx = L.tx - L.x, dy = L.ty - L.y, d = Math.hypot(dx, dy);
+  if (d > 2) { const st = Math.min(d, (L.speed || 70) * DT); L.x += dx / d * st; L.y += dy / d * st; L.facing = Math.atan2(dy, dx); L.state = 'move'; } else L.state = 'hold'; }); }
+function drawLeader(c, L) {
+  if (!L.shown) return; const q = P(L.x, L.y), s = q.s; if (!(s > 0)) return;
+  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); c.fillStyle = 'rgba(233,199,122,.32)'; c.strokeStyle = '#f2d27e'; c.lineWidth = Math.max(1.5, 2 * s);
+  c.beginPath(); c.ellipse(0, 0, 24 * s, 10 * s, 0, 0, PI * 2); c.fill(); c.stroke(); c.restore();
+  const own = SHEETS['leader-' + L.id];
+  drawSprite(c, { side: L.side, type: 'cavalry', state: L.state, sheet: own ? 'leader-' + L.id : undefined }, q.x, q.y, L.facing, 0, s * 1.6, q.k);
+  outlined(c, L.name.toUpperCase(), q.x, q.y + 15 * s + 7, 12 * Math.max(.9, Math.min(1.5, s)), { fill: '#ffe7a8' });
+}
 function stepWatch() {
   while (eventIndex < S.events.length && S.events[eventIndex].t <= simTime) fireEvent(S.events[eventIndex++]);
-  formations.forEach(moveFormation); artillery(false);
+  formations.forEach(moveFormation); moveLeaders(); artillery(false);
   if (simTime >= S.duration && !battleOver && !fastForward) endWatch();
 }
 function endWatch() { battleOver = 'history'; paused = true; showDebrief(); }
@@ -614,7 +633,7 @@ function stepCommand() {
       if (best) { f.tx = best.x; f.ty = best.y; f.state = 'attack'; } else { f.tx = S.ai.holdPoint.x; f.ty = S.ai.holdPoint.y; f.state = 'move'; }
     }
   });
-  formations.forEach(moveFormation); artillery(true); combat(); fog(); checkEnd();
+  formations.forEach(moveFormation); moveLeaders(); artillery(true); combat(); fog(); checkEnd();
 }
 // The computer side without a hunting role: charges the nearest enemy it has spotted (chariots from further off), or holds.
 function aiReact(side, enemies) {
@@ -760,8 +779,8 @@ function render() {
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
   PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
-  formations.forEach(f => scene.push({ y: f.y, f }));
-  scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : drawFormation(ctx, o.f));
+  formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L }));
+  scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
   drawSmoke(ctx);
   // aim lines from the player's selected batteries to their targets: dashed while laying, solid once the guns are on
   formations.forEach(f => { const g = f.gun, t = g && g.target && byId[g.target]; if (!t || f.side !== player || !selected.has(f.id) || !alive(t)) return;
@@ -1016,7 +1035,7 @@ function startMode(m, opts) {
   begin();
 }
 $('globe').addEventListener('click', () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } });
-function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
+function resetSim() { createFormations(); createLeaders(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
 function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
@@ -1349,7 +1368,7 @@ function tick(t) {
 }
 
 /* ---------------- boot ---------------- */
-TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderArmies(); createFormations();
+TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderArmies(); createFormations(); createLeaders();
 // Optional painted terrain (images/terrain.jpg, painted to the layout guide): when present it replaces the drawn ground.
 // Labels, river course and props still come from the scenario, so the painting must follow the guide's positions.
 { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height);

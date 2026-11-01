@@ -225,6 +225,13 @@ window.BATTLE_SCENARIO = {
         { x: 916, y: 1500, text: 'LZ X-Ray', small: true }, { x: 1153, y: 1505, text: 'LZ Falcon', small: true }
       ]
     },
+    leaders: [
+      { id: 'westmoreland', name: 'Westmoreland · in Saigon', side: 'us', x: 2300, y: 1720, hidden: true },
+      { id: 'beckwith', name: 'Beckwith', side: 'us', with: 'beckwith', dy: -26 },
+      { id: 'luat', name: 'Luat', side: 'us', type: 'armor', with: 'column', dy: -40 },
+      { id: 'moore', name: 'Moore', side: 'us', with: 'moore', dy: -26 },
+      { id: 'an', name: 'Nguyen Huu An', side: 'pavn', x: 760, y: 1580, hidden: true }
+    ],
     formations: [
       { id: 'camp',     side: 'us', name: 'Plei Me camp: Green Berets and Montagnard militia', division: 'Plei Me camp', type: 'ranger', cols: 3, rows: 2, power: 1, x: 1551, y: 1294, hidden: true,
         count: '12 Americans, 14 South Vietnamese, about 400 Montagnards', confidence: 'established', note: 'A Special Forces camp: a triangle of earth walls, bunkers and wire on a bare hilltop.' },
@@ -257,6 +264,7 @@ window.BATTLE_SCENARIO = {
     ],
     events: [
       { t: 0, title: 'The trap', tag: 'established', clock: '19 Oct · evening', light: 'day', focus: { x: 1560, y: 1150 }, zoom: 0.62,
+        media: { file: '26-art-plei-me-camp.jpg', caption: 'Plei Me: a triangle of earth walls, sandbagged bunkers at the corners and wire all round, on a cleared hilltop in the jungle.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'Plei Me was a small Special Forces camp in the hills south of Pleiku: twelve American Green Berets, fourteen South Vietnamese, and about four hundred Montagnard militia, behind a triangle of earth walls and sandbags. On the evening of 19 October, two North Vietnamese regiments moved into position around it. The 33rd would attack the camp. The 32nd would wait beside the road from Pleiku, to ambush the column that would come to save it.',
         orders: [
           { id: 'camp', visible: true, state: 'dig' },
@@ -279,6 +287,7 @@ window.BATTLE_SCENARIO = {
           { fire: { kind: 'air', at: { x: 1470, y: 1330 }, r: 60, dmg: 10, delay: 3, planeDir: 3.4 } }
         ] },
       { t: 44, title: 'The relief column', tag: 'established', clock: '22–23 Oct', light: 'day', focus: { x: 1880, y: 620 }, zoom: 0.6,
+        media: { file: '27-art-fire-base.jpg', caption: 'A 1st Cavalry Division fire base in the Highlands: guns, ammunition and sandbags on a hilltop of red earth, flown in by helicopter.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'Down the road from Pleiku came the relief column: about twelve hundred men under Lieutenant Colonel Nguyen Trong Luat, with M41 tanks, M113 armoured carriers, two Ranger battalions and artillery. American guns of the newly arrived 1st Cavalry Division moved forward to cover it. This was the column the 32nd Regiment was waiting for.',
         orders: [
           { id: 'column', visible: true, at: { x: 1808, y: 135 }, to: { x: 1870, y: 386 }, speed: 50 },
@@ -305,8 +314,9 @@ window.BATTLE_SCENARIO = {
           { id: 'camp', strengthTo: 100, over: 6, delay: 8 }
         ] },
       { t: 90, title: 'The pursuit', tag: 'established', clock: '26 Oct – 9 Nov', light: 'day', focus: { x: 1400, y: 1000 }, zoom: 0.5,
+        media: { file: '28-art-camp-holloway.jpg', caption: 'Camp Holloway at Pleiku: the airfield where the helicopters of the pursuit were based, with fuel, ammunition and Hueys lined up beside the strip.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'General Westmoreland let the 1st Cavalry Division do what it had been built for. Instead of waiting for the enemy, its helicopters went after him. Day after day the brigades leap-frogged west by air, searching the jungle and the grass for the regiments that had attacked Plei Me.',
-        orders: [
+        orders: [ { leader: 'westmoreland', visible: true },
           { id: 'column', lift: 'out' }, { id: 'beckwith', lift: 'out', delay: 1 },
           { id: 'cav1', at: { x: 1330, y: 1040 }, lift: true, from: { x: 1932, y: 267 }, delay: 1 },
           { id: 'cav2', at: { x: 1180, y: 860 }, lift: true, from: { x: 1932, y: 267 }, delay: 3 },
@@ -317,7 +327,7 @@ window.BATTLE_SCENARIO = {
         ] },
       { t: 104, title: 'The hospital', tag: 'established', clock: '1 Nov', light: 'day', focus: { x: 1180, y: 1180 }, zoom: 1.0,
         text: 'On 1 November the cavalry found the field hospital of the 33rd Regiment hidden in the forest, and overran it after a hard fight. They took prisoners, weapons and documents, and the documents showed that the enemy regiments were gathering near the Chu Pong.',
-        orders: [
+        orders: [ { leader: 'westmoreland', visible: false },
           { id: 'hosp', visible: true },
           { id: 'cav9', at: { x: 1235, y: 1150 }, lift: true, from: { x: 1932, y: 267 } },
           { id: 'cav9', to: { x: 1195, y: 1180 }, speed: 10, delay: 5, state: 'attack' },
@@ -334,14 +344,16 @@ window.BATTLE_SCENARIO = {
           { id: 'cav9b', at: { x: 668, y: 1160 }, lift: true, from: { x: 1551, y: 1294 }, delay: 13 }
         ] },
       { t: 134, title: 'The new brigade', tag: 'established', clock: '9–13 Nov', light: 'day', focus: { x: 930, y: 1440 }, zoom: 0.65,
+        media: { file: '30-art-lz-falcon.jpg', caption: 'A fire base like LZ Falcon, where the 3rd Brigade’s howitzers were set up to cover the landing at X-Ray, eight kilometres away.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'On 9 November the 3rd Brigade took over the hunt. The prisoners and the documents pointed to the Chu Pong, a long forested mountain on the border. On 13 November the brigade commander gave Lieutenant Colonel Hal Moore his orders: take his battalion into the Ia Drang valley, at the foot of the mountain, and find the enemy.',
-        orders: [
+        orders: [ { leader: 'an', visible: true },
           { id: 'cav9', lift: 'out' }, { id: 'cav9b', lift: 'out', delay: 1 }, { id: 'cav1', lift: 'out', delay: 2 }, { id: 'cav2', lift: 'out', delay: 3 },
           { id: 'r66', to: { x: 780, y: 1540 }, speed: 14, state: 'move' }, { id: 'r33', to: { x: 700, y: 1610 }, speed: 12 }, { id: 'r32', to: { x: 860, y: 1630 }, speed: 12 },
           { id: 'arty', lift: 'out', delay: 2 }, { id: 'arty2', at: { x: 1153, y: 1462 }, lift: true, from: { x: 1932, y: 267 }, delay: 5 },
           { id: 'moore', visible: true, at: { x: 1515, y: 1335 }, state: 'hold' }
         ] },
       { t: 148, title: 'Into the valley', tag: 'established', clock: '14 Nov · 10:48', light: 'day', focus: { x: 916, y: 1453 }, zoom: 1.2,
+        media: { file: '29-art-xray-clearing.jpg', caption: 'A clearing at the foot of the Chu Pong, with a dry creek bed beside it: the kind of place the first Hueys came down into at X-Ray.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'At 10:48 on 14 November the first sixteen Hueys came down into a clearing at the foot of the Chu Pong. The clearing was called X-Ray. On the mountain above it were the three battalions of the 66th Regiment and part of the 33rd.',
         orders: [
           { fire: { kind: 'arty', at: { x: 880, y: 1430 }, r: 45, dmg: 3, delay: 0 } }, { fire: { kind: 'arty', at: { x: 950, y: 1480 }, r: 45, dmg: 3, delay: 1.5 } },
@@ -390,6 +402,11 @@ window.BATTLE_SCENARIO = {
       ]
     },
 
+    // Moore wears the 7th Cavalry's black Stetson and yellow scarf here (an artist's choice: at X-Ray itself he wore a helmet).
+    leaders: [
+      { id: 'moore', name: 'Moore', side: 'us', with: 'cp', dx: -18, dy: -22 },
+      { id: 'an', name: 'Nguyen Huu An', side: 'pavn', x: 390, y: 920, hidden: true }
+    ],
     formations: [
       // United States: every formation arrives by helicopter except Tully's battalion, which walks in from the east.
       { id: 'cp',     side: 'us', name: 'Moore & battalion command group', division: '1/7 CP', type: 'rifle', cols: 3, rows: 2, power: 1.1, x: 1345, y: 860, offmap: true,
@@ -452,7 +469,7 @@ window.BATTLE_SCENARIO = {
       { t: 40, title: 'First contact', tag: 'us', clock: 'Day 1 · 12:45', focus: { x: 880, y: 860 },
         text: 'B Company’s lead platoon meets North Vietnamese soldiers coming down the slope and the fight begins. The 9th Battalion of the 66th Regiment is attacking toward the clearing. The 2nd Platoon under Lieutenant Herrick chases a withdrawing squad to the right and loses touch with the rest of the company.',
         explain: 'Both accounts agree that the first attack came from the 9th Battalion, launched within two hours of the landing. The Vietnamese account says An ordered it as soon as he was sure where the Americans were; the American account says the battalion had been resting and had to be roused. Either way the attack ran into B Company on the finger rather than into the clearing.',
-        orders: [
+        orders: [ { leader: 'an', visible: true },
           { id: '9bn-a', visible: true, to: { x: 820, y: 800 }, speed: 18, state: 'attack' },
           { id: 'b-co', to: { x: 900, y: 860 }, state: 'hold' }, { id: 'b-2plt', to: { x: 840, y: 1000 }, speed: 16 },
           { id: 'hw', visible: true, to: { x: 640, y: 980 }, state: 'hold' }
@@ -541,7 +558,7 @@ window.BATTLE_SCENARIO = {
       { t: 198, title: 'Arc Light', tag: 'established', clock: 'Day 2 · 16:00', focus: { x: 500, y: 900 },
         text: 'B-52 bombers from Guam drop their loads along the Chu Pong massif: the first time the strategic bombers are used in support of troops in contact. The mountain shakes for five days. The North Vietnamese command post moves higher up the slope.',
         explain: 'Arc Light strikes were planned a day ahead and fell on map squares, not on targets anyone could see. Their effect on the regiments is disputed: the American account assumes heavy losses in the mountain; the Vietnamese account says the units had already dispersed and the bombs fell on empty jungle and on the wounded.',
-        orders: [
+        orders: [ { leader: 'an', to: { x: 240, y: 880 } },
           { fire: { kind: 'arclight', along: [[300, 300], [250, 1600]], n: 9, r: 130, delay: 2 } },
           { id: 'an', to: { x: 300, y: 980 }, speed: 15, state: 'move', delay: 4, then: 'hold' }, { id: 'hw', strengthTo: 50, over: 10 }, { id: '8bn', visible: true, to: { x: 520, y: 1180 }, speed: 15, then: 'hold', delay: 6 }
         ] },
