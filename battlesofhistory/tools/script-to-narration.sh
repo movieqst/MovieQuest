@@ -22,6 +22,11 @@ var say = function (t) { return String(t)
   .replace(/\bEthandun\b/g, 'Ethan-dun').replace(/\bGuthrum\b/g, 'Gooth-rum').replace(/\bAthelney\b/g, 'Athel-nee').replace(/\bÆthelstan\b/g, 'Athel-stan')
   .replace(/\bAsser\b/g, 'Asser').replace(/\bIley\b/g, 'Eye-lee').replace(/\bCountisbury\b/g, 'Counts-bury').replace(/\bthegns\b/g, 'thains').replace(/\bseax\b/g, 'say-ax')
   .replace(/\bdensa testudine\b/g, 'densa testoodinay').replace(/\bfyrd\b/g, 'feerd').replace(/\bSelwood\b/g, 'Sell-wood')
+  .replace(/\bMalo-les-Bains\b/g, 'Mallo lay Ban').replace(/\bBray-Dunes\b/g, 'Bray Doon').replace(/\bLa Panne\b/g, 'La Pan').replace(/\bZuydcoote\b/g, 'Zweed-coat')
+  .replace(/\bNieuport\b/g, 'Nyoo-port').replace(/\bFurnes\b/g, 'Furn').replace(/\bBergues\b/g, 'Berg').replace(/\bRundstedt\b/g, 'Roont-shtet').replace(/\bG\u00f6ring\b/g, 'Gurring')
+  .replace(/\bKwinte\b/g, 'Kvinta').replace(/\bSedan\b/g, 'Seh-dahn').replace(/\bAbbeville\b/g, 'Abb-veel').replace(/\bWormhout\b/g, 'Worm-howt').replace(/\bAbrial\b/g, 'Abree-al')
+  .replace(/\bLeopold\b/g, 'Layo-pold').replace(/\bHalder\b/g, 'Hall-der').replace(/\bMoëres\b/g, 'Mwar').replace(/\bAa canal\b/g, 'Ah canal').replace(/\bS-30\b/g, 'S thirty')
+  .replace(/\b18:57\b/g, 'three minutes to seven in the evening').replace(/\b03:40\b/g, 'twenty to four in the morning').replace(/\b10:20\b/g, 'twenty past ten').replace(/\b23:30\b/g, 'half past eleven at night').replace(/\b14:23\b/g, 'twenty-three minutes past two')
   .replace(/(\d+):00\b/g, '$1 hundred').replace(/(\d+):(\d\d)/g, '$1 $2').replace(/·/g, ',').replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/–/g, ' to ').replace(/\s+/g, ' ').trim(); };
 var clips = [], cur = null;
 var push = function (name, title) { cur = { name: name, parts: title ? [/[.?!]$/.test(title) ? title : title + '.'] : [] }; clips.push(cur); };

@@ -389,7 +389,15 @@ window.DUNKIRK_SCENARIO = {
     { file: 'establish-1-channel.jpg', secs: 5, pulse: { x: .617, y: .596 }, credit: 'Artist rendering: the Strait of Dover with Dunkirk on the French coast. Battle Games, AI-generated.' }
   ],
   imageBase: 'images/',
-  voices: [],
+  audioBase: 'audio/',
+  voices: [
+    { id: 'clear',    name: 'Narrator 1 \u00b7 clear',  speaker: 25 },
+    { id: 'light',    name: 'Narrator 2 \u00b7 light',  speaker: 60 },
+    { id: 'bright',   name: 'Narrator 3 \u00b7 bright', speaker: 0 },
+    { id: 'deep',     name: 'Narrator 4 \u00b7 deep',   speaker: 400 },
+    { id: 'warm',     name: 'Narrator 5 \u00b7 warm',   speaker: 7 },
+    { id: 'computer', name: 'Computer \u00b7 calm',     speaker: 500, length: 1.3, piperArgs: '--noise-scale 0.4 --noise-w 0.3', mix: 'highpass=f=90,lowpass=f=4800,bass=g=4:f=140,acompressor=threshold=0.25:ratio=3:attack=20:release=250,volume=1.4,alimiter=limit=0.95' }
+  ],
 
   commandLines: {},
 

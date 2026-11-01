@@ -894,8 +894,8 @@ document.addEventListener('fullscreenchange', () => { $('fsBtn').classList.toggl
 mini.addEventListener('dblclick', e => { e.preventDefault(); toggleFullscreen(); });
 $('fsBtn').onclick = toggleFullscreen;
 $('mapBtn').onclick = toggleOverview;
-let textOff = false; try { textOff = localStorage.getItem('kadesh-textoff') === '1'; } catch (e) {}
-function setTextOff(off) { textOff = off; document.body.classList.toggle('textoff', off); try { localStorage.setItem('kadesh-textoff', off ? '1' : '0'); } catch (e) {} }
+let textOff = false; try { textOff = localStorage.getItem('dunkirk-textoff') === '1'; } catch (e) {}
+function setTextOff(off) { textOff = off; document.body.classList.toggle('textoff', off); try { localStorage.setItem('dunkirk-textoff', off ? '1' : '0'); } catch (e) {} }
 $('capX').onclick = e => { e.stopPropagation(); setTextOff(true); };
 $('introX').onclick = e => { e.stopPropagation(); setTextOff(true); };
 $('viewTextBtn').onclick = () => setTextOff(false);
@@ -950,11 +950,11 @@ document.addEventListener('click', e => { if (!e.target.closest('#voiceWrap')) $
 $('voiceBtn').onclick = () => Narr.toggle();
 if (S.voices && S.voices.length) {
   const sel = $('voiceSel'); sel.innerHTML = S.voices.map(v => `<option value="${v.id}"${v.id === voiceId ? ' selected' : ''}>${v.name}</option>`).join('');
-  sel.onchange = () => { voiceId = sel.value; try { localStorage.setItem('kadesh-voice', voiceId); } catch (e) {} if (Narr.on) { if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) Narr.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); } };
+  sel.onchange = () => { voiceId = sel.value; try { localStorage.setItem('dunkirk-voice', voiceId); } catch (e) {} if (Narr.on) { if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) Narr.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); } };
 } else $('voiceSel').style.display = 'none';
-try { const r = parseFloat(localStorage.getItem('kadesh-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
+try { const r = parseFloat(localStorage.getItem('dunkirk-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
 $('voiceRate').value = String(Narr.rate);
-$('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('kadesh-voice-rate', String(Narr.rate)); } catch (e) {} };
+$('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('dunkirk-voice-rate', String(Narr.rate)); } catch (e) {} };
 $('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, .45, 2.4); clampView(); };
 $('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, .45, 2.4); clampView(); };
 $('introNext').onclick = () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } showIntro(introIdx + 1); };
