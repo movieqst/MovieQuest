@@ -86,8 +86,9 @@ window.BATTLE_SCENARIO = {
         { at: 21, file: '21-art-map-sea.jpg', caption: 'South-East Asia in 1965: Vietnam divided at the 17th parallel, with Laos, Cambodia and Thailand. The red ring marks the Ia Drang valley in the Central Highlands, beside the Cambodian border west of Pleiku.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' }
       ],
       subtitle: '14–18 November 1965 · Central Highlands, South Vietnam',
-      focus: { x: 1300, y: 880 }, zoom: 1.1,
-      markers: [ { x: 1300, y: 880, label: 'LZ X-Ray' } ],
+      part: 'pleiku', focus: { x: 1250, y: 900 }, zoom: .5,
+      orders: [ { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 916, y: 1453 } }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 960, y: 1420 }, delay: 1.2 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 880, y: 1480 }, delay: 2.4 } ],
+      markers: [ { x: 916, y: 1453, label: 'LZ X-Ray' }, { x: 1551, y: 1294, label: 'Plei Me' }, { x: 1808, y: 119, label: 'Pleiku' } ],
       auto: 31,
       lines: [
         { text: 'The first battle between the United States Army and the regular army of North Vietnam: three days in a clearing below a mountain, and one more on the trail to the next clearing.', tag: 'established' },
@@ -102,7 +103,8 @@ window.BATTLE_SCENARIO = {
         { at: 30, file: '04-ho-chi-minh-trail.jpg', caption: 'Porters push loaded bicycles along a stream bed on the Ho Chi Minh trail. The regiments that fought at the Ia Drang walked this way for two months, through Laos and Cambodia, to reach the Central Highlands.', ref: 'From R. W. Stewart, Deepening Involvement, 1945–1965, US Army Center of Military History', credit: 'Photo: United States Army, public domain (Wikimedia Commons, Ho chi minh trail.jpg)' },
         { at: 38, file: '05-westmoreland-1965.jpg', pos: '50% 8%', caption: 'General William Westmoreland, commanding US forces in Vietnam, here in 1967. In 1965 he moved from defending bases to seeking out and destroying North Vietnamese units, and sent the 1st Cavalry Division after the regiments that had attacked Plei Me.', ref: 'Newport, Vietnam, 21 September 1967; National Archives 530616', credit: 'Photo: SP5 Robert C. Lafoon, Department of the Army Special Photo Office, public domain (Wikimedia Commons)' }
       ],
-      focus: { x: 1300, y: 880 }, zoom: .9,
+      part: 'pleiku', focus: { x: 1150, y: 900 }, zoom: .5,
+      orders: [ { id: 'r66', visible: true, at: { x: 80, y: 1150 }, to: { x: 700, y: 1500 }, speed: 14 }, { id: 'r32', visible: true, at: { x: 60, y: 820 }, to: { x: 600, y: 1200 }, speed: 14, delay: 3 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 1400, y: 700 } }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 1100, y: 1000 }, delay: 2 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 1600, y: 1100 }, delay: 4 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 900, y: 800 }, delay: 6 } ],
       auto: 48,
       lines: [
         { text: 'In 1965 the United States sent its own ground forces into South Vietnam. The 1st Cavalry Division (Airmobile), the first division built around the helicopter, arrived at An Khe in the Central Highlands in September.', tag: 'established' },
@@ -117,7 +119,9 @@ window.BATTLE_SCENARIO = {
         { at: 20, file: '07-1st-cav-sky-soldiers.jpg', caption: 'Troopers of the 1st Cavalry Division, the horse-head patch on the shoulder, with a visitor: Moshe Dayan, the Israeli general, who joined US patrols in 1966 to study the new war. The division searched the Highlands westward from Plei Me through October and November 1965.', ref: 'South Vietnam, August 1966', credit: 'Photo: Israel Press and Photo Agency, Dan Hadani collection, Wikimedia Commons, CC BY 4.0' },
         { at: 38, file: '22-art-map-highlands.jpg', caption: 'The campaign area: Pleiku, the Special Forces camp at Plei Me, the Chu Pong massif against the Cambodian border, the Ia Drang running west, and the two clearings, X-Ray at the foot of the mountain and Albany to its north.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' }
       ],
-      focus: { x: 1300, y: 880 }, zoom: .9,
+      part: 'pleiku', focus: { x: 1640, y: 1080 }, zoom: .75,
+      markers: [ { x: 1551, y: 1294, label: 'Plei Me camp' } ],
+      orders: [ { id: 'camp', visible: true, state: 'dig' }, { id: 'r33', visible: true, at: { x: 1300, y: 1380 }, to: { x: 1470, y: 1330 }, speed: 12, state: 'attack' }, { fire: { kind: 'air', at: { x: 1450, y: 1340 }, r: 60, dmg: 6, delay: 3, planeDir: 3.6 } }, { fire: { kind: 'napalm', at: { x: 1430, y: 1370 }, r: 60, dmg: 6, delay: 9, planeDir: 2.9 } }, { id: 'column', visible: true, at: { x: 1870, y: 386 }, to: { x: 1932, y: 707 }, speed: 50 }, { id: 'column', to: { x: 1790, y: 1012 }, speed: 40, delay: 7 }, { id: 'r32', visible: true, at: { x: 1745, y: 985 }, state: 'hold' } ],
       auto: 55,
       lines: [
         { text: 'On 19 October the PAVN 33rd Regiment besieged the Special Forces camp at Plei Me, forty kilometres south-west of Pleiku, while the 32nd Regiment waited to ambush the relief column. The siege failed, and the regiments pulled back west toward the Chu Pong massif and the Cambodian border.', tag: 'established' },
@@ -133,8 +137,9 @@ window.BATTLE_SCENARIO = {
         { at: 30, file: '10-105mm-howitzer.jpg', caption: 'An M101 105 mm howitzer crew on a hilltop fire base in Vietnam. Twelve guns like this at LZ Falcon, eight kilometres east of X-Ray, fired more than four thousand rounds in the first day of the battle.', ref: 'US Air War College photograph, Vietnam', credit: 'Photo: US Department of Defense, public domain (Wikimedia Commons, M101 105mm Howitzer.jpg)' },
         { at: 44, file: '18-arc-light-map.jpg', caption: 'The Arc Light boxes: each shaded square is a map grid bombed by B-52s on the date written in it, 15 to 20 November, across the Chu Pong west of X-Ray.', ref: 'Map of Arc Light strikes, Pleiku campaign, November 1965', credit: 'Wikimedia Commons (Arc Light operation at Chu Pong November 1965.jpg)' }
       ],
-      focus: { x: 1300, y: 880 }, zoom: 1.2,
-      markers: [ { x: 1300, y: 880, label: 'LZ X-Ray' } ],
+      part: 'pleiku', focus: { x: 1650, y: 700 }, zoom: .6,
+      orders: [ { id: 'cav1', at: { x: 1330, y: 1040 }, lift: true, from: { x: 1932, y: 267 } }, { id: 'cav2', at: { x: 1180, y: 860 }, lift: true, from: { x: 1932, y: 267 }, delay: 2 }, { id: 'arty2', at: { x: 1153, y: 1462 }, lift: true, from: { x: 1932, y: 267 }, delay: 4 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 1000, y: 1100 }, delay: 1 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 1250, y: 1300 }, delay: 5 } ],
+      markers: [ { x: 1932, y: 267, label: 'Camp Holloway' } ],
       auto: 54,
       lines: [
         { text: 'The 1st Battalion, 7th Cavalry, Custer’s old regiment, under Lieutenant Colonel Harold G. Moore: 431 men on the day, in three rifle companies, a weapons company with mortars, and a headquarters. Rifle companies carried the new M16 rifle, M60 machine guns and M79 grenade launchers.', tag: 'us', cite: 'Moore, After Action Report, 1st Bn 7th Cav, 9 December 1965' },
@@ -149,8 +154,9 @@ window.BATTLE_SCENARIO = {
         { at: 22, file: '12-nguyen-huu-an.jpg', caption: 'Nguyen Huu An, the field commander at the Ia Drang, seen ten years later as a major general inspecting a tank brigade before the 1975 offensive. He met Moore and Galloway in Hanoi in 1993 and walked the X-Ray clearing with them.', ref: 'Vietnam, 1975; from the Communist Party of Vietnam newspaper archive', credit: 'Photo: public domain in Vietnam (Wikimedia Commons, Thieu-tuong-Huu-An.jpg)' },
         { at: 42, file: '13-ak47-rpg.jpg', caption: 'A soldier firing the RPG-2 rocket launcher from the prone position, from a Polish army manual. With the AK-47 it was the weapon of the PAVN assault companies at the Ia Drang; the heavy weapons companies carried 82 mm mortars and 12.7 mm machine guns.', ref: 'S. Torecki, R\u0119czny granatnik przeciwpancerny rgppanc-2, TBiU 37 (Warsaw, 1975)', credit: 'Photo: Polish army manual, public domain in Poland and the United States (Wikimedia Commons)' }
       ],
-      focus: { x: 500, y: 800 }, zoom: .9,
-      markers: [ { x: 420, y: 760, label: 'Chu Pong massif' } ],
+      part: 'pleiku', focus: { x: 800, y: 1450 }, zoom: .8,
+      orders: [ { id: 'r66', visible: true, at: { x: 200, y: 1300 }, to: { x: 700, y: 1530 }, speed: 16 }, { id: 'r33', visible: true, at: { x: 1150, y: 1350 }, to: { x: 820, y: 1610 }, speed: 16 }, { id: 'r32', visible: true, at: { x: 1250, y: 1150 }, to: { x: 900, y: 1640 }, speed: 16 }, { leader: 'an', visible: true, at: { x: 760, y: 1580 } } ],
+      markers: [ { x: 720, y: 1600, label: 'Chu Pong massif' } ],
       auto: 67,
       lines: [
         { text: 'The B3 Front under Chu Huy Man held three regiments of regulars near the Chu Pong: the 32nd and 33rd, tired from Plei Me, and the fresh 66th, with the H-15 Viet Cong battalion. On the mountain above X-Ray were the three battalions of the 66th and part of the 33rd.', tag: 'established' },
@@ -182,6 +188,7 @@ window.BATTLE_SCENARIO = {
         { at: 18, file: '17-xray-perimeter.jpg', caption: 'A rifle squad of the 1st Squadron, 9th Cavalry, the division\u2019s air cavalry scouts, runs from a Huey in Vietnam. At X-Ray every company came in this way, eight to ten men a helicopter, into a clearing the enemy was watching.', ref: 'Vietnam, 1965 to 1972; US Army photograph', credit: 'Photo: United States Army, public domain (Wikimedia Commons, Infantry 1-9 US Cavalry exiting UH-1D.jpg)' }
       ],
       focus: { x: 1300, y: 880 }, zoom: 1.1,
+      orders: [ { heli: 'gunship', to: { x: 1300, y: 880 } }, { heli: 'gunship', to: { x: 1150, y: 760 }, delay: 3 } ],
       markers: [ { x: 1300, y: 880, label: 'LZ X-Ray' } ],
       auto: 45,
       lines: [

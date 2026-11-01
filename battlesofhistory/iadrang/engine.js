@@ -829,8 +829,12 @@ function showIntro(i) {
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('ctrlStrip').classList.toggle('lit', false); $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
+  // a slide can show another part's map (sl.part, e.g. the campaign) and bring it to life with event-style orders (sl.orders)
+  { const want = sl.part ? Math.max(0, S.parts.findIndex(p => p.id === sl.part)) : INTRO_PART;
+    if (want !== partIdx) loadPart(want);
+    resetSim(); acc = 0; (sl.orders || []).forEach(applyOrder); if (sl.light) setLight(sl.light); }
   markers = sl.markers || [];
-  if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
+  if (sl.zoom) { view.z = clamp(sl.zoom, .3, 2.4); clampView(); }
   if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
@@ -1256,6 +1260,7 @@ function tick(t) {
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration ▶ ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next ▶'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
       $('introBar').style.width = Math.min(100, frac * 100) + '%';
+      if (sl.orders) { acc += dt; while (acc >= DT) { acc -= DT; simTime += DT; stepSim(); } }   // the slide's animation runs while it is shown
     }
   } else if (!paused && !battleOver && !cinematic) {
     acc += dt * speed;
