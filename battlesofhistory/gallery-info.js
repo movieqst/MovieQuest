@@ -117,6 +117,7 @@ window.GALLERY_INFO = {
   'dunkirk/13-churchill-karsh.jpg': ['photo', 'portrait', 1941, 'Sir_Winston_Churchill_-_19086236948.jpg', null],
   'dunkirk/14-bourrasque-sinking.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_1940_HU2280.jpg', null],
   'dunkirk/15-oil-smoke.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_and_the_Retreat_From_France_1940_C1720.jpg', null],
+  'dunkirk/04-ramsay.jpg': ['photo', 'portrait', 1943, 'The_Royal_Navy_during_the_Second_World_War_A23440.jpg', null],
   'dunkirk/03-gort.jpg': ['art', 'portrait', 1940, 'General_the_Viscount_Gort_Vc,_Gcb,_Cbe,_Dso,_Mvo,_Mc_Art.IWMARTLD730.jpg', null],
   'dunkirk/02-beach-queues.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_26-29_May_1940_NYP68075.jpg', null],
   // Waterloo
