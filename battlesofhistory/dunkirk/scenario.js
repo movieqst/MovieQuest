@@ -123,7 +123,8 @@ window.DUNKIRK_SCENARIO = {
       map: 'campaign',
       media: [
         { at: 0, file: '01-destroyer-dover.jpg', caption: 'Troops brought back from Dunkirk crowd the deck of a destroyer as she comes in to berth at Dover, 31 May 1940.', ref: 'Imperial War Museum H 1637', credit: 'Photo: Lt. Puttnam and Lt. Malindine, War Office official photographers. Public domain (UK Crown copyright expired)' },
-        { at: 7, file: '11-cundall-withdrawal.jpg', caption: 'The Withdrawal from Dunkirk, June 1940, painted by the official war artist Charles Cundall. Smoke from the burning oil tanks hangs over the town; men queue on the sand, wade out to the boats and are ferried to the ships, while a lorry jetty runs into the sea and German aircraft attack.', ref: 'Imperial War Museum, Art.IWM ART LD 305', credit: 'Painting: Charles Cundall, 1940. Public domain (UK Crown copyright expired)' }
+        { at: 7, file: '11-cundall-withdrawal.jpg', caption: 'The Withdrawal from Dunkirk, June 1940, painted by the official war artist Charles Cundall. Smoke from the burning oil tanks hangs over the town; men queue on the sand, wade out to the boats and are ferried to the ships, while a lorry jetty runs into the sea and German aircraft attack.', ref: 'Imperial War Museum, Art.IWM ART LD 305', credit: 'Painting: Charles Cundall, 1940. Public domain (UK Crown copyright expired)' },
+        { at: 14, file: '13-churchill-karsh.jpg', caption: 'Winston Churchill, Prime Minister for just sixteen days when the evacuation began. On 4 June he told Parliament that \u201cwars are not won by evacuations\u201d, and that Britain would \u201cfight on the beaches\u201d. This famous portrait was taken in Ottawa in December 1941.', ref: 'Parliament of Canada, Ottawa, 30 December 1941', credit: 'Photo: Yousuf Karsh, 1941. Public domain in Canada and the United States' }
       ],
       subtitle: '26 May – 4 June 1940 · the Strait of Dover',
       focus: m1(51.0, 2.4), zoom: .6,
