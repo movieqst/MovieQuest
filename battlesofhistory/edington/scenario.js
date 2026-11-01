@@ -65,7 +65,7 @@ window.EDINGTON_SCENARIO = {
       title: 'BATTLE OF EDINGTON',
       media: [
         { at: 0, file: '01-shieldwall-rendering.jpg', caption: 'ARTIST RENDERING. The two shield walls meet at Ethandun, under the dragon banner of Wessex. Asser says Alfred fought with a dense shield wall; the faces, colours and details here are imagined.', ref: 'After Asser, Life of King Alfred, ch. 56', credit: 'Artist rendering: Battle Games, AI-generated' },
-        { at: 6, file: '02-alfred-statue-winchester.jpg', caption: 'King Alfred as the Victorians imagined him: Hamo Thornycroft\u2019s bronze statue in Winchester, Alfred\u2019s capital, unveiled in 1901 for the thousandth anniversary of his death. No portrait of Alfred from his own lifetime survives.', ref: 'The Broadway, Winchester, Hampshire', credit: 'Photo: Wikimedia Commons (photographer and licence to confirm)' },
+        { at: 6, file: '02-alfred-statue-winchester.jpg', caption: 'King Alfred as the Victorians imagined him: Hamo Thornycroft\u2019s bronze statue in Winchester, Alfred\u2019s capital, unveiled in 1901 for the thousandth anniversary of his death. No portrait of Alfred from his own lifetime survives.', ref: 'The Broadway, Winchester, Hampshire', credit: 'Photo: Antony McCallum, WyrdLight.com, 2006. Wikimedia Commons; free to use with attribution' },
         { at: 11, file: '03-alfred-statue-1918.jpg', caption: 'An American army band at the foot of the Alfred statue in Winchester near the end of the First World War. Many US troops passed through the city on their way to France.', ref: 'Winchester, c. 1918', credit: 'Photo: Hampshire and Solent Museums, Wikimedia Commons, CC BY-SA 2.0' }
       ],
       subtitle: 'May 878 · Wessex',

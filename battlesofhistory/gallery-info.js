@@ -93,7 +93,7 @@ window.GALLERY_INFO = {
   'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
   // Edington
   'edington/01-shieldwall-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
-  'edington/02-alfred-statue-winchester.jpg': ['art', 'statue', 1901, null, null],
+  'edington/02-alfred-statue-winchester.jpg': ['art', 'statue', 1901, 'Winchester-alfred-wyrdlight.jpg', null],
   'edington/03-alfred-statue-1918.jpg': ['photo', 'old photograph', 1918, 'American_Band,_Winchester.jpg', null],
   'edington/04-alfred-jewel-front.jpg': ['art', 'jewel', 885, 'Alfred_Jewel_Ashmolean_2014.JPG', null],
   'edington/05-alfred-jewel-side.jpg': ['art', 'jewel', 885, 'Alfred_Jewel.jpg', null],
