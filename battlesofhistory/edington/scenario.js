@@ -80,7 +80,8 @@ window.EDINGTON_SCENARIO = {
     {
       title: 'Surprise at Chippenham',
       media: [
-        { at: 0, file: '16-chronicle-peterborough.jpg', caption: 'The Anglo-Saxon Chronicle, our main source for 878: the opening page of the Peterborough copy, beginning \u201cThe island of Britain is eight hundred miles long and two hundred broad\u201d. The Chronicle records that the Vikings came to Chippenham \u201cin midwinter after Twelfth Night\u201d.', ref: 'Bodleian Library, Oxford, MS Laud Misc. 636; facsimile from B. Thorpe\u2019s edition (1861)', credit: 'Facsimile: Benjamin Thorpe, 1861. Public domain (Wikimedia Commons)' }
+        { at: 0, file: '18-chippenham-878-postcard.jpg', caption: 'ARTIST RENDERING. Chippenham, a royal estate of the kings of Wessex, stood on a rise inside a loop of the River Avon (its name means Cippa\u2019s land in the river bend). Guthrum\u2019s army struck in midwinter after Twelfth Night 878, while Alfred kept the Christmas feast there. The buildings are a reconstruction: nothing of the Saxon estate survives.', ref: 'After the Anglo-Saxon Chronicle, 878, and Asser, ch. 52', credit: 'Artist rendering: Battle Games, AI-generated' },
+        { at: 9, file: '16-chronicle-peterborough.jpg', caption: 'The Anglo-Saxon Chronicle, our main source for 878: the opening page of the Peterborough copy, beginning \u201cThe island of Britain is eight hundred miles long and two hundred broad\u201d. The Chronicle records that the Vikings came to Chippenham \u201cin midwinter after Twelfth Night\u201d.', ref: 'Bodleian Library, Oxford, MS Laud Misc. 636; facsimile from B. Thorpe\u2019s edition (1861)', credit: 'Facsimile: Benjamin Thorpe, 1861. Public domain (Wikimedia Commons)' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
