@@ -112,6 +112,7 @@ window.GALLERY_INFO = {
   'dunkirk/08-matilda-tank.jpg': ['photo', 'museum object', 2013, 'The_Matilda_Tank_(geograph_3416319).jpg', null],
   'dunkirk/09-matilda-side.jpg': ['photo', 'museum object', 2011, 'Matilda_II_Tank,_Bovington_Tank_Museum_-_Dorset._(5977195830).jpg', null],
   'dunkirk/10-rommel-1940.jpg': ['photo', 'wartime photo', 1940, 'Bundesarchiv_Bild_146-1970-076-43,_Paris,_Erwin_Rommel_bei_Siegesparade.jpg', null],
+  'dunkirk/11-cundall-withdrawal.jpg': ['art', 'painting', 1940, 'The_Withdrawal_from_Dunkirk,_June_1940_Art.IWMARTLD305.jpg', null],
   'dunkirk/03-gort.jpg': ['art', 'portrait', 1940, 'General_the_Viscount_Gort_Vc,_Gcb,_Cbe,_Dso,_Mvo,_Mc_Art.IWMARTLD730.jpg', null],
   'dunkirk/02-beach-queues.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_26-29_May_1940_NYP68075.jpg', null],
   // Waterloo
