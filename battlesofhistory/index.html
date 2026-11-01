@@ -51,7 +51,7 @@
   #tlbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
   #tlbar .lbl{font:600 13px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.1em}
   #tlbar .ctl{display:flex;gap:6px}#tlbar button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer;font:inherit;font-size:12px}#tlbar button:hover{border-color:var(--gold)}
-  #tl{position:relative;height:230px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,#0d1b24,#0a151d);cursor:grab;user-select:none;touch-action:none}
+  #tl{position:relative;height:272px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,#0d1b24,#0a151d);cursor:grab;user-select:none;touch-action:none}
   #tl.drag{cursor:grabbing}
   #tltrack{position:absolute;top:0;bottom:0;left:0;will-change:transform}
   #tltrack .axis{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,rgba(233,199,122,.25),var(--gold) 6%,var(--gold) 94%,rgba(233,199,122,.25))}
@@ -62,16 +62,18 @@
   #tltrack .now span{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:10px;color:#5fcf8a;white-space:nowrap}
   .mini{position:absolute;width:118px;margin-left:-59px;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.5);transition:transform .12s,border-color .12s;z-index:1}
   .mini:hover{transform:scale(1.06);border-color:var(--gold);z-index:3}
-  .mini.up{bottom:calc(50% + 14px)}.mini.down{top:calc(50% + 14px)}
+  .mini.up{bottom:calc(50% + 16px)}.mini.down{top:calc(50% + 30px)}
+  #tltrack svg.links{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+  #tltrack .bdot{position:absolute;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);z-index:2}
   .mini .th{height:58px;background:#0a1620 center/cover no-repeat}
   .mini .t{font:600 10.5px 'Cinzel',Georgia,serif;color:var(--gold);padding:4px 6px 0;line-height:1.2}
   .mini .d{font-size:10px;color:var(--muted);padding:0 6px 5px}
   .mini .pin{position:absolute;left:50%;width:1px;height:14px;background:var(--gold)}
-  .mini.up .pin{top:100%}.mini.down .pin{bottom:100%}
+  .mini .pin,.mini .dot{display:none}
   .mini .dot{position:absolute;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
   .mini.up .dot{top:calc(100% + 10px)}.mini.down .dot{bottom:calc(100% + 10px)}
   #tlhint{font-size:11px;color:#6f8691;margin:6px 2px 0}
-  @media(max-width:600px){#tl{height:200px}.mini{width:96px;margin-left:-48px}.mini .th{height:46px}}
+  @media(max-width:600px){#tl{height:250px}.mini{width:96px;margin-left:-48px}.mini .th{height:46px}}
   .bhbar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;max-width:1100px;margin:10px auto 24px;padding:14px 16px;border-top:1px solid #1b2b35}
   .bhbar a{color:#e9c77a;text-decoration:none;font-weight:600;font-size:15px}.bhbar a:hover{text-decoration:underline}
 </style>
@@ -83,7 +85,7 @@
 <section id="tlwrap">
   <div id="tlbar"><span class="lbl">TIMELINE</span><span class="ctl"><button id="tlOut" title="Zoom out">−</button><button id="tlIn" title="Zoom in">+</button><button id="tlFit" title="Show the whole timeline">Fit</button></span></div>
   <div id="tl"><div id="tltrack"></div></div>
-  <div id="tlhint">Scroll or pinch to zoom, drag to move. Click a battle to open it.</div>
+  <div id="tlhint">The timeline is squeezed toward the past: each step to the left covers more years, so recent battles have room. Scroll or pinch to zoom, drag to move. Click a battle to open it.</div>
 </section>
 <main id="list"></main>
 <nav class="bhbar"><a href="library.html">📚 Library of sources</a><a href="gallery.html?kind=art">🖼 Art gallery</a><a href="gallery.html?kind=photo">📷 Photographs</a><a href="gallery.html">All pictures</a></nav>
@@ -131,34 +133,57 @@
     ${b.status === 'ready' ? '</a>' : '</div>'}`).join('');
 </script>
 <script>
-/* Timeline: linear years from a round number before the earliest battle up to today. Zoom and drag;
-   battles alternate above and below the line, and overlapping ones separate as you zoom in. */
+/* Timeline on a logarithmic scale of "years before today": each step to the left covers more time than the last, so the
+   crowded recent centuries get room and the ancient past is compressed. AGE_PAD years are added to every age so that
+   today itself sits a short way in from the right edge instead of infinitely far away. Zoom and drag; battles alternate
+   above and below the line, and year labels are chosen so they never overlap at any zoom. */
 (function () {
   const B = (window.BATTLES || []).filter(b => typeof b.year === 'number').sort((a, b) => a.year - b.year);
   const tl = document.getElementById('tl'), track = document.getElementById('tltrack'); if (!B.length) { document.getElementById('tlwrap').style.display = 'none'; return; }
-  const NOW = new Date().getFullYear();
-  const first = Math.min(...B.map(b => b.year)), span0 = NOW - first;
-  const roundDown = (y, step) => Math.floor(y / step) * step;
-  const step0 = span0 > 2000 ? 500 : span0 > 500 ? 100 : 50;
-  const START = roundDown(first, step0) - step0 * .5;            // a round number before the first battle, plus a little room
-  const END = NOW + span0 * .08;                                   // and room after today for the last card
-  const yrLabel = y => y < 0 ? (-y) + ' BCE' : y <= 0 ? '1 CE' : String(y);
+  const NOW = new Date().getFullYear(), AGE_PAD = 25;
+  const first = Math.min(...B.map(b => b.year));
+  const u = y => Math.log(NOW - y + AGE_PAD);                      // larger for older years
+  const U0 = u(first), U1 = u(NOW);                     // a little room before the first battle and after today
+  const yrLabel = y => y < 0 ? (-y) + ' BCE' : y === 0 ? '1 CE' : String(y);
   let zoom = 1, off = 0, W = 0;                                    // zoom factor, horizontal offset in px, visible width
-  const px = y => (y - START) / (END - START) * W * zoom;          // year -> x in the track
+  const M0 = 66, M1 = 46;                                          // px kept clear at the ends, so the first and last cards fit
+  const px = y => M0 + (U0 - u(y)) / (U0 - U1) * (W * zoom - M0 - M1);   // year -> x in the track
+  // the narrowest the timeline may be: wide enough for every card side by side in two rows (matters on phones)
+  const minZoom = () => { const cw = matchMedia('(max-width:600px)').matches ? 96 : 118; return Math.max(1, (Math.ceil(B.length / 2) * (cw + 6) + 24) / Math.max(1, tl.clientWidth)); };
   function build() {
-    W = tl.clientWidth; track.style.width = Math.round(W * zoom) + 'px';
-    const pxPerYear = W * zoom / (END - START);
-    const steps = [1, 2, 5, 10, 25, 50, 100, 250, 500, 1000]; let step = steps.find(s => s * pxPerYear >= 90) || 1000; const minor = step / (step % 5 === 0 ? 5 : 2);
+    W = tl.clientWidth; zoom = Math.max(zoom, minZoom()); track.style.width = Math.round(W * zoom) + 'px';
     let html = '<div class="axis"></div>';
-    for (let y = roundDown(START, minor); y <= END; y += minor) { if (y < START) continue; const major = Math.abs(y / step - Math.round(y / step)) < 1e-9; html += `<div class="tick${major ? '' : ' minor'}" style="left:${px(y).toFixed(1)}px">${major ? '<span>' + yrLabel(y) + '</span>' : ''}</div>`; }
+    // Ticks: try round years from the coarsest step to the finest; keep a labelled tick where it has room, a small one otherwise.
+    const labels = [], minors = [];
+    const room = (arr, x, d) => arr.every(v => Math.abs(v - x) >= d);
+    [1000, 500, 100, 50, 25, 10, 5, 1].forEach(st => {
+      for (let y = Math.ceil(first / st) * st; y <= NOW; y += st) {
+        const x = px(y); if (x < 0) continue;
+        if (room(labels, x, 96)) { labels.push(x); html += `<div class="tick" style="left:${x.toFixed(1)}px"><span>${yrLabel(y)}</span></div>`; }
+        else if (room(labels, x, 10) && room(minors, x, 10)) { minors.push(x); html += `<div class="tick minor" style="left:${x.toFixed(1)}px"></div>`; }
+      }
+    });
     html += `<div class="now" style="left:${px(NOW).toFixed(1)}px"><span>today</span></div>`;
-    B.forEach((b, i) => { html += `<a class="mini ${i % 2 ? 'down' : 'up'}" href="${esc(b.folder)}/index.html" style="left:${px(b.year).toFixed(1)}px" title="${esc(b.title)} · ${esc(b.date)}"><div class="th" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')"></div><div class="t">${esc(b.title)}</div><div class="d">${esc(b.date)}</div><i class="pin"></i><i class="dot"></i></a>`; });
+    // Each card goes above or below the line, on whichever side the previous card is further away; on each side cards
+    // then slide sideways just enough not to overlap, with a thin line from the card to its true year on the axis.
+    const CW = matchMedia('(max-width:600px)').matches ? 96 : 118, GAP = 6, TW = W * zoom, H = tl.clientHeight, AY = H / 2;
+    let lastUp = -1e9, lastDown = -1e9; const cards = B.map(b => { const x = px(b.year), side = x - lastUp >= x - lastDown ? 'up' : 'down'; if (side === 'up') lastUp = x; else lastDown = x; return { b, x, side, cx: x }; });
+    ['up', 'down'].forEach(sd => { const L = cards.filter(c => c.side === sd);
+      L.forEach((c, k) => { c.cx = Math.max(c.x, CW / 2 + 2, k ? L[k - 1].cx + CW + GAP : -1e9); });
+      for (let k = L.length - 1; k >= 0; k--) L[k].cx = Math.min(L[k].cx, TW - CW / 2 - 2, k < L.length - 1 ? L[k + 1].cx - CW - GAP : 1e9); });
+    let links = '';
+    cards.forEach(({ b, x, side, cx }) => {
+      const ey = side === 'up' ? AY - 16 : AY + 30;
+      links += `<line x1="${x.toFixed(1)}" y1="${AY}" x2="${cx.toFixed(1)}" y2="${ey}" stroke="#e9c77a" stroke-opacity=".8" stroke-width="1"/>`;
+      html += `<a class="mini ${side}" href="${esc(b.folder)}/index.html" style="left:${cx.toFixed(1)}px" title="${esc(b.title)} · ${esc(b.date)}"><div class="th" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')"></div><div class="t">${esc(b.title)}</div><div class="d">${esc(b.date)}</div></a><i class="bdot" style="left:${x.toFixed(1)}px"></i>`;
+    });
+    html += `<svg class="links">${links}</svg>`;
     track.innerHTML = html; place();
   }
   function place() { const max = Math.max(0, W * zoom - W); off = Math.max(-max, Math.min(0, off)); track.style.transform = `translateX(${off}px)`; }
-  function zoomAt(f, cx) { const z2 = Math.max(1, Math.min(400, zoom * f)); if (z2 === zoom) return; const worldX = (cx - off) / zoom; zoom = z2; off = cx - worldX * zoom; build(); }
+  function zoomAt(f, cx) { const z2 = Math.max(minZoom(), Math.min(400, zoom * f)); if (z2 === zoom) return; const worldX = (cx - off) / zoom; zoom = z2; off = cx - worldX * zoom; build(); }
   document.getElementById('tlIn').onclick = () => zoomAt(1.6, W / 2); document.getElementById('tlOut').onclick = () => zoomAt(1 / 1.6, W / 2);
-  document.getElementById('tlFit').onclick = () => { zoom = 1; off = 0; build(); };
+  document.getElementById('tlFit').onclick = () => { zoom = minZoom(); off = 0; build(); };
   tl.addEventListener('wheel', e => { e.preventDefault(); const r = tl.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 1 / 1.25, e.clientX - r.left); }, { passive: false });
   let drag = null;
   tl.addEventListener('pointerdown', e => { drag = { x: e.clientX, off, moved: false }; tl.setPointerCapture(e.pointerId); tl.classList.add('drag'); });
