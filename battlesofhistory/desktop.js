@@ -12,13 +12,22 @@
   if (new URLSearchParams(location.search).get('layout') === 'classic') return;
   const main = document.querySelector('main'), panel = $('battlePanel'), right = document.querySelector('aside.side');
   if (!main || !panel || !right) return;
-  const wide = () => innerWidth >= 1100 && !document.body.classList.contains('phone') && !document.body.classList.contains('subs');
+  // Loaded early (right after scenario.js), before the big map data, so the page shows this layout while it loads.
+  // phone.js and subtitles.js run later, so their own on/off tests are repeated here.
+  const pref = (k, n) => { let v = new URLSearchParams(location.search).get(k); try { if (v === null) v = localStorage.getItem(n); } catch (e) {} return v; };
+  const coarse = matchMedia('(pointer: coarse)').matches, small = Math.min(screen.width, screen.height) < 600;
+  const phoneOn = () => { const v = pref('phone', 'bh-phone'); return v === '1' || (v !== '0' && coarse && small); };
+  const subsOn = () => { const v = pref('subs', 'bh-subs'); return v === '1' || (v !== '0' && (coarse && !small || phoneOn())); };
+  const wide = () => innerWidth >= 1100 && !phoneOn() && !subsOn() && !document.body.classList.contains('phone') && !document.body.classList.contains('subs');
   if (!wide()) return;
-  document.body.classList.add('dl');
+  document.body.classList.add('dl', 'dlwait');
+  // until the engine has run (it loads after the map data), its playback and art buttons would show in the wrong state
+  addEventListener('DOMContentLoaded', () => document.body.classList.remove('dlwait'));
 
   const css = document.createElement('style');
   css.textContent = `
   body.dl main{grid-template-columns:300px minmax(0,1fr) 300px}
+  body.dlwait #dlBar,body.dlwait #artBtn{visibility:hidden}
   body.dl #dlLeft{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden}
   body.dl #dlCenter{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}
   body.dl #dlCenter:fullscreen{background:#05090c;padding:10px}
@@ -50,7 +59,12 @@
   body.dl #mmCard{box-shadow:none}
   /* the right sidebar: buttons and minimap fixed at the top, everything below scrolls on its own */
   body.dl aside.side{overflow:hidden}
-  body.dl #dlRScroll{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:10px;padding-right:2px}
+  /* framed like the Narration card on the left, with its scrollbar inside the frame */
+  body.dl #dlRScroll{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:0;padding:4px 6px 4px 0;
+    background:var(--panel,#101f29);border:1px solid var(--line,#38505c);border-radius:9px}
+  body.dl #dlRScroll>.card{background:none;border:0;border-radius:0;box-shadow:none;margin:0;border-bottom:1px solid #22343d;flex-shrink:0}
+  body.dl #dlRScroll>.card:last-child{border-bottom:0}
+  body.dl #dlRScroll,body.dl #narrList{scrollbar-width:thin;scrollbar-color:#4b6370 transparent}
   /* the armies are in the sidebar, so no Armies button up top; the big play button never covers an open unit card */
   body.dl #armiesBtn{display:none}
   body.unitopen #playBig,body.unitopen #playGame{visibility:hidden}
@@ -122,7 +136,7 @@
   { const fsb = $('fsBtn'), vw = $('voiceWrap'); if (fsb) nav.appendChild(fsb); if (vw) nav.appendChild(vw); }
   const hide = document.createElement('button'); hide.id = 'dlHideTop'; nav.appendChild(hide);
   let hidden = false; try { hidden = localStorage.getItem('bh-hidetop') === '1'; } catch (e) {}
-  const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Show' : '\u25b4 Hide'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
+  const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Controls' : '\u25b4 Controls'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
   hide.onclick = () => setHidden(!hidden); setHidden(hidden);
   if (mmw) { const card = document.createElement('section'); card.className = 'card'; card.id = 'mmCard'; card.innerHTML = '<h2>Battlefield map</h2>'; card.appendChild(mmw); rtop.appendChild(card); }
   // everything else in the right sidebar goes into its own scrolling area below the minimap
