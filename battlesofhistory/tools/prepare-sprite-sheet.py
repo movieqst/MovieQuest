@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Turn a ChatGPT sprite sheet (a 4 x 4 grid on a green #00FF00 background) into the sheet the battle engines use.
 
-    python3 -I tools/prepare-sprite-sheet.py IN.png OUT.png [cell] [figure-height]
+    python3 -I tools/prepare-sprite-sheet.py IN.png OUT.png [cell, e.g. 160 or 240x200] [figure-height]
 
 - keys out the green (soft edges, and green spill on the figure's outline is pulled back toward neutral)
 - finds the figure in each of the 16 cells, ignoring specks
@@ -14,7 +14,7 @@ from PIL import Image
 import numpy as np
 
 src, dst = sys.argv[1], sys.argv[2]
-CELL = int(sys.argv[3]) if len(sys.argv) > 3 else 160
+CW, CH = (map(int, sys.argv[3].split('x')) if 'x' in sys.argv[3] else (int(sys.argv[3]),) * 2) if len(sys.argv) > 3 else (160, 160)   # cell: 160 or 240x200
 FIG = int(sys.argv[4]) if len(sys.argv) > 4 else 130
 FOOT = 8
 
@@ -43,14 +43,14 @@ for row in range(4):
         boxes.append((xs[0], ys[0], xs[-1] + 1, ys[-1] + 1)); cells.append(c)
 tallest = max(b[3] - b[1] for b in boxes)
 k = FIG / tallest
-out = Image.new('RGBA', (CELL * 4, CELL * 4), (0, 0, 0, 0))
+out = Image.new('RGBA', (CW * 4, CH * 4), (0, 0, 0, 0))
 for i, (c, (bx0, by0, bx1, by1)) in enumerate(zip(cells, boxes)):
     fig = Image.fromarray(c[by0:by1, bx0:bx1], 'RGBA')
     fw, fh = max(1, round((bx1 - bx0) * k)), max(1, round((by1 - by0) * k))
     fig = fig.resize((fw, fh), Image.LANCZOS)
-    if fw > CELL - 4:   # very wide figure (a spear held sideways): shrink to fit the cell
-        s = (CELL - 4) / fw; fig = fig.resize((CELL - 4, max(1, round(fh * s))), Image.LANCZOS); fw, fh = fig.size
+    if fw > CW - 4:   # very wide figure (a spear held sideways): shrink to fit the cell
+        s = (CW - 4) / fw; fig = fig.resize((CW - 4, max(1, round(fh * s))), Image.LANCZOS); fw, fh = fig.size
     col, row = i % 4, i // 4
-    out.alpha_composite(fig, (col * CELL + (CELL - fw) // 2, row * CELL + CELL - FOOT - fh))
+    out.alpha_composite(fig, (col * CW + (CW - fw) // 2, row * CH + CH - FOOT - fh))
 out.save(dst, optimize=True)
 print(f'{dst}: {out.size[0]}x{out.size[1]}, scale {k:.3f}, tallest figure {FIG}px')

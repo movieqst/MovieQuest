@@ -240,17 +240,24 @@ window.WATERLOO_SCENARIO = {
 
   /* ---------- Watch mode: the day in narrated chapters ----------
      Times of day are those most historians give; several are disputed and the chapters say so. */
+  /* The commanders, drawn bigger on a gold disc (engine: leaders). Positions are where the accounts put them, approximately. */
+  leaders: [
+    { id: 'napoleon',   name: 'Napoleon',   side: 'french', x: 1290, y: 1700 },               // at Rossomme in the morning
+    { id: 'wellington', name: 'Wellington', side: 'allied', x: 1235, y: 700 },                // by the elm at the crossroads
+    { id: 'ney',        name: 'Ney',        side: 'french', x: 1330, y: 1380 },
+    { id: 'blucher',    name: 'Blücher',    side: 'allied', x: 2380, y: 1450, hidden: true }   // arrives with Bülow
+  ],
   events: [
     { t: 0, title: 'The ridge', tag: 'account', focus: { x: 1200, y: 800 }, zoom: 'fit',
       text: 'Wellington’s infantry lies on the reverse slope. The guns stand on the crest. The French army waits on the far side of the valley.',
       explain: 'Why the reverse slope? Infantry behind the crest could not be shelled. They could stand up and fire when the French came over the top.',
       cite: 'Britannica, The first hours of battle',
-      orders: [] },
+      orders: [ { leader: 'wellington', to: { x: 1180, y: 720 } },] },
     { t: 12, title: 'Hougoumont', tag: 'established', focus: { x: 650, y: 1000 },
       text: 'The battle opens at Hougoumont, on the Allied right, in the late morning. Reille’s infantry attacks the walled farm, and the fighting there goes on all day.',
       explain: 'Many historians think the attack was meant to draw in Wellington’s reserves. Instead it drew in more and more French battalions. The defenders closed the north gate after the French forced it: a famous story, told differently by different witnesses.',
       cite: 'Britannica, Battle of Waterloo; National Army Museum, Hougoumont',
-      orders: [ { id: 'reille', to: { x: 660, y: 1030 }, speed: 16, state: 'attack' }, { id: 'guns-r', fire: true } ] },
+      orders: [ { leader: 'wellington', to: { x: 900, y: 760 } }, { id: 'reille', to: { x: 660, y: 1030 }, speed: 16, state: 'attack' }, { id: 'guns-r', fire: true } ] },
     { t: 26, title: 'The grand battery opens', tag: 'disputed', focus: { x: 1450, y: 950 },
       text: 'The French grand battery fires on the Allied line. The number of guns is disputed.',
       explain: 'Napoleon massed the guns to break the Allied line before the infantry attack. How many guns there were, and how much damage they did, is not agreed.',
@@ -260,7 +267,7 @@ window.WATERLOO_SCENARIO = {
       text: 'D’Erlon’s corps advances against the Allied left-centre, east of the Brussels road. Picton’s division meets it at the hedges along the crest.',
       explain: 'D’Erlon’s divisions advanced in unusually broad, deep formations, which were slow to deploy and made big targets. Sir Thomas Picton was killed leading the counter-attack.',
       cite: 'Britannica, Battle of Waterloo',
-      orders: [ { id: 'derlon', to: { x: 1500, y: 770 }, speed: 14, state: 'attack' }, { id: 'picton', visible: true, state: 'hold' } ] },
+      orders: [ { leader: 'ney', to: { x: 1420, y: 1060 } }, { leader: 'wellington', to: { x: 1250, y: 720 } }, { id: 'derlon', to: { x: 1500, y: 770 }, speed: 14, state: 'attack' }, { id: 'picton', visible: true, state: 'hold' } ] },
     { t: 54, title: 'The Union Brigade charges', tag: 'established', focus: { x: 1500, y: 900 },
       text: 'Uxbridge sends the heavy cavalry over the crest. The Union Brigade, with the Scots Greys, breaks d’Erlon’s attack and captures two eagles.',
       explain: 'Carried away, the cavalry rode on into the grand battery and was cut up by French lancers and cuirassiers. How far it got, and how many guns it put out of action, is disputed.',
@@ -275,7 +282,7 @@ window.WATERLOO_SCENARIO = {
       text: 'Marshal Ney sends wave after wave of cuirassiers and lancers up the slope between Hougoumont and La Haye Sainte, against the Allied right-centre.',
       explain: 'Why Ney attacked is disputed: he may have taken movement behind the crest for a retreat. The charges went in without infantry to support them.',
       cite: 'Britannica, Battle of Waterloo',
-      orders: [
+      orders: [ { leader: 'ney', to: { x: 990, y: 790 }, speed: 110 }, { leader: 'napoleon', to: { x: 1290, y: 1480 } }, { leader: 'wellington', to: { x: 1060, y: 680 } },
         { id: 'greys', to: { x: 1600, y: 470 }, speed: 30, state: 'move', strengthTo: 35, over: 4 },
         { id: 'household', to: { x: 1050, y: 450 }, speed: 30, state: 'move', strengthTo: 55, over: 4 },
         { id: 'lancers', via: [{ x: 1250, y: 1150 }], to: { x: 1130, y: 700 }, speed: 40, state: 'attack' },
@@ -294,7 +301,7 @@ window.WATERLOO_SCENARIO = {
       text: 'Bülow’s Prussians come in from the east and attack Plancenoit, on the French right. Lobau’s corps is sent to hold them.',
       explain: 'The Prussian arrival forced Napoleon to commit troops to his right, away from the centre. The exact time is disputed; the sources give between about 16:30 and 17:00.',
       cite: 'Britannica, Battle of Waterloo; the time is disputed',
-      orders: [
+      orders: [ { leader: 'blucher', visible: true, to: { x: 2160, y: 1560 } },
         { id: 'bulow', visible: true, to: { x: 2150, y: 1600 }, speed: 30, state: 'attack' },
         { id: 'lobau', visible: true, to: { x: 2040, y: 1520 }, speed: 25 },
         { id: 'yguard', visible: true, to: { x: 2100, y: 1660 }, speed: 22 }
@@ -303,7 +310,7 @@ window.WATERLOO_SCENARIO = {
       text: 'Out of ammunition, the King’s German Legion is driven out of La Haye Sainte. French guns and skirmishers come up close to the centre of the Allied line.',
       explain: 'Major Baring’s men held the farm for most of the day, until their rifle ammunition ran out. With the farm lost, the Allied centre was at its weakest of the day.',
       cite: 'Britannica, Battle of Waterloo; Baring’s own account',
-      orders: [
+      orders: [ { leader: 'ney', to: { x: 1300, y: 900 } }, { leader: 'wellington', to: { x: 1220, y: 690 } },
         { id: 'lhs', to: { x: 1250, y: 620 }, speed: 22, state: 'move', strengthTo: 25, over: 4 },
         { id: 'derlon', via: [{ x: 1420, y: 1000 }], to: { x: 1320, y: 900 }, speed: 18, state: 'attack' }
       ] },
@@ -316,12 +323,12 @@ window.WATERLOO_SCENARIO = {
       text: 'The Imperial Guard goes forward in the last French attack. Wellington’s reserves meet it on the crest.',
       explain: 'The Guard’s attack is the last throw of the day. The words attributed to its officers are disputed, and the Record does not repeat them as fact.',
       cite: 'Britannica, Battle of Waterloo',
-      orders: [ { id: 'guard', visible: true, via: [{ x: 1150, y: 1150 }], to: { x: 960, y: 720 }, speed: 22, state: 'attack' }, { id: 'guards-b', visible: true, state: 'hold' } ] },
+      orders: [ { leader: 'napoleon', to: { x: 1270, y: 1180 } }, { leader: 'ney', to: { x: 1030, y: 860 } }, { leader: 'wellington', to: { x: 1000, y: 680 } }, { id: 'guard', visible: true, via: [{ x: 1150, y: 1150 }], to: { x: 960, y: 720 }, speed: 22, state: 'attack' }, { id: 'guards-b', visible: true, state: 'hold' } ] },
     { t: 152, title: 'The aftermath', tag: 'established', focus: { x: 1200, y: 900 }, zoom: 'fit', end: true,
       text: 'The French attack is broken. The Prussians press on, and the French army retreats south. Napoleon abdicated three days later.',
       explain: 'The battle ended the Napoleonic Wars. Its result is not in doubt; the detail of who did what, and when, is what the sources argue about.',
       cite: 'Britannica, Battle of Waterloo',
-      orders: [
+      orders: [ { leader: 'napoleon', to: { x: 1290, y: 1790 }, speed: 90 }, { leader: 'ney', to: { x: 1250, y: 1650 } }, { leader: 'wellington', to: { x: 1300, y: 1430 } }, { leader: 'blucher', to: { x: 1320, y: 1460 } },
         { id: 'guard', to: { x: 1200, y: 1700 }, speed: 36, state: 'rout', strengthTo: 30, over: 4 },
         { id: 'derlon', to: { x: 1500, y: 1700 }, speed: 30, state: 'rout' }, { id: 'reille', to: { x: 800, y: 1700 }, speed: 30, state: 'rout' },
         { id: 'guards-b', to: { x: 1000, y: 1000 }, speed: 20 }, { id: 'alten', to: { x: 1200, y: 1000 }, speed: 20 }, { id: 'picton', to: { x: 1500, y: 1000 }, speed: 20 },
