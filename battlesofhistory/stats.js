@@ -18,4 +18,26 @@
   const s = document.createElement('script');
   s.async = true; s.src = 'https://gc.zgo.at/count.js'; s.dataset.goatcounter = 'https://' + CODE + '.goatcounter.com/count';
   document.head.appendChild(s);
+
+  // Visit count, small in a bottom corner ("128 VISITS"), like roughdrafter.com: on the home page, the home page and
+  // every battle page added together; on any other page (a battle, the library, the gallery), that page's own visits.
+  // Battle pages put it bottom-right, since their bottom-left holds the Library links. Hidden until GoatCounter answers.
+  const views = async path => {
+    try { const r = await fetch('https://' + CODE + '.goatcounter.com/counter/' + encodeURIComponent(path) + '.json'); if (!r.ok) return 0;
+      const d = await r.json(); return Number(String(d.count || '0').replace(/[^\d]/g, '')) || 0; } catch (e) { return 0; }
+  };
+  const show = async () => {
+    const here = pathFor(), home = here === '/battlesofhistory/';
+    let n;
+    if (home) { const folders = (window.BATTLES || []).map(b => b.folder);
+      n = (await Promise.all([here].concat(folders.map(f => '/battlesofhistory/' + f + '/')).map(views))).reduce((a, b) => a + b, 0); }
+    else n = await views(here);
+    if (!n) return;
+    const battle = !!document.getElementById('battle');
+    const el = document.createElement('div'); el.id = 'visits'; el.textContent = n.toLocaleString('en-US') + ' visits';
+    el.title = home ? 'Visits to Battles of History' : 'Visits to this page';
+    el.style.cssText = 'position:fixed;' + (battle ? 'right:10px' : 'left:10px') + ';bottom:8px;z-index:50;pointer-events:none;font:600 9px/1 system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#6f8691;';
+    document.body.appendChild(el);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show); else show();
 })();
