@@ -100,7 +100,7 @@ window.GALLERY_INFO = {
   'edington/06-athelney-hill.jpg': ['photo', 'site today', 2017, "King_Alfred's_Monument,_Athelney_01.jpg", null],
   'edington/07-athelney-monument.jpg': ['photo', 'site today', 2017, 'Monument,_Athelney_-_geograph.org.uk_-_5496704.jpg', null],
   'edington/08-bratton-camp-edington-hill.jpg': ['photo', 'site today', 2025, 'From_Bratton_Camp_to_Edington_Hill_-_geograph.org.uk_-_7986414.jpg', null],
-  'edington/09-gjermundbu-helmet.jpg': ['art', 'helmet', 975, null, null],
+  'edington/09-gjermundbu-helmet.jpg': ['art', 'helmet', 975, 'Cultural_History_(historisk)_Museum_Oslo._VIKINGR_Norwegian_Viking-Age_Exhibition_08_Iron_helmet_from_Gjermundbu_(Gjermundbuhjelmen)._Best-preserved_viking_helmet,_grave_find,_destroyed_in_funeral._Equestrian_warrior_950-1000._4665.jpg', null],
   'edington/10-viking-warrior-reconstruction.jpg': ['photo', 'museum reconstruction', 2021, 'Leidang_kriger_norrøn_ringbrynje_hjelm_nesebeskytter_middelalder_Norse_Scandinavian_medieval_warrior_Chainmail_replica_Riveted_rings_Hauberk_11th_C._Spangen_helmet_mannequin_Marinemuseet_Naval_Museum_Horten_Norway_0730.jpg', null],
   'edington/13-viking-reenactors.jpg': ['photo', 'reenactment', 2012, 'Viking_Festival,_Delamont_County_Park,_June_2012_(14).JPG', null],
   'edington/12-valsgarde-helmet.jpg': ['art', 'helmet', 650, 'The_Vikings_Begin_68_-_warrior_helmet,_Valsgärde_boat_grave_5,_7th_century.jpg', null],
