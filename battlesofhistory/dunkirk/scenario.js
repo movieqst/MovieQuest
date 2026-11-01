@@ -191,6 +191,9 @@ window.DUNKIRK_SCENARIO = {
     {
       title: 'How to read this reenactment',
       map: 'channel',
+      media: [
+        { at: 0, file: '15-oil-smoke.jpg', caption: 'Smoke from the burning oil storage tanks billows over Dunkirk, with ships offshore, about the start of June 1940. The column could be seen from England; on the beach map of this reenactment it rises from the same tanks.', ref: 'Imperial War Museum C 1720', credit: 'Photo: Royal Air Force official photographer. Public domain (UK Crown copyright expired)' }
+      ],
       focus: m3(51.15, 1.9), zoom: .5,
       markers: [],
       auto: 16,
