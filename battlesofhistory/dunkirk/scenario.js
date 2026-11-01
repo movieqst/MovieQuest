@@ -165,7 +165,9 @@ window.DUNKIRK_SCENARIO = {
       title: 'The ships',
       map: 'channel',
       media: [
-        { at: 0, file: '02-beach-queues.jpg', caption: 'British troops line up on the beach at Dunkirk to wait for the boats, late May 1940.', ref: 'Imperial War Museum NYP 68075', credit: 'Photo: unknown War Office photographer. Public domain (UK Crown copyright expired)' }
+        { at: 0, file: '02-beach-queues.jpg', caption: 'British troops line up on the beach at Dunkirk to wait for the boats, late May 1940.', ref: 'Imperial War Museum NYP 68075', credit: 'Photo: unknown War Office photographer. Public domain (UK Crown copyright expired)' },
+        { at: 7, file: '05-dover-castle.jpg', caption: 'Dover Castle from its keep. Deep inside the white cliffs below it ran tunnels first dug in the Napoleonic wars; in 1940 they held Admiral Ramsay\u2019s naval headquarters, and Operation Dynamo was run from a room there.', ref: 'Dover Castle, Kent (English Heritage)', credit: 'Photo: Karen Roe, Wikimedia Commons, CC BY 2.0' },
+        { at: 14, file: '06-dover-tunnel-entrance.jpg', caption: 'One of the entrances to the tunnel system under Dover Castle, now open to visitors as the Secret Wartime Tunnels.', ref: 'Dover Castle, Kent', credit: 'Photo: Karen Roe, Wikimedia Commons, CC BY 2.0' }
       ],
       focus: m3(51.15, 1.9), zoom: .5,
       markers: [ Object.assign(m3(51.125, 1.31), { label: 'Dover: Admiral Ramsay' }), Object.assign(m3(51.035, 2.375), { label: 'Dunkirk' }) ],
