@@ -692,6 +692,12 @@ window.BATTLE_SCENARIO = {
      intro-N.mp3, event-<part>-N.mp3, explain-<part>-N.mp3, outcome-<part>.mp3, cmd-KEY.mp3. */
   /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of the Ia Drang Valley, which happened in November 1965, between the United States 1st Cavalry Division and the People’s Army of Vietnam.',
+  /* Establishing pictures between the globe and the battlefield, wide to close; `pulse` rings LZ X-Ray. */
+  establishing: [
+    { file: 'establish-1-indochina.jpg', secs: 5, pulse: { x: .589, y: .603 }, credit: 'Artist rendering: Indochina in 1965, with the Ho Chi Minh Trail. Battle Games, AI-generated; borders approximate.' },
+    { file: 'establish-2-south-vietnam.jpg', secs: 5, pulse: { x: .464, y: .435 }, credit: 'Artist rendering: South Vietnam and the Central Highlands, 1965. Battle Games, AI-generated; positions approximate.' },
+    { file: 'establish-3-highlands.jpg', secs: 6, pulse: { x: .314, y: .696 }, credit: 'Artist rendering: the Chu Pong massif, the landing zones, Pleiku and Plei Me, November 1965. Battle Games, AI-generated; positions approximate.' }
+  ],
   imageBase: 'images/',
   audioBase: 'audio/',
   /* Selectable narrators. Each has its own folder audio/<id>/ with the same clip names.
