@@ -94,6 +94,7 @@ window.GALLERY_INFO = {
   // Edington
   'edington/01-shieldwall-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
   'edington/18-chippenham-878-postcard.jpg': ['game', 'AI artist rendering', 2026, null, null],
+  'edington/19-chippenham-today-postcard.jpg': ['game', 'AI artist rendering', 2026, null, null],
   'edington/16-chronicle-peterborough.jpg': ['document', 'manuscript facsimile', 1861, 'The_Anglo-Saxon_Chronicle_according_to_the_Several_Original_Authorities_-_Pl_5.jpg', null],
   'edington/17-chronicle-corpus.jpg': ['document', 'manuscript facsimile', 1861, 'The_Anglo-Saxon_Chronicle_according_to_the_Several_Original_Authorities_-_Pl_1.jpg', null],
   'edington/14-egberts-stone-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
