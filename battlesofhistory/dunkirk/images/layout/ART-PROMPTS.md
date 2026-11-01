@@ -103,40 +103,111 @@ The waves are done in code, because the wave frames were whole maps framed diffe
 ## 5. Sprites for soldiers, ships and aircraft  →  `images/units/<name>.png`
 
 The game draws simple symbols now (army blocks, ships and aircraft seen from above). These sheets will replace them.
-For every sheet: a **solid pure GREEN (#00FF00) background**, which I'll cut out; seen **from above at the same slight
-angle as the Dunkirk paintings**; **no text, no shadows on the background, no borders between cells**. Attach
-`map2.jpg` so the style matches.
+**Attach `map2.jpg` to every request** so the style matches, ask for one sheet at a time, and send each back as a file.
+Paste each prompt exactly as it is: the FORMAT part tells ChatGPT the exact grid the game cuts the sheet into.
+Start with the ships and aircraft: they show the most.
 
-**Soldiers: one sheet per army** (`british-infantry.png`, `french-infantry.png`, `german-infantry.png`)
+### Ships  →  `ships.png`
 
-> Make a game sprite sheet of a [British / French / German] infantry soldier of May 1940, seen from above at a slight
-> angle, small and readable like a strategy-game unit, in the painted style of the attached map.
-> British: khaki battledress, flat round "Brodie" steel helmet, rifle. French: khaki-brown coat, Adrian helmet with a
-> crest, rifle. German: field-grey uniform, coal-scuttle helmet, rifle.
-> Grid: 4 columns x 4 rows. Rows face: down (toward the viewer), right, up (away), left. Columns: standing, then three
-> walking frames. Every cell the same size, the figure's feet at the bottom centre of each cell, the same scale
-> throughout. Solid pure green (#00FF00) background. No text.
+```
+Make a game sprite sheet of six ships from the Dunkirk evacuation, 1940, seen from DIRECTLY ABOVE (straight top-down, like a map), all with their bows pointing to the RIGHT, painted realistically to match the style of the attached map.
 
-**Panzer** (`german-panzer.png`)
+FORMAT (must be exact):
+- Image exactly 1536 x 1024 pixels: a grid of 3 columns x 2 rows of 512 x 512 cells, no gaps, lines or borders between cells.
+- One ship per cell, centred, horizontal, each ship as long as about 90% of the cell width (the small boats can be shorter: about 50%).
+- Solid pure green background (#00FF00) in every cell. No water, no wakes, no shadows, nothing green on the ships.
+- No text, numbers or labels.
 
-> Make a game sprite sheet of a German Panzer III tank of 1940, seen from above at a slight angle, painted style
-> matching the attached map, field grey with a small black-and-white cross. Grid: 4 columns x 4 rows. Rows face down,
-> right, up, left; columns are four frames of the tracks moving. Same size and centre in every cell. Solid pure green
-> (#00FF00) background. No text.
+The six ships, left to right, top row then bottom row:
+1. A grey Royal Navy destroyer, two funnels, guns fore and aft, the deck packed with khaki soldiers.
+2. A grey Royal Navy minesweeper, smaller, one funnel.
+3. A paddle steamer: black hull, white upper deck, one red funnel with a black top, round paddle boxes on each side.
+4. A cross-Channel passenger ferry: black hull, white superstructure, two red funnels, decks crowded with soldiers.
+5. A small white motor yacht with a wooden deck (one of the "little ships").
+6. A small open wooden lifeboat with oars, a few soldiers aboard.
+```
 
-**Ships: one sheet, one ship per cell** (`ships.png`)
+### Aircraft  →  `aircraft.png`
 
-> Make a game sprite sheet of ships at Dunkirk in 1940, seen from straight above, bows pointing RIGHT, painted style
-> matching the attached map. Grid: 3 columns x 2 rows, one ship per cell, each centred:
-> 1 a grey Royal Navy destroyer, decks crowded with soldiers; 2 a grey minesweeper; 3 a paddle steamer with a black
-> hull, red funnel and paddle boxes; 4 a cross-Channel ferry with two red funnels; 5 a small white motor yacht;
-> 6 a wooden lifeboat. Solid pure green (#00FF00) background. No water, no wakes, no text.
+```
+Make a game sprite sheet of three aircraft of 1940, seen from DIRECTLY ABOVE (straight top-down), all with their noses pointing to the RIGHT, painted realistically to match the style of the attached map.
 
-**Aircraft: one sheet** (`aircraft.png`)
+FORMAT (must be exact):
+- Image exactly 1536 x 512 pixels: 3 cells of 512 x 512 side by side, no gaps, lines or borders.
+- One aircraft per cell, centred, wings spanning about 85% of the cell height.
+- Solid pure green background (#00FF00). No shadows, no sky, nothing green on the planes.
+- No text, numbers or labels.
 
-> Make a game sprite sheet of aircraft of 1940, seen from straight above, noses pointing RIGHT, painted style matching
-> the attached map. Grid: 3 columns x 1 row, one aircraft per cell, each centred: 1 a German Ju 87 Stuka dive bomber
-> with its bent gull wings and black crosses; 2 a German Heinkel He 111 bomber; 3 a British Spitfire with roundels.
-> Solid pure green (#00FF00) background. No shadows, no text.
+The three aircraft, left to right:
+1. A German Junkers Ju 87 Stuka dive bomber: bent "gull" wings, fixed landing gear, dark green camouflage, black crosses on the wings.
+2. A German Heinkel He 111 bomber: two engines, glass nose, green camouflage, black crosses.
+3. A British Supermarine Spitfire: elliptical wings, brown and green camouflage, blue-white-red roundels.
+```
 
-When they come back, send them over and I'll cut them out and put them in.
+### British soldier  →  `british-infantry.png`
+
+```
+Make a game sprite sheet of a British infantryman of the BEF, May 1940: khaki serge battledress, flat round "Brodie" steel helmet, webbing straps and small pack, puttees and boots, carrying a Lee-Enfield rifle at the slope on his shoulder.
+
+FORMAT (must be exact):
+- Image exactly 640 x 640 pixels: a 4 x 4 grid of 160 x 160 cells, no gaps, lines or borders between cells.
+- Rows, top to bottom: the figure faces TOWARD the viewer (south), then faces RIGHT (east), then faces AWAY from the viewer (north), then faces LEFT (west).
+- Columns, left to right: 4 frames of a slow walking cycle that loop smoothly.
+- One figure per cell, the same size in every cell (about 130 px tall), feet on the same line about 8 px above the bottom of each cell, centred left to right.
+- Solid pure green background (#00FF00) in every cell. No ground shadows, and nothing green on the figure.
+- Seen from about 45 degrees above, like a strategy game.
+- Painted realistic style matching the attached map.
+- No text, numbers or labels.
+```
+
+### French soldier  →  `french-infantry.png`
+
+```
+Make a game sprite sheet of a French infantryman of May 1940: khaki-brown greatcoat with the front corners buttoned back, Adrian steel helmet with its small crest on top, leather ammunition pouches, puttees and boots, carrying a long Lebel or MAS 36 rifle on his shoulder.
+
+FORMAT (must be exact):
+- Image exactly 640 x 640 pixels: a 4 x 4 grid of 160 x 160 cells, no gaps, lines or borders between cells.
+- Rows, top to bottom: the figure faces TOWARD the viewer (south), then faces RIGHT (east), then faces AWAY from the viewer (north), then faces LEFT (west).
+- Columns, left to right: 4 frames of a slow walking cycle that loop smoothly.
+- One figure per cell, the same size in every cell (about 130 px tall), feet on the same line about 8 px above the bottom of each cell, centred left to right.
+- Solid pure green background (#00FF00) in every cell. No ground shadows, and nothing green on the figure.
+- Seen from about 45 degrees above, like a strategy game.
+- Painted realistic style matching the attached map.
+- No text, numbers or labels.
+```
+
+### German soldier  →  `german-infantry.png`
+
+```
+Make a game sprite sheet of a German infantryman of May 1940: field-grey tunic and trousers, the rounded "coal-scuttle" M35 steel helmet, black leather belt and Y-straps with ammunition pouches, tall black marching boots, carrying a Kar98k rifle on his shoulder. No insignia or symbols other than plain uniform details.
+
+FORMAT (must be exact):
+- Image exactly 640 x 640 pixels: a 4 x 4 grid of 160 x 160 cells, no gaps, lines or borders between cells.
+- Rows, top to bottom: the figure faces TOWARD the viewer (south), then faces RIGHT (east), then faces AWAY from the viewer (north), then faces LEFT (west).
+- Columns, left to right: 4 frames of a slow walking cycle that loop smoothly.
+- One figure per cell, the same size in every cell (about 130 px tall), feet on the same line about 8 px above the bottom of each cell, centred left to right.
+- Solid pure green background (#00FF00) in every cell. No ground shadows, and nothing green on the figure.
+- Seen from about 45 degrees above, like a strategy game.
+- Painted realistic style matching the attached map.
+- No text, numbers or labels.
+```
+
+### German tank  →  `german-panzer.png`
+
+```
+Make a game sprite sheet of a German Panzer III tank of 1940, painted dark grey, with a small black-and-white cross on the turret side, tracks and road wheels clearly visible.
+
+FORMAT (must be exact):
+- Image exactly 640 x 640 pixels: a 4 x 4 grid of 160 x 160 cells, no gaps, lines or borders between cells.
+- Rows, top to bottom: the tank faces TOWARD the viewer (south), then faces RIGHT (east), then faces AWAY from the viewer (north), then faces LEFT (west).
+- Columns, left to right: 4 frames of the tank driving, the tracks moving slightly, looping smoothly.
+- One tank per cell, the same size in every cell (about 120 px long), its tracks on the same line about 8 px above the bottom of each cell, centred left to right.
+- Solid pure green background (#00FF00) in every cell. No ground shadows, and nothing green on the tank.
+- Seen from about 45 degrees above, like a strategy game.
+- Painted realistic style matching the attached map.
+- No text, numbers or labels.
+```
+
+**Check each sheet before sending:** the right size and shape, the right number of cells, the rows facing toward you,
+right, away and left (soldiers and tank), noses and bows pointing right (ships and aircraft), and an all-green
+background.
