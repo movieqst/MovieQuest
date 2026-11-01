@@ -257,6 +257,7 @@ window.BATTLE_SCENARIO = {
     ],
     events: [
       { t: 0, title: 'The trap', tag: 'established', clock: '19 Oct · evening', light: 'day', focus: { x: 1560, y: 1150 }, zoom: 0.62,
+        media: { file: '26-art-plei-me-camp.jpg', caption: 'Plei Me: a triangle of earth walls, sandbagged bunkers at the corners and wire all round, on a cleared hilltop in the jungle.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'Plei Me was a small Special Forces camp in the hills south of Pleiku: twelve American Green Berets, fourteen South Vietnamese, and about four hundred Montagnard militia, behind a triangle of earth walls and sandbags. On the evening of 19 October, two North Vietnamese regiments moved into position around it. The 33rd would attack the camp. The 32nd would wait beside the road from Pleiku, to ambush the column that would come to save it.',
         orders: [
           { id: 'camp', visible: true, state: 'dig' },
@@ -279,6 +280,7 @@ window.BATTLE_SCENARIO = {
           { fire: { kind: 'air', at: { x: 1470, y: 1330 }, r: 60, dmg: 10, delay: 3, planeDir: 3.4 } }
         ] },
       { t: 44, title: 'The relief column', tag: 'established', clock: '22–23 Oct', light: 'day', focus: { x: 1880, y: 620 }, zoom: 0.6,
+        media: { file: '27-art-fire-base.jpg', caption: 'A 1st Cavalry Division fire base in the Highlands: guns, ammunition and sandbags on a hilltop of red earth, flown in by helicopter.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'Down the road from Pleiku came the relief column: about twelve hundred men under Lieutenant Colonel Nguyen Trong Luat, with M41 tanks, M113 armoured carriers, two Ranger battalions and artillery. American guns of the newly arrived 1st Cavalry Division moved forward to cover it. This was the column the 32nd Regiment was waiting for.',
         orders: [
           { id: 'column', visible: true, at: { x: 1808, y: 135 }, to: { x: 1870, y: 386 }, speed: 50 },
@@ -305,6 +307,7 @@ window.BATTLE_SCENARIO = {
           { id: 'camp', strengthTo: 100, over: 6, delay: 8 }
         ] },
       { t: 90, title: 'The pursuit', tag: 'established', clock: '26 Oct – 9 Nov', light: 'day', focus: { x: 1400, y: 1000 }, zoom: 0.5,
+        media: { file: '28-art-camp-holloway.jpg', caption: 'Camp Holloway at Pleiku: the airfield where the helicopters of the pursuit were based, with fuel, ammunition and Hueys lined up beside the strip.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'General Westmoreland let the 1st Cavalry Division do what it had been built for. Instead of waiting for the enemy, its helicopters went after him. Day after day the brigades leap-frogged west by air, searching the jungle and the grass for the regiments that had attacked Plei Me.',
         orders: [
           { id: 'column', lift: 'out' }, { id: 'beckwith', lift: 'out', delay: 1 },
@@ -334,6 +337,7 @@ window.BATTLE_SCENARIO = {
           { id: 'cav9b', at: { x: 668, y: 1160 }, lift: true, from: { x: 1551, y: 1294 }, delay: 13 }
         ] },
       { t: 134, title: 'The new brigade', tag: 'established', clock: '9–13 Nov', light: 'day', focus: { x: 930, y: 1440 }, zoom: 0.65,
+        media: { file: '30-art-lz-falcon.jpg', caption: 'A fire base like LZ Falcon, where the 3rd Brigade’s howitzers were set up to cover the landing at X-Ray, eight kilometres away.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'On 9 November the 3rd Brigade took over the hunt. The prisoners and the documents pointed to the Chu Pong, a long forested mountain on the border. On 13 November the brigade commander gave Lieutenant Colonel Hal Moore his orders: take his battalion into the Ia Drang valley, at the foot of the mountain, and find the enemy.',
         orders: [
           { id: 'cav9', lift: 'out' }, { id: 'cav9b', lift: 'out', delay: 1 }, { id: 'cav1', lift: 'out', delay: 2 }, { id: 'cav2', lift: 'out', delay: 3 },
@@ -342,6 +346,7 @@ window.BATTLE_SCENARIO = {
           { id: 'moore', visible: true, at: { x: 1515, y: 1335 }, state: 'hold' }
         ] },
       { t: 148, title: 'Into the valley', tag: 'established', clock: '14 Nov · 10:48', light: 'day', focus: { x: 916, y: 1453 }, zoom: 1.2,
+        media: { file: '29-art-xray-clearing.jpg', caption: 'A clearing at the foot of the Chu Pong, with a dry creek bed beside it: the kind of place the first Hueys came down into at X-Ray.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'At 10:48 on 14 November the first sixteen Hueys came down into a clearing at the foot of the Chu Pong. The clearing was called X-Ray. On the mountain above it were the three battalions of the 66th Regiment and part of the 33rd.',
         orders: [
           { fire: { kind: 'arty', at: { x: 880, y: 1430 }, r: 45, dmg: 3, delay: 0 } }, { fire: { kind: 'arty', at: { x: 950, y: 1480 }, r: 45, dmg: 3, delay: 1.5 } },

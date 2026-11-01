@@ -197,15 +197,25 @@
     const SC = window[Object.keys(window).find(k => /_SCENARIO$/.test(k))], card = $('mediaCard');
     const pics = SC ? [].concat(...(SC.intro || []).map(sl => sl.media || [])) : [];
     let k = -1, last = 0;
+    const evMedia = {}; let lastEv = null;
+    if (SC) [].concat(SC.events || [], ...(SC.parts || []).map(p => p.events || [])).forEach(e => { if (e && e.media && e.title) evMedia[e.title] = e.media; });
+    const showM = m => { const base = (SC.imageBase || 'images/'), img = $('introImg'); if (!img) return; img.classList.remove('show'); img.onload = () => img.classList.add('show'); img.src = base + m.file;
+      if ($('introCap')) $('introCap').textContent = m.caption || ''; if ($('introRef')) $('introRef').textContent = [m.ref, m.credit].filter(Boolean).join(' \u00b7 '); };
     const show = i => { const m = pics[i], base = (SC.imageBase || 'images/'), img = $('introImg'), ph = $('introPh');
       if (!m || !img) return; img.classList.remove('show'); if (ph) ph.classList.remove('show');
       img.onload = () => img.classList.add('show'); img.onerror = () => { if (ph) ph.classList.add('show'); }; img.src = base + m.file;
       if ($('introCap')) $('introCap').textContent = m.caption || ''; if ($('introRef')) $('introRef').textContent = [m.ref, m.credit].filter(Boolean).join(' \u00b7 '); };
-    if (card && pics.length) setInterval(() => {
+    if (card && (pics.length || Object.keys(evMedia).length)) setInterval(() => {
       const watching = document.body.dataset.mode !== 'intro';
       card.classList.toggle('dlshow', watching);
       if (!watching) { k = -1; return; }
-      const now = Date.now(); if (k < 0 || now - last > 12000) { k = (k + 1) % pics.length; last = now; show(k); }
+      // a chapter can bring its own picture (event.media): shown as soon as the chapter starts, then the cycle resumes
+      const ctEl = $('capTitle'), title = ctEl ? ctEl.textContent.trim() : '';
+      const ev = title && evMedia[title];
+      const imgNow = $('introImg'), onPic = ev && imgNow && (imgNow.getAttribute('src') || '').endsWith(ev.file);
+      if (ev && (ev !== lastEv || (!onPic && Date.now() - last < 12000))) { if (ev !== lastEv) last = Date.now(); lastEv = ev; if (!onPic) showM(ev); return; }
+      if (!ev) lastEv = null;
+      const now = Date.now(); if (pics.length && (k < 0 || now - last > 12000)) { k = (k + 1) % pics.length; last = now; show(k); }
     }, 500);
   }
 
