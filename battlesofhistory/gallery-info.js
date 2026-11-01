@@ -93,6 +93,8 @@ window.GALLERY_INFO = {
   'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
   // Edington
   'edington/01-shieldwall-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
+  'edington/16-chronicle-peterborough.jpg': ['document', 'manuscript facsimile', 1861, 'The_Anglo-Saxon_Chronicle_according_to_the_Several_Original_Authorities_-_Pl_5.jpg', null],
+  'edington/17-chronicle-corpus.jpg': ['document', 'manuscript facsimile', 1861, 'The_Anglo-Saxon_Chronicle_according_to_the_Several_Original_Authorities_-_Pl_1.jpg', null],
   'edington/14-egberts-stone-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
   'edington/15-egberts-stone-poster.jpg': ['game', 'AI artist rendering', 2026, null, null],
   'edington/02-alfred-statue-winchester.jpg': ['art', 'statue', 1901, 'Winchester-alfred-wyrdlight.jpg', null],

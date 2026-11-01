@@ -79,7 +79,9 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'Surprise at Chippenham',
-      media: [],
+      media: [
+        { at: 0, file: '16-chronicle-peterborough.jpg', caption: 'The Anglo-Saxon Chronicle, our main source for 878: the opening page of the Peterborough copy, beginning \u201cThe island of Britain is eight hundred miles long and two hundred broad\u201d. The Chronicle records that the Vikings came to Chippenham \u201cin midwinter after Twelfth Night\u201d.', ref: 'Bodleian Library, Oxford, MS Laud Misc. 636; facsimile from B. Thorpe\u2019s edition (1861)', credit: 'Facsimile: Benjamin Thorpe, 1861. Public domain (Wikimedia Commons)' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 18,
@@ -142,7 +144,8 @@ window.EDINGTON_SCENARIO = {
     {
       title: 'The sources',
       media: [
-        { at: 0, file: '08-bratton-camp-edington-hill.jpg', caption: 'From the ramparts of Bratton Camp, an Iron Age hillfort, along the chalk down toward Edington Hill. The battle is usually placed on these downs above Edington, and some historians think Bratton Camp was the stronghold where Guthrum\u2019s army was besieged afterwards.', ref: 'Bratton Camp, near Westbury, Wiltshire', credit: 'Photo: Neil Owen, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' }
+        { at: 0, file: '17-chronicle-corpus.jpg', caption: 'A page of an eleventh-century copy of the Anglo-Saxon Chronicle, written in Old English, with the entries for 923 and 924. The Chronicle was kept year by year in several copies, starting at Alfred\u2019s court around 890.', ref: 'Corpus Christi College, Cambridge; facsimile from B. Thorpe\u2019s edition (1861)', credit: 'Facsimile: Benjamin Thorpe, 1861. Public domain (Wikimedia Commons)' },
+        { at: 8, file: '08-bratton-camp-edington-hill.jpg', caption: 'From the ramparts of Bratton Camp, an Iron Age hillfort, along the chalk down toward Edington Hill. The battle is usually placed on these downs above Edington, and some historians think Bratton Camp was the stronghold where Guthrum\u2019s army was besieged afterwards.', ref: 'Bratton Camp, near Westbury, Wiltshire', credit: 'Photo: Neil Owen, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
