@@ -81,3 +81,33 @@ enough that small soldiers can stand on it:
 
 Send each painting back. I'll check it against the guide by laying one over the other. If anything has moved, I'll mark
 it and you can ask ChatGPT to fix that part ("move the river on the right to match the guide exactly").
+
+## Map 2, one-image version (recommended): `talas-2-valley-base-marked.png`
+
+The clean terrain base with the towns and the road marked on it, so ChatGPT needs only one picture.
+
+```
+I'm attaching a map of the Talas valley in Central Asia (188 x 141 km, north at the top), made from real satellite
+elevation data. Repaint it as a photorealistic satellite photograph of this valley in July of the year 751, seen from
+STRAIGHT ABOVE (no tilt, no perspective, no horizon): real rock, snow, grass, gravel and water textures, soft natural
+shadows, at most a few small clouds over the high peaks.
+
+ALIGNMENT IS THE MOST IMPORTANT THING. Your picture will be laid exactly on top of this map in a game, pixel for pixel.
+- Same framing and 4:3 shape. Do not crop, zoom, shift or rotate.
+- Every mountain, ridge and valley exactly where the map's shading puts it: the high range on the right, the high
+  range along the bottom, and the long low ridge that runs from the left edge across the middle of the plain.
+- Every river exactly where the map draws it, with the same bends. Thick blue lines: wide, shallow, braided summer
+  rivers with pale gravel beds and green belts of trees and reeds. Thin lines: small streams, many nearly dry in July.
+
+The pink circled markers are towns. Put each town EXACTLY on its marker, centred on the cross, about the size of the
+circle, then remove the marker:
+- 1: TALAS CITY, a mud-brick walled town with a citadel and flat roofs, with green irrigated fields and orchards
+  around it, mostly on the plain to the west and south of the walls.
+- 2: ATLAKH, a smaller mud-brick walled town on the river bend, with a few fields.
+- 3: KULAN, a small walled village.
+Earth-coloured sun-dried brick. NO blue domes, NO minarets.
+The yellow dashed line is the Silk Road: paint it as a faint dusty track along exactly that line.
+
+Everywhere else: dry golden summer steppe with green patches, paler and drier to the north. Nothing modern.
+NO text, numbers, labels, markers, circles or lines in the finished picture.
+```
