@@ -132,7 +132,9 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'The sources',
-      media: [],
+      media: [
+        { at: 0, file: '08-bratton-camp-edington-hill.jpg', caption: 'From the ramparts of Bratton Camp, an Iron Age hillfort, along the chalk down toward Edington Hill. The battle is usually placed on these downs above Edington, and some historians think Bratton Camp was the stronghold where Guthrum\u2019s army was besieged afterwards.', ref: 'Bratton Camp, near Westbury, Wiltshire', credit: 'Photo: Neil Owen, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 16,
