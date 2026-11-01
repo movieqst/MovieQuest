@@ -1154,8 +1154,8 @@ if (S.voices && S.voices.length) {
 try { const r = parseFloat(localStorage.getItem('edington-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
 $('voiceRate').value = String(Narr.rate);
 $('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('edington-voice-rate', String(Narr.rate)); } catch (e) {} };
-$('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, .45, 2.4); clampView(); };
-$('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, .45, 2.4); clampView(); };
+$('zoomIn').onclick = () => { const c = U(view.w / 2, view.h / 2); view.z = clamp(view.z * 1.2, .45, 2.4); const c2 = U(view.w / 2, view.h / 2); view.x += c.x - c2.x; view.y += c.y - c2.y; clampView(); };   // zoom about the centre
+$('zoomOut').onclick = () => { const c = U(view.w / 2, view.h / 2); view.z = clamp(view.z / 1.2, .45, 2.4); const c2 = U(view.w / 2, view.h / 2); view.x += c.x - c2.x; view.y += c.y - c2.y; clampView(); };   // zoom about the centre
 $('introNext').onclick = () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } showIntro(introIdx + 1); };
 $('introBack').onclick = () => showIntro(introIdx - 1);
 $('introPause').onclick = togglePause;
