@@ -38,11 +38,17 @@
   body.dl #clock{padding:0 2px;font-size:12px}
   /* top of the right sidebar: back to the battles + show/hide the top bar, then the minimap; they stay in view
      while the rest of the right sidebar scrolls under them */
-  body.dl #dlRightTop{position:sticky;top:0;z-index:3;display:flex;flex-direction:column;gap:8px;background:#071017;padding-bottom:2px;flex-shrink:0}
+  body.dl #dlRightTop{display:flex;flex-direction:column;gap:8px;background:#071017;padding-bottom:2px;flex-shrink:0}
   body.dl #dlNav{display:flex;gap:6px}
   body.dl #dlNav>*{flex:1;text-align:center;padding:7px 6px;font-size:12px;border:1px solid #526873;border-radius:6px;background:#172a36;color:#f2f4ef;font-weight:600;text-decoration:none;white-space:nowrap}
   body.dl #dlNav>*:hover{filter:brightness(1.18)}
-  body.dl #mmCard{box-shadow:0 6px 14px rgba(0,0,0,.45)}
+  body.dl #mmCard{box-shadow:none}
+  /* the right sidebar: buttons and minimap fixed at the top, everything below scrolls on its own */
+  body.dl aside.side{overflow:hidden}
+  body.dl #dlRScroll{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:10px;padding-right:2px}
+  /* the armies are in the sidebar, so no Armies button up top; the big play button never covers an open unit card */
+  body.dl #armiesBtn{display:none}
+  body.unitopen #playBig,body.unitopen #playGame{visibility:hidden}
   /* the battle's title at the top of the left sidebar */
   body.dl #dlTitle{flex-shrink:0;padding:2px 4px 0}
   body.dl #dlTitle .brand{font-size:clamp(18px,1.7vw,26px);white-space:normal;line-height:1.15}
@@ -112,6 +118,8 @@
   const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Show controls' : '\u25b4 Hide controls'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
   hide.onclick = () => setHidden(!hidden); setHidden(hidden);
   if (mmw) { const card = document.createElement('section'); card.className = 'card'; card.id = 'mmCard'; card.innerHTML = '<h2>Battlefield map</h2>'; card.appendChild(mmw); rtop.appendChild(card); }
+  // everything else in the right sidebar goes into its own scrolling area below the minimap
+  { const sc = document.createElement('div'); sc.id = 'dlRScroll'; [...right.children].forEach(ch => { if (ch !== rtop) sc.appendChild(ch); }); right.appendChild(sc); }
   // the battle's title moves to the top of the left sidebar
   const titleBox = document.querySelector('header > div:first-child');
   if (titleBox && !titleBox.classList.contains('top-actions')) { titleBox.id = 'dlTitle'; left.insertBefore(titleBox, left.firstChild); }
