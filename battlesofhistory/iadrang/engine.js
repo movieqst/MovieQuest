@@ -270,6 +270,9 @@ function createFormations() {
 function applyOrder(o) {
   if (o.delay) { pending.push({ due: simTime + o.delay, o: Object.assign({}, o, { delay: 0 }) }); return; }
   if (o.fire) { callFire(o.fire); return; }
+  if (o.leader) { const L = leaders.find(l => l.id === o.leader); if (!L) return;
+    if (o.at) { L.x = L.tx = o.at.x; L.y = L.ty = o.at.y; } if (o.to) { L.tx = o.to.x; L.ty = o.to.y; }
+    if (o.visible !== undefined) L.shown = o.visible; return; }
   if (o.heli) { spawnHeli({ kind: o.heli, to: o.to, from: o.from }); return; }
   const f = byId[o.id]; if (!f) return;
   if (o.lift) { spawnHeli({ kind: 'lift', f, out: o.lift === 'out', from: o.from }); if (o.then) f.then = o.then; return; }
@@ -378,7 +381,34 @@ function fireEvent(ev) {
   renderTimeline();
   if (ev.end && !fastForward) endWatch();
 }
-function stepSim() { stepPending(); formations.forEach(moveFormation); stepStrikes(); stepHelis(); stepLight(); }
+/* ---------------- leaders: the commanders, a bigger figure on a gold disc with the name below.
+   Per part (PART.leaders). A leader can go `with` a formation (hidden while it is off the map, e.g. before its lift lands)
+   or stand at x, y and be moved by event orders { leader: 'an', to: {x, y}, visible }. They take no part in the fighting.
+   Painted sheets: images/units/leader-<id>.png (4x4, 160 px cells); until one exists a soldier of the side stands in. */
+let leaders = []; const LSHEET = {};
+function createLeaders() {
+  leaders = (PART.leaders || []).map(L => Object.assign({}, L, { tx: L.x, ty: L.y, shown: !L.hidden, facing: L.facing !== undefined ? L.facing : PI / 2, state: 'hold' }));
+  leaders.forEach(L => { const k = L.sheet || L.id; if (LSHEET[k] !== undefined) return; LSHEET[k] = null; const im = new Image(); im.onload = () => { LSHEET[k] = im; }; im.src = (S.imageBase || 'images/') + 'units/leader-' + k + '.png'; });
+}
+const leaderOn = L => L.shown && (!L.with || (byId[L.with] && alive(byId[L.with])));
+function moveLeaders() {
+  leaders.forEach(L => {
+    if (L.with) { const f = byId[L.with]; if (!f) return; L.tx = f.x + (L.dx || 0); L.ty = f.y + (L.dy || 0); if (!alive(f) || Math.hypot(L.tx - L.x, L.ty - L.y) > 250) { L.x = L.tx; L.y = L.ty; } }
+    const dx = L.tx - L.x, dy = L.ty - L.y, d = Math.hypot(dx, dy);
+    if (d > 2) { const st = Math.min(d, (L.speed || 60) * DT); L.x += dx / d * st; L.y += dy / d * st; L.facing = Math.atan2(dy, dx); L.state = 'move'; } else L.state = 'hold';
+  });
+}
+function drawLeader(c, L) {
+  if (!leaderOn(L)) return; const q = P(L.x, L.y), FS = PART.figScale || 1, s = q.s * FS; if (!(s > 0)) return;
+  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); c.fillStyle = 'rgba(233,199,122,.32)'; c.strokeStyle = '#f2d27e'; c.lineWidth = Math.max(1.5, 2 * s);
+  c.beginPath(); c.ellipse(0, 0, 20 * s, 8 * s, 0, 0, PI * 2); c.fill(); c.stroke(); c.restore();
+  const sh = artOn ? LSHEET[L.sheet || L.id] : null;
+  if (sh) { const row = { s: 0, e: 1, n: 2, w: 3 }[dirOf(L.facing)], fr = L.state === 'move' ? Math.floor(wall * 6) % 4 : 0, h = 26 * 1.3 * 1.7 * s, dd = h / 130 * 160;
+    c.drawImage(sh, fr * 160, row * 160, 160, 160, q.x - dd / 2, q.y - dd + 8 * dd / 160, dd, dd); }
+  else drawSprite(c, { side: L.side, type: L.type || (L.side === 'us' ? 'rifle' : 'assault'), state: L.state }, q.x, q.y, L.facing, 0, 1.3 * 1.7 * s, q.k);
+  outlined(c, L.name.toUpperCase(), q.x, q.y + 12 * s + 8, 12 * Math.max(.9, Math.min(1.5, q.s)), { fill: '#ffe7a8' });
+}
+function stepSim() { stepPending(); formations.forEach(moveFormation); moveLeaders(); stepStrikes(); stepHelis(); stepLight(); }
 function stepWatch() {
   while (eventIndex < PART.events.length && PART.events[eventIndex].t <= simTime) fireEvent(PART.events[eventIndex++]);
   stepSim();
@@ -611,9 +641,9 @@ function render() {
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
   PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v) scene.push({ y: p.y, prop: p }); });
-  formations.forEach(f => scene.push({ y: f.y, f }));
+  formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y + 1, L }));
   helis.forEach(h => scene.push({ y: h.y + 400, h }));
-  scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.h ? drawHeli(ctx, o.h) : drawFormation(ctx, o.f));
+  scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.h ? drawHeli(ctx, o.h) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
   drawStrikes(ctx); drawPlanes(ctx);
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
@@ -897,7 +927,7 @@ function startMode(m, opts) {
   else cmdCaption('Command mode', player === 'us' ? 'startus' : 'startpavn', 'reconstruction');
 }
 $('globe').addEventListener('click', () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } });
-function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; pending = []; strikes = []; effects = []; helis = []; planes = []; light.cur = light.target = 0; clockLabel = PART.clockStart || ''; support = {}; renderSelection(); renderTimeline(); updateClock(); }
+function resetSim() { createFormations(); createLeaders(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; pending = []; strikes = []; effects = []; helis = []; planes = []; light.cur = light.target = 0; clockLabel = PART.clockStart || ''; support = {}; renderSelection(); renderTimeline(); updateClock(); }
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
 function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
@@ -1249,7 +1279,7 @@ $('artBtn').onclick = () => { artOn = !artOn; try { localStorage.setItem(LS('art
 // Optional painted terrain per part (images/terrain-<part>.jpg, painted to that part's layout guide): replaces the drawn ground; labels still come from the scenario.
 S.parts.forEach(p => { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = p.world.w * TS; T.height = p.world.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height); g.scale(TS, TS);
     const saveB = B; B = p.battlefield; drawLabels(g); B = saveB; PAINTS[p.id] = T; if (PART === p) { PAINTEDTER = T; applyArt(); } }; img.src = (S.imageBase || 'images/') + 'terrain-' + p.id + '.jpg'; });
-renderBriefing(); renderArmies(); loadPart(INTRO_PART); createFormations();
+renderBriefing(); renderArmies(); loadPart(INTRO_PART); createFormations(); createLeaders();
 if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Oswald'").then(() => { DRAWNTER = buildTerrain(); applyArt(); }).catch(() => {});
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
