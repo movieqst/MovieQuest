@@ -233,7 +233,11 @@ function drawPlane(c, q, f, z, shadow) {
 function drawQueue(c, f, z) {
   // A column of men several abreast, standing from the beach out into the shallows toward the boats.
   const n = Math.max(4, Math.round((f.rows || 30) * Math.max(.1, f.strength / 100))), ang = f.facing, ca = Math.cos(ang), sa = Math.sin(ang), cols = f.cols || 3;
+  const sh = sheetFor(f.side), fh = 8 * z, figs = sh && fh >= 12;   // men facing the sea, nearest the shore drawn last
   c.save(); c.fillStyle = '#3d3a2a';
+  if (figs) { for (let r = n - 1; r >= 0; r--) for (let k = 0; k < cols; k++) { const along = r * 5.5, side = (k - (cols - 1) / 2) * 4.5, jx = (jitter(r * 7 + k, 61) - .5) * 2.2, jy = (jitter(r * 7 + k, 62) - .5) * 2.2;
+      const q = P(f.x + ca * along - sa * side + jx, f.y + sa * along + ca * side + jy); drawSprite(c, sh, q.x, q.y, fh, ang, false, 0); }
+    c.restore(); return; }
   for (let r = 0; r < n; r++) for (let k = 0; k < cols; k++) { const along = r * 5.5, side = (k - (cols - 1) / 2) * 4.5, jx = (jitter(r * 7 + k, 61) - .5) * 2.2, jy = (jitter(r * 7 + k, 62) - .5) * 2.2;
     const q = P(f.x + ca * along - sa * side + jx, f.y + sa * along + ca * side + jy); c.beginPath(); c.arc(q.x, q.y, Math.max(.8, 1.35 * z), 0, PI * 2); c.fill(); }
   c.restore();
@@ -256,13 +260,37 @@ function drawFormation(c, f) {
   const big = f.type === 'army', w = (big ? 64 : 40) * z * (f.scale || 1), h = (big ? 40 : 26) * z * (f.scale || 1);
   if (f.state === 'rout' || f.state === 'scattered' || f.state === 'surrendered') c.globalAlpha *= .55;
   natoBlock(c, q.x, q.y, w, h, f.side, f.kind || 'infantry');
+  const below = drawSquad(c, f, q, w, h, z);
   if (f.strength < 100) { c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(q.x - w / 2, q.y + h / 2 + 2, w, 4); c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(q.x - w / 2, q.y + h / 2 + 2, w * f.strength / 100, 4); }
   c.restore();
   const suffix = f.state === 'surrendered' ? ' · surrendered' : f.state === 'rout' ? ' · falling back' : '';
-  outlined(c, f.division + suffix, q.x, q.y + h / 2 + 14 * Math.max(.8, z), 11 * Math.max(.85, Math.min(1.5, z)), { fill: SIDECOL(f.side) });
+  outlined(c, f.division + suffix, q.x, q.y + h / 2 + below + 14 * Math.max(.8, z), 11 * Math.max(.85, Math.min(1.5, z)), { fill: SIDECOL(f.side) });
   if (selected.has(f.id)) { c.save(); c.strokeStyle = '#fff2a4'; c.lineWidth = 2; c.setLineDash([6, 4]); c.strokeRect(q.x - w / 2 - 6, q.y - h / 2 - 6, w + 12, h + 12); c.restore(); }
 }
-function drawSprite() {}
+/* Painted sprite sheets (images/units/<name>.png): 4 rows south, east, north, west x 4 walking frames, 160 px cells,
+   feet 8 px above the bottom of each cell. Drawn only once they have loaded and only when big enough to read. */
+const SHEETS = {};
+['british-infantry', 'french-infantry', 'german-infantry', 'german-panzer'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const sheetFor = (side, kind) => side === 'german' ? SHEETS[kind === 'armour' ? 'german-panzer' : 'german-infantry'] : side === 'british' ? SHEETS['british-infantry'] : side === 'french' ? SHEETS['french-infantry'] : null;
+const rowOf = a => { const x = Math.cos(a), y = Math.sin(a); return Math.abs(x) > Math.abs(y) ? (x > 0 ? 1 : 3) : (y > 0 ? 0 : 2); };
+// one figure, feet at (x, y), `h` px tall; `walk` animates the four frames, `i` staggers the step
+function drawSprite(c, sh, x, y, h, facing, walk, i) {
+  const frame = walk ? Math.floor(wall * 6 + i) % 4 : 0, d = h / 130 * 160;
+  c.drawImage(sh, frame * 160, rowOf(facing) * 160, 160, 160, x - d / 2, y - d + 8 * d / 160, d, d);
+}
+// a few soldiers (or tanks) under a unit block; returns the height they take so the label can move below them
+const SQUAD = [[-.62, 0], [.62, 0], [-.2, .1], [.2, .1], [0, -.05]];
+function drawSquad(c, f, q, w, h, z) {
+  const sh = sheetFor(f.side, f.kind), big = f.type === 'army', tank = f.side === 'german' && f.kind === 'armour';
+  const fh = (tank ? (big ? 24 : 18) : (big ? 26 : 19)) * z * (f.scale || 1);
+  if (!sh || fh < 13) return 0;
+  const n = Math.max(1, Math.round((tank ? 3 : 5) * Math.max(.2, f.strength / 100))), walk = f.state === 'move' || f.state === 'rout';
+  const face = f.state === 'rout' ? f.facing + PI : f.facing, top = q.y + h / 2 + 3, spots = tank ? [[-.55, 0], [.55, 0], [0, .08]] : SQUAD;
+  c.save(); if (f.state === 'rout' || f.state === 'scattered' || f.state === 'surrendered') c.globalAlpha *= .6;
+  spots.slice(0, n).map((s, i) => ({ s, i })).sort((a, b) => a.s[1] - b.s[1]).forEach(({ s, i }) =>
+    drawSprite(c, sh, q.x + s[0] * w * (tank ? 1.25 : 1), top + fh + s[1] * fh, fh, face, walk, i * 1.7 + jitter(f.id.length, i)));
+  c.restore(); return fh + 4;
+}
 const PROPS = [];
 
 /* ---------------- formations ---------------- */
