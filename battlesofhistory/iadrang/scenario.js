@@ -696,7 +696,8 @@ window.BATTLE_SCENARIO = {
   establishing: [
     { file: 'establish-1-indochina.jpg', secs: 5, pulse: { x: .589, y: .603 }, credit: 'Artist rendering: Indochina in 1965, with the Ho Chi Minh Trail. Battle Games, AI-generated; borders approximate.' },
     { file: 'establish-2-south-vietnam.jpg', secs: 5, pulse: { x: .464, y: .435 }, credit: 'Artist rendering: South Vietnam and the Central Highlands, 1965. Battle Games, AI-generated; positions approximate.' },
-    { file: 'establish-3-highlands.jpg', secs: 6, pulse: { x: .314, y: .696 }, credit: 'Artist rendering: the Chu Pong massif, the landing zones, Pleiku and Plei Me, November 1965. Battle Games, AI-generated; positions approximate.' }
+    { file: 'establish-3-highlands.jpg', secs: 4, pulse: { x: .314, y: .696 }, credit: 'Artist rendering: the Chu Pong massif, the landing zones, Pleiku and Plei Me, November 1965. Battle Games, AI-generated; positions approximate.' },
+    { file: 'establish-4-highlands-real.jpg', secs: 6, pulse: { x: .314, y: .696 }, credit: 'Artist rendering: the Chu Pong massif and the landing zones from the air, November 1965. Battle Games, AI-generated; positions approximate.' }
   ],
   imageBase: 'images/',
   audioBase: 'audio/',
