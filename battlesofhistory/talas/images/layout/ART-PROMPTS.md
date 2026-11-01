@@ -25,17 +25,20 @@ not a new map. It will be laid exactly on top of the guide in a game, pixel for 
 - NO text, labels, letters, numbers, grid lines, arrows, dashed lines, coloured rings or boxes in the painting:
   those are only guides for you. Remove the white grid, the title, the scale bar and the edge labels.
 - Paint everything right to the edges of the frame.
+STYLE: photorealistic, like a high-resolution satellite and relief view (like a real aerial photograph of the land),
+not a painted or cartoon map. Real rock, snow, sand, grass and water textures; soft natural shadows.
+CITIES IN 751: Sogdian / Central Asian towns of sun-dried mud brick in earth colours, thick walls, square towers, a
+citadel, flat roofs. NO blue domes, NO minarets (those are 600 years later). Small and realistic, as seen from above.
 ```
 
 ## Prompt 1: the region (`talas-1-region-guide.png`)
 
 ```
 [the alignment rules above]
-Paint this map of Central Asia in the year 751 as a beautiful hand-painted historical atlas map, in the same style as
-my other battle maps: warm natural colours, soft hill shading, painted mountains with snow on the high peaks of the
+Make this map of Central Asia in the year 751 photorealistic, like a satellite relief view: real mountains with snow on the high peaks of the
 Tian Shan and Pamirs, the pale sand of the Taklamakan and Kyzylkum deserts, green river valleys and oases, blue lakes
 (Issyk-Kul, Balkhash, the Aral Sea) and rivers exactly where the guide has them.
-Show small painted walled cities on the squares: Kucha, Suyab, Talas, Chach, Samarkand, Bukhara, Merv, and small towns
+Show small realistic walled cities on the squares: Kucha, Suyab, Talas, Chach, Samarkand, Bukhara, Merv, and small towns
 on the dots. No roads, no modern borders (the thin grey lines are modern borders: leave them out).
 ```
 
