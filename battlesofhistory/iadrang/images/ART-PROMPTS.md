@@ -127,3 +127,40 @@ shows the full picture.
 - `pavn-assault.jpg`: North Vietnamese infantry in pith helmets charging through elephant grass with AK-47s and an RPG.
 - `pavn-heavy.jpg`: a 12.7 mm machine gun crew dug in among termite mounds on a jungle slope.
 - `pavn-recon.jpg`: two scouts in dark clothing watching a clearing from the bank of a dry creek bed.
+
+---
+
+## 4. Establishing maps (shown between the globe and the battlefield, about 5 seconds each)
+
+Two pictures, from wide to close, in the same painted style. Size: 16:9 landscape, 1672 × 941 or larger.
+Attach a Google Maps screenshot of the same area as a geography reference. When they come back I put a pulsing ring
+on the battle site.
+
+**1. Indochina, 1965**  →  `images/establish-1-indochina.jpg`
+
+> Paint an illustrated map of mainland South-East Asia in November 1965, north up, in the style of a hand-coloured
+> 1960s military atlas map: soft relief shading, muted greens and ochres, pale blue sea. Frame: from Burma and
+> Thailand on the left to the South China Sea on the right, from the Chinese border at the top to the southern tip of
+> Vietnam at the bottom (about 97° to 112° east, 8° to 23° north), with the Gulf of Tonkin and Hainan island top
+> right. Follow the attached map for the real coastline, the Mekong river and the mountains.
+> Shade the countries in soft tints: North Vietnam light red, South Vietnam light yellow-gold, Laos and Cambodia light
+> green, Thailand light grey-violet. Mark the 17th-parallel demilitarised zone with a thin dashed line. Show the Ho Chi
+> Minh Trail as a faint dashed brown line running south from North Vietnam through eastern Laos and Cambodia. Show the
+> Central Highlands of South Vietnam as forested mountains.
+> Label only: NORTH VIETNAM, SOUTH VIETNAM, LAOS, CAMBODIA, THAILAND, Hanoi, Saigon, Pleiku, South China Sea,
+> Gulf of Tonkin, Mekong, Ho Chi Minh Trail. No modern borders other than these, no frame, no legend.
+
+**2. The Central Highlands: Pleiku to the Chu Pong**  →  `images/establish-2-highlands.jpg`
+
+> Paint an illustrated map of the Central Highlands of South Vietnam around Pleiku in November 1965, north up, in the
+> same hand-coloured 1960s military map style: relief shading, dense dark-green jungle, lighter elephant-grass
+> clearings, red-brown dirt roads, blue rivers. Frame: about 60 km across, from the Cambodian border on the left to
+> Pleiku on the right (about 107.4° to 108.1° east, 13.4° to 14.1° north).
+> Show: the Cambodian border as a dashed line along the left edge; the Chu Pong massif, a long forested mountain
+> rising from the border; the winding Ia Drang river running north of it; the town of Pleiku with Camp Holloway
+> airfield; the Plei Me Special Forces camp to the south-east, a small triangular fort; Highway 19 and the dirt roads
+> between them.
+> Mark the landing zones as small clearings with labels: LZ X-RAY at the foot of the Chu Pong, LZ ALBANY a few
+> kilometres north-east of it, LZ COLUMBUS and LZ FALCON (the artillery bases) between X-Ray and Pleiku.
+> Label only: CAMBODIA, CHU PONG MASSIF, Ia Drang, Pleiku, Camp Holloway, Plei Me, LZ X-Ray, LZ Albany,
+> LZ Columbus, LZ Falcon. No frame, no legend, no modern features.

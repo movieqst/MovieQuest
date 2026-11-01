@@ -61,7 +61,7 @@ window.BATTLE_SCENARIO = {
   /* Opening shot: where the globe turns, what it dives to, and the labels at the end of the dive. */
   globe: {
     target: { lon: 107.72, lat: 13.57 },        // LZ X-Ray, Chu Pong massif, Gia Lai province
-    region: { lon: 106, lat: 15 }, pull: 4.2,
+    region: { lon: 104.6, lat: 16.6 }, pull: 7.5,   // close enough that Indochina fills the view (like the Ho Chi Minh trail map)
     startLat: 14,
     periodNote: 'South-East Asia in 1965 · Vietnam divided at the 17th parallel since 1954',
     labels: [
