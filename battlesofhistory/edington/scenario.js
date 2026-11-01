@@ -287,22 +287,22 @@ window.EDINGTON_SCENARIO = {
   ],
 
   units: [
-    { side: 'saxon', type: 'infantry', name: 'West Saxon fyrd', desc: 'Free men of the shires, called out to fight for the king.', tag: 'established', photos: [],
+    { side: 'saxon', type: 'infantry', name: 'West Saxon fyrd', portrait: 'saxon-fyrd', desc: 'Free men of the shires, called out to fight for the king.', tag: 'established', photos: [],
       lines: [
         { text: 'The army was raised shire by shire. At Egbert’s Stone the men of Somerset, Wiltshire and part of Hampshire came to the king.', tag: 'account', cite: 'Anglo-Saxon Chronicle, 878' },
         { text: 'Most carried a spear, a round wooden shield and a long knife called a seax.', tag: 'established' }
       ] },
-    { side: 'saxon', type: 'infantry', name: 'King’s thegns', desc: 'Alfred’s noble warriors, with mail, helmets and swords.', tag: 'established', photos: [],
+    { side: 'saxon', type: 'infantry', name: 'King’s thegns', portrait: 'saxon-thegn', desc: 'Alfred’s noble warriors, with mail, helmets and swords.', tag: 'established', photos: [],
       lines: [
         { text: 'Thegns were the king’s landholding warriors. They could afford mail shirts, helmets and swords, and stood in the front of the line.', tag: 'established' },
         { text: 'They rode to war but fought on foot, like the rest of the army.', tag: 'established' }
       ] },
-    { side: 'viking', type: 'infantry', name: 'Viking warriors', desc: 'Veterans of the Great Army, which had fought in England for thirteen years.', tag: 'established', photos: [],
+    { side: 'viking', type: 'infantry', name: 'Viking warriors', portrait: 'viking-warrior', desc: 'Veterans of the Great Army, which had fought in England for thirteen years.', tag: 'established', photos: [],
       lines: [
         { text: 'The Great Army landed in East Anglia in 865 and had campaigned across England ever since.', tag: 'established' },
         { text: 'Their weapons were much like the English ones: spear, shield, axe and, for the richer men, sword and mail. They did not wear horned helmets.', tag: 'established' }
       ] },
-    { side: 'viking', type: 'infantry', name: 'Guthrum', desc: 'Leader of the Viking army in Wessex, later King of East Anglia.', tag: 'established', photos: [],
+    { side: 'viking', type: 'infantry', name: 'Guthrum', portrait: 'viking-guthrum', desc: 'Leader of the Viking army in Wessex, later King of East Anglia.', tag: 'established', photos: [],
       lines: [
         { text: 'Guthrum came to England with the second wave of the Great Army in 871 and led its attack on Wessex.', tag: 'established' },
         { text: 'After Edington he was baptised as Æthelstan and ruled East Anglia until about 890. A treaty with Alfred set the border between them.', tag: 'established' }

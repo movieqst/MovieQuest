@@ -81,3 +81,23 @@ Four sheets, one per soldier. The game cuts each sheet into a grid, so the layou
 - the background is all bright green
 
 If a row faces the wrong way, I can usually fix it. A sheet with the wrong grid needs remaking.
+
+---
+
+## Armies card portraits  →  `images/portraits/<name>.jpg`
+
+One picture per card in the Armies panel. **Format:** landscape **4:3**, at least **1024 × 768**, a single realistic
+painted portrait (head and upper body, slightly from below), a plain softly blurred battlefield background, natural
+light, **no text, no border**. The cards crop to the centre, so keep the face and shield in the middle. Saved as JPG
+with the names below.
+
+1. `saxon-fyrd.jpg`: an ordinary West Saxon farmer-soldier of the fyrd, 878: wool tunic and cloak, no armour, a round
+   red-painted shield and an ash spear, determined weathered face, the Wiltshire downs behind.
+2. `saxon-thegn.jpg`: one of King Alfred's thegns, a noble warrior: mail shirt, plain iron helmet with a nose guard, a
+   sword at the hip, rich red cloak with a gilt brooch, round red shield; the golden dragon banner of Wessex blurred
+   behind.
+3. `viking-warrior.jpg`: a veteran of the Viking Great Army: mail shirt, rounded iron helmet with a nose guard (no
+   horns), fur-trimmed cloak, round blue-painted shield and a Dane axe or spear, braided beard.
+4. `viking-guthrum.jpg`: Guthrum, leader of the Viking army in Wessex (his real face is unknown): a commanding older
+   chieftain, fine mail, a helmet with spectacle-like eye guards, a richly patterned cloak, silver arm rings, a sword,
+   a raven banner blurred behind.
