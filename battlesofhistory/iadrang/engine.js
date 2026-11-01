@@ -905,7 +905,7 @@ function showEstablishing() {
   establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
 }
 function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
-function startIntro() { hideEstablishing(); if (partIdx !== INTRO_PART) loadPart(INTRO_PART); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
+function startIntro() { autoNextStop(); hideEstablishing(); if (partIdx !== INTRO_PART) loadPart(INTRO_PART); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
   if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function loadPart(i) {
@@ -916,6 +916,7 @@ function loadPart(i) {
   $('partTitle').textContent = PART.title + ' · ' + PART.subtitle;
 }
 function startMode(m, opts) {
+  autoNextStop();
   hideEstablishing();
   let part = opts && opts.part !== undefined ? opts.part : partIdx;
   if (m === 'command' && S.parts[part].watchOnly) part = S.parts.findIndex(p => !p.watchOnly);
@@ -935,6 +936,10 @@ function resetSim() { createFormations(); createLeaders(); simTime = 0; acc = 0;
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
 function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
+let autoNextT = null;
+function autoNextStop() { if (autoNextT) { clearInterval(autoNextT); autoNextT = null; const nb = $('debriefNext'), nm = $('debriefNextMini'); if (nb) nb.textContent = nb.textContent.replace(/ in \d+$/, ''); if (nm) nm.textContent = nm.textContent.replace(/ in \d+$/, ''); } }
+['pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, e => { if (!autoNextT) return; const t = e.target;
+  if (t && t.closest && (t.closest('#debriefNext') || t.closest('#debriefNextMini') || t.closest('#debrief .xbtn'))) return; autoNextStop(); }, true));
 function showDebrief() {
   Narr.stop(); const d = $('debrief');
   let head, body;
@@ -950,6 +955,21 @@ function showDebrief() {
   $('debriefTitle').textContent = head;
   $('debriefBody').innerHTML = body + `<h4>The historical outcome · ${PART.title}</h4>` + PART.outcome.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   const nb = $('debriefNext'); nb.style.display = next ? '' : 'none'; nb.textContent = next ? `▶ Continue: ${next.title}` : '';
+  const nm = $('debriefNextMini'); if (nm) { nm.style.display = next ? '' : 'none'; nm.textContent = nb.textContent; }
+  // after the historical debrief in Watch mode, go on to the next part by itself: once the narration has finished,
+  // count down 5, 4, 3, 2, 1. Any other click or key on the debrief stops it.
+  autoNextStop();
+  if (next && battleOver === 'history' && mode === 'watch') {
+    let left = 5, t0 = null;
+    autoNextT = setInterval(() => {
+      const speaking = Narr.on && ((Narr.audio && !Narr.audio.ended) || ('speechSynthesis' in window && speechSynthesis.speaking));
+      if (speaking || paused && !battleOver) { t0 = null; return; }
+      if (t0 === null) t0 = Date.now();
+      const n = Math.max(0, left - Math.floor((Date.now() - t0) / 1000)), lab = `▶ Continue: ${next.title} in ${n}`;
+      nb.textContent = lab; if (nm) nm.textContent = lab;
+      if (n <= 0) { autoNextStop(); nb.click(); }
+    }, 200);
+  }
   if (Narr.on && battleOver === 'history') Narr.speak(PART.outcome.map(l => l.text).join(' '), PART.outcomeAudio || audioFor('outcome', PART.id));
   showOverlay('debrief');
 }
@@ -1228,7 +1248,8 @@ const chosenPart = () => { const r = document.querySelector('input[name=pmPart]:
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
 $('debriefWatch').onclick = () => startMode('watch');
 $('debriefCommand').onclick = () => startMode('command');
-$('debriefNext').onclick = () => startMode(mode === 'intro' ? 'watch' : mode, { part: partIdx + 1 });
+$('debriefNext').onclick = () => { autoNextStop(); startMode(mode === 'intro' ? 'watch' : mode, { part: partIdx + 1 }); };
+{ const nm = $('debriefNextMini'); if (nm) nm.onclick = () => $('debriefNext').click(); }
 $('debriefIntro').onclick = startIntro;
 $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if (f.side === player && alive(f) && f.state !== 'rout' && UT[f.type].kind !== 'air') selected.add(f.id); }); renderSelection(); };
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
