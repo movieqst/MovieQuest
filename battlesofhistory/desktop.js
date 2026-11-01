@@ -32,18 +32,34 @@
   body.dl #zoomBox button{padding:6px 9px}
   /* playback buttons (pause, FF, skip, clock, armies; Back / Next in the introduction) in the top bar; the timeline under the map */
   body.dl header>div:first-child{flex:none}
-  body.dl .top-actions{flex:1;justify-content:flex-end;flex-wrap:nowrap;min-width:0}
+  body.dl .top-actions{flex:1;justify-content:flex-end;flex-wrap:wrap;row-gap:4px;min-width:0}
+  body.dl header{flex-wrap:nowrap}
+  body.dl .brand{font-size:clamp(15px,1.3vw,24px);white-space:nowrap}
+  body.dl #clock{padding:0 2px;font-size:12px}
+  /* top of the right sidebar: back to the battles + show/hide the top bar, then the minimap; they stay in view
+     while the rest of the right sidebar scrolls under them */
+  body.dl #dlRightTop{position:sticky;top:0;z-index:3;display:flex;flex-direction:column;gap:8px;background:#071017;padding-bottom:2px;flex-shrink:0}
+  body.dl #dlNav{display:flex;gap:6px}
+  body.dl #dlNav>*{flex:1;text-align:center;padding:7px 6px;font-size:12px;border:1px solid #526873;border-radius:6px;background:#172a36;color:#f2f4ef;font-weight:600;text-decoration:none;white-space:nowrap}
+  body.dl #dlNav>*:hover{filter:brightness(1.18)}
+  body.dl #mmCard{box-shadow:0 6px 14px rgba(0,0,0,.45)}
+  /* the battle's title at the top of the left sidebar */
+  body.dl #dlTitle{flex-shrink:0;padding:2px 4px 0}
+  body.dl #dlTitle .brand{font-size:clamp(18px,1.7vw,26px);white-space:normal;line-height:1.15}
+  body.dl #dlTitle .subtitle{max-width:none;white-space:normal;overflow:visible;display:block}
+  body.dl header{justify-content:flex-end}
+  body.dl.hidetop header,body.dl.hidetop footer{display:none}
+  /* fullscreen: the picture-and-notes slideshow sits top-left of the map */
+  body.dl #fsMediaWrap{left:12px;right:auto}
   body.dl #dlBar{display:flex;align-items:center;gap:6px;flex:none}
   body.dl #timeline{position:relative;left:auto;right:auto;bottom:auto;flex:none;height:22px}
   body.dl[data-mode="intro"] #timeline{display:none}
   body.dl #ctrlStrip{position:static;opacity:1;background:none;border:0;padding:0;backdrop-filter:none;display:flex;gap:4px;flex:none}
-  body.dl #ctrlStrip button,body.dl .top-actions button{padding:6px 9px;font-size:12px}
+  body.dl #ctrlStrip button,body.dl .top-actions button,body.dl .top-actions a.home{padding:5px 7px;font-size:11.5px}
   body.dl #ctrlStrip .hud-home{display:none}
   body.dl .top-actions button,body.dl .top-actions a,body.dl #clock{white-space:nowrap}
   body.dl .top-actions{gap:4px}
   body.dl .top-actions .sep{margin:0 2px}
-  body.dl header .subtitle{max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  @media(max-width:1300px){body.dl header .subtitle{display:none}}
   body.dl #dlCenter:fullscreen #dlBar{margin:0 0 8px}
   /* closed captions under the map: the sentence being spoken, large, as on television */
   body.dl #dlText{position:relative;background:#05090c;border:1px solid #2c3f49;border-radius:9px;min-height:112px;display:flex;flex-direction:column;justify-content:center;padding:8px 48px;text-align:center}
@@ -83,9 +99,22 @@
   const top = document.querySelector('.top-actions'), zoom = $('zoomBox');
   if (top && zoom) { const sep = document.createElement('span'); sep.className = 'sep'; top.insertBefore(sep, top.firstChild); top.insertBefore(zoom, sep); }
   if (top) top.insertBefore(bar, top.firstChild);
+  // shorter link back to the list of battles, so the top bar fits on one line
+  [['watchBtn', '\u25b6 Watch', 'Watch the reenactment'], ['commandBtn', '\u2694 Command', 'Take command']].forEach(([id, t, title]) => { const b = $(id); if (b) { b.textContent = t; b.title = title; } });
   // minimap to the top of the right sidebar
   const mmw = $('minimap-wrap');
-  if (mmw) { const card = document.createElement('section'); card.className = 'card'; card.id = 'mmCard'; card.innerHTML = '<h2>Battlefield map</h2>'; card.appendChild(mmw); right.insertBefore(card, right.firstChild); }
+  const rtop = document.createElement('div'); rtop.id = 'dlRightTop'; right.insertBefore(rtop, right.firstChild);
+  const nav = document.createElement('div'); nav.id = 'dlNav'; rtop.appendChild(nav);
+  const homeLink = top && top.querySelector(':scope > a.home');
+  if (homeLink) { homeLink.textContent = '\u25c0 Battles of History'; nav.appendChild(homeLink); top.querySelectorAll('.sep').forEach((sp, i, all) => { if (i === all.length - 1) sp.remove(); }); }
+  const hide = document.createElement('button'); hide.id = 'dlHideTop'; nav.appendChild(hide);
+  let hidden = false; try { hidden = localStorage.getItem('bh-hidetop') === '1'; } catch (e) {}
+  const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Show controls' : '\u25b4 Hide controls'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
+  hide.onclick = () => setHidden(!hidden); setHidden(hidden);
+  if (mmw) { const card = document.createElement('section'); card.className = 'card'; card.id = 'mmCard'; card.innerHTML = '<h2>Battlefield map</h2>'; card.appendChild(mmw); rtop.appendChild(card); }
+  // the battle's title moves to the top of the left sidebar
+  const titleBox = document.querySelector('header > div:first-child');
+  if (titleBox && !titleBox.classList.contains('top-actions')) { titleBox.id = 'dlTitle'; left.insertBefore(titleBox, left.firstChild); }
   // slideshow to the left sidebar
   const media = $('mediaCard'); if (media) left.appendChild(media);
   // fullscreen takes the map with its play bar and captions
