@@ -29,3 +29,55 @@ Size: 4800 × 3600 pixels (4:3), or the largest 4:3 ChatGPT can make.
 
 If the result moves things, reply: "Keep every feature exactly where it is on the layout image; do not reinterpret
 the layout." (Or send it anyway: I can trace the game's map from the painting.)
+
+---
+
+## Unit sprite sheets  →  `images/units/<name>.png`
+
+Four sheets, one per soldier. The game cuts each sheet into a grid, so the layout must be exact.
+
+**Format for every sheet:**
+- **Size:** exactly **640 × 640 pixels**, a **4 × 4 grid** of 160 × 160 cells, with no gaps, lines or borders between them.
+- **Rows** (top to bottom): the figure faces **toward the viewer (south)**, then **right (east)**, then **away (north)**, then **left (west)**.
+- **Columns:** four frames of a slow walk cycle, left to right, that loop smoothly.
+- **Placement:** one figure per cell, the same size in every cell, about 130 px tall, feet on the same line about 8 px above the bottom of the cell, centred left to right.
+- **Background:** solid pure **green #00FF00** in every cell; I cut it out. No shadows on the ground, nothing green on the figure.
+- **Viewing angle:** about 45° from above, like a strategy game, so you see the top of the shield and helmet.
+- **Style:** painted and realistic, to match the attached battle map (`terrain.jpg`).
+- **No text**, numbers or labels.
+
+**1. `saxon-spearman.png`**
+
+> Make a game sprite sheet of an Anglo-Saxon spearman of King Alfred's army, Wessex, 878 AD. He wears a knee-length wool tunic
+> in muted red or brown, trousers with leg wraps, leather shoes, and an iron cap or a plain round helmet (no horns). He carries a
+> big round wooden shield painted red with an iron boss, and a long ash spear with an iron head, held upright. A seax knife at
+> his belt. Wealthier look, but no plate armour.
+> [paste the format block above]
+
+**2. `saxon-archer.png`**
+
+> Make a game sprite sheet of an Anglo-Saxon bowman of King Alfred's army, Wessex, 878 AD. Wool tunic in earth colours, a hood or
+> bare head, leg wraps, a simple wooden self bow (no curved composite bow), and a quiver of arrows at his hip. No shield, no
+> armour. He walks with the bow in his left hand.
+> [paste the format block above]
+
+**3. `viking-spearman.png`**
+
+> Make a game sprite sheet of a Viking warrior of Guthrum's Great Army, England, 878 AD. Wool tunic in blue-grey or dark green,
+> a mail shirt to the hips on some, a rounded iron helmet with a nose guard (no horns), a big round wooden shield painted blue
+> with an iron boss, and a spear held upright. A sword or axe at the belt.
+> [paste the format block above]
+
+**4. `viking-archer.png`**
+
+> Make a game sprite sheet of a Viking bowman of Guthrum's army, England, 878 AD. Wool tunic and cloak in muted colours, a
+> fur-trimmed cap or bare head, a long wooden self bow, and a quiver of arrows on the back. No shield, no armour.
+> [paste the format block above]
+
+**Check before sending:**
+- the sheet is square
+- there are 16 figures in a 4 × 4 grid
+- the rows face toward you, right, away, then left
+- the background is all bright green
+
+If a row faces the wrong way, I can usually fix it. A sheet with the wrong grid needs remaking.
