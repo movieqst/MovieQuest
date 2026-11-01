@@ -42,20 +42,26 @@ window.mqViews = async function (itemId) {
   return a + b;
 };
 
-// Running total of every visit to the site, small in the bottom-left corner
-// ("128 VISITS"), like roughdrafter.com. Hidden until GoatCounter answers.
+// Visit count, small in the bottom-left corner ("128 VISITS"), like roughdrafter.com. Hidden until GoatCounter
+// answers. On a movie page (movies/<id>/) it shows that movie's own visits; everywhere else, every visit to the site.
 (function () {
   const code = window.MQ_GOATCOUNTER;
   if (!code) return;
   const show = async () => {
     try {
-      const res = await fetch(`https://${code}.goatcounter.com/counter/TOTAL.json`);
-      if (!res.ok) return;
-      const data = await res.json();
-      const n = String(data.count || '').trim();
+      const m = location.pathname.match(/\/movies\/([^/]+)\/?(index\.html)?$/);
+      let n;
+      if (m && window.mqViews) n = String(await window.mqViews(m[1]) || '');
+      else {
+        const res = await fetch(`https://${code}.goatcounter.com/counter/TOTAL.json`);
+        if (!res.ok) return;
+        const data = await res.json();
+        n = String(data.count || '').trim();
+      }
       if (!n || n === '0') return;
       const el = document.createElement('div');
       el.textContent = `${n} visits`;
+      el.title = m ? 'Visits to this movie\u2019s page' : 'Visits to MovieQuest';
       el.style.cssText = 'position:fixed;left:10px;bottom:8px;z-index:50;pointer-events:none;' +
         'font:600 9px/1 "JetBrains Mono",monospace;letter-spacing:0.6px;text-transform:uppercase;color:#8a8a8a;';
       document.body.appendChild(el);
