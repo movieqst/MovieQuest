@@ -149,6 +149,9 @@ window.DUNKIRK_SCENARIO = {
     {
       title: 'The armies',
       map: 'campaign',
+      media: [
+        { at: 0, file: '03-gort.jpg', caption: 'General Lord Gort, commander of the British Expeditionary Force, painted in 1940. On 25 May he decided, without waiting for orders, to give up the planned attack south and fall back to the coast: the decision that saved most of his army.', ref: 'Imperial War Museum, Art.IWM ART LD 730', credit: 'Painting: Reginald Grenville Eves, 1940. Public domain (UK Crown copyright expired)' }
+      ],
       focus: m1(50.8, 2.8), zoom: .5,
       markers: [ Object.assign(m1(50.62, 3.35), { label: 'BEF' }), Object.assign(m1(51.02, 3.55), { label: 'Belgian Army' }), Object.assign(m1(50.42, 3.3), { label: 'French First Army' }) ],
       auto: 20,
