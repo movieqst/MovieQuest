@@ -68,6 +68,8 @@ class Guide:
                 if wpx > 1: m = binary_dilation(m, iterations=int(wpx // 2))
                 rgb[m] = WATER
         self.im = Image.fromarray(rgb.clip(0, 255).astype('uint8')); self.d = ImageDraw.Draw(self.im)
+        # a clean copy (terrain and rivers only, no labels, grid or arrows) for ChatGPT to repaint realistically
+        os.makedirs(OUT, exist_ok=True); self.im.save(os.path.join(OUT, name.replace('-guide.png', '-base.png')), optimize=True)
 
     def xy(self, lat, lon): return ((lon - self.lon0) / (self.lon1 - self.lon0) * W, (self.lat1 - lat) / (self.lat1 - self.lat0) * H)
     def P(self, pts): return [self.xy(a, b) for a, b in pts]
