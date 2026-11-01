@@ -57,7 +57,7 @@ function loadMaps() {
 function setMap(id, instant) {
   if (!S.maps[id] || id === curMap) return;
   curMap = id; B = S.maps[id]; const m = MAPS[id]; TER = m && m.img; mapFade = instant || fastForward ? 0 : 1;
-  if (B.zoom) view.z = B.zoom; clampView(); if (TER) buildMiniBase();
+  view.z = Math.max(B.zoom || 0, fillZ()); clampView(); if (TER) buildMiniBase();
   document.body.dataset.map = id;
 }
 // The sea, found from the painting itself: water-coloured pixels joined to the map's open-sea edge (so flooded fields and
@@ -432,13 +432,21 @@ function U(sx, sy) { const vw = VW(), vh = VH(), v = vAt(sy), s = sAt(v); return
 // The view may run a little past the south edge of the map, so that what the camera frames can sit in the upper part
 // of the screen, clear of the caption at the bottom. Beyond the edge the background is plain black.
 const OVER = () => document.body.classList.contains('dl') ? 0 : VH() * .35;   // the desktop layout keeps the caption off the map
-function clampView() { view.z = Math.max(view.z, view.w / W.w, view.h / W.h); /* never smaller than the panel: no black strip beside the painting */ view.x = clamp(view.x, 0, Math.max(0, W.w - VW())); view.y = clamp(view.y, 0, Math.max(0, W.h - VH()) + OVER()); }
+// Zoom limits: zoomed right out the whole painting fits in the window (with dark margins on the long sides);
+// a map opens filling the window, never smaller.
+const minZ = () => Math.min(view.w / W.w, view.h / W.h), fillZ = () => Math.max(view.w / W.w, view.h / W.h);
+function clampView() {
+  view.z = Math.max(view.z, minZ());
+  const vw = VW(), vh = VH();
+  view.x = vw >= W.w ? (W.w - vw) / 2 : clamp(view.x, 0, W.w - vw);           // smaller than the window: centred
+  view.y = vh >= W.h ? (W.h - vh) / 2 : clamp(view.y, 0, Math.max(0, W.h - vh) + OVER());
+}
 function focusOn(x, y) { cam.tx = x; cam.ty = y; }
 // Frame a point in the upper part of the screen, above the caption box.
 function frame(x, y, k = .22) { focusOn(x, y + VH() * k); }
 function updateCamera() {
   if (cam.tx === null) return;
-  const gx = clamp(cam.tx - VW() / 2, 0, Math.max(0, W.w - VW())), gy = clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
+  const gx = VW() >= W.w ? (W.w - VW()) / 2 : clamp(cam.tx - VW() / 2, 0, W.w - VW()), gy = VH() >= W.h ? (W.h - VH()) / 2 : clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
   view.x += (gx - view.x) * .08; view.y += (gy - view.y) * .08;
   if (Math.abs(gx - view.x) < .5 && Math.abs(gy - view.y) < .5) { view.x = gx; view.y = gy; cam.tx = null; }
 }
@@ -630,7 +638,7 @@ function showIntro(i) {
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   if (sl.map) setMap(sl.map, true);
   markers = sl.markers || [];
-  if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
+  if (sl.zoom) { view.z = clamp(sl.zoom, minZ(), 2.4); clampView(); }
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
   if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
@@ -818,7 +826,7 @@ canvas.addEventListener('pointermove', e => {
 canvas.addEventListener('pointerup', e => {
   if (band) {
     const bx = Math.min(band.x0, band.x1), by = Math.min(band.y0, band.y1), bw = Math.abs(band.x1 - band.x0), bh = Math.abs(band.y1 - band.y0); band = null;
-    if (bw > 20 && bh > 20) { view.z = clamp(Math.min(view.w / bw, view.h * TR() / bh), .45, 2.4); view.x = bx + bw / 2 - VW() / 2; view.y = by + bh / 2 - VH() / 2; overview = null; $('battlePanel').classList.remove('overview'); clampView(); manualCamera(); dragging = false; return; }
+    if (bw > 20 && bh > 20) { view.z = clamp(Math.min(view.w / bw, view.h * TR() / bh), minZ(), 2.4); view.x = bx + bw / 2 - VW() / 2; view.y = by + bh / 2 - VH() / 2; overview = null; $('battlePanel').classList.remove('overview'); clampView(); manualCamera(); dragging = false; return; }
   }
   if (marquee) {
     const mq = marquee; marquee = null;
@@ -840,7 +848,7 @@ canvas.addEventListener('pointerup', e => {
 });
 canvas.addEventListener('wheel', e => {
   e.preventDefault(); const r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
-  const wp = U(mx, my), z2 = clamp(view.z * (e.deltaY < 0 ? 1.15 : 1 / 1.15), .45, 2.4);
+  const wp = U(mx, my), z2 = clamp(view.z * (e.deltaY < 0 ? 1.15 : 1 / 1.15), minZ(), 2.4);
   view.z = z2; const v = vAt(my), sv = sAt(v); view.x = wp.x - VW() / 2 - (mx - view.w / 2) / (view.w * sv) * VW(); view.y = wp.y - v * VH(); clampView(); manualCamera();
 }, { passive: false });
 function toggleOverview() {
@@ -925,7 +933,7 @@ window.addEventListener('keydown', e => {
   if (k === 'r') $('resetBtn').click();
   if (k === '>' || k === '.') $('ffBtn').click();
   if (k === 'g' && e.shiftKey) exportLayoutGuide();
-  if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, .45, 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, .45, 2.4); clampView(); }
+  if (k === '+' || k === '=') { view.z = clamp(view.z * 1.15, minZ(), 2.4); clampView(); } if (k === '-') { view.z = clamp(view.z / 1.15, minZ(), 2.4); clampView(); }
   if (mode === 'intro' && introStarted) { if (k === 'arrowright' || k === 'enter') showIntro(introIdx + 1); if (k === 'arrowleft') showIntro(introIdx - 1); }
 });
 
@@ -955,8 +963,8 @@ if (S.voices && S.voices.length) {
 try { const r = parseFloat(localStorage.getItem('dunkirk-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
 $('voiceRate').value = String(Narr.rate);
 $('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('dunkirk-voice-rate', String(Narr.rate)); } catch (e) {} };
-$('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, .45, 2.4); clampView(); };
-$('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, .45, 2.4); clampView(); };
+$('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, minZ(), 2.4); clampView(); };
+$('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, minZ(), 2.4); clampView(); };
 $('introNext').onclick = () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } showIntro(introIdx + 1); };
 $('introBack').onclick = () => showIntro(introIdx - 1);
 $('introPause').onclick = togglePause;
