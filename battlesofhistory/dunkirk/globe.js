@@ -5,7 +5,7 @@ window.DunkirkGlobe = (() => {
   const D = Math.PI / 180, REGION = { lon: 2.377, lat: 51.035 };
   const RINGS = (window.DUNKIRK_WORLD && window.DUNKIRK_WORLD.rings) || [];
   const BORDERS = window.DUNKIRK_BORDERS || { modern: [], ancient: [] };
-  const NEAR_EAST = { lon: 3.2, lat: 51.0 };   // centre of the pull-back that shows the whole region
+  const NEAR_EAST = { lon: 3.0, lat: 50.0 };   // centre of the pull-back that shows the whole region
   // Pre-computed per ring: Float32 arrays of lon(rad), cos(lat), sin(lat), plus a lon/lat bounding box.
   const PRE = RINGS.map(r => {
     const n = r.length, lon = new Float32Array(n), cl = new Float32Array(n), sl = new Float32Array(n);
@@ -230,7 +230,7 @@ window.DunkirkGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = 5, CLOSE = 26;
+  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = 13, CLOSE = 90;   // Dunkirk: pull in close enough that the 1940 positions and place names spread out
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
