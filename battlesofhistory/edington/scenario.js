@@ -92,8 +92,10 @@ window.EDINGTON_SCENARIO = {
     {
       title: 'Athelney',
       media: [
-        { at: 0, file: '04-alfred-jewel-front.jpg', caption: 'The Alfred Jewel: a figure in coloured enamel under a polished rock crystal, set in gold. It was found in 1693 at North Petherton, a few miles from Athelney, and was probably the handle of a pointer used to follow the words while reading.', ref: 'Ashmolean Museum, Oxford, AN1836 p.135.371', credit: 'Photo: user Geni, Wikimedia Commons, CC BY-SA 4.0' },
-        { at: 9, file: '05-alfred-jewel-side.jpg', caption: 'Its gold rim spells out in Old English \u00c6LFRED MEC HEHT GEWYRCAN, \u201cAlfred ordered me to be made\u201d. The base ends in the head of a beast.', ref: 'Ashmolean Museum, Oxford', credit: 'Photo: Richard M Buck, Wikimedia Commons, CC BY-SA 3.0' }
+        { at: 0, file: '06-athelney-hill.jpg', caption: 'Athelney today: a low rise above the flat fields of the Somerset Levels. In 878 these fields were marsh and fen, and Athelney was an island in them, reached only by boat or hidden paths.', ref: 'Athelney, near Lyng, Somerset', credit: 'Photo: Simon Burchell, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 5, file: '07-athelney-monument.jpg', caption: 'The monument on the hill, put up in 1801 by the local squire, John Slade, to mark where Alfred sheltered and later founded an abbey. Nothing of Alfred\u2019s fort or the abbey survives above ground.', ref: 'King Alfred\u2019s Monument, Athelney (listed building)', credit: 'Photo: Stephen Richards, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' },
+        { at: 10, file: '04-alfred-jewel-front.jpg', caption: 'The Alfred Jewel: a figure in coloured enamel under a polished rock crystal, set in gold. It was found in 1693 at North Petherton, a few miles from Athelney, and was probably the handle of a pointer used to follow the words while reading.', ref: 'Ashmolean Museum, Oxford, AN1836 p.135.371', credit: 'Photo: user Geni, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 15, file: '05-alfred-jewel-side.jpg', caption: 'Its gold rim spells out in Old English \u00c6LFRED MEC HEHT GEWYRCAN, \u201cAlfred ordered me to be made\u201d. The base ends in the head of a beast.', ref: 'Ashmolean Museum, Oxford', credit: 'Photo: Richard M Buck, Wikimedia Commons, CC BY-SA 3.0' }
       ],
       focus: { x: 400, y: 1500 }, zoom: .8,
       markers: [],

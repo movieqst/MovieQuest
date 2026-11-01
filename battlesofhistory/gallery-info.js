@@ -97,6 +97,8 @@ window.GALLERY_INFO = {
   'edington/03-alfred-statue-1918.jpg': ['photo', 'old photograph', 1918, 'American_Band,_Winchester.jpg', null],
   'edington/04-alfred-jewel-front.jpg': ['art', 'jewel', 885, 'Alfred_Jewel_Ashmolean_2014.JPG', null],
   'edington/05-alfred-jewel-side.jpg': ['art', 'jewel', 885, 'Alfred_Jewel.jpg', null],
+  'edington/06-athelney-hill.jpg': ['photo', 'site today', 2017, "King_Alfred's_Monument,_Athelney_01.jpg", null],
+  'edington/07-athelney-monument.jpg': ['photo', 'site today', 2017, 'Monument,_Athelney_-_geograph.org.uk_-_5496704.jpg', null],
   'dunkirk/01-destroyer-dover.jpg': ['photo', 'wartime photo', 1940, 'Troops_evacuated_from_Dunkirk_on_a_destroyer_about_to_berth_at_Dover,_31_May_1940._H1637.jpg', null],
   'dunkirk/02-beach-queues.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_26-29_May_1940_NYP68075.jpg', null],
   // Waterloo
