@@ -111,3 +111,34 @@ The yellow dashed line is the Silk Road: paint it as a faint dusty track along e
 Everywhere else: dry golden summer steppe with green patches, paler and drier to the north. Nothing modern.
 NO text, numbers, labels, markers, circles or lines in the finished picture.
 ```
+
+## Map 3, one-image version (recommended): `talas-3-battle-base-marked.png`
+
+```
+I'm attaching a close map of the plain between Talas city and Atlakh in Central Asia (49 x 37 km, north at the top),
+made from real satellite elevation data. Repaint it as a photorealistic satellite photograph of this plain in July of
+the year 751, seen from STRAIGHT ABOVE (no tilt, no perspective, no horizon), detailed enough that small soldiers
+will be drawn standing on it. Real grass, earth, rock, gravel and water textures; soft natural shadows; no clouds.
+
+ALIGNMENT IS THE MOST IMPORTANT THING. Your picture will be laid exactly on top of this map in a game, pixel for pixel.
+- Same framing and 4:3 shape. Do not crop, zoom, shift or rotate.
+- The low rocky ridges (top left, top right, the long one across the lower middle, and the one along the lower
+  left) exactly where the map's shading puts them: brown rock and grassy slopes cut by small gullies.
+- Every river exactly where the map draws it, with the same bends. The thick blue line on the right is the Talas:
+  a wide, shallow, braided summer river with pale gravel bars, channels and a belt of willows, poplars and reeds.
+  The others are smaller streams with stony beds and a thin line of trees; in July some carry only a little water.
+
+The pink circled markers are towns. Put each town EXACTLY on its marker, centred on the cross, about the size of the
+circle, then remove the marker:
+- 1: TALAS CITY, a walled town of sun-dried mud brick about 1 km across: a square citadel on a mound, thick walls
+  with towers, flat-roofed houses packed inside, gates on the roads. Green irrigated fields, orchards and small
+  canals for 2 to 3 km around it.
+- 2: ATLAKH, a smaller walled mud-brick town on the stream, with fields around it.
+Earth-coloured brick. NO blue domes, NO minarets.
+The yellow dashed line is the road: paint it as a faint dusty track along exactly that line.
+
+The orange dashed box is where the armies fight: keep everything inside it OPEN ground (dry golden grass, a few
+fields near the town, no trees, no buildings), with the ridge across its lower edge as it is.
+Everywhere else: dry golden summer steppe with green patches. Nothing modern.
+NO text, numbers, labels, markers, circles, boxes or lines in the finished picture.
+```
