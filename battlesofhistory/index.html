@@ -186,9 +186,11 @@
   document.getElementById('tlFit').onclick = () => { zoom = minZoom(); off = 0; build(); };
   tl.addEventListener('wheel', e => { e.preventDefault(); const r = tl.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 1 / 1.25, e.clientX - r.left); }, { passive: false });
   let drag = null;
-  tl.addEventListener('pointerdown', e => { drag = { x: e.clientX, off, moved: false }; tl.setPointerCapture(e.pointerId); tl.classList.add('drag'); });
+  tl.addEventListener('pointerdown', e => { if (e.button) return; drag = { x: e.clientX, off, moved: false, link: e.target.closest('a.mini') }; tl.setPointerCapture(e.pointerId); tl.classList.add('drag'); });
   tl.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 4) drag.moved = true; off = drag.off + dx; place(); });
-  tl.addEventListener('pointerup', e => { if (drag && drag.moved) { const stop = ev => { ev.preventDefault(); ev.stopPropagation(); }; tl.addEventListener('click', stop, { capture: true, once: true }); } drag = null; tl.classList.remove('drag'); });
+  // A click (no drag) on a battle card opens it: pointer capture sends the click to the timeline itself, so follow the link here.
+  tl.addEventListener('pointerup', e => { if (drag && !drag.moved && drag.link) { const L = drag.link; drag = null; tl.classList.remove('drag'); if (e.ctrlKey || e.metaKey) window.open(L.href, '_blank'); else location.href = L.href; return; }
+    if (drag && drag.moved) { const stop = ev => { ev.preventDefault(); ev.stopPropagation(); }; tl.addEventListener('click', stop, { capture: true, once: true }); } drag = null; tl.classList.remove('drag'); });
   // pinch zoom on touch screens
   let pinch = null;
   tl.addEventListener('touchstart', e => { if (e.touches.length === 2) pinch = { d: Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY), zoom }; }, { passive: true });
