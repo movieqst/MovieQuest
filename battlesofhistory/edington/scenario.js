@@ -79,7 +79,11 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'Surprise at Chippenham',
-      media: [],
+      media: [
+        { at: 0, file: '18-chippenham-878-postcard.jpg', caption: 'ARTIST RENDERING. Chippenham, a royal estate of the kings of Wessex, stood on a rise inside a loop of the River Avon (its name means Cippa\u2019s land in the river bend). Guthrum\u2019s army struck in midwinter after Twelfth Night 878, while Alfred kept the Christmas feast there. The buildings are a reconstruction: nothing of the Saxon estate survives.', ref: 'After the Anglo-Saxon Chronicle, 878, and Asser, ch. 52', credit: 'Artist rendering: Battle Games, AI-generated' },
+        { at: 7, file: '19-chippenham-today-postcard.jpg', caption: 'ARTIST\u2019S IMPRESSION. Chippenham today: a Wiltshire market town still built around the same bend of the River Avon, with St Andrew\u2019s Church on the high ground and Brunel\u2019s Great Western Railway viaduct beyond. The details here are painted, not photographed.', ref: 'Chippenham, Wiltshire', credit: 'Artist\u2019s impression: Battle Games, AI-generated' },
+        { at: 14, file: '16-chronicle-peterborough.jpg', caption: 'The Anglo-Saxon Chronicle, our main source for 878: the opening page of the Peterborough copy, beginning \u201cThe island of Britain is eight hundred miles long and two hundred broad\u201d. The Chronicle records that the Vikings came to Chippenham \u201cin midwinter after Twelfth Night\u201d.', ref: 'Bodleian Library, Oxford, MS Laud Misc. 636; facsimile from B. Thorpe\u2019s edition (1861)', credit: 'Facsimile: Benjamin Thorpe, 1861. Public domain (Wikimedia Commons)' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 18,
@@ -108,7 +112,10 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'The muster at Egbert’s Stone',
-      media: [],
+      media: [
+        { at: 0, file: '14-egberts-stone-rendering.jpg', caption: 'ARTIST RENDERING. Alfred meets the men of Somerset, Wiltshire and Hampshire at Egbert\u2019s Stone, May 878, under the dragon banner of Wessex. The stone has not survived and its exact place is unknown; its look here is imagined.', ref: 'After the Anglo-Saxon Chronicle, 878, and Asser, ch. 55', credit: 'Artist rendering: Battle Games, AI-generated' },
+        { at: 9, file: '15-egberts-stone-poster.jpg', caption: 'ARTIST RENDERING. The muster and the march: from Athelney to Egbert\u2019s Stone, on to Iley Oak and then Edington. The stone is traditionally placed near King Alfred\u2019s Tower at Stourhead.', ref: 'Anglo-Saxon Chronicle, 878', credit: 'Artist rendering: Battle Games, AI-generated' }
+      ],
       focus: { x: 400, y: 1500 }, zoom: .8,
       markers: [],
       auto: 18,
@@ -139,7 +146,8 @@ window.EDINGTON_SCENARIO = {
     {
       title: 'The sources',
       media: [
-        { at: 0, file: '08-bratton-camp-edington-hill.jpg', caption: 'From the ramparts of Bratton Camp, an Iron Age hillfort, along the chalk down toward Edington Hill. The battle is usually placed on these downs above Edington, and some historians think Bratton Camp was the stronghold where Guthrum\u2019s army was besieged afterwards.', ref: 'Bratton Camp, near Westbury, Wiltshire', credit: 'Photo: Neil Owen, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' }
+        { at: 0, file: '17-chronicle-corpus.jpg', caption: 'A page of an eleventh-century copy of the Anglo-Saxon Chronicle, written in Old English, with the entries for 923 and 924. The Chronicle was kept year by year in several copies, starting at Alfred\u2019s court around 890.', ref: 'Corpus Christi College, Cambridge; facsimile from B. Thorpe\u2019s edition (1861)', credit: 'Facsimile: Benjamin Thorpe, 1861. Public domain (Wikimedia Commons)' },
+        { at: 8, file: '08-bratton-camp-edington-hill.jpg', caption: 'From the ramparts of Bratton Camp, an Iron Age hillfort, along the chalk down toward Edington Hill. The battle is usually placed on these downs above Edington, and some historians think Bratton Camp was the stronghold where Guthrum\u2019s army was besieged afterwards.', ref: 'Bratton Camp, near Westbury, Wiltshire', credit: 'Photo: Neil Owen, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' }
       ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
@@ -256,7 +264,14 @@ window.EDINGTON_SCENARIO = {
   ],
   imageBase: 'images/',
   audioBase: 'audio/',
-  voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],
+  voices: [
+    { id: 'clear',    name: 'Narrator 1 \u00b7 clear',  speaker: 25 },
+    { id: 'light',    name: 'Narrator 2 \u00b7 light',  speaker: 60 },
+    { id: 'bright',   name: 'Narrator 3 \u00b7 bright', speaker: 0 },
+    { id: 'deep',     name: 'Narrator 4 \u00b7 deep',   speaker: 400 },
+    { id: 'warm',     name: 'Narrator 5 \u00b7 warm',   speaker: 7 },
+    { id: 'computer', name: 'Computer \u00b7 calm',     speaker: 500, length: 1.3, piperArgs: '--noise-scale 0.4 --noise-w 0.3', mix: 'highpass=f=90,lowpass=f=4800,bass=g=4:f=140,acompressor=threshold=0.25:ratio=3:attack=20:release=250,volume=1.4,alimiter=limit=0.95' }
+  ],
 
   debrief: {
     saxon: {
@@ -279,22 +294,22 @@ window.EDINGTON_SCENARIO = {
   ],
 
   units: [
-    { side: 'saxon', type: 'infantry', name: 'West Saxon fyrd', desc: 'Free men of the shires, called out to fight for the king.', tag: 'established', photos: [],
+    { side: 'saxon', type: 'infantry', name: 'West Saxon fyrd', portrait: 'saxon-fyrd', desc: 'Free men of the shires, called out to fight for the king.', tag: 'established', photos: [],
       lines: [
         { text: 'The army was raised shire by shire. At Egbert’s Stone the men of Somerset, Wiltshire and part of Hampshire came to the king.', tag: 'account', cite: 'Anglo-Saxon Chronicle, 878' },
         { text: 'Most carried a spear, a round wooden shield and a long knife called a seax.', tag: 'established' }
       ] },
-    { side: 'saxon', type: 'infantry', name: 'King’s thegns', desc: 'Alfred’s noble warriors, with mail, helmets and swords.', tag: 'established', photos: [],
+    { side: 'saxon', type: 'infantry', name: 'King’s thegns', portrait: 'saxon-thegn', desc: 'Alfred’s noble warriors, with mail, helmets and swords.', tag: 'established', photos: [],
       lines: [
         { text: 'Thegns were the king’s landholding warriors. They could afford mail shirts, helmets and swords, and stood in the front of the line.', tag: 'established' },
         { text: 'They rode to war but fought on foot, like the rest of the army.', tag: 'established' }
       ] },
-    { side: 'viking', type: 'infantry', name: 'Viking warriors', desc: 'Veterans of the Great Army, which had fought in England for thirteen years.', tag: 'established', photos: [],
+    { side: 'viking', type: 'infantry', name: 'Viking warriors', portrait: 'viking-warrior', desc: 'Veterans of the Great Army, which had fought in England for thirteen years.', tag: 'established', photos: [],
       lines: [
         { text: 'The Great Army landed in East Anglia in 865 and had campaigned across England ever since.', tag: 'established' },
         { text: 'Their weapons were much like the English ones: spear, shield, axe and, for the richer men, sword and mail. They did not wear horned helmets.', tag: 'established' }
       ] },
-    { side: 'viking', type: 'infantry', name: 'Guthrum', desc: 'Leader of the Viking army in Wessex, later King of East Anglia.', tag: 'established', photos: [],
+    { side: 'viking', type: 'infantry', name: 'Guthrum', portrait: 'viking-guthrum', desc: 'Leader of the Viking army in Wessex, later King of East Anglia.', tag: 'established', photos: [],
       lines: [
         { text: 'Guthrum came to England with the second wave of the Great Army in 871 and led its attack on Wessex.', tag: 'established' },
         { text: 'After Edington he was baptised as Æthelstan and ruled East Anglia until about 890. A treaty with Alfred set the border between them.', tag: 'established' }

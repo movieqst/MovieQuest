@@ -12,13 +12,22 @@
   if (new URLSearchParams(location.search).get('layout') === 'classic') return;
   const main = document.querySelector('main'), panel = $('battlePanel'), right = document.querySelector('aside.side');
   if (!main || !panel || !right) return;
-  const wide = () => innerWidth >= 1100 && !document.body.classList.contains('phone') && !document.body.classList.contains('subs');
+  // Loaded early (right after scenario.js), before the big map data, so the page shows this layout while it loads.
+  // phone.js and subtitles.js run later, so their own on/off tests are repeated here.
+  const pref = (k, n) => { let v = new URLSearchParams(location.search).get(k); try { if (v === null) v = localStorage.getItem(n); } catch (e) {} return v; };
+  const coarse = matchMedia('(pointer: coarse)').matches, small = Math.min(screen.width, screen.height) < 600;
+  const phoneOn = () => { const v = pref('phone', 'bh-phone'); return v === '1' || (v !== '0' && coarse && small); };
+  const subsOn = () => { const v = pref('subs', 'bh-subs'); return v === '1' || (v !== '0' && (coarse && !small || phoneOn())); };
+  const wide = () => innerWidth >= 1100 && !phoneOn() && !subsOn() && !document.body.classList.contains('phone') && !document.body.classList.contains('subs');
   if (!wide()) return;
-  document.body.classList.add('dl');
+  document.body.classList.add('dl', 'dlwait');
+  // until the engine has run (it loads after the map data), its playback and art buttons would show in the wrong state
+  addEventListener('DOMContentLoaded', () => document.body.classList.remove('dlwait'));
 
   const css = document.createElement('style');
   css.textContent = `
   body.dl main{grid-template-columns:300px minmax(0,1fr) 300px}
+  body.dlwait #dlBar,body.dlwait #artBtn{visibility:hidden}
   body.dl #dlLeft{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden}
   body.dl #dlCenter{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}
   body.dl #dlCenter:fullscreen{background:#05090c;padding:10px}
@@ -38,11 +47,27 @@
   body.dl #clock{padding:0 2px;font-size:12px}
   /* top of the right sidebar: back to the battles + show/hide the top bar, then the minimap; they stay in view
      while the rest of the right sidebar scrolls under them */
-  body.dl #dlRightTop{position:sticky;top:0;z-index:3;display:flex;flex-direction:column;gap:8px;background:#071017;padding-bottom:2px;flex-shrink:0}
+  body.dl #dlRightTop{display:flex;flex-direction:column;gap:8px;background:#071017;padding-bottom:2px;flex-shrink:0}
   body.dl #dlNav{display:flex;gap:6px}
   body.dl #dlNav>*{flex:1;text-align:center;padding:7px 6px;font-size:12px;border:1px solid #526873;border-radius:6px;background:#172a36;color:#f2f4ef;font-weight:600;text-decoration:none;white-space:nowrap}
   body.dl #dlNav>*:hover{filter:brightness(1.18)}
-  body.dl #mmCard{box-shadow:0 6px 14px rgba(0,0,0,.45)}
+  body.dl #dlNav>#fsBtn,body.dl #dlNav>#voiceWrap{flex:none}
+  body.dl #dlNav>#voiceWrap{padding:0;border:0;background:none;display:flex}
+  body.dl #dlNav #voiceMenuBtn{padding:7px 8px;font-size:12px;white-space:nowrap}
+  body.dl #dlNav #voicePop{right:auto;left:50%;transform:translateX(-50%);top:38px}
+  body.dl #dlNav>a.home,body.dl #dlNav>#dlHideTop{flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  body.dl #mmCard{box-shadow:none}
+  /* the right sidebar: buttons and minimap fixed at the top, everything below scrolls on its own */
+  body.dl aside.side{overflow:hidden}
+  /* framed like the Narration card on the left, with its scrollbar inside the frame */
+  body.dl #dlRScroll{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:0;padding:4px 6px 4px 0;
+    background:var(--panel,#101f29);border:1px solid var(--line,#38505c);border-radius:9px}
+  body.dl #dlRScroll>.card{background:none;border:0;border-radius:0;box-shadow:none;margin:0;border-bottom:1px solid #22343d;flex-shrink:0}
+  body.dl #dlRScroll>.card:last-child{border-bottom:0}
+  body.dl #dlRScroll,body.dl #narrList{scrollbar-width:thin;scrollbar-color:#4b6370 transparent}
+  /* the armies are in the sidebar, so no Armies button up top; the big play button never covers an open unit card */
+  body.dl #armiesBtn{display:none}
+  body.unitopen #playBig,body.unitopen #playGame{visibility:hidden}
   /* the battle's title at the top of the left sidebar */
   body.dl #dlTitle{flex-shrink:0;padding:2px 4px 0}
   body.dl #dlTitle .brand{font-size:clamp(18px,1.7vw,26px);white-space:normal;line-height:1.15}
@@ -106,12 +131,16 @@
   const rtop = document.createElement('div'); rtop.id = 'dlRightTop'; right.insertBefore(rtop, right.firstChild);
   const nav = document.createElement('div'); nav.id = 'dlNav'; rtop.appendChild(nav);
   const homeLink = top && top.querySelector(':scope > a.home');
-  if (homeLink) { homeLink.textContent = '\u25c0 Battles of History'; nav.appendChild(homeLink); top.querySelectorAll('.sep').forEach((sp, i, all) => { if (i === all.length - 1) sp.remove(); }); }
+  if (homeLink) { homeLink.textContent = '\u25c0 Battles'; homeLink.title = 'Back to Battles of History'; nav.appendChild(homeLink); top.querySelectorAll('.sep').forEach((sp, i, all) => { if (i === all.length - 1) sp.remove(); }); }
+  // Full and Voice sit between "Battles of History" and "Hide controls", so they stay reachable with the top bar hidden
+  { const fsb = $('fsBtn'), vw = $('voiceWrap'); if (fsb) nav.appendChild(fsb); if (vw) nav.appendChild(vw); }
   const hide = document.createElement('button'); hide.id = 'dlHideTop'; nav.appendChild(hide);
   let hidden = false; try { hidden = localStorage.getItem('bh-hidetop') === '1'; } catch (e) {}
-  const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Show controls' : '\u25b4 Hide controls'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
+  const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Controls' : '\u25b4 Controls'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
   hide.onclick = () => setHidden(!hidden); setHidden(hidden);
   if (mmw) { const card = document.createElement('section'); card.className = 'card'; card.id = 'mmCard'; card.innerHTML = '<h2>Battlefield map</h2>'; card.appendChild(mmw); rtop.appendChild(card); }
+  // everything else in the right sidebar goes into its own scrolling area below the minimap
+  { const sc = document.createElement('div'); sc.id = 'dlRScroll'; [...right.children].forEach(ch => { if (ch !== rtop) sc.appendChild(ch); }); right.appendChild(sc); }
   // the battle's title moves to the top of the left sidebar
   const titleBox = document.querySelector('header > div:first-child');
   if (titleBox && !titleBox.classList.contains('top-actions')) { titleBox.id = 'dlTitle'; left.insertBefore(titleBox, left.firstChild); }
@@ -126,6 +155,12 @@
   // in fullscreen the play bar comes along, above the map
   document.addEventListener('fullscreenchange', () => { if (document.fullscreenElement === center) center.insertBefore(bar, center.firstChild); else if (top && bar.parentElement !== top) top.insertBefore(bar, top.firstChild); });
 
+  // ---- picture framing: a scenario picture can say which part to keep when it is cropped to fit, e.g. pos: '50% 12%'
+  //      keeps the top (a face) of a tall portrait. Applies to the slideshow picture wherever it is shown.
+  { const SC = window[Object.keys(window).find(k => /_SCENARIO$/.test(k))], pos = {};
+    if (SC) [].concat(...(SC.intro || []).map(sl => sl.media || [])).concat(SC.media || []).forEach(m => { if (m && m.file && m.pos) pos[m.file] = m.pos; });
+    const fit = el => { if (!el) return; const f = decodeURIComponent((el.getAttribute('src') || '').split('/').pop()); el.style.objectPosition = pos[f] || ''; };
+    ['introImg', 'bigPhotoImg'].forEach(id => { const el = $(id); if (el) { fit(el); new MutationObserver(() => fit(el)).observe(el, { attributes: true, attributeFilter: ['src'] }); } }); }
   // ---- closed captions: follow the narrator sentence by sentence (as subtitles.js does on tablets)
   {
     const ct = text.querySelector('.ct'), cl = text.querySelector('.cl'), bulb = text.querySelector('#ccBulb');

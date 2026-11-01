@@ -85,7 +85,7 @@ window.BATTLES = [
     blurb: 'Alfred, driven into the Somerset marshes, gathers the men of Wessex and meets Guthrum’s army at Ethandun. A shield-wall battle that saved the last English kingdom.',
     cover: 'images/cover.jpg',
     coverCredit: 'Artist rendering: the shield walls meet at Ethandun. Battle Games, AI-generated',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'talas',

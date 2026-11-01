@@ -748,7 +748,7 @@ function renderTimeline() {
   $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
 }
-const PN = u => (u.side === 'saxon' ? 'saxon' : 'viking') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'elephant' ? 'elephant' : u.type === 'cavalry' ? 'cavalry' : u.type === 'archers' ? 'archer' : 'spearman');
+const PN = u => u.portrait || (u.side === 'saxon' ? 'saxon' : 'viking') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'elephant' ? 'elephant' : u.type === 'cavalry' ? 'cavalry' : u.type === 'archers' ? 'archer' : 'spearman');
 function unitSprite(c, u, big) {
   const w = c.canvas.width, h = c.canvas.height; c.fillStyle = '#c0ad75'; c.fillRect(0, 0, w, h);
   drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' ? 1.8 : 2) * (big ? h / 60 : 1));

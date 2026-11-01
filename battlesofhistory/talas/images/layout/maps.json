@@ -1,0 +1,35 @@
+[
+ {
+  "file": "talas-1-region-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 35.0,
+  "lat1": 47.9,
+  "lon0": 61.0,
+  "lon1": 84.0,
+  "km_w": 1919.08,
+  "km_h": 1436.03
+ },
+ {
+  "file": "talas-2-valley-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 42.25,
+  "lat1": 43.52,
+  "lon0": 70.6,
+  "lon1": 72.9,
+  "km_w": 187.6,
+  "km_h": 141.38
+ },
+ {
+  "file": "talas-3-battle-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 42.6,
+  "lat1": 42.93,
+  "lon0": 71.0,
+  "lon1": 71.6,
+  "km_w": 49.03,
+  "km_h": 36.74
+ }
+]

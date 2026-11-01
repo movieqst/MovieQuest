@@ -61,7 +61,7 @@ window.BATTLE_SCENARIO = {
   /* Opening shot: where the globe turns, what it dives to, and the labels at the end of the dive. */
   globe: {
     target: { lon: 107.72, lat: 13.57 },        // LZ X-Ray, Chu Pong massif, Gia Lai province
-    region: { lon: 106, lat: 15 }, pull: 4.2,
+    region: { lon: 104.6, lat: 16.6 }, pull: 7.5,   // close enough that Indochina fills the view (like the Ho Chi Minh trail map)
     startLat: 14,
     periodNote: 'South-East Asia in 1965 · Vietnam divided at the 17th parallel since 1954',
     labels: [
@@ -97,7 +97,7 @@ window.BATTLE_SCENARIO = {
         { at: 0,  file: '03-1st-cav-an-khe.jpg', caption: 'CH-47 Chinooks lined up at Qui Nhon on 13 September 1965, waiting to carry the 1st Cavalry Division (Airmobile) inland to its new base at An Khe. The first division built around the helicopter had more than 400 aircraft.', ref: 'Qui Nhon, 13 September 1965; US Army photograph, NARA 111-CCV-104-CC32062', credit: 'Photo: SSG Lyle Boggess, United States Army, public domain (Wikimedia Commons)' },
         { at: 16, file: '25-hcm-trail-map.jpg', pulse: '25-hcm-trail-map-glow.jpg', caption: 'The Ho Chi Minh trail in 1965: not one road but a web of tracks running south from Vinh through the Mu Gia pass, down the Laotian side of the Annamite mountains past Tchepone, into Cambodia, with branches east to Pleiku, the Ia Drang (the red ring) and the Saigon area. The pulse marks the trail.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' },
         { at: 30, file: '04-ho-chi-minh-trail.jpg', caption: 'Porters push loaded bicycles along a stream bed on the Ho Chi Minh trail. The regiments that fought at the Ia Drang walked this way for two months, through Laos and Cambodia, to reach the Central Highlands.', ref: 'From R. W. Stewart, Deepening Involvement, 1945–1965, US Army Center of Military History', credit: 'Photo: United States Army, public domain (Wikimedia Commons, Ho chi minh trail.jpg)' },
-        { at: 38, file: '05-westmoreland-1965.jpg', caption: 'General William Westmoreland, commanding US forces in Vietnam, here in 1967. In 1965 he moved from defending bases to seeking out and destroying North Vietnamese units, and sent the 1st Cavalry Division after the regiments that had attacked Plei Me.', ref: 'Newport, Vietnam, 21 September 1967; National Archives 530616', credit: 'Photo: SP5 Robert C. Lafoon, Department of the Army Special Photo Office, public domain (Wikimedia Commons)' }
+        { at: 38, file: '05-westmoreland-1965.jpg', pos: '50% 8%', caption: 'General William Westmoreland, commanding US forces in Vietnam, here in 1967. In 1965 he moved from defending bases to seeking out and destroying North Vietnamese units, and sent the 1st Cavalry Division after the regiments that had attacked Plei Me.', ref: 'Newport, Vietnam, 21 September 1967; National Archives 530616', credit: 'Photo: SP5 Robert C. Lafoon, Department of the Army Special Photo Office, public domain (Wikimedia Commons)' }
       ],
       focus: { x: 1300, y: 880 }, zoom: .9,
       auto: 48,
@@ -692,6 +692,13 @@ window.BATTLE_SCENARIO = {
      intro-N.mp3, event-<part>-N.mp3, explain-<part>-N.mp3, outcome-<part>.mp3, cmd-KEY.mp3. */
   /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of the Ia Drang Valley, which happened in November 1965, between the United States 1st Cavalry Division and the People’s Army of Vietnam.',
+  /* Establishing pictures between the globe and the battlefield, wide to close; `pulse` rings LZ X-Ray. */
+  establishing: [
+    { file: 'establish-1-indochina.jpg', secs: 5, pulse: { x: .589, y: .603 }, credit: 'Artist rendering: Indochina in 1965, with the Ho Chi Minh Trail. Battle Games, AI-generated; borders approximate.' },
+    { file: 'establish-2-south-vietnam.jpg', secs: 5, pulse: { x: .464, y: .435 }, credit: 'Artist rendering: South Vietnam and the Central Highlands, 1965. Battle Games, AI-generated; positions approximate.' },
+    { file: 'establish-3-highlands.jpg', secs: 4, pulse: { x: .314, y: .696 }, credit: 'Artist rendering: the Chu Pong massif, the landing zones, Pleiku and Plei Me, November 1965. Battle Games, AI-generated; positions approximate.' },
+    { file: 'establish-4-highlands-real.jpg', secs: 6, pulse: { x: .314, y: .696 }, credit: 'Artist rendering: the Chu Pong massif and the landing zones from the air, November 1965. Battle Games, AI-generated; positions approximate.' }
+  ],
   imageBase: 'images/',
   audioBase: 'audio/',
   /* Selectable narrators. Each has its own folder audio/<id>/ with the same clip names.

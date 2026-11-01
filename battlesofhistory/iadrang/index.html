@@ -136,6 +136,13 @@
   body[data-mode="command"] .watch-only, body[data-mode="intro"] .watch-only{display:none}
   /* overlays */
   #globe{position:absolute;inset:0;z-index:4;width:100%;height:100%;display:none}
+  #establish{position:absolute;inset:0;z-index:4;display:none;opacity:0;transition:opacity 1.2s ease;background:#000;pointer-events:none}
+  #establish.show{display:block}#establish.on{opacity:1}
+  #establish img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity 1.2s ease}
+  #establish .ecap{position:absolute;right:10px;bottom:8px;font-size:11px;color:#e8e2d2;background:rgba(0,0,0,.55);padding:2px 8px;border-radius:4px}
+  #establish .epulse{position:absolute;display:none;width:0;height:0}
+  #establish .epulse::before,#establish .epulse::after{content:'';position:absolute;left:-22px;top:-22px;width:44px;height:44px;border-radius:50%;border:3px solid #ffd36b;box-shadow:0 0 12px rgba(255,211,107,.8);animation:epulse 1.6s ease-out infinite}
+  #establish .epulse::after{animation-delay:.8s}
   #playBig{position:absolute;left:50%;top:50%;width:132px;height:132px;margin:-66px 0 0 -66px;z-index:6;border-radius:50%;border:3px solid rgba(233,199,122,.9);background:rgba(9,23,32,.55);padding:0;display:none;box-shadow:0 0 0 12px rgba(233,199,122,.12),0 10px 40px rgba(0,0,0,.6);transition:transform .2s,background .2s}
   #playBig.show{display:block;animation:pulse 1.8s ease-in-out infinite}
   #playBig:hover{transform:scale(1.07);background:rgba(33,78,117,.75)}
@@ -317,6 +324,7 @@
     <div id="ctxMenu" class="hud"></div>
 
     <canvas id="globe" aria-hidden="true"></canvas>
+    <div id="establish" aria-hidden="true"><img alt=""><span class="epulse"></span><span class="ecap"></span></div>
     <button id="playBig" title="Begin with narration" aria-label="Begin with narration"><span></span></button>
     <button id="playGame" title="Play" aria-label="Play"><span></span></button>
     <div id="playMenu">
@@ -457,13 +465,13 @@
 </main>
 <footer><nav class="bhbar"><a href="../library.html?battle=iadrang">📚 Library</a><a href="../gallery.html?battle=iadrang&kind=art">🖼 Art gallery</a><a href="../gallery.html?battle=iadrang&kind=photo">📷 Photographs</a><a href="../gallery.html">All battles’ pictures</a></nav><span class="bhnote">Battle Games · Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the maps are a reconstruction.</span></footer>
 <script src="scenario.js"></script>
+<script src="../desktop.js"></script>
 <script src="world.js"></script>
 <script src="borders.js"></script>
 <script src="globe.js"></script>
 <script src="engine.js"></script>
 <script src="../phone.js"></script>
 <script src="../subtitles.js"></script>
-<script src="../desktop.js"></script>
 <script src="../autostart.js"></script>
 <script src="../stats.js"></script>
 </body>
