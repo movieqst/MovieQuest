@@ -90,8 +90,53 @@ Instead the game plays these small sheets over the painting. The waves are done 
 The black background lets the flames glow; the white background lets the smoke's darkness become its see-through
 edge. Neither needs a green screen.
 
-**Smoke frames received (`images/fx/smoke-frames-4x4.jpg`).** ChatGPT returned 16 small whole-map frames with the
-smoke rolling. They line up with `map2.jpg` (each frame covers map2 from about x 13–1871, y 13–1398, at 0.148 of
-map2's scale), so the game lifts only the smoke from each frame (darkening against the frames' clean sea) and
-crossfades the 16 layers over the full-size painting. The map underneath stays sharp and still. The flames will
-flicker in code, or from the flame sheet above if one is made.
+**Received and prepared (`images/fx/`).**
+- `smoke.png`: 16 smoke-only layers, lifted from ChatGPT's whole-map smoke frames, which were matched to `map2.jpg`.
+- `flames.png`: 8 flame frames, with the black background made transparent.
+- `fx.json`: where each piece sits on map 2, including the four burning tanks.
+
+The waves are done in code, because the wave frames were whole maps framed differently. Rebuild these with
+`tools/prepare-fx.py`.
+
+---
+
+## 5. Sprites for soldiers, ships and aircraft  →  `images/units/<name>.png`
+
+The game draws simple symbols now (army blocks, ships and aircraft seen from above). These sheets will replace them.
+For every sheet: a **solid pure GREEN (#00FF00) background**, which I'll cut out; seen **from above at the same slight
+angle as the Dunkirk paintings**; **no text, no shadows on the background, no borders between cells**. Attach
+`map2.jpg` so the style matches.
+
+**Soldiers: one sheet per army** (`british-infantry.png`, `french-infantry.png`, `german-infantry.png`)
+
+> Make a game sprite sheet of a [British / French / German] infantry soldier of May 1940, seen from above at a slight
+> angle, small and readable like a strategy-game unit, in the painted style of the attached map.
+> British: khaki battledress, flat round "Brodie" steel helmet, rifle. French: khaki-brown coat, Adrian helmet with a
+> crest, rifle. German: field-grey uniform, coal-scuttle helmet, rifle.
+> Grid: 4 columns x 4 rows. Rows face: down (toward the viewer), right, up (away), left. Columns: standing, then three
+> walking frames. Every cell the same size, the figure's feet at the bottom centre of each cell, the same scale
+> throughout. Solid pure green (#00FF00) background. No text.
+
+**Panzer** (`german-panzer.png`)
+
+> Make a game sprite sheet of a German Panzer III tank of 1940, seen from above at a slight angle, painted style
+> matching the attached map, field grey with a small black-and-white cross. Grid: 4 columns x 4 rows. Rows face down,
+> right, up, left; columns are four frames of the tracks moving. Same size and centre in every cell. Solid pure green
+> (#00FF00) background. No text.
+
+**Ships: one sheet, one ship per cell** (`ships.png`)
+
+> Make a game sprite sheet of ships at Dunkirk in 1940, seen from straight above, bows pointing RIGHT, painted style
+> matching the attached map. Grid: 3 columns x 2 rows, one ship per cell, each centred:
+> 1 a grey Royal Navy destroyer, decks crowded with soldiers; 2 a grey minesweeper; 3 a paddle steamer with a black
+> hull, red funnel and paddle boxes; 4 a cross-Channel ferry with two red funnels; 5 a small white motor yacht;
+> 6 a wooden lifeboat. Solid pure green (#00FF00) background. No water, no wakes, no text.
+
+**Aircraft: one sheet** (`aircraft.png`)
+
+> Make a game sprite sheet of aircraft of 1940, seen from straight above, noses pointing RIGHT, painted style matching
+> the attached map. Grid: 3 columns x 1 row, one aircraft per cell, each centred: 1 a German Ju 87 Stuka dive bomber
+> with its bent gull wings and black crosses; 2 a German Heinkel He 111 bomber; 3 a British Spitfire with roundels.
+> Solid pure green (#00FF00) background. No shadows, no text.
+
+When they come back, send them over and I'll cut them out and put them in.

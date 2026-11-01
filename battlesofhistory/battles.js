@@ -103,7 +103,7 @@ window.BATTLES = [
   },
   {
     folder: 'dunkirk',
-    order: 8,
+    order: 10,
     era: 'Second World War',
     title: 'Dunkirk',
     date: '26 May – 4 June 1940', year: 1940,
@@ -113,6 +113,20 @@ window.BATTLES = [
     blurb: 'Cut off by the German advance, the British and French hold a shrinking pocket around Dunkirk while ships, from destroyers to the little ships, carry more than 330,000 men off the beaches and the mole.',
     cover: 'images/cover.jpg',
     coverCredit: 'Troops evacuated from Dunkirk on a destroyer about to berth at Dover, 31 May 1940. Photo: Puttnam and Malindine, War Office official photographers. Imperial War Museum (H 1637), public domain (Crown copyright expired)',
+    status: 'ready'
+  },
+  {
+    folder: 'stirling',
+    order: 9,
+    era: 'Middle Ages',
+    title: 'Battle of Stirling Bridge',
+    date: '11 September 1297', year: 1297,
+    place: 'Stirling, on the River Forth, Scotland',
+    sides: 'The Scots under William Wallace and Andrew Moray vs. the English army of Edward I under the Earl of Surrey',
+    sideColors: ['#2e5aa8', '#c0392b'],
+    blurb: 'Wallace and Moray wait on the high ground while the English cross a narrow wooden bridge over the Forth two at a time, then attack before the rest can follow.',
+    cover: 'images/cover.jpg',
+    coverCredit: 'Artist rendering: the Scots charge the English column on the bridge. Battle Games, AI-generated',
     status: 'in progress'
   }
 ];

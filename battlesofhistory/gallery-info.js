@@ -93,6 +93,8 @@ window.GALLERY_INFO = {
   'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
   // Edington
   'edington/01-shieldwall-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
+  'dunkirk/01-destroyer-dover.jpg': ['photo', 'wartime photo', 1940, 'Troops_evacuated_from_Dunkirk_on_a_destroyer_about_to_berth_at_Dover,_31_May_1940._H1637.jpg', null],
+  'dunkirk/02-beach-queues.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_26-29_May_1940_NYP68075.jpg', null],
   // Waterloo
   'waterloo/01-pieneman-waterloo.jpg': ['art', 'painting', 1824, 'De_Slag_bij_Waterloo_Rijksmuseum_SK-A-1115.jpeg', null],
   'waterloo/02-napoleon-david.jpg': ['art', 'painting', 1812, 'Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project_2.jpg', null],

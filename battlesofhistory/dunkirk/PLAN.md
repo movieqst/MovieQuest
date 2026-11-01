@@ -119,6 +119,11 @@ These are Admiralty figures. Sources differ a little, so they will be tagged as 
 
 ## Establishing pictures (5 seconds each, between the globe and the first map)
 
+0. **Straight after the globe: the Strait of Dover, before the smoke** (`images/establish-1-channel.jpg`, with "UK" and
+   "FRANCE" lettered). The pulsing ring goes on Dunkirk at `pulse: { x: .617, y: .596 }`. The same view with the oil
+   smoke (`establish-2-channel-smoke.jpg`) returns when the story reaches the evacuation, about 27 May.
+   Map 3 also comes in both versions (`map3-nosmoke.jpg` and `map3.jpg`, nearly identical), so the game can fade
+   the smoke in once the tanks burn.
 1. **Europe in May 1940:** a painted map with the German advance arrows from the Ardennes to the coast.
 2. **The beaches:** the saved Imperial War Museum photo of troops queueing on the beach (NYP 68075, public domain).
 3. **The destroyer coming into Dover**, the card's cover photo (IWM H 1637), at the switch to map 3.
