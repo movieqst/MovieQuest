@@ -122,7 +122,9 @@ window.DUNKIRK_SCENARIO = {
       title: 'DUNKIRK, 1940',
       map: 'campaign',
       media: [
-        { at: 0, file: '01-destroyer-dover.jpg', caption: 'Troops brought back from Dunkirk crowd the deck of a destroyer as she comes in to berth at Dover, 31 May 1940.', ref: 'Imperial War Museum H 1637', credit: 'Photo: Lt. Puttnam and Lt. Malindine, War Office official photographers. Public domain (UK Crown copyright expired)' }
+        { at: 0, file: '01-destroyer-dover.jpg', caption: 'Troops brought back from Dunkirk crowd the deck of a destroyer as she comes in to berth at Dover, 31 May 1940.', ref: 'Imperial War Museum H 1637', credit: 'Photo: Lt. Puttnam and Lt. Malindine, War Office official photographers. Public domain (UK Crown copyright expired)' },
+        { at: 7, file: '11-cundall-withdrawal.jpg', caption: 'The Withdrawal from Dunkirk, June 1940, painted by the official war artist Charles Cundall. Smoke from the burning oil tanks hangs over the town; men queue on the sand, wade out to the boats and are ferried to the ships, while a lorry jetty runs into the sea and German aircraft attack.', ref: 'Imperial War Museum, Art.IWM ART LD 305', credit: 'Painting: Charles Cundall, 1940. Public domain (UK Crown copyright expired)' },
+        { at: 14, file: '13-churchill-karsh.jpg', caption: 'Winston Churchill, Prime Minister for just sixteen days when the evacuation began. On 4 June he told Parliament that \u201cwars are not won by evacuations\u201d, and that Britain would \u201cfight on the beaches\u201d. This famous portrait was taken in Ottawa in December 1941.', ref: 'Parliament of Canada, Ottawa, 30 December 1941', credit: 'Photo: Yousuf Karsh, 1941. Public domain in Canada and the United States' }
       ],
       subtitle: '26 May – 4 June 1940 · the Strait of Dover',
       focus: m1(51.0, 2.4), zoom: .6,
@@ -137,6 +139,12 @@ window.DUNKIRK_SCENARIO = {
     {
       title: 'The trap',
       map: 'campaign',
+      media: [
+        { at: 0, file: '07-panzer-iv-1940.jpg', caption: 'A German Panzer IV on exercise in the west in March 1940, two months before the invasion. Tanks like this, massed in ten panzer divisions, broke through at Sedan and raced to the Channel coast.', ref: 'German Federal Archives (Bundesarchiv), Bild 101I-124-0250-39', credit: 'Photo: Hinz, Bundesarchiv, Bild 101I-124-0250-39, CC BY-SA 3.0 DE' },
+        { at: 10, file: '08-matilda-tank.jpg', caption: 'A British Matilda II at the Tank Museum, Bovington, in later desert colours. In the counter-attack at Arras on 21 May, Matildas shrugged off most German anti-tank shells and briefly threw Rommel\u2019s division into confusion.', ref: 'The Tank Museum, Bovington, Dorset', credit: 'Photo: Bill Nicholls, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' },
+        { at: 16, file: '09-matilda-side.jpg', caption: 'The same Matilda II from the side. Its armour was up to 78 mm thick, more than any German tank of 1940, but it was slow, about walking pace across country, and only a few dozen were in France.', ref: 'The Tank Museum, Bovington, Dorset', credit: 'Photo: Jim Linwood, Wikimedia Commons, CC BY 2.0' },
+        { at: 22, file: '10-rommel-1940.jpg', caption: 'Generalmajor Erwin Rommel, whose 7th Panzer Division was struck by the Matildas at Arras, at the German victory parade in Paris in June 1940, after the fall of France. He reported being attacked by hundreds of tanks.', ref: 'German Federal Archives (Bundesarchiv), Bild 146-1970-076-43', credit: 'Photo: unknown photographer, Bundesarchiv, Bild 146-1970-076-43, CC BY-SA 3.0 DE' }
+      ],
       focus: m1(50.75, 2.6), zoom: .5,
       markers: [ Object.assign(m1(50.62, 3.3), { label: 'British and French armies' }), Object.assign(m1(50.45, 1.9), { label: 'German tanks reach the sea, 20 May' }) ],
       auto: 20,
@@ -149,6 +157,9 @@ window.DUNKIRK_SCENARIO = {
     {
       title: 'The armies',
       map: 'campaign',
+      media: [
+        { at: 0, file: '03-gort.jpg', caption: 'General Lord Gort, commander of the British Expeditionary Force, painted in 1940. On 25 May he decided, without waiting for orders, to give up the planned attack south and fall back to the coast: the decision that saved most of his army.', ref: 'Imperial War Museum, Art.IWM ART LD 730', credit: 'Painting: Reginald Grenville Eves, 1940. Public domain (UK Crown copyright expired)' }
+      ],
       focus: m1(50.8, 2.8), zoom: .5,
       markers: [ Object.assign(m1(50.62, 3.35), { label: 'BEF' }), Object.assign(m1(51.02, 3.55), { label: 'Belgian Army' }), Object.assign(m1(50.42, 3.3), { label: 'French First Army' }) ],
       auto: 20,
@@ -162,7 +173,11 @@ window.DUNKIRK_SCENARIO = {
       title: 'The ships',
       map: 'channel',
       media: [
-        { at: 0, file: '02-beach-queues.jpg', caption: 'British troops line up on the beach at Dunkirk to wait for the boats, late May 1940.', ref: 'Imperial War Museum NYP 68075', credit: 'Photo: unknown War Office photographer. Public domain (UK Crown copyright expired)' }
+        { at: 0, file: '02-beach-queues.jpg', caption: 'British troops line up on the beach at Dunkirk to wait for the boats, late May 1940.', ref: 'Imperial War Museum NYP 68075', credit: 'Photo: unknown War Office photographer. Public domain (UK Crown copyright expired)' },
+        { at: 7, file: '05-dover-castle.jpg', caption: 'Dover Castle from its keep. Deep inside the white cliffs below it ran tunnels first dug in the Napoleonic wars; in 1940 they held Admiral Ramsay\u2019s naval headquarters, and Operation Dynamo was run from a room there.', ref: 'Dover Castle, Kent (English Heritage)', credit: 'Photo: Karen Roe, Wikimedia Commons, CC BY 2.0' },
+        { at: 14, file: '06-dover-tunnel-entrance.jpg', caption: 'One of the entrances to the tunnel system under Dover Castle, now open to visitors as the Secret Wartime Tunnels.', ref: 'Dover Castle, Kent', credit: 'Photo: Karen Roe, Wikimedia Commons, CC BY 2.0' },
+        { at: 21, file: '12-medway-queen.jpg', caption: 'The paddle steamer Medway Queen, a Thames excursion boat turned minesweeper, called the heroine of Dunkirk. She made seven round trips and brought home about 7,000 men. Here she lies at Damhead Creek in Kent before her restoration.', ref: 'Damhead Creek, Kent; now preserved by the Medway Queen Preservation Society', credit: 'Photo: Chris Allen, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' },
+        { at: 28, file: '14-bourrasque-sinking.jpg', caption: 'The French destroyer Bourrasque, crowded with troops, sinking off the Belgian coast on 30 May 1940 after striking a mine on the way back from Dunkirk. Around 300 men were lost. More than 200 vessels were sunk in the nine days.', ref: 'Imperial War Museum HU 2280', credit: 'Photo: unknown photographer. Public domain (UK Crown copyright expired)' }
       ],
       focus: m3(51.15, 1.9), zoom: .5,
       markers: [ Object.assign(m3(51.125, 1.31), { label: 'Dover: Admiral Ramsay' }), Object.assign(m3(51.035, 2.375), { label: 'Dunkirk' }) ],
@@ -176,6 +191,9 @@ window.DUNKIRK_SCENARIO = {
     {
       title: 'How to read this reenactment',
       map: 'channel',
+      media: [
+        { at: 0, file: '15-oil-smoke.jpg', caption: 'Smoke from the burning oil storage tanks billows over Dunkirk, with ships offshore, about the start of June 1940. The column could be seen from England; on the beach map of this reenactment it rises from the same tanks.', ref: 'Imperial War Museum C 1720', credit: 'Photo: Royal Air Force official photographer. Public domain (UK Crown copyright expired)' }
+      ],
       focus: m3(51.15, 1.9), zoom: .5,
       markers: [],
       auto: 16,
