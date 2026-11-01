@@ -120,7 +120,11 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'The two armies',
-      media: [],
+      media: [
+        { at: 0, file: '11-gokstad-ship-model.jpg', caption: 'A quarter-size model of the Gokstad ship, a Viking longship built around 890 and found in a burial mound in Norway. Ships like this, rowed by about thirty to forty men, carried the Great Army to England.', ref: 'Marinemuseet (Royal Norwegian Navy Museum), Horten, Norway', credit: 'Photo: Wolfmann, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 6, file: '10-viking-warrior-reconstruction.jpg', caption: 'A museum reconstruction of a well-equipped Viking warrior: an iron helmet with a nose guard and a mail shirt. Only the richer men in either army had gear like this; most fought with a spear, a shield and a long knife.', ref: 'Marinemuseet, Horten, Norway (modern reconstruction)', credit: 'Photo: Wolfmann, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 12, file: '09-gjermundbu-helmet.jpg', caption: 'The Gjermundbu helmet, the best-preserved Viking helmet ever found, with its spectacle-shaped eye guard. It was made around 950 to 1000, about a century after Edington, but shows the kind of helmet a Viking leader might have worn. No Viking helmet had horns.', ref: 'Museum of Cultural History, University of Oslo', credit: 'Photo: Wolfmann, Wikimedia Commons, CC BY-SA 4.0' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 18,
