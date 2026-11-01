@@ -50,7 +50,7 @@ window.EDINGTON_SCENARIO = {
   battlefield: {
     scale: { px: 60, label: 'schematic, not to scale' },
     river: [], tributary: [], fords: [], bridge: null, city: null, camp: null, road: [],
-    forests: [{ x: 300, y: 1650, r: 160 }, { x: 2150, y: 1550, r: 140 }],
+    forests: [{ x: 730, y: 1270, r: 140 }, { x: 1685, y: 1225, r: 130 }],   // the two woods on the painted map (images/terrain.jpg)
     hills: [],
     fields: [],
     labels: [
@@ -243,7 +243,8 @@ window.EDINGTON_SCENARIO = {
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Edington, which happened in May 878, between the West Saxons of Alfred the Great and the Viking Great Army of Guthrum.',
   /* Establishing pictures, between the globe and the battle map (see showEstablishing in engine.js). */
   establishing: [
-    { file: 'establish-1-wiltshire.jpg', secs: 5, credit: 'Artist rendering: the Wiltshire downs, 878. Battle Games, AI-generated. The exact site of the battle is not known.' }
+    { file: 'establish-1-wiltshire.jpg', secs: 5, credit: 'Artist rendering: the Wiltshire downs, 878. Battle Games, AI-generated. The exact site of the battle is not known.' },
+    { file: 'establish-2-overview.jpg', secs: 6, pulse: { x: .56, y: .547 }, credit: 'Artist rendering: Bratton Camp, Edington and the Wiltshire downs, with the battlefield shown. Battle Games, AI-generated. The exact site is not known.' }
   ],
   imageBase: 'images/',
   audioBase: 'audio/',
