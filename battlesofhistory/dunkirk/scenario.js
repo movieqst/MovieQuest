@@ -139,7 +139,8 @@ window.DUNKIRK_SCENARIO = {
       map: 'campaign',
       media: [
         { at: 0, file: '07-panzer-iv-1940.jpg', caption: 'A German Panzer IV on exercise in the west in March 1940, two months before the invasion. Tanks like this, massed in ten panzer divisions, broke through at Sedan and raced to the Channel coast.', ref: 'German Federal Archives (Bundesarchiv), Bild 101I-124-0250-39', credit: 'Photo: Hinz, Bundesarchiv, Bild 101I-124-0250-39, CC BY-SA 3.0 DE' },
-        { at: 10, file: '08-matilda-tank.jpg', caption: 'A British Matilda II at the Tank Museum, Bovington, in later desert colours. In the counter-attack at Arras on 21 May, Matildas shrugged off most German anti-tank shells and briefly threw Rommel\u2019s division into confusion.', ref: 'The Tank Museum, Bovington, Dorset', credit: 'Photo: Bill Nicholls, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' }
+        { at: 10, file: '08-matilda-tank.jpg', caption: 'A British Matilda II at the Tank Museum, Bovington, in later desert colours. In the counter-attack at Arras on 21 May, Matildas shrugged off most German anti-tank shells and briefly threw Rommel\u2019s division into confusion.', ref: 'The Tank Museum, Bovington, Dorset', credit: 'Photo: Bill Nicholls, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' },
+        { at: 16, file: '09-matilda-side.jpg', caption: 'The same Matilda II from the side. Its armour was up to 78 mm thick, more than any German tank of 1940, but it was slow, about walking pace across country, and only a few dozen were in France.', ref: 'The Tank Museum, Bovington, Dorset', credit: 'Photo: Jim Linwood, Wikimedia Commons, CC BY 2.0' }
       ],
       focus: m1(50.75, 2.6), zoom: .5,
       markers: [ Object.assign(m1(50.62, 3.3), { label: 'British and French armies' }), Object.assign(m1(50.45, 1.9), { label: 'German tanks reach the sea, 20 May' }) ],

@@ -110,6 +110,7 @@ window.GALLERY_INFO = {
   'dunkirk/06-dover-tunnel-entrance.jpg': ['photo', 'site today', 2012, 'Dover_Castle_(EH)_20-04-2012_(7217036336).jpg', null],
   'dunkirk/07-panzer-iv-1940.jpg': ['photo', 'wartime photo', 1940, 'Bundesarchiv_Bild_101I-124-0250-39,_Im_Westen,_Panzer_IV.jpg', null],
   'dunkirk/08-matilda-tank.jpg': ['photo', 'museum object', 2013, 'The_Matilda_Tank_(geograph_3416319).jpg', null],
+  'dunkirk/09-matilda-side.jpg': ['photo', 'museum object', 2011, 'Matilda_II_Tank,_Bovington_Tank_Museum_-_Dorset._(5977195830).jpg', null],
   'dunkirk/03-gort.jpg': ['art', 'portrait', 1940, 'General_the_Viscount_Gort_Vc,_Gcb,_Cbe,_Dso,_Mvo,_Mc_Art.IWMARTLD730.jpg', null],
   'dunkirk/02-beach-queues.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_26-29_May_1940_NYP68075.jpg', null],
   // Waterloo
