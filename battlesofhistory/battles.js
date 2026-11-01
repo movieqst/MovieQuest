@@ -126,7 +126,7 @@ window.BATTLES = [
     sideColors: ['#2e5aa8', '#c0392b'],
     blurb: 'Wallace and Moray wait on the high ground while the English cross a narrow wooden bridge over the Forth two at a time, then attack before the rest can follow.',
     cover: 'images/cover.jpg',
-    coverCredit: 'Placeholder picture',
+    coverCredit: 'Artist rendering: the Scots charge the English column on the bridge. Battle Games, AI-generated',
     status: 'in progress'
   }
 ];
