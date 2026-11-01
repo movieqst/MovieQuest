@@ -155,6 +155,12 @@
   // in fullscreen the play bar comes along, above the map
   document.addEventListener('fullscreenchange', () => { if (document.fullscreenElement === center) center.insertBefore(bar, center.firstChild); else if (top && bar.parentElement !== top) top.insertBefore(bar, top.firstChild); });
 
+  // ---- picture framing: a scenario picture can say which part to keep when it is cropped to fit, e.g. pos: '50% 12%'
+  //      keeps the top (a face) of a tall portrait. Applies to the slideshow picture wherever it is shown.
+  { const SC = window[Object.keys(window).find(k => /_SCENARIO$/.test(k))], pos = {};
+    if (SC) [].concat(...(SC.intro || []).map(sl => sl.media || [])).concat(SC.media || []).forEach(m => { if (m && m.file && m.pos) pos[m.file] = m.pos; });
+    const fit = el => { if (!el) return; const f = decodeURIComponent((el.getAttribute('src') || '').split('/').pop()); el.style.objectPosition = pos[f] || ''; };
+    ['introImg', 'bigPhotoImg'].forEach(id => { const el = $(id); if (el) { fit(el); new MutationObserver(() => fit(el)).observe(el, { attributes: true, attributeFilter: ['src'] }); } }); }
   // ---- closed captions: follow the narrator sentence by sentence (as subtitles.js does on tablets)
   {
     const ct = text.querySelector('.ct'), cl = text.querySelector('.cl'), bulb = text.querySelector('#ccBulb');
