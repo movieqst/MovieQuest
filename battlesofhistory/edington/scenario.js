@@ -108,7 +108,10 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'The muster at Egbert’s Stone',
-      media: [],
+      media: [
+        { at: 0, file: '14-egberts-stone-rendering.jpg', caption: 'ARTIST RENDERING. Alfred meets the men of Somerset, Wiltshire and Hampshire at Egbert\u2019s Stone, May 878, under the dragon banner of Wessex. The stone has not survived and its exact place is unknown; its look here is imagined.', ref: 'After the Anglo-Saxon Chronicle, 878, and Asser, ch. 55', credit: 'Artist rendering: Battle Games, AI-generated' },
+        { at: 9, file: '15-egberts-stone-poster.jpg', caption: 'ARTIST RENDERING. The muster and the march: from Athelney to Egbert\u2019s Stone, on to Iley Oak and then Edington. The stone is traditionally placed near King Alfred\u2019s Tower at Stourhead.', ref: 'Anglo-Saxon Chronicle, 878', credit: 'Artist rendering: Battle Games, AI-generated' }
+      ],
       focus: { x: 400, y: 1500 }, zoom: .8,
       markers: [],
       auto: 18,
