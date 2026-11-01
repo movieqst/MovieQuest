@@ -93,6 +93,18 @@ window.GALLERY_INFO = {
   'gaugamela/17-bactrian-delegation.jpg': ['art', 'relief', -480, 'Bactrian Tribute Bearers on the Apadana Staircase 9 (Best Viewed Size "Large") (4687986033).jpg', null],
   // Edington
   'edington/01-shieldwall-rendering.jpg': ['game', 'AI artist rendering', 2026, null, null],
+  'edington/02-alfred-statue-winchester.jpg': ['art', 'statue', 1901, 'Winchester-alfred-wyrdlight.jpg', null],
+  'edington/03-alfred-statue-1918.jpg': ['photo', 'old photograph', 1918, 'American_Band,_Winchester.jpg', null],
+  'edington/04-alfred-jewel-front.jpg': ['art', 'jewel', 885, 'Alfred_Jewel_Ashmolean_2014.JPG', null],
+  'edington/05-alfred-jewel-side.jpg': ['art', 'jewel', 885, 'Alfred_Jewel.jpg', null],
+  'edington/06-athelney-hill.jpg': ['photo', 'site today', 2017, "King_Alfred's_Monument,_Athelney_01.jpg", null],
+  'edington/07-athelney-monument.jpg': ['photo', 'site today', 2017, 'Monument,_Athelney_-_geograph.org.uk_-_5496704.jpg', null],
+  'edington/08-bratton-camp-edington-hill.jpg': ['photo', 'site today', 2025, 'From_Bratton_Camp_to_Edington_Hill_-_geograph.org.uk_-_7986414.jpg', null],
+  'edington/09-gjermundbu-helmet.jpg': ['art', 'helmet', 975, null, null],
+  'edington/10-viking-warrior-reconstruction.jpg': ['photo', 'museum reconstruction', 2021, null, null],
+  'edington/13-viking-reenactors.jpg': ['photo', 'reenactment', 2012, 'Viking_Festival,_Delamont_County_Park,_June_2012_(14).JPG', null],
+  'edington/12-valsgarde-helmet.jpg': ['art', 'helmet', 650, 'The_Vikings_Begin_68_-_warrior_helmet,_Valsgärde_boat_grave_5,_7th_century.jpg', null],
+  'edington/11-gokstad-ship-model.jpg': ['art', 'ship model', 890, 'Gokstadskipet_vikingskip_ca._890_Sandefjord_Gokstad_Viking_ship_model_._Marinemuseet_Naval_Museum_Horten_Norway_2021-09-03_IMG_0716.jpg', null],
   'dunkirk/01-destroyer-dover.jpg': ['photo', 'wartime photo', 1940, 'Troops_evacuated_from_Dunkirk_on_a_destroyer_about_to_berth_at_Dover,_31_May_1940._H1637.jpg', null],
   'dunkirk/02-beach-queues.jpg': ['photo', 'wartime photo', 1940, 'Dunkirk_26-29_May_1940_NYP68075.jpg', null],
   // Waterloo

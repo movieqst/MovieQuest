@@ -50,7 +50,7 @@ window.EDINGTON_SCENARIO = {
   battlefield: {
     scale: { px: 60, label: 'schematic, not to scale' },
     river: [], tributary: [], fords: [], bridge: null, city: null, camp: null, road: [],
-    forests: [{ x: 300, y: 1650, r: 160 }, { x: 2150, y: 1550, r: 140 }],
+    forests: [{ x: 730, y: 1270, r: 140 }, { x: 1685, y: 1225, r: 130 }],   // the two woods on the painted map (images/terrain.jpg)
     hills: [],
     fields: [],
     labels: [
@@ -64,7 +64,9 @@ window.EDINGTON_SCENARIO = {
     {
       title: 'BATTLE OF EDINGTON',
       media: [
-        { at: 0, file: '01-shieldwall-rendering.jpg', caption: 'ARTIST RENDERING. The two shield walls meet at Ethandun, under the dragon banner of Wessex. Asser says Alfred fought with a dense shield wall; the faces, colours and details here are imagined.', ref: 'After Asser, Life of King Alfred, ch. 56', credit: 'Artist rendering: Battle Games, AI-generated' }
+        { at: 0, file: '01-shieldwall-rendering.jpg', caption: 'ARTIST RENDERING. The two shield walls meet at Ethandun, under the dragon banner of Wessex. Asser says Alfred fought with a dense shield wall; the faces, colours and details here are imagined.', ref: 'After Asser, Life of King Alfred, ch. 56', credit: 'Artist rendering: Battle Games, AI-generated' },
+        { at: 6, file: '02-alfred-statue-winchester.jpg', caption: 'King Alfred as the Victorians imagined him: Hamo Thornycroft\u2019s bronze statue in Winchester, Alfred\u2019s capital, unveiled in 1901 for the thousandth anniversary of his death. No portrait of Alfred from his own lifetime survives.', ref: 'The Broadway, Winchester, Hampshire', credit: 'Photo: Antony McCallum, WyrdLight.com, 2006. Wikimedia Commons; free to use with attribution' },
+        { at: 11, file: '03-alfred-statue-1918.jpg', caption: 'An American army band at the foot of the Alfred statue in Winchester near the end of the First World War. Many US troops passed through the city on their way to France.', ref: 'Winchester, c. 1918', credit: 'Photo: Hampshire and Solent Museums, Wikimedia Commons, CC BY-SA 2.0' }
       ],
       subtitle: 'May 878 · Wessex',
       focus: { x: 1200, y: 900 }, zoom: 'fit',
@@ -89,7 +91,12 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'Athelney',
-      media: [],
+      media: [
+        { at: 0, file: '06-athelney-hill.jpg', caption: 'Athelney today: a low rise above the flat fields of the Somerset Levels. In 878 these fields were marsh and fen, and Athelney was an island in them, reached only by boat or hidden paths.', ref: 'Athelney, near Lyng, Somerset', credit: 'Photo: Simon Burchell, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 5, file: '07-athelney-monument.jpg', caption: 'The monument on the hill, put up in 1801 by the local squire, John Slade, to mark where Alfred sheltered and later founded an abbey. Nothing of Alfred\u2019s fort or the abbey survives above ground.', ref: 'King Alfred\u2019s Monument, Athelney (listed building)', credit: 'Photo: Stephen Richards, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' },
+        { at: 10, file: '04-alfred-jewel-front.jpg', caption: 'The Alfred Jewel: a figure in coloured enamel under a polished rock crystal, set in gold. It was found in 1693 at North Petherton, a few miles from Athelney, and was probably the handle of a pointer used to follow the words while reading.', ref: 'Ashmolean Museum, Oxford, AN1836 p.135.371', credit: 'Photo: user Geni, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 15, file: '05-alfred-jewel-side.jpg', caption: 'Its gold rim spells out in Old English \u00c6LFRED MEC HEHT GEWYRCAN, \u201cAlfred ordered me to be made\u201d. The base ends in the head of a beast.', ref: 'Ashmolean Museum, Oxford', credit: 'Photo: Richard M Buck, Wikimedia Commons, CC BY-SA 3.0' }
+      ],
       focus: { x: 400, y: 1500 }, zoom: .8,
       markers: [],
       auto: 18,
@@ -113,7 +120,13 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'The two armies',
-      media: [],
+      media: [
+        { at: 0, file: '11-gokstad-ship-model.jpg', caption: 'A quarter-size model of the Gokstad ship, a Viking longship built around 890 and found in a burial mound in Norway. Ships like this, rowed by about thirty to forty men, carried the Great Army to England.', ref: 'Marinemuseet (Royal Norwegian Navy Museum), Horten, Norway', credit: 'Photo: Wolfmann, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 4, file: '13-viking-reenactors.jpg', caption: 'Viking-age reenactors in mail and iron helmets, with big round wooden shields painted in bright colours. Shields like these, overlapped edge to edge, made the shield wall.', ref: 'Magnus Barelegs Viking Festival, Delamont Country Park, County Down, 2012 (modern reenactment)', credit: 'Photo: Ardfern, Wikimedia Commons, CC BY-SA 3.0' },
+        { at: 8, file: '10-viking-warrior-reconstruction.jpg', caption: 'A museum reconstruction of a well-equipped Viking warrior: an iron helmet with a nose guard and a mail shirt. Only the richer men in either army had gear like this; most fought with a spear, a shield and a long knife.', ref: 'Marinemuseet, Horten, Norway (modern reconstruction)', credit: 'Photo: Wolfmann, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 12, file: '09-gjermundbu-helmet.jpg', caption: 'The Gjermundbu helmet, the best-preserved Viking helmet ever found, with its spectacle-shaped eye guard. It was made around 950 to 1000, about a century after Edington, but shows the kind of helmet a Viking leader might have worn. No Viking helmet had horns.', ref: 'Museum of Cultural History, University of Oslo', credit: 'Photo: Wolfmann, Wikimedia Commons, CC BY-SA 4.0' },
+        { at: 16, file: '12-valsgarde-helmet.jpg', caption: 'An older warrior helmet, from a 7th-century boat grave at Valsg\u00e4rde in Sweden, two centuries before Edington. Helmets like this belonged to the rich warrior class of Scandinavia from which the Viking Age grew.', ref: 'Valsg\u00e4rde boat grave 5; shown in \u201cThe Vikings Begin\u201d, Nordic Museum, Seattle', credit: 'Photo: Joe Mabel, Wikimedia Commons, CC BY-SA 4.0' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 18,
@@ -125,7 +138,9 @@ window.EDINGTON_SCENARIO = {
     },
     {
       title: 'The sources',
-      media: [],
+      media: [
+        { at: 0, file: '08-bratton-camp-edington-hill.jpg', caption: 'From the ramparts of Bratton Camp, an Iron Age hillfort, along the chalk down toward Edington Hill. The battle is usually placed on these downs above Edington, and some historians think Bratton Camp was the stronghold where Guthrum\u2019s army was besieged afterwards.', ref: 'Bratton Camp, near Westbury, Wiltshire', credit: 'Photo: Neil Owen, geograph.org.uk, Wikimedia Commons, CC BY-SA 2.0' }
+      ],
       focus: { x: 1200, y: 900 }, zoom: 'fit',
       markers: [],
       auto: 16,
@@ -236,7 +251,8 @@ window.EDINGTON_SCENARIO = {
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Edington, which happened in May 878, between the West Saxons of Alfred the Great and the Viking Great Army of Guthrum.',
   /* Establishing pictures, between the globe and the battle map (see showEstablishing in engine.js). */
   establishing: [
-    { file: 'establish-1-wiltshire.jpg', secs: 5, credit: 'Artist rendering: the Wiltshire downs, 878. Battle Games, AI-generated. The exact site of the battle is not known.' }
+    { file: 'establish-1-wiltshire.jpg', secs: 5, credit: 'Artist rendering: the Wiltshire downs, 878. Battle Games, AI-generated. The exact site of the battle is not known.' },
+    { file: 'establish-2-overview.jpg', secs: 6, pulse: { x: .56, y: .547 }, credit: 'Artist rendering: Bratton Camp, Edington and the Wiltshire downs, with the battlefield shown. Battle Games, AI-generated. The exact site is not known.' }
   ],
   imageBase: 'images/',
   audioBase: 'audio/',
