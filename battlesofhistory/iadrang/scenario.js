@@ -55,6 +55,9 @@ window.BATTLE_SCENARIO = {
     heli:    { name: 'UH-1 Huey',          side: 'us',   kind: 'air',  speed: 240, range: 0, fig: 'heli',    sheet: 'us-huey',     spec: { cw: 240, ch: 200, h: 34 } },
     assault: { name: 'Assault battalion',  side: 'pavn', kind: 'foot', speed: 18, range: 60,  fig: 'assault', sheet: 'pavn-assault', spec: { cw: 160, ch: 160, h: 26 }, dmg: { rifle: 7, weapons: 9, recon: 4, assault: 5, heavy: 5 }, cover: 1, belt: 1.6 },
     heavy:   { name: 'Heavy weapons',      side: 'pavn', kind: 'foot', speed: 8,  range: 260, fig: 'heavy',   sheet: 'pavn-heavy',  spec: { cw: 160, ch: 160, h: 26 }, dmg: { rifle: 4, weapons: 4, recon: 2, assault: 3, heavy: 3 }, cover: 1, indirect: true },
+    armor:   { name: 'Armoured carriers (ARVN)', side: 'us', kind: 'foot', speed: 50, range: 120, fig: 'rifle', sheet: 'arvn-m113', spec: { cw: 160, ch: 160, h: 26 }, dmg: { assault: 5, heavy: 4, recon: 5 }, cover: 1 },
+    ranger:  { name: 'Rangers and camp defenders (ARVN)', side: 'us', kind: 'foot', speed: 14, range: 90, fig: 'rifle', sheet: 'arvn-ranger', spec: { cw: 160, ch: 160, h: 26 }, dmg: { assault: 5, heavy: 4, recon: 5 }, cover: 1 },
+    plane:   { name: 'A-1 Skyraider', side: 'us', kind: 'plane', speed: 500, range: 0, fig: 'heli', sheet: null, spec: { cw: 256, ch: 256, h: 34 } },
     recon:   { name: 'Reconnaissance',     side: 'pavn', kind: 'foot', speed: 22, range: 45,  fig: 'recon',   sheet: 'pavn-recon',  spec: { cw: 160, ch: 160, h: 26 }, dmg: { rifle: 2, weapons: 3, recon: 3, assault: 2, heavy: 2 }, cover: 1, stealth: true }
   },
 
@@ -200,6 +203,157 @@ window.BATTLE_SCENARIO = {
 
   /* ---------- The battle, in parts. Each part has its own map, formations, events and AI. ---------- */
   parts: [
+  {
+    id: 'pleiku',
+    title: 'The Pleiku campaign', subtitle: '19 October – 14 November 1965',
+    watchOnly: true, autoNext: true,      // the lead-up: shown in Watch mode only, then straight on to LZ X-Ray
+    duration: 168, commandDuration: 168,
+    world: { w: 2400, h: 1800 },          // the campaign map: 14.02 N 107.42 E (top left) to 13.46 N 108.19 E, about 83 x 62 km (1 px = 35 m)
+    figScale: .8, startZoom: .6, planeDir: 3.14, tilt: 0,
+    clockStart: '19 Oct 1965',
+    heliFrom: { x: 1932, y: 267 },        // Camp Holloway, beside Pleiku
+    rally: { us: { x: 1551, y: 1294 }, pavn: { x: 800, y: 1550 } },
+    battlefield: {
+      scale: { px: 289, label: '10 km' },
+      features: [ { kind: 'lz', name: 'Plei Me', id: 'pleime', x: 1551, y: 1294, r: 120 } ],
+      labels: [
+        { x: 1808, y: 70, text: 'PLEIKU' }, { x: 2050, y: 330, text: 'Camp Holloway', small: true },
+{ x: 748, y: 650, text: 'Duc Co', small: true },
+        { x: 720, y: 1660, text: 'CHU PONG MASSIF', rotate: -.25 }, { x: 520, y: 1290, text: 'Ia Drang', small: true },
+        { x: 170, y: 900, text: 'CAMBODIA', rotate: 1.2 }, { x: 2010, y: 560, text: 'Route 14', small: true, rotate: 1.4 },
+        { x: 1840, y: 1090, text: 'camp road', small: true, rotate: -.6 },
+        { x: 916, y: 1500, text: 'LZ X-Ray', small: true }, { x: 1153, y: 1505, text: 'LZ Falcon', small: true }
+      ]
+    },
+    formations: [
+      { id: 'camp',     side: 'us', name: 'Plei Me camp: Green Berets and Montagnard militia', division: 'Plei Me camp', type: 'ranger', cols: 3, rows: 2, power: 1, x: 1551, y: 1294, hidden: true,
+        count: '12 Americans, 14 South Vietnamese, about 400 Montagnards', confidence: 'established', note: 'A Special Forces camp: a triangle of earth walls, bunkers and wire on a bare hilltop.' },
+      { id: 'beckwith', side: 'us', name: 'Beckwith’s reaction force and two Ranger companies', division: 'Beckwith', type: 'ranger', cols: 3, rows: 2, power: 1, x: 1653, y: 1192, offmap: true,
+        count: 'About 170 men', confidence: 'established', note: 'Project Delta and the 91st Ranger Battalion, landed by helicopter on 21 October.' },
+      { id: 'column',   side: 'us', name: 'ARVN relief column (Lt Col Nguyen Trong Luat)', division: 'Relief column', type: 'armor', cols: 4, rows: 2, power: 1.1, x: 1808, y: 135, hidden: true, speed: 50,
+        count: 'About 1,200 men: M41 tanks, M113 carriers, two Ranger battalions, artillery', confidence: 'estimate', note: 'The 3rd Armored Cavalry with the 21st and 22nd Ranger Battalions and an infantry battalion. Sources give 1,200 or 1,400 men.' },
+      { id: 'arty',     side: 'us', name: 'US artillery, 1st Cavalry Division', division: 'US guns', type: 'weapons', cols: 3, rows: 1, power: 1, x: 1935, y: 1010, offmap: true,
+        count: 'A battery of 105 mm howitzers', confidence: 'established', note: 'Flown forward to cover the relief column: the 1st Cavalry Division’s first action in Vietnam.' },
+      { id: 'arty2',    side: 'us', name: 'US artillery at LZ Falcon', division: 'Falcon guns', type: 'weapons', cols: 3, rows: 1, power: 1, x: 1153, y: 1462, offmap: true,
+        count: 'Two batteries of 105 mm howitzers', confidence: 'established', note: 'The guns that would fire for X-Ray.' },
+      { id: 'cav1',     side: 'us', name: '1st Brigade, 1st Cavalry Division', division: '1st Brigade', type: 'rifle', cols: 4, rows: 2, power: 1, x: 1330, y: 1040, offmap: true,
+        count: 'Several battalions', confidence: 'established', note: 'Searched west from Plei Me from 27 October to 9 November.' },
+      { id: 'cav2',     side: 'us', name: 'Another battalion of the 1st Brigade', division: '1st Brigade', type: 'rifle', cols: 4, rows: 2, power: 1, x: 1180, y: 860, offmap: true,
+        count: 'A battalion', confidence: 'reconstruction', note: 'Shown to stand for the many air assaults of the search.' },
+      { id: 'cav9',     side: 'us', name: '1st Squadron, 9th Cavalry', division: '1/9 Cavalry', type: 'rifle', cols: 3, rows: 2, power: 1, x: 1235, y: 1150, offmap: true,
+        count: 'Scouts and their rifle platoons', confidence: 'established', note: 'The division’s air cavalry squadron: scout helicopters with small rifle platoons, the “Blues”.' },
+      { id: 'cav9b',    side: 'us', name: 'Reinforcements for LZ Mary', division: 'Reinforcements', type: 'rifle', cols: 3, rows: 2, power: 1, x: 668, y: 1160, offmap: true,
+        count: 'A rifle company', confidence: 'us', note: 'Flown in during the night of 3–4 November.' },
+      { id: 'moore',    side: 'us', name: '1st Battalion, 7th Cavalry (Moore)', division: '1/7 Cavalry', type: 'rifle', cols: 4, rows: 2, power: 1, x: 1515, y: 1335, hidden: true,
+        count: '431 men', confidence: 'us', note: 'Staged near Plei Me; landed at X-Ray on 14 November.' },
+      { id: 'r33',      side: 'pavn', name: '33rd Regiment, PAVN', division: '33rd Regiment', type: 'assault', cols: 5, rows: 3, power: 1.1, x: 1180, y: 1400, hidden: true,
+        count: 'About 2,000 men', confidence: 'estimate', note: 'Besieged Plei Me; badly hurt by the air strikes and the pursuit.' },
+      { id: 'r32',      side: 'pavn', name: '32nd Regiment, PAVN', division: '32nd Regiment', type: 'assault', cols: 5, rows: 3, power: 1.1, x: 1520, y: 880, hidden: true,
+        count: 'About 2,000 men', confidence: 'estimate', note: 'Laid the ambush for the relief column.' },
+      { id: 'r66',      side: 'pavn', name: '66th Regiment, PAVN', division: '66th Regiment', type: 'assault', cols: 5, rows: 3, power: 1.1, x: 300, y: 1180, hidden: true,
+        count: 'About 2,000 men', confidence: 'estimate', note: 'Fresh from the Ho Chi Minh trail in early November; its battalions fought at X-Ray and Albany.' },
+      { id: 'hosp',     side: 'pavn', name: 'Field hospital of the 33rd Regiment', division: 'Hospital', type: 'recon', cols: 2, rows: 1, power: .5, x: 1180, y: 1185, hidden: true,
+        count: 'Wounded, medics and guards', confidence: 'established', note: 'Overrun on 1 November; its documents pointed to the Chu Pong. Exact site approximate.' }
+    ],
+    events: [
+      { t: 0, title: 'The trap', tag: 'established', clock: '19 Oct · evening', light: 'day', focus: { x: 1560, y: 1150 }, zoom: 0.62,
+        text: 'Plei Me was a small Special Forces camp in the hills south of Pleiku: twelve American Green Berets, fourteen South Vietnamese, and about four hundred Montagnard militia, behind a triangle of earth walls and sandbags. On the evening of 19 October, two North Vietnamese regiments moved into position around it. The 33rd would attack the camp. The 32nd would wait beside the road from Pleiku, to ambush the column that would come to save it.',
+        orders: [
+          { id: 'camp', visible: true, state: 'dig' },
+          { id: 'r33', visible: true, at: { x: 1180, y: 1400 }, to: { x: 1420, y: 1350 }, speed: 18 },
+          { id: 'r32', visible: true, at: { x: 1520, y: 880 }, to: { x: 1745, y: 985 }, speed: 18, then: 'hold' }
+        ] },
+      { t: 16, title: 'The siege', tag: 'established', clock: '19–20 Oct · night', light: 'night', focus: { x: 1530, y: 1300 }, zoom: 0.95,
+        text: 'Soon after dark a Montagnard patrol ran into the enemy, and at midnight the attack began: mortars, recoilless rifles, and waves of infantry against the wire. The defenders held. Through the night and the days that followed, flareships lit the camp and A-1 Skyraiders bombed and strafed the attackers close to the walls.',
+        orders: [
+          { id: 'r33', to: { x: 1490, y: 1320 }, speed: 10, state: 'attack' },
+          { fire: { kind: 'arty', at: { x: 1551, y: 1294 }, r: 45, dmg: 4, delay: 1 } }, { fire: { kind: 'arty', at: { x: 1545, y: 1300 }, r: 45, dmg: 4, delay: 3 } },
+          { fire: { kind: 'air', at: { x: 1460, y: 1335 }, r: 60, dmg: 14, delay: 5, planeDir: 3.6 } }, { fire: { kind: 'napalm', at: { x: 1430, y: 1370 }, r: 60, dmg: 12, delay: 9, planeDir: 2.9 } },
+          { id: 'camp', strengthTo: 85, over: 8 }, { id: 'r33', strengthTo: 80, over: 10 }
+        ] },
+      { t: 30, title: 'Help from the air', tag: 'established', clock: '21–22 Oct', light: 'day', focus: { x: 1600, y: 1230 }, zoom: 0.95,
+        text: 'On the morning of 21 October helicopters landed Major Charles Beckwith with a Special Forces reaction team and two companies of South Vietnamese Rangers a few kilometres north-east of the camp. They fought their way in through the jungle and reached the walls. Beckwith took command, and the camp was still surrounded.',
+        orders: [
+          { id: 'beckwith', at: { x: 1653, y: 1192 }, lift: true, from: { x: 1932, y: 267 } },
+          { id: 'beckwith', to: { x: 1572, y: 1268 }, speed: 8, delay: 7 },
+          { fire: { kind: 'air', at: { x: 1470, y: 1330 }, r: 60, dmg: 10, delay: 3, planeDir: 3.4 } }
+        ] },
+      { t: 44, title: 'The relief column', tag: 'established', clock: '22–23 Oct', light: 'day', focus: { x: 1880, y: 620 }, zoom: 0.6,
+        text: 'Down the road from Pleiku came the relief column: about twelve hundred men under Lieutenant Colonel Nguyen Trong Luat, with M41 tanks, M113 armoured carriers, two Ranger battalions and artillery. American guns of the newly arrived 1st Cavalry Division moved forward to cover it. This was the column the 32nd Regiment was waiting for.',
+        orders: [
+          { id: 'column', visible: true, at: { x: 1808, y: 135 }, to: { x: 1870, y: 386 }, speed: 50 },
+          { id: 'column', to: { x: 1932, y: 707 }, speed: 50, delay: 6 },
+          { id: 'column', to: { x: 1960, y: 960 }, speed: 50, delay: 12.5 },
+          { id: 'arty', at: { x: 1935, y: 1010 }, lift: true, from: { x: 1932, y: 267 }, delay: 4 }
+        ] },
+      { t: 58, title: 'The ambush', tag: 'established', clock: '23 Oct · evening', light: 'dusk', focus: { x: 1770, y: 1010 }, zoom: 1.05,
+        text: 'In the evening, a few kilometres short of the camp, the 32nd Regiment struck the column from both sides of the road. Tanks and carriers fired back point-blank into the jungle while the American artillery and the aircraft hammered the ambush. The column held, but it stopped where it was, and for a day and a half it would not move.',
+        orders: [
+          { id: 'column', to: { x: 1790, y: 1012 }, speed: 30 },
+          { id: 'r32', to: { x: 1772, y: 995 }, speed: 12, state: 'attack', delay: 3 },
+          { fire: { kind: 'arty', at: { x: 1735, y: 965 }, r: 55, dmg: 10, delay: 5 } }, { fire: { kind: 'arty', at: { x: 1760, y: 1060 }, r: 55, dmg: 10, delay: 7 } },
+          { fire: { kind: 'air', at: { x: 1720, y: 990 }, r: 65, dmg: 14, delay: 9, planeDir: 3.3 } }, { fire: { kind: 'napalm', at: { x: 1745, y: 1065 }, r: 60, dmg: 12, delay: 12, planeDir: 2.7 } },
+          { id: 'column', strengthTo: 78, over: 8, delay: 3 }, { id: 'r32', strengthTo: 62, over: 10, delay: 4 }
+        ] },
+      { t: 74, title: 'The siege is lifted', tag: 'established', clock: '25 Oct', light: 'day', focus: { x: 1640, y: 1150 }, zoom: 0.75,
+        text: 'On the 25th, promised American artillery all the way, Luat\'s column pushed on and reached Plei Me that evening. The North Vietnamese had already begun to pull back west, toward the Chu Pong mountain and the Cambodian border. The camp had held for six days.',
+        orders: [
+          { id: 'r32', to: { x: 1250, y: 1150 }, speed: 16, state: 'move' },
+          { id: 'r33', to: { x: 1120, y: 1360 }, speed: 16, state: 'move', delay: 2 },
+          { id: 'column', to: { x: 1652, y: 1157 }, speed: 30 },
+          { id: 'column', to: { x: 1585, y: 1265 }, speed: 30, delay: 6 },
+          { id: 'camp', strengthTo: 100, over: 6, delay: 8 }
+        ] },
+      { t: 90, title: 'The pursuit', tag: 'established', clock: '26 Oct – 9 Nov', light: 'day', focus: { x: 1400, y: 1000 }, zoom: 0.5,
+        text: 'General Westmoreland let the 1st Cavalry Division do what it had been built for. Instead of waiting for the enemy, its helicopters went after him. Day after day the brigades leap-frogged west by air, searching the jungle and the grass for the regiments that had attacked Plei Me.',
+        orders: [
+          { id: 'column', lift: 'out' }, { id: 'beckwith', lift: 'out', delay: 1 },
+          { id: 'cav1', at: { x: 1330, y: 1040 }, lift: true, from: { x: 1932, y: 267 }, delay: 1 },
+          { id: 'cav2', at: { x: 1180, y: 860 }, lift: true, from: { x: 1932, y: 267 }, delay: 3 },
+          { heli: 'gunship', to: { x: 1050, y: 1000 }, from: { x: 1551, y: 1294 }, delay: 2 }, { heli: 'gunship', to: { x: 900, y: 900 }, from: { x: 1932, y: 267 }, delay: 4 },
+          { heli: 'gunship', to: { x: 1200, y: 1250 }, from: { x: 1551, y: 1294 }, delay: 6 }, { heli: 'gunship', to: { x: 980, y: 1180 }, from: { x: 1932, y: 267 }, delay: 8 },
+          { id: 'cav1', to: { x: 1250, y: 1120 }, speed: 10, delay: 9 }, { id: 'cav2', to: { x: 1080, y: 950 }, speed: 10, delay: 10 },
+          { id: 'r32', to: { x: 950, y: 1420 }, speed: 12, delay: 3 }, { id: 'r33', to: { x: 1000, y: 1330 }, speed: 12, delay: 4 }
+        ] },
+      { t: 104, title: 'The hospital', tag: 'established', clock: '1 Nov', light: 'day', focus: { x: 1180, y: 1180 }, zoom: 1.0,
+        text: 'On 1 November the cavalry found the field hospital of the 33rd Regiment hidden in the forest, and overran it after a hard fight. They took prisoners, weapons and documents, and the documents showed that the enemy regiments were gathering near the Chu Pong.',
+        orders: [
+          { id: 'hosp', visible: true },
+          { id: 'cav9', at: { x: 1235, y: 1150 }, lift: true, from: { x: 1932, y: 267 } },
+          { id: 'cav9', to: { x: 1195, y: 1180 }, speed: 10, delay: 5, state: 'attack' },
+          { fire: { kind: 'arty', at: { x: 1170, y: 1200 }, r: 45, dmg: 10, delay: 4 } },
+          { id: 'hosp', strengthTo: 0, over: 8, delay: 6 }, { id: 'hosp', state: 'destroyed', delay: 15 }, { id: 'cav9', strengthTo: 90, over: 6, delay: 6 }
+        ] },
+      { t: 118, title: 'Ambush in the valley', tag: 'us', clock: '3–4 Nov', light: 'night', focus: { x: 640, y: 1200 }, zoom: 1.0,
+        text: 'Two days later the cavalry\'s own scouts laid an ambush by the Ia Drang near the Cambodian border, and caught a column of a fresh North Vietnamese regiment, the 66th, which had just walked in down the Ho Chi Minh trail. That night the North Vietnamese counter-attacked the little landing zone, and reinforcements were flown in to hold it.',
+        orders: [
+          { id: 'cav9', at: { x: 650, y: 1175 }, lift: true, from: { x: 1551, y: 1294 } },
+          { id: 'r66', visible: true, at: { x: 300, y: 1180 }, to: { x: 600, y: 1205 }, speed: 18, delay: 2 },
+          { fire: { kind: 'arty', at: { x: 590, y: 1210 }, r: 55, dmg: 10, delay: 9 } },
+          { id: 'r66', strengthTo: 85, over: 6, delay: 8 }, { id: 'r66', to: { x: 640, y: 1190 }, speed: 10, state: 'attack', delay: 12 },
+          { id: 'cav9b', at: { x: 668, y: 1160 }, lift: true, from: { x: 1551, y: 1294 }, delay: 13 }
+        ] },
+      { t: 134, title: 'The new brigade', tag: 'established', clock: '9–13 Nov', light: 'day', focus: { x: 930, y: 1440 }, zoom: 0.65,
+        text: 'On 9 November the 3rd Brigade took over the hunt. The prisoners and the documents pointed to the Chu Pong, a long forested mountain on the border. On 13 November the brigade commander gave Lieutenant Colonel Hal Moore his orders: take his battalion into the Ia Drang valley, at the foot of the mountain, and find the enemy.',
+        orders: [
+          { id: 'cav9', lift: 'out' }, { id: 'cav9b', lift: 'out', delay: 1 }, { id: 'cav1', lift: 'out', delay: 2 }, { id: 'cav2', lift: 'out', delay: 3 },
+          { id: 'r66', to: { x: 780, y: 1540 }, speed: 14, state: 'move' }, { id: 'r33', to: { x: 700, y: 1610 }, speed: 12 }, { id: 'r32', to: { x: 860, y: 1630 }, speed: 12 },
+          { id: 'arty', lift: 'out', delay: 2 }, { id: 'arty2', at: { x: 1153, y: 1462 }, lift: true, from: { x: 1932, y: 267 }, delay: 5 },
+          { id: 'moore', visible: true, at: { x: 1515, y: 1335 }, state: 'hold' }
+        ] },
+      { t: 148, title: 'Into the valley', tag: 'established', clock: '14 Nov · 10:48', light: 'day', focus: { x: 916, y: 1453 }, zoom: 1.2,
+        text: 'At 10:48 on 14 November the first sixteen Hueys came down into a clearing at the foot of the Chu Pong. The clearing was called X-Ray. On the mountain above it were the three battalions of the 66th Regiment and part of the 33rd.',
+        orders: [
+          { fire: { kind: 'arty', at: { x: 880, y: 1430 }, r: 45, dmg: 3, delay: 0 } }, { fire: { kind: 'arty', at: { x: 950, y: 1480 }, r: 45, dmg: 3, delay: 1.5 } },
+          { id: 'moore', at: { x: 916, y: 1453 }, lift: true, from: { x: 1551, y: 1294 }, delay: 3 }
+        ] }
+    ],
+    ai: { spotRange: 200, nightSpot: 120, beltRange: 60, pavn: { waves: [], withdrawAt: 30, withdrawTo: { x: 800, y: 1550 }, regroupAfter: 30 }, us: { lifts: [], perimeter: {}, fireEvery: 99, airEvery: 99 } },
+    support: {},
+    outcome: [
+      { text: 'Plei Me held for six days. The two North Vietnamese regiments lost heavily to air power and pulled back toward the Chu Pong, and the 1st Cavalry Division followed them by helicopter.', tag: 'established' }
+    ]
+  },
   {
     id: 'xray',
     title: 'LZ X-Ray', subtitle: '14–16 November 1965',
@@ -578,6 +732,23 @@ window.BATTLE_SCENARIO = {
 
   /* ---------- The armies panel: click a card for the write-up. `photos` are intro slideshow files or new { file, caption, ref, credit } entries. ---------- */
   units: [
+    { side: 'us', type: 'armor', portrait: 'arvn-m113', name: 'ARVN armoured column', desc: 'M113 armoured carriers and M41 light tanks of the South Vietnamese 3rd Armored Cavalry, with Ranger battalions riding along.', tag: 'established',
+      lines: [
+        { text: 'The column that drove to the relief of Plei Me in October 1965 was commanded by Lieutenant Colonel Nguyen Trong Luat: about 1,200 men with tanks, carriers, two Ranger battalions, an infantry battalion and two howitzers.', tag: 'established' },
+        { text: 'The North Vietnamese plan was to ambush it on the road. It was ambushed on the evening of 23 October, fought back with its own guns and American artillery and air strikes, and reached the camp on 25 October.', tag: 'established' },
+        { text: 'The M113 was an aluminium box on tracks, carrying eleven men and a .50-calibre machine gun. The South Vietnamese army used it from 1962, often fighting from on top of it rather than inside.', tag: 'established' }
+      ] },
+    { side: 'us', type: 'ranger', portrait: 'arvn-ranger', name: 'ARVN Rangers and camp defenders', desc: 'South Vietnamese Rangers (Biet Dong Quan), and the Montagnard militia who held Plei Me with twelve American Green Berets.', tag: 'established',
+      lines: [
+        { text: 'Plei Me was held by about four hundred Montagnard militia of the Civilian Irregular Defense Group, mostly Jarai, with fourteen South Vietnamese and twelve American Special Forces soldiers.', tag: 'established' },
+        { text: 'On 21 October Major Charles Beckwith landed near the camp with a Special Forces reaction team and two companies of South Vietnamese Rangers, fought his way in, and took command of the defence.', tag: 'established' },
+        { text: 'The Rangers wore a maroon beret with the badge of a black tiger’s head on a gold star.', tag: 'established' }
+      ] },
+    { side: 'us', type: 'plane', portrait: 'us-skyraider', name: 'A-1 Skyraider', desc: 'A single-engine propeller attack plane that could carry a huge bomb load and stay over a battle for hours.', tag: 'established',
+      lines: [
+        { text: 'Air power saved Plei Me. Through the siege, A-1 Skyraiders and jet fighter-bombers bombed and strafed the attackers close to the walls, and flareships lit the camp at night.', tag: 'established' },
+        { text: 'The Skyraider was a Second World War design, slow but tough, and in 1965 it was the main close-support plane of the US Air Force and the South Vietnamese air force in Vietnam.', tag: 'established' }
+      ] },
     { side: 'us', type: 'rifle', name: 'US rifleman', desc: 'Airmobile infantry: M16 rifle, grenades, entrenching tool. Lands by helicopter, digs in, calls for fire.', tag: 'established',
       photos: ['17-xray-perimeter.jpg', '07-1st-cav-sky-soldiers.jpg', '16-xray-sketch-map.jpg'],
       lines: [
