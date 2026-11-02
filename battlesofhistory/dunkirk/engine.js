@@ -233,7 +233,7 @@ function drawPlane(c, q, f, z, shadow) {
 function drawQueue(c, f, z) {
   // A column of men several abreast, standing from the beach out into the shallows toward the boats.
   const n = Math.max(4, Math.round((f.rows || 30) * Math.max(.1, f.strength / 100))), ang = f.facing, ca = Math.cos(ang), sa = Math.sin(ang), cols = f.cols || 3;
-  const sh = sheetFor(f.side), fh = 8 * z, figs = sh && fh >= 12;   // men facing the sea, nearest the shore drawn last
+  const sh = sheetFor(f.side), fh = 8 * z, figs = sh && artOn && fh >= 9;   // men facing the sea, nearest the shore drawn last
   c.save(); c.fillStyle = '#3d3a2a';
   if (figs) { for (let r = n - 1; r >= 0; r--) for (let k = 0; k < cols; k++) { const along = r * 5.5, side = (k - (cols - 1) / 2) * 4.5, jx = (jitter(r * 7 + k, 61) - .5) * 2.2, jy = (jitter(r * 7 + k, 62) - .5) * 2.2;
       const q = P(f.x + ca * along - sa * side + jx, f.y + sa * along + ca * side + jy); drawSprite(c, sh, q.x, q.y, fh, ang, false, 0); }
@@ -259,8 +259,9 @@ function drawFormation(c, f) {
   if (f.trail && f.trail.length > 1) { c.save(); c.strokeStyle = SIDE(f.side).color; c.globalAlpha = .45; c.lineWidth = Math.max(3, 7 * z); c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); f.trail.forEach((p, i) => { const t = P(p.x, p.y); i ? c.lineTo(t.x, t.y) : c.moveTo(t.x, t.y); }); c.lineTo(q.x, q.y); c.stroke(); c.restore(); }
   const big = f.type === 'army', w = (big ? 64 : 40) * z * (f.scale || 1), h = (big ? 40 : 26) * z * (f.scale || 1);
   if (f.state === 'rout' || f.state === 'scattered' || f.state === 'surrendered') c.globalAlpha *= .55;
-  natoBlock(c, q.x, q.y, w, h, f.side, f.kind || 'infantry');
-  const below = drawSquad(c, f, q, w, h, z);
+  const sq = artOn && sheetFor(f.side, f.kind);
+  if (!sq) natoBlock(c, q.x, q.y, w, h, f.side, f.kind || 'infantry');
+  const below = drawSquad(c, f, q, w, sq ? -h * .9 : h, z) + (sq ? -h : 0);
   if (f.strength < 100) { c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(q.x - w / 2, q.y + h / 2 + 2, w, 4); c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(q.x - w / 2, q.y + h / 2 + 2, w * f.strength / 100, 4); }
   c.restore();
   const suffix = f.state === 'surrendered' ? ' · surrendered' : f.state === 'rout' ? ' · falling back' : '';
@@ -270,7 +271,7 @@ function drawFormation(c, f) {
 /* Painted sprite sheets (images/units/<name>.png): 4 rows south, east, north, west x 4 walking frames, 160 px cells,
    feet 8 px above the bottom of each cell. Drawn only once they have loaded and only when big enough to read. */
 const SHEETS = {};
-['british-infantry', 'french-infantry', 'german-infantry', 'german-panzer'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+['british-infantry', 'french-infantry', 'german-infantry', 'german-panzer'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; clearTimeout(window.__dkCards); window.__dkCards = setTimeout(() => { if (typeof renderArmies === 'function') renderArmies(); }, 50); }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 const sheetFor = (side, kind) => side === 'german' ? SHEETS[kind === 'armour' ? 'german-panzer' : 'german-infantry'] : side === 'british' ? SHEETS['british-infantry'] : side === 'french' ? SHEETS['french-infantry'] : null;
 const rowOf = a => { const x = Math.cos(a), y = Math.sin(a); return Math.abs(x) > Math.abs(y) ? (x > 0 ? 1 : 3) : (y > 0 ? 0 : 2); };
 // one figure, feet at (x, y), `h` px tall; `walk` animates the four frames, `i` staggers the step
@@ -282,13 +283,16 @@ function drawSprite(c, sh, x, y, h, facing, walk, i) {
 const SQUAD = [[-.62, 0], [.62, 0], [-.2, .1], [.2, .1], [0, -.05]];
 function drawSquad(c, f, q, w, h, z) {
   const sh = sheetFor(f.side, f.kind), big = f.type === 'army', tank = f.side === 'german' && f.kind === 'armour';
-  const fh = (tank ? (big ? 24 : 18) : (big ? 26 : 19)) * z * (f.scale || 1);
-  if (!sh || fh < 13) return 0;
+  let fh = (tank ? (big ? 24 : 18) : (big ? 26 : 19)) * z * (f.scale || 1);
+  if (!sh || !artOn) return 0;
+  if (fh < 38) fh = 38;   // stay readable when zoomed out
+  { const bw = Math.max(w, fh * (tank ? 3.6 : 3.4)), bh = fh * .95, cy = q.y + h / 2 + 3 + fh * .55;   // the unit's map symbol, as the background of the group
+    c.save(); c.globalAlpha *= .78; natoBlock(c, q.x, cy, bw, bh, f.side, f.kind || 'infantry'); c.restore(); }
   const n = Math.max(1, Math.round((tank ? 3 : 5) * Math.max(.2, f.strength / 100))), walk = f.state === 'move' || f.state === 'rout';
   const face = f.state === 'rout' ? f.facing + PI : f.facing, top = q.y + h / 2 + 3, spots = tank ? [[-.55, 0], [.55, 0], [0, .08]] : SQUAD;
   c.save(); if (f.state === 'rout' || f.state === 'scattered' || f.state === 'surrendered') c.globalAlpha *= .6;
   spots.slice(0, n).map((s, i) => ({ s, i })).sort((a, b) => a.s[1] - b.s[1]).forEach(({ s, i }) =>
-    drawSprite(c, sh, q.x + s[0] * w * (tank ? 1.25 : 1), top + fh + s[1] * fh, fh, face, walk, i * 1.7 + jitter(f.id.length, i)));
+    drawSprite(c, sh, q.x + s[0] * Math.max(w, fh * 1.6) * (tank ? 1.25 : 1), top + fh + s[1] * fh, fh, face, walk, i * 1.7 + jitter(f.id.length, i)));
   c.restore(); return fh + 4;
 }
 const PROPS = [];
@@ -601,7 +605,7 @@ function unitSprite(c, u, big) {
   // the armies panel shows the same symbols as the map: a unit block, a ship or an aircraft
   const w = c.canvas.width, h = c.canvas.height; c.fillStyle = u.type === 'ship' || u.type === 'aircraft' ? '#2f5c6b' : '#8e9a6a'; c.fillRect(0, 0, w, h);
   const f = { side: u.side, cls: u.cls, facing: 0, state: 'hold', strength: 100, scale: 1 }, z = h / (u.type === 'ship' ? 26 : u.type === 'aircraft' ? 34 : 50);
-  if (u.type === 'ship') drawShip(c, { x: w / 2, y: h / 2 }, f, z * .9); else if (u.type === 'aircraft') { f.facing = -PI / 2; drawPlane(c, { x: w / 2, y: h / 2 }, f, z, false); } else natoBlock(c, w / 2, h / 2, w * .62, h * .55, u.side, u.kind || 'infantry');
+  if (u.type === 'ship') drawShip(c, { x: w / 2, y: h / 2 }, f, z * .9); else if (u.type === 'aircraft') { f.facing = -PI / 2; drawPlane(c, { x: w / 2, y: h / 2 }, f, z, false); } else { const sh = artOn && sheetFor(u.side, u.kind); if (sh) { const d = h * 1.05; c.drawImage(sh, 0, 0, 160, 160, w / 2 - d / 2, h - d + 4, d, d); } else natoBlock(c, w / 2, h / 2, w * .62, h * .55, u.side, u.kind || 'infantry'); }
 }
 function renderArmies() {
   const units = S.units || [];
@@ -1057,7 +1061,11 @@ function tick(t) {
 renderBriefing(); renderArmies(); createFormations();
 loadMaps(); setMap(S.startMap || 'campaign', true);
 function applyArt() {}
-$('artBtn').style.display = 'none';
+// 🎨 Art: painted soldiers and tanks at every zoom; ✏ Drawn: the military symbols (the painted maps stay either way)
+function applyArt() { const b = $('artBtn'); if (!b) return; b.classList.toggle('active', artOn); b.textContent = artOn ? '\ud83c\udfa8 Art' : '\u270f Drawn';
+  b.title = artOn ? 'Painted soldiers and tanks (click for military map symbols)' : 'Military map symbols (click for painted soldiers and tanks)'; if (typeof renderArmies === 'function') renderArmies(); }
+$('artBtn').onclick = () => { artOn = !artOn; try { localStorage.setItem('dunkirk-art', artOn ? '1' : '0'); } catch (e) {} applyArt(); };
+applyArt();
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
 new ResizeObserver(resize).observe(panel); resize();
 view.x = 600; view.y = 300; startIntro();
