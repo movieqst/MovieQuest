@@ -34,7 +34,7 @@ let TER = null, MINIBASE = null, PAINTED = false, PAINTEDTER = null, DRAWNTER = 
 let pending = [], strikes = [], effects = [], helis = [], light = { cur: 0, target: 0, name: 'day' }, clockLabel = '', support = {};
 let PROPS = [];
 const IMGS = {}; function img(src) { if (!IMGS[src]) { const im = new Image(); im.src = (S.imageBase || 'images/') + src; IMGS[src] = im; } return IMGS[src]; }
-['props/horsa.png', 'props/horsa-wreck.png'].forEach(img);
+['props/horsa.png', 'props/horsa-top.png', 'props/horsa-wreck.png'].forEach(img);
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const jitter = (i, k = 0) => { const s = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return s - Math.floor(s); };
@@ -639,9 +639,9 @@ function drawFormation(c, f) {
 function drawHeli(c, h) {
   const g = P(h.x, h.y), q = P(h.x, h.y - h.alt), s = g.s * 1.6;
   c.save(); c.globalAlpha = .25; c.fillStyle = '#000'; c.beginPath(); c.ellipse(g.x + 6 * s, g.y, 14 * s, 5 * s * g.k, 0, 0, PI * 2); c.fill(); c.restore();
-  if (h.kind === 'glider') { const im = IMGS['props/horsa.png']; if (im && im.complete && im.naturalWidth) { const w = 120 * g.s, hh = w * im.naturalHeight / im.naturalWidth; c.save(); c.translate(q.x, q.y); c.rotate(h.facing + PI);
-    c.filter = 'brightness(1.9) contrast(1.1) drop-shadow(0 0 ' + Math.max(2, 4 * g.s) + 'px rgba(230,235,255,.75))';   // pale in the moonlight, so it reads against the dark fields
-    c.drawImage(im, -w / 2, -hh * .7, w, hh); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
+  if (h.kind === 'glider') { const top = IMGS['props/horsa-top.png'], ok = top && top.complete && top.naturalWidth, im = ok ? top : IMGS['props/horsa.png']; if (im && im.complete && im.naturalWidth) { const w = (ok ? 95 : 120) * g.s, hh = w * im.naturalHeight / im.naturalWidth; c.save(); c.translate(q.x, q.y); c.rotate(h.facing + (ok ? 0 : PI));   // the top-down Horsa (nose to the right) when it has loaded
+    c.filter = (ok ? 'brightness(1.35)' : 'brightness(1.9) contrast(1.1)') + ' drop-shadow(0 0 ' + Math.max(2, 4 * g.s) + 'px rgba(230,235,255,.75))';   // pale in the moonlight, so it reads against the dark fields
+    c.drawImage(im, -w / 2, ok ? -hh / 2 : -hh * .7, w, hh); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
   drawSprite(c, { type: 'heli', side: DEF(), state: 'move' }, q.x, q.y, h.facing, 0, s, q.k);
 }
 function drawStrikes(c) {
