@@ -821,7 +821,7 @@ function renderBriefing() {
 /* ---------------- overlays: intro, debrief, explain ---------------- */
 function showOverlay(id) { $(id).classList.add('show'); }
 let unitPausedIntro = false;
-function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
+function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'debrief' && typeof textOff !== 'undefined' && textOff) document.body.classList.add('textoff'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
 function showIntro(i) {
   introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next ▶'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
@@ -941,6 +941,7 @@ function autoNextStop() { if (autoNextT) { clearInterval(autoNextT); autoNextT =
 ['pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, e => { if (!autoNextT) return; const t = e.target;
   if (t && t.closest && (t.closest('#debriefNext') || t.closest('#debriefNextMini') || t.closest('#debrief .xbtn'))) return; autoNextStop(); }, true));
 function showDebrief() {
+  document.body.classList.remove('textoff');   // the after-action report always opens in full, even when the viewer has hidden the text elsewhere (fullDebrief)
   Narr.stop(); const d = $('debrief');
   let head, body;
   const next = partIdx < S.parts.length - 1 ? S.parts[partIdx + 1] : null;
