@@ -520,8 +520,8 @@ window.BATTLE_SCENARIO = {
   establishing: [
     { file: 'establish-1-europe-1944.jpg', secs: 5, pulse: { x: .33, y: .63 }, credit: 'North-western Europe, June 1944. Artist rendering: Battle Games, AI-generated' },
     { file: 'establish-2-normandy-coast.jpg', secs: 5, pulse: { x: .605, y: .535 }, credit: 'The Normandy coast on the night of 5 to 6 June 1944, the invasion fleet offshore. Artist rendering: Battle Games, AI-generated' },
-    { file: 'establish-3-orne-valley-illustrated.jpg', secs: 4, pulse: { x: .58, y: .355 }, credit: 'The Caen canal and the river Orne, side by side from the sea to Caen. Artist rendering: Battle Games, AI-generated' },
-    { file: 'establish-4-orne-valley-moonlit.jpg', secs: 5, pulse: { x: .585, y: .37 }, credit: 'The same valley in the moonlight of 6 June 1944. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-3-orne-valley-illustrated.jpg', secs: 4, pulse: { x: .42, y: .355 }, credit: 'The Caen canal and the river Orne, side by side from the sea to Caen. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-4-orne-valley-moonlit.jpg', secs: 5, pulse: { x: .415, y: .37 }, credit: 'The same valley in the moonlight of 6 June 1944. Artist rendering: Battle Games, AI-generated' },
     { file: 'establish-5-gliders-landing.jpg', secs: 6, credit: 'Sixteen minutes past midnight: the gliders come down beside the canal bridge. Artist rendering: Battle Games, AI-generated' }
   ],
   imageBase: 'images/',
