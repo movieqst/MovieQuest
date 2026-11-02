@@ -85,7 +85,9 @@
   body.dl .top-actions button,body.dl .top-actions a,body.dl #clock{white-space:nowrap}
   body.dl .top-actions{gap:4px}
   body.dl .top-actions .sep{margin:0 2px}
-  body.dl #dlCenter:fullscreen #dlBar{margin:0 0 8px}
+  body.dl #dlCenter:fullscreen{position:relative}
+  body.dl #dlCenter:fullscreen #dlBar{position:absolute;top:10px;left:50%;transform:translate(-50%,-140%);z-index:40;margin:0;padding:6px 10px;background:rgba(7,16,23,.92);border:1px solid #2a3e48;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.5);transition:transform .25s ease,opacity .25s;opacity:0}
+  body.dl #dlCenter:fullscreen #dlBar.peek{transform:translate(-50%,0);opacity:1}
   /* closed captions under the map: the sentence being spoken, large, as on television */
   body.dl #dlText{position:relative;background:#05090c;border:1px solid #2c3f49;border-radius:9px;min-height:112px;display:flex;flex-direction:column;justify-content:center;padding:8px 48px;text-align:center}
   body.dl #cc .ct{font:600 12px 'Cinzel',Georgia,serif;letter-spacing:.06em;color:var(--gold);opacity:.85;margin-bottom:4px}
@@ -153,7 +155,11 @@
     if (document.fullscreenElement) document.exitFullscreen && document.exitFullscreen(); else if (center.requestFullscreen) center.requestFullscreen().catch(() => {});
   }, true);
   // in fullscreen the play bar comes along, above the map
-  document.addEventListener('fullscreenchange', () => { if (document.fullscreenElement === center) center.insertBefore(bar, center.firstChild); else if (top && bar.parentElement !== top) top.insertBefore(bar, top.firstChild); });
+  // in fullscreen the play bar hides; it slides in when the mouse comes near the top, and leaves again after a moment
+  { let t = null; center.addEventListener('mousemove', e => { if (document.fullscreenElement !== center) return; const r = center.getBoundingClientRect();
+      if (e.clientY - r.top < 90 || bar.contains(e.target)) { bar.classList.add('peek'); clearTimeout(t); t = setTimeout(() => { if (!bar.matches(':hover')) bar.classList.remove('peek'); }, 2500); } });
+    bar.addEventListener('mouseleave', () => { clearTimeout(t); t = setTimeout(() => bar.classList.remove('peek'), 1200); }); }
+  document.addEventListener('fullscreenchange', () => { bar.classList.remove('peek'); if (document.fullscreenElement === center) center.insertBefore(bar, center.firstChild); else if (top && bar.parentElement !== top) top.insertBefore(bar, top.firstChild); });
 
   // ---- picture framing: a scenario picture can say which part to keep when it is cropped to fit, e.g. pos: '50% 12%'
   //      keeps the top (a face) of a tall portrait. Applies to the slideshow picture wherever it is shown.

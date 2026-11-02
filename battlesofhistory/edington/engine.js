@@ -806,7 +806,7 @@ function renderBriefing() {
 /* ---------------- overlays: intro, debrief, explain ---------------- */
 function showOverlay(id) { $(id).classList.add('show'); }
 let unitPausedIntro = false;
-function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
+function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'debrief' && typeof textOff !== 'undefined' && textOff) document.body.classList.add('textoff'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
 function showIntro(i) {
   introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
@@ -911,6 +911,7 @@ function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'w
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
 function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
 function showDebrief() {
+  document.body.classList.remove('textoff');   // the after-action report always opens in full, even when the viewer has hidden the text elsewhere (fullDebrief)
   Narr.stop(); const d = $('debrief');
   let head, body;
   if (battleOver === 'history') { head = 'What the sources say happened next'; body = ''; }
@@ -1154,8 +1155,8 @@ if (S.voices && S.voices.length) {
 try { const r = parseFloat(localStorage.getItem('edington-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
 $('voiceRate').value = String(Narr.rate);
 $('voiceRate').onchange = () => { Narr.rate = parseFloat($('voiceRate').value) || 1; if (Narr.audio) Narr.audio.playbackRate = Narr.rate; try { localStorage.setItem('edington-voice-rate', String(Narr.rate)); } catch (e) {} };
-$('zoomIn').onclick = () => { view.z = clamp(view.z * 1.2, .45, 2.4); clampView(); };
-$('zoomOut').onclick = () => { view.z = clamp(view.z / 1.2, .45, 2.4); clampView(); };
+$('zoomIn').onclick = () => { const c = U(view.w / 2, view.h / 2); view.z = clamp(view.z * 1.2, .45, 2.4); const c2 = U(view.w / 2, view.h / 2); view.x += c.x - c2.x; view.y += c.y - c2.y; clampView(); };   // zoom about the centre
+$('zoomOut').onclick = () => { const c = U(view.w / 2, view.h / 2); view.z = clamp(view.z / 1.2, .45, 2.4); const c2 = U(view.w / 2, view.h / 2); view.x += c.x - c2.x; view.y += c.y - c2.y; clampView(); };   // zoom about the centre
 $('introNext').onclick = () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } showIntro(introIdx + 1); };
 $('introBack').onclick = () => showIntro(introIdx - 1);
 $('introPause').onclick = togglePause;
