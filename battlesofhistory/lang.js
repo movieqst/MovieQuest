@@ -35,7 +35,7 @@
     each(S.outcome, L.outcome, (o, t) => set(o, 'text', typeof t === 'string' ? t : t.text));
     if (L.commandLines && S.commandLines) Object.keys(L.commandLines).forEach(k => set(S.commandLines, k, L.commandLines[k]));
     if (L.debrief && S.debrief) Object.keys(L.debrief).forEach(side => S.debrief[side] && Object.keys(L.debrief[side]).forEach(r => { const d = S.debrief[side][r], t = L.debrief[side][r]; if (d && t) { set(d, 'title', t.title); set(d, 'text', t.text); } }));
-    each(S.units, L.units, (u, t) => Object.keys(t).forEach(k => typeof u[k] === 'string' && set(u, k, t[k])));
+    each(S.units, L.units, (u, t) => { Object.keys(t).forEach(k => typeof u[k] === 'string' && set(u, k, t[k])); each(u.lines, t.lines, (ln, tx) => set(ln, 'text', typeof tx === 'string' ? tx : tx.text)); });
     if (L.leaders && S.leaders) [S.leaders, S.campaign && S.campaign.leaders].forEach(ls => (ls || []).forEach(l => set(l, 'name', L.leaders[l.id])));
     if (L.sides && S.sides) Object.keys(L.sides).forEach(k => S.sides[k] && set(S.sides[k], 'name', typeof L.sides[k] === 'string' ? L.sides[k] : L.sides[k].name));
     if (L.citations && S.citations) Object.keys(L.citations).forEach(k => { const c = S.citations[k], t = L.citations[k]; if (c && t) { set(c, 'title', t.title); set(c, 'intro', t.intro); } });

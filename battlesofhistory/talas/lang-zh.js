@@ -101,3 +101,44 @@ window.TALAS_LANG.zh = {
     '这场战役并没有终结唐朝在中亚的势力。真正终结它的，是公元755年的安史之乱。'
   ]
 };
+
+/* The page plays the first two chapters on the region map (the campaign part): split the chapters the same way as
+   scenario.js does, so each translation stays with its chapter. */
+(z => {
+  if (!z || z.campaign) return;
+  z.campaign = { title: '西征', subtitle: '公元751年春夏', events: z.events.slice(0, 2) };
+  z.events = z.events.slice(2);
+  z.sides = { allied: '唐朝', french: '阿拔斯王朝' };
+  z.leaders = { gao: '高仙芝', lisiye: '李嗣业', duan: '段秀实', ziyad: '齐亚德·伊本·萨利赫', abumuslim: '阿布·穆斯林 · 在木鹿' };
+  z.voices = [ { id: 'zh', name: '普通话 · 旁白' } ];
+  z.titleCard = { title: '怛罗斯之战', date: '公元751年7月', place: '怛罗斯河谷，中亚（今哈萨克斯坦与吉尔吉斯斯坦交界处）', sides: '高仙芝的安西军，以及拔汗那和葛逻禄  ·  齐亚德·伊本·萨利赫率领的呼罗珊军队' };
+})(window.TALAS_LANG.zh);
+
+/* The armies panel, the units on the map, the map labels and the towns (added with the battle page). */
+Object.assign(window.TALAS_LANG.zh, {
+  units: [
+    { name: '唐军重装步兵', desc: '安西军的职业士兵：铠甲、长刀和长枪。', lines: ['安西都护府在远离中原的塔里木盆地绿洲城市中驻有常备的职业军队。', '老兵以纪律严明著称。在撤退中救了高仙芝的李嗣业，是一位手持陌刀步战的将领。'] },
+    { name: '唐军弩手', desc: '弩：唐军的远程武器。', lines: ['唐代兵书记载，弩手分排轮番发射，一排装填，一排射击。', '他们在怛罗斯如何作战，史料没有记载。'] },
+    { name: '唐军骑兵', desc: '安西军的铠甲骑兵。', lines: ['唐朝西部的军队把铠甲骑兵与步兵、弩手一起使用。他们在怛罗斯的人数不得而知。'] },
+    { name: '拔汗那盟军', desc: '与唐朝结盟的拔汗那国军队。', lines: ['唐代史书说，撤退时道路被拔汗那士兵和他们的马匹、骆驼堵住了。'] },
+    { name: '葛逻禄', desc: '天山以北草原上的突厥骑兵。', lines: ['中国史料说，葛逻禄在第五天背叛高仙芝，与阿拔斯军队一起攻击唐军。', '他们是否事先有所谋划，战前究竟站在哪一边，至今仍有争议。'] },
+    { name: '呼罗珊的阿拔斯步兵', desc: '黑旗之下革命的老兵。', lines: ['阿拔斯革命依靠的是阿布·穆斯林在伊朗东部呼罗珊招募的军队。黑色是他们旗帜和衣服的颜色。', '齐亚德·伊本·萨利赫带到怛罗斯的军队规模没有记载。'] },
+    { name: '阿拔斯骑兵', desc: '呼罗珊军队的骑兵。', lines: ['阿拉伯史料只说齐亚德遇到中国军队并打败了他们；他的骑兵如何作战，没有描述。'] }
+  ].map(u => Object.assign(u, { lines: u.lines.map(text => ({ text })) })),
+  formations: {
+    xbow: { name: '唐军弩手（安西军）', division: '弩手' }, inf: { name: '唐军重装步兵（安西军）', division: '安西步兵' }, tcav: { name: '唐军骑兵', division: '唐军骑兵' },
+    ferghana: { name: '拔汗那盟军', division: '拔汗那' }, karluk: { name: '葛逻禄', division: '葛逻禄' },
+    ainf: { name: '呼罗珊的阿拔斯步兵', division: '呼罗珊' }, acavn: { name: '阿拔斯骑兵（北翼）', division: '阿拔斯骑兵' }, acavs: { name: '阿拔斯骑兵（南翼）', division: '阿拔斯骑兵' },
+    captive: { name: '唐军俘虏', division: '俘虏' }, rear: { name: '李嗣业的后卫', division: '后卫' }
+  },
+  labels: ['怛罗斯（塔拉兹）', '阿特拉赫', '通往俱兰 ↗', '↙ 通往石国', '低矮山岭'],
+  scaleLabel: '10公里'
+});
+(z => {
+  z.campaign.towns = ['龟兹（安西）', '拨换（阿克苏）', '碎叶', '怛罗斯', '石国（塔什干）', '拔汗那', '撒马尔罕', '布哈拉', '木鹿'];
+  z.campaign.formations = { 'c-tang': { name: '高仙芝的安西军', division: '高仙芝' }, 'c-ferg': { name: '拔汗那', division: '拔汗那' }, 'c-karluk': { name: '葛逻禄', division: '葛逻禄' }, 'c-arab': { name: '呼罗珊军队', division: '齐亚德·伊本·萨利赫' } };
+})(window.TALAS_LANG.zh);
+(z => {   // the dates shown with each chapter
+  const C = ['公元751年春', '751年初夏', '751年7月', '第一天', '第一天', '第二至四天', '第五天', '第五天', '夜里', '夜里', '夜里', '战后', '751年末', '755至756年'];
+  z.campaign.events.forEach((e, i) => { e.clock = C[i]; }); z.events.forEach((e, i) => { e.clock = C[i + 2]; });
+})(window.TALAS_LANG.zh);
