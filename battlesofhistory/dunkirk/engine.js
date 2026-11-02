@@ -261,7 +261,6 @@ function drawFormation(c, f) {
   if (f.state === 'rout' || f.state === 'scattered' || f.state === 'surrendered') c.globalAlpha *= .55;
   const sq = artOn && sheetFor(f.side, f.kind);
   if (!sq) natoBlock(c, q.x, q.y, w, h, f.side, f.kind || 'infantry');
-  else { c.save(); c.fillStyle = SIDE(f.side).color; c.globalAlpha *= .9; c.fillRect(q.x - w * .3, q.y - h / 2, w * .6, Math.max(3, h * .16)); c.restore(); }   // a thin side-coloured bar marks the unit
   const below = drawSquad(c, f, q, w, sq ? -h * .9 : h, z) + (sq ? -h : 0);
   if (f.strength < 100) { c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(q.x - w / 2, q.y + h / 2 + 2, w, 4); c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(q.x - w / 2, q.y + h / 2 + 2, w * f.strength / 100, 4); }
   c.restore();
@@ -287,8 +286,8 @@ function drawSquad(c, f, q, w, h, z) {
   let fh = (tank ? (big ? 24 : 18) : (big ? 26 : 19)) * z * (f.scale || 1);
   if (!sh || !artOn) return 0;
   if (fh < 38) fh = 38;   // stay readable when zoomed out
-  { const R = fh * (tank ? 1.7 : 1.5), cy = q.y + h / 2 + 3 + fh * .95; c.save(); c.globalAlpha *= .55; c.fillStyle = SIDE(f.side).color;   // a patch of the side's colour under the group
-    c.beginPath(); c.ellipse(q.x, cy, R, R * .38, 0, 0, PI * 2); c.fill(); c.globalAlpha = .9; c.strokeStyle = SIDE(f.side).light; c.lineWidth = 1.5; c.stroke(); c.restore(); }
+  { const bw = Math.max(w, fh * (tank ? 3.6 : 3.4)), bh = fh * .95, cy = q.y + h / 2 + 3 + fh * .55;   // the unit's map symbol, as the background of the group
+    c.save(); c.globalAlpha *= .78; natoBlock(c, q.x, cy, bw, bh, f.side, f.kind || 'infantry'); c.restore(); }
   const n = Math.max(1, Math.round((tank ? 3 : 5) * Math.max(.2, f.strength / 100))), walk = f.state === 'move' || f.state === 'rout';
   const face = f.state === 'rout' ? f.facing + PI : f.facing, top = q.y + h / 2 + 3, spots = tank ? [[-.55, 0], [.55, 0], [0, .08]] : SQUAD;
   c.save(); if (f.state === 'rout' || f.state === 'scattered' || f.state === 'surrendered') c.globalAlpha *= .6;
