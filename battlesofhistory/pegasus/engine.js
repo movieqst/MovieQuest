@@ -311,7 +311,7 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', d = dirOf(facing), step = moving ? wall * 8 + i * 1.7 : 0;
   if (d === 'w') c.scale(-1, 1);
   if (ut.kind === 'air') figHeli(c, s, wall * 40 + i, d === 'w' ? 'e' : d);
-  else if (ut.water) figBoat(c, s, d === 'w' ? 'e' : d);
+  else if (ut.water) figBoat(c, s * 2.4, d === 'w' ? 'e' : d);   // a gunboat is far bigger than a man
   else if (ut.kind === 'vehicle') figTank(c, SIDE_ART[f.side], s, d === 'w' ? 'e' : d, step);
   else figSoldier(c, f.side, f.type, s, i, d === 'w' ? 'e' : d, step, f.state === 'dig' && f.dug);
   c.restore();
@@ -414,6 +414,7 @@ function stepLight() { const d = light.target - light.cur; light.cur += Math.sig
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
   if (ev.clock) clockLabel = ev.clock; if (ev.light) setLight(ev.light);
+  if (cam.follow && ev.zoom) { view.z = clamp(ev.zoom, .45, 2.4); clampView(); }
   if (cam.follow && ev.focus) frame(ev.focus.x, ev.focus.y);
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((ev.clock || fmtTime(ev.t)) + ' ' + ev.title);
@@ -638,7 +639,9 @@ function drawFormation(c, f) {
 function drawHeli(c, h) {
   const g = P(h.x, h.y), q = P(h.x, h.y - h.alt), s = g.s * 1.6;
   c.save(); c.globalAlpha = .25; c.fillStyle = '#000'; c.beginPath(); c.ellipse(g.x + 6 * s, g.y, 14 * s, 5 * s * g.k, 0, 0, PI * 2); c.fill(); c.restore();
-  if (h.kind === 'glider') { const im = IMGS['props/horsa.png']; if (im && im.complete && im.naturalWidth) { const w = 120 * g.s, hh = w * im.naturalHeight / im.naturalWidth; c.save(); c.translate(q.x, q.y); c.rotate(h.facing + PI); c.drawImage(im, -w / 2, -hh * .7, w, hh); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
+  if (h.kind === 'glider') { const im = IMGS['props/horsa.png']; if (im && im.complete && im.naturalWidth) { const w = 120 * g.s, hh = w * im.naturalHeight / im.naturalWidth; c.save(); c.translate(q.x, q.y); c.rotate(h.facing + PI);
+    c.filter = 'brightness(1.9) contrast(1.1) drop-shadow(0 0 ' + Math.max(2, 4 * g.s) + 'px rgba(230,235,255,.75))';   // pale in the moonlight, so it reads against the dark fields
+    c.drawImage(im, -w / 2, -hh * .7, w, hh); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
   drawSprite(c, { type: 'heli', side: DEF(), state: 'move' }, q.x, q.y, h.facing, 0, s, q.k);
 }
 function drawStrikes(c) {

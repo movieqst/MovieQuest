@@ -204,21 +204,21 @@ window.BATTLE_SCENARIO = {
 
     formations: [
       // British: the three canal-bridge gliders, the two river-bridge gliders, the sappers, then the paras and the commandos
-      { id: 'g1',  side: 'brit', name: 'No 25 Platoon (Brotheridge), glider 1', division: 'Glider 1', type: 'airlanding', cols: 5, rows: 3, power: 1.2, x: 1030, y: 880, offmap: true, glider: true,
+      { id: 'g1',  side: 'brit', name: 'No 25 Platoon (Brotheridge), glider 1', division: 'Glider 1', type: 'airlanding', cols: 5, rows: 3, power: 1.2, x: 1136, y: 832, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Wallwork’s glider, down at 00:16 forty-seven yards from the bridge. Brotheridge led it over the bridge and was killed on the far side.' },
-      { id: 'g2',  side: 'brit', name: 'No 24 Platoon (Wood), glider 2', division: 'Glider 2', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1090, y: 930, offmap: true, glider: true,
+      { id: 'g2',  side: 'brit', name: 'No 24 Platoon (Wood), glider 2', division: 'Glider 2', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1220, y: 880, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed a minute later, broke its back in a ditch. Cleared the trenches on the east bank. Lieutenant Wood was wounded in both legs.' },
-      { id: 'g3',  side: 'brit', name: 'No 14 Platoon (Smith), glider 3', division: 'Glider 3', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1140, y: 980, offmap: true, glider: true,
+      { id: 'g3',  side: 'brit', name: 'No 14 Platoon (Smith), glider 3', division: 'Glider 3', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1220, y: 970, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed in the pond; one man drowned, the only death in the landings. Crossed the bridge to hold the west bank and the café.' },
-      { id: 'hq',  side: 'brit', name: 'Major Howard and company HQ', division: 'Howard', type: 'airlanding', cols: 3, rows: 2, power: 1.0, x: 1000, y: 850, offmap: true,
+      { id: 'hq',  side: 'brit', name: 'Major Howard and company HQ', division: 'Howard', type: 'airlanding', cols: 3, rows: 2, power: 1.0, x: 1112, y: 812, offmap: true,
         count: 'About 10 men', confidence: 'british', note: 'Howard set up beside the pillbox on the east bank, from where he could see both bridges, and sent the signal Ham and Jam: both bridges taken intact.' },
-      { id: 'sap', side: 'brit', name: 'Royal Engineers (Neilson)', division: 'Sappers', type: 'airlanding', cols: 4, rows: 2, power: .8, x: 1060, y: 860, offmap: true,
+      { id: 'sap', side: 'brit', name: 'Royal Engineers (Neilson)', division: 'Sappers', type: 'airlanding', cols: 4, rows: 2, power: .8, x: 1162, y: 852, offmap: true,
         count: '30 sappers', confidence: 'british', note: 'Searched the bridges for the demolition charges and found the chambers empty: the explosives were in a shed nearby and had never been fitted.' },
-      { id: 'piat', side: 'brit', name: 'PIAT team (Sergeant Thornton)', division: 'PIAT', type: 'piat', cols: 2, rows: 1, power: 1.0, x: 1010, y: 840, offmap: true,
+      { id: 'piat', side: 'brit', name: 'PIAT team (Sergeant Thornton)', division: 'PIAT', type: 'piat', cols: 2, rows: 1, power: 1.0, x: 1124, y: 822, offmap: true,
         count: '2 men, one PIAT, two bombs', confidence: 'british', note: 'Wagger Thornton lay in a ditch at the T-junction in Bénouville and hit the leading tank with his first bomb. The second tank turned back. It was the moment of the night.' },
-      { id: 'g4',  side: 'brit', name: 'No 17 Platoon (Fox), glider 5', division: 'Glider 5', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1760, y: 560, offmap: true, glider: true,
+      { id: 'g4',  side: 'brit', name: 'No 17 Platoon (Fox), glider 5', division: 'Glider 5', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1820, y: 496, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed three hundred yards from the river bridge and rushed it. A machine gun fired a few bursts and the crew ran. The bridge was taken without loss.' },
-      { id: 'g5',  side: 'brit', name: 'No 23 Platoon (Sweeney), glider 6', division: 'Glider 6', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1680, y: 620, offmap: true, glider: true,
+      { id: 'g5',  side: 'brit', name: 'No 23 Platoon (Sweeney), glider 6', division: 'Glider 6', type: 'airlanding', cols: 5, rows: 3, power: 1.1, x: 1736, y: 514, offmap: true, glider: true,
         count: '28 men and 2 pilots', confidence: 'british', note: 'Landed seven hundred yards short and arrived at the river bridge at the run to find Fox already across. Glider 4, Priday’s, was released in the wrong place and landed on the River Dives eight miles east.' },
       { id: 'pA',  side: 'brit', name: 'A Company, 7th Parachute Battalion', division: 'A Coy 7 Para', type: 'para', cols: 6, rows: 3, power: 1.0, x: 2160, y: -20, offmap: true,
         count: 'About 60 men who found the rendezvous', confidence: 'british', note: 'The battalion was scattered in the drop; a third of it never reached the bridges. A Company held Bénouville through the morning against the counter-attacks.' },
@@ -250,11 +250,11 @@ window.BATTLE_SCENARIO = {
     ],
 
     events: [
-      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1060, y: 890 },
+      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1200, y: 640 }, zoom: .8,
         text: 'Sixteen minutes past midnight. Out of the dark at ninety miles an hour, the first Horsa hits the ground, bounces, smashes through the wire and stops with its nose forty-seven yards from the canal bridge. The second and third land within a minute. Nobody on the bridge has heard a thing.',
         explain: 'The gliders were released at 6,000 feet over the coast and flew seven miles by stopwatch, making two timed turns in cloud. Wallwork, in the lead, aimed for the wire at the end of the field to stop the glider before the embankment: he hit it, and the two pilots went through the windscreen. Everyone aboard was stunned for a few seconds; some of the men thought they were dead.',
         orders: [
-          { id: 'g1', lift: 'glider', delay: 0 }, { id: 'hq', lift: 'glider', delay: .5 }, { id: 'sap', lift: 'glider', delay: 1 }, { id: 'piat', lift: 'glider', delay: 1 },
+          { id: 'g1', lift: 'glider', delay: 0 }, { id: 'hq', visible: true, state: 'hold', delay: 9 }, { id: 'sap', visible: true, state: 'hold', delay: 9.5 }, { id: 'piat', visible: true, state: 'hold', delay: 9.5 },
           { id: 'g2', lift: 'glider', delay: 4 }, { id: 'g3', lift: 'glider', delay: 7 },
           { id: 'gar', visible: false, state: 'hold' }, { id: 'gun', visible: false, state: 'hold' }
         ] },
@@ -315,7 +315,7 @@ window.BATTLE_SCENARIO = {
       { t: 146, title: 'The gunboat', tag: 'british', clock: '09:00', focus: { x: 865, y: 360 },
         text: 'Two German gunboats come down the canal from Ouistreham, the leading one firing a 20 mm cannon at the bridge. A PIAT bomb from the east bank hits it below the wheelhouse; it slews into the bank and its crew are taken prisoner. The second boat turns back for the sea.',
         explain: 'The boats were from the naval base at Ouistreham, sent to find out what was happening at the bridge. It was the second time that morning the PIAT, the weapon nobody trusted, had decided a fight. The commandos landing on Sword at that moment were four hours away.',
-        orders: [ { id: 'boat', visible: true, to: { x: 865, y: 650 }, speed: 30, state: 'attack' }, { id: 'boat', strengthTo: 0, over: 4, delay: 7 }, { fire: { kind: 'smoke', at: { x: 865, y: 655 }, r: 26, delay: 8, dmg: 0, life: 30 } } ] },
+        orders: [ { id: 'boat', visible: true, at: { x: 865, y: 180 }, to: { x: 865, y: 600 }, speed: 38, state: 'attack' }, { id: 'boat', strengthTo: 0, over: 3, delay: 11 }, { fire: { kind: 'smoke', at: { x: 865, y: 600 }, r: 26, delay: 11.5, dmg: 0, life: 30 } } ] },
       { t: 162, title: 'The bomb', tag: 'british', clock: '10:00', light: 'day', focus: { x: 865, y: 730 },
         text: 'A German fighter-bomber comes in low along the canal and drops a bomb on the canal bridge. It hits the tower, bounces off, and falls into the water without exploding. The bridge is not touched again from the air.',
         explain: 'A hit would have cut the road to the beaches for the airborne division. The dud was pure luck, and both accounts record it. Through the morning the Germans tried the bridge with tanks, infantry, a gunboat, snipers and an aircraft, and every attempt was too small and too late.',
