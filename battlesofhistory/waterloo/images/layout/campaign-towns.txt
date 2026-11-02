@@ -1,0 +1,23 @@
+1: Brussels
+2: Waterloo
+3: Mont-Saint-Jean
+4: La Belle Alliance
+5: Plancenoit
+6: Braine-l’Alleud
+7: Genappe
+8: Quatre Bras
+9: Frasnes
+10: Gosselies
+11: Charleroi
+12: Fleurus
+13: Ligny
+14: Saint-Amand
+15: Sombreffe
+16: Gembloux
+17: Wavre
+18: Nivelles
+19: Namur
+20: Walhain
+21: Tilly
+22: Mont-Saint-Guibert
+23: Chapelle-Saint-Lambert
