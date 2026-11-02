@@ -98,12 +98,9 @@ window.BATTLE_SCENARIO = {
       part: 'approach', focus: { x: 1420, y: 250 }, zoom: .38,
       markers: [ { x: 1456, y: 1000, label: 'Drop zone N' } ],
       orders: [
-        { flight: { img: 'dakota', pts: [[1340, -220], [1380, 1000], [1420, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 40.0 },
-        { flight: { img: 'dakota', pts: [[1400, -220], [1440, 1000], [1480, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 41.1 },
-        { flight: { img: 'dakota', pts: [[1460, -220], [1500, 1000], [1540, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 42.2 },
-        { flight: { img: 'dakota', pts: [[1370, -220], [1410, 1000], [1450, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 43.3 },
-        { flight: { img: 'dakota', pts: [[1430, -220], [1470, 1000], [1510, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 44.4 },
-        { flight: { img: 'dakota', pts: [[1400, -220], [1440, 1000], [1480, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 45.5 }
+{ flight: { img: 'dakota', pts: [[1350, -220], [1390, 1000], [1430, 1990]], speed: 320, w: 56, drop: { from: 920, to: 1080, every: .13 } }, delay: 40.0 },
+        { flight: { img: 'dakota', pts: [[1400, -220], [1440, 1000], [1480, 1990]], speed: 320, w: 56, drop: { from: 920, to: 1080, every: .13 } }, delay: 41.2 },
+        { flight: { img: 'dakota', pts: [[1450, -220], [1490, 1000], [1530, 1990]], speed: 320, w: 56, drop: { from: 920, to: 1080, every: .13 } }, delay: 42.4 }
       ],
       media: [
         { at: 0,  file: '03-john-howard.jpg', caption: 'Major John Howard, commanding D Company, 2nd Battalion, the Oxfordshire and Buckinghamshire Light Infantry: a former regimental sergeant-major and policeman who had trained his company for six months for this one night.', ref: 'British Army photograph, 1944', credit: 'Crown copyright expired, public domain (via ParaData)' },
