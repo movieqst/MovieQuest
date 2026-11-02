@@ -17,12 +17,12 @@ SENT = re.compile(r'[^.!?]+[.!?]+["”’)]*|[^.!?]+$')   # the same rule as the
 def sentences(t): return [x.strip() for x in (SENT.findall(t) or [t]) if x.strip()]
 
 DUMP = r"""
-global.window = {}; require(process.argv[1]);
-const S = window[Object.keys(window).find(k => /_SCENARIO$/.test(k))], out = {};
+const S = require(process.argv[1] + '/../tools/load-scenario.js')(process.argv[1], process.argv[2]), out = {};   // the page's text, in the voice's language
 (S.intro || []).forEach((sl, i) => { if (sl.choice) return; out['intro-' + (i + 1)] = { pre: [sl.title + '.'], text: (sl.lines || []).map(l => l.text).join(' ') }; });
 if (S.parts) S.parts.forEach(p => p.events.forEach((e, i) => { out['event-' + p.id + '-' + (i + 1)] = { pre: [], text: e.text }; if (S.parts.length === 1) out['event-' + (i + 1)] = { pre: [], text: e.text }; }));
 else (S.events || []).forEach((e, i) => { out['event-' + (i + 1)] = { pre: [], text: e.text }; });
 if (S.campaign) S.campaign.events.forEach((e, i) => { out['event-campaign-' + (i + 1)] = { pre: [], text: e.text }; });   // Waterloo's opening part, on its own map
+if (S.welcome) out['welcome'] = { pre: [], text: S.welcome };
 process.stdout.write(JSON.stringify(out));
 """
 
@@ -55,9 +55,14 @@ report = ['# Closed-caption check', '', 'Made by `tools/caption-timings.py`. Eac
           'Usually the text was changed after the clip was recorded. Re-record the clips listed here (all voices shown).', '']
 flagged_total = 0
 for b in BATTLES:
-    clips = json.loads(subprocess.check_output(['node', '-e', DUMP, os.path.join(ROOT, b, 'scenario.js')]))
+    CL = {}
+    def clips_for(lang):   # a voice folder named xx-something (fr-tom) reads the battle's lang-xx.js text
+        if lang not in CL: CL[lang] = json.loads(subprocess.check_output(['node', '-e', DUMP, os.path.join(ROOT, b), lang]))
+        return CL[lang]
     adir = os.path.join(ROOT, b, 'audio'); rows = []
     for v in sorted(d for d in os.listdir(adir) if os.path.isdir(os.path.join(adir, d))):
+        m = re.match(r'([a-z]{2})-', v); lang = m.group(1) if m and os.path.exists(os.path.join(ROOT, b, 'lang-%s.js' % m.group(1))) else 'en'
+        clips = clips_for(lang)
         timings, rates, info = {}, [], []
         for name, c in clips.items():
             f = os.path.join(adir, v, name + '.mp3')
