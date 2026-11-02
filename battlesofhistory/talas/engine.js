@@ -581,7 +581,22 @@ function moveFormation(f) {
 }
 
 /* ---------------- watch mode ---------------- */
+/* ---- music: a chapter can start a piece (ev.music: { file, vol } from audio/music/) or stop it (music: null); it ducks
+   under the narrator and fades when paused */
+const MUSIC = { el: new Audio(), file: '', target: 0 };
+function setMusic(m, instant) {
+  if (!m || !m.vol) { MUSIC.target = 0; if (instant) { MUSIC.el.pause(); MUSIC.el.volume = 0; MUSIC.file = ''; } return; }
+  if (MUSIC.file !== m.file) { MUSIC.file = m.file; MUSIC.el.src = (S.audioBase || 'audio/') + 'music/' + m.file; MUSIC.el.volume = 0; MUSIC.el.play().catch(() => {}); }
+  else if (MUSIC.el.paused) MUSIC.el.play().catch(() => {});
+  MUSIC.target = m.vol;
+}
+setInterval(() => {
+  const speaking = Narr.on && Narr.audio && !Narr.audio.paused && !Narr.audio.ended, want = MUSIC.target * (speaking ? .55 : 1) * (paused && mode !== 'intro' && !battleOver ? 0 : 1);
+  const v = MUSIC.el.volume, nv = Math.abs(want - v) < .01 ? want : v + (want - v) * .08; MUSIC.el.volume = Math.max(0, Math.min(1, nv));
+  if (MUSIC.target === 0 && MUSIC.el.volume < .005 && !MUSIC.el.paused) { MUSIC.el.pause(); MUSIC.file = ''; }
+}, 100);
 function fireEvent(ev) {
+  if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   currentEvent = ev; ev.orders.forEach(applyOrder); if (stage === 'campaign') markers = ev.markers || [];
   camForEvent(ev);
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
@@ -1099,12 +1114,13 @@ function showEstablishing() {
   establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
 }
 function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
-function startIntro() { hideEstablishing(); clearTimeout(stageT); mode = 'intro'; setStage('battle'); resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
+function startIntro() { setMusic(null, true); hideEstablishing(); clearTimeout(stageT); mode = 'intro'; setStage('battle'); resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
   if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
   hideEstablishing();
   const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
+  if (!(opts && opts.stage === 'battle')) setMusic(null, true);   // the music carries over from the campaign into the battle
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   clearTimeout(stageT); setStage(m === 'watch' && !(opts && opts.stage === 'battle') ? 'campaign' : 'battle');
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();

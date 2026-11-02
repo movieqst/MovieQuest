@@ -248,7 +248,7 @@ window.TALAS_SCENARIO = {
   const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; });
   const set = (i, o) => Object.assign(EV[i], o);
   // campaign (region map)
-  set(0, { t: 0, focus: { x: 1700, y: 800 }, zoom: .5, orders: [
+  set(0, { t: 0, music: { file: 'guqin-zuiyu-changwan.mp3', vol: .32 }, focus: { x: 1700, y: 800 }, zoom: .5, orders: [
     { id: 'c-tang', to: { x: TALAS_R.x + 70, y: TALAS_R.y + 10 }, via: [AKSU, BEDEL, ISSYK, SUYAB], speed: 120 },
     { leader: 'gao', to: { x: TALAS_R.x + 70, y: TALAS_R.y - 20 }, speed: 120 },
     { id: 'c-ferg', visible: true, to: { x: TALAS_R.x + 20, y: TALAS_R.y + 60 }, speed: 30, delay: 4 },
@@ -266,7 +266,7 @@ window.TALAS_SCENARIO = {
     ...['ainf', 'acavn', 'acavs'].map((id, k) => ({ id, visible: true, at: { x: 40 + k * 40, y: 1720 - k * 30 }, to: { x: L[id].x - 200, y: L[id].y + 160 }, via: [{ x: ATLAKH.x + 80, y: ATLAKH.y + 60 }], speed: 60, delay: k })),
     { leader: 'gao', visible: true, at: { x: 2390, y: 50 }, to: { x: 2060, y: 600 }, speed: 60 }, { leader: 'lisiye', visible: true, at: { x: 2390, y: 90 }, to: { x: 1960, y: 640 }, speed: 60 },
     { leader: 'ziyad', visible: true, at: { x: 60, y: 1700 }, to: { x: 1250, y: 720 }, via: [{ x: ATLAKH.x + 80, y: ATLAKH.y + 60 }], speed: 60 } ] });
-  set(3, { t: 14, zoom: 'fit', orders: [
+  set(3, { t: 14, music: null, zoom: 'fit', orders: [
     ...Object.keys(L).map(id => ({ id, to: L[id], speed: 40, then: 'hold' })),
     // a last step toward the enemy, so each line faces the other
     ...['xbow', 'inf', 'tcav', 'ferghana', 'karluk'].map(id => ({ id, to: { x: L[id].x - 4, y: L[id].y }, speed: 10, delay: 9, then: 'hold' })),
@@ -291,7 +291,7 @@ window.TALAS_SCENARIO = {
     { id: 'ainf', to: { x: 1900, y: 560 }, speed: 18, state: 'attack', delay: 3 }, { id: 'karluk', to: { x: 2100, y: 520 }, speed: 30, state: 'attack', delay: 2 },
     { leader: 'gao', to: { x: 2200, y: 330 }, speed: 40 }, { leader: 'lisiye', to: { x: 2170, y: 360 }, speed: 40 } ] });
   const RIDGE = { x: 2260, y: 170 };
-  set(8, { t: 84, focus: RIDGE, zoom: 1.2, markers: [ Object.assign({ label: 'White Stone Ridge (location unknown)' }, RIDGE) ], orders: [
+  set(8, { t: 84, music: { file: 'guqin-zuiyu-changwan.mp3', vol: .2 }, focus: RIDGE, zoom: 1.2, markers: [ Object.assign({ label: 'White Stone Ridge (location unknown)' }, RIDGE) ], orders: [
     { leader: 'gao', to: { x: RIDGE.x - 30, y: RIDGE.y + 50 }, speed: 30 }, { leader: 'lisiye', to: { x: RIDGE.x - 70, y: RIDGE.y + 70 }, speed: 30 } ] });
   set(9, { t: 98, focus: RIDGE, zoom: 1.4, orders: [
     { id: 'ferghana', to: { x: RIDGE.x + 10, y: RIDGE.y - 10 }, speed: 16, state: 'rout' },
@@ -301,7 +301,7 @@ window.TALAS_SCENARIO = {
     { leader: 'duan', visible: true, at: { x: 2230, y: 230 }, to: { x: 2220, y: 240 }, speed: 10 },
     { leader: 'lisiye', to: { x: 2190, y: 250 }, speed: 18 },
     { id: 'rear', visible: true, at: { x: 2260, y: 220 }, to: { x: 2160, y: 290 }, speed: 12, then: 'hold' } ] });
-  set(11, { t: 126, focus: { x: 1500, y: 900 }, zoom: .8, orders: [
+  set(11, { t: 126, music: null, focus: { x: 1500, y: 900 }, zoom: .8, orders: [
     { id: 'captive', visible: true, at: { x: 1860, y: 650 }, to: { x: 40, y: 1740 }, via: [{ x: ATLAKH.x + 80, y: ATLAKH.y + 60 }], speed: 30 },
     { id: 'acavs', to: { x: 60, y: 1690 }, via: [{ x: ATLAKH.x + 120, y: ATLAKH.y + 40 }], speed: 30, delay: 1 } ] });
   set(12, { t: 140, zoom: 'fit', orders: [
@@ -346,7 +346,8 @@ window.TALAS_SCENARIO = {
     { title: 'Du You, Tongdian (quoting Du Huan’s Jingxingji)', note: 'A captive’s account of the western lands.' },
     { title: 'Ibn al-Athir, al-Kamil fi al-Tarikh', note: 'The Arabic account of Ziyad ibn Salih’s victory.' },
     { title: 'Lin Meicun, The city of Talas and the Tang Silk Road (2021)', note: 'Where Talas stood.' },
-    { title: 'Kazakh and Kyrgyz research on Atlakh (2021–2022)', note: 'The battlefield south of Taraz, and the memorial at Joon-Döbö.' }
+    { title: 'Kazakh and Kyrgyz research on Atlakh (2021–2022)', note: 'The battlefield south of Taraz, and the memorial at Joon-Döbö.' },
+    { title: 'Music: Zuiyu Changwan (The Evening Song of the Drunken Fisherman), guqin', note: 'Played by Charlie Huang, 2013, from the Ming score Tianwen Ge Qinpu (1576); Wikimedia Commons, CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0). A Ming-era piece, chosen for the sound of the instrument, which was already ancient in 751; we shortened it and added a fade.' }
   ];
   S.library = [];
 
