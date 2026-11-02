@@ -814,7 +814,7 @@ function renderBriefing() {
   $('briefMeta').innerHTML = `<b>${S.date}</b> · ${S.place}<br>${S.tagline}`;
   $('confKey').innerHTML = Object.keys(S.confidence).map(k => `<div class="keyrow">${tagChip(k)}<span>${S.confidence[k].desc}</span></div>`).join('');
   $('sources').innerHTML = S.sources.map(s => `<li><b>${s.title}</b> — ${s.note}</li>`).join('');
-  const ps = $('partSel'), pm = $('pmPart'); if (ps) ps.innerHTML = S.parts.map((p, i) => `<option value="${i}">${p.title} · ${p.subtitle}</option>`).join(''); if (pm) pm.innerHTML = S.parts.map((p, i) => `<label><input type="radio" name="pmPart" value="${i}"${i === partIdx ? ' checked' : ''}> ${p.title} <span class="tiny">${p.subtitle}</span></label>`).join('');
+  const ps = $('partSel'), pm = $('pmPart'); if (ps) ps.innerHTML = S.parts.map((p, i) => `<option value="${i}">${p.title} · ${p.subtitle}</option>`).join(''); if (pm) pm.innerHTML = S.parts.map((p, i) => p.watchOnly ? '' : `<label><input type="radio" name="pmPart" value="${i}"${i === partIdx ? ' checked' : ''}> ${p.title} <span class="tiny">${p.subtitle}</span></label>`).join('');
   const ss = $('sideSel'); if (ss) ss.innerHTML = SIDE_IDS.map(sd => `<option value="${sd}">${SIDES[sd].name}</option>`).join('');
 }
 
@@ -1245,7 +1245,7 @@ $('armiesBtn').onclick = () => { if ($('unit').classList.contains('show')) hideO
 $('unitPrev').onclick = () => openUnit(unitIdx - 1);
 $('unitNext').onclick = () => openUnit(unitIdx + 1);
 $('unitPlate').onclick = () => { const u = (S.units || [])[unitIdx]; if (!u) return; const n = unitPhotos(u).length; if (n > 1) showUnitPhoto((unitPhoto + 1) % n); };
-const chosenPart = () => { const r = document.querySelector('input[name=pmPart]:checked'); return r ? +r.value : partIdx; };
+const chosenPart = () => { const r = document.querySelector('input[name=pmPart]:checked'); return r ? +r.value : Math.max(INTRO_PART, S.parts[partIdx].watchOnly ? INTRO_PART : partIdx); };
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
 $('debriefWatch').onclick = () => startMode('watch');
 $('debriefCommand').onclick = () => startMode('command');

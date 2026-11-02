@@ -193,8 +193,7 @@ window.BATTLE_SCENARIO = {
       auto: 45,
       lines: [
         { text: 'On the morning of 14 November Moore flew over the valley, chose X-Ray from three possible clearings, and ordered twenty minutes of artillery, rockets and air strikes on its edges. At 10:48 the first eight Hueys touched down with B Company and the battalion commander.', tag: 'us', cite: 'Moore, After Action Report; Moore & Galloway, ch. 5–6' },
-        { text: 'A kilometre away, on the slope, two regiments of the North Vietnamese army were resting. Whether the Americans had landed next to the enemy by luck or by design, the fight that followed decided how both armies would fight the rest of the war.', tag: 'established' },
-        { text: 'Choose how to see it: watch the reenactment as the sources describe it, or take command of either side and try to do better.', tag: 'reconstruction' }
+        { text: 'A kilometre away, on the slope, two regiments of the North Vietnamese army were resting. Whether the Americans had landed next to the enemy by luck or by design, the fight that followed decided how both armies would fight the rest of the war.', tag: 'established' }
       ]
     },
     {
