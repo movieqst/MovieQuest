@@ -153,7 +153,7 @@ window.BATTLES = [
     sides: 'Israel vs. Egypt, Jordan and Syria',
     sideColors: ['#2f6fc4', '#2e8b57'],
     blurb: 'In six days in June 1967, after weeks of rising tension, Israel struck the Egyptian air force on the ground, then fought on three fronts: across Sinai to the Suez Canal, into the West Bank and Jerusalem, and up the Golan Heights.',
-    cover: 'images/cover.jpg',
+    cover: 'images/cover.jpg', coverPos: '65% 50%',   // the half-track, not the helmet in the foreground
     coverCredit: 'Israeli half-tracks on the Golan Heights, 1967. Photo: Israel Press and Photo Agency (I.P.P.A.), Dan Hadani collection, National Library of Israel, CC BY 4.0',
     status: 'in progress'
   }
