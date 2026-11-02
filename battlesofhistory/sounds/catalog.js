@@ -14,6 +14,6 @@ window.BH_SOUNDS = [
     by: 'Iwan “qubodup” Gabovitch, 2014', used: 'Artillery moments (Vimy, the Six-Day War, and others as they are built)',
     licence: 'CC0 1.0 (public domain)', source: 'Freesound no. 239137', note: 'Loudness evened out.' },
   { battle: 'all', kind: 'Sound effect', file: 'sounds/lee-enfield-shot-01.mp3', title: 'Lee-Enfield rifle: shots and bolt action (5 clips)',
-    by: 'Recorded by MovieQuest at a firing range (an SMLE Mark IV, the rifle family of the British and Canadian infantry in both world wars)', used: 'Rifle fire for the Canadian and British infantry (Vimy, Dunkirk, Pegasus)',
-    licence: 'Our own recording, used with permission', source: 'MovieQuest', note: 'Three shots and two of the bolt being worked; loudness evened out. This player plays the first shot.' }
+    by: 'Recorded by Kris Eyvindson at a firing range (an SMLE Mark IV, the rifle family of the British and Canadian infantry in both world wars)', used: 'Rifle fire for the Canadian and British infantry (Vimy, Dunkirk, Pegasus)',
+    licence: 'Recorded for Battles of History, used with permission', source: 'Kris Eyvindson', note: 'Three shots and two of the bolt being worked; loudness evened out. This player plays the first shot.' }
 ];
