@@ -9,6 +9,12 @@ const S = window.WATERLOO_SCENARIO, W = S.world, B = S.battlefield;
 if (!B.city) B.city = { name: '', x: -1e5, y: -1e5, w: 0, h: 0 };
 if (!B.camp) B.camp = { name: '', x: -1e5, y: -1e5, w: 0, h: 0 };
 if (!B.bridge) B.bridge = { x: -1e5, y: -1e5 };
+/* The campaign (S.campaign): an opening part on its own map (15 to 17 June), played in Watch mode before the battle.
+   setStage() swaps the chapters, formations, leaders, length and map; the battle's own are kept in BATTLE. Both maps are
+   2400 x 1800 world pixels. Command mode is always the battle. */
+const BATTLE = { events: S.events, formations: S.formations, leaders: S.leaders, duration: S.duration };
+const CAMP = S.campaign || null;
+let stage = 'battle', stageT = null;
 const $ = id => document.getElementById(id);
 const canvas = $('battle'), ctx = canvas.getContext('2d');
 const mini = $('minimap'), mctx = mini.getContext('2d');
@@ -43,6 +49,7 @@ const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').
 const tagChip = (tag, cite) => { const c = S.confidence[tag] || S.confidence.reconstruction; return `<button class="chip" style="--c:${c.color}" title="${c.desc} Click for the sources." data-tag="${tag}" data-cite="${esc(cite)}">${c.label}</button>`; };
 let voiceId = (S.voices && S.voices[0]) ? S.voices[0].id : '';
 try { const v = localStorage.getItem('waterloo-voice'); if (v && S.voices.some(x => x.id === v)) voiceId = v; } catch (e) {}
+const evAudio = ev => ev.audio || audioFor(stage === 'campaign' ? 'event-campaign' : 'event', S.events.indexOf(ev) + 1);
 const audioFor = (kind, n) => S.audioBase ? S.audioBase + (voiceId ? voiceId + '/' : '') + kind + (n !== undefined ? '-' + n : '') + '.mp3' : undefined;
 
 function riverXAt(y) {
@@ -571,11 +578,11 @@ function moveFormation(f) {
 
 /* ---------------- watch mode ---------------- */
 function fireEvent(ev) {
-  currentEvent = ev; ev.orders.forEach(applyOrder);
+  currentEvent = ev; ev.orders.forEach(applyOrder); if (stage === 'campaign') markers = ev.markers || [];
   if (cam.follow && ev.zoom === 'fit') showWholeMap();
   else if (cam.follow && ev.focus) { if (ev.zoom || view.z < WATCH_Z - .01) cam.tz = ev.zoom || WATCH_Z; frame(ev.focus.x, ev.focus.y); }
-  caption(ev.title, ev.text, ev.tag, !fastForward, ev.audio || audioFor('event', S.events.indexOf(ev) + 1), ev.cite);
-  addLog(fmtTime(ev.t) + ' ' + ev.title);
+  caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
+  addLog((stage === 'campaign' && ev.clock ? ev.clock : fmtTime(ev.t)) + ' ' + ev.title);
   renderTimeline();
   if (ev.end && !fastForward) endWatch();
 }
@@ -583,7 +590,7 @@ function fireEvent(ev) {
    Each has its own painted sheet (images/units/leader-<id>.png, 240x200 cells like the cavalry); until it arrives a
    rider of the side's cavalry stands in. Moved by event orders { leader: 'ney', to: {x, y} }. They take no part in the fighting. */
 let leaders = [];
-(S.leaders || []).forEach(L => { const im = new Image(); im.onload = () => { SHEETS['leader-' + L.id] = im; }; im.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '.png'; });
+[...new Map((S.leaders || []).concat(CAMP ? CAMP.leaders || [] : []).filter(L => !L.noSheet).map(L => [L.id, L])).values()].forEach(L => { const im = new Image(); im.onload = () => { SHEETS['leader-' + L.id] = im; }; im.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '.png'; });
 function createLeaders() { leaders = (S.leaders || []).map(L => Object.assign({}, L, { tx: L.x, ty: L.y, shown: !L.hidden, facing: L.facing !== undefined ? L.facing : -PI / 2, state: 'hold' })); }
 function moveLeaders() { leaders.forEach(L => { const dx = L.tx - L.x, dy = L.ty - L.y, d = Math.hypot(dx, dy);
   if (d > 2) { const st = Math.min(d, (L.speed || 70) * DT); L.x += dx / d * st; L.y += dy / d * st; L.facing = Math.atan2(dy, dx); L.state = 'move'; } else L.state = 'hold'; }); }
@@ -598,14 +605,22 @@ function drawLeader(c, L) {
 function stepWatch() {
   while (eventIndex < S.events.length && S.events[eventIndex].t <= simTime) fireEvent(S.events[eventIndex++]);
   formations.forEach(moveFormation); moveLeaders(); artillery(false);
-  if (simTime >= S.duration && !battleOver && !fastForward) endWatch();
+  if (simTime >= S.duration && !battleOver && !fastForward) { if (stage === 'campaign') toBattle(); else endWatch(); }
+}
+// The end of the campaign: the camera closes in on the ridge of Mont-Saint-Jean, then the battle map takes over.
+function toBattle() { battleOver = 'next'; if (cam.follow) { cam.tz = 2.2; frame(825, 680); } clearTimeout(stageT); stageT = setTimeout(() => startMode('watch', { stage: 'battle' }), 2600); }
+function setStage(st) {
+  if (st === 'campaign' && !CAMP) st = 'battle';
+  stage = st; const src = st === 'campaign' ? CAMP : BATTLE;
+  S.events = src.events; S.formations = src.formations; S.leaders = src.leaders; S.duration = src.duration;
+  document.body.dataset.stage = st; applyArt();
 }
 function endWatch() { battleOver = 'history'; paused = true; showDebrief(); }
 function jumpTo(t) {
   fastForward = true; resetSim(); 
   while (simTime < t) { simTime += DT; stepWatch(); }
   fastForward = false; paused = false; battleOver = null; hideOverlay('debrief');
-  if (currentEvent) caption(currentEvent.title, currentEvent.text, currentEvent.tag, true, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1), currentEvent.cite);
+  if (currentEvent) caption(currentEvent.title, currentEvent.text, currentEvent.tag, true, evAudio(currentEvent), currentEvent.cite);
   updatePauseBtn(); $('clock').textContent = fmtTime(simTime); render();
   if (currentEvent && currentEvent.end) endWatch();
 }
@@ -778,10 +793,11 @@ function render() {
   }
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
-  PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
+  if (stage !== 'campaign') PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
   formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
   drawSmoke(ctx);
+  if (mode === 'watch' && currentEvent && currentEvent.rain) drawRain(ctx);
   // aim lines from the player's selected batteries to their targets: dashed while laying, solid once the guns are on
   formations.forEach(f => { const g = f.gun, t = g && g.target && byId[g.target]; if (!t || f.side !== player || !selected.has(f.id) || !alive(t)) return;
     const a = P(f.x, f.y - 8), b = P(t.x, t.y - 8), laid = g.laid >= GUN.lay; ctx.save(); ctx.strokeStyle = g.mode === 'auto' || g.mode === 'fire' ? '#ff6a4a' : '#ffd36b'; ctx.lineWidth = 2;
@@ -806,20 +822,26 @@ function render() {
     ctx.fillStyle = 'rgba(255,211,107,.12)'; ctx.fill(); ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 2; ctx.setLineDash([8, 6]); ctx.stroke(); ctx.setLineDash([]);
   }
   // scale bar (at the near edge of the view)
-  const sb = B.scale.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55;
+  const SCL = stage === 'campaign' ? CAMP.scale : B.scale, sb = SCL.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55;
   ctx.fillRect(300, sy0 - 20, sb + 16, 20);
-  ctx.fillStyle = '#e9c77a'; ctx.fillRect(308, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'left'; ctx.fillText(B.scale.label, 308, sy0 - 10); ctx.restore();
+  ctx.fillStyle = '#e9c77a'; ctx.fillRect(308, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'left'; ctx.fillText(SCL.label, 308, sy0 - 10); ctx.restore();
   drawMini();
+}
+// Rain over the whole view (campaign chapters with rain: true): a darker sky and falling streaks.
+function drawRain(c) {
+  c.save(); c.fillStyle = 'rgba(16,24,36,.22)'; c.fillRect(0, 0, view.w, view.h); c.strokeStyle = 'rgba(205,218,235,.38)'; c.lineWidth = 1; c.beginPath();
+  for (let i = 0; i < 280; i++) { const x = ((jitter(i, 21) * view.w - wall * 90) % view.w + view.w) % view.w, y = (jitter(i, 22) * view.h + wall * 620 * (.8 + jitter(i, 23) * .4)) % view.h; c.moveTo(x, y); c.lineTo(x - 5, y + 17); }
+  c.stroke(); c.restore();
 }
 function buildMiniBase() {
   MINIBASE = document.createElement('canvas'); MINIBASE.width = mini.width; MINIBASE.height = mini.height;
-  const g = MINIBASE.getContext('2d'); g.drawImage(TER, 0, 0, mini.width, mini.height);
+  const g = MINIBASE.getContext('2d'); if (!TER) return; g.drawImage(TER, 0, 0, mini.width, mini.height); if (stage === 'campaign') return;
   const sx = mini.width / W.w, sy = mini.height / W.h; g.fillStyle = '#4a6a36'; PROPS.forEach(p => { if (p.kind === 'tree') g.fillRect(p.x * sx - 1, p.y * sy - 1, 2, 2); });
   g.fillStyle = '#8c7d5a'; g.fillRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy); g.strokeStyle = '#4d4230'; g.lineWidth = 1; g.strokeRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy);
 }
 function drawMini() {
   const w = mini.width, h = mini.height, sx = w / W.w, sy = h / W.h;
-  mctx.drawImage(MINIBASE, 0, 0);
+  mctx.fillStyle = '#000'; mctx.fillRect(0, 0, w, h); if (TER) mctx.drawImage(MINIBASE, 0, 0);
   formations.forEach(f => { if (!f.present || !alive(f)) return; if (!f.known && mode === 'command' && f.side !== player) return; mctx.globalAlpha = (f.known || (mode === 'command' && f.side === player)) ? 1 : .45; mctx.fillStyle = SIDE_ART[f.side].pennant; mctx.strokeStyle = '#fff'; mctx.lineWidth = .8; mctx.beginPath(); mctx.arc(f.x * sx, f.y * sy, f.type === 'chariot' ? 3.6 : 3, 0, PI * 2); mctx.fill(); mctx.stroke(); });
   mctx.globalAlpha = 1; mctx.strokeStyle = '#ff3030'; mctx.lineWidth = 2.5; const q = [U(0, 0), U(view.w, 0), U(view.w, view.h), U(0, view.h)];
   mctx.beginPath(); q.forEach((p, i) => i ? mctx.lineTo(p.x * sx, p.y * sy) : mctx.moveTo(p.x * sx, p.y * sy)); mctx.closePath(); mctx.stroke();
@@ -855,7 +877,7 @@ const Narr = {
   },
   stop() { clearTimeout(this.leadT); this.next = null; if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
-  set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '\ud83d\udd0a Voice' : '\ud83d\udd07 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
+  set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '\ud83d\udd0a Voice' : '\ud83d\udd07 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, evAudio(currentEvent)); },
   toggle() { this.set(!this.on); }
 };
 // The first slide opens with the welcome line (S.welcome, clip welcome.mp3) when it has been recorded.
@@ -897,8 +919,9 @@ function renderTimeline() {
   tl.innerHTML = S.events.map(e => `<button class="tick${currentEvent === e ? ' on' : ''}" style="left:${e.t / S.duration * 100}%" data-t="${e.t}" title="${fmtTime(e.t)} ${e.title}"></button>`).join('') + `<i id="tlNow" style="left:${simTime / S.duration * 100}%"></i>`;
   tl.querySelectorAll('.tick').forEach(b => b.onclick = ev => { ev.stopPropagation(); jumpTo(+b.dataset.t); });
   tl.onclick = ev => { const r = tl.getBoundingClientRect(); jumpTo(clamp((ev.clientX - r.left) / r.width, 0, 1) * S.duration); };
-  $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
+  $('eventList').innerHTML = (CAMP && mode === 'watch' ? `<div class="stagesel"><button data-st="campaign" class="${stage === 'campaign' ? 'on' : ''}">The campaign <i>15–17 June</i></button><button data-st="battle" class="${stage === 'battle' ? 'on' : ''}">The battle <i>18 June</i></button></div>` : '') + S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${stage === 'campaign' && e.clock ? e.clock : fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
+  $('eventList').querySelectorAll('.stagesel button').forEach(b => b.onclick = () => startMode('watch', { stage: b.dataset.st }));
 }
 const PN = u => u.portrait || ((SHEET_BY[u.side] || {})[u.type] || u.side + '-' + u.type);   // portrait file name; the painted figure is the fallback
 function unitSprite(c, u, big) {
@@ -1038,13 +1061,14 @@ function showEstablishing() {
   establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
 }
 function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
-function startIntro() { hideEstablishing(); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
+function startIntro() { hideEstablishing(); clearTimeout(stageT); mode = 'intro'; setStage('battle'); resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
   if (G && window.WATERLOO_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
   hideEstablishing();
   const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
+  clearTimeout(stageT); setStage(m === 'watch' && !(opts && opts.stage === 'battle') ? 'campaign' : 'battle');
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m; $('caption').classList.remove('show'); placeMedia();
   renderTimeline(); renderSelection();
@@ -1310,12 +1334,12 @@ $('watchBtn').onclick = () => startMode('watch');
 // Take command: ask which side to lead (the same menu as the start screen, without the reenactment button).
 $('commandBtn').onclick = () => { $('playMenu').classList.add('show', 'cmdpick'); };
 $('pauseBtn').onclick = togglePause;
-$('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode); };
+$('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode, { stage }); };
 $('speedSel').onchange = e => { speed = +e.target.value; $('ffBtn').classList.toggle('active', speed > 1); $('ffBtn').textContent = speed > 1 ? '\u23e9 ' + speed + '\u00d7' : '\u23e9 FF'; };
 // FF: 1x -> 2x -> 4x -> back to 1x
 $('ffBtn').onclick = () => { speed = speed >= 4 ? 1 : speed >= 2 ? 4 : 2; $('speedSel').value = String(speed); $('speedSel').onchange({ target: $('speedSel') }); };
 // Skip: jump to the start of the next chapter (Watch mode)
-function skipChapter() { if (mode !== 'watch') return; const next = S.events.find(e => e.t > simTime + .01); if (next) jumpTo(next.t); }
+function skipChapter() { if (mode !== 'watch') return; const next = S.events.find(e => e.t > simTime + .01); if (next) jumpTo(next.t); else if (stage === 'campaign') startMode('watch', { stage: 'battle' }); }
 $('skipBtn').onclick = skipChapter;
 $('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) frame(currentEvent.focus.x, currentEvent.focus.y); };
 $('explainBtn').onclick = showExplain;
@@ -1325,7 +1349,7 @@ document.addEventListener('click', e => { if (!e.target.closest('#voiceWrap')) $
 $('voiceBtn').onclick = () => Narr.toggle();
 if (S.voices && S.voices.length) {
   const sel = $('voiceSel'); sel.innerHTML = S.voices.map(v => `<option value="${v.id}"${v.id === voiceId ? ' selected' : ''}>${v.name}</option>`).join('');
-  sel.onchange = () => { voiceId = sel.value; try { localStorage.setItem('waterloo-voice', voiceId); } catch (e) {} if (Narr.on) { if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) Narr.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); } };
+  sel.onchange = () => { voiceId = sel.value; try { localStorage.setItem('waterloo-voice', voiceId); } catch (e) {} if (Narr.on) { if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) Narr.speak(currentEvent.text, evAudio(currentEvent)); } };
 } else $('voiceSel').style.display = 'none';
 try { const r = parseFloat(localStorage.getItem('waterloo-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
 $('voiceRate').value = String(Narr.rate);
@@ -1383,10 +1407,10 @@ function tick(t) {
     acc += dt * speed;
     while (acc >= DT) {
       // In Watch mode, hold at a chapter boundary while the narrator is still speaking the previous one.
-      if (mode === 'watch' && Narr.on && Narr.audio && (!Narr.audio.ended || wall - Narr.endedAt < CHAPTER_BREAK) && eventIndex < S.events.length && S.events[eventIndex].t <= simTime + DT) { acc = 0; break; }
+      if (mode === 'watch' && Narr.on && Narr.audio && (!Narr.audio.ended || wall - Narr.endedAt < CHAPTER_BREAK) && ((eventIndex < S.events.length && S.events[eventIndex].t <= simTime + DT) || (stage === 'campaign' && simTime + DT >= S.duration))) { acc = 0; break; }
       acc -= DT; simTime += DT; if (mode === 'watch') stepWatch(); else stepCommand();
     }
-    $('clock').textContent = fmtTime(simTime); const now = $('tlNow'); if (now) now.style.left = (simTime / S.duration * 100) + '%';
+    $('clock').textContent = stage === 'campaign' && currentEvent && currentEvent.clock ? currentEvent.clock : fmtTime(simTime); const now = $('tlNow'); if (now) now.style.left = (simTime / S.duration * 100) + '%';
   }
   render(); requestAnimationFrame(tick);
 }
@@ -1400,10 +1424,17 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
     B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
     PAINTEDTER = T; applyArt(); }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
 function applyArt() {
+  if (stage === 'campaign') { TER = CAMPTER; PAINTED = true; buildMiniBase(); return; }
   if (artOn && PAINTEDTER) { TER = PAINTEDTER; PAINTED = true; }
   else { if (!DRAWNTER) DRAWNTER = buildTerrain(); TER = DRAWNTER; PAINTED = false; }
   buildMiniBase(); document.body.classList.toggle('drawnmode', !artOn); const b = $('artBtn'); if (b) { b.classList.toggle('active', artOn); b.textContent = artOn ? '\ud83c\udfa8 Art' : '\u270f Drawn'; b.title = artOn ? 'Painted battlefield (click for the drawn map)' : 'Drawn battlefield (click for the painting)'; }
 }
+// The campaign map (S.campaign.terrain), with the towns written on it.
+let CAMPTER = null;
+if (CAMP) { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height); g.scale(TS, TS);
+    CAMP.towns.forEach(t => { g.fillStyle = '#1b130a'; g.beginPath(); g.arc(t.x, t.y, t.big ? 9 : 6, 0, PI * 2); g.fill(); g.fillStyle = t.big ? '#ffd36b' : '#f6e9c6'; g.beginPath(); g.arc(t.x, t.y, t.big ? 6 : 4, 0, PI * 2); g.fill();
+      outlined(g, t.name, t.x, t.y - (t.big ? 26 : 19), t.big ? 30 : 20, { fill: t.big ? '#ffe7a8' : '#f6e9c6' }); });
+    CAMPTER = T; if (stage === 'campaign') applyArt(); }; img.src = (S.imageBase || 'images/') + CAMP.terrain; }
 $('artBtn').onclick = () => { artOn = !artOn; try { localStorage.setItem('waterloo-art', artOn ? '1' : '0'); } catch (e) {} applyArt(); };
 // When the title font finishes loading, redo the drawn labels; never overwrite a painting that has already arrived.
 if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { DRAWNTER = buildTerrain(); applyArt(); }).catch(() => {});

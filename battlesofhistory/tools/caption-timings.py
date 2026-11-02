@@ -22,6 +22,7 @@ const S = window[Object.keys(window).find(k => /_SCENARIO$/.test(k))], out = {};
 (S.intro || []).forEach((sl, i) => { if (sl.choice) return; out['intro-' + (i + 1)] = { pre: [sl.title + '.'], text: (sl.lines || []).map(l => l.text).join(' ') }; });
 if (S.parts) S.parts.forEach(p => p.events.forEach((e, i) => { out['event-' + p.id + '-' + (i + 1)] = { pre: [], text: e.text }; if (S.parts.length === 1) out['event-' + (i + 1)] = { pre: [], text: e.text }; }));
 else (S.events || []).forEach((e, i) => { out['event-' + (i + 1)] = { pre: [], text: e.text }; });
+if (S.campaign) S.campaign.events.forEach((e, i) => { out['event-campaign-' + (i + 1)] = { pre: [], text: e.text }; });   // Waterloo's opening part, on its own map
 process.stdout.write(JSON.stringify(out));
 """
 
