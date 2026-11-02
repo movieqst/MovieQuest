@@ -1,0 +1,17 @@
+# Vimy Ridge: pictures collected so far
+
+| file | what | source and licence |
+|---|---|---|
+| 01-machine-gun-crews.jpg | Canadian machine gunners dig in, in shell holes on Vimy Ridge, April 1917 | Canada, Dept. of National Defence; Library and Archives Canada PA-001017; IWM CO 1146. Public domain |
+| 02-28th-battalion-signal-station.jpg | The 28th Battalion sets up a signal station, April 1917 | Canada, Dept. of National Defence; LAC PA-001096. Public domain (also CC BY 2.0 via LAC Flickr) |
+| 03-consolidating-positions.jpg | Canadians consolidating their positions on the ridge, April 1917 (foreground: Pte Townsend Valentine) | Canada, Dept. of National Defence; LAC PA-001085. Public domain |
+| 04-vimy-ridge-turner.jpg | Official war photo of Vimy Ridge, 1917 | Photo: Jack Turner; Collections Canada. Public domain |
+| 05-troops-returning.jpg | Canadian troops on their way to a rest period after the capture of the ridge, May 1917 | Photo: W. I. Castle, official Canadian war photographer; LAC PA-001267. Public domain |
+| 10-map-arras-vimy-1917.png | Map of the Battle of Arras, April 1917, with Vimy Ridge (front-line divisions of 9 April) | Usedtoknowthat, Wikimedia Commons, based on the US Military Academy map. CC BY-SA 4.0: credit the author and share alike |
+| 06-bringing-in-the-wounded.jpg | Bringing in the wounded, April 1917: German prisoners carry a stretcher, a Canadian soldier behind | Canada, Dept. of National Defence; LAC PA-001042 (MIKAN 3521651). CC BY 2.0 via LAC Flickr; public domain in Canada |
+| 07-battered-german-trench.jpg | A battered German trench on Vimy Ridge, captured by the Canadians, April 1917 | Canada, Dept. of National Defence; LAC PA-001150 (MIKAN 3521598). Public domain |
+| 08-richard-jack-taking-of-vimy-ridge.jpg | Richard Jack, *The Taking of Vimy Ridge, Easter Monday 1917* (1919): gunners loading a QF 4.5-inch howitzer, the ridge under bombardment behind | Canadian War Museum 19710261-0160. Public domain (the artist died in 1952) |
+| 09-pack-horses-ammunition.jpg | Pack horses carry shells to the 20th Battery, Canadian Field Artillery, through the mud of Neuville-Saint-Vaast, April 1917 | Photo: W. I. Castle; LAC PA-001231 (MIKAN 3194763). Public domain |
+| 11-byng-and-prince-arthur-german-mortar.jpg | Lt-Gen Sir Julian Byng, commander of the Canadian Corps (left), watches Prince Arthur of Connaught work a German light trench mortar captured at Vimy, May 1917 | Canada, Dept. of National Defence; LAC PA-001268 (MIKAN 3397824). Public domain |
+| cover.jpg, 12-longstaff-ghosts-of-vimy-ridge.jpg | Will Longstaff, *Ghosts of Vimy Ridge* (about 1929): the ghosts of the Canadian Corps around the Vimy Memorial | House of Commons Heritage Collection O-4714. Public domain (the artist died in 1953) |
+| 13-grange-subway-today.jpg | The preserved Grange Subway at the Vimy memorial park today | source to confirm (sent from ChatGPT's research) |

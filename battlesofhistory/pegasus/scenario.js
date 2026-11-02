@@ -96,7 +96,19 @@ window.BATTLE_SCENARIO = {
     {
       title: 'The British force',
       part: 'approach', focus: { x: 1420, y: 250 }, zoom: .38,
-      markers: [ { x: 1456, y: 1000, label: 'Drop zone N' } ],
+      // briefing marks, each when the narrator reaches it (real positions on the area map)
+      cues: [
+        { on: 'D Company', unit: { x: 1040, y: 1010, kind: 'inf', side: 'brit', size: 'I', label: 'D Coy, 2nd Ox and Bucks' } },
+        { on: 'three for each bridge', ring: { x: 1219, y: 878, r: 12, label: 'Canal bridge: 3 gliders', lx: -20, ly: -22, align: 'right' } },
+        { on: 'three for each bridge', delay: .8, ring: { x: 1343, y: 887, r: 12, label: 'River bridge: 3 gliders', lx: 16, ly: 22, align: 'left' } },
+        { on: 'football pitch', ring: { x: 1262, y: 935, r: 10, label: 'The landing field', lx: -14, ly: 24, align: 'right' } },
+        { on: 'football pitch', delay: .5, arrow: { pts: [[1960, 340], [1720, 1140], [1500, 1030], [1285, 935]], label: 'Gliders from the coast', dx: 80, dy: 0 } },
+        { on: '7th Parachute Battalion', ring: { x: 1472, y: 840, r: 16, label: 'Drop zone N', lx: 22, ly: -16, align: 'left' } },
+        { on: '7th Parachute Battalion', delay: .6, unit: { x: 1640, y: 690, kind: 'airborne', side: 'brit', size: 'II', label: '7th Para Bn' } },
+        { on: '7th Parachute Battalion', delay: 2.5, arrow: { pts: [[1460, 852], [1400, 880], [1360, 888]] } },
+        { on: 'Lord Lovat', delay: 5, unit: { x: 1000, y: 230, kind: 'commando', side: 'brit', size: 'X', label: '1st SS Bde (Lovat)' } },
+        { on: 'Lord Lovat', delay: 7, arrow: { pts: [[1060, 260], [980, 340], [1080, 600], [1190, 690], [1212, 860]], label: 'Six miles, due by noon', dx: -70, dy: 0 } }
+      ],
       media: [
         { at: 0,  file: '03-john-howard.jpg', caption: 'Major John Howard, commanding D Company, 2nd Battalion, the Oxfordshire and Buckinghamshire Light Infantry: a former regimental sergeant-major and policeman who had trained his company for six months for this one night.', ref: 'British Army photograph, 1944', credit: 'Crown copyright expired, public domain (via ParaData)' },
         { at: 8, file: '40-map-glider-route.jpg', caption: 'The flight: six Halifax bombers of 298 and 644 Squadrons towed the six gliders from RAF Tarrant Rushton in Dorset across the Channel. The gliders cast off near the coast and glided down to the bridges; the Halifaxes went on to a diversion raid and flew home.', ref: 'Routes approximate', credit: 'Map: Battle Games, drawn from real elevation data' },

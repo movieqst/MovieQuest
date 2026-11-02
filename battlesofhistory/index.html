@@ -119,7 +119,7 @@
   const sidesHTML = (t, colors) => { const m = String(t || '').split(/\s+vs\.?\s+/i); const [ca, cb] = colors || ['#ff6a5c', '#6aa6ff']; return m.length === 2 ? `<span style="color:${ca}">${esc(m[0])}</span> <span class="vs">vs.</span> <span style="color:${cb}">${esc(m[1])}</span>` : esc(t); };
   document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.order || 0) - (a.order || 0)).map(b => `
     ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
-      <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')">
+      <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')${b.coverPos ? ';background-position:' + esc(b.coverPos) : ''}">
         <span class="era">${esc(b.era)}</span>
         <span class="status ${b.status === 'ready' ? 'ready' : b.status === 'coming soon' ? 'soon' : ''}">${esc(b.status)}</span>
         <div class="title"><h2>${esc(b.title)}</h2><div class="date">${esc(b.date)} · ${esc(b.place)}</div></div>

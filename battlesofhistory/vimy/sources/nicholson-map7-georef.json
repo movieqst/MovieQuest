@@ -1,0 +1,18 @@
+{
+ "file": "nicholson-map7-vimy-ridge-9-12-april-1917.jpg",
+ "note": "map pixel (x, y, 1) @ A = (lon, lat); fitted to SRTM height bands (80/100/120/140 m), correlation 0.876",
+ "A": [
+  [
+   9.33421e-05,
+   1.1872e-06
+  ],
+  [
+   -3.5342e-06,
+   -5.79062e-05
+  ],
+  [
+   2.6381732285,
+   50.4065664992
+  ]
+ ]
+}

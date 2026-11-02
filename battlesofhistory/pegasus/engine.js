@@ -760,7 +760,7 @@ function render() {
     ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
   });
-  drawNight(ctx);
+  drawNight(ctx); if (mode === 'intro') drawCues(ctx);   // the briefing marks stay bright over the night
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
@@ -930,6 +930,51 @@ function renderBriefing() {
 function showOverlay(id) { $(id).classList.add('show'); }
 let unitPausedIntro = false;
 function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'debrief' && typeof textOff !== 'undefined' && textOff) document.body.classList.add('textoff'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
+/* ---------------- briefing cues: on an introduction slide (sl.cues), rings, arrows and unit boxes appear on the map
+   when the narrator reaches a phrase, like a commander's briefing.
+   { on: 'phrase spoken', delay: s, ring: { x, y, label } }  |  { arrow: { pts: [[x, y], ...], label, col } }  |
+   { unit: { x, y, kind: 'inf' | 'airborne' | 'armour' | 'commando', side: 'brit' | 'ger', size: 'I' | 'II' | 'X' | 'XX', label } }
+   The phrase is matched against the closed caption sentence on screen; without captions, by how far the narration has got. */
+let cues = [];
+const CUE_COL = { brit: '#3d7fd8', ger: '#d24a3c' };
+function updateCues(sl, frac, done) {
+  if (!cues.length) return;
+  const cl = document.querySelector('.cl'), line = cl ? cl.textContent.toLowerCase() : '';
+  const full = (sl.title + '. ' + sl.lines.map(l => l.text).join(' ')).toLowerCase();
+  cues.forEach(c => { if (c.t0 !== undefined) return; const ph = (c.on || '').toLowerCase(), pos = full.indexOf(ph), at = pos < 0 ? 0 : pos / full.length;
+    if (done || (line && line.includes(ph)) || frac >= at + (line ? .05 : 0)) c.t0 = wall + (c.delay || 0); });
+}
+function drawCues(c) {
+  cues.forEach(q => {
+    if (q.t0 === undefined || wall < q.t0) return; const a = Math.min(1, (wall - q.t0) / .6);
+    c.save(); c.globalAlpha = a;
+    if (q.ring) { const p = P(q.ring.x, q.ring.y), r = (q.ring.r || 22) * (1 + .2 * Math.sin(wall * 3)), R = q.ring;
+      c.strokeStyle = '#ffd36b'; c.lineWidth = 3; c.beginPath(); c.arc(p.x, p.y, r, 0, PI * 2); c.stroke();
+      c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 8; c.beginPath(); c.arc(p.x, p.y, r + 7, 0, PI * 2); c.stroke();
+      // the label sits above the ring, or where `lx`/`ly` (screen pixels from the centre) and `align` put it
+      outlined(c, R.label, p.x + (R.lx || 0), p.y + (R.ly !== undefined ? R.ly : -(q.ring.r || 22) - 18), 14, { fill: '#fff3c9', align: R.align || 'center' }); }
+    if (q.arrow) { const pts = q.arrow.pts.map(([x, y]) => P(x, y)), grow = Math.min(1, (wall - q.t0) / 1.8), col = q.arrow.col || '#ffd36b';
+      let L = 0; const seg = []; for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y); seg.push(d); L += d; }
+      let left = L * grow; c.strokeStyle = col; c.fillStyle = col; c.lineWidth = 5; c.lineCap = 'round'; c.lineJoin = 'round'; c.setLineDash([14, 9]); c.beginPath(); c.moveTo(pts[0].x, pts[0].y);
+      let tip = pts[0], ang = 0;
+      for (let i = 1; i < pts.length && left > 0; i++) { const k = Math.min(1, left / seg[i - 1]), x = pts[i - 1].x + (pts[i].x - pts[i - 1].x) * k, y = pts[i - 1].y + (pts[i].y - pts[i - 1].y) * k;
+        c.lineTo(x, y); ang = Math.atan2(pts[i].y - pts[i - 1].y, pts[i].x - pts[i - 1].x); tip = { x, y }; left -= seg[i - 1]; }
+      c.shadowColor = 'rgba(0,0,0,.8)'; c.shadowBlur = 4; c.stroke(); c.setLineDash([]);
+      c.beginPath(); c.moveTo(tip.x + Math.cos(ang) * 10, tip.y + Math.sin(ang) * 10); c.lineTo(tip.x + Math.cos(ang + 2.5) * 18, tip.y + Math.sin(ang + 2.5) * 18); c.lineTo(tip.x + Math.cos(ang - 2.5) * 18, tip.y + Math.sin(ang - 2.5) * 18); c.closePath(); c.fill(); c.shadowBlur = 0;
+      if (q.arrow.label && grow > .5) { const m = pts[Math.floor(pts.length / 2)]; outlined(c, q.arrow.label, m.x + (q.arrow.dx || 0), m.y + (q.arrow.dy || -16), 13, { fill: '#fff3c9' }); } }
+    if (q.unit) { const u = q.unit, p = P(u.x, u.y), w = 46, h = 30, x0 = p.x - w / 2, y0 = p.y - h / 2;
+      c.shadowColor = 'rgba(0,0,0,.7)'; c.shadowBlur = 6; c.fillStyle = CUE_COL[u.side] || CUE_COL.brit; c.fillRect(x0, y0, w, h); c.shadowBlur = 0;
+      c.strokeStyle = '#f4f1e6'; c.lineWidth = 2; c.strokeRect(x0, y0, w, h); c.beginPath();
+      if (u.kind === 'armour') c.ellipse(p.x, p.y, w * .32, h * .26, 0, 0, PI * 2);
+      else { c.moveTo(x0, y0); c.lineTo(x0 + w, y0 + h); c.moveTo(x0 + w, y0); c.lineTo(x0, y0 + h); }
+      c.stroke();
+      if (u.kind === 'airborne') { c.beginPath(); c.arc(p.x - 5, y0 + h - 2, 5, PI, 0); c.arc(p.x + 5, y0 + h - 2, 5, PI, 0); c.stroke(); }   // the airborne wings
+      if (u.kind === 'commando') { c.fillStyle = '#2f7a3a'; c.beginPath(); c.arc(p.x, y0 + h / 2, 6, 0, PI * 2); c.fill(); c.stroke(); }    // the green beret
+      if (u.size) outlined(c, u.size, p.x, y0 - 8, 12, { fill: '#f4f1e6' });
+      if (u.label) outlined(c, u.label, p.x, y0 + h + 13, 13, { fill: '#fff3c9' }); }   // unit boxes stay the same size on screen at any zoom
+    c.restore();
+  });
+}
 function showIntro(i) {
   introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next ▶'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
@@ -940,7 +985,7 @@ function showIntro(i) {
   { const want = sl.part ? Math.max(0, S.parts.findIndex(p => p.id === sl.part)) : 0;   // a slide can show another part's map (the approach) and run orders on it
     if (want !== partIdx) loadPart(want);
     resetSim(); acc = 0; (sl.orders || []).forEach(applyOrder); if (sl.light) setLight(sl.light); }
-  markers = sl.markers || [];
+  markers = sl.markers || []; cues = (sl.cues || []).map(q => Object.assign({}, q));
   if (sl.zoom) { view.z = clamp(sl.zoom, .25, 2.4); clampView(); }
   if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
@@ -1366,7 +1411,7 @@ function tick(t) {
       const nb = $('introNext');
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration ▶ ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next ▶'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
-      $('introBar').style.width = Math.min(100, frac * 100) + '%';
+      $('introBar').style.width = Math.min(100, frac * 100) + '%'; updateCues(sl, frac, tail);
       if (sl.orders) { acc += dt; while (acc >= DT) { acc -= DT; simTime += DT; stepSim(); } }   // the slide's animation runs while it is shown
     }
   } else if (!paused && !battleOver && !cinematic) {
