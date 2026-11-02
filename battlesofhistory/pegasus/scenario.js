@@ -95,14 +95,22 @@ window.BATTLE_SCENARIO = {
     },
     {
       title: 'The British force',
+      part: 'approach', focus: { x: 1420, y: 250 }, zoom: .38,
+      markers: [ { x: 1456, y: 1000, label: 'Drop zone N' } ],
+      orders: [
+        { flight: { img: 'dakota', pts: [[1340, -220], [1380, 1000], [1420, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 40.0 },
+        { flight: { img: 'dakota', pts: [[1400, -220], [1440, 1000], [1480, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 41.1 },
+        { flight: { img: 'dakota', pts: [[1460, -220], [1500, 1000], [1540, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 42.2 },
+        { flight: { img: 'dakota', pts: [[1370, -220], [1410, 1000], [1450, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 43.3 },
+        { flight: { img: 'dakota', pts: [[1430, -220], [1470, 1000], [1510, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 44.4 },
+        { flight: { img: 'dakota', pts: [[1400, -220], [1440, 1000], [1480, 1990]], speed: 165, w: 52, drop: { from: 905, to: 1095, every: .22 } }, delay: 45.5 }
+      ],
       media: [
         { at: 0,  file: '03-john-howard.jpg', caption: 'Major John Howard, commanding D Company, 2nd Battalion, the Oxfordshire and Buckinghamshire Light Infantry: a former regimental sergeant-major and policeman who had trained his company for six months for this one night.', ref: 'British Army photograph, 1944', credit: 'Crown copyright expired, public domain (via ParaData)' },
         { at: 8, file: '40-map-glider-route.jpg', caption: 'The flight: six Halifax bombers of 298 and 644 Squadrons towed the six gliders from RAF Tarrant Rushton in Dorset across the Channel. The gliders cast off near the coast and glided down to the bridges; the Halifaxes went on to a diversion raid and flew home.', ref: 'Routes approximate', credit: 'Map: Battle Games, drawn from real elevation data' },
         { at: 14, file: '07-horsa-under-tow.jpg', caption: 'An Airspeed Horsa glider on tow behind an Albemarle. The six Horsas were towed across the Channel by Halifax bombers and released at 6,000 feet over the coast, seven miles from the bridges.', ref: 'British Air Ministry photograph', credit: 'Crown copyright expired, public domain' },
         { at: 26, file: '13-horsa-replica-museum.jpg', caption: 'A full-size replica of a Horsa at the Memorial Pegasus museum. Twenty metres of plywood and fabric carrying thirty men, two pilots and their kit, landing at ninety miles an hour with no engine and no second chance.', ref: 'Memorial Pegasus, Ranville', credit: 'Photo: René Hourdry, 2023, CC0' }
       ],
-      focus: { x: 1180, y: 1010 }, zoom: 1,
-      markers: [ { x: 1180, y: 1010, label: 'LZ X' }, { x: 1790, y: 500, label: 'LZ Y' } ],
       auto: 46,
       lines: [
         { text: 'The task went to D Company of the 2nd Ox and Bucks, an airlanding battalion of the 6th Airborne Division, under Major John Howard: 139 of his own men, thirty sappers of the Royal Engineers, and twelve glider pilots of the Glider Pilot Regiment. 181 men in six Horsas, three for each bridge.', tag: 'british', cite: 'Howard, report on Operation Deadstick; Ambrose, Pegasus Bridge, ch. 2' },
@@ -146,12 +154,20 @@ window.BATTLE_SCENARIO = {
     },
     {
       title: 'Deadstick',
+      part: 'approach', focus: { x: 1550, y: 80 }, zoom: .36,
+      markers: [ { x: 1219, y: 878, label: 'Canal bridge' }, { x: 1343, y: 887, label: 'River bridge' } ],
+      orders: [
+        { flight: { img: 'tow', pts: [[2520, -165], [1920, 335]], speed: 150, w: 132, then: [ { flight: { img: 'halifax', pts: [[1920, 335], [1420, 820], [462, 1607], [-200, 1980]], speed: 170, w: 62 } }, { flight: { img: 'glider', pts: [[1920, 335], [1720, 1140], [1500, 1030], [1250, 905]], speed: 115, w: 46, stay: true } } ] }, delay: 0.0 },
+        { flight: { img: 'tow', pts: [[2560, -165], [1960, 335]], speed: 150, w: 132, then: [ { flight: { img: 'halifax', pts: [[1960, 335], [1420, 820], [462, 1607], [-200, 1980]], speed: 170, w: 62 } }, { flight: { img: 'glider', pts: [[1960, 335], [1760, 1140], [1520, 1030], [1262, 927]], speed: 115, w: 46, stay: true } } ] }, delay: 0.9 },
+        { flight: { img: 'tow', pts: [[2600, -165], [2000, 335]], speed: 150, w: 132, then: [ { flight: { img: 'halifax', pts: [[2000, 335], [1420, 820], [462, 1607], [-200, 1980]], speed: 170, w: 62 } }, { flight: { img: 'glider', pts: [[2000, 335], [1800, 1140], [1540, 1030], [1278, 950]], speed: 115, w: 46, stay: true } } ] }, delay: 1.8 },
+        { flight: { img: 'tow', pts: [[2520, -110], [1920, 390]], speed: 150, w: 132, then: [ { flight: { img: 'halifax', pts: [[1920, 390], [1420, 820], [462, 1607], [-200, 1980]], speed: 170, w: 62 } }, { flight: { img: 'glider', pts: [[1920, 390], [1720, 1140], [1500, 1030], [1302, 835]], speed: 115, w: 46, stay: true } } ] }, delay: 2.7 },
+        { flight: { img: 'tow', pts: [[2560, -110], [1960, 390]], speed: 150, w: 132, then: [ { flight: { img: 'halifax', pts: [[1960, 390], [1420, 820], [462, 1607], [-200, 1980]], speed: 170, w: 62 } }, { flight: { img: 'glider', pts: [[1960, 390], [1760, 1140], [1520, 1030], [1286, 852]], speed: 115, w: 46, stay: true } } ] }, delay: 3.6 },
+        { flight: { img: 'tow', pts: [[2600, -110], [2000, 390]], speed: 150, w: 132, then: [ { flight: { img: 'halifax', pts: [[2000, 390], [1420, 820], [462, 1607], [-200, 1980]], speed: 170, w: 62 } }, { flight: { img: 'glider', pts: [[2000, 390], [2250, 560], [2600, 760]], speed: 115, w: 46 } } ] }, delay: 4.5 }
+      ],
       media: [
         { at: 0,  file: '02-horsa-glider-benouville.jpg', caption: 'Glider number 1 as it lay three days later, fifty yards from the canal bridge, its nose crushed into the barbed wire. Wallwork and his co-pilot were thrown through the windscreen and were the first British soldiers on French soil on D-Day.', ref: 'Bénouville, 8 June 1944; Imperial War Museum B 5232', credit: 'Photo: Sgt Christie; Crown copyright expired, public domain' },
         { at: 16, file: '08-brotheridge-grave.jpg', caption: 'The grave of Lieutenant Den Brotheridge at Ranville. He led the first platoon across the bridge and was hit by a burst from the machine gun on the far side: the first Allied soldier killed by enemy fire on D-Day. His daughter was born a fortnight later.', ref: 'Ranville churchyard', credit: 'Photo: Dennis Peeters, 2010, public domain' }
       ],
-      focus: { x: 1000, y: 860 }, zoom: 1.2,
-      markers: [ { x: 1030, y: 880, label: 'Glider 1' } ],
       auto: 38,
       lines: [
         { text: 'The operation was named Deadstick, the pilots’ word for landing with no engine. The gliders cast off over the coast at 00:07 and came down through cloud, turning twice by stopwatch, to arrive out of the dark at ninety miles an hour, braked by a parachute and a skid.', tag: 'british', cite: 'Ambrose, Pegasus Bridge, ch. 5' },
@@ -371,7 +387,27 @@ window.BATTLE_SCENARIO = {
       startbrit: 'You command D Company. Your gliders are coming in on the canal bridge; two more follow at the river bridge. Take both bridges before the garrison wakes, dig in on both banks, and hold until the paratroopers arrive in the night and the commandos at one in the afternoon. You have one PIAT and no artillery.',
       startger:  'You command the German response. The bridge garrison is asleep, its commander is in Ranville, and the charges are not fitted. The British are landing now. Retake a bridge and hold it, or drive the airborne off the west bank, before the commandos arrive from the beach at one in the afternoon. The 21st Panzer Division’s tanks and infantry become yours as the night goes on.'
     }
-  }
+  },
+  {
+    id: 'approach',
+    title: 'The approach', subtitle: 'Night of 5–6 June 1944',
+    introOnly: true, tilt: 0, noProps: true,     // the moonlit area map (Ouistreham to Caen), shown in the introduction only
+    duration: 60, commandDuration: 60,
+    world: { w: 2400, h: 1800 },                 // 49.31 N 0.42 W (top left) to 49.17 N 0.134 W, about 21 x 16 km (1 px = 9 m)
+    clockStart: '5 June · 23:00',
+    heliFrom: { x: 2560, y: -140 }, rally: { brit: { x: 1219, y: 878 }, ger: { x: 600, y: 1500 } },
+    battlefield: {
+      scale: { px: 114, label: '1 km' },
+      features: [],
+      labels: [
+        { x: 1316, y: 300, text: 'OUISTREHAM', small: true }, { x: 470, y: 1650, text: 'CAEN' }, { x: 1150, y: 960, text: 'Bénouville', small: true },
+        { x: 1390, y: 1000, text: 'Ranville', small: true }, { x: 1880, y: 470, text: 'Merville battery', small: true },
+        { x: 1100, y: 130, text: 'Sword Beach', small: true }, { x: 2000, y: 140, text: 'Bay of the Seine', small: true },
+        { x: 760, y: 1200, text: 'Caen canal', small: true, rotate: -.95 }, { x: 960, y: 1300, text: 'Orne', small: true, rotate: -.95 }
+      ]
+    },
+    formations: [], events: [], ai: {}, support: {}, outcome: []
+  },
   ],
 
   units: [
