@@ -97,11 +97,6 @@ window.BATTLE_SCENARIO = {
       title: 'The British force',
       part: 'approach', focus: { x: 1420, y: 250 }, zoom: .38,
       markers: [ { x: 1456, y: 1000, label: 'Drop zone N' } ],
-      orders: [
-{ flight: { img: 'dakota', pts: [[1350, -220], [1390, 1000], [1430, 1990]], speed: 320, w: 56, drop: { from: 920, to: 1080, every: .13 } }, delay: 40.0 },
-        { flight: { img: 'dakota', pts: [[1400, -220], [1440, 1000], [1480, 1990]], speed: 320, w: 56, drop: { from: 920, to: 1080, every: .13 } }, delay: 41.2 },
-        { flight: { img: 'dakota', pts: [[1450, -220], [1490, 1000], [1530, 1990]], speed: 320, w: 56, drop: { from: 920, to: 1080, every: .13 } }, delay: 42.4 }
-      ],
       media: [
         { at: 0,  file: '03-john-howard.jpg', caption: 'Major John Howard, commanding D Company, 2nd Battalion, the Oxfordshire and Buckinghamshire Light Infantry: a former regimental sergeant-major and policeman who had trained his company for six months for this one night.', ref: 'British Army photograph, 1944', credit: 'Crown copyright expired, public domain (via ParaData)' },
         { at: 8, file: '40-map-glider-route.jpg', caption: 'The flight: six Halifax bombers of 298 and 644 Squadrons towed the six gliders from RAF Tarrant Rushton in Dorset across the Channel. The gliders cast off near the coast and glided down to the bridges; the Halifaxes went on to a diversion raid and flew home.', ref: 'Routes approximate', credit: 'Map: Battle Games, drawn from real elevation data' },
@@ -300,7 +295,12 @@ window.BATTLE_SCENARIO = {
         media: { file: 'establish-2-normandy-coast.jpg', caption: 'The Normandy coast in the first hour of 6 June 1944: the canal and the Orne running inland to Caen, the invasion fleet offshore. Half an hour after the gliders, the 7th Parachute Battalion dropped east of the river near Ranville.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'Half an hour later the sky to the north-east fills with the 7th Parachute Battalion, dropping to take over the bridges. The drop is scattered by wind and flak; companies land miles apart and in the flooded fields. A third of the battalion will never reach the rendezvous.',
         explain: 'The 6th Airborne Division dropped east of the Orne to seal off the flank of the invasion. The 7th Battalion’s job was the bridges, and it got there, but with 200 men instead of 600, and without its mortars and machine guns, which had come down in the water. Howard’s company would have to hold longer than planned.',
-        orders: [ { id: 'pA', visible: true, at: { x: 2160, y: -20 }, to: { x: 1840, y: 420 }, speed: 26 }, { id: 'pB', visible: true, at: { x: 2260, y: 100 }, to: { x: 1960, y: 500 }, speed: 26, delay: 6 }, { id: 'pC', visible: true, at: { x: 2360, y: 40 }, to: { x: 2020, y: 620 }, speed: 26, delay: 12 } ] },
+        orders: [
+          // three Dakotas fly south over the north-east corner and the paratroopers come down; then the companies march in
+          { flight: { img: 'dakota', pts: [[2120, -420], [2160, 400], [2230, 2100]], speed: 320, w: 56, drop: { from: 170, to: 330, every: .13 } } },
+          { flight: { img: 'dakota', pts: [[2230, -420], [2270, 400], [2340, 2100]], speed: 320, w: 56, drop: { from: 220, to: 380, every: .13 } }, delay: 1.2 },
+          { flight: { img: 'dakota', pts: [[2340, -420], [2380, 400], [2450, 2100]], speed: 320, w: 56, drop: { from: 180, to: 340, every: .13 } }, delay: 2.4 },
+          { id: 'pA', visible: true, at: { x: 2160, y: -20 }, to: { x: 1840, y: 420 }, speed: 26, delay: 5 }, { id: 'pB', visible: true, at: { x: 2260, y: 100 }, to: { x: 1960, y: 500 }, speed: 26, delay: 9 }, { id: 'pC', visible: true, at: { x: 2360, y: 40 }, to: { x: 2020, y: 620 }, speed: 26, delay: 13 } ] },
       { t: 70, title: 'Tanks', tag: 'british', clock: '01:30', focus: { x: 640, y: 860 },
         text: 'Engines in Bénouville. Two tanks of the 21st Panzer Division come up the road from the south with infantry behind them, toward the T-junction a hundred yards from the bridge. Sergeant Thornton is in a ditch at the junction with the company’s last PIAT and two bombs. He lets the lead tank come to thirty yards and fires. It stops, burns, and its ammunition explodes for the next hour.',
         explain: 'The PIAT was a spring-loaded tube that threw a three-pound bomb a hundred yards, and it was feared for its unreliability. Thornton later said he was shaking so much he was sure he would miss. The burning tank lit the crossroads and blocked the road; the second tank withdrew, and the Germans, hearing the explosions, believed the British had anti-tank guns. No tank tried the road again that night.',
