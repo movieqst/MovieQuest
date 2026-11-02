@@ -253,7 +253,7 @@ window.TALAS_SCENARIO = {
     { leader: 'gao', to: { x: TALAS_R.x + 70, y: TALAS_R.y - 20 }, speed: 120 },
     { id: 'c-ferg', visible: true, to: { x: TALAS_R.x + 20, y: TALAS_R.y + 60 }, speed: 30, delay: 4 },
     { id: 'c-karluk', visible: true, to: { x: TALAS_R.x + 110, y: TALAS_R.y - 40 }, via: [{ x: 1500, y: 560 }], speed: 70, delay: 3 } ] });
-  set(1, { t: 14, focus: { x: 600, y: 1100 }, zoom: .5, orders: [
+  set(1, { t: 14, music: { file: 'oud-andy-jordan.mp3', vol: .32 }, focus: { x: 600, y: 1100 }, zoom: .5, orders: [
     { id: 'c-arab', visible: true, to: { x: TALAS_R.x - 70, y: TALAS_R.y + 30 }, via: [BUKHARA, SAMARKAND, CHACH], speed: 120 },
     { leader: 'ziyad', visible: true, to: { x: TALAS_R.x - 70, y: TALAS_R.y }, speed: 120 },
     { leader: 'abumuslim', visible: true } ] });
@@ -347,7 +347,8 @@ window.TALAS_SCENARIO = {
     { title: 'Ibn al-Athir, al-Kamil fi al-Tarikh', note: 'The Arabic account of Ziyad ibn Salih’s victory.' },
     { title: 'Lin Meicun, The city of Talas and the Tang Silk Road (2021)', note: 'Where Talas stood.' },
     { title: 'Kazakh and Kyrgyz research on Atlakh (2021–2022)', note: 'The battlefield south of Taraz, and the memorial at Joon-Döbö.' },
-    { title: 'Music: Zuiyu Changwan (The Evening Song of the Drunken Fisherman), guqin', note: 'Played by Charlie Huang, 2013, from the Ming score Tianwen Ge Qinpu (1576); Wikimedia Commons, CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0). A Ming-era piece, chosen for the sound of the instrument, which was already ancient in 751; we shortened it and added a fade.' }
+    { title: 'Music: Zuiyu Changwan (The Evening Song of the Drunken Fisherman), guqin', note: 'Played by Charlie Huang, 2013, from the Ming score Tianwen Ge Qinpu (1576); Wikimedia Commons, CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0). A Ming-era piece, chosen for the sound of the instrument, which was already ancient in 751; we shortened it and added a fade.' },
+    { title: 'Music: Oud music by Andy R. Jordan (2018)', note: 'Commissioned by the Wikimedia Foundation; Wikimedia Commons, CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0). A modern piece for the oud, the lute of the Abbasid world; we added a fade.' }
   ];
   S.library = [];
 
