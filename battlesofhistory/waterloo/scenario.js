@@ -76,7 +76,7 @@ window.WATERLOO_SCENARIO = {
       media: [
         { at: 0, file: '01-pieneman-waterloo.jpg', caption: 'The Battle of Waterloo by Jan Willem Pieneman, painted in 1824. Wellington, centre, receives news of the Prussian advance. The scene is posed: a painter’s reconstruction, not an eyewitness view.', ref: 'Rijksmuseum, Amsterdam, SK-A-1115', credit: 'Jan Willem Pieneman, 1824. Rijksmuseum, Wikimedia Commons, public domain' },
         { at: 7, file: '18-sadler-waterloo.jpg', caption: 'The Battle of Waterloo by the Irish painter William Sadler, painted in June 1815, the month of the battle: the redcoats, the smoke and the burning farm under a stormy sky. A painter’s view of the day, not an eyewitness record.', ref: 'William Sadler, The Battle of Waterloo, 1815, oil on canvas', credit: 'William Sadler, 1815. Wikimedia Commons, public domain' },
-        { at: 12, file: '02-napoleon-david.jpg', caption: 'Napoleon in his study, by Jacques-Louis David (1812). Three years later he escaped from Elba and returned to power for the Hundred Days.', ref: 'National Gallery of Art, Washington (Samuel H. Kress Collection)', credit: 'Jacques-Louis David, 1812. Wikimedia Commons (Google Art Project), public domain' }
+        { at: 12, file: '02-napoleon-david.jpg', pos: '50% 10%', caption: 'Napoleon in his study, by Jacques-Louis David (1812). Three years later he escaped from Elba and returned to power for the Hundred Days.', ref: 'National Gallery of Art, Washington (Samuel H. Kress Collection)', credit: 'Jacques-Louis David, 1812. Wikimedia Commons (Google Art Project), public domain' }
       ],
       subtitle: '18 June 1815 · south of Brussels',
       focus: { x: 1200, y: 900 }, zoom: 'fit',
@@ -126,7 +126,7 @@ window.WATERLOO_SCENARIO = {
       media: [
         { at: 0, file: '08-blucher.jpg', caption: 'Field Marshal Gebhard Leberecht von Blücher, commander of the Prussian army, then 72 years old. Two days before Waterloo he was ridden over by cavalry at Ligny, and still led his army to Wellington’s aid.', ref: 'French lithograph, 19th century; KU Leuven Libraries, PA00467', credit: 'KU Leuven Libraries, Wikimedia Commons, public domain' },
         { at: 12, file: '09-plancenoit-northen.jpg', caption: 'Prussian infantry storm Plancenoit, held by the Young Guard, by Adolph Northen (1864). Painted almost fifty years later: the painter was born after the battle.', ref: 'Adolph Northen, Prussian Attack on Plancenoit, 1864', credit: 'Adolph Northen, 1864. Wikimedia Commons, public domain' },
-        { at: 22, file: '10-grouchy.jpg', caption: 'Emmanuel Grouchy, here as a general of the Empire, before Napoleon made him a marshal in 1815. At Waterloo he was following the Prussians to Wavre with about 33,000 men, and never reached the battle.', ref: 'Engraving by J. N. Joly after Constance Mayer; Bibliothèque nationale de France (Gallica)', credit: 'BnF Gallica, Wikimedia Commons, public domain' }
+        { at: 22, file: '10-grouchy.jpg', pos: '50% 25%', caption: 'Emmanuel Grouchy, here as a general of the Empire, before Napoleon made him a marshal in 1815. At Waterloo he was following the Prussians to Wavre with about 33,000 men, and never reached the battle.', ref: 'Engraving by J. N. Joly after Constance Mayer; Bibliothèque nationale de France (Gallica)', credit: 'BnF Gallica, Wikimedia Commons, public domain' }
       ],
       focus: { x: 2000, y: 1400 }, zoom: .8,
       markers: [],

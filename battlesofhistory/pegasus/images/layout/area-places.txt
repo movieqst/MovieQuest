@@ -1,0 +1,14 @@
+1: Ouistreham
+2: Colleville
+3: Hermanville
+4: Bénouville
+5: Le Port
+6: Ranville
+7: Hérouvillette
+8: Amfreville
+9: Bréville
+10: Merville battery
+11: Blainville
+12: Caen
+13: Canal bridge (Pegasus)
+14: River bridge (Horsa)

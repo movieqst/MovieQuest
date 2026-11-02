@@ -34,7 +34,7 @@ let TER = null, MINIBASE = null, PAINTED = false, PAINTEDTER = null, DRAWNTER = 
 let pending = [], strikes = [], effects = [], helis = [], light = { cur: 0, target: 0, name: 'day' }, clockLabel = '', support = {};
 let PROPS = [];
 const IMGS = {}; function img(src) { if (!IMGS[src]) { const im = new Image(); im.src = (S.imageBase || 'images/') + src; IMGS[src] = im; } return IMGS[src]; }
-['props/horsa.png', 'props/horsa-wreck.png'].forEach(img);
+['props/horsa.png', 'props/horsa-top.png', 'props/horsa-wreck.png'].forEach(img);
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const jitter = (i, k = 0) => { const s = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return s - Math.floor(s); };
@@ -311,7 +311,7 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', d = dirOf(facing), step = moving ? wall * 8 + i * 1.7 : 0;
   if (d === 'w') c.scale(-1, 1);
   if (ut.kind === 'air') figHeli(c, s, wall * 40 + i, d === 'w' ? 'e' : d);
-  else if (ut.water) figBoat(c, s, d === 'w' ? 'e' : d);
+  else if (ut.water) figBoat(c, s * 2.4, d === 'w' ? 'e' : d);   // a gunboat is far bigger than a man
   else if (ut.kind === 'vehicle') figTank(c, SIDE_ART[f.side], s, d === 'w' ? 'e' : d, step);
   else figSoldier(c, f.side, f.type, s, i, d === 'w' ? 'e' : d, step, f.state === 'dig' && f.dug);
   c.restore();
@@ -414,6 +414,7 @@ function stepLight() { const d = light.target - light.cur; light.cur += Math.sig
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
   if (ev.clock) clockLabel = ev.clock; if (ev.light) setLight(ev.light);
+  if (cam.follow && ev.zoom) { view.z = clamp(ev.zoom, .45, 2.4); clampView(); }
   if (cam.follow && ev.focus) frame(ev.focus.x, ev.focus.y);
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((ev.clock || fmtTime(ev.t)) + ' ' + ev.title);
@@ -638,7 +639,9 @@ function drawFormation(c, f) {
 function drawHeli(c, h) {
   const g = P(h.x, h.y), q = P(h.x, h.y - h.alt), s = g.s * 1.6;
   c.save(); c.globalAlpha = .25; c.fillStyle = '#000'; c.beginPath(); c.ellipse(g.x + 6 * s, g.y, 14 * s, 5 * s * g.k, 0, 0, PI * 2); c.fill(); c.restore();
-  if (h.kind === 'glider') { const im = IMGS['props/horsa.png']; if (im && im.complete && im.naturalWidth) { const w = 120 * g.s, hh = w * im.naturalHeight / im.naturalWidth; c.save(); c.translate(q.x, q.y); c.rotate(h.facing + PI); c.drawImage(im, -w / 2, -hh * .7, w, hh); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
+  if (h.kind === 'glider') { const top = IMGS['props/horsa-top.png'], ok = top && top.complete && top.naturalWidth, im = ok ? top : IMGS['props/horsa.png']; if (im && im.complete && im.naturalWidth) { const w = (ok ? 95 : 120) * g.s, hh = w * im.naturalHeight / im.naturalWidth; c.save(); c.translate(q.x, q.y); c.rotate(h.facing + (ok ? 0 : PI));   // the top-down Horsa (nose to the right) when it has loaded
+    c.filter = (ok ? 'brightness(1.35)' : 'brightness(1.9) contrast(1.1)') + ' drop-shadow(0 0 ' + Math.max(2, 4 * g.s) + 'px rgba(230,235,255,.75))';   // pale in the moonlight, so it reads against the dark fields
+    c.drawImage(im, -w / 2, ok ? -hh / 2 : -hh * .7, w, hh); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
   drawSprite(c, { type: 'heli', side: DEF(), state: 'move' }, q.x, q.y, h.facing, 0, s, q.k);
 }
 function drawStrikes(c) {
@@ -922,9 +925,31 @@ function titleCardProgress(k) {
 }
 $('playBig').onclick = () => beginIntro(true);
 let introSpunCb = null;
-function startIntro() { if (partIdx !== 0) loadPart(0); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
+// Establishing pictures (S.establishing: [{ file, secs, credit, pulse: { x, y } }]): after the globe's dive, before the battle
+// map, each fades in, holds for `secs` (about 5) while the narration carries on, and fades out. `pulse` (fractions of the
+// picture's width and height) puts a pulsing ring on the picture, e.g. on the battle's town.
+let establishT = [];
+function placePulse(m) {
+  const el = $('establish'), img = el.querySelector('img'), ring = el.querySelector('.epulse');
+  if (!m.pulse || !img.naturalWidth) { ring.style.display = 'none'; return; }
+  const W = el.clientWidth, H = el.clientHeight, k = Math.min(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * k, h = img.naturalHeight * k;
+  ring.style.left = ((W - w) / 2 + m.pulse.x * w) + 'px'; ring.style.top = ((H - h) / 2 + m.pulse.y * h) + 'px'; ring.style.display = 'block';
+}
+function showEstablishing() {
+  const list = S.establishing || [], el = $('establish'); if (!list.length || !el) return;
+  establishT.forEach(clearTimeout); establishT = []; const img = el.querySelector('img'), cap = el.querySelector('.ecap');
+  let at = 0; el.classList.add('show'); requestAnimationFrame(() => el.classList.add('on'));
+  list.forEach((m, i) => {
+    establishT.push(setTimeout(() => { img.style.opacity = 0; el.querySelector('.epulse').style.display = 'none';
+      establishT.push(setTimeout(() => { img.onload = () => placePulse(m); img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; if (img.complete) placePulse(m); }, i ? 600 : 0)); }, at * 1000));
+    at += (m.secs || 5);
+  });
+  establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
+}
+function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
+function startIntro() { hideEstablishing(); if (partIdx !== 0) loadPart(0); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
-  if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
+  if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function loadPart(i) {
   partIdx = clamp(i, 0, S.parts.length - 1); PART = S.parts[partIdx]; W = PART.world; B = PART.battlefield;
   buildProps(); DRAWNTER = buildTerrain(); PAINTEDTER = PAINTS[PART.id] || null; applyArt(); clockLabel = PART.clockStart || '';
@@ -932,6 +957,7 @@ function loadPart(i) {
   $('partTitle').textContent = PART.title + ' · ' + PART.subtitle;
 }
 function startMode(m, opts) {
+  hideEstablishing();
   const part = opts && opts.part !== undefined ? opts.part : partIdx; if (part !== partIdx) loadPart(part);
   $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
