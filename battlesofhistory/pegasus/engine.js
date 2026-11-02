@@ -214,7 +214,7 @@ function drawProp(c, p) {
     c.fillStyle = '#8fbb62'; c.beginPath(); c.arc(q.x - r * .4, q.y - r * (h + .9), r * .25, 0, PI * 2); c.fill();
   } else if (p.kind === 'image') {
     const im = IMGS[p.src]; if (!im || !im.complete || !im.naturalWidth) return; const w = p.w * s, h = w * im.naturalHeight / im.naturalWidth;
-    c.save(); c.translate(q.x, q.y); c.rotate(p.rot || 0); c.globalAlpha = .18; c.fillStyle = '#000'; c.beginPath(); c.ellipse(4 * s, 2 * s, w * .4, h * .3 * k, 0, 0, PI * 2); c.fill(); c.globalAlpha = 1; if (p.top) c.filter = 'brightness(1.35)'; c.drawImage(im, -w / 2, p.top ? -h / 2 : -h * .7, w, h); c.restore();
+    c.save(); c.translate(q.x, q.y); c.rotate(p.rot || 0); c.globalAlpha = .18; c.fillStyle = '#000'; c.beginPath(); c.ellipse(4 * s, 2 * s, w * .4, h * .3 * k, 0, 0, PI * 2); c.fill(); c.globalAlpha = 1; if (p.top) { const lit = fxSprite(im, [0, 0, im.naturalWidth, im.naturalHeight], 'brightness(1.35)', 0); c.drawImage(lit, -w / 2, -h / 2, w, h); } else c.drawImage(im, -w / 2, -h * .7, w, h); c.restore();
   } else if (p.kind === 'mound') {
     const r = p.r * s; c.fillStyle = 'rgba(40,25,10,.3)'; c.beginPath(); c.ellipse(q.x + r * .4, q.y, r * 1.2, r * .45 * k, 0, 0, PI * 2); c.fill();
     c.fillStyle = '#8a5a3a'; c.beginPath(); c.moveTo(q.x - r, q.y); c.quadraticCurveTo(q.x - r * .5, q.y - r * 1.6, q.x, q.y - r * 2.1); c.quadraticCurveTo(q.x + r * .5, q.y - r * 1.5, q.x + r, q.y); c.closePath(); c.fill();
@@ -330,6 +330,12 @@ function createFormations() {
    Orders: { flight: { img, pts: [[x, y], ...], speed, w, then: [orders], drop: { from, to, every } } } and { chute: { x, y } }.
    img: 'tow' (Halifax towing a Horsa), 'halifax', 'glider', 'dakota'. Sizes are on-screen pixels at the overview zoom. */
 let flights = [], chutes = [];
+const FX_CACHE = {};
+function fxSprite(im, crop, filter, pad = 8) {   // the sprite (or part of it) drawn once through a filter, then reused
+  const key = im.src + '|' + crop.join(',') + '|' + filter; if (FX_CACHE[key]) return FX_CACHE[key];
+  const k = Math.min(1, 420 / crop[2]), cv = document.createElement('canvas'); cv.width = Math.round(crop[2] * k) + pad * 2; cv.height = Math.round(crop[3] * k) + pad * 2;
+  const g = cv.getContext('2d'); g.filter = filter; g.drawImage(im, ...crop, pad, pad, cv.width - pad * 2, cv.height - pad * 2); cv.pad = pad / k; return (FX_CACHE[key] = cv);
+}
 const PLANE_IMG = { tow: 'props/halifax-tow-top.png', halifax: 'props/halifax-tow-top.png', glider: 'props/horsa-top.png', dakota: 'props/dakota-top.png' };
 Object.values(PLANE_IMG).forEach(img); img('units/brit-parachute.png');
 function spawnFlight(o) {
@@ -357,8 +363,9 @@ function drawFlights(c) {
     const im = IMGS[PLANE_IMG[f.img]]; if (!im || !im.complete || !im.naturalWidth) return;
     const crop = f.img === 'halifax' ? [im.naturalWidth * .555, 0, im.naturalWidth * .445, im.naturalHeight] : [0, 0, im.naturalWidth, im.naturalHeight];
     const w = (f.w || 60) * zk, h = w * crop[3] / crop[2], alt = f.landed ? 0 : (f.alt !== undefined ? f.alt : 1) * (f.img === 'glider' ? 1 - f.d / f.len : 1), q = P(f.x, f.y);
-    c.save(); c.globalAlpha = .28; c.translate(q.x + 18 * alt * zk, q.y + 26 * alt * zk); c.rotate(f.facing); c.filter = 'brightness(0)'; c.drawImage(im, ...crop, -w / 2, -h / 2, w, h); c.restore();   // shadow on the ground
-    c.save(); c.translate(q.x, q.y); c.rotate(f.facing); c.filter = 'brightness(1.25) drop-shadow(0 0 3px rgba(230,235,255,.55))'; c.drawImage(im, ...crop, -w / 2, -h / 2, w, h); c.restore();
+    const sh = fxSprite(im, crop, 'brightness(0)', 0), lit = fxSprite(im, crop, 'brightness(1.25) drop-shadow(0 0 4px rgba(230,235,255,.55))'), pw = w * lit.pad / crop[2];
+    c.save(); c.globalAlpha = .28; c.translate(q.x + 18 * alt * zk, q.y + 26 * alt * zk); c.rotate(f.facing); c.drawImage(sh, -w / 2, -h / 2, w, h); c.restore();   // shadow on the ground
+    c.save(); c.translate(q.x, q.y); c.rotate(f.facing); c.drawImage(lit, -w / 2 - pw, -h / 2 - pw, w + pw * 2, h + pw * 2); c.restore();
   });
 }
 function applyOrder(o) {
@@ -695,8 +702,8 @@ function drawHeli(c, h) {
   const g = P(h.x, h.y), q = P(h.x, h.y - h.alt), s = g.s * 1.6;
   c.save(); c.globalAlpha = .25; c.fillStyle = '#000'; c.beginPath(); c.ellipse(g.x + 6 * s, g.y, 14 * s, 5 * s * g.k, 0, 0, PI * 2); c.fill(); c.restore();
   if (h.kind === 'glider') { const top = IMGS['props/horsa-top.png'], ok = top && top.complete && top.naturalWidth, im = ok ? top : IMGS['props/horsa.png']; if (im && im.complete && im.naturalWidth) { const w = (ok ? 95 : 120) * g.s, hh = w * im.naturalHeight / im.naturalWidth; c.save(); c.translate(q.x, q.y); c.rotate(h.facing + (ok ? 0 : PI));   // the top-down Horsa (nose to the right) when it has loaded
-    c.filter = (ok ? 'brightness(1.35)' : 'brightness(1.9) contrast(1.1)') + ' drop-shadow(0 0 ' + Math.max(2, 4 * g.s) + 'px rgba(230,235,255,.75))';   // pale in the moonlight, so it reads against the dark fields
-    c.drawImage(im, -w / 2, ok ? -hh / 2 : -hh * .7, w, hh); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
+    const lit = fxSprite(im, [0, 0, im.naturalWidth, im.naturalHeight], (ok ? 'brightness(1.35)' : 'brightness(1.9) contrast(1.1)') + ' drop-shadow(0 0 5px rgba(230,235,255,.75))'), pw = w * lit.pad / im.naturalWidth, ph = pw;   // pale in the moonlight, so it reads against the dark fields
+    c.drawImage(lit, -w / 2 - pw, (ok ? -hh / 2 : -hh * .7) - ph, w + pw * 2, hh + ph * 2); c.restore(); } else { c.save(); c.translate(q.x, q.y); c.rotate(h.facing); c.fillStyle = '#4a5a3a'; c.fillRect(-30 * s, -2 * s, 60 * s, 4 * s); c.fillRect(-8 * s, -22 * s, 10 * s, 44 * s); c.restore(); } return; }
   drawSprite(c, { type: 'heli', side: DEF(), state: 'move' }, q.x, q.y, h.facing, 0, s, q.k);
 }
 function drawStrikes(c) {
