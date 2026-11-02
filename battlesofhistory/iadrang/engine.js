@@ -652,7 +652,7 @@ function render() {
     ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
   });
-  drawNight(ctx);
+  drawNight(ctx); if (BR && mode === 'intro') BR.draw(ctx);   // the briefing marks stay bright over the night
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
@@ -822,6 +822,8 @@ function renderBriefing() {
 function showOverlay(id) { $(id).classList.add('show'); }
 let unitPausedIntro = false;
 function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'debrief' && typeof textOff !== 'undefined' && textOff) document.body.classList.add('textoff'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
+// briefing marks on the introduction's maps (../briefing.js): rings, arrows and unit boxes, as the narrator mentions them
+const BR = window.BHBriefing ? window.BHBriefing.create({ P: (x, y) => P(x, y), outlined: (c, t, x, y, sz, o) => outlined(c, t, x, y, sz, o), sideColor: sd => sd === 'pavn' ? '#c8463a' : '#3d7fd8' }) : null;
 function showIntro(i) {
   introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next ▶'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
@@ -833,7 +835,7 @@ function showIntro(i) {
   { const want = sl.part ? Math.max(0, S.parts.findIndex(p => p.id === sl.part)) : INTRO_PART;
     if (want !== partIdx) loadPart(want);
     resetSim(); acc = 0; (sl.orders || []).forEach(applyOrder); if (sl.light) setLight(sl.light); }
-  markers = sl.markers || [];
+  markers = sl.markers || []; if (BR) BR.set(sl);
   if (sl.zoom) { view.z = clamp(sl.zoom, .3, 2.4); clampView(); }
   if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
@@ -1281,7 +1283,7 @@ function tick(t) {
       const nb = $('introNext');
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration ▶ ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next ▶'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
-      $('introBar').style.width = Math.min(100, frac * 100) + '%';
+      $('introBar').style.width = Math.min(100, frac * 100) + '%'; if (BR) BR.update(sl, frac, tail);
       if (sl.orders) { acc += dt; while (acc >= DT) { acc -= DT; simTime += DT; stepSim(); } }   // the slide's animation runs while it is shown
     }
   } else if (!paused && !battleOver && !cinematic) {

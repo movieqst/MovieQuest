@@ -97,6 +97,12 @@ window.BATTLE_SCENARIO = {
     },
     {
       title: 'A new kind of war',
+      cues: [
+        { on: '1st Cavalry Division', unit: { x: 1790, y: 860, kind: 'heli', side: 'us', size: 'XX', label: '1st Cavalry Division (Airmobile)', lx: -20, align: 'right' } },
+        { on: 'Ho Chi Minh trail', arrow: { pts: [[400, 900], [560, 960], [700, 1060]], label: 'down the Ho Chi Minh trail', col: '#ff8a76', dy: -18, dx: 60 } },
+        { on: 'Ho Chi Minh trail', delay: .8, arrow: { pts: [[400, 1260], [560, 1320], [700, 1400]], col: '#ff8a76' } },
+        { on: 'cut South Vietnam in two', arrow: { pts: [[760, 1250], [1150, 1130], [1500, 1060], [1900, 980]], label: 'their plan: cut the South in two', col: '#ff8a76', w: 7, dy: -20 } }
+      ],
       media: [
         { at: 0,  file: '03-1st-cav-an-khe.jpg', caption: 'CH-47 Chinooks lined up at Qui Nhon on 13 September 1965, waiting to carry the 1st Cavalry Division (Airmobile) inland to its new base at An Khe. The first division built around the helicopter had more than 400 aircraft.', ref: 'Qui Nhon, 13 September 1965; US Army photograph, NARA 111-CCV-104-CC32062', credit: 'Photo: SSG Lyle Boggess, United States Army, public domain (Wikimedia Commons)' },
         { at: 16, file: '25-hcm-trail-map.jpg', pulse: '25-hcm-trail-map-glow.jpg', caption: 'The Ho Chi Minh trail in 1965: not one road but a web of tracks running south from Vinh through the Mu Gia pass, down the Laotian side of the Annamite mountains past Tchepone, into Cambodia, with branches east to Pleiku, the Ia Drang (the red ring) and the Saigon area. The pulse marks the trail.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' },
@@ -114,13 +120,20 @@ window.BATTLE_SCENARIO = {
     },
     {
       title: 'Plei Me',
+      cues: [
+        { on: 'besieged the Special Forces camp', ring: { x: 1551, y: 1294, r: 24, label: 'Plei Me camp, besieged 19 October', ly: 44 } },
+        { on: 'ambush the relief column', ring: { x: 1745, y: 985, r: 26, label: 'Ambush: the 32nd Regiment', lx: 34, ly: 0, align: 'left' } },
+        { on: 'pulled back west', arrow: { pts: [[1440, 1330], [1250, 1420], [1100, 1500]], label: 'back toward the Chu Pong', col: '#ff8a76', dy: 26 } },
+        { on: 'leap-frogged west', arrow: { pts: [[2000, 860], [1700, 1060], [1400, 1180]], label: '1st Cavalry: the pursuit by helicopter', col: '#8fc4ff', dy: -18 } },
+        { on: 'into the Ia Drang valley', arrow: { pts: [[1330, 1250], [1180, 1380], [1110, 1440]], label: 'one battalion into the Ia Drang, 14 November', col: '#8fc4ff', dx: -10, dy: 26, align: 'right' } }
+      ],
       media: [
         { at: 0,  file: '06-plei-me-camp.jpg', caption: 'The Special Forces camp at Plei Me as it looked from the air: a triangle of earth and sandbags on a bare hilltop, a bunker at each corner, an airstrip beside it. The North Vietnamese 33rd Regiment besieged it from 19 October 1965 as bait for an ambush of the relief column.', ref: 'Painted for this game after the 1965 reconnaissance photographs', credit: 'Painting: Battle Games, original artwork' },
         { at: 20, file: '07-1st-cav-sky-soldiers.jpg', caption: 'Troopers of the 1st Cavalry Division, the horse-head patch on the shoulder, with a visitor: Moshe Dayan, the Israeli general, who joined US patrols in 1966 to study the new war. The division searched the Highlands westward from Plei Me through October and November 1965.', ref: 'South Vietnam, August 1966', credit: 'Photo: Israel Press and Photo Agency, Dan Hadani collection, Wikimedia Commons, CC BY 4.0' },
         { at: 38, file: '22-art-map-highlands.jpg', caption: 'The campaign area: Pleiku, the Special Forces camp at Plei Me, the Chu Pong massif against the Cambodian border, the Ia Drang running west, and the two clearings, X-Ray at the foot of the mountain and Albany to its north.', ref: 'Painted for this game; approximate', credit: 'Map: Battle Games, original artwork' }
       ],
       part: 'pleiku', focus: { x: 1640, y: 1080 }, zoom: .75,
-      markers: [ { x: 1551, y: 1294, label: 'Plei Me camp' } ],
+      markers: [],
       orders: [ { id: 'camp', visible: true, state: 'dig' }, { id: 'r33', visible: true, at: { x: 1300, y: 1380 }, to: { x: 1470, y: 1330 }, speed: 12, state: 'attack' }, { fire: { kind: 'air', at: { x: 1450, y: 1340 }, r: 60, dmg: 6, delay: 3, planeDir: 3.6 } }, { fire: { kind: 'napalm', at: { x: 1430, y: 1370 }, r: 60, dmg: 6, delay: 9, planeDir: 2.9 } }, { id: 'column', visible: true, at: { x: 1870, y: 386 }, to: { x: 1932, y: 707 }, speed: 50 }, { id: 'column', to: { x: 1790, y: 1012 }, speed: 40, delay: 7 }, { id: 'r32', visible: true, at: { x: 1745, y: 985 }, state: 'hold' } ],
       auto: 55,
       lines: [
@@ -139,7 +152,13 @@ window.BATTLE_SCENARIO = {
       ],
       part: 'pleiku', focus: { x: 1650, y: 700 }, zoom: .6,
       orders: [ { id: 'cav1', at: { x: 1330, y: 1040 }, lift: true, from: { x: 1932, y: 267 } }, { id: 'cav2', at: { x: 1180, y: 860 }, lift: true, from: { x: 1932, y: 267 }, delay: 2 }, { id: 'arty2', at: { x: 1153, y: 1462 }, lift: true, from: { x: 1932, y: 267 }, delay: 4 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 1000, y: 1100 }, delay: 1 }, { heli: 'gunship', from: { x: 1932, y: 267 }, to: { x: 1250, y: 1300 }, delay: 5 } ],
-      markers: [ { x: 1932, y: 267, label: 'Camp Holloway' } ],
+      markers: [],
+      cues: [
+        { on: '1st Battalion, 7th Cavalry', unit: { x: 1600, y: 560, kind: 'heli', side: 'us', size: 'II', label: '1st Bn, 7th Cavalry: 431 men' } },
+        { on: 'sixteen Huey transports', arrow: { pts: [[1980, 470], [1840, 560], [1720, 620]], label: 'sixteen Hueys from Camp Holloway', col: '#8fc4ff', dx: 90, dy: -14 } },
+        { on: 'LZ Falcon', ring: { x: 1153, y: 1462, r: 22, label: 'LZ Falcon: two batteries of 105 mm' } },
+        { on: 'Its weakness was the lift', arrow: { pts: [[1700, 650], [1450, 950], [1180, 1390]], label: 'half an hour each trip, a company at a time', col: '#8fc4ff', dx: 40, dy: 0, align: 'left' } }
+      ],
       auto: 54,
       lines: [
         { text: 'The 1st Battalion, 7th Cavalry, Custer’s old regiment, under Lieutenant Colonel Harold G. Moore: 431 men on the day, in three rifle companies, a weapons company with mortars, and a headquarters. Rifle companies carried the new M16 rifle, M60 machine guns and M79 grenade launchers.', tag: 'us', cite: 'Moore, After Action Report, 1st Bn 7th Cav, 9 December 1965' },
@@ -156,7 +175,14 @@ window.BATTLE_SCENARIO = {
       ],
       part: 'pleiku', focus: { x: 800, y: 1450 }, zoom: .8,
       orders: [ { id: 'r66', visible: true, at: { x: 200, y: 1300 }, to: { x: 700, y: 1530 }, speed: 16 }, { id: 'r33', visible: true, at: { x: 1150, y: 1350 }, to: { x: 820, y: 1610 }, speed: 16 }, { id: 'r32', visible: true, at: { x: 1250, y: 1150 }, to: { x: 900, y: 1640 }, speed: 16 }, { leader: 'an', visible: true, at: { x: 760, y: 1580 } } ],
-      markers: [ { x: 720, y: 1600, label: 'Chu Pong massif' } ],
+      markers: [],
+      cues: [
+        { on: 'The B3 Front', unit: { x: 470, y: 1330, side: 'pavn', size: 'XX', label: 'B3 Front (Chu Huy Man)' } },
+        { on: 'tired from Plei Me', ring: { x: 860, y: 1625, r: 30, label: '32nd and 33rd: tired from Plei Me', ly: 50 } },
+        { on: 'the fresh 66th', ring: { x: 700, y: 1530, r: 30, label: 'the 66th, fresh from the trail', lx: -40, align: 'right' } },
+        { on: 'ordered an attack within the hour', arrow: { pts: [[770, 1560], [850, 1500], [905, 1460]], label: 'attack within the hour', col: '#ff8a76', dy: -22 } },
+        { on: 'grab the enemy by the belt', ring: { x: 916, y: 1453, r: 18, label: 'grab the enemy by the belt', lx: 28, ly: 0, align: 'left' } }
+      ],
       auto: 67,
       lines: [
         { text: 'The B3 Front under Chu Huy Man held three regiments of regulars near the Chu Pong: the 32nd and 33rd, tired from Plei Me, and the fresh 66th, with the H-15 Viet Cong battalion. On the mountain above X-Ray were the three battalions of the 66th and part of the 33rd.', tag: 'established' },
@@ -173,7 +199,12 @@ window.BATTLE_SCENARIO = {
         { at: 25, file: '15-termite-mound.jpg', caption: 'A termite mound, taller than a man and hard as brick. The clearing at X-Ray had several; Moore put his command post behind the biggest, and both sides used them as cover.', ref: 'A termite mound of the kind found across the dry tropics', credit: 'Photo: Ayandoh Solomon, Wikimedia Commons, CC BY 4.0' }
       ],
       focus: { x: 1150, y: 950 }, zoom: 1.3,
-      markers: [ { x: 980, y: 880, label: 'Dry creek bed' }, { x: 1300, y: 880, label: 'The clearing' } ],
+      markers: [],
+      cues: [
+        { on: 'a clearing the size of a football field', ring: { x: 1300, y: 880, r: 60, label: 'The clearing: LZ X-Ray' } },
+        { on: 'A dry creek bed', ring: { x: 980, y: 880, r: 34, label: 'The dry creek bed: the front line', lx: -48, ly: 0, align: 'right' } },
+        { on: 'between it and the mountain', arrow: { pts: [[880, 960], [560, 1000]], label: 'the Chu Pong', col: '#ff8a76', dy: -18 } }
+      ],
       auto: 41,
       lines: [
         { text: 'Ia means river in the Jarai language. The Ia Drang runs west from the Chu Pong into Cambodia. At the foot of the mountain lay a clearing the size of a football field, named X-Ray on the map: scrub, elephant grass, trees up to thirty metres tall, and termite mounds taller than a man.', tag: 'established' },
