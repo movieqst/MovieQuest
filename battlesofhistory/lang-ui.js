@@ -46,7 +46,7 @@ window.BH_UI.fr = {
   'The armies: full write-ups and photographs of every unit': 'Les armées : la fiche complète et les photos de chaque unité',
   'Watch the reenactment': 'Voir la reconstitution', 'Take command': 'Prendre le commandement',
   // tags shown on chips (the scenario's own labels are translated by its lang file)
-  'BATTLE OF WATERLOO': 'BATAILLE DE WATERLOO', 'Historical reenactment · 18 June 1815 · runs locally, no install': 'Reconstitution historique · 18 juin 1815 · fonctionne sans installation',
+  'BATTLE OF WATERLOO': 'BATAILLE DE WATERLOO', 'Battle of Waterloo — Historical Reenactment': 'Bataille de Waterloo — Reconstitution historique', 'Historical reenactment · 18 June 1815 · runs locally, no install': 'Reconstitution historique · 18 juin 1815 · fonctionne sans installation',
   '▴ Show fewer': '▴ Moins d’unités',
     'Established': 'Établi', 'Account': 'Témoignage', 'Disputed': 'Contesté', 'Estimate': 'Estimation', 'Reconstruction': 'Reconstitution'
 };
