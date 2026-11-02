@@ -217,7 +217,8 @@
     const pics = SC ? [].concat(...(SC.intro || []).map(sl => sl.media || [])) : [];
     let k = -1, last = 0;
     const evMedia = {}; let lastEv = null;
-    if (SC) [].concat(SC.events || [], ...(SC.parts || []).map(p => p.events || [])).forEach(e => { if (e && e.media && e.title) evMedia[e.title] = e.media; });
+    // event.media is a picture object, or the file name of one of the introduction's pictures (its caption is reused)
+    if (SC) [].concat(SC.events || [], ...(SC.parts || []).map(p => p.events || []), SC.campaign ? SC.campaign.events : []).forEach(e => { if (e && e.media && e.title) evMedia[e.title] = typeof e.media === 'string' ? (pics.find(p => p.file === e.media) || { file: e.media }) : e.media; });
     const showM = m => { const base = (SC.imageBase || 'images/'), img = $('introImg'); if (!img) return; img.classList.remove('show'); img.onload = () => img.classList.add('show'); img.src = base + m.file;
       if ($('introCap')) $('introCap').textContent = m.caption || ''; if ($('introRef')) $('introRef').textContent = [m.ref, m.credit].filter(Boolean).join(' \u00b7 '); };
     const show = i => { const m = pics[i], base = (SC.imageBase || 'images/'), img = $('introImg'), ph = $('introPh');
@@ -247,22 +248,31 @@
     const fmt = t => `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
     let html = '<h5>Introduction</h5>';
     (S.intro || []).forEach((sl, i) => { html += `<div class="ni" data-k="i${i}"><b>${esc(sl.title)}</b>${(sl.lines || []).map(l => esc(l.text)).join(' ')}</div>`; });
-    html += '<h5>The reenactment</h5>';
-    (S.events || []).forEach((ev, i) => { html += `<div class="ni" data-k="e${i}"><span class="t">${fmt(ev.t)}</span><b>${esc(ev.title)}</b>${esc(ev.text)}</div>`; });
+    // a battle with an opening campaign part (Waterloo: S.campaign) lists its chapters first; the engine swaps S.events
+    // between the two, so the battle's own list is kept here as it was at load
+    const CEV = S.campaign ? S.campaign.events : [], BEV = S.events || [];
+    if (CEV.length) { html += '<h5>The campaign</h5>'; CEV.forEach((ev, i) => { html += `<div class="ni" data-k="c${i}"><span class="t">${esc(ev.clock || '')}</span><b>${esc(ev.title)}</b>${esc(ev.text)}</div>`; }); }
+    html += CEV.length ? '<h5>The battle</h5>' : '<h5>The reenactment</h5>';
+    BEV.forEach((ev, i) => { html += `<div class="ni" data-k="e${i}"><span class="t">${fmt(ev.t)}</span><b>${esc(ev.title)}</b>${esc(ev.text)}</div>`; });
     list.innerHTML = html;
     const mark = key => { list.querySelectorAll('.ni.on').forEach(n => n.classList.remove('on')); const n = list.querySelector(`[data-k="${key}"]`); if (!n) return;
       n.classList.add('on'); const r = n.offsetTop - list.offsetTop; if (r < list.scrollTop || r > list.scrollTop + list.clientHeight - 60) list.scrollTo({ top: r - 30, behavior: 'smooth' }); };
     const introIndex = () => { const m = ($('introKicker') || {}).textContent; const k = m && m.match(/(\d+)\s*\/\s*\d+/); return k ? +k[1] - 1 : -1; };
     const sync = () => {
       if (document.body.dataset.mode === 'intro') { const i = introIndex(); if (i >= 0) mark('i' + i); return; }
-      const t = ($('capTitle') || {}).textContent, i = (S.events || []).findIndex(ev => ev.title === t); if (i >= 0) mark('e' + i);
+      const t = ($('capTitle') || {}).textContent, camp = document.body.dataset.stage === 'campaign', i = (camp ? CEV : BEV).findIndex(ev => ev.title === t); if (i >= 0) mark((camp ? 'c' : 'e') + i);
     };
     ['introKicker', 'capTitle'].forEach(id => { const el = $(id); if (el) new MutationObserver(sync).observe(el, { childList: true, characterData: true, subtree: true }); });
     new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['data-mode'] });
     // click a chapter to go there: in the introduction step back or forward; in the reenactment jump on the timeline
     list.addEventListener('click', e => {
       const n = e.target.closest('.ni'); if (!n) return; const k = n.dataset.k, idx = +k.slice(1);
-      if (k[0] === 'e') { const b = document.querySelectorAll('#eventList .ev')[idx]; if (document.body.dataset.mode === 'intro') { const w = $('chooseWatch'); if (w) w.click(); setTimeout(() => { const b2 = document.querySelectorAll('#eventList .ev')[idx]; if (b2) b2.click(); }, 50); } else if (b) b.click(); return; }
+      if (k[0] === 'e' || k[0] === 'c') {
+        const st = k[0] === 'c' ? 'campaign' : 'battle', go = () => { const b2 = document.querySelectorAll('#eventList .ev')[idx]; if (b2) b2.click(); };
+        const toStage = () => { if (CEV.length && document.body.dataset.stage !== st) { const sb = document.querySelector(`#eventList .stagesel button[data-st="${st}"]`); if (sb) sb.click(); return true; } return false; };
+        if (document.body.dataset.mode === 'intro') { const w = $('chooseWatch'); if (w) w.click(); setTimeout(() => { toStage(); setTimeout(go, 50); }, 50); }
+        else if (toStage()) setTimeout(go, 50); else go();
+        return; }
       if (document.body.dataset.mode !== 'intro') { const ib = $('introBtn'); if (ib) ib.click(); return; }
       let cur = introIndex(), guard = 20; while (cur !== idx && guard--) { $(cur < idx ? 'introNext' : 'introBack').click(); cur = introIndex(); }
     });

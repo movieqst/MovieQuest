@@ -336,6 +336,139 @@ window.WATERLOO_SCENARIO = {
       ] }
   ],
 
+  /* ---------- The campaign, 15 to 17 June 1815: the opening part of the reenactment, on the campaign map ----------
+     Watch mode plays these chapters first, on images/terrain-campaign.jpg (Charleroi to Brussels, 71 x 53 km, painted to
+     real elevation; tools/draw-campaign-guide.py), then moves onto the battle map. Town positions are real (lat/lon).
+     Narration: audio/<voice>/event-campaign-N.mp3. Text checked in CAMPAIGN-CHAPTERS.md. Formations are whole corps
+     and armies, drawn small; their routes follow the 1815 roads, approximately. */
+  campaign: {
+    title: 'The campaign', subtitle: '15–17 June 1815',
+    terrain: 'terrain-campaign.jpg',
+    scale: { px: 169, label: '5 km' },
+    duration: 132,
+    towns: [ { name: 'Brussels', x: 698, y: 71, big: true }, { name: 'Waterloo', x: 810, y: 562 }, { name: 'Mont-Saint-Jean', x: 825, y: 660 }, { name: 'La Belle Alliance', x: 844, y: 724 }, { name: 'Plancenoit', x: 880, y: 754 }, { name: 'Braine-l’Alleud', x: 743, y: 679 }, { name: 'Genappe', x: 937, y: 953 }, { name: 'Quatre Bras', x: 937, y: 1103 }, { name: 'Frasnes', x: 901, y: 1170 }, { name: 'Gosselies', x: 884, y: 1485 }, { name: 'Charleroi', x: 918, y: 1702, big: true }, { name: 'Fleurus', x: 1167, y: 1429 }, { name: 'Ligny', x: 1238, y: 1324 }, { name: 'Saint-Amand', x: 1178, y: 1361 }, { name: 'Sombreffe', x: 1293, y: 1267 }, { name: 'Gembloux', x: 1511, y: 1140 }, { name: 'Wavre', x: 1308, y: 555, big: true }, { name: 'Nivelles', x: 643, y: 1001, big: true }, { name: 'Namur', x: 1929, y: 1492, big: true }, { name: 'Walhain', x: 1525, y: 919 }, { name: 'Tilly', x: 1167, y: 1144 }, { name: 'Mont-Saint-Guibert', x: 1317, y: 866 }, { name: 'Chapelle-Saint-Lambert', x: 1064, y: 656 } ],
+    formations: [
+      { id: 'c-reserve',    side: 'allied', name: 'Wellington’s reserve (Picton)', division: 'Allied reserve', type: 'infantry', cols: 3, rows: 2, x: 715, y: 170 },
+      { id: 'c-west',       side: 'allied', name: 'Wellington’s army, western divisions', division: 'Allied army', type: 'infantry', cols: 4, rows: 2, x: 650, y: 760 },
+      { id: 'c-perponcher', side: 'allied', name: 'Perponcher’s Dutch-Belgian division', division: 'Perponcher', type: 'infantry', cols: 3, rows: 2, x: 650, y: 985 },
+      { id: 'c-ukcav',      side: 'allied', name: 'Uxbridge’s cavalry, the rearguard', division: 'Allied cavalry', type: 'cavalry', sheet: 'scots-greys', cols: 3, rows: 1, x: 940, y: 1060, hidden: true, offmap: true },
+      { id: 'c-zieten',     side: 'allied', name: 'Prussian I Corps (Zieten)', division: 'Zieten', type: 'infantry', sheet: 'prussian-infantry', cols: 3, rows: 2, x: 960, y: 1600 },
+      { id: 'c-pirch',      side: 'allied', name: 'Prussian II Corps (Pirch)', division: 'Pirch', type: 'infantry', sheet: 'prussian-infantry', cols: 3, rows: 2, x: 1800, y: 1440 },
+      { id: 'c-thielmann',  side: 'allied', name: 'Prussian III Corps (Thielmann)', division: 'Thielmann', type: 'infantry', sheet: 'prussian-infantry', cols: 3, rows: 2, x: 2020, y: 1520 },
+      { id: 'c-bulow',      side: 'allied', name: 'Prussian IV Corps (Bülow)', division: 'Bülow', type: 'infantry', sheet: 'prussian-infantry', cols: 3, rows: 2, x: 1700, y: 420, hidden: true, offmap: true },
+      { id: 'c-reille',     side: 'french', name: 'II Corps (Reille)', division: 'Reille', type: 'infantry', cols: 3, rows: 2, x: 860, y: 1840, hidden: true, offmap: true },
+      { id: 'c-derlon',     side: 'french', name: 'I Corps (d’Erlon)', division: 'd’Erlon', type: 'infantry', cols: 3, rows: 2, x: 840, y: 1900, hidden: true, offmap: true },
+      { id: 'c-guard',      side: 'french', name: 'The Imperial Guard', division: 'Imperial Guard', type: 'infantry', cols: 3, rows: 2, x: 930, y: 1860, hidden: true, offmap: true },
+      { id: 'c-vandamme',   side: 'french', name: 'III Corps (Vandamme)', division: 'Vandamme', type: 'infantry', cols: 3, rows: 2, x: 990, y: 1880, hidden: true, offmap: true },
+      { id: 'c-gerard',     side: 'french', name: 'IV Corps (Gérard)', division: 'Gérard', type: 'infantry', cols: 3, rows: 2, x: 1080, y: 1880, hidden: true, offmap: true },
+      { id: 'c-cuir',       side: 'french', name: 'Kellermann’s cuirassiers', division: 'Cuirassiers', type: 'cavalry', sheet: 'french-cuirassier', cols: 3, rows: 1, x: 880, y: 1260, hidden: true, offmap: true },
+      { id: 'c-grouchy',    side: 'french', name: 'Grouchy’s wing (III and IV Corps)', division: 'Grouchy', type: 'infantry', cols: 4, rows: 2, x: 1250, y: 1320, hidden: true, offmap: true }
+    ],
+    leaders: [
+      { id: 'napoleon',   name: 'Napoleon',   side: 'french', x: 925, y: 1820, hidden: true },
+      { id: 'wellington', name: 'Wellington', side: 'allied', x: 700, y: 95 },
+      { id: 'ney',        name: 'Ney',        side: 'french', x: 880, y: 1800, hidden: true },
+      { id: 'blucher',    name: 'Blücher',    side: 'allied', x: 1929, y: 1492 },
+      { id: 'grouchy',    name: 'Grouchy',    side: 'french', x: 1240, y: 1300, hidden: true, noSheet: true }   // no painted sheet yet: a French rider stands in
+    ],
+    events: [
+    { t: 0, media: '02-napoleon-david.jpg', title: 'The Hundred Days', clock: 'March to June 1815', tag: 'established', focus: { x: 1150, y: 760 }, zoom: .5,
+      text: 'In March 1815 Napoleon escaped from exile on Elba and took back the throne of France. Europe\'s leading powers declared him an outlaw and prepared to fight him. Wellington commanded British, Dutch, Belgian and German troops across western Belgium, while Blücher\'s Prussian corps were spread farther east, from Charleroi toward Namur and Liège. Napoleon decided to strike before the rest of the allies could join them.',
+      orders: [
+        { leader: 'wellington', visible: true }, { leader: 'blucher', visible: true } ] },
+    { t: 12, title: 'Across the Sambre', clock: '15 June, dawn', tag: 'established', focus: { x: 940, y: 1450 }, zoom: .62,
+      text: 'At dawn on 15 June Napoleon\'s army, about 120,000 strong, advanced toward the Sambre. French troops crossed the river at several points, taking Charleroi later that morning. Napoleon aimed his blow at the point where the two allied armies met, to drive between them and beat each one alone. The Prussian outposts fell back fighting toward Fleurus.',
+      orders: [
+        { id: 'c-reille', visible: true, at: { x: 860, y: 1840 }, to: { x: 885, y: 1500 }, via: [ { x: 870, y: 1705 } ], speed: 26 },
+        { id: 'c-derlon', visible: true, at: { x: 840, y: 1900 }, to: { x: 870, y: 1560 }, via: [ { x: 860, y: 1720 } ], speed: 24 },
+        { id: 'c-guard', visible: true, at: { x: 930, y: 1860 }, to: { x: 950, y: 1640 }, speed: 22 },
+        { id: 'c-vandamme', visible: true, at: { x: 990, y: 1880 }, to: { x: 1080, y: 1560 }, via: [ { x: 960, y: 1720 } ], speed: 26 },
+        { id: 'c-gerard', visible: true, at: { x: 1080, y: 1880 }, to: { x: 1110, y: 1640 }, via: [ { x: 1050, y: 1740 } ], speed: 22 },
+        { leader: 'napoleon', visible: true, at: { x: 925, y: 1820 }, to: { x: 930, y: 1690 } },
+        { leader: 'ney', visible: true, at: { x: 880, y: 1800 }, to: { x: 895, y: 1500 }, delay: 0 },
+        { id: 'c-zieten', to: { x: 1160, y: 1420 }, speed: 18, state: 'move' },
+        { leader: 'blucher', to: { x: 1290, y: 1275 } } ] },
+    { t: 24, media: '03-wellington-lawrence.jpg', title: 'The Duchess of Richmond\'s ball', clock: '15 June, night', tag: 'account', focus: { x: 720, y: 330 }, zoom: .62,
+      markers: [ { x: 698, y: 90, label: 'The ball' } ],
+      text: 'That evening many senior officers and members of Brussels society attended a ball given by the Duchess of Richmond. Wellington already knew the French had advanced. During the ball he received more news. One later account says he admitted Napoleon had surprised him and gained a day\'s march. As the night went on, officers left the ball to prepare their men and join the troops marching south.',
+      orders: [
+        { leader: 'wellington', at: { x: 700, y: 95 } },
+        { id: 'c-reserve', to: { x: 815, y: 520 }, speed: 20, state: 'move' },
+        { id: 'c-west', to: { x: 700, y: 880 }, speed: 14, state: 'move' } ] },
+    { t: 36, title: 'Ligny', clock: '16 June, afternoon', tag: 'established', focus: { x: 1210, y: 1360 }, zoom: .95,
+      text: 'On the 16th Napoleon attacked about eighty thousand Prussians from three corps, gathered around Ligny and Saint-Amand. All afternoon the two armies fought for the villages, house by house. In the evening Napoleon sent in the Imperial Guard, and the Prussian centre broke.',
+      orders: [
+        { id: 'c-vandamme', to: { x: 1170, y: 1365 }, speed: 18, state: 'attack' },
+        { id: 'c-gerard', to: { x: 1235, y: 1335 }, speed: 18, state: 'attack' },
+        { id: 'c-guard', to: { x: 1225, y: 1350 }, via: [ { x: 1150, y: 1440 } ], speed: 20, state: 'attack', delay: 9 },
+        { id: 'c-pirch', to: { x: 1245, y: 1300 }, speed: 16 },
+        { id: 'c-thielmann', to: { x: 1330, y: 1270 }, speed: 16 },
+        { id: 'c-zieten', strengthTo: 55, over: 14 }, { id: 'c-pirch', strengthTo: 60, over: 14 },
+        { leader: 'napoleon', to: { x: 1150, y: 1430 } }, { leader: 'blucher', to: { x: 1250, y: 1295 } } ] },
+    { t: 48, media: '06-ney-gerard.jpg', title: 'Quatre Bras', clock: '16 June, afternoon', tag: 'established', focus: { x: 930, y: 1110 }, zoom: .95,
+      text: 'At the same time, roughly eleven kilometres away in a straight line, Marshal Ney attacked the crossroads of Quatre Bras. It was first defended by Dutch-Belgian troops under General Perponcher. Wellington arrived in the morning, before Ney\'s main attack began, and all afternoon his regiments came up the road from Brussels and were thrown into the fight. By nightfall Ney had been held, and the crossroads was still in allied hands.',
+      orders: [
+        { id: 'c-perponcher', to: { x: 930, y: 1085 }, speed: 20 },
+        { id: 'c-reille', to: { x: 915, y: 1145 }, speed: 16, state: 'attack' },
+        { id: 'c-cuir', visible: true, at: { x: 880, y: 1260 }, to: { x: 925, y: 1130 }, speed: 30, state: 'attack', delay: 8 },
+        { id: 'c-reserve', to: { x: 935, y: 1075 }, via: [ { x: 935, y: 950 } ], speed: 26 },
+        { leader: 'wellington', at: { x: 940, y: 1050 } }, { leader: 'ney', to: { x: 900, y: 1170 } } ] },
+    { t: 60, title: 'The corps that fought nowhere', clock: '16 June, evening', tag: 'disputed', focus: { x: 1030, y: 1300 }, zoom: .75,
+      text: 'Between the battles, d\'Erlon\'s corps of about twenty thousand men was redirected toward Ligny, then recalled by Ney. It marched between the two battlefields and fought at neither. Its absence may have cost the French a greater victory at Ligny, or success at Quatre Bras. Historians still debate what its arrival might have changed.',
+      orders: [
+        { id: 'c-derlon', to: { x: 1100, y: 1370 }, via: [ { x: 960, y: 1420 } ], speed: 26, then: 'hold' } ] },
+    { t: 72, media: '08-blucher.jpg', title: 'Blücher unhorsed', clock: '16 June, night', tag: 'established', focus: { x: 1220, y: 1290 }, zoom: 1.0,
+      text: 'At Ligny, the seventy-two-year-old Blücher led a last cavalry charge. His horse was shot and fell on him. French cavalry passed close by, but his aide Count Nostitz stayed with him until Prussian soldiers could free him. While Blücher was missing, his chief of staff Gneisenau directed the defeated troops first toward Tilly, then toward Wavre, keeping them within reach of Wellington.',
+      orders: [
+        { id: 'c-derlon', to: { x: 905, y: 1190 }, via: [ { x: 980, y: 1330 } ], speed: 26 },
+        { leader: 'blucher', to: { x: 1215, y: 1335 }, speed: 90 },
+        { id: 'c-zieten', to: { x: 1170, y: 1150 }, speed: 18, state: 'move', delay: 6 },
+        { id: 'c-pirch', to: { x: 1200, y: 1130 }, speed: 18, state: 'move', delay: 6 },
+        { id: 'c-thielmann', to: { x: 1400, y: 1180 }, speed: 18, state: 'move', delay: 6 } ] },
+    { t: 84, media: '10-grouchy.jpg', title: 'North, not east', clock: '17 June', tag: 'established', focus: { x: 1300, y: 900 }, zoom: .55,
+      text: 'Retreating north to Wavre, not east toward their homeland, kept the two allied armies within supporting distance, and made their cooperation at Waterloo possible. Napoleon sent Marshal Grouchy with roughly thirty-three thousand men to pursue the Prussians, attack them if possible, and prevent them from joining Wellington. Grouchy\'s pursuit went slowly, by way of Gembloux, where he spent the night.',
+      orders: [
+        { id: 'c-zieten', to: { x: 1290, y: 575 }, via: [ { x: 1305, y: 880 } ], speed: 30 },
+        { id: 'c-pirch', to: { x: 1335, y: 610 }, via: [ { x: 1325, y: 890 } ], speed: 30 },
+        { id: 'c-thielmann', to: { x: 1380, y: 560 }, via: [ { x: 1500, y: 1120 }, { x: 1390, y: 850 } ], speed: 34 },
+        { id: 'c-bulow', visible: true, at: { x: 1700, y: 420 }, to: { x: 1400, y: 520 }, speed: 30 },
+        { leader: 'blucher', to: { x: 1305, y: 540 }, speed: 120 },
+        { id: 'c-vandamme', state: 'withdrawn' }, { id: 'c-gerard', state: 'withdrawn' },
+        { id: 'c-grouchy', visible: true, at: { x: 1250, y: 1320 }, to: { x: 1500, y: 1150 }, speed: 12 },
+        { leader: 'grouchy', visible: true, at: { x: 1240, y: 1300 }, to: { x: 1490, y: 1135 }, speed: 18 } ] },
+    { t: 96, title: 'Retreat in the storm', clock: '17 June, afternoon', tag: 'established', focus: { x: 880, y: 800 }, zoom: .8,
+      rain: true,
+      text: 'After learning that Blücher had retreated from Ligny, Wellington withdrew from Quatre Bras, his left flank exposed, and marched north toward the ridge of Mont-Saint-Jean. French cavalry pursued his rearguard and clashed with British cavalry near Genappe. A violent thunderstorm swept over the retreat, turning the roads and fields into mud.',
+      orders: [
+        { id: 'c-reserve', to: { x: 815, y: 655 }, via: [ { x: 935, y: 950 } ], speed: 34 },
+        { id: 'c-perponcher', to: { x: 860, y: 670 }, via: [ { x: 935, y: 960 } ], speed: 34 },
+        { id: 'c-west', to: { x: 770, y: 660 }, speed: 30 },
+        { id: 'c-ukcav', visible: true, at: { x: 940, y: 1060 }, to: { x: 945, y: 935 }, speed: 30, then: 'hold' },
+        { id: 'c-ukcav', to: { x: 860, y: 700 }, speed: 30, delay: 14 },
+        { id: 'c-cuir', to: { x: 945, y: 975 }, speed: 30, state: 'attack' },
+        { id: 'c-cuir', to: { x: 870, y: 760 }, speed: 26, delay: 14 },
+        { id: 'c-reille', to: { x: 830, y: 770 }, via: [ { x: 935, y: 1000 } ], speed: 30 },
+        { id: 'c-derlon', to: { x: 880, y: 765 }, via: [ { x: 935, y: 1010 } ], speed: 30 },
+        { id: 'c-guard', to: { x: 875, y: 840 }, via: [ { x: 1000, y: 1150 }, { x: 935, y: 1030 } ], speed: 40 },
+        { leader: 'wellington', to: { x: 825, y: 640 }, speed: 120 }, { leader: 'ney', to: { x: 900, y: 800 }, speed: 110 },
+        { leader: 'napoleon', to: { x: 890, y: 830 }, speed: 140 } ] },
+    { t: 108, title: 'The night before', clock: '17–18 June', tag: 'established', focus: { x: 1050, y: 650 }, zoom: .62,
+      rain: true,
+      text: 'All night the rain fell on two armies lying in the open fields, a few kilometres apart. Wellington prepared to fight on the ridge, provided Blücher came to his aid from Wavre, and during the night the Prussians confirmed their promise to march. At dawn, Bülow\'s Prussian corps began moving west from Wavre along muddy roads, marching to Wellington\'s aid before the battle had begun.',
+      orders: [
+        { leader: 'wellington', to: { x: 810, y: 570 } }, { leader: 'napoleon', to: { x: 870, y: 800 } },
+        { id: 'c-bulow', to: { x: 1080, y: 650 }, speed: 7 }, { leader: 'blucher', to: { x: 1150, y: 600 }, speed: 10, delay: 8 } ] },
+    { t: 120, media: '10-grouchy.jpg', title: '18 June', clock: 'morning', tag: 'account', focus: { x: 1150, y: 760 }, zoom: .55,
+      markers: [ { x: 1525, y: 919, label: 'Walhain' } ],
+      text: 'On the morning of 18 June, Napoleon delayed his attack while his army assembled and the rain-soaked ground began to dry. Near Walhain, Grouchy heard the guns of Waterloo. General Gérard urged him to march toward the fighting, but Grouchy refused and continued pursuing the Prussians toward Wavre. The battle of Waterloo had begun.',
+      orders: [
+        { id: 'c-grouchy', to: { x: 1450, y: 780 }, via: [ { x: 1520, y: 925 } ], speed: 12 },
+        { leader: 'grouchy', to: { x: 1515, y: 905 }, speed: 30 },
+        { leader: 'wellington', to: { x: 828, y: 655 } }, { leader: 'napoleon', to: { x: 846, y: 735 } },
+        { id: 'c-reille', to: { x: 800, y: 700 }, speed: 10, state: 'attack', delay: 12 } ] }
+    ]
+  },
+
   /* ---------- Command mode: the computer’s plans for the side the player does not take ---------- */
   ai: {
     plans: {
