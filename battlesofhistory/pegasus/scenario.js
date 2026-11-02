@@ -478,6 +478,14 @@ window.BATTLE_SCENARIO = {
 
   /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
   welcome: 'Welcome to Battles of History. Today we are learning about the battle for Pegasus Bridge, which happened on the night of the 5th to the 6th of June 1944, between the British 6th Airborne Division and the German army defending Normandy.',
+  /* After the globe: Europe in 1944, the Normandy coast on D-Day, the Orne valley (illustrated, then moonlit), the gliders landing. */
+  establishing: [
+    { file: 'establish-1-europe-1944.jpg', secs: 5, pulse: { x: .33, y: .63 }, credit: 'North-western Europe, June 1944. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-2-normandy-coast.jpg', secs: 5, pulse: { x: .58, y: .47 }, credit: 'The Normandy coast on the night of 5 to 6 June 1944, the invasion fleet offshore. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-3-orne-valley-illustrated.jpg', secs: 4, pulse: { x: .58, y: .355 }, credit: 'The Caen canal and the river Orne, side by side from the sea to Caen. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-4-orne-valley-moonlit.jpg', secs: 5, pulse: { x: .585, y: .37 }, credit: 'The same valley in the moonlight of 6 June 1944. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-5-gliders-landing.jpg', secs: 6, credit: 'Sixteen minutes past midnight: the gliders come down beside the canal bridge. Artist rendering: Battle Games, AI-generated' }
+  ],
   imageBase: 'images/',
   audioBase: 'audio/',
   /* One narrator for now. */

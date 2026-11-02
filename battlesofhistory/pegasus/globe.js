@@ -259,7 +259,7 @@ window.BattleGlobe = (() => {
       const k = Math.min(1, (now - t0) / DIVE2_SECS), e = ease(k);
       st.R = R0 * PULL * Math.pow(CLOSE / PULL, e); st.lat0 = NEAR_EAST.lat + (KADESH.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (KADESH.lon - NEAR_EAST.lon) * e;
       st.ancient = Math.max(0, 1 - k / .4); st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = -h * ((cb.lift ? .22 : .04) * (1 - e) + .05 * e);
-      if (k >= 1) { st.phase = 'fade'; t0 = now; }
+      if (k >= 1) { st.phase = 'fade'; t0 = now; if (cb.onFade) cb.onFade(); }
     } else if (st.phase === 'fade') {
       const k = Math.min(1, (now - t0) / FADE_SECS); cv.style.opacity = String(1 - k);
       if (k >= 1) { stop(); if (cb.onDone) cb.onDone(); return; }
