@@ -89,35 +89,36 @@ Blücher at Wavre. *Tags: established.*
 
 ## 9. Retreat in the storm  · 17 June, afternoon
 **Narration:**
-> Learning that the Prussians had fallen back, Wellington withdrew from Quatre Bras along the Brussels road to a
-> ridge he had chosen near the village of Mont-Saint-Jean. In the afternoon a violent thunderstorm broke over the
-> armies. The French followed through the mud, and the British cavalry fought a rearguard action at Genappe.
+> After learning that Blücher had retreated from Ligny, Wellington withdrew from Quatre Bras, his left flank exposed,
+> and marched north toward the ridge of Mont-Saint-Jean. French cavalry pursued his rearguard and clashed with British
+> cavalry near Genappe. A violent thunderstorm swept over the retreat, turning the roads and fields into mud.
 
 **Map:** Wellington's army marches north to the ridge; the French follow; rain over the whole map; a cavalry clash at
 Genappe. Leaders: Wellington, Napoleon. *Tags: established.*
 
 ## 10. The night before  · 17–18 June
 **Narration:**
-> All night the rain fell on two armies lying in the open fields, a few kilometres apart. Wellington would stand and
-> fight on the ridge, because Blücher had promised to come to him from Wavre. At dawn, the first Prussian corps set off
-> along muddy lanes toward the sound of the guns that had not yet begun.
+> All night the rain fell on two armies lying in the open fields, a few kilometres apart. Wellington prepared to fight
+> on the ridge, provided Blücher came to his aid from Wavre, and during the night the Prussians confirmed their
+> promise to march. At dawn, Bülow's Prussian corps began moving west from Wavre along muddy roads, marching to
+> Wellington's aid before the battle had begun.
 
 **Map:** the two armies on their ridges south of Waterloo; Bülow's corps starts west from Wavre. Leaders: all four.
 *Tags: established.*
 
 ## 11. 18 June  · morning
 **Narration:**
-> In the morning Napoleon waited for the ground to dry so that his guns could move. At Walhain, Grouchy heard the first
-> cannon to the west, and kept marching after the Prussians as he had been ordered. The battle of Waterloo was about to
-> begin.
+> On the morning of 18 June, Napoleon delayed his attack while his army assembled and the rain-soaked ground began to
+> dry. Near Walhain, Grouchy heard the guns of Waterloo. General Gérard urged him to march toward the fighting, but
+> Grouchy refused and continued pursuing the Prussians toward Wavre. The battle of Waterloo had begun.
 
-**Map:** the Prussian corps gather at Wavre; Grouchy's columns move slowly north-east and stop for the night at Gembloux. Leaders: Blücher at Wavre.
-*Tags: established for the mission; estimate for the strength.*
+**Map:** the French army assembles south of the ridge; around 11:30 the first attack opens on Hougoumont; at Walhain, Grouchy's columns keep moving north toward Wavre; the camera closes in on the ridge and the reenactment switches to the battle map.
+*Tags: established for the delay and the events; account for the conversation; disputed for the causes of the delay and whether Grouchy should have changed course.*
 
 ---
 
 ## Fact-check
-Chapters 1 to 8 corrected after ChatGPT's fact-check (sources: Clausewitz, *The Campaign of 1815*; Wellington's dispatch of 19 June; Bowles's memorandum in the *Letters of the First Earl of Malmesbury*; Ropes; Siborne; the Prussian official report). Chapters 9 to 11 still to be checked.
+Chapters 1 to 8 corrected after ChatGPT's fact-check (sources: Clausewitz, *The Campaign of 1815*; Wellington's dispatch of 19 June; Bowles's memorandum in the *Letters of the First Earl of Malmesbury*; Ropes; Siborne; the Prussian official report). Chapters 9 to 11 corrected in the second part of the fact-check (Wellington's dispatch of 19 June; Hussey, *Waterloo: The Campaign of 1815*; Cotton, *A Voice from Waterloo*; Ropes, ch. XV; the National Army Museum).
 
 ## Still to check before recording
 - Army numbers: the French about 120,000 (some say 125,000); the Prussians at Ligny about 80,000 to 84,000.
