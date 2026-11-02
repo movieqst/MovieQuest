@@ -54,7 +54,7 @@ window.BATTLE_SCENARIO = {
 
   globe: {
     target: { lon: -0.2747, lat: 49.2425 },      // the canal bridge at Bénouville
-    region: { lon: -0.8, lat: 49.3 }, pull: 4.6, startLat: 44,
+    region: { lon: 0.5, lat: 50.2 }, pull: 6.6, startLat: 44,   // close enough that only the top edge of Africa shows
     periodNote: 'Western Europe on 6 June 1944 · German-occupied France, the invasion beaches along the Normandy coast',
     labels: [
       { lon: 2.35, lat: 48.86, text: 'Paris', size: .55, dot: true }, { lon: -0.37, lat: 49.18, text: 'Caen', size: .6, dot: true },
