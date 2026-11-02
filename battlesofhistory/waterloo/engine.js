@@ -871,7 +871,7 @@ const Narr = {
   tts(text) {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(text); u.rate = .92 * this.rate; u.pitch = .85;
-    const vs = speechSynthesis.getVoices(), pref = vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
+    const LG = window.BH_LANG || 'en', vs = speechSynthesis.getVoices(), pref = (LG === 'en' && vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name))) || vs.find(v => new RegExp('^' + LG, 'i').test(v.lang)) || vs[0];   // the browser's voice in the page's language
     if (pref) u.voice = pref; u.onend = () => { const n = this.next; this.next = null; if (n) n(); }; speechSynthesis.speak(u);
     if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
   },
