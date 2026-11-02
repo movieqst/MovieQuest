@@ -128,5 +128,19 @@ window.BATTLES = [
     cover: 'images/cover.jpg',
     coverCredit: 'Artist rendering: the Scots cut off the English vanguard at the north end of the bridge. Battle Games, AI-generated',
     status: 'in progress'
+  },
+  {
+    folder: 'vimy',
+    order: 11,
+    era: 'First World War',
+    title: 'Battle of Vimy Ridge',
+    date: '9–12 April 1917', year: 1917,
+    place: 'Vimy Ridge, north of Arras, northern France',
+    sides: 'The Canadian Corps under Julian Byng, with British support vs. the German Sixth Army',
+    sideColors: ['#c0392b', '#2e5aa8'],
+    blurb: 'For the first time all four Canadian divisions attack together. After months of tunnelling and rehearsal they advance behind a creeping barrage and take the ridge that had held out against the French and British for two years.',
+    cover: 'images/cover.jpg',
+    coverCredit: 'Canadian machine gunners dig in, in shell holes on Vimy Ridge, April 1917. Photo: Canada, Dept. of National Defence; Library and Archives Canada PA-001017 (IWM CO 1146), public domain',
+    status: 'in progress'
   }
 ];
