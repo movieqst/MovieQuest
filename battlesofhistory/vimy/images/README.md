@@ -10,3 +10,4 @@
 | 10-map-arras-vimy-1917.png | Map of the Battle of Arras, April 1917, with Vimy Ridge (front-line divisions of 9 April) | Usedtoknowthat, Wikimedia Commons, based on the US Military Academy map. CC BY-SA 4.0: credit the author and share alike |
 | 06-bringing-in-the-wounded.jpg | Bringing in the wounded, April 1917: German prisoners carry a stretcher, a Canadian soldier behind | Canada, Dept. of National Defence; LAC PA-001042 (MIKAN 3521651). CC BY 2.0 via LAC Flickr; public domain in Canada |
 | 07-battered-german-trench.jpg | A battered German trench on Vimy Ridge, captured by the Canadians, April 1917 | Canada, Dept. of National Defence; LAC PA-001150 (MIKAN 3521598). Public domain |
+| 08-richard-jack-taking-of-vimy-ridge.jpg | Richard Jack, *The Taking of Vimy Ridge, Easter Monday 1917* (1919): gunners loading a QF 4.5-inch howitzer, the ridge under bombardment behind | Canadian War Museum 19710261-0160. Public domain (the artist died in 1952) |
