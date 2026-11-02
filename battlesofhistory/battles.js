@@ -1,7 +1,7 @@
 /* The list of battles. Cards below the timeline are ordered by `order`: the highest number is shown first. Give a new card the next number, and bump a card's number when it is updated, so it moves to the front. The timeline uses `year`. Add a new entry here when a new battle folder is added; index.html reads it.
    Each entry: folder (the subfolder with its own index.html), title, date (text), year (a number for the
    timeline: negative for BCE), place, sides, blurb, cover (a picture inside the folder's images/),
-   coverCredit, and status: 'ready' | 'in progress'. */
+   coverCredit, optional coverPos (CSS background-position, to keep the subject in the crop), and status: 'ready' | 'in progress'. */
 window.BATTLES = [
   {
     folder: 'kadesh',
@@ -139,7 +139,7 @@ window.BATTLES = [
     sides: 'The Canadian Corps under Julian Byng, with British support vs. the German Sixth Army',
     sideColors: ['#c0392b', '#2e5aa8'],
     blurb: 'For the first time all four Canadian divisions attack together. After months of tunnelling and rehearsal they advance behind a creeping barrage and take the ridge that had held out against the French and British for two years.',
-    cover: 'images/cover.jpg',
+    cover: 'images/cover.jpg', coverPos: '30% 18%',   // keep the memorial in view
     coverCredit: 'Will Longstaff, Ghosts of Vimy Ridge (about 1929): the ghosts of the Canadian Corps gather on the ridge around the Vimy Memorial. House of Commons Heritage Collection, public domain',
     status: 'in progress'
   }
