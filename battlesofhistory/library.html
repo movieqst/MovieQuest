@@ -25,6 +25,9 @@
   <p class="lead" id="lead"></p>
   <p class="small">Each book we keep is a PDF of a printed copy, so it still opens if an outside site moves. Modern works still in copyright are listed with a link only.</p>
   <div id="lib"></div>
+  <h1 style="font-size:24px;margin-top:28px">Sounds and music</h1>
+  <p class="small">Every recording in the battles is free to use: public domain or a Creative Commons licence. Each is listed with who made it and where it comes from.</p>
+  <div id="snd"></div>
   <p class="small">The pictures in the game are kept on this site too; each one shows its source and licence under it.</p>
 </main>
 <script>
@@ -48,6 +51,17 @@
         ${b.link ? `<a href="${esc(b.link)}" target="_blank" rel="noopener">${esc(b.linkLabel || 'Read online')}</a>` : ''}</div></div>`).join('') || '<p>No books listed yet.</p>';
   };
   document.head.appendChild(sc);
+</script>
+<script src="sounds/catalog.js"></script>
+<script>
+  // the sounds and music: this battle's first, then the ones every battle shares
+  { const list = (window.BH_SOUNDS || []).filter(x => x.battle === B || x.battle === 'all');
+    const e = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    document.getElementById('snd').innerHTML = list.map(x => `<div class="book"><h2>${e(x.title)}</h2>
+      <div class="meta">${e(x.kind)} · ${e(x.by)}</div>
+      <audio controls preload="none" src="${e(x.file)}" style="width:100%;margin:6px 0"></audio>
+      <div class="small">Used in the game: ${e(x.used)} · <b>${e(x.licence)}</b> · ${e(x.source)}</div>
+      ${x.note ? `<div class="small">${e(x.note)}</div>` : ''}</div>`).join('') || '<p class="small">No sounds for this battle yet.</p>'; }
 </script>
 <script src="stats.js"></script>
 </body></html>
