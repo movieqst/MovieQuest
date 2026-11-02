@@ -14,3 +14,4 @@
 | 09-pack-horses-ammunition.jpg | Pack horses carry shells to the 20th Battery, Canadian Field Artillery, through the mud of Neuville-Saint-Vaast, April 1917 | Photo: W. I. Castle; LAC PA-001231 (MIKAN 3194763). Public domain |
 | 11-byng-and-prince-arthur-german-mortar.jpg | Lt-Gen Sir Julian Byng, commander of the Canadian Corps (left), watches Prince Arthur of Connaught work a German light trench mortar captured at Vimy, May 1917 | Canada, Dept. of National Defence; LAC PA-001268 (MIKAN 3397824). Public domain |
 | cover.jpg, 12-longstaff-ghosts-of-vimy-ridge.jpg | Will Longstaff, *Ghosts of Vimy Ridge* (about 1929): the ghosts of the Canadian Corps around the Vimy Memorial | House of Commons Heritage Collection O-4714. Public domain (the artist died in 1953) |
+| 13-grange-subway-today.jpg | The preserved Grange Subway at the Vimy memorial park today | source to confirm (sent from ChatGPT's research) |
