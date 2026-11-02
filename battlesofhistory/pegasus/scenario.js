@@ -153,8 +153,7 @@ window.BATTLE_SCENARIO = {
       auto: 38,
       lines: [
         { text: 'The operation was named Deadstick, the pilots’ word for landing with no engine. The gliders cast off over the coast at 00:07 and came down through cloud, turning twice by stopwatch, to arrive out of the dark at ninety miles an hour, braked by a parachute and a skid.', tag: 'british', cite: 'Ambrose, Pegasus Bridge, ch. 5' },
-        { text: 'The first glider hit the ground at sixteen minutes past midnight, forty-seven yards from the canal bridge. The second and third followed within a minute. At the river bridge two of three arrived; the sixth, released in the wrong place, landed eight miles away on the wrong river.', tag: 'established' },
-        { text: 'Choose how to see it: watch the night unfold as the two sides tell it, or take command of the bridges, or of the garrison and the tanks that must take them back.', tag: 'reconstruction' }
+        { text: 'The first glider hit the ground at sixteen minutes past midnight, forty-seven yards from the canal bridge. The second and third followed within a minute. At the river bridge two of three arrived; the sixth, released in the wrong place, landed eight miles away on the wrong river.', tag: 'established' }
       ]
     },
     { title: 'Choose', choice: true, focus: { x: 1180, y: 730 }, zoom: 1, auto: 9999, lines: [ { text: 'Watch the battle unfold, or take command.', tag: 'reconstruction' } ] }
