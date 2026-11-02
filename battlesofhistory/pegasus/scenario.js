@@ -97,6 +97,7 @@ window.BATTLE_SCENARIO = {
       title: 'The British force',
       media: [
         { at: 0,  file: '03-john-howard.jpg', caption: 'Major John Howard, commanding D Company, 2nd Battalion, the Oxfordshire and Buckinghamshire Light Infantry: a former regimental sergeant-major and policeman who had trained his company for six months for this one night.', ref: 'British Army photograph, 1944', credit: 'Crown copyright expired, public domain (via ParaData)' },
+        { at: 8, file: '40-map-glider-route.jpg', caption: 'The flight: six Halifax bombers of 298 and 644 Squadrons towed the six gliders from RAF Tarrant Rushton in Dorset across the Channel. The gliders cast off near the coast and glided down to the bridges; the Halifaxes went on to a diversion raid and flew home.', ref: 'Routes approximate', credit: 'Map: Battle Games, drawn from real elevation data' },
         { at: 14, file: '07-horsa-under-tow.jpg', caption: 'An Airspeed Horsa glider on tow behind an Albemarle. The six Horsas were towed across the Channel by Halifax bombers and released at 6,000 feet over the coast, seven miles from the bridges.', ref: 'British Air Ministry photograph', credit: 'Crown copyright expired, public domain' },
         { at: 26, file: '13-horsa-replica-museum.jpg', caption: 'A full-size replica of a Horsa at the Memorial Pegasus museum. Twenty metres of plywood and fabric carrying thirty men, two pilots and their kit, landing at ninety miles an hour with no engine and no second chance.', ref: 'Memorial Pegasus, Ranville', credit: 'Photo: René Hourdry, 2023, CC0' }
       ],
@@ -114,7 +115,8 @@ window.BATTLE_SCENARIO = {
       title: 'The German garrison',
       media: [
         { at: 0,  file: '09-german-antitank-guns.jpg', caption: 'German anti-tank guns captured in Normandy, summer 1944. The garrison at the canal bridge had one gun of this family in a sandbagged pit at the east end, a 50 mm PaK 38, with a concrete pillbox and machine-gun trenches beside it.', ref: 'Normandy, 1944; National Archives of Canada', credit: 'Public domain (Archives Normandie 1939-45)' },
-        { at: 16, file: '10-panzer-iv-normandy.jpg', caption: 'A captured Panzer IV of the kind the 21st Panzer Division sent down the road to the bridge at half past one in the morning. This one was taken by the British 27th Armoured Brigade in July.', ref: 'Normandy, 3 July 1944; Imperial War Museum B 6344', credit: 'Photo: Sgt J. Mapham; Crown copyright expired, public domain' }
+        { at: 16, file: '10-panzer-iv-normandy.jpg', caption: 'A captured Panzer IV of the kind the 21st Panzer Division sent down the road to the bridge at half past one in the morning. This one was taken by the British 27th Armoured Brigade in July.', ref: 'Normandy, 3 July 1944; Imperial War Museum B 6344', credit: 'Photo: Sgt J. Mapham; Crown copyright expired, public domain' },
+        { at: 31, file: '41-map-21st-panzer.jpg', caption: 'Where the 21st Panzer Division lay: spread south and south-east of Caen, its tanks around Falaise and Vimont, its headquarters at Saint-Pierre-sur-Dives. The red ring is ten miles from the bridge.', ref: 'Positions approximate', credit: 'Map: Battle Games, drawn from real elevation data' }
       ],
       focus: { x: 1000, y: 760 }, zoom: 1.3,
       markers: [ { x: 1005, y: 780, label: 'Gun pit and pillbox' } ],
