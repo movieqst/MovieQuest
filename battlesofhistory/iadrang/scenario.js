@@ -124,7 +124,7 @@ window.BATTLE_SCENARIO = {
         { on: 'besieged the Special Forces camp', ring: { x: 1551, y: 1294, r: 24, label: 'Plei Me camp, besieged 19 October', ly: 44 } },
         { on: 'ambush the relief column', ring: { x: 1745, y: 985, r: 26, label: 'Ambush: the 32nd Regiment', lx: 34, ly: 0, align: 'left' } },
         { on: 'pulled back west', arrow: { pts: [[1440, 1330], [1250, 1420], [1100, 1500]], label: 'back toward the Chu Pong', col: '#ff8a76', dy: 26 } },
-        { on: 'leap-frogged west', arrow: { pts: [[2000, 860], [1700, 1060], [1400, 1180]], label: '1st Cavalry: the pursuit by helicopter', col: '#8fc4ff', dy: -18 } },
+        { on: 'leap-frogged west', arrow: { pts: [[2050, 1080], [1760, 1150], [1450, 1210]], label: '1st Cavalry: the pursuit by helicopter', col: '#8fc4ff', dy: 24 } },
         { on: 'into the Ia Drang valley', arrow: { pts: [[1330, 1250], [1180, 1380], [1110, 1440]], label: 'one battalion into the Ia Drang, 14 November', col: '#8fc4ff', dx: -10, dy: 26, align: 'right' } }
       ],
       media: [
@@ -178,7 +178,7 @@ window.BATTLE_SCENARIO = {
       markers: [],
       cues: [
         { on: 'The B3 Front', unit: { x: 470, y: 1330, side: 'pavn', size: 'XX', label: 'B3 Front (Chu Huy Man)' } },
-        { on: 'tired from Plei Me', ring: { x: 860, y: 1625, r: 30, label: '32nd and 33rd: tired from Plei Me', ly: 50 } },
+        { on: 'tired from Plei Me', ring: { x: 860, y: 1625, r: 30, label: '32nd and 33rd: tired from Plei Me', lx: 42, ly: 0, align: 'left' } },
         { on: 'the fresh 66th', ring: { x: 700, y: 1530, r: 30, label: 'the 66th, fresh from the trail', lx: -40, align: 'right' } },
         { on: 'ordered an attack within the hour', arrow: { pts: [[770, 1560], [850, 1500], [905, 1460]], label: 'attack within the hour', col: '#ff8a76', dy: -22 } },
         { on: 'grab the enemy by the belt', ring: { x: 916, y: 1453, r: 18, label: 'grab the enemy by the belt', lx: 28, ly: 0, align: 'left' } }
@@ -202,8 +202,8 @@ window.BATTLE_SCENARIO = {
       markers: [],
       cues: [
         { on: 'a clearing the size of a football field', ring: { x: 1300, y: 880, r: 60, label: 'The clearing: LZ X-Ray' } },
-        { on: 'A dry creek bed', ring: { x: 980, y: 880, r: 34, label: 'The dry creek bed: the front line', lx: -48, ly: 0, align: 'right' } },
-        { on: 'between it and the mountain', arrow: { pts: [[880, 960], [560, 1000]], label: 'the Chu Pong', col: '#ff8a76', dy: -18 } }
+        { on: 'A dry creek bed', ring: { x: 980, y: 880, r: 34, label: 'The dry creek bed: the front line', lx: 44, ly: 22, align: 'left' } },
+        { on: 'between it and the mountain', arrow: { pts: [[900, 1010], [620, 1050]], label: 'the Chu Pong', col: '#ff8a76', dy: 22 } }
       ],
       auto: 41,
       lines: [
