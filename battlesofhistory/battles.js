@@ -167,8 +167,8 @@ window.BATTLES = [
     sides: 'The Eastern Army of Tokugawa Ieyasu vs. the Western Army of Ishida Mitsunari',
     sideColors: ['#2f6fc4', '#c0392b'],
     blurb: 'In a fog-filled mountain valley, the two great coalitions of Japan meet to decide who rules after Toyotomi Hideyoshi. When Kobayakawa Hideaki’s army changes sides on the hill above, the Western Army collapses, and Tokugawa Ieyasu wins the country for two and a half centuries.',
-    cover: 'images/cover.jpg', coverPos: '50% 45%',
-    coverCredit: 'Sekigahara Kassen Byōbu, folding screen of the battle (1854 replica of a 1620s original by Kanō Sadanobu). Town of Sekigahara Archive of History and Cultural Anthropology, public domain',
+    cover: 'images/cover.jpg', coverPos: '45% 55%',
+    coverCredit: 'Sekigahara Kassen Byōbu-zu, folding screen of the battle seen from the north (late Edo period, 19th century). City of Gifu Museum of History, public domain',
     status: 'in progress'
   }
 ];
