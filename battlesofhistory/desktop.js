@@ -173,6 +173,13 @@
     const plain = el => { if (!el) return ''; const c = el.cloneNode(true); c.querySelectorAll('button,.chip').forEach(b => b.remove()); return c.textContent.replace(/\s+/g, ' ').trim(); };
     const sentences = t => (t.match(/[^.!?]+[.!?]+["\u201d\u2019)]*|[^.!?]+$/g) || [t]).map(x => x.trim()).filter(Boolean);
     let key = '', parts = [], weights = [], t0 = 0, shown = -1;
+    const TIMINGS = {};   // timings.json per voice folder, loaded once
+    const timingsFor = src => {
+      const m = src.match(/^(.*\/)([^\/?#]+)\.mp3/); if (!m) return null;
+      const dir = m[1], t = TIMINGS[dir];
+      if (t === undefined) { TIMINGS[dir] = null; fetch(dir + 'timings.json').then(r => r.ok ? r.json() : {}).then(j => { TIMINGS[dir] = j; }).catch(() => { TIMINGS[dir] = {}; }); return null; }
+      return t && t[m[2]] || null;
+    };
     const source = () => {
       const intro = $('intro');
       if (document.body.dataset.mode === 'intro') {
@@ -190,8 +197,14 @@
       const k = src.title + '|' + src.text;
       if (k !== key) { key = k; parts = sentences(src.text); const tot = parts.reduce((n, p) => n + p.length, 0) || 1; let acc = 0; weights = parts.map(p => (acc += p.length) / tot); t0 = performance.now(); shown = -1; ct.textContent = src.title; }
       const a = window.BattlePage && window.BattlePage.Narr && window.BattlePage.Narr.audio;
-      const f = a && a.duration && isFinite(a.duration) ? a.currentTime / a.duration : (performance.now() - t0) / 1000 * 15 / (parts.reduce((n, p) => n + p.length, 0) || 1);
-      let i = weights.findIndex(w => f < w); if (i < 0) i = parts.length - 1;
+      // exact sentence start times measured from the recording (tools/caption-timings.py -> audio/<voice>/timings.json)
+      const tm = a && a.src ? timingsFor(a.src) : null;
+      let i;
+      if (tm && tm.length === parts.length && !a.ended) { i = 0; for (let k = 0; k < tm.length; k++) if (a.currentTime + .05 >= tm[k]) i = k; }
+      else {
+        const f = a && a.duration && isFinite(a.duration) ? a.currentTime / a.duration : (performance.now() - t0) / 1000 * 15 / (parts.reduce((n, p) => n + p.length, 0) || 1);
+        i = weights.findIndex(w => f < w); if (i < 0) i = parts.length - 1;
+      }
       if (i !== shown) { shown = i; cl.textContent = parts[i]; }
       requestAnimationFrame(tick);
     };
