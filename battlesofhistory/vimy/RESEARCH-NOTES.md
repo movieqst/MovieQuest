@@ -25,7 +25,7 @@ page numbers. Anything below is used only once it is confirmed there, or tagged 
 - **Its caution is right.** Mark uncertain trenches and craters as reconstructed. Give each feature a first and last
   dated appearance. Keep "birth of a nation" as later interpretation, not fact.
 
-## Bob Gordon, "The Battle of Vimy Ridge, Part 3" (Legion Magazine series, vol. 24-05): claims to check
+## Bob Gordon, "The Battle of Vimy Ridge, Part 3: Canadian Corps Succeeds Where Others Had Failed", *Esprit de Corps* vol. 24-05 (espritdecorps.ca): claims to check
 
 - **The 4th Division** had the narrowest no man's land and the nearest objectives, but the steepest climb. The Pimple
   is 1,500 m north of Hill 145. Hill 145 was the 11th Brigade's objective.
