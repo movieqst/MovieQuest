@@ -54,7 +54,7 @@ window.BATTLE_SCENARIO = {
 
   globe: {
     target: { lon: -0.2747, lat: 49.2425 },      // the canal bridge at Bénouville
-    region: { lon: -0.8, lat: 49.3 }, pull: 4.6, startLat: 44,
+    region: { lon: 0.5, lat: 50.2 }, pull: 6.6, startLat: 44,   // close enough that only the top edge of Africa shows
     periodNote: 'Western Europe on 6 June 1944 · German-occupied France, the invasion beaches along the Normandy coast',
     labels: [
       { lon: 2.35, lat: 48.86, text: 'Paris', size: .55, dot: true }, { lon: -0.37, lat: 49.18, text: 'Caen', size: .6, dot: true },
@@ -166,6 +166,7 @@ window.BATTLE_SCENARIO = {
     duration: 250,
     commandDuration: 300,
     world: { w: 2400, h: 1800 },
+    gliderFrom: { x: 1900, y: 1980 },   // the gliders came in from the south-east and landed heading north-west, toward the bridges
     clockStart: '6 June · 00:16',
     heliFrom: { x: 1760, y: -260 },            // gliders come in from the north-east, over the coast
     rally: { brit: { x: 1180, y: 860 }, ger: { x: 400, y: 1360 } },
@@ -250,7 +251,7 @@ window.BATTLE_SCENARIO = {
     ],
 
     events: [
-      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1200, y: 640 }, zoom: .8,
+      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1180, y: 860 }, zoom: .8,
         text: 'Sixteen minutes past midnight. Out of the dark at ninety miles an hour, the first Horsa hits the ground, bounces, smashes through the wire and stops with its nose forty-seven yards from the canal bridge. The second and third land within a minute. Nobody on the bridge has heard a thing.',
         explain: 'The gliders were released at 6,000 feet over the coast and flew seven miles by stopwatch, making two timed turns in cloud. Wallwork, in the lead, aimed for the wire at the end of the field to stop the glider before the embankment: he hit it, and the two pilots went through the windscreen. Everyone aboard was stunned for a few seconds; some of the men thought they were dead.',
         orders: [
@@ -281,6 +282,7 @@ window.BATTLE_SCENARIO = {
         explain: 'Schmidt was the one German officer who knew the demolition plan. Captured within fifteen minutes of the landing, he could not raise the alarm or order the charges fitted. The German side had no commander at the bridges for the rest of the night; the counter-attacks that came were organised from outside.',
         orders: [ { id: 'schmidt', visible: true, to: { x: 1620, y: 720 }, speed: 45, state: 'move' }, { id: 'schmidt', strengthTo: 0, over: 6, delay: 5 } ] },
       { t: 54, title: 'The drop', tag: 'established', clock: '00:50', focus: { x: 2060, y: 160 },
+        media: { file: 'establish-2-normandy-coast.jpg', caption: 'The Normandy coast in the first hour of 6 June 1944: the canal and the Orne running inland to Caen, the invasion fleet offshore. Half an hour after the gliders, the 7th Parachute Battalion dropped east of the river near Ranville.', credit: 'Artist rendering: Battle Games, AI-generated' },
         text: 'Half an hour later the sky to the north-east fills with the 7th Parachute Battalion, dropping to take over the bridges. The drop is scattered by wind and flak; companies land miles apart and in the flooded fields. A third of the battalion will never reach the rendezvous.',
         explain: 'The 6th Airborne Division dropped east of the Orne to seal off the flank of the invasion. The 7th Battalion’s job was the bridges, and it got there, but with 200 men instead of 600, and without its mortars and machine guns, which had come down in the water. Howard’s company would have to hold longer than planned.',
         orders: [ { id: 'pA', visible: true, at: { x: 2160, y: -20 }, to: { x: 1840, y: 420 }, speed: 26 }, { id: 'pB', visible: true, at: { x: 2260, y: 100 }, to: { x: 1960, y: 500 }, speed: 26, delay: 6 }, { id: 'pC', visible: true, at: { x: 2360, y: 40 }, to: { x: 2020, y: 620 }, speed: 26, delay: 12 } ] },
@@ -320,11 +322,11 @@ window.BATTLE_SCENARIO = {
         text: 'A German fighter-bomber comes in low along the canal and drops a bomb on the canal bridge. It hits the tower, bounces off, and falls into the water without exploding. The bridge is not touched again from the air.',
         explain: 'A hit would have cut the road to the beaches for the airborne division. The dud was pure luck, and both accounts record it. Through the morning the Germans tried the bridge with tanks, infantry, a gunboat, snipers and an aircraft, and every attempt was too small and too late.',
         orders: [ { fire: { kind: 'dud', at: { x: 835, y: 755 }, r: 34, delay: 3, dmg: 0 } }, { id: 'ginf1', to: { x: 440, y: 1160 }, speed: 13, state: 'attack', strengthTo: 35, over: 12 }, { id: 'pA', strengthTo: 45, over: 12 } ] },
-      { t: 182, title: 'Noon', tag: 'established', clock: '12:00', focus: { x: 560, y: 860 },
+      { t: 182, title: 'Noon', music: { file: 'blue-bells.mp3', vol: .12 }, tag: 'established', clock: '12:00', focus: { x: 560, y: 860 },
         text: 'The attacks on Bénouville slacken. The paratroopers are down to half strength in the village and have lost most of their officers, but the Germans have not reached the bridge. From the north comes the sound of the fighting at Sword, and then, faintly, bagpipes.',
         explain: 'Lovat’s brigade had landed at 08:40 and fought its way through Colleville and the gun batteries behind the beach. Lovat had promised Howard he would be at the bridge by noon. He was two minutes late, and apologised for it.',
         orders: [ { id: 'ginf1', to: { x: 300, y: 1360 }, speed: 13, state: 'move', then: 'hold' }, { id: 'ginf2', to: { x: 440, y: 260 }, speed: 13, state: 'move', then: 'hold' } ] },
-      { t: 206, title: 'The commandos', tag: 'established', clock: '13:00', focus: { x: 865, y: 560 },
+      { t: 206, title: 'The commandos', music: { file: 'blue-bells.mp3', vol: .45 }, tag: 'established', clock: '13:00', focus: { x: 865, y: 560 },
         text: 'At one o’clock Lord Lovat’s commandos come down the road from Le Port, green berets instead of helmets, Piper Bill Millin playing Blue Bonnets over the Border at their head. They cross the canal bridge under sniper fire at a walk, as Lovat ordered, losing several men on the span, and shake hands with the airborne on the far side.',
         explain: 'Lovat marched his men across at the walk, pipes playing, as a point: the beach and the bridge were joined. The snipers in Le Port were still active and the crossing cost lives. Howard’s report records the relief at 13:00; Lovat’s own account says 13:02 and apologises for the delay.',
         orders: [ { id: 'cmdo', visible: true, at: { x: 560, y: -200 }, to: { x: 870, y: 730 }, speed: 40, state: 'move' }, { id: 'cmdo', to: { x: 1300, y: 730 }, speed: 30, state: 'move', delay: 14, then: 'hold' }, { id: 'cmdo', strengthTo: 94, over: 10, delay: 12 } ] },
@@ -468,6 +470,7 @@ window.BATTLE_SCENARIO = {
   ],
 
   sources: [
+    { ref: 'Music: “Blue Bells of Scotland”, traditional, played by Piper Johnny (Frederick John Ludwig Jr.) with the Medinah Highlanders drums, from Marines Hymn / Blue Bells of Scotland (2006)', note: 'Wikimedia Commons, File:08 Marines Hymn-Blue Bells of Scotland.ogg, CC BY-SA 4.0; the Blue Bells part only, faded in and out. Bill Millin played Blue Bonnets over the Border at the bridge; this is another Scottish pipe tune of the kind.' },
     { title: 'Ambrose, Pegasus Bridge (1985)', note: 'the standard account, from both sides' },
     { title: 'Howard, Report on Operation Deadstick (1944)', note: 'the original report' },
     { title: 'Barber, The Pegasus and Orne Bridges (2009)', note: 'the fullest modern study' },
@@ -481,7 +484,7 @@ window.BATTLE_SCENARIO = {
   /* After the globe: Europe in 1944, the Normandy coast on D-Day, the Orne valley (illustrated, then moonlit), the gliders landing. */
   establishing: [
     { file: 'establish-1-europe-1944.jpg', secs: 5, pulse: { x: .33, y: .63 }, credit: 'North-western Europe, June 1944. Artist rendering: Battle Games, AI-generated' },
-    { file: 'establish-2-normandy-coast.jpg', secs: 5, pulse: { x: .58, y: .47 }, credit: 'The Normandy coast on the night of 5 to 6 June 1944, the invasion fleet offshore. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-2-normandy-coast.jpg', secs: 5, pulse: { x: .605, y: .535 }, credit: 'The Normandy coast on the night of 5 to 6 June 1944, the invasion fleet offshore. Artist rendering: Battle Games, AI-generated' },
     { file: 'establish-3-orne-valley-illustrated.jpg', secs: 4, pulse: { x: .58, y: .355 }, credit: 'The Caen canal and the river Orne, side by side from the sea to Caen. Artist rendering: Battle Games, AI-generated' },
     { file: 'establish-4-orne-valley-moonlit.jpg', secs: 5, pulse: { x: .585, y: .37 }, credit: 'The same valley in the moonlight of 6 June 1944. Artist rendering: Battle Games, AI-generated' },
     { file: 'establish-5-gliders-landing.jpg', secs: 6, credit: 'Sixteen minutes past midnight: the gliders come down beside the canal bridge. Artist rendering: Battle Games, AI-generated' }

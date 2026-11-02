@@ -214,7 +214,7 @@ function drawProp(c, p) {
     c.fillStyle = '#8fbb62'; c.beginPath(); c.arc(q.x - r * .4, q.y - r * (h + .9), r * .25, 0, PI * 2); c.fill();
   } else if (p.kind === 'image') {
     const im = IMGS[p.src]; if (!im || !im.complete || !im.naturalWidth) return; const w = p.w * s, h = w * im.naturalHeight / im.naturalWidth;
-    c.save(); c.translate(q.x, q.y); c.rotate(p.rot || 0); c.globalAlpha = .18; c.fillStyle = '#000'; c.beginPath(); c.ellipse(4 * s, 2 * s, w * .4, h * .3 * k, 0, 0, PI * 2); c.fill(); c.globalAlpha = 1; c.drawImage(im, -w / 2, -h * .7, w, h); c.restore();
+    c.save(); c.translate(q.x, q.y); c.rotate(p.rot || 0); c.globalAlpha = .18; c.fillStyle = '#000'; c.beginPath(); c.ellipse(4 * s, 2 * s, w * .4, h * .3 * k, 0, 0, PI * 2); c.fill(); c.globalAlpha = 1; if (p.top) c.filter = 'brightness(1.35)'; c.drawImage(im, -w / 2, p.top ? -h / 2 : -h * .7, w, h); c.restore();
   } else if (p.kind === 'mound') {
     const r = p.r * s; c.fillStyle = 'rgba(40,25,10,.3)'; c.beginPath(); c.ellipse(q.x + r * .4, q.y, r * 1.2, r * .45 * k, 0, 0, PI * 2); c.fill();
     c.fillStyle = '#8a5a3a'; c.beginPath(); c.moveTo(q.x - r, q.y); c.quadraticCurveTo(q.x - r * .5, q.y - r * 1.6, q.x, q.y - r * 2.1); c.quadraticCurveTo(q.x + r * .5, q.y - r * 1.5, q.x + r, q.y); c.closePath(); c.fill();
@@ -387,16 +387,17 @@ function stepStrikes() {
 
 /* ---------------- helicopters: lifts in and out, medevac and gunship runs ---------------- */
 function spawnHeli(o) {
-  const from = PART.heliFrom || { x: W.w + 60, y: W.h / 2 };
+  const from = (o.kind === 'glider' && PART.gliderFrom) || PART.heliFrom || { x: W.w + 60, y: W.h / 2 };
   let to = o.to; if (o.kind === 'lift' || o.kind === 'glider') { const f = o.f; to = { x: f.x, y: f.y }; if (!o.out) { f.present = false; } }
   helis.push({ kind: o.kind, f: o.f || null, out: !!o.out, x: from.x, y: from.y, from, to, phase: 'in', t: 0, alt: o.kind === 'glider' ? 120 : 70, facing: Math.atan2(to.y - from.y, to.x - from.x), id: Math.random() });
 }
 function stepHelis() {
   helis.forEach(h => {
-    const sp = h.kind === 'glider' ? 150 : (UT.heli ? UT.heli.speed : 240);
+    const sp = h.kind === 'glider' ? 300 : (UT.heli ? UT.heli.speed : 240);
     const tgt = h.phase === 'out' ? h.from : h.to, dx = tgt.x - h.x, dy = tgt.y - h.y, d = Math.hypot(dx, dy);
     if (h.kind === 'glider' && h.phase === 'in') { const tot = Math.hypot(h.to.x - h.from.x, h.to.y - h.from.y) || 1; h.alt = 120 * Math.max(0, d / tot); }
-    if (h.phase === 'land' && h.kind === 'glider') { h.t += DT; h.alt = 0; if (h.t >= 1.2) { const f = h.f; if (f) { f.present = true; f.known = true; f.state = f.then && f.then !== 'hold' ? f.then : 'hold'; f.then = null; f.lastHit = simTime; addLog(f.division + ' down'); if (mode === 'command' && f.side === player) { cmdCaption('Glider down', 'lift', 'reconstruction', { x: f.x, y: f.y }); renderSelection(); } } PROPS.push({ kind: 'image', src: 'props/horsa-wreck.png', x: h.to.x + 10, y: h.to.y + 14, w: 120, rot: h.facing + PI, k: 0 }); h.phase = 'gone'; } return; }
+    if (h.phase === 'land' && h.kind === 'glider') { h.t += DT; h.alt = 0; if (h.t >= 1.2) { const f = h.f; if (f) { f.present = true; f.known = true; f.state = f.then && f.then !== 'hold' ? f.then : 'hold'; f.then = null; f.lastHit = simTime; addLog(f.division + ' down'); if (mode === 'command' && f.side === player) { cmdCaption('Glider down', 'lift', 'reconstruction', { x: f.x, y: f.y }); renderSelection(); } } { const top = IMGS['props/horsa-top.png'], ok = top && top.complete && top.naturalWidth;   // the glider stays where it stopped, as it looked in the air
+        PROPS.push(ok ? { kind: 'image', src: 'props/horsa-top.png', x: h.to.x, y: h.to.y, w: 95, rot: h.facing, k: 0, top: true } : { kind: 'image', src: 'props/horsa-wreck.png', x: h.to.x + 10, y: h.to.y + 14, w: 120, rot: h.facing + PI, k: 0 }); } h.phase = 'gone'; } return; }
     if (h.phase === 'land') { h.t += DT; h.alt = Math.max(2, 70 * Math.max(0, 1 - h.t / 1.2)); if (h.t >= 2.2) { if (h.kind === 'lift' && h.f) { if (h.out) { h.f.state = 'withdrawn'; h.f.known = false; if (selected.has(h.f.id)) selected.delete(h.f.id); addLog(h.f.division + ' lifted out'); } else { h.f.present = true; h.f.known = true; h.f.state = h.f.then && h.f.then !== 'hold' ? h.f.then : 'hold'; h.f.then = null; h.f.lastHit = simTime; addLog(h.f.division + ' landed'); if (mode === 'command' && h.f.side === player) { cmdCaption('Lift landed', 'lift', 'reconstruction', { x: h.f.x, y: h.f.y }); renderSelection(); } } } h.phase = 'out'; h.facing = Math.atan2(h.from.y - h.y, h.from.x - h.x); } return; }
     const step = sp * DT;
     if (d <= step) { h.x = tgt.x; h.y = tgt.y; if (h.phase === 'in') { if (h.kind === 'gunship') { h.phase = 'out'; h.facing = Math.atan2(h.from.y - h.y, h.from.x - h.x); } else { h.phase = 'land'; h.t = 0; } } else h.phase = 'gone'; }
@@ -411,8 +412,24 @@ function setLight(name) { if (!name || LIGHTS[name] === undefined) return; light
 function stepLight() { const d = light.target - light.cur; light.cur += Math.sign(d) * Math.min(Math.abs(d), DT / 4); }
 
 /* ---------------- watch mode ---------------- */
+/* ---------------- music: an event can bring in a tune ({ music: { file, vol } }, vol 0 to fade it out). It fades in and
+   out, plays softer while the narrator speaks, and stops whenever the reenactment is restarted or left. ---------------- */
+const MUSIC = { el: new Audio(), file: '', target: 0 };
+MUSIC.el.loop = false;   // plays once through (about 70 s) and ends
+function setMusic(m, instant) {
+  if (!m || !m.vol) { MUSIC.target = 0; if (instant) { MUSIC.el.pause(); MUSIC.el.volume = 0; MUSIC.file = ''; } return; }
+  if (MUSIC.file !== m.file) { MUSIC.file = m.file; MUSIC.el.src = (S.audioBase || 'audio/') + 'music/' + m.file; MUSIC.el.volume = 0; MUSIC.el.play().catch(() => {}); }
+  else if (MUSIC.el.paused) MUSIC.el.play().catch(() => {});
+  MUSIC.target = m.vol;
+}
+setInterval(() => {   // ease the volume toward its target, ducked under the narrator
+  const speaking = Narr.on && Narr.audio && !Narr.audio.paused && !Narr.audio.ended, want = MUSIC.target * (speaking ? .55 : 1) * (paused && mode !== 'intro' && !battleOver ? 0 : 1);
+  const v = MUSIC.el.volume, nv = Math.abs(want - v) < .01 ? want : v + (want - v) * .08; MUSIC.el.volume = Math.max(0, Math.min(1, nv));
+  if (MUSIC.target === 0 && MUSIC.el.volume < .005 && !MUSIC.el.paused) { MUSIC.el.pause(); MUSIC.file = ''; }
+}, 100);
 function fireEvent(ev) {
   currentEvent = ev; ev.orders.forEach(applyOrder);
+  if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   if (ev.clock) clockLabel = ev.clock; if (ev.light) setLight(ev.light);
   if (cam.follow && ev.zoom) { view.z = clamp(ev.zoom, .45, 2.4); clampView(); }
   if (cam.follow && ev.focus) frame(ev.focus.x, ev.focus.y);
@@ -434,6 +451,7 @@ function jumpTo(t) {
   while (simTime < t) { simTime += DT; stepWatch(); }
   fastForward = false; paused = false; battleOver = null; hideOverlay('debrief'); light.cur = light.target;
   if (currentEvent) caption(currentEvent.title, currentEvent.text, currentEvent.tag, true, evAudio(currentEvent), currentEvent.cite);
+  { const last = PART.events.filter(e => e.t <= simTime && e.music !== undefined).pop(); setMusic(last ? last.music : null, !last); }
   updatePauseBtn(); updateClock(); render();
   if (currentEvent && currentEvent.end) endWatch();
 }
@@ -938,7 +956,7 @@ function placePulse(m) {
 function showEstablishing() {
   const list = S.establishing || [], el = $('establish'); if (!list.length || !el) return;
   establishT.forEach(clearTimeout); establishT = []; const img = el.querySelector('img'), cap = el.querySelector('.ecap');
-  let at = 0; el.classList.add('show'); requestAnimationFrame(() => el.classList.add('on'));
+  let at = 0; el.style.transition = 'none'; el.classList.add('show', 'on'); void el.offsetWidth; el.style.transition = '';   // opaque at once, under the fading globe: the battle map never shows through
   list.forEach((m, i) => {
     establishT.push(setTimeout(() => { img.style.opacity = 0; el.querySelector('.epulse').style.display = 'none';
       establishT.push(setTimeout(() => { img.onload = () => placePulse(m); img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; if (img.complete) placePulse(m); }, i ? 600 : 0)); }, at * 1000));
@@ -947,7 +965,7 @@ function showEstablishing() {
   establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
 }
 function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
-function startIntro() { hideEstablishing(); if (partIdx !== 0) loadPart(0); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
+function startIntro() { setMusic(null, true); hideEstablishing(); if (partIdx !== 0) loadPart(0); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop(); light.cur = light.target = 0;
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
   if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function loadPart(i) {
@@ -957,6 +975,7 @@ function loadPart(i) {
   $('partTitle').textContent = PART.title + ' · ' + PART.subtitle;
 }
 function startMode(m, opts) {
+  setMusic(null, true);
   hideEstablishing();
   const part = opts && opts.part !== undefined ? opts.part : partIdx; if (part !== partIdx) loadPart(part);
   $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');

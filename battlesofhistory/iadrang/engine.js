@@ -896,7 +896,7 @@ function placePulse(m) {
 function showEstablishing() {
   const list = S.establishing || [], el = $('establish'); if (!list.length || !el) return;
   establishT.forEach(clearTimeout); establishT = []; const img = el.querySelector('img'), cap = el.querySelector('.ecap');
-  let at = 0; el.classList.add('show'); requestAnimationFrame(() => el.classList.add('on'));
+  let at = 0; el.style.transition = 'none'; el.classList.add('show', 'on'); void el.offsetWidth; el.style.transition = '';   // opaque at once, under the fading globe: the battle map never shows through
   list.forEach((m, i) => {
     establishT.push(setTimeout(() => { img.style.opacity = 0; el.querySelector('.epulse').style.display = 'none';
       establishT.push(setTimeout(() => { img.onload = () => placePulse(m); img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; if (img.complete) placePulse(m); }, i ? 600 : 0)); }, at * 1000));
