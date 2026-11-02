@@ -351,7 +351,7 @@ function moveFormation(f) {
 function fireEvent(ev) {
   currentEvent = ev; if (ev.map) setMap(ev.map);
   ev.orders.forEach(o => { if (o.fx === 'bombs') addBlasts(Object.assign({ map: ev.map }, o)); else applyOrder(o); });
-  if (cam.follow && ev.focus) frame(ev.focus.x, ev.focus.y);
+  camForEvent(ev);
   caption(ev.title, ev.text, ev.tag, !fastForward, ev.audio || audioFor('event', S.events.indexOf(ev) + 1), ev.cite);
   addLog(fmtTime(ev.t) + ' ' + ev.title);
   renderTimeline();
@@ -359,6 +359,7 @@ function fireEvent(ev) {
 }
 function stepWatch() {
   while (eventIndex < S.events.length && S.events[eventIndex].t <= simTime) fireEvent(S.events[eventIndex++]);
+  camBack();
   formations.forEach(moveFormation);
   if (simTime >= S.duration && !battleOver && !fastForward) endWatch();
 }
@@ -473,14 +474,48 @@ function clampView() {
   view.x = vw >= W.w ? (W.w - vw) / 2 : clamp(view.x, 0, W.w - vw);           // smaller than the window: centred
   view.y = vh >= W.h ? (W.h - vh) / 2 : clamp(view.y, 0, Math.max(0, W.h - vh) + OVER());
 }
-function focusOn(x, y) { cam.tx = x; cam.ty = y; }
+function focusOn(x, y) { cam.tx = x; cam.ty = y; cam.fy = null; }
 // Frame a point in the upper part of the screen, above the caption box.
-function frame(x, y, k = .22) { focusOn(x, y + VH() * k); }
+function frame(x, y, k = .22) { focusOn(x, y + VH() * k); cam.fy = y; cam.fk = k; }
 function updateCamera() {
+  if (cam.tz != null) { view.z += (cam.tz - view.z) * .08; if (Math.abs(cam.tz - view.z) < .002) { view.z = cam.tz; cam.tz = null; } }
+  if (cam.fy != null && cam.tx !== null) cam.ty = cam.fy + VH() * cam.fk;   // keep the framing right while the zoom eases
   if (cam.tx === null) return;
   const gx = VW() >= W.w ? (W.w - VW()) / 2 : clamp(cam.tx - VW() / 2, 0, W.w - VW()), gy = VH() >= W.h ? (W.h - VH()) / 2 : clamp(cam.ty - VH() / 2, 0, Math.max(0, W.h - VH()) + OVER());
   view.x += (gx - view.x) * .08; view.y += (gy - view.y) * .08;
   if (Math.abs(gx - view.x) < .5 && Math.abs(gy - view.y) < .5) { view.x = gx; view.y = gy; cam.tx = null; }
+}
+const ACTION_Z = () => fillZ() * 1.5, WHOLE_Z = () => minZ();
+
+// zoom easing and framing for the camera rule above
+function CAM_IN(z, f, k) { cam.tz = z; frame(f.x, f.y, k); }
+function CAM_WHOLE() { cam.tz = WHOLE_Z(); focusOn(W.w / 2, W.h / 2); }
+
+/* ---- the camera's rule (every battle): the whole map while the narrator talks; in on the action, then back out.
+   A chapter with action (attacks, fire, strikes, landings, routs) and a focus eases in on it for ACTION_HOLD seconds of
+   the reenactment, then eases back out to the whole map; quiet chapters show the whole map. In the introduction a slide
+   starts on the whole map and, when its subject is small (its focus and zoom), eases in on it while the narrator talks
+   about it, then back out. Moving the camera yourself stops all this until Follow (F) is pressed again. */
+const ACTION_HOLD = 7;
+const hasAction = ev => (ev.orders || []).some(o => o.fire || o.strike || o.lift || o.heli || o.flight || o.chute || o.fx || o.state === 'attack' || o.state === 'rout' || o.strengthTo !== undefined);
+function camForEvent(ev) {
+  if (!cam.follow) return;
+  const z = typeof ev.zoom === 'number' ? ev.zoom : ACTION_Z();
+  if (ev.focus && ev.zoom !== 'fit' && hasAction(ev) && z > WHOLE_Z() * 1.15) { CAM_IN(z, ev.focus); cam.backAt = simTime + ACTION_HOLD; }
+  else { CAM_WHOLE(); cam.backAt = null; }
+}
+window.__cam = () => ({ z: view.z, x: view.x, y: view.y, w: view.w, h: view.h, whole: WHOLE_Z(), tz: cam.tz, follow: cam.follow });   // for tests
+function camBack() { if (cam.follow && cam.backAt != null && simTime >= cam.backAt) { cam.backAt = null; CAM_WHOLE(); } }
+let introZoom = null;
+function introCamStart(sl) {
+  cam.tx = null; cam.tz = null; cam.fy = null; cam.backAt = null; if ('fit' in cam) cam.fit = false;
+  view.z = WHOLE_Z(); view.x = W.w / 2 - VW() / 2; view.y = W.h / 2 - VH() / 2; clampView();
+  introZoom = sl && sl.focus && typeof sl.zoom === 'number' && sl.zoom > WHOLE_Z() * 1.6 ? { z: sl.zoom, f: sl.focus, stage: 0 } : null;
+}
+function introCamTick(frac, done) {
+  if (!introZoom || !cam.follow) return;
+  if (introZoom.stage === 0 && frac >= .18 && !done) { introZoom.stage = 1; CAM_IN(introZoom.z, introZoom.f, .27); }
+  else if (introZoom.stage === 1 && (frac >= .82 || done)) { introZoom.stage = 2; CAM_WHOLE(); }
 }
 function render() {
   updateCamera(); clampView();
@@ -673,9 +708,7 @@ function showIntro(i) {
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   if (sl.map) setMap(sl.map, true);
   markers = sl.markers || []; if (BR) BR.set(sl);
-  if (sl.zoom) { view.z = clamp(sl.zoom, minZ(), 2.4); clampView(); }
-  // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
-  if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
+  introCamStart(sl);   // the whole map; a small subject is eased in on as the narrator reaches it
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
   if (introStarted) speakSlide(sl);
@@ -1046,7 +1079,7 @@ function tick(t) {
       const nb = $('introNext');
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
-      $('introBar').style.width = Math.min(100, frac * 100) + '%'; if (BR) BR.update(sl, frac, tail);
+      $('introBar').style.width = Math.min(100, frac * 100) + '%'; introCamTick(frac, tail); if (BR) BR.update(sl, frac, tail);
     }
   } else if (!paused && !battleOver && !cinematic) {
     acc += dt * speed;
