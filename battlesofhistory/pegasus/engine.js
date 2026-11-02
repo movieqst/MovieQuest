@@ -196,7 +196,7 @@ function buildTerrain(noLabels) {
 
 /* ---------------- standing scenery: trees and termite mounds, drawn in the projected pass so they have height ---------------- */
 function buildProps() {
-  PROPS = [];
+  PROPS = []; if (PART.noProps) return;
   feats('woods').forEach((fo, fi) => { const n = Math.floor(fo.rx * fo.ry / 1400); for (let i = 0; i < n; i++) { const a = jitter(fi * 1000 + i, 6) * PI * 2, rr = Math.sqrt(jitter(fi * 1000 + i, 7)); const x = fo.x + Math.cos(a) * rr * fo.rx, y = fo.y + Math.sin(a) * rr * fo.ry; if (x < 10 || x > W.w - 10 || y < 10 || y > W.h - 10) continue; if (feats('clearing').some(cl => inEll(x, y, cl)) || feats('lz').some(l => Math.hypot(x - l.x, y - l.y) < l.r) || groundAt(x, y).water) continue; PROPS.push({ kind: 'tree', x, y, r: 8 + jitter(i, 8) * 9, k: i, tall: jitter(i, 9) > .8 }); } });
   feats('slope').forEach((sl, si) => { for (let i = 0; i < 260; i++) { const x = jitter(si * 77 + i, 41) * W.w, y = jitter(si * 77 + i, 42) * W.h; if (!inPoly(x, y, sl.poly)) continue; PROPS.push({ kind: 'tree', x, y, r: 9 + jitter(i, 43) * 10, k: i, tall: jitter(i, 44) > .7 }); } });
   for (let i = 0; i < 70; i++) { const x = (i * 173 + 100) % W.w, y = (i * 119 + 70) % W.h; const gg = groundAt(x, y); if (feats('clearing').some(cl => inEll(x, y, cl)) || gg.water || gg.road || feats('lz').some(l => l.poly && inPoly(x, y, l.poly)) || feats('village').some(v => inRect(x, y, v))) continue; PROPS.push({ kind: 'tree', x, y, r: 7 + jitter(i, 9) * 6, k: i }); }
@@ -326,8 +326,44 @@ function createFormations() {
   }));
   byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations;
 }
+/* ---------------- the approach: aircraft flying over the area map, gliders casting off, paratroopers coming down.
+   Orders: { flight: { img, pts: [[x, y], ...], speed, w, then: [orders], drop: { from, to, every } } } and { chute: { x, y } }.
+   img: 'tow' (Halifax towing a Horsa), 'halifax', 'glider', 'dakota'. Sizes are on-screen pixels at the overview zoom. */
+let flights = [], chutes = [];
+const PLANE_IMG = { tow: 'props/halifax-tow-top.png', halifax: 'props/halifax-tow-top.png', glider: 'props/horsa-top.png', dakota: 'props/dakota-top.png' };
+Object.values(PLANE_IMG).forEach(img); img('units/brit-parachute.png');
+function spawnFlight(o) {
+  const pts = o.pts.map(p => ({ x: p[0], y: p[1] })); let len = 0; for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+  flights.push(Object.assign({ d: 0, len, x: pts[0].x, y: pts[0].y, facing: Math.atan2(pts[1].y - pts[0].y, pts[1].x - pts[0].x), done: false, dropped: 0 }, o, { pts }));
+}
+function stepFlights() {
+  flights.forEach(f => {
+    if (f.done) return; f.d = Math.min(f.len, f.d + (f.speed || 120) * DT);
+    let r = f.d; for (let i = 1; i < f.pts.length; i++) { const a = f.pts[i - 1], b = f.pts[i], L = Math.hypot(b.x - a.x, b.y - a.y); if (r <= L || i === f.pts.length - 1) { const k = L ? Math.min(1, r / L) : 1; f.x = a.x + (b.x - a.x) * k; f.y = a.y + (b.y - a.y) * k; f.facing = Math.atan2(b.y - a.y, b.x - a.x); break; } r -= L; }
+    if (f.drop && f.y >= f.drop.from && f.y <= f.drop.to && simTime - (f.lastDrop || -9) >= (f.drop.every || .25)) { f.lastDrop = simTime; chutes.push({ x: f.x + (jitter(chutes.length, 81) - .5) * 30, y: f.y + (jitter(chutes.length, 82) - .5) * 30, t0: simTime, k: chutes.length }); }
+    if (f.d >= f.len) { f.done = true; (f.then || []).forEach(applyOrder); }
+  });
+  flights = flights.filter(f => !f.done || f.stay);
+}
+function drawFlights(c) {
+  const zk = Math.max(.6, Math.min(2.2, view.z / .42));
+  const sheet = IMGS['units/brit-parachute.png'];
+  if (sheet && sheet.complete && sheet.naturalWidth) chutes.forEach(ch => {   // opening, swaying, landing, then the man standing beside his canopy
+    const a = simTime - ch.t0, life = 9; if (a < 0 || a > life + 6) return;
+    let row, fr; if (a < 1.2) { row = 0; fr = Math.min(3, Math.floor(a / .3)); } else if (a < life) { row = ch.k % 2 ? 3 : 1; fr = Math.floor(wall * 3 + ch.k) % 4; } else { row = 2; fr = Math.min(3, Math.floor((a - life) / .4)); }
+    const q = P(ch.x, ch.y + Math.min(a, life) * 2), w = 30 * zk; c.save(); if (a > life + 4) c.globalAlpha = Math.max(0, 1 - (a - life - 4) / 2); c.drawImage(sheet, fr * 160, row * 160, 160, 160, q.x - w / 2, q.y - w, w, w); c.restore();
+  });
+  flights.forEach(f => {
+    const im = IMGS[PLANE_IMG[f.img]]; if (!im || !im.complete || !im.naturalWidth) return;
+    const crop = f.img === 'halifax' ? [im.naturalWidth * .555, 0, im.naturalWidth * .445, im.naturalHeight] : [0, 0, im.naturalWidth, im.naturalHeight];
+    const w = (f.w || 60) * zk, h = w * crop[3] / crop[2], alt = f.landed ? 0 : (f.alt !== undefined ? f.alt : 1) * (f.img === 'glider' ? 1 - f.d / f.len : 1), q = P(f.x, f.y);
+    c.save(); c.globalAlpha = .28; c.translate(q.x + 18 * alt * zk, q.y + 26 * alt * zk); c.rotate(f.facing); c.filter = 'brightness(0)'; c.drawImage(im, ...crop, -w / 2, -h / 2, w, h); c.restore();   // shadow on the ground
+    c.save(); c.translate(q.x, q.y); c.rotate(f.facing); c.filter = 'brightness(1.25) drop-shadow(0 0 3px rgba(230,235,255,.55))'; c.drawImage(im, ...crop, -w / 2, -h / 2, w, h); c.restore();
+  });
+}
 function applyOrder(o) {
   if (o.delay) { pending.push({ due: simTime + o.delay, o: Object.assign({}, o, { delay: 0 }) }); return; }
+  if (o.flight) { spawnFlight(o.flight); return; }
   if (o.fire) { callFire(o.fire); return; }
   if (o.heli) { spawnHeli({ kind: o.heli, to: o.to }); return; }
   const f = byId[o.id]; if (!f) return;
@@ -438,7 +474,7 @@ function fireEvent(ev) {
   renderTimeline();
   if (ev.end && !fastForward) endWatch();
 }
-function stepSim() { stepPending(); formations.forEach(moveFormation); stepStrikes(); stepHelis(); stepLight();
+function stepSim() { stepPending(); stepFlights(); formations.forEach(moveFormation); stepStrikes(); stepHelis(); stepLight();
   if (mode === 'watch') formations.forEach(f => { if (alive(f) && f.strength <= 0 && f.strengthTarget === null) { f.strength = 0; f.state = 'destroyed'; addLog(f.division + ' destroyed'); } }); }
 function stepWatch() {
   while (eventIndex < PART.events.length && PART.events[eventIndex].t <= simTime) fireEvent(PART.events[eventIndex++]);
@@ -593,6 +629,7 @@ function resize() {
 }
 /* ---- tilted view: the map is seen from a camera leaning back, so the far (north) edge is smaller and the near (south) edge larger. ---- */
 let TILT = .45;
+const TILT_DEFAULT = .45;
 const SQ = .88;
 const tiltOn = () => TILT > 0;
 const TR = () => tiltOn() ? (TILT / Math.log(1 + TILT)) / SQ : 1;
@@ -708,7 +745,7 @@ function render() {
   formations.forEach(f => scene.push({ y: f.y, f }));
   helis.forEach(h => scene.push({ y: h.y + 400, h }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.h ? drawHeli(ctx, o.h) : drawFormation(ctx, o.f));
-  drawStrikes(ctx);
+  drawStrikes(ctx); drawFlights(ctx);
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
@@ -878,7 +915,7 @@ function renderBriefing() {
   $('briefMeta').innerHTML = `<b>${S.date}</b> · ${S.place}<br>${S.tagline}`;
   $('confKey').innerHTML = Object.keys(S.confidence).map(k => `<div class="keyrow">${tagChip(k)}<span>${S.confidence[k].desc}</span></div>`).join('');
   $('sources').innerHTML = S.sources.map(s => `<li><b>${s.title}</b> — ${s.note}</li>`).join('');
-  const ps = $('partSel'), pm = $('pmPart'); if (ps) ps.innerHTML = S.parts.map((p, i) => `<option value="${i}">${p.title} · ${p.subtitle}</option>`).join(''); if (pm) pm.innerHTML = S.parts.map((p, i) => `<label><input type="radio" name="pmPart" value="${i}"${i === partIdx ? ' checked' : ''}> ${p.title} <span class="tiny">${p.subtitle}</span></label>`).join('');
+  const ps = $('partSel'), pm = $('pmPart'); if (ps) ps.innerHTML = S.parts.map((p, i) => p.introOnly ? '' : `<option value="${i}">${p.title} · ${p.subtitle}</option>`).join(''); if (pm) pm.innerHTML = S.parts.map((p, i) => p.introOnly ? '' : `<label><input type="radio" name="pmPart" value="${i}"${i === partIdx ? ' checked' : ''}> ${p.title} <span class="tiny">${p.subtitle}</span></label>`).join('');
   const ss = $('sideSel'); if (ss) ss.innerHTML = SIDE_IDS.map(sd => `<option value="${sd}">${SIDES[sd].name}</option>`).join('');
 }
 
@@ -893,8 +930,11 @@ function showIntro(i) {
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('ctrlStrip').classList.toggle('lit', false); $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
+  { const want = sl.part ? Math.max(0, S.parts.findIndex(p => p.id === sl.part)) : 0;   // a slide can show another part's map (the approach) and run orders on it
+    if (want !== partIdx) loadPart(want);
+    resetSim(); acc = 0; (sl.orders || []).forEach(applyOrder); if (sl.light) setLight(sl.light); }
   markers = sl.markers || [];
-  if (sl.zoom) { view.z = clamp(sl.zoom, .45, 2.4); clampView(); }
+  if (sl.zoom) { view.z = clamp(sl.zoom, .25, 2.4); clampView(); }
   if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
   introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
@@ -970,6 +1010,7 @@ function startIntro() { setMusic(null, true); hideEstablishing(); if (partIdx !=
   if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function loadPart(i) {
   partIdx = clamp(i, 0, S.parts.length - 1); PART = S.parts[partIdx]; W = PART.world; B = PART.battlefield;
+  TILT = PART.tilt !== undefined ? PART.tilt : TILT_DEFAULT;
   buildProps(); DRAWNTER = buildTerrain(); PAINTEDTER = PAINTS[PART.id] || null; applyArt(); clockLabel = PART.clockStart || '';
   const ps = $('partSel'); if (ps) ps.value = String(partIdx); document.querySelectorAll('input[name=pmPart]').forEach(r => r.checked = +r.value === partIdx);
   $('partTitle').textContent = PART.title + ' · ' + PART.subtitle;
@@ -989,7 +1030,7 @@ function startMode(m, opts) {
   else cmdCaption('Command mode', 'start' + player, 'reconstruction');
 }
 $('globe').addEventListener('click', () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } });
-function resetSim() { objectives().forEach(o => { o._lost = 0; o._told = false; o._taken = false; }); createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; pending = []; strikes = []; effects = []; helis = []; light.cur = light.target = 0; clockLabel = PART.clockStart || ''; support = {}; renderSelection(); renderTimeline(); updateClock(); }
+function resetSim() { flights = []; chutes = []; objectives().forEach(o => { o._lost = 0; o._told = false; o._taken = false; }); createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; pending = []; strikes = []; effects = []; helis = []; light.cur = light.target = 0; clockLabel = PART.clockStart || ''; support = {}; renderSelection(); renderTimeline(); updateClock(); }
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
 function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
@@ -997,7 +1038,7 @@ function showDebrief() {
   document.body.classList.remove('textoff');   // the after-action report always opens in full, even when the viewer has hidden the text elsewhere (fullDebrief)
   Narr.stop(); const d = $('debrief');
   let head, body;
-  const next = partIdx < S.parts.length - 1 ? S.parts[partIdx + 1] : null;
+  const next = S.parts.slice(partIdx + 1).find(p => !p.introOnly) || null;
   if (battleOver === 'history') { head = 'What the sources say happened next'; body = ''; }
   else {
     const nm = SIDES[player].name, en = SIDES[other(player)].name;
@@ -1287,7 +1328,7 @@ const chosenPart = () => { const r = document.querySelector('input[name=pmPart]:
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
 $('debriefWatch').onclick = () => startMode('watch');
 $('debriefCommand').onclick = () => startMode('command');
-$('debriefNext').onclick = () => startMode(mode === 'intro' ? 'watch' : mode, { part: partIdx + 1 });
+$('debriefNext').onclick = () => { const n = S.parts.findIndex((p, i) => i > partIdx && !p.introOnly); if (n > 0) startMode(mode === 'intro' ? 'watch' : mode, { part: n }); };
 $('debriefIntro').onclick = startIntro;
 $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if (f.side === player && alive(f) && f.state !== 'rout' && UT[f.type].kind !== 'air') selected.add(f.id); }); renderSelection(); };
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
@@ -1319,6 +1360,7 @@ function tick(t) {
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration ▶ ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next ▶'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
       $('introBar').style.width = Math.min(100, frac * 100) + '%';
+      if (sl.orders) { acc += dt; while (acc >= DT) { acc -= DT; simTime += DT; stepSim(); } }   // the slide's animation runs while it is shown
     }
   } else if (!paused && !battleOver && !cinematic) {
     acc += dt * speed;
