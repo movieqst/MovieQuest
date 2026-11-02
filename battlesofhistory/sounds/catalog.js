@@ -15,5 +15,9 @@ window.BH_SOUNDS = [
     licence: 'CC0 1.0 (public domain)', source: 'Freesound no. 239137', note: 'Loudness evened out.' },
   { battle: 'all', kind: 'Sound effect', file: 'sounds/lee-enfield-shot-01.mp3', title: 'Lee-Enfield rifle: shots and bolt action (5 clips)',
     by: 'Recorded by Kris Eyvindson at a firing range (an SMLE Mark IV, the rifle family of the British and Canadian infantry in both world wars)', used: 'Rifle fire for the Canadian and British infantry (Vimy, Dunkirk, Pegasus)',
-    licence: 'Recorded for Battles of History, used with permission', source: 'Kris Eyvindson', note: 'Three shots and two of the bolt being worked; loudness evened out. This player plays the first shot.' }
+    licence: 'Recorded for Battles of History, used with permission', source: 'Kris Eyvindson', note: 'Three shots and two of the bolt being worked; loudness evened out. This player plays the first shot.' },
+  { battle: 'iadrang', kind: 'Sound effect', file: 'sounds/type81-shot-01.mp3', title: 'Type 81 rifle: five shots',
+    by: 'Recorded by Kris Eyvindson', used: 'North Vietnamese rifle fire at Ia Drang (the AK-47 and SKS fired the same 7.62×39 mm cartridge)',
+    licence: 'Recorded for Battles of History, used with permission', source: 'Kris Eyvindson',
+    note: 'A modern Chinese rifle (1981) standing in for the AK-47 of 1965: a sound-design approximation, not a recording from the war. Loudness evened out; this player plays the first shot.' }
 ];
