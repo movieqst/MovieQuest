@@ -23,6 +23,12 @@ def painted(g, name):   # a painting lined up to this map's frame (images/layout
     p = os.path.join(IMG, 'layout', name)
     if os.path.exists(p): g.im = Image.open(p).convert('RGB').resize((2400, 1800)); g.d = ImageDraw.Draw(g.im); print('painted base:', name)
 
+def warp_to(g, marks):   # a painting whose towns are not exactly where the real map has them: bend the drawing onto the
+    # painting with a thin-plate spline through landmarks (lat, lon, x and y as fractions of the painting)
+    from scipy.interpolate import RBFInterpolator
+    xy0 = g.xy; real = np.array([xy0(la, lo) for la, lo, _, _ in marks], float); pic = np.array([(px * 2400, py * 1800) for _, _, px, py in marks], float)
+    f = RBFInterpolator(real, pic, kernel='thin_plate_spline'); g.wxy = lambda x, y: tuple(f(np.array([[x, y]], float))[0]); g.xy = lambda la, lo: g.wxy(*xy0(la, lo)); g.xy0 = xy0
+
 def label(g, la, lo, s, col=(255, 240, 200), size=34, dx=0, dy=-26, anchor='mb'):
     x, y = g.xy(la, lo); g.d.text((x + dx, y + dy), s, fill=col, font=F(size, True), anchor=anchor, stroke_width=5, stroke_fill=(10, 14, 20))
 
@@ -66,13 +72,19 @@ save(g, '40-map-glider-route.jpg')
 
 # ---- 2. the 21st Panzer Division and the bridge
 g = Guide('ctx-21pz.png', 48.86, 49.36, -0.80, 0.20, 10, None, None); night(g)
+if os.path.exists(os.path.join(IMG, 'layout', 'ctx-21pz-painted.jpg')):   # ChatGPT's moonlit Caen countryside, with its towns as landmarks
+    painted(g, 'ctx-21pz-painted.jpg')
+    warp_to(g, [(49.283, -0.252, .549, .055), (49.185, -0.365, .366, .308), (49.191, -0.168, .642, .262), (48.892, -0.199, .584, .912), (49.017, -0.033, .818, .599)])
 km = lambda k: k / (g.km_w) * 2400
-x, y = g.xy(*BRIDGE); r = km(16.1)   # ten miles
-g.d.ellipse([x - r, y - r, x + r, y + r], outline=(255, 120, 100), width=5)
+x, y = (g.xy0 if hasattr(g, 'xy0') else g.xy)(*BRIDGE); r = km(16.1)   # ten miles, a circle on the real map (bent with the painting)
+ring = [(x + r * math.cos(a * math.pi / 90), y + r * math.sin(a * math.pi / 90)) for a in range(181)]
+if hasattr(g, 'wxy'): ring = [g.wxy(*q) for q in ring]
+g.d.line(ring, fill=(255, 120, 100), width=5, joint='curve')
 label(g, BRIDGE[0] - 0.02, BRIDGE[1] + 0.235, 'ten miles', (255, 160, 150), 26, anchor='lm', dx=10, dy=0)
 dot(g, *BRIDGE, 12, (255, 90, 80)); label(g, *BRIDGE, 'Pegasus Bridge', (255, 210, 200), 32, dy=-22)
-for (la, lo), n in [((49.185, -0.365), 'Caen'), ((49.283, -0.252), 'Ouistreham'), ((49.191, -0.168), 'Troarn'), ((49.072, -0.199), 'Vimont'), ((48.892, -0.199), 'Falaise')]:
-    dot(g, la, lo, 8); label(g, la, lo, n, size=26, dy=-16)
+for (la, lo), n, kw in [((49.185, -0.365), 'Caen', {}), ((49.283, -0.252), 'Ouistreham', {}), ((49.191, -0.168), 'Troarn', dict(dx=-16, dy=0, anchor='rm')),   # Troarn's name to the left, clear of the Panzergrenadiers' label
+                        ((49.072, -0.199), 'Vimont', {}), ((48.892, -0.199), 'Falaise', {})]:
+    dot(g, la, lo, 8); label(g, la, lo, n, size=26, **dict(dict(dy=-16), **kw))
 PZ = [((49.017, -0.033), 'Divisional HQ, Saint-Pierre-sur-Dives'), ((49.12, -0.32), 'Panzergrenadiers south of Caen'), ((49.20, -0.12), 'Panzergrenadiers near Troarn'), ((48.98, -0.23), 'Panzer Regiment 22, around Falaise and Vimont')]
 for (la, lo), n in PZ:
     x, y = g.xy(la, lo); g.d.rectangle([x - 28, y - 18, x + 28, y + 18], fill=(70, 75, 80), outline=(230, 230, 230), width=3); g.d.ellipse([x - 18, y - 10, x + 18, y + 10], outline=(230, 230, 230), width=3)
