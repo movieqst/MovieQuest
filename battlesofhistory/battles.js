@@ -99,7 +99,7 @@ window.BATTLES = [
     blurb: 'At the edge of two empires, a Tang army meets the forces of the new Abbasid Caliphate. Their Karluk allies change sides, and the Tang army is broken.',
     cover: 'images/cover.jpg',
     coverCredit: 'Tang dynasty figure of a warrior on an armoured horse, from the tomb of Crown Prince Li Chongrun. Photo: Gary Lee Todd, Wikimedia Commons, CC BY-SA 4.0',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'dunkirk',
