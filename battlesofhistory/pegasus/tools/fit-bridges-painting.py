@@ -15,9 +15,9 @@ if summer:   # yellow-orange foliage (hue 32-62 degrees, saturated) toward green
     h2 = h + k * (88 - h) * .85; s2 = s * (1 - .25 * k)
     hsv[..., 0] = h2 * 255 / 360; hsv[..., 1] = s2; B = Image.fromarray(hsv.clip(0, 255).astype('uint8'), 'HSV').convert('RGB')
 OUT_W, OUT_H = 4800, 3600; Bs = np.asarray(B.resize((2400, 1800), Image.LANCZOS)).astype(float)
-# current map (2400 x 1800 world) -> where the painting has the same thing
+# current map (2400 x 1800 world) -> where the painting has the same thing (measured on the June-crops painting)
 P = [((862, 60), (805, 60)), ((860, 300), (803, 300)), ((863, 600), (801, 600)), ((866, 1000), (797, 1000)), ((866, 1300), (794, 1300)), ((862, 1700), (788, 1700)),
-     ((1565, 60), (1598, 60)), ((1584, 600), (1690, 600)), ((1602, 1000), (1652, 1000)), ((1688, 1300), (1800, 1300)), ((1799, 1700), (1982, 1700)),
+     ((1565, 60), (1551, 60)), ((1584, 600), (1690, 600)), ((1602, 1000), (1664, 1000)), ((1688, 1300), (1800, 1300)), ((1799, 1700), (1982, 1700)),
      ((861, 741), (792, 736)), ((1528, 747), (1608, 760)), ((300, 749), (300, 755)), ((2200, 733), (2200, 733)),
      ((0, 0), (0, 0)), ((0, 1800), (0, 1800)), ((2400, 0), (2400, 0)), ((2400, 1800), (2400, 1800))]
 f = RBFInterpolator(np.array([a for a, b in P], float), np.array([b for a, b in P], float), kernel='thin_plate_spline', smoothing=2)

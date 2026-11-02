@@ -194,7 +194,7 @@ window.BATTLE_SCENARIO = {
         { kind: 'village', x: 150, y: 810, w: 480, h: 540, name: 'B\u00e9nouville' },
         { kind: 'village', x: 300, y: 330, w: 400, h: 270, name: 'Le Port' },
         { kind: 'village', x: 1890, y: 700, w: 510, h: 650, name: 'Ranville' },
-        { kind: 'building', x: 720, y: 620, w: 70, h: 50, name: 'Caf\u00e9 Gondr\u00e9e' },
+        { kind: 'building', x: 624, y: 655, w: 70, h: 50, name: 'Caf\u00e9 Gondr\u00e9e' },
         { kind: 'pillbox', x: 995, y: 670, r: 26, name: 'Pillbox' },
         { kind: 'pillbox', x: 990, y: 815, r: 24, name: 'Gun pit' },
         { kind: 'trench', pts: [[940,640],[1040,650]], name: 'MG trench' },
