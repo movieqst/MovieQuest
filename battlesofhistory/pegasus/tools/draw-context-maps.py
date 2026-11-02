@@ -19,6 +19,10 @@ def night(g):   # moonlit colours: dark land, dark sea
     a = np.asarray(g.im).astype(float); sea = g.e <= 0.8
     a = a * np.array(LAND_TINT); a[sea] = SEA; g.im = Image.fromarray(a.clip(0, 255).astype('uint8')); g.d = ImageDraw.Draw(g.im)
 
+def painted(g, name):   # a painting lined up to this map's frame (images/layout/<name>) replaces the drawn ground, when there is one
+    p = os.path.join(IMG, 'layout', name)
+    if os.path.exists(p): g.im = Image.open(p).convert('RGB').resize((2400, 1800)); g.d = ImageDraw.Draw(g.im); print('painted base:', name)
+
 def label(g, la, lo, s, col=(255, 240, 200), size=34, dx=0, dy=-26, anchor='mb'):
     x, y = g.xy(la, lo); g.d.text((x + dx, y + dy), s, fill=col, font=F(size, True), anchor=anchor, stroke_width=5, stroke_fill=(10, 14, 20))
 
@@ -42,7 +46,7 @@ def save(g, name):
     g.im.convert('RGB').save(os.path.join(IMG, name), quality=88); print(name)
 
 # ---- 1. the flight: Tarrant Rushton to the bridges, and the tugs' return
-g = Guide('ctx-route.png', 49.05, 51.12, -2.75, 0.55, 8, None, None); night(g)
+g = Guide('ctx-route.png', 49.05, 51.12, -2.75, 0.55, 8, None, None); night(g); painted(g, 'ctx-route-painted.jpg')   # ChatGPT's moonlit Channel, warped onto the real coastline
 TR = (50.857, -2.083); CASTOFF = (49.300, -0.130)   # Tarrant Rushton airfield, Dorset; cast-off near the coast east of the Orne
 out = [TR, (50.60, -1.60), (50.10, -0.90), (49.55, -0.35), CASTOFF]
 back = [CASTOFF, (49.40, 0.10), (49.90, -0.30), (50.45, -1.20), TR]
