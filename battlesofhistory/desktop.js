@@ -199,13 +199,26 @@
       const a = window.BattlePage && window.BattlePage.Narr && window.BattlePage.Narr.audio;
       // exact sentence start times measured from the recording (tools/caption-timings.py -> audio/<voice>/timings.json)
       const tm = a && a.src ? timingsFor(a.src) : null;
-      let i;
-      if (tm && tm.length === parts.length && !a.ended) { i = 0; for (let k = 0; k < tm.length; k++) if (a.currentTime + .05 >= tm[k]) i = k; }
-      else {
-        const f = a && a.duration && isFinite(a.duration) ? a.currentTime / a.duration : (performance.now() - t0) / 1000 * 15 / (parts.reduce((n, p) => n + p.length, 0) || 1);
-        i = weights.findIndex(w => f < w); if (i < 0) i = parts.length - 1;
+      let line;
+      const SC = window[Object.keys(window).find(k => /_SCENARIO$/.test(k))] || {};
+      if (a && a.src && /\/welcome\.mp3(\?|$)/.test(a.src) && SC.welcome) {
+        // the welcome line plays before the first slide's own clip: caption it, sentence by sentence
+        const ws = sentences(SC.welcome), tot = ws.reduce((n, p) => n + p.length, 0) || 1, f = a.duration && isFinite(a.duration) ? a.currentTime / a.duration : 0;
+        let acc = 0; line = ws.find(p => f < (acc += p.length) / tot) || ws[ws.length - 1];
+      } else if (tm && tm.length === parts.length && !a.ended && a.currentTime + .05 < tm[0] - .15) {
+        // before the first written sentence the narrator reads the slide's title: show it, not the next sentence
+        const tt = src.title || '', nice = tt === tt.toUpperCase() ? tt.toLowerCase().replace(/(^|[\s\-–(])(\S)/g, (m, p, c) => p + c.toUpperCase()) : tt;   // titles shown in capitals read as normal words
+        line = document.body.dataset.mode === 'intro' && tt ? nice + '.' : '';
+      } else {
+        let i;
+        if (tm && tm.length === parts.length && !a.ended) { i = 0; for (let k = 0; k < tm.length; k++) if (a.currentTime + .05 >= tm[k]) i = k; }
+        else {
+          const f = a && a.duration && isFinite(a.duration) ? a.currentTime / a.duration : (performance.now() - t0) / 1000 * 15 / (parts.reduce((n, p) => n + p.length, 0) || 1);
+          i = weights.findIndex(w => f < w); if (i < 0) i = parts.length - 1;
+        }
+        line = parts[i];
       }
-      if (i !== shown) { shown = i; cl.textContent = parts[i]; }
+      if (line !== shown) { shown = line; cl.textContent = line; }
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
