@@ -156,5 +156,19 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '65% 50%',   // the half-track, not the helmet in the foreground
     coverCredit: 'Israeli half-tracks on the Golan Heights, 1967. Photo: Israel Press and Photo Agency (I.P.P.A.), Dan Hadani collection, National Library of Israel, CC BY 4.0',
     status: 'in progress'
+  },
+  {
+    folder: 'sekigahara',
+    order: 13,
+    era: 'Sengoku Japan',
+    title: 'Battle of Sekigahara',
+    date: '21 October 1600', year: 1600,
+    place: 'Sekigahara, Mino Province, Japan',
+    sides: 'The Eastern Army of Tokugawa Ieyasu vs. the Western Army of Ishida Mitsunari',
+    sideColors: ['#2f6fc4', '#c0392b'],
+    blurb: 'In a fog-filled mountain valley, the two great coalitions of Japan meet to decide who rules after Toyotomi Hideyoshi. When Kobayakawa Hideaki’s army changes sides on the hill above, the Western Army collapses, and Tokugawa Ieyasu wins the country for two and a half centuries.',
+    cover: 'images/cover.jpg',
+    coverCredit: 'Cover picture to come: a public-domain painting of the battle (for example the Edo-period folding screens of Sekigahara)',
+    status: 'in progress'
   }
 ];
