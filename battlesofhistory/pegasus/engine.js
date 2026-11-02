@@ -355,9 +355,9 @@ function drawFlights(c) {
   const zk = Math.max(.6, Math.min(2.2, view.z / .42));
   const sheet = IMGS['units/brit-parachute.png'];
   if (sheet && sheet.complete && sheet.naturalWidth) chutes.forEach(ch => {   // opening, swaying, landing, then the man standing beside his canopy
-    const a = simTime - ch.t0, life = 9; if (a < 0 || a > life + 6) return;
-    let row, fr; if (a < 1.2) { row = 0; fr = Math.min(3, Math.floor(a / .3)); } else if (a < life) { row = ch.k % 2 ? 3 : 1; fr = Math.floor(wall * 3 + ch.k) % 4; } else { row = 2; fr = Math.min(3, Math.floor((a - life) / .4)); }
-    const q = P(ch.x, ch.y + Math.min(a, life) * 2), w = 30 * zk; c.save(); if (a > life + 4) c.globalAlpha = Math.max(0, 1 - (a - life - 4) / 2); c.drawImage(sheet, fr * 160, row * 160, 160, 160, q.x - w / 2, q.y - w, w, w); c.restore();
+    const a = simTime - ch.t0, life = 4.5; if (a < 0 || a > life + 4) return;
+    let row, fr; if (a < 1.2) { row = 0; fr = Math.min(3, Math.floor(a / .3)); } else if (a < life) { row = ch.k % 2 ? 3 : 1; fr = Math.floor(wall * 4 + ch.k) % 4; } else { row = 2; fr = Math.min(3, Math.floor((a - life) / .3)); }
+    const q = P(ch.x, ch.y + Math.min(a, life) * 4), w = 30 * zk; c.save(); if (a > life + 2.5) c.globalAlpha = Math.max(0, 1 - (a - life - 2.5) / 1.5); c.drawImage(sheet, fr * 160, row * 160, 160, 160, q.x - w / 2, q.y - w, w, w); c.restore();
   });
   flights.forEach(f => {
     const im = IMGS[PLANE_IMG[f.img]]; if (!im || !im.complete || !im.naturalWidth) return;
