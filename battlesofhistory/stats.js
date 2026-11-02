@@ -21,7 +21,7 @@
 
   // Visit count, small in a bottom corner ("128 VISITS"), like roughdrafter.com: on the home page, the home page and
   // every battle page added together; on any other page (a battle, the library, the gallery), that page's own visits.
-  // Battle pages put it in the bottom link bar, left of Library. Hidden until GoatCounter answers.
+  // Battle pages put it at the end of the top bar. Hidden until GoatCounter answers.
   const views = async path => {
     try { const r = await fetch('https://' + CODE + '.goatcounter.com/counter/' + encodeURIComponent(path) + '.json'); if (!r.ok) return 0;
       const d = await r.json(); return Number(String(d.count || '0').replace(/[^\d]/g, '')) || 0; } catch (e) { return 0; }
@@ -36,8 +36,11 @@
     const battle = !!document.getElementById('battle');
     const el = document.createElement('div'); el.id = 'visits'; el.textContent = n.toLocaleString('en-US') + ' visits';
     el.title = home ? 'Visits to Battles of History' : 'Visits to this page';
-    const bar = battle && document.querySelector('footer .bhbar');
-    if (bar) {   // battle pages: in the bottom bar, just left of the Library link
+    const top = battle && document.querySelector('header .top-actions'), bar = battle && document.querySelector('footer .bhbar');
+    if (top) {   // battle pages: at the end of the top bar (the buttons that "Controls" shows and hides)
+      el.style.cssText = 'align-self:center;margin-left:6px;padding:3px 7px;border:1px solid #2a3e48;border-radius:5px;font:600 10px/1 system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#a9bac0;white-space:nowrap;';
+      top.appendChild(el);
+    } else if (bar) {   // no top bar: in the bottom bar, just left of the Library link
       el.style.cssText = 'align-self:center;font:600 10px/1 system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#8fa1a8;white-space:nowrap;';
       bar.insertBefore(el, bar.firstChild);
     } else {
