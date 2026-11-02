@@ -214,7 +214,7 @@ function drawProp(c, p) {
     c.fillStyle = '#8fbb62'; c.beginPath(); c.arc(q.x - r * .4, q.y - r * (h + .9), r * .25, 0, PI * 2); c.fill();
   } else if (p.kind === 'image') {
     const im = IMGS[p.src]; if (!im || !im.complete || !im.naturalWidth) return; const w = p.w * s, h = w * im.naturalHeight / im.naturalWidth;
-    c.save(); c.translate(q.x, q.y); c.rotate(p.rot || 0); c.globalAlpha = .18; c.fillStyle = '#000'; c.beginPath(); c.ellipse(4 * s, 2 * s, w * .4, h * .3 * k, 0, 0, PI * 2); c.fill(); c.globalAlpha = 1; c.drawImage(im, -w / 2, -h * .7, w, h); c.restore();
+    c.save(); c.translate(q.x, q.y); c.rotate(p.rot || 0); c.globalAlpha = .18; c.fillStyle = '#000'; c.beginPath(); c.ellipse(4 * s, 2 * s, w * .4, h * .3 * k, 0, 0, PI * 2); c.fill(); c.globalAlpha = 1; if (p.top) c.filter = 'brightness(1.35)'; c.drawImage(im, -w / 2, p.top ? -h / 2 : -h * .7, w, h); c.restore();
   } else if (p.kind === 'mound') {
     const r = p.r * s; c.fillStyle = 'rgba(40,25,10,.3)'; c.beginPath(); c.ellipse(q.x + r * .4, q.y, r * 1.2, r * .45 * k, 0, 0, PI * 2); c.fill();
     c.fillStyle = '#8a5a3a'; c.beginPath(); c.moveTo(q.x - r, q.y); c.quadraticCurveTo(q.x - r * .5, q.y - r * 1.6, q.x, q.y - r * 2.1); c.quadraticCurveTo(q.x + r * .5, q.y - r * 1.5, q.x + r, q.y); c.closePath(); c.fill();
@@ -393,10 +393,11 @@ function spawnHeli(o) {
 }
 function stepHelis() {
   helis.forEach(h => {
-    const sp = h.kind === 'glider' ? 150 : (UT.heli ? UT.heli.speed : 240);
+    const sp = h.kind === 'glider' ? 300 : (UT.heli ? UT.heli.speed : 240);
     const tgt = h.phase === 'out' ? h.from : h.to, dx = tgt.x - h.x, dy = tgt.y - h.y, d = Math.hypot(dx, dy);
     if (h.kind === 'glider' && h.phase === 'in') { const tot = Math.hypot(h.to.x - h.from.x, h.to.y - h.from.y) || 1; h.alt = 120 * Math.max(0, d / tot); }
-    if (h.phase === 'land' && h.kind === 'glider') { h.t += DT; h.alt = 0; if (h.t >= 1.2) { const f = h.f; if (f) { f.present = true; f.known = true; f.state = f.then && f.then !== 'hold' ? f.then : 'hold'; f.then = null; f.lastHit = simTime; addLog(f.division + ' down'); if (mode === 'command' && f.side === player) { cmdCaption('Glider down', 'lift', 'reconstruction', { x: f.x, y: f.y }); renderSelection(); } } PROPS.push({ kind: 'image', src: 'props/horsa-wreck.png', x: h.to.x + 10, y: h.to.y + 14, w: 120, rot: h.facing + PI, k: 0 }); h.phase = 'gone'; } return; }
+    if (h.phase === 'land' && h.kind === 'glider') { h.t += DT; h.alt = 0; if (h.t >= 1.2) { const f = h.f; if (f) { f.present = true; f.known = true; f.state = f.then && f.then !== 'hold' ? f.then : 'hold'; f.then = null; f.lastHit = simTime; addLog(f.division + ' down'); if (mode === 'command' && f.side === player) { cmdCaption('Glider down', 'lift', 'reconstruction', { x: f.x, y: f.y }); renderSelection(); } } { const top = IMGS['props/horsa-top.png'], ok = top && top.complete && top.naturalWidth;   // the glider stays where it stopped, as it looked in the air
+        PROPS.push(ok ? { kind: 'image', src: 'props/horsa-top.png', x: h.to.x, y: h.to.y, w: 95, rot: h.facing, k: 0, top: true } : { kind: 'image', src: 'props/horsa-wreck.png', x: h.to.x + 10, y: h.to.y + 14, w: 120, rot: h.facing + PI, k: 0 }); } h.phase = 'gone'; } return; }
     if (h.phase === 'land') { h.t += DT; h.alt = Math.max(2, 70 * Math.max(0, 1 - h.t / 1.2)); if (h.t >= 2.2) { if (h.kind === 'lift' && h.f) { if (h.out) { h.f.state = 'withdrawn'; h.f.known = false; if (selected.has(h.f.id)) selected.delete(h.f.id); addLog(h.f.division + ' lifted out'); } else { h.f.present = true; h.f.known = true; h.f.state = h.f.then && h.f.then !== 'hold' ? h.f.then : 'hold'; h.f.then = null; h.f.lastHit = simTime; addLog(h.f.division + ' landed'); if (mode === 'command' && h.f.side === player) { cmdCaption('Lift landed', 'lift', 'reconstruction', { x: h.f.x, y: h.f.y }); renderSelection(); } } } h.phase = 'out'; h.facing = Math.atan2(h.from.y - h.y, h.from.x - h.x); } return; }
     const step = sp * DT;
     if (d <= step) { h.x = tgt.x; h.y = tgt.y; if (h.phase === 'in') { if (h.kind === 'gunship') { h.phase = 'out'; h.facing = Math.atan2(h.from.y - h.y, h.from.x - h.x); } else { h.phase = 'land'; h.t = 0; } } else h.phase = 'gone'; }
