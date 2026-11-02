@@ -207,7 +207,7 @@
         let acc = 0; line = ws.find(p => f < (acc += p.length) / tot) || ws[ws.length - 1];
       } else if (tm && tm.length === parts.length && !a.ended && a.currentTime + .05 < tm[0] - .15) {
         // before the first written sentence the narrator reads the slide's title: show it, not the next sentence
-        const tt = src.title || '', nice = tt === tt.toUpperCase() ? tt.toLowerCase().replace(/(^|[\s\-–(])(\S)/g, (m, p, c) => p + c.toUpperCase()) : tt;   // titles shown in capitals read as normal words
+        const tt = src.title || '', nice = tt === tt.toUpperCase() ? tt.toLowerCase().replace(/(^|[\s\-–(])(\S+)/g, (m, p, w) => p + (p && /^(of|the|and|at|on|in|de|du|des|la|le|les|et|à|au|aux)$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1))) : tt;   // small words stay small (Bataille de Waterloo)   // titles shown in capitals read as normal words
         line = document.body.dataset.mode === 'intro' && tt ? nice + '.' : '';
       } else {
         let i;
