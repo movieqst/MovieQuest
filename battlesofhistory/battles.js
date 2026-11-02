@@ -140,7 +140,7 @@ window.BATTLES = [
     sideColors: ['#c0392b', '#2e5aa8'],
     blurb: 'For the first time all four Canadian divisions attack together. After months of tunnelling and rehearsal they advance behind a creeping barrage and take the ridge that had held out against the French and British for two years.',
     cover: 'images/cover.jpg',
-    coverCredit: 'Canadian machine gunners dig in, in shell holes on Vimy Ridge, April 1917. Photo: Canada, Dept. of National Defence; Library and Archives Canada PA-001017 (IWM CO 1146), public domain',
+    coverCredit: 'Will Longstaff, Ghosts of Vimy Ridge (about 1929): the ghosts of the Canadian Corps gather on the ridge around the Vimy Memorial. House of Commons Heritage Collection, public domain',
     status: 'in progress'
   }
 ];
