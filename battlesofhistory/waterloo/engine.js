@@ -1016,10 +1016,33 @@ function titleCardProgress(k) {
 }
 $('playBig').onclick = () => beginIntro(true);
 let introSpunCb = null;
-function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
+// Establishing pictures (S.establishing: [{ file, secs, credit, pulse: { x, y } }]): after the globe's dive, before the battle
+// map, each fades in, holds for `secs` (about 5) while the narration carries on, and fades out. `pulse` (fractions of the
+// picture's width and height) puts a pulsing ring on the picture, e.g. on the battle's town.
+let establishT = [];
+function placePulse(m) {
+  const el = $('establish'), img = el.querySelector('img'), ring = el.querySelector('.epulse');
+  if (!m.pulse || !img.naturalWidth) { ring.style.display = 'none'; return; }
+  const W = el.clientWidth, H = el.clientHeight, k = Math.min(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * k, h = img.naturalHeight * k;
+  ring.style.left = ((W - w) / 2 + m.pulse.x * w) + 'px'; ring.style.top = ((H - h) / 2 + m.pulse.y * h) + 'px'; ring.style.display = 'block';
+}
+function showEstablishing() {
+  const list = S.establishing || [], el = $('establish'); if (!list.length || !el) return;
+  establishT.forEach(clearTimeout); establishT = []; const img = el.querySelector('img'), cap = el.querySelector('.ecap');
+  let at = 0; el.classList.add('show'); requestAnimationFrame(() => el.classList.add('on'));
+  list.forEach((m, i) => {
+    establishT.push(setTimeout(() => { img.style.opacity = 0; el.querySelector('.epulse').style.display = 'none';
+      establishT.push(setTimeout(() => { img.onload = () => placePulse(m); img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; if (img.complete) placePulse(m); }, i ? 600 : 0)); }, at * 1000));
+    at += (m.secs || 5);
+  });
+  establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
+}
+function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
+function startIntro() { hideEstablishing(); mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
-  if (G && window.WATERLOO_WORLD) G.start($('globe'), { lift: true, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
+  if (G && window.WATERLOO_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
+  hideEstablishing();
   const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
