@@ -18,6 +18,11 @@ const m3 = (lat, lon) => ({ x: Math.round((lon - .95) / 2.1 * 2400), y: Math.rou
 const R1 = pts => pts.map(([a, b]) => { const p = m1(a, b); return [p.x, p.y]; });
 const R3 = pts => pts.map(([a, b]) => { const p = m3(a, b); return [p.x, p.y]; });
 const DK3 = [51.065, 2.37], DOVER = [51.10, 1.345];
+// briefing marks (../briefing.js): positions from latitude and longitude
+const ring1 = (lat, lon, label, o) => ({ ring: Object.assign(m1(lat, lon), { label }, o || {}) }), ring3 = (lat, lon, label, o) => ({ ring: Object.assign(m3(lat, lon), { label }, o || {}) });
+const arrow1 = (pts, label, o) => ({ arrow: Object.assign({ pts: R1(pts), label }, o || {}) }), arrow3 = (pts, label, o) => ({ arrow: Object.assign({ pts: R3(pts), label }, o || {}) });
+const unit1 = (lat, lon, o) => ({ unit: Object.assign(m1(lat, lon), o) });
+const GER = '#d8dce2', ALLY = '#ff9a86';   // arrow colours: German grey, Allied red
 const ROUTE_Z = [DK3, [51.04, 2.20], [51.03, 2.05], [51.02, 1.88], [51.03, 1.70], [51.07, 1.52], DOVER];
 const ROUTE_X = [DK3, [51.11, 2.30], [51.20, 2.15], [51.30, 1.90], [51.35, 1.65], [51.33, 1.58], [51.24, 1.46], DOVER];
 const ROUTE_Y = [DK3, [51.10, 2.48], [51.17, 2.60], [51.22, 2.63], [51.33, 2.45], [51.42, 2.10], [51.42, 1.75], [51.33, 1.58], [51.24, 1.46], DOVER];
@@ -146,7 +151,15 @@ window.DUNKIRK_SCENARIO = {
         { at: 22, file: '10-rommel-1940.jpg', caption: 'Generalmajor Erwin Rommel, whose 7th Panzer Division was struck by the Matildas at Arras, at the German victory parade in Paris in June 1940, after the fall of France. He reported being attacked by hundreds of tanks.', ref: 'German Federal Archives (Bundesarchiv), Bild 146-1970-076-43', credit: 'Photo: unknown photographer, Bundesarchiv, Bild 146-1970-076-43, CC BY-SA 3.0 DE' }
       ],
       focus: m1(50.75, 2.6), zoom: .5,
-      markers: [ Object.assign(m1(50.62, 3.3), { label: 'British and French armies' }), Object.assign(m1(50.45, 1.9), { label: 'German tanks reach the sea, 20 May' }) ],
+      markers: [],
+      cues: [
+        Object.assign({ on: 'invaded the Netherlands' }, arrow1([[51.42, 4.05], [51.22, 3.75], [51.05, 3.55]], 'German Army Group B', { col: GER, dy: -18 })),
+        Object.assign({ on: 'invaded the Netherlands', delay: .7 }, arrow1([[50.95, 4.05], [50.82, 3.75]], '', { col: GER })),
+        Object.assign({ on: 'advanced into Belgium' }, arrow1([[50.55, 2.95], [50.72, 3.45], [50.83, 4.0]], 'Allies advance into Belgium', { col: ALLY, dy: 24, dx: -60 })),
+        Object.assign({ on: 'through the Ardennes' }, arrow1([[50.24, 4.05], [50.30, 3.4], [50.28, 2.7], [50.36, 2.1], [50.45, 1.72]], 'Panzers, from Sedan to the sea', { col: GER, w: 7, dy: 22 })),
+        Object.assign({ on: 'reached on 20 May' }, ring1(50.45, 1.72, 'The sea, 20 May', { r: 16, lx: 24, ly: 0, align: 'left' })),
+        Object.assign({ on: 'cut off from the rest of France' }, ring1(50.82, 3.0, 'Cut off', { r: 90, ly: -108 }))
+      ],
       auto: 20,
       lines: [
         { text: 'On 10 May the German Army invaded the Netherlands, Belgium and France. The British and the best French armies advanced into Belgium to meet it.', tag: 'established' },
@@ -161,7 +174,16 @@ window.DUNKIRK_SCENARIO = {
         { at: 0, file: '03-gort.jpg', caption: 'General Lord Gort, commander of the British Expeditionary Force, painted in 1940. On 25 May he decided, without waiting for orders, to give up the planned attack south and fall back to the coast: the decision that saved most of his army.', ref: 'Imperial War Museum, Art.IWM ART LD 730', credit: 'Painting: Reginald Grenville Eves, 1940. Public domain (UK Crown copyright expired)' }
       ],
       focus: m1(50.8, 2.8), zoom: .5,
-      markers: [ Object.assign(m1(50.62, 3.35), { label: 'BEF' }), Object.assign(m1(51.02, 3.55), { label: 'Belgian Army' }), Object.assign(m1(50.42, 3.3), { label: 'French First Army' }) ],
+      markers: [],
+      cues: [
+        Object.assign({ on: 'British Expeditionary Force' }, ring1(50.62, 3.38, 'BEF: about 250,000 men in the north', { r: 30, ly: -50, lx: 20, align: 'right' })),
+        Object.assign({ on: 'French First Army' }, ring1(50.40, 3.32, '', { r: 30 })),
+        Object.assign({ on: 'Belgian Army' }, ring1(51.02, 3.58, '', { r: 30 })),
+        Object.assign({ on: 'two German army groups' }, unit1(51.30, 3.95, { side: 'german', size: 'XXXXX', label: 'Army Group B' })),
+        Object.assign({ on: 'two German army groups', delay: .8 }, unit1(50.30, 3.85, { side: 'german', size: 'XXXXX', label: 'Army Group A' })),
+        Object.assign({ on: 'tank divisions' }, unit1(50.38, 2.15, { side: 'german', kind: 'armour', size: 'XX', label: 'Panzer divisions' })),
+        Object.assign({ on: 'tank divisions', delay: .6 }, arrow1([[50.42, 2.3], [50.62, 2.25], [50.82, 2.2]], 'turning north', { col: GER, dy: 0, dx: 60 }))
+      ],
       auto: 20,
       lines: [
         { text: 'The British Expeditionary Force, under Lord Gort, had about 390,000 men in France, of whom around 250,000 were in the fighting area in the north.', tag: 'estimate', cite: 'Ellis, The War in France and Flanders (1953), ch. 1 and appendices' },
@@ -181,7 +203,14 @@ window.DUNKIRK_SCENARIO = {
         { at: 28, file: '14-bourrasque-sinking.jpg', caption: 'The French destroyer Bourrasque, crowded with troops, sinking off the Belgian coast on 30 May 1940 after striking a mine on the way back from Dunkirk. Around 300 men were lost. More than 200 vessels were sunk in the nine days.', ref: 'Imperial War Museum HU 2280', credit: 'Photo: unknown photographer. Public domain (UK Crown copyright expired)' }
       ],
       focus: m3(51.15, 1.9), zoom: .5,
-      markers: [ Object.assign(m3(51.125, 1.31), { label: 'Dover: Admiral Ramsay' }), Object.assign(m3(51.035, 2.375), { label: 'Dunkirk' }) ],
+      markers: [],
+      cues: [
+        Object.assign({ on: 'From his headquarters' }, ring3(51.125, 1.31, 'Dover: Admiral Ramsay', { r: 20 })),
+        Object.assign({ on: 'Operation Dynamo' }, ring3(51.035, 2.375, 'Dunkirk', { r: 20 })),
+        Object.assign({ on: '45,000 men' }, ring3(51.035, 2.375, 'Expected: 45,000 men in two days', { r: 34, ly: 54, lx: 30, align: 'right' })),
+        Object.assign({ on: 'Destroyers' }, arrow3([DOVER, [51.07, 1.52], [51.03, 1.70], [51.02, 1.88], [51.03, 2.05], [51.04, 2.20], DK3], 'Destroyers, ferries, steamers', { col: '#9fd0ff', dy: 26 })),
+        Object.assign({ on: 'the little ships' }, arrow3([[51.33, 1.58], [51.35, 1.65], [51.30, 1.90], [51.20, 2.15], [51.11, 2.30], DK3], 'The little ships', { col: '#ffe08a', dy: -20 }))
+      ],
       auto: 20,
       lines: [
         { text: 'From his headquarters in the cliffs at Dover, Vice-Admiral Bertram Ramsay planned the evacuation. Its code name was Operation Dynamo.', tag: 'established' },
