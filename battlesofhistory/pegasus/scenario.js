@@ -320,11 +320,11 @@ window.BATTLE_SCENARIO = {
         text: 'A German fighter-bomber comes in low along the canal and drops a bomb on the canal bridge. It hits the tower, bounces off, and falls into the water without exploding. The bridge is not touched again from the air.',
         explain: 'A hit would have cut the road to the beaches for the airborne division. The dud was pure luck, and both accounts record it. Through the morning the Germans tried the bridge with tanks, infantry, a gunboat, snipers and an aircraft, and every attempt was too small and too late.',
         orders: [ { fire: { kind: 'dud', at: { x: 835, y: 755 }, r: 34, delay: 3, dmg: 0 } }, { id: 'ginf1', to: { x: 440, y: 1160 }, speed: 13, state: 'attack', strengthTo: 35, over: 12 }, { id: 'pA', strengthTo: 45, over: 12 } ] },
-      { t: 182, title: 'Noon', tag: 'established', clock: '12:00', focus: { x: 560, y: 860 },
+      { t: 182, title: 'Noon', music: { file: 'blue-bells.mp3', vol: .12 }, tag: 'established', clock: '12:00', focus: { x: 560, y: 860 },
         text: 'The attacks on Bénouville slacken. The paratroopers are down to half strength in the village and have lost most of their officers, but the Germans have not reached the bridge. From the north comes the sound of the fighting at Sword, and then, faintly, bagpipes.',
         explain: 'Lovat’s brigade had landed at 08:40 and fought its way through Colleville and the gun batteries behind the beach. Lovat had promised Howard he would be at the bridge by noon. He was two minutes late, and apologised for it.',
         orders: [ { id: 'ginf1', to: { x: 300, y: 1360 }, speed: 13, state: 'move', then: 'hold' }, { id: 'ginf2', to: { x: 440, y: 260 }, speed: 13, state: 'move', then: 'hold' } ] },
-      { t: 206, title: 'The commandos', tag: 'established', clock: '13:00', focus: { x: 865, y: 560 },
+      { t: 206, title: 'The commandos', music: { file: 'blue-bells.mp3', vol: .45 }, tag: 'established', clock: '13:00', focus: { x: 865, y: 560 },
         text: 'At one o’clock Lord Lovat’s commandos come down the road from Le Port, green berets instead of helmets, Piper Bill Millin playing Blue Bonnets over the Border at their head. They cross the canal bridge under sniper fire at a walk, as Lovat ordered, losing several men on the span, and shake hands with the airborne on the far side.',
         explain: 'Lovat marched his men across at the walk, pipes playing, as a point: the beach and the bridge were joined. The snipers in Le Port were still active and the crossing cost lives. Howard’s report records the relief at 13:00; Lovat’s own account says 13:02 and apologises for the delay.',
         orders: [ { id: 'cmdo', visible: true, at: { x: 560, y: -200 }, to: { x: 870, y: 730 }, speed: 40, state: 'move' }, { id: 'cmdo', to: { x: 1300, y: 730 }, speed: 30, state: 'move', delay: 14, then: 'hold' }, { id: 'cmdo', strengthTo: 94, over: 10, delay: 12 } ] },
@@ -468,6 +468,7 @@ window.BATTLE_SCENARIO = {
   ],
 
   sources: [
+    { ref: 'Music: “Blue Bells of Scotland”, traditional, played by Piper Johnny (Frederick John Ludwig Jr.) with the Medinah Highlanders drums, from Marines Hymn / Blue Bells of Scotland (2006)', note: 'Wikimedia Commons, File:08 Marines Hymn-Blue Bells of Scotland.ogg, CC BY-SA 4.0; the Blue Bells part only, faded in and out. Bill Millin played Blue Bonnets over the Border at the bridge; this is another Scottish pipe tune of the kind.' },
     { title: 'Ambrose, Pegasus Bridge (1985)', note: 'the standard account, from both sides' },
     { title: 'Howard, Report on Operation Deadstick (1944)', note: 'the original report' },
     { title: 'Barber, The Pegasus and Orne Bridges (2009)', note: 'the fullest modern study' },
