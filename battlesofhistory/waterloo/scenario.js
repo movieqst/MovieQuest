@@ -378,6 +378,14 @@ window.WATERLOO_SCENARIO = {
   /* Recorded narration lives in audio/<voice>/ (clear: Narrator 1). Clips missing for a line fall back to the browser’s voice. */
   /* Spoken before the first intro slide (clip audio/<voice>/welcome.mp3; skipped until it is recorded). */
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Waterloo, which happened on the 18th of June 1815, between Wellington’s Allied army with Blücher’s Prussians, and Napoleon’s French army.',
+  /* After the globe: Europe in 1815, the Low Countries, the campaign area (painted, then real), the battlefield at dawn. */
+  establishing: [
+    { file: 'establish-1-europe-1815.jpg', secs: 5, pulse: { x: .395, y: .39 }, credit: 'Europe after the Congress of Vienna, 1815. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-2-low-countries.jpg', secs: 5, pulse: { x: .48, y: .42 }, credit: 'The Low Countries and northern France: Brussels, Charleroi, Namur and the Sambre. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-3-campaign-cartoon.jpg', secs: 4, pulse: { x: .40, y: .30 }, credit: 'The campaign: the road from Charleroi to Brussels, Quatre Bras, Ligny and Wavre. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-4-campaign-real.jpg', secs: 5, pulse: { x: .40, y: .30 }, credit: 'The same country as it looks from the air. Artist rendering: Battle Games, AI-generated' },
+    { file: 'establish-5-battlefield-dawn.jpg', secs: 6, credit: 'The ridge of Mont-Saint-Jean on the morning of 18 June 1815. Artist rendering: Battle Games, AI-generated' }
+  ],
   imageBase: 'images/',
   audioBase: 'audio/',
   voices: [
