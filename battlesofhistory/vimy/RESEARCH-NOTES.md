@@ -47,3 +47,18 @@ page numbers. Anything below is used only once it is confirmed there, or tagged 
 - **Context:** the Canadian Corps held 7 km of an attack front over 40 km wide; about 160,000 Imperial casualties in
   the whole Battle of Arras, about 10,600 of them Canadian. Currie in 1922 said Vimy was not the Corps' most important
   battle. Nivelle's offensive of 16 April failed.
+
+## Checked against Nicholson's text (the PDF we hold)
+
+- **Confirmed (Nicholson p. 265):** 10,602 Canadian casualties for 9-14 April, 3,598 of them fatal. **Eleven subways** "of a
+  total length of almost" four miles (p. 249). ChatGPT's "12 or 13" comes from later guides (Boire mentions a "13-tunnel"
+  system); **disputed**, give both.
+- **The undestroyed trench (Nicholson pp. 259-260):** "left undestroyed by the heavy artillery at the request of the
+  commanding officer of the left assaulting battalion (the 87th)". Gordon and Godefroy dispute who asked for it (the
+  87th's CO or Brigadier-General Odlum), so present it as **disputed**.
+- **Hill 145, correcting Gordon:** on 9 April the 102nd Battalion took the south-west slope. Bombers of the 87th took
+  the troublesome trench at 1 p.m., and "before dark, two companies of the 85th Battalion overran the two remaining
+  trenches on the west side of the summit" (p. 260). The rest of the hill (the 11th Brigade's Red Line) was handed to
+  the 10th Brigade at 6 p.m. and taken on the afternoon of **10 April** (p. 261). So the summit was not fully clear on
+  9 April. Pattison's VC (50th Battalion, 10th Brigade, 10 April) belongs to that second attack. Nicholson does not
+  name him; the VC is confirmed by the London Gazette, per ChatGPT.
