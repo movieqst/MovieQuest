@@ -36,7 +36,7 @@
   ['caption', 'intro'].forEach(id => $(id) && $(id).addEventListener('click', e => { if (document.body.classList.contains('subsopen') && !e.target.closest('button,a')) closeOpen(); }));
 
   const plain = el => { if (!el) return ''; const c = el.cloneNode(true); c.querySelectorAll('button,.chip').forEach(b => b.remove()); return c.textContent.replace(/\s+/g, ' ').trim(); };
-  const sentences = t => (t.match(/[^.!?]+[.!?]+["”’)]*|[^.!?]+$/g) || [t]).map(s => s.trim()).filter(Boolean);
+  const sentences = t => (t.match(/[^.!?。！？]+[.!?。！？]+["”’)]*|[^.!?。！？]+$/g) || [t]).map(s => s.trim()).filter(Boolean);
   const vis = el => el && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden';
 
   let key = '', parts = [], weights = [], t0 = 0, shown = -1;

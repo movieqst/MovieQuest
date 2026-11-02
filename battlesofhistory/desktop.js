@@ -171,7 +171,7 @@
   {
     const ct = text.querySelector('.ct'), cl = text.querySelector('.cl'), bulb = text.querySelector('#ccBulb');
     const plain = el => { if (!el) return ''; const c = el.cloneNode(true); c.querySelectorAll('button,.chip').forEach(b => b.remove()); return c.textContent.replace(/\s+/g, ' ').trim(); };
-    const sentences = t => (t.match(/[^.!?]+[.!?]+["\u201d\u2019)]*|[^.!?]+$/g) || [t]).map(x => x.trim()).filter(Boolean);
+    const sentences = t => (t.match(/[^.!?。！？]+[.!?。！？]+["\u201d\u2019)]*|[^.!?。！？]+$/g) || [t]).map(x => x.trim()).filter(Boolean);
     let key = '', parts = [], weights = [], t0 = 0, shown = -1;
     const TIMINGS = {};   // timings.json per voice folder, loaded once
     const timingsFor = src => {
