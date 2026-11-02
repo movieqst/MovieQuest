@@ -42,6 +42,17 @@
     if (L.formations) [S.formations, S.campaign && S.campaign.formations].forEach(fs => (fs || []).forEach(f => { const t = L.formations[f.id]; if (t) ['name', 'division', 'count', 'note'].forEach(k => set(f, k, t[k])); }));
     if (S.battlefield && S.battlefield.labels && L.labels) each(S.battlefield.labels, L.labels, (l, t) => set(l, 'text', typeof t === 'string' ? t : t.text));
     each(S.library, L.library, (b, t) => set(b, 'about', typeof t === 'string' ? t : t.about));
+    each(S.library, L.libraryDetails, (b, t) => t && Object.keys(t).forEach(k => typeof b[k] === 'string' && set(b, k, t[k])));
+    each(S.sources, L.sources, (s, t) => set(s, 'note', typeof t === 'string' ? t : t.note));
+    if (L.scaleLabel && S.battlefield && S.battlefield.scale) set(S.battlefield.scale, 'label', L.scaleLabel);
+    // the opening part on its own map (Waterloo's campaign): towns, formations, the markers chapters put on the map
+    if (S.campaign && L.campaign) {
+      each(S.campaign.towns, L.campaign.towns, (t, n) => set(t, 'name', typeof n === 'string' ? n : n.name));
+      if (L.campaign.formations) (S.campaign.formations || []).forEach(f => { const t = L.campaign.formations[f.id]; if (t) ['name', 'division', 'count', 'note'].forEach(k => set(f, k, t[k])); });
+      each(S.campaign.events, L.campaign.events, (e, t) => each(e.markers, t.markers, (m, n) => set(m, 'label', typeof n === 'string' ? n : n.label)));
+    }
+    // the computer's captions in command mode
+    if (S.ai && S.ai.plans && L.ai) Object.keys(L.ai).forEach(side => each(S.ai.plans[side], L.ai[side], (st, t) => { if (t && st.caption) { set(st.caption, 'title', t.title); set(st.caption, 'text', t.text); } }));
     if (L.voices) S.voices = L.voices;               // the translated narrators (audio/<id>/…)
     document.documentElement.lang = lang;
   }

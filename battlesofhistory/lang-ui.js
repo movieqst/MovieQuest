@@ -6,8 +6,9 @@ window.BH_UI.fr = {
   // top bar and controls
   '◀ Back': '◀ Retour', 'Back': 'Retour', 'Ⅱ Pause': 'Ⅱ Pause', '▶ Resume': '▶ Reprendre', 'Next ▶': 'Suivant ▶', 'Skip intro ⏭': 'Passer l’intro ⏭',
   '🗺 Map': '🗺 Carte', '🎨 Art': '🎨 Peinture', '✏ Drawn': '✏ Dessin', '📜 Intro': '📜 Intro', '▶ Watch': '▶ Regarder', '⚔ Command': '⚔ Commander',
-  '◀ Battles': '◀ Batailles', '⛶ Full': '⛶ Plein écran', '🔊 Voice': '🔊 Voix', '🔇 Voice': '🔇 Voix', '🔊 Voice on': '🔊 Voix activée', '🔇 Voice off': '🔇 Voix coupée',
-  '▴ Controls': '▴ Commandes', '▾ Controls': '▾ Commandes', 'Controls': 'Commandes', '⏩ FF': '⏩ Accélérer', '⏭ Skip': '⏭ Chapitre suivant', 'Follow': 'Suivre',
+  '◀ Battles': '◀ Retour', '⛶ Full': '⛶ Écran',   // short labels: the right-hand buttons are narrow
+  '🔊 Voice': '🔊 Voix', '🔇 Voice': '🔇 Voix', '🔊 Voice on': '🔊 Voix activée', '🔇 Voice off': '🔇 Voix coupée',
+  '▴ Controls': '▴ Réglages', '▾ Controls': '▾ Réglages', 'Controls': 'Commandes', '⏩ FF': '⏩ Accélérer', '⏭ Skip': '⏭ Chapitre suivant', 'Follow': 'Suivre',
   'Restart': 'Recommencer', 'Explain': 'Expliquer', 'Halt': 'Halte', 'Fall back': 'Repli', 'Select all': 'Tout sélectionner', 'Speed': 'Vitesse', 'Side': 'Camp',
   'Allied': 'Alliés', 'French': 'Français', 'Allied army': 'Armée alliée', 'French army': 'Armée française', 'Narrator': 'Narrateur', 'Narration speed': 'Vitesse de la narration',
   '⚔ Armies': '⚔ Armées', '📝 View text': '📝 Afficher le texte', '📝 View text narration': '📝 Afficher la narration', '⇄ Map': '⇄ Carte', '⇄ Enlarge': '⇄ Agrandir',
@@ -45,7 +46,9 @@ window.BH_UI.fr = {
   'The armies: full write-ups and photographs of every unit': 'Les armées : la fiche complète et les photos de chaque unité',
   'Watch the reenactment': 'Voir la reconstitution', 'Take command': 'Prendre le commandement',
   // tags shown on chips (the scenario's own labels are translated by its lang file)
-  'Established': 'Établi', 'Account': 'Témoignage', 'Disputed': 'Contesté', 'Estimate': 'Estimation', 'Reconstruction': 'Reconstitution'
+  'BATTLE OF WATERLOO': 'BATAILLE DE WATERLOO', 'Historical reenactment · 18 June 1815 · runs locally, no install': 'Reconstitution historique · 18 juin 1815 · fonctionne sans installation',
+  '▴ Show fewer': '▴ Moins d’unités',
+    'Established': 'Établi', 'Account': 'Témoignage', 'Disputed': 'Contesté', 'Estimate': 'Estimation', 'Reconstruction': 'Reconstitution'
 };
 window.BH_UI_PATTERNS.fr = [
   [/^Historical introduction · (\d+) \/ (\d+)$/, (m, a, b) => `Introduction historique · ${a} / ${b}`],
@@ -54,5 +57,6 @@ window.BH_UI_PATTERNS.fr = [
   [/^Specific record: (.*)$/, (m, a) => `Source précise : ${a}`],
   [/^(\d+) formations? selected$/, (m, a) => `${a} formation${a > 1 ? 's' : ''} sélectionnée${a > 1 ? 's' : ''}`],
   [/^No formation selected$/, () => 'Aucune formation sélectionnée'],
+  [/^▾ (\d+) more units?$/, (m, a) => `▾ ${a} unité${a > 1 ? 's' : ''} de plus`],
   [/^Photo to add(.*)$/, (m, a) => `Photo à ajouter${a}`]
 ];
