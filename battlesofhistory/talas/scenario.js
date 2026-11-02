@@ -178,7 +178,7 @@ window.TALAS_SCENARIO = {
         { x: 2150, y: 1220, text: 'low ridge', small: true }
       ]
     },
-    globe: { target: { lon: 71.3, lat: 42.8 }, region: { lon: 74, lat: 40 }, pull: 6.5, startLat: 30,
+    globe: { target: { lon: 71.3, lat: 42.8 }, region: { lon: 70, lat: 43.5 }, pull: 3.6, startLat: 30,
       periodNote: 'Central Asia in 751 · between Tang China and the Abbasid Caliphate',
       labels: [
         { lon: 82.96, lat: 41.72, text: 'Kucha (Anxi)', size: .5, dot: true }, { lon: 108.9, lat: 34.3, text: 'Chang’an', size: .55, dot: true },

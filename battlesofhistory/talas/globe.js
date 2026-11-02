@@ -2,7 +2,7 @@
    Orthographic projection drawn by hand on a 2D canvas; land from world.js. */
 window.BattleGlobe = (() => {
   'use strict';
-  const D = Math.PI / 180, GS = (window.BATTLE_SCENARIO && window.BATTLE_SCENARIO.globe) || {}, KADESH = GS.target || { lon: 0, lat: 0 }, START_LAT = GS.startLat !== undefined ? GS.startLat : 24;
+  const D = Math.PI / 180, GS = ((window.BATTLE_SCENARIO || window[Object.keys(window).find(k => /_SCENARIO$/.test(k))] || {}).globe) || {}, KADESH = GS.target || { lon: 0, lat: 0 }, START_LAT = GS.startLat !== undefined ? GS.startLat : 24;
   const RINGS = (window.BATTLE_WORLD && window.BATTLE_WORLD.rings) || [];
   const BORDERS = window.BATTLE_BORDERS || { modern: [], ancient: [] };
   const NEAR_EAST = GS.region || KADESH;   // centre of the pull-back that shows the whole region

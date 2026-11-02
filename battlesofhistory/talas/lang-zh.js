@@ -142,3 +142,11 @@ Object.assign(window.TALAS_LANG.zh, {
   const C = ['公元751年春', '751年初夏', '751年7月', '第一天', '第一天', '第二至四天', '第五天', '第五天', '夜里', '夜里', '夜里', '战后', '751年末', '755至756年'];
   z.campaign.events.forEach((e, i) => { e.clock = C[i]; }); z.events.forEach((e, i) => { e.clock = C[i + 2]; });
 })(window.TALAS_LANG.zh);
+Object.assign(window.TALAS_LANG.zh, {   // the briefing panel and the title card's small print
+  place: '怛罗斯河谷，中亚（今哈萨克斯坦与吉尔吉斯斯坦交界处）',
+  tagline: '唐朝对阿拔斯王朝',
+});
+Object.assign(window.TALAS_LANG.zh.titleCard, {
+  dateNote: '唐朝与阿拔斯王朝在怛罗斯河谷交战：相持五日，随后葛逻禄倒戈。',
+  dateRef: '《资治通鉴》卷二一六；《旧唐书》卷一〇九；伊本·艾西尔'
+});

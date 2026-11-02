@@ -97,7 +97,7 @@ window.BH_UI.zh = {
   'Hide the text': '隐藏文字', 'Hide the narration text': '隐藏旁白文字', 'Hide the text; the narration continues': '隐藏文字；旁白继续',
   'Painted battlefield (click for the drawn map)': '彩绘战场（点击切换线描地图）', 'Drawn battlefield (click for the painting)': '线描战场（点击切换彩绘）',
   'Enlarge the photo; the map shrinks into this corner': '放大图片；地图缩到这个角落', 'Back to the map': '回到地图',
-  'The armies: full write-ups and photographs of every unit': '双方军队：每支部队的详细介绍和图片', 'Watch the reenactment': '观看战役重现', 'Take command': '亲自指挥',
+  'The armies: full write-ups and photographs of every unit': '双方军队：每支部队的详细介绍和图片', 'Watch the reenactment': '观看战役重现', 'Take command': '亲自指挥', 'Click for the full write-up and photographs': '点击查看详细介绍和图片', 'Click to replay from here': '点击从这里重新播放',
   // this battle's page
   'BATTLE OF TALAS': '怛罗斯之战', 'Battle of Talas — Historical Reenactment': '怛罗斯之战 — 历史重现', 'Historical reenactment · July 751 · runs locally, no install': '历史重现 · 公元751年7月 · 无需安装',
   '⚔ Play as Tang': '⚔ 扮演唐军', '⚔ Play as Abbasid': '⚔ 扮演阿拔斯军', 'Tang': '唐', 'Abbasid': '阿拔斯',
