@@ -506,6 +506,7 @@ function render() {
     ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
   });
+  if (BR && mode === 'intro') BR.draw(ctx);
   // scale bar (at the near edge of the view)
   if (B.scale) { const sb = B.scale.px * z; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55; ctx.fillStyle = 'rgba(9,23,32,.8)';
     ctx.fillRect(300, sy0 - 20, sb + 16, 20); ctx.fillStyle = '#e9c77a'; ctx.fillRect(308, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'left'; ctx.fillText(B.scale.label, 308, sy0 - 10); ctx.restore(); }
@@ -661,6 +662,8 @@ function renderBriefing() {
 function showOverlay(id) { $(id).classList.add('show'); }
 let unitPausedIntro = false;
 function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'debrief' && typeof textOff !== 'undefined' && textOff) document.body.classList.add('textoff'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
+// briefing marks on the introduction's maps (../briefing.js): rings, arrows and unit blocks, as the narrator mentions them
+const BR = window.BHBriefing ? window.BHBriefing.create({ P: (x, y) => P(x, y), outlined: (c, t, x, y, sz, o) => outlined(c, t, x, y, sz, o), sideColor: sd => SIDE(sd).color }) : null;
 function showIntro(i) {
   introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
@@ -669,7 +672,7 @@ function showIntro(i) {
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('ctrlStrip').classList.toggle('lit', false); $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
   if (sl.map) setMap(sl.map, true);
-  markers = sl.markers || [];
+  markers = sl.markers || []; if (BR) BR.set(sl);
   if (sl.zoom) { view.z = clamp(sl.zoom, minZ(), 2.4); clampView(); }
   // The dialog covers the lower part of the panel, so aim the camera such that the point of interest sits in the upper third.
   if (sl.focus) frame(sl.focus.x, sl.focus.y, .27);
@@ -1043,7 +1046,7 @@ function tick(t) {
       const nb = $('introNext');
       if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
-      $('introBar').style.width = Math.min(100, frac * 100) + '%';
+      $('introBar').style.width = Math.min(100, frac * 100) + '%'; if (BR) BR.update(sl, frac, tail);
     }
   } else if (!paused && !battleOver && !cinematic) {
     acc += dt * speed;
