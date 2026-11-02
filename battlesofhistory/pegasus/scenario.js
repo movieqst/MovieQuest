@@ -166,6 +166,7 @@ window.BATTLE_SCENARIO = {
     duration: 250,
     commandDuration: 300,
     world: { w: 2400, h: 1800 },
+    gliderFrom: { x: 1900, y: 1980 },   // the gliders came in from the south-east and landed heading north-west, toward the bridges
     clockStart: '6 June · 00:16',
     heliFrom: { x: 1760, y: -260 },            // gliders come in from the north-east, over the coast
     rally: { brit: { x: 1180, y: 860 }, ger: { x: 400, y: 1360 } },
@@ -250,7 +251,7 @@ window.BATTLE_SCENARIO = {
     ],
 
     events: [
-      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1200, y: 640 }, zoom: .8,
+      { t: 0, title: 'Deadstick', tag: 'established', clock: '6 June · 00:16', light: 'night', focus: { x: 1180, y: 860 }, zoom: .8,
         text: 'Sixteen minutes past midnight. Out of the dark at ninety miles an hour, the first Horsa hits the ground, bounces, smashes through the wire and stops with its nose forty-seven yards from the canal bridge. The second and third land within a minute. Nobody on the bridge has heard a thing.',
         explain: 'The gliders were released at 6,000 feet over the coast and flew seven miles by stopwatch, making two timed turns in cloud. Wallwork, in the lead, aimed for the wire at the end of the field to stop the glider before the embankment: he hit it, and the two pilots went through the windscreen. Everyone aboard was stunned for a few seconds; some of the men thought they were dead.',
         orders: [

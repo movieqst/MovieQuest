@@ -387,7 +387,7 @@ function stepStrikes() {
 
 /* ---------------- helicopters: lifts in and out, medevac and gunship runs ---------------- */
 function spawnHeli(o) {
-  const from = PART.heliFrom || { x: W.w + 60, y: W.h / 2 };
+  const from = (o.kind === 'glider' && PART.gliderFrom) || PART.heliFrom || { x: W.w + 60, y: W.h / 2 };
   let to = o.to; if (o.kind === 'lift' || o.kind === 'glider') { const f = o.f; to = { x: f.x, y: f.y }; if (!o.out) { f.present = false; } }
   helis.push({ kind: o.kind, f: o.f || null, out: !!o.out, x: from.x, y: from.y, from, to, phase: 'in', t: 0, alt: o.kind === 'glider' ? 120 : 70, facing: Math.atan2(to.y - from.y, to.x - from.x), id: Math.random() });
 }
