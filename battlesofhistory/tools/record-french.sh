@@ -11,6 +11,6 @@ HF=https://huggingface.co/rhasspy/piper-voices/resolve/main/fr/fr_FR
 get() { [ -s "$VOICES/$1.onnx" ] || { echo "Downloading $1 ..."; curl -sSL -o "$VOICES/$1.onnx" "$HF/$2/$3/$1.onnx"; curl -sSL -o "$VOICES/$1.onnx.json" "$HF/$2/$3/$1.onnx.json"; }; }
 get fr_FR-tom-medium tom medium
 get fr_FR-siwis-medium siwis medium
-grep -P '^\S+\tfr-tom\t' "$LINES" > /tmp/fr-tom.tsv;   MODEL="$VOICES/fr_FR-tom-medium.onnx"   bash "$HERE/record-voices.sh" /tmp/fr-tom.tsv
-grep -P '^\S+\tfr-siwis\t' "$LINES" > /tmp/fr-siwis.tsv; MODEL="$VOICES/fr_FR-siwis-medium.onnx" bash "$HERE/record-voices.sh" /tmp/fr-siwis.tsv
+awk -F'\t' '$2 == "fr-tom"' "$LINES" > /tmp/fr-tom.tsv;   MODEL="$VOICES/fr_FR-tom-medium.onnx"   bash "$HERE/record-voices.sh" /tmp/fr-tom.tsv
+awk -F'\t' '$2 == "fr-siwis"' "$LINES" > /tmp/fr-siwis.tsv; MODEL="$VOICES/fr_FR-siwis-medium.onnx" bash "$HERE/record-voices.sh" /tmp/fr-siwis.tsv
 echo "All done. Now run:  cd ~ && zip -r voices-fr.zip voices/waterloo/fr-tom voices/waterloo/fr-siwis"
