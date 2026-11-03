@@ -43,3 +43,10 @@ Use the four unit descriptions above. Name them **portrait-scots-spearman**, **p
 ```text
 A realistic painting of the wooden bridge over the River Forth at Stirling on the morning of 11 September 1297: a long, narrow timber bridge on wooden piers, only wide enough for two horsemen, crossing a dark slow river between wet green meadows; Stirling Castle on its rock in the distance behind, the steep wooded Abbey Craig on the other side. English knights in mail with coloured surcoats riding onto the bridge two by two. Early morning light, mist on the river. No modern things, no stone bridge, no Wallace Monument, no text.
 ```
+
+## Received (3 November 2026)
+ChatGPT's 9 sheets (4 units, 5 leaders) were cut out by `tools/prepare-sprite-sheet.py` and `clean-sprite-sheet.py`, after the white border strips from ChatGPT's composite had been keyed out. They are in `images/units/`:
+- **Units:** infantry at 160 px cells; horse at 240 × 200.
+- **Leaders:** `leader-<id>.png`. Wallace is on foot, at 160 px cells.
+
+Still to come: the 4 portraits (section C) and the optional bridge painting (D).

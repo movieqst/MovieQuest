@@ -313,7 +313,9 @@ window.STIRLING_SCENARIO = {
         { lon: -3.94, lat: 56.12, text: 'STIRLING', size: .85, pin: true, early: true }
       ] },
     establishing: [],
-    sheets: [], sheetBy: {},
+    // painted figures (images/units/<name>.png, cut from ChatGPT's sheets with tools/prepare-sprite-sheet.py)
+    sheets: ['scots-spearman', 'scots-horseman', 'english-knight', 'english-foot'],
+    sheetBy: { allied: { infantry: 'scots-spearman', cavalry: 'scots-horseman', archers: 'scots-spearman' }, french: { infantry: 'english-foot', archers: 'english-foot', cavalry: 'english-knight' } },
     sideArt: { allied: { cloth: '#3a4a6a', cloth2: '#2a3550', pennant: '#2e5aa8' }, french: { cloth: '#8a3a30', cloth2: '#6a2a22', pennant: '#c0392b', trim: '#e9c77a' } },
     ai: { plans: {} }, commandLines: {},
     debrief: { allied: { victory: { title: 'Scottish victory', text: '' }, defeat: { title: 'Scottish defeat', text: '' }, stalemate: { title: 'Stalemate', text: '' } },
@@ -332,7 +334,7 @@ window.STIRLING_SCENARIO = {
     F({ id: 'welsh',   side: 'french', name: 'Welsh and English foot', division: 'Main body', type: 'archers', cols: 7, rows: 2, x: 640, y: 1220, note: 'Guisborough says thousands of Welsh crossed early in the morning and were called back.' }),
     F({ id: 'main',    side: 'french', name: 'Surrey’s main body', division: 'Main body', type: 'cavalry', cols: 6, rows: 2, x: 560, y: 1120, note: 'The rest of the army, which never crossed.' }),
     F({ id: 'baggage', side: 'french', name: 'The English baggage', division: 'Baggage', type: 'infantry', cols: 4, rows: 1, power: .3, x: 520, y: 1000, note: 'Wagons and stores, seized at the end by the Steward and Lennox.' }),
-    F({ id: 'steward', side: 'french', name: 'The Steward and the Earl of Lennox', division: 'Steward', type: 'cavalry', cols: 3, rows: 1, x: WOODS.x, y: WOODS.y, note: 'Scottish lords serving with the English. Guisborough says they waited in the woods, then fell on the fleeing English and their baggage.' })
+    F({ id: 'steward', side: 'french', name: 'The Steward and the Earl of Lennox', division: 'Steward', type: 'cavalry', sheet: 'scots-horseman', cols: 3, rows: 1, x: WOODS.x, y: WOODS.y, note: 'Scottish lords serving with the English. Guisborough says they waited in the woods, then fell on the fleeing English and their baggage.' })
   ];
   S.leaders = [
     { id: 'wallace',     name: 'William Wallace',          side: 'allied', x: 1900, y: 470 },
