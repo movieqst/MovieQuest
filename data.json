@@ -4321,5 +4321,82 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "bag-of-bones-2011-dvd",
+    "title": "Stephen King's Bag of Bones",
+    "year": 2011,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/bag-of-bones-2011-dvd-1.jpg",
+    "photos": [
+      "images/bag-of-bones-2011-dvd-1.jpg",
+      "images/bag-of-bones-2011-dvd-2.jpg",
+      "images/bag-of-bones-2011-dvd-3.jpg",
+      "images/bag-of-bones-2011-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%20Bag%20of%20Bones%20DVD%20Pierce%20Brosnan&campid=5339133571&customid=bag-of-bones-2011-dvd",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Pierce Brosnan, Melissa George, Annabeth Gish, Anika Noni Rose, Matt Frewer, Jason Priestley, Caitlin Carmichael, Peter MacNeill, William Schallert",
+    "director": "Mick Garris",
+    "producers": "Michael Mahoney, Mark Sennet, Stewart Mackinnon, Mick Garris",
+    "company": "Sony Pictures Television / Sennet Entertainment / Headline Pictures / A&E",
+    "titleNote": "Mini-Series / 2011",
+    "tagline": "DVD / Widescreen / Pierce Brosnan / Stephen King / Horror / 2010s",
+    "desc": "Based on the award-winning novel by Stephen King, Stephen King's Bag of Bones is an unforgettable psychological thriller. Two-time Golden Globe nominee Pierce Brosnan (Die Another Day) stars as Mike Noonan, a novelist who suffers from writer's block after the death of his wife, Jo (Annabeth Gish). A dream inspires him to return to the couple's lakeside retreat hoping to find answers about his wife's sudden death, but he is plagued by ever-escalating nightmares and mysterious ghostly visitations from Sara Tidwell (Anika Noni Rose, Dreamgirls), a blues singer whose spirit lingers in the house. As the inhabitants of Dark Score Lake haunt him, Mike comes to realize that his late wife still has something to tell him. Jason Priestley, Melissa George and William Schallert also star.",
+    "trivia": [
+      {
+        "heading": "A Bram Stoker Winner",
+        "text": "Stephen King's 1998 novel Bag of Bones won the Bram Stoker Award for Best Novel and the British Fantasy Award."
+      },
+      {
+        "heading": "Bond Goes Haunted",
+        "text": "Pierce Brosnan, best known as James Bond, plays novelist Mike Noonan, a writer haunted by his wife's death and the ghosts of Dark Score Lake."
+      },
+      {
+        "heading": "Mick Garris Again",
+        "text": "Director Mick Garris has adapted more Stephen King stories than almost anyone, including The Stand (1994), The Shining (1997) mini-series and Riding the Bullet."
+      },
+      {
+        "heading": "Two-Night Event",
+        "text": "It first aired on A&E as a two-part mini-series in December 2011; this DVD presents the whole 163-minute story."
+      }
+    ],
+    "tidbits": [
+      "Stephen King's 1998 novel Bag of Bones won the Bram Stoker Award for Best Novel and the British Fantasy Award.",
+      "Pierce Brosnan, best known as James Bond, plays novelist Mike Noonan, a writer haunted by his wife's death and the ghosts of Dark Score Lake.",
+      "Director Mick Garris has adapted more Stephen King stories than almost anyone, including The Stand (1994), The Shining (1997) mini-series and Riding the Bullet.",
+      "It first aired on A&E as a two-part mini-series in December 2011; this DVD presents the whole 163-minute story."
+    ],
+    "copies": [
+      {
+        "id": "bag-of-bones-2011-dvd-1",
+        "added": "2026-11-03",
+        "format": "DVD",
+        "edition": "Sony Pictures widescreen DVD",
+        "photos": [
+          "images/bag-of-bones-2011-dvd-1.jpg",
+          "images/bag-of-bones-2011-dvd-2.jpg",
+          "images/bag-of-bones-2011-dvd-3.jpg",
+          "images/bag-of-bones-2011-dvd-4.jpg"
+        ],
+        "gif": "images/bag-of-bones-2011-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Sony Pictures Home Entertainment DVD (2012, catalogue 39557, UPC 043396395572), Region 1. Approx. 163 minutes, colour, 1.78:1 anamorphic widescreen. English 5.1 Dolby Digital; English, English SDH and French subtitles. Not rated (US) / 14A (Canada). Special features: deleted scenes. Teleplay by Matt Venne, directed by Mick Garris."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
