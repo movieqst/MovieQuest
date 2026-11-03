@@ -46,3 +46,47 @@ This keeps one clear story and still tells the legend. Three separate modes woul
 - Per-contingent strengths.
 - Exact banner colours.
 - Coordinates for the camps.
+
+---
+
+## Narration draft 2: change log (after ChatGPT's script review, 3 November 2026)
+The review is kept in REVIEW-CHATGPT-SCRIPT.md, and draft 1 in NARRATION-SCRIPT-v1.md.
+
+### The key letter, checked as far as possible
+The letter is the **joint letter of Ishikawa Yasumichi and Hikosaka Motomasa to Matsudaira Ienori**, dated Keichō 5, 9th month, 17th day (two days after the battle). A search found:
+- **Where it is:** it survives as a **copy, not the original**. The copy is in the *Hori monjo* (堀文書), no. 5, at the Kyushu University Library's Archives (九州大学附属図書館付設記録資料館), and carries a note by Honda Masanobu dated 9/26.
+- **Where it is printed:** *Shinshū Fukuoka-shi shi*, shiryō-hen, chūsei 1, pp. 177–178; also *Gifu-ken shi*, shiryō-hen, kodai-chūsei 4, pp. 204–205.
+- **What it is reported to say:**
+  - Ieyasu gave battle at Sekigahara at the **hour of the snake (巳刻, about 10 a.m.)** on the 15th.
+  - Kobayakawa Hideaki, Wakisaka Yasuharu and Ogawa Suketada and his son sided with Ieyasu, so the West was beaten **quickly**.
+  - Ōtani Yoshitsugu was killed.
+- **The dispute:** Shiramine Jun's "Kobayakawa turned at the start" rests mainly on this copy. **Fujita Tatsuo** (in *Fujin Kōron*) points to conflicts with other primary sources and says the reading needs re-examination. **Not resolved.**
+- **Not done:** we have not read the Japanese text itself, which is only in the printed volumes above.
+- **Sources:**
+  - [sagara-sei.com, source list for *Uragiri no senryaku*](https://sagara-sei.com/books/sekigahara/sources/)
+  - [Fujin Kōron, Fujita on the new theories](https://fujinkoron.jp/articles/-/10039?page=3)
+  - [gendai.media, Takahashi Yōsuke](https://gendai.media/articles/-/160537)
+
+So the narration now says **"has been read as"** and **"some historians read the same letter as…"**, with the tag *letter; the time, disputed*.
+
+### Confirmed corrections (made)
+1. **Intro 1:** "the largest armies Japan had ever seen" became **"two enormous coalitions"**.
+2. **Intro 2:** the Elders and Commissioners are **two overlapping groups**, not a ladder.
+3. **Intro 4:** Hidetada led **"a major Tokugawa force"**, not "the main army".
+4. **Intro 5:** added why the valley mattered: it lay **on the Nakasendō, the way to the capital**.
+5. **Intro 6:** "no one counted" became **"no reliable, complete count survives"**, and the numbers are dropped from the speech.
+6. **Intro 6:** "the 1893 plan" became **"the traditional camp sites, as marked in the valley today"**, which matches what our map will actually use.
+7. **Ch. 2:** Kobayakawa has **"one of the largest Western contingents"**.
+8. **Ch. 6:** two of the four defectors are named, those in the letter (Wakisaka, Ogawa). Ōtani "foreseeing the treachery" is now **later account**.
+9. **Ch. 8:** the order of the collapse is removed.
+10. **Ch. 9:** "written down in the Edo period" became **"best known from accounts written long after"**.
+11. **Ch. 10:** no survivor numbers. **Shimazu Toyohisa** is named.
+12. **Ch. 11:** the head inspection is kept apart from the head mounds, whose origin is a **later account**.
+13. **Ch. 12:** the execution is given in **both calendars** (10th month, 1st day = 6 November).
+14. **Aftermath:** 1868 is told as a **later interpretation, not revenge**.
+
+### Still open
+- **The letter's time and sequence** (see above) stay **disputed**. Our reenactment follows Shiramine's reading, and chapter 9 tells the traditional version.
+- **Map positions:** we use the **traditional camp sites** (the modern markers). The evidence for each is listed in RESEARCH.md §3 and is generally weak. A per-commander confidence list, and an optional "1893 plan" layer, are still to be made.
+- **Calendar conversions:** 15th day of the 9th month = 21 Oct and 1st day of the 10th month = 6 Nov are standard. They still need checking against a conversion table before the Japanese recording.
+- **Ieyasu's letter to Date Masamune** (9/15): its wording has still not been confirmed.
