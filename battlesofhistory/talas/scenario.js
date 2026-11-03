@@ -64,6 +64,9 @@ window.TALAS_SCENARIO = {
         { text: 'The Abbasid army was commanded by Ziyad ibn Salih, sent by Abu Muslim from Khurasan. No reliable figure for its size survives. Modern estimates vary widely, and none can be confirmed.', tag: 'estimate' }
       ] },
     { title: 'The sources',
+      media: [
+        { at: 0, file: '44-talas-runic-stone.jpg', caption: 'The first Talas inscription: a boulder from the Talas valley carved in Old Turkic runes, with a drawing of the letters below. The Turkic peoples of the valley wrote too, though nothing they wrote describes the battle. Usually dated to the 8th century; the dating is disputed.', ref: 'One of the “Talas inscriptions”, found along the Talas river; museum photograph and drawing', credit: 'Photo: irq.kaznpu.kz (Kazakh National Pedagogical University), via Wikimedia Commons (Talas tas yazma 1.jpg), “copyrighted free use”' }
+      ],
       lines: [
         { text: 'The Chinese sources include the two Tang histories and the Comprehensive Mirror. Du You’s Tongdian also preserves passages from the travel account of his relative Du Huan, who was captured.', tag: 'established' },
         { text: 'The Arabic accounts are brief and sometimes tell a different story, especially about why the armies fought and how many men were lost.', tag: 'established' },
