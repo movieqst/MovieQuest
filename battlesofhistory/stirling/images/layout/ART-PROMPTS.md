@@ -35,10 +35,11 @@ NO modern things: no roads, cars, railways, the stone Old Bridge, modern houses 
 
 ChatGPT often shifts things. If the river bends are not in the same places, ask it to "keep the river exactly as in the first image".
 
-## Result (3 November 2026)
-- **`images/terrain-battle.jpg`:** ChatGPT's painting, scaled to 2400 × 1800.
-- **The river:** 93% of our traced river lies under its painted river, with no shift. The bridge, causeway, abbey and river loops are where they should be.
-- **One known slip:** the castle is drawn about 200 m west-north-west of the real rock. It isn't a battle position, so it is left as it is.
+## Result (3 November 2026, third version)
+- **`images/terrain-battle.jpg`:** ChatGPT's painting, scaled to 2400 × 1800. It is the third version, after two rounds of fixing the bridge.
+- **The river:** 94% of our traced river lies within 20 m of the painted river.
+- **The bridge:** narrow and to scale. It is painted at about (970, 1020) world px, about 80 m along the river from the HES pier point at (1019, 1025). The game puts the bridge on the **painted** one, so the armies cross where the picture shows it.
+- **The castle:** drawn about 200 m west of the real rock. It isn't a battle position, so it is left as it is.
 - **Credit:** Battle Games, AI-generated (ChatGPT) from our guide map.
 
 ---
