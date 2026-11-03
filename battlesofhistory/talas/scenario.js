@@ -87,7 +87,8 @@ window.TALAS_SCENARIO = {
       ] },
     { title: 'The ground',
       media: [
-        { at: 0, file: '45-talas-river-taraz.jpg', caption: 'The Talas River at Taraz today, in winter. The river comes down from the mountains of Kyrgyzstan (on the horizon) and spreads across the plain; the city on the right stands near the site of old Talas. A yurt, the felt tent of the steppe, stands in the field on the left.', ref: 'Taraz, Kazakhstan, 6 January 2010', credit: 'Photo: upyernoz (Flickr), CC BY 2.0, via Wikimedia Commons (Talas River.jpg)' }
+        { at: 0, file: '45-talas-river-taraz.jpg', caption: 'The Talas River at Taraz today, in winter. The river comes down from the mountains of Kyrgyzstan (on the horizon) and spreads across the plain; the city on the right stands near the site of old Talas. A yurt, the felt tent of the steppe, stands in the field on the left.', ref: 'Taraz, Kazakhstan, 6 January 2010', credit: 'Photo: upyernoz (Flickr), CC BY 2.0, via Wikimedia Commons (Talas River.jpg)' },
+        { at: 14, file: '58-akyrtas.jpg', caption: 'Akyrtas, the “white stone”: the walls of a great palace or caravanserai of red sandstone blocks, about 40 km east of Taraz, built in the 8th or 9th century, close to the time of the battle, and never finished. Who built it is still debated.', ref: 'Akyrtas, Zhambyl Region, Kazakhstan', credit: 'Photo: Yakov Fedorov, CC BY-SA 3.0, via Wikimedia Commons (Akyrtas.JPG)' }
       ],
       lines: [
         { text: 'Ancient Taraz, the town of Talas, stood near the site of modern Taraz in Kazakhstan. The battle took place somewhere in the surrounding Talas valley.', tag: 'established' },
