@@ -314,6 +314,9 @@ window.STIRLING_SCENARIO = {
       ] },
     establishing: [],
     // painted figures (images/units/<name>.png, cut from ChatGPT's sheets with tools/prepare-sprite-sheet.py)
+    attackSheets: { 'scots-spearman': 'scots-spearman-attack', 'scots-horseman': 'scots-horseman-charge', 'english-knight': 'english-knight-charge',
+                    'english-longbowman': 'english-longbow-fire', 'english-spearman': 'english-foot-attack', 'english-man-at-arms': 'english-foot-attack' },
+    fallen: { soldier: 'dead-soldier', horse: 'dead-horse' },
     sheets: ['scots-spearman', 'scots-horseman', 'scots-archer', 'english-knight', 'english-foot', 'english-spearman', 'english-longbowman', 'english-man-at-arms', 'baggage-wagon'],
     sheetBy: { allied: { infantry: 'scots-spearman', cavalry: 'scots-horseman', archers: 'scots-archer' }, french: { infantry: 'english-spearman', archers: 'english-longbowman', cavalry: 'english-knight' } },
     sideArt: { allied: { cloth: '#3a4a6a', cloth2: '#2a3550', pennant: '#2e5aa8' }, french: { cloth: '#8a3a30', cloth2: '#6a2a22', pennant: '#c0392b', trim: '#e9c77a' } },
