@@ -37,6 +37,9 @@ window.STIRLING_SCENARIO = {
   intro: [
   {
     "title": "BATTLE OF STIRLING BRIDGE",
+    "media": [
+      { "at": 0, "file": "02-stirling-castle-rock.jpg", "caption": "Stirling Castle from the King’s Knot, looking north. Below the rock, out of sight, the River Forth winds across the flat carse toward the bridge.", "ref": "Stirling Castle, 11 July 2002", "credit": "Photo: Finlay McWalter, CC BY-SA 3.0 / GFDL, via Wikimedia Commons (Stirlingcastle.jpg)" }
+    ],
     "lines": [
       {
         "text": "On the 11th of September 1297, a Scottish army waited on the high ground above the River Forth while an English army crossed a narrow wooden bridge towards it.",
@@ -84,6 +87,9 @@ window.STIRLING_SCENARIO = {
   },
   {
     "title": "The key to Scotland",
+    "media": [
+      { "at": 0, "file": "01-stirling-castle-2017.jpg", "caption": "Stirling Castle on its rock of volcanic stone, seen from Raploch Road below. The buildings standing today are mostly of the 15th and 16th centuries; in 1297 the castle was smaller, but the rock was the same, and it commanded the crossing of the Forth.", "ref": "Stirling Castle, from Raploch Road, 8 July 2017", "credit": "Photo: DeFacto, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle 2017.jpg)" }
+    ],
     "lines": [
       {
         "text": "Stirling Castle stands on a rock above the River Forth. Below it, the river winds in great loops across soft, wet ground.",
