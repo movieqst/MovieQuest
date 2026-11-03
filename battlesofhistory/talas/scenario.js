@@ -73,6 +73,9 @@ window.TALAS_SCENARIO = {
         { text: 'No source describes how the armies stood or what happened on each of the five days. In this reenactment, those parts are our reconstruction, and they are marked as such.', tag: 'reconstruction' }
       ] },
     { title: 'The ground',
+      media: [
+        { at: 0, file: '45-talas-river-taraz.jpg', caption: 'The Talas River at Taraz today, in winter. The river comes down from the mountains of Kyrgyzstan (on the horizon) and spreads across the plain; the city on the right stands near the site of old Talas. A yurt, the felt tent of the steppe, stands in the field on the left.', ref: 'Taraz, Kazakhstan, 6 January 2010', credit: 'Photo: upyernoz (Flickr), CC BY 2.0, via Wikimedia Commons (Talas River.jpg)' }
+      ],
       lines: [
         { text: 'Ancient Taraz, the town of Talas, stood near the site of modern Taraz in Kazakhstan. The battle took place somewhere in the surrounding Talas valley.', tag: 'established' },
         { text: 'The exact battlefield has never been found. The Arab writers name the place Atlakh. Historians and archaeologists in Kazakhstan and Kyrgyzstan place it on the plain south of Taraz, and Kyrgyzstan raised a monument there in 2021.', tag: 'estimate' },
