@@ -115,7 +115,7 @@ metas.append(g.save())
 G['RAMP'][:] = [(420, (150, 178, 120)), (450, (168, 188, 126)), (480, (186, 194, 132)), (520, (198, 196, 140)), (560, (196, 186, 136)), (620, (180, 168, 124))]
 R = dict(lat0=52.28, lat1=52.96, lon0=-107.04, lon1=-105.56)
 g = Guide('region-guide.png', R['lat0'], R['lat1'], R['lon0'], R['lon1'], 12, None, None)
-river_paths(g, [(('b', .35, .44), ('t', .82, .92)), (('l', .78, .96), ('t', .36, .46))], 3)   # South and North Saskatchewan
+river_paths(g, [(('b', .35, .44), ('t', .82, .92)), (('l', .78, .96), ('t', .36, .46))], 6)   # South and North Saskatchewan (drawn ~500 m wide so a painter can see them)
 P = {
  'Batoche': CHURCH, 'Fish Creek': (52.5390, -106.1527), 'Duck Lake': (52.8242, -106.2742), 'Fort Carlton': (52.8740, -106.5310),
  'Clarke\'s Crossing': (52.3200, -106.4570), 'Gabriel\'s Crossing': (52.6700, -106.1220),

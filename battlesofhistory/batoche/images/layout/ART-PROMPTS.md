@@ -95,3 +95,18 @@ Please edit your Batoche painting, using the marks on this copy (remove the mark
 2. Move the white church (with its bell tower), the two-storey white rectory and the fenced cemetery south-east, to the small magenta circle: the church and rectory side by side, and the cemetery just south of them, on the slope above the river. Where they were, paint plain fields and grass like the area around them.
 No text or marks in the result.
 ```
+
+## Region map, first painting (3 November 2026): rejected
+ChatGPT drew its own rivers in a "Y" shape that doesn't match the base at all, so I couldn't use it. The rivers on the first base were thin and pale, so they were hard to see. The base now draws them thicker and bolder (about 500 m wide).
+
+### Retry prompt
+Attach the **new** region-base.png first and region-guide.png second (from `region-maps-v2.zip`), then paste:
+
+```text
+Repaint the first image as a realistic high aerial view of the prairie in spring 1885. The blue lines are the ONLY two rivers, and they must stay EXACTLY where they are, with every bend, as narrow dark rivers in wooded valleys:
+- the North Saskatchewan, running from the lower-left corner up to the top edge (left third of the picture);
+- the South Saskatchewan, running from the bottom edge (a little left of centre) up through the middle, then turning right along the top edge.
+The two rivers do NOT meet inside the picture. Do not add, move or straighten any river, and do not invent other big rivers. Small creeks, sloughs and ponds are fine.
+Same framing, 4:3, north at the top, straight down; do not crop, zoom or shift. Tawny spring prairie with green showing, aspen bluffs, many small sloughs, and more woods to the north. A few tiny log farms and cart trails as faint marks only.
+NO text, labels, grid lines, arrows, dots or boxes. NO modern roads, towns or field squares.
+```
