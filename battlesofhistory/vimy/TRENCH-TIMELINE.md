@@ -53,3 +53,20 @@ Our session cannot reach McMaster or Ottawa, so these have to be downloaded by h
 **What it does not give:** any positions. Like us, it says the trenches, craters and subway entrances must be traced from **dated maps and plans**. The plan above stands. The **dated McMaster sheets** are still the missing piece; the VAC brochure, Nicholson's PDF and Valour Canada are blocked here too.
 
 **Also worth downloading:** the Veterans Affairs Canada brochure *Vimy Tunnels and Trenches* (PDF). It may include a plan of the subways.
+
+## Veterans Affairs Canada brochure, *Vimy: Tunnels and trenches* (2021)
+Kept in `research/` for **reference only**. It is © Her Majesty the Queen in Right of Canada (2021), so it is **not to be shown** on the site.
+
+**Facts for the timeline:**
+- "From **1915 to 1917**, dozens of tunnels were dug at Vimy Ridge by French, British, Canadian and German forces." Both sides first dug **deep mines** to blow up positions and enemy tunnels. This went on "until **August 1916** when British tunnellers constructed **underground defences** to block mining attacks." → stages 3–4
+- "In **October 1916**, tunnelling companies of the British Royal Engineers began digging **13 communication tunnels** along the **northern half** of Vimy Ridge … called subways … from **265 metres to 1.7 kilometres**" long, joining the rear to the front. More than **10 km** of tunnels in all. → stage 6
+- Inside the subways: brigade headquarters, living quarters, cookhouses, stores, water reservoirs, medical posts.
+- **The Grange Subway** joined the front-line trenches to support areas **1.4 km** away. It was 1.5 m wide and 2 m high, with the roof about 8 m down. It had a slightly arched roof braced with timber, chalk walls that were bright white then, and dim 220-volt electric light.
+- **Digging:** mostly hand tools, about **6 m³ of subway a day** with several teams, chalk taken out in trolleys on rails, about **200 sandbags of chalk per metre**.
+- **Fighting tunnels:** dug forward from the main system to lay charges or attack enemy miners, **up to 40 m deep**. Their explosions made the craters seen today, and **the craters were made in 1916** by French, British and German tunnellers. → stage 4
+- **Before the attack:** troops and ammunition moved forward through the subways **up to 36 hours** beforehand. Several subways had **exits in no man's land**. About **950 men from three battalions** waited in the Grange Subway.
+- **Today:** the preserved trenches have Canadian and German observation trenches as little as **25 m apart**.
+- **A difference to note:** the brochure says whistles were heard at **5:25 a.m.**, while the attack time is usually given as 5:30. The narration keeps 5:30, which is Nicholson's zero hour.
+- **The tour maps** in the brochure are local site plans with no grid, so they can't be placed on our map. They are useful for the look of the Grange tunnel, its stairs, exits and chambers.
+
+**Subway count:** Nicholson says eleven (almost four miles); VAC says thirteen (over 10 km of tunnels in all). Keep it as **disputed**: the VAC figure counts subways, the 10 km figure counts all tunnels.
