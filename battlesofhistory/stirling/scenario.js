@@ -125,6 +125,9 @@ window.STIRLING_SCENARIO = {
   },
   {
     "title": "The bridge",
+    "media": [
+      { "at": 0, "file": "08-stirling-old-bridge.jpg", "caption": "Stirling Old Bridge, built of stone in the 15th or 16th century. The bridge of 1297 was not this one: it was a narrow wooden bridge on eight piers, and the remains of four of them lie in the river about 60 metres upstream, beyond the arches in this view.", "ref": "Stirling Old Bridge, 23 September 2018", "credit": "Photo: Annboeva, CC BY-SA 4.0, via Wikimedia Commons (The Old Stirling Bridge - still tells its story.jpg)" }
+    ],
     "lines": [
       {
         "text": "The bridge of 1297 was made of timber, so narrow that only two horsemen could ride side by side.",

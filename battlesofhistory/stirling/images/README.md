@@ -9,3 +9,4 @@
 | 05-castle-woodcut-1832.jpg | woodcut of Stirling Castle, The Penny Magazine, 15 Dec 1832 | unknown artist, public domain (Penny Magazine 1832 364 View of Stirling Castle.jpg) | not yet |
 | 06-castle-forework-2011.jpg | the Forework and gatehouse, with the Palace behind (both c. 1500s) | dun_deagh (Flickr), 15 June 2011, CC BY-SA 2.0 (Stirling Castle (6056086215).jpg) | not yet |
 | 07-castle-from-broad-street-1992.jpg | Stirling Castle from Broad Street, 1992 | Ken MacGregor, CC BY-SA 4.0 (Stirling Castle from Broad Street.jpg) | not yet |
+| 08-stirling-old-bridge.jpg | Stirling Old Bridge (stone, 15th–16th c.), autumn | Annboeva, 23 Sept 2018, CC BY-SA 4.0 (The Old Stirling Bridge - still tells its story.jpg) | intro "The bridge" |
