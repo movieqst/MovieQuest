@@ -386,7 +386,7 @@ window.STIRLING_SCENARIO = {
   /* ---------- what happens in each chapter ---------- */
   const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; });
   const set = (i, o) => Object.assign(EV[i], o);
-  set(0, { t: 0, zoom: 'fit', orders: [
+  set(0, { t: 0, music: { file: 'guifrog-beyond-the-warriors.mp3', vol: .3 }, zoom: 'fit', orders: [
     { id: 'c-eng', to: { x: STIRLING.x + 30, y: STIRLING.y + 40 }, via: [SELKIRK, EDINBURGH, FALKIRK], speed: 110 },
     { leader: 'surrey', to: { x: STIRLING.x + 40, y: STIRLING.y + 10 }, via: [SELKIRK, EDINBURGH, FALKIRK], speed: 110 } ] });
   set(1, { t: 14, zoom: 'fit', orders: [
@@ -399,7 +399,7 @@ window.STIRLING_SCENARIO = {
     { id: 'steward', to: { x: 900, y: 760 }, speed: 30 }, { id: 'steward', to: WOODS, speed: 30, delay: 6 } ] });
   set(3, { t: 14, focus: BRIDGE, zoom: 1.1, orders: [   // the false start: a small group crosses and is called back
     { id: 'welsh', to: { x: 1090, y: 930 }, via: [BW, BE], speed: 40 }, { id: 'welsh', to: { x: 640, y: 1220 }, via: [BE, BW], speed: 40, delay: 7 } ] });
-  set(4, { t: 28, focus: { x: 1300, y: 760 }, zoom: .8, markers: [ { x: 1300, y: 760, label: 'the friars cross to the Scots' } ] });
+  set(4, { t: 28, music: null, focus: { x: 1300, y: 760 }, zoom: .8, markers: [ { x: 1300, y: 760, label: 'the friars cross to the Scots' } ] });
   set(5, { t: 42, focus: { x: 900, y: 1150 }, zoom: .9, markers: [ Object.assign({ label: 'possible ford (place unknown)' }, FORD) ], orders: [
     { leader: 'lundie', visible: true, to: { x: 620, y: 1080 }, speed: 20 } ] });
   set(6, { t: 56, focus: BRIDGE, zoom: 1.1, orders: [   // two by two: the vanguard crosses and gathers east of the bridge, beside the causeway
@@ -419,7 +419,7 @@ window.STIRLING_SCENARIO = {
   set(10, { t: 112, focus: BRIDGE, zoom: 1.3, orders: [
     { leader: 'thweng', to: { x: 760, y: 1100 }, via: [BE, BW], speed: 30 }, { id: 'van', strengthTo: 8, over: 10 }, { id: 'vfoot', strengthTo: 5, over: 10 } ] });
   set(11, { t: 126, focus: BRIDGE, zoom: 1.2, markers: [ Object.assign({ label: 'the bridge can no longer be crossed' }, BRIDGE) ] });
-  set(12, { t: 140, zoom: 'fit', orders: [
+  set(12, { t: 140, music: { file: 'great-highland-bagpipe-tomanic.mp3', vol: .25 }, zoom: 'fit', orders: [
     ...['main', 'welsh'].map((id, k) => ({ id, state: 'rout', to: { x: 300 + k * 60, y: 1780 }, speed: 30, delay: k })),
     { leader: 'surrey', to: { x: 260, y: 1780 }, speed: 32 }, { leader: 'thweng', to: CASTLE, speed: 20 },
     { id: 'steward', side: 'allied' }, { id: 'steward', to: { x: 520, y: 1010 }, speed: 40, state: 'attack', delay: 2 },
@@ -455,6 +455,8 @@ window.STIRLING_SCENARIO = {
     { title: 'The Chronicle of Walter of Guisborough', note: 'The fullest contemporary account.' },
     { title: 'The Chronicle of Lanercost, trans. H. Maxwell (1913), pp. 163–164', note: 'A northern English view.' },
     { title: 'The Lübeck letter, 11 October 1297 (National Records of Scotland transcript)', note: 'Moray and Wallace as leaders of the army of Scotland.' },
+    { title: 'Music: Guifrog (Guilherme Arcoverde), Beyond The Warriors', note: 'A modern piece in the style of medieval music; Wikimedia Commons, CC BY 3.0 FR (creativecommons.org/licenses/by/3.0/fr). Plays under the march north. We added fades. (Its licence was imported from archive.org and awaits Commons review.)' },
+    { title: 'Music: Great Highland bagpipe (sound sample), by Tomanic', note: 'Wikimedia Commons, public domain. Plays under the rout as a modern lament. The great Highland bagpipe as it sounds today is centuries later than 1297, and no source says pipes were played at Stirling Bridge.' },
     { title: 'P. Armstrong, Stirling Bridge and Falkirk 1297–98 (Osprey, 2003); S. Reid, Battles of the Scottish Lowlands (2004)', note: 'Modern estimates of the armies.' }
   ];
   S.library = [];
