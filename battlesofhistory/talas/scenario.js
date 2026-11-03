@@ -58,6 +58,9 @@ window.TALAS_SCENARIO = {
         { text: 'The Arab historian Ibn al-Athir tells it differently: the ruler of Ferghana asked the Chinese for help against the ruler of Chach, and Abu Muslim answered the Chinese intervention.', tag: 'arab' }
       ] },
     { title: 'The armies',
+      media: [
+        { at: 0, file: '46-tang-soldier-figure.jpg', caption: 'A Tang soldier, as a pottery figure from a tomb: an armoured coat with two round breastplates, shoulder guards, a helmet with neck flaps, and a long coat to the knees. His hands once held a weapon, now lost. Figures like this are our best guide to how the Anxi army looked.', ref: 'Tang dynasty tomb figure, photographed in Luoyang, China', credit: 'Photo: Gary Lee Todd (Flickr), CC0 public domain, via Wikimedia Commons (Soldier of Tang 01.jpg)' }
+      ],
       lines: [
         { text: 'Gao Xianzhi led thirty thousand Tang and allied soldiers, according to the Comprehensive Mirror. Other Chinese accounts give twenty or sixty thousand, while Arab accounts give much larger figures.', tag: 'tang' },
         { text: 'Its core was the professional army of Anxi, with armoured infantry and crossbows, under hard veterans like the general Li Siye. With them marched allies from the kingdom of Ferghana, and the Karluks, a Turkic people.', tag: 'established' },
@@ -322,7 +325,7 @@ window.TALAS_SCENARIO = {
 
   /* ---------- the armies panel, the citations and the sources ---------- */
   S.units = [
-    { side: 'allied', type: 'infantry', sheet: 'tang-infantry', portrait: 'tang-infantry', name: 'Tang heavy infantry', desc: 'The professional soldiers of the Anxi army: armour, long blades and spears.', tag: 'established',
+    { side: 'allied', type: 'infantry', sheet: 'tang-infantry', portrait: 'tang-infantry', name: 'Tang heavy infantry', desc: 'The professional soldiers of the Anxi army: armour, long blades and spears.', tag: 'established', photos: ['46-tang-soldier-figure.jpg'],
       lines: [ { text: 'The Protectorate of Anxi kept a standing army of professional soldiers in the oasis cities of the Tarim basin, far from China.', tag: 'established' },
                { text: 'Its veterans were famous for their discipline. Li Siye, the general who saved Gao Xianzhi in the retreat, fought on foot with the heavy modao blade.', tag: 'tang' } ] },
     { side: 'allied', type: 'archers', sheet: 'tang-crossbow', portrait: 'tang-crossbow', name: 'Tang crossbowmen', desc: 'The crossbow, the nu: the Tang army’s long-range weapon.', tag: 'established',
