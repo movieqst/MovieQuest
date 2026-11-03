@@ -70,3 +70,11 @@ Kept in `research/` for **reference only**. It is © Her Majesty the Queen in Ri
 - **The tour maps** in the brochure are local site plans with no grid, so they can't be placed on our map. They are useful for the look of the Grange tunnel, its stairs, exits and chambers.
 
 **Subway count:** Nicholson says eleven (almost four miles); VAC says thirteen (over 10 km of tunnels in all). Keep it as **disputed**: the VAC figure counts subways, the 10 km figure counts all tunnels.
+
+## The preserved trenches at the Vimy Memorial Park (greatwar.co.uk)
+Our notes only; the site's photos are © greatwar.co.uk, so they are not to be used.
+- **Location:** 50°22′17″N 2°46′17″E, which is **world px ≈ 1307, 841** on our battle map, in the Grange/crater sector.
+- **What they are:** a short section of the **Allied and German front lines with a few metres of no man's land** between them, where the two front lines were on 9 April 1917.
+- **Not original:** the trenches were rebuilt in the **1920s–30s** by Major **Unwin Simson**, the Canadian engineer building the Memorial. He used **sandbags filled with concrete** to keep them from collapsing. On the page they are *preserved, rebuilt*, not original 1917 trenches.
+- **Around them:** cratered ground, still uncleared of munitions; visitors stay on the paths.
+- **Use:** a "Today" marker on the timeline's final frame, with our own text and a free photo (search Commons for "Vimy preserved trenches").
