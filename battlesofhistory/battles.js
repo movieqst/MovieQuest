@@ -170,5 +170,19 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '45% 55%',
     coverCredit: 'Sekigahara Kassen Byōbu-zu, folding screen of the battle seen from the north (late Edo period, 19th century). City of Gifu Museum of History, public domain',
     status: 'in progress'
+  },
+  {
+    folder: 'batoche',
+    order: 14,
+    era: 'Canada, 1885',
+    title: 'Battle of Batoche',
+    date: '9–12 May 1885', year: 1885,
+    place: 'Batoche, on the South Saskatchewan River (today in Saskatchewan, Canada)',
+    sides: 'The North-West Field Force of Major-General Frederick Middleton vs. the Métis and First Nations fighters of Louis Riel and Gabriel Dumont',
+    sideColors: ['#c0392b', '#2f6fc4'],
+    blurb: 'For four days a Canadian government army presses against the rifle pits dug by the Métis around their village on the South Saskatchewan. On the fourth day it breaks through, and the North-West Resistance of 1885 comes to an end.',
+    cover: 'images/cover.jpg', coverPos: '60% 50%',
+    coverCredit: 'Hostilities open at Batoche, 9 May 1885. Photograph by Captain James Peters, who served with the field force. Library and Archives Canada, C-003464, public domain',
+    status: 'in progress'
   }
 ];
