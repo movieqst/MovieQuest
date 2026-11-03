@@ -110,3 +110,8 @@ The two rivers do NOT meet inside the picture. Do not add, move or straighten an
 Same framing, 4:3, north at the top, straight down; do not crop, zoom or shift. Tawny spring prairie with green showing, aspen bluffs, many small sloughs, and more woods to the north. A few tiny log farms and cart trails as faint marks only.
 NO text, labels, grid lines, arrows, dots or boxes. NO modern roads, towns or field squares.
 ```
+
+## Battle map, second painting (3 November 2026): current
+- **`images/terrain-battle.jpg`:** the second painting, scaled to 2400 × 1800. The bridge is gone, and in its place is a cable ferry: a scow on a line across the river below the village.
+- **River:** 86% of our traced river is within 20 m of the painted water, and 99% within 60 m.
+- **Church:** ChatGPT did not move it. The church, rectory and cemetery are still painted about 540 m north-west of the real church, at about (1086, 778) world px instead of (1264, 1012). If we keep this painting, the game puts the church on the **painted** one, as we did with the Stirling bridge.
