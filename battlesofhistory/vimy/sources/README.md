@@ -16,3 +16,4 @@
 ## Research (research/)
 - CWM-trench-map-card.pdf: Canadian War Museum education card with a soldier's hand-sketched trench map (George Metcalf Archival Collection, CWM 19810903-001). © CWM, for reference only.
 - CWM-reading-a-trench-map-symbol-cards.pdf: CWM symbol cards covering wire, the British front line, enemy trenches, ground cut up by shellfire, tracks, buried cable, trench railway, dumps, observation posts and dug-outs. Used as the **legend** for our tracing (which symbol means what). © CWM, for reference only.
+| la-folie-farm-1-5000-small.jpg | **"La Folie Farm", 1:5,000** special trench map, the 3rd Division sector: Neuville-St-Vaast to La Folie Farm and Petit Vimy, with German trenches in red and the Bois de la Folie | Canadian War Museum education sheet (research/CWM-1-5000-trench-map-la-folie-farm.pdf). Only 639 × 525 here. At 1:5,000 it's twice the detail of the 1:10,000 sheets; worth finding the original in the CWM collection |
