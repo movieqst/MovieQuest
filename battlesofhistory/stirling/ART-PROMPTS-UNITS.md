@@ -50,3 +50,17 @@ ChatGPT's 9 sheets (4 units, 5 leaders) were cut out by `tools/prepare-sprite-sh
 - **Leaders:** `leader-<id>.png`. Wallace is on foot, at 160 px cells.
 
 Still to come: the 4 portraits (section C) and the optional bridge painting (D).
+
+## Received: 12 more sheets (3 November 2026)
+**Used on the page:**
+- **scots-archer:** the Scottish archers (a new formation, about 400 in the HES reconstruction).
+- **english-spearman:** English foot.
+- **english-longbowman:** the Welsh and English foot.
+- **english-man-at-arms:** the vanguard's foot.
+- **baggage-wagon:** the English baggage.
+
+**Cut out but not used yet:** scots-axeman, scots-swordsman, horseman-light, pack-horse, english-crossbowman. Crossbowmen in Stirling Castle's garrison are possible but unverified.
+
+**Not used:**
+- **boulder-crew:** nothing in the sources about rolling boulders at Stirling Bridge.
+- **bridge-section:** the bridge is painted on the map.
