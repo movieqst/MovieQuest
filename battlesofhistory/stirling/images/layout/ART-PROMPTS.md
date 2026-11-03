@@ -79,3 +79,11 @@ AROUND IT:
 NO text, labels, letters, numbers, grid lines, arrows, coloured lines or boxes. Paint right to the edges.
 NO modern things, and NOT the later stone bridge (the grey square in the guide marks where it is built centuries later: leave plain river there).
 ```
+
+---
+
+# Scotland 1296–97 (campaign map)
+- **`images/map-scotland.jpg`:** ChatGPT's painting of `scotland-base.png`, scaled to 2400 × 1800. The frame is 54.6–58.0°N, 7.6°W–0.5°E.
+- **Alignment:** 95% of the land and sea matches our coastline, with no shift. The red coast overlay lies on the painted coast all round Scotland.
+- **The firths:** a few narrow firths (the Moray Firth, Loch Fyne) are painted slightly wider than they are. That's fine for a campaign map.
+- **Credit:** Battle Games, AI-generated (ChatGPT) from our guide map.
