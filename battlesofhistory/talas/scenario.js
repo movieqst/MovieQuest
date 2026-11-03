@@ -43,6 +43,9 @@ window.TALAS_SCENARIO = {
         { text: 'Very little was written about it at the time. This introduction separates what the sources say from what historians have pieced together. Watch the colour of each tag.', tag: 'reconstruction' }
       ] },
     { title: 'Two empires',
+      media: [
+        { at: 0, file: '43-silk-road-751.jpg', pulse: '43-silk-road-751-glow.jpg', fit: 'contain', caption: 'The Silk Road around 751: not one road but a web of caravan routes from Chang’an to the Mediterranean, joined to the sea route through the Persian Gulf. Talas (the crossed swords) lay on the northern route, where the Tang and Abbasid worlds met. The glow marks the routes.', ref: 'Approximate; after Hansen, The Silk Road (2012), and the guide map drawn for this game (talas/SILK-ROAD.md)', credit: 'Map: Battle Games, AI-generated (ChatGPT) from our guide map' }
+      ],
       lines: [
         { text: 'In 751 Tang China was at the height of its power. From its western headquarters at Kucha, the Protectorate of Anxi, its generals watched over the oasis kingdoms of the Silk Road as far as the mountains of Central Asia.', tag: 'established' },
         { text: 'Far to the west a new power had just risen. In 750 the Abbasid family overthrew the Umayyad caliphs, with an army raised in Khurasan, in eastern Iran, under the black banners of Abu Muslim. Its commanders were extending their authority across Khurasan and the contested cities of Transoxiana, including Samarkand and Bukhara.', tag: 'established' },
