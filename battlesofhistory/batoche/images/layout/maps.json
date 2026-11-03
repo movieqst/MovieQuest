@@ -1,0 +1,35 @@
+[
+ {
+  "file": "battle-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 52.7395,
+  "lat1": 52.7692,
+  "lon0": -106.1526,
+  "lon1": -106.0874,
+  "km_w": 4.39,
+  "km_h": 3.31
+ },
+ {
+  "file": "region-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 52.28,
+  "lat1": 52.96,
+  "lon0": -107.04,
+  "lon1": -105.56,
+  "km_w": 100.02,
+  "km_h": 75.7
+ },
+ {
+  "file": "campaign-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 49.85,
+  "lat1": 54.2,
+  "lon0": -111.3,
+  "lon1": -101.9,
+  "km_w": 643.87,
+  "km_h": 484.24
+ }
+]

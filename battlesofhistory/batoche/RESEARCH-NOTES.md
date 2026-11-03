@@ -26,3 +26,11 @@ Layout, north at top, river along the west and south:
 - The visitor centre is about 500 m east of the church.
 This matches the 1885 sketch: Middleton's camp to the southeast, the church in the middle, the village and the crossing to the north along the river, and the rifle pits facing the attackers in between.
 (Distances measured off the Parks Canada map, taking church-to-Highway-225 as about 1 km; rough.)
+
+## Other 1885 places (for the region and campaign maps)
+- Battle of Tourond's Coulee / Fish Creek NHS: 52.53901, -106.152659 (Parks Canada visitor page; Tourism Saskatchewan), about 24 km south of Batoche.
+- Clarke's Crossing (Clarkboro Ferry): about 52.320, -106.457 (latitude.to, approx.); one account says the 1885 crossing was "on the river eighteen miles from Saskatoon". About 64 km south of Batoche.
+- Duck Lake battlefield cairn (Hwy 212): 52.8242, -106.2742 (Veterans Affairs Canada listing). The town is about 52.80, -106.27.
+- Gabriel's Crossing (Dumont's ferry): east bank, about six miles upstream (south) of Batoche, half a mile south of today's Gabriel's Bridge (Louis Riel Institute notes). Map point approx.
+- Frenchman Butte NHS: 53.627285, -109.575534 (Parks Canada). Fort Pitt (provincial park): 53.57477, -109.7937 (Tourism Saskatchewan).
+- Not yet checked: Frog Lake, Cut Knife Hill, Fort Carlton, Battleford, Humboldt, Touchwood Hills, Qu'Appelle station (map points from general knowledge, marked approx.).
