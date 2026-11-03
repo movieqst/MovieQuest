@@ -12,6 +12,6 @@
 
 ## More reference points (Google Maps / Street View, reference only)
 - Footpath from the visitor centre west to the church (Street View, Aug 2015): 52.75367, -106.11292. Looking WSW, the church sits on a low rise across open, flat prairie edged with aspen bluffs, much like the "open prairie" on the 1885 sketch.
-- The river: south of the site the South Saskatchewan turns in a broad bend from flowing south-southwest to flowing east, with steep wooded banks and sandbars (1:2542 m view centred 52.7530, -106.1346).
+- The river: west and south of the site the South Saskatchewan makes a broad bend around the village, with steep wooded banks and sandbars (2.5 km-wide view centred 52.7530, -106.1346); flow direction to be checked against the DEM.
 - Highway 225 runs north to south about 1 km east of the church.
 - Back to Batoche festival grounds (modern, not part of the battle): about 52.767, -106.117, 1.5 km north of the church.
