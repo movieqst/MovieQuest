@@ -58,3 +58,8 @@ NO modern things: no roads, cars, railways, power lines, buildings or the modern
 
 - **The streams** only roughly follow the real ones. The game doesn't use them.
 - **Credit:** Battle Games, AI-generated (ChatGPT) from our guide map.
+
+## Result: Japan 1600 (3 November 2026)
+- **`images/map-japan.jpg`:** the autumn satellite view. 99% of the land and sea matches the Natural Earth coastline.
+- **`images/map-japan-night.jpg`:** a moonlit version of the same view. The red coast overlay lies on its coast all round, so it lines up as well. It can be used for the night march (chapter 1) or as an establishing picture.
+- **Credit:** Battle Games, AI-generated (ChatGPT) from our guide map.
