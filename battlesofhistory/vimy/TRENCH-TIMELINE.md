@@ -79,3 +79,24 @@ Our notes only; the site's photos are © greatwar.co.uk, so they are not to be u
 - **Around them:** cratered ground, still uncleared of munitions; visitors stay on the paths.
 - **Use:** a "Today" marker on the timeline's final frame, with our own text and a free photo (search Commons for "Vimy preserved trenches").
 - **Position checked on Google Maps (3 Nov 2026):** the preserved trenches are at about **50.37158, 2.77125**, matching the 50°22′17″N 2°46′17″E above. The Visitor Education Centre and the **Grange Tunnel entrance** are about 100–150 m west and south-west of them, and the Memorial on Hill 145 is about 1 km north. (The satellite view is © Google/Airbus/Maxar and is not to be used. Positions only.)
+
+## National Library of Scotland trench maps (found 3 November 2026)
+NLS has dated editions of both Vimy sheets. The sheets are also listed on the NLS trench-map index.
+
+**Received so far, as small print-PDFs only** (about 600 px of map, too small to trace):
+| NLS map no. | sheet | edition / date |
+|---|---|---|
+| 101465023 | 36C S.W. (Vimy–Lens), 1:20,000 | Edition 6, trenches to 15 Feb 1916 |
+| 101465068 | 51B N.W. (Arras; Neuville–Thélus–Farbus in the top-left corner) | edition to be read |
+| 101465071 | 51B N.W. | another edition, to be read |
+| 101464753 | **51B.NW.1 Roclincourt**, 1:10,000 (Neuville-St-Vaast to Thélus, the south half of the battlefield in detail) | Edition 5A, trenches to 27 Dec 1916 |
+| 101464744 | **36C.SW.1 Lens**, 1:10,000 (Lens, Liévin, Angres: north-east of the ridge, toward the Pimple) | Edition 8A, trenches to 10 Feb 1917 |
+| 101465065 | a neighbouring sheet with the front on its right-hand side (probably 51C N.E., west of Arras) | not needed |
+
+**Still to get, all at full size:**
+- 51B.NW Ed. 6A (4 Mar 1917)
+- 51B.NW.1 Roclincourt Ed. 5A (27 Dec 1916, 1:10,000)
+- 36C.SW.1 Lens Ed. 8A (10 Feb 1917, 1:10,000)
+- 36C.SW.3 Givenchy (8 Apr 1916, 1:10,000)
+- 51B.NW Ed. 4A (Oct 1916) and 7A (May 1917)
+- 36C.SW Ed. 11A (Nov 1917)
