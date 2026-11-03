@@ -44,3 +44,5 @@ Downloaded piece by piece with tools/fetch-nls-map.sh at half the scan's resolut
 | nls-101465023.jpg (7134 × 5654) | 101465023 | 36C S.W. (Vimy–Lens), 1:20,000 | Edition 6, trenches corrected to 15 February 1916 |
 | nls-101464753.jpg (7388 × 5476) | 101464753 | 51B.NW.1 Roclincourt, 1:10,000 (Neuville-St-Vaast, Thélus: the south half) | Edition 5A, trenches corrected to 27 December 1916, published January 1917 |
 | nls-101464744.jpg (7355 × 5466) | 101464744 | 36C.SW.1 Lens, 1:10,000 (Lens, Liévin, Angres) | Edition 8A, trenches corrected to 10 February 1917 |
+| nls-101465068.jpg (7106 × 5178) | 101465068 | 51B N.W. (Arras; Neuville–Thélus–Farbus in the top-left corner), 1:20,000 | Edition 6A, trenches corrected to 4 March 1917: **five weeks before the attack** |
+| nls-101465071.jpg (7106 × 5270) | 101465071 | 51B N.W., 1:20,000 | Edition 4A, trenches corrected to 10 October 1916: as the Canadians arrived |
