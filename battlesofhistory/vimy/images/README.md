@@ -15,3 +15,12 @@
 | 11-byng-and-prince-arthur-german-mortar.jpg | Lt-Gen Sir Julian Byng, commander of the Canadian Corps (left), watches Prince Arthur of Connaught work a German light trench mortar captured at Vimy, May 1917 | Canada, Dept. of National Defence; LAC PA-001268 (MIKAN 3397824). Public domain |
 | cover.jpg, 12-longstaff-ghosts-of-vimy-ridge.jpg | Will Longstaff, *Ghosts of Vimy Ridge* (about 1929): the ghosts of the Canadian Corps around the Vimy Memorial | House of Commons Heritage Collection O-4714. Public domain (the artist died in 1953) |
 | 13-grange-subway-today.jpg | The preserved Grange Subway at the Vimy memorial park today | source to confirm (sent from ChatGPT's research) |
+
+## From McMaster University Library (William Ready Division of Archives), Digital Collections, with the trench-map album
+Licence: McMaster describes its digitised First World War collection as public domain (the photographs date from 1916–18). **Still to confirm** on each item's page.
+
+| file | what | use |
+|---|---|---|
+| 14-4-squadron-raf-1918.jpg | No. 4 Squadron RAF in front of a canvas aeroplane hangar, France, November 1918 | the flyers who took the photographs that trench maps were drawn from |
+| 15-aerial-overlap-photographs.jpg | a training card, "Overlap Photographs": the interval between exposures for overlapping air photos at heights from 1,000 to 10,000 feet | how the trench maps were made |
+| 16-6th-field-survey-company-re.jpg | the 6th Field Survey Company, Royal Engineers, outside their office | the map-makers: the Field Survey Companies drew and printed the trench maps |
