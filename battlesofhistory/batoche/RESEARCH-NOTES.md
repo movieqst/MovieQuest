@@ -19,9 +19,10 @@
 ## Parks Canada site map (research/parks-canada-site-map.jpg, reference only)
 Layout, north at top, river along the west and south:
 - **East Village** and the **Carlton Trail** crossing, with the **old ferry site/dock** on the river: about 1.3 km northwest of the church. This was the main village of 1885 (Batoche's store and the crossing).
-- **Métis rifle pits**: in the open ground between the East Village and the church, about 600 m north of the church.
+- **Métis rifle pits**: in the open ground between the East Village and the church, about 600–700 m north of the church.
 - **Church and rectory**, with **Mission Ridge** and a **replica rifle pit** just to the west on the edge of the river valley.
-- **Cemetery**: about 250 m south of the church, on the slope above the river.
-- **Caron home**, a **military grave** and the **zareba** (Middleton's fortified camp): about 800 m to 1 km southeast of the church, near Highway 225.
-- The visitor centre is about 600 m east of the church.
+- **Cemetery**: about 400 m south of the church, on the slope above the river.
+- **Caron home**, a **military grave** and the **zareba** (Middleton's fortified camp): about 1 km southeast of the church, near Highway 225.
+- The visitor centre is about 500 m east of the church.
 This matches the 1885 sketch: Middleton's camp to the southeast, the church in the middle, the village and the crossing to the north along the river, and the rifle pits facing the attackers in between.
+(Distances measured off the Parks Canada map, taking church-to-Highway-225 as about 1 km; rough.)
