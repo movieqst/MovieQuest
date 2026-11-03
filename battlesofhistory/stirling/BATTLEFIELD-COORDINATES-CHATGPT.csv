@@ -1,0 +1,9 @@
+feature,latitude,longitude,confidence,source,warning
+Probable medieval timber bridge,56.129126,-3.936699,probable identification; source grid coordinate,HES SM8264,Archaeological remains; not proven precisely 1297
+HES registered battlefield reference,56.132329,-3.930745,certain designation reference; not clash location,HES BTL28,Do not use as exact combat position
+Abbey Craig,56.1400,-3.9166,approximate map marker,HES BTL28,Rough site marker; check GIS
+Stirling Castle,56.1234,-3.9464,approximate map marker,HES BTL28,Not a 1297 building-footprint survey
+Cambuskenneth Abbey,56.1238,-3.9174,approximate map marker,HES BTL28,Check historic abbey footprint
+River loop / Causewayhead,56.1323,-3.9307,approximate reference point,HES BTL28,Not river outline
+Possible ford Riverside-Cambuskenneth,56.1255,-3.9256,speculative marker,HES BTL28 Terrain,Exact ford unknown
+Medieval causeway,,,route reconstructed; no unique coordinate,HES BTL28,Trace with GIS and historical maps
