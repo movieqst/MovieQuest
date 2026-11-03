@@ -327,7 +327,7 @@ window.TALAS_SCENARIO = {
 
   /* ---------- the armies panel, the citations and the sources ---------- */
   S.units = [
-    { side: 'allied', type: 'infantry', sheet: 'tang-infantry', portrait: 'tang-infantry', name: 'Tang heavy infantry', desc: 'The professional soldiers of the Anxi army: armour, long blades and spears.', tag: 'established', photos: ['49-merv-erk-kala.jpg'], photos: ['46-tang-soldier-figure.jpg'],
+    { side: 'allied', type: 'infantry', sheet: 'tang-infantry', portrait: 'tang-infantry', name: 'Tang heavy infantry', desc: 'The professional soldiers of the Anxi army: armour, long blades and spears.', tag: 'established', photos: ['46-tang-soldier-figure.jpg'],
       lines: [ { text: 'The Protectorate of Anxi kept a standing army of professional soldiers in the oasis cities of the Tarim basin, far from China.', tag: 'established' },
                { text: 'Its veterans were famous for their discipline. Li Siye, the general who saved Gao Xianzhi in the retreat, fought on foot with the heavy modao blade.', tag: 'tang' } ] },
     { side: 'allied', type: 'archers', sheet: 'tang-crossbow', portrait: 'tang-crossbow', name: 'Tang crossbowmen', desc: 'The crossbow, the nu: the Tang army’s long-range weapon.', tag: 'established',
@@ -340,7 +340,7 @@ window.TALAS_SCENARIO = {
     { side: 'allied', type: 'cavalry', sheet: 'karluk-cavalry', portrait: 'karluk', name: 'The Karluks', desc: 'Turkic horsemen of the steppe north of the Tian Shan.', tag: 'tang',
       lines: [ { text: 'The Chinese account says the Karluks rebelled against Gao Xianzhi on the fifth day and attacked his army together with the Abbasids.', tag: 'tang' },
                { text: 'Whether they had planned it, and which side they were really on before the battle, is disputed.', tag: 'estimate' } ] },
-    { side: 'french', type: 'infantry', sheet: 'abbasid-infantry', portrait: 'abbasid-infantry', name: 'Abbasid infantry of Khurasan', desc: 'Veterans of the revolution under the black banners.', tag: 'established',
+    { side: 'french', type: 'infantry', sheet: 'abbasid-infantry', portrait: 'abbasid-infantry', name: 'Abbasid infantry of Khurasan', desc: 'Veterans of the revolution under the black banners.', tag: 'established', photos: ['49-merv-erk-kala.jpg'],
       lines: [ { text: 'The Abbasid revolution was won by an army raised in Khurasan, in eastern Iran, under Abu Muslim. Black was the colour of its banners and clothes.', tag: 'established' },
                { text: 'The size of the army Ziyad ibn Salih led to the Talas is not recorded.', tag: 'estimate' } ] },
     { side: 'french', type: 'cavalry', sheet: 'abbasid-cavalry', portrait: 'abbasid-cavalry', name: 'Abbasid cavalry', desc: 'Horsemen of the army of Khurasan.', tag: 'established',
