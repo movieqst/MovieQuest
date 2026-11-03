@@ -118,7 +118,7 @@ g = Guide('region-guide.png', R['lat0'], R['lat1'], R['lon0'], R['lon1'], 12, No
 river_paths(g, [(('b', .35, .44), ('t', .82, .92)), (('l', .78, .96), ('t', .36, .46))], 3)   # South and North Saskatchewan
 P = {
  'Batoche': CHURCH, 'Fish Creek': (52.5390, -106.1527), 'Duck Lake': (52.8242, -106.2742), 'Fort Carlton': (52.8740, -106.5310),
- 'Clarke\'s Crossing': (52.3200, -106.4570), 'Gabriel\'s Crossing': (52.6700, -106.1400),
+ 'Clarke\'s Crossing': (52.3200, -106.4570), 'Gabriel\'s Crossing': (52.6700, -106.1220),
  'Rosthern': (52.6640, -106.3300), 'Duck Lake town': (52.8000, -106.2670),
 }
 g.town(*P['Batoche'], 'BATOCHE', '9-12 May 1885', 32, RED, 14, -36, walled=True)
