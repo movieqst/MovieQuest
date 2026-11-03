@@ -9,8 +9,13 @@ Writes OUTDIR/<battle>/<voice>/<clip>.mp3. Clips already made are skipped, so it
 """
 import os, subprocess, sys, tempfile
 
+import warnings
+warnings.filterwarnings('ignore')   # torch's FutureWarning/UserWarning lines are only noise here
 import numpy as np
 import soundfile as sf
+import torch
+try: torch.backends.nnpack.set_flags(False)   # stops the "Could not initialize NNPACK! Unsupported hardware" lines (harmless)
+except Exception: pass
 from kokoro import KPipeline
 
 lines_path, out = sys.argv[1], sys.argv[2]

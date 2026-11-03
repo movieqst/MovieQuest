@@ -6,13 +6,18 @@
 # Safe to stop (Ctrl+C) and run again: finished clips are skipped.
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd); ENV=${KOKORO_ENV:-$HOME/kokoro-env}; OUT=${OUT:-$HOME/voices}
+[ -x "$ENV/bin/pip" ] || rm -rf "$ENV"   # a half-made environment (e.g. python3-venv was missing) is started again
 if [ ! -x "$ENV/bin/python" ]; then
   echo "Setting up Kokoro in $ENV (first time only) ..."
-  python3 -m venv "$ENV" || { echo "Please run:  sudo apt install python3-venv   and try again."; exit 1; }
+  python3 -m venv "$ENV" || { rm -rf "$ENV"; v=$(python3 -c "import sys; print('%d.%d' % sys.version_info[:2])"); echo "Please run:  sudo apt install python3-venv python$v-venv   and try again."; exit 1; }
   "$ENV/bin/pip" install -q --upgrade pip
   "$ENV/bin/pip" install -q --extra-index-url https://download.pytorch.org/whl/cpu torch
   "$ENV/bin/pip" install -q kokoro soundfile "misaki[ja]"
 fi
+# the full "unidic" package comes without its dictionary (it needs a separate 500 MB download) and then hides the small
+# unidic-lite dictionary that misaki[ja] brings; without it, the Japanese reader (fugashi/MeCab) uses unidic-lite
+"$ENV/bin/python" -c "import unidic, os, sys; sys.exit(0 if os.path.exists(os.path.join(unidic.DICDIR, 'mecabrc')) else 1)" 2>/dev/null || "$ENV/bin/pip" uninstall -q -y unidic 2>/dev/null || true
+"$ENV/bin/pip" show -q unidic-lite >/dev/null 2>&1 || "$ENV/bin/pip" install -q unidic-lite
 MIX='highpass=f=70,agate=threshold=0.035:ratio=6:attack=8:release=160:knee=2,volume=1.6,alimiter=limit=0.95'
 LINES=${1:?usage: record-japanese.sh test | lines.tsv}
 if [ "$LINES" = test ]; then
