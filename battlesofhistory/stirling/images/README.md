@@ -11,3 +11,4 @@
 | 07-castle-from-broad-street-1992.jpg | Stirling Castle from Broad Street, 1992 | Ken MacGregor, CC BY-SA 4.0 (Stirling Castle from Broad Street.jpg) | not yet |
 | 08-stirling-old-bridge.jpg | Stirling Old Bridge (stone, 15th–16th c.), autumn | Annboeva, 23 Sept 2018, CC BY-SA 4.0 (The Old Stirling Bridge - still tells its story.jpg) | intro "The bridge" |
 | 09-old-bridge-and-monument-1990.jpg | the Old Bridge with the Abbey Craig and Wallace Monument behind | Roger Wollstadt (Flickr), 14 Sept 1990, CC BY-SA 2.0 (Stirling - Stirling Bridge.jpg) | intro "The bridge" (second picture) |
+| 10-ridley-battle-of-stirling-bridge.jpg | Victorian engraving of the battle, after Matthew White Ridley | public domain (The Battle of Stirling Bridge.jpg) | intro opening slide |

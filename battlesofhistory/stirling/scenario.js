@@ -38,7 +38,8 @@ window.STIRLING_SCENARIO = {
   {
     "title": "BATTLE OF STIRLING BRIDGE",
     "media": [
-      { "at": 0, "file": "02-stirling-castle-rock.jpg", "caption": "Stirling Castle from the King’s Knot, looking north. Below the rock, out of sight, the River Forth winds across the flat carse toward the bridge.", "ref": "Stirling Castle, 11 July 2002", "credit": "Photo: Finlay McWalter, CC BY-SA 3.0 / GFDL, via Wikimedia Commons (Stirlingcastle.jpg)" }
+      { "at": 0, "file": "02-stirling-castle-rock.jpg", "caption": "Stirling Castle from the King’s Knot, looking north. Below the rock, out of sight, the River Forth winds across the flat carse toward the bridge.", "ref": "Stirling Castle, 11 July 2002", "credit": "Photo: Finlay McWalter, CC BY-SA 3.0 / GFDL, via Wikimedia Commons (Stirlingcastle.jpg)" },
+      { "at": 9, "file": "10-ridley-battle-of-stirling-bridge.jpg", "caption": "The Battle of Stirling Bridge as the Victorians imagined it: the Scots fall on the English at the end of the bridge, men and horses go into the Forth, and the bridge breaks. A dramatic picture, but not evidence: the armour, the castle and the broken bridge are the artist’s invention, drawn almost six hundred years later.", "ref": "Wood engraving after Matthew White Ridley, from a Victorian History of Scotland", "credit": "Matthew White Ridley (1837–1888), engraved by C. Roberts; public domain, via Wikimedia Commons (The Battle of Stirling Bridge.jpg)" }
     ],
     "lines": [
       {
