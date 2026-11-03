@@ -4116,5 +4116,99 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "stephen-king-5-movie-collection-bluray",
+    "title": "Stephen King 5-Movie Collection",
+    "year": 1983,
+    "years": [
+      1983,
+      1985,
+      1989,
+      1994,
+      2019
+    ],
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/stephen-king-5-movie-collection-bluray-1.jpg",
+    "photos": [
+      "images/stephen-king-5-movie-collection-bluray-1.jpg",
+      "images/stephen-king-5-movie-collection-bluray-2.jpg",
+      "images/stephen-king-5-movie-collection-bluray-3.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%205-Movie%20Collection%20Blu-ray&campid=5339133571&customid=stephen-king-5-movie-collection-bluray",
+    "price": null,
+    "categories": [
+      "1980s",
+      "1990s",
+      "2010s"
+    ],
+    "starring": "Christopher Walken, Gary Busey, Corey Haim, Fred Gwynne, Dale Midkiff, Gary Sinise, Molly Ringwald, Rob Lowe, Jason Clarke, John Lithgow, Amy Seimetz",
+    "director": "David Cronenberg, Daniel Attias, Mary Lambert, Mick Garris, Kevin Kölsch & Dennis Widmyer",
+    "producers": "Dino De Laurentiis, Richard P. Rubinstein, Mitchell Galin, Lorenzo di Bonaventura",
+    "company": "Paramount Pictures (Canada)",
+    "titleNote": "The Dead Zone / Silver Bullet / Pet Sematary 1989 & 2019 / The Stand / 1983–2019",
+    "tagline": "Blu-ray / 5-Movie Collection / Bilingual Canadian Edition / Stephen King / Horror",
+    "desc": "From the written works of Stephen King: five films on Blu-ray. The Dead Zone (1983): Christopher Walken wakes from a coma with the power to see the future. Silver Bullet (1985): the peaceful town of Tarker's Mills is suddenly terrorized by a maniacal killer. Pet Sematary (1989): the original adaptation, from King's own screenplay. Stephen King's The Stand (1994): in an apocalyptic future, the few survivors of a plague-ravaged world must choose sides in the ultimate battle of good vs. evil that will decide the fate of humanity. Pet Sematary (2019): the chilling remake with Jason Clarke and John Lithgow.",
+    "trivia": [
+      {
+        "heading": "Five Decades of King",
+        "text": "The set spans 36 years of Stephen King adaptations, from David Cronenberg's The Dead Zone (1983) to the 2019 remake of Pet Sematary."
+      },
+      {
+        "heading": "Christopher Walken's Psychic",
+        "text": "In The Dead Zone, Christopher Walken plays Johnny Smith, a teacher who wakes from a five-year coma able to see people's futures."
+      },
+      {
+        "heading": "King Wrote His Own Scripts",
+        "text": "Stephen King wrote the screenplays for Pet Sematary (1989) and Silver Bullet himself, and the teleplay for The Stand."
+      },
+      {
+        "heading": "Six Hours of The Stand",
+        "text": "The Stand is the full 1994 ABC mini-series, nearly six hours long (359 minutes), starring Gary Sinise, Molly Ringwald and Rob Lowe."
+      },
+      {
+        "heading": "Corey Haim and Gary Busey",
+        "text": "Silver Bullet (1985), based on King's Cycle of the Werewolf, stars a young Corey Haim as a boy in a wheelchair and Gary Busey as his Uncle Red."
+      },
+      {
+        "heading": "Two Takes on Pet Sematary",
+        "text": "Both versions of Pet Sematary are here: Mary Lambert's 1989 original, with Fred Gwynne as Jud, and the 2019 remake with Jason Clarke and John Lithgow."
+      }
+    ],
+    "tidbits": [
+      "The set spans 36 years of Stephen King adaptations, from David Cronenberg's The Dead Zone (1983) to the 2019 remake of Pet Sematary.",
+      "In The Dead Zone, Christopher Walken plays Johnny Smith, a teacher who wakes from a five-year coma able to see people's futures.",
+      "Stephen King wrote the screenplays for Pet Sematary (1989) and Silver Bullet himself, and the teleplay for The Stand.",
+      "The Stand is the full 1994 ABC mini-series, nearly six hours long (359 minutes), starring Gary Sinise, Molly Ringwald and Rob Lowe.",
+      "Silver Bullet (1985), based on King's Cycle of the Werewolf, stars a young Corey Haim as a boy in a wheelchair and Gary Busey as his Uncle Red.",
+      "Both versions of Pet Sematary are here: Mary Lambert's 1989 original, with Fred Gwynne as Jud, and the 2019 remake with Jason Clarke and John Lithgow."
+    ],
+    "copies": [
+      {
+        "id": "stephen-king-5-movie-collection-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Paramount bilingual Canadian 5-movie Blu-ray set (Collection de 5 films)",
+        "photos": [
+          "images/stephen-king-5-movie-collection-bluray-1.jpg",
+          "images/stephen-king-5-movie-collection-bluray-2.jpg",
+          "images/stephen-king-5-movie-collection-bluray-3.jpg"
+        ],
+        "gif": "images/stephen-king-5-movie-collection-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Paramount Pictures Canadian release (2020, UPC 032429346513), bilingual English/French packaging, 1080p high definition. Pet Sematary (2019): 100 min, 14A, English Dolby Atmos, French/Spanish/Portuguese 5.1; special features include an all-new alternate ending, deleted and extended scenes and over 90 minutes of bonus content. The Stand (1994): 359 min, 14A, 1.33:1, English 2.0 (English only). The Dead Zone (1983): 103 min, 14A, English DTS-HD MA 5.1, French mono. Pet Sematary (1989): 102 min, 18A, English DTS-HD MA 5.1, French 2.0; commentary by director Mary Lambert and original featurettes. Silver Bullet (1985): 94 min, 18A, English DTS-HD MA mono, French mono. English SDH and French subtitles. Licensed for sale only in Canada."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
