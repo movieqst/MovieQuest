@@ -39,3 +39,22 @@ STYLE: photorealistic aerial view, soft grey autumn light after rain, a little m
 NO text, labels, letters, numbers, grid lines, arrows, squares, dots or coloured lines. Paint right to the edges.
 NO modern things: no roads, cars, railways, power lines, buildings or the modern town.
 ```
+
+## Result: the valley (3 November 2026, second version)
+- **`images/terrain-battle.jpg`:** ChatGPT's painting, scaled to 2400 × 1800. The first try is kept as `terrain-battle-draft1.jpg`.
+- **The camps:** the hills, valley floor and road follow the guide. The camps are within about 100–450 m of the traditional points.
+- **Camp positions in the game:** the game places each army on the camp **as painted**, in world pixels at 2400 × 1800, so the picture and the armies agree. The traditional point (from the guide) is given after each:
+
+| Camp | Painted (world px) | Traditional point |
+|---|---|---|
+| Ishida (Sasao) | 730, 480 | 758, 484 |
+| Shimazu | 910, 570 | 786, 588 |
+| Konishi | 600, 610 | 671, 623 |
+| Ukita | 660, 755 | 585, 761 |
+| Ōtani (Yamanaka) | 485, 870 | 500, 827 |
+| Kobayakawa (Matsuo) | 790, 1295 | 638, 1339 |
+| Ieyasu, first HQ (Momokubari) | 1830, 930 | 1800, 900 |
+| Ieyasu, later HQ (Jinbano) | 1160, 755 | 1014, 693 |
+
+- **The streams** only roughly follow the real ones. The game doesn't use them.
+- **Credit:** Battle Games, AI-generated (ChatGPT) from our guide map.
