@@ -4404,5 +4404,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "ncis-new-orleans-complete-series-dvd",
+    "title": "NCIS: New Orleans – The Complete Series",
+    "year": 2014,
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "format": "DVD",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/ncis-new-orleans-complete-series-dvd-1.jpg",
+    "photos": [
+      "images/ncis-new-orleans-complete-series-dvd-1.jpg",
+      "images/ncis-new-orleans-complete-series-dvd-2.jpg",
+      "images/ncis-new-orleans-complete-series-dvd-3.jpg",
+      "images/ncis-new-orleans-complete-series-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=NCIS%20New%20Orleans%20Complete%20Series%20DVD&campid=5339133571&customid=ncis-new-orleans-complete-series-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s",
+      "2020s"
+    ],
+    "runYears": "2014–2021",
+    "createdBy": "Gary Glasberg",
+    "starring": "Scott Bakula, Lucas Black, Vanessa Ferlito, CCH Pounder, Zoe McLellan, Rob Kerkovich, Shalita Grant, Daryl \"Chill\" Mitchell, Necar Zadegan, Charles Michael Davis",
+    "producers": "Gary Glasberg, Mark Harmon, Jan Nash, Christopher Silber, Brad Kern",
+    "company": "CBS Television Studios / Paramount",
+    "titleNote": "The Complete Series / 2014–2021",
+    "tagline": "DVD / Complete Series / Seasons 1–7 / Factory Sealed / Scott Bakula / TV Series / 2014–2021",
+    "desc": "Justice, Cajun style. NCIS: New Orleans follows Special Agent Dwayne Pride (Scott Bakula) and his team as they investigate crimes involving military personnel in the Big Easy, a city known for its music, entertainment and decadence. This box set collects all seven seasons of the hit CBS drama, from the Crescent City backdoor pilot to the series finale, with hours of special features.",
+    "trivia": [
+      {
+        "heading": "Born on NCIS",
+        "text": "The series was launched by a two-part backdoor pilot, \"Crescent City\", in season 11 of NCIS in 2014. Both parts are included as special features."
+      },
+      {
+        "heading": "Quantum Leap's Scott Bakula",
+        "text": "Scott Bakula, of Quantum Leap and Star Trek: Enterprise, leads the team as Special Agent Dwayne \"King\" Pride."
+      },
+      {
+        "heading": "Seven Seasons in the Big Easy",
+        "text": "NCIS: New Orleans ran seven seasons on CBS from 2014 to 2021, 155 episodes in all, filmed on location in and around New Orleans."
+      },
+      {
+        "heading": "Lucas Black and Vanessa Ferlito",
+        "text": "Lucas Black, of Sling Blade and The Fast and the Furious: Tokyo Drift, played Agent Christopher LaSalle for the first six seasons."
+      }
+    ],
+    "tidbits": [
+      "The series was launched by a two-part backdoor pilot, \"Crescent City\", in season 11 of NCIS in 2014. Both parts are included as special features.",
+      "Scott Bakula, of Quantum Leap and Star Trek: Enterprise, leads the team as Special Agent Dwayne \"King\" Pride.",
+      "NCIS: New Orleans ran seven seasons on CBS from 2014 to 2021, 155 episodes in all, filmed on location in and around New Orleans.",
+      "Lucas Black, of Sling Blade and The Fast and the Furious: Tokyo Drift, played Agent Christopher LaSalle for the first six seasons."
+    ],
+    "copies": [
+      {
+        "id": "ncis-new-orleans-complete-series-dvd-1",
+        "added": "2026-11-03",
+        "format": "DVD",
+        "edition": "CBS / Paramount complete series box set",
+        "photos": [
+          "images/ncis-new-orleans-complete-series-dvd-1.jpg",
+          "images/ncis-new-orleans-complete-series-dvd-2.jpg",
+          "images/ncis-new-orleans-complete-series-dvd-3.jpg",
+          "images/ncis-new-orleans-complete-series-dvd-4.jpg"
+        ],
+        "gif": "images/ncis-new-orleans-complete-series-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed); the shrink wrap has small splits at the top edge",
+          "discs": [
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "CBS / Paramount DVD box set, still in the original shrink wrap. All seven seasons (2014 to 2021). Special features listed on the box include the NCIS season 11 backdoor pilot \"Crescent City\" (Parts I and II), featurettes on New Orleans and the cast, \"Scott and Lucas: The Perfect Pair\", audio commentary on select episodes and deleted scenes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
