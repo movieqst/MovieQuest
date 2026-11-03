@@ -22,3 +22,17 @@
 ## More CWM education material (research/, © CWM, reference only)
 - CWM-trench-image-cards.pdf: 22 photo cards of trench life, all George Metcalf Archival Collection, with CWM numbers. Among them **"Vimy Ridge from the air"** (mine craters 10–15 m deep, blown by Canadian engineers before and during 9 April) and an **aerial view dated 24 March 1917**. The original wartime photos are Canadian Crown/official photos, so **public domain**; get them from Library and Archives Canada or the CWM online collection by their numbers, and don't take them from the PDF.
 - CWM-vimy-ridge-9-12-april-map.pdf: Nicholson's Map 7 again (we have a larger scan).
+
+## CWM "Battle of Vimy Ridge" learning resources (research/CWM-resources-*.pdf, © CWM, reference only)
+- **Primary source materials** (13 items):
+  - Longstaff's *Vimy Ridge* (CWM 19890275-051);
+  - Allward's plaster *Justice*;
+  - a captured 77 mm gun;
+  - *The Crest of Vimy Ridge*, *The Pimple, Evening* and Richard Jack's *Taking of Vimy Ridge*;
+  - a German MG 08 and a German bayonet;
+  - the Pawley grave marker;
+  - **MacDowell's field message of 8 a.m., 9 April** (CWM 19610015-002): only 15 men left with him in a "horrible mess"; he asks for another company and machine-guns; "lots of dead Bosche and he evidently held well";
+  - the **Vimy–Roclincourt trench map, January–February 1917** (CWM 19890227-021): British trenches blue, German red;
+  - the map of the Canadian advance (CWM 19750215-030).
+- **Photographs** (16): aerial view of craters (CWM 19740387-060), a tank crossing a trench, the Douai plain from the ridge, the 29th Battalion advancing through wire, fortifications, casualties, artillery, Byng, cemeteries, the 1936 dedication and pilgrims, Allward.
+- The wartime photos and the 1917 maps are public domain; get them by their CWM numbers from the museum's online collection or Library and Archives Canada.
