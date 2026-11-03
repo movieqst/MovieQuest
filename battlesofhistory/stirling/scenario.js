@@ -88,7 +88,8 @@ window.STIRLING_SCENARIO = {
   {
     "title": "The key to Scotland",
     "media": [
-      { "at": 0, "file": "01-stirling-castle-2017.jpg", "caption": "Stirling Castle on its rock of volcanic stone, seen from Raploch Road below. The buildings standing today are mostly of the 15th and 16th centuries; in 1297 the castle was smaller, but the rock was the same, and it commanded the crossing of the Forth.", "ref": "Stirling Castle, from Raploch Road, 8 July 2017", "credit": "Photo: DeFacto, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle 2017.jpg)" }
+      { "at": 0, "file": "01-stirling-castle-2017.jpg", "caption": "Stirling Castle on its rock of volcanic stone, seen from Raploch Road below. The buildings standing today are mostly of the 15th and 16th centuries; in 1297 the castle was smaller, but the rock was the same, and it commanded the crossing of the Forth.", "ref": "Stirling Castle, from Raploch Road, 8 July 2017", "credit": "Photo: DeFacto, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle 2017.jpg)" },
+      { "at": 17, "file": "03-view-to-abbey-craig.jpg", "caption": "The view from Stirling Castle across the carse to the Abbey Craig, the steep wooded hill where the Scots waited, with the Ochil Hills behind. The tower on top is the Wallace Monument, built in 1869; the stone Old Bridge, lower centre, is 15th–16th century. The wooden bridge of 1297 stood just upstream of it.", "ref": "From the Castle Esplanade, Stirling, 25 November 2018", "credit": "Photo: Andraszy, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle, Wallace Monument, Stirling.jpg)" }
     ],
     "lines": [
       {
