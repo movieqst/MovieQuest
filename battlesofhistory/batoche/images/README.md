@@ -9,3 +9,5 @@
 | riel-prisoner-1885.jpg | Louis Riel, a prisoner in Major-General Middleton's camp at Batoche, 16 May 1885 | Photo: James Peters, 1885. Library and Archives Canada, C-003450 (MIKAN 3623590). Public domain in Canada (created before 1949) and in the US (published before 1931). Wikimedia Commons: Louis_Riel_prison.jpg |
 
 Not saved: "Saskatchewan 2022 Batoche" (CC0), a modern electoral district map; not needed for the 1885 battle.
+| batoche-church-2005.jpg | Batoche today: the church of Saint-Antoine-de-Padoue, the rectory and the cemetery (National Historic Site) | Photo: danrmg (Flickr), 9 August 2005. CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/). Wikimedia Commons: Batoche.jpg |
+| st-laurent-mission-1891.jpg | "La Mission de Saint-Laurent près Batoche", winter 1891: the Métis mission a few km from Batoche, six years after the battle. Black lantern-slide frame cropped | Charles Gailly de Taurines (1857–1941), glass slide reproduced by Molteni, 1891. Bibliothèque nationale de France, Société de Géographie SG XGA-58. Public domain (France: author died over 70 years ago; US: published before 1931) |
