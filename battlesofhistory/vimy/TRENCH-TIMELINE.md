@@ -90,6 +90,7 @@ NLS has dated editions of both Vimy sheets. The sheets are also listed on the NL
 | 101465068 | 51B N.W. (Arras; Neuville–Thélus–Farbus in the top-left corner) | edition to be read |
 | 101465071 | 51B N.W. | another edition, to be read |
 | 101464753 | **51B.NW.1 Roclincourt**, 1:10,000 (Neuville-St-Vaast to Thélus, the south half of the battlefield in detail) | Edition 5A, trenches to 27 Dec 1916 |
+| 101464744 | **36C.SW.1 Lens**, 1:10,000 (Lens, Liévin, Angres: north-east of the ridge, toward the Pimple) | Edition 8A, trenches to 10 Feb 1917 |
 | 101465065 | a neighbouring sheet with the front on its right-hand side (probably 51C N.E., west of Arras) | not needed |
 
 **Still to get, all at full size:**
