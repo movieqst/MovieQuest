@@ -50,10 +50,12 @@ P = {   # (lat, lon)
  'Alnwick': (55.4130, -1.7060), 'Dumfries': (55.0700, -3.6050), 'Selkirk': (55.5480, -2.8390), 'Dunstaffnage': (56.4510, -5.4380),
 }
 g.line([P['Berwick'], P['Roxburgh'], P['Selkirk'], (55.80, -3.25), P['Edinburgh'], P['Falkirk'], P['Stirling']], RED, 7, dash=20)
-g.text(55.46, -1.45, "Surrey's English army\nmarches north, Sept 1297", RED, 24, True)
+g.text(55.46, -1.45, "Surrey's English army\nmarches north, Sept 1297\n(route reconstructed)", RED, 24, True)
 g.line([P['Stirling'], P['Perth'], P['Dundee']], BLUE, 6, dash=16)
-g.arrow([P['Inverness'], (57.25, -3.8), (56.85, -3.6), P['Perth'], P['Stirling']], BLUE, '', 6)
-g.text(57.05, -3.25, "Moray's rising in the north\n(Avoch, Urquhart, Inverness, Elgin, Aberdeen)", BLUE, 24, True)
+for n in ('Avoch', 'Urquhart', 'Inverness', 'Elgin', 'Banff', 'Aberdeen'):   # attacks on English garrisons across the north
+    x, y = g.xy(*P[n]); g.d.ellipse([x - 22, y - 22, x + 22, y + 22], outline=BLUE, width=5)
+g.arrow([(57.15, -3.6), (56.85, -3.6), P['Perth'], P['Stirling']], BLUE, '', 6)
+g.text(57.05, -3.25, "Moray's rising: attacks on English garrisons\nacross the north (blue rings); route south approximate", BLUE, 24, True)
 g.arrow([P['Lanark'], (55.85, -3.90), P['Stirling']], BLUE, '', 6)
 g.text(55.62, -4.55, "Wallace's rising\n(Lanark, May 1297)", BLUE, 24, True)
 g.ring(*P['Stirling'], 12, '', RED)
@@ -62,12 +64,12 @@ g.d.text((g.xy(*P['Stirling'])[0] - 60, g.xy(*P['Stirling'])[1] + 2), '11 Sept 1
 for n, sub, dy in [('Berwick', 'sacked by Edward I, Mar 1296', -28), ('Dunbar', 'Scots defeated, Apr 1296', -28), ('Roxburgh', 'English muster, July 1297', 26),
                ('Haddington', 'Lübeck letter, 11 Oct 1297', 26), ('Scone', 'the Stone taken to England, 1296', -28), ('Falkirk', 'Wallace defeated, July 1298', 26)]:
     g.town(*P[n], n, sub, 24, BLACK, 9, dy)
-g.town(*P['Perth'], 'Perth', '', 22, GREY, 7, 24)
+g.town(*P['Perth'], 'Perth', '', 22, GREY, 7, 24); g.town(*P['Banff'], 'Banff', '', 22, GREY, 7, -24)
 for n in ('Edinburgh', 'Dundee', 'Aberdeen', 'Inverness', 'Elgin', 'Glasgow', 'Dumbarton', 'Ayr', 'Lanark', 'Dumfries', 'Carlisle', 'Avoch', 'Urquhart'):
     g.town(*P[n], n, '', 22, GREY, 7, -24)
 g.arrow([P['Stirling'], (55.60, -3.10), P['Carlisle']], PURPLE, '', 5)
 g.arrow([(55.60, -3.10), P['Hexham'], P['Newcastle']], PURPLE, '', 5)
-g.text(55.15, -2.20, "the Scots raid northern England\n(Oct-Nov 1297)", PURPLE, 22, True)
+g.text(55.15, -2.20, "the Scots raid northern England\n(Oct-Nov 1297; routes illustrative)", PURPLE, 22, True)
 g.town(*P['Hexham'], 'Hexham', '', 22, GREY, 7, 24); g.town(*P['Newcastle'], 'Newcastle', '', 22, GREY, 7, 24)
 g.text(57.0, -6.4, 'HIGHLANDS', GREY, 34, True); g.text(55.35, -3.4, 'SOUTHERN UPLANDS', GREY, 28, True)
 g.text(56.13, -2.95, 'Firth of Forth', BLUE, 24, True); g.text(56.75, -1.4, 'NORTH SEA', BLUE, 32, True)
