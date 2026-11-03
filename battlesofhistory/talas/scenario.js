@@ -97,6 +97,9 @@ window.TALAS_SCENARIO = {
       ] }
   ],
 
+  /* Pictures saved for the chapters (once chapters can show pictures):
+     60-kizil-caves-1906.jpg  "The march west": the Kizil caves near Kucha, the Tang headquarters, photographed 1902-1914.
+       Photo: Albert Grünwedel, public domain, via Wikimedia Commons (Caves 1-17, Kizil.jpg) */
   /* ---------- The reenactment ---------- */
   events: [
     { t: 0, title: 'The march west', tag: 'reconstruction', clock: 'Spring 751',
