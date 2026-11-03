@@ -39,3 +39,17 @@ Our session cannot reach McMaster or Ottawa, so these have to be downloaded by h
 3. **Optional, for the south end (Thélus–Farbus):** the 51B NW1 sheets of the same dates, from the same McMaster grid page (grid=51b).
 
 **Licence:** McMaster describes its trench-map scans as public domain. The maps are British Crown copyright from 1915–17, which has expired.
+
+---
+
+## ChatGPT's trench and tunnel research (3 November 2026): `research/CHATGPT-*.md`
+**What it adds:**
+- **A five-state outline:** improvised 1914, continuous 1915, the mine war 1915–16, the subways 1916–17, and preparation and attack in 1917.
+- **Feature types:** firing, support, reserve and communication trenches; traverses; wire; dugouts; mine and listening galleries; subways; tramways; craters.
+- **A layer plan with dates:** each segment carries a side, earliest and latest dates, confidence and source. This matches our "first seen / last seen" design.
+- **Grange Subway figures** (Veterans Affairs Canada brochure): about 1.5 m wide and 2 m high, with the roof about 8 m down. The whole system was more than 10 km, with **13 major subways**, the longest about 1.7 km. Nicholson says eleven, almost four miles. The difference is down to definitions, so the count stays **disputed**.
+- **Three confidence levels:** documented, inferred and illustrative. They map onto our established, reconstruction and illustrative tags.
+
+**What it does not give:** any positions. Like us, it says the trenches, craters and subway entrances must be traced from **dated maps and plans**. The plan above stands. The **dated McMaster sheets** are still the missing piece; the VAC brochure, Nicholson's PDF and Valour Canada are blocked here too.
+
+**Also worth downloading:** the Veterans Affairs Canada brochure *Vimy Tunnels and Trenches* (PDF). It may include a plan of the subways.
