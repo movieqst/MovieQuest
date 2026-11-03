@@ -14,6 +14,10 @@ if [ ! -x "$ENV/bin/python" ]; then
   "$ENV/bin/pip" install -q --extra-index-url https://download.pytorch.org/whl/cpu torch
   "$ENV/bin/pip" install -q kokoro soundfile "misaki[ja]"
 fi
+# the full "unidic" package comes without its dictionary (it needs a separate 500 MB download) and then hides the small
+# unidic-lite dictionary that misaki[ja] brings; without it, the Japanese reader (fugashi/MeCab) uses unidic-lite
+"$ENV/bin/python" -c "import unidic, os, sys; sys.exit(0 if os.path.exists(os.path.join(unidic.DICDIR, 'mecabrc')) else 1)" 2>/dev/null || "$ENV/bin/pip" uninstall -q -y unidic 2>/dev/null || true
+"$ENV/bin/pip" show -q unidic-lite >/dev/null 2>&1 || "$ENV/bin/pip" install -q unidic-lite
 MIX='highpass=f=70,agate=threshold=0.035:ratio=6:attack=8:release=160:knee=2,volume=1.6,alimiter=limit=0.95'
 LINES=${1:?usage: record-japanese.sh test | lines.tsv}
 if [ "$LINES" = test ]; then
