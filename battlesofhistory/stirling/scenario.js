@@ -386,7 +386,7 @@ window.STIRLING_SCENARIO = {
   /* ---------- what happens in each chapter ---------- */
   const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; });
   const set = (i, o) => Object.assign(EV[i], o);
-  set(0, { t: 0, music: { file: 'guifrog-beyond-the-warriors.mp3', vol: .3 }, zoom: 'fit', orders: [
+  set(0, { t: 0, media: '02-stirling-castle-rock.jpg', music: { file: 'guifrog-beyond-the-warriors.mp3', vol: .3 }, zoom: 'fit', orders: [
     { id: 'c-eng', to: { x: STIRLING.x + 30, y: STIRLING.y + 40 }, via: [SELKIRK, EDINBURGH, FALKIRK], speed: 110 },
     { leader: 'surrey', to: { x: STIRLING.x + 40, y: STIRLING.y + 10 }, via: [SELKIRK, EDINBURGH, FALKIRK], speed: 110 } ] });
   set(1, { t: 14, zoom: 'fit', orders: [
@@ -402,11 +402,11 @@ window.STIRLING_SCENARIO = {
   set(4, { t: 28, music: null, focus: { x: 1300, y: 760 }, zoom: .8, markers: [ { x: 1300, y: 760, label: 'the friars cross to the Scots' } ] });
   set(5, { t: 42, focus: { x: 900, y: 1150 }, zoom: .9, markers: [ Object.assign({ label: 'possible ford (place unknown)' }, FORD) ], orders: [
     { leader: 'lundie', visible: true, to: { x: 620, y: 1080 }, speed: 20 } ] });
-  set(6, { t: 56, focus: BRIDGE, zoom: 1.1, orders: [   // two by two: the vanguard crosses and gathers east of the bridge, beside the causeway
+  set(6, { t: 56, media: '09-old-bridge-and-monument-1990.jpg', focus: BRIDGE, zoom: 1.1, orders: [   // two by two: the vanguard crosses and gathers east of the bridge, beside the causeway
     { id: 'van', to: { x: 1130, y: 900 }, via: [BW, BE, CW1], speed: 22, then: 'hold' },
     { leader: 'cressingham', to: { x: 1110, y: 870 }, via: [BW, BE], speed: 22 }, { leader: 'thweng', to: { x: 1160, y: 930 }, via: [BW, BE], speed: 22, delay: 1 },
     { id: 'vfoot', to: { x: 1060, y: 960 }, via: [BW, BE], speed: 18, delay: 4, then: 'hold' } ] });
-  set(7, { t: 70, focus: { x: 1250, y: 800 }, zoom: .8, orders: [   // the Scots come down and cut the English off from the bridge
+  set(7, { t: 70, media: '03-view-to-abbey-craig.jpg', focus: { x: 1250, y: 800 }, zoom: .8, orders: [   // the Scots come down and cut the English off from the bridge
     { id: 'sspear1', to: { x: 1040, y: 1000 }, via: [CW3, CW2, { x: 1120, y: 1020 }], speed: 50, state: 'attack' },
     { id: 'sspear2', to: { x: 1200, y: 860 }, via: [CW3, CW2], speed: 46, state: 'attack', delay: 1 },
     { id: 'shorse', to: { x: 1300, y: 780 }, via: [CW3], speed: 50, state: 'attack', delay: 2 },
@@ -416,10 +416,10 @@ window.STIRLING_SCENARIO = {
     { id: 'van', strengthTo: 25, over: 12 }, { id: 'vfoot', strengthTo: 20, over: 12 },
     { id: 'sspear1', strengthTo: 85, over: 12 }, { id: 'sspear2', strengthTo: 85, over: 12 } ] });
   set(9, { t: 98, focus: { x: 1110, y: 880 }, zoom: 1.3, orders: [ { leader: 'cressingham', visible: false } ] });
-  set(10, { t: 112, focus: BRIDGE, zoom: 1.3, orders: [
+  set(10, { t: 112, media: { file: '04-castle-gatehouse.jpg', caption: 'Stirling Castle, which Surrey left in Sir Marmaduke Thweng’s keeping as he retreated. The gatehouse in this photograph was built about two hundred years later, around 1500, on the same rock.', ref: 'Stirling Castle gatehouse, 31 August 2018', credit: 'Photo: Marcok, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle 2018-08-31 by Marcok f04.jpg)' }, focus: BRIDGE, zoom: 1.3, orders: [
     { leader: 'thweng', to: { x: 760, y: 1100 }, via: [BE, BW], speed: 30 }, { id: 'van', strengthTo: 8, over: 10 }, { id: 'vfoot', strengthTo: 5, over: 10 } ] });
-  set(11, { t: 126, focus: BRIDGE, zoom: 1.2, markers: [ Object.assign({ label: 'the bridge can no longer be crossed' }, BRIDGE) ] });
-  set(12, { t: 140, music: { file: 'great-highland-bagpipe-tomanic.mp3', vol: .25 }, zoom: 'fit', orders: [
+  set(11, { t: 126, media: '10-ridley-battle-of-stirling-bridge.jpg', focus: BRIDGE, zoom: 1.2, markers: [ Object.assign({ label: 'the bridge can no longer be crossed' }, BRIDGE) ] });
+  set(12, { t: 140, media: { file: '05-castle-woodcut-1832.jpg', caption: 'Stirling Castle in an 1832 woodcut. As Surrey rode south, the castle on its rock stayed behind in English hands, with Thweng as its keeper.', ref: 'The Penny Magazine, 15 December 1832', credit: 'Unknown artist, public domain, via Wikimedia Commons (Penny Magazine 1832 364 View of Stirling Castle.jpg)' }, music: { file: 'great-highland-bagpipe-tomanic.mp3', vol: .25 }, zoom: 'fit', orders: [
     ...['main', 'welsh'].map((id, k) => ({ id, state: 'rout', to: { x: 300 + k * 60, y: 1780 }, speed: 30, delay: k })),
     { leader: 'surrey', to: { x: 260, y: 1780 }, speed: 32 }, { leader: 'thweng', to: CASTLE, speed: 20 },
     { id: 'steward', side: 'allied' }, { id: 'steward', to: { x: 520, y: 1010 }, speed: 40, state: 'attack', delay: 2 },
