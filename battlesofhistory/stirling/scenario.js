@@ -37,6 +37,10 @@ window.STIRLING_SCENARIO = {
   intro: [
   {
     "title": "BATTLE OF STIRLING BRIDGE",
+    "media": [
+      { "at": 0, "file": "02-stirling-castle-rock.jpg", "caption": "Stirling Castle from the King’s Knot, looking north. Below the rock, out of sight, the River Forth winds across the flat carse toward the bridge.", "ref": "Stirling Castle, 11 July 2002", "credit": "Photo: Finlay McWalter, CC BY-SA 3.0 / GFDL, via Wikimedia Commons (Stirlingcastle.jpg)" },
+      { "at": 9, "file": "10-ridley-battle-of-stirling-bridge.jpg", "caption": "The Battle of Stirling Bridge as the Victorians imagined it: the Scots fall on the English at the end of the bridge, men and horses go into the Forth, and the bridge breaks. A dramatic picture, but not evidence: the armour, the castle and the broken bridge are the artist’s invention, drawn almost six hundred years later.", "ref": "Wood engraving after Matthew White Ridley, from a Victorian History of Scotland", "credit": "Matthew White Ridley (1837–1888), engraved by C. Roberts; public domain, via Wikimedia Commons (The Battle of Stirling Bridge.jpg)" }
+    ],
     "lines": [
       {
         "text": "On the 11th of September 1297, a Scottish army waited on the high ground above the River Forth while an English army crossed a narrow wooden bridge towards it.",
@@ -84,6 +88,10 @@ window.STIRLING_SCENARIO = {
   },
   {
     "title": "The key to Scotland",
+    "media": [
+      { "at": 0, "file": "01-stirling-castle-2017.jpg", "caption": "Stirling Castle on its rock of volcanic stone, seen from Raploch Road below. The buildings standing today are mostly of the 15th and 16th centuries; in 1297 the castle was smaller, but the rock was the same, and it commanded the crossing of the Forth.", "ref": "Stirling Castle, from Raploch Road, 8 July 2017", "credit": "Photo: DeFacto, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle 2017.jpg)" },
+      { "at": 17, "file": "03-view-to-abbey-craig.jpg", "caption": "The view from Stirling Castle across the carse to the Abbey Craig, the steep wooded hill where the Scots waited, with the Ochil Hills behind. The tower on top is the Wallace Monument, built in 1869; the stone Old Bridge, lower centre, is 15th–16th century. The wooden bridge of 1297 stood just upstream of it.", "ref": "From the Castle Esplanade, Stirling, 25 November 2018", "credit": "Photo: Andraszy, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle, Wallace Monument, Stirling.jpg)" }
+    ],
     "lines": [
       {
         "text": "Stirling Castle stands on a rock above the River Forth. Below it, the river winds in great loops across soft, wet ground.",
@@ -118,6 +126,10 @@ window.STIRLING_SCENARIO = {
   },
   {
     "title": "The bridge",
+    "media": [
+      { "at": 0, "file": "08-stirling-old-bridge.jpg", "caption": "Stirling Old Bridge, built of stone in the 15th or 16th century. The bridge of 1297 was not this one: it was a narrow wooden bridge on eight piers, and the remains of four of them lie in the river about 60 metres upstream, beyond the arches in this view.", "ref": "Stirling Old Bridge, 23 September 2018", "credit": "Photo: Annboeva, CC BY-SA 4.0, via Wikimedia Commons (The Old Stirling Bridge - still tells its story.jpg)" },
+      { "at": 16, "file": "09-old-bridge-and-monument-1990.jpg", "caption": "The Old Bridge with the Abbey Craig behind it, and the Wallace Monument on top. The wooden bridge of 1297 stood a little upstream, to the left of this view; across it, the English rode toward the hill where the Scots were waiting.", "ref": "Stirling, 14 September 1990", "credit": "Photo: Roger Wollstadt (Flickr), CC BY-SA 2.0, via Wikimedia Commons (Stirling - Stirling Bridge.jpg)" }
+    ],
     "lines": [
       {
         "text": "The bridge of 1297 was made of timber, so narrow that only two horsemen could ride side by side.",
@@ -374,7 +386,7 @@ window.STIRLING_SCENARIO = {
   /* ---------- what happens in each chapter ---------- */
   const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; });
   const set = (i, o) => Object.assign(EV[i], o);
-  set(0, { t: 0, zoom: 'fit', orders: [
+  set(0, { t: 0, media: '02-stirling-castle-rock.jpg', music: { file: 'guifrog-beyond-the-warriors.mp3', vol: .3 }, zoom: 'fit', orders: [
     { id: 'c-eng', to: { x: STIRLING.x + 30, y: STIRLING.y + 40 }, via: [SELKIRK, EDINBURGH, FALKIRK], speed: 110 },
     { leader: 'surrey', to: { x: STIRLING.x + 40, y: STIRLING.y + 10 }, via: [SELKIRK, EDINBURGH, FALKIRK], speed: 110 } ] });
   set(1, { t: 14, zoom: 'fit', orders: [
@@ -387,14 +399,14 @@ window.STIRLING_SCENARIO = {
     { id: 'steward', to: { x: 900, y: 760 }, speed: 30 }, { id: 'steward', to: WOODS, speed: 30, delay: 6 } ] });
   set(3, { t: 14, focus: BRIDGE, zoom: 1.1, orders: [   // the false start: a small group crosses and is called back
     { id: 'welsh', to: { x: 1090, y: 930 }, via: [BW, BE], speed: 40 }, { id: 'welsh', to: { x: 640, y: 1220 }, via: [BE, BW], speed: 40, delay: 7 } ] });
-  set(4, { t: 28, focus: { x: 1300, y: 760 }, zoom: .8, markers: [ { x: 1300, y: 760, label: 'the friars cross to the Scots' } ] });
+  set(4, { t: 28, music: null, focus: { x: 1300, y: 760 }, zoom: .8, markers: [ { x: 1300, y: 760, label: 'the friars cross to the Scots' } ] });
   set(5, { t: 42, focus: { x: 900, y: 1150 }, zoom: .9, markers: [ Object.assign({ label: 'possible ford (place unknown)' }, FORD) ], orders: [
     { leader: 'lundie', visible: true, to: { x: 620, y: 1080 }, speed: 20 } ] });
-  set(6, { t: 56, focus: BRIDGE, zoom: 1.1, orders: [   // two by two: the vanguard crosses and gathers east of the bridge, beside the causeway
+  set(6, { t: 56, media: '09-old-bridge-and-monument-1990.jpg', focus: BRIDGE, zoom: 1.1, orders: [   // two by two: the vanguard crosses and gathers east of the bridge, beside the causeway
     { id: 'van', to: { x: 1130, y: 900 }, via: [BW, BE, CW1], speed: 22, then: 'hold' },
     { leader: 'cressingham', to: { x: 1110, y: 870 }, via: [BW, BE], speed: 22 }, { leader: 'thweng', to: { x: 1160, y: 930 }, via: [BW, BE], speed: 22, delay: 1 },
     { id: 'vfoot', to: { x: 1060, y: 960 }, via: [BW, BE], speed: 18, delay: 4, then: 'hold' } ] });
-  set(7, { t: 70, focus: { x: 1250, y: 800 }, zoom: .8, orders: [   // the Scots come down and cut the English off from the bridge
+  set(7, { t: 70, media: '03-view-to-abbey-craig.jpg', focus: { x: 1250, y: 800 }, zoom: .8, orders: [   // the Scots come down and cut the English off from the bridge
     { id: 'sspear1', to: { x: 1040, y: 1000 }, via: [CW3, CW2, { x: 1120, y: 1020 }], speed: 50, state: 'attack' },
     { id: 'sspear2', to: { x: 1200, y: 860 }, via: [CW3, CW2], speed: 46, state: 'attack', delay: 1 },
     { id: 'shorse', to: { x: 1300, y: 780 }, via: [CW3], speed: 50, state: 'attack', delay: 2 },
@@ -404,10 +416,10 @@ window.STIRLING_SCENARIO = {
     { id: 'van', strengthTo: 25, over: 12 }, { id: 'vfoot', strengthTo: 20, over: 12 },
     { id: 'sspear1', strengthTo: 85, over: 12 }, { id: 'sspear2', strengthTo: 85, over: 12 } ] });
   set(9, { t: 98, focus: { x: 1110, y: 880 }, zoom: 1.3, orders: [ { leader: 'cressingham', visible: false } ] });
-  set(10, { t: 112, focus: BRIDGE, zoom: 1.3, orders: [
+  set(10, { t: 112, media: { file: '04-castle-gatehouse.jpg', caption: 'Stirling Castle, which Surrey left in Sir Marmaduke Thweng’s keeping as he retreated. The gatehouse in this photograph was built about two hundred years later, around 1500, on the same rock.', ref: 'Stirling Castle gatehouse, 31 August 2018', credit: 'Photo: Marcok, CC BY-SA 4.0, via Wikimedia Commons (Stirling Castle 2018-08-31 by Marcok f04.jpg)' }, focus: BRIDGE, zoom: 1.3, orders: [
     { leader: 'thweng', to: { x: 760, y: 1100 }, via: [BE, BW], speed: 30 }, { id: 'van', strengthTo: 8, over: 10 }, { id: 'vfoot', strengthTo: 5, over: 10 } ] });
-  set(11, { t: 126, focus: BRIDGE, zoom: 1.2, markers: [ Object.assign({ label: 'the bridge can no longer be crossed' }, BRIDGE) ] });
-  set(12, { t: 140, zoom: 'fit', orders: [
+  set(11, { t: 126, media: '10-ridley-battle-of-stirling-bridge.jpg', focus: BRIDGE, zoom: 1.2, markers: [ Object.assign({ label: 'the bridge can no longer be crossed' }, BRIDGE) ] });
+  set(12, { t: 140, media: { file: '05-castle-woodcut-1832.jpg', caption: 'Stirling Castle in an 1832 woodcut. As Surrey rode south, the castle on its rock stayed behind in English hands, with Thweng as its keeper.', ref: 'The Penny Magazine, 15 December 1832', credit: 'Unknown artist, public domain, via Wikimedia Commons (Penny Magazine 1832 364 View of Stirling Castle.jpg)' }, music: { file: 'great-highland-bagpipe-tomanic.mp3', vol: .25 }, zoom: 'fit', orders: [
     ...['main', 'welsh'].map((id, k) => ({ id, state: 'rout', to: { x: 300 + k * 60, y: 1780 }, speed: 30, delay: k })),
     { leader: 'surrey', to: { x: 260, y: 1780 }, speed: 32 }, { leader: 'thweng', to: CASTLE, speed: 20 },
     { id: 'steward', side: 'allied' }, { id: 'steward', to: { x: 520, y: 1010 }, speed: 40, state: 'attack', delay: 2 },
@@ -443,6 +455,8 @@ window.STIRLING_SCENARIO = {
     { title: 'The Chronicle of Walter of Guisborough', note: 'The fullest contemporary account.' },
     { title: 'The Chronicle of Lanercost, trans. H. Maxwell (1913), pp. 163–164', note: 'A northern English view.' },
     { title: 'The Lübeck letter, 11 October 1297 (National Records of Scotland transcript)', note: 'Moray and Wallace as leaders of the army of Scotland.' },
+    { title: 'Music: Guifrog (Guilherme Arcoverde), Beyond The Warriors', note: 'A modern piece in the style of medieval music; Wikimedia Commons, CC BY 3.0 FR (creativecommons.org/licenses/by/3.0/fr). Plays under the march north. We added fades. (Its licence was imported from archive.org and awaits Commons review.)' },
+    { title: 'Music: Great Highland bagpipe (sound sample), by Tomanic', note: 'Wikimedia Commons, public domain. Plays under the rout as a modern lament. The great Highland bagpipe as it sounds today is centuries later than 1297, and no source says pipes were played at Stirling Bridge.' },
     { title: 'P. Armstrong, Stirling Bridge and Falkirk 1297–98 (Osprey, 2003); S. Reid, Battles of the Scottish Lowlands (2004)', note: 'Modern estimates of the armies.' }
   ];
   S.library = [];

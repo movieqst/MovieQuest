@@ -111,3 +111,23 @@ window.BH_UI_PATTERNS.zh = [
   [/^Specific record: (.*)$/, (m, a) => `具体出处：${a}`],
   [/^▾ (\d+) more units?$/, (m, a) => `▾ 另外 ${a} 支部队`]
 ];
+
+/* Scots and Scottish Gaelic: the main buttons and panels (Stirling Bridge). The Gaelic is a first translation, to be checked. */
+window.BH_UI.sco = {
+  'Next ▶': 'Neist ▶', 'Skip intro ⏭': 'Hap the intro ⏭', '📜 Intro': '📜 Intro', '▶ Watch reenactment': '▶ Watch the reenactment', '▶ Watch again': '▶ Watch again',
+  '🔊 Voice': '🔊 Vyce', '🔊 Voice on': '🔊 Vyce on', '🔇 Voice off': '🔇 Vyce aff', '▴ Controls': '▴ Controls', '▾ Controls': '▾ Controls', '⏩ FF': '⏩ Faister', '⏭ Skip': '⏭ Neist chaipter',
+  'Restart': 'Stert again', 'Explain': 'Expleen', 'Close': 'Steek', 'Continue ▶': 'Cairry on ▶', 'Speed': 'Speed', 'Narrator': 'Tellar',
+  '🔊 Begin with narration': '🔊 Stert wi the tellin', 'Begin with narration': 'Stert wi the tellin', 'Begin without sound': 'Stert wi nae soond',
+  'Narration': 'The tellin', 'Introduction': 'Introduction', 'The armies': 'The airmies', 'Battle log': 'Battle log', 'Battlefield map': 'Battle map',
+  'BATTLE OF STIRLING BRIDGE': 'BATTLE O STIRLIN BRIG', 'Historical reenactment · 11 September 1297 · runs locally, no install': 'Historical reenactment · 11 September 1297 · rins on yer ain machine', 'From the record': 'Fae the record', '▶ Watch': '▶ Watch', '🗺 Map': '🗺 Map', '◀ Battles': '◀ Battles', '⛶ Full': '⛶ Fu screen',
+  '🖼 Slideshow': '🖼 Pictur show', '📚 Library': '📚 Leebrary', '◀ Battles of History': '◀ Battles o History', 'Sources & further reading': 'Sources an mair tae read'
+};
+window.BH_UI.gd = {
+  'Next ▶': 'An ath fhear ▶', 'Skip intro ⏭': 'Leum thar an ro-ràdh ⏭', '📜 Intro': '📜 Ro-ràdh', '▶ Watch reenactment': '▶ Coimhead air a’ bhlàr', '▶ Watch again': '▶ Coimhead a-rithist',
+  '🔊 Voice': '🔊 Guth', '🔊 Voice on': '🔊 Guth air', '🔇 Voice off': '🔇 Guth dheth', '▴ Controls': '▴ Smachd', '▾ Controls': '▾ Smachd', '⏩ FF': '⏩ Nas luaithe', '⏭ Skip': '⏭ An ath chaibideil',
+  'Restart': 'Tòisich a-rithist', 'Explain': 'Mìnich', 'Close': 'Dùin', 'Continue ▶': 'Lean air adhart ▶', 'Speed': 'Astar', 'Narrator': 'Neach-aithris',
+  '🔊 Begin with narration': '🔊 Tòisich le aithris', 'Begin with narration': 'Tòisich le aithris', 'Begin without sound': 'Tòisich gun fhuaim',
+  'Narration': 'Aithris', 'Introduction': 'Ro-ràdh', 'The armies': 'Na feachdan', 'Battle log': 'Leabhar a’ bhlàir', 'Battlefield map': 'Mapa a’ bhlàir',
+  'BATTLE OF STIRLING BRIDGE': 'BLÀR DROCHAID SHRUIGHLEA', 'Historical reenactment · 11 September 1297 · runs locally, no install': 'Ath-chruthachadh eachdraidheil · 11 Sultain 1297', 'From the record': 'Bhon chlàr', '▶ Watch': '▶ Coimhead', '🗺 Map': '🗺 Mapa', '◀ Battles': '◀ Blàran', '⛶ Full': '⛶ Làn-sgrìn', '🎨 Art': '🎨 Ealain',
+  '🖼 Slideshow': '🖼 Taisbeanadh dhealbhan', '📚 Library': '📚 Leabharlann', '◀ Battles of History': '◀ Blàran na h-Eachdraidh', 'Sources & further reading': 'Tùsan is leughadh a bharrachd'
+};
