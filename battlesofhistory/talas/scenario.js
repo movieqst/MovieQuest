@@ -54,6 +54,9 @@ window.TALAS_SCENARIO = {
         { text: 'Between them lay the cities of the Sogdians, merchants of the Silk Road, and the pastures of the Turkic peoples, who took sides as it suited them.', tag: 'established' }
       ] },
     { title: 'The spark',
+      media: [
+        { at: 0, file: '52-ferghana-weshparkar.jpg', caption: 'A god of the Ferghana valley: Weshparkar, with a third eye on his forehead, from a 7th-century temple at Kuva in Ferghana. Ferghana was a rich kingdom of farms and horse pastures; its rulers took sides between the Tang and the Arabs, and its troops marched with Gao Xianzhi to Talas.', ref: 'Clay sculpture, Kuva temple, Ferghana, Uzbekistan, 7th century', credit: 'Photo: ALFGRN (Flickr), CC BY-SA 2.0, via Wikimedia Commons (Weshparkar, 7th century, Kuva (Ferghana), Uzbekistan.jpg)' }
+      ],
       lines: [
         { text: 'The Chinese histories say that in 750 the Tang general Gao Xianzhi made peace with the king of Chach, the city that is Tashkent today, then broke his word, seized the city and sent the king to the Chinese capital, Chang’an, where he was put to death.', tag: 'tang' },
         { text: 'The king’s son escaped and told neighbouring rulers what Gao had done. The Chinese histories say they then invited the Arabs to attack the Tang garrisons.', tag: 'tang' },
@@ -336,7 +339,7 @@ window.TALAS_SCENARIO = {
                { text: 'How they were used at Talas is not recorded.', tag: 'reconstruction' } ] },
     { side: 'allied', type: 'cavalry', sheet: 'tang-cavalry', portrait: 'tang-cavalry', name: 'Tang cavalry', desc: 'Armoured horsemen of the Anxi army.', tag: 'established', photos: [{ file: '47-tang-horse-figure.jpg', caption: 'A Tang horse, as a painted pottery figure from a tomb, with its saddle and saddle cloth. The Tang prized tall horses from the west, from Ferghana and the steppe; the horses of the Anxi cavalry came from the same lands they fought over.', ref: 'Tang dynasty tomb figure, New Luoyang City Museum, Henan, China', credit: 'Photo: Gary Lee Todd (Flickr), CC0 public domain, via Wikimedia Commons (Tang Pottery Dancing Horse.jpg)' }],
       lines: [ { text: 'The western armies of the Tang used armoured horsemen alongside infantry and crossbows. Their number at Talas is not known.', tag: 'estimate' } ] },
-    { side: 'allied', type: 'infantry', portrait: 'ferghana', name: 'Allies from Ferghana', desc: 'Troops of the kingdom of Ferghana, allied to the Tang.', tag: 'tang',
+    { side: 'allied', type: 'infantry', portrait: 'ferghana', name: 'Allies from Ferghana', desc: 'Troops of the kingdom of Ferghana, allied to the Tang.', tag: 'tang', photos: ['52-ferghana-weshparkar.jpg'],
       lines: [ { text: 'The Tang histories say that in the retreat the road was blocked by the men, horses and camels of the Ferghana troops.', tag: 'tang' } ] },
     { side: 'allied', type: 'cavalry', sheet: 'karluk-cavalry', portrait: 'karluk', name: 'The Karluks', desc: 'Turkic horsemen of the steppe north of the Tian Shan.', tag: 'tang',
       lines: [ { text: 'The Chinese account says the Karluks rebelled against Gao Xianzhi on the fifth day and attacked his army together with the Abbasids.', tag: 'tang' },
