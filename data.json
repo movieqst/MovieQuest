@@ -4032,5 +4032,89 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "thinner-1996-bluray",
+    "title": "Stephen King's Thinner",
+    "year": 1996,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/thinner-1996-bluray-1.jpg",
+    "photos": [
+      "images/thinner-1996-bluray-1.jpg",
+      "images/thinner-1996-bluray-2.jpg",
+      "images/thinner-1996-bluray-3.jpg",
+      "images/thinner-1996-bluray-4.jpg",
+      "images/thinner-1996-bluray-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%20Thinner%20Blu-ray%20Olive%20Films&campid=5339133571&customid=thinner-1996-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Robert John Burke, Joe Mantegna, Lucinda Jenney, Kari Wührer, Michael Constantine, Bethany Joy Lenz",
+    "director": "Tom Holland",
+    "producers": "Richard P. Rubinstein, Mitchell Galin",
+    "company": "Spelling Films / Paramount / Olive Films",
+    "titleNote": "Olive Films Blu-ray / 1996",
+    "tagline": "Blu-ray / Olive Films / Widescreen / Stephen King / Horror / 1990s",
+    "desc": "Based on the best-seller, Stephen King's Thinner stars Robert John Burke (RoboCop 3) and Joe Mantegna (House of Games) in a story of supernatural terror and countdown to the ultimate payback. A 109-year-old gypsy (Michael Constantine, My Big Fat Greek Wedding), hell-bent on revenge, exacts a curse so shocking it compels its victim to gorge himself in an effort to avoid shrinking away to nothingness. With time running out and a torture so bizarre and powerful, even death seems a more likely option. Directed by Tom Holland (The Langoliers).",
+    "trivia": [
+      {
+        "heading": "A Bachman Book",
+        "text": "Stephen King first published Thinner in 1984 under his pen name Richard Bachman. Sales jumped once fans discovered Bachman was really King."
+      },
+      {
+        "heading": "King's Cameo",
+        "text": "Stephen King makes a cameo appearance as Dr. Bangor, a pharmacist."
+      },
+      {
+        "heading": "The RoboCop 3 Connection",
+        "text": "Star Robert John Burke played RoboCop in RoboCop 3, which we also carry."
+      },
+      {
+        "heading": "Prosthetic Weight Loss",
+        "text": "Burke wore extensive prosthetic makeup by Greg Cannon to show lawyer Billy Halleck's transformation from overweight to skeletal."
+      },
+      {
+        "heading": "From Child's Play to the Curse",
+        "text": "Director Tom Holland also made Fright Night, Child's Play and the Stephen King mini-series The Langoliers."
+      }
+    ],
+    "tidbits": [
+      "Stephen King first published Thinner in 1984 under his pen name Richard Bachman. Sales jumped once fans discovered Bachman was really King.",
+      "Stephen King makes a cameo appearance as Dr. Bangor, a pharmacist.",
+      "Star Robert John Burke played RoboCop in RoboCop 3, which we also carry.",
+      "Burke wore extensive prosthetic makeup by Greg Cannon to show lawyer Billy Halleck's transformation from overweight to skeletal.",
+      "Director Tom Holland also made Fright Night, Child's Play and the Stephen King mini-series The Langoliers."
+    ],
+    "copies": [
+      {
+        "id": "thinner-1996-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Olive Films Blu-ray (OF460)",
+        "photos": [
+          "images/thinner-1996-bluray-1.jpg",
+          "images/thinner-1996-bluray-2.jpg",
+          "images/thinner-1996-bluray-3.jpg",
+          "images/thinner-1996-bluray-4.jpg",
+          "images/thinner-1996-bluray-5.jpg"
+        ],
+        "gif": "images/thinner-1996-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Olive Films Blu-ray (2012, catalogue OF460, UPC 887090046008), under licence from Paramount. 1996, colour, 92 minutes, anamorphic widescreen. Rated R for horror violence and gore, language and sexuality. Screenplay by Michael McDowell and Tom Holland; music by Daniel Licht; special makeup by Greg Cannon. Licensed for sale in the U.S. and Canada."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
