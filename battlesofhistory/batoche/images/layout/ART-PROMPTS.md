@@ -111,7 +111,13 @@ Same framing, 4:3, north at the top, straight down; do not crop, zoom or shift. 
 NO text, labels, grid lines, arrows, dots or boxes. NO modern roads, towns or field squares.
 ```
 
-## Battle map, second painting (3 November 2026): current
+## Battle map, second painting (3 November 2026): replaced by the third
 - **`images/terrain-battle.jpg`:** the second painting, scaled to 2400 × 1800. The bridge is gone, and in its place is a cable ferry: a scow on a line across the river below the village.
 - **River:** 86% of our traced river is within 20 m of the painted water, and 99% within 60 m.
 - **Church:** ChatGPT did not move it. The church, rectory and cemetery are still painted about 540 m north-west of the real church, at about (1086, 778) world px instead of (1264, 1012). If we keep this painting, the game puts the church on the **painted** one, as we did with the Stirling bridge.
+
+## Battle map, third painting (3 November 2026): current
+- **`images/terrain-battle.jpg`:** the third painting, scaled to 2400 × 1800. It keeps the cable ferry, with no bridge.
+- **Church, rectory and cemetery:** now near their real place. The church is painted at about (1326, 1118) world px against the real (1264, 1012), about 230 m out. The cemetery is just south of it, about 270 m east of the guide spot.
+- **River:** 87% of our traced river is within 20 m of the painted water, and 99% within 60 m.
+- **Game positions:** the game puts the church on the painted one.
