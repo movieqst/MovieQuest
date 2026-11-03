@@ -4494,5 +4494,84 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "house-of-cards-season-4-dvd",
+    "title": "House of Cards: The Complete Fourth Season",
+    "year": 2016,
+    "format": "DVD",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/house-of-cards-season-4-dvd-1.jpg",
+    "photos": [
+      "images/house-of-cards-season-4-dvd-1.jpg",
+      "images/house-of-cards-season-4-dvd-2.jpg",
+      "images/house-of-cards-season-4-dvd-3.jpg",
+      "images/house-of-cards-season-4-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=House%20of%20Cards%20Fourth%20Season%20DVD%20sealed&campid=5339133571&customid=house-of-cards-season-4-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "runYears": "2016",
+    "createdBy": "Beau Willimon, based on the novel by Michael Dobbs",
+    "starring": "Kevin Spacey, Robin Wright, Michael Kelly, Mahershala Ali, Neve Campbell, Joel Kinnaman, Kim Dickens, Derek Cecil, Ellen Burstyn",
+    "producers": "Beau Willimon, David Fincher, Kevin Spacey, Dana Brunetti, Eric Roth",
+    "company": "Media Rights Capital / Netflix / Sony Pictures Home Entertainment",
+    "titleNote": "Volume Four / Chapters 40–52 / 2016",
+    "tagline": "DVD / Season 4 / Bilingual Canadian Edition / Factory Sealed / Kevin Spacey / TV Series / 2016",
+    "desc": "They've always been a great team. But now in Season Four of House of Cards, Frank (Golden Globe winner Kevin Spacey) and Claire (Golden Globe winner Robin Wright) become even greater adversaries as their marriage stumbles and their ambitions are at odds. Volume Four collects Chapters 40 to 52, the complete fourth season.",
+    "trivia": [
+      {
+        "heading": "Netflix's First Big Original",
+        "text": "House of Cards premiered in 2013 as Netflix's first major original series, and the first web-only show to win major Emmy Awards."
+      },
+      {
+        "heading": "Based on a British Classic",
+        "text": "The series adapts the 1990 BBC mini-series of the same name, based on Michael Dobbs's novel about a ruthless Chief Whip."
+      },
+      {
+        "heading": "Breaking the Fourth Wall",
+        "text": "Frank Underwood's habit of speaking straight to the camera comes from the BBC original's Francis Urquhart, who did the same."
+      },
+      {
+        "heading": "Ellen Burstyn Joins",
+        "text": "Season four adds Oscar winner Ellen Burstyn as Claire's mother, Elizabeth Hale, pictured on the back cover."
+      }
+    ],
+    "tidbits": [
+      "House of Cards premiered in 2013 as Netflix's first major original series, and the first web-only show to win major Emmy Awards.",
+      "The series adapts the 1990 BBC mini-series of the same name, based on Michael Dobbs's novel about a ruthless Chief Whip.",
+      "Frank Underwood's habit of speaking straight to the camera comes from the BBC original's Francis Urquhart, who did the same.",
+      "Season four adds Oscar winner Ellen Burstyn as Claire's mother, Elizabeth Hale, pictured on the back cover."
+    ],
+    "copies": [
+      {
+        "id": "house-of-cards-season-4-dvd-1",
+        "added": "2026-11-03",
+        "format": "DVD",
+        "edition": "Sony Pictures bilingual Canadian edition (version française incluse)",
+        "photos": [
+          "images/house-of-cards-season-4-dvd-1.jpg",
+          "images/house-of-cards-season-4-dvd-2.jpg",
+          "images/house-of-cards-season-4-dvd-3.jpg",
+          "images/house-of-cards-season-4-dvd-4.jpg"
+        ],
+        "gif": "images/house-of-cards-season-4-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed); original Best Buy price sticker on the front shrink wrap",
+          "discs": [
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "Sony Pictures Home Entertainment Canadian release (2016, UPC 043396477766), bilingual English/French packaging, still in the original shrink wrap. Chapters 40 to 52 (13 episodes), approx. 647 minutes, colour, 2.00:1 anamorphic widescreen. Audio: English and French 5.1 Dolby Digital. Subtitles: Chinese Traditional, English SDH, French, Korean, Portuguese, Spanish, Thai. Rated 14A (Canada) / 13+ (Quebec)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
