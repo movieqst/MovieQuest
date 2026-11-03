@@ -45,6 +45,7 @@ window.TALAS_SCENARIO = {
     { title: 'Two empires',
       media: [
         { at: 0, file: '43-silk-road-751.jpg', pulse: '43-silk-road-751-glow.jpg', fit: 'contain', caption: 'The Silk Road around 751: not one road but a web of caravan routes from Chang’an to the Mediterranean, joined to the sea route through the Persian Gulf. Talas (the crossed swords) lay on the northern route, where the Tang and Abbasid worlds met. The glow marks the routes.', ref: 'Approximate; after Hansen, The Silk Road (2012), and the guide map drawn for this game (talas/SILK-ROAD.md)', credit: 'Map: Battle Games, AI-generated (ChatGPT) from our guide map' },
+        { at: 20, file: '49-merv-erk-kala.jpg', caption: 'Merv, the capital of Khurasan, from the top of its oldest citadel, the Erk Kala. The Abbasid revolution began here in 747 under Abu Muslim, and the army that fought at Talas was raised in Khurasan. Its earth walls are all that is left of the fortress.', ref: 'Erk Kala, Merv, Turkmenistan', credit: 'Photo: John Pavelka (Flickr), CC BY 2.0, via Wikimedia Commons (Erk Kala Citadel (28527290218).jpg)' },
         { at: 39, file: '48-tang-tomb-caravan.jpg', caption: 'A caravan in clay: riders, horses and laden camels from the Tang tomb of Li Siben in Luoyang. Figures like these, of foreign grooms and camel drivers, were buried with the Tang elite; they show how much the Silk Road trade, carried by Sogdian merchants, meant to China.', ref: 'Tang dynasty tomb figures, Tomb of Li Siben, Luoyang Ancient Tombs Museum, Henan, China', credit: 'Photo: Gary Lee Todd (Flickr), CC0 public domain, via Wikimedia Commons (Tang Dynasty Tomb of Li Siben 04.jpg)' }
       ],
       lines: [
@@ -326,7 +327,7 @@ window.TALAS_SCENARIO = {
 
   /* ---------- the armies panel, the citations and the sources ---------- */
   S.units = [
-    { side: 'allied', type: 'infantry', sheet: 'tang-infantry', portrait: 'tang-infantry', name: 'Tang heavy infantry', desc: 'The professional soldiers of the Anxi army: armour, long blades and spears.', tag: 'established', photos: ['46-tang-soldier-figure.jpg'],
+    { side: 'allied', type: 'infantry', sheet: 'tang-infantry', portrait: 'tang-infantry', name: 'Tang heavy infantry', desc: 'The professional soldiers of the Anxi army: armour, long blades and spears.', tag: 'established', photos: ['49-merv-erk-kala.jpg'], photos: ['46-tang-soldier-figure.jpg'],
       lines: [ { text: 'The Protectorate of Anxi kept a standing army of professional soldiers in the oasis cities of the Tarim basin, far from China.', tag: 'established' },
                { text: 'Its veterans were famous for their discipline. Li Siye, the general who saved Gao Xianzhi in the retreat, fought on foot with the heavy modao blade.', tag: 'tang' } ] },
     { side: 'allied', type: 'archers', sheet: 'tang-crossbow', portrait: 'tang-crossbow', name: 'Tang crossbowmen', desc: 'The crossbow, the nu: the Tang army’s long-range weapon.', tag: 'established',
