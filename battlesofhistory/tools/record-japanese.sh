@@ -6,9 +6,10 @@
 # Safe to stop (Ctrl+C) and run again: finished clips are skipped.
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd); ENV=${KOKORO_ENV:-$HOME/kokoro-env}; OUT=${OUT:-$HOME/voices}
+[ -x "$ENV/bin/pip" ] || rm -rf "$ENV"   # a half-made environment (e.g. python3-venv was missing) is started again
 if [ ! -x "$ENV/bin/python" ]; then
   echo "Setting up Kokoro in $ENV (first time only) ..."
-  python3 -m venv "$ENV" || { echo "Please run:  sudo apt install python3-venv   and try again."; exit 1; }
+  python3 -m venv "$ENV" || { rm -rf "$ENV"; v=$(python3 -c "import sys; print('%d.%d' % sys.version_info[:2])"); echo "Please run:  sudo apt install python3-venv python$v-venv   and try again."; exit 1; }
   "$ENV/bin/pip" install -q --upgrade pip
   "$ENV/bin/pip" install -q --extra-index-url https://download.pytorch.org/whl/cpu torch
   "$ENV/bin/pip" install -q kokoro soundfile "misaki[ja]"
