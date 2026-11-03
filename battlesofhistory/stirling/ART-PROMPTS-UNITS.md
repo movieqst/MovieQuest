@@ -64,3 +64,8 @@ Still to come: the 4 portraits (section C) and the optional bridge painting (D).
 **Not used:**
 - **boulder-crew:** nothing in the sources about rolling boulders at Stirling Bridge.
 - **bridge-section:** the bridge is painted on the map.
+
+## Received: fallen soldiers (3 November 2026)
+- **`images/units/fallen-soldiers.png`:** 16 different fallen poses (4 × 4, 240 × 200 cells), keyed out. This is a good full sheet, not cut from a composite.
+- **The figures:** English soldiers in mail, some with the red cross of St George on a white shield; Edward I's armies wore that badge. A few red tunics show a white cross, which looks more like a crusading order, so pick from the others.
+- **Not used yet:** the engine has no "fallen" layer. It could scatter these on the ground where a unit loses men, once the attack-animation change is made.
