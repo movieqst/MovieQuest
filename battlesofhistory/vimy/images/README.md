@@ -24,3 +24,9 @@ Licence: McMaster describes its digitised First World War collection as public d
 | 14-4-squadron-raf-1918.jpg | No. 4 Squadron RAF in front of a canvas aeroplane hangar, France, November 1918 | the flyers who took the photographs that trench maps were drawn from |
 | 15-aerial-overlap-photographs.jpg | a training card, "Overlap Photographs": the interval between exposures for overlapping air photos at heights from 1,000 to 10,000 feet | how the trench maps were made |
 | 16-6th-field-survey-company-re.jpg | the 6th Field Survey Company, Royal Engineers, outside their office | the map-makers: the Field Survey Companies drew and printed the trench maps |
+
+## The guns (Wikimedia Commons)
+| file | what | licence |
+|---|---|---|
+| 17-18-pounder-field-gun.jpg | An Ordnance QF 18-pounder field gun Mk II, Royal Artillery Park, Halifax, Nova Scotia: the British and Canadian field gun of the creeping barrage at Vimy | Photo: Skaarup.HA, 29 May 2011, CC BY-SA 3.0 (File:Ordnance QF 18-pounder Field Gun Mk II, Halifax, Nova Scotia (12).JPG) |
+| 18-18-pounder-shrapnel-shell-cutaway.jpg | A cut-away 18-pounder shrapnel shell (Canadian War Museum, artifact 20020045-592): the lead balls set in resin, the powder charge behind them, and the cordite cartridge. The time fuze fired the charge over the target, throwing the balls forward like a shotgun blast against wire and troops | Photo: Dickbauch, 2005, released into the public domain (File:Sectioned British 18-pounder shrapnel round photograph.jpg) |

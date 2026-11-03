@@ -331,7 +331,30 @@ const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, 
 // the painted sheets this battle uses (S.sheets) and which sheet each side and type takes (S.sheetBy)
 (S.sheets || []).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; if (armiesRedraw) armiesRedraw(); }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 const SHEET_BY = S.sheetBy || {};
-const sheetFor = f => SHEETS[f.sheet || (SHEET_BY[f.side] || {})[f.type]];
+const sheetName = f => f.sheet || (SHEET_BY[f.side] || {})[f.type];
+const sheetFor = f => SHEETS[sheetName(f)];
+/* Combat animation. S.attackSheets maps a walking sheet to its attack sheet (the same 4 x 4 layout: rows s, e, n, w; four
+   frames of a spear thrust, a sword stroke, a charge, a bow drawn...). A formation that is fighting (it struck or was struck
+   in the last moment, or its strength is falling by the script) draws its attack sheet instead, a little faster.
+   Leaders use 'leader-<id>-attack' when an enemy formation is fighting close by. */
+const ATTACK = S.attackSheets || {};
+[...new Set(Object.values(ATTACK))].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const fighting = f => simTime - (f.lastStrike ?? -99) < 1.2 || simTime - (f.lastHit ?? -99) < 1.2 || (f.strengthTarget !== null && f.strengthTarget !== undefined && f.strengthTarget < f.strength);
+/* The fallen. When a formation loses men, the figures that drop out are left lying where they stood: a body from
+   S.fallen.soldier (a 4 x 4 sheet of 16 different fallen poses, 240 x 200 cells), and for horsemen now and then a dead
+   horse (S.fallen.horse). They lie on the ground under everything else and are cleared when the battle restarts. */
+const FALLEN = [], FALLEN_MAX = 700, FS = S.fallen || {}; window.__fallen = FALLEN;   // for tests
+[FS.soldier, FS.horse].filter(Boolean).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+function drawFallen(c, y0v, y1v, x0v, x1v) {
+  if (!artOn) return;
+  FALLEN.forEach(b => {
+    if (b.y < y0v || b.y > y1v || b.x < x0v || b.x > x1v) return;
+    const sh = SHEETS[b.horse ? FS.horse : FS.soldier], q = P(b.x, b.y); if (!(q.s > 0)) return;
+    if (!sh) { c.fillStyle = 'rgba(40,30,20,.55)'; c.beginPath(); c.ellipse(q.x, q.y, 6 * q.s, 2.5 * q.s * (q.k || 1), 0, 0, PI * 2); c.fill(); return; }
+    const k = b.k % 16, cw = 240, ch = 200, h = (b.horse ? 24 : 16) * 1.3 * q.s, sc = h / ch * 1.6;
+    c.drawImage(sh, (k % 4) * cw, Math.floor(k / 4) * ch, cw, ch, q.x - cw * sc / 2, q.y - ch * sc * .62, cw * sc, ch * sc);
+  });
+}
 /* ---------------- artillery ----------------
    A battery is a formation of gun figures (three guns stand for a whole battery). It fires only when unlimbered: a battery
    ordered to move first limbers up, moves slowly, and must unlimber again before it can fire. It fires volleys on a reload
@@ -448,6 +471,9 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   if (sh && f.type === 'artillery') { drawGunSheet(c, sh, f, x, y, i, s); return; }
   if (sh) {
     const spec = SHEET_SPEC[f.type] || SHEET_SPEC.infantry, d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
+    const atk = f.fight && f.state !== 'rout' ? SHEETS[f.attackSheet || ATTACK[sheetName(f)]] : null;
+    if (atk) { const frame = Math.floor(wall * 7 + i * 1.3) % 4, scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
+      c.drawImage(atk, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, x - dw / 2, y - dh + 2 * s, dw, dh); return; }
     const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
     const scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
     c.save(); c.translate(x, y); if (k !== 1) c.scale(1, 1); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore(); return;
@@ -530,7 +556,7 @@ function createFormations() {
     facing: d.facing !== undefined ? d.facing : (d.side === 'allied' ? PI / 2 : -PI / 2), spread: 1,   // the Allies hold the north, facing south
     holdFire: mode === 'watch' && !!d.holdFire, then: null, aiPhase: null, lastHit: -99
   }));
-  formations.forEach(f => { if (f.type === 'artillery') gunInit(f); }); SMOKE.length = 0;
+  formations.forEach(f => { if (f.type === 'artillery') gunInit(f); }); SMOKE.length = 0; FALLEN.length = 0;
   byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations; window.__sel = selected;
 }
 function applyOrder(o) {
@@ -608,7 +634,8 @@ function fireEvent(ev) {
    Each has its own painted sheet (images/units/leader-<id>.png, 240x200 cells like the cavalry); until it arrives a
    rider of the side's cavalry stands in. Moved by event orders { leader: 'ney', to: {x, y} }. They take no part in the fighting. */
 let leaders = [];
-[...new Map((S.leaders || []).concat(CAMP ? CAMP.leaders || [] : []).filter(L => !L.noSheet).map(L => [L.id, L])).values()].forEach(L => { const im = new Image(); im.onload = () => { SHEETS['leader-' + L.id] = im; }; im.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '.png'; });
+[...new Map((S.leaders || []).concat(CAMP ? CAMP.leaders || [] : []).filter(L => !L.noSheet).map(L => [L.id, L])).values()].forEach(L => { const im = new Image(); im.onload = () => { SHEETS['leader-' + L.id] = im; }; im.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '.png';
+  if (S.attackSheets) { const ia = new Image(); ia.onload = () => { SHEETS['leader-' + L.id + '-attack'] = ia; }; ia.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '-attack.png'; } });
 function createLeaders() { leaders = (S.leaders || []).map(L => Object.assign({}, L, { tx: L.x, ty: L.y, shown: !L.hidden, facing: L.facing !== undefined ? L.facing : -PI / 2, state: 'hold' })); }
 function moveLeaders() { leaders.forEach(L => { const dx = L.tx - L.x, dy = L.ty - L.y, d = Math.hypot(dx, dy);
   if (d > 2) { const st = Math.min(d, (L.speed || 70) * DT); L.x += dx / d * st; L.y += dy / d * st; L.facing = Math.atan2(dy, dx); L.state = 'move'; } else L.state = 'hold'; }); }
@@ -617,7 +644,8 @@ function drawLeader(c, L) {
   c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); c.fillStyle = 'rgba(233,199,122,.32)'; c.strokeStyle = '#f2d27e'; c.lineWidth = Math.max(1.5, 2 * s);
   c.beginPath(); c.ellipse(0, 0, 24 * s, 10 * s, 0, 0, PI * 2); c.fill(); c.stroke(); c.restore();
   const own = SHEETS['leader-' + L.id];
-  drawSprite(c, { side: L.side, type: 'cavalry', state: L.state, sheet: own ? 'leader-' + L.id : undefined }, q.x, q.y, L.facing, 0, s * 1.6, q.k);
+  const fight = formations.some(f => alive(f) && f.side !== L.side && f.fight && Math.hypot(f.x - L.x, f.y - L.y) < 140);
+  drawSprite(c, { side: L.side, type: 'cavalry', state: L.state, sheet: own ? 'leader-' + L.id : undefined, fight, attackSheet: 'leader-' + L.id + '-attack' }, q.x, q.y, L.facing, 0, s * 1.6, q.k);
   outlined(c, L.name.toUpperCase(), q.x, q.y + 15 * s + 7, 12 * Math.max(.9, Math.min(1.5, s)), { fill: '#ffe7a8' });
 }
 function stepWatch() {
@@ -693,7 +721,7 @@ function combat() {
     if (a.type === 'chariot' && d.state === 'move') dmg *= 1.3;
     if (d.state === 'hold' && d.type !== 'chariot') dmg *= .7;
     if (d.fortified && d.state === 'hold') dmg *= .45;   // a walled farm (Hougoumont, La Haye Sainte)
-    d.strength -= dmg; d.lastHit = simTime;
+    d.strength -= dmg; d.lastHit = simTime; a.lastStrike = simTime;
     if (a.state === 'hold') a.facing = Math.atan2(d.y - a.y, d.x - a.x);
   }));
   formations.forEach(f => {
@@ -798,7 +826,16 @@ function drawFormation(c, f) {
   const FC = f.inWater ? (f.type === 'chariot' ? 1 : 2) : f.cols, FR = f.inWater ? Math.ceil(n / FC) : f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', scatter = f.state === 'rout' || f.state === 'scattered';
-  const pts = [];
+  const pts = []; f.fight = fighting(f);
+  // men lost since the last frame are left lying where they stood (not when a chapter jumps the strength at once)
+  if (FS.soldier && f._shown !== undefined && shown < f._shown && f._shown - shown <= 6 && !f.inWater) {
+    for (let i = shown; i < f._shown; i++) {
+      const col = i % FC, row = Math.floor(i / FC), d = -(row - (FR - 1) / 2) * sy, a = (col - (FC - 1) / 2) * sx;
+      FALLEN.push({ x: f.x + cos * d - sin * a + (jitter(i, 4) - .5) * 6, y: f.y + sin * d + cos * a + (jitter(i, 5) - .5) * 6, k: Math.floor(jitter(i + f.x, 6) * 16), horse: f.type === 'cavalry' && FS.horse && i % 2 === 0 });
+    }
+    if (FALLEN.length > FALLEN_MAX) FALLEN.splice(0, FALLEN.length - FALLEN_MAX);
+  }
+  f._shown = shown;
   for (let i = 0; i < n; i++) {
     if (i >= shown) continue;
     const col = i % FC, row = Math.floor(i / FC);
@@ -844,6 +881,7 @@ function render() {
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
   if (stage !== 'campaign') PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
+  if (stage !== 'campaign') drawFallen(ctx, y0v, y1v, x0v, x1v);
   formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L }));
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
   drawSmoke(ctx);

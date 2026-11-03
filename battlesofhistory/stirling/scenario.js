@@ -313,7 +313,12 @@ window.STIRLING_SCENARIO = {
         { lon: -3.94, lat: 56.12, text: 'STIRLING', size: .85, pin: true, early: true }
       ] },
     establishing: [],
-    sheets: [], sheetBy: {},
+    // painted figures (images/units/<name>.png, cut from ChatGPT's sheets with tools/prepare-sprite-sheet.py)
+    attackSheets: { 'scots-spearman': 'scots-spearman-attack', 'scots-horseman': 'scots-horseman-charge', 'english-knight': 'english-knight-charge',
+                    'english-longbowman': 'english-longbow-fire', 'english-spearman': 'english-foot-attack', 'english-man-at-arms': 'english-foot-attack' },
+    fallen: { soldier: 'dead-soldier', horse: 'dead-horse' },
+    sheets: ['scots-spearman', 'scots-horseman', 'scots-archer', 'english-knight', 'english-foot', 'english-spearman', 'english-longbowman', 'english-man-at-arms', 'baggage-wagon'],
+    sheetBy: { allied: { infantry: 'scots-spearman', cavalry: 'scots-horseman', archers: 'scots-archer' }, french: { infantry: 'english-spearman', archers: 'english-longbowman', cavalry: 'english-knight' } },
     sideArt: { allied: { cloth: '#3a4a6a', cloth2: '#2a3550', pennant: '#2e5aa8' }, french: { cloth: '#8a3a30', cloth2: '#6a2a22', pennant: '#c0392b', trim: '#e9c77a' } },
     ai: { plans: {} }, commandLines: {},
     debrief: { allied: { victory: { title: 'Scottish victory', text: '' }, defeat: { title: 'Scottish defeat', text: '' }, stalemate: { title: 'Stalemate', text: '' } },
@@ -326,13 +331,14 @@ window.STIRLING_SCENARIO = {
   S.formations = [
     F({ id: 'sspear1', side: 'allied', name: 'Scottish spearmen (Moray)', division: 'Moray', type: 'infantry', cols: 8, rows: 3, power: 1.2, x: 1700, y: 520, count: 'Several thousand in all (estimate)', note: 'Andrew Moray’s men from the north: spearmen on foot, the core of the army.' }),
     F({ id: 'sspear2', side: 'allied', name: 'Scottish spearmen (Wallace)', division: 'Wallace', type: 'infantry', cols: 7, rows: 3, power: 1.2, x: 1820, y: 600, count: 'Several thousand in all (estimate)', note: 'Wallace’s men from the south and the forest of Selkirk.' }),
+    F({ id: 'sarch',   side: 'allied', name: 'Scottish archers', division: 'Archers', type: 'archers', cols: 4, rows: 1, x: 1960, y: 640, count: 'A few hundred (estimate)', note: 'Historic Environment Scotland’s reconstruction gives the Scots about 400 archers, from the forest of Selkirk.' }),
     F({ id: 'shorse',  side: 'allied', name: 'Scottish horsemen', division: 'Horse', type: 'cavalry', cols: 3, rows: 1, x: 1950, y: 520, count: 'A few hundred at most (estimate)', note: 'A small mounted force; the Scots relied on their spearmen.' }),
     F({ id: 'van',     side: 'french', name: 'English vanguard: knights and men-at-arms', division: 'Vanguard', type: 'cavalry', cols: 6, rows: 2, power: 1.3, x: 760, y: 1060, note: 'Armoured horsemen, with Cressingham and Thweng among them. They crossed first.' }),
-    F({ id: 'vfoot',   side: 'french', name: 'English vanguard: foot', division: 'Vanguard', type: 'infantry', cols: 6, rows: 2, x: 700, y: 1140, note: 'Foot soldiers who crossed behind the horsemen.' }),
+    F({ id: 'vfoot',   side: 'french', name: 'English vanguard: foot', division: 'Vanguard', type: 'infantry', sheet: 'english-man-at-arms', cols: 6, rows: 2, x: 700, y: 1140, note: 'Foot soldiers who crossed behind the horsemen.' }),
     F({ id: 'welsh',   side: 'french', name: 'Welsh and English foot', division: 'Main body', type: 'archers', cols: 7, rows: 2, x: 640, y: 1220, note: 'Guisborough says thousands of Welsh crossed early in the morning and were called back.' }),
     F({ id: 'main',    side: 'french', name: 'Surrey’s main body', division: 'Main body', type: 'cavalry', cols: 6, rows: 2, x: 560, y: 1120, note: 'The rest of the army, which never crossed.' }),
-    F({ id: 'baggage', side: 'french', name: 'The English baggage', division: 'Baggage', type: 'infantry', cols: 4, rows: 1, power: .3, x: 520, y: 1000, note: 'Wagons and stores, seized at the end by the Steward and Lennox.' }),
-    F({ id: 'steward', side: 'french', name: 'The Steward and the Earl of Lennox', division: 'Steward', type: 'cavalry', cols: 3, rows: 1, x: WOODS.x, y: WOODS.y, note: 'Scottish lords serving with the English. Guisborough says they waited in the woods, then fell on the fleeing English and their baggage.' })
+    F({ id: 'baggage', side: 'french', name: 'The English baggage', division: 'Baggage', type: 'cavalry', sheet: 'baggage-wagon', cols: 4, rows: 1, power: .3, x: 520, y: 1000, note: 'Wagons and stores, seized at the end by the Steward and Lennox.' }),
+    F({ id: 'steward', side: 'french', name: 'The Steward and the Earl of Lennox', division: 'Steward', type: 'cavalry', sheet: 'scots-horseman', cols: 3, rows: 1, x: WOODS.x, y: WOODS.y, note: 'Scottish lords serving with the English. Guisborough says they waited in the woods, then fell on the fleeing English and their baggage.' })
   ];
   S.leaders = [
     { id: 'wallace',     name: 'William Wallace',          side: 'allied', x: 1900, y: 470 },
@@ -392,6 +398,7 @@ window.STIRLING_SCENARIO = {
     { id: 'sspear1', to: { x: 1040, y: 1000 }, via: [CW3, CW2, { x: 1120, y: 1020 }], speed: 50, state: 'attack' },
     { id: 'sspear2', to: { x: 1200, y: 860 }, via: [CW3, CW2], speed: 46, state: 'attack', delay: 1 },
     { id: 'shorse', to: { x: 1300, y: 780 }, via: [CW3], speed: 50, state: 'attack', delay: 2 },
+    { id: 'sarch', to: { x: 1380, y: 700 }, via: [CW3], speed: 40, delay: 2 },
     { leader: 'moray', to: { x: 1250, y: 900 }, speed: 46 }, { leader: 'wallace', to: { x: 1300, y: 820 }, speed: 46 } ] });
   set(8, { t: 84, focus: { x: 1100, y: 920 }, zoom: 1.1, orders: [
     { id: 'van', strengthTo: 25, over: 12 }, { id: 'vfoot', strengthTo: 20, over: 12 },
@@ -411,6 +418,8 @@ window.STIRLING_SCENARIO = {
   S.units = [
     { side: 'allied', type: 'infantry', name: 'Scottish spearmen', desc: 'The heart of the Scottish army: men on foot with long spears.', tag: 'established',
       lines: [ { text: 'Most of Moray’s and Wallace’s men fought on foot with long spears, in close formations later called schiltroms. At Stirling Bridge they attacked rather than stood.', tag: 'established' } ] },
+    { side: 'allied', type: 'archers', name: 'Scottish archers', desc: 'Bowmen, many from the forest of Selkirk.', tag: 'estimate',
+      lines: [ { text: 'Historic Environment Scotland’s reconstruction gives the Scots about four hundred archers; the figure is an estimate.', tag: 'estimate' } ] },
     { side: 'allied', type: 'cavalry', name: 'Scottish horsemen', desc: 'A small mounted force of knights and light horse.', tag: 'estimate',
       lines: [ { text: 'The Scots had only a few horsemen; modern estimates suggest under two hundred.', tag: 'estimate' } ] },
     { side: 'french', type: 'cavalry', name: 'English knights and men-at-arms', desc: 'Armoured horsemen in mail, the strength of Edward I’s armies.', tag: 'established',
