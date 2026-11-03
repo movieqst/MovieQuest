@@ -4230,5 +4230,92 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "under-the-dome-season-1-bluray",
+    "title": "Under the Dome: Season One",
+    "year": 2013,
+    "format": "Blu-ray",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/under-the-dome-season-1-bluray-1.jpg",
+    "photos": [
+      "images/under-the-dome-season-1-bluray-1.jpg",
+      "images/under-the-dome-season-1-bluray-2.jpg",
+      "images/under-the-dome-season-1-bluray-3.jpg",
+      "images/under-the-dome-season-1-bluray-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Under%20the%20Dome%20Season%201%20Blu-ray&campid=5339133571&customid=under-the-dome-season-1-bluray",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "runYears": "2013",
+    "createdBy": "Brian K. Vaughan, based on the novel by Stephen King",
+    "starring": "Mike Vogel, Rachelle Lefevre, Dean Norris, Natalie Martinez, Britt Robertson, Alexander Koch, Colin Ford, Nicholas Strong, Jolene Purdy, Aisha Hinds",
+    "producers": "Steven Spielberg, Stephen King, Brian K. Vaughan, Neal Baer, Jack Bender",
+    "company": "Amblin Television / CBS Television Studios / Paramount",
+    "titleNote": "Season One / 2013",
+    "tagline": "Blu-ray / Season 1 / 4-Disc Set / Stephen King / Amblin / TV Series / 2013",
+    "desc": "From Amblin Television and based on the bestselling book by Stephen King, Under the Dome is \"classic drama executed well\" (NY Daily News). The small town of Chester's Mill is suddenly and inexplicably sealed off from the rest of the world by a massive transparent barrier. Starring Mike Vogel, Rachelle Lefevre, Dean Norris, Natalie Martinez, Britt Robertson, Alexander Koch, Colin Ford, Nicholas Strong, Jolene Purdy and Aisha Hinds, the epic story of a town in peril unfolds as the residents struggle to maintain control and ultimately figure out the truth about the dome.",
+    "trivia": [
+      {
+        "heading": "King's Longest Idea",
+        "text": "Stephen King first tried writing Under the Dome in 1976 as \"The Cannibals\", then shelved it for decades before publishing the 1,074-page novel in 2009."
+      },
+      {
+        "heading": "A Spielberg Production",
+        "text": "The series came from Steven Spielberg's Amblin Television, and it was one of the most-watched summer dramas on CBS in years when it premiered in June 2013."
+      },
+      {
+        "heading": "Big Jim Is Hank",
+        "text": "Dean Norris, who plays town councilman Big Jim Rennie, was fresh off playing DEA agent Hank Schrader in Breaking Bad."
+      },
+      {
+        "heading": "King's Cameo",
+        "text": "Stephen King appears in a season-two episode as a diner patron, and he was an executive producer on the series."
+      },
+      {
+        "heading": "Three Seasons Under Glass",
+        "text": "Under the Dome ran three summers on CBS, from 2013 to 2015, ending with season three."
+      }
+    ],
+    "tidbits": [
+      "Stephen King first tried writing Under the Dome in 1976 as \"The Cannibals\", then shelved it for decades before publishing the 1,074-page novel in 2009.",
+      "The series came from Steven Spielberg's Amblin Television, and it was one of the most-watched summer dramas on CBS in years when it premiered in June 2013.",
+      "Dean Norris, who plays town councilman Big Jim Rennie, was fresh off playing DEA agent Hank Schrader in Breaking Bad.",
+      "Stephen King appears in a season-two episode as a diner patron, and he was an executive producer on the series.",
+      "Under the Dome ran three summers on CBS, from 2013 to 2015, ending with season three."
+    ],
+    "copies": [
+      {
+        "id": "under-the-dome-season-1-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "CBS / Paramount 4-disc Blu-ray set",
+        "photos": [
+          "images/under-the-dome-season-1-bluray-1.jpg",
+          "images/under-the-dome-season-1-bluray-2.jpg",
+          "images/under-the-dome-season-1-bluray-3.jpg",
+          "images/under-the-dome-season-1-bluray-4.jpg"
+        ],
+        "gif": "images/under-the-dome-season-1-bluray-1.gif",
+        "condition": {
+          "overall": "Good",
+          "case": "Very Good",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Cover art flaw: a small nick/tear in the cover sleeve on the left (spine) edge, visible in the front and angled photos. CBS Television Studios / Paramount 4-disc Blu-ray (2013, ISBN 1-4157-7560-5, UPC 032429144065, catalogue 7914406). All 13 season-one episodes, approx. 9 hrs 1 min, colour, 1080p high definition. English 5.1 DTS-HD Master Audio, English stereo surround; English SDH and Spanish subtitles. Not rated (US) / 14A (Canada). Special features: Under the Dome: Filming the Pilot; The World of Under the Dome; Stephen King and Under the Dome; Under the Dome: From Novel to Series; Under the Dome: The First Season; Joe's Blog; gag reel; deleted scenes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
