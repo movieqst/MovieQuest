@@ -40,3 +40,41 @@ ChatGPT often shifts things. If the river bends are not in the same places, ask 
 - **The river:** 93% of our traced river lies under its painted river, with no shift. The bridge, causeway, abbey and river loops are where they should be.
 - **One known slip:** the castle is drawn about 200 m west-north-west of the real rock. It isn't a battle position, so it is left as it is.
 - **Credit:** Battle Games, AI-generated (ChatGPT) from our guide map.
+
+---
+
+# The bridge close-up
+There are two pictures, both drawn by `stirling/tools/draw-bridge-closeup.py`:
+- `bridge-guide.png` has the labels.
+- `bridge-base.png` has the terrain and river only.
+
+They cover about 600 × 450 m around the HES pier site, at 2400 × 1800 pixels (4 px per metre).
+
+**What we know about the bridge:**
+- **Size:** it was narrow, two horsemen abreast (Guisborough).
+- **Piers:** Stirling's burgh seal of 1296 shows it on eight piers. Four stone-reinforced piers have been found in the river, in a line running at a slant across the channel (HES SM8264; Page 2001).
+- **Unknown:** the deck width, the timber details and the exact angle. Those are reconstructed.
+
+## Prompt for ChatGPT
+Attach **both** pictures, then paste this:
+
+```text
+Repaint the first image (bridge-base.png) as a realistic, close, straight-down aerial view of the wooden bridge over the River Forth at Stirling, Scotland, in September 1297. The second image (bridge-guide.png) shows where everything goes. It is only a guide: do not copy its labels. The view is about 600 metres across.
+
+ALIGNMENT IS THE MOST IMPORTANT THING. Your picture is a repaint of the first image, not a new picture. It will be laid exactly on top of it in a game.
+- The same 4:3 framing. Do not crop, zoom, rotate or shift. North at the top, seen straight down (not at an angle).
+- The river keeps exactly the same banks and width (about 60 m): a dark, slow, tidal river with muddy banks and reeds.
+
+THE BRIDGE (where the red line and the eight black squares are in the guide):
+- One long, NARROW wooden bridge, only about 4 metres wide (two horsemen side by side), crossing the river at a slant, exactly along the red line.
+- The deck is rough planks with a simple low timber rail on each side, held up on EIGHT piers in a straight line. Each pier is a cluster of wooden posts driven into the riverbed, with rough stones piled around its base against the current. The piers are spaced evenly across the river.
+- It looks sturdy but plain: grey weathered oak, no stone arches, no towers, no gates.
+
+AROUND IT:
+- West bank (left): a muddy track climbing up toward Stirling, worn grass, a few thatched huts and a fence.
+- East bank (right): the start of a narrow raised earth causeway running north-east across wet green meadows with rushes and pools (the brown line in the guide).
+- Soft early-autumn light; real wood, mud, water, reed and grass textures, with natural shadows. No people or horses.
+
+NO text, labels, letters, numbers, grid lines, arrows, coloured lines or boxes. Paint right to the edges.
+NO modern things, and NOT the later stone bridge (the grey square in the guide marks where it is built centuries later: leave plain river there).
+```
