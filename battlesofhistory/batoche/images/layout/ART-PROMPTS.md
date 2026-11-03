@@ -75,3 +75,23 @@ NO text, labels, grid lines, arrows, dots, lines or boxes. NO modern roads, town
 ## After ChatGPT
 - Send me each painting. I'll check it lines up with the base by overlaying our traced river, as we did for Stirling (it should be over 90% within about 20 m).
 - ChatGPT often shifts things. If the river bends move, ask it to "keep the river exactly as in the first image".
+
+---
+
+## Battle map, first painting (3 November 2026)
+- **`images/terrain-battle-draft1.jpg`:** ChatGPT's first painting, scaled to 2400 × 1800.
+- **The river lines up very well:** 92% of our traced river is within 20 m of the painted water, and 99% within 60 m.
+- **Placed close enough:** the village, the zareba camp and the ravines.
+- **Two fixes to ask for:**
+  1. There is a **bridge** across the river by the village. No bridge existed in 1885 (Batoche had a cable ferry), so it must go.
+  2. The **church, rectory and cemetery** are about 500 m north-west of where they belong. They should sit 1.4 km south-east of the village, with the cemetery just south of the church.
+
+### Fix prompt
+Attach the painting with the marks (`batoche-fix-marks.png`) and paste:
+
+```text
+Please edit your Batoche painting, using the marks on this copy (remove the marks themselves). Keep EVERYTHING else exactly as it is: same framing, same river, same ravines, same village, same camp. Do not crop, zoom or shift.
+1. Remove the bridge across the river at the red X. There was no bridge in 1885. Paint plain river there, and a small cable ferry instead: a flat wooden scow at the water's edge below the village, with a thin cable strung across the river between two posts.
+2. Move the white church (with its bell tower), the two-storey white rectory and the fenced cemetery south-east, to the small magenta circle: the church and rectory side by side, and the cemetery just south of them, on the slope above the river. Where they were, paint plain fields and grass like the area around them.
+No text or marks in the result.
+```
