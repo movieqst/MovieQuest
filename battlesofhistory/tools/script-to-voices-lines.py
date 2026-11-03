@@ -28,7 +28,18 @@ out = [clean(x) for s in ('The outcome', 'The aftermath') for x in re.findall(r'
 clips.append(('outcome', ' '.join(out)))
 # names respelled for the synthesiser only (the captions keep the real spelling)
 SAY = [(r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b', 'Loobeck'), (r'\bScalacronica\b', 'Scala-cronica'),
-       (r'\bThweng\b', 'Thweng'), (r'\bCressingham\b', 'Cressing-um')]
+       (r'\bThweng\b', 'Thweng'), (r'\bCressingham\b', 'Cressing-um'),
+       # Sekigahara: Japanese names, respelled for the English voices (stress-free, syllable by syllable)
+       (r'\bSekigahara\b', 'Seki-gahara'), (r'\bIeyasu\b', 'Ee-eh-yasu'), (r'\bMitsunari\b', 'Mitsu-nari'), (r'\bKobayakawa\b', 'Koba-yakawa'),
+       (r'\bHideaki\b', 'Hee-deh-aki'), (r'\bHideyoshi\b', 'Hee-deh-yoshi'), (r'\bHideyori\b', 'Hee-deh-yori'), (r'\bHidetada\b', 'Hee-deh-tada'),
+       (r'\bHideie\b', 'Hee-deh-ee-eh'), (r'\bŌgaki\b', 'Oh-gaki'), (r'\bŌtani\b', 'Oh-tani'), (r'\bYoshitsugu\b', 'Yoshi-tsugu'),
+       (r'\bMōri\b', 'Moh-ree'), (r'\bTerumoto\b', 'Teru-moto'), (r'\bKikkawa\b', 'Kick-kawa'), (r'\bHiroie\b', 'Hiro-ee-eh'),
+       (r'\bShimazu\b', 'Shima-zoo'), (r'\bYoshihiro\b', 'Yoshi-hiro'), (r'\bToyohisa\b', 'Toyo-hisa'), (r'\bUkita\b', 'Oo-kita'),
+       (r'\bYukinaga\b', 'Yuki-naga'), (r'\bAnkokuji Ekei\b', 'Ankoku-jee Eh-kay'), (r'\bMatsuo\b', 'Mat-soo-oh'), (r'\bSasao\b', 'Sa-sa-oh'),
+       (r'\bNangū\b', 'Nan-goo'), (r'\bNakasendō\b', 'Naka-sen-doh'), (r'\bAonogahara\b', 'Ah-oh-no-gahara'), (r'\bFushimi\b', 'Foo-shimi'),
+       (r'\bTorii Mototada\b', 'Toh-ree-ee Moto-tada'), (r'\bUeda\b', 'Oo-eh-da'), (r'\bUesugi\b', 'Oo-eh-sugi'), (r'\bKagekatsu\b', 'Kah-geh-katsu'),
+       (r'\bEdo\b', 'Eh-doh'), (r'\bshōgun(ate)?\b', lambda m: 'show-gun' + (m.group(1) or '')), (r'\bChōshū\b', 'Choh-shoo'), (r'\bIse\b', 'Ee-seh'),
+       (r'\bIi Naomasa\b', 'Ee-ee Nao-masa'), (r'\bToyotomi\b', 'Toyo-tomi'), (r'\bTokugawa\b', 'Toku-gawa'), (r'\bŌmi\b', 'Oh-mee')]
 def say(t):
     for a, b in SAY: t = re.sub(a, b, t)
     return t
