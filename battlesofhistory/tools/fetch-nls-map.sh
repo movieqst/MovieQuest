@@ -2,11 +2,11 @@
 # Downloads a full National Library of Scotland map (maps.nls.uk, licence CC BY) in pieces, because the NLS image
 # server refuses whole large images ("pixel area exceeds the maximum threshold"). The pieces are put back together later.
 #   bash fetch-nls-map.sh 101464753 [101464744 ...]
-# Makes ~/nls-maps/<map number>/ with info.json and tiles r<row>_c<col>.jpg (1024 x 1024 pieces of the map at SCALE).
+# Makes ~/nls-maps/<map number>/ with info.json and tiles r<row>_c<col>.jpg (512 x 512 pieces; the server allows at most 270,000 pixels per request of the map at SCALE).
 # SCALE=0.5 (default) gives half the scan's resolution, which is plenty for tracing; SCALE=1 for the full scan.
 # Then:  cd ~ && zip -r nls-maps.zip nls-maps   and send nls-maps.zip back.
 set -euo pipefail
-SCALE=${SCALE:-0.5}; OUT=${OUT:-$HOME/nls-maps}; PIECE=${PIECE:-1024}
+SCALE=${SCALE:-0.5}; OUT=${OUT:-$HOME/nls-maps}; PIECE=${PIECE:-512}
 for ID in "$@"; do
   D="$OUT/$ID"; mkdir -p "$D"; BASE="https://map-view.nls.uk/iiif/2/10146%2F$ID"
   curl -sSf "$BASE/info.json" -o "$D/info.json"
