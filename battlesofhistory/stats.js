@@ -23,18 +23,21 @@
   // every battle page added together; on any other page (a battle, the library, the gallery), that page's own visits.
   // Battle pages put it at the end of the top bar. Hidden until GoatCounter answers.
   const views = async path => {
-    try { const r = await fetch('https://' + CODE + '.goatcounter.com/counter/' + encodeURIComponent(path) + '.json'); if (!r.ok) return 0;
-      const d = await r.json(); return Number(String(d.count || '0').replace(/[^\d]/g, '')) || 0; } catch (e) { return 0; }
+    // 0 when GoatCounter has no visits for that page yet (it answers 404); null when it can't be reached at all.
+    try { const r = await fetch('https://' + CODE + '.goatcounter.com/counter/' + encodeURIComponent(path) + '.json'); if (r.status === 404) return 0; if (!r.ok) return null;
+      const d = await r.json(); return Number(String(d.count || '0').replace(/[^\d]/g, '')) || 0; } catch (e) { return null; }
   };
   const show = async () => {
     const here = pathFor(), home = here === '/battlesofhistory/';
     let n;
     if (home) { const folders = (window.BATTLES || []).map(b => b.folder);
-      n = (await Promise.all([here].concat(folders.map(f => '/battlesofhistory/' + f + '/')).map(views))).reduce((a, b) => a + b, 0); }
+      const all = await Promise.all([here].concat(folders.map(f => '/battlesofhistory/' + f + '/')).map(views));
+      n = all.every(c => c === null) ? null : all.reduce((a, b) => a + (b || 0), 0); }
     else n = await views(here);
-    if (!n) return;
+    if (n === null) return;   // shown even at 0 (a page nobody has visited yet), hidden only if GoatCounter can't be reached
+    if (!n) n = 1;            // this visit itself is on its way to GoatCounter, so count it
     const battle = !!document.getElementById('battle');
-    const el = document.createElement('div'); el.id = 'visits'; el.textContent = n.toLocaleString('en-US') + ' visits';
+    const el = document.createElement('div'); el.id = 'visits'; el.textContent = n.toLocaleString('en-US') + (n === 1 ? ' visit' : ' visits');
     el.title = home ? 'Visits to Battles of History' : 'Visits to this page';
     const top = battle && document.querySelector('header .top-actions'), bar = battle && document.querySelector('footer .bhbar');
     if (top) {   // battle pages: at the end of the top bar (the buttons that "Controls" shows and hides)
