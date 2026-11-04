@@ -8397,5 +8397,101 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "pet-sematary-1989-bluray",
+    "title": "Pet Sematary",
+    "year": 1989,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/pet-sematary-1989-bluray-1.jpg",
+    "photos": [
+      "images/pet-sematary-1989-bluray-1.jpg",
+      "images/pet-sematary-1989-bluray-2.jpg",
+      "images/pet-sematary-1989-bluray-3.jpg",
+      "images/pet-sematary-1989-bluray-4.jpg",
+      "images/pet-sematary-1989-bluray-5.jpg",
+      "images/pet-sematary-1989-bluray-6.jpg",
+      "images/pet-sematary-1989-bluray-7.jpg",
+      "images/pet-sematary-1989-bluray-8.jpg",
+      "images/pet-sematary-1989-bluray-9.jpg",
+      "images/pet-sematary-1989-bluray-10.jpg",
+      "images/pet-sematary-1989-bluray-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Pet%20Sematary%201989%20Blu-ray&campid=5339133571&customid=pet-sematary-1989-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Dale Midkiff, Fred Gwynne, Denise Crosby, Miko Hughes, Blaze Berdahl, Brad Greenquist",
+    "director": "Mary Lambert",
+    "producers": "Richard P. Rubinstein; co-producer Mitchell Galin; executive producer Tim Zinnemann",
+    "company": "Paramount Pictures / Warner Home Video (Canada)",
+    "titleNote": "Blu-ray / 1989",
+    "tagline": "Blu-ray / Stephen King / Fred Gwynne / Dale Midkiff / Horror / 1980s",
+    "desc": "Louis and Rachel Creed move their young family to a quiet house in rural Maine, next to a pet cemetery built on an ancient burial ground. Their neighbour Jud Crandall (Fred Gwynne) knows the cemetery's darkest secret, and when tragedy strikes the family, that secret brings back something that should have stayed buried. Stephen King wrote the screenplay from his own novel. Sometimes dead is better.",
+    "trivia": [
+      {
+        "heading": "King Wrote the Screenplay",
+        "text": "Stephen King adapted his own novel for the screen, and he makes a cameo as the minister at a funeral."
+      },
+      {
+        "heading": "Shot in Maine",
+        "text": "King insisted the film be shot in Maine, where the story is set, when he sold the rights. Filming took place around Ellsworth, Hancock, Bangor and Acadia National Park."
+      },
+      {
+        "heading": "Romero's Lost Version",
+        "text": "The rights were first sold to George A. Romero in 1984 for $10,000, but he dropped out because he was busy making Monkey Shines."
+      },
+      {
+        "heading": "The Ramones",
+        "text": "The Ramones wrote the song \"Pet Sematary\" for the film. It plays over the closing credits, and their \"Sheena Is a Punk Rocker\" is heard in an earlier scene."
+      },
+      {
+        "heading": "A Horror Hit",
+        "text": "Made for about $11.5 million, the film took in $57.5 million in the U.S. It was followed by Pet Sematary Two in 1992 and remade in 2019 with Jason Clarke and John Lithgow."
+      }
+    ],
+    "tidbits": [
+      "Stephen King adapted his own novel for the screen, and he makes a cameo as the minister at a funeral.",
+      "King insisted the film be shot in Maine, where the story is set, when he sold the rights. Filming took place around Ellsworth, Hancock, Bangor and Acadia National Park.",
+      "The rights were first sold to George A. Romero in 1984 for $10,000, but he dropped out because he was busy making Monkey Shines.",
+      "The Ramones wrote the song \"Pet Sematary\" for the film. It plays over the closing credits, and their \"Sheena Is a Punk Rocker\" is heard in an earlier scene.",
+      "Made for about $11.5 million, the film took in $57.5 million in the U.S. It was followed by Pet Sematary Two in 1992 and remade in 2019 with Jason Clarke and John Lithgow."
+    ],
+    "copies": [
+      {
+        "id": "pet-sematary-1989-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Paramount Canadian bilingual Blu-ray (Pet Sematary / Cimetière vivant)",
+        "photos": [
+          "images/pet-sematary-1989-bluray-1.jpg",
+          "images/pet-sematary-1989-bluray-2.jpg",
+          "images/pet-sematary-1989-bluray-3.jpg",
+          "images/pet-sematary-1989-bluray-4.jpg",
+          "images/pet-sematary-1989-bluray-5.jpg",
+          "images/pet-sematary-1989-bluray-6.jpg",
+          "images/pet-sematary-1989-bluray-7.jpg",
+          "images/pet-sematary-1989-bluray-8.jpg",
+          "images/pet-sematary-1989-bluray-9.jpg",
+          "images/pet-sematary-1989-bluray-10.jpg",
+          "images/pet-sematary-1989-bluray-11.jpg"
+        ],
+        "gif": "images/pet-sematary-1989-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and bilingual cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Paramount Pictures (2012), distributed in Canada by Warner Home Video, UPC 883929316694. Licensed for sale only in Canada. 1989, colour, 102 minutes, 1080p high definition. English 5.1 DTS-HD Master Audio; French 2.0 stereo, Spanish mono and Portuguese mono Dolby Digital. Subtitles: English, English SDH, French, Spanish, Portuguese. Rated 18A (Canada), R (US). Special features: commentary by director Mary Lambert; Stephen King Territory; The Characters; Filming the Horror."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
