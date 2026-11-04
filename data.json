@@ -6042,5 +6042,101 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "stargate-1994-bluray",
+    "title": "Stargate",
+    "year": 1994,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/stargate-1994-bluray-1.jpg",
+    "photos": [
+      "images/stargate-1994-bluray-1.jpg",
+      "images/stargate-1994-bluray-2.jpg",
+      "images/stargate-1994-bluray-3.jpg",
+      "images/stargate-1994-bluray-4.jpg",
+      "images/stargate-1994-bluray-5.jpg",
+      "images/stargate-1994-bluray-6.jpg",
+      "images/stargate-1994-bluray-7.jpg",
+      "images/stargate-1994-bluray-8.jpg",
+      "images/stargate-1994-bluray-9.jpg",
+      "images/stargate-1994-bluray-10.jpg",
+      "images/stargate-1994-bluray-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stargate%2015th%20Anniversary%20Blu-ray&campid=5339133571&customid=stargate-1994-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Kurt Russell, James Spader, Jaye Davidson, Viveca Lindfors, Alexis Cruz, Mili Avital",
+    "director": "Roland Emmerich",
+    "producers": "Joel B. Michaels, Oliver Eberle, Dean Devlin; executive producer Mario Kassar",
+    "company": "Le StudioCanal+ / Centropolis Film / Carolco Pictures / Lionsgate / Maple Pictures (Canada)",
+    "titleNote": "15th Anniversary Edition / Blu-ray / 1994",
+    "tagline": "Blu-ray / 15th Anniversary Edition / Slipcover / Kurt Russell / James Spader / Sci-Fi / 1990s",
+    "desc": "The original epic movie from director Roland Emmerich (Independence Day) that spawned a galaxy of fans worldwide, Stargate remains a thrilling adventure through space and time that is not to be missed. Now, for the first time, see and hear the movie like never before, with multiple versions of the film presented in 1080p high definition and all-new 7.1 DTS-HD Master Audio, and go beyond the gate with special features that capture how Stargate unlocked a massive franchise universe and became a must-see modern sci-fi classic.",
+    "trivia": [
+      {
+        "heading": "Pyramids Meet Spaceships",
+        "text": "Roland Emmerich had long wanted to link Egypt's pyramids with alien spaceships; Dean Devlin's \"Lawrence of Arabia in outer space\" idea merged with it, and the Stargate became the link."
+      },
+      {
+        "heading": "The Film That Unlocked a Universe",
+        "text": "Its success led to Stargate SG-1, which premiered in 1997 and ran for ten years, spawning Stargate Atlantis, Stargate Universe, an animated series and two TV movies."
+      },
+      {
+        "heading": "A Hit on a $55 Million Budget",
+        "text": "Released on October 28, 1994, Stargate grossed $196.5 million worldwide."
+      },
+      {
+        "heading": "Desert Shoot in Arizona",
+        "text": "The desert planet Abydos was filmed in the July heat of the sand dunes outside Yuma, Arizona; interior sets were built in Howard Hughes' former Spruce Goose hangar in Long Beach."
+      },
+      {
+        "heading": "Ra's Million-Dollar Ask",
+        "text": "Jaye Davidson reportedly asked for $1 million to play the sun god Ra; his glowing eyes and distorted voice were added in post-production."
+      }
+    ],
+    "tidbits": [
+      "Roland Emmerich had long wanted to link Egypt's pyramids with alien spaceships; Dean Devlin's \"Lawrence of Arabia in outer space\" idea merged with it, and the Stargate became the link.",
+      "Its success led to Stargate SG-1, which premiered in 1997 and ran for ten years, spawning Stargate Atlantis, Stargate Universe, an animated series and two TV movies.",
+      "Released on October 28, 1994, Stargate grossed $196.5 million worldwide.",
+      "The desert planet Abydos was filmed in the July heat of the sand dunes outside Yuma, Arizona; interior sets were built in Howard Hughes' former Spruce Goose hangar in Long Beach.",
+      "Jaye Davidson reportedly asked for $1 million to play the sun god Ra; his glowing eyes and distorted voice were added in post-production."
+    ],
+    "copies": [
+      {
+        "id": "stargate-1994-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "15th Anniversary Edition, Maple Pictures Canadian Blu-ray with holographic slipcover, bilingual (La porte des étoiles)",
+        "photos": [
+          "images/stargate-1994-bluray-1.jpg",
+          "images/stargate-1994-bluray-2.jpg",
+          "images/stargate-1994-bluray-3.jpg",
+          "images/stargate-1994-bluray-4.jpg",
+          "images/stargate-1994-bluray-5.jpg",
+          "images/stargate-1994-bluray-6.jpg",
+          "images/stargate-1994-bluray-7.jpg",
+          "images/stargate-1994-bluray-8.jpg",
+          "images/stargate-1994-bluray-9.jpg",
+          "images/stargate-1994-bluray-10.jpg",
+          "images/stargate-1994-bluray-11.jpg"
+        ],
+        "gif": "images/stargate-1994-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Case Very Good; case art clean. Slipcover: edge and corner wear, a crease across the special-features panel on the back, and the barcode square on the back is cut out (white).",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Maple Pictures / Lionsgate Blu-ray (Canada, 2009), catalogue 20748, UPC 057373207482, Region A. Theatrical and uncut extended versions, approx. 130 minutes, 1080p 2.40:1 widescreen. English 7.1 DTS-HD Master Audio, French 5.1 Dolby Digital; English and Spanish subtitles, English SDH. Rated 14A (Canada). Special features (over 4 hours): Deciphering the Gate: Concepts and Casting; Opening the Gate: The Making of the Movie; Passing Through the Gate: The Legacy; gag reel; Master of the Stargate trivia challenge; BonusView picture-in-picture Stargate Ultimate Knowledge; Is There a Stargate?; The Making of Stargate documentary; commentary with Roland Emmerich and Dean Devlin."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
