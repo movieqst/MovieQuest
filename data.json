@@ -9195,5 +9195,108 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "creepshow-2-1987-bluray",
+    "title": "Creepshow 2",
+    "year": 1987,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/creepshow-2-1987-bluray-1.jpg",
+    "photos": [
+      "images/creepshow-2-1987-bluray-1.jpg",
+      "images/creepshow-2-1987-bluray-2.jpg",
+      "images/creepshow-2-1987-bluray-3.jpg",
+      "images/creepshow-2-1987-bluray-4.jpg",
+      "images/creepshow-2-1987-bluray-5.jpg",
+      "images/creepshow-2-1987-bluray-6.jpg",
+      "images/creepshow-2-1987-bluray-7.jpg",
+      "images/creepshow-2-1987-bluray-8.jpg",
+      "images/creepshow-2-1987-bluray-9.jpg",
+      "images/creepshow-2-1987-bluray-10.jpg",
+      "images/creepshow-2-1987-bluray-11.jpg",
+      "images/creepshow-2-1987-bluray-12.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Creepshow%202%20Blu-ray&campid=5339133571&customid=creepshow-2-1987-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Lois Chiles, George Kennedy, Dorothy Lamour, Tom Savini, Daniel Beer, Page Hannah, Tom Wright",
+    "director": "Michael Gornick",
+    "producers": "David Ball; executive producer Richard P. Rubinstein; associate producer Mitchell Galin",
+    "company": "New World Pictures / Laurel / Lakeshore / RLJ Entertainment / Image Entertainment",
+    "titleNote": "Blu-ray / 1987",
+    "tagline": "Blu-ray / Stephen King / George A. Romero / Tom Savini / Horror Anthology / 1980s",
+    "desc": "The rotting Creep himself is back with three new gruesome tales of horror. A cigar store wooden Indian comes to life to avenge its owner's brutal murder in \"Old Chief Wood'nhead\". Four teenagers become the target of a terrifying, man-eating oil slick in \"The Raft\". And in \"The Hitchhiker\", a woman keeps running into the same mutilated man on a lonely road. Stephen King and George A. Romero welcome you to Creepshow 2.",
+    "trivia": [
+      {
+        "heading": "King Hitches a Ride",
+        "text": "Stephen King makes a cameo as the truck driver in \"The Hitchhiker\" segment."
+      },
+      {
+        "heading": "Romero Wrote It",
+        "text": "George A. Romero, who directed the original Creepshow, wrote the screenplay from King's stories. Michael Gornick, the first film's cinematographer, took over as director."
+      },
+      {
+        "heading": "Savini Is the Creep",
+        "text": "Make-up effects legend Tom Savini plays The Creep in the wraparound scenes."
+      },
+      {
+        "heading": "Two Lost Tales",
+        "text": "Five stories were planned, but \"Pinfall\" and \"Cat from Hell\" were cut for budget reasons. \"Cat from Hell\" later turned up in Tales from the Darkside: The Movie (1990)."
+      },
+      {
+        "heading": "Dorothy Lamour's Last Film",
+        "text": "Hollywood star Dorothy Lamour plays Martha Spruce in \"Old Chief Wood'nhead\", her final film role."
+      },
+      {
+        "heading": "A Low-Budget Hit",
+        "text": "Made for about $3.5 million, Creepshow 2 took in about $14 million at the box office."
+      }
+    ],
+    "tidbits": [
+      "Stephen King makes a cameo as the truck driver in \"The Hitchhiker\" segment.",
+      "George A. Romero, who directed the original Creepshow, wrote the screenplay from King's stories. Michael Gornick, the first film's cinematographer, took over as director.",
+      "Make-up effects legend Tom Savini plays The Creep in the wraparound scenes.",
+      "Five stories were planned, but \"Pinfall\" and \"Cat from Hell\" were cut for budget reasons. \"Cat from Hell\" later turned up in Tales from the Darkside: The Movie (1990).",
+      "Hollywood star Dorothy Lamour plays Martha Spruce in \"Old Chief Wood'nhead\", her final film role.",
+      "Made for about $3.5 million, Creepshow 2 took in about $14 million at the box office."
+    ],
+    "copies": [
+      {
+        "id": "creepshow-2-1987-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "RLJ Entertainment / Image / Lakeshore Blu-ray (LAK8636BD)",
+        "photos": [
+          "images/creepshow-2-1987-bluray-1.jpg",
+          "images/creepshow-2-1987-bluray-2.jpg",
+          "images/creepshow-2-1987-bluray-3.jpg",
+          "images/creepshow-2-1987-bluray-4.jpg",
+          "images/creepshow-2-1987-bluray-5.jpg",
+          "images/creepshow-2-1987-bluray-6.jpg",
+          "images/creepshow-2-1987-bluray-7.jpg",
+          "images/creepshow-2-1987-bluray-8.jpg",
+          "images/creepshow-2-1987-bluray-9.jpg",
+          "images/creepshow-2-1987-bluray-10.jpg",
+          "images/creepshow-2-1987-bluray-11.jpg",
+          "images/creepshow-2-1987-bluray-12.jpg"
+        ],
+        "gif": "images/creepshow-2-1987-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "RLJ Entertainment / Image Entertainment / Lakeshore Entertainment Blu-ray (2013), catalogue LAK8636BD, UPC 014381863659. Approx. 89 minutes, colour, 1080p high-definition widescreen 1.85:1. Audio English DTS-HD Master Audio stereo; English SDH subtitles. Rated R. Made in the USA."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
