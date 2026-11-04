@@ -5036,5 +5036,97 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "seven-1995-bluray",
+    "title": "Seven",
+    "year": 1995,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/seven-1995-bluray-1.jpg",
+    "photos": [
+      "images/seven-1995-bluray-1.jpg",
+      "images/seven-1995-bluray-2.jpg",
+      "images/seven-1995-bluray-3.jpg",
+      "images/seven-1995-bluray-4.jpg",
+      "images/seven-1995-bluray-5.jpg",
+      "images/seven-1995-bluray-6.jpg",
+      "images/seven-1995-bluray-7.jpg",
+      "images/seven-1995-bluray-8.jpg",
+      "images/seven-1995-bluray-9.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Seven%20Se7en%20Blu-ray%20Brad%20Pitt&campid=5339133571&customid=seven-1995-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Brad Pitt, Morgan Freeman, Gwyneth Paltrow, R. Lee Ermey, John C. McGinley, Richard Roundtree",
+    "director": "David Fincher",
+    "producers": "Arnold Kopelson, Phyllis Carlyle; executive producers Gianni Nunnari, Dan Kolsrud, Anne Kopelson",
+    "company": "New Line Cinema / Arnold Kopelson Productions / Alliance Films (Canada)",
+    "titleNote": "Se7en / Blu-ray / 1995",
+    "tagline": "Blu-ray / Widescreen / Brad Pitt / Morgan Freeman / David Fincher / Thriller / 1990s",
+    "desc": "Brad Pitt (Ocean's 11, Fight Club) and Morgan Freeman (The Sum of All Fears, Kiss the Girls) star in a searing psychological thriller about two detectives on the trail of a vicious serial killer who chooses his victims according to the seven deadly sins. This riveting classic also stars Academy Award winner Gwyneth Paltrow and is directed by David Fincher (The Panic Room, Fight Club).",
+    "trivia": [
+      {
+        "heading": "Written at Tower Records",
+        "text": "Andrew Kevin Walker wrote Seven while working at a Tower Records store in New York City, a time he later described as depressing."
+      },
+      {
+        "heading": "Pitt Fought for the Ending",
+        "text": "Producers pushed for a softer finale, but Brad Pitt insisted on keeping the original 'what's in the box' ending and refused to change it after test screenings."
+      },
+      {
+        "heading": "A Real Injury on Set",
+        "text": "Pitt slipped during the rain-soaked chase and put his arm through a car windshield; the cast he wore was written into the script."
+      },
+      {
+        "heading": "The Famous Opening Titles",
+        "text": "Kyle Cooper's scratchy, journal-filled title sequence, set to a Nine Inch Nails remix, was hugely influential and is still studied by designers."
+      },
+      {
+        "heading": "Beat Showgirls",
+        "text": "Seven opened on September 22, 1995, the same day as Showgirls, and topped it; it went on to earn over $327 million worldwide."
+      }
+    ],
+    "tidbits": [
+      "Andrew Kevin Walker wrote Seven while working at a Tower Records store in New York City, a time he later described as depressing.",
+      "Producers pushed for a softer finale, but Brad Pitt insisted on keeping the original 'what's in the box' ending and refused to change it after test screenings.",
+      "Pitt slipped during the rain-soaked chase and put his arm through a car windshield; the cast he wore was written into the script.",
+      "Kyle Cooper's scratchy, journal-filled title sequence, set to a Nine Inch Nails remix, was hugely influential and is still studied by designers.",
+      "Seven opened on September 22, 1995, the same day as Showgirls, and topped it; it went on to earn over $327 million worldwide."
+    ],
+    "copies": [
+      {
+        "id": "seven-1995-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Alliance Films Canadian Blu-ray, bilingual (Sept), reversible cover",
+        "photos": [
+          "images/seven-1995-bluray-1.jpg",
+          "images/seven-1995-bluray-2.jpg",
+          "images/seven-1995-bluray-3.jpg",
+          "images/seven-1995-bluray-4.jpg",
+          "images/seven-1995-bluray-5.jpg",
+          "images/seven-1995-bluray-6.jpg",
+          "images/seven-1995-bluray-7.jpg",
+          "images/seven-1995-bluray-8.jpg",
+          "images/seven-1995-bluray-9.jpg"
+        ],
+        "gif": "images/seven-1995-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Standard blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None. The cover is reversible (French artwork on the inside).",
+          "notes": "Alliance Films / New Line Blu-ray (Canada, 2009), catalogue 108599, UPC 065935823933, Region A. Approx. 127 minutes, 1080i 16x9 1.78:1. Audio English 5.1 DTS-HD Master Audio and 5.1 Dolby Digital, French 2.0 Dolby Surround; no subtitles. Rated 18A (Canada). No special features listed."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
