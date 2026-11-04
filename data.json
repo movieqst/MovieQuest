@@ -10415,5 +10415,103 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "trailer-park-boys-season-6-dvd",
+    "title": "Trailer Park Boys: The Complete Sixth Season",
+    "year": 2006,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/trailer-park-boys-season-6-dvd-1.jpg",
+    "photos": [
+      "images/trailer-park-boys-season-6-dvd-1.jpg",
+      "images/trailer-park-boys-season-6-dvd-2.jpg",
+      "images/trailer-park-boys-season-6-dvd-3.jpg",
+      "images/trailer-park-boys-season-6-dvd-4.jpg",
+      "images/trailer-park-boys-season-6-dvd-5.jpg",
+      "images/trailer-park-boys-season-6-dvd-6.jpg",
+      "images/trailer-park-boys-season-6-dvd-7.jpg",
+      "images/trailer-park-boys-season-6-dvd-8.jpg",
+      "images/trailer-park-boys-season-6-dvd-9.jpg",
+      "images/trailer-park-boys-season-6-dvd-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Trailer%20Park%20Boys%20Sixth%20Season%20DVD&campid=5339133571&customid=trailer-park-boys-season-6-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2006",
+    "createdBy": "Mike Clattenburg",
+    "starring": "Robb Wells, John Paul Tremblay, Mike Smith, John Dunsworth, Patrick Roach, Lucy DeCoutere, Sarah Dunsworth, Cory Bowles, Mike Jackson, Jonathan Torrens",
+    "director": "Mike Clattenburg",
+    "producers": "Mike Clattenburg, Barrie Dunn, Michael Volpe",
+    "company": "Trailer Park Productions / Topsail Productions / Showcase / Alliance Atlantis",
+    "titleNote": "Complete Season 6 / Deluxe 2-Disc Set / 2006",
+    "tagline": "DVD / Complete Sixth Season / 2 Discs / Robb Wells / John Paul Tremblay / Mike Smith / Canadian TV / 2000s",
+    "desc": "In season six, the Sunnyvale denizens are up to their usual hijinks. Bubbles decides to go legit and opens a feline dream vacation area and theme park called \"Kittyland\". Ricky becomes a garbage man and enlists Trevor to move people's lawn furniture to the curb to be collected, and Julian gets into the real estate business. Randy gets fed up with Lahey's drinking and becomes the Associate Trailer Park Supervisor, Cory and Trevor open a \"Convenients Store\", and Ray gets kicked out of the park for living in his old rig. Things get unhinged when Mr. Lahey finds super 8 footage from Halloween 1977 proving the Boys caused him to be kicked off the police force.",
+    "trivia": [
+      {
+        "heading": "Welcome to Kittyland",
+        "text": "This season Bubbles tries to go legit by opening Kittyland, a feline dream vacation area and theme park for cats."
+      },
+      {
+        "heading": "Lahey's Halloween Tape",
+        "text": "The season's big twist comes when Mr. Lahey finds super 8 footage from Halloween 1977 that proves Ricky, Bubbles and Julian got him kicked off the police force."
+      },
+      {
+        "heading": "A Park of Their Own",
+        "text": "Like Season 5, this season was filmed on the show's own Sunnyvale set in Dartmouth, Nova Scotia, after the production stopped shooting in real trailer parks."
+      },
+      {
+        "heading": "It Started with One Last Shot",
+        "text": "Creator Mike Clattenburg first put early versions of Julian and Ricky in his 1998 short film One Last Shot, which was entirely improvised."
+      },
+      {
+        "heading": "Back on Netflix",
+        "text": "The show ran seven seasons on Showcase, then Netflix revived it in 2014 for five more seasons, specials, films and an animated series."
+      }
+    ],
+    "tidbits": [
+      "This season Bubbles tries to go legit by opening Kittyland, a feline dream vacation area and theme park for cats.",
+      "The season's big twist comes when Mr. Lahey finds super 8 footage from Halloween 1977 that proves Ricky, Bubbles and Julian got him kicked off the police force.",
+      "Like Season 5, this season was filmed on the show's own Sunnyvale set in Dartmouth, Nova Scotia, after the production stopped shooting in real trailer parks.",
+      "Creator Mike Clattenburg first put early versions of Julian and Ricky in his 1998 short film One Last Shot, which was entirely improvised.",
+      "The show ran seven seasons on Showcase, then Netflix revived it in 2014 for five more seasons, specials, films and an animated series."
+    ],
+    "copies": [
+      {
+        "id": "trailer-park-boys-season-6-dvd-1",
+        "added": "2026-11-04",
+        "format": "DVD",
+        "edition": "Alliance Atlantis Deluxe 2-Disc Set (101196)",
+        "photos": [
+          "images/trailer-park-boys-season-6-dvd-1.jpg",
+          "images/trailer-park-boys-season-6-dvd-2.jpg",
+          "images/trailer-park-boys-season-6-dvd-3.jpg",
+          "images/trailer-park-boys-season-6-dvd-4.jpg",
+          "images/trailer-park-boys-season-6-dvd-5.jpg",
+          "images/trailer-park-boys-season-6-dvd-6.jpg",
+          "images/trailer-park-boys-season-6-dvd-7.jpg",
+          "images/trailer-park-boys-season-6-dvd-8.jpg",
+          "images/trailer-park-boys-season-6-dvd-9.jpg",
+          "images/trailer-park-boys-season-6-dvd-10.jpg"
+        ],
+        "gif": "images/trailer-park-boys-season-6-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Black DVD case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Atlantis, distributed in Canada by Motion Picture Distribution LP (2007), catalogue 101196, UPC 065935802563, authorized for sale in Canada only. 2 discs (Disc 1 and Disc 2, both 101196), approx. 3 h 25 min, full screen 1.33:1, English 5.1 and 2.0 Dolby Digital. Rated 18A (Canada). Bonus features include alternate takes, extended takes, lost interviews, deleted scenes, \"TPB Fun\", the featurette \"Don't Cry Over Spilled Piss Jugs\" and more."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
