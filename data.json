@@ -4946,5 +4946,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "good-will-hunting-1997-bluray",
+    "title": "Good Will Hunting",
+    "year": 1997,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/good-will-hunting-1997-bluray-1.jpg",
+    "photos": [
+      "images/good-will-hunting-1997-bluray-1.jpg",
+      "images/good-will-hunting-1997-bluray-2.jpg",
+      "images/good-will-hunting-1997-bluray-3.jpg",
+      "images/good-will-hunting-1997-bluray-4.jpg",
+      "images/good-will-hunting-1997-bluray-5.jpg",
+      "images/good-will-hunting-1997-bluray-6.jpg",
+      "images/good-will-hunting-1997-bluray-7.jpg",
+      "images/good-will-hunting-1997-bluray-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Good%20Will%20Hunting%20Blu-ray&campid=5339133571&customid=good-will-hunting-1997-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Robin Williams, Matt Damon, Ben Affleck, Minnie Driver, Stellan Skarsgård, Casey Affleck, Cole Hauser",
+    "director": "Gus Van Sant",
+    "producers": "Lawrence Bender; executive producers Bob Weinstein, Harvey Weinstein, Jonathan Gordon, Su Armstrong; co-executive producers Kevin Smith, Scott Mosier",
+    "company": "Miramax Films / A Band Apart / Lawrence Bender Productions / Alliance Films (Canada)",
+    "titleNote": "Blu-ray / 1997",
+    "tagline": "Blu-ray / Widescreen / Robin Williams / Matt Damon / Ben Affleck / 2 Oscar Winner / 1990s",
+    "desc": "From Gus Van Sant, the acclaimed director of Milk. This triumphant story was nominated for 9 Academy Awards, winning Oscars for Robin Williams and hot newcomers Matt Damon and Ben Affleck. Will Hunting is a headstrong, working-class genius. After one too many run-ins with the law, Will's last chance is a psychology professor. Experience this powerful and unforgettable movie.",
+    "trivia": [
+      {
+        "heading": "Two Oscars from Nine Nods",
+        "text": "The film earned nine Academy Award nominations, including Best Picture, and won two: Best Supporting Actor for Robin Williams and Best Original Screenplay for Ben Affleck and Matt Damon."
+      },
+      {
+        "heading": "It Began as a Thriller",
+        "text": "Damon and Affleck first wrote it as a story about a math genius and his buddy outsmarting the government, before it became a character drama."
+      },
+      {
+        "heading": "Kevin Smith Got It Made",
+        "text": "After Castle Rock wouldn't let Damon and Affleck direct, Kevin Smith (Clerks, Chasing Amy) took the script to Miramax, which bought it; he's credited as a co-executive producer."
+      },
+      {
+        "heading": "Robin Williams' Bar",
+        "text": "Robin Williams picked Boston's L Street Tavern as a location, even though his character never appears in those scenes."
+      },
+      {
+        "heading": "A Memorial Bench",
+        "text": "The Boston Public Garden bench from Will and Sean's famous scene became an informal memorial to Robin Williams after his death in 2014."
+      }
+    ],
+    "tidbits": [
+      "The film earned nine Academy Award nominations, including Best Picture, and won two: Best Supporting Actor for Robin Williams and Best Original Screenplay for Ben Affleck and Matt Damon.",
+      "Damon and Affleck first wrote it as a story about a math genius and his buddy outsmarting the government, before it became a character drama.",
+      "After Castle Rock wouldn't let Damon and Affleck direct, Kevin Smith (Clerks, Chasing Amy) took the script to Miramax, which bought it; he's credited as a co-executive producer.",
+      "Robin Williams picked Boston's L Street Tavern as a location, even though his character never appears in those scenes.",
+      "The Boston Public Garden bench from Will and Sean's famous scene became an informal memorial to Robin Williams after his death in 2014."
+    ],
+    "copies": [
+      {
+        "id": "good-will-hunting-1997-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Alliance Films Canadian Blu-ray, bilingual (Le destin de Will Hunting), reversible cover",
+        "photos": [
+          "images/good-will-hunting-1997-bluray-1.jpg",
+          "images/good-will-hunting-1997-bluray-2.jpg",
+          "images/good-will-hunting-1997-bluray-3.jpg",
+          "images/good-will-hunting-1997-bluray-4.jpg",
+          "images/good-will-hunting-1997-bluray-5.jpg",
+          "images/good-will-hunting-1997-bluray-6.jpg",
+          "images/good-will-hunting-1997-bluray-7.jpg",
+          "images/good-will-hunting-1997-bluray-8.jpg"
+        ],
+        "gif": "images/good-will-hunting-1997-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Standard blue Blu-ray case, clean. A retailer's barcode sticker is stuck over the original barcode on the back.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None. The cover is reversible (French artwork on the inside).",
+          "notes": "Alliance Films / Miramax Blu-ray (Canada, 2008), catalogue 108824, UPC 065935824503, Region A. Approx. 126 minutes, 1080i 16x9 1.85:1. Audio English 5.1 Dolby Digital and 5.1 DTS-HD Master Audio, French 5.1 Dolby Digital. Rated 14A (Canada). Bilingual English/French packaging."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
