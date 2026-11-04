@@ -5493,5 +5493,96 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-adventures-of-tintin-2011-bluray-3d",
+    "title": "The Adventures of Tintin",
+    "year": 2011,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-adventures-of-tintin-2011-bluray-3d-1.jpg",
+    "photos": [
+      "images/the-adventures-of-tintin-2011-bluray-3d-1.jpg",
+      "images/the-adventures-of-tintin-2011-bluray-3d-2.jpg",
+      "images/the-adventures-of-tintin-2011-bluray-3d-3.jpg",
+      "images/the-adventures-of-tintin-2011-bluray-3d-4.jpg",
+      "images/the-adventures-of-tintin-2011-bluray-3d-5.jpg",
+      "images/the-adventures-of-tintin-2011-bluray-3d-6.jpg",
+      "images/the-adventures-of-tintin-2011-bluray-3d-7.jpg",
+      "images/the-adventures-of-tintin-2011-bluray-3d-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Adventures%20of%20Tintin%20Blu-ray%203D&campid=5339133571&customid=the-adventures-of-tintin-2011-bluray-3d",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Jamie Bell, Andy Serkis, Daniel Craig, Nick Frost, Simon Pegg, Toby Jones",
+    "director": "Steven Spielberg",
+    "producers": "Steven Spielberg, Peter Jackson, Kathleen Kennedy",
+    "company": "Paramount Pictures / Columbia Pictures / Amblin Entertainment / WingNut Films / Nickelodeon Movies",
+    "titleNote": "Limited 3D Edition / Blu-ray 3D + Blu-ray / 2011",
+    "tagline": "Blu-ray 3D / Blu-ray / Steven Spielberg / Peter Jackson / Animated / Family / 2010s",
+    "desc": "From Academy Award-winning filmmakers Steven Spielberg and Peter Jackson comes the epic adventures of Tintin. Racing to uncover the secrets of a sunken ship that may hold a vast fortune, but also an ancient curse, Tintin and his loyal dog Snowy embark on an action-packed journey that critics are calling fun for the whole family. Starring Jamie Bell, Andy Serkis and Daniel Craig.",
+    "trivia": [
+      {
+        "heading": "Three Books in One",
+        "text": "The story combines Hergé's The Crab with the Golden Claws (1941), The Secret of the Unicorn (1943) and Red Rackham's Treasure (1944)."
+      },
+      {
+        "heading": "Spielberg Meets Hergé",
+        "text": "Hergé and Spielberg admired each other's work; Spielberg took up the film rights after Hergé's death in 1983 and re-optioned them in 2002."
+      },
+      {
+        "heading": "A Golden Globe First",
+        "text": "It was the first motion-capture film, and the first non-Pixar film, to win the Golden Globe for Best Animated Feature."
+      },
+      {
+        "heading": "An Oscar Nod for Williams",
+        "text": "John Williams' score earned an Academy Award nomination for Best Original Score."
+      },
+      {
+        "heading": "Spielberg and Jackson",
+        "text": "Peter Jackson co-produced the film with Spielberg and Kathleen Kennedy; Weta Digital handled the visual effects and animation."
+      }
+    ],
+    "tidbits": [
+      "The story combines Hergé's The Crab with the Golden Claws (1941), The Secret of the Unicorn (1943) and Red Rackham's Treasure (1944).",
+      "Hergé and Spielberg admired each other's work; Spielberg took up the film rights after Hergé's death in 1983 and re-optioned them in 2002.",
+      "It was the first motion-capture film, and the first non-Pixar film, to win the Golden Globe for Best Animated Feature.",
+      "John Williams' score earned an Academy Award nomination for Best Original Score.",
+      "Peter Jackson co-produced the film with Spielberg and Kathleen Kennedy; Weta Digital handled the visual effects and animation."
+    ],
+    "copies": [
+      {
+        "id": "the-adventures-of-tintin-2011-bluray-3d-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Limited 3D Edition (Canadian, bilingual): Blu-ray 3D and Blu-ray discs with slipcover",
+        "photos": [
+          "images/the-adventures-of-tintin-2011-bluray-3d-1.jpg",
+          "images/the-adventures-of-tintin-2011-bluray-3d-2.jpg",
+          "images/the-adventures-of-tintin-2011-bluray-3d-3.jpg",
+          "images/the-adventures-of-tintin-2011-bluray-3d-4.jpg",
+          "images/the-adventures-of-tintin-2011-bluray-3d-5.jpg",
+          "images/the-adventures-of-tintin-2011-bluray-3d-6.jpg",
+          "images/the-adventures-of-tintin-2011-bluray-3d-7.jpg",
+          "images/the-adventures-of-tintin-2011-bluray-3d-8.jpg"
+        ],
+        "gif": "images/the-adventures-of-tintin-2011-bluray-3d-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Slipcover Very Good, with light edge wear. Comes as shown: the slipcover and the two Blu-ray discs in paper sleeves.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Paramount Home Entertainment Canada (2012), UPC 097361461663, Region A. Disc 1: Blu-ray 3D feature film. Disc 2: Blu-ray feature film plus over 90 minutes of special features. The DVD and the digital copy from the original 3-disc set are not included. Approx. 106 minutes, colour, 1080p widescreen. English DTS-HD Master Audio 7.1; French and Spanish Dolby Digital 5.1; English SDH, French and Spanish subtitles. Rated PG (US and Canada). 3D playback needs a 3D TV, 3D Blu-ray player and 3D glasses; the 2D Blu-ray plays on any Blu-ray player."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
