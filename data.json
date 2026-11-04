@@ -7364,5 +7364,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "sully-2016-bluray",
+    "title": "Sully",
+    "year": 2016,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/sully-2016-bluray-1.jpg",
+    "photos": [
+      "images/sully-2016-bluray-1.jpg",
+      "images/sully-2016-bluray-2.jpg",
+      "images/sully-2016-bluray-3.jpg",
+      "images/sully-2016-bluray-4.jpg",
+      "images/sully-2016-bluray-5.jpg",
+      "images/sully-2016-bluray-6.jpg",
+      "images/sully-2016-bluray-7.jpg",
+      "images/sully-2016-bluray-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Sully%20Blu-ray%20Tom%20Hanks&campid=5339133571&customid=sully-2016-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Tom Hanks, Aaron Eckhart, Laura Linney",
+    "director": "Clint Eastwood",
+    "producers": "Clint Eastwood, Frank Marshall, Allyn Stewart, Tim Moore",
+    "company": "Warner Bros. Pictures / Village Roadshow Pictures / Malpaso / The Kennedy/Marshall Company / Flashlight Films",
+    "titleNote": "Blu-ray / 2016",
+    "tagline": "Blu-ray / Widescreen / Tom Hanks / Aaron Eckhart / Clint Eastwood / True Story / 2010s",
+    "desc": "On January 15, 2009, Captain Chesley \"Sully\" Sullenberger (Tom Hanks) and his copilot (Aaron Eckhart) begin a routine flight that turns terrifying. Sully pulls off the impossible and glides his disabled plane onto the frigid waters of the Hudson River, saving the lives of all 155 aboard. Even though he's heralded for his unprecedented feat of aviation skill, an all-out investigation threatens to destroy Sully's reputation and career.",
+    "trivia": [
+      {
+        "heading": "155 Souls Saved",
+        "text": "The film retells the January 15, 2009 landing of US Airways Flight 1549 on the Hudson River, in which all 155 people aboard survived."
+      },
+      {
+        "heading": "From Sully's Own Book",
+        "text": "It's based on Highest Duty, the 2009 memoir by Captain Chesley \"Sully\" Sullenberger with Jeffrey Zaslow."
+      },
+      {
+        "heading": "Shot for IMAX",
+        "text": "Sully was billed as the first feature shot almost entirely with IMAX-certified digital cameras."
+      },
+      {
+        "heading": "An Oscar Nod",
+        "text": "The film was nominated for the Academy Award for Best Sound Editing, and both the AFI and the National Board of Review named it one of 2016's ten best films."
+      },
+      {
+        "heading": "A $240 Million Hit",
+        "text": "Made for about $60 million, Sully earned about $240.8 million worldwide."
+      }
+    ],
+    "tidbits": [
+      "The film retells the January 15, 2009 landing of US Airways Flight 1549 on the Hudson River, in which all 155 people aboard survived.",
+      "It's based on Highest Duty, the 2009 memoir by Captain Chesley \"Sully\" Sullenberger with Jeffrey Zaslow.",
+      "Sully was billed as the first feature shot almost entirely with IMAX-certified digital cameras.",
+      "The film was nominated for the Academy Award for Best Sound Editing, and both the AFI and the National Board of Review named it one of 2016's ten best films.",
+      "Made for about $60 million, Sully earned about $240.8 million worldwide."
+    ],
+    "copies": [
+      {
+        "id": "sully-2016-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Warner Bros. Canadian Blu-ray, bilingual (version française incluse)",
+        "photos": [
+          "images/sully-2016-bluray-1.jpg",
+          "images/sully-2016-bluray-2.jpg",
+          "images/sully-2016-bluray-3.jpg",
+          "images/sully-2016-bluray-4.jpg",
+          "images/sully-2016-bluray-5.jpg",
+          "images/sully-2016-bluray-6.jpg",
+          "images/sully-2016-bluray-7.jpg",
+          "images/sully-2016-bluray-8.jpg"
+        ],
+        "gif": "images/sully-2016-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Batman video game promo insert.",
+          "notes": "Warner Bros. Entertainment Canada Blu-ray (2016), catalogue 3000071338, UPC 883929551514. Approx. 96 minutes, 1080p 16x9 2.4:1. Audio English Dolby Atmos, English Descriptive Audio 5.1, French (Quebec) and Spanish Dolby Digital 5.1; subtitles English SDH, French, Spanish. Rated PG (Canada) / G (Quebec) / PG-13 (US). Special features: Sully Sullenberger: The Man Behind the Miracle; Moment by Moment: Averting Disaster on the Hudson; Neck Deep in the Hudson: Shooting Sully."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
