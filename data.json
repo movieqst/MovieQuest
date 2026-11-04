@@ -9815,5 +9815,104 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "it-2017-bluray",
+    "title": "IT",
+    "year": 2017,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/it-2017-bluray-1.jpg",
+    "photos": [
+      "images/it-2017-bluray-1.jpg",
+      "images/it-2017-bluray-2.jpg",
+      "images/it-2017-bluray-3.jpg",
+      "images/it-2017-bluray-4.jpg",
+      "images/it-2017-bluray-5.jpg",
+      "images/it-2017-bluray-6.jpg",
+      "images/it-2017-bluray-7.jpg",
+      "images/it-2017-bluray-8.jpg",
+      "images/it-2017-bluray-9.jpg",
+      "images/it-2017-bluray-10.jpg",
+      "images/it-2017-bluray-11.jpg",
+      "images/it-2017-bluray-12.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=IT%202017%20Blu-ray%20DVD&campid=5339133571&customid=it-2017-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Bill Skarsgård, Jaeden Lieberher, Finn Wolfhard, Sophia Lillis, Jeremy Ray Taylor, Wyatt Oleff, Chosen Jacobs, Jack Dylan Grazer",
+    "director": "Andy Muschietti",
+    "producers": "Roy Lee, Dan Lin, Seth Grahame-Smith, David Katzenberg, Barbara Muschietti",
+    "company": "New Line Cinema / Vertigo / Lin Pictures / KatzSmith / Warner Bros. Home Entertainment Canada",
+    "titleNote": "Blu-ray + DVD / 2017",
+    "tagline": "Blu-ray / DVD / Stephen King / Bill Skarsgård / Finn Wolfhard / Horror / 2010s",
+    "desc": "Stephen King's horror masterpiece comes to life for a new generation. In Derry, Maine, seven young friends unite against a terrifying supernatural creature that has been haunting their small town for centuries. Calling itself Pennywise the Dancing Clown, IT is a monster of unspeakable power that takes the form of everyone's most horrific fears. Threatened by their worst nightmares, the only way these kids can survive IT is together.",
+    "trivia": [
+      {
+        "heading": "Biggest Horror Hit Ever",
+        "text": "Made for about $35 million, IT took in about $700 million worldwide, making it the highest-grossing horror film of all time."
+      },
+      {
+        "heading": "A Record Opening",
+        "text": "IT earned $50 million on its opening Friday alone and $123 million in its first weekend in North America."
+      },
+      {
+        "heading": "A Change of Director",
+        "text": "Cary Fukunaga was first set to direct and still shares the screenplay credit, but left in 2015. Andy Muschietti took over."
+      },
+      {
+        "heading": "A New Pennywise",
+        "text": "Bill Skarsgård took over the role of Pennywise the Dancing Clown, made famous by Tim Curry in the 1990 mini-series. The bonus feature \"Pennywise Lives!\" shows how he prepared."
+      },
+      {
+        "heading": "Made in Ontario",
+        "text": "The Toronto-area town of Port Hope, Ontario stood in for Derry, Maine."
+      }
+    ],
+    "tidbits": [
+      "Made for about $35 million, IT took in about $700 million worldwide, making it the highest-grossing horror film of all time.",
+      "IT earned $50 million on its opening Friday alone and $123 million in its first weekend in North America.",
+      "Cary Fukunaga was first set to direct and still shares the screenplay credit, but left in 2015. Andy Muschietti took over.",
+      "Bill Skarsgård took over the role of Pennywise the Dancing Clown, made famous by Tim Curry in the 1990 mini-series. The bonus feature \"Pennywise Lives!\" shows how he prepared.",
+      "The Toronto-area town of Port Hope, Ontario stood in for Derry, Maine."
+    ],
+    "copies": [
+      {
+        "id": "it-2017-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Warner Bros. Canadian bilingual Blu-ray + DVD (IT / ÇA)",
+        "photos": [
+          "images/it-2017-bluray-1.jpg",
+          "images/it-2017-bluray-2.jpg",
+          "images/it-2017-bluray-3.jpg",
+          "images/it-2017-bluray-4.jpg",
+          "images/it-2017-bluray-5.jpg",
+          "images/it-2017-bluray-6.jpg",
+          "images/it-2017-bluray-7.jpg",
+          "images/it-2017-bluray-8.jpg",
+          "images/it-2017-bluray-9.jpg",
+          "images/it-2017-bluray-10.jpg",
+          "images/it-2017-bluray-11.jpg",
+          "images/it-2017-bluray-12.jpg"
+        ],
+        "gif": "images/it-2017-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case clean. Cover art has light wear marks on the dark areas of the front, as shown in the photos.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None. Digital code not included.",
+          "notes": "Warner Bros. Entertainment Canada (2017), catalogue 3000076390, UPC 883929583560, for sale in Canada only. Disc 1: Blu-ray (2000138218), 135 minutes, 1080p 16x9 2.4:1, English Dolby Atmos-TrueHD, English DTS-HD Master Audio, English Descriptive Audio 5.1, French (Quebec) and Spanish Dolby Digital 5.1; subtitles English SDH, French, Spanish. Disc 2: DVD movie, Region 1 (2000138210). Rated 14A (Canada) / 13+ (Quebec), R (US). Bonus content (English): Pennywise Lives!; The Losers' Club; Author of Fear; eleven deleted or extended scenes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
