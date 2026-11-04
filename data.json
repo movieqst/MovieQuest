@@ -8005,5 +8005,93 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "needful-things-1993-bluray",
+    "title": "Stephen King's Needful Things",
+    "year": 1993,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/needful-things-1993-bluray-1.jpg",
+    "photos": [
+      "images/needful-things-1993-bluray-1.jpg",
+      "images/needful-things-1993-bluray-2.jpg",
+      "images/needful-things-1993-bluray-3.jpg",
+      "images/needful-things-1993-bluray-4.jpg",
+      "images/needful-things-1993-bluray-5.jpg",
+      "images/needful-things-1993-bluray-6.jpg",
+      "images/needful-things-1993-bluray-7.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Needful%20Things%20Blu-ray%20Kino%20Lorber&campid=5339133571&customid=needful-things-1993-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Ed Harris, Max von Sydow, Bonnie Bedelia, J.T. Walsh, Amanda Plummer",
+    "director": "Fraser C. Heston",
+    "producers": "Jack Cummins; executive producer Peter Yates",
+    "company": "Castle Rock Entertainment / New Line Cinema / Kino Lorber Studio Classics",
+    "titleNote": "Kino Lorber Studio Classics Blu-ray / 1993",
+    "tagline": "Blu-ray / Kino Lorber Studio Classics / Ed Harris / Max von Sydow / Stephen King / Horror / 1990s",
+    "desc": "Welcome to Castle Rock, Maine, a lovely place to live... if you don't mind selling your soul! Acting greats Ed Harris (The Abyss) and Max von Sydow (Three Days of the Condor) head an exceptional cast that includes Bonnie Bedelia, J.T. Walsh and Amanda Plummer in this supernatural thriller that's dark, haunting and a hell of a good scare. Sheriff Alan Pangborn (Harris) has a devil of a problem: suddenly all the residents of his sleepy little town are dying... to kill each other. But at least business is still booming, especially at a new antique store. The shop's mysterious owner (von Sydow) has something for everyone, and his prices are always reasonable: just one small favor... eternal damnation!",
+    "trivia": [
+      {
+        "heading": "A Heston Behind the Camera",
+        "text": "Needful Things was directed by Fraser C. Heston, son of Charlton Heston; he records the commentary on this disc."
+      },
+      {
+        "heading": "The Rare Three-Hour Version",
+        "text": "TBS later had the film re-edited into a roughly three-hour mini-series with about an hour of deleted scenes added back; it has never been released on home video in the US."
+      },
+      {
+        "heading": "Welcome to Castle Rock",
+        "text": "The story is set in Castle Rock, Maine, the fictional town that also appears in King's The Dead Zone, Cujo and The Body (Stand by Me)."
+      },
+      {
+        "heading": "A Cult Favourite",
+        "text": "Panned by critics in 1993, the film has since built a cult following, largely thanks to Max von Sydow's devilish Leland Gaunt."
+      },
+      {
+        "heading": "Castle Rock Entertainment",
+        "text": "It was produced by Castle Rock Entertainment, the company Rob Reiner named after King's town."
+      }
+    ],
+    "tidbits": [
+      "Needful Things was directed by Fraser C. Heston, son of Charlton Heston; he records the commentary on this disc.",
+      "TBS later had the film re-edited into a roughly three-hour mini-series with about an hour of deleted scenes added back; it has never been released on home video in the US.",
+      "The story is set in Castle Rock, Maine, the fictional town that also appears in King's The Dead Zone, Cujo and The Body (Stand by Me).",
+      "Panned by critics in 1993, the film has since built a cult following, largely thanks to Max von Sydow's devilish Leland Gaunt.",
+      "It was produced by Castle Rock Entertainment, the company Rob Reiner named after King's town."
+    ],
+    "copies": [
+      {
+        "id": "needful-things-1993-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Kino Lorber Studio Classics Blu-ray (K1634)",
+        "photos": [
+          "images/needful-things-1993-bluray-1.jpg",
+          "images/needful-things-1993-bluray-2.jpg",
+          "images/needful-things-1993-bluray-3.jpg",
+          "images/needful-things-1993-bluray-4.jpg",
+          "images/needful-things-1993-bluray-5.jpg",
+          "images/needful-things-1993-bluray-6.jpg",
+          "images/needful-things-1993-bluray-7.jpg"
+        ],
+        "gif": "images/needful-things-1993-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Kino Lorber Studio Classics Blu-ray, catalogue K1634, UPC 738329163426, Region A, under licence from 20th Century Fox and MGM. Theatrical cut, 1993, colour, approx. 120 minutes, 1080p 1.85:1, DTS audio, English subtitles. Rated R. Special features: audio commentary with director Fraser C. Heston; original theatrical trailer."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
