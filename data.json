@@ -4852,5 +4852,99 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "jane-eyre-2011-bluray",
+    "title": "Jane Eyre",
+    "year": 2011,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/jane-eyre-2011-bluray-1.jpg",
+    "photos": [
+      "images/jane-eyre-2011-bluray-1.jpg",
+      "images/jane-eyre-2011-bluray-2.jpg",
+      "images/jane-eyre-2011-bluray-3.jpg",
+      "images/jane-eyre-2011-bluray-4.jpg",
+      "images/jane-eyre-2011-bluray-5.jpg",
+      "images/jane-eyre-2011-bluray-6.jpg",
+      "images/jane-eyre-2011-bluray-7.jpg",
+      "images/jane-eyre-2011-bluray-8.jpg",
+      "images/jane-eyre-2011-bluray-9.jpg",
+      "images/jane-eyre-2011-bluray-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Jane%20Eyre%20Blu-ray%20Wasikowska%20Fassbender&campid=5339133571&customid=jane-eyre-2011-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Mia Wasikowska, Michael Fassbender, Jamie Bell, Judi Dench, Sally Hawkins, Imogen Poots",
+    "director": "Cary Joji Fukunaga",
+    "producers": "Alison Owen, Paul Trijbits",
+    "company": "Focus Features / BBC Films / Ruby Films / Alliance Films (Canada)",
+    "titleNote": "Blu-ray / 2011",
+    "tagline": "Blu-ray / Widescreen / Mia Wasikowska / Michael Fassbender / Judi Dench / Charlotte Brontë / 2010s",
+    "desc": "Mia Wasikowska (Alice in Wonderland), Michael Fassbender (X-Men: First Class) and Academy Award winner Judi Dench (Shakespeare in Love) star in acclaimed director Cary Fukunaga's daring new adaptation of the timeless romance. When orphaned governess Jane Eyre (Wasikowska) arrives at imposing Thornfield Hall, she's intrigued by her brooding wealthy employer, Rochester (Fassbender). His dark moods and the strange occurrences in the house lead her to discover a terrible secret that he had hoped to hide from her forever.",
+    "trivia": [
+      {
+        "heading": "An Oscar Nod for the Costumes",
+        "text": "Michael O'Connor's period costumes earned the film an Academy Award nomination for Best Costume Design."
+      },
+      {
+        "heading": "Fukunaga's Second Feature",
+        "text": "Director Cary Joji Fukunaga made Jane Eyre right after his debut Sin Nombre; he later directed True Detective and the Bond film No Time to Die."
+      },
+      {
+        "heading": "From the 1847 Novel",
+        "text": "Moira Buffini's screenplay adapts Charlotte Brontë's 1847 novel, telling Jane's story in flashback from the moment she flees Thornfield."
+      },
+      {
+        "heading": "Score by an Oscar Winner",
+        "text": "The music is by Dario Marianelli, who won the Oscar for scoring Atonement; a bonus feature on this disc follows him and Fukunaga at work on the score."
+      },
+      {
+        "heading": "A Hidden Commentary",
+        "text": "Besides the director's commentary, this disc hides an Easter-egg commentary with Rob Meyer and Ameer Youssef."
+      }
+    ],
+    "tidbits": [
+      "Michael O'Connor's period costumes earned the film an Academy Award nomination for Best Costume Design.",
+      "Director Cary Joji Fukunaga made Jane Eyre right after his debut Sin Nombre; he later directed True Detective and the Bond film No Time to Die.",
+      "Moira Buffini's screenplay adapts Charlotte Brontë's 1847 novel, telling Jane's story in flashback from the moment she flees Thornfield.",
+      "The music is by Dario Marianelli, who won the Oscar for scoring Atonement; a bonus feature on this disc follows him and Fukunaga at work on the score.",
+      "Besides the director's commentary, this disc hides an Easter-egg commentary with Rob Meyer and Ameer Youssef."
+    ],
+    "copies": [
+      {
+        "id": "jane-eyre-2011-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Alliance Films Canadian Blu-ray, reversible English/French cover",
+        "photos": [
+          "images/jane-eyre-2011-bluray-1.jpg",
+          "images/jane-eyre-2011-bluray-2.jpg",
+          "images/jane-eyre-2011-bluray-3.jpg",
+          "images/jane-eyre-2011-bluray-4.jpg",
+          "images/jane-eyre-2011-bluray-5.jpg",
+          "images/jane-eyre-2011-bluray-6.jpg",
+          "images/jane-eyre-2011-bluray-7.jpg",
+          "images/jane-eyre-2011-bluray-8.jpg",
+          "images/jane-eyre-2011-bluray-9.jpg",
+          "images/jane-eyre-2011-bluray-10.jpg"
+        ],
+        "gif": "images/jane-eyre-2011-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Standard blue Blu-ray case, clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Theatrical promo card for I Don't Know How She Does It; the cover is reversible (French artwork on the inside).",
+          "notes": "Alliance Films Blu-ray (Canada, 2011), catalogue 400158, UPC 065935400158, Region A. Approx. 121 minutes, 1080p 1.85:1 16x9. Audio English 5.1 DTS-HD Master Audio, Spanish 5.1 DTS Surround; subtitles English SDH, French, Spanish. Rated PG (Canada), mature theme. Special features: deleted scenes; A Look Inside Jane Eyre; To Score Jane Eyre: Cary Fukunaga and Dario Marianelli Team Up; The Mysterious Light of Jane Eyre; feature commentary with director Cary Fukunaga; Easter egg commentary with Rob Meyer and Ameer Youssef."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
