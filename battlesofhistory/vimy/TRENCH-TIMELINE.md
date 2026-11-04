@@ -100,3 +100,13 @@ NLS has dated editions of both Vimy sheets. The sheets are also listed on the NL
 - 36C.SW.3 Givenchy (8 Apr 1916, 1:10,000)
 - 51B.NW Ed. 4A (Oct 1916) and 7A (May 1917)
 - 36C.SW Ed. 11A (Nov 1917)
+
+## Where the work stands (3 November 2026)
+- **Maps in hand:** six NLS sheets at full detail, in sources/trench-maps/nls/ and in the Library: Feb 1916, Oct 1916, Dec 1916, Feb 1917, Mar 1917, May 1917.
+- **Tools:** tools/fetch-nls-map.sh downloads a map in 512 px pieces; tools/stitch-nls-map.py joins them.
+- **Next, georeferencing:** a first affine fit of 36C S.W. from village names on the downsampled sheet was 150–800 m out, because labels were used rather than exact points. Planned method:
+  1. Pick exact control points (road crossings, churches, the "1°31′ W of Brussels" meridian line printed on 36C S.W.) on full-resolution crops.
+  2. Match them to the same points on battle-nicholson.jpg, which is already fitted to the battle frame.
+  3. Then fit an affine or thin-plate warp per sheet.
+- **Then tracing:** warp each sheet into the battle frame, pick out the red (German) and blue (British) trench ink, and save one transparent overlay per date. The page cross-fades between them on the timeline.
+- **Side project for later:** nicer painted Vimy maps built on these overlays.

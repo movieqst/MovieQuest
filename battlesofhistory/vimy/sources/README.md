@@ -46,3 +46,4 @@ Downloaded piece by piece with tools/fetch-nls-map.sh at half the scan's resolut
 | nls-101464744.jpg (7355 × 5466) | 101464744 | 36C.SW.1 Lens, 1:10,000 (Lens, Liévin, Angres) | Edition 8A, trenches corrected to 10 February 1917 |
 | nls-101465068.jpg (7106 × 5178) | 101465068 | 51B N.W. (Arras; Neuville–Thélus–Farbus in the top-left corner), 1:20,000 | Edition 6A, trenches corrected to 4 March 1917: **five weeks before the attack** |
 | nls-101465071.jpg (7106 × 5270) | 101465071 | 51B N.W., 1:20,000 | Edition 4A, trenches corrected to 10 October 1916: as the Canadians arrived |
+| nls-101465065.jpg (7100 × 5250) | 101465065 | 51B N.W., 1:20,000 | Edition 7A, trenches corrected to 25 May 1917: **after the battle**, the new front on the plain. It shows the German trenches and also British ones up to about 200 yards inside our front line on 27 May 1917 |

@@ -22,6 +22,8 @@
   /* Banners whose painting has its quiet ground at the bottom: the title moves down onto it */
   body.poster.title-bottom header{justify-content:flex-end;padding-top:0;padding-bottom:28px}
   h1{font:800 clamp(30px,5vw,54px) 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.14em;margin:0;text-shadow:0 1px 0 #5a4310,0 3px 12px rgba(0,0,0,.7)}
+  h1.logo{line-height:0;letter-spacing:0}
+  h1.logo img{display:block;width:min(92vw,860px);height:auto;margin:0 auto;filter:drop-shadow(0 4px 14px rgba(0,0,0,.75))}
   .tag{color:var(--muted);margin:10px auto 0;max-width:640px;font-size:15px}
   .tag b{color:var(--text);font-weight:600}
   main{max-width:1100px;margin:0 auto;padding:12px 16px 40px;display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
@@ -80,7 +82,7 @@
 </head>
 <body>
 <header>
-  <h1>BATTLES OF HISTORY</h1>
+  <h1 class="logo"><img src="images/logo.webp" srcset="images/logo-1000.webp 1000w, images/logo.webp 2000w" sizes="min(92vw, 860px)" width="2000" height="557" alt="Battles of History"></h1>
 </header>
 <section id="tlwrap">
   <div id="tlbar"><span class="lbl">TIMELINE</span><span class="ctl"><button id="tlOut" title="Zoom out">−</button><button id="tlIn" title="Zoom in">+</button><button id="tlFit" title="Show the whole timeline">Fit</button></span></div>
@@ -115,7 +117,7 @@
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   // Two sides, split on 'vs.': the first in red, the second in blue. Text without 'vs.' is shown as it is.
   // Side colours: the first side is always red and the second always blue, on every card.
-  const pickSideColors = b => b.sideColors || ['#c0392b', '#2e5aa8'];
+  const pickSideColors = () => ['#c0392b', '#2e5aa8'];   // always the first side red, the second blue
   const sidesHTML = (t, colors) => { const m = String(t || '').split(/\s+vs\.?\s+/i); const [ca, cb] = colors || ['#ff6a5c', '#6aa6ff']; return m.length === 2 ? `<span style="color:${ca}">${esc(m[0])}</span> <span class="vs">vs.</span> <span style="color:${cb}">${esc(m[1])}</span>` : esc(t); };
   document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.order || 0) - (a.order || 0)).map(b => `
     ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
