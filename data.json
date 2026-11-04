@@ -4620,5 +4620,107 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "rick-and-morty-season-1-dvd",
+    "title": "Rick and Morty: Season 1",
+    "year": 2013,
+    "years": [
+      2013,
+      2014
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/rick-and-morty-season-1-dvd-1.jpg",
+    "photos": [
+      "images/rick-and-morty-season-1-dvd-1.jpg",
+      "images/rick-and-morty-season-1-dvd-2.jpg",
+      "images/rick-and-morty-season-1-dvd-3.jpg",
+      "images/rick-and-morty-season-1-dvd-4.jpg",
+      "images/rick-and-morty-season-1-dvd-5.jpg",
+      "images/rick-and-morty-season-1-dvd-6.jpg",
+      "images/rick-and-morty-season-1-dvd-7.jpg",
+      "images/rick-and-morty-season-1-dvd-8.jpg",
+      "images/rick-and-morty-season-1-dvd-9.jpg",
+      "images/rick-and-morty-season-1-dvd-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Rick%20and%20Morty%20Season%201%20DVD&campid=5339133571&customid=rick-and-morty-season-1-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "starring": "Justin Roiland, Chris Parnell, Spencer Grammer, Sarah Chalke",
+    "createdBy": "Justin Roiland, Dan Harmon",
+    "director": "Justin Roiland, Dan Harmon (creators)",
+    "producers": "Justin Roiland, Dan Harmon",
+    "company": "Williams Street / Adult Swim / Cartoon Network / Warner Home Video",
+    "titleNote": "2-Disc / 2013–2014",
+    "runYears": "2013–2014",
+    "tagline": "DVD / 2-Disc / Uncensored / Widescreen / Adult Swim / Animated / TV Series / 2010s",
+    "desc": "Rick Sanchez is a mad scientist who drags his anxious grandson Morty along on dangerous, reality-bending adventures across infinite universes, while the rest of the Smith family (Beth, Jerry and Summer) tries to keep up at home. From Justin Roiland and Dan Harmon, Season 1 collects all 11 episodes of Adult Swim's hit, including \"Pilot\", \"Lawnmower Dog\", \"Meeseeks and Destroy\", \"Rixty Minutes\" and \"Ricksy Business\".",
+    "trivia": [
+      {
+        "heading": "Uncensored on DVD",
+        "text": "The episodes aired TV-14 on Adult Swim; this DVD carries the uncensored audio and is rated TV-MA."
+      },
+      {
+        "heading": "One Man, Two Voices",
+        "text": "Co-creator Justin Roiland voiced both Rick Sanchez and Morty Smith."
+      },
+      {
+        "heading": "Born on Channel 101",
+        "text": "Rick and Morty grew out of Roiland's crude Back to the Future parody short \"The Real Animated Adventures of Doc and Mharti\", made for Dan Harmon's Channel 101 film festival."
+      },
+      {
+        "heading": "Universal Acclaim",
+        "text": "Season 1 holds a 97% approval rating on Rotten Tomatoes and an 85 on Metacritic."
+      },
+      {
+        "heading": "Made for Widescreen",
+        "text": "The show was produced in 16:9 HD, so it appeared letterboxed on Adult Swim's standard-definition feed; this DVD presents it in widescreen."
+      }
+    ],
+    "tidbits": [
+      "The episodes aired TV-14 on Adult Swim; this DVD carries the uncensored audio and is rated TV-MA.",
+      "Co-creator Justin Roiland voiced both Rick Sanchez and Morty Smith.",
+      "Rick and Morty grew out of Roiland's crude Back to the Future parody short \"The Real Animated Adventures of Doc and Mharti\", made for Dan Harmon's Channel 101 film festival.",
+      "Season 1 holds a 97% approval rating on Rotten Tomatoes and an 85 on Metacritic.",
+      "The show was produced in 16:9 HD, so it appeared letterboxed on Adult Swim's standard-definition feed; this DVD presents it in widescreen."
+    ],
+    "copies": [
+      {
+        "id": "rick-and-morty-season-1-dvd-1",
+        "added": "2026-11-03",
+        "format": "DVD",
+        "edition": "2-disc widescreen, uncensored",
+        "photos": [
+          "images/rick-and-morty-season-1-dvd-1.jpg",
+          "images/rick-and-morty-season-1-dvd-2.jpg",
+          "images/rick-and-morty-season-1-dvd-3.jpg",
+          "images/rick-and-morty-season-1-dvd-4.jpg",
+          "images/rick-and-morty-season-1-dvd-5.jpg",
+          "images/rick-and-morty-season-1-dvd-6.jpg",
+          "images/rick-and-morty-season-1-dvd-7.jpg",
+          "images/rick-and-morty-season-1-dvd-8.jpg",
+          "images/rick-and-morty-season-1-dvd-9.jpg",
+          "images/rick-and-morty-season-1-dvd-10.jpg"
+        ],
+        "gif": "images/rick-and-morty-season-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. White 2-disc case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Warner Home Video / Adult Swim DVD (2014), Region 1, 2 discs (2000097740 / 2000097741), widescreen, rated TV-MA-L, approx. 241 minutes for all 11 episodes of Season 1: Pilot, Lawnmower Dog, Anatomy Park, M. Night Shaym-Aliens!, Meeseeks and Destroy, Rick Potion #9, Raising Gazorpazorp, Rixty Minutes, Something Ricked This Way Comes, Close Rick-counters of the Rick Kind, Ricksy Business. Originally aired December 2013 to April 2014."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
