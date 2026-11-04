@@ -118,7 +118,7 @@ window.BATTLES = [
     blurb: 'Wallace and Moray wait on the high ground while the English cross a narrow wooden bridge over the Forth two at a time, then attack before the rest can follow.',
     cover: 'images/cover.jpg',
     coverCredit: 'Artist rendering: the Scots cut off the English vanguard at the north end of the bridge. Battle Games, AI-generated',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'vimy',
