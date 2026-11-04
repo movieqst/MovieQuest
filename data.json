@@ -5949,5 +5949,98 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "green-zone-2010-bluray",
+    "title": "Green Zone",
+    "year": 2010,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/green-zone-2010-bluray-1.jpg",
+    "photos": [
+      "images/green-zone-2010-bluray-1.jpg",
+      "images/green-zone-2010-bluray-2.jpg",
+      "images/green-zone-2010-bluray-3.jpg",
+      "images/green-zone-2010-bluray-4.jpg",
+      "images/green-zone-2010-bluray-5.jpg",
+      "images/green-zone-2010-bluray-6.jpg",
+      "images/green-zone-2010-bluray-7.jpg",
+      "images/green-zone-2010-bluray-8.jpg",
+      "images/green-zone-2010-bluray-9.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Green%20Zone%20Blu-ray%20Matt%20Damon&campid=5339133571&customid=green-zone-2010-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Matt Damon, Greg Kinnear, Brendan Gleeson, Amy Ryan, Khalid Abdalla, Jason Isaacs, Yigal Naor",
+    "director": "Paul Greengrass",
+    "producers": "Tim Bevan, Eric Fellner, Lloyd Levin, Paul Greengrass",
+    "company": "Universal Pictures / StudioCanal / Relativity Media / Working Title Films",
+    "titleNote": "Blu-ray + Digital Copy / 2010",
+    "tagline": "Blu-ray / Widescreen / Matt Damon / Paul Greengrass / Action Thriller / 2010s",
+    "desc": "Academy Award nominee Matt Damon and director Paul Greengrass (The Bourne Supremacy, The Bourne Ultimatum) reteam in this action-packed thriller. Damon stars as Roy Miller, a rogue U.S. Army officer who must hunt through covert and faulty intelligence hidden on foreign soil before war escalates in an unstable region. Also starring Academy Award nominees Greg Kinnear and Amy Ryan, Green Zone is \"one hell of a thriller\" (Roger Ebert, Chicago Sun-Times).",
+    "trivia": [
+      {
+        "heading": "From a Reporter's Book",
+        "text": "The film was inspired by Imperial Life in the Emerald City (2006), Washington Post journalist Rajiv Chandrasekaran's account of life inside Baghdad's Green Zone."
+      },
+      {
+        "heading": "Damon and Greengrass Again",
+        "text": "It reunited Matt Damon with Paul Greengrass, who had directed him in The Bourne Supremacy and The Bourne Ultimatum."
+      },
+      {
+        "heading": "Written by an Oscar Winner",
+        "text": "The screenplay is by Brian Helgeland, who won an Academy Award for co-writing L.A. Confidential."
+      },
+      {
+        "heading": "Baghdad in Spain and Morocco",
+        "text": "Filming began in Spain in January 2008, then moved to Morocco and the United Kingdom to recreate 2003 Baghdad."
+      },
+      {
+        "heading": "A $100 Million Gamble",
+        "text": "Made for about $100 million, it earned $94.9 million worldwide and is often called one of 2010's most underrated thrillers."
+      }
+    ],
+    "tidbits": [
+      "The film was inspired by Imperial Life in the Emerald City (2006), Washington Post journalist Rajiv Chandrasekaran's account of life inside Baghdad's Green Zone.",
+      "It reunited Matt Damon with Paul Greengrass, who had directed him in The Bourne Supremacy and The Bourne Ultimatum.",
+      "The screenplay is by Brian Helgeland, who won an Academy Award for co-writing L.A. Confidential.",
+      "Filming began in Spain in January 2008, then moved to Morocco and the United Kingdom to recreate 2003 Baghdad.",
+      "Made for about $100 million, it earned $94.9 million worldwide and is often called one of 2010's most underrated thrillers."
+    ],
+    "copies": [
+      {
+        "id": "green-zone-2010-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Universal Canadian Blu-ray, bilingual (La zone verte), with digital copy disc",
+        "photos": [
+          "images/green-zone-2010-bluray-1.jpg",
+          "images/green-zone-2010-bluray-2.jpg",
+          "images/green-zone-2010-bluray-3.jpg",
+          "images/green-zone-2010-bluray-4.jpg",
+          "images/green-zone-2010-bluray-5.jpg",
+          "images/green-zone-2010-bluray-6.jpg",
+          "images/green-zone-2010-bluray-7.jpg",
+          "images/green-zone-2010-bluray-8.jpg",
+          "images/green-zone-2010-bluray-9.jpg"
+        ],
+        "gif": "images/green-zone-2010-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Digital copy instruction insert (the digital copy offer has long expired).",
+          "notes": "Universal Studios Canada Blu-ray (2010), catalogue 2013887 / 06212C, UPC 025195052979, BD-50. Disc 1: Blu-ray feature. Disc 2: Digital Copy DVD-ROM (computers only). Approx. 1 hr 55 min, 1080p 2.40:1 widescreen. English DTS-HD Master Audio 5.1, plus French and Spanish; English SDH, French and Spanish subtitles. Rated 14A (Canada) / R (US). Special features: U-Control video commentary with Matt Damon and Paul Greengrass and picture-in-picture; pocket BLU; deleted scenes; Matt Damon: Ready for Action; Inside the Green Zone; D-BOX motion enabled."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
