@@ -8708,5 +8708,101 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "stand-by-me-1986-bluray",
+    "title": "Stand by Me",
+    "year": 1986,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/stand-by-me-1986-bluray-1.jpg",
+    "photos": [
+      "images/stand-by-me-1986-bluray-1.jpg",
+      "images/stand-by-me-1986-bluray-2.jpg",
+      "images/stand-by-me-1986-bluray-3.jpg",
+      "images/stand-by-me-1986-bluray-4.jpg",
+      "images/stand-by-me-1986-bluray-5.jpg",
+      "images/stand-by-me-1986-bluray-6.jpg",
+      "images/stand-by-me-1986-bluray-7.jpg",
+      "images/stand-by-me-1986-bluray-8.jpg",
+      "images/stand-by-me-1986-bluray-9.jpg",
+      "images/stand-by-me-1986-bluray-10.jpg",
+      "images/stand-by-me-1986-bluray-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stand%20By%20Me%2025th%20Anniversary%20Blu-ray&campid=5339133571&customid=stand-by-me-1986-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Wil Wheaton, River Phoenix, Corey Feldman, Jerry O'Connell, Kiefer Sutherland",
+    "director": "Rob Reiner",
+    "producers": "Bruce A. Evans, Raynold Gideon, Andrew Scheinman",
+    "company": "Columbia Pictures / Act III / Sony Pictures Home Entertainment",
+    "titleNote": "25th Anniversary Edition / Blu-ray / 1986",
+    "tagline": "Blu-ray / 25th Anniversary Edition / Stephen King / Rob Reiner / River Phoenix / Kiefer Sutherland / Drama / 1980s",
+    "desc": "In a small, woodsy Oregon town, four friends (sensitive Gordie, tough guy Chris, flamboyant Teddy and scaredy-cat Vern) set out on a two-day trek to find the body of a missing boy. When they run into the town's knife-wielding hoods, they discover a strength they never knew they had. Rob Reiner's beloved film of Stephen King's novella The Body is a rare and special story about friendship and growing up.",
+    "trivia": [
+      {
+        "heading": "King's Favourite",
+        "text": "After an early private screening, Stephen King left the room for about fifteen minutes to compose himself, then told Rob Reiner it was the best film ever made from his work. He has said the story is autobiographical."
+      },
+      {
+        "heading": "Based on The Body",
+        "text": "The film adapts King's 1982 novella The Body. Screenwriters Raynold Gideon and Bruce A. Evans were nominated for the Oscar for Best Adapted Screenplay."
+      },
+      {
+        "heading": "The Real Castle Rock",
+        "text": "Brownsville, Oregon stood in for the fictional town of Castle Rock. A year later Rob Reiner named his new production company, Castle Rock Entertainment, after it."
+      },
+      {
+        "heading": "A Small-Budget Hit",
+        "text": "Made for about $8 million, Stand by Me took in about $52 million at the box office in 1986."
+      },
+      {
+        "heading": "The Title Song",
+        "text": "The film is named after Ben E. King's 1961 hit \"Stand by Me\", which plays over the closing credits."
+      }
+    ],
+    "tidbits": [
+      "After an early private screening, Stephen King left the room for about fifteen minutes to compose himself, then told Rob Reiner it was the best film ever made from his work. He has said the story is autobiographical.",
+      "The film adapts King's 1982 novella The Body. Screenwriters Raynold Gideon and Bruce A. Evans were nominated for the Oscar for Best Adapted Screenplay.",
+      "Brownsville, Oregon stood in for the fictional town of Castle Rock. A year later Rob Reiner named his new production company, Castle Rock Entertainment, after it.",
+      "Made for about $8 million, Stand by Me took in about $52 million at the box office in 1986.",
+      "The film is named after Ben E. King's 1961 hit \"Stand by Me\", which plays over the closing credits."
+    ],
+    "copies": [
+      {
+        "id": "stand-by-me-1986-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "25th Anniversary Edition, Sony Canadian bilingual Blu-ray (Stand by Me / Compte sur moi)",
+        "photos": [
+          "images/stand-by-me-1986-bluray-1.jpg",
+          "images/stand-by-me-1986-bluray-2.jpg",
+          "images/stand-by-me-1986-bluray-3.jpg",
+          "images/stand-by-me-1986-bluray-4.jpg",
+          "images/stand-by-me-1986-bluray-5.jpg",
+          "images/stand-by-me-1986-bluray-6.jpg",
+          "images/stand-by-me-1986-bluray-7.jpg",
+          "images/stand-by-me-1986-bluray-8.jpg",
+          "images/stand-by-me-1986-bluray-9.jpg",
+          "images/stand-by-me-1986-bluray-10.jpg",
+          "images/stand-by-me-1986-bluray-11.jpg"
+        ],
+        "gif": "images/stand-by-me-1986-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and bilingual cover art clean, with reverse-side artwork inside, and only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None. Printed artwork on the inside of the cover.",
+          "notes": "Sony Pictures Home Entertainment / Columbia Pictures (2011), catalogue 37616, UPC 043396376168, Region A/B/C. Approx. 88 minutes, colour, 1080p 1.85:1. Audio English, French (Parisian) and Portuguese 5.1 DTS-HD Master Audio, Spanish 5.1 Dolby Digital. Subtitles English, English SDH, French, Portuguese, Spanish. Rated PG (Canada). Special features: Blu-ray exclusive 25 Years Later picture-in-picture commentary with Rob Reiner, Wil Wheaton and Corey Feldman; Walking the Tracks: The Summer of Stand by Me; audio commentary with Rob Reiner; Stand by Me music video; BD-Live and movieIQ."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
