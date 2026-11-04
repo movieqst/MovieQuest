@@ -5219,5 +5219,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "a-return-to-salems-lot-1987-bluray",
+    "title": "A Return to Salem's Lot",
+    "year": 1987,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/a-return-to-salems-lot-1987-bluray-1.jpg",
+    "photos": [
+      "images/a-return-to-salems-lot-1987-bluray-1.jpg",
+      "images/a-return-to-salems-lot-1987-bluray-2.jpg",
+      "images/a-return-to-salems-lot-1987-bluray-3.jpg",
+      "images/a-return-to-salems-lot-1987-bluray-4.jpg",
+      "images/a-return-to-salems-lot-1987-bluray-5.jpg",
+      "images/a-return-to-salems-lot-1987-bluray-6.jpg",
+      "images/a-return-to-salems-lot-1987-bluray-7.jpg",
+      "images/a-return-to-salems-lot-1987-bluray-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=A%20Return%20to%20Salem%27s%20Lot%20Blu-ray%20Scream%20Factory&campid=5339133571&customid=a-return-to-salems-lot-1987-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Michael Moriarty, Samuel Fuller, Andrew Duggan, Ricky Addison Reed, June Havoc, Evelyn Keyes",
+    "director": "Larry Cohen",
+    "producers": "Paul Kurta; executive producer Larry Cohen",
+    "company": "Warner Bros. / Larco Productions / Scream Factory (Shout! Factory)",
+    "titleNote": "Scream Factory Blu-ray / 1987",
+    "tagline": "Blu-ray / Scream Factory / Larry Cohen / Michael Moriarty / Stephen King / Horror / 1980s",
+    "desc": "The terrifying tale of Salem's Lot continues in the shocking and satirical A Return to Salem's Lot! Beneath the quaint, picture-perfect exterior of a small New England community lurks an unsettling, undead evil: vampires. When fresh blood comes to town in the form of amoral anthropologist Joe Weber and his son Jeremy, the vampires employ the father to document their story. But when the stakes are raised, Joe must take on the hellish horde or lose his son... and his soul. Directed and co-written by genre legend Larry Cohen (the It's Alive trilogy, Black Caesar, God Told Me To) and featuring Michael Moriarty (Q: The Winged Serpent).",
+    "trivia": [
+      {
+        "heading": "Shot in Vermont",
+        "text": "Larry Cohen filmed A Return to Salem's Lot in Vermont in late 1986, standing in for King's town of Jerusalem's Lot."
+      },
+      {
+        "heading": "From Cannes to Cinemas",
+        "text": "After screening at the 1987 Cannes Film Market, Warner Bros. gave it a limited theatrical release that fall."
+      },
+      {
+        "heading": "A Legendary Director in Front of the Camera",
+        "text": "Veteran filmmaker Samuel Fuller (The Big Red One) plays the cantankerous Nazi-hunter who helps fight the vampires."
+      },
+      {
+        "heading": "Cohen and Moriarty Again",
+        "text": "Michael Moriarty had already starred in Cohen's Q: The Winged Serpent and It's Alive III; this was another of their many collaborations."
+      },
+      {
+        "heading": "Chainsaw Cinematographer",
+        "text": "Director of photography Daniel Pearl also shot the original The Texas Chain Saw Massacre (1974)."
+      }
+    ],
+    "tidbits": [
+      "Larry Cohen filmed A Return to Salem's Lot in Vermont in late 1986, standing in for King's town of Jerusalem's Lot.",
+      "After screening at the 1987 Cannes Film Market, Warner Bros. gave it a limited theatrical release that fall.",
+      "Veteran filmmaker Samuel Fuller (The Big Red One) plays the cantankerous Nazi-hunter who helps fight the vampires.",
+      "Michael Moriarty had already starred in Cohen's Q: The Winged Serpent and It's Alive III; this was another of their many collaborations.",
+      "Director of photography Daniel Pearl also shot the original The Texas Chain Saw Massacre (1974)."
+    ],
+    "copies": [
+      {
+        "id": "a-return-to-salems-lot-1987-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Scream Factory Blu-ray (SF 21901)",
+        "photos": [
+          "images/a-return-to-salems-lot-1987-bluray-1.jpg",
+          "images/a-return-to-salems-lot-1987-bluray-2.jpg",
+          "images/a-return-to-salems-lot-1987-bluray-3.jpg",
+          "images/a-return-to-salems-lot-1987-bluray-4.jpg",
+          "images/a-return-to-salems-lot-1987-bluray-5.jpg",
+          "images/a-return-to-salems-lot-1987-bluray-6.jpg",
+          "images/a-return-to-salems-lot-1987-bluray-7.jpg",
+          "images/a-return-to-salems-lot-1987-bluray-8.jpg"
+        ],
+        "gif": "images/a-return-to-salems-lot-1987-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Standard blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None. Printed artwork on the inside of the cover.",
+          "notes": "Scream Factory / Shout! Factory Blu-ray under licence from Warner Bros., catalogue SF 21901, UPC 826663219012, Region A. Approx. 101 minutes, colour, 1080p 1.85:1 widescreen. Audio English DTS-HD Master Audio stereo; English SDH subtitles. Rated R."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
