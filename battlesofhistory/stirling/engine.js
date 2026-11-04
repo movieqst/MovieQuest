@@ -1073,8 +1073,10 @@ let unitPausedIntro = false;
 function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'debrief' && typeof textOff !== 'undefined' && textOff) document.body.classList.add('textoff'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
 // briefing marks on the introduction's maps (../briefing.js)
 const BR = window.BHBriefing ? window.BHBriefing.create({ P: (x, y) => P(x, y), outlined: (c, t, x, y, sz, o) => outlined(c, t, x, y, sz, o), sideColor: sd => (S.sides[sd] || {}).color || '#888' }) : null;
+// Reading time for a slide without the voice: its own 'auto', or about 2.5 words a second (at least 8 s).
+function slideSecs(sl) { if (sl.auto) return sl.auto; const n = (sl.lines || []).map(l => l.text).join(' ').split(/\s+/).length + String(sl.title || '').split(/\s+/).length; return Math.max(8, n / 2.5 + 2); }
 function showIntro(i) {
-  introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
+  introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; introEnded = false; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
   $('introTitle').textContent = sl.title; $('introSub').textContent = sl.subtitle || '';
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
@@ -1095,7 +1097,7 @@ $('introBar').parentElement.addEventListener('click', e => {
   const r = e.currentTarget.getBoundingClientRect(), k = clamp((e.clientX - r.left) / r.width, 0, 1), sl = S.intro[introIdx];
   introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   if (Narr.on && Narr.audio && Narr.audio.duration) { const au = Narr.audio; au.currentTime = k * au.duration; if (au.ended || au.paused) au.play().catch(() => {}); Narr.endedAt = -99; }
-  else introTimer = k * sl.auto;
+  else introTimer = k * slideSecs(sl);
   mediaIdx = -1; showMedia(Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer);
 });
 // media.pulse: a second file shown over the first with a heartbeat fade (the glowing Silk Road map)
@@ -1133,7 +1135,7 @@ function titleCardProgress(k) {
   if (k >= 1) el.classList.remove('show');
 }
 $('playBig').onclick = () => beginIntro(true);
-let introSpunCb = null;
+let introSpunCb = null; var introEnded = false;   // var: showIntro may run before this line
 // Establishing pictures (S.establishing: [{ file, secs, credit, pulse: { x, y } }]): after the globe's dive, before the battle
 // map, each fades in, holds for `secs` (about 5) while the narration carries on, and fades out. `pulse` (fractions of the
 // picture's width and height) puts a pulsing ring on the picture, e.g. on the battle's town.
@@ -1492,10 +1494,10 @@ function tick(t) {
       let tail = false, frac = 0;
       if (Narr.on && Narr.audio) { const au = Narr.audio; if (au.ended && au.currentTime >= au.duration - .05) tail = true; else frac = au.duration ? Math.min(1, au.currentTime / au.duration) : 0; }
       else if (Narr.on && 'speechSynthesis' in window && speechSynthesis.speaking) frac = .5;
-      else { if (!(G && G.active())) introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
+      else { if (!(G && G.active())) introTimer += dt; frac = Math.min(1, introTimer / slideSecs(sl)); if (introTimer >= slideSecs(sl)) tail = true; }
       showMedia(Narr.on && Narr.audio ? Narr.audio.currentTime * (Narr.rate || 1) / (Narr.rate || 1) : introTimer);
       const nb = $('introNext');
-      if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
+      if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) { if (introIdx < S.intro.length - 1) showIntro(introIdx + 1); else if (!introEnded) { introEnded = true; $('playGame').classList.add('show'); } } }   // after the last slide: stop and offer Watch / Play (no looping)
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
       $('introBar').style.width = Math.min(100, frac * 100) + '%'; introCamTick(frac, tail); if (BR) BR.update(sl, frac, tail);
     }
