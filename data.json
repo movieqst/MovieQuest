@@ -7726,5 +7726,97 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "young-guns-1988-bluray",
+    "title": "Young Guns",
+    "year": 1988,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/young-guns-1988-bluray-1.jpg",
+    "photos": [
+      "images/young-guns-1988-bluray-1.jpg",
+      "images/young-guns-1988-bluray-2.jpg",
+      "images/young-guns-1988-bluray-3.jpg",
+      "images/young-guns-1988-bluray-4.jpg",
+      "images/young-guns-1988-bluray-5.jpg",
+      "images/young-guns-1988-bluray-6.jpg",
+      "images/young-guns-1988-bluray-7.jpg",
+      "images/young-guns-1988-bluray-8.jpg",
+      "images/young-guns-1988-bluray-9.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Young%20Guns%20Blu-ray%20Estevez&campid=5339133571&customid=young-guns-1988-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Emilio Estevez, Kiefer Sutherland, Lou Diamond Phillips, Charlie Sheen, Dermot Mulroney, Casey Siemaszko, Terence Stamp, Jack Palance, Terry O'Quinn",
+    "director": "Christopher Cain",
+    "producers": "Joe Roth, Christopher Cain; executive producers John Fusco, James G. Robinson",
+    "company": "Morgan Creek / 20th Century Fox / Lionsgate / Maple Pictures (Canada)",
+    "titleNote": "Blu-ray / 1988",
+    "tagline": "Blu-ray / Widescreen / Emilio Estevez / Kiefer Sutherland / Charlie Sheen / Western / 1980s",
+    "desc": "Six of the hottest stars, Emilio Estevez, Kiefer Sutherland, Lou Diamond Phillips, Charlie Sheen, Dermot Mulroney and Casey Siemaszko, take on the Wild West in this heart-stopping, gunslinging action adventure. The year is 1878, Lincoln County. John Tunstall, a British ranchowner, hires six rebellious boys as \"regulators\" to protect his ranch against the ruthless Santa Fe Ring. When Tunstall is killed in an ambush, the Regulators, led by the wild-tempered Billy the Kid (Estevez), declare war on the Ring. As their vendetta turns into a bloody rampage, they are branded outlaws, becoming the objects of the largest manhunt in Western history.",
+    "trivia": [
+      {
+        "heading": "A Number One Opening",
+        "text": "Young Guns opened at number one at the US box office in August 1988 and earned about $56 million worldwide on an $11 million budget."
+      },
+      {
+        "heading": "Tom Cruise Cameo",
+        "text": "Tom Cruise makes a non-speaking cameo as one of Murphy's henchmen, and country singer Randy Travis appears as a Gatling gunner."
+      },
+      {
+        "heading": "Brothers on Screen",
+        "text": "Emilio Estevez plays Billy the Kid and his real-life brother Charlie Sheen plays Regulator Dick Brewer."
+      },
+      {
+        "heading": "Sutherland Was Nearly Billy",
+        "text": "Director Christopher Cain first wanted Kiefer Sutherland as Billy, until Emilio Estevez convinced him he was right for the part."
+      },
+      {
+        "heading": "1870s Lincoln County in Santa Fe",
+        "text": "The film was shot mostly in Santa Fe County, New Mexico, with the town of Los Cerrillos redressed as 1870s Lincoln County."
+      }
+    ],
+    "tidbits": [
+      "Young Guns opened at number one at the US box office in August 1988 and earned about $56 million worldwide on an $11 million budget.",
+      "Tom Cruise makes a non-speaking cameo as one of Murphy's henchmen, and country singer Randy Travis appears as a Gatling gunner.",
+      "Emilio Estevez plays Billy the Kid and his real-life brother Charlie Sheen plays Regulator Dick Brewer.",
+      "Director Christopher Cain first wanted Kiefer Sutherland as Billy, until Emilio Estevez convinced him he was right for the part.",
+      "The film was shot mostly in Santa Fe County, New Mexico, with the town of Los Cerrillos redressed as 1870s Lincoln County."
+    ],
+    "copies": [
+      {
+        "id": "young-guns-1988-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Maple Pictures / Lionsgate Canadian Blu-ray",
+        "photos": [
+          "images/young-guns-1988-bluray-1.jpg",
+          "images/young-guns-1988-bluray-2.jpg",
+          "images/young-guns-1988-bluray-3.jpg",
+          "images/young-guns-1988-bluray-4.jpg",
+          "images/young-guns-1988-bluray-5.jpg",
+          "images/young-guns-1988-bluray-6.jpg",
+          "images/young-guns-1988-bluray-7.jpg",
+          "images/young-guns-1988-bluray-8.jpg",
+          "images/young-guns-1988-bluray-9.jpg"
+        ],
+        "gif": "images/young-guns-1988-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None. Printed artwork on the inside of the cover.",
+          "notes": "Maple Pictures / Lionsgate Blu-ray (Canada), catalogue 17365, UPC 057373173657. Approx. 102 minutes, 1080p 16x9 widescreen 1.85:1. Audio DTS-HD and 5.1 Dolby Digital Surround EX; English and Spanish subtitles. Rated 14A (Canada). Special features: The Real Billy the Kid documentary; advanced trivia track; Metamenu interactive menus."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
