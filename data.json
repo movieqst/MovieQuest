@@ -6138,5 +6138,93 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "aeon-flux-2005-bluray",
+    "title": "Æon Flux",
+    "year": 2005,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/aeon-flux-2005-bluray-1.jpg",
+    "photos": [
+      "images/aeon-flux-2005-bluray-1.jpg",
+      "images/aeon-flux-2005-bluray-2.jpg",
+      "images/aeon-flux-2005-bluray-3.jpg",
+      "images/aeon-flux-2005-bluray-4.jpg",
+      "images/aeon-flux-2005-bluray-5.jpg",
+      "images/aeon-flux-2005-bluray-6.jpg",
+      "images/aeon-flux-2005-bluray-7.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Aeon%20Flux%20Blu-ray%20Charlize%20Theron&campid=5339133571&customid=aeon-flux-2005-bluray",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "Charlize Theron, Marton Csokas, Jonny Lee Miller, Sophie Okonedo, Frances McDormand, Pete Postlethwaite",
+    "director": "Karyn Kusama",
+    "producers": "Gale Anne Hurd, David Gale, Gary Lucchesi",
+    "company": "Paramount Pictures / MTV Films / Lakeshore Entertainment / Valhalla Motion Pictures",
+    "titleNote": "Aeon Flux / Blu-ray / 2005",
+    "tagline": "Blu-ray / Widescreen / Charlize Theron / Sci-Fi Action / MTV / 2000s",
+    "desc": "Academy Award-winner Charlize Theron stars as Aeon Flux, the underground operative fighting totalitarian rule in 25th-century Earth's last living city. Aeon is the rebels' best hope of overthrowing the oppressively sterile, \"perfect\" society. But while on assignment to gun down the government's leader, Aeon uncovers a web of startling secrets that could completely change the world's future in this gripping sci-fi action thriller based on the ground-breaking MTV animated series.",
+    "trivia": [
+      {
+        "heading": "From MTV's Cult Cartoon",
+        "text": "The film is based on Peter Chung's MTV animated series Æon Flux, which aired from 1991 to 1995."
+      },
+      {
+        "heading": "Theron Hurt on Set",
+        "text": "Charlize Theron was hospitalized with a neck injury during stunt work, pausing filming for about a month."
+      },
+      {
+        "heading": "Shot in Germany",
+        "text": "Though set in the walled city of Bregna in the year 2415, the film was shot in and around Berlin and Potsdam."
+      },
+      {
+        "heading": "The Studio Recut",
+        "text": "Director Karyn Kusama said Paramount heavily re-edited her version; her cut reportedly had nearly 30 more minutes of footage."
+      },
+      {
+        "heading": "Creator Not Impressed",
+        "text": "Series creator Peter Chung was openly critical of the film, saying his character \"does not actually appear in the movie.\""
+      }
+    ],
+    "tidbits": [
+      "The film is based on Peter Chung's MTV animated series Æon Flux, which aired from 1991 to 1995.",
+      "Charlize Theron was hospitalized with a neck injury during stunt work, pausing filming for about a month.",
+      "Though set in the walled city of Bregna in the year 2415, the film was shot in and around Berlin and Potsdam.",
+      "Director Karyn Kusama said Paramount heavily re-edited her version; her cut reportedly had nearly 30 more minutes of footage.",
+      "Series creator Peter Chung was openly critical of the film, saying his character \"does not actually appear in the movie.\""
+    ],
+    "copies": [
+      {
+        "id": "aeon-flux-2005-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Paramount Canadian Blu-ray, bilingual",
+        "photos": [
+          "images/aeon-flux-2005-bluray-1.jpg",
+          "images/aeon-flux-2005-bluray-2.jpg",
+          "images/aeon-flux-2005-bluray-3.jpg",
+          "images/aeon-flux-2005-bluray-4.jpg",
+          "images/aeon-flux-2005-bluray-5.jpg",
+          "images/aeon-flux-2005-bluray-6.jpg",
+          "images/aeon-flux-2005-bluray-7.jpg"
+        ],
+        "gif": "images/aeon-flux-2005-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Case Very Good. Cover art: Good. The front art has visible scuffs and light scratches, and a small worn/torn patch along the left edge (see front photos). Some light marks on the inside of the clear case.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Paramount Home Entertainment Blu-ray (Canada, 2009), catalogue 11827, UPC 097361182766. Approx. 92 minutes, colour, 1080p high definition. English 5.1 DTS and 5.1 Dolby Digital, French and Spanish 5.1 Dolby Digital; English, French and Spanish subtitles, English SDH. Rated 14A (Canada) / PG-13 (US). Special features: commentary by Charlize Theron and producer Gale Anne Hurd; commentary by co-screenwriters Phil Hay and Matt Manfredi; Creating a World; The Locations of Aeon Flux; The Stunts of Aeon Flux; The Costume Design Workshop; The Craft of the Set Photographer; theatrical trailer (HD)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
