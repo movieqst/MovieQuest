@@ -6609,5 +6609,93 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "kingdom-of-heaven-2005-bluray",
+    "title": "Kingdom of Heaven",
+    "year": 2005,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/kingdom-of-heaven-2005-bluray-1.jpg",
+    "photos": [
+      "images/kingdom-of-heaven-2005-bluray-1.jpg",
+      "images/kingdom-of-heaven-2005-bluray-2.jpg",
+      "images/kingdom-of-heaven-2005-bluray-3.jpg",
+      "images/kingdom-of-heaven-2005-bluray-4.jpg",
+      "images/kingdom-of-heaven-2005-bluray-5.jpg",
+      "images/kingdom-of-heaven-2005-bluray-6.jpg",
+      "images/kingdom-of-heaven-2005-bluray-7.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Kingdom%20of%20Heaven%20Director%27s%20Cut%20Blu-ray&campid=5339133571&customid=kingdom-of-heaven-2005-bluray",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "Orlando Bloom, Eva Green, Jeremy Irons, David Thewlis, Brendan Gleeson, Marton Csokas, Liam Neeson, Edward Norton",
+    "director": "Ridley Scott",
+    "producers": "Ridley Scott; executive producers Branko Lustig, Lisa Ellzey, Terry Needham",
+    "company": "20th Century Fox / Scott Free Productions",
+    "titleNote": "Director's Cut / Blu-ray / 2005",
+    "tagline": "Blu-ray / Director's Cut / 194 Minutes / Orlando Bloom / Ridley Scott / Epic / 2000s",
+    "desc": "Orlando Bloom heads an all-star cast in this sweeping, action-packed tale about a young Frenchman who travels to Jerusalem during the Crusades. There he must battle overwhelming forces to defend the city, save countless lives, and fulfill his true destiny as a knight. Ridley Scott's Director's Cut presents the full 194-minute version of the film.",
+    "trivia": [
+      {
+        "heading": "The Cut That Saved It",
+        "text": "The 144-minute theatrical version got mixed reviews; Ridley Scott's Director's Cut restores about 45 minutes and is widely acclaimed as the definitive version."
+      },
+      {
+        "heading": "Castles in Spain and Morocco",
+        "text": "Filming took place in Ouarzazate, Morocco, and across Spain, including Loarre Castle, Segovia, Ávila and the Casa de Pilatos in Seville."
+      },
+      {
+        "heading": "Bloom Bulked Up",
+        "text": "Orlando Bloom gained about 20 pounds to play the blacksmith-turned-knight Balian of Ibelin."
+      },
+      {
+        "heading": "The Masked King",
+        "text": "Edward Norton plays the leper King Baldwin IV of Jerusalem, his face hidden behind a silver mask for the whole film."
+      },
+      {
+        "heading": "A $130 Million Epic",
+        "text": "Made for about $130 million, the film earned about $211.7 million worldwide and was especially popular in Arabic-speaking countries."
+      }
+    ],
+    "tidbits": [
+      "The 144-minute theatrical version got mixed reviews; Ridley Scott's Director's Cut restores about 45 minutes and is widely acclaimed as the definitive version.",
+      "Filming took place in Ouarzazate, Morocco, and across Spain, including Loarre Castle, Segovia, Ávila and the Casa de Pilatos in Seville.",
+      "Orlando Bloom gained about 20 pounds to play the blacksmith-turned-knight Balian of Ibelin.",
+      "Edward Norton plays the leper King Baldwin IV of Jerusalem, his face hidden behind a silver mask for the whole film.",
+      "Made for about $130 million, the film earned about $211.7 million worldwide and was especially popular in Arabic-speaking countries."
+    ],
+    "copies": [
+      {
+        "id": "kingdom-of-heaven-2005-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Director's Cut, 20th Century Fox Blu-ray (single disc)",
+        "photos": [
+          "images/kingdom-of-heaven-2005-bluray-1.jpg",
+          "images/kingdom-of-heaven-2005-bluray-2.jpg",
+          "images/kingdom-of-heaven-2005-bluray-3.jpg",
+          "images/kingdom-of-heaven-2005-bluray-4.jpg",
+          "images/kingdom-of-heaven-2005-bluray-5.jpg",
+          "images/kingdom-of-heaven-2005-bluray-6.jpg",
+          "images/kingdom-of-heaven-2005-bluray-7.jpg"
+        ],
+        "gif": "images/kingdom-of-heaven-2005-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Blu-ray player update insert.",
+          "notes": "20th Century Fox Home Entertainment Blu-ray (2006), for distribution in the US and Canada. 50GB dual-layer disc, Director's Cut, approx. 194 minutes, colour, 1080p widescreen 2.35:1 (MPEG-2 @ 24 Mbps). English DTS-HD Master Audio 5.1 lossless; subtitles English, Spanish and French; closed captioned. Rated R (US) / 14A (Canada). Smart Menu Technology (menus during playback)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
