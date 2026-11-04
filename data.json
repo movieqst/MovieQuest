@@ -6516,5 +6516,98 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "sanctum-2011-bluray-3d",
+    "title": "Sanctum 3D",
+    "year": 2011,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/sanctum-2011-bluray-3d-1.jpg",
+    "photos": [
+      "images/sanctum-2011-bluray-3d-1.jpg",
+      "images/sanctum-2011-bluray-3d-2.jpg",
+      "images/sanctum-2011-bluray-3d-3.jpg",
+      "images/sanctum-2011-bluray-3d-4.jpg",
+      "images/sanctum-2011-bluray-3d-5.jpg",
+      "images/sanctum-2011-bluray-3d-6.jpg",
+      "images/sanctum-2011-bluray-3d-7.jpg",
+      "images/sanctum-2011-bluray-3d-8.jpg",
+      "images/sanctum-2011-bluray-3d-9.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Sanctum%203D%20Blu-ray&campid=5339133571&customid=sanctum-2011-bluray-3d",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Richard Roxburgh, Rhys Wakefield, Alice Parkinson, Dan Wyllie, Ioan Gruffudd",
+    "director": "Alister Grierson",
+    "producers": "Andrew Wight, Ben Browning; executive producers James Cameron, Michael Maher, Peter Rawlinson, Ryan Kavanaugh",
+    "company": "Universal Pictures / Relativity Media / Wayfare Entertainment / FilmNation",
+    "titleNote": "2-Disc Blu-ray 3D + Blu-ray / 2011",
+    "tagline": "Blu-ray 3D / Blu-ray / 2-Disc / James Cameron / Underwater Thriller / 2010s",
+    "desc": "Conceived and shot in 3D! From executive producer James Cameron (Avatar) comes a thrilling underwater adventure based on true events. Master diver Frank McGuire leads a team, including his 17-year-old son, to explore the largest, most beautiful and least accessible cave system on Earth. But when a tropical storm cuts off their only escape route, the team must work together to find their way through an uncharted and dangerous underwater labyrinth to make it out alive. With time running out, can they survive, or will they be trapped forever?",
+    "trivia": [
+      {
+        "heading": "Based on a Real Rescue",
+        "text": "Co-writer and producer Andrew Wight drew on his own 1988 expedition on Australia's Nullarbor Plain, when a storm collapsed the cave entrance and trapped 13 cavers underground."
+      },
+      {
+        "heading": "Avatar's 3D Tech",
+        "text": "Executive producer James Cameron lent the film the 3D camera techniques he developed for Avatar; it was conceived and shot in 3D."
+      },
+      {
+        "heading": "A Tank on the Gold Coast",
+        "text": "Most of Sanctum was shot on Queensland's Gold Coast, with the underwater scenes filmed in a huge water tank at Village Roadshow Studios and real caves near Mount Gambier."
+      },
+      {
+        "heading": "Big Returns",
+        "text": "Made for about $30 million, Sanctum earned about $108.6 million worldwide."
+      },
+      {
+        "heading": "The Real Story on Disc",
+        "text": "Disc 2 includes Sanctum: The Real Story and Nullarbor Dreaming, about the real expedition behind the film."
+      }
+    ],
+    "tidbits": [
+      "Co-writer and producer Andrew Wight drew on his own 1988 expedition on Australia's Nullarbor Plain, when a storm collapsed the cave entrance and trapped 13 cavers underground.",
+      "Executive producer James Cameron lent the film the 3D camera techniques he developed for Avatar; it was conceived and shot in 3D.",
+      "Most of Sanctum was shot on Queensland's Gold Coast, with the underwater scenes filmed in a huge water tank at Village Roadshow Studios and real caves near Mount Gambier.",
+      "Made for about $30 million, Sanctum earned about $108.6 million worldwide.",
+      "Disc 2 includes Sanctum: The Real Story and Nullarbor Dreaming, about the real expedition behind the film."
+    ],
+    "copies": [
+      {
+        "id": "sanctum-2011-bluray-3d-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Universal Canadian 2-disc combo (Blu-ray 3D + Blu-ray), bilingual",
+        "photos": [
+          "images/sanctum-2011-bluray-3d-1.jpg",
+          "images/sanctum-2011-bluray-3d-2.jpg",
+          "images/sanctum-2011-bluray-3d-3.jpg",
+          "images/sanctum-2011-bluray-3d-4.jpg",
+          "images/sanctum-2011-bluray-3d-5.jpg",
+          "images/sanctum-2011-bluray-3d-6.jpg",
+          "images/sanctum-2011-bluray-3d-7.jpg",
+          "images/sanctum-2011-bluray-3d-8.jpg",
+          "images/sanctum-2011-bluray-3d-9.jpg"
+        ],
+        "gif": "images/sanctum-2011-bluray-3d-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue 2-disc Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Universal Studios Canada Blu-ray (2011), catalogue 18861C, UPC 025192104800. Disc 1: Blu-ray 3D feature film. Disc 2: Blu-ray feature film plus bonus features. Approx. 1 hr 49 min, 1080p 1.85:1 widescreen. English DTS-HD Master Audio 5.1, French and Spanish DTS 5.1. Rated 14A (Canada) / 13+ (Quebec). Special features: commentary with director Alister Grierson, actor Rhys Wakefield and co-writer/producer Andrew Wight; deleted scenes; Sanctum: The Real Story; Nullarbor Dreaming; BD-Live; pocket BLU; D-BOX motion enabled. 3D playback needs a 3D TV, 3D Blu-ray player and 3D glasses; Disc 2 plays on any Blu-ray player."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
