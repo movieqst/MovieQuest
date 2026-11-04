@@ -7920,5 +7920,90 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "bag-of-bones-2011-bluray",
+    "title": "Stephen King's Bag of Bones",
+    "year": 2011,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Pierce Brosnan, Melissa George, Annabeth Gish, Anika Noni Rose, Matt Frewer, Jason Priestley, Caitlin Carmichael, Peter MacNeill, William Schallert",
+    "director": "Mick Garris",
+    "producers": "Michael Mahoney, Mark Sennet, Stewart Mackinnon, Mick Garris",
+    "company": "Sony Pictures Television / Sennet Entertainment / Headline Pictures / Via Vision Entertainment (Australia)",
+    "titleNote": "Mini-Series / Region B Blu-ray / 2011",
+    "tagline": "Blu-ray / Region B Australian Import / Pierce Brosnan / Stephen King / Horror / 2010s",
+    "desc": "Based on the award-winning novel by Stephen King, Stephen King's Bag of Bones is an unforgettable psychological thriller. Two-time Golden Globe nominee Pierce Brosnan (Die Another Day) stars as Mike Noonan, a novelist who suffers from writer's block after the death of his wife, Jo (Annabeth Gish). A dream inspires him to return to the couple's lakeside retreat hoping to find answers about his wife's sudden death, but he is plagued by ever-escalating nightmares and mysterious ghostly visitations from Sara Tidwell (Anika Noni Rose, Dreamgirls), a blues singer whose spirit lingers in the house. As the inhabitants of Dark Score Lake haunt him, Mike comes to realize that his late wife still has something to tell him. Jason Priestley, Melissa George and William Schallert also star.",
+    "trivia": [
+      {
+        "heading": "A Bram Stoker Winner",
+        "text": "Stephen King's 1998 novel Bag of Bones won the Bram Stoker Award for Best Novel and the British Fantasy Award."
+      },
+      {
+        "heading": "Bond Goes Haunted",
+        "text": "Pierce Brosnan, best known as James Bond, plays novelist Mike Noonan, a writer haunted by his wife's death and the ghosts of Dark Score Lake."
+      },
+      {
+        "heading": "Mick Garris Again",
+        "text": "Director Mick Garris has adapted more Stephen King stories than almost anyone, including The Stand (1994), The Shining (1997) mini-series and Riding the Bullet."
+      },
+      {
+        "heading": "Two-Night Event",
+        "text": "It first aired on A&E as a two-part mini-series in December 2011; this DVD presents the whole 163-minute story."
+      }
+    ],
+    "tidbits": [
+      "Stephen King's 1998 novel Bag of Bones won the Bram Stoker Award for Best Novel and the British Fantasy Award.",
+      "Pierce Brosnan, best known as James Bond, plays novelist Mike Noonan, a writer haunted by his wife's death and the ghosts of Dark Score Lake.",
+      "Director Mick Garris has adapted more Stephen King stories than almost anyone, including The Stand (1994), The Shining (1997) mini-series and Riding the Bullet.",
+      "It first aired on A&E as a two-part mini-series in December 2011; this DVD presents the whole 163-minute story."
+    ],
+    "image": "https://moviequest.ca/images/bag-of-bones-2011-bluray-1.jpg",
+    "photos": [
+      "images/bag-of-bones-2011-bluray-1.jpg",
+      "images/bag-of-bones-2011-bluray-2.jpg",
+      "images/bag-of-bones-2011-bluray-3.jpg",
+      "images/bag-of-bones-2011-bluray-4.jpg",
+      "images/bag-of-bones-2011-bluray-5.jpg",
+      "images/bag-of-bones-2011-bluray-6.jpg",
+      "images/bag-of-bones-2011-bluray-7.jpg",
+      "images/bag-of-bones-2011-bluray-8.jpg"
+    ],
+    "storeUrl": "",
+    "price": null,
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%20Bag%20of%20Bones%20Blu-ray&campid=5339133571&customid=bag-of-bones-2011-bluray",
+    "copies": [
+      {
+        "id": "bag-of-bones-2011-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Via Vision Australian Blu-ray (2022), Region B",
+        "photos": [
+          "images/bag-of-bones-2011-bluray-1.jpg",
+          "images/bag-of-bones-2011-bluray-2.jpg",
+          "images/bag-of-bones-2011-bluray-3.jpg",
+          "images/bag-of-bones-2011-bluray-4.jpg",
+          "images/bag-of-bones-2011-bluray-5.jpg",
+          "images/bag-of-bones-2011-bluray-6.jpg",
+          "images/bag-of-bones-2011-bluray-7.jpg",
+          "images/bag-of-bones-2011-bluray-8.jpg"
+        ],
+        "gif": "images/bag-of-bones-2011-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case clean; the scratched, distressed look of the cover art is part of the printed design. Reversible-style printed artwork on the inside of the cover.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Via Vision Entertainment Blu-ray (Australia, 2022), catalogue VVE3711, barcode 9337369037110, under licence from Sony Pictures Television. REGION B: plays in Region B or region-free Blu-ray players; most standard North American (Region A) players will not play it. Approx. 2 hrs 43 min, 1080p 1.78:1. English 5.1 Dolby Digital; English HOH subtitles. Rated MA15+ (Australia). Special features: deleted scenes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
