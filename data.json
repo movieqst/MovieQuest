@@ -8900,5 +8900,103 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "christine-1983-bluray",
+    "title": "Christine",
+    "year": 1983,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/christine-1983-bluray-1.jpg",
+    "photos": [
+      "images/christine-1983-bluray-1.jpg",
+      "images/christine-1983-bluray-2.jpg",
+      "images/christine-1983-bluray-3.jpg",
+      "images/christine-1983-bluray-4.jpg",
+      "images/christine-1983-bluray-5.jpg",
+      "images/christine-1983-bluray-6.jpg",
+      "images/christine-1983-bluray-7.jpg",
+      "images/christine-1983-bluray-8.jpg",
+      "images/christine-1983-bluray-9.jpg",
+      "images/christine-1983-bluray-10.jpg",
+      "images/christine-1983-bluray-11.jpg",
+      "images/christine-1983-bluray-12.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Christine%20John%20Carpenter%20Blu-ray&campid=5339133571&customid=christine-1983-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Keith Gordon, John Stockwell, Alexandra Paul, Robert Prosky, Harry Dean Stanton",
+    "director": "John Carpenter",
+    "producers": "Richard Kobritz; executive producers Kirby McCauley, Mark Tarlov",
+    "company": "Columbia Pictures / Polar Film / Sony Pictures Home Entertainment",
+    "titleNote": "Blu-ray / 1983",
+    "tagline": "Blu-ray / John Carpenter / Stephen King / Keith Gordon / Horror / 1980s",
+    "desc": "She was born in Detroit, on an automobile assembly line, but Christine is no ordinary car. Deep within the chassis of this red and white 1958 Plymouth Fury lives an unholy presence. She seduces shy 17-year-old Arnie Cunningham, who becomes consumed with passion for her, and when anyone gets in their way, they become the victims of Christine's horrifying wrath. John Carpenter brings Stephen King's bestseller to life.",
+    "trivia": [
+      {
+        "heading": "Seventeen Christines",
+        "text": "The production tracked down 24 real 1958 Plymouth Furys and built 17 versions of Christine from them. All but two were destroyed during filming."
+      },
+      {
+        "heading": "Carpenter's Comeback",
+        "text": "After The Thing (1982) flopped and he was dropped from Firestarter, John Carpenter took on Christine so he could get straight back behind the camera."
+      },
+      {
+        "heading": "Running in Reverse",
+        "text": "Christine's famous self-repair scene was shot after filming wrapped: hydraulic pumps crushed the car's body, and the footage was played backwards."
+      },
+      {
+        "heading": "Arnie's Wardrobe",
+        "text": "Keith Gordon suggested Arnie's clothes grow bolder and redder as Christine takes hold of him."
+      },
+      {
+        "heading": "Best Since Halloween",
+        "text": "Time magazine called Christine \"Carpenter's best since Halloween\", a quote printed on the back of this edition."
+      }
+    ],
+    "tidbits": [
+      "The production tracked down 24 real 1958 Plymouth Furys and built 17 versions of Christine from them. All but two were destroyed during filming.",
+      "After The Thing (1982) flopped and he was dropped from Firestarter, John Carpenter took on Christine so he could get straight back behind the camera.",
+      "Christine's famous self-repair scene was shot after filming wrapped: hydraulic pumps crushed the car's body, and the footage was played backwards.",
+      "Keith Gordon suggested Arnie's clothes grow bolder and redder as Christine takes hold of him.",
+      "Time magazine called Christine \"Carpenter's best since Halloween\", a quote printed on the back of this edition."
+    ],
+    "copies": [
+      {
+        "id": "christine-1983-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Sony Canadian bilingual Blu-ray (Version française incluse), 2015",
+        "photos": [
+          "images/christine-1983-bluray-1.jpg",
+          "images/christine-1983-bluray-2.jpg",
+          "images/christine-1983-bluray-3.jpg",
+          "images/christine-1983-bluray-4.jpg",
+          "images/christine-1983-bluray-5.jpg",
+          "images/christine-1983-bluray-6.jpg",
+          "images/christine-1983-bluray-7.jpg",
+          "images/christine-1983-bluray-8.jpg",
+          "images/christine-1983-bluray-9.jpg",
+          "images/christine-1983-bluray-10.jpg",
+          "images/christine-1983-bluray-11.jpg",
+          "images/christine-1983-bluray-12.jpg"
+        ],
+        "gif": "images/christine-1983-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and bilingual cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Sony Pictures Home Entertainment / Columbia Pictures (2015), catalogue 46304, UPC 043396463042, Region A/B/C. Approx. 110 minutes, colour, 1080p 2.35:1. Audio English 5.1 DTS-HD Master Audio, French (Parisian), German, Russian, Italian, Spanish and Portuguese, plus English audio description. Subtitles in 11 languages including English, English SDH and French. Rated 18A (Canada). Special features: deleted scenes; commentary with director John Carpenter and Keith Gordon; Christine: Ignition; Christine: Fast and Furious; Christine: Finish Line."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
