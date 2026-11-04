@@ -10324,5 +10324,96 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "trailer-park-boys-say-goodnight-to-the-bad-guys-dvd",
+    "title": "Trailer Park Boys: Say Goodnight to the Bad Guys",
+    "year": 2008,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-1.jpg",
+    "photos": [
+      "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-1.jpg",
+      "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-2.jpg",
+      "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-3.jpg",
+      "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-4.jpg",
+      "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-5.jpg",
+      "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-6.jpg",
+      "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-7.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Trailer%20Park%20Boys%20Say%20Goodnight%20to%20the%20Bad%20Guys%20DVD&campid=5339133571&customid=trailer-park-boys-say-goodnight-to-the-bad-guys-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2008",
+    "createdBy": "Mike Clattenburg",
+    "starring": "John Paul Tremblay, Robb Wells, Mike Smith, John Dunsworth, Patrick Roach, Lucy DeCoutere, Sarah Dunsworth, Jonathan Torrens, Barrie Dunn",
+    "director": "Mike Clattenburg",
+    "producers": "Karen Wentzell; executive producers Mike Clattenburg, Barrie Dunn, Michael Volpe",
+    "company": "Trailer Park Productions / Topsail Productions / Showcase / Alliance Films",
+    "titleNote": "TV Special / DVD (cover art and disc, no case) / 2008",
+    "tagline": "DVD / Series Finale Special / Robb Wells / John Paul Tremblay / Mike Smith / Canadian TV / 2000s",
+    "desc": "It has been one year since the successful \"train ride\" in Maine, and Ricky, Julian and Bubbles are about to become rich. On the eve of dividing up the money, the Boys are ambushed by Sam Losco and the money is lost forever. Ray is back living in the dump, the Boys are penniless once again, and Ricky has to deal with Randy raising \"baby\" Randy with Lucy. Meanwhile, Lahey hatches a greasy plan involving \"dirty dancing\" to get the Boys out of Sunnyvale for a good, long time. The world is theirs...",
+    "trivia": [
+      {
+        "heading": "The TV Finale",
+        "text": "This one-hour special was the last Trailer Park Boys show on Showcase. It premiered on December 7, 2008, wrapping up the original seven-season run."
+      },
+      {
+        "heading": "Picking Up the Cliffhanger",
+        "text": "The special picks up one year after Season 7's \"train ride\" in Maine, with the Boys about to split the money."
+      },
+      {
+        "heading": "Scarface Homage",
+        "text": "The cover art and tagline (\"The world is theirs...\") are a send-up of the classic Scarface poster, with Bubbles in Tony Montana's white suit."
+      },
+      {
+        "heading": "Shot in HD",
+        "text": "The special was shot in high definition in Halifax, with series creator Mike Clattenburg directing."
+      },
+      {
+        "heading": "What Came Next",
+        "text": "The Boys returned to the big screen in Trailer Park Boys: Countdown to Liquor Day (2009), and Netflix revived the series in 2014."
+      }
+    ],
+    "tidbits": [
+      "This one-hour special was the last Trailer Park Boys show on Showcase. It premiered on December 7, 2008, wrapping up the original seven-season run.",
+      "The special picks up one year after Season 7's \"train ride\" in Maine, with the Boys about to split the money.",
+      "The cover art and tagline (\"The world is theirs...\") are a send-up of the classic Scarface poster, with Bubbles in Tony Montana's white suit.",
+      "The special was shot in high definition in Halifax, with series creator Mike Clattenburg directing.",
+      "The Boys returned to the big screen in Trailer Park Boys: Countdown to Liquor Day (2009), and Netflix revived the series in 2014."
+    ],
+    "copies": [
+      {
+        "id": "trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-1",
+        "added": "2026-11-04",
+        "format": "DVD",
+        "edition": "Alliance Films Canadian DVD (117040), no case",
+        "photos": [
+          "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-1.jpg",
+          "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-2.jpg",
+          "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-3.jpg",
+          "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-4.jpg",
+          "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-5.jpg",
+          "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-6.jpg",
+          "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-7.jpg"
+        ],
+        "gif": "images/trailer-park-boys-say-goodnight-to-the-bad-guys-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "No case. Includes the original printed cover art (case insert), Very Good and clean, and the disc in a paper sleeve, exactly as shown.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Films (Canada, printed 2010), catalogue 117040, UPC 065935842309, distributed exclusively in Canada. Approx. 47 minutes, widescreen 1.78:1 enhanced for 16x9 TVs, English 2.0 Dolby Surround. Rated 18A (Canada): coarse language, substance abuse. Special features: behind the scenes; alternative takes."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
