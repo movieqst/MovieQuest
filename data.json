@@ -8804,5 +8804,101 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "cujo-1983-bluray",
+    "title": "Cujo",
+    "year": 1983,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/cujo-1983-bluray-1.jpg",
+    "photos": [
+      "images/cujo-1983-bluray-1.jpg",
+      "images/cujo-1983-bluray-2.jpg",
+      "images/cujo-1983-bluray-3.jpg",
+      "images/cujo-1983-bluray-4.jpg",
+      "images/cujo-1983-bluray-5.jpg",
+      "images/cujo-1983-bluray-6.jpg",
+      "images/cujo-1983-bluray-7.jpg",
+      "images/cujo-1983-bluray-8.jpg",
+      "images/cujo-1983-bluray-9.jpg",
+      "images/cujo-1983-bluray-10.jpg",
+      "images/cujo-1983-bluray-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Cujo%2025th%20Anniversary%20Blu-ray&campid=5339133571&customid=cujo-1983-bluray",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Dee Wallace, Daniel Hugh-Kelly, Danny Pintauro, Ed Lauter, Christopher Stone",
+    "director": "Lewis Teague",
+    "producers": "Daniel H. Blatt, Robert Singer",
+    "company": "Taft Entertainment / Sunn Classic Pictures / Republic Pictures / Maple Pictures / Lionsgate",
+    "titleNote": "25th Anniversary Edition / Blu-ray / 1983",
+    "tagline": "Blu-ray / 25th Anniversary Edition / Stephen King / Dee Wallace / Horror / 1980s",
+    "desc": "Vic and Donna Trenton are trying to save their crumbling marriage in rural Maine, while their young son Tad befriends a lovable 200-pound St. Bernard named Cujo. But a bat bite turns the gentle dog into a rabid killer, and when Donna and Tad's aging Pinto breaks down at a remote farm, they are trapped in the summer heat with Cujo waiting outside. From the terrifying novel by Stephen King.",
+    "trivia": [
+      {
+        "heading": "How Many Cujos?",
+        "text": "Cast and crew remember anywhere from five to 13 trained Saint Bernards playing Cujo. A man in a dog suit and a mechanical dog were used for some of the attack shots."
+      },
+      {
+        "heading": "A New Director",
+        "text": "Peter Medak was the original director but left a few days into filming over creative differences. Lewis Teague took over."
+      },
+      {
+        "heading": "A Different Ending",
+        "text": "In Stephen King's 1981 novel, young Tad does not survive. The studio insisted on changing the ending for the film, and King accepted it."
+      },
+      {
+        "heading": "Maine in California",
+        "text": "Although the story is set in Maine, the film was shot in northern California in late 1982."
+      },
+      {
+        "heading": "Dee Wallace's Favourite",
+        "text": "Dee Wallace, fresh from E.T., found the shoot so draining she was treated for exhaustion afterwards, yet she calls Cujo her favourite of her own films."
+      }
+    ],
+    "tidbits": [
+      "Cast and crew remember anywhere from five to 13 trained Saint Bernards playing Cujo. A man in a dog suit and a mechanical dog were used for some of the attack shots.",
+      "Peter Medak was the original director but left a few days into filming over creative differences. Lewis Teague took over.",
+      "In Stephen King's 1981 novel, young Tad does not survive. The studio insisted on changing the ending for the film, and King accepted it.",
+      "Although the story is set in Maine, the film was shot in northern California in late 1982.",
+      "Dee Wallace, fresh from E.T., found the shoot so draining she was treated for exhaustion afterwards, yet she calls Cujo her favourite of her own films."
+    ],
+    "copies": [
+      {
+        "id": "cujo-1983-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "25th Anniversary Edition, Maple Pictures / Lionsgate Canadian Blu-ray (20787)",
+        "photos": [
+          "images/cujo-1983-bluray-1.jpg",
+          "images/cujo-1983-bluray-2.jpg",
+          "images/cujo-1983-bluray-3.jpg",
+          "images/cujo-1983-bluray-4.jpg",
+          "images/cujo-1983-bluray-5.jpg",
+          "images/cujo-1983-bluray-6.jpg",
+          "images/cujo-1983-bluray-7.jpg",
+          "images/cujo-1983-bluray-8.jpg",
+          "images/cujo-1983-bluray-9.jpg",
+          "images/cujo-1983-bluray-10.jpg",
+          "images/cujo-1983-bluray-11.jpg"
+        ],
+        "gif": "images/cujo-1983-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Maple Pictures / Lionsgate Blu-ray (Canada, 2009), catalogue 20787, UPC 057373207871, Region A/B/C. Approx. 95 minutes, colour, 1080p 16x9 widescreen 1.85:1. Audio English 5.1 DTS-HD Master Audio and original English mono (Dolby Digital); English and Spanish subtitles, English SDH. Rated 18A (Canada). Special features: audio commentary by director Lewis Teague; Dog Days: The Making of Cujo, a three-part documentary with cast and filmmaker interviews."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
