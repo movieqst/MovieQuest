@@ -7549,5 +7549,94 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "in-treatment-season-3-dvd",
+    "title": "In Treatment: Season Three",
+    "year": 2010,
+    "format": "DVD",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/in-treatment-season-3-dvd-1.jpg",
+    "photos": [
+      "images/in-treatment-season-3-dvd-1.jpg",
+      "images/in-treatment-season-3-dvd-2.jpg",
+      "images/in-treatment-season-3-dvd-3.jpg",
+      "images/in-treatment-season-3-dvd-4.jpg",
+      "images/in-treatment-season-3-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=In%20Treatment%20Season%203%20DVD%20sealed&campid=5339133571&customid=in-treatment-season-3-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "runYears": "2010",
+    "starring": "Gabriel Byrne, Amy Ryan, Irrfan Khan, Debra Winger, Dane DeHaan, Sonya Walger",
+    "createdBy": "Hagai Levi with Ori Sivan and Nir Bergman (BeTipul); developed by Rodrigo García",
+    "producers": "Stephen Levinson, Anya Epstein, Dan Futterman, Paris Barclay, Hagai Levi, Mark Wahlberg",
+    "company": "HBO / Warner Home Video",
+    "titleNote": "4-Disc Set / Sealed / 2010",
+    "tagline": "DVD / 4-Disc Set / 28 Episodes / Factory Sealed / Gabriel Byrne / HBO / TV Series / 2010",
+    "desc": "Set within the highly charged confines of individual psychotherapy sessions, In Treatment Season 3 continues to center around Dr. Paul Weston (Gabriel Byrne), who is coping with the aftereffects of his recent divorce, as well as his move to Brooklyn to continue his practice. In the midst of new emotional and physical challenges (including hand tremors he fears might be the onset of Parkinson's Disease, which killed his father), Paul will be treating three new patients (Debra Winger, Irrfan Khan and Dane DeHaan), and will see a new therapist (Amy Ryan) in New York City.",
+    "trivia": [
+      {
+        "heading": "Off the Israeli Script",
+        "text": "Seasons 1 and 2 closely followed the Israeli series BeTipul; Season 3 was the first written entirely from new material, since BeTipul had only two seasons."
+      },
+      {
+        "heading": "A Golden Globe for Byrne",
+        "text": "Gabriel Byrne won the Golden Globe for Best Actor in a Drama Series for playing therapist Paul Weston."
+      },
+      {
+        "heading": "Four Sessions a Week",
+        "text": "Season 3 aired four episodes a week on HBO, from late October to December 7, 2010, each episode a single therapy session."
+      },
+      {
+        "heading": "A Future Star",
+        "text": "Dane DeHaan, later of Chronicle and The Amazing Spider-Man 2, plays Jesse, a teenage patient, alongside Irrfan Khan and Debra Winger."
+      },
+      {
+        "heading": "Revived a Decade Later",
+        "text": "HBO brought the show back in 2021 for a fourth season with Uzo Aduba as a new therapist."
+      }
+    ],
+    "tidbits": [
+      "Seasons 1 and 2 closely followed the Israeli series BeTipul; Season 3 was the first written entirely from new material, since BeTipul had only two seasons.",
+      "Gabriel Byrne won the Golden Globe for Best Actor in a Drama Series for playing therapist Paul Weston.",
+      "Season 3 aired four episodes a week on HBO, from late October to December 7, 2010, each episode a single therapy session.",
+      "Dane DeHaan, later of Chronicle and The Amazing Spider-Man 2, plays Jesse, a teenage patient, alongside Irrfan Khan and Debra Winger.",
+      "HBO brought the show back in 2021 for a fourth season with Uzo Aduba as a new therapist."
+    ],
+    "copies": [
+      {
+        "id": "in-treatment-season-3-dvd-1",
+        "added": "2026-11-04",
+        "format": "DVD",
+        "edition": "HBO 4-disc DVD set, still sealed",
+        "photos": [
+          "images/in-treatment-season-3-dvd-1.jpg",
+          "images/in-treatment-season-3-dvd-2.jpg",
+          "images/in-treatment-season-3-dvd-3.jpg",
+          "images/in-treatment-season-3-dvd-4.jpg",
+          "images/in-treatment-season-3-dvd-5.jpg"
+        ],
+        "gif": "images/in-treatment-season-3-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed). Original Future Shop price sticker on the front shrink wrap; the wrap is loose with small splits along the spine edge (see photos), but the set itself is unopened.",
+          "discs": [
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "HBO Home Entertainment / Warner Home Video DVD (2011), ISBN 0-7806-7644-0, UPC 883929190003. 4 discs, 28 episodes, approx. 840 minutes, colour, 16:9. Audio English 5.1, French 5.1, Spanish 2.0; subtitles English, French, Spanish. Rated TV-MA (US) / 14A (Canada)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
