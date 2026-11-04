@@ -8192,5 +8192,82 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-sopranos-season-4-dvd",
+    "title": "The Sopranos: The Complete Fourth Season",
+    "year": 2002,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-sopranos-season-4-dvd-1.jpg",
+    "photos": [
+      "images/the-sopranos-season-4-dvd-1.jpg"
+    ],
+    "storeUrl": "https://www.ebay.ca/itm/117248541440?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=the-sopranos-season-4-dvd&toolid=10001&mkevt=1",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Sopranos%20Season%204%20DVD&campid=5339133571&customid=the-sopranos-season-4-dvd",
+    "price": 24.95,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2002",
+    "createdBy": "David Chase",
+    "starring": "James Gandolfini, Edie Falco, Lorraine Bracco, Michael Imperioli, Dominic Chianese, Steven Van Zandt, Tony Sirico, Drea de Matteo, Joe Pantoliano",
+    "producers": "David Chase, Brad Grey, Robin Green, Mitchell Burgess, Terence Winter, Ilene S. Landress",
+    "company": "HBO / Brillstein-Grey / Chase Films / HBO Home Video",
+    "titleNote": "Complete Season 4 / 2002",
+    "tagline": "DVD / Complete Fourth Season / 13 Episodes / James Gandolfini / HBO / TV Series / 2000s",
+    "desc": "Tony Soprano is back, and his two families are feeling the strain. With money tight and the Feds closing in, Tony juggles a restless crew, a hot-headed captain in Ralph Cifaretto, a nephew fighting addiction and a marriage that is coming apart at the seams. The Complete Fourth Season collects all 13 episodes of HBO's Emmy-winning drama, ending with the acclaimed finale \"Whitecaps\".",
+    "trivia": [
+      {
+        "heading": "Four Emmys",
+        "text": "Season 4 won four Emmys: James Gandolfini and Edie Falco for lead acting (both for \"Whitecaps\"), Joe Pantoliano for supporting actor, and the writing award for \"Whitecaps\"."
+      },
+      {
+        "heading": "The Whitecaps Finale",
+        "text": "In the season finale \"Whitecaps\", Tony and Carmela's marriage finally falls apart, in one of the most acclaimed episodes of the series."
+      },
+      {
+        "heading": "Goodbye, Ralphie",
+        "text": "\"Whoever Did This\" features Tony's showdown with Ralph Cifaretto after the stable fire that kills the racehorse Pie-O-My."
+      },
+      {
+        "heading": "Christopher's Intervention",
+        "text": "\"The Strong, Silent Type\" includes the crew's infamous intervention for Christopher, which quickly turns into a beating."
+      },
+      {
+        "heading": "Fall 2002 on HBO",
+        "text": "The season's 13 episodes aired on HBO from September 15 to December 8, 2002."
+      }
+    ],
+    "tidbits": [
+      "Season 4 won four Emmys: James Gandolfini and Edie Falco for lead acting (both for \"Whitecaps\"), Joe Pantoliano for supporting actor, and the writing award for \"Whitecaps\".",
+      "In the season finale \"Whitecaps\", Tony and Carmela's marriage finally falls apart, in one of the most acclaimed episodes of the series.",
+      "\"Whoever Did This\" features Tony's showdown with Ralph Cifaretto after the stable fire that kills the racehorse Pie-O-My.",
+      "\"The Strong, Silent Type\" includes the crew's infamous intervention for Christopher, which quickly turns into a beating.",
+      "The season's 13 episodes aired on HBO from September 15 to December 8, 2002."
+    ],
+    "copies": [
+      {
+        "id": "the-sopranos-season-4-dvd-1",
+        "added": "2026-11-04",
+        "format": "DVD",
+        "edition": "HBO Home Video DVD set",
+        "photos": [
+          "images/the-sopranos-season-4-dvd-1.jpg"
+        ],
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "",
+          "notes": "HBO Home Video DVD, The Complete Fourth Season: all 13 episodes, originally aired September 15 to December 8, 2002. Please see the photos in the listing for the case, discs and box details."
+        },
+        "ebayUrl": "https://www.ebay.ca/itm/117248541440",
+        "sold": false
+      }
+    ]
   }
 ]
