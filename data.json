@@ -5672,5 +5672,89 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "house-of-cards-season-3-bluray",
+    "title": "House of Cards: The Complete Third Season",
+    "year": 2015,
+    "format": "Blu-ray",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/house-of-cards-season-3-bluray-1.jpg",
+    "photos": [
+      "images/house-of-cards-season-3-bluray-1.jpg",
+      "images/house-of-cards-season-3-bluray-2.jpg",
+      "images/house-of-cards-season-3-bluray-3.jpg",
+      "images/house-of-cards-season-3-bluray-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=House%20of%20Cards%20Third%20Season%20Blu-ray%20sealed&campid=5339133571&customid=house-of-cards-season-3-bluray",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "runYears": "2015",
+    "createdBy": "Beau Willimon, based on the novel by Michael Dobbs",
+    "starring": "Kevin Spacey, Robin Wright, Michael Kelly, Mahershala Ali, Molly Parker, Lars Mikkelsen, Elizabeth Marvel, Derek Cecil, Reg E. Cathey",
+    "producers": "Beau Willimon, David Fincher, Kevin Spacey, Dana Brunetti, Eric Roth",
+    "company": "Media Rights Capital / Netflix / Sony Pictures Home Entertainment",
+    "titleNote": "Volume Three / Chapters 27–39 / Blu-ray / 2015",
+    "tagline": "Blu-ray / Season 3 / Bilingual Canadian Edition / Factory Sealed / Kevin Spacey / TV Series / 2015",
+    "desc": "In Season 3 of House of Cards, President Underwood fights to secure his legacy. Claire wants more than being the First Lady. The biggest threat they face is contending with each other. This Emmy-winning original thriller series stars Golden Globe winner Kevin Spacey as ruthless and cunning Francis Underwood, who will stop at nothing to conquer the halls of power in Washington D.C. His secret weapon: his gorgeous, ambitious and equally conniving wife Claire (Golden Globe winner Robin Wright). Volume Three collects Chapters 27 to 39, the complete third season.",
+    "trivia": [
+      {
+        "heading": "Netflix's First Big Original",
+        "text": "House of Cards premiered in 2013 as Netflix's first major original series; Season 3 arrived all at once on February 27, 2015."
+      },
+      {
+        "heading": "An Early Leak",
+        "text": "About ten Season 3 episodes went live on Netflix by accident for roughly 25 minutes on February 11, 2015, two weeks before release."
+      },
+      {
+        "heading": "Emmy Wins",
+        "text": "For this season Reg E. Cathey won the Emmy for Outstanding Guest Actor as Freddy, and Jeff Beal won for his music; Spacey, Wright and Michael Kelly were all nominated."
+      },
+      {
+        "heading": "Pussy Riot Cameo",
+        "text": "Members of the Russian protest band Pussy Riot appear as themselves opposite Lars Mikkelsen's President Viktor Petrov."
+      },
+      {
+        "heading": "Shot in Maryland",
+        "text": "The season was filmed in the Baltimore area and Washington, D.C., from June to December 2014."
+      }
+    ],
+    "tidbits": [
+      "House of Cards premiered in 2013 as Netflix's first major original series; Season 3 arrived all at once on February 27, 2015.",
+      "About ten Season 3 episodes went live on Netflix by accident for roughly 25 minutes on February 11, 2015, two weeks before release.",
+      "For this season Reg E. Cathey won the Emmy for Outstanding Guest Actor as Freddy, and Jeff Beal won for his music; Spacey, Wright and Michael Kelly were all nominated.",
+      "Members of the Russian protest band Pussy Riot appear as themselves opposite Lars Mikkelsen's President Viktor Petrov.",
+      "The season was filmed in the Baltimore area and Washington, D.C., from June to December 2014."
+    ],
+    "copies": [
+      {
+        "id": "house-of-cards-season-3-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Sony Pictures Canadian Blu-ray, bilingual, with slipcover",
+        "photos": [
+          "images/house-of-cards-season-3-bluray-1.jpg",
+          "images/house-of-cards-season-3-bluray-2.jpg",
+          "images/house-of-cards-season-3-bluray-3.jpg",
+          "images/house-of-cards-season-3-bluray-4.jpg"
+        ],
+        "gif": "images/house-of-cards-season-3-bluray-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed); original Best Buy price sticker on the front shrink wrap. The UltraViolet digital copy offer on the wrap expired 12/31/2018.",
+          "discs": [
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "Sony Pictures Home Entertainment Canadian Blu-ray (2015, UPC 043396460164), Region A/B, bilingual English/French packaging, still in the original shrink wrap. Chapters 27 to 39 (13 episodes), approx. 691 minutes, colour, 1080p 2.00:1. Audio: English and French (Parisian) 5.1 DTS-HD Master Audio. Subtitles: English, English SDH, French, Portuguese, Spanish. Rated PG (Canada) / 13+ (Quebec). Special features: Blu-ray exclusive A Death in New Mexico; Backstage Politics: On the Set of House of Cards."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
