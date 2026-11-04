@@ -6697,5 +6697,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-night-flier-1997-dvd",
+    "title": "Stephen King's The Night Flier",
+    "year": 1997,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-night-flier-1997-dvd-1.jpg",
+    "photos": [
+      "images/the-night-flier-1997-dvd-1.jpg",
+      "images/the-night-flier-1997-dvd-2.jpg",
+      "images/the-night-flier-1997-dvd-3.jpg",
+      "images/the-night-flier-1997-dvd-4.jpg",
+      "images/the-night-flier-1997-dvd-5.jpg",
+      "images/the-night-flier-1997-dvd-6.jpg",
+      "images/the-night-flier-1997-dvd-7.jpg",
+      "images/the-night-flier-1997-dvd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%20Night%20Flier%20DVD&campid=5339133571&customid=the-night-flier-1997-dvd",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Miguel Ferrer, Julie Entwisle, Dan Monahan, Michael H. Moss",
+    "director": "Mark Pavia",
+    "producers": "Richard P. Rubinstein, Mitchell Galin; executive producer David Kappes",
+    "company": "New Line Cinema / New Amsterdam Entertainment / Stardust International / Medusa Film",
+    "titleNote": "Australian PAL DVD / 1997",
+    "tagline": "DVD / Stephen King / Miguel Ferrer / Horror / Australian Import (PAL) / 1990s",
+    "desc": "For tabloid journalist Richard Dees (Miguel Ferrer), facts are always stranger than fiction. Every headline is a deadline. Serial killers, UFO abductions, tales of molestation, mayhem and murder. To some the tales are unbelievable, but his faithful readers believe. And now there's a new story. The Night Flier. What is it that flies by night in a dark-winged Cessna, lands at secluded airports and brutally murders local residents? Dees begins to follow the unknown killer in a Cessna of his own, uncovering clues that reveal a pilot more terrifying than he could ever have imagined.",
+    "trivia": [
+      {
+        "heading": "From a 1988 King Story",
+        "text": "The film is based on Stephen King's 1988 short story \"The Night Flier\", about a tabloid reporter chasing a killer who flies a Cessna by night."
+      },
+      {
+        "heading": "A Name from Dracula",
+        "text": "The vampire's name, Dwight Renfield, honours Dwight Frye, who played Renfield in the 1931 Dracula."
+      },
+      {
+        "heading": "HBO Before Cinemas",
+        "text": "It premiered on HBO on November 7, 1997, before New Line gave it a limited US cinema release in February 1998."
+      },
+      {
+        "heading": "Hurricane on Set",
+        "text": "It was shot in Wilmington, North Carolina, where Hurricane Bertha cost the production a day of filming."
+      },
+      {
+        "heading": "Ferrer Meets King",
+        "text": "Miguel Ferrer first met Stephen King while making the 1994 mini-series The Stand."
+      }
+    ],
+    "tidbits": [
+      "The film is based on Stephen King's 1988 short story \"The Night Flier\", about a tabloid reporter chasing a killer who flies a Cessna by night.",
+      "The vampire's name, Dwight Renfield, honours Dwight Frye, who played Renfield in the 1931 Dracula.",
+      "It premiered on HBO on November 7, 1997, before New Line gave it a limited US cinema release in February 1998.",
+      "It was shot in Wilmington, North Carolina, where Hurricane Bertha cost the production a day of filming.",
+      "Miguel Ferrer first met Stephen King while making the 1994 mini-series The Stand."
+    ],
+    "copies": [
+      {
+        "id": "the-night-flier-1997-dvd-1",
+        "added": "2026-11-03",
+        "format": "DVD",
+        "edition": "Australian release (PAL), clear case",
+        "photos": [
+          "images/the-night-flier-1997-dvd-1.jpg",
+          "images/the-night-flier-1997-dvd-2.jpg",
+          "images/the-night-flier-1997-dvd-3.jpg",
+          "images/the-night-flier-1997-dvd-4.jpg",
+          "images/the-night-flier-1997-dvd-5.jpg",
+          "images/the-night-flier-1997-dvd-6.jpg",
+          "images/the-night-flier-1997-dvd-7.jpg",
+          "images/the-night-flier-1997-dvd-8.jpg"
+        ],
+        "gif": "images/the-night-flier-1997-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Clear DVD case and cover art clean.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Australian DVD release, rated MA15+, barcode 9317486000945. PAL format (the back cover also shows an 'ALL' logo). PLEASE NOTE: PAL discs need a PAL-compatible or multi-system DVD player and TV; most computers will play them. Approx. 93 minutes, colour, 4:3, Dolby Digital, English. Special features: interactive menus, trailer, scene index, cast notes, about the filmmakers, production notes and photo gallery."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
