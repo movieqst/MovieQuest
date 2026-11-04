@@ -8998,5 +8998,101 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "carrie-1976-bluray",
+    "title": "Carrie",
+    "year": 1976,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/carrie-1976-bluray-1.jpg",
+    "photos": [
+      "images/carrie-1976-bluray-1.jpg",
+      "images/carrie-1976-bluray-2.jpg",
+      "images/carrie-1976-bluray-3.jpg",
+      "images/carrie-1976-bluray-4.jpg",
+      "images/carrie-1976-bluray-5.jpg",
+      "images/carrie-1976-bluray-6.jpg",
+      "images/carrie-1976-bluray-7.jpg",
+      "images/carrie-1976-bluray-8.jpg",
+      "images/carrie-1976-bluray-9.jpg",
+      "images/carrie-1976-bluray-10.jpg",
+      "images/carrie-1976-bluray-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Carrie%201976%20Blu-ray%20Spacek&campid=5339133571&customid=carrie-1976-bluray",
+    "price": null,
+    "categories": [
+      "1970s"
+    ],
+    "starring": "Sissy Spacek, Piper Laurie, Amy Irving, William Katt, Nancy Allen, John Travolta, Betty Buckley",
+    "director": "Brian De Palma",
+    "producers": "Paul Monash",
+    "company": "United Artists / MGM / 20th Century Fox Home Entertainment",
+    "titleNote": "Blu-ray / 1976",
+    "tagline": "Blu-ray / Stephen King / Brian De Palma / Sissy Spacek / John Travolta / Horror / 1970s",
+    "desc": "All hell breaks loose when Carrie White, a tortured, misfit teenager, unleashes her secret telekinetic powers against her psychotic mother and her sadistic classmates. Sissy Spacek and Piper Laurie star in Brian De Palma's bone-chilling classic, based on Stephen King's best-selling first novel and one of the all-time great horror films.",
+    "trivia": [
+      {
+        "heading": "King's First",
+        "text": "Carrie was Stephen King's first published novel, and this was the first film ever made from one of his stories."
+      },
+      {
+        "heading": "Two Oscar Nominations",
+        "text": "Sissy Spacek (Carrie) and Piper Laurie (her mother, Margaret White) were both nominated for Academy Awards, a rare honour for a horror film."
+      },
+      {
+        "heading": "Auditions with Star Wars",
+        "text": "Brian De Palma held joint auditions with his friend George Lucas, who was casting Star Wars. Amy Irving was considered for both Carrie and Princess Leia."
+      },
+      {
+        "heading": "Method Carrie",
+        "text": "Sissy Spacek kept herself apart from the rest of the cast during filming so she would feel as isolated as Carrie."
+      },
+      {
+        "heading": "That's Her Hand",
+        "text": "For the famous graveyard ending, De Palma wanted a stunt double, but Spacek insisted on doing it herself and was buried in the ground for the shot."
+      }
+    ],
+    "tidbits": [
+      "Carrie was Stephen King's first published novel, and this was the first film ever made from one of his stories.",
+      "Sissy Spacek (Carrie) and Piper Laurie (her mother, Margaret White) were both nominated for Academy Awards, a rare honour for a horror film.",
+      "Brian De Palma held joint auditions with his friend George Lucas, who was casting Star Wars. Amy Irving was considered for both Carrie and Princess Leia.",
+      "Sissy Spacek kept herself apart from the rest of the cast during filming so she would feel as isolated as Carrie.",
+      "For the famous graveyard ending, De Palma wanted a stunt double, but Spacek insisted on doing it herself and was buried in the ground for the shot."
+    ],
+    "copies": [
+      {
+        "id": "carrie-1976-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "MGM / Fox Canadian bilingual Blu-ray (Version française incluse)",
+        "photos": [
+          "images/carrie-1976-bluray-1.jpg",
+          "images/carrie-1976-bluray-2.jpg",
+          "images/carrie-1976-bluray-3.jpg",
+          "images/carrie-1976-bluray-4.jpg",
+          "images/carrie-1976-bluray-5.jpg",
+          "images/carrie-1976-bluray-6.jpg",
+          "images/carrie-1976-bluray-7.jpg",
+          "images/carrie-1976-bluray-8.jpg",
+          "images/carrie-1976-bluray-9.jpg",
+          "images/carrie-1976-bluray-10.jpg",
+          "images/carrie-1976-bluray-11.jpg"
+        ],
+        "gif": "images/carrie-1976-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and bilingual cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "MGM / Twentieth Century Fox Home Entertainment (2012 package), Blu-ray cat. # M129317, UPC 883904293170, Region A. 1976, colour, 98 minutes, widescreen 1.85:1, MPEG-2 @ 22 Mbps on a 25GB single-layer disc. Audio English 5.1 DTS-HD Master Audio, English mono, French and Spanish mono. Subtitles English SDH, Spanish, French. Rated 14A (Canada) / 13+ (Quebec)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
