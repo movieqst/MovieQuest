@@ -4644,9 +4644,9 @@
       "images/rick-and-morty-season-1-dvd-9.jpg",
       "images/rick-and-morty-season-1-dvd-10.jpg"
     ],
-    "storeUrl": "",
+    "storeUrl": "https://www.ebay.ca/itm/128173624797?mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339133571&customid=rick-and-morty-season-1-dvd&toolid=10001&mkevt=1",
     "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Rick%20and%20Morty%20Season%201%20DVD&campid=5339133571&customid=rick-and-morty-season-1-dvd",
-    "price": null,
+    "price": 33.95,
     "categories": [
       "tvseries",
       "2010s"
@@ -4718,7 +4718,7 @@
           "inserts": "None",
           "notes": "Warner Home Video / Adult Swim DVD (2014), Region 1, 2 discs (2000097740 / 2000097741), widescreen, rated TV-MA-L, approx. 241 minutes for all 11 episodes of Season 1: Pilot, Lawnmower Dog, Anatomy Park, M. Night Shaym-Aliens!, Meeseeks and Destroy, Rick Potion #9, Raising Gazorpazorp, Rixty Minutes, Something Ricked This Way Comes, Close Rick-counters of the Rick Kind, Ricksy Business. Originally aired December 2013 to April 2014."
         },
-        "ebayUrl": "",
+        "ebayUrl": "https://www.ebay.ca/itm/128173624797",
         "sold": false
       }
     ]
