@@ -5128,5 +5128,96 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "salems-lot-1979-bluray",
+    "title": "Salem's Lot",
+    "year": 1979,
+    "format": "Blu-ray",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/salems-lot-1979-bluray-1.jpg",
+    "photos": [
+      "images/salems-lot-1979-bluray-1.jpg",
+      "images/salems-lot-1979-bluray-2.jpg",
+      "images/salems-lot-1979-bluray-3.jpg",
+      "images/salems-lot-1979-bluray-4.jpg",
+      "images/salems-lot-1979-bluray-5.jpg",
+      "images/salems-lot-1979-bluray-6.jpg",
+      "images/salems-lot-1979-bluray-7.jpg",
+      "images/salems-lot-1979-bluray-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Salem%27s%20Lot%201979%20Blu-ray&campid=5339133571&customid=salems-lot-1979-bluray",
+    "price": null,
+    "categories": [
+      "1970s",
+      "tvseries"
+    ],
+    "starring": "David Soul, James Mason, Lance Kerwin, Bonnie Bedelia, Lew Ayres, Reggie Nalder",
+    "director": "Tobe Hooper",
+    "producers": "Richard Kobritz; executive producer Stirling Silliphant",
+    "company": "Warner Bros. Television / Warner Home Video",
+    "titleNote": "Mini-Series / Blu-ray / 1979",
+    "tagline": "Blu-ray / Stephen King / Tobe Hooper / David Soul / James Mason / Horror / Mini-Series / 1970s",
+    "desc": "Sinister events bring together a writer (David Soul) fascinated with an old hilltop house; a suave antiques dealer (James Mason) whose expertise goes beyond bric-a-brac; and the dealer's mysterious, pale-skinned \"partner\" (Reggie Nalder) in Salem's Lot, a blood-curdling shocker based on Stephen King's novel and directed by Tobe Hooper (Poltergeist).",
+    "trivia": [
+      {
+        "heading": "A Two-Night TV Event",
+        "text": "Salem's Lot first aired on CBS as a two-part mini-series on November 17 and 24, 1979; this Blu-ray presents the full 183-minute version."
+      },
+      {
+        "heading": "Nosferatu, Not Dracula",
+        "text": "Producer Richard Kobritz modelled the master vampire Barlow on the silent classic Nosferatu, making him a monster rather than a suave Dracula."
+      },
+      {
+        "heading": "A Vampire Without Words",
+        "text": "Unlike in Stephen King's novel, Barlow (Reggie Nalder) never speaks, only hisses; Kobritz felt a talking vampire wouldn't be frightening."
+      },
+      {
+        "heading": "A House Built to Haunt",
+        "text": "No real house suited the Marsten House, so the production built a façade for it while filming mostly in Ferndale, California."
+      },
+      {
+        "heading": "A Shorter Cut for Cinemas",
+        "text": "A 112-minute version with different music and alternate scenes was released in cinemas overseas."
+      }
+    ],
+    "tidbits": [
+      "Salem's Lot first aired on CBS as a two-part mini-series on November 17 and 24, 1979; this Blu-ray presents the full 183-minute version.",
+      "Producer Richard Kobritz modelled the master vampire Barlow on the silent classic Nosferatu, making him a monster rather than a suave Dracula.",
+      "Unlike in Stephen King's novel, Barlow (Reggie Nalder) never speaks, only hisses; Kobritz felt a talking vampire wouldn't be frightening.",
+      "No real house suited the Marsten House, so the production built a façade for it while filming mostly in Ferndale, California.",
+      "A 112-minute version with different music and alternate scenes was released in cinemas overseas."
+    ],
+    "copies": [
+      {
+        "id": "salems-lot-1979-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Warner Home Video Canadian Blu-ray, bilingual (Les vampires de Salem)",
+        "photos": [
+          "images/salems-lot-1979-bluray-1.jpg",
+          "images/salems-lot-1979-bluray-2.jpg",
+          "images/salems-lot-1979-bluray-3.jpg",
+          "images/salems-lot-1979-bluray-4.jpg",
+          "images/salems-lot-1979-bluray-5.jpg",
+          "images/salems-lot-1979-bluray-6.jpg",
+          "images/salems-lot-1979-bluray-7.jpg",
+          "images/salems-lot-1979-bluray-8.jpg"
+        ],
+        "gif": "images/salems-lot-1979-bluray-1.gif",
+        "condition": {
+          "overall": "Good",
+          "case": "Case Very Good. Cover art: a small torn/peeled patch at the bottom centre of the front, just below \"L'horreur à son meilleur !\" (visible in the front photos).",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Warner Home Video Blu-ray (Canada, 2016), UPC 883929563913, Region A. Full 183-minute mini-series, 1080p 4x3 1.37:1. Audio English DTS-HD Master Audio 1.0, French and Spanish Dolby Digital 1.0; subtitles English SDH, French, Spanish. Rated 14A (Canada) / 13+ (Québec), PG (US). Special features: feature-length audio commentary by director Tobe Hooper; international theatrical trailer."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
