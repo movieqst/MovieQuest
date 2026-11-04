@@ -9503,5 +9503,102 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "it-2-film-collection-bluray",
+    "title": "IT 2 Film Collection (IT / IT Chapter Two)",
+    "year": 2017,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/it-2-film-collection-bluray-1.jpg",
+    "photos": [
+      "images/it-2-film-collection-bluray-1.jpg",
+      "images/it-2-film-collection-bluray-2.jpg",
+      "images/it-2-film-collection-bluray-3.jpg",
+      "images/it-2-film-collection-bluray-4.jpg",
+      "images/it-2-film-collection-bluray-5.jpg",
+      "images/it-2-film-collection-bluray-6.jpg",
+      "images/it-2-film-collection-bluray-7.jpg",
+      "images/it-2-film-collection-bluray-8.jpg",
+      "images/it-2-film-collection-bluray-9.jpg",
+      "images/it-2-film-collection-bluray-10.jpg",
+      "images/it-2-film-collection-bluray-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=IT%202%20Film%20Collection%20Blu-ray&campid=5339133571&customid=it-2-film-collection-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Bill Skarsgård, Jaeden Martell, Sophia Lillis, Finn Wolfhard, James McAvoy, Jessica Chastain, Bill Hader, Isaiah Mustafa, Jay Ryan, James Ransone",
+    "director": "Andy Muschietti",
+    "producers": "Barbara Muschietti, Roy Lee, Dan Lin, Seth Grahame-Smith, David Katzenberg",
+    "company": "New Line Cinema / Warner Bros. Home Entertainment",
+    "titleNote": "2 Film Collection / Blu-ray (cover art and discs, no case) / 2017-2019",
+    "tagline": "Blu-ray / 2 Films / IT / IT Chapter Two / Stephen King / Bill Skarsgård / Horror / 2010s",
+    "desc": "Both chapters of Stephen King's epic in one collection. In IT (2017), seven bullied kids in Derry, Maine, the Losers' Club, band together against Pennywise, an ancient evil that hunts the town's children every 27 years. In IT Chapter Two (2019), the Losers return to Derry as adults to keep their promise and finish what they started.",
+    "trivia": [
+      {
+        "heading": "Biggest Horror Hit Ever",
+        "text": "Made for about $35 million, IT (2017) took in about $700 million worldwide, making it the highest-grossing horror film of all time."
+      },
+      {
+        "heading": "A Record Opening",
+        "text": "IT earned $50 million on its opening Friday alone and $123 million in its first weekend in North America."
+      },
+      {
+        "heading": "A Change of Director",
+        "text": "Cary Fukunaga was first set to direct and still shares the screenplay credit, but left in 2015. Andy Muschietti took over and directed both films."
+      },
+      {
+        "heading": "Chapter Two",
+        "text": "IT Chapter Two (2019) brought in James McAvoy, Jessica Chastain and Bill Hader as the grown-up Losers' Club and took in about $468 million worldwide."
+      },
+      {
+        "heading": "Bill Skarsgård's Pennywise",
+        "text": "Bill Skarsgård plays Pennywise the Dancing Clown in both films, taking over the role Tim Curry made famous in the 1990 mini-series."
+      }
+    ],
+    "tidbits": [
+      "Made for about $35 million, IT (2017) took in about $700 million worldwide, making it the highest-grossing horror film of all time.",
+      "IT earned $50 million on its opening Friday alone and $123 million in its first weekend in North America.",
+      "Cary Fukunaga was first set to direct and still shares the screenplay credit, but left in 2015. Andy Muschietti took over and directed both films.",
+      "IT Chapter Two (2019) brought in James McAvoy, Jessica Chastain and Bill Hader as the grown-up Losers' Club and took in about $468 million worldwide.",
+      "Bill Skarsgård plays Pennywise the Dancing Clown in both films, taking over the role Tim Curry made famous in the 1990 mini-series."
+    ],
+    "copies": [
+      {
+        "id": "it-2-film-collection-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Warner Bros. 2 Film Collection Blu-ray (3000082805), no case",
+        "photos": [
+          "images/it-2-film-collection-bluray-1.jpg",
+          "images/it-2-film-collection-bluray-2.jpg",
+          "images/it-2-film-collection-bluray-3.jpg",
+          "images/it-2-film-collection-bluray-4.jpg",
+          "images/it-2-film-collection-bluray-5.jpg",
+          "images/it-2-film-collection-bluray-6.jpg",
+          "images/it-2-film-collection-bluray-7.jpg",
+          "images/it-2-film-collection-bluray-8.jpg",
+          "images/it-2-film-collection-bluray-9.jpg",
+          "images/it-2-film-collection-bluray-10.jpg",
+          "images/it-2-film-collection-bluray-11.jpg"
+        ],
+        "gif": "images/it-2-film-collection-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "No case. Includes the original printed cover art (case insert), Very Good and clean, and both Blu-ray discs in paper sleeves, exactly as shown.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Warner Bros. Home Entertainment / New Line Cinema (2019), catalogue 3000082805, UPC 883929702862, for sale in the USA and Canada only. 2 Blu-ray discs: IT (2017, 135 min) and IT Chapter Two (2019, 169 min). 1080p high definition. Audio Dolby Atmos-TrueHD English, DTS-HD MA English (IT only), English Descriptive Audio, French and Spanish; subtitles English SDH, French, Spanish. Rated R (US) / 14A (Canada). IT includes special features; IT Chapter Two includes commentary by director Andy Muschietti."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
