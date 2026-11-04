@@ -9718,5 +9718,102 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "it-1990-miniseries-bluray",
+    "title": "Stephen King's IT (1990 Mini-Series)",
+    "year": 1990,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/it-1990-miniseries-bluray-1.jpg",
+    "photos": [
+      "images/it-1990-miniseries-bluray-1.jpg",
+      "images/it-1990-miniseries-bluray-2.jpg",
+      "images/it-1990-miniseries-bluray-3.jpg",
+      "images/it-1990-miniseries-bluray-4.jpg",
+      "images/it-1990-miniseries-bluray-5.jpg",
+      "images/it-1990-miniseries-bluray-6.jpg",
+      "images/it-1990-miniseries-bluray-7.jpg",
+      "images/it-1990-miniseries-bluray-8.jpg",
+      "images/it-1990-miniseries-bluray-9.jpg",
+      "images/it-1990-miniseries-bluray-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%27s%20IT%201990%20Blu-ray%20Tim%20Curry&campid=5339133571&customid=it-1990-miniseries-bluray",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "1990s"
+    ],
+    "runYears": "1990",
+    "starring": "Tim Curry, Harry Anderson, Dennis Christopher, Richard Masur, Annette O'Toole, Tim Reid, John Ritter, Richard Thomas",
+    "director": "Tommy Lee Wallace",
+    "createdBy": "Stephen King (novel)",
+    "producers": "Matthew O'Connor; executive producers Jim Green, Allen Epstein",
+    "company": "Lorimar Television / Konigsberg-Sanitsky / Green-Epstein / Warner Home Video",
+    "titleNote": "The Original Mini-Series / Blu-ray / 1990",
+    "tagline": "Blu-ray / The Original Mini-Series / Stephen King / Tim Curry / John Ritter / Horror / 1990s",
+    "desc": "October, 1957. \"It\" awakens, and the small town of Derry, Maine will never be the same. Seven children face an unthinkable horror that appears in many forms, including Pennywise the clown (Tim Curry), who lives, hunts and kills from the town's sewers. Thirty years later, the surviving adults who were brave enough return to stop the new killing spree, this time for good. Stephen King's classic, complete in high definition.",
+    "trivia": [
+      {
+        "heading": "Tim Curry's Pennywise",
+        "text": "Tim Curry's turn as Pennywise the Dancing Clown is still remembered as one of the scariest clowns ever put on screen."
+      },
+      {
+        "heading": "ABC's Biggest Hit of 1990",
+        "text": "The two-part mini-series aired on ABC on November 18 and 20, 1990, and drew about 30 million viewers, making it ABC's biggest success of the year."
+      },
+      {
+        "heading": "Derry in British Columbia",
+        "text": "The town of Derry, Maine was actually New Westminster, British Columbia, where the mini-series was filmed over about three months in 1990."
+      },
+      {
+        "heading": "An Emmy Winner",
+        "text": "IT was nominated for two Emmys and won for Outstanding Music Composition for Richard Bellis's score."
+      },
+      {
+        "heading": "Written by a King Veteran",
+        "text": "Lawrence D. Cohen, who wrote the screenplay for Carrie (1976), adapted the novel with director Tommy Lee Wallace."
+      }
+    ],
+    "tidbits": [
+      "Tim Curry's turn as Pennywise the Dancing Clown is still remembered as one of the scariest clowns ever put on screen.",
+      "The two-part mini-series aired on ABC on November 18 and 20, 1990, and drew about 30 million viewers, making it ABC's biggest success of the year.",
+      "The town of Derry, Maine was actually New Westminster, British Columbia, where the mini-series was filmed over about three months in 1990.",
+      "IT was nominated for two Emmys and won for Outstanding Music Composition for Richard Bellis's score.",
+      "Lawrence D. Cohen, who wrote the screenplay for Carrie (1976), adapted the novel with director Tommy Lee Wallace."
+    ],
+    "copies": [
+      {
+        "id": "it-1990-miniseries-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Warner Home Video Blu-ray (2016)",
+        "photos": [
+          "images/it-1990-miniseries-bluray-1.jpg",
+          "images/it-1990-miniseries-bluray-2.jpg",
+          "images/it-1990-miniseries-bluray-3.jpg",
+          "images/it-1990-miniseries-bluray-4.jpg",
+          "images/it-1990-miniseries-bluray-5.jpg",
+          "images/it-1990-miniseries-bluray-6.jpg",
+          "images/it-1990-miniseries-bluray-7.jpg",
+          "images/it-1990-miniseries-bluray-8.jpg",
+          "images/it-1990-miniseries-bluray-9.jpg",
+          "images/it-1990-miniseries-bluray-10.jpg"
+        ],
+        "gif": "images/it-1990-miniseries-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case clean. Cover art has a few light scuff marks on the white areas of the front and spine, as shown in the photos.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Warner Home Video Blu-ray (2016), catalogue 3000070118, UPC 883929527571, for sale in the USA and Canada only. Disc 2000125361. Both parts, approx. 187 minutes, colour, 1080p 4x3 1.33:1. Audio English DTS-HD Master Audio 2.0, French and Spanish Dolby Digital 2.0; subtitles English SDH, French, Spanish. Not rated (US) / PG (Canada). Special feature: commentary by director Tommy Lee Wallace and actors Dennis Christopher, Tim Reid, John Ritter and Richard Thomas."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
