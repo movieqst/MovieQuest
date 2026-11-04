@@ -7454,5 +7454,100 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "doctor-sleep-2019-bluray",
+    "title": "Stephen King's Doctor Sleep",
+    "year": 2019,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/doctor-sleep-2019-bluray-1.jpg",
+    "photos": [
+      "images/doctor-sleep-2019-bluray-1.jpg",
+      "images/doctor-sleep-2019-bluray-2.jpg",
+      "images/doctor-sleep-2019-bluray-3.jpg",
+      "images/doctor-sleep-2019-bluray-4.jpg",
+      "images/doctor-sleep-2019-bluray-5.jpg",
+      "images/doctor-sleep-2019-bluray-6.jpg",
+      "images/doctor-sleep-2019-bluray-7.jpg",
+      "images/doctor-sleep-2019-bluray-8.jpg",
+      "images/doctor-sleep-2019-bluray-9.jpg",
+      "images/doctor-sleep-2019-bluray-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Doctor%20Sleep%20Director%27s%20Cut%20Blu-ray&campid=5339133571&customid=doctor-sleep-2019-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Ewan McGregor, Rebecca Ferguson, Kyliegh Curran, Cliff Curtis",
+    "director": "Mike Flanagan",
+    "producers": "Trevor Macy, Jon Berg; executive producers Roy Lee, Scott Lumpkin, Akiva Goldsman, Kevin McCormick",
+    "company": "Warner Bros. Pictures / Intrepid Pictures / Vertigo Entertainment",
+    "titleNote": "Director's Cut + Theatrical / 2-Disc Blu-ray / 2019",
+    "tagline": "Blu-ray / 2-Disc / Director's Cut + Theatrical / Ewan McGregor / Stephen King / The Shining / Horror / 2010s",
+    "desc": "Still scarred by the trauma he endured as a child at the Overlook Hotel, Dan Torrance faces the ghosts of the past when he meets Abra, a courageous teen who desperately needs his help, and who possesses a powerful extrasensory ability called the \"shine.\" The next chapter in The Shining story, from writer-director Mike Flanagan and the novel by Stephen King.",
+    "trivia": [
+      {
+        "heading": "King Was Won Over",
+        "text": "Stephen King said that \"everything that I ever disliked about the Kubrick version of The Shining is redeemed for me here.\""
+      },
+      {
+        "heading": "Kubrick's Overlook, Rebuilt",
+        "text": "The production rebuilt the Overlook Hotel sets using the blueprints from Stanley Kubrick's The Shining."
+      },
+      {
+        "heading": "New Faces, Old Roles",
+        "text": "Carl Lumbly plays Dick Hallorann (Scatman Crothers in 1980) and Alex Essoe plays Wendy Torrance (Shelley Duvall in 1980)."
+      },
+      {
+        "heading": "Two Stories, One Sequel",
+        "text": "Mike Flanagan had to reconcile King's novel, where the Overlook burns down, with Kubrick's film, where it survives; he asked King's permission to bring the hotel back."
+      },
+      {
+        "heading": "Both Cuts Included",
+        "text": "This set has the 152-minute theatrical version and the 180-minute director's cut, each on its own Blu-ray."
+      }
+    ],
+    "tidbits": [
+      "Stephen King said that \"everything that I ever disliked about the Kubrick version of The Shining is redeemed for me here.\"",
+      "The production rebuilt the Overlook Hotel sets using the blueprints from Stanley Kubrick's The Shining.",
+      "Carl Lumbly plays Dick Hallorann (Scatman Crothers in 1980) and Alex Essoe plays Wendy Torrance (Shelley Duvall in 1980).",
+      "Mike Flanagan had to reconcile King's novel, where the Overlook burns down, with Kubrick's film, where it survives; he asked King's permission to bring the hotel back.",
+      "This set has the 152-minute theatrical version and the 180-minute director's cut, each on its own Blu-ray."
+    ],
+    "copies": [
+      {
+        "id": "doctor-sleep-2019-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Warner 2-disc Blu-ray: Director's Cut and Theatrical Version",
+        "photos": [
+          "images/doctor-sleep-2019-bluray-1.jpg",
+          "images/doctor-sleep-2019-bluray-2.jpg",
+          "images/doctor-sleep-2019-bluray-3.jpg",
+          "images/doctor-sleep-2019-bluray-4.jpg",
+          "images/doctor-sleep-2019-bluray-5.jpg",
+          "images/doctor-sleep-2019-bluray-6.jpg",
+          "images/doctor-sleep-2019-bluray-7.jpg",
+          "images/doctor-sleep-2019-bluray-8.jpg",
+          "images/doctor-sleep-2019-bluray-9.jpg",
+          "images/doctor-sleep-2019-bluray-10.jpg"
+        ],
+        "gif": "images/doctor-sleep-2019-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue 2-disc Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Digital movie code insert (the code may have been redeemed or expired; not guaranteed).",
+          "notes": "Warner Bros. Blu-ray (2020), catalogue 3000082833, UPC 883929698837, for sale in the USA and Canada. 2 discs: Director's Cut (180 min) and Theatrical Version (152 min). 1080p. Audio both versions English Dolby Atmos-TrueHD and Dolby Digital; theatrical version also English Descriptive Audio, French and Spanish Dolby Digital. Subtitles English SDH, French, Spanish. Rated R (US) / 14A (Canada). Special features: From Shining to Sleep; The Making of Doctor Sleep: A New Vision; Return to the Overlook."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
