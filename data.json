@@ -6875,5 +6875,98 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "saving-private-ryan-1998-bluray",
+    "title": "Saving Private Ryan",
+    "year": 1998,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/saving-private-ryan-1998-bluray-1.jpg",
+    "photos": [
+      "images/saving-private-ryan-1998-bluray-1.jpg",
+      "images/saving-private-ryan-1998-bluray-2.jpg",
+      "images/saving-private-ryan-1998-bluray-3.jpg",
+      "images/saving-private-ryan-1998-bluray-4.jpg",
+      "images/saving-private-ryan-1998-bluray-5.jpg",
+      "images/saving-private-ryan-1998-bluray-6.jpg",
+      "images/saving-private-ryan-1998-bluray-7.jpg",
+      "images/saving-private-ryan-1998-bluray-8.jpg",
+      "images/saving-private-ryan-1998-bluray-9.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Saving%20Private%20Ryan%20Sapphire%20Series%20Blu-ray&campid=5339133571&customid=saving-private-ryan-1998-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Tom Hanks, Edward Burns, Matt Damon, Tom Sizemore, Barry Pepper, Adam Goldberg, Vin Diesel, Giovanni Ribisi, Jeremy Davies",
+    "director": "Steven Spielberg",
+    "producers": "Steven Spielberg, Ian Bryce, Mark Gordon, Gary Levinsohn",
+    "company": "DreamWorks Pictures / Paramount Pictures / Amblin Entertainment / Mutual Film Company",
+    "titleNote": "Sapphire Series 2-Disc Blu-ray / 1998",
+    "tagline": "Blu-ray / Sapphire Series / 2-Disc / Tom Hanks / Matt Damon / Steven Spielberg / War / 1990s",
+    "desc": "The Film that Inspired the World to Remember. Internationally acclaimed by critics and audiences alike, Saving Private Ryan, directed by Steven Spielberg, is an unforgettable film achievement that has had a profound and lasting impact throughout the world. Seen through the eyes of a squad of American soldiers, the story begins with World War II's historic D-Day invasion, then moves beyond the beach as the men embark on a dangerous special mission. Captain John Miller (Tom Hanks) must take his men behind enemy lines to find Private James Ryan (Matt Damon), whose three brothers have been killed in combat. Faced with impossible odds, the men question their orders: why are eight men risking their lives to save just one?",
+    "trivia": [
+      {
+        "heading": "Omaha Beach in Ireland",
+        "text": "The D-Day landing was filmed on Ballinesker Beach at Curracloe Strand, County Wexford, Ireland, because Normandy's beaches had strict filming restrictions."
+      },
+      {
+        "heading": "A $12 Million Sequence",
+        "text": "The Omaha Beach opening alone cost about $12 million, over 15% of the film's $70 million budget, and used more than 2,500 Irish Army reservists as extras."
+      },
+      {
+        "heading": "Based on Real Brothers",
+        "text": "The story was inspired by the Niland brothers: three of the four were reported killed, and the fourth, Edward, was later found alive after escaping a Japanese prison camp in Burma."
+      },
+      {
+        "heading": "Real Boot Camp",
+        "text": "The lead actors went through a gruelling 10-day boot camp run by retired Marine Captain Dale Dye; only Matt Damon, who played Ryan, was spared."
+      },
+      {
+        "heading": "Five Oscars",
+        "text": "The film won five Academy Awards: Best Director for Steven Spielberg, plus Cinematography, Sound, Sound Effects Editing and Film Editing."
+      }
+    ],
+    "tidbits": [
+      "The D-Day landing was filmed on Ballinesker Beach at Curracloe Strand, County Wexford, Ireland, because Normandy's beaches had strict filming restrictions.",
+      "The Omaha Beach opening alone cost about $12 million, over 15% of the film's $70 million budget, and used more than 2,500 Irish Army reservists as extras.",
+      "The story was inspired by the Niland brothers: three of the four were reported killed, and the fourth, Edward, was later found alive after escaping a Japanese prison camp in Burma.",
+      "The lead actors went through a gruelling 10-day boot camp run by retired Marine Captain Dale Dye; only Matt Damon, who played Ryan, was spared.",
+      "The film won five Academy Awards: Best Director for Steven Spielberg, plus Cinematography, Sound, Sound Effects Editing and Film Editing."
+    ],
+    "copies": [
+      {
+        "id": "saving-private-ryan-1998-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Sapphire Series 2-disc Paramount Canadian Blu-ray, bilingual (Il faut sauver le soldat Ryan)",
+        "photos": [
+          "images/saving-private-ryan-1998-bluray-1.jpg",
+          "images/saving-private-ryan-1998-bluray-2.jpg",
+          "images/saving-private-ryan-1998-bluray-3.jpg",
+          "images/saving-private-ryan-1998-bluray-4.jpg",
+          "images/saving-private-ryan-1998-bluray-5.jpg",
+          "images/saving-private-ryan-1998-bluray-6.jpg",
+          "images/saving-private-ryan-1998-bluray-7.jpg",
+          "images/saving-private-ryan-1998-bluray-8.jpg",
+          "images/saving-private-ryan-1998-bluray-9.jpg"
+        ],
+        "gif": "images/saving-private-ryan-1998-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue 2-disc Blu-ray case; light wear to the bottom-left edge of the back cover art.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Paramount Home Entertainment Blu-ray, Sapphire Series (Canada, 2010), UPC 097360748475 (proof of purchase 074847), Region A. Disc 1: feature film, approx. 169 minutes, colour, 1080p. Audio English DTS-HD Master Audio 5.1, French, Spanish and Portuguese Dolby Digital 5.1; subtitles English, English SDH, French, Spanish, Portuguese. Rated 14A (Canada) / R (US). Disc 2: special features (not rated): introduction by Steven Spielberg; Looking into the Past; Miller and His Platoon; Boot Camp; Making Saving Private Ryan; Re-Creating Omaha Beach; Music and Sound; Parting Thoughts; Into the Breach; theatrical and re-release trailers (HD); Shooting War, hosted by Tom Hanks."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
