@@ -8493,5 +8493,103 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-stand-1994-bluray",
+    "title": "Stephen King's The Stand",
+    "year": 1994,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-stand-1994-bluray-1.jpg",
+    "photos": [
+      "images/the-stand-1994-bluray-1.jpg",
+      "images/the-stand-1994-bluray-2.jpg",
+      "images/the-stand-1994-bluray-3.jpg",
+      "images/the-stand-1994-bluray-4.jpg",
+      "images/the-stand-1994-bluray-5.jpg",
+      "images/the-stand-1994-bluray-6.jpg",
+      "images/the-stand-1994-bluray-7.jpg",
+      "images/the-stand-1994-bluray-8.jpg",
+      "images/the-stand-1994-bluray-9.jpg",
+      "images/the-stand-1994-bluray-10.jpg",
+      "images/the-stand-1994-bluray-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%20The%20Stand%201994%20Blu-ray&campid=5339133571&customid=the-stand-1994-bluray",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "1990s"
+    ],
+    "runYears": "1994",
+    "starring": "Gary Sinise, Molly Ringwald, Jamey Sheridan, Laura San Giacomo, Ruby Dee, Ossie Davis, Miguel Ferrer, Corin Nemec, Matt Frewer, Adam Storke, Ray Walston, Rob Lowe",
+    "director": "Mick Garris",
+    "createdBy": "Stephen King",
+    "company": "Laurel Entertainment / Spelling / ABC / CBS Blu-ray / Paramount",
+    "titleNote": "The Original Mini-Series / Blu-ray / 1994",
+    "tagline": "Blu-ray / The Original Mini-Series / Collector's Edition / Gary Sinise / Molly Ringwald / Rob Lowe / Horror / 1990s",
+    "desc": "A deadly plague escapes from a government lab and wipes out most of the world. The survivors are drawn by their dreams to two camps: the gentle Mother Abagail in Boulder, and the dark man Randall Flagg in Las Vegas. Stephen King's epic battle of good and evil, restored in high definition from the original camera negative with enhanced visual effects. All four parts on one Blu-ray: The Plague, The Dreams, The Betrayal and The Stand.",
+    "trivia": [
+      {
+        "heading": "King Wrote It",
+        "text": "Stephen King wrote the teleplay himself, adapting his own best-selling novel, and makes a cameo as Teddy Weizak."
+      },
+      {
+        "heading": "Four Nights on ABC",
+        "text": "The mini-series aired on ABC in four parts between May 8 and May 12, 1994: The Plague, The Dreams, The Betrayal and The Stand."
+      },
+      {
+        "heading": "A Ratings Hit",
+        "text": "About 19 million homes watched all four parts, with each night drawing around a third of the TV audience."
+      },
+      {
+        "heading": "Emmy Winner",
+        "text": "The Stand earned six Emmy nominations and won two, for Outstanding Makeup and Outstanding Sound Mixing."
+      },
+      {
+        "heading": "Boulder in Utah",
+        "text": "Mick Garris directed all four parts. Plans to film in Boulder, Colorado fell through, so the Boulder scenes were shot in Utah, with more filming in Nevada, Pennsylvania and New York."
+      }
+    ],
+    "tidbits": [
+      "Stephen King wrote the teleplay himself, adapting his own best-selling novel, and makes a cameo as Teddy Weizak.",
+      "The mini-series aired on ABC in four parts between May 8 and May 12, 1994: The Plague, The Dreams, The Betrayal and The Stand.",
+      "About 19 million homes watched all four parts, with each night drawing around a third of the TV audience.",
+      "The Stand earned six Emmy nominations and won two, for Outstanding Makeup and Outstanding Sound Mixing.",
+      "Mick Garris directed all four parts. Plans to film in Boulder, Colorado fell through, so the Boulder scenes were shot in Utah, with more filming in Nevada, Pennsylvania and New York."
+    ],
+    "copies": [
+      {
+        "id": "the-stand-1994-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "CBS Blu-ray / Paramount Collector's Edition (2019), 1 disc",
+        "photos": [
+          "images/the-stand-1994-bluray-1.jpg",
+          "images/the-stand-1994-bluray-2.jpg",
+          "images/the-stand-1994-bluray-3.jpg",
+          "images/the-stand-1994-bluray-4.jpg",
+          "images/the-stand-1994-bluray-5.jpg",
+          "images/the-stand-1994-bluray-6.jpg",
+          "images/the-stand-1994-bluray-7.jpg",
+          "images/the-stand-1994-bluray-8.jpg",
+          "images/the-stand-1994-bluray-9.jpg",
+          "images/the-stand-1994-bluray-10.jpg",
+          "images/the-stand-1994-bluray-11.jpg"
+        ],
+        "gif": "images/the-stand-1994-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "CBS Blu-ray / Paramount (2019), catalogue 2117281, UPC 032429327482, licensed for sale only in the U.S. and Canada. 1 disc, all four parts, approx. 5 hrs 59 min, colour, 1080p, 4x3. Audio English, Castilian and German stereo; subtitles English SDH, Castilian, German, Danish, Finnish, Norwegian, Swedish. Not rated (US) / 14A (Canada). Special features (SD): audio commentary; The Making of Stephen King's The Stand."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
