@@ -5584,5 +5584,93 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "american-beauty-1999-bluray",
+    "title": "American Beauty",
+    "year": 1999,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/american-beauty-1999-bluray-1.jpg",
+    "photos": [
+      "images/american-beauty-1999-bluray-1.jpg",
+      "images/american-beauty-1999-bluray-2.jpg",
+      "images/american-beauty-1999-bluray-3.jpg",
+      "images/american-beauty-1999-bluray-4.jpg",
+      "images/american-beauty-1999-bluray-5.jpg",
+      "images/american-beauty-1999-bluray-6.jpg",
+      "images/american-beauty-1999-bluray-7.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=American%20Beauty%20Blu-ray%20Sapphire%20Series&campid=5339133571&customid=american-beauty-1999-bluray",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Kevin Spacey, Annette Bening, Thora Birch, Allison Janney, Peter Gallagher, Mena Suvari, Wes Bentley, Chris Cooper",
+    "director": "Sam Mendes",
+    "producers": "Bruce Cohen, Dan Jinks; co-producers Stan Wlodkowski, Alan Ball",
+    "company": "DreamWorks Pictures / Jinks/Cohen Company / Paramount Home Entertainment",
+    "titleNote": "Sapphire Series Blu-ray / 1999",
+    "tagline": "Blu-ray / Sapphire Series / Widescreen / Kevin Spacey / Annette Bening / Sam Mendes / Best Picture / 1990s",
+    "desc": "In his directorial debut, Academy Award-winner Sam Mendes creates, with Oscar-winning screenwriter Alan Ball, a dark, intelligent and truthful portrayal of suburbia. Named Best Picture of the Year by over 65 critics and honoured with five Academy Awards, including Best Picture, American Beauty stars Kevin Spacey and Annette Bening as Lester and Carolyn Burnham, a seemingly ordinary couple whose unravelling marriage sparks a storm of change in their seemingly perfect neighbourhood. Also featuring an acclaimed ensemble supporting cast, American Beauty has been hailed as a \"flat-out masterpiece\" (Rod Dreher, New York Post).",
+    "trivia": [
+      {
+        "heading": "Five Oscars",
+        "text": "American Beauty won five Academy Awards: Best Picture, Best Director (Sam Mendes, in his film debut), Best Actor (Kevin Spacey), Best Cinematography (Conrad L. Hall) and Best Original Screenplay (Alan Ball)."
+      },
+      {
+        "heading": "The Plastic Bag Was Real",
+        "text": "Alan Ball based the famous floating plastic bag scene on his own real-life encounter with a bag caught in the wind."
+      },
+      {
+        "heading": "Storyboarded Start to Finish",
+        "text": "Mendes and cinematographer Conrad Hall storyboarded the whole film before shooting; their storyboard presentation is one of this disc's extras."
+      },
+      {
+        "heading": "Choreographed by Paula Abdul",
+        "text": "The cheerleaders' halftime routine was choreographed by Paula Abdul."
+      },
+      {
+        "heading": "A Darker Original Ending",
+        "text": "An early version framed the story around a media trial; it was shot but cut from the film as too cynical."
+      }
+    ],
+    "tidbits": [
+      "American Beauty won five Academy Awards: Best Picture, Best Director (Sam Mendes, in his film debut), Best Actor (Kevin Spacey), Best Cinematography (Conrad L. Hall) and Best Original Screenplay (Alan Ball).",
+      "Alan Ball based the famous floating plastic bag scene on his own real-life encounter with a bag caught in the wind.",
+      "Mendes and cinematographer Conrad Hall storyboarded the whole film before shooting; their storyboard presentation is one of this disc's extras.",
+      "The cheerleaders' halftime routine was choreographed by Paula Abdul.",
+      "An early version framed the story around a media trial; it was shot but cut from the film as too cynical."
+    ],
+    "copies": [
+      {
+        "id": "american-beauty-1999-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Sapphire Series Canadian Blu-ray, bilingual (Beauté américaine)",
+        "photos": [
+          "images/american-beauty-1999-bluray-1.jpg",
+          "images/american-beauty-1999-bluray-2.jpg",
+          "images/american-beauty-1999-bluray-3.jpg",
+          "images/american-beauty-1999-bluray-4.jpg",
+          "images/american-beauty-1999-bluray-5.jpg",
+          "images/american-beauty-1999-bluray-6.jpg",
+          "images/american-beauty-1999-bluray-7.jpg"
+        ],
+        "gif": "images/american-beauty-1999-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Standard blue Blu-ray case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Paramount Home Entertainment Blu-ray, Sapphire Series (Canada, 2010), catalogue 07480, UPC 883929305933, Region A. Approx. 122 minutes, colour, 1080p. Audio English DTS-HD Master Audio 5.1; French, Spanish and Portuguese Dolby Digital 5.1. Subtitles English, English SDH, French, Spanish, Portuguese. Rated 14A (Canada) / R (US). Special features: commentary by director Sam Mendes and screenwriter Alan Ball; American Beauty: Look Closer...; storyboard presentation with Sam Mendes and cinematographer Conrad L. Hall; 2 theatrical trailers (HD)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
