@@ -5405,5 +5405,93 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "jarhead-2005-bluray",
+    "title": "Jarhead",
+    "year": 2005,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/jarhead-2005-bluray-1.jpg",
+    "photos": [
+      "images/jarhead-2005-bluray-1.jpg",
+      "images/jarhead-2005-bluray-2.jpg",
+      "images/jarhead-2005-bluray-3.jpg",
+      "images/jarhead-2005-bluray-4.jpg",
+      "images/jarhead-2005-bluray-5.jpg",
+      "images/jarhead-2005-bluray-6.jpg",
+      "images/jarhead-2005-bluray-7.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Jarhead%20Blu-ray%20Jake%20Gyllenhaal&campid=5339133571&customid=jarhead-2005-bluray",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "Jake Gyllenhaal, Peter Sarsgaard, Jamie Foxx, Chris Cooper, Lucas Black",
+    "director": "Sam Mendes",
+    "producers": "Douglas Wick, Lucy Fisher; executive producers Sam Mercer, Bobby Cohen",
+    "company": "Universal Pictures / Red Wagon Entertainment / Universal Studios Canada",
+    "titleNote": "Blu-ray / 2005",
+    "tagline": "Blu-ray / Widescreen / Jake Gyllenhaal / Jamie Foxx / Sam Mendes / War / 2000s",
+    "desc": "Academy Award winner Jamie Foxx and Jake Gyllenhaal star in this critically acclaimed, brilliantly unconventional war story from Oscar-winning director Sam Mendes. Jarhead (the self-imposed moniker of the Marines) follows Swoff (Gyllenhaal) from a sobering stint in boot camp to active duty, where he sports a sniper rifle through Middle East deserts that provide no cover from the heat or Iraqi soldiers. Swoff and his fellow Marines sustain themselves with sardonic humanity and wicked comedy on blazing desert fields in a country they don't understand, against an enemy they can't see, for a cause they don't fully grasp.",
+    "trivia": [
+      {
+        "heading": "From a Marine's Memoir",
+        "text": "Jarhead is based on Anthony Swofford's best-selling memoir of serving as a Marine sniper in the 1991 Gulf War; Swofford records a commentary on this disc."
+      },
+      {
+        "heading": "Gyllenhaal Won Him Over",
+        "text": "Sam Mendes first thought Jake Gyllenhaal was too soft for the role of Swoff, but changed his mind after the actor called him directly."
+      },
+      {
+        "heading": "An Apocalypse Now Connection",
+        "text": "The platoon watches the helicopter attack from Apocalypse Now; Jarhead's editor and sound designer Walter Murch also worked on that film."
+      },
+      {
+        "heading": "He Kept Going",
+        "text": "Gyllenhaal knocked out a front tooth during a breakdown scene and insisted on finishing the take."
+      },
+      {
+        "heading": "Deakins Goes Handheld",
+        "text": "Cinematographer Roger Deakins shot much of the film handheld to give it a gritty, documentary feel."
+      }
+    ],
+    "tidbits": [
+      "Jarhead is based on Anthony Swofford's best-selling memoir of serving as a Marine sniper in the 1991 Gulf War; Swofford records a commentary on this disc.",
+      "Sam Mendes first thought Jake Gyllenhaal was too soft for the role of Swoff, but changed his mind after the actor called him directly.",
+      "The platoon watches the helicopter attack from Apocalypse Now; Jarhead's editor and sound designer Walter Murch also worked on that film.",
+      "Gyllenhaal knocked out a front tooth during a breakdown scene and insisted on finishing the take.",
+      "Cinematographer Roger Deakins shot much of the film handheld to give it a gritty, documentary feel."
+    ],
+    "copies": [
+      {
+        "id": "jarhead-2005-bluray-1",
+        "added": "2026-11-03",
+        "format": "Blu-ray",
+        "edition": "Universal Canadian Blu-ray, bilingual",
+        "photos": [
+          "images/jarhead-2005-bluray-1.jpg",
+          "images/jarhead-2005-bluray-2.jpg",
+          "images/jarhead-2005-bluray-3.jpg",
+          "images/jarhead-2005-bluray-4.jpg",
+          "images/jarhead-2005-bluray-5.jpg",
+          "images/jarhead-2005-bluray-6.jpg",
+          "images/jarhead-2005-bluray-7.jpg"
+        ],
+        "gif": "images/jarhead-2005-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Case Very Good. Cover art: Good. Small nicks/tears along the bottom banner of the front (at \"EXPÉRIENCE\" and \"PARFAITE\") and a small scuff at the bottom right of the back. A retailer's barcode sticker is on the back.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Universal Studios Canada Blu-ray (2008), Region A, BD-25. Approx. 2 hrs 3 min, colour, 1080p 2.35:1 widescreen. Audio English DTS-HD Master Audio 5.1, Spanish and French DTS 5.1; subtitles English SDH, Spanish, French. Rated 18A (Canada), coarse language and disturbing content. Special features: commentary with director Sam Mendes; commentary with screenwriter William Broyles Jr. and author Anthony Swofford; My Scenes clip bookmarking."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
