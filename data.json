@@ -9094,5 +9094,100 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "carrie-2013-bluray",
+    "title": "Carrie",
+    "year": 2013,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/carrie-2013-bluray-1.jpg",
+    "photos": [
+      "images/carrie-2013-bluray-1.jpg",
+      "images/carrie-2013-bluray-2.jpg",
+      "images/carrie-2013-bluray-3.jpg",
+      "images/carrie-2013-bluray-4.jpg",
+      "images/carrie-2013-bluray-5.jpg",
+      "images/carrie-2013-bluray-6.jpg",
+      "images/carrie-2013-bluray-7.jpg",
+      "images/carrie-2013-bluray-8.jpg",
+      "images/carrie-2013-bluray-9.jpg",
+      "images/carrie-2013-bluray-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Carrie%202013%20Blu-ray%20Moretz&campid=5339133571&customid=carrie-2013-bluray",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Chloë Grace Moretz, Julianne Moore, Judy Greer, Portia Doubleday, Gabriella Wilde, Ansel Elgort",
+    "director": "Kimberly Peirce",
+    "producers": "Kevin Misher; executive producer J. Miles Dale",
+    "company": "Metro-Goldwyn-Mayer / Screen Gems / Misher Films / 20th Century Fox Home Entertainment",
+    "titleNote": "Blu-ray + DVD (cover art and discs, no case) / 2013",
+    "tagline": "Blu-ray / DVD / Stephen King / Chloë Grace Moretz / Julianne Moore / Horror / 2010s",
+    "desc": "Chloë Grace Moretz and Julianne Moore star in this reimagining of Stephen King's iconic best seller. After merciless taunting from her classmates and abuse at the hands of her religious fanatic mother, shy outcast Carrie White's anger and her telekinetic powers are unleashed. And when a prom prank goes horribly wrong, events spiral out of control. You will know her name.",
+    "trivia": [
+      {
+        "heading": "Third Time on Screen",
+        "text": "This is the third film of Stephen King's 1974 novel, after Brian De Palma's 1976 classic and a 2002 TV movie."
+      },
+      {
+        "heading": "A Familiar Writer",
+        "text": "Lawrence D. Cohen, who wrote the 1976 film, shares the screenplay credit with Roberto Aguirre-Sacasa."
+      },
+      {
+        "heading": "Made in Toronto",
+        "text": "The film was shot in mid-2012 around the Greater Toronto Area, including Mississauga and Etobicoke."
+      },
+      {
+        "heading": "A Box Office Hit",
+        "text": "Made for about $30 million, Carrie took in about $85 million worldwide."
+      },
+      {
+        "heading": "Alternate Ending",
+        "text": "This Blu-ray includes an alternate ending that was never shown in theatres, plus over an hour of special features."
+      }
+    ],
+    "tidbits": [
+      "This is the third film of Stephen King's 1974 novel, after Brian De Palma's 1976 classic and a 2002 TV movie.",
+      "Lawrence D. Cohen, who wrote the 1976 film, shares the screenplay credit with Roberto Aguirre-Sacasa.",
+      "The film was shot in mid-2012 around the Greater Toronto Area, including Mississauga and Etobicoke.",
+      "Made for about $30 million, Carrie took in about $85 million worldwide.",
+      "This Blu-ray includes an alternate ending that was never shown in theatres, plus over an hour of special features."
+    ],
+    "copies": [
+      {
+        "id": "carrie-2013-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Fox / MGM Canadian bilingual Blu-ray + DVD (Version française incluse), no case",
+        "photos": [
+          "images/carrie-2013-bluray-1.jpg",
+          "images/carrie-2013-bluray-2.jpg",
+          "images/carrie-2013-bluray-3.jpg",
+          "images/carrie-2013-bluray-4.jpg",
+          "images/carrie-2013-bluray-5.jpg",
+          "images/carrie-2013-bluray-6.jpg",
+          "images/carrie-2013-bluray-7.jpg",
+          "images/carrie-2013-bluray-8.jpg",
+          "images/carrie-2013-bluray-9.jpg",
+          "images/carrie-2013-bluray-10.jpg"
+        ],
+        "gif": "images/carrie-2013-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "No case. Includes the original printed cover art (case insert), Very Good and clean, and both discs in paper sleeves, exactly as shown.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None. Digital HD code not included.",
+          "notes": "Twentieth Century Fox Home Entertainment / MGM (2014), Blu-ray cat. # M129376, UPC 883904293767, Region A (Blu-ray) / Region 1 (DVD). Disc 1: Blu-ray, Carrie in high definition, 100 minutes, 2.35:1, English DTS-HD Master Audio 5.1, English descriptive audio, Spanish and French Dolby Digital 5.1; English SDH and Spanish subtitles. Disc 2: DVD, standard definition. Rated 14A (Canada) / 13+ (Quebec). Blu-ray special features: alternate ending not shown in theatres; deleted/alternate scenes; Creating Carrie; The Power of Telekinesis; commentary by director Kimberly Peirce; Telekinetic Coffee Shop Surprise."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
