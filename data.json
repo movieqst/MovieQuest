@@ -7638,5 +7638,93 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "house-of-cards-season-2-dvd",
+    "title": "House of Cards: The Complete Second Season",
+    "year": 2014,
+    "format": "DVD",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/house-of-cards-season-2-dvd-1.jpg",
+    "photos": [
+      "images/house-of-cards-season-2-dvd-1.jpg",
+      "images/house-of-cards-season-2-dvd-2.jpg",
+      "images/house-of-cards-season-2-dvd-3.jpg",
+      "images/house-of-cards-season-2-dvd-4.jpg",
+      "images/house-of-cards-season-2-dvd-5.jpg",
+      "images/house-of-cards-season-2-dvd-6.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=House%20of%20Cards%20Second%20Season%20DVD%20sealed&campid=5339133571&customid=house-of-cards-season-2-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "runYears": "2014",
+    "createdBy": "Beau Willimon, based on the novel by Michael Dobbs",
+    "starring": "Kevin Spacey, Robin Wright, Michael Kelly, Mahershala Ali, Molly Parker, Gerald McRaney, Rachel Brosnahan",
+    "producers": "Beau Willimon, David Fincher, Kevin Spacey, Dana Brunetti, Eric Roth",
+    "company": "Media Rights Capital / Netflix / Sony Pictures Home Entertainment",
+    "titleNote": "Volume Two / Chapters 14–26 / Sealed / 2014",
+    "tagline": "DVD / Season 2 / Bilingual Canadian Edition / Factory Sealed / Kevin Spacey / TV Series / 2014",
+    "desc": "Masterful, beguiling and charismatic, Francis Underwood (Kevin Spacey) and his equally ambitious wife Claire (Robin Wright) continue their ruthless rise to power in Season 2 of House of Cards. Behind the curtain of power, sex, ambition, love, greed and corruption in modern Washington D.C., the Underwoods must battle threats past and present to avoid losing everything. As new alliances form and old ones succumb to deception and betrayal, they will stop at nothing to ensure their ascendancy.",
+    "trivia": [
+      {
+        "heading": "No Spoilers, Mr. President",
+        "text": "The day before Season 2 premiered, President Obama tweeted: \"Tomorrow: @HouseOfCards. No spoilers, please.\""
+      },
+      {
+        "heading": "A Valentine's Day Binge",
+        "text": "All 13 episodes of Season 2 were released on Netflix on Valentine's Day, February 14, 2014."
+      },
+      {
+        "heading": "Netflix's First Big Original",
+        "text": "House of Cards premiered in 2013 as Netflix's first major original series, and the first web-only show to win major Emmy Awards."
+      },
+      {
+        "heading": "Based on a British Classic",
+        "text": "The series adapts the 1990 BBC mini-series of the same name, based on Michael Dobbs's novel about a ruthless Chief Whip."
+      },
+      {
+        "heading": "Breaking the Fourth Wall",
+        "text": "Frank Underwood's habit of speaking straight to the camera comes from the BBC original's Francis Urquhart, who did the same; one of this set's featurettes is called Direct Address."
+      }
+    ],
+    "tidbits": [
+      "The day before Season 2 premiered, President Obama tweeted: \"Tomorrow: @HouseOfCards. No spoilers, please.\"",
+      "All 13 episodes of Season 2 were released on Netflix on Valentine's Day, February 14, 2014.",
+      "House of Cards premiered in 2013 as Netflix's first major original series, and the first web-only show to win major Emmy Awards.",
+      "The series adapts the 1990 BBC mini-series of the same name, based on Michael Dobbs's novel about a ruthless Chief Whip.",
+      "Frank Underwood's habit of speaking straight to the camera comes from the BBC original's Francis Urquhart, who did the same; one of this set's featurettes is called Direct Address."
+    ],
+    "copies": [
+      {
+        "id": "house-of-cards-season-2-dvd-1",
+        "added": "2026-11-04",
+        "format": "DVD",
+        "edition": "Sony Pictures Canadian DVD, bilingual, still sealed",
+        "photos": [
+          "images/house-of-cards-season-2-dvd-1.jpg",
+          "images/house-of-cards-season-2-dvd-2.jpg",
+          "images/house-of-cards-season-2-dvd-3.jpg",
+          "images/house-of-cards-season-2-dvd-4.jpg",
+          "images/house-of-cards-season-2-dvd-5.jpg",
+          "images/house-of-cards-season-2-dvd-6.jpg"
+        ],
+        "gif": "images/house-of-cards-season-2-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed); original Future Shop price sticker on the front shrink wrap. The wrap is a little loose and wrinkled, but the set is unopened.",
+          "discs": [
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "Sony Pictures Home Entertainment Canadian release (2014), UPC 043396443709, bilingual English/French packaging, still in the original shrink wrap. Chapters 14 to 26 (13 episodes), approx. 663 minutes, colour, 2.00:1 anamorphic widescreen. Audio: English and French (Quebec dub) 5.1 Dolby Digital. Subtitles: English, English SDH, French, Portuguese, Spanish. Rated PG (Canada) / 13+ (Quebec). Special features: Politics for the Sake of Politics; Direct Address; Two Houses; Table Read; Line of Succession."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
