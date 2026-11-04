@@ -7168,5 +7168,102 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "adventure-time-finn-the-human-dvd",
+    "title": "Adventure Time: Finn the Human",
+    "year": 2014,
+    "years": [
+      2010,
+      2014
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/adventure-time-finn-the-human-dvd-1.jpg",
+    "photos": [
+      "images/adventure-time-finn-the-human-dvd-1.jpg",
+      "images/adventure-time-finn-the-human-dvd-2.jpg",
+      "images/adventure-time-finn-the-human-dvd-3.jpg",
+      "images/adventure-time-finn-the-human-dvd-4.jpg",
+      "images/adventure-time-finn-the-human-dvd-5.jpg",
+      "images/adventure-time-finn-the-human-dvd-6.jpg",
+      "images/adventure-time-finn-the-human-dvd-7.jpg",
+      "images/adventure-time-finn-the-human-dvd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Adventure%20Time%20Finn%20the%20Human%20DVD&campid=5339133571&customid=adventure-time-finn-the-human-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "runYears": "2010–2014",
+    "starring": "Jeremy Shada, John DiMaggio, Hynden Walch, Tom Kenny, Olivia Olson",
+    "createdBy": "Pendleton Ward",
+    "director": "Pendleton Ward (creator)",
+    "producers": "Frederator Studios / Cartoon Network Studios",
+    "company": "Cartoon Network / Frederator / Warner Home Video",
+    "titleNote": "16 Episodes / 2014",
+    "tagline": "DVD / 16 Episodes / Cartoon Network / Animated / Family / TV Series / 2010s",
+    "desc": "\"Finn the Human\". You know the world of Adventure Time is pretty unique when you have to point out someone as \"human\". Just take a look at all 16 episodes on this DVD! They're filled with Jake the Dog, a Banana Man, Bubblegum Princess, Bird Man, a royal family of flames. There's even a Cute King and his legion of cuties. And somehow, Finn the Human fits right in!",
+    "trivia": [
+      {
+        "heading": "A Three-Part Epic",
+        "text": "This disc includes the three-part story \"The Lich\", \"Finn the Human\" and \"Jake the Dog\", where Finn's wish sends him to an alternate timeline."
+      },
+      {
+        "heading": "Most-Watched of the Season",
+        "text": "The two-part Season 5 premiere \"Finn the Human\" / \"Jake the Dog\" (November 12, 2012) drew 3.4 million viewers, the most-watched episode of that season."
+      },
+      {
+        "heading": "Born from D&D",
+        "text": "Creator Pendleton Ward drew on video games and the tabletop game Dungeons & Dragons for the post-apocalyptic Land of Ooo."
+      },
+      {
+        "heading": "Bender Is Jake",
+        "text": "Jake the Dog is voiced by John DiMaggio, also the voice of Bender on Futurama."
+      },
+      {
+        "heading": "Rebecca Sugar on Board",
+        "text": "Part 2, \"Jake the Dog\", was storyboarded by Cole Sanchez and Rebecca Sugar, who went on to create Steven Universe."
+      }
+    ],
+    "tidbits": [
+      "This disc includes the three-part story \"The Lich\", \"Finn the Human\" and \"Jake the Dog\", where Finn's wish sends him to an alternate timeline.",
+      "The two-part Season 5 premiere \"Finn the Human\" / \"Jake the Dog\" (November 12, 2012) drew 3.4 million viewers, the most-watched episode of that season.",
+      "Creator Pendleton Ward drew on video games and the tabletop game Dungeons & Dragons for the post-apocalyptic Land of Ooo.",
+      "Jake the Dog is voiced by John DiMaggio, also the voice of Bender on Futurama.",
+      "Part 2, \"Jake the Dog\", was storyboarded by Cole Sanchez and Rebecca Sugar, who went on to create Steven Universe."
+    ],
+    "copies": [
+      {
+        "id": "adventure-time-finn-the-human-dvd-1",
+        "added": "2026-11-03",
+        "format": "DVD",
+        "edition": "Warner / Cartoon Network single-disc DVD",
+        "photos": [
+          "images/adventure-time-finn-the-human-dvd-1.jpg",
+          "images/adventure-time-finn-the-human-dvd-2.jpg",
+          "images/adventure-time-finn-the-human-dvd-3.jpg",
+          "images/adventure-time-finn-the-human-dvd-4.jpg",
+          "images/adventure-time-finn-the-human-dvd-5.jpg",
+          "images/adventure-time-finn-the-human-dvd-6.jpg",
+          "images/adventure-time-finn-the-human-dvd-7.jpg",
+          "images/adventure-time-finn-the-human-dvd-8.jpg"
+        ],
+        "gif": "images/adventure-time-finn-the-human-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Case Very Good. Cover art: Good. A small scuffed/peeled patch on the front logo, to the left of \"ADVENTURE TIME\" (see close-up photo); light shelf wear along the bottom edge and a small crease at the lower right of the back.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Cartoon Network Holiday Collection promo insert.",
+          "notes": "Warner Home Video / Cartoon Network DVD (2014), catalogue 3000060765, UPC 883929450466, Region 1. Single disc, 16 episodes, approx. 176 minutes, colour, widescreen (letterbox, enhanced for widescreen TVs). English Dolby Digital 2.0; English SDH subtitles. Rated TV-PG. Episodes: The New Frontier, The Lich, Finn the Human, Jake the Dog, We Fixed a Truck, Blade of Grass, The Red Throne, The Great Bird Man, One Last Job, Little Dude, City of Thieves, Conquest of Cuteness, Who Would Win, Ignition Point, Furniture & Meat, Sad Face."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
