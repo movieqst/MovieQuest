@@ -8093,5 +8093,104 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "kingdom-hospital-complete-series-bluray",
+    "title": "Stephen King Presents Kingdom Hospital: The Complete Series",
+    "year": 2004,
+    "format": "Blu-ray",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/kingdom-hospital-complete-series-bluray-1.jpg",
+    "photos": [
+      "images/kingdom-hospital-complete-series-bluray-1.jpg",
+      "images/kingdom-hospital-complete-series-bluray-2.jpg",
+      "images/kingdom-hospital-complete-series-bluray-3.jpg",
+      "images/kingdom-hospital-complete-series-bluray-4.jpg",
+      "images/kingdom-hospital-complete-series-bluray-5.jpg",
+      "images/kingdom-hospital-complete-series-bluray-6.jpg",
+      "images/kingdom-hospital-complete-series-bluray-7.jpg",
+      "images/kingdom-hospital-complete-series-bluray-8.jpg",
+      "images/kingdom-hospital-complete-series-bluray-9.jpg",
+      "images/kingdom-hospital-complete-series-bluray-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Kingdom%20Hospital%20Complete%20Series%20Blu-ray&campid=5339133571&customid=kingdom-hospital-complete-series-bluray",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2004",
+    "createdBy": "Stephen King, based on The Kingdom by Lars von Trier",
+    "starring": "Andrew McCarthy, Bruce Davison, Ed Begley Jr., Diane Ladd, Jack Coleman, Julian Richings, Jodelle Ferland",
+    "director": "Craig R. Baxley",
+    "producers": "Stephen King, Mark Carliner",
+    "company": "Sony Pictures Television / Touchstone Television / ABC / Via Vision Entertainment (Australia)",
+    "titleNote": "3-Disc Region B Blu-ray / 2004",
+    "tagline": "Blu-ray / 3-Disc Set / Region B Australian Import / Stephen King / Horror / TV Series / 2000s",
+    "desc": "Stephen King presents Kingdom Hospital, the haunting drama series developed directly for television by the award-winning, best-selling master of horror. Using Lars von Trier's Danish series (a.k.a. The Kingdom) as a point of inspiration, King tells the terrifying story of The Kingdom, a hospital with a bizarre population that includes a nearly blind security guard, a nurse who regularly faints at the sight of blood and a paraplegic artist whose recovery goes beyond the miraculous. When patients and staff hear the tortured voice of a little girl crying through the halls, they are dismissive of any suggestion of mysticism or unseen powers... but at their own peril. Contains all 13 episodes of the critically acclaimed series in high definition!",
+    "trivia": [
+      {
+        "heading": "Based on Lars von Trier",
+        "text": "Stephen King developed Kingdom Hospital from Lars von Trier's Danish series The Kingdom (Riget, 1994)."
+      },
+      {
+        "heading": "Big Start, Short Run",
+        "text": "The 2004 premiere gave ABC its highest ratings for a drama debut that season, but ratings fell sharply afterwards and the show ended after its 13 episodes."
+      },
+      {
+        "heading": "One Director Throughout",
+        "text": "Craig R. Baxley directed every episode; he also directed King's Storm of the Century and Rose Red."
+      },
+      {
+        "heading": "A Familiar Cast",
+        "text": "The ensemble includes Andrew McCarthy, Bruce Davison, Ed Begley Jr., Diane Ladd, Julian Richings and Jodelle Ferland."
+      },
+      {
+        "heading": "Now in HD",
+        "text": "This 2022 Via Vision set presents all 13 episodes of the series in high definition for the first time."
+      }
+    ],
+    "tidbits": [
+      "Stephen King developed Kingdom Hospital from Lars von Trier's Danish series The Kingdom (Riget, 1994).",
+      "The 2004 premiere gave ABC its highest ratings for a drama debut that season, but ratings fell sharply afterwards and the show ended after its 13 episodes.",
+      "Craig R. Baxley directed every episode; he also directed King's Storm of the Century and Rose Red.",
+      "The ensemble includes Andrew McCarthy, Bruce Davison, Ed Begley Jr., Diane Ladd, Julian Richings and Jodelle Ferland.",
+      "This 2022 Via Vision set presents all 13 episodes of the series in high definition for the first time."
+    ],
+    "copies": [
+      {
+        "id": "kingdom-hospital-complete-series-bluray-1",
+        "added": "2026-11-04",
+        "format": "Blu-ray",
+        "edition": "Via Vision Australian 3-disc Blu-ray (2022), Region B",
+        "photos": [
+          "images/kingdom-hospital-complete-series-bluray-1.jpg",
+          "images/kingdom-hospital-complete-series-bluray-2.jpg",
+          "images/kingdom-hospital-complete-series-bluray-3.jpg",
+          "images/kingdom-hospital-complete-series-bluray-4.jpg",
+          "images/kingdom-hospital-complete-series-bluray-5.jpg",
+          "images/kingdom-hospital-complete-series-bluray-6.jpg",
+          "images/kingdom-hospital-complete-series-bluray-7.jpg",
+          "images/kingdom-hospital-complete-series-bluray-8.jpg",
+          "images/kingdom-hospital-complete-series-bluray-9.jpg",
+          "images/kingdom-hospital-complete-series-bluray-10.jpg"
+        ],
+        "gif": "images/kingdom-hospital-complete-series-bluray-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Blue 3-disc Blu-ray case and cover art clean, with only light shelf wear. Via Vision catalogue artwork printed on the inside of the cover.",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "Via Vision Entertainment Blu-ray (Australia, 2022), catalogue VVE3257, barcode 9337369032573, under licence from Sony Pictures Television. REGION B: plays in Region B or region-free Blu-ray players; most standard North American (Region A) players will not play it. 3 discs, all 13 episodes, approx. 10 hrs 8 min, 1080p 16:9, English 5.1; no subtitles. Rated M (Australia)."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
