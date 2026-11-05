@@ -157,7 +157,7 @@ window.BATTLES = [
     blurb: 'In a fog-filled mountain valley, the two great coalitions of Japan meet to decide who rules after Toyotomi Hideyoshi. When Kobayakawa Hideaki’s army changes sides on the hill above, the Western Army collapses, and Tokugawa Ieyasu wins the country for two and a half centuries.',
     cover: 'images/cover.jpg', coverPos: '45% 55%',
     coverCredit: 'Sekigahara Kassen Byōbu-zu, folding screen of the battle seen from the north (late Edo period, 19th century). City of Gifu Museum of History, public domain',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'batoche',
