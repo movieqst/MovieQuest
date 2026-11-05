@@ -16,3 +16,7 @@ Credit: Battle Games, AI-generated (ChatGPT) from ART-PROMPTS-UNITS.md.
 - **Sheets cut from ChatGPT's 3-panel previews** (each panel 724 px, a real 181 px per cell, not enlarged): west-yari (now walking), east-cavalry, west-cavalry, leader-ieyasu and its attack sheet, leader-mitsunari, leader-kobayakawa and its attack sheet (red armour), leader-shimazu, fallen-east, fallen-west, and a bonus fallen-horse. That resolution is enough for figures drawn about 30–40 px tall in the game, so these are approved.
 - **Note:** kobayakawa-attack's rows 1 and 3 face right and front instead of front and away. Acceptable for a leader.
 - **Still wanted:** leader-mitsunari-attack, leader-shimazu-attack, and the portraits of Mitsunari (plain banner), Kobayakawa, Shimazu, the ashigaru yari, the ashigaru teppō, the samurai cavalry, and the battle scene.
+
+## Portraits (5 November 2026)
+**Approved (full-size originals):** ieyasu, mitsunari (plain banner), kobayakawa (young, in red), ashigaru-yari, ashigaru-teppo, samurai-cavalry, and sekigahara-wide (a battlefield panorama; could serve as a cover).
+**To redo:** shimazu. It still shows a man of about 40 with black hair; Shimazu Yoshihiro was 65.
