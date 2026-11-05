@@ -11193,5 +11193,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "steve-mcqueen-american-icon-dvd",
+    "title": "Steve McQueen: American Icon",
+    "year": 2017,
+    "format": "DVD",
+    "condition": "Brand New",
+    "image": "https://moviequest.ca/images/steve-mcqueen-american-icon-dvd-1.jpg",
+    "photos": [
+      "images/steve-mcqueen-american-icon-dvd-1.jpg",
+      "images/steve-mcqueen-american-icon-dvd-2.jpg",
+      "images/steve-mcqueen-american-icon-dvd-3.jpg",
+      "images/steve-mcqueen-american-icon-dvd-4.jpg",
+      "images/steve-mcqueen-american-icon-dvd-5.jpg",
+      "images/steve-mcqueen-american-icon-dvd-6.jpg",
+      "images/steve-mcqueen-american-icon-dvd-7.jpg",
+      "images/steve-mcqueen-american-icon-dvd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Steve%20McQueen%20American%20Icon%20DVD&campid=5339133571&customid=steve-mcqueen-american-icon-dvd",
+    "price": null,
+    "categories": [
+      "2010s"
+    ],
+    "starring": "Greg Laurie, Barbara Minty McQueen, Stan Barrett, Mel Gibson; narrated by Gary Sinise",
+    "director": "Jon Erwin, Ben Smallbone",
+    "producers": "Jerilyn Esquibel, Josh Walsh, Paul Eaton, John Collins, Gary Zelasko",
+    "company": "American Icon Films / Erwin Brothers Entertainment / Harvest Films / Universal Pictures Home Entertainment",
+    "titleNote": "DVD / Factory Sealed / 2017",
+    "tagline": "DVD / Factory Sealed with Slipcover / Documentary / Steve McQueen / Gary Sinise / Mel Gibson / 2010s",
+    "desc": "Steve McQueen is one of America's most endearing and intriguing movie stars. On the surface, McQueen had everything he could want: fame, cars, homes, and more money than he could spend in a lifetime. Follow an avid fan of the actor, Pastor Greg Laurie, as he hits the road in his mint Mustang (a replica of McQueen's car in the classic film Bullitt), traveling the country in search of the true, untold story of McQueen's redemption-filled final chapters. A true faith journey narrated by Gary Sinise.",
+    "trivia": [
+      {
+        "heading": "Narrated by Gary Sinise",
+        "text": "The documentary is narrated by Gary Sinise, with a score by Brent McCorkle."
+      },
+      {
+        "heading": "The Bullitt Mustang",
+        "text": "Pastor Greg Laurie travels the country in a replica of the Mustang Steve McQueen drove in the classic 1968 film Bullitt."
+      },
+      {
+        "heading": "From the Book",
+        "text": "The film is based on the book Steve McQueen: The Salvation of an American Icon by Greg Laurie and Marshall Terrill."
+      },
+      {
+        "heading": "Mel Gibson Interview",
+        "text": "The bonus features include extended interviews with Mel Gibson and McQueen's widow, Barbara Minty McQueen, plus a behind-the-scenes look at the original Bullitt car."
+      },
+      {
+        "heading": "The Erwin Brothers",
+        "text": "It was directed by Jon Erwin and Ben Smallbone, with Jon and Andrew Erwin as executive producers."
+      }
+    ],
+    "tidbits": [
+      "The documentary is narrated by Gary Sinise, with a score by Brent McCorkle.",
+      "Pastor Greg Laurie travels the country in a replica of the Mustang Steve McQueen drove in the classic 1968 film Bullitt.",
+      "The film is based on the book Steve McQueen: The Salvation of an American Icon by Greg Laurie and Marshall Terrill.",
+      "The bonus features include extended interviews with Mel Gibson and McQueen's widow, Barbara Minty McQueen, plus a behind-the-scenes look at the original Bullitt car.",
+      "It was directed by Jon Erwin and Ben Smallbone, with Jon and Andrew Erwin as executive producers."
+    ],
+    "copies": [
+      {
+        "id": "steve-mcqueen-american-icon-dvd-1",
+        "added": "2026-11-05",
+        "format": "DVD",
+        "edition": "Universal widescreen DVD with slipcover, factory sealed",
+        "photos": [
+          "images/steve-mcqueen-american-icon-dvd-1.jpg",
+          "images/steve-mcqueen-american-icon-dvd-2.jpg",
+          "images/steve-mcqueen-american-icon-dvd-3.jpg",
+          "images/steve-mcqueen-american-icon-dvd-4.jpg",
+          "images/steve-mcqueen-american-icon-dvd-5.jpg",
+          "images/steve-mcqueen-american-icon-dvd-6.jpg",
+          "images/steve-mcqueen-american-icon-dvd-7.jpg",
+          "images/steve-mcqueen-american-icon-dvd-8.jpg"
+        ],
+        "gif": "images/steve-mcqueen-american-icon-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New",
+          "case": "Factory sealed in the original shrink wrap. Slipcover included (not sealed), with light shelf wear on the edges.",
+          "discs": [
+            "Brand New (sealed)"
+          ],
+          "inserts": "As issued (sealed).",
+          "notes": "Universal Pictures Home Entertainment (2018), catalogue 61195787 / 2086160, UPC 191329052242, Region 1 NTSC, authorized for use in the U.S. and Canada; disc made in Mexico. Approx. 1 hr 19 min, colour, anamorphic widescreen 2.40:1, dual layer. English Dolby Digital 5.1; subtitles English SDH, Spanish, French. Not rated. Over 30 minutes of bonus content: two extended interviews with Mel Gibson and Barbara Minty McQueen; a special message from Pastor Greg Laurie; behind the scenes look at the original Bullitt car."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
