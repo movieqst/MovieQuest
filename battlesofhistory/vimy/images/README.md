@@ -38,6 +38,8 @@ Licence: McMaster describes its digitised First World War collection as public d
 | 20-currie-portrait-1917.jpg | Arthur Currie, commander of the 1st Canadian Division at Vimy, June 1917 | Photographer unknown, June 1917. Library and Archives Canada PA-001370 (MIKAN 3191901). Public domain in Canada (Crown copyright expired) and in the US (published before 1931). Wikimedia Commons: ArthurCurrie.jpg |
 | 21-byng-april-1917.jpg | Lieutenant-General Sir Julian Byng, commander of the Canadian Corps, April 1917, the month of Vimy (negative O-1369) | Photographer unknown, Canadian official photograph, April 1917. Canadian Museum of History, George Metcalf Archival Collection, CWM 19920085-262; IWM CO 1370. Public domain in Canada (Crown copyright expired; photo before 1949) and in the US (published before 1931). Wikimedia Commons: Julian_Byng_(April_1917).jpg |
 
+| 25-canadian-light-horse-going-into-action.jpg | The Canadian Light Horse going into action at Vimy Ridge, April 1917: troopers in Brodie helmets ride in file across the shell-torn ground, a shell bursting on the right | Photographer unknown, Canadian official photograph, April 1917. Library and Archives Canada a001111 (MIKAN 3194785). Public domain in Canada (Crown copyright expired; photo before 1949) and in the US (published before 1931). Wikimedia Commons: File-The_Canadian_Light_Horse_going_into_action_at_Vimy_Ridge,_April_1917 (A001111) |
+
 ## Wanted: the user found these; they came only as screenshots, so the files are still to be sent
 | planned file | what | licence (from Commons) |
 |---|---|---|
