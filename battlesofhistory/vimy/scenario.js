@@ -378,6 +378,15 @@ Object.assign(window.VIMY_SCENARIO, {
         { lon: 2.77, lat: 50.37, text: 'VIMY RIDGE', size: .85, pin: true, early: true }
       ] },
     establishing: [],
+    imageBase: 'images/', audioBase: 'audio/',
+    voices: [
+      { id: 'clear',    name: 'Narrator 1 · clear',  speaker: 25 },
+      { id: 'light',    name: 'Narrator 2 · light',  speaker: 60 },
+      { id: 'bright',   name: 'Narrator 3 · bright', speaker: 0 },
+      { id: 'deep',     name: 'Narrator 4 · deep',   speaker: 400 },
+      { id: 'warm',     name: 'Narrator 5 · warm',   speaker: 7 },
+      { id: 'computer', name: 'Computer · calm',     speaker: 500 }
+    ],
     attackSheets: { 'canadian-infantry': 'canadian-infantry-attack', 'canadian-lewis-gunner': 'canadian-lewis-fire', 'german-infantry': 'german-infantry-attack' },
     fallen: { bySide: { allied: 'fallen-canadian', french: 'fallen-german' } },
     sheets: ['canadian-infantry', 'canadian-lewis-gunner', 'canadian-bomber', 'german-infantry', 'german-machine-gun-fire', 'german-prisoners',
