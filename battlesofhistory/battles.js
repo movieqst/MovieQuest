@@ -131,7 +131,7 @@ window.BATTLES = [
     blurb: 'For the first time all four Canadian divisions attack together. After months of tunnelling and rehearsal they advance behind a creeping barrage and take the ridge that had held out against the French and British for two years.',
     cover: 'images/cover.jpg', coverPos: '30% 18%',   // keep the memorial in view
     coverCredit: 'Will Longstaff, Ghosts of Vimy Ridge (about 1929): the ghosts of the Canadian Corps gather on the ridge around the Vimy Memorial. House of Commons Heritage Collection, public domain',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'sixday',
