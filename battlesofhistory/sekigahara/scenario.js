@@ -363,7 +363,7 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
   const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; e.t = i * 14; });
   const set = (i, o) => Object.assign(EV[i], o);
   const via = [{ x: 1700, y: 880 }, { x: 1250, y: 800 }];
-  set(0, { media: '01-sekigahara-kassen-byobu-1854.jpg', zoom: 'fit', markers: [ { x: 2300, y: 880, label: 'from Ōgaki, in the rain' } ], orders: [
+  set(0, { media: '01-sekigahara-kassen-byobu-1854.jpg', music: { file: 'mountain-emperor-macleod.mp3', vol: .22 }, zoom: 'fit', markers: [ { x: 2300, y: 880, label: 'from Ōgaki, in the rain' } ], orders: [
     { id: 'ishida', to: ISHIDA, via, speed: 140 }, { id: 'ishidag', to: { x: ISHIDA.x + 70, y: ISHIDA.y + 40 }, via, speed: 140 },
     { id: 'shimazu', to: SHIMAZU, via, speed: 140 }, { id: 'konishi', to: KONISHI, via, speed: 140 },
     { id: 'ukita', to: UKITA, via, speed: 140 }, { id: 'ukitag', to: { x: UKITA.x + 90, y: UKITA.y - 30 }, via, speed: 140 },
@@ -423,6 +423,7 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
     { title: 'The letters of the 17th day of the 9th month, 1600, and their modern readings (Shirane Tadao; Kasaya Kazuhiko)', note: 'The basis of the reenactment.' },
     { title: 'Edo-period chronicles of the battle', note: 'The famous story of chapter 9.' },
     { title: 'Sekigahara Kassen Byōbu (1854 copy) and Sekigahara Kassen Byōbu-zu (Gifu)', note: 'Public-domain screen paintings of the battle, on Wikimedia Commons.' },
+    { title: 'Music: “Mountain Emperor”, Kevin MacLeod (incompetech.com)', note: 'Licensed under Creative Commons: By Attribution 3.0 (creativecommons.org/licenses/by/3.0/). Wikimedia Commons, File:Mountain Emperor (ISRC USUAN1700012).mp3. Taiko drums and gamelan (an Indonesian instrument, not Japanese): modern atmosphere for the night march and the armies taking position. Loudness evened out, fades added.' },
     { title: 'Music: Taiko, by Scott Harding, performed live by the Singapore Wind Symphony’s Percussion Ensemble (first 25 seconds)', note: 'Wikimedia Commons, File:02 Taiko2 (short).oga, CC0 1.0 (public domain). Plays as the battle begins and under the Shimazu breakout. A modern piece for Japanese drums: atmosphere, not a recording of 1600.' }
   ];
   S.library = [];
