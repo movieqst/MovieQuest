@@ -45,3 +45,9 @@ Name them **portrait-alexander** and **portrait-darius**.
 
 ---
 **On the page:** the Gaugamela page runs on an older engine with no leader figures yet. Once these sheets come back, it gets the leader feature from the newer battles (the same one Stirling and Vimy use), with Alexander leading the Companions and Darius in the centre.
+
+## Received (5 November 2026): all four sheets approved
+`images/units-raw/` holds ChatGPT's sheets. `images/units/leader-*.png` holds the same sheets cut to 240 × 200 cells.
+- **Alexander:** a black Bucephalus with a leopard-skin saddle cloth, a white linen corselet over purple, bareheaded and clean-shaven. The action sheet shows the spear thrust and the raised sword. The rows face the right ways.
+- **Darius:** a tall Persian crown and purple robe, a bow, a driver beside him, and a gilded red chariot with two white horses. The action sheet shows him drawing and loosing the bow, then pointing.
+- **To do:** give the Gaugamela page the leader feature from the newer engine (Stirling and Vimy).
