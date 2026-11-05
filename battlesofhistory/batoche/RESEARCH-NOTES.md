@@ -94,3 +94,20 @@ The Hildebrandt PDF (parkscanadahistory.com/series/saah/battlebatoche.pdf) is bl
 - Use these maps for the rifle-pit lines on each day: the main pits ring the church and rectory, run along the slope above the river and the ravine, and face the cemetery.
 - Also use them for the Field Force's moves each day.
 - **The painted map** puts the church about 290 m south-east of Hildebrandt's position, so the game will place it on the painted one, as at Stirling.
+
+## What they wore (checked 5 November 2026, for the art prompts)
+Web checks only. Each unit's dress varied, and many details below are **probable, not certain**. Check them against the Peters photographs and museum pieces before final art.
+- **The militia fought in its normal dress:** the North-West campaign is described as the last one in which Canadian soldiers fought in their full uniforms (militaryheritage.com, after Chartrand and Summers). Each man was issued a tunic, trousers, a greatcoat and a forage cap, often a dark blue **Glengarry** (QOR Museum).
+- **90th Winnipeg Rifles:** **rifle-green** tunics, so dark they looked black; hence the Métis name "the little black devils". Black belts. **Short Snider rifles**, brought west by the Red River Expedition (a letter of 1885, Royal Winnipeg Rifles Museum).
+- **10th Royal Grenadiers:** a **scarlet** tunic with dark blue facings and dark blue trousers with a red stripe (regimental dress, Wikipedia). In the field: probably a Glengarry or forage cap, not the full-dress headgear. Snider rifles.
+- **A Battery and the Winnipeg Field Battery:** artillery **dark blue** (probable); four 9-pounder muzzle-loading guns drawn by horses.
+- **Boulton's and French's Scouts:** local volunteers on prairie horses. Probably **working clothes**, wide felt hats and bandoliers (to check against Peters's photographs of the scouts).
+- **Howard's Gatling:** Captain A. L. Howard, an American from the Connecticut National Guard who came with the gun. Plain dress; a Gatling gun on a two-wheeled carriage pulled by horses.
+- **Métis:** the **blue capote** (a hooded coat) with the **finger-woven sash** (ceinture fléchée), worn under the capote by the Métis (Métis Museum, Gabriel Dumont Institute). Also cloth shirts, trousers or leggings, **moccasins**, and felt hats or caps. Arms: a mix of shotguns, old muzzle-loaders and some repeating rifles. By 12 May there were only about 40 rifles, and some fired nails and pebbles.
+- **Cree and Dakota fighters:** everyday prairie dress of the 1880s: cloth shirts, blankets, leggings, moccasins, and trade guns. **No war bonnets or "movie Indian" costume.** Needs a review by a community or museum source before the art is final.
+- **Leaders:**
+  - **Middleton:** a heavy-set British general of 60, with a big white moustache; a dark patrol jacket and a forage cap.
+  - **Dumont:** a broad, strong man of 47, with a dark beard; a hunter's clothes, a sash and a rifle.
+  - **Riel:** a bearded man of 40 in a dark coat, carrying a crucifix. He led in prayer and did not carry a gun.
+
+**Sources:** [Royal Winnipeg Rifles Museum](https://rwrmuseum.com/s/pork-beans-and-hard-tack-1885.pdf); [Royal Grenadiers (Wikipedia)](https://en.wikipedia.org/wiki/Royal_Grenadiers); [QOR Museum uniforms](https://qormuseum.org/history/timeline-uniforms/evolution-of-enlisted-uniforms-of-the-qorofc/); [militaryheritage.com: QOR](https://militaryheritage.com/queensownrifles.htm); [Métis Museum: men's clothing](https://www.metismuseum.ca/media/document.php/148472.Metis%20Mens%20Clothing%20(New).pdf); [Métis Museum: the sash](https://www.metismuseum.ca/resource.php/14654); [Capote (Wikipedia)](https://en.wikipedia.org/wiki/Capote_(garment)).
