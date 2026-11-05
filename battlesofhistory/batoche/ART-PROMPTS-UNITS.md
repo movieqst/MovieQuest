@@ -62,7 +62,7 @@ Make a sprite sheet for a historical battle game seen from above at an angle (th
 ## C. Leaders (the same grid, 240 × 200 cells)
 - **leader-middleton** (mounted): `Major-General Frederick Middleton at Batoche, aged 60: a heavy-set British general with a big white moustache, a dark blue patrol jacket, a forage cap, riding a large bay horse.`
 - **leader-middleton-attack:** `The same Middleton: frames 1-2 looking through field glasses, frames 3-4 pointing forward to order the advance.`
-- **leader-dumont** (on foot): `Gabriel Dumont at Batoche, aged 47: a broad, heavy, powerful Métis buffalo hunter with a full dark beard with a little grey, a dark wide-brimmed felt hat, a dark cloth jacket over a waistcoat and shirt, a patterned neckerchief, the woven sash, moccasins, carrying his rifle.`
+- **leader-dumont** (on foot): `Gabriel Dumont at Batoche, aged 47: a broad, heavy, powerful Métis buffalo hunter with a full dark beard, a dark wide-brimmed felt hat, a long fringed buckskin jacket with fur at the cuffs, a pale neckerchief, a dark shirt, dark trousers, moccasins, carrying a long rifle across his body.`
 - **leader-dumont-attack:** `The same Dumont: frame 1 aiming, frame 2 firing, frames 3-4 waving his men forward with his hat.`
 - **leader-riel** (on foot, walking): `Louis Riel at Batoche, aged 40: a man of medium build with thick dark curly hair, a full dark beard and moustache, a wide-brimmed felt hat, a dark waistcoat over a light shirt with the sleeves showing, dark trousers, holding a crucifix in one hand. Plain prairie clothes, not a frock coat. He carries no gun.`
 - **leader-riel-attack:** `The same Riel: frames 1-2 raising the crucifix high, frames 3-4 kneeling in prayer.`
@@ -86,7 +86,7 @@ A square painted portrait, in the style of a Canadian history painting of the 18
 ```
 **Reference photos for Riel** (both public domain, in images/): riel-1884-bennetto.jpg (his face and curly hair, a year before), riel-c1880-lac.jpg (bearded, seated, in a tweed suit) and riel-prisoner-1885.jpg (a full beard, a wide hat and a waistcoat, 16 May 1885). Send ChatGPT all three with the Riel prompts.
 
-**Reference photo for Dumont** (public domain, in images/): dumont-riboulet-1887.jpg (seated in the middle; the best-sourced photo). Send it with the Dumont prompts. Don't use dumont-1885-salter-taylor.jpg for the face: the man there looks older and greyer, and may not be Dumont.
+**Reference photos for Dumont** (public domain, in images/): dumont-1885-buckskin.jpg (the main one: standing with his rifle in a fringed buckskin jacket, published in 1885) and dumont-riboulet-1887.jpg (seated in the middle). Send both with the Dumont prompts. Don't use dumont-1885-salter-taylor.jpg for the face: the man there looks older and greyer, and may not be Dumont.
 
 Use: **portrait-rifles** (from 1), **portrait-grenadier** (from 3), **portrait-scout** (from 5), **portrait-metis** (from 10), **portrait-firstnations** (from 15), **portrait-middleton**, **portrait-dumont**, **portrait-riel**.
 
