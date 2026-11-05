@@ -57,3 +57,40 @@ This matches the 1885 sketch: Middleton's camp to the southeast, the church in t
 - checked picture and music licences.
 
 The Hildebrandt PDF (parkscanadahistory.com/series/saah/battlebatoche.pdf) is blocked in this session. It is the key source, maps included, so download it and send it.
+
+## Positions from Hildebrandt's battle maps (5 November 2026)
+- **Source:** W. Hildebrandt, *The Battle of Batoche* (revised edition, Canadian Parks Service, 1989). The user sent the whole book as two PDFs.
+- **The maps:** ten battle maps by B. Richard and D. Kappler, saved in `research/hildebrandt-maps/` as **reference only** (© Government of Canada; not to be shown on the page). By book page:
+  - p. 38: 9 May, 8:00 a.m., the Northcote
+  - p. 42: 9 May, 9:00 a.m.
+  - p. 47: 9 May, 11:00 a.m.
+  - p. 50 and p. 51: 9 May, the Métis offensive
+  - p. 60: 9 May, 6:00 p.m., the withdrawal into the zareba
+  - p. 64: 10 May
+  - p. 68: 11 May, the Jolie Prairie feint
+  - p. 72 and p. 73: 12 May, the final charge
+- **How they were lined up:** map p. 38 was fitted to the battle frame through the church, the river bend south of the cemetery, and the ferry. It is a similarity fit (scale and rotation): the map is about 10° off true north and about 3.9 m per pixel at 110 dpi. Map p. 73 was fitted to p. 38 through the ferry, the East Village, the cemetery and the West Village (residuals under 9 px). The fit is in `research/hildebrandt-map-fit.json`.
+- **Accuracy:** about 50–100 m.
+
+| place | battle frame (world px) | lat, lon |
+|---|---|---|
+| Church (Saint-Antoine-de-Padoue) | 1270, 968 | 52.7532, -106.1181 |
+| Rectory | 1236, 979 | 52.7530, -106.1190 |
+| Cemetery | 1227, 1145 | 52.7503, -106.1193 |
+| Mission Ridge | 1166, 1003 | 52.7527, -106.1209 |
+| Batoche East Village | 847, 487 | 52.7612, -106.1296 |
+| Ferry crossing | 580, 460 | 52.7616, -106.1368 |
+| West Village (across the river) | 435, 514 | 52.7607, -106.1408 |
+| Zareba (Middleton's camp) | 1711, 1253 | 52.7485, -106.1061 |
+| Jolie Prairie | 1509, 774 | 52.7564, -106.1116 |
+
+**Checks:**
+- **The church** is 80 m from the Google Maps point, so it agrees.
+- **The cemetery** is about 330 m south of the church (Parks Canada: about 400 m).
+- **The zareba** is about 1.0 km south-east of the church, as Parks Canada says.
+- **The East Village and the ferry** are about 230 m east of my earlier estimate from the Parks Canada map. Use Hildebrandt's positions.
+
+**For the reenactment:**
+- Use these maps for the rifle-pit lines on each day: the main pits ring the church and rectory, run along the slope above the river and the ravine, and face the cemetery.
+- Also use them for the Field Force's moves each day.
+- **The painted map** puts the church about 290 m south-east of Hildebrandt's position, so the game will place it on the painted one, as at Stirling.
