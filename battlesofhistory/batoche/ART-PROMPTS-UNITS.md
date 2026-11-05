@@ -60,7 +60,7 @@ Make a sprite sheet for a historical battle game seen from above at an angle (th
 16. **firstnations-fighter-fire** (action): `The same fighter in action: frame 1 kneeling in the bush and aiming, frame 2 firing with smoke, frames 3-4 reloading.`
 
 ## C. Leaders (the same grid, 240 × 200 cells)
-- **leader-middleton** (mounted): `Major-General Frederick Middleton at Batoche, aged 60: a heavy-set British general with a big white moustache, a dark blue patrol jacket, a forage cap, riding a large bay horse.`
+- **leader-middleton** (mounted): `Major-General Frederick Middleton at Batoche, aged 59: a heavy-set, older British general with a big white moustache and short white hair, a light grey-khaki campaign jacket and breeches, a dark field cap tilted on his head, a belt with a revolver holster and a sword, tall black riding boots, riding a large bay horse.`
 - **leader-middleton-attack:** `The same Middleton: frames 1-2 looking through field glasses, frames 3-4 pointing forward to order the advance.`
 - **leader-dumont** (on foot): `Gabriel Dumont at Batoche, aged 47: a broad, heavy, powerful Métis buffalo hunter with a full dark beard, a dark wide-brimmed felt hat, a long fringed buckskin jacket with fur at the cuffs, a pale neckerchief, a dark shirt, dark trousers, moccasins, carrying a long rifle across his body.`
 - **leader-dumont-attack:** `The same Dumont: frame 1 aiming, frame 2 firing, frames 3-4 waving his men forward with his hat.`
@@ -85,6 +85,8 @@ A sprite sheet for a battle game seen from above at an angle: ONE square image, 
 A square painted portrait, in the style of a Canadian history painting of the 1880s blended with realism, of [UNIT] at the Battle of Batoche, May 1885, half length, against a spring prairie with poplar bush and a river valley in the distance, in the clothing described: [DESCRIPTION]. No text, no frame, the figure filling the picture.
 ```
 **Reference photos for Riel** (both public domain, in images/): riel-1884-bennetto.jpg (his face and curly hair, a year before), riel-c1880-lac.jpg (bearded, seated, in a tweed suit) and riel-prisoner-1885.jpg (a full beard, a wide hat and a waistcoat, 16 May 1885). Send ChatGPT all three with the Riel prompts.
+
+**Reference photo for Middleton** (public domain, in images/): middleton-1885-topley.jpg (September 1885, in his campaign dress). Send it with the Middleton prompts.
 
 **Reference photos for Dumont** (public domain, in images/): dumont-1885-buckskin.jpg (the main one: standing with his rifle in a fringed buckskin jacket, published in 1885) and dumont-riboulet-1887.jpg (seated in the middle). Send both with the Dumont prompts. Don't use dumont-1885-salter-taylor.jpg for the face: the man there looks older and greyer, and may not be Dumont.
 
