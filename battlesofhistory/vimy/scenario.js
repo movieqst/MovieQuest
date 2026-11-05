@@ -21,8 +21,8 @@ Object.assign(window.VIMY_SCENARIO, {
     reconstruction: { label: 'Reconstruction', color: '#c8a2ff', desc: 'Our own choice, to make the battle visible: where each unit stood and how it moved.' }
   },
   sides: {
-    allied: { name: 'Canadian Corps', short: 'Canadians', army: 'The Canadian Corps under Lieutenant-General Sir Julian Byng', color: '#c0392b', light: '#ffd6d0' },
-    french: { name: 'German Sixth Army', short: 'Germans', army: 'The German Sixth Army (Group Vimy) under General von Falkenhausen', color: '#2e5aa8', light: '#d0dcff' }
+    allied: { name: 'Canadian Corps', short: 'Canadians', army: 'The Canadian Corps under Lieutenant-General Sir Julian Byng', color: '#2e5aa8', light: '#d0dcff' },
+    french: { name: 'German Sixth Army', short: 'Germans', army: 'The German Sixth Army (Group Vimy) under General von Falkenhausen', color: '#c0392b', light: '#ffd6d0' }
   },
   welcome: "Welcome to Battles of History. Today we are learning about the Battle of Vimy Ridge, fought from the 9th to the 12th of April 1917, between the Canadian Corps and the German Sixth Army.",
   intro: [
@@ -52,7 +52,7 @@ Object.assign(window.VIMY_SCENARIO, {
         "credit": "Photo: Capt. H. E. Knobel, Canada, Dept. of National Defence, April 1917. Library and Archives Canada PA-001020. Public domain in Canada (Crown copyright expired; photo before 1949) and in the US (published before 1931). Wikimedia Commons: 29th_Infantry_Batallion_advancing_over_No_man's_Land_through_the_German_barbed_wire (A001020)"
       }
     ],
-    "trenches": "battle-trenches-1917-03.png"
+    "trenches": "trenches-1917-03.png"
   },
   {
     "title": "The ridge",
@@ -84,7 +84,7 @@ Object.assign(window.VIMY_SCENARIO, {
         "credit": "Canada, Dept. of National Defence, November 1917. Library and Archives Canada PA-002218 (MIKAN 3395593). Public domain in Canada (Crown copyright expired); on Commons via LAC's Flickr under CC BY 2.0. Wikimedia Commons: Trenches_behind_the_Canadians_at_Vimy_Ridge._Photograph_taken_from_a_kite_balloon"
       }
     ],
-    "trenches": "battle-trenches-1916-02.png"
+    "trenches": "trenches-1916-02.png"
   },
   {
     "title": "The plan",
@@ -116,7 +116,7 @@ Object.assign(window.VIMY_SCENARIO, {
         "credit": "Photo: W. I. Castle; LAC PA-001231 (MIKAN 3194763). Public domain"
       }
     ],
-    "trenches": "battle-trenches-1917-03.png"
+    "trenches": "trenches-1917-03.png"
   },
   {
     "title": "The guns",
@@ -154,7 +154,7 @@ Object.assign(window.VIMY_SCENARIO, {
         "credit": "Photo: Dickbauch, 2005, released into the public domain (File:Sectioned British 18-pounder shrapnel round photograph.jpg)"
       }
     ],
-    "trenches": "battle-trenches-1917-03.png"
+    "trenches": "trenches-1917-03.png"
   },
   {
     "title": "Underground",
@@ -186,7 +186,7 @@ Object.assign(window.VIMY_SCENARIO, {
         "credit": "Photo: Dhirun4, 12 November 2009. Released into the public domain by the author. Wikimedia Commons: Vimy_ridge_memorial_from_the_nearby_carpark.jpg"
       }
     ],
-    "trenches": "battle-trenches-1916-10.png"
+    "trenches": "trenches-1916-10.png"
   },
   {
     "title": "The defenders",
@@ -218,7 +218,7 @@ Object.assign(window.VIMY_SCENARIO, {
         "credit": "Canada, Dept. of National Defence; Library and Archives Canada PA-001017; IWM CO 1146. Public domain"
       }
     ],
-    "trenches": "battle-trenches-1917-03.png"
+    "trenches": "trenches-1917-03.png"
   }
 ],
   events: [
@@ -330,7 +330,7 @@ Object.assign(window.VIMY_SCENARIO, {
      battle map  images/terrain-battle.jpg  50.402–50.322 N, 2.710–2.877 E (about 11.9 x 8.9 km, 2400 x 1800 world px, ~5 m per px)
    The front lines and the Black, Red, Blue and Brown objective lines are in lines.js (window.VIMY_LINES), traced from
    Nicholson's Map 7 lined up to the ground. The trench layers (images/trenches/) are traced from the NLS trench maps
-   (tools/trench-georef/); on this page the German trenches are blue and the Allied red, as are the armies.
+   (tools/trench-georef/), coloured as on the 1917 maps: German red, Allied blue, as are the armies.
    Where each formation stood and how it moved, between those lines, is our reconstruction.
    ====================================================================================================================== */
 (() => {
@@ -356,8 +356,8 @@ Object.assign(window.VIMY_SCENARIO, {
     },
     world: { w: 2400, h: 1800 },
     terrain: 'terrain-battle.jpg',
-    trenchLayers: ['battle-trenches-1916-02.png', 'battle-trenches-1916-10.png', 'battle-trenches-1917-03.png'],
-    defaultTrench: 'battle-trenches-1917-03.png', introTrench: 'battle-trenches-1917-03.png', trenchAlpha: .45,
+    trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1917-03.png'],
+    defaultTrench: 'trenches-1917-03.png', introTrench: 'trenches-1917-03.png', trenchAlpha: .45,
     duration: 182, commandDuration: 300, commandFocus: { x: 1100, y: 800 },
     battlefield: {
       scale: { px: 202, label: '1 km' },
@@ -384,7 +384,7 @@ Object.assign(window.VIMY_SCENARIO, {
              'stretcher-bearers', 'mounted-messenger-optional', 'german-field-artillery', 'canadian-mortar-crew'],
     sheetBy: { allied: { infantry: 'canadian-infantry', archers: 'canadian-lewis-gunner', cavalry: 'mounted-messenger-optional' },
                french: { infantry: 'german-infantry', archers: 'german-infantry', cavalry: 'german-machine-gun-fire' } },
-    sideArt: { allied: { cloth: '#7a6a44', cloth2: '#5a4e34', pennant: '#c0392b' }, french: { cloth: '#5d655a', cloth2: '#4a5048', pennant: '#2e5aa8' } },
+    sideArt: { allied: { cloth: '#7a6a44', cloth2: '#5a4e34', pennant: '#2e5aa8' }, french: { cloth: '#5d655a', cloth2: '#4a5048', pennant: '#c0392b' } },
     ai: { plans: {} }, commandLines: {},
     debrief: { allied: { victory: { title: 'Canadian victory', text: '' }, defeat: { title: 'Canadian defeat', text: '' }, stalemate: { title: 'Stalemate', text: '' } },
                french: { victory: { title: 'German victory', text: '' }, defeat: { title: 'German defeat', text: '' }, stalemate: { title: 'Stalemate', text: '' } } }
