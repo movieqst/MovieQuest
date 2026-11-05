@@ -64,7 +64,7 @@ Make a sprite sheet for a historical battle game seen from above at an angle (th
 - **leader-middleton-attack:** `The same Middleton: frames 1-2 looking through field glasses, frames 3-4 pointing forward to order the advance.`
 - **leader-dumont** (on foot): `Gabriel Dumont at Batoche, aged 47: a broad, powerful Métis buffalo hunter with a full dark beard, a felt hat, a hide jacket over a cloth shirt, the woven sash, moccasins, carrying his rifle.`
 - **leader-dumont-attack:** `The same Dumont: frame 1 aiming, frame 2 firing, frames 3-4 waving his men forward with his hat.`
-- **leader-riel** (on foot, walking): `Louis Riel at Batoche, aged 40: a bearded man with dark wavy hair in a long dark frock coat, holding a crucifix in one hand. He carries no gun.`
+- **leader-riel** (on foot, walking): `Louis Riel at Batoche, aged 40: a man of medium build with thick dark curly hair, a full dark beard and moustache, a wide-brimmed felt hat, a dark waistcoat over a light shirt with the sleeves showing, dark trousers, holding a crucifix in one hand. Plain prairie clothes, not a frock coat. He carries no gun.`
 - **leader-riel-attack:** `The same Riel: frames 1-2 raising the crucifix high, frames 3-4 kneeling in prayer.`
 - **leader-howard** (with the gun): `Captain Arthur L. Howard of Connecticut with his Gatling gun, 1885: a moustached American in a dark civilian suit and soft hat, standing by the gun on its two-wheeled carriage.`
 - **leader-howard-attack:** `The same Howard: frames 1-4 turning the crank of the Gatling gun, with puffs of smoke.`
@@ -84,6 +84,8 @@ A sprite sheet for a battle game seen from above at an angle: ONE square image, 
 ```text
 A square painted portrait, in the style of a Canadian history painting of the 1880s blended with realism, of [UNIT] at the Battle of Batoche, May 1885, half length, against a spring prairie with poplar bush and a river valley in the distance, in the clothing described: [DESCRIPTION]. No text, no frame, the figure filling the picture.
 ```
+**Reference photos for Riel** (both public domain, in images/): riel-1884-bennetto.jpg (his face and curly hair, a year before) and riel-prisoner-1885.jpg (a full beard, a wide hat and a waistcoat, 16 May 1885). Send ChatGPT both with the Riel prompts.
+
 Use: **portrait-rifles** (from 1), **portrait-grenadier** (from 3), **portrait-scout** (from 5), **portrait-metis** (from 10), **portrait-firstnations** (from 15), **portrait-middleton**, **portrait-dumont**, **portrait-riel**.
 
 ---

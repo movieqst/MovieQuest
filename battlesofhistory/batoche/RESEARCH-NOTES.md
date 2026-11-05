@@ -108,6 +108,6 @@ Web checks only. Each unit's dress varied, and many details below are **probable
 - **Leaders:**
   - **Middleton:** a heavy-set British general of 60, with a big white moustache; a dark patrol jacket and a forage cap.
   - **Dumont:** a broad, strong man of 47, with a dark beard; a hunter's clothes, a sash and a rifle.
-  - **Riel:** a bearded man of 40 in a dark coat, carrying a crucifix. He led in prayer and did not carry a gun.
+  - **Riel:** aged 40. The Peters photo of 16 May 1885 (images/riel-prisoner-1885.jpg) shows a full beard, a wide-brimmed felt hat, and a dark waistcoat over a light shirt. The Bennetto carte de visite of about 1884 (images/riel-1884-bennetto.jpg) shows his thick curly hair and heavy moustache. He carried a crucifix, led in prayer and did not carry a gun.
 
 **Sources:** [Royal Winnipeg Rifles Museum](https://rwrmuseum.com/s/pork-beans-and-hard-tack-1885.pdf); [Royal Grenadiers (Wikipedia)](https://en.wikipedia.org/wiki/Royal_Grenadiers); [QOR Museum uniforms](https://qormuseum.org/history/timeline-uniforms/evolution-of-enlisted-uniforms-of-the-qorofc/); [militaryheritage.com: QOR](https://militaryheritage.com/queensownrifles.htm); [Métis Museum: men's clothing](https://www.metismuseum.ca/media/document.php/148472.Metis%20Mens%20Clothing%20(New).pdf); [Métis Museum: the sash](https://www.metismuseum.ca/resource.php/14654); [Capote (Wikipedia)](https://en.wikipedia.org/wiki/Capote_(garment)).
