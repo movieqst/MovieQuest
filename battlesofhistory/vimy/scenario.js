@@ -379,6 +379,7 @@ Object.assign(window.VIMY_SCENARIO, {
       ] },
     establishing: [],
     imageBase: 'images/', audioBase: 'audio/',
+    sfx: { base: '../sounds/', rifle: ['lee-enfield-shot-02.mp3', 'lee-enfield-shot-03.mp3'], gun: ['artillery-gunfire.mp3'], vol: .3 },
     voices: [
       { id: 'clear',    name: 'Narrator 1 · clear',  speaker: 25 },
       { id: 'light',    name: 'Narrator 2 · light',  speaker: 60 },
