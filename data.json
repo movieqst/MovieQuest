@@ -10823,5 +10823,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "radio-city-christmas-spectacular-dvd",
+    "title": "Radio City Christmas Spectacular Starring The Rockettes",
+    "year": 2008,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/radio-city-christmas-spectacular-dvd-1.jpg",
+    "photos": [
+      "images/radio-city-christmas-spectacular-dvd-1.jpg",
+      "images/radio-city-christmas-spectacular-dvd-2.jpg",
+      "images/radio-city-christmas-spectacular-dvd-3.jpg",
+      "images/radio-city-christmas-spectacular-dvd-4.jpg",
+      "images/radio-city-christmas-spectacular-dvd-5.jpg",
+      "images/radio-city-christmas-spectacular-dvd-6.jpg",
+      "images/radio-city-christmas-spectacular-dvd-7.jpg",
+      "images/radio-city-christmas-spectacular-dvd-8.jpg",
+      "images/radio-city-christmas-spectacular-dvd-9.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Radio%20City%20Christmas%20Spectacular%20Rockettes%20DVD&campid=5339133571&customid=radio-city-christmas-spectacular-dvd",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "The Rockettes",
+    "company": "MSG Entertainment / Radio City / Time Life",
+    "titleNote": "DVD / 2008",
+    "tagline": "DVD / The Rockettes / Christmas / Holiday Stage Show / Time Life / 2000s",
+    "desc": "Celebrate the season with the Radio City Christmas Spectacular, a holiday show like no other. Watch the world-famous Rockettes bring their signature eye-high kicks and precision choreography to showstopping numbers such as The Parade of the Wooden Soldiers and New York at Christmas. Join Santa as he flies through the city, and rediscover the true meaning of Christmas in the awe-inspiring Living Nativity. The show has dazzled more than 65 million people for over 75 years.",
+    "trivia": [
+      {
+        "heading": "Since 1933",
+        "text": "The first Christmas Spectacular was staged in 1933, a year after Radio City Music Hall opened in New York."
+      },
+      {
+        "heading": "The Wooden Soldiers",
+        "text": "\"The Parade of the Wooden Soldiers\" has been part of the show since that first year and is still performed almost unchanged, ending with the famous slow-motion domino fall."
+      },
+      {
+        "heading": "From St. Louis",
+        "text": "The Rockettes began in St. Louis in 1925 as the Missouri Rockets, founded by Russell Markert, who wanted American dancers who could do \"eye-high kicks\"."
+      },
+      {
+        "heading": "Kick After Kick",
+        "text": "36 Rockettes perform in each show, and on busy days a single dancer can do more than 1,000 high kicks across as many as five shows."
+      },
+      {
+        "heading": "Real Camels",
+        "text": "The Living Nativity uses real animals, including camels, which stay at Radio City during the show's run."
+      }
+    ],
+    "tidbits": [
+      "The first Christmas Spectacular was staged in 1933, a year after Radio City Music Hall opened in New York.",
+      "\"The Parade of the Wooden Soldiers\" has been part of the show since that first year and is still performed almost unchanged, ending with the famous slow-motion domino fall.",
+      "The Rockettes began in St. Louis in 1925 as the Missouri Rockets, founded by Russell Markert, who wanted American dancers who could do \"eye-high kicks\".",
+      "36 Rockettes perform in each show, and on busy days a single dancer can do more than 1,000 high kicks across as many as five shows.",
+      "The Living Nativity uses real animals, including camels, which stay at Radio City during the show's run."
+    ],
+    "copies": [
+      {
+        "id": "radio-city-christmas-spectacular-dvd-1",
+        "added": "2026-11-04",
+        "format": "DVD",
+        "edition": "Time Life / MSG Entertainment DVD (80018-X)",
+        "photos": [
+          "images/radio-city-christmas-spectacular-dvd-1.jpg",
+          "images/radio-city-christmas-spectacular-dvd-2.jpg",
+          "images/radio-city-christmas-spectacular-dvd-3.jpg",
+          "images/radio-city-christmas-spectacular-dvd-4.jpg",
+          "images/radio-city-christmas-spectacular-dvd-5.jpg",
+          "images/radio-city-christmas-spectacular-dvd-6.jpg",
+          "images/radio-city-christmas-spectacular-dvd-7.jpg",
+          "images/radio-city-christmas-spectacular-dvd-8.jpg",
+          "images/radio-city-christmas-spectacular-dvd-9.jpg"
+        ],
+        "gif": "images/radio-city-christmas-spectacular-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Clear DVD case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None. Scene selection guide printed on the inside of the cover.",
+          "notes": "Time Life / MSG Entertainment (2008), catalogue 80018-X, UPC 610583353099, disc 23501-Z. Approx. 80 minutes, colour, stereo 2.0. Not rated. 13 scenes: Show Open; Sleigh Ride; Santa Flies to New York; The Twelve Days of Christmas; The Nutcracker; The Parade of the Wooden Soldiers; New York at Christmas; Here Comes Santa Claus; Magic Is There; Christmas Memories; Let Christmas Shine; The Living Nativity; Joy to the World."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
