@@ -375,7 +375,7 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
     { id: 'ii', to: { x: 1010, y: 680 }, via: [{ x: 1600, y: 880 }], speed: 130 }, { id: 'kuroda', to: { x: 1040, y: 470 }, via: [{ x: 1600, y: 860 }], speed: 130 },
     { id: 'todo', to: { x: 830, y: 990 }, via: [{ x: 1600, y: 940 }], speed: 130 }, { id: 'honda', to: { x: 1100, y: 860 }, via: [{ x: 1600, y: 920 }], speed: 130 },
     { id: 'tokugawa', to: { x: MOMOKUBARI.x - 60, y: MOMOKUBARI.y + 30 }, speed: 80 }, { leader: 'ieyasu', to: MOMOKUBARI, speed: 80 } ] });
-  set(3, { focus: { x: 800, y: 720 }, zoom: 1.5, markers: [ { x: 760, y: 790, label: 'Fukushima attacks Ukita' } ], orders: [
+  set(3, { music: { file: 'taiko-harding.mp3', vol: .35 }, focus: { x: 800, y: 720 }, zoom: 1.5, markers: [ { x: 760, y: 790, label: 'Fukushima attacks Ukita' } ], orders: [
     { id: 'fukushima', to: { x: UKITA.x + 70, y: UKITA.y + 10 }, speed: 40, state: 'attack' }, { id: 'fukug', to: { x: UKITA.x + 140, y: UKITA.y - 50 }, speed: 30 },
     { id: 'kuroda', to: { x: ISHIDA.x + 90, y: ISHIDA.y + 10 }, speed: 40, state: 'attack' }, { id: 'ii', to: { x: SHIMAZU.x + 60, y: SHIMAZU.y + 80 }, speed: 40 } ] });
   set(4, { focus: { x: 620, y: 1060 }, zoom: 1.5, markers: [ Object.assign({ label: 'Kobayakawa turns' }, MATSUO) ], orders: [
@@ -391,7 +391,7 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
     { id: 'ishidag', state: 'rout', to: { x: 160, y: 280 }, speed: 45, delay: 2 }, { leader: 'mitsunari', to: { x: 80, y: 260 }, speed: 45, delay: 2 },
     { id: 'ukita', strengthTo: 30, over: 8 }, { id: 'konishi', strengthTo: 35, over: 8 }, { id: 'ishida', strengthTo: 40, over: 8 } ] });
   set(8, { media: '02-sekigahara-byobu-gifu-north-view.jpg', zoom: 'fit', markers: [ Object.assign({ label: 'tradition: the noon volley at Mount Matsuo' }, MATSUO) ] });
-  set(9, { focus: { x: 1500, y: 1000 }, zoom: 1, markers: [ { x: ISE.x - 80, y: ISE.y - 40, label: 'toward Ise' } ], orders: [
+  set(9, { music: { file: 'taiko-harding.mp3', vol: .3 }, focus: { x: 1500, y: 1000 }, zoom: 1, markers: [ { x: ISE.x - 80, y: ISE.y - 40, label: 'toward Ise' } ], orders: [
     { id: 'shimazu', to: ISE, via: [{ x: 1100, y: 800 }, { x: 1600, y: 1150 }], speed: 50, state: 'attack' }, { id: 'shimazu', strengthTo: 25, over: 12 },
     { leader: 'shimazu', to: { x: ISE.x - 30, y: ISE.y - 40 }, via: [{ x: 1100, y: 800 }, { x: 1600, y: 1150 }], speed: 50 } ] });
   set(10, { zoom: 'fit', markers: [ Object.assign({ label: 'Jinbano: Ieyasu inspects the heads' }, JINBANO) ], orders: [
@@ -423,7 +423,7 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
     { title: 'The letters of the 17th day of the 9th month, 1600, and their modern readings (Shirane Tadao; Kasaya Kazuhiko)', note: 'The basis of the reenactment.' },
     { title: 'Edo-period chronicles of the battle', note: 'The famous story of chapter 9.' },
     { title: 'Sekigahara Kassen Byōbu (1854 copy) and Sekigahara Kassen Byōbu-zu (Gifu)', note: 'Public-domain screen paintings of the battle, on Wikimedia Commons.' },
-    { title: 'Music', note: 'None yet.' }
+    { title: 'Music: Taiko, by Scott Harding, performed live by the Singapore Wind Symphony’s Percussion Ensemble (first 25 seconds)', note: 'Wikimedia Commons, File:02 Taiko2 (short).oga, CC0 1.0 (public domain). Plays as the battle begins and under the Shimazu breakout. A modern piece for Japanese drums: atmosphere, not a recording of 1600.' }
   ];
   S.library = [];
 })();
