@@ -11003,5 +11003,90 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-langoliers-1995-dvd",
+    "title": "Stephen King's The Langoliers",
+    "year": 1995,
+    "format": "DVD",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/the-langoliers-1995-dvd-1.jpg",
+    "photos": [
+      "images/the-langoliers-1995-dvd-1.jpg",
+      "images/the-langoliers-1995-dvd-2.jpg",
+      "images/the-langoliers-1995-dvd-3.jpg",
+      "images/the-langoliers-1995-dvd-4.jpg",
+      "images/the-langoliers-1995-dvd-5.jpg",
+      "images/the-langoliers-1995-dvd-6.jpg",
+      "images/the-langoliers-1995-dvd-7.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Stephen%20King%20Langoliers%20DVD&campid=5339133571&customid=the-langoliers-1995-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "1990s"
+    ],
+    "runYears": "1995",
+    "starring": "Patricia Wettig, Dean Stockwell, David Morse, Mark Lindsay Chapman, Frankie Faison, Baxter Harris, Kimber Riddle, Christopher Collet, Kate Maberly, Bronson Pinchot",
+    "director": "Tom Holland",
+    "createdBy": "Stephen King (novella)",
+    "company": "Laurel Entertainment / Spelling / ABC / CBS DVD / Paramount",
+    "titleNote": "DVD (cover art and disc, no case) / 1995",
+    "tagline": "DVD / Mini-Series / Stephen King / Dean Stockwell / Bronson Pinchot / Horror / 1990s",
+    "desc": "On a red-eye flight across the country, a small group of passengers awakens mid-journey to face a shocking reality: they are somehow the only people left in the entire world. Fear turns to panic and desperation when they learn that they have slipped through a rip in the fabric of the universe. Unimaginable evil awaits them if they don't find a way back, and they are literally running out of time. Based on the story from Stephen King's bestseller Four Past Midnight.",
+    "trivia": [
+      {
+        "heading": "King Makes a Cameo",
+        "text": "Stephen King appears as Tom Holby, the boss of the unravelling businessman Craig Toomey."
+      },
+      {
+        "heading": "Shot at Bangor Airport",
+        "text": "The mini-series was filmed almost entirely in and around Bangor International Airport in Maine during the summer of 1994."
+      },
+      {
+        "heading": "Four Past Midnight",
+        "text": "The story comes from King's 1990 collection Four Past Midnight, a book of four novellas."
+      },
+      {
+        "heading": "Two Nights on ABC",
+        "text": "The Langoliers aired on ABC in two parts on May 14 and 15, 1995, written and directed by Tom Holland of Fright Night and Child's Play."
+      }
+    ],
+    "tidbits": [
+      "Stephen King appears as Tom Holby, the boss of the unravelling businessman Craig Toomey.",
+      "The mini-series was filmed almost entirely in and around Bangor International Airport in Maine during the summer of 1994.",
+      "The story comes from King's 1990 collection Four Past Midnight, a book of four novellas.",
+      "The Langoliers aired on ABC in two parts on May 14 and 15, 1995, written and directed by Tom Holland of Fright Night and Child's Play."
+    ],
+    "copies": [
+      {
+        "id": "the-langoliers-1995-dvd-1",
+        "added": "2026-11-05",
+        "format": "DVD",
+        "edition": "CBS DVD / Paramount (2013), no case",
+        "photos": [
+          "images/the-langoliers-1995-dvd-1.jpg",
+          "images/the-langoliers-1995-dvd-2.jpg",
+          "images/the-langoliers-1995-dvd-3.jpg",
+          "images/the-langoliers-1995-dvd-4.jpg",
+          "images/the-langoliers-1995-dvd-5.jpg",
+          "images/the-langoliers-1995-dvd-6.jpg",
+          "images/the-langoliers-1995-dvd-7.jpg"
+        ],
+        "gif": "images/the-langoliers-1995-dvd-1.gif",
+        "condition": {
+          "overall": "Good",
+          "case": "No case. Includes the original printed cover art (case insert), Acceptable: creases on the front left (spine) edge and a crease near the lower right of the back, as shown in the photos. Disc in a paper sleeve.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "CBS DVD / Paramount (2013), ISBN 1-4157-2314-1, UPC 097366221941, Region 1 NTSC, licensed for sale only in the US and Canada. 1 disc, approx. 2 hrs 59 min, colour, 4x3. English and Spanish stereo, Brazilian Portuguese mono; English, Spanish and Brazilian Portuguese subtitles. Not rated (US) / 14A (Canada). This program may be edited from its original broadcast version."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
