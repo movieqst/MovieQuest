@@ -84,7 +84,7 @@ A sprite sheet for a battle game seen from above at an angle: ONE square image, 
 ```text
 A square painted portrait, in the style of a Canadian history painting of the 1880s blended with realism, of [UNIT] at the Battle of Batoche, May 1885, half length, against a spring prairie with poplar bush and a river valley in the distance, in the clothing described: [DESCRIPTION]. No text, no frame, the figure filling the picture.
 ```
-**Reference photos for Riel** (both public domain, in images/): riel-1884-bennetto.jpg (his face and curly hair, a year before) and riel-prisoner-1885.jpg (a full beard, a wide hat and a waistcoat, 16 May 1885). Send ChatGPT both with the Riel prompts.
+**Reference photos for Riel** (both public domain, in images/): riel-1884-bennetto.jpg (his face and curly hair, a year before), riel-c1880-lac.jpg (bearded, seated, in a tweed suit) and riel-prisoner-1885.jpg (a full beard, a wide hat and a waistcoat, 16 May 1885). Send ChatGPT all three with the Riel prompts.
 
 Use: **portrait-rifles** (from 1), **portrait-grenadier** (from 3), **portrait-scout** (from 5), **portrait-metis** (from 10), **portrait-firstnations** (from 15), **portrait-middleton**, **portrait-dumont**, **portrait-riel**.
 
