@@ -23,4 +23,4 @@ Credit: Battle Games, AI-generated (ChatGPT) from ART-PROMPTS-UNITS.md.
 - **portrait-shimazu.jpg:** redone and approved: an old man with grey-white hair, at 65. Cut from the left panel of ChatGPT's composite (about 700 × 1024).
 - **leader-mitsunari-attack, leader-shimazu-attack:** approved. They were cut from ChatGPT's two-panel picture (about 765 × 880 each, 4 × 4 on green; the label strip was dropped). Mitsunari points his sword and raises a war fan. Shimazu (grey-haired) charges with a spear. Each row faces the right way.
 
-**The Sekigahara art set is complete:** 10 soldier sheets, 8 leader sheets, 3 fallen sheets and 9 portraits.
+**The Sekigahara art set is complete:** 10 soldier sheets, 8 leader sheets, 3 fallen sheets and 8 portraits.
