@@ -34,3 +34,26 @@ This matches the 1885 sketch: Middleton's camp to the southeast, the church in t
 - Gabriel's Crossing (Dumont's ferry): east bank, about six miles upstream (south) of Batoche, half a mile south of today's Gabriel's Bridge (Louis Riel Institute notes). Map point approx.
 - Frenchman Butte NHS: 53.627285, -109.575534 (Parks Canada). Fort Pitt (provincial park): 53.57477, -109.7937 (Tourism Saskatchewan).
 - Not yet checked: Frog Lake, Cut Knife Hill, Fort Carlton, Battleford, Humboldt, Touchwood Hills, Qu'Appelle station (map points from general knowledge, marked approx.).
+
+## ChatGPT dossier V2 (5 November 2026): RESEARCH-CHATGPT-V2.md, checked against Hildebrandt (1989) and the DCB
+**New facts to use** (page numbers are Hildebrandt's printed pages, still to confirm against the PDF):
+- **Field Force on 7 May:** 886 men on land (Boulton 70, French's Scouts 29, A Battery 101, Winnipeg Field Battery 58, 10th Royal Grenadiers 258, 90th Winnipeg Rifles 270, Midland about 100), plus about 50 on the Northcote. The guns were four RML 9-pounders and Howard's Gatling.
+- **Defenders:** 250–300 at the start. Only 50–60 fought on 12 May, with about 40 rifles (an estimate).
+- **The ferry cable** was lowered by ferryman **Alex P. Fisher and Pascal Montour**. It knocked down the Northcote's smokestacks and whistle; the boat drifted on downstream and never landed its troops.
+- **Garnot** sent about 20 men to fire on the boat, which thinned the pits facing Middleton's first advance.
+- **Father Moulin** was hit in the leg by a bullet through the rectory wall. A white cloth was shown, and Middleton stopped the firing.
+- **Scouting:** Fleury led the scouts on the west bank and Champagne on the east, with small groups under deputy captains.
+- **The zareba:** wagons and earthworks with a parados of 4–5 ft. On 10 May the Midland dug shallow pits halfway toward the cemetery.
+- **Ammunition:** collected from unexploded shells, and dropped bullets melted down. The "nails" story stays unproven.
+- **12 May:** Middleton's feint on the Oolie (Jolie) Prairie, then the infantry breaks through near the cemetery and church. **Who started the charge is disputed** (Williams, Van Straubenzie, or momentum).
+- **French** was killed at a window of Batoche's house.
+- **Deaths:** 25 in four days, all sides. Do not confuse this with the 5 killed on 12 May.
+- **Dumont** stayed near Batoche for some days and left after Riel's surrender on 15 May.
+
+**Still missing:**
+- the Sessional Papers (vol. 19, no. 5, 1886) and Dumont's 1949 account;
+- a list of the dead by name, and Ouellette's age;
+- who Riel surrendered to;
+- checked picture and music licences.
+
+The Hildebrandt PDF (parkscanadahistory.com/series/saah/battlebatoche.pdf) is blocked in this session. It is the key source, maps included, so download it and send it.

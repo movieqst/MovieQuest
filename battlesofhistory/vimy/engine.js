@@ -465,12 +465,21 @@ function volley(f, best, bd, apply) {
 }
 /* The creeping barrage (chapter 'barrage': { from: [[x,y]...], to: [[x,y]...], secs, rate }): a line of shell bursts that
    walks from the 'from' line to the 'to' line (same number of points) over 'secs' seconds of battle time. */
+/* Sound effects (S.sfx: { rifle: [files], gun: [files], vol }, files in ../sounds/): a rifle crack now and then while
+   formations are fighting, and the guns under the barrage. Quiet, rate-limited, and only while a battle is running. */
+const SFX = S.sfx || null, SFXP = {};
+function sfx(kind, vol) {
+  if (!SFX || !SFX[kind] || fastForward || paused || mode === 'intro' || document.hidden) return;
+  const now = performance.now(), gap = kind === 'gun' ? 1800 : 260; if (now - (SFXP[kind] || 0) < gap) return; SFXP[kind] = now;
+  const list = SFX[kind], a = new Audio((SFX.base || '../sounds/') + list[Math.floor(Math.random() * list.length)]);
+  a.volume = Math.max(0, Math.min(1, (vol || 1) * (SFX.vol || .3))); a.playbackRate = .92 + Math.random() * .16; a.play().catch(() => {});
+}
 function barrage() {
   const e = currentEvent; if (!e || !e.barrage || fastForward) return; const B2 = e.barrage, a = simTime - e.t; if (a < 0 || a > B2.secs) return;
   const k = a / B2.secs, n = B2.from.length; if (Math.random() > (B2.rate || .9)) return;
   const u = Math.random() * (n - 1), i = Math.floor(u), f = u - i, lerp = (A, j) => [A[j][0] + (B2.to[j][0] - A[j][0]) * k, A[j][1] + (B2.to[j][1] - A[j][1]) * k];
   const p0 = lerp(B2.from, i), p1 = lerp(B2.from, Math.min(n - 1, i + 1)), x = p0[0] + (p1[0] - p0[0]) * f + (Math.random() - .5) * 30, y = p0[1] + (p1[1] - p0[1]) * f + (Math.random() - .5) * 30;
-  SMOKE.push({ x, y, t0: simTime, life: 2.4, r: 9, kind: 'smoke' }); SMOKE.push({ x, y, t0: simTime + .05, life: 1.3, r: 11, kind: 'dust' });
+  SMOKE.push({ x, y, t0: simTime, life: 2.4, r: 9, kind: 'smoke' }); SMOKE.push({ x, y, t0: simTime + .05, life: 1.3, r: 11, kind: 'dust' }); sfx('gun', .8);
 }
 function drawSmoke(c) {
   SMOKE.forEach(p => { const a = simTime - p.t0; if (a < 0) return; const k = a / p.life, q = P(p.x + a * 6, p.y - a * 4); if (!(q.s > 0)) return;
@@ -676,6 +685,7 @@ function stepWatch() {
   while (eventIndex < S.events.length && S.events[eventIndex].t <= simTime) fireEvent(S.events[eventIndex++]);
   camBack();
   formations.forEach(moveFormation); moveLeaders(); artillery(false); barrage();
+  if (Math.random() < .08 && formations.some(f => alive(f) && f.present && f.state !== 'rout' && fighting(f))) sfx('rifle', .6);   // rifle fire while units are fighting
   if (simTime >= S.duration && !battleOver && !fastForward) { if (stage === 'campaign') toBattle(); else endWatch(); }
 }
 // The end of the campaign: the camera closes in on the ridge of Mont-Saint-Jean, then the battle map takes over.
@@ -745,7 +755,7 @@ function combat() {
     if (a.type === 'chariot' && d.state === 'move') dmg *= 1.3;
     if (d.state === 'hold' && d.type !== 'chariot') dmg *= .7;
     if (d.fortified && d.state === 'hold') dmg *= .45;   // a walled farm (Hougoumont, La Haye Sainte)
-    d.strength -= dmg; d.lastHit = simTime; a.lastStrike = simTime;
+    d.strength -= dmg; d.lastHit = simTime; a.lastStrike = simTime; if (Math.random() < .1) sfx('rifle', .6);
     if (a.state === 'hold') a.facing = Math.atan2(d.y - a.y, d.x - a.x);
   }));
   formations.forEach(f => {
