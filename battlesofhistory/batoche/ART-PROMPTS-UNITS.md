@@ -47,7 +47,7 @@ Make a sprite sheet for a historical battle game seen from above at an angle (th
 5. **field-scout** (trot): `A Canadian mounted scout of 1885 (Boulton's or French's Scouts): a prairie volunteer in working clothes, a brown jacket, a wide-brimmed felt hat, a cartridge belt, a carbine held across the saddle, on a hardy brown prairie horse with a plain saddle.`
 6. **field-gun** (move): `A Canadian militia field gun of 1885: a 9-pounder rifled muzzle-loading gun on a wooden carriage, pulled by horses, with three gunners in dark blue artillery uniforms and forage caps walking beside it.`
 7. **field-gun-fire** (action): `The same 9-pounder gun unlimbered with its crew in dark blue: frame 1 aiming, frame 2 firing with a big cloud of white smoke and a flash, frames 3-4 sponging and loading the barrel from the front.`
-8. **field-gatling** (move): `A Gatling gun of 1885 on a two-wheeled carriage, pulled by two horses, with its American officer in plain dark civilian clothes and a soft hat, and two militia helpers.`
+8. **field-gatling** (move): `A Gatling gun of 1885: a cluster of long barrels in a metal frame, a tall straight feed magazine standing up on top, mounted on a light carriage with two big wooden spoked wheels, pulled by two horses, with its American officer (short pointed beard, light-coloured peaked cap, dark jacket) and two militia helpers.`
 9. **field-gatling-fire** (action): `The same Gatling gun unlimbered, the officer turning the crank: frames 1-4 firing, with little puffs of smoke from the turning barrels.`
 
 ## B. Defenders (Métis and First Nations)
@@ -66,7 +66,7 @@ Make a sprite sheet for a historical battle game seen from above at an angle (th
 - **leader-dumont-attack:** `The same Dumont: frame 1 aiming, frame 2 firing, frames 3-4 waving his men forward with his hat.`
 - **leader-riel** (on foot, walking): `Louis Riel at Batoche, aged 40: a man of medium build with thick dark curly hair, a full dark beard and moustache, a wide-brimmed felt hat, a dark waistcoat over a light shirt with the sleeves showing, dark trousers, holding a crucifix in one hand. Plain prairie clothes, not a frock coat. He carries no gun.`
 - **leader-riel-attack:** `The same Riel: frames 1-2 raising the crucifix high, frames 3-4 kneeling in prayer.`
-- **leader-howard** (with the gun): `Captain Arthur L. Howard of Connecticut with his Gatling gun, 1885: a moustached American in a dark civilian suit and soft hat, standing by the gun on its two-wheeled carriage.`
+- **leader-howard** (with the gun): `Captain Arthur L. Howard of Connecticut with his Gatling gun, 1885: a lean American of about 40 with a short pointed beard and moustache, a light-coloured peaked cap, a dark jacket and trousers, standing beside the gun with its cluster of barrels, its tall feed magazine on top and its two big wooden spoked wheels.`
 - **leader-howard-attack:** `The same Howard: frames 1-4 turning the crank of the Gatling gun, with puffs of smoke.`
 
 ## D. The fallen (two sheets)
@@ -87,6 +87,8 @@ A square painted portrait, in the style of a Canadian history painting of the 18
 **Reference photos for Riel** (both public domain, in images/): riel-1884-bennetto.jpg (his face and curly hair, a year before), riel-c1880-lac.jpg (bearded, seated, in a tweed suit) and riel-prisoner-1885.jpg (a full beard, a wide hat and a waistcoat, 16 May 1885). Send ChatGPT all three with the Riel prompts.
 
 **Reference photo for Middleton** (public domain, in images/): middleton-1885-topley.jpg (September 1885, in his campaign dress). Send it with the Middleton prompts.
+
+**Reference photo for Howard and the Gatling** (in images/): howard-gatling-1885.jpg. Send it with the Gatling and Howard prompts.
 
 **Reference photos for Dumont** (public domain, in images/): dumont-1885-buckskin.jpg (the main one: standing with his rifle in a fringed buckskin jacket, published in 1885) and dumont-riboulet-1887.jpg (seated in the middle). Send both with the Dumont prompts. Don't use dumont-1885-salter-taylor.jpg for the face: the man there looks older and greyer, and may not be Dumont.
 
