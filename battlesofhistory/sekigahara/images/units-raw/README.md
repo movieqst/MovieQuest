@@ -20,3 +20,4 @@ Credit: Battle Games, AI-generated (ChatGPT) from ART-PROMPTS-UNITS.md.
 ## Portraits (5 November 2026)
 **Approved (full-size originals):** ieyasu, mitsunari (plain banner), kobayakawa (young, in red), ashigaru-yari, ashigaru-teppo, samurai-cavalry, and sekigahara-wide (a battlefield panorama; could serve as a cover).
 **To redo:** shimazu. It still shows a man of about 40 with black hair; Shimazu Yoshihiro was 65.
+- **portrait-shimazu.jpg:** redone and approved: an old man with grey-white hair, at 65. Cut from the left panel of ChatGPT's composite (about 700 × 1024).
