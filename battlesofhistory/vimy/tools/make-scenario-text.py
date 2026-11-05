@@ -57,7 +57,7 @@ IM = {0: [media('cover.jpg', 0), media('35-29th-battalion-advancing-over-no-mans
       5: [media('07-battered-german-trench.jpg', 0), media('01-machine-gun-crews.jpg', 16)]}
 for i, ms in IM.items(): intro[i]['media'] = [m for m in ms if m['caption']]
 # the intro slides show the trench layers as the story of the ridge goes on
-TR = {0: 'battle-trenches-1917-03.png', 1: 'battle-trenches-1916-02.png', 2: 'battle-trenches-1917-03.png', 3: 'battle-trenches-1917-03.png', 4: 'battle-trenches-1916-10.png', 5: 'battle-trenches-1917-03.png'}
+TR = {0: 'trenches-1917-03.png', 1: 'trenches-1916-02.png', 2: 'trenches-1917-03.png', 3: 'trenches-1917-03.png', 4: 'trenches-1916-10.png', 5: 'trenches-1917-03.png'}
 for i, n in TR.items(): intro[i]['trenches'] = n
 intro[0]['title'] = intro[0]['title'].upper() if intro[0]['title'].isupper() else intro[0]['title']
 
@@ -85,8 +85,8 @@ Object.assign(window.VIMY_SCENARIO, {{
     reconstruction: {{ label: 'Reconstruction', color: '#c8a2ff', desc: 'Our own choice, to make the battle visible: where each unit stood and how it moved.' }}
   }},
   sides: {{
-    allied: {{ name: 'Canadian Corps', short: 'Canadians', army: 'The Canadian Corps under Lieutenant-General Sir Julian Byng', color: '#c0392b', light: '#ffd6d0' }},
-    french: {{ name: 'German Sixth Army', short: 'Germans', army: 'The German Sixth Army (Group Vimy) under General von Falkenhausen', color: '#2e5aa8', light: '#d0dcff' }}
+    allied: {{ name: 'Canadian Corps', short: 'Canadians', army: 'The Canadian Corps under Lieutenant-General Sir Julian Byng', color: '#2e5aa8', light: '#d0dcff' }},
+    french: {{ name: 'German Sixth Army', short: 'Germans', army: 'The German Sixth Army (Group Vimy) under General von Falkenhausen', color: '#c0392b', light: '#ffd6d0' }}
   }},
   welcome: {json.dumps(welcome, ensure_ascii=False)},
   intro: {js(intro)},

@@ -127,7 +127,7 @@ window.BATTLES = [
     title: 'Battle of Vimy Ridge',
     date: '9–12 April 1917', year: 1917,
     place: 'Vimy Ridge, north of Arras, northern France',
-    sides: 'The Canadian Corps under Julian Byng, with British support vs. the German Sixth Army',
+    sides: 'The German Sixth Army vs. the Canadian Corps under Julian Byng, with British support',   // German first: red, as on the 1917 trench maps
     blurb: 'For the first time all four Canadian divisions attack together. After months of tunnelling and rehearsal they advance behind a creeping barrage and take the ridge that had held out against the French and British for two years.',
     cover: 'images/cover.jpg', coverPos: '30% 18%',   // keep the memorial in view
     coverCredit: 'Will Longstaff, Ghosts of Vimy Ridge (about 1929): the ghosts of the Canadian Corps gather on the ridge around the Vimy Memorial. House of Commons Heritage Collection, public domain',
