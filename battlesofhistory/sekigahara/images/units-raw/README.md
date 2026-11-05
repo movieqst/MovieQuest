@@ -21,3 +21,6 @@ Credit: Battle Games, AI-generated (ChatGPT) from ART-PROMPTS-UNITS.md.
 **Approved (full-size originals):** ieyasu, mitsunari (plain banner), kobayakawa (young, in red), ashigaru-yari, ashigaru-teppo, samurai-cavalry, and sekigahara-wide (a battlefield panorama; could serve as a cover).
 **To redo:** shimazu. It still shows a man of about 40 with black hair; Shimazu Yoshihiro was 65.
 - **portrait-shimazu.jpg:** redone and approved: an old man with grey-white hair, at 65. Cut from the left panel of ChatGPT's composite (about 700 × 1024).
+- **leader-mitsunari-attack, leader-shimazu-attack:** approved. They were cut from ChatGPT's two-panel picture (about 765 × 880 each, 4 × 4 on green; the label strip was dropped). Mitsunari points his sword and raises a war fan. Shimazu (grey-haired) charges with a spear. Each row faces the right way.
+
+**The Sekigahara art set is complete** except the original west-yari (approved again in batch 2).
