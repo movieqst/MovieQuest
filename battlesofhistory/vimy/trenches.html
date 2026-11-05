@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vimy Ridge Trenches</title>
+<style>
+  :root{--ink:#071017;--panel:#0d1b24;--line:#1f3340;--gold:#e9c77a;--text:#edf1ed;--muted:#9fb1b8;--de:#d23a3a;--gb:#3c78e0}
+  html,body{margin:0;background:var(--ink);color:var(--text);font:15px/1.5 system-ui,sans-serif}
+  header{padding:14px 16px 6px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+  h1{font:600 24px Georgia,serif;color:var(--gold);margin:0}
+  header a{color:#9fc8ff;font-size:14px}
+  #wrap{position:relative;max-width:1400px;margin:0 auto;padding:0 16px}
+  #map{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:#1a2a1a;touch-action:none;cursor:grab}
+  #view{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}
+  #view img,#view svg{position:absolute;left:0;top:0;width:100%;height:100%;user-select:none;-webkit-user-drag:none}
+  .layer{opacity:0;transition:opacity 1.2s ease}
+  .layer.on{opacity:1}
+  .layer.old{opacity:.5;filter:saturate(.35) brightness(1.25)}
+  #stamp{position:absolute;left:12px;top:10px;background:rgba(7,16,23,.78);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font:600 18px Georgia,serif;color:var(--gold);pointer-events:none}
+  #legend{position:absolute;right:10px;bottom:10px;background:rgba(7,16,23,.78);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:12.5px;pointer-events:none}
+  #legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:6px}
+  #zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:4px}
+  #zoom button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:rgba(7,16,23,.8);color:var(--text);font-size:18px;cursor:pointer}
+  #ctrl{display:flex;align-items:center;gap:12px;margin:12px 0 4px}
+  #play{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);background:transparent;color:var(--gold);font-size:18px;cursor:pointer}
+  #slider{flex:1;accent-color:var(--gold)}
+  #ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin:0 0 0 56px}
+  #ticks span{cursor:pointer;text-align:center;flex:1}
+  #ticks span.on{color:var(--gold);font-weight:600}
+  #cap{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0 6px}
+  #cap h2{margin:0 0 4px;font:600 18px Georgia,serif;color:var(--gold)}
+  #cap p{margin:0}
+  .tag{display:inline-block;font-size:11.5px;border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-left:6px;vertical-align:1px}
+  .src{font-size:12.5px;color:var(--muted);margin-top:6px}
+  footer{max-width:1400px;margin:8px auto 30px;padding:0 16px;font-size:12.5px;color:var(--muted)}
+  footer a{color:#9fc8ff}
+  @media (max-width:600px){h1{font-size:20px}#stamp{font-size:15px}#ticks{font-size:10.5px;margin-left:50px}}
+</style>
+</head>
+<body>
+<header><h1>Vimy Ridge: the trenches, 1916–1917</h1><a href="../library.html">📚 The trench maps in the library</a><a href="../index.html">◀ Battles of History</a></header>
+<div id="wrap">
+  <div id="map">
+    <div id="view">
+      <img src="images/terrain-battle.jpg" alt="Painted map of Vimy Ridge">
+      <img class="layer" data-k="0" src="images/trenches/trenches-1916-02.png" alt="">
+      <img class="layer" data-k="1" src="images/trenches/trenches-1916-10.png" alt="">
+      <img class="layer" data-k="2" src="images/trenches/trenches-1916-12.png" alt="">
+      <img class="layer" data-k="3" src="images/trenches/trenches-1917-03.png" alt="">
+      <svg id="lines" class="layer" viewBox="0 0 2400 1800" preserveAspectRatio="none"></svg>
+      <svg id="labels" viewBox="0 0 2400 1800" preserveAspectRatio="none"></svg>
+    </div>
+    <div id="stamp"></div>
+    <div id="zoom"><button id="zin" title="Zoom in">+</button><button id="zout" title="Zoom out">−</button></div>
+    <div id="legend"><div><i style="background:var(--de)"></i>German trenches</div><div><i style="background:var(--gb)"></i>French / British / Canadian trenches</div></div>
+  </div>
+  <div id="ctrl"><button id="play" title="Play">▶</button><input id="slider" type="range" min="0" max="5" step="1" value="0" aria-label="Date"></div>
+  <div id="ticks"></div>
+  <div id="cap"></div>
+</div>
+<footer>
+  Trenches traced from British trench maps (Ordnance Survey / GSGS, 1916–1917) in the National Library of Scotland (CC BY), sheets 36C SW and 51B NW and their 1:10,000 parts, lined up to the ground using the printed map grid and the villages. Positions are accurate to about 100–200 m; the 1917 lines in the north come from a small copy of sheet 36C SW 3 and are less detailed. The attack lines of 9 April are from Nicholson’s <i>Canadian Expeditionary Force 1914–1919</i>, Map 7. Painted map: Battle Games, AI-generated from our guide.
+</footer>
+<script src="lines.js"></script>
+<script>
+(() => {
+  'use strict';
+  const STAGES = [
+    { date: 'Feb 1916', title: 'The French line, February 1916',
+      text: 'After the French attacks of 1915, their front line (blue) runs along the foot of the ridge from Souchez to Neuville-St-Vaast. The Germans (red) hold the heights, with a dense web of trenches on the slopes above.',
+      tag: 'Traced from a dated map', src: 'Sheet 36C SW, edition 6, trenches corrected to 15 February 1916 (NLS 101465023).', layers: [0] },
+    { date: 'Oct 1916', title: 'The British take over, autumn 1916',
+      text: 'The British relieve the French in March 1916. In May the Germans seize the British front line on the northern part of the ridge. In October the Canadian Corps arrives. South of Neuville the two lines face each other across a narrow no man’s land.',
+      tag: 'Traced from dated maps', src: 'North: 36C SW, February 1916 (older). South: 51B NW, edition 4A, trenches corrected to 10 October 1916 (NLS 101465071).', layers: [1] },
+    { date: 'Dec 1916', title: 'The trench maze before Thélus, December 1916',
+      text: 'The detailed 1:10,000 map of December 1916 shows the German defences in front of Thélus: line after line of trenches, joined by communication trenches, from the front line back up the slope.',
+      tag: 'Traced from dated maps', src: 'Adds 51B NW 1 (Roclincourt), edition 5A, 1:10,000, trenches corrected to 27 December 1916 (NLS 101464753).', layers: [2] },
+    { date: 'Mar 1917', title: 'On the eve of the battle, early 1917',
+      text: 'By the spring of 1917 the German positions on the ridge are three lines deep, with deep dugouts, tunnels and machine-gun posts. The Canadians dig assembly trenches and the subways that will bring their men forward under cover.',
+      tag: 'Traced from dated maps', src: 'North: 36C SW 3, edition 7A, early 1917 (small copy, less detailed). South: 51B NW, edition 6A, trenches corrected to 4 March 1917 (NLS 101465068).', layers: [3] },
+    { date: '9 Apr 1917', title: 'The attack, 9–12 April 1917',
+      text: 'At 5:30 a.m. on Easter Monday the four Canadian divisions attack behind a creeping barrage. By nightfall they hold almost the whole ridge: the Black, Red, Blue and Brown objective lines. Hill 145 falls on 10 April and the Pimple on 12 April.',
+      tag: 'Established', src: 'Objective lines from Nicholson, Map 7, over the trenches of early 1917.', layers: [3], lines: true },
+    { date: 'May 1917', title: 'After the battle, May 1917',
+      text: 'On the May 1917 map the old German trench system on the ridge is no longer shown: the front has moved down onto the Douai plain to the east. The old lines (shown faded) were left behind; parts were later rebuilt and preserved at the Canadian National Vimy Memorial.',
+      tag: 'Traced from a dated map', src: '51B NW, edition 7A, May 1917 (NLS 101465065).', layers: [], old: 3 }
+  ];
+  const $ = id => document.getElementById(id);
+  const layers = [...document.querySelectorAll('img.layer')];
+  const L = window.VIMY_LINES || {};
+  // the attack lines, drawn once
+  const NS = 'http://www.w3.org/2000/svg';
+  const path = (pts, col, w, dash) => { const p = document.createElementNS(NS, 'polyline'); p.setAttribute('points', pts.map(q => q.join(',')).join(' ')); p.setAttribute('fill', 'none'); p.setAttribute('stroke', col); p.setAttribute('stroke-width', w); p.setAttribute('stroke-linejoin', 'round'); if (dash) p.setAttribute('stroke-dasharray', dash); return p; };
+  const svg = $('lines');
+  const objectives = [['black', '#111', 'Black Line'], ['red', '#b0201a', 'Red Line'], ['blue', '#2347b8', 'Blue Line'], ['brown', '#7a4a1e', 'Brown Line']];
+  objectives.forEach(([k, c, name]) => { if (!L[k]) return; svg.appendChild(path(L[k], 'rgba(255,255,255,.75)', 11)); svg.appendChild(path(L[k], c, 6, '18 10'));
+    const q = L[k][L[k].length - 1]; const t = document.createElementNS(NS, 'text'); t.setAttribute('x', q[0]); t.setAttribute('y', q[1] + 40); t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', c); t.setAttribute('stroke', 'rgba(255,255,255,.9)'); t.setAttribute('stroke-width', 6); t.setAttribute('paint-order', 'stroke'); t.setAttribute('font', '700 30px system-ui'); t.setAttribute('font-size', '30'); t.setAttribute('font-weight', '700'); t.textContent = name; svg.appendChild(t); });
+  if (L.canadianFront) svg.appendChild(path(L.canadianFront, '#3c78e0', 7));
+  // place labels
+  const lab = $('labels'), P = L.places || {};
+  const names = { hill145: 'Hill 145', pimple: 'The Pimple', laFolieFarm: 'La Folie Farm', thelus: 'Thélus', farbus: 'Farbus', givenchy: 'Givenchy', vimy: 'Vimy', neuville: 'Neuville-St-Vaast' };
+  Object.entries(names).forEach(([k, n]) => { const q = P[k]; if (!q) return; const t = document.createElementNS(NS, 'text'); t.setAttribute('x', q[0]); t.setAttribute('y', q[1] - 18); t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', '#fff'); t.setAttribute('stroke', 'rgba(0,0,0,.75)'); t.setAttribute('stroke-width', 7); t.setAttribute('paint-order', 'stroke'); t.setAttribute('font-size', '30'); t.setAttribute('font-weight', '700'); t.setAttribute('font-family', 'Georgia,serif'); t.textContent = n; lab.appendChild(t); });
+  // ticks
+  $('ticks').innerHTML = STAGES.map((s, i) => `<span data-i="${i}">${s.date}</span>`).join('');
+  $('ticks').addEventListener('click', e => { const i = e.target.dataset.i; if (i !== undefined) { stop(); show(+i); } });
+  let cur = -1;
+  function show(i) {
+    cur = i; const s = STAGES[i]; $('slider').value = i;
+    layers.forEach((im, k) => { im.classList.toggle('on', s.layers.includes(k)); im.classList.toggle('old', s.old === k); });
+    svg.classList.toggle('on', !!s.lines);
+    $('stamp').textContent = s.date;
+    $('cap').innerHTML = `<h2>${s.title}<span class="tag" style="color:${s.tag === 'Established' ? '#8fd28f' : '#9fc8ff'}">${s.tag}</span></h2><p>${s.text}</p><div class="src">Source: ${s.src}</div>`;
+    [...$('ticks').children].forEach((t, k) => t.classList.toggle('on', k === i));
+  }
+  $('slider').addEventListener('input', e => { stop(); show(+e.target.value); });
+  let timer = 0;
+  function stop() { clearInterval(timer); timer = 0; $('play').textContent = '▶'; }
+  $('play').addEventListener('click', () => { if (timer) return stop(); if (cur >= STAGES.length - 1) show(0); $('play').textContent = 'Ⅱ'; timer = setInterval(() => { if (cur >= STAGES.length - 1) return stop(); show(cur + 1); }, 4500); });
+  // pan and zoom
+  const view = $('view'), map = $('map'); let z = 1, ox = 0, oy = 0;
+  const apply = () => { const r = map.getBoundingClientRect(); z = Math.max(1, Math.min(6, z)); ox = Math.min(0, Math.max(r.width * (1 - z), ox)); oy = Math.min(0, Math.max(r.height * (1 - z), oy)); view.style.transform = `translate(${ox}px,${oy}px) scale(${z})`; };
+  const zoomAt = (f, cx, cy) => { const nz = Math.max(1, Math.min(6, z * f)); ox = cx - (cx - ox) * nz / z; oy = cy - (cy - oy) * nz / z; z = nz; apply(); };
+  map.addEventListener('wheel', e => { e.preventDefault(); const r = map.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX - r.left, e.clientY - r.top); }, { passive: false });
+  $('zin').onclick = () => { const r = map.getBoundingClientRect(); zoomAt(1.4, r.width / 2, r.height / 2); };
+  $('zout').onclick = () => { const r = map.getBoundingClientRect(); zoomAt(1 / 1.4, r.width / 2, r.height / 2); };
+  const pts = new Map(); let last = null, pinch = 0;
+  map.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; map.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); map.style.cursor = 'grabbing'; });
+  map.addEventListener('pointermove', e => {
+    if (!pts.has(e.pointerId)) return; const prev = pts.get(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]);
+    if (pts.size === 1) { ox += e.clientX - prev[0]; oy += e.clientY - prev[1]; apply(); }
+    else if (pts.size === 2) { const [a, b] = [...pts.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); const r = map.getBoundingClientRect(); if (pinch) zoomAt(d / pinch, (a[0] + b[0]) / 2 - r.left, (a[1] + b[1]) / 2 - r.top); pinch = d; }
+  });
+  const up = e => { pts.delete(e.pointerId); if (pts.size < 2) pinch = 0; map.style.cursor = 'grab'; };
+  map.addEventListener('pointerup', up); map.addEventListener('pointercancel', up);
+  window.addEventListener('resize', apply);
+  show(0);
+})();
+</script>
+<script src="../stats.js"></script>
+</body>
+</html>
