@@ -50,8 +50,8 @@ window.GAUGAMELA_SCENARIO = {
   },
 
   sides: {
-    macedon: { name: 'Macedon', color: '#3985d7', light: '#c5e2ff', rally: { x: 1200, y: 1700 } },
-    persia:  { name: 'Persia',  color: '#d44c3e', light: '#ffd0bd', rally: { x: 1200, y: 110 } }
+    allied: { name: 'Macedon', color: '#3985d7', light: '#c5e2ff', rally: { x: 1200, y: 1700 } },
+    french:  { name: 'Persia',  color: '#d44c3e', light: '#ffd0bd', rally: { x: 1200, y: 110 } }
   },
 
   /* A schematic plain: no river, road, city or camp is placed, because no source fixes them. */
@@ -177,53 +177,53 @@ window.GAUGAMELA_SCENARIO = {
      `power` is a game balance value, not a count of men. `count` is the source's description, shown as given. */
   formations: [
     // Macedonians, south edge, facing north. From the west: Parmenion's left, the centre, Alexander's right.
-    { id: 'thess',   side: 'macedon', name: 'Thessalian cavalry (Parmenion)', division: 'Parmenion', type: 'cavalry', cols: 6, rows: 2, power: 1.0, x: 560,  y: 1260,
+    { id: 'thess',   side: 'allied', name: 'Thessalian cavalry (Parmenion)', division: 'Parmenion', type: 'cavalry', cols: 6, rows: 2, power: 1.0, x: 560,  y: 1260,
       count: 'Part of the Macedonian horse (estimate c. 7,000 in all)', confidence: 'ancient',
       note: 'Parmenion’s left wing bore the heaviest pressure from the Persian right, according to Arrian.' },
-    { id: 'agri',    side: 'macedon', name: 'Agrianian javelinmen', division: 'Light troops', type: 'archers', cols: 4, rows: 3, power: 0.8, x: 880, y: 1230,
+    { id: 'agri',    side: 'allied', name: 'Agrianian javelinmen', division: 'Light troops', type: 'archers', cols: 4, rows: 3, power: 0.8, x: 880, y: 1230,
       count: 'Light infantry screen', confidence: 'ancient',
       note: 'Light troops helped to blunt the chariot charge, according to Arrian.' },
-    { id: 'phal',    side: 'macedon', name: 'Phalanx (pezhetairoi)', division: 'Centre', type: 'infantry', cols: 10, rows: 5, power: 1.3, x: 1080, y: 1300,
+    { id: 'phal',    side: 'allied', name: 'Phalanx (pezhetairoi)', division: 'Centre', type: 'infantry', cols: 10, rows: 5, power: 1.3, x: 1080, y: 1300,
       count: 'Part of the c. 40,000 foot (estimate)', confidence: 'established',
       note: 'The phalanx with its long sarissa pikes formed the centre. Strong to the front, vulnerable on the flanks.' },
-    { id: 'hyp',     side: 'macedon', name: 'Hypaspists', division: 'Right', type: 'infantry', cols: 4, rows: 3, power: 1.0, x: 1420, y: 1250,
+    { id: 'hyp',     side: 'allied', name: 'Hypaspists', division: 'Right', type: 'infantry', cols: 4, rows: 3, power: 1.0, x: 1420, y: 1250,
       count: 'Elite infantry', confidence: 'ancient',
       note: 'The hypaspists linked the phalanx to the cavalry on the right. Their exact role in the battle is debated.' },
-    { id: 'comp',    side: 'macedon', name: 'Companion cavalry (Alexander)', division: 'Right', type: 'cavalry', cols: 4, rows: 2, power: 1.4, x: 1700, y: 1230,
+    { id: 'comp',    side: 'allied', name: 'Companion cavalry (Alexander)', division: 'Right', type: 'cavalry', cols: 4, rows: 2, power: 1.4, x: 1700, y: 1230,
       count: 'Elite horse, part of the c. 7,000 (estimate)', confidence: 'established',
       note: 'Alexander led the Companions on the right. Their charge decided the battle on the Persian left-centre, according to the Greek accounts.' },
-    { id: 'reserve', side: 'macedon', name: 'Second line (refused flank)', division: 'Reserve', type: 'infantry', cols: 6, rows: 2, power: 0.9, x: 1150, y: 1480,
+    { id: 'reserve', side: 'allied', name: 'Second line (refused flank)', division: 'Reserve', type: 'infantry', cols: 6, rows: 2, power: 0.9, x: 1150, y: 1480,
       count: 'Reserve line', confidence: 'ancient',
       note: 'Arrian describes a second line to counter an envelopment. Its exact placement is a reconstruction.' },
 
     // Persians, north edge, facing south. Persian left (Alexander’s side) is to the east.
-    { id: 'bact',    side: 'persia', name: 'Bactrian and Saka cavalry (Bessus)', division: 'Left', type: 'cavalry', cols: 6, rows: 2, power: 1.1, x: 1900, y: 560,
+    { id: 'bact',    side: 'french', name: 'Bactrian and Saka cavalry (Bessus)', division: 'Left', type: 'cavalry', cols: 6, rows: 2, power: 1.1, x: 1900, y: 560,
       count: 'Persian left wing', confidence: 'ancient',
       note: 'Bessus commanded the Persian left opposite Alexander, according to Arrian. The command attribution is not certain.' },
-    { id: 'pcav',    side: 'persia', name: 'Armenian and Cappadocian cavalry', division: 'Right', type: 'cavalry', cols: 6, rows: 2, power: 1.0, x: 500, y: 560, hidden: true,
+    { id: 'pcav',    side: 'french', name: 'Armenian and Cappadocian cavalry', division: 'Right', type: 'cavalry', cols: 6, rows: 2, power: 1.0, x: 500, y: 560, hidden: true,
       count: 'Persian right wing (reported)', confidence: 'ancient',
       note: 'Opposite Parmenion. Hidden at first: the dust of the advance limited what could be seen, a point the sources stress.' },
-    { id: 'chariot-1', side: 'persia', name: 'Scythed chariots (1)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 980,  y: 820, hunter: true,
+    { id: 'chariot-1', side: 'french', name: 'Scythed chariots (1)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 980,  y: 820, hunter: true,
       count: 'Arrian reports 200 scythed chariots in total', confidence: 'ancient',
       note: 'The scythed chariots were sent against the Macedonian front. Their exact routes are not known.' },
-    { id: 'chariot-2', side: 'persia', name: 'Scythed chariots (2)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1140, y: 820, hunter: true,
+    { id: 'chariot-2', side: 'french', name: 'Scythed chariots (2)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1140, y: 820, hunter: true,
       count: 'Part of the 200', confidence: 'ancient', note: 'Part of the forward chariot line.' },
-    { id: 'chariot-3', side: 'persia', name: 'Scythed chariots (3)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1300, y: 820, hunter: true,
+    { id: 'chariot-3', side: 'french', name: 'Scythed chariots (3)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1300, y: 820, hunter: true,
       count: 'Part of the 200', confidence: 'ancient', note: 'Part of the forward chariot line.' },
-    { id: 'chariot-4', side: 'persia', name: 'Scythed chariots (4)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1460, y: 820, hunter: true,
+    { id: 'chariot-4', side: 'french', name: 'Scythed chariots (4)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1460, y: 820, hunter: true,
       count: 'Part of the 200', confidence: 'ancient', note: 'Part of the forward chariot line.' },
-    { id: 'chariot-5', side: 'persia', name: 'Scythed chariots (5)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1620, y: 820, hunter: true,
+    { id: 'chariot-5', side: 'french', name: 'Scythed chariots (5)', division: 'Forward', type: 'chariot', cols: 2, rows: 1, power: 1.0, x: 1620, y: 820, hunter: true,
       count: 'Part of the 200', confidence: 'ancient', note: 'Part of the forward chariot line.' },
-    { id: 'pinf',    side: 'persia', name: 'Persian infantry (centre)', division: 'Centre', type: 'infantry', cols: 8, rows: 4, power: 1.0, x: 1020, y: 470,
+    { id: 'pinf',    side: 'french', name: 'Persian infantry (centre)', division: 'Centre', type: 'infantry', cols: 8, rows: 4, power: 1.0, x: 1020, y: 470,
       count: 'Persian centre (no reliable total)', confidence: 'ancient',
       note: 'The mixed royal and subject infantry of the centre.' },
-    { id: 'merc',    side: 'persia', name: 'Greek mercenaries (reported)', division: 'Centre', type: 'infantry', cols: 4, rows: 3, power: 1.1, x: 1330, y: 470,
+    { id: 'merc',    side: 'french', name: 'Greek mercenaries (reported)', division: 'Centre', type: 'infantry', cols: 4, rows: 3, power: 1.1, x: 1330, y: 470,
       count: 'Reported near the centre', confidence: 'ancient',
       note: 'Arrian and other sources report Greek mercenaries with Darius. Their number is not known.' },
-    { id: 'eleph',   side: 'persia', name: 'War elephants', division: 'Elephants', type: 'elephant', cols: 3, rows: 1, power: 1.2, x: 1050, y: 640, facing: 1.5708, aiHold: true,
+    { id: 'eleph',   side: 'french', name: 'War elephants', division: 'Elephants', type: 'elephant', cols: 3, rows: 1, power: 1.2, x: 1050, y: 640, facing: 1.5708, aiHold: true,
       count: 'Arrian reports about 15', confidence: 'ancient',
       note: 'Arrian places the elephants in front of Darius with the chariots. No reliable account shows them fighting; they were captured after the battle. Three figures stand for them here.' },
-    { id: 'darius',  side: 'persia', name: 'Darius and the royal guard', division: 'Centre', type: 'infantry', cols: 5, rows: 2, power: 1.2, x: 1180, y: 330,
+    { id: 'darius',  side: 'french', name: 'Darius and the royal guard', division: 'Centre', type: 'infantry', cols: 5, rows: 2, power: 1.2, x: 1180, y: 330,
       count: 'The king’s guard', confidence: 'established',
       note: 'Darius stood in the centre. Whether he fled first, or was abandoned by his army, is disputed.' }
   ],
@@ -240,7 +240,7 @@ window.GAUGAMELA_SCENARIO = {
       explain: 'The oblique move is Arrian’s account of how Alexander drew the Persian cavalry away from the centre and out of position. Its exact path is a reconstruction.',
       cite: 'Arrian III.11',
       orders: [
-        { id: 'comp', to: { x: 1950, y: 1120 }, speed: 22 }, { id: 'hyp', to: { x: 1740, y: 1140 }, speed: 18 },
+        { id: 'comp', to: { x: 1950, y: 1120 }, speed: 22 }, { leader: 'alexander', to: { x: 2000, y: 1070 }, speed: 22 }, { id: 'hyp', to: { x: 1740, y: 1140 }, speed: 18 },
         { id: 'bact', to: { x: 1990, y: 640 }, speed: 22 }
       ] },
     { t: 26, title: 'The scythed chariots charge', tag: 'ancient', focus: { x: 1200, y: 980 },
@@ -258,7 +258,7 @@ window.GAUGAMELA_SCENARIO = {
       explain: 'The Greek accounts describe a wedge toward Darius. The exact shape of the gap and the route of the charge are interpretations, not a record.',
       cite: 'Arrian III.14; the route is a reconstruction',
       orders: [
-        { id: 'comp', via: [{ x: 1880, y: 900 }], to: { x: 1330, y: 560 }, speed: 36 }, { id: 'hyp', via: [{ x: 1770, y: 980 }], to: { x: 1320, y: 700 }, speed: 22 },
+        { id: 'comp', via: [{ x: 1880, y: 900 }], to: { x: 1330, y: 560 }, speed: 36 }, { leader: 'alexander', via: [{ x: 1900, y: 860 }], to: { x: 1360, y: 520 }, speed: 36 }, { id: 'hyp', via: [{ x: 1770, y: 980 }], to: { x: 1320, y: 700 }, speed: 22 },
         // both go round the east end of the chariot line, not through it
         { id: 'darius', state: 'hold' }
       ] },
@@ -267,7 +267,7 @@ window.GAUGAMELA_SCENARIO = {
       explain: 'The sources disagree about who went first. Greek writers have Darius flee before his army. A Babylonian diary may say his soldiers abandoned him. Both can be read in more than one way.',
       cite: 'Arrian III.14–15; Babylonian Astronomical Diary, No. −651; Curtius IV.16',
       orders: [
-        { id: 'darius', to: { x: 1180, y: 150 }, speed: 25, state: 'move' },
+        { id: 'darius', to: { x: 1180, y: 150 }, speed: 25, state: 'move' }, { leader: 'darius', to: { x: 1180, y: 60 }, speed: 30 },
         { id: 'pinf', state: 'rout', to: { x: 1000, y: 120 }, speed: 36, spread: 2.2, strengthTo: 25, over: 6 },
         { id: 'merc', state: 'hold' }
       ] },
@@ -278,7 +278,7 @@ window.GAUGAMELA_SCENARIO = {
       orders: [
         { id: 'pcav', visible: true, to: { x: 640, y: 1150 }, speed: 22, state: 'attack' },
         { id: 'thess', state: 'hold' },
-        { id: 'comp', to: { x: 1000, y: 820 }, speed: 22 }
+        { id: 'comp', to: { x: 1000, y: 820 }, speed: 22 }, { leader: 'alexander', to: { x: 1030, y: 780 }, speed: 22 }
       ] },
     { t: 80, title: 'The aftermath', tag: 'established', focus: { x: 1200, y: 900 }, end: true,
       text: 'The Persian army withdraws. Darius escapes and the Macedonians hold the field. The result is not in doubt, though the sources disagree about the rest.',
@@ -290,8 +290,8 @@ window.GAUGAMELA_SCENARIO = {
   /* ---------- Command mode: the computer's plans for the side the player does not take ---------- */
   ai: {
     plans: {
-      /* When the player takes Macedon, Persia is run by the computer. */
-      persia: [
+      /* When the player takes Macedon ('allied'), Persia ('french') is run by the computer. */
+      french: [
         { t: 0,  orders: [ { id: 'bact', to: { x: 1700, y: 520 }, speed: 22 } ] },
         { t: 20, orders: [
             { id: 'chariot-1', to: { x: 980, y: 1000 }, speed: 60, hunt: true }, { id: 'chariot-2', to: { x: 1140, y: 1000 }, speed: 60, hunt: true },
@@ -302,7 +302,7 @@ window.GAUGAMELA_SCENARIO = {
         { t: 40, orders: [ { id: 'pcav', visible: true, to: { x: 640, y: 1100 }, speed: 30 } ] }
       ],
       /* When the player takes Persia, Macedon is run by the computer and marches as Arrian describes. */
-      macedon: [
+      allied: [
         { t: 0,  orders: [ { id: 'comp', to: { x: 1950, y: 1120 }, speed: 22 }, { id: 'hyp', to: { x: 1740, y: 1140 }, speed: 18 } ] },
         { t: 30, orders: [ { id: 'phal', to: { x: 1080, y: 1200 }, speed: 12 } ],
           caption: { title: 'The Macedonian right', text: 'Alexander’s right wing moves obliquely. Its exact path is not known.', tag: 'ancient' } }
@@ -315,8 +315,8 @@ window.GAUGAMELA_SCENARIO = {
 
   /* Captions shown when a command battle begins, by the player's side */
   commandLines: {
-    macedon: 'You lead the Macedonian army. Click a formation or drag a box around several, then right-click the map for orders. The Persians are in front of you; some of their cavalry is hidden in the dust.',
-    persia:  'You lead the Persian army. Click a formation or drag a box around several, then right-click the map for orders. The Macedonian right is moving toward your left wing.'
+    allied: 'You lead the Macedonian army. Click a formation or drag a box around several, then right-click the map for orders. The Persians are in front of you; some of their cavalry is hidden in the dust.',
+    french:  'You lead the Persian army. Click a formation or drag a box around several, then right-click the map for orders. The Macedonian right is moving toward your left wing.'
   },
 
   /* Recorded narration lives in audio/ (generated by make-narration.sh). Paths follow a convention:
@@ -326,6 +326,14 @@ window.GAUGAMELA_SCENARIO = {
   welcome: 'Welcome to Battles of History. Today we are learning about the Battle of Gaugamela, which happened in 331 BCE, between the Macedonian army of Alexander the Great and the Persian army of Darius the Third.',
   imageBase: 'images/',
   audioBase: 'audio/',
+  /* painted figures (images/units/<name>.png) for each side and type, and the two leaders' sheets (leader-<id>, leader-<id>-attack) */
+  sheets: ['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'persia-spearman', 'persia-cavalry', 'persia-chariot', 'persia-elephant'],
+  sheetBy: { allied: { infantry: 'macedonian-spearman', archers: 'macedonian-archer', cavalry: 'macedonian-cavalry' },
+             french: { infantry: 'persia-spearman', archers: 'persia-spearman', cavalry: 'persia-cavalry', chariot: 'persia-chariot', elephant: 'persia-elephant' } },
+  leaders: [
+    { id: 'alexander', name: 'Alexander III', side: 'allied', x: 1760, y: 1180 },
+    { id: 'darius',    name: 'Darius III',    side: 'french', x: 1180, y: 280 }
+  ],
   voices: [
     { id: 'clear',    name: 'Narrator 1 \u00b7 clear',  speaker: 25 },
     { id: 'light',    name: 'Narrator 2 \u00b7 light',  speaker: 60 },
@@ -337,12 +345,12 @@ window.GAUGAMELA_SCENARIO = {
 
   /* What the debrief says at the end of a command battle, by the player's side and the result */
   debrief: {
-    macedon: {
+    allied: {
       victory:   { title: 'Macedonian victory', text: 'You broke the Persian army. Their chariots and cavalry were beaten and the centre gave way.' },
       defeat:    { title: 'Macedonian defeat', text: 'The Macedonian army has been scattered. The sources say the battle was close, and turned on a few decisions.' },
       stalemate: { title: 'Stalemate', text: 'Night falls with both armies still in the field. The battle was not settled in the time the sources give it.' }
     },
-    persia: {
+    french: {
       victory:   { title: 'Persian victory', text: 'You scattered the Macedonian army. The chariots and cavalry did what Darius planned for them.' },
       defeat:    { title: 'Persian defeat', text: 'Your army has been broken. The centre gave way, as it did in 331 BCE.' },
       stalemate: { title: 'Stalemate', text: 'Night falls with both armies still in the field. The battle was not settled in the time the sources give it.' }
@@ -360,81 +368,81 @@ window.GAUGAMELA_SCENARIO = {
   /* ---------- The armies panel. `photos` are file names from the intro slideshow (see images/README.md); until a file is added it shows a placeholder.
      Each side shows its first two cards; the rest open from a "more" button. ---------- */
   units: [
-    { side: 'macedon', type: 'infantry', name: 'Macedonian phalanx', desc: 'Long sarissa pikes, shield and helmet. The centre of Alexander’s army.', tag: 'established',
+    { side: 'allied', type: 'infantry', name: 'Macedonian phalanx', desc: 'Long sarissa pikes, shield and helmet. The centre of Alexander’s army.', tag: 'established',
       photos: [{ file: '18-susa-archers-aod455.jpg', caption: 'Four royal guardsmen in glazed brick from the palace of Darius I at Susa, with spears, bows and quivers, in the patterned robes of the king’s guard.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 455', credit: 'Photo: Laurens R. Krol, Wikimedia Commons, CC BY 4.0' }, '07-alexander-sarcophagus.jpg'],
       lines: [
         { text: 'The pezhetairoi, the foot companions, carried the sarissa, a pike about six metres long, held in both hands. Their shield was smaller than the classic hoplite shield and hung from a strap.', tag: 'established', cite: 'Arrian III.11; Polybius XVIII.12–14 on the later sarissa' },
         { text: 'The phalanx was strong to the front and weak on its flanks. A phalanx that was pushed sideways lost its order, and the Macedonians knew it.', tag: 'estimate' },
         { text: 'In this game the phalanx holds its ground when it is attacked head-on. It is vulnerable to a flank attack.', tag: 'reconstruction' }
       ] },
-    { side: 'macedon', type: 'cavalry', name: 'Companion cavalry', desc: 'Alexander’s elite horse, on the right.', tag: 'ancient',
+    { side: 'allied', type: 'cavalry', name: 'Companion cavalry', desc: 'Alexander’s elite horse, on the right.', tag: 'ancient',
       photos: ['03-mosaic-alexander.jpg', '08-sarcophagus-alexander.jpg'],
       lines: [
         { text: 'The Companions were the king’s own cavalry, drawn from the Macedonian nobility. Arrian says they fought with thrusting spears and swords.', tag: 'ancient', cite: 'Arrian III.11–14' },
         { text: 'Cavalry does not ride through a formed spear wall. Its charge works when the enemy line is already broken.', tag: 'estimate' }
       ] },
-    { side: 'macedon', type: 'archers', name: 'Agrianian javelinmen', desc: 'Light infantry from the hills north of Macedon, armed with javelins.', tag: 'ancient',
+    { side: 'allied', type: 'archers', name: 'Agrianian javelinmen', desc: 'Light infantry from the hills north of Macedon, armed with javelins.', tag: 'ancient',
       photos: [],
       lines: [
         { text: 'The Agrianians were a hill people from the north of Macedon. They fought as light troops with javelins and were among Alexander’s most trusted soldiers.', tag: 'ancient', cite: 'Arrian III.12' },
         { text: 'Arrian says the Agrianians and other javelin-men met the scythed chariots, threw their javelins, seized the reins and pulled the drivers down.', tag: 'ancient', cite: 'Arrian III.13' },
         { text: 'In this game the javelinmen are fast and fragile. They are best used against the chariots, not against formed infantry.', tag: 'reconstruction' }
       ] },
-    { side: 'macedon', type: 'infantry', name: 'Hypaspists', desc: 'Elite foot soldiers between the phalanx and the Companion cavalry.', tag: 'ancient',
+    { side: 'allied', type: 'infantry', name: 'Hypaspists', desc: 'Elite foot soldiers between the phalanx and the Companion cavalry.', tag: 'ancient',
       photos: ['07-alexander-sarcophagus.jpg'],
       lines: [
         { text: 'The hypaspists, the “shield-bearers”, were the king’s elite infantry. Arrian says Nicanor, a son of Parmenion, commanded them.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'They stood between the phalanx and the cavalry on the right, linking the slow pike line to Alexander’s fast-moving horse.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'Their equipment is debated. Some historians think they carried a shorter spear than the phalanx, others that they were armed in the same way.', tag: 'disputed' }
       ] },
-    { side: 'macedon', type: 'cavalry', name: 'Thessalian cavalry', desc: 'Horsemen from Thessaly, with Parmenion on the left wing.', tag: 'ancient',
+    { side: 'allied', type: 'cavalry', name: 'Thessalian cavalry', desc: 'Horsemen from Thessaly, with Parmenion on the left wing.', tag: 'ancient',
       photos: [],
       lines: [
         { text: 'Thessaly, south of Macedon, was famous for its horses and its horsemen. Its cavalry fought on the left wing under Parmenion.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'The left wing took the heaviest pressure from the Persian right. Arrian praises the Thessalian horse for how they fought there.', tag: 'ancient', cite: 'Arrian III.15' },
         { text: 'In this game the Thessalians must hold the left long enough for Alexander’s charge on the right to decide the battle.', tag: 'reconstruction' }
       ] },
-    { side: 'persia', type: 'chariot', name: 'Scythed chariot', desc: 'A horse-drawn chariot with blades on its wheels, sent against the front.', tag: 'ancient',
+    { side: 'french', type: 'chariot', name: 'Scythed chariot', desc: 'A horse-drawn chariot with blades on its wheels, sent against the front.', tag: 'ancient',
       photos: ['02-mosaic-darius.jpg'],
       lines: [
         { text: 'Arrian reports 200 scythed chariots. They are well attested in the ancient sources; the numbers are not reliable.', tag: 'ancient', cite: 'Arrian III.8, III.13' },
         { text: 'The chariots needed open ground and a straight run. Light troops and gaps in the ranks were the answer.', tag: 'ancient', cite: 'Arrian III.13' }
       ] },
-    { side: 'persia', type: 'cavalry', name: 'Bactrian and Saka cavalry', desc: 'Mounted lancers and archers from the eastern provinces.', tag: 'ancient',
+    { side: 'french', type: 'cavalry', name: 'Bactrian and Saka cavalry', desc: 'Mounted lancers and archers from the eastern provinces.', tag: 'ancient',
       photos: [{ file: '17-bactrian-delegation.jpg', caption: 'Bactrians in Median-style coats and trousers lead a two-humped Bactrian camel, relief from the Apadana staircase at Persepolis. Arrian places Bactrian horsemen on Darius’s left at Gaugamela.', ref: 'Persepolis, Iran, 5th century BCE; identification after D. N. Wilber, Persepolis', credit: 'Photo: A. Davey, Wikimedia Commons, CC BY 2.0' }],
       lines: [
         { text: 'The Persian cavalry from the eastern provinces, under Bessus according to Arrian, was on the left.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'Persian cavalry should not be shown as heavily armoured knights. The sources do not describe that, and the evidence does not support it.', tag: 'estimate' }
       ] },
-    { side: 'persia', type: 'infantry', name: 'Persian infantry', desc: 'Foot soldiers from many peoples of the empire, in the centre.', tag: 'ancient',
+    { side: 'french', type: 'infantry', name: 'Persian infantry', desc: 'Foot soldiers from many peoples of the empire, in the centre.', tag: 'ancient',
       photos: [{ file: '19-susa-frieze-louvre.jpg', caption: 'The frieze of archers from Darius I’s palace at Susa as it stands in the Louvre today: two rows of guardsmen in glazed brick, taller than a man.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, Sully wing; photographed 2016', credit: 'Photo: Fred Romero, Wikimedia Commons, CC BY 2.0' }, '10-persepolis-guards.jpg', '11-susa-archers.jpg', '12-apadana-delegations.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
       lines: [
         { text: 'Arrian lists contingents from across the Persian empire, from Babylon to the eastern provinces, placed in the centre and massed behind it.', tag: 'ancient', cite: 'Arrian III.8, III.11' },
         { text: 'The ancient numbers for the Persian army are not reliable, and no modern total is agreed.', tag: 'estimate' },
         { text: 'Historians think Darius relied mainly on his cavalry. How much of the infantry actually fought is not clear.', tag: 'estimate' }
       ] },
-    { side: 'persia', type: 'infantry', name: 'Darius and the royal guard', desc: 'The Great King in the centre, among his guards and kinsmen.', tag: 'established',
+    { side: 'french', type: 'infantry', name: 'Darius and the royal guard', desc: 'The Great King in the centre, among his guards and kinsmen.', tag: 'established',
       photos: ['02-mosaic-darius.jpg', '11-susa-archers.jpg', '05-persian-daric.jpg', { file: '16-susa-archer-detail.jpg', caption: 'Head of a royal archer from the glazed-brick frieze at Susa: patterned robe, bow over the shoulder, quiver on the back.', ref: 'Susa, about 510 BCE; Musée du Louvre, Paris, AOD 487', credit: 'Photo: Jastrow, Wikimedia Commons, public domain' }],
       lines: [
         { text: 'Darius III stood in the centre of his army, the usual place for a Persian king. Arrian says his kinsmen and the Persian guards were around him.', tag: 'ancient', cite: 'Arrian II.8, III.11' },
         { text: 'Among the guards Arrian names the “apple-bearers”, picked spearmen whose spears had golden apples on the butt.', tag: 'ancient', cite: 'Arrian III.11; Herodotus VII.41' },
         { text: 'Whether Darius fled before his army or was left by it is disputed. The Greek accounts and the Babylonian diary can be read differently.', tag: 'disputed' }
       ] },
-    { side: 'persia', type: 'infantry', name: 'Greek mercenaries', desc: 'Greek hired soldiers fighting for the Persian king.', tag: 'ancient',
+    { side: 'french', type: 'infantry', name: 'Greek mercenaries', desc: 'Greek hired soldiers fighting for the Persian king.', tag: 'ancient',
       photos: ['07-alexander-sarcophagus.jpg'],
       lines: [
         { text: 'Arrian places Greek mercenaries on either side of Darius and his guard, facing the Macedonian phalanx.', tag: 'ancient', cite: 'Arrian III.11' },
         { text: 'Greeks had served Persian kings for generations. Many had already fought against Alexander at Issus two years before.', tag: 'ancient', cite: 'Arrian II.8' },
         { text: 'Their number at Gaugamela is not known.', tag: 'estimate' }
       ] },
-    { side: 'persia', type: 'cavalry', name: 'Armenian and Cappadocian cavalry', desc: 'Horsemen from the north-west of the empire, on the Persian right.', tag: 'ancient',
+    { side: 'french', type: 'cavalry', name: 'Armenian and Cappadocian cavalry', desc: 'Horsemen from the north-west of the empire, on the Persian right.', tag: 'ancient',
       photos: [],
       lines: [
         { text: 'Arrian places Armenian and Cappadocian horse in front of the Persian right wing, facing Parmenion. Other accounts give the command of the right to Mazaeus.', tag: 'ancient', cite: 'Arrian III.11; Diodorus XVII.60' },
         { text: 'The Persian right pressed Parmenion hard. Arrian says Parmenion sent to Alexander for help; whether Alexander turned back is disputed.', tag: 'disputed' },
         { text: 'In this game they start hidden in the dust of the advance and appear when your troops come close.', tag: 'reconstruction' }
       ] },
-    { side: 'persia', type: 'elephant', name: 'War elephants', desc: 'About fifteen elephants with Darius, in front of the centre.', tag: 'ancient',
+    { side: 'french', type: 'elephant', name: 'War elephants', desc: 'About fifteen elephants with Darius, in front of the centre.', tag: 'ancient',
       photos: [],
       lines: [
         { text: 'Arrian says Darius had about fifteen elephants, brought from the Indian borderlands, placed with the chariots in front of the king.', tag: 'ancient', cite: 'Arrian III.8, III.11' },
