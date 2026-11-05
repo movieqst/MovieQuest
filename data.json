@@ -11477,5 +11477,94 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "american-dad-volume-5-dvd",
+    "title": "American Dad! Volume 5",
+    "year": 2008,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/american-dad-volume-5-dvd-1.jpg",
+    "photos": [
+      "images/american-dad-volume-5-dvd-1.jpg",
+      "images/american-dad-volume-5-dvd-2.jpg",
+      "images/american-dad-volume-5-dvd-3.jpg",
+      "images/american-dad-volume-5-dvd-4.jpg",
+      "images/american-dad-volume-5-dvd-5.jpg",
+      "images/american-dad-volume-5-dvd-6.jpg",
+      "images/american-dad-volume-5-dvd-7.jpg",
+      "images/american-dad-volume-5-dvd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=American%20Dad%20Volume%205%20DVD&campid=5339133571&customid=american-dad-volume-5-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2008-2009",
+    "createdBy": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "starring": "Seth MacFarlane, Wendy Schaal, Scott Grimes, Rachael MacFarlane, Dee Bradley Baker",
+    "producers": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "company": "Fuzzy Door Productions / Underdog Productions / 20th Century Fox Television",
+    "titleNote": "Volume 5 / Uncensored / 3-Disc Set / 2008-2009",
+    "tagline": "DVD / Volume 5 / Uncensored / 14 Episodes / 3 Discs / Seth MacFarlane / Animated Comedy / 2000s",
+    "desc": "God bless American Dad! From the twisted comic minds of Mike Barker, Matt Weitzman and Seth MacFarlane (Family Guy) come the over-the-top adventures of CIA Agent Stan Smith and his delightfully dysfunctional family. Volume Five celebrates that great American pastime, revenge! Steve and his friends strike back at Bar Mitzvah boy Etan Cohen for stealing Steve's girlfriend, Francine puts Stan through the wringer when she finds out he's picked a back-up wife, and Roger unleashes deadly hot dog havoc throughout Langley Falls. 14 uncensored episodes on 3 discs.",
+    "trivia": [
+      {
+        "heading": "A Super Bowl Premiere",
+        "text": "American Dad! premiered on Fox right after Super Bowl XXXIX in February 2005 and drew 15.1 million viewers."
+      },
+      {
+        "heading": "From the Family Guy Team",
+        "text": "The show was created by Seth MacFarlane with Mike Barker and Matt Weitzman. MacFarlane voices both Stan Smith and Roger the alien."
+      },
+      {
+        "heading": "A Skier in a Fishbowl",
+        "text": "Klaus the goldfish is really a former East German Olympic ski jumper whose brain was put into a fish by the CIA."
+      },
+      {
+        "heading": "Revenge Is the American Way",
+        "text": "Volume 5 is all about getting even: Steve takes on Bar Mitzvah boy Etan Cohen in \"Bar Mitzvah Hustle\", Francine discovers Stan's back-up wife in \"Wife Insurance\", and Roger unleashes hot dog havoc in \"The Weiner of Our Discontent\"."
+      }
+    ],
+    "tidbits": [
+      "American Dad! premiered on Fox right after Super Bowl XXXIX in February 2005 and drew 15.1 million viewers.",
+      "The show was created by Seth MacFarlane with Mike Barker and Matt Weitzman. MacFarlane voices both Stan Smith and Roger the alien.",
+      "Klaus the goldfish is really a former East German Olympic ski jumper whose brain was put into a fish by the CIA.",
+      "Volume 5 is all about getting even: Steve takes on Bar Mitzvah boy Etan Cohen in \"Bar Mitzvah Hustle\", Francine discovers Stan's back-up wife in \"Wife Insurance\", and Roger unleashes hot dog havoc in \"The Weiner of Our Discontent\"."
+    ],
+    "copies": [
+      {
+        "id": "american-dad-volume-5-dvd-1",
+        "added": "2026-11-05",
+        "format": "DVD",
+        "edition": "20th Century Fox Uncensored 3-disc set (2010)",
+        "photos": [
+          "images/american-dad-volume-5-dvd-1.jpg",
+          "images/american-dad-volume-5-dvd-2.jpg",
+          "images/american-dad-volume-5-dvd-3.jpg",
+          "images/american-dad-volume-5-dvd-4.jpg",
+          "images/american-dad-volume-5-dvd-5.jpg",
+          "images/american-dad-volume-5-dvd-6.jpg",
+          "images/american-dad-volume-5-dvd-7.jpg",
+          "images/american-dad-volume-5-dvd-8.jpg"
+        ],
+        "gif": "images/american-dad-volume-5-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Clear 3-disc case and cover art clean, with only light shelf wear. Episode guide printed on the inside of the cover.",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None. Episode guide printed on the inside of the cover.",
+          "notes": "20th Century Fox Home Entertainment (2010), UPC 024543660255, Region 1 NTSC. 3 discs, 14 episodes, approx. 306 minutes, colour (2008/2009), full frame 1.33:1, dual layer. English 5.1 Dolby Digital; English SDH, Spanish, French and Portuguese subtitles. Rated 14A (Canada). Disc 1: Phantom of the Telethon; Chimdale; Stan Time; Family Affair; Live and Let Fry; Roy Rogers McFreely. Disc 2: Jack's Back; Bar Mitzvah Hustle; Wife Insurance; The DeLorean Story-an; Every Which Way But Lose; The Weiner of Our Discontent. Disc 3: Daddy Queerest; Stan's Night Out. Special features: uncensored commentaries on all episodes; Bar Mitzvah Hustle Fact-Up Trivia; deleted scenes; The Power Hour drinking game."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
