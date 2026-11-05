@@ -512,7 +512,7 @@ Object.assign(window.VIMY_SCENARIO, {
     { title: 'Veterans Affairs Canada, Vimy: Tunnels and Trenches (2021)', note: 'The Grange Subway and the preserved trenches.' },
     { title: 'British trench maps, 1916–1917 (National Library of Scotland, CC BY)', note: 'Sheets 36C SW and 51B NW: the trenches on the map, traced for this page.' },
     { title: 'London Gazette nos. 30122 and 30215 (1917)', note: 'The Victoria Cross citations.' },
-    { title: 'Music: “It’s a Long, Long Way to Tipperary”, sung by Albert Farrington (1915, remastered)', note: 'Song by Jack Judge and Harry Williams (1912), the marching song of the British and Canadian armies. Public domain (published in the UK more than 70 years ago; in the US before 1926). Wikimedia Commons: Albert Farrington - It’s a Long Long Way to Tipperary - 1915 - remastered. Plays under the night before the attack and the last chapter, ducked under the narration.' }
+    { title: 'Music: “It’s a Long, Long Way to Tipperary”, sung by Albert Farrington (1915, remastered)', note: 'Song by Jack Judge and Harry Williams (1912), the marching song of the British and Canadian armies. Public domain in the UK, the US (published before 1926) and Canada (sound recordings are protected 70 years after publication). Period atmosphere: not a claim that it was heard on the battlefield. Wikimedia Commons: Albert Farrington - It’s a Long Long Way to Tipperary - 1915 - remastered. Plays under the night before the attack and the last chapter, ducked under the narration.' }
   ];
 
   /* ---------- the introduction: briefing marks on the map ---------- */
