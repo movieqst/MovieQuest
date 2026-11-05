@@ -45,3 +45,7 @@ Several files came back under the wrong names; they were renamed by what they sh
 - **fallen-german.png:** 16 fallen Germans in field-grey with Stahlhelms.
 
 Still to come: a MacDowell walking sheet, and four portraits (Lewis gunner, artillery, British infantry, German infantry).
+
+## Final batch (5 November 2026): all approved
+leader-macdowell.png (walking: khaki, Brodie helmet), portrait-british-infantry.jpg, portrait-canadian-artillery.jpg (18-pounder), portrait-canadian-lewis-gunner.jpg, portrait-german-infantry.jpg (field-grey, Stahlhelm, Gewehr 98).
+**The Vimy art set is complete:** 29 sprite sheets and 7 portraits.
