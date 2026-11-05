@@ -11283,5 +11283,102 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "ash-vs-evil-dead-season-1-dvd",
+    "title": "Ash vs Evil Dead: The Complete First Season",
+    "year": 2015,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/ash-vs-evil-dead-season-1-dvd-1.jpg",
+    "photos": [
+      "images/ash-vs-evil-dead-season-1-dvd-1.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-2.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-3.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-4.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-5.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-6.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-7.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-8.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-9.jpg",
+      "images/ash-vs-evil-dead-season-1-dvd-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Ash%20vs%20Evil%20Dead%20First%20Season%20DVD&campid=5339133571&customid=ash-vs-evil-dead-season-1-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2010s"
+    ],
+    "runYears": "2015",
+    "createdBy": "Sam Raimi, Ivan Raimi, Tom Spezialy",
+    "starring": "Bruce Campbell, Lucy Lawless, Ray Santiago, Dana DeLorenzo, Jill Marie Jones",
+    "producers": "Sam Raimi, Rob Tapert, Bruce Campbell, Craig DiGregorio; co-executive producer Ivan Raimi",
+    "company": "Starz / Renaissance Pictures / Anchor Bay Entertainment",
+    "titleNote": "Complete Season 1 / 2-Disc Set / 2015",
+    "tagline": "DVD / Complete First Season / 10 Episodes / 2 Discs / Bruce Campbell / Lucy Lawless / Horror Comedy / 2010s",
+    "desc": "The long-awaited follow-up to the classic horror film The Evil Dead. Bruce Campbell reprises his role as Ash, the stock boy, aging lothario and chainsaw-handed monster hunter who has spent the last 30 years avoiding responsibility, maturity and the terrors of the Evil Dead. When a Deadite plague threatens to destroy all of mankind, Ash is finally forced to face his demons, personal and literal. With Lucy Lawless as the mysterious Ruby, Ray Santiago as loyal sidekick Pablo and Dana DeLorenzo as Kelly. All 10 half-hour episodes on 2 discs.",
+    "trivia": [
+      {
+        "heading": "A Halloween Premiere",
+        "text": "Ash vs Evil Dead premiered on Starz on Halloween night, October 31, 2015."
+      },
+      {
+        "heading": "Renewed Before It Aired",
+        "text": "Starz was so confident in the show that it ordered a second season a few days before the first episode aired."
+      },
+      {
+        "heading": "Raimi Returns",
+        "text": "Sam Raimi, who directed The Evil Dead trilogy, directed the first episode, \"El Jefe\"."
+      },
+      {
+        "heading": "30 Years Later",
+        "text": "Bruce Campbell returns as Ash, who has spent 30 years avoiding responsibility and the Evil Dead since the original films."
+      },
+      {
+        "heading": "Xena Joins the Fight",
+        "text": "Lucy Lawless, Xena: Warrior Princess herself and Rob Tapert's wife, plays the mysterious Ruby."
+      }
+    ],
+    "tidbits": [
+      "Ash vs Evil Dead premiered on Starz on Halloween night, October 31, 2015.",
+      "Starz was so confident in the show that it ordered a second season a few days before the first episode aired.",
+      "Sam Raimi, who directed The Evil Dead trilogy, directed the first episode, \"El Jefe\".",
+      "Bruce Campbell returns as Ash, who has spent 30 years avoiding responsibility and the Evil Dead since the original films.",
+      "Lucy Lawless, Xena: Warrior Princess herself and Rob Tapert's wife, plays the mysterious Ruby."
+    ],
+    "copies": [
+      {
+        "id": "ash-vs-evil-dead-season-1-dvd-1",
+        "added": "2026-11-05",
+        "format": "DVD",
+        "edition": "Anchor Bay / Starz 2-disc set (ST63965)",
+        "photos": [
+          "images/ash-vs-evil-dead-season-1-dvd-1.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-2.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-3.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-4.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-5.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-6.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-7.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-8.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-9.jpg",
+          "images/ash-vs-evil-dead-season-1-dvd-10.jpg"
+        ],
+        "gif": "images/ash-vs-evil-dead-season-1-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Black 2-disc DVD case with flip tray; cover art clean with only light shelf wear.",
+          "discs": [
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "Starz promotional insert.",
+          "notes": "Anchor Bay Entertainment / Starz (2016), catalogue ST63965, UPC 013132639659, Region 1. 2 discs, all 10 episodes, approx. 294 minutes, colour, anamorphic widescreen 1.78:1. English Dolby Digital 5.1, Spanish Dolby Surround 2.0; English SDH and Spanish subtitles. TV-MA (US) / 18A (Canada). Disc 1: El Jefe, Bait, Books From Beyond, Brujo, The Host. Disc 2: The Killer of Killers, Fire in the Hole, Ashes to Ashes, Bound in Flesh, The Dark One. Special features: audio commentaries on all episodes; Inside the World of Ash; How to Kill a Deadite; Best of Ash."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
