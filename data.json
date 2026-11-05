@@ -11088,5 +11088,110 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "wendy-carlos-switched-on-bach-cd",
+    "title": "Switched-On Bach",
+    "year": 1968,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/wendy-carlos-switched-on-bach-cd-1.jpg",
+    "photos": [
+      "images/wendy-carlos-switched-on-bach-cd-1.jpg",
+      "images/wendy-carlos-switched-on-bach-cd-2.jpg",
+      "images/wendy-carlos-switched-on-bach-cd-3.jpg",
+      "images/wendy-carlos-switched-on-bach-cd-4.jpg",
+      "images/wendy-carlos-switched-on-bach-cd-5.jpg",
+      "images/wendy-carlos-switched-on-bach-cd-6.jpg",
+      "images/wendy-carlos-switched-on-bach-cd-7.jpg",
+      "images/wendy-carlos-switched-on-bach-cd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Switched-On%20Bach%20Wendy%20Carlos%20CD%20MK%207194&campid=5339133571&customid=wendy-carlos-switched-on-bach-cd",
+    "price": null,
+    "categories": [
+      "music"
+    ],
+    "artist": "Wendy Carlos",
+    "genre": "Electronic / Classical (Moog synthesizer)",
+    "label": "CBS Records Masterworks",
+    "released": "1968 (CD 1981 pressing)",
+    "producers": "Rachel Elkind; Trans-Electronic Music Productions, Inc.",
+    "titleNote": "CBS Masterworks CD (MK 7194) / Made in Japan / 1968",
+    "tagline": "Music CD / Wendy Carlos / Moog Synthesizer / J.S. Bach / CBS Masterworks / Early Japan Pressing / 1960s",
+    "desc": "The album that brought the Moog synthesizer to the world. Wendy Carlos's virtuoso electronic performances of J.S. Bach, including Brandenburg Concerto No. 3, \"Air on the G String\", \"Jesu, Joy of Man's Desiring\", the Sinfonia from Cantata No. 29, Two-Part Inventions, the Chorale Prelude \"Wachet Auf\" and Preludes and Fugues from The Well-Tempered Clavier. An early CBS Masterworks compact disc pressing, made in Japan.",
+    "tracks": [
+      "Sinfonia to Cantata No. 29 (3:20)",
+      "Air on the G String (2:27)",
+      "Two-Part Invention in F Major (0:40)",
+      "Two-Part Invention in B-Flat Major (1:30)",
+      "Two-Part Invention in D Minor (0:55)",
+      "Jesu, Joy of Man's Desiring (2:56)",
+      "Prelude & Fugue No. 7 from Well-Tempered Clavier, Book I (7:07)",
+      "Prelude & Fugue No. 2 from Well-Tempered Clavier, Book I (2:43)",
+      "Chorale Prelude \"Wachet Auf\" (3:37)",
+      "Brandenburg Concerto No. 3: I. Allegro (6:35)",
+      "Brandenburg Concerto No. 3: II. Andante (2:50)",
+      "Brandenburg Concerto No. 3: III. Allegro (5:05)"
+    ],
+    "trivia": [
+      {
+        "heading": "A Classical Chart-Topper",
+        "text": "Switched-On Bach was released in October 1968, reached No. 10 on the Billboard 200 and held No. 1 on the Billboard Classical Albums chart from January 1969 to January 1972."
+      },
+      {
+        "heading": "Three Grammys",
+        "text": "The album won three Grammy Awards in 1970, including Best Classical Album and Best Engineered Classical Recording."
+      },
+      {
+        "heading": "One Note at a Time",
+        "text": "The Moog synthesizer of the day could only play one note at a time, so every part was recorded separately and layered on a custom 8-track recorder Wendy Carlos built in a basement studio."
+      },
+      {
+        "heading": "Platinum Classic",
+        "text": "It was certified platinum in 1986, only the second classical album ever to reach that mark."
+      },
+      {
+        "heading": "Who Made It",
+        "text": "Produced by Rachel Elkind and Wendy Carlos, with Benjamin Folkman assisting on the performances."
+      }
+    ],
+    "tidbits": [
+      "Switched-On Bach was released in October 1968, reached No. 10 on the Billboard 200 and held No. 1 on the Billboard Classical Albums chart from January 1969 to January 1972.",
+      "The album won three Grammy Awards in 1970, including Best Classical Album and Best Engineered Classical Recording.",
+      "The Moog synthesizer of the day could only play one note at a time, so every part was recorded separately and layered on a custom 8-track recorder Wendy Carlos built in a basement studio.",
+      "It was certified platinum in 1986, only the second classical album ever to reach that mark.",
+      "Produced by Rachel Elkind and Wendy Carlos, with Benjamin Folkman assisting on the performances."
+    ],
+    "copies": [
+      {
+        "id": "wendy-carlos-switched-on-bach-cd-1",
+        "added": "2026-11-05",
+        "format": "CD",
+        "edition": "CBS Records Masterworks MK 7194, early Japan pressing",
+        "photos": [
+          "images/wendy-carlos-switched-on-bach-cd-1.jpg",
+          "images/wendy-carlos-switched-on-bach-cd-2.jpg",
+          "images/wendy-carlos-switched-on-bach-cd-3.jpg",
+          "images/wendy-carlos-switched-on-bach-cd-4.jpg",
+          "images/wendy-carlos-switched-on-bach-cd-5.jpg",
+          "images/wendy-carlos-switched-on-bach-cd-6.jpg",
+          "images/wendy-carlos-switched-on-bach-cd-7.jpg",
+          "images/wendy-carlos-switched-on-bach-cd-8.jpg"
+        ],
+        "gif": "images/wendy-carlos-switched-on-bach-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Jewel case with the original front insert and back card, light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Original front insert.",
+          "notes": "CBS Records Masterworks, catalogue MK 7194, UPC 07464-07194-2, disc DIDC 20094, made in Japan; manufactured in Canada by CBS Records Canada. Digitally mastered analog recording, mastered with TLC at half-speed at the CBS Recording Studios, New York. ℗ 1968/1973 CBS Inc., © 1981 CBS Inc. 12 tracks. Realized and performed by Wendy Carlos with the assistance of Benjamin Folkman."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
