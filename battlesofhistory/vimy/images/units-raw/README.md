@@ -38,3 +38,10 @@ Several files came back under the wrong names; they were renamed by what they sh
 | portrait-byng.jpg | portrait-byng | excellent |
 
 **Rejected, to redo:** canadian-infantry-attack (carrying buckets, not attacking), canadian-lewis-fire (a tripod gun with Red Cross armbands), fallen-german (in khaki, so not German), a MacDowell walk sheet (missing), and four portraits that were old rejected pictures: Lewis gunner, artillery, German infantry, British infantry.
+
+## Third batch (5 November 2026): three corrected sheets, all approved
+- **canadian-infantry-attack.png:** aim, fire, charge and lunge; rows face the viewer, right, away and left.
+- **canadian-lewis-fire.png:** prone behind the Lewis on its bipod, firing, in all four directions.
+- **fallen-german.png:** 16 fallen Germans in field-grey with Stahlhelms.
+
+Still to come: a MacDowell walking sheet, and four portraits (Lewis gunner, artillery, British infantry, German infantry).
