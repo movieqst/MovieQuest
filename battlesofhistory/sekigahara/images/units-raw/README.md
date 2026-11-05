@@ -10,3 +10,9 @@ Credit: Battle Games, AI-generated (ChatGPT) from ART-PROMPTS-UNITS.md.
 **To redo:** west-yari. Its rows 1–2 show thrusting poses, not a walk.
 
 **Note:** the spears are short (about 2 m). Real ashigaru yari were up to about 5 m. Acceptable at sprite size.
+
+## Batch 2 (5 November 2026)
+- **portrait-ieyasu.jpg:** a full-size original, approved (the Tokugawa hollyhock crest).
+- **Sheets cut from ChatGPT's 3-panel previews** (each panel 724 px, a real 181 px per cell, not enlarged): west-yari (now walking), east-cavalry, west-cavalry, leader-ieyasu and its attack sheet, leader-mitsunari, leader-kobayakawa and its attack sheet (red armour), leader-shimazu, fallen-east, fallen-west, and a bonus fallen-horse. That resolution is enough for figures drawn about 30–40 px tall in the game, so these are approved.
+- **Note:** kobayakawa-attack's rows 1 and 3 face right and front instead of front and away. Acceptable for a leader.
+- **Still wanted:** leader-mitsunari-attack, leader-shimazu-attack, and the portraits of Mitsunari (plain banner), Kobayakawa, Shimazu, the ashigaru yari, the ashigaru teppō, the samurai cavalry, and the battle scene.
