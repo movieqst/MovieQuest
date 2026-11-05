@@ -441,10 +441,10 @@ Object.assign(window.VIMY_SCENARIO, {
   const B = (a, b) => ({ from: along(a, YS_SOUTH), to: along(b, YS_SOUTH), secs: 13, rate: .95 });
   const BN = (a, b) => ({ from: along(a, YS), to: along(b, YS), secs: 13, rate: .95 });
   const M = f => f;   // picture file
-  set(0, { media: M('33-lorry-on-shell-battered-road.jpg'), zoom: 'fit', markers: [], orders: [
+  set(0, { media: M('33-lorry-on-shell-battered-road.jpg'), music: { file: 'tipperary-farrington-1915.mp3', vol: .22 }, zoom: 'fit', markers: [], orders: [
     ...[['c4', 450], ['c3', 760], ['c2', 1110], ['c1', 1470]].map(([id, y]) => ({ id, to: on(CF, y, -12), speed: 14 })),
     { id: 'b13', to: on(CF, 1290, -14), speed: 14 } ] });
-  set(1, { media: M('08-richard-jack-taking-of-vimy-ridge.jpg'), zoom: 'fit', barrage: BN(GF, L.black || GF), orders: [
+  set(1, { media: M('08-richard-jack-taking-of-vimy-ridge.jpg'), music: null, zoom: 'fit', barrage: BN(GF, L.black || GF), orders: [
     ...[['c4', 450], ['c3', 760], ['c2', 1110], ['c1', 1470]].map(([id, y]) => ({ id, to: on(GF, y, 20), speed: 16, state: 'attack' })),
     { id: 'b13', to: on(GF, 1290, 20), speed: 16, state: 'attack' }, { id: 'cmg', to: on(GF, 1380, -10), speed: 14 } ] });
   set(2, { media: M('35-29th-battalion-advancing-over-no-mans-land.jpg'), focus: { x: 1080, y: 1150 }, zoom: 2, orders: [
@@ -480,7 +480,7 @@ Object.assign(window.VIMY_SCENARIO, {
   set(11, { media: M('01-machine-gun-crews.jpg'), focus: PIMPLE, zoom: 3.08, markers: [ Object.assign({ label: 'The Pimple, 12 April' }, PIMPLE) ], orders: [
     { id: 'gguard', visible: true }, { id: 'c10', to: { x: PIMPLE.x + 40, y: PIMPLE.y + 20 }, via: [{ x: 760, y: 300 }], speed: 20, state: 'attack' },
     { id: 'gguard', strengthTo: 10, over: 10 }, { id: 'g16', state: 'rout', to: { x: 1300, y: 150 }, speed: 20, delay: 5 } ] });
-  set(12, { media: M('27-bush-a-cemetery-on-vimy-ridge.jpg'), zoom: 'fit', markers: [], orders: [ { leader: 'byng', to: { x: 700, y: 820 }, speed: 30 } ] });
+  set(12, { media: M('27-bush-a-cemetery-on-vimy-ridge.jpg'), music: { file: 'tipperary-farrington-1915.mp3', vol: .2 }, zoom: 'fit', markers: [], orders: [ { leader: 'byng', to: { x: 700, y: 820 }, speed: 30 } ] });
   EV[12].end = false;
 
   /* ---------- the armies panel, the citations and the sources ---------- */
@@ -511,7 +511,8 @@ Object.assign(window.VIMY_SCENARIO, {
     { title: 'M. Boire, “The Underground War: Military Mining Operations in Support of the Attack on Vimy Ridge”, Canadian Military History 1 (1992)', note: 'The tunnels, subways and mines.' },
     { title: 'Veterans Affairs Canada, Vimy: Tunnels and Trenches (2021)', note: 'The Grange Subway and the preserved trenches.' },
     { title: 'British trench maps, 1916–1917 (National Library of Scotland, CC BY)', note: 'Sheets 36C SW and 51B NW: the trenches on the map, traced for this page.' },
-    { title: 'London Gazette nos. 30122 and 30215 (1917)', note: 'The Victoria Cross citations.' }
+    { title: 'London Gazette nos. 30122 and 30215 (1917)', note: 'The Victoria Cross citations.' },
+    { title: 'Music: “It’s a Long, Long Way to Tipperary”, sung by Albert Farrington (1915, remastered)', note: 'Song by Jack Judge and Harry Williams (1912), the marching song of the British and Canadian armies. Public domain (published in the UK more than 70 years ago; in the US before 1926). Wikimedia Commons: Albert Farrington - It’s a Long Long Way to Tipperary - 1915 - remastered. Plays under the night before the attack and the last chapter, ducked under the narration.' }
   ];
 
   /* ---------- the introduction: briefing marks on the map ---------- */
