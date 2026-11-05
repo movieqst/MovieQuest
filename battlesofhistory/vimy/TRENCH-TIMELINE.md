@@ -110,3 +110,18 @@ NLS has dated editions of both Vimy sheets. The sheets are also listed on the NL
   3. Then fit an affine or thin-plate warp per sheet.
 - **Then tracing:** warp each sheet into the battle frame, pick out the red (German) and blue (British) trench ink, and save one transparent overlay per date. The page cross-fades between them on the timeline.
 - **Side project for later:** nicer painted Vimy maps built on these overlays.
+
+## Georeferencing notes (5 November 2026)
+**The sheet frames are labelled in one shared grid.** Distances are W of origin and N/S of origin; the 1:20,000 sheets are in yards, the 1:10,000 in metres:
+| NLS no. | sheet | frame W → E | frame N → S |
+|---|---|---|---|
+| 101465023 | 36C SW Ed 6 (Feb 1916), 1:20,000 | 126,861 → 109,361 yds W (116,001 → 100,000 m) | 7,918 yds N → 3,019 yds S (7,240 m N → 2,760 m S) |
+| 101465071 / 068 / 065 | 51B NW Eds 4A, 6A, 7A, 1:20,000 | 116,000 → 100,000 m W | 2,760 → 12,760 m S |
+| 101464753 | 51B NW1 Roclincourt 5A, 1:10,000 | 116,000 → 108,000 m W | 2,760 → 7,760 m S |
+| 101464744 | 36C SW1 Lens 8A, 1:10,000 | 116,000 → 108,000 m W | 7,240 → 2,240 m N |
+
+So every sheet can be placed in that one grid from its frame corners. For 36C SW, frame top-left ≈ px (360, 458) and top-right ≈ (6603, 468); the 1,000-yd grid lines are about 358 px apart.
+
+**Ground truth:** Nicholson's map is too schematic for precise control points, and online map services are blocked here. Plan: fit one grid → world transform by matching the sheets' printed contour lines (orange, 5 m interval) to the real elevation (DEM), then check it against the "1°31′ W of Brussels" meridian printed on 36C SW.
+
+**Coverage gap:** the 1:10,000 sheet **36C SW3** (Givenchy–Vimy, 2,240 m N → 2,760 m S), which holds the heart of the battle (Hill 145, the Pimple, the craters), is only covered by the Feb 1916 1:20,000 sheet. A 1917 edition of 36C SW3, or of the 1:20,000 36C SW (Eds 8–9, early 1917), would complete the timeline there.
