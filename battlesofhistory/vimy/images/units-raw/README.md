@@ -48,4 +48,4 @@ Still to come: a MacDowell walking sheet, and four portraits (Lewis gunner, arti
 
 ## Final batch (5 November 2026): all approved
 leader-macdowell.png (walking: khaki, Brodie helmet), portrait-british-infantry.jpg, portrait-canadian-artillery.jpg (18-pounder), portrait-canadian-lewis-gunner.jpg, portrait-german-infantry.jpg (field-grey, Stahlhelm, Gewehr 98).
-**The Vimy art set is complete:** 29 sprite sheets and 7 portraits.
+**The Vimy art set is complete:** 27 sprite sheets and 8 portraits.
