@@ -348,8 +348,8 @@ window.BH_ATLAS = [
 "status": "in progress",
 "file": "batoche/images/terrain-continent.jpg",
 "title": "Continent map",
-"what": "Canada and the northern United States in spring, about 5,900 × 4,200 km (74°N 142°W to 36°N 50°W), for the step after the globe. Painted over layout/continent-base.png; checked 6 November 2026: coasts and lakes agree 95.5% across the south (the prairies, the Great Lakes, Hudson Bay, both coasts), but only 77% in the Arctic, where some islands are invented or moved (a redo of the Arctic was asked for)",
-"credit": "Original illustration for this project (AI-generated, ChatGPT), painted from our elevation-data base: an artist's impression, not evidence. 1448 × 1086, enlarged to 2400 × 1800",
+"what": "Canada and the northern United States in spring, about 5,900 × 4,200 km (74°N 142°W to 36°N 50°W), for the step after the globe. Painted over layout/continent-base.png; checked 6 November 2026: coasts and lakes agree 99.5% with the base (the Arctic islands 98.7%)",
+"credit": "Original illustration for this project (AI-generated, ChatGPT), painted from our elevation-data base: an artist's impression, not evidence. 2000 × 1500, enlarged to 2400 × 1800",
 "kind": "game"
 },
 {
