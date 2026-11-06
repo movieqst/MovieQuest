@@ -48,3 +48,15 @@ All are original illustrations for this project (AI-generated) from ART-PROMPTS-
 - **middleton:** khaki campaign dress, peaked cap, white moustache, field glasses.
 - **dumont:** the corrected one, without the flag: buckskin, beard, wide hat, blanket.
 - **riel:** beard, dark coat, crucifix.
+
+**Full-size batch of 6 November (parts 1–4):**
+
+| sheet | review |
+|---|---|
+| leader-howard | PASS. Dark jacket, light peaked cap, short pointed beard, pushing the Gatling (barrel cluster, spoked wheels). |
+| leader-howard-attack | PASS. Turning the crank and firing, four directions. |
+| northcote-damaged | PASS for now. Both stacks broken to stumps, smoke from the stumps, four directions. But it is drawn as a side-wheeler with a Union Jack, while northcote (and the real boat) is a stern-wheeler: a redraw matching northcote would be better. |
+| firstnations-fighter | PASS for now. Braids, hide shirt, leggings, moccasins, musket. Still has a few feathers and a Métis-style sash; the blanket version in ChatGPT's preview was closer to the brief. |
+| firstnations-fighter-fire | WRONG FILE again: the Métis rifleman's fire sheet. Not used. |
+| leader-riel (walking) | REVISE. Moustache only, frock coat, a sash and papers: it does not match leader-riel-attack (full beard, crucifix). Not used. |
+| leader-dumont (walking) | Not used: a blanket coat again, not buckskin. The approved leader-dumont stays. |
