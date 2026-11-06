@@ -135,3 +135,6 @@ NO text, labels, grid lines, arrows, dots or boxes. NO modern roads, towns or fi
 - **Church, rectory and cemetery:** now near their real place. The church is painted at about (1326, 1118) world px against the real (1264, 1012), about 230 m out. The cemetery is just south of it, about 270 m east of the guide spot.
 - **River:** 87% of our traced river is within 20 m of the painted water, and 99% within 60 m.
 - **Game positions:** the game puts the church on the painted one.
+
+## Notes for building the page
+- **Continent map in the game:** show at most about 80% of it, centred on Canada and a little toward the prairies, so most of the oceans and Greenland stay out of the frame. Do not crop the image file itself; the full painting stays in the Atlas.
