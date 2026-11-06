@@ -26,6 +26,7 @@
   - British redcoats from the Napoleonic wars;
   - gore.
   - **Riel must not carry a gun.**
+  - **No Métis infinity flag** on the 1885 battlefield or in the portraits: no source shows it at Batoche. Its history goes in a "From the record" picture instead.
 
 ---
 

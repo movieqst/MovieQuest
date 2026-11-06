@@ -123,6 +123,26 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
 
 ---
 
+## "From the record" pictures (left panel; captions, not narration)
+
+### The Métis flag (with intro slide 2, "The Métis of the South Saskatchewan")
+**Picture:** a photo of the Métis flag, a white infinity sign on blue (the user is getting one; its licence to check).
+
+**Caption:**
+> The Métis flag: a white infinity sign on a blue field. It is one of the oldest flags made in Canada. Accounts say the Métis of the North West Company first flew it in 1815 or 1816, and that Cuthbert Grant's men carried it at the clash at Seven Oaks, at Red River, in June 1816. A red version was also used. The infinity sign is often read as two peoples joined, a people that will live forever. *(established; the first date, account)*
+>
+> There is no record that it flew at Batoche in 1885. Riel's men there carried religious banners. Today it is the flag of the Métis Nation. *(established; the banners, to check)*
+
+**Why:** the art avoids putting the flag on the 1885 battlefield, where no source shows it. This picture tells its real history instead.
+
+**To check before publishing:**
+- the 1815/1816 date and who gave the flag (accounts name the North West Company);
+- the red version;
+- what banners Riel's men carried at Batoche (one account mentions a banner of the Virgin Mary);
+- the photo's licence.
+
+The flag's design itself is not under copyright, but a photo of it is the photographer's.
+
 ## Notes for review (draft 1)
 - **To check against a full text:**
   - the background slides (2–4);
