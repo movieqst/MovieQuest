@@ -60,3 +60,4 @@ All are original illustrations for this project (AI-generated) from ART-PROMPTS-
 | firstnations-fighter-fire | WRONG FILE again: the Métis rifleman's fire sheet. Not used. |
 | leader-riel (walking) | REVISE. Moustache only, frock coat, a sash and papers: it does not match leader-riel-attack (full beard, crucifix). Not used. |
 | leader-dumont (walking) | Not used: a blanket coat again, not buckskin. The approved leader-dumont stays. |
+| firstnations-fighter-fire (second try) | PASS. Braids, cloth shirt, dark waistcoat, fringed leggings, a plain red cloth sash (not the Métis ceinture fléchée), no feathers; kneeling behind a log wall: aim, fire, smoke, in all four directions. Cut at 240 × 200. |
