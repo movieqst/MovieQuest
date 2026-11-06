@@ -335,8 +335,8 @@
     <div id="playMenu">
       <div class="pm-title">BATTLE OF BATOCHE</div>
       <button id="pmWatch" class="primary">▶ Play the reenactment</button>
-      <button id="pmAllied" class="primary">⚔ Play as the Eastern Army</button>
-      <button id="pmFrench" class="primary">⚔ Play as the Western Army</button>
+      <button id="pmAllied" class="primary">⚔ Play as the Field Force</button>
+      <button id="pmFrench" class="primary">⚔ Play as the defenders of Batoche</button>
       <button id="pmClose">Back</button>
     </div>
     <div id="titleCard"></div>
@@ -357,8 +357,8 @@
           </div>
           <div class="actions" id="introChoice" style="display:none">
             <button id="chooseWatch" class="primary big">▶ Watch the battle unfold</button>
-            <button id="chooseCommand" class="primary big">⚔ Command the Eastern Army</button>
-          <button id="chooseCommandH" class="primary big">⚔ Command the Western Army</button>
+            <button id="chooseCommand" class="primary big">⚔ Command the Field Force</button>
+          <button id="chooseCommandH" class="primary big">⚔ Command the defenders</button>
             <span class="spacer"></span>
             <button id="introBackChoice" onclick="document.getElementById('introBack').click()">◀ Back</button>
           </div>
@@ -448,7 +448,7 @@
     </section>
     <section class="card cmd-only">
       <h2>Orders</h2>
-      <div class="orders"><label class="tiny">Side <select id="sideSel"><option value="allied">Eastern Army</option><option value="french">Western Army</option></select></label><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back</button></div>
+      <div class="orders"><label class="tiny">Side <select id="sideSel"><option value="allied">Field Force</option><option value="french">Defenders</option></select></label><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back</button></div>
       <p class="muted">Choose your side. Click a formation or drag a box around several to select them (Ctrl-drag adds). Right-click the map for the order menu: attack-move, move, face, halt, fall back. Pan with the arrow keys, the minimap or the wheel; Shift-drag draws a zoom box. As the French you hold the centre and the chariot force; the Allied advance as history had it until they sight you. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
     </section>
     <section class="card">
@@ -467,6 +467,7 @@
 </main>
 <footer><nav class="bhbar"><a href="../library.html?battle=batoche">📚 Library</a><a href="../gallery.html?battle=batoche&kind=art">🖼 Art gallery</a><a href="../gallery.html?battle=batoche&kind=photo">📷 Photographs</a><a href="../gallery.html">All battles’ pictures</a><a href="../atlas.html?battle=batoche">🗺 Atlas</a></nav><span class="bhnote">Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</span></footer>
 <script src="scenario.js"></script>
+<script src="lang-fr.js"></script>
 <script src="../lang-ui.js"></script>
 <script src="../lang.js"></script>
 <script src="../desktop.js"></script>

@@ -135,7 +135,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sixday', progress: 30, lat: 31.78, lon: 35.23,
+    folder: 'sixday', progress: 50, lat: 31.78, lon: 35.23,
     order: 12,
     era: 'Arab–Israeli Wars',
     title: 'The Six-Day War',
