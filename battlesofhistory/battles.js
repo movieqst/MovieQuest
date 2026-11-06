@@ -4,7 +4,7 @@
    coverCredit, optional coverPos (CSS background-position, to keep the subject in the crop), and status: 'ready' | 'in progress'. */
 window.BATTLES = [
   {
-    folder: 'kadesh',
+    folder: 'kadesh', lat: 34.56, lon: 36.52,
     order: 1,
     era: 'Bronze Age',
     title: 'Battle of Kadesh',
@@ -17,7 +17,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'iadrang',
+    folder: 'iadrang', lat: 13.57, lon: 107.72,
     order: 2,
     era: 'Vietnam War',
     title: 'Battle of the Ia Drang',
@@ -30,7 +30,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'pegasus',
+    folder: 'pegasus', lat: 49.24, lon: -0.27,
     order: 3,
     era: 'Second World War',
     title: 'Pegasus Bridge',
@@ -43,7 +43,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'gaugamela',
+    folder: 'gaugamela', lat: 36.56, lon: 43.44,
     order: 4,
     era: 'Classical Antiquity',
     title: 'Battle of Gaugamela',
@@ -56,7 +56,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'waterloo',
+    folder: 'waterloo', lat: 50.68, lon: 4.41,
     order: 5,
     era: 'Napoleonic Wars',
     title: 'Battle of Waterloo',
@@ -69,7 +69,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'edington',
+    folder: 'edington', lat: 51.27, lon: -2.1,
     order: 7,
     era: 'Viking Age',
     title: 'Battle of Edington',
@@ -82,7 +82,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'talas',
+    folder: 'talas', lat: 42.9, lon: 71.4,
     order: 6,
     era: 'Tang and Abbasid',
     title: 'Battle of Talas',
@@ -95,7 +95,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'dunkirk',
+    folder: 'dunkirk', lat: 51.03, lon: 2.37,
     order: 10,
     era: 'Second World War',
     title: 'Dunkirk',
@@ -108,7 +108,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'stirling',
+    folder: 'stirling', lat: 56.12, lon: -3.94,
     order: 9,
     era: 'Middle Ages',
     title: 'Battle of Stirling Bridge',
@@ -121,7 +121,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'vimy',
+    folder: 'vimy', lat: 50.38, lon: 2.77,
     order: 11,
     era: 'First World War',
     title: 'Battle of Vimy Ridge',
@@ -134,7 +134,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sixday',
+    folder: 'sixday', lat: 31.78, lon: 35.23,
     order: 12,
     era: 'Arab–Israeli Wars',
     title: 'The Six-Day War',
@@ -147,7 +147,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'sekigahara',
+    folder: 'sekigahara', lat: 35.37, lon: 136.47,
     order: 13,
     era: 'Sengoku Japan',
     title: 'Battle of Sekigahara',
@@ -160,7 +160,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'batoche',
+    folder: 'batoche', lat: 52.75, lon: -106.12,
     order: 14,
     era: 'Canada, 1885',
     title: 'Battle of Batoche',
@@ -173,7 +173,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'tyre',
+    folder: 'tyre', lat: 33.27, lon: 35.2,
     order: 15,
     era: 'Classical Antiquity',
     title: 'Battle of Tyre',
@@ -186,7 +186,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'fishcreek',
+    folder: 'fishcreek', lat: 52.54, lon: -106.15,
     order: 16,
     era: 'Canada, 1885',
     title: 'Battle of Fish Creek',
