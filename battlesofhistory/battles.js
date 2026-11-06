@@ -198,5 +198,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '50% 50%',
     coverCredit: 'The Battle of Fish Creek, coloured lithograph, 1885. Public domain',
     status: 'in progress'
+  },
+  {
+    folder: 'bunkerhill', progress: 15, lat: 42.3763, lon: -71.0608,
+    order: 17,
+    era: 'American Revolutionary War',
+    title: 'Battle of Bunker Hill',
+    date: '17 June 1775', year: 1775,
+    place: 'Breed\u2019s Hill and Bunker Hill, on the Charlestown peninsula across the river from Boston, Massachusetts',
+    sides: 'The British army of General William Howe vs. the New England militia of Colonel William Prescott',
+    blurb: 'Overnight, New England militia dig a redoubt on the heights above Boston. Next day the British land and attack uphill. Twice they are driven back; the third assault takes the hill as the defenders run out of powder, but it costs the British over a thousand men.',
+    cover: 'images/cover.jpg', coverPos: '50% 35%',
+    coverCredit: 'John Trumbull, The Battle of Bunker\u2019s Hill, June 17, 1775 (1786). Public domain',
+    status: 'in progress'
   }
 ];
