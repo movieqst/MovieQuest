@@ -11,7 +11,7 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 ### 2. The land and its peoples
 - The war of 1948 ended in 1949 with armistice agreements between Israel and Egypt, Jordan, Syria and Lebanon. These were not peace treaties, and the armistice lines were not agreed borders. *(established)*
 - Egypt ran the Gaza Strip. Jordan held the West Bank and East Jerusalem with the Old City; Israel held West Jerusalem, and Mount Scopus stayed an Israeli island inside Jordanian ground. Syria held the Golan Heights, above demilitarised zones along the line. *(established)*
-- The war of 1948 also made hundreds of thousands of Palestinians refugees; Palestinians call it the Nakba, "the catastrophe". Many still lived in camps in 1967, and in this war many would be uprooted a second time. *(established)*
+- The war of 1948 also made about seven hundred thousand Palestinians refugees, by the UN's count; Palestinians call it the Nakba, "the catastrophe". Many still lived in camps in 1967, and in this war many would be uprooted a second time. *(established)*
 
 ### 3. Suez, 1956
 - In 1956 Israel invaded Sinai in coordination with Britain and France. Under pressure from the United States and the Soviet Union, it withdrew in 1957. *(established)*
