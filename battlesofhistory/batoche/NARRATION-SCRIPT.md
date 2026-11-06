@@ -71,7 +71,7 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
    Middleton plans a joint attack. His column will come up from the south-east by land, while the *Northcote*, with soldiers behind barricades on her decks, comes down the river behind the village. *(established; H89)*
 
 2. **The steamer** · Morning, 9 May
-   The *Northcote* arrives before the land column is ready. Fighters on both banks open fire on her. At the Batoche ferry, the ferryman Alex Fisher, helped by Pascal Montour, has lowered the ferry cable across the river. It catches the steamer and knocks down her smokestacks. Damaged, she drifts on downstream and never lands her soldiers. *(established; H89)*
+   The *Northcote* arrives before the land column is ready. Fighters on both banks open fire on her. At the Batoche ferry, the ferryman Alex P. Fisher, helped by Pascal Montour, has lowered the ferry cable across the river. It catches the steamer and knocks down her smokestacks. Damaged, she drifts on downstream and never lands her soldiers. *(established; H89)*
 
 3. **The church** · Morning, 9 May
    The column reaches the church and the rectory. The priests, the sisters, and Métis women and children are sheltering inside. A bullet through the rectory wall wounds Father Moulin in the leg. Witnesses say a white cloth was shown, and Middleton ordered the firing stopped. *(established; the white cloth, account; who fired the shot, unknown)*
@@ -89,19 +89,19 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
    The soldiers move out again, cautiously. They dig shallow pits halfway toward the cemetery but cannot take the heights. The guns shell the rifle pits, the cemetery and the buildings across the river. The camp's walls are built higher. *(established; H89)*
 
 8. **Testing the line** · 11 May
-   Middleton rides out with mounted men and Howard's Gatling gun onto the open prairie to the north-east. Defenders hurry across to meet him, and he sees that the line in front of his infantry grows thin when they do. *(established; H89)*
+   Middleton rides out with Boulton's mounted men and Howard's Gatling gun onto the open prairie to the north, the Jolie Prairie. The Gatling fires a few rounds into the rifle pits. Defenders hurry across to meet him, and he sees that the line in front of his infantry grows thin when they do. *(established; H89 pp. 67–70)*
 
 9. **Running short** · 10 and 11 May
-   In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Some accounts say a few men fired nails when the bullets ran out; how often that happened is uncertain. *(account; the nails, disputed)*
+   In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Hildebrandt writes that some fired nails when the bullets made from scavenged lead ran out; how often that happened is uncertain. *(account; H89 p. 73)*
 
 10. **The feint** · Morning, 12 May
-    Middleton tries the trick again. He leads the mounted men and a gun out onto the Jolie Prairie, to draw the defenders north. The infantry are to attack when they hear his guns. *(established; H89)*
+    Middleton tries the trick again. He leads the mounted men, a nine-pounder and the Gatling out onto the Jolie Prairie, to draw the defenders north. The infantry are to attack when they hear his guns. A rider comes out under a white flag: John Astley, a surveyor held prisoner by Riel, with a letter warning that if the women and children are harmed, the prisoners will be too. Middleton answers that the families should gather in one house under a white flag. *(established; H89 pp. 71–72)*
 
 11. **The signal** · Midday, 12 May
-    The infantry do not move. A strong east wind may have carried the sound of the guns away, or the order was not clear. The planned attack never begins. Middleton rides back, furious, and his men go to lunch. *(established; the reason and his anger, account)*
+    The infantry do not move: a strong east wind carries the sound of the guns away, and Colonel Van Straubenzie hears nothing. The planned attack never begins. Middleton rides back, furious: "I lost both my temper and my head," he wrote later. His men sit down to their lunch of hard biscuit. Across the lines, seeing the soldiers pull back, many Métis think peace has come and go back to their families. *(established; H89 pp. 71–73; the Métis hopes, account)*
 
 12. **The charge** · Afternoon, 12 May
-    In the afternoon the Midland and the Royal Grenadiers go forward near the cemetery, with the 90th Winnipeg Rifles in support, and the advance becomes a charge. Who ordered it is still argued: Lieutenant-Colonel Williams, Colonel Van Straubenzie, or nobody, as the soldiers simply ran forward. The thin line in the pits breaks. One account describes Riel praying with his followers, his arms outstretched, as the defence gives way. *(established; who started it, disputed; Riel at prayer, account)*
+    In the afternoon the Midland and the Royal Grenadiers go forward near the cemetery, with the 90th Winnipeg Rifles in support, and the advance becomes a charge. Who ordered it is still argued: Lieutenant-Colonel Williams, Colonel Van Straubenzie, or nobody, as the soldiers simply ran forward. The thin line in the pits breaks. A Métis witness remembered Riel kneeling, his arms crossed, praying with the people around him as the defence gave way. *(established; who started it, disputed; Riel at prayer, account, H89 p. 74)*
 
 13. **The village** · Late afternoon, 12 May
     The soldiers pour down toward the village. Fighting goes on in the bush and around the houses. Captain John French of French's Scouts is shot at an upstairs window of Batoche's house. Prisoners held by Riel's government are set free. Among the defenders killed that day is Joseph Ouellette, an old man, said to be over ninety. *(established; Ouellette's age, account)*
@@ -110,8 +110,8 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
     Batoche has fallen. Families who had sheltered by the river come out to find their homes searched and their belongings taken. Later testimony said that soldiers took belongings, among them a woman's wedding ring. *(account: testimony quoted by Hildebrandt)*
 
 ## The outcome
-- The army won. Hildebrandt counts about 25 dead in the four days, on both sides. *(estimate; H89)*
-- By the last day, only 50 to 60 defenders were still fighting, with about 40 rifles between them. *(estimate; H89)*
+- The army won. Hildebrandt counts twenty-five dead in the four days: soldiers, Métis and First Nations. *(estimate; H89, introduction)*
+- By the last day, only 50 to 60 defenders were still fighting, with about 40 rifles between them; the rest had double-barrelled shotguns. *(estimate; H89 p. 73)*
 
 ## The aftermath (debrief)
 - On the 15th of May, Louis Riel gave himself up. Gabriel Dumont stayed near Batoche for some days; when he heard that Riel had surrendered, he escaped to the United States. *(established; DCB)*
@@ -174,7 +174,7 @@ Answer as a list of changes, chapter by chapter. Do not rewrite the whole script
 ```
 
 ## Change log, draft 2 (6 November 2026, after ChatGPT's review)
-- **Clips changed (to re-record):** intro-4, intro-6, event-3, event-8, event-9, event-11, event-12, event-13, event-14 and outcome. All the others are unchanged.
+- **Clips changed (to re-record):** intro-4, intro-6, event-2, event-3, event-8, event-9, event-10, event-11, event-12, event-13, event-14 and outcome (12 per voice). All the others are unchanged.
 - **Accepted from the review:**
   - Frog Lake and Fort Pitt: the Cree leaders were divided;
   - the defenders' numbers changed;
@@ -191,4 +191,16 @@ Answer as a list of changes, chapter by chapter. Do not rewrite the whole script
   - Battleford: six Cree and two Nakoda men, 27 November;
   - the flag caption now cites the 1815 and 1816 accounts.
 - **Not added:** a count of about 25 prisoners (unchecked).
-- **Still to check against the Hildebrandt PDF** (blocked here): the page references, Fisher and Montour (p. 39), the 11 May ride (pp. 67–70), Riel at prayer (p. 74), the prisoners (pp. 77–78) and the wedding-ring witness (p. 78).
+- **Checked against Hildebrandt (1989), the PDF the user sent:**
+  - Fisher and Montour lowered the cable;
+  - the 11 May ride, with Howard's Gatling and Boulton's men;
+  - the east wind on 12 May, Middleton's "temper and head", and the lunch;
+  - Astley's white flag and Riel's letter;
+  - many Métis thought peace had come;
+  - Riel kneeling and praying (a Métis witness);
+  - the nails;
+  - 50 to 60 fighters with about 40 rifles;
+  - twenty-five dead.
+  
+  These were added or firmed up in event-2, event-8 to event-12 and the outcome.
+- **Not found in the text** (the scan's text layer is patchy): Ouellette's age, the prisoners' identities and the wedding-ring witness. They stay tagged as accounts.
