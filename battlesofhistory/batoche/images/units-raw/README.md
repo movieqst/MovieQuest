@@ -14,3 +14,10 @@ All are original illustrations for this project (AI-generated) from ART-PROMPTS-
 | metis-rifle | PASS. Blue capote, the sash, wide felt hat, leggings, long rifle. The sash reads as tartan rather than the arrow-patterned ceinture fléchée; fine at game size. |
 | metis-rifle-fire | PASS for now. Behind a low log wall: aim, fire, reload. In row 1 (facing the viewer) the wall is behind him instead of in front; a redraw of that row would be better. Cut at 240 × 200. |
 | field-scout | PASS. A prairie volunteer in a brown jacket and wide felt hat, carbine, galloping bay horse. Cut at 240 × 200. |
+| metis-shotgun | PASS. An older hunter in a fringed hide jacket, fur cap, sash and moccasins, with a double-barrelled shotgun. |
+| metis-shotgun-fire | PASS. Behind a log wall: aim, fire, break the gun open to reload. As with metis-rifle-fire, the wall is behind him in row 1. Cut at 240 × 200. |
+| metis-horse | PASS. Blue capote, sash, wide hat, rifle, prairie horse. Cut at 240 × 200. |
+| leader-dumont | PASS. Full dark beard, wide hat, rifle, sash, field glasses. He wears a striped blanket coat (a Métis capote) rather than the fringed buckskin jacket of the 1885 photo: period-right, and he reads as Dumont at game size. A buckskin redraw would match the photo better. Cut at 240 × 200. |
+| firstnations-fighter, firstnations-fighter-fire | REVISE (not cut). Feathers in the hair, a fringed hide shirt and the Métis tartan sash read as a costume. Ask for: a cloth (calico) shirt, a wool blanket over one shoulder or a blanket coat, cloth leggings and moccasins, braided hair with at most one feather, a plain belt, a trade musket. |
+| leader-middleton | REVISE (not cut). Dark blue dress uniform with gold braid; the Topley photo of 1885 shows a light grey-khaki campaign jacket and breeches, a dark field cap, tall black boots and a white moustache, and the prompt has him mounted. |
+| leader-riel | REVISE (not cut). This is the clean-chinned 1884 look in a frock coat, holding papers. In May 1885 he had a full beard and wore a wide-brimmed hat and a waistcoat, and the prompt has him holding a crucifix. No gun: correct. |
