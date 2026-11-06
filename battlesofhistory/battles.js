@@ -171,7 +171,7 @@ window.BATTLES = [
     blurb: 'For four days a Canadian government army presses against the rifle pits dug by the Métis around their village on the South Saskatchewan. On the fourth day it breaks through, and the North-West Resistance of 1885 comes to an end.',
     cover: 'images/cover.jpg', coverPos: '60% 50%',
     coverCredit: 'Hostilities open at Batoche, 9 May 1885. Photograph by Captain James Peters, who served with the field force. Library and Archives Canada, C-003464, public domain',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'tyre', progress: 35, lat: 33.27, lon: 35.2,
