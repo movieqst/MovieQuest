@@ -61,3 +61,7 @@ All are original illustrations for this project (AI-generated) from ART-PROMPTS-
 | leader-riel (walking) | REVISE. Moustache only, frock coat, a sash and papers: it does not match leader-riel-attack (full beard, crucifix). Not used. |
 | leader-dumont (walking) | Not used: a blanket coat again, not buckskin. The approved leader-dumont stays. |
 | firstnations-fighter-fire (second try) | PASS. Braids, cloth shirt, dark waistcoat, fringed leggings, a plain red cloth sash (not the Métis ceinture fléchée), no feathers; kneeling behind a log wall: aim, fire, smoke, in all four directions. Cut at 240 × 200. |
+| leader-riel (final) | PASS. Full dark beard, curly hair, long dark coat, dark red waistcoat, a crucifix on his chest, no gun: matches leader-riel-attack. |
+| northcote-damaged (final, replaces the side-wheeler) | PASS. The same stern-wheeler as northcote, both stacks broken to stumps, smoke from the stumps, a red ensign. Row 1 is seen a little from the side rather than straight on; fine at game size. |
+
+**The Batoche set is complete:** 28 sheets in ../units/ and 8 portraits in ../portraits/.
