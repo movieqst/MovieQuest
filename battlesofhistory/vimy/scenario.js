@@ -577,3 +577,10 @@ Object.assign(window.VIMY_SCENARIO, {
 
 // The year shown with the dates in the stamp at the top left of the map
 window.VIMY_SCENARIO.clockYear = 1917;
+// The legend at the top right of the map
+window.VIMY_SCENARIO.legend = [
+  { label: 'German trenches', color: '#ff3a68', kind: 'line' },
+  { label: 'British and Canadian trenches', color: '#5ae8ff', kind: 'line' },
+  { label: 'Canadian Corps', color: '#2e5aa8', kind: 'dot' },
+  { label: 'German Sixth Army', color: '#c0392b', kind: 'dot' }
+];

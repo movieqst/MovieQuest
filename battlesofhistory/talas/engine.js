@@ -754,6 +754,21 @@ function drawClockStamp() {
   if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, x + 14, y + (L1 ? 38 : 9)); }
   ctx.restore();
 }
+// Legend, top right of the map: S.legend ([{ label, color, kind: 'line' | 'dot' }]) or, by default, each side's colour.
+function drawLegend() {
+  const items = S.legend || Object.keys(S.sides || {}).map(k => ({ label: S.sides[k].short || S.sides[k].name, color: S.sides[k].color, kind: 'dot' }));
+  if (!items.length || (mode === 'intro' && introIdx === 0)) return;
+  ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
+  const x = view.w - w - 14, y = 12; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
+  ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "13px system-ui, sans-serif";
+  items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
+    if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.arc(x + 23, cy, 5, 0, Math.PI * 2); ctx.fill(); }
+    ctx.shadowBlur = 0; ctx.fillStyle = '#e8eef2'; ctx.fillText(it.label, x + 42, cy); });
+  ctx.restore();
+}
 // Pulsing rings (markers): gold for a place or a neutral event; the side's own colour when the ring points at that side's
 // men. A marker can say so with side: '<side key>' (or side: 'neutral' to stay gold); without it, a ring whose label names
 // one of the formations takes that formation's side.
@@ -910,6 +925,7 @@ function render() {
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
   drawClockStamp();
+  drawLegend();
   if (BR && mode === 'intro') BR.draw(ctx);
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
