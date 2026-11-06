@@ -164,3 +164,10 @@ Each leader has a walking sheet (**leader-NAME**). Field commanders also have an
 - **Licences:** each photo's licence still has to be read once on its Commons page; commons.wikimedia.org is blocked in this session.
 - **Rank badges:** check against a 1967 chart. At sprite size, a gold slide or a red tab is enough.
 - **Placement:** Assad, Nasser and Amer are placed at their headquarters on the Region map, not on a battlefield.
+
+## Redo requests after batch 2 (6 November)
+Keep exactly the style of the approved IDF infantry sheets.
+1. **idf-centurion** (moving): `The same Israeli Centurion tank as idf-centurion-fire (sand-grey paint, white recognition stripes, long 105 mm gun, commander in the hatch), driving: 4 frames of tracks and dust per row. Rows: south, east, north, west. No national flags or stars.`
+2. **idf-sherman** (redo, optional): `The same long-gun Super Sherman, but with NO Star of David on the hull: plain sand-olive paint with white recognition marks and a white number only.`
+3. **jor-trench-fire**: `A Jordanian soldier of June 1967 defending Ammunition Hill in Jerusalem: steel helmet (not a shemagh), khaki uniform, a bolt-action Lee-Enfield or an M1 rifle, firing over the stone-and-sandbag edge of a trench that is IN FRONT of him in every row: frames aim, fire with a flash, recoil, reload. Rows: south, east, north, west.`
+4. **egy-trench-fire** (optional): `The same Egyptian infantryman as egy-infantry, firing from a sandbagged trench at Um Katef: the sandbags IN FRONT of him in every row. No flag patches on the sleeves.`
