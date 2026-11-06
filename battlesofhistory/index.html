@@ -144,9 +144,9 @@
   // Side colours: the first side is always red and the second always blue, on every card.
   const pickSideColors = () => ['#c0392b', '#2e5aa8'];   // always the first side red, the second blue
   const sidesHTML = (t, colors) => { const m = String(t || '').split(/\s+vs\.?\s+/i); const [ca, cb] = colors || ['#ff6a5c', '#6aa6ff']; return m.length === 2 ? `<span style="color:${ca}">${esc(m[0])}</span> <span class="vs">vs.</span> <span style="color:${cb}">${esc(m[1])}</span>` : esc(t); };
-  // In-progress battles sit in the column beside the globe, at most 4 at a time: the furthest along (`progress` in battles.js); when a battle's
+  // In-progress battles sit in the column beside the globe, at most 4 at a time: the furthest along (`progress` in battles.js), the closest to ready at the bottom, just above the grid it will move into; when a battle's
   // status becomes 'ready' it moves to the grid and the next one takes its place.
-  document.getElementById('wipList').innerHTML = (window.BATTLES || []).filter(b => b.status !== 'ready').sort((a, b) => (b.progress || 0) - (a.progress || 0) || (b.order || 0) - (a.order || 0)).slice(0, 4).map(b => `
+  document.getElementById('wipList').innerHTML = (window.BATTLES || []).filter(b => b.status !== 'ready').sort((a, b) => (b.progress || 0) - (a.progress || 0) || (b.order || 0) - (a.order || 0)).slice(0, 4).reverse().map(b => `
     <a class="wcard" href="${esc(b.folder)}/index.html"><div class="th" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')${b.coverPos ? ';background-position:' + esc(b.coverPos) : ''}"></div>
       <div class="t"><b>${esc(b.title)}</b>${esc(b.date)}<br><span class="s">${esc(b.status)}</span></div></a>`).join('');
   document.getElementById('list').innerHTML = (window.BATTLES || []).filter(b => b.status === 'ready').sort((a, b) => (b.order || 0) - (a.order || 0)).map(b => `
