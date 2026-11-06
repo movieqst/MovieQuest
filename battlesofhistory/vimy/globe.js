@@ -199,7 +199,13 @@ window.BattleGlobe = (() => {
         c.globalAlpha = s.ancient;
         BORDERS.ancient.forEach(k => (k.rings || [k.ring]).forEach(ring => { c.beginPath(); if (path(ring)) { c.closePath(); c.fillStyle = `rgba(${k.color},.26)`; c.fill(); c.setLineDash([7, 5]); c.strokeStyle = `rgba(${k.color},.95)`; c.lineWidth = 2; c.stroke(); c.setLineDash([]); } }));
         // a front line of the time (BORDERS.front: { name, line: [[lon, lat]...], color, label }), drawn over the realms
-        const FR = BORDERS.front; if (FR) { c.beginPath(); if (path(FR.line)) { c.setLineDash([]); c.lineWidth = Math.max(3, Math.min(7, R / 260)); c.strokeStyle = 'rgba(20,10,10,.75)'; c.stroke(); c.lineWidth = Math.max(2, Math.min(5, R / 360)); c.strokeStyle = `rgb(${FR.color})`; c.stroke(); }
+        const FR = BORDERS.front; if (FR) { c.beginPath(); if (path(FR.line)) { c.setLineDash([]); c.lineWidth = Math.max(3, Math.min(7, R / 260)) * (GS.frontSides ? 1.8 : 1); c.strokeStyle = 'rgba(20,10,10,.75)'; c.stroke(); if (!GS.frontSides) { c.lineWidth = Math.max(2, Math.min(5, R / 360)); c.strokeStyle = `rgb(${FR.color})`; c.stroke(); } }
+          // GS.frontSides { east, west }: the two opposing lines, drawn as a double line either side of the front
+          const FS = GS.frontSides; if (FS) { const pts = FR.line.map(q => proj(q[0] * D, Math.cos(q[1] * D), Math.sin(q[1] * D))), lw = Math.max(2, Math.min(5, R / 360)), off = lw * .9;
+            [[FS.east, 1], [FS.west, -1]].forEach(([col, sg]) => { c.beginPath(); let pen = false;
+              for (let i = 0; i < pts.length; i++) { const p = pts[i]; if (!p) { pen = false; continue; } const a = pts[i - 1] || p, b = pts[i + 1] || p; let dx = b[0] - a[0], dy = b[1] - a[1]; const L = Math.hypot(dx, dy) || 1; let nx = -dy / L, ny = dx / L; if (nx < 0) { nx = -nx; ny = -ny; }
+                const x = p[0] + nx * off * sg, y = p[1] + ny * off * sg; pen ? c.lineTo(x, y) : c.moveTo(x, y); pen = true; }
+              c.lineWidth = lw; c.strokeStyle = `rgb(${col})`; c.stroke(); }); }
           if (!s.stop2 && FR.label) { const p = proj(FR.label[0] * D, Math.cos(FR.label[1] * D), Math.sin(FR.label[1] * D)); if (p) { c.font = `700 ${fs * .8}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(FR.name, p[0], p[1]); c.fillStyle = `rgb(${FR.color})`; c.fillText(FR.name, p[0], p[1]); } } }
         if (!s.stop2) BORDERS.ancient.forEach(k => { const p = proj(k.label[0] * D, Math.cos(k.label[1] * D), Math.sin(k.label[1] * D)); if (!p) return;
           c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(k.name, p[0], p[1]); c.fillStyle = `rgb(${k.color})`; c.fillText(k.name, p[0], p[1]);
@@ -295,7 +301,7 @@ window.BattleGlobe = (() => {
       const k = Math.min(1, (now - t0) / DIVE2_SECS), e = ease(k);
       const F = st.from || { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }, CL = Math.max(CLOSE, F.pull * 1.5);
       st.R = R0 * F.pull * Math.pow(CL / F.pull, e); st.lat0 = F.lat + (KADESH.lat - F.lat) * e; st.lon0 = F.lon + (KADESH.lon - F.lon) * e;
-      st.ancient = Math.max(0, 1 - k / .4); st.tThen = st.stop2 ? Math.max(0, 1 - k / .3) : 0; st.modern = 0; st.tToday = 0; st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = (F.oy !== undefined ? F.oy : -h * (cb.lift ? .22 : .04)) * (1 - e) - h * .05 * e;
+      st.ancient = GS.keepBorders ? 1 : Math.max(0, 1 - k / .4); st.tThen = st.stop2 ? (GS.keepTowns ? 1 : Math.max(0, 1 - k / .3)) : 0; st.modern = 0; st.tToday = 0; st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = (F.oy !== undefined ? F.oy : -h * (cb.lift ? .22 : .04)) * (1 - e) - h * .05 * e;
       if (k >= 1) { st.phase = 'fade'; t0 = now; if (cb.onFade) cb.onFade(); }
     } else if (st.phase === 'fade') {
       const k = Math.min(1, (now - t0) / FADE_SECS); cv.style.opacity = String(1 - k);

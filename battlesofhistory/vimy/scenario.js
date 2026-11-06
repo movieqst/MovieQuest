@@ -369,7 +369,7 @@ Object.assign(window.VIMY_SCENARIO, {
         { x: 543, y: 290, text: 'Souchez', small: true }, { x: 1997, y: 1090, text: 'Willerval', small: true }
       ]
     },
-    globe: { target: { lon: 2.77, lat: 50.37 }, region: { lon: 3.2, lat: 49.4 }, pull: 3.2, startLat: 35,
+    globe: { target: { lon: 2.77, lat: 50.37 }, region: { lon: 3.2, lat: 49.4 }, pull: 4.5, lift: false, keepBorders: true, keepTowns: true, frontSides: { east: '230,70,55', west: '90,150,255' }, startLat: 35,
       periodNote: 'Western Europe in April 1917',
       stop2: { center: { lon: 2.8, lat: 50.38 }, pull: 34, todayNote: 'Today’s towns and cities', thenNote: 'Towns of April 1917' },
       labels: [
