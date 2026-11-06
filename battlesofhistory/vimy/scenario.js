@@ -356,7 +356,7 @@ Object.assign(window.VIMY_SCENARIO, {
     },
     world: { w: 2400, h: 1800 },
     terrain: 'terrain-battle.jpg',
-    trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1917-03.png'],
+    trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1916-12.png', 'trenches-1917-03.png'], trenchNeonAlpha: .6,
     defaultTrench: 'trenches-1917-03.png', introTrench: 'trenches-1917-03.png', trenchAlpha: .45,
     duration: 182, commandDuration: 300, commandFocus: { x: 1100, y: 800 },
     battlefield: {
@@ -452,14 +452,14 @@ Object.assign(window.VIMY_SCENARIO, {
     { id: 'b13', to: on(L.black, 1290, 10), speed: 18, state: 'attack' },
     { id: 'g79b', strengthTo: 55, over: 10 }, { id: 'g1a', strengthTo: 50, over: 10 }, { id: 'g1b', strengthTo: 55, over: 10 } ] });
   set(3, { media: M('36-advancing-through-german-wire.jpg'), focus: { x: 1150, y: 1300 }, zoom: 2.64, barrage: B(L.black, L.red),
-    markers: [ { x: 1150, y: 1450, label: 'Milne, 16th Battalion' }, { x: 1120, y: 1180, label: 'Sifton, 18th Battalion' } ], orders: [
+    markers: [ { x: 1150, y: 1450, label: 'Milne, 16th Battalion', side: 'allied' }, { x: 1120, y: 1180, label: 'Sifton, 18th Battalion', side: 'allied' } ], orders: [
     { id: 'c1', strengthTo: 85, over: 10 }, { id: 'c2', strengthTo: 88, over: 10 }, { id: 'gmg2', strengthTo: 40, over: 10 } ] });
   set(4, { media: M('37-germans-leaving-dugouts-as-canadians-advance.jpg'), focus: FOLIE, zoom: 2,
     markers: [ Object.assign({ label: 'La Folie Farm' }, FOLIE), Object.assign({ label: 'the cave at Les Tilleuls' }, TILLEULS) ], orders: [
     { id: 'c3', to: { x: FOLIE.x + 30, y: FOLIE.y + 20 }, speed: 18, state: 'attack' },
     ...[['c2', 1110], ['c1', 1470]].map(([id, y]) => ({ id, to: on(L.red, y, 10), speed: 18, state: 'attack' })), { id: 'b13', to: on(L.red, 1290, 10), speed: 18, state: 'attack' },
     { id: 'g79b', state: 'rout', to: { x: VIMY.x, y: VIMY.y + 60 }, speed: 18 }, { id: 'gmg2', strengthTo: 0, over: 6 } ] });
-  set(5, { media: M('06-bringing-in-the-wounded.jpg'), focus: HILL145, zoom: 2.86, markers: [ Object.assign({ label: 'Hill 145' }, HILL145), Object.assign({ label: 'machine-guns on the Pimple' }, PIMPLE) ], orders: [
+  set(5, { media: M('06-bringing-in-the-wounded.jpg'), focus: HILL145, zoom: 2.86, markers: [ Object.assign({ label: 'Hill 145' }, HILL145), Object.assign({ label: 'machine-guns on the Pimple', side: 'french' }, PIMPLE) ], orders: [
     { id: 'c4', to: { x: HILL145.x - 40, y: HILL145.y + 10 }, speed: 14, state: 'attack' }, { id: 'c4', strengthTo: 55, over: 12 },
     { id: 'gmg1', strengthTo: 85, over: 12 }, { id: 'g16', strengthTo: 90, over: 12 } ] });
   set(6, { media: M('03-consolidating-positions.jpg'), focus: THELUS, zoom: 2, barrage: B(L.red, L.blue), orders: [
@@ -528,6 +528,27 @@ Object.assign(window.VIMY_SCENARIO, {
   I[4].cues = [ Object.assign({ on: 'eleven subways' }, ring({ x: 780, y: 650 }, 'the subways', { r: 90 })) ];
   I[5].cues = [ Object.assign({ on: 'Bavarians at Thélus' }, ring(THELUS, 'Bavarians', { r: 80 })), Object.assign({ on: '79th Reserve' }, ring(VIMY, 'Prussians, 79th Reserve', { r: 80 })),
                 Object.assign({ on: '16th Bavarian' }, ring(PIMPLE, '16th Bavarian', { r: 80 })) ];
+  // The map starts empty: the title slide and the trench build-up show no soldiers. The build-up slide was added after the
+  // narration was recorded (extra: captions only until its clip is recorded; the recorded clips keep their numbers).
+  I[0].noUnits = true; I[0].trenches = null;
+  // dates for the stamp at the top left of the map (the trench build-up shows its own)
+  [['Easter Monday, 9 April'], ['1914 to 1917'], ['Winter 1916 to 1917'], ['20 March to 9 April'], ['1916 to 1917'], ['April 1917']].forEach(([c], i) => { const sl = I[i === 0 ? 0 : i]; if (sl && !sl.growth) sl.clock = c; });
+  I.splice(1, 0, {
+    title: 'Four years of trenches', extra: true, noUnits: true, auto: 32, trenches: null,
+    lines: [
+      { text: 'The Germans took Vimy Ridge in October 1914 and dug in. French attacks in 1915 reached the crest but could not hold it.', tag: 'established' },
+      { text: 'In February 1916 the British took over this part of the line from the French. The Canadians arrived in October 1916.', tag: 'established' },
+      { text: 'All through the winter both sides kept digging: new front lines, saps, communication trenches and tunnels, until the ridge was a maze.', tag: 'established' },
+      { text: 'Blue lines are British and Canadian trenches, red lines German, traced from the British trench maps of each date. Each map covers a different part of the ridge.', tag: 'reconstruction' }
+    ],
+    growth: [
+      { at: 0, layer: null, label: '1914 to 1915' },
+      { at: 7, layer: 'trenches-1916-02.png', label: 'February 1916' },
+      { at: 13, layer: 'trenches-1916-10.png', label: 'October 1916' },
+      { at: 19, layer: 'trenches-1916-12.png', label: 'December 1916' },
+      { at: 25, layer: 'trenches-1917-03.png', label: 'March 1917' }
+    ]
+  });
 })();
 
 /* ---------- the library of sources (library.html?battle=vimy) ---------- */
@@ -553,3 +574,13 @@ Object.assign(window.VIMY_SCENARIO, {
     ];
   })()
 });
+
+// The year shown with the dates in the stamp at the top left of the map
+window.VIMY_SCENARIO.clockYear = 1917;
+// The legend at the top right of the map
+window.VIMY_SCENARIO.legend = [
+  { label: 'German trenches', color: '#ff3a68', kind: 'line' },
+  { label: 'British and Canadian trenches', color: '#5ae8ff', kind: 'line' },
+  { label: 'Canadian Corps', color: '#2e5aa8', kind: 'dot' },
+  { label: 'German Sixth Army', color: '#c0392b', kind: 'dot' }
+];

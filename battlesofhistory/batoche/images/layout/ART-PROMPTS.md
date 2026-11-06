@@ -70,6 +70,20 @@ STYLE: soft, natural colours like a gentle satellite photograph, with light reli
 NO text, labels, grid lines, arrows, dots, lines or boxes. NO modern roads, towns, field squares or railways (the game draws the 1885 railway itself).
 ```
 
+## 4. The continent map (Canada and the northern United States), after the globe
+`batoche/tools/draw-continent.py` draws it. It covers 74°N 142°W (top left) to 36°N 50°W (bottom right), about 5,900 × 4,200 km.
+Attach **continent-base.png** first and **continent-guide.png** second, then paste:
+
+```text
+Repaint the first image (continent-base.png) as a beautiful, realistic satellite-style view of Canada and the northern United States in spring, in the same style as a gentle satellite photograph. The second image is a guide only: do not copy its labels, borders or boxes.
+
+ALIGNMENT: exactly the same framing, 4:3, north at the top. Do not crop, zoom, rotate or shift. It covers 74°N 142°W (top left) to 36°N 50°W (bottom right). Every coastline, island, lake and river stays EXACTLY where it is in the first image: Hudson Bay, the Great Lakes, the Pacific and Atlantic coasts, the Arctic islands, Lake Winnipeg, Great Slave and Great Bear Lakes.
+
+PAINT: deep blue oceans and bays; snow and ice on the Arctic islands and the far north; dark green boreal forest across the north; the Rocky Mountains in the west with snowy peaks; the open prairie (pale tan and green) in the middle south; eastern forests in the south-east. Soft natural colours, light relief shading, a little thin cloud at most.
+STYLE: realistic, gentle satellite photograph.
+NO text, labels, borders, grid lines, arrows, dots, lines or boxes. NO cities, roads or night lights.
+```
+
 ---
 
 ## After ChatGPT
@@ -121,3 +135,6 @@ NO text, labels, grid lines, arrows, dots or boxes. NO modern roads, towns or fi
 - **Church, rectory and cemetery:** now near their real place. The church is painted at about (1326, 1118) world px against the real (1264, 1012), about 230 m out. The cemetery is just south of it, about 270 m east of the guide spot.
 - **River:** 87% of our traced river is within 20 m of the painted water, and 99% within 60 m.
 - **Game positions:** the game puts the church on the painted one.
+
+## Notes for building the page
+- **Continent map in the game:** show at most about 80% of it, centred on Canada and a little toward the prairies, so most of the oceans and Greenland stay out of the frame. Do not crop the image file itself; the full painting stays in the Atlas.

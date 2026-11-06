@@ -131,7 +131,7 @@ window.BATTLE_SCENARIO = {
         { at: 31, file: '41-map-21st-panzer.jpg', caption: 'Where the 21st Panzer Division lay: spread south and south-east of Caen, its tanks around Falaise and Vimont, its headquarters at Saint-Pierre-sur-Dives. The red ring is ten miles from the bridge.', ref: 'Positions approximate', credit: 'Map: Battle Games, drawn from real elevation data' }
       ],
       focus: { x: 1000, y: 760 }, zoom: 1.3,
-      markers: [ { x: 1005, y: 780, label: 'Gun pit and pillbox' } ],
+      markers: [ { x: 1005, y: 780, label: 'Gun pit and pillbox', side: 'ger' } ],
       auto: 44,
       lines: [
         { text: 'The bridges were guarded by about fifty men of the 716th Infantry Division, a coastal-defence formation of older men and conscripts from across occupied Europe, under Major Hans Schmidt, with a 50 mm anti-tank gun, machine guns in trenches, and the bridges wired for demolition.', tag: 'german', cite: 'Schmidt’s account in Ambrose, Pegasus Bridge, ch. 4; 716th Infantry Division war diary' },
@@ -401,7 +401,7 @@ window.BATTLE_SCENARIO = {
   {
     id: 'approach',
     title: 'The approach', subtitle: 'Night of 5–6 June 1944',
-    introOnly: true, tilt: 0, noProps: true,     // the moonlit area map (Ouistreham to Caen), shown in the introduction only
+    introOnly: true, noProps: true,     // the moonlit area map (Ouistreham to Caen), shown in the introduction only
     duration: 60, commandDuration: 60,
     world: { w: 2400, h: 1800 },                 // 49.31 N 0.42 W (top left) to 49.17 N 0.134 W, about 21 x 16 km (1 px = 9 m)
     clockStart: '5 June · 23:00',
@@ -559,3 +559,6 @@ window.BATTLE_SCENARIO = {
     objective: 'A bridge has changed hands.'
   }
 };
+
+// The year shown with the dates in the stamp at the top left of the map
+window.BATTLE_SCENARIO.clockYear = 1944;

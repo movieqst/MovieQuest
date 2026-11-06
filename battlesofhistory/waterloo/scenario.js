@@ -459,7 +459,7 @@ window.WATERLOO_SCENARIO = {
         { leader: 'wellington', to: { x: 810, y: 570 } }, { leader: 'napoleon', to: { x: 870, y: 800 } },
         { id: 'c-bulow', to: { x: 1080, y: 650 }, speed: 7 }, { leader: 'blucher', to: { x: 1150, y: 600 }, speed: 10, delay: 8 } ] },
     { t: 120, media: '10-grouchy.jpg', title: '18 June', clock: 'morning', tag: 'account', focus: { x: 1150, y: 760 }, zoom: .55,
-      markers: [ { x: 1525, y: 919, label: 'Walhain' } ],
+      markers: [ { x: 1525, y: 919, label: 'Walhain', side: 'french' } ],
       text: 'On the morning of 18 June, Napoleon delayed his attack while his army assembled and the rain-soaked ground began to dry. Near Walhain, Grouchy heard the guns of Waterloo. General Gérard urged him to march toward the fighting, but Grouchy refused and continued pursuing the Prussians toward Wavre. The battle of Waterloo had begun.',
       orders: [
         { id: 'c-grouchy', to: { x: 1450, y: 780 }, via: [ { x: 1520, y: 925 } ], speed: 12 },

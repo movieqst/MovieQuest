@@ -337,8 +337,48 @@ const SHEET_BY = S.sheetBy || {};
    chapter with 'trenches' switches the layer (null: none); S.defaultTrench is the one shown when the battle starts. */
 const TRENCH = {}, TCACHE = {}; let curTrench = S.defaultTrench || null;
 (S.trenchLayers || []).forEach(n => { const im = new Image(); im.onload = () => { TRENCH[n] = im; if (curTrench === n) applyArt(); }; im.src = (S.imageBase || 'images/') + 'trenches/' + n; });
+/* Neon trenches: each layer recoloured once to glowing lines (German red, British and Canadian blue) on a canvas the size of
+   the terrain, then drawn over the map every frame, so a layer can fade in. An intro slide with `growth`
+   ([{ at: seconds, layer, label }]) builds the trench system up stage by stage; `noUnits` hides the soldiers. */
+const NEON = {}, NEONB = {};   // NEONB: the British and Canadian (blue) lines alone, thicker, drawn again so they stay easy to see
+function neonLayer(n) {
+  if (!n) return null; if (NEON[n]) return NEON[n]; const im = TRENCH[n]; if (!im) return null;
+  const w = Math.round(W.w * TS), h = Math.round(W.h * TS), A = document.createElement('canvas'); A.width = w; A.height = h;
+  const a = A.getContext('2d'); a.drawImage(im, 0, 0, w, h);
+  const Bc = document.createElement('canvas'); Bc.width = w; Bc.height = h; let blue = null;
+  try { const d = a.getImageData(0, 0, w, h), px = d.data, bd = new ImageData(w, h), bp = bd.data;   // opened from a file, the browser may refuse: then the lines keep their colours
+    for (let i = 0; i < px.length; i += 4) { if (px[i + 3] < 50) { px[i + 3] = 0; continue; } const red = px[i] > px[i + 2]; px[i] = red ? 255 : 60; px[i + 1] = red ? 50 : 225; px[i + 2] = red ? 95 : 255; px[i + 3] = 255;
+      if (!red) { bp[i] = 90; bp[i + 1] = 235; bp[i + 2] = 255; bp[i + 3] = 255; } }
+    a.putImageData(d, 0, 0); Bc.getContext('2d').putImageData(bd, 0, 0); blue = Bc; } catch (e) {}
+  if (blue) { const BB = document.createElement('canvas'); BB.width = w; BB.height = h; const b = BB.getContext('2d');
+    b.filter = 'blur(10px)'; b.drawImage(blue, 0, 0); b.drawImage(blue, 0, 0); b.filter = 'none';
+    for (let dx = -2; dx <= 2; dx++) for (let dy = -2; dy <= 2; dy++) if (dx * dx + dy * dy <= 5) b.drawImage(blue, dx, dy);
+    b.globalCompositeOperation = 'lighter'; b.globalAlpha = .6; b.drawImage(blue, 0, 0); NEONB[n] = BB; }
+  const C = document.createElement('canvas'); C.width = w; C.height = h; const c = C.getContext('2d');
+  c.filter = 'blur(7px)'; c.drawImage(A, 0, 0); c.drawImage(A, 0, 0); c.filter = 'blur(2px)'; c.drawImage(A, 0, 0); c.filter = 'none';
+  [[-1, 0], [1, 0], [0, -1], [0, 1], [0, 0]].forEach(([dx, dy]) => c.drawImage(A, dx, dy));
+  NEON[n] = C; return C;
+}
+function growthNow() {
+  const sl = mode === 'intro' && S.intro[introIdx]; if (!sl || !sl.growth) return null;
+  const t = Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer;
+  let k = 0; sl.growth.forEach((g, i) => { if (t >= g.at) k = i; }); return { sl, k, g: sl.growth[k], prev: k ? sl.growth[k - 1] : null, f: Math.min(1, (t - sl.growth[k].at) / 1.6) };
+}
+function drawTrenches(drawWorld) {
+  const gr = growthNow(), layers = [];
+  if (gr) { if (gr.prev && gr.prev.layer) layers.push([gr.prev.layer, 1]); if (gr.g.layer) layers.push([gr.g.layer, gr.f], [gr.g.layer, (1 - gr.f) * .9, 'lighter']); }
+  else if (curTrench) layers.push([curTrench, mode === 'intro' ? .95 : (S.trenchNeonAlpha || .6)]);
+  layers.forEach(([n, al, op]) => { const C = neonLayer(n); if (!C || al <= 0) return; ctx.save(); ctx.globalAlpha = al; if (op) ctx.globalCompositeOperation = op; drawWorld(C);
+    if (NEONB[n] && !op) { ctx.globalAlpha = Math.min(1, al * 1.7); drawWorld(NEONB[n]); } ctx.restore(); });
+}
+function drawGrowthLabel() {
+  const gr = growthNow(); if (!gr || !gr.g.label) return;
+  ctx.save(); ctx.globalAlpha = .4 + .6 * gr.f; ctx.shadowColor = '#7fe9ff'; ctx.shadowBlur = 18;
+  outlined(ctx, gr.g.label, view.w / 2, 54, 34, { fill: '#e9fbff', weight: 'bold' }); ctx.restore();
+}
 function setTrench(n) { if (n === undefined || n === curTrench) return; curTrench = n; applyArt(); }
 function withTrench(base) {
+  return base;   // the trenches are now drawn as glowing neon lines over the map each frame (neonLayer, drawTrenches)
   if (!curTrench || !TRENCH[curTrench] || !base) return base; const key = curTrench + (base === PAINTEDTER ? 'p' : 'd');
   if (!TCACHE[key]) { const T = document.createElement('canvas'); T.width = base.width; T.height = base.height; const g = T.getContext('2d'); g.drawImage(base, 0, 0); g.globalAlpha = S.trenchAlpha || .85; g.drawImage(TRENCH[curTrench], 0, 0, T.width, T.height); TCACHE[key] = T; }
   return TCACHE[key];
@@ -779,6 +819,70 @@ function checkEnd() {
 }
 
 /* ---------------- rendering ---------------- */
+// Date and time stamp, top left of the map: what the chapter's `clock` says (e.g. "9 April, 5:30", "Day 2 · 07:55",
+// "Night, 20 October"). Pieces naming a month, a "Day N" or a year are the date; the rest is the time of day. A chapter
+// that gives only a time keeps the last date. S.clockYear is added to dates without a year; ev.clockTag ('disputed',
+// 'estimate') tints it. An intro slide can carry its own `clock`.
+const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
+function clockTime(t) {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(t.trim()); if (!m) return t;
+  let h = +m[1]; const pm = h >= 12, lead = m[1].length === 2; if (!lead && h < 12) return h + ':' + m[2] + ' a.m.';
+  if (h === 12 && m[2] === '00') return 'Noon'; const h12 = h % 12 || 12; return h12 + ':' + m[2] + (pm ? ' p.m.' : ' a.m.');
+}
+function clockParts(c) {
+  const bits = String(c).split(/\s+·\s+|,\s+/).map(x => x.trim()).filter(Boolean); let date = null; const time = [];
+  bits.forEach(b => { if (!date && CLOCK_DATE.test(b)) date = b; else time.push(clockTime(b)); });
+  if (date && S.clockYear && !/\b\d{3,4}\b/.test(date) && !/\bdays? \d/i.test(date)) date += ' ' + S.clockYear;
+  const tm = time.join(', '); return { date, time: tm ? tm[0].toUpperCase() + tm.slice(1) : '' };
+}
+function clockStampNow() {
+  if (mode === 'intro') { const sl = S.intro && S.intro[introIdx]; return sl && sl.clock && !sl.growth ? Object.assign(clockParts(sl.clock), { tag: sl.clockTag }) : null; }
+  const ev = currentEvent; if (!ev || !ev.clock) return null; const list = S.events || [], i = list.indexOf(ev);
+  let date = null; for (let k = 0; k <= i; k++) if (list[k] && list[k].clock) { const p = clockParts(list[k].clock); if (p.date) date = p.date; }
+  const p = clockParts(ev.clock); return { date: p.date || date, time: p.time, tag: ev.clockTag };
+}
+let clockShown = '', clockSince = -9;
+function drawClockStamp() {
+  const st = clockStampNow(); if (!st || !(st.date || st.time)) { clockShown = ''; return; }
+  const key = st.date + '|' + st.time; if (key !== clockShown) { clockShown = key; clockSince = wall; }
+  const f = Math.min(1, (wall - clockSince) / .8), glow = 1 - f, col = st.tag === 'disputed' ? '#ffb36b' : st.tag === 'estimate' ? '#ffe08a' : '#7fe9ff';
+  const L1 = (st.date || '').toUpperCase(), L2 = st.time || '';
+  ctx.save(); ctx.font = "bold 22px 'Cinzel', Georgia, serif"; const w1 = ctx.measureText(L1).width; ctx.font = "16px system-ui, sans-serif"; const w2 = ctx.measureText(L2).width;
+  const x = 14, y = 12, w = Math.max(w1, w2) + 28, h = (L1 ? 30 : 0) + (L2 ? 24 : 0) + 12;
+  ctx.globalAlpha = .35 + .65 * f; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.shadowColor = col; ctx.shadowBlur = 10 + 20 * glow;
+  ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+  ctx.shadowBlur = 8 + 14 * glow; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  if (L1) { ctx.font = "bold 22px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#f2fbff'; ctx.fillText(L1, x + 14, y + 8); }
+  if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, x + 14, y + (L1 ? 38 : 9)); }
+  ctx.restore();
+}
+// Legend, top right of the map: S.legend ([{ label, color, kind: 'line' | 'dot' }]) or, by default, each side's colour.
+function drawLegend() {
+  const items = S.legend || Object.keys(S.sides || {}).map(k => ({ label: S.sides[k].short || S.sides[k].name, color: S.sides[k].color, kind: 'dot' }));
+  if (!items.length || (mode === 'intro' && introIdx === 0)) return;
+  ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
+  const x = view.w - w - 14, y = 12; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
+  ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "13px system-ui, sans-serif";
+  items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
+    if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.arc(x + 23, cy, 5, 0, Math.PI * 2); ctx.fill(); }
+    ctx.shadowBlur = 0; ctx.fillStyle = '#e8eef2'; ctx.fillText(it.label, x + 42, cy); });
+  ctx.restore();
+}
+// Pulsing rings (markers): gold for a place or a neutral event; the side's own colour when the ring points at that side's
+// men. A marker can say so with side: '<side key>' (or side: 'neutral' to stay gold); without it, a ring whose label names
+// one of the formations takes that formation's side.
+function markerColors(m) {
+  let sd = m.side;
+  if (sd === undefined && m.label) { const l = m.label.toLowerCase(), f = formations.find(f => f.name && f.name.length >= 4 && l.includes(f.name.toLowerCase())); sd = f && f.side; }
+  const c = sd && S.sides && S.sides[sd] && S.sides[sd].color;
+  if (!c || !/^#[0-9a-f]{6}$/i.test(c)) return { ring: '#ffd36b', glow: 'rgba(255,211,107,.4)', text: '#fff3c9' };
+  const n = parseInt(c.slice(1), 16), rr = n >> 16, gg = n >> 8 & 255, bb = n & 255, lift = v => Math.round(v + (255 - v) * .45);
+  return { ring: `rgb(${lift(rr)},${lift(gg)},${lift(bb)})`, glow: `rgba(${rr},${gg},${bb},.5)`, text: S.sides[sd].light || '#ffffff' };
+}
+
 function resize() {
   const r = panel.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
   canvas.width = Math.max(1, Math.floor(r.width * dpr)); canvas.height = Math.max(1, Math.floor(r.height * dpr));
@@ -900,6 +1004,14 @@ function render() {
   updateCamera(); clampView();
   const z = view.z, vw = VW(), vh = VH();
   ctx.fillStyle = '#000'; ctx.fillRect(0, 0, view.w, view.h);
+  const drawWorld = img => { if (tiltOn()) {
+      const STRIP = 3;
+      for (let y0 = 0; y0 < view.h; y0 += STRIP) {
+        const y1 = Math.min(view.h, y0 + STRIP), v0 = vAt(y0), v1 = vAt(y1 + 1), sm = sAt((v0 + v1) / 2);
+        const wy0 = view.y + v0 * vh, wy1 = view.y + v1 * vh, ww = vw / sm, wxl = view.x + vw / 2 - ww / 2;
+        ctx.drawImage(img, wxl * TS, wy0 * TS, ww * TS, Math.max(1, (wy1 - wy0) * TS), 0, y0, view.w, y1 - y0 + 1);
+      }
+    } else ctx.drawImage(img, view.x * TS, view.y * TS, vw * TS, vh * TS, 0, 0, view.w, view.h); };
   if (TER) {
     if (tiltOn()) {
       // Draw the pre-rendered terrain in thin horizontal strips, each sampling a wider span of the map the further north it is.
@@ -911,12 +1023,13 @@ function render() {
         ctx.drawImage(TER, wxl * TS, wy0 * TS, ww * TS, Math.max(1, (wy1 - wy0) * TS), 0, y0, view.w, y1 - y0 + 1);
       }
     } else ctx.drawImage(TER, view.x * TS, view.y * TS, vw * TS, vh * TS, 0, 0, view.w, view.h);
+    if (stage !== 'campaign') drawTrenches(drawWorld);
   }
-  const scene = [];
+  const scene = [], noUnits = mode === 'intro' && S.intro[introIdx] && S.intro[introIdx].noUnits;
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
   if (stage !== 'campaign') PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
   if (stage !== 'campaign') drawFallen(ctx, y0v, y1v, x0v, x1v);
-  formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L }));
+  if (!noUnits) { formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L })); }
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
   drawSmoke(ctx);
   if (mode === 'watch' && currentEvent && currentEvent.rain) drawRain(ctx);
@@ -927,11 +1040,15 @@ function render() {
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
-    ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
-    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
+    const mc = markerColors(m);
+    ctx.strokeStyle = mc.ring; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
+    ctx.strokeStyle = mc.glow; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
+    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
+  drawClockStamp();
+  drawLegend();
   if (BR && mode === 'intro') BR.draw(ctx);
+  drawGrowthLabel();
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
@@ -959,6 +1076,7 @@ function drawRain(c) {
 function buildMiniBase() {
   MINIBASE = document.createElement('canvas'); MINIBASE.width = mini.width; MINIBASE.height = mini.height;
   const g = MINIBASE.getContext('2d'); if (!TER) return; g.drawImage(TER, 0, 0, mini.width, mini.height); if (stage === 'campaign') return;
+  { const C = neonLayer(curTrench); if (C) { g.drawImage(C, 0, 0, mini.width, mini.height); if (NEONB[curTrench]) { g.drawImage(NEONB[curTrench], 0, 0, mini.width, mini.height); g.drawImage(NEONB[curTrench], 0, 0, mini.width, mini.height); } } }
   const sx = mini.width / W.w, sy = mini.height / W.h; g.fillStyle = '#4a6a36'; PROPS.forEach(p => { if (p.kind === 'tree') g.fillRect(p.x * sx - 1, p.y * sy - 1, 2, 2); });
   g.fillStyle = '#8c7d5a'; g.fillRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy); g.strokeStyle = '#4d4230'; g.lineWidth = 1; g.strokeRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy);
 }
@@ -1004,7 +1122,8 @@ const Narr = {
   toggle() { this.set(!this.on); }
 };
 // The first slide opens with the welcome line (S.welcome, clip welcome.mp3) when it has been recorded.
-function speakSlide(sl) { const i = S.intro.indexOf(sl), go = () => Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', i + 1));
+function speakSlide(sl) { const i = S.intro.indexOf(sl), clip = S.intro.slice(0, i + 1).filter(x => !x.extra).length,
+    go = () => Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || (sl.extra ? null : audioFor('intro', clip)), undefined, !!sl.extra && !sl.audio);
   if (i === 0 && S.welcome) Narr.speak(S.welcome, audioFor('welcome'), go, true); else go(); }
 
 /* ---------------- UI: captions, log, panels ---------------- */
