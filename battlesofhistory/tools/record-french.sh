@@ -6,12 +6,12 @@
 # ~/voices/waterloo/fr-siwis/*.mp3 (45 clips each). Safe to stop (Ctrl+C) and run again: finished clips are skipped.
 # Then:  cd ~ && zip -r voices-fr.zip voices/waterloo/fr-tom voices/waterloo/fr-siwis   and send voices-fr.zip back.
 set -euo pipefail
-HERE=$(cd "$(dirname "$0")" && pwd); LINES="${1:-$HERE/waterloo-fr-voices-lines.tsv}"   # another battle: bash record-french.sh ../tools/batoche-fr-voices-lines.tsv
+HERE=$(cd "$(dirname "$0")" && pwd); LIST="${1:-$HERE/waterloo-fr-voices-lines.tsv}"   # another battle: bash record-french.sh ../tools/batoche-fr-voices-lines.tsv
 VOICES=${VOICES:-$HOME/piper-voice}; mkdir -p "$VOICES"
 HF=https://huggingface.co/rhasspy/piper-voices/resolve/main/fr/fr_FR
 get() { [ -s "$VOICES/$1.onnx" ] || { echo "Downloading $1 ..."; curl -sSL -o "$VOICES/$1.onnx" "$HF/$2/$3/$1.onnx"; curl -sSL -o "$VOICES/$1.onnx.json" "$HF/$2/$3/$1.onnx.json"; }; }
 get fr_FR-tom-medium tom medium
 get fr_FR-siwis-medium siwis medium
-awk -F'\t' '$2 == "fr-tom"' "$LINES" > /tmp/fr-tom.tsv;   MODEL="$VOICES/fr_FR-tom-medium.onnx"   bash "$HERE/record-voices.sh" /tmp/fr-tom.tsv
-awk -F'\t' '$2 == "fr-siwis"' "$LINES" > /tmp/fr-siwis.tsv; MODEL="$VOICES/fr_FR-siwis-medium.onnx" bash "$HERE/record-voices.sh" /tmp/fr-siwis.tsv
+awk -F'\t' '$2 == "fr-tom"' "$LIST" > /tmp/fr-tom.tsv;   MODEL="$VOICES/fr_FR-tom-medium.onnx"   bash "$HERE/record-voices.sh" /tmp/fr-tom.tsv
+awk -F'\t' '$2 == "fr-siwis"' "$LIST" > /tmp/fr-siwis.tsv; MODEL="$VOICES/fr_FR-siwis-medium.onnx" bash "$HERE/record-voices.sh" /tmp/fr-siwis.tsv
 echo "All done. Now run:  cd ~ && zip -r voices-fr.zip voices/waterloo/fr-tom voices/waterloo/fr-siwis"
