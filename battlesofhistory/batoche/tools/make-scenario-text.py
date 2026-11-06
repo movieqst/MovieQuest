@@ -51,9 +51,14 @@ outcome = [{'text': clean(l), 'tag': tag_of(l)} for l in re.split(r'\n- ', '\n' 
 # ---- pictures for each intro slide (seconds into its narration)
 FLAG = ('The Métis flag: a white infinity sign on a blue field. An account from 1815 describes a red flag with a horizontal figure eight, and Peter Fiddler recorded a blue one carried by Métis under Cuthbert Grant in 1816. '
         'It is a central symbol of the Métis Nation today. No source shows it flying at Batoche in 1885, so it is shown here as history, not on the battlefield.')
+CREE = ('nēhiyawēwin, the Cree language. Cree is an Algonquian language spoken from the Rocky Mountains to Labrador; around Batoche people spoke Plains Cree, '
+        'and Michif, the Métis language, joins Cree verbs to French nouns. For centuries Cree lived by the spoken word: stories, prayers, law and history were told and remembered, '
+        'alongside pictographs painted on rock. In 1840 and 1841 at Norway House, the missionary James Evans, working with Cree and Ojibwe helpers, printed the first books in syllabics; '
+        'Cree tradition credits a man named Calling Badger. Each shape stands for a consonant, and turning it changes the vowel. The script spread quickly, and by 1885 many Cree could read and write it. '
+        'Today Cree is spoken by more people than any other Indigenous language in Canada. The Saskatchewan River takes its name from the Cree kisiskāciwani-sīpiy, "the swift-flowing river".')
 IM = {0: [media('cover.jpg', 0), media('capture-of-batoche-curzon.jpg', 14)],
       1: [media('batoche-village-1885.jpg', 0), dict(media('metis-flag.png', 14, 'contain'), caption=FLAG), media('batoche-rectory-church-2017.jpg', 30)],
-      2: [media('st-laurent-mission-1891.jpg', 0), media('riel-1884-bennetto.jpg', 22)],
+      2: [media('st-laurent-mission-1891.jpg', 0), dict(media('cree-syllabics-chart.png', 10, 'contain'), caption=CREE), media('riel-1884-bennetto.jpg', 26)],
       3: [media('dumont-1885-buckskin.jpg', 0, 'contain'), media('riel-c1880-lac.jpg', 18, 'contain'), media('middleton-1885-topley.jpg', 34, 'contain')],
       4: [media('heroes-of-batoche-belleville.jpg', 0)],
       5: [media('rml-9-pounder-gun.jpg', 0), media('howard-gatling-1885.jpg', 14, 'contain'), media('battlefield-sketch-1885.jpg', 28, 'contain')]}
