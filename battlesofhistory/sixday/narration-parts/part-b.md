@@ -12,7 +12,7 @@
 - Over each base the jets climbed sharply, hit the runways first, then the aircraft parked in the open. None of Egypt's airfields had hardened shelters. A new Israeli bomb drove into the runway before it exploded, leaving a crater that had to be dug out. *(israeli)*
 - At El Arish, the MiG-17 pilot Fikry el-Gahramy remembered: "There was no warning at all." *(arab: Egyptian)*
 - At Kabrit, Flight Lieutenant Mustafa Hafez, aged twenty-six, was in the mess when the bombs fell. He took off in whatever MiG-17 was ready, and found his guns would not fire because of a cockpit switch. "I was not actually due to fly that morning," he said. *(arab: Egyptian)*
-- A second wave, from about half past nine, hit fourteen more fields, as far as Helwan, Beni Suef and El Minya. Bombers moved south to Luxor for safety were attacked there at midday. *(israeli)*
+- A second wave, from about half past nine, hit fourteen more fields, as far as Helwan and El Minya on the Nile. Bombers moved south to Luxor for safety were attacked there at midday. *(israeli)*
 - All the numbers are claims. Israel claimed 197 Egyptian aircraft in the first wave alone, and Israeli-based totals for the day run from about 290 to 340. An Arab chronology gives 209 of Egypt's 340. Egypt's chief of staff, General Mohamed Fawzi, wrote that 85 percent was gone within four hours. *(estimate)*
 - Israel lost about 17 to 19 aircraft that day, most to anti-aircraft fire. Captain David Yariv shot down a MiG-21 over Bir Gifgafa, then was killed by ground fire. *(estimate)*
 - In Cairo, Nasser's former deputy Abdul Latif al-Baghdadi heard the guns at a quarter to nine. That evening, he wrote, Amer first claimed 73 Israeli planes shot down, then showed a list: 47 Egyptian aircraft left, 35 able to fly. Radio Cairo was still announcing great victories. *(arab: Egyptian)*
@@ -32,8 +32,7 @@
 - Mistakes happened on Israel's side too: an Israeli Ouragan was shot down by an Israeli Hawk missile near Dimona. *(israeli)*
 - That night the chief of staff, Yitzhak Rabin, announced on the radio that 400 enemy planes had been destroyed. Earlier, Defence Minister Moshe Dayan had asked the press not to publish the number. *(israeli)*
 - On the 7th of June, by Iraqi accounts, Iraqi, Jordanian and Pakistani pilots flying Hunters from H-3 shot down two Vautours and a Mirage. *(disputed)*
-- For the whole war Israel claimed about 450 Arab aircraft; other counts run from 372 to 440. Israel lost between 26 and 48 aircraft, depending on what is counted. *(estimate)*
-- From the second day, Egyptian, Jordanian and Syrian soldiers fought with almost no aircraft of their own overhead. *(established)*
+- For the whole war Israel claimed about 450 Arab aircraft; other counts run from 372 to 440. Israel lost between 26 and 48 aircraft, depending on what is counted. From the second day, the Arab armies fought with almost no aircraft of their own overhead. *(estimate)*
 
 ---
 
@@ -64,8 +63,7 @@
 - The last United Nations peacekeepers were still in their camps, waiting to leave. At half past two that afternoon a shell hit the Indian battalion's main camp, killing an officer and a soldier and wounding ten. India blamed Israeli artillery; the UN report noted Egyptian positions close by. *(established)*
 - The same day, by the UN's report, Israeli aircraft strafed a white-painted UN convoy south of Khan Yunis, killing three Indian soldiers. Israeli tanks broke into the wire of the UN camp at Rafah, where a Brazilian soldier was lightly wounded. *(established)*
 - How many peacekeepers died in all is disputed: India counted 8 by the 8th of June; UN papers are cited for 15, fourteen Indian and one Brazilian; another count gives 27. *(disputed)*
-- By sunset Israeli troops held the Ali Muntar ridge above Gaza City, but were pushed back from the city itself. One count gives about 70 Israelis killed in the Strip that day. *(estimate)*
-- Among them were two journalists: the Israeli Ben Oyserman, and the Life photographer Paul Schutzer, aged thirty-six, whose half-track was hit by an anti-tank shell on the way to Gaza. *(established)*
+- By sunset Israeli troops held the Ali Muntar ridge above Gaza City, but were pushed back from the city itself. One count gives about 70 Israelis killed in the Strip that day. Among them were the Israeli journalist Ben Oyserman and the Life photographer Paul Schutzer, aged thirty-six, whose half-track was hit by an anti-tank shell. *(estimate)*
 - On the morning of the 6th of June, Eitan's paratroopers and the armour took Gaza City. In Khan Yunis, broken into on the first day, the town and camp held out until the 7th or the 8th of June. *(disputed)*
 - In Beach camp, Sarah Ayoub, aged twenty-four, was baking bread when the explosions began. Next morning she saw soldiers across the camp and houses destroyed. Her husband, Munther, was among the men rounded up. *(arab: Palestinian)*
 - In Shujaiya, Zuhair Ahmad, a young aircraft engineer just graduated in Cairo, was killed by shrapnel while checking on his brothers. His mother, Mariam Farajallah, said: "That war tore my heart apart." *(arab: Palestinian)*
@@ -172,7 +170,7 @@
 
 **(a) To check**
 - Ch. 6: "a new Israeli bomb drove into the runway" is from the air file (S2/S3), but whether it was used across the first wave is not stated. Amer's departure field "Almaza" and the co-passenger Sidki Mahmoud are in the air file; the Majalla version has Amer "with his top lieutenants".
-- Ch. 6: the second wave fields listed (Helwan, Beni Suef, El Minya, Luxor) mix ACIG times; Beni Suef was hit at 07:55–08:07, i.e. in the first wave. Check before mapping. "Bombers moved south to Luxor for safety" is from the ACIG row; Luxor time 12:15.
+- Ch. 6: second-wave fields named (Helwan, El Minya at 10:00, ACIG); Beni Suef was hit in the first wave (07:55–08:07), so it is not named there. "Bombers moved south to Luxor for safety" is from the ACIG row; Luxor time 12:15.
 - Ch. 6: Mustafa Hafez's "mess" timing is Cairo or Israel clock (not given); I left the clock out.
 - Ch. 7: "Iraqi Tu-16 ... six crew and about eleven to fourteen reservists" from S17; another source gives 16 soldiers. Date 5 or 6 June open.
 - Ch. 7: Ajlouni's death and Saif-ul-Azam's claim rest on a modding site citing Cooper/Nicolle [unverified]; narrated as "accounts say", tagged disputed.
