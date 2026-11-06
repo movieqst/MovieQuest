@@ -340,14 +340,20 @@ const TRENCH = {}, TCACHE = {}; let curTrench = S.defaultTrench || null;
 /* Neon trenches: each layer recoloured once to glowing lines (German red, British and Canadian blue) on a canvas the size of
    the terrain, then drawn over the map every frame, so a layer can fade in. An intro slide with `growth`
    ([{ at: seconds, layer, label }]) builds the trench system up stage by stage; `noUnits` hides the soldiers. */
-const NEON = {};
+const NEON = {}, NEONB = {};   // NEONB: the British and Canadian (blue) lines alone, thicker, drawn again so they stay easy to see
 function neonLayer(n) {
   if (!n) return null; if (NEON[n]) return NEON[n]; const im = TRENCH[n]; if (!im) return null;
   const w = Math.round(W.w * TS), h = Math.round(W.h * TS), A = document.createElement('canvas'); A.width = w; A.height = h;
   const a = A.getContext('2d'); a.drawImage(im, 0, 0, w, h);
-  try { const d = a.getImageData(0, 0, w, h), px = d.data;   // opened from a file, the browser may refuse: then the lines keep their colours
-    for (let i = 0; i < px.length; i += 4) { if (px[i + 3] < 50) { px[i + 3] = 0; continue; } const red = px[i] > px[i + 2]; px[i] = red ? 255 : 50; px[i + 1] = red ? 50 : 215; px[i + 2] = red ? 95 : 255; px[i + 3] = 255; }
-    a.putImageData(d, 0, 0); } catch (e) {}
+  const Bc = document.createElement('canvas'); Bc.width = w; Bc.height = h; let blue = null;
+  try { const d = a.getImageData(0, 0, w, h), px = d.data, bd = new ImageData(w, h), bp = bd.data;   // opened from a file, the browser may refuse: then the lines keep their colours
+    for (let i = 0; i < px.length; i += 4) { if (px[i + 3] < 50) { px[i + 3] = 0; continue; } const red = px[i] > px[i + 2]; px[i] = red ? 255 : 60; px[i + 1] = red ? 50 : 225; px[i + 2] = red ? 95 : 255; px[i + 3] = 255;
+      if (!red) { bp[i] = 90; bp[i + 1] = 235; bp[i + 2] = 255; bp[i + 3] = 255; } }
+    a.putImageData(d, 0, 0); Bc.getContext('2d').putImageData(bd, 0, 0); blue = Bc; } catch (e) {}
+  if (blue) { const BB = document.createElement('canvas'); BB.width = w; BB.height = h; const b = BB.getContext('2d');
+    b.filter = 'blur(10px)'; b.drawImage(blue, 0, 0); b.drawImage(blue, 0, 0); b.filter = 'none';
+    for (let dx = -2; dx <= 2; dx++) for (let dy = -2; dy <= 2; dy++) if (dx * dx + dy * dy <= 5) b.drawImage(blue, dx, dy);
+    b.globalCompositeOperation = 'lighter'; b.globalAlpha = .6; b.drawImage(blue, 0, 0); NEONB[n] = BB; }
   const C = document.createElement('canvas'); C.width = w; C.height = h; const c = C.getContext('2d');
   c.filter = 'blur(7px)'; c.drawImage(A, 0, 0); c.drawImage(A, 0, 0); c.filter = 'blur(2px)'; c.drawImage(A, 0, 0); c.filter = 'none';
   [[-1, 0], [1, 0], [0, -1], [0, 1], [0, 0]].forEach(([dx, dy]) => c.drawImage(A, dx, dy));
@@ -362,7 +368,8 @@ function drawTrenches(drawWorld) {
   const gr = growthNow(), layers = [];
   if (gr) { if (gr.prev && gr.prev.layer) layers.push([gr.prev.layer, 1]); if (gr.g.layer) layers.push([gr.g.layer, gr.f], [gr.g.layer, (1 - gr.f) * .9, 'lighter']); }
   else if (curTrench) layers.push([curTrench, mode === 'intro' ? .95 : (S.trenchNeonAlpha || .6)]);
-  layers.forEach(([n, al, op]) => { const C = neonLayer(n); if (!C || al <= 0) return; ctx.save(); ctx.globalAlpha = al; if (op) ctx.globalCompositeOperation = op; drawWorld(C); ctx.restore(); });
+  layers.forEach(([n, al, op]) => { const C = neonLayer(n); if (!C || al <= 0) return; ctx.save(); ctx.globalAlpha = al; if (op) ctx.globalCompositeOperation = op; drawWorld(C);
+    if (NEONB[n] && !op) { ctx.globalAlpha = Math.min(1, al * 1.7); drawWorld(NEONB[n]); } ctx.restore(); });
 }
 function drawGrowthLabel() {
   const gr = growthNow(); if (!gr || !gr.g.label) return;
@@ -1015,7 +1022,7 @@ function drawRain(c) {
 function buildMiniBase() {
   MINIBASE = document.createElement('canvas'); MINIBASE.width = mini.width; MINIBASE.height = mini.height;
   const g = MINIBASE.getContext('2d'); if (!TER) return; g.drawImage(TER, 0, 0, mini.width, mini.height); if (stage === 'campaign') return;
-  { const C = neonLayer(curTrench); if (C) g.drawImage(C, 0, 0, mini.width, mini.height); }
+  { const C = neonLayer(curTrench); if (C) { g.drawImage(C, 0, 0, mini.width, mini.height); if (NEONB[curTrench]) { g.drawImage(NEONB[curTrench], 0, 0, mini.width, mini.height); g.drawImage(NEONB[curTrench], 0, 0, mini.width, mini.height); } } }
   const sx = mini.width / W.w, sy = mini.height / W.h; g.fillStyle = '#4a6a36'; PROPS.forEach(p => { if (p.kind === 'tree') g.fillRect(p.x * sx - 1, p.y * sy - 1, 2, 2); });
   g.fillStyle = '#8c7d5a'; g.fillRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy); g.strokeStyle = '#4d4230'; g.lineWidth = 1; g.strokeRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy);
 }
