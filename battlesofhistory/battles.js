@@ -184,5 +184,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '70% 40%',
     coverCredit: 'Original illustration for this project (AI-generated): an artist’s impression, not evidence',
     status: 'in progress'
+  },
+  {
+    folder: 'fishcreek',
+    order: 16,
+    era: 'Canada, 1885',
+    title: 'Battle of Fish Creek',
+    date: '24 April 1885', year: 1885,
+    place: 'Fish Creek (Tourond\u2019s Coulee), on the South Saskatchewan River south of Batoche (today in Saskatchewan, Canada)',
+    sides: 'The North-West Field Force of Major-General Frederick Middleton vs. the Métis and First Nations fighters of Gabriel Dumont',
+    blurb: 'Dumont\u2019s fighters ambush Middleton\u2019s column from a wooded coulee, stop it in its tracks and hold their ground until nightfall. Middleton waits two weeks before marching on Batoche.',
+    cover: 'images/cover.jpg', coverPos: '50% 50%',
+    coverCredit: 'The Battle of Fish Creek, coloured lithograph, 1885. Public domain',
+    status: 'in progress'
   }
 ];
