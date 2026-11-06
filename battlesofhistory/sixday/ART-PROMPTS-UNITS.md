@@ -171,3 +171,7 @@ Keep exactly the style of the approved IDF infantry sheets.
 2. **idf-sherman** (redo, optional): `The same long-gun Super Sherman, but with NO Star of David on the hull: plain sand-olive paint with white recognition marks and a white number only.`
 3. **jor-trench-fire**: `A Jordanian soldier of June 1967 defending Ammunition Hill in Jerusalem: steel helmet (not a shemagh), khaki uniform, a bolt-action Lee-Enfield or an M1 rifle, firing over the stone-and-sandbag edge of a trench that is IN FRONT of him in every row: frames aim, fire with a flash, recoil, reload. Rows: south, east, north, west.`
 4. **egy-trench-fire** (optional): `The same Egyptian infantryman as egy-infantry, firing from a sandbagged trench at Um Katef: the sandbags IN FRONT of him in every row. No flag patches on the sleeves.`
+
+## Redo requests after batch 3 (6 November)
+1. **idf-centurion** (moving), asked again: `NO gun flash and NO smoke in any frame: the tank only drives, with tracks turning and a little dust.`
+2. **idf-mirage** (redo): `The same Mirage IIICJ sheet, but in bare natural metal (silver-grey), as most Israeli Mirages were in June 1967, with the blue-and-white roundel.`

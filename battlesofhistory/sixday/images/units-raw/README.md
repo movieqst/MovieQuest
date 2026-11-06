@@ -23,3 +23,14 @@ These are original illustrations for this project (AI-generated): an artist's im
 | jor-infantry | PASS. Khaki, red-and-white shemagh, rifle, rows in order. Small flag patch on one sleeve; tiny at game size. |
 | jor-infantry-fire | PASS as the general Jordanian infantry firing sheet (shemagh, standing). The Ammunition Hill trench sheet (steel helmet, rifle, firing from a trench) is still needed. |
 | jor-patton, jor-patton-fire | PASS. An M48 Patton with crew, rows in order. The moving sheet has a Jordanian flag on the turret; whether Jordanian tanks bore it in 1967 is unconfirmed, and it is tiny at game size. |
+
+**Batch 3 (6 November):** all rows in order (south, east, north, west).
+
+| sheet | review |
+|---|---|
+| egy-trench-fire, jor-trench-fire, syr-trench-fire | PASS. Steel helmets, firing over sandbags that are in front in every row. The Egyptian and Jordanian ones have small flag patches; tiny at game size. |
+| syr-infantry | PASS. Olive uniform, steel helmet, AK. |
+| syr-t55, syr-t55-fire | PASS. A T-54/55, moving and firing. |
+| idf-sherman-fire (from idf-sherman-redo) | PASS as the Super Sherman's firing sheet: no Star of David, white recognition stripes. |
+| idf-mirage | PASS for now. A 4 × 4 sheet with wide cells: top, side, tail and side views, rows in order. It is painted in desert camouflage with blue roundels; in June 1967 most Israeli Mirages were bare metal (camouflage came after the war), so a bare-metal redo is asked for. |
+| idf-centurion (asked as a moving sheet) | Not used: it is firing again. The moving Centurion is still needed. |
