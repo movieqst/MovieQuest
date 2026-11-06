@@ -175,3 +175,6 @@ Keep exactly the style of the approved IDF infantry sheets.
 ## Redo requests after batch 3 (6 November)
 1. **idf-centurion** (moving), asked again: `NO gun flash and NO smoke in any frame: the tank only drives, with tracks turning and a little dust.`
 2. **idf-mirage** (redo): `The same Mirage IIICJ sheet, but in bare natural metal (silver-grey), as most Israeli Mirages were in June 1967, with the blue-and-white roundel.`
+
+## Redo requests after batch 4 (6 November)
+1. **jor-hunter** (redo): `A Royal Jordanian Air Force Hawker Hunter of June 1967: a single-seat swept-wing jet whose air intakes are at the WING ROOTS beside the cockpit (not in the nose), a pointed solid nose, a single jet exhaust under the tail, no afterburner flame. Camouflage and Jordanian roundels. Same 4x4 layout as the other aircraft: rows top view facing down, side view facing right, top view facing up, side view facing left.`

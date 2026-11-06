@@ -34,3 +34,14 @@ These are original illustrations for this project (AI-generated): an artist's im
 | idf-sherman-fire (from idf-sherman-redo) | PASS as the Super Sherman's firing sheet: no Star of David, white recognition stripes. |
 | idf-mirage | PASS for now. A 4 × 4 sheet with wide cells: top, side, tail and side views, rows in order. It is painted in desert camouflage with blue roundels; in June 1967 most Israeli Mirages were bare metal (camouflage came after the war), so a bare-metal redo is asked for. |
 | idf-centurion (asked as a moving sheet) | Not used: it is firing again. The moving Centurion is still needed. |
+
+**Batch 4 (6 November):**
+
+| sheet | review |
+|---|---|
+| idf-centurion (moving) | PASS for now. A Centurion driving, no gun flash, rows in order. It has a Star of David on the turret, which the firing sheet does not; tiny at game size. |
+| idf-mirage (silver redo) | PASS. Bare metal, replacing the camouflaged one. |
+| idf-supermystere | PASS. Camouflage, roundels, rows in order. |
+| egy-mig21 | PASS. Rows were south, west, north, east: reordered. Sand camouflage and roundels. |
+| idf-guns-fire, egy-guns-fire | PASS, adapted. The sheets are one three-quarter view in 16 frames (aim, load, fire, smoke), not four directions. The firing row was used for every direction, mirrored for the south and east rows. Ammunition boxes with flags are tiny at game size. |
+| jor-hunter | REJECTED: its air intake is in the nose; a Hawker Hunter's intakes are at the wing roots. |
