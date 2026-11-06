@@ -356,7 +356,7 @@ Object.assign(window.VIMY_SCENARIO, {
     },
     world: { w: 2400, h: 1800 },
     terrain: 'terrain-battle.jpg',
-    trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1917-03.png'],
+    trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1916-12.png', 'trenches-1917-03.png'], trenchNeonAlpha: .6,
     defaultTrench: 'trenches-1917-03.png', introTrench: 'trenches-1917-03.png', trenchAlpha: .45,
     duration: 182, commandDuration: 300, commandFocus: { x: 1100, y: 800 },
     battlefield: {
@@ -528,6 +528,25 @@ Object.assign(window.VIMY_SCENARIO, {
   I[4].cues = [ Object.assign({ on: 'eleven subways' }, ring({ x: 780, y: 650 }, 'the subways', { r: 90 })) ];
   I[5].cues = [ Object.assign({ on: 'Bavarians at Thélus' }, ring(THELUS, 'Bavarians', { r: 80 })), Object.assign({ on: '79th Reserve' }, ring(VIMY, 'Prussians, 79th Reserve', { r: 80 })),
                 Object.assign({ on: '16th Bavarian' }, ring(PIMPLE, '16th Bavarian', { r: 80 })) ];
+  // The map starts empty: the title slide and the trench build-up show no soldiers. The build-up slide was added after the
+  // narration was recorded (extra: captions only until its clip is recorded; the recorded clips keep their numbers).
+  I[0].noUnits = true; I[0].trenches = null;
+  I.splice(1, 0, {
+    title: 'Four years of trenches', extra: true, noUnits: true, auto: 32, trenches: null,
+    lines: [
+      { text: 'The Germans took Vimy Ridge in October 1914 and dug in. French attacks in 1915 reached the crest but could not hold it.', tag: 'established' },
+      { text: 'In February 1916 the British took over this part of the line from the French. The Canadians arrived in October 1916.', tag: 'established' },
+      { text: 'All through the winter both sides kept digging: new front lines, saps, communication trenches and tunnels, until the ridge was a maze.', tag: 'established' },
+      { text: 'Blue lines are British and Canadian trenches, red lines German, traced from the British trench maps of each date. Each map covers a different part of the ridge.', tag: 'reconstruction' }
+    ],
+    growth: [
+      { at: 0, layer: null, label: '1914 to 1915' },
+      { at: 7, layer: 'trenches-1916-02.png', label: 'February 1916' },
+      { at: 13, layer: 'trenches-1916-10.png', label: 'October 1916' },
+      { at: 19, layer: 'trenches-1916-12.png', label: 'December 1916' },
+      { at: 25, layer: 'trenches-1917-03.png', label: 'March 1917' }
+    ]
+  });
 })();
 
 /* ---------- the library of sources (library.html?battle=vimy) ---------- */

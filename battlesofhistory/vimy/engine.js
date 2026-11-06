@@ -337,8 +337,41 @@ const SHEET_BY = S.sheetBy || {};
    chapter with 'trenches' switches the layer (null: none); S.defaultTrench is the one shown when the battle starts. */
 const TRENCH = {}, TCACHE = {}; let curTrench = S.defaultTrench || null;
 (S.trenchLayers || []).forEach(n => { const im = new Image(); im.onload = () => { TRENCH[n] = im; if (curTrench === n) applyArt(); }; im.src = (S.imageBase || 'images/') + 'trenches/' + n; });
+/* Neon trenches: each layer recoloured once to glowing lines (German red, British and Canadian blue) on a canvas the size of
+   the terrain, then drawn over the map every frame, so a layer can fade in. An intro slide with `growth`
+   ([{ at: seconds, layer, label }]) builds the trench system up stage by stage; `noUnits` hides the soldiers. */
+const NEON = {};
+function neonLayer(n) {
+  if (!n) return null; if (NEON[n]) return NEON[n]; const im = TRENCH[n]; if (!im) return null;
+  const w = Math.round(W.w * TS), h = Math.round(W.h * TS), A = document.createElement('canvas'); A.width = w; A.height = h;
+  const a = A.getContext('2d'); a.drawImage(im, 0, 0, w, h);
+  try { const d = a.getImageData(0, 0, w, h), px = d.data;   // opened from a file, the browser may refuse: then the lines keep their colours
+    for (let i = 0; i < px.length; i += 4) { if (px[i + 3] < 50) { px[i + 3] = 0; continue; } const red = px[i] > px[i + 2]; px[i] = red ? 255 : 50; px[i + 1] = red ? 50 : 215; px[i + 2] = red ? 95 : 255; px[i + 3] = 255; }
+    a.putImageData(d, 0, 0); } catch (e) {}
+  const C = document.createElement('canvas'); C.width = w; C.height = h; const c = C.getContext('2d');
+  c.filter = 'blur(7px)'; c.drawImage(A, 0, 0); c.drawImage(A, 0, 0); c.filter = 'blur(2px)'; c.drawImage(A, 0, 0); c.filter = 'none';
+  [[-1, 0], [1, 0], [0, -1], [0, 1], [0, 0]].forEach(([dx, dy]) => c.drawImage(A, dx, dy));
+  NEON[n] = C; return C;
+}
+function growthNow() {
+  const sl = mode === 'intro' && S.intro[introIdx]; if (!sl || !sl.growth) return null;
+  const t = Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer;
+  let k = 0; sl.growth.forEach((g, i) => { if (t >= g.at) k = i; }); return { sl, k, g: sl.growth[k], prev: k ? sl.growth[k - 1] : null, f: Math.min(1, (t - sl.growth[k].at) / 1.6) };
+}
+function drawTrenches(drawWorld) {
+  const gr = growthNow(), layers = [];
+  if (gr) { if (gr.prev && gr.prev.layer) layers.push([gr.prev.layer, 1]); if (gr.g.layer) layers.push([gr.g.layer, gr.f], [gr.g.layer, (1 - gr.f) * .9, 'lighter']); }
+  else if (curTrench) layers.push([curTrench, mode === 'intro' ? .95 : (S.trenchNeonAlpha || .6)]);
+  layers.forEach(([n, al, op]) => { const C = neonLayer(n); if (!C || al <= 0) return; ctx.save(); ctx.globalAlpha = al; if (op) ctx.globalCompositeOperation = op; drawWorld(C); ctx.restore(); });
+}
+function drawGrowthLabel() {
+  const gr = growthNow(); if (!gr || !gr.g.label) return;
+  ctx.save(); ctx.globalAlpha = .4 + .6 * gr.f; ctx.shadowColor = '#7fe9ff'; ctx.shadowBlur = 18;
+  outlined(ctx, gr.g.label, view.w / 2, 54, 34, { fill: '#e9fbff', weight: 'bold' }); ctx.restore();
+}
 function setTrench(n) { if (n === undefined || n === curTrench) return; curTrench = n; applyArt(); }
 function withTrench(base) {
+  return base;   // the trenches are now drawn as glowing neon lines over the map each frame (neonLayer, drawTrenches)
   if (!curTrench || !TRENCH[curTrench] || !base) return base; const key = curTrench + (base === PAINTEDTER ? 'p' : 'd');
   if (!TCACHE[key]) { const T = document.createElement('canvas'); T.width = base.width; T.height = base.height; const g = T.getContext('2d'); g.drawImage(base, 0, 0); g.globalAlpha = S.trenchAlpha || .85; g.drawImage(TRENCH[curTrench], 0, 0, T.width, T.height); TCACHE[key] = T; }
   return TCACHE[key];
@@ -912,6 +945,14 @@ function render() {
   updateCamera(); clampView();
   const z = view.z, vw = VW(), vh = VH();
   ctx.fillStyle = '#000'; ctx.fillRect(0, 0, view.w, view.h);
+  const drawWorld = img => { if (tiltOn()) {
+      const STRIP = 3;
+      for (let y0 = 0; y0 < view.h; y0 += STRIP) {
+        const y1 = Math.min(view.h, y0 + STRIP), v0 = vAt(y0), v1 = vAt(y1 + 1), sm = sAt((v0 + v1) / 2);
+        const wy0 = view.y + v0 * vh, wy1 = view.y + v1 * vh, ww = vw / sm, wxl = view.x + vw / 2 - ww / 2;
+        ctx.drawImage(img, wxl * TS, wy0 * TS, ww * TS, Math.max(1, (wy1 - wy0) * TS), 0, y0, view.w, y1 - y0 + 1);
+      }
+    } else ctx.drawImage(img, view.x * TS, view.y * TS, vw * TS, vh * TS, 0, 0, view.w, view.h); };
   if (TER) {
     if (tiltOn()) {
       // Draw the pre-rendered terrain in thin horizontal strips, each sampling a wider span of the map the further north it is.
@@ -923,12 +964,13 @@ function render() {
         ctx.drawImage(TER, wxl * TS, wy0 * TS, ww * TS, Math.max(1, (wy1 - wy0) * TS), 0, y0, view.w, y1 - y0 + 1);
       }
     } else ctx.drawImage(TER, view.x * TS, view.y * TS, vw * TS, vh * TS, 0, 0, view.w, view.h);
+    if (stage !== 'campaign') drawTrenches(drawWorld);
   }
-  const scene = [];
+  const scene = [], noUnits = mode === 'intro' && S.intro[introIdx] && S.intro[introIdx].noUnits;
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
   if (stage !== 'campaign') PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
   if (stage !== 'campaign') drawFallen(ctx, y0v, y1v, x0v, x1v);
-  formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L }));
+  if (!noUnits) { formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L })); }
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
   drawSmoke(ctx);
   if (mode === 'watch' && currentEvent && currentEvent.rain) drawRain(ctx);
@@ -945,6 +987,7 @@ function render() {
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
   if (BR && mode === 'intro') BR.draw(ctx);
+  drawGrowthLabel();
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
@@ -972,6 +1015,7 @@ function drawRain(c) {
 function buildMiniBase() {
   MINIBASE = document.createElement('canvas'); MINIBASE.width = mini.width; MINIBASE.height = mini.height;
   const g = MINIBASE.getContext('2d'); if (!TER) return; g.drawImage(TER, 0, 0, mini.width, mini.height); if (stage === 'campaign') return;
+  { const C = neonLayer(curTrench); if (C) g.drawImage(C, 0, 0, mini.width, mini.height); }
   const sx = mini.width / W.w, sy = mini.height / W.h; g.fillStyle = '#4a6a36'; PROPS.forEach(p => { if (p.kind === 'tree') g.fillRect(p.x * sx - 1, p.y * sy - 1, 2, 2); });
   g.fillStyle = '#8c7d5a'; g.fillRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy); g.strokeStyle = '#4d4230'; g.lineWidth = 1; g.strokeRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy);
 }
@@ -1017,7 +1061,8 @@ const Narr = {
   toggle() { this.set(!this.on); }
 };
 // The first slide opens with the welcome line (S.welcome, clip welcome.mp3) when it has been recorded.
-function speakSlide(sl) { const i = S.intro.indexOf(sl), go = () => Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || audioFor('intro', i + 1));
+function speakSlide(sl) { const i = S.intro.indexOf(sl), clip = S.intro.slice(0, i + 1).filter(x => !x.extra).length,
+    go = () => Narr.speak(sl.title + '. ' + (sl.subtitle ? sl.subtitle + '. ' : '') + sl.lines.map(l => l.text).join(' '), sl.audio || (sl.extra ? null : audioFor('intro', clip)), undefined, !!sl.extra && !sl.audio);
   if (i === 0 && S.welcome) Narr.speak(S.welcome, audioFor('welcome'), go, true); else go(); }
 
 /* ---------------- UI: captions, log, panels ---------------- */
