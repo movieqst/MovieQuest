@@ -38,3 +38,13 @@ All are original illustrations for this project (AI-generated) from ART-PROMPTS-
 | leader-middleton-attack | WRONG FILE: the Métis horseman. leader-middleton is used instead. |
 | leader-howard-attack | REVISE. A khaki officer with a yellow trouser stripe, which looks like Middleton. Howard: dark jacket, light-coloured peaked cap, short pointed beard (howard-gatling-1885.jpg). The gun is right. |
 | field-gun-hand-pushed-DRAFT | Not used: the same as field-gun-fire. |
+
+**Portraits (6 November):** all 8 PASS, saved square (600 × 600) in ../portraits/, cropped around the face from the 1448 × 1086 originals in portraits/ here. The same background throughout: the river, the church, the Field Force behind a fence, smoke.
+- **rifles:** rifle green, dark Glengarry, Snider. The original has a Métis flag behind the church on the right; the square crop leaves it out.
+- **grenadier:** scarlet, white cross-belts, a diced Glengarry.
+- **scout:** brown jacket, wide hat, cartridge belt, carbine, horse.
+- **metis:** red tuque, striped blanket coat, rifle.
+- **firstnations:** braids, cloth shirt, blanket, rifle, no feathers.
+- **middleton:** khaki campaign dress, peaked cap, white moustache, field glasses.
+- **dumont:** the corrected one, without the flag: buckskin, beard, wide hat, blanket.
+- **riel:** beard, dark coat, crucifix.
