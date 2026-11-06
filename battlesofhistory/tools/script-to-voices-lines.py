@@ -27,7 +27,7 @@ for n, body in re.findall(r'^(\d+)\. \*\*.+?\*\*.*?$(.*?)(?=^\d+\. \*\*|^## |\Z)
 out = [clean(x) for s in ('The outcome', 'The aftermath') for x in re.findall(r'^- (.+?)(?=^- |\Z)', section(s).strip() + '\n', re.M | re.S)]
 clips.append(('outcome', ' '.join(out)))
 # names respelled for the synthesiser only (the captions keep the real spelling)
-SAY = [(r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b', 'Loobeck'), (r'\bScalacronica\b', 'Scala-cronica'),
+SAY = [(r'\bVimy\b', 'Vimmy'), (r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b', 'Loobeck'), (r'\bScalacronica\b', 'Scala-cronica'),
        (r'\bThweng\b', 'Thweng'), (r'\bCressingham\b', 'Cressing-um'),
        # Sekigahara: Japanese names, respelled for the English voices (stress-free, syllable by syllable)
        (r'\bSekigahara\b', 'Seki-gahara'), (r'\bIeyasu\b', 'Ee-eh-yasu'), (r'\bMitsunari\b', 'Mitsu-nari'), (r'\bKobayakawa\b', 'Koba-yakawa'),
