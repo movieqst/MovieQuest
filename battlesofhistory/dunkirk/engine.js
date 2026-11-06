@@ -606,8 +606,7 @@ function render() {
     ctx.strokeStyle = mc.glow; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
-  drawClockStamp();
-  drawLegend();
+  if (!document.querySelector('.overlay.show, #debrief.show')) { drawClockStamp(); drawLegend(); }   // not over the debrief
   if (BR && mode === 'intro') BR.draw(ctx);
   // scale bar (at the near edge of the view)
   if (B.scale) { const sb = B.scale.px * z; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55; ctx.fillStyle = 'rgba(9,23,32,.8)';
