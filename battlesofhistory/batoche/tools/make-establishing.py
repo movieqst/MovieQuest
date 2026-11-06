@@ -46,7 +46,8 @@ make('campaign', 'terrain-campaign.jpg', [
 # 3. the South Branch: Duck Lake, Fort Carlton, the North-West Mounted Police, Fish Creek
 make('region', 'terrain-region.jpg', [
     (*B, 'BATOCHE', '', True, GOLD, -26), (52.824, -106.274, 'Duck Lake', 'fight of 26 March', False, BLUE, -18),
-    (52.874, -106.531, 'Fort Carlton', 'NWMP and HBC post', False, RED, -18), (52.539, -106.153, 'Fish Creek', 'Tourond’s Coulee, 24 April', False, BLUE, 20),
+    (52.874, -106.531, 'Fort Carlton', 'NWMP and HBC post', False, RED, -18), (52.539, -106.153, 'Fish Creek', 'Tourond’s Coulee · ka nootinikayhk daan la koolii dii tourond', False, BLUE, 20),
     (52.32, -106.457, "Clarke's Crossing", "Middleton's camp", False, RED, 20), (52.80, -106.08, 'Saint-Laurent', 'mission', False, GREY, -18),
-    (52.67, -106.122, "Gabriel's Crossing", "Dumont's ferry", False, GREY, 20)],
+    (52.67, -106.122, "Gabriel's Crossing", "Dumont's ferry", False, GREY, 20),
+    (52.45, -106.36, 'South Saskatchewan', 'kisiskāciwani-sīpiy, the swift-flowing river', False, (60, 110, 160), 20)],
     lines=[([(52.32, -106.457), (52.43, -106.30), (52.539, -106.153), (52.62, -106.10), (52.70, -106.09), (52.7485, -106.1061)], RED, 7, True)])

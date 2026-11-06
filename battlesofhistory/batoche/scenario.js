@@ -115,7 +115,14 @@ Object.assign(window.BATOCHE_SCENARIO, {
         "credit": "Charles Gailly de Taurines (1857–1941), glass slide reproduced by Molteni, 1891. Bibliothèque nationale de France, Société de Géographie SG XGA-58. Public domain (France: author died over 70 years ago; US: published before 1931)"
       },
       {
-        "at": 22,
+        "at": 10,
+        "file": "cree-syllabics-chart.png",
+        "caption": "nēhiyawēwin, the Cree language. Cree is an Algonquian language spoken from the Rocky Mountains to Labrador; around Batoche people spoke Plains Cree, and Michif, the Métis language, joins Cree verbs to French nouns. For centuries Cree lived by the spoken word: stories, prayers, law and history were told and remembered, alongside pictographs painted on rock. In 1840 and 1841 at Norway House, the missionary James Evans, working with Cree and Ojibwe helpers, printed the first books in syllabics; Cree tradition credits a man named Calling Badger. Each shape stands for a consonant, and turning it changes the vowel. The script spread quickly, and by 1885 many Cree could read and write it. Today Cree is spoken by more people than any other Indigenous language in Canada. The Saskatchewan River takes its name from the Cree kisiskāciwani-sīpiy, \"the swift-flowing river\".",
+        "credit": "Drawn for this project with Noto Sans Canadian Aboriginal (SIL Open Font License); batoche/tools/make-cree-chart.py. Free to use. The chart covers the main signs only, without the long-vowel dots.",
+        "fit": "contain"
+      },
+      {
+        "at": 26,
         "file": "riel-1884-bennetto.jpg",
         "caption": "Louis Riel, carte de visite of about 1884 (thick curly hair, heavy moustache). The University of Manitoba dates it 1870; the Virtual Métis Museum's 1884 is likelier, as the studio only opened in Winnipeg in 1880. Face reference for the Riel art",
         "credit": "Photo: I. Bennetto & Co., Winnipeg (Israel Bennetto, 1860–1946). University of Manitoba Archives, PC 107. Public domain in Canada (photo before 1949) and in the US (published before 1931). Wikimedia Commons: LouisRiel1870.jpg"
@@ -379,7 +386,7 @@ Object.assign(window.BATOCHE_SCENARIO, {
         { x: VILLAGE.x - 40, y: VILLAGE.y - 120, text: 'Batoche', small: true }, { x: CHURCH.x - 10, y: CHURCH.y - 90, text: 'church and rectory', small: true },
         { x: CEMETERY.x + 20, y: CEMETERY.y + 70, text: 'cemetery', small: true }, { x: ZAREBA.x, y: ZAREBA.y + 120, text: 'the zareba', small: true },
         { x: JOLIE.x + 60, y: JOLIE.y - 80, text: 'Jolie Prairie', small: true }, { x: FERRY.x - 40, y: FERRY.y + 60, text: 'ferry', small: true },
-        { x: 380, y: 1500, text: 'South Saskatchewan River', small: true }, { x: RIDGE.x - 140, y: RIDGE.y - 30, text: 'Mission Ridge', small: true }
+        { x: 380, y: 1500, text: 'South Saskatchewan River', small: true }, { x: 380, y: 1545, text: 'kisiskāciwani-sīpiy', small: true }, { x: RIDGE.x - 140, y: RIDGE.y - 30, text: 'Mission Ridge', small: true }
       ]
     },
     globe: { target: { lon: -106.118, lat: 52.753 }, region: { lon: -100, lat: 54 }, pull: 3.2, startLat: 35,

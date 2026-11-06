@@ -48,8 +48,21 @@
     ctx.fillStyle = '#6f8f55'; ctx.strokeStyle = 'rgba(30,50,25,.8)'; ctx.lineWidth = .7;
     const fine = Z > 4 && window.BATTLE_WORLD && window.BATTLE_WORLD.rings;
     (fine ? window.BATTLE_WORLD.rings : LAND).forEach(r => {
-      let vis = 0; const pts = r.map(([lo, la]) => { const p = proj(la, lo); if (p.z > 0) vis++; else { const dx = p.x - cx, dy = p.y - cy, d = Math.hypot(dx, dy) || 1; p.x = cx + dx / d * R; p.y = cy + dy / d * R; } return p; });
-      if (!vis) return; ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.closePath(); ctx.fill(); ctx.stroke();
+      // Clip the shape to the visible half of the globe: where its outline goes behind the horizon, follow the horizon
+      // (the shorter way round) to where it comes back. Pushing hidden points onto the edge instead could wrap a large
+      // landmass (Antarctica, Russia) all the way round and fill the whole disc.
+      const P = r.map(([lo, la]) => proj(la, lo)); if (!P.some(p => p.z > 0)) return;
+      const ang = p => Math.atan2(p.y - cy, p.x - cx), path = []; let exitA = null;
+      const n = P.length, start = P.findIndex(p => p.z > 0);
+      for (let k = 0; k <= n; k++) {
+        const p = P[(start + k) % n], q = P[(start + k + n - 1) % n];
+        if (p.z > 0) {
+          if (exitA !== null) { let a1 = ang(p), da = a1 - exitA; while (da > Math.PI) da -= 2 * Math.PI; while (da < -Math.PI) da += 2 * Math.PI;
+            const steps = Math.max(2, Math.ceil(Math.abs(da) / .08)); for (let j = 1; j < steps; j++) { const a = exitA + da * j / steps; path.push({ x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) }); } exitA = null; }
+          path.push(p);
+        } else if (q && q.z > 0 && exitA === null) exitA = ang(p);
+      }
+      if (path.length < 3) return; ctx.beginPath(); path.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.closePath(); ctx.fill(); ctx.stroke();
     });
     // today's country borders, fading in from zoom 2 to 3
     const ba = Math.max(0, Math.min(1, Z - 2));
