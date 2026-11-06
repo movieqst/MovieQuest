@@ -208,8 +208,8 @@ window.BATTLES = [
     place: 'Breed\u2019s Hill and Bunker Hill, Charlestown peninsula, Massachusetts',
     sides: 'British forces under Major-General William Howe vs. New England provincial militia under Colonel William Prescott',
     blurb: 'On the night of 16 June, New England militia dig a redoubt on Breed\u2019s Hill above British-held Boston. By afternoon the Royal Navy and Howe\u2019s infantry are crossing the Charles River to storm it. The British take the hill, but at a terrible cost.',
-    cover: 'images/cover.jpg', coverPos: '50% 40%',
-    coverCredit: '\u201CA Plan of the Action at Bunkers-Hill, on the 17th of June 1775\u201D, by Lt. Page of the Engineers (Page/Montr\u00e9sor). Library of Congress, Geography and Map Division, gm71000613, 1775, public domain',
+    cover: 'images/cover.jpg', coverPos: '50% 45%',
+    coverCredit: 'John Trumbull, The Death of General Warren at the Battle of Bunker\u2019s Hill, painted 1786. Public domain. A later painting, not evidence of the battle',
     status: 'in progress'
   }
 ];
