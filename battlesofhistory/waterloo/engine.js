@@ -905,8 +905,7 @@ function render() {
     ctx.strokeStyle = mc.glow; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
-  drawClockStamp();
-  drawLegend();
+  if (!document.querySelector('.overlay.show, #debrief.show')) { drawClockStamp(); drawLegend(); }   // not over the debrief
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];

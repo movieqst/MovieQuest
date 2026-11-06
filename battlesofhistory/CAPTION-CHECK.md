@@ -4,9 +4,4 @@ Made by `tools/caption-timings.py`. Each row is a recorded clip that does not fi
 its length is far from what the text predicts, or the narrator's pauses do not line up with the sentences.
 Usually the text was changed after the clip was recorded. Re-record the clips listed here (all voices shown).
 
-## sekigahara
-
-| clip | voice | speech rate | sentence pauses |
-|---|---|---|---|
-| event-5 | deep | 99% of the usual speed | 1/3 pauses found |
-
+Every clip fits its text.
