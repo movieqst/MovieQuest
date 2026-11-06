@@ -75,6 +75,26 @@
   .mini .dot{position:absolute;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
   .mini.up .dot{top:calc(100% + 10px)}.mini.down .dot{bottom:calc(100% + 10px)}
   #tlhint{font-size:11px;color:#6f8691;margin:6px 2px 0}
+  #explore{max-width:1100px;margin:14px auto 4px;padding:0 16px;display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start}
+  #explore .lbl{font:600 12px 'Cinzel',Georgia,serif;letter-spacing:.12em;color:var(--gold);margin:0 0 6px}
+  #explore .lbl span{font:12px system-ui,sans-serif;letter-spacing:0;color:var(--muted,#9fb1b8);margin-left:8px}
+  #gwrap{position:relative;background:radial-gradient(ellipse at center,#0d2233 0%,#050b12 75%);border:1px solid var(--line);border-radius:12px;padding:10px;overflow:hidden}
+  #globe{width:100%;height:420px;display:block;cursor:grab;touch-action:none}
+  #gwrap .key{position:absolute;left:14px;bottom:10px;font-size:12px;color:#c9d4d8}
+  #gwrap .key i{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 4px 0 10px;vertical-align:-1px}
+  #gwrap .key .k1{background:#e9c77a;margin-left:0} #gwrap .key .k2{border:2px solid #c9b48a;width:7px;height:7px}
+  #gcard{position:absolute;right:14px;top:40px;width:250px;background:rgba(10,22,32,.96);border:1px solid var(--gold);border-radius:10px;overflow:hidden;display:none;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+  #gcard.show{display:block} #gcard .th{height:120px;background:#0a1620 center/cover no-repeat}
+  #gcard .tx{padding:8px 10px 10px;display:flex;flex-direction:column;gap:2px;font-size:13px} #gcard .tx b{font:700 16px 'Cinzel',Georgia,serif;color:var(--gold)}
+  #gcard .pl{color:#9fb1b8;font-size:12px} #gcard .open{margin-top:6px;color:#9fc8ff;font-weight:600;text-decoration:none}
+  #gcard .x{position:absolute;right:6px;top:6px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:50%;width:24px;height:24px;cursor:pointer}
+  #gzoom{position:absolute;right:14px;bottom:10px;display:flex;gap:4px} #gzoom button{background:#0b1821;color:#e8eef2;border:1px solid var(--line);border-radius:6px;padding:2px 9px;cursor:pointer}
+  #wip{display:flex;flex-direction:column;min-width:0} #wipList{display:flex;flex-direction:column;gap:10px}
+  .wcard{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .15s}
+  .wcard:hover{border-color:var(--gold)} .wcard .th{height:72px;background:#0a1620 center/cover no-repeat}
+  .wcard .t{padding:6px 8px 6px 0;font-size:12px;line-height:1.3} .wcard b{display:block;font:700 14px 'Cinzel',Georgia,serif;color:var(--gold)}
+  .wcard .s{display:inline-block;margin-top:3px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#ffcf6b;border:1px solid #7a5a20;border-radius:4px;padding:0 5px}
+  @media(max-width:800px){#explore{grid-template-columns:1fr}#globe{height:340px}#gcard{left:14px;right:14px;width:auto;top:auto;bottom:34px}}
   @media(max-width:600px){#tl{height:250px}.mini{width:96px;margin-left:-48px}.mini .th{height:46px}}
   .bhbar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;max-width:1100px;margin:10px auto 24px;padding:14px 16px;border-top:1px solid #1b2b35}
   .bhbar a{color:#e9c77a;text-decoration:none;font-weight:600;font-size:15px}.bhbar a:hover{text-decoration:underline}
@@ -88,6 +108,11 @@
   <div id="tlbar"><span class="lbl">TIMELINE</span><span class="ctl"><button id="tlOut" title="Zoom out">−</button><button id="tlIn" title="Zoom in">+</button><button id="tlFit" title="Show the whole timeline">Fit</button></span></div>
   <div id="tl"><div id="tltrack"></div></div>
   <div id="tlhint">The timeline is squeezed toward the past: each step to the left covers more years, so recent battles have room. Scroll or pinch to zoom, drag to move. Click a battle to open it.</div>
+</section>
+<section id="explore">
+  <div id="gwrap"><div class="lbl">EXPLORE BY PLACE <span>drag to turn · scroll or pinch to zoom · click a pin</span></div><canvas id="globe" aria-label="Globe with every battle as a pin"></canvas><div id="gcard"></div>
+    <div class="key"><i class="k1"></i> ready <i class="k2"></i> in progress</div><div id="gzoom"><button data-z="in" title="Zoom in">+</button><button data-z="out" title="Zoom out">−</button><button data-z="fit" title="Whole globe">Fit</button></div></div>
+  <aside id="wip"><div class="lbl">IN PROGRESS</div><div id="wipList"></div></aside>
 </section>
 <main id="list"></main>
 <nav class="bhbar"><a href="library.html">📚 Library of sources</a><a href="gallery.html?kind=art">🖼 Art gallery</a><a href="gallery.html?kind=photo">📷 Photographs</a><a href="gallery.html">All pictures</a><a href="atlas.html">🗺 Atlas</a></nav>
@@ -119,7 +144,12 @@
   // Side colours: the first side is always red and the second always blue, on every card.
   const pickSideColors = () => ['#c0392b', '#2e5aa8'];   // always the first side red, the second blue
   const sidesHTML = (t, colors) => { const m = String(t || '').split(/\s+vs\.?\s+/i); const [ca, cb] = colors || ['#ff6a5c', '#6aa6ff']; return m.length === 2 ? `<span style="color:${ca}">${esc(m[0])}</span> <span class="vs">vs.</span> <span style="color:${cb}">${esc(m[1])}</span>` : esc(t); };
-  document.getElementById('list').innerHTML = (window.BATTLES || []).slice().sort((a, b) => (b.order || 0) - (a.order || 0)).map(b => `
+  // In-progress battles sit in the column beside the globe, at most 4 at a time: the furthest along (`progress` in battles.js); when a battle's
+  // status becomes 'ready' it moves to the grid and the next one takes its place.
+  document.getElementById('wipList').innerHTML = (window.BATTLES || []).filter(b => b.status !== 'ready').sort((a, b) => (b.progress || 0) - (a.progress || 0) || (b.order || 0) - (a.order || 0)).slice(0, 4).map(b => `
+    <a class="wcard" href="${esc(b.folder)}/index.html"><div class="th" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')${b.coverPos ? ';background-position:' + esc(b.coverPos) : ''}"></div>
+      <div class="t"><b>${esc(b.title)}</b>${esc(b.date)}<br><span class="s">${esc(b.status)}</span></div></a>`).join('');
+  document.getElementById('list').innerHTML = (window.BATTLES || []).filter(b => b.status === 'ready').sort((a, b) => (b.order || 0) - (a.order || 0)).map(b => `
     ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')${b.coverPos ? ';background-position:' + esc(b.coverPos) : ''}">
         <span class="era">${esc(b.era)}</span>
@@ -202,5 +232,22 @@
 })();
 </script>
 <script src="stats.js"></script>
+<script src="home-world.js"></script>
+<script src="home-globe.js"></script>
+<script>
+/* The globe panel is as tall as the In progress column beside it (wide screens only). */
+(() => {
+  const g = document.getElementById('globe'), wrap = document.getElementById('gwrap'), wip = document.getElementById('wip');
+  function match() {
+    if (!g || !wip) return;
+    if (window.innerWidth <= 800) { g.style.height = ''; } else {
+      const extra = wrap.offsetHeight - g.offsetHeight;   // the label and padding around the canvas
+      g.style.height = Math.max(300, wip.offsetHeight - extra) + 'px';
+    }
+    window.dispatchEvent(new Event('resize'));
+  }
+  window.addEventListener('load', match); let t; window.addEventListener('resize', e => { if (e.isTrusted) { clearTimeout(t); t = setTimeout(match, 120); } }); match();
+})();
+</script>
 </body>
 </html>
