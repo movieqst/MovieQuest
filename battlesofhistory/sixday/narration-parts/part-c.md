@@ -64,8 +64,7 @@
 ### 17. The West Bank falls
 *Map: West Bank · 5–7 June*
 - Jordan had about 45,000 men on the West Bank, and Israel about 40,000 on this front: estimates differ. Israel's air force, free after the first morning, ruled the roads. *(estimate)*
-- On the night of the 5th, Israeli troops took the Latrun salient, on the road from Tel Aviv to Jerusalem. The garrison had already left for Jerusalem. Trappist monks at the Latrun monastery said the Jordanians left without firing a shot. *(established)*
-- Two Egyptian commando battalions had been sent to the Latrun area. Israeli and Egyptian accounts of what happened to them differ widely. *(disputed)*
+- On the night of the 5th, Israeli troops took the Latrun salient, on the road from Tel Aviv to Jerusalem. The garrison had already left for Jerusalem. Trappist monks at the Latrun monastery said the Jordanians left without firing a shot. Two Egyptian commando battalions had also been sent to this area; accounts of what happened to them differ widely. *(established)*
 - The villages of Imwas, Yalu and Beit Nuba, near Latrun, were emptied. Some fled, some were driven out; about 8,000 people, or more by some counts, walked toward Ramallah in the heat. Israeli officials said the villages were damaged in fighting; Israeli soldiers' testimony and the villagers say they were destroyed after the fighting. Within weeks all three were gone. *(disputed)*
 - A French monk at Latrun, Brother Guy Khoury, kept a diary: about seventy elderly villagers, women and children sheltered at the monastery until an Israeli officer ordered them to leave for Ramallah. *(arab: Palestinian)*
 - In the north, Brigadier-General Elad Peled's division crossed near Jenin at about five on the afternoon of the 5th. At dawn on the 6th, an Israeli feigned withdrawal drew out Jordanian Patton tanks, and eight were knocked out. Jenin was declared secure that evening. *(israeli)*
@@ -83,17 +82,16 @@
 *Map: Jerusalem · 7 June, about 00:30–22:00*
 - At half past midnight, Ata Ali told Governor al-Khatib that nearly all his officers had gone and he could not hold. The Governor refused to leave. He called Jerusalem his adopted city. *(arab: Jordanian)*
 - At about one in the morning, the soldiers quietly gathered at the Dung Gate and left, about 500 of them. At half past two, police, volunteers and soldiers handed in their weapons at the Awqaf. Before dawn, a Jordanian sergeant and two Palestinian soldiers came back and dug in near the Golden Gate. *(arab: Jordanian)*
-- In Amman, Prime Minister Saad Juma'a asked the US ambassador and the UN to stop Israel taking the Old City, warning that the monarchy itself could fall. *(arab: Jordanian)*
-- At about seven, Dayan, hearing that a UN ceasefire was near, ordered the Old City taken. Whether the cabinet approved first is disputed. His orders said every holy building was to be protected. *(disputed)*
-- At sunrise, Israeli aircraft bombed Augusta Victoria. In the Awqaf, people cheered, thinking they were Iraqi planes. At half past eight, Gur's paratroopers attacked on three lines. By half past nine they had linked up on the ridge and turned toward the walls. *(arab: Jordanian)*
+- At about seven, Dayan, hearing that a UN ceasefire was near, ordered the Old City taken. Whether the cabinet approved first is disputed. His orders said every holy building was to be protected. In Amman, Prime Minister Saad Juma'a had asked the US ambassador and the UN to stop Israel taking the Old City, warning that the monarchy itself could fall. *(disputed)*
+- At sunrise, Israeli aircraft bombed Augusta Victoria. In the Awqaf, people cheered, thinking they were Iraqi planes. *(arab: Jordanian)*
+- At half past eight, Gur's paratroopers attacked on three lines. By half past nine they had linked up on the ridge and turned toward the walls. *(israeli)*
 - At about a quarter to ten, tank fire opened the Lions' Gate, also called St Stephen's Gate, and Gur's half-track went in. One Jordanian soldier fired a Bren gun from the minaret above it. *(israeli)*
 - The paratroopers went first onto the great platform that Jews call the Temple Mount and Muslims call al-Haram al-Sharif, the Noble Sanctuary, with the Dome of the Rock and al-Aqsa Mosque. At about ten, Gur spoke on the radio, in his own words: "The Temple Mount is in our hands." Then he ordered all firing to stop. *(israeli)*
-- Paratroopers found the Governor, the Muslim judge and Hazim Khalidi in the Awqaf and took them prisoner. *(arab: Jordanian)*
 - A little later the paratroopers came down to the Western Wall, the remaining wall of the ancient Temple compound and the holiest place where Jews can pray. Narkiss asked where it was. The Chief Rabbi of the army, Brigadier-General Shlomo Goren, said prayers and blew the shofar, the ram's horn. *(established)*
 - One paratrooper, Yitzhak Yifat, later said: "We realised that we had conquered another people." *(israeli)*
 - Gur's deputy tied an Israeli flag beside the Wall, and a flag was also raised on the Dome of the Rock. Dayan ordered that flag taken down. In the afternoon Dayan, Rabin and Narkiss walked through the Lions' Gate to the Wall. *(established)*
 - Dayan left the Haram al-Sharif under the Muslim religious authority, the Waqf, which took it back within days. When Gur asked for a written statement that the holy sites were undamaged, Sheikh Sa'id Sabri refused until Muslims could inspect them. *(israeli)*
-- That day the Governor and the Mayor of East Jerusalem, Rouhi al-Khatib, surrendered the city. Within days Israel demolished the Mughrabi Quarter in front of the Wall; its story is told at the end. *(established)*
+- Paratroopers took the Governor, the Muslim judge and Hazim Khalidi prisoner in the Awqaf. That day the Governor and the Mayor of East Jerusalem, Rouhi al-Khatib, surrendered the city. Within days Israel demolished the Mughrabi Quarter in front of the Wall; its story is told at the end. *(established)*
 - The battle for Jerusalem cost Israel about 180 soldiers and about 20 civilians killed. One count gives about 330 Jordanian soldiers and about 100 civilians in East Jerusalem. *(estimate)*
 - At ten at night, Israel time, the UN ceasefire with Jordan took effect. The West Bank and East Jerusalem were now held by Israel. *(established)*
 
