@@ -1,4 +1,4 @@
-# Battle of Batoche: narration script (DRAFT 1, for ChatGPT's review)
+# Battle of Batoche: narration script (DRAFT 2, after ChatGPT's review; draft 1 kept as NARRATION-SCRIPT-v1.md)
 
 This is what the narrators will read.
 
@@ -49,7 +49,7 @@ Major-General Frederick Middleton and the Métis and First Nations fighters of L
 
 ### 4. March 1885
 - In March 1885 Riel and his followers declared a provisional government at Batoche. Gabriel Dumont, a buffalo hunter famous on the plains, led its fighters. *(established)*
-- On the 26th of March, at Duck Lake, Métis and First Nations fighters defeated a force of North-West Mounted Police and volunteers. Further west, Cree warriors took Frog Lake and Fort Pitt. *(established)*
+- On the 26th of March, at Duck Lake, Métis and First Nations fighters defeated a force of North-West Mounted Police and volunteers. Further west, Cree fighters killed nine people at Frog Lake and took Fort Pitt, though the Cree leaders did not all agree on using force. *(established)*
 - Ottawa sent an army west on the new Canadian Pacific Railway, still unfinished in places north of Lake Superior. Its commander was a British officer, Major-General Frederick Middleton. *(established)*
 
 ### 5. The road to Batoche
@@ -59,7 +59,7 @@ Major-General Frederick Middleton and the Métis and First Nations fighters of L
 
 ### 6. The armies and the ground
 - Middleton counted 886 men on land: militia from Winnipeg, Toronto and Ontario towns, mounted scouts, and gunners of A Battery. He had four nine-pounder guns, a Gatling gun, and about fifty more men on the steamer. *(established; H89)*
-- The defenders were Métis, with Cree and Dakota allies: perhaps 250 to 300 at the start. They had hunting rifles, shotguns and old muzzle-loaders, and little ammunition. *(estimate; H89)*
+- The defenders were Métis, Cree and Dakota fighters, perhaps 250 to 300 at the start. Their numbers changed as the battle went on. They had hunting rifles, shotguns and old muzzle-loaders, and little ammunition. *(estimate; H89)*
 - The village lay on the east bank of the river. To the south, the church and the rectory stood on higher ground, with the cemetery beyond. Along the wooded slopes and ravines, the defenders had dug rifle pits: shallow holes with a low wall of earth and logs, hard to see and hard to hit. *(established; the positions on our map, reconstruction)*
 
 ---
@@ -74,7 +74,7 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
    The *Northcote* arrives before the land column is ready. Fighters on both banks open fire on her. At the Batoche ferry, the ferryman Alex Fisher, helped by Pascal Montour, has lowered the ferry cable across the river. It catches the steamer and knocks down her smokestacks. Damaged, she drifts on downstream and never lands her soldiers. *(established; H89)*
 
 3. **The church** · Morning, 9 May
-   The column reaches the church and the rectory. The priests, the sisters, and Métis women and children are sheltering inside. A bullet through the rectory wall wounds Father Moulin in the leg. A white cloth is shown, and Middleton orders the firing stopped. *(established; who fired the shot, unknown)*
+   The column reaches the church and the rectory. The priests, the sisters, and Métis women and children are sheltering inside. A bullet through the rectory wall wounds Father Moulin in the leg. Witnesses say a white cloth was shown, and Middleton ordered the firing stopped. *(established; the white cloth, account; who fired the shot, unknown)*
 
 4. **The rifle pits** · Midday, 9 May
    Beyond the church, the ground drops toward the river. The soldiers push to the edge of Mission Ridge and run into fire from pits they cannot see. The guns are pulled forward onto the ridge, and the defenders creep through the bush toward them. Captain Howard's Gatling gun opens fire and covers the infantry as they fall back. *(established; H89)*
@@ -89,34 +89,34 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
    The soldiers move out again, cautiously. They dig shallow pits halfway toward the cemetery but cannot take the heights. The guns shell the rifle pits, the cemetery and the buildings across the river. The camp's walls are built higher. *(established; H89)*
 
 8. **Testing the line** · 11 May
-   Middleton rides out with mounted men onto the open prairie to the north-east and fires a few shells. Defenders hurry across to meet him, and he sees that the line in front of his infantry grows thin when they do. *(established; H89)*
+   Middleton rides out with mounted men and Howard's Gatling gun onto the open prairie to the north-east. Defenders hurry across to meet him, and he sees that the line in front of his infantry grows thin when they do. *(established; H89)*
 
 9. **Running short** · 10 and 11 May
-   In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Later stories say they fired nails and stones; that has not been proven. *(account; the nails, disputed)*
+   In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Some accounts say a few men fired nails when the bullets ran out; how often that happened is uncertain. *(account; the nails, disputed)*
 
 10. **The feint** · Morning, 12 May
     Middleton tries the trick again. He leads the mounted men and a gun out onto the Jolie Prairie, to draw the defenders north. The infantry are to attack when they hear his guns. *(established; H89)*
 
 11. **The signal** · Midday, 12 May
-    The infantry do not move. Perhaps the wind carried the sound away, or the order was not clear. Middleton rides back angry, and his men go to lunch. *(established; the reason, disputed)*
+    The infantry do not move. A strong east wind may have carried the sound of the guns away, or the order was not clear. The planned attack never begins. Middleton rides back, furious, and his men go to lunch. *(established; the reason and his anger, account)*
 
 12. **The charge** · Afternoon, 12 May
-    In the afternoon the Midland and the Grenadiers, with the 90th Winnipeg Rifles beside them, go forward near the cemetery, and the advance becomes a rush. Who ordered it is still argued: Lieutenant-Colonel Williams, Colonel Van Straubenzie, or nobody, as the soldiers simply ran forward. The thin line in the pits breaks. *(established; who started it, disputed)*
+    In the afternoon the Midland and the Royal Grenadiers go forward near the cemetery, with the 90th Winnipeg Rifles in support, and the advance becomes a charge. Who ordered it is still argued: Lieutenant-Colonel Williams, Colonel Van Straubenzie, or nobody, as the soldiers simply ran forward. The thin line in the pits breaks. One account describes Riel praying with his followers, his arms outstretched, as the defence gives way. *(established; who started it, disputed; Riel at prayer, account)*
 
 13. **The village** · Late afternoon, 12 May
-    The soldiers pour down toward the village. Fighting goes on in the bush and around the houses. Captain John French of French's Scouts is shot at an upstairs window of Batoche's house. Prisoners held by the Métis are set free. Among the defenders killed that day is Joseph Ouellette, an old man, said to be over ninety. *(established; Ouellette's age, account)*
+    The soldiers pour down toward the village. Fighting goes on in the bush and around the houses. Captain John French of French's Scouts is shot at an upstairs window of Batoche's house. Prisoners held by Riel's government are set free. Among the defenders killed that day is Joseph Ouellette, an old man, said to be over ninety. *(established; Ouellette's age, account)*
 
 14. **After the fighting** · Evening, 12 May
-    Batoche has fallen. Families who had sheltered by the river come out to find their homes searched and their belongings taken. Some later testified that soldiers took a woman's wedding ring. *(account; H89)*
+    Batoche has fallen. Families who had sheltered by the river come out to find their homes searched and their belongings taken. Later testimony said that soldiers took belongings, among them a woman's wedding ring. *(account: testimony quoted by Hildebrandt)*
 
 ## The outcome
-- The army won. Hildebrandt counts 25 dead in the four days, on both sides. *(estimate; H89)*
+- The army won. Hildebrandt counts about 25 dead in the four days, on both sides. *(estimate; H89)*
 - By the last day, only 50 to 60 defenders were still fighting, with about 40 rifles between them. *(estimate; H89)*
 
 ## The aftermath (debrief)
 - On the 15th of May, Louis Riel gave himself up. Gabriel Dumont stayed near Batoche for some days; when he heard that Riel had surrendered, he escaped to the United States. *(established; DCB)*
-- That summer, the Cree chiefs Poundmaker and Big Bear also surrendered, and were sent to prison. *(established; to check)*
-- Riel was tried for high treason at Regina. The jury found him guilty but asked for mercy. He was hanged on the 16th of November 1885. Eleven days later, eight Cree and Assiniboine men were hanged together at Battleford. *(established; to check)*
+- Poundmaker surrendered at the end of May, and Big Bear in early July. Both were sent to prison. *(established)*
+- Riel was tried for high treason at Regina. The jury found him guilty but asked for mercy. He was hanged on the 16th of November 1885. Eleven days later, on the 27th of November, six Cree and two Nakoda (Assiniboine) men were hanged together at Battleford. *(established; Parks Canada)*
 - Riel's death divided Canada for a generation, French against English, Catholic against Protestant. *(established)*
 - Dumont later toured the United States with Buffalo Bill's Wild West show. After an amnesty he came home, and he died near Batoche in 1906. *(established; to check)*
 - Today Batoche is a National Historic Site. Riel, once hanged as a traitor, is remembered as the founder of Manitoba, and statues of Riel and Dumont stand in Winnipeg and Saskatoon. *(established)*
@@ -129,9 +129,9 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
 **Picture:** images/metis-flag.png, the blue Métis flag (Wikimedia Commons, public domain: a simple flag design).
 
 **Caption:**
-> The Métis flag: a white infinity sign on a blue field. It is one of the oldest flags made in Canada. Accounts say the Métis of the North West Company first flew it in 1815 or 1816, and that Cuthbert Grant's men carried it at the clash at Seven Oaks, at Red River, in June 1816. A red version was also used. The infinity sign is often read as two peoples joined, a people that will live forever. *(established; the first date, account)*
+> The Métis flag: a white infinity sign on a blue field. It dates to the early nineteenth century: an account from 1815 describes a red flag with a horizontal figure eight, and a witness, Peter Fiddler, recorded a blue one carried by Métis under Cuthbert Grant in 1816. The sign is often read as the joining of two peoples, and a people that will live forever. *(account)*
 >
-> There is no record that it flew at Batoche in 1885. Riel's men there carried religious banners. Today it is the flag of the Métis Nation. *(established; the banners, to check)*
+> It is a central symbol of the Métis Nation today. No source we have read shows it flying at Batoche in 1885, so it is shown here as history, not on the battlefield. *(established)*
 
 **Why:** the art avoids putting the flag on the 1885 battlefield, where no source shows it. This picture tells its real history instead.
 
@@ -172,3 +172,23 @@ Check especially: the 11 May ride onto the prairie, the 12 May signal and lunch,
 Joseph Ouellette's age, who the prisoners were, the wedding-ring testimony, and the aftermath dates.
 Answer as a list of changes, chapter by chapter. Do not rewrite the whole script.
 ```
+
+## Change log, draft 2 (6 November 2026, after ChatGPT's review)
+- **Clips changed (to re-record):** intro-4, intro-6, event-3, event-8, event-9, event-11, event-12, event-13, event-14 and outcome. All the others are unchanged.
+- **Accepted from the review:**
+  - Frog Lake and Fort Pitt: the Cree leaders were divided;
+  - the defenders' numbers changed;
+  - the white cloth comes from witnesses;
+  - Howard's Gatling went with Middleton on 11 May;
+  - the nails are put more cautiously;
+  - the east wind and Middleton's anger are tagged as accounts;
+  - the Grenadiers and Midland led, with the 90th in support;
+  - Riel at prayer (account);
+  - "Riel's government" for the prisoners;
+  - the wedding ring is attributed to testimony;
+  - "about 25" dead;
+  - Poundmaker and Big Bear surrendered separately;
+  - Battleford: six Cree and two Nakoda men, 27 November;
+  - the flag caption now cites the 1815 and 1816 accounts.
+- **Not added:** a count of about 25 prisoners (unchecked).
+- **Still to check against the Hildebrandt PDF** (blocked here): the page references, Fisher and Montour (p. 39), the 11 May ride (pp. 67–70), Riel at prayer (p. 74), the prisoners (pp. 77–78) and the wedding-ring witness (p. 78).
