@@ -21,3 +21,20 @@ All are original illustrations for this project (AI-generated) from ART-PROMPTS-
 | firstnations-fighter, firstnations-fighter-fire | REVISE (not cut). Feathers in the hair, a fringed hide shirt and the Métis tartan sash read as a costume. Ask for: a cloth (calico) shirt, a wool blanket over one shoulder or a blanket coat, cloth leggings and moccasins, braided hair with at most one feather, a plain belt, a trade musket. |
 | leader-middleton | REVISE (not cut). Dark blue dress uniform with gold braid; the Topley photo of 1885 shows a light grey-khaki campaign jacket and breeches, a dark field cap, tall black boots and a white moustache, and the prompt has him mounted. |
 | leader-riel | REVISE (not cut). This is the clean-chinned 1884 look in a frock coat, holding papers. In May 1885 he had a full beard and wore a wide-brimmed hat and a waistcoat, and the prompt has him holding a crucifix. No gun: correct. |
+
+**Batch of 6 November (A corrections, B artillery and leaders, C fallen and Northcote):**
+
+| sheet | review |
+|---|---|
+| field-gun (from field-gun-horse-drawn) | PASS. The 9-pounder hooked to its limber, two horses, gunners in dark blue riding; going away, the muzzle points back, as it should. Cut at 240 × 200. |
+| leader-middleton (from leader-middleton-revised) | PASS. Mounted, light khaki campaign dress, dark cap, white moustache, as in the Topley photo; the frames salute, look through field glasses and point. Also used as leader-middleton-attack until a separate one passes. |
+| leader-dumont-attack | PASS. Fringed buckskin jacket as in the 1885 photo: aim, fire, then raise his fist or wave his hat. His walking sheet wears a blanket coat: a buckskin walking sheet would match better. |
+| leader-riel-attack | PASS. Full beard, curly hair, dark coat and waistcoat, holding a crucifix; raises it, and kneels in prayer in row 4. No gun. No hat and a longer coat than the 1885 photo; the walking sheet should match this look. |
+| fallen-field | PASS. Rifle green and scarlet, Glengarries, rifles beside them, no blood. Some white helmets lie beside them: to check whether any unit at Batoche wore them. Cut at 240 × 200. |
+| fallen-defenders | PASS. Everyday clothes, sashes, felt hats, guns, no blood. One man in row 4 has feathers in a headband; acceptable. |
+| northcote | PASS. Sternwheeler with twin stacks forward, wheel at the stern, barricades of sacks, soldiers firing, a red ensign. Cut at 240 × 200. |
+| firstnations-fighter-revised, firstnations-fighter-fire-revised | WRONG FILES. The first is a militia officer with a revolver, the second the Métis rifleman again. Ask for them again. |
+| leader-riel-revised | WRONG FILE: a First World War soldier in a steel helmet. Ask for Riel's walking sheet again. |
+| leader-middleton-attack | WRONG FILE: the Métis horseman. leader-middleton is used instead. |
+| leader-howard-attack | REVISE. A khaki officer with a yellow trouser stripe, which looks like Middleton. Howard: dark jacket, light-coloured peaked cap, short pointed beard (howard-gatling-1885.jpg). The gun is right. |
+| field-gun-hand-pushed-DRAFT | Not used: the same as field-gun-fire. |
