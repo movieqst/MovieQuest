@@ -122,7 +122,7 @@
     if (Z > 1.8) need('home-borders.js', () => window.HOME_BORDERS);
     if (Z > 3.5) need('vimy/world.js', () => window.BATTLE_WORLD);
     if (target) { let dl = ((target.lon - lon0 + 540) % 360) - 180; lon0 += dl * .08; lat0 += (target.lat - lat0) * .08; if (Math.abs(dl) < .05 && Math.abs(target.lat - lat0) < .05) target = null; }
-    else if (!drag && !sel && Z < 1.3 && (idle || t - lastUser > 6000)) lon0 += .04;   // a slow turn when nobody is using it
+    else if (!drag && !sel && Z < 1.3 && (idle || t - lastUser > 6000)) lon0 -= .04;   // a slow turn when nobody is using it, west to east like the real Earth (the land drifts to the right)
     draw(); requestAnimationFrame(tick);
   }
   window.addEventListener('resize', size); size(); requestAnimationFrame(tick);
