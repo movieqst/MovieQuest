@@ -536,6 +536,18 @@ function checkEnd() {
 }
 
 /* ---------------- rendering ---------------- */
+// Pulsing rings (markers): gold for a place or a neutral event; the side's own colour when the ring points at that side's
+// men. A marker can say so with side: '<side key>' (or side: 'neutral' to stay gold); without it, a ring whose label names
+// one of the formations takes that formation's side.
+function markerColors(m) {
+  let sd = m.side;
+  if (sd === undefined && m.label) { const l = m.label.toLowerCase(), f = formations.find(f => f.name && f.name.length >= 4 && l.includes(f.name.toLowerCase())); sd = f && f.side; }
+  const c = sd && S.sides && S.sides[sd] && S.sides[sd].color;
+  if (!c || !/^#[0-9a-f]{6}$/i.test(c)) return { ring: '#ffd36b', glow: 'rgba(255,211,107,.4)', text: '#fff3c9' };
+  const n = parseInt(c.slice(1), 16), rr = n >> 16, gg = n >> 8 & 255, bb = n & 255, lift = v => Math.round(v + (255 - v) * .45);
+  return { ring: `rgb(${lift(rr)},${lift(gg)},${lift(bb)})`, glow: `rgba(${rr},${gg},${bb},.5)`, text: S.sides[sd].light || '#ffffff' };
+}
+
 function resize() {
   const r = panel.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
   canvas.width = Math.max(1, Math.floor(r.width * dpr)); canvas.height = Math.max(1, Math.floor(r.height * dpr));
@@ -668,9 +680,10 @@ function render() {
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
-    ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
-    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
+    const mc = markerColors(m);
+    ctx.strokeStyle = mc.ring; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
+    ctx.strokeStyle = mc.glow; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
+    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);

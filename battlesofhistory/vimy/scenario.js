@@ -452,14 +452,14 @@ Object.assign(window.VIMY_SCENARIO, {
     { id: 'b13', to: on(L.black, 1290, 10), speed: 18, state: 'attack' },
     { id: 'g79b', strengthTo: 55, over: 10 }, { id: 'g1a', strengthTo: 50, over: 10 }, { id: 'g1b', strengthTo: 55, over: 10 } ] });
   set(3, { media: M('36-advancing-through-german-wire.jpg'), focus: { x: 1150, y: 1300 }, zoom: 2.64, barrage: B(L.black, L.red),
-    markers: [ { x: 1150, y: 1450, label: 'Milne, 16th Battalion' }, { x: 1120, y: 1180, label: 'Sifton, 18th Battalion' } ], orders: [
+    markers: [ { x: 1150, y: 1450, label: 'Milne, 16th Battalion', side: 'allied' }, { x: 1120, y: 1180, label: 'Sifton, 18th Battalion', side: 'allied' } ], orders: [
     { id: 'c1', strengthTo: 85, over: 10 }, { id: 'c2', strengthTo: 88, over: 10 }, { id: 'gmg2', strengthTo: 40, over: 10 } ] });
   set(4, { media: M('37-germans-leaving-dugouts-as-canadians-advance.jpg'), focus: FOLIE, zoom: 2,
     markers: [ Object.assign({ label: 'La Folie Farm' }, FOLIE), Object.assign({ label: 'the cave at Les Tilleuls' }, TILLEULS) ], orders: [
     { id: 'c3', to: { x: FOLIE.x + 30, y: FOLIE.y + 20 }, speed: 18, state: 'attack' },
     ...[['c2', 1110], ['c1', 1470]].map(([id, y]) => ({ id, to: on(L.red, y, 10), speed: 18, state: 'attack' })), { id: 'b13', to: on(L.red, 1290, 10), speed: 18, state: 'attack' },
     { id: 'g79b', state: 'rout', to: { x: VIMY.x, y: VIMY.y + 60 }, speed: 18 }, { id: 'gmg2', strengthTo: 0, over: 6 } ] });
-  set(5, { media: M('06-bringing-in-the-wounded.jpg'), focus: HILL145, zoom: 2.86, markers: [ Object.assign({ label: 'Hill 145' }, HILL145), Object.assign({ label: 'machine-guns on the Pimple' }, PIMPLE) ], orders: [
+  set(5, { media: M('06-bringing-in-the-wounded.jpg'), focus: HILL145, zoom: 2.86, markers: [ Object.assign({ label: 'Hill 145' }, HILL145), Object.assign({ label: 'machine-guns on the Pimple', side: 'french' }, PIMPLE) ], orders: [
     { id: 'c4', to: { x: HILL145.x - 40, y: HILL145.y + 10 }, speed: 14, state: 'attack' }, { id: 'c4', strengthTo: 55, over: 12 },
     { id: 'gmg1', strengthTo: 85, over: 12 }, { id: 'g16', strengthTo: 90, over: 12 } ] });
   set(6, { media: M('03-consolidating-positions.jpg'), focus: THELUS, zoom: 2, barrage: B(L.red, L.blue), orders: [

@@ -363,7 +363,7 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
   const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; e.t = i * 14; });
   const set = (i, o) => Object.assign(EV[i], o);
   const via = [{ x: 1700, y: 880 }, { x: 1250, y: 800 }];
-  set(0, { media: '01-sekigahara-kassen-byobu-1854.jpg', music: { file: 'mountain-emperor-macleod.mp3', vol: .22 }, zoom: 'fit', markers: [ { x: 2300, y: 880, label: 'from Ōgaki, in the rain' } ], orders: [
+  set(0, { media: '01-sekigahara-kassen-byobu-1854.jpg', music: { file: 'mountain-emperor-macleod.mp3', vol: .22 }, zoom: 'fit', markers: [ { x: 2300, y: 880, label: 'from Ōgaki, in the rain', side: 'french' } ], orders: [
     { id: 'ishida', to: ISHIDA, via, speed: 140 }, { id: 'ishidag', to: { x: ISHIDA.x + 70, y: ISHIDA.y + 40 }, via, speed: 140 },
     { id: 'shimazu', to: SHIMAZU, via, speed: 140 }, { id: 'konishi', to: KONISHI, via, speed: 140 },
     { id: 'ukita', to: UKITA, via, speed: 140 }, { id: 'ukitag', to: { x: UKITA.x + 90, y: UKITA.y - 30 }, via, speed: 140 },
@@ -378,23 +378,23 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
   set(3, { music: { file: 'taiko-harding.mp3', vol: .35 }, focus: { x: 800, y: 720 }, zoom: 1.5, markers: [ { x: 760, y: 790, label: 'Fukushima attacks Ukita' } ], orders: [
     { id: 'fukushima', to: { x: UKITA.x + 70, y: UKITA.y + 10 }, speed: 40, state: 'attack' }, { id: 'fukug', to: { x: UKITA.x + 140, y: UKITA.y - 50 }, speed: 30 },
     { id: 'kuroda', to: { x: ISHIDA.x + 90, y: ISHIDA.y + 10 }, speed: 40, state: 'attack' }, { id: 'ii', to: { x: SHIMAZU.x + 60, y: SHIMAZU.y + 80 }, speed: 40 } ] });
-  set(4, { focus: { x: 620, y: 1060 }, zoom: 1.5, markers: [ Object.assign({ label: 'Kobayakawa turns' }, MATSUO) ], orders: [
+  set(4, { focus: { x: 620, y: 1060 }, zoom: 1.5, markers: [ Object.assign({ label: 'Kobayakawa turns', side: 'allied' }, MATSUO) ], orders: [
     { id: 'kobaya', side: 'allied' }, { id: 'kobaya', to: { x: OTANI.x + 60, y: OTANI.y + 60 }, speed: 45, state: 'attack' },
     { leader: 'kobayakawa', to: { x: OTANI.x + 120, y: OTANI.y + 130 }, speed: 45 }, { id: 'todo', to: { x: OTANI.x + 110, y: OTANI.y - 10 }, speed: 35, state: 'attack' } ] });
   set(5, { focus: OTANI, zoom: 1.7, orders: [
     { id: 'wakisaka', side: 'allied' }, { id: 'wakisaka', to: { x: OTANI.x + 20, y: OTANI.y + 50 }, speed: 40, state: 'attack' },
     { id: 'otani', strengthTo: 0, over: 10 } ] });
-  set(6, { focus: { x: 2050, y: 1200 }, zoom: 1.3, markers: [ Object.assign({ label: 'the Mōri army on Mount Nangū' }, NANGU) ], orders: [ { id: 'mori', state: 'hold' } ] });
+  set(6, { focus: { x: 2050, y: 1200 }, zoom: 1.3, markers: [ Object.assign({ label: 'the Mōri army on Mount Nangū', side: 'french' }, NANGU) ], orders: [ { id: 'mori', state: 'hold' } ] });
   set(7, { zoom: 'fit', orders: [
     { id: 'konishi', state: 'rout', to: { x: 30, y: 520 }, speed: 45 }, { id: 'ukita', state: 'rout', to: { x: 30, y: 640 }, speed: 45, delay: 1 },
     { id: 'ukitag', state: 'rout', to: { x: 30, y: 700 }, speed: 45, delay: 1 }, { id: 'ishida', state: 'rout', to: { x: 120, y: 300 }, speed: 45, delay: 2 },
     { id: 'ishidag', state: 'rout', to: { x: 160, y: 280 }, speed: 45, delay: 2 }, { leader: 'mitsunari', to: { x: 80, y: 260 }, speed: 45, delay: 2 },
     { id: 'ukita', strengthTo: 30, over: 8 }, { id: 'konishi', strengthTo: 35, over: 8 }, { id: 'ishida', strengthTo: 40, over: 8 } ] });
-  set(8, { media: '02-sekigahara-byobu-gifu-north-view.jpg', zoom: 'fit', markers: [ Object.assign({ label: 'tradition: the noon volley at Mount Matsuo' }, MATSUO) ] });
-  set(9, { music: { file: 'taiko-harding.mp3', vol: .3 }, focus: { x: 1500, y: 1000 }, zoom: 1, markers: [ { x: ISE.x - 80, y: ISE.y - 40, label: 'toward Ise' } ], orders: [
+  set(8, { media: '02-sekigahara-byobu-gifu-north-view.jpg', zoom: 'fit', markers: [ Object.assign({ label: 'tradition: the noon volley at Mount Matsuo', side: 'allied' }, MATSUO) ] });
+  set(9, { music: { file: 'taiko-harding.mp3', vol: .3 }, focus: { x: 1500, y: 1000 }, zoom: 1, markers: [ { x: ISE.x - 80, y: ISE.y - 40, label: 'toward Ise', side: 'french' } ], orders: [
     { id: 'shimazu', to: ISE, via: [{ x: 1100, y: 800 }, { x: 1600, y: 1150 }], speed: 50, state: 'attack' }, { id: 'shimazu', strengthTo: 25, over: 12 },
     { leader: 'shimazu', to: { x: ISE.x - 30, y: ISE.y - 40 }, via: [{ x: 1100, y: 800 }, { x: 1600, y: 1150 }], speed: 50 } ] });
-  set(10, { zoom: 'fit', markers: [ Object.assign({ label: 'Jinbano: Ieyasu inspects the heads' }, JINBANO) ], orders: [
+  set(10, { zoom: 'fit', markers: [ Object.assign({ label: 'Jinbano: Ieyasu inspects the heads', side: 'allied' }, JINBANO) ], orders: [
     { leader: 'ieyasu', to: JINBANO, speed: 70 }, { id: 'tokugawa', to: { x: JINBANO.x + 80, y: JINBANO.y + 40 }, speed: 70 } ] });
   set(11, { media: '01-sekigahara-kassen-byobu-1854.jpg', zoom: 'fit', orders: [ { leader: 'mitsunari', visible: false } ] });
 
