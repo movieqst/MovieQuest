@@ -11,7 +11,7 @@ CMIX = 'highpass=f=90,lowpass=f=4800,bass=g=4:f=140,acompressor=threshold=0.25:r
 VOICES = [('clear', 25, '1.08', '-', MIX), ('light', 60, '1.08', '-', MIX), ('bright', 0, '1.08', '-', MIX), ('deep', 400, '1.08', '-', MIX),
           ('warm', 7, '1.08', '-', MIX), ('computer', 500, '1.3', '--noise-scale 0.4 --noise-w 0.3', CMIX)]
 SMALL = {'a', 'an', 'the', 'of', 'and', 'or', 'to', 'in', 'on', 'at', 'by', 'for'}
-def clean(t): return re.sub(r'\s+', ' ', re.sub(r'\*\([^)]*\)\*', '', t).replace('**', '').replace('---', '')).strip()
+def clean(t): return re.sub(r'\s+', ' ', re.sub(r'\*\([^)]*\)\*', '', t).replace('**', '').replace('*', '').replace('---', '')).strip()
 def title(t):
     if t != t.upper(): return t
     w = t.lower().split(); return ' '.join(x if i and x in SMALL else x[:1].upper() + x[1:] for i, x in enumerate(w))
@@ -39,7 +39,14 @@ SAY = [(r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b
        (r'\bNangū\b', 'Nan-goo'), (r'\bNakasendō\b', 'Naka-sen-doh'), (r'\bAonogahara\b', 'Ah-oh-no-gahara'), (r'\bFushimi\b', 'Foo-shimi'),
        (r'\bTorii Mototada\b', 'Toh-ree-ee Moto-tada'), (r'\bUeda\b', 'Oo-eh-da'), (r'\bUesugi\b', 'Oo-eh-sugi'), (r'\bKagekatsu\b', 'Kah-geh-katsu'),
        (r'\bEdo\b', 'Eh-doh'), (r'\bshōgun(ate)?\b', lambda m: 'show-gun' + (m.group(1) or '')), (r'\bChōshū\b', 'Choh-shoo'), (r'\bIse\b', 'Ee-seh'),
-       (r'\bIi Naomasa\b', 'Ee-ee Nao-masa'), (r'\bToyotomi\b', 'Toyo-tomi'), (r'\bTokugawa\b', 'Toku-gawa'), (r'\bŌmi\b', 'Oh-mee')]
+       (r'\bIi Naomasa\b', 'Ee-ee Nao-masa'), (r'\bToyotomi\b', 'Toyo-tomi'), (r'\bTokugawa\b', 'Toku-gawa'), (r'\bŌmi\b', 'Oh-mee'),
+       # Batoche: French and Métis names, respelled for the English voices
+       (r'\bMétis\b', 'May-tee'), (r'\bBatoche\b', 'Ba-tosh'), (r'\bRiel\b', 'Ree-el'), (r'\bDumont\b', 'Doo-mon'),
+       (r'\bMichif\b', 'Mitchif'), (r'\bSaint-Antoine-de-Padoue\b', 'San-tan-twan duh Pa-doo'), (r'\bLetendre\b', 'Luh-tondr'),
+       (r'\bXavier\b', 'Zav-yay'), (r'\bMoulin\b', 'Moo-lan'), (r'\bGarnot\b', 'Gar-no'), (r'\bFleury\b', 'Flur-ee'),
+       (r'\bAmbroise Champagne\b', 'Om-bwahz Shom-pan-yuh'), (r'\bPascal Montour\b', 'Pass-kal Mon-toor'), (r'\bOuellette\b', 'Wel-ett'),
+       (r'\bQu\'Appelle\b', 'Ka-pell'), (r'\bVan Straubenzie\b', 'Van Straw-ben-zee'), (r'\bzareba\b', 'za-ree-ba'),
+       (r'\bJolie\b', 'Zho-lee'), (r'\bcoulee\b', 'koo-lee')]
 def say(t):
     for a, b in SAY: t = re.sub(a, b, t)
     return t
