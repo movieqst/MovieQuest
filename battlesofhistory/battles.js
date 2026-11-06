@@ -1,7 +1,8 @@
 /* The list of battles. Cards below the timeline are ordered by `order`: the highest number is shown first. Give a new card the next number, and bump a card's number when it is updated, so it moves to the front. The timeline uses `year`. Add a new entry here when a new battle folder is added; index.html reads it.
    Each entry: folder (the subfolder with its own index.html), title, date (text), year (a number for the
    timeline: negative for BCE), place, sides, blurb, cover (a picture inside the folder's images/),
-   coverCredit, optional coverPos (CSS background-position, to keep the subject in the crop), and status: 'ready' | 'in progress'. */
+   coverCredit, optional coverPos (CSS background-position, to keep the subject in the crop), and status: 'ready' | 'in progress'; for in-progress battles,
+   progress (0-100, roughly how far along: research, maps, art, script, voices) decides which 4 show beside the globe. */
 window.BATTLES = [
   {
     folder: 'kadesh', lat: 34.56, lon: 36.52,
@@ -134,7 +135,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sixday', lat: 31.78, lon: 35.23,
+    folder: 'sixday', progress: 30, lat: 31.78, lon: 35.23,
     order: 12,
     era: 'Arab–Israeli Wars',
     title: 'The Six-Day War',
@@ -160,7 +161,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'batoche', lat: 52.75, lon: -106.12,
+    folder: 'batoche', progress: 90, lat: 52.75, lon: -106.12,
     order: 14,
     era: 'Canada, 1885',
     title: 'Battle of Batoche',
@@ -173,7 +174,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'tyre', lat: 33.27, lon: 35.2,
+    folder: 'tyre', progress: 35, lat: 33.27, lon: 35.2,
     order: 15,
     era: 'Classical Antiquity',
     title: 'Battle of Tyre',
@@ -186,7 +187,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'fishcreek', lat: 52.54, lon: -106.15,
+    folder: 'fishcreek', progress: 20, lat: 52.54, lon: -106.15,
     order: 16,
     era: 'Canada, 1885',
     title: 'Battle of Fish Creek',
