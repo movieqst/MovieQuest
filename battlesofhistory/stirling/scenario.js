@@ -488,3 +488,6 @@ window.STIRLING_SCENARIO = {
     Object.assign({ on: 'two horsemen' }, ring(BRIDGE, 'the bridge of 1297', { r: 40 })),
     Object.assign({ on: 'four stone piers' }, ring(BRIDGE, 'the pier remains', { r: 70, ly: 90 })) ];
 })();
+
+// The year shown with the dates in the stamp at the top left of the map
+window.STIRLING_SCENARIO.clockYear = 1297;

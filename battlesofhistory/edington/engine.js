@@ -536,6 +536,43 @@ function checkEnd() {
 }
 
 /* ---------------- rendering ---------------- */
+// Date and time stamp, top left of the map: what the chapter's `clock` says (e.g. "9 April, 5:30", "Day 2 · 07:55",
+// "Night, 20 October"). Pieces naming a month, a "Day N" or a year are the date; the rest is the time of day. A chapter
+// that gives only a time keeps the last date. S.clockYear is added to dates without a year; ev.clockTag ('disputed',
+// 'estimate') tints it. An intro slide can carry its own `clock`.
+const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
+function clockTime(t) {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(t.trim()); if (!m) return t;
+  let h = +m[1]; const pm = h >= 12, lead = m[1].length === 2; if (!lead && h < 12) return h + ':' + m[2] + ' a.m.';
+  if (h === 12 && m[2] === '00') return 'Noon'; const h12 = h % 12 || 12; return h12 + ':' + m[2] + (pm ? ' p.m.' : ' a.m.');
+}
+function clockParts(c) {
+  const bits = String(c).split(/\s+·\s+|,\s+/).map(x => x.trim()).filter(Boolean); let date = null; const time = [];
+  bits.forEach(b => { if (!date && CLOCK_DATE.test(b)) date = b; else time.push(clockTime(b)); });
+  if (date && S.clockYear && !/\b\d{3,4}\b/.test(date) && !/\bdays? \d/i.test(date)) date += ' ' + S.clockYear;
+  const tm = time.join(', '); return { date, time: tm ? tm[0].toUpperCase() + tm.slice(1) : '' };
+}
+function clockStampNow() {
+  if (mode === 'intro') { const sl = S.intro && S.intro[introIdx]; return sl && sl.clock && !sl.growth ? Object.assign(clockParts(sl.clock), { tag: sl.clockTag }) : null; }
+  const ev = currentEvent; if (!ev || !ev.clock) return null; const list = S.events || [], i = list.indexOf(ev);
+  let date = null; for (let k = 0; k <= i; k++) if (list[k] && list[k].clock) { const p = clockParts(list[k].clock); if (p.date) date = p.date; }
+  const p = clockParts(ev.clock); return { date: p.date || date, time: p.time, tag: ev.clockTag };
+}
+let clockShown = '', clockSince = -9;
+function drawClockStamp() {
+  const st = clockStampNow(); if (!st || !(st.date || st.time)) { clockShown = ''; return; }
+  const key = st.date + '|' + st.time; if (key !== clockShown) { clockShown = key; clockSince = wall; }
+  const f = Math.min(1, (wall - clockSince) / .8), glow = 1 - f, col = st.tag === 'disputed' ? '#ffb36b' : st.tag === 'estimate' ? '#ffe08a' : '#7fe9ff';
+  const L1 = (st.date || '').toUpperCase(), L2 = st.time || '';
+  ctx.save(); ctx.font = "bold 22px 'Cinzel', Georgia, serif"; const w1 = ctx.measureText(L1).width; ctx.font = "16px system-ui, sans-serif"; const w2 = ctx.measureText(L2).width;
+  const x = 14, y = 12, w = Math.max(w1, w2) + 28, h = (L1 ? 30 : 0) + (L2 ? 24 : 0) + 12;
+  ctx.globalAlpha = .35 + .65 * f; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.shadowColor = col; ctx.shadowBlur = 10 + 20 * glow;
+  ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+  ctx.shadowBlur = 8 + 14 * glow; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  if (L1) { ctx.font = "bold 22px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#f2fbff'; ctx.fillText(L1, x + 14, y + 8); }
+  if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, x + 14, y + (L1 ? 38 : 9)); }
+  ctx.restore();
+}
 // Pulsing rings (markers): gold for a place or a neutral event; the side's own colour when the ring points at that side's
 // men. A marker can say so with side: '<side key>' (or side: 'neutral' to stay gold); without it, a ring whose label names
 // one of the formations takes that formation's side.
@@ -685,6 +722,7 @@ function render() {
     ctx.strokeStyle = mc.glow; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
     outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
+  drawClockStamp();
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];

@@ -531,6 +531,8 @@ Object.assign(window.VIMY_SCENARIO, {
   // The map starts empty: the title slide and the trench build-up show no soldiers. The build-up slide was added after the
   // narration was recorded (extra: captions only until its clip is recorded; the recorded clips keep their numbers).
   I[0].noUnits = true; I[0].trenches = null;
+  // dates for the stamp at the top left of the map (the trench build-up shows its own)
+  [['Easter Monday, 9 April'], ['1914 to 1917'], ['Winter 1916 to 1917'], ['20 March to 9 April'], ['1916 to 1917'], ['April 1917']].forEach(([c], i) => { const sl = I[i === 0 ? 0 : i]; if (sl && !sl.growth) sl.clock = c; });
   I.splice(1, 0, {
     title: 'Four years of trenches', extra: true, noUnits: true, auto: 32, trenches: null,
     lines: [
@@ -572,3 +574,6 @@ Object.assign(window.VIMY_SCENARIO, {
     ];
   })()
 });
+
+// The year shown with the dates in the stamp at the top left of the map
+window.VIMY_SCENARIO.clockYear = 1917;

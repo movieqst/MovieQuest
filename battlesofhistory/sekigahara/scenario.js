@@ -428,3 +428,11 @@ Object.assign(window.SEKIGAHARA_SCENARIO, {
   ];
   S.library = [];
 })();
+
+// The year shown with the dates in the stamp at the top left of the map
+window.SEKIGAHARA_SCENARIO.clockYear = 1600;
+// Dates for the stamp on the map (the chapters' own clocks name only the night of the 20th)
+(function () { const E = window.SEKIGAHARA_SCENARIO.events, D = (i, c, tag) => { if (E[i]) { E[i].clock = c; if (tag) E[i].clockTag = tag; } };
+  D(3, '21 October, About ten in the morning', 'disputed'); D(4, '21 October, Morning', 'disputed');
+  [5, 6, 7, 9, 10].forEach(i => { if (E[i]) E[i].clock = '21 October, ' + E[i].clock; }); D(8, '21 October, Tradition', 'disputed');
+  D(11, '6 November, Days later'); })();

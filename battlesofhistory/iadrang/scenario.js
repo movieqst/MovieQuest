@@ -948,3 +948,6 @@ window.BATTLE_SCENARIO = {
     belt:     'The enemy is inside a hundred metres. Fire support on them now would hit your own men.'
   }
 };
+
+// The year shown with the dates in the stamp at the top left of the map
+window.BATTLE_SCENARIO.clockYear = 1965;
