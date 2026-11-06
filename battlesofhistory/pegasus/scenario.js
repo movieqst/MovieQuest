@@ -401,7 +401,7 @@ window.BATTLE_SCENARIO = {
   {
     id: 'approach',
     title: 'The approach', subtitle: 'Night of 5–6 June 1944',
-    introOnly: true, tilt: 0, noProps: true,     // the moonlit area map (Ouistreham to Caen), shown in the introduction only
+    introOnly: true, noProps: true,     // the moonlit area map (Ouistreham to Caen), shown in the introduction only
     duration: 60, commandDuration: 60,
     world: { w: 2400, h: 1800 },                 // 49.31 N 0.42 W (top left) to 49.17 N 0.134 W, about 21 x 16 km (1 px = 9 m)
     clockStart: '5 June · 23:00',
