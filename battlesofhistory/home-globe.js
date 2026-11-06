@@ -68,7 +68,7 @@
   cv.addEventListener('pointermove', e => {
     const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
     if (drag) { const dx = e.clientX - drag.x, dy = e.clientY - drag.y; if (Math.hypot(dx, dy) > 4) drag.moved = true; lon0 = drag.lon - dx / R * 60; lat0 = Math.max(-80, Math.min(80, drag.lat + dy / R * 60)); lastUser = performance.now(); }
-    else { const h = pinAt(x, y); if (h !== hover) { hover = h; cv.style.cursor = h ? 'pointer' : 'grab'; cv.title = h ? h.b.title + ' · ' + h.b.date : ''; } }
+    else { const h = pinAt(x, y); if (h !== hover) { hover = h; cv.style.cursor = h ? 'pointer' : 'grab'; } }
   });
   cv.addEventListener('pointerup', e => { const d = drag; drag = null; if (!d || d.moved) return; const p = pinAt(d.px, d.py); sel = p; showCard(p);
     if (p) { target = { lon: p.lon, lat: Math.max(-40, Math.min(70, p.lat)) };   // a crowded spot (western Europe): zoom in so its pins separate
