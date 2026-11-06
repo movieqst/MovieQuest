@@ -77,14 +77,21 @@ Object.assign(window.BATOCHE_SCENARIO, {
         "credit": "Photographer unknown, c. 1885. Bibliothèque et Archives nationales du Québec, P600,S6,D5,P1309. Public domain in Canada (photo before 1949) and in the US (published before 1931). Wikimedia Commons: Batoche_1885.jpg (1280 px copy)"
       },
       {
-        "at": 14,
+        "at": 12,
         "file": "metis-flag.png",
         "caption": "The Métis flag: a white infinity sign on a blue field. An account from 1815 describes a red flag with a horizontal figure eight, and Peter Fiddler recorded a blue one carried by Métis under Cuthbert Grant in 1816. It is a central symbol of the Métis Nation today. No source shows it flying at Batoche in 1885, so it is shown here as history, not on the battlefield.",
         "credit": "Drawing by Xasartha (2014) after Flags of the World (crwflags.com/fotw/flags/ca_metis.html). Public domain: a simple flag design, ineligible for copyright. Wikimedia Commons: Flag_of_the_Metis_(francophone).PNG (586 × 292)",
         "fit": "contain"
       },
       {
-        "at": 30,
+        "at": 24,
+        "file": "michif-chart.png",
+        "caption": "Michif, the language of the Métis. It is one of the world’s rare mixed languages: most nouns, with their articles, come from French, and most verbs come from Plains Cree, with the Cree endings that show who acts and when. It grew in the fur-trade families of the 1700s and 1800s and was spoken at Red River and at Batoche, alongside French, Cree and English. Like Cree it was passed on mainly by speaking. Today only a few thousand people speak it (1,845 reported in the 2021 census), and Métis communities are working to keep it alive. The linguist Peter Bakker described how it was formed in A Language of Our Own (1997).",
+        "credit": "Drawn for this project after Peter Bakker, A Language of Our Own (1997); batoche/tools/make-michif-chart.py. Free to use.",
+        "fit": "contain"
+      },
+      {
+        "at": 36,
         "file": "batoche-rectory-church-2017.jpg",
         "caption": "The rectory and Saint-Antoine-de-Padoue church (1884) at Batoche National Historic Site, among the few buildings left standing after the battle",
         "credit": "Photo: David Stanley, 30 July 2017. CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/). Wikimedia Commons: Batoche_National_Historic_Site_(27568738179).jpg"
