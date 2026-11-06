@@ -56,8 +56,12 @@ CREE = ('nēhiyawēwin, the Cree language. Cree is an Algonquian language spoken
         'alongside pictographs painted on rock. In 1840 and 1841 at Norway House, the missionary James Evans, working with Cree and Ojibwe helpers, printed the first books in syllabics; '
         'Cree tradition credits a man named Calling Badger. Each shape stands for a consonant, and turning it changes the vowel. The script spread quickly, and by 1885 many Cree could read and write it. '
         'Today Cree is spoken by more people than any other Indigenous language in Canada. The Saskatchewan River takes its name from the Cree kisiskāciwani-sīpiy, "the swift-flowing river".')
+MICHIF = ('Michif, the language of the Métis. It is one of the world’s rare mixed languages: most nouns, with their articles, come from French, and most verbs come from Plains Cree, '
+          'with the Cree endings that show who acts and when. It grew in the fur-trade families of the 1700s and 1800s and was spoken at Red River and at Batoche, alongside French, Cree and English. '
+          'Like Cree it was passed on mainly by speaking. Today only a few thousand people speak it (1,845 reported in the 2021 census), and Métis communities are working to keep it alive. '
+          'The linguist Peter Bakker described how it was formed in A Language of Our Own (1997).')
 IM = {0: [media('cover.jpg', 0), media('capture-of-batoche-curzon.jpg', 14)],
-      1: [media('batoche-village-1885.jpg', 0), dict(media('metis-flag.png', 14, 'contain'), caption=FLAG), media('batoche-rectory-church-2017.jpg', 30)],
+      1: [media('batoche-village-1885.jpg', 0), dict(media('metis-flag.png', 12, 'contain'), caption=FLAG), dict(media('michif-chart.png', 24, 'contain'), caption=MICHIF), media('batoche-rectory-church-2017.jpg', 36)],
       2: [media('st-laurent-mission-1891.jpg', 0), dict(media('cree-syllabics-chart.png', 10, 'contain'), caption=CREE), media('riel-1884-bennetto.jpg', 26)],
       3: [media('dumont-1885-buckskin.jpg', 0, 'contain'), media('riel-c1880-lac.jpg', 18, 'contain'), media('middleton-1885-topley.jpg', 34, 'contain')],
       4: [media('heroes-of-batoche-belleville.jpg', 0)],
