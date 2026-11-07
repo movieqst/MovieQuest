@@ -37,3 +37,16 @@ A reference for **Red River (1869–70)**, **Batoche** and **Fish Creek** (1885)
 1. Intro 6 or event 4: "rifle pits three or four feet deep" (instead of "shallow"), and Middleton's "I was astonished at the strength of the position and at the ingenuity and care displayed in the construction of the rifle pits." (2 clips)
 2. Event 9: "a bishop later wrote that they were reduced to firing stones and nails" beside Hildebrandt. (1 clip)
 3. Outcome: Riel's "I do not like war"; his last letter ("I will go to fulfil God's will"); Dumont's "I still have ninety cartridges"; Poundmaker on 26 May. (1 clip, the outcome)
+
+## Aftermath, pp. 376–385 (site owner's screenshots, 7 November 2026)
+
+| Stanley | our script (outcome/debrief) | verdict |
+|---|---|---|
+| Big Bear surrendered on **2 July** to Sergeant Smart of the Mounted Police at Fort Carlton, travelling almost alone (p. 377) | "Big Bear in early July" | confirms; can add "2 July, at Fort Carlton" |
+| Poundmaker came in at Battleford on **26 May** (p. 373) | "end of May" | confirms; "26 May" |
+| Riel condemned to death for treason; **eighteen** Métis associates sentenced to one to seven years for treason-felony; **eleven** First Nations men condemned to hang for murder, three reprieved; Big Bear and Poundmaker imprisoned; Imasees, Little Poplar, Lucky Man and others escaped to Montana; W. H. Jackson and Thomas Scott tried and discharged (p. 378). Cost of the campaign over $5,000,000 (p. 378) | the Battleford hangings of eight (27 Nov.) | agrees (11 condemned, 3 reprieved = 8 hanged) |
+| The Métis afterwards: homes burned and looted; many got scrip and sold it cheaply; many moved to the Peace River (p. 378). A general amnesty in 1886; Poundmaker and Big Bear freed in 1887 and did not live long (p. 379) | Dumont's amnesty | **new for the debrief: what happened to the Métis of Batoche** (Stanley's wording not used) |
+| Riel's trial: Regina, late July, before a stipendiary magistrate and **a jury of six English-speaking men**; the defence pleaded insanity, which **Riel himself rejected** in his addresses to the jury (pp. 384–385). Guilty with a recommendation to mercy; sentenced for 18 September; appeals to the Manitoba Queen's Bench and the Privy Council failed; reprieved to 16 November; a medical commission; hanged 16 November 1885 (p. 385) | "tried for high treason at Regina… found guilty but asked for mercy… hanged 16 November" | confirms; adds the six-man jury and Riel refusing the insanity plea |
+| The trial divided Canada along French and English lines: Quebec saw Riel as a patriot, Ontario as a rebel; the crisis shifted Quebec toward Laurier's Liberals (pp. 380–383) | not in the script | context for the debrief (one line) |
+
+**Proposed debrief additions** (outcome clip only): Poundmaker 26 May and Big Bear 2 July; Riel refused to let his lawyers call him insane; the trial divided English and French Canada; after the war many Métis lost their homes and land, and some moved north and west.
