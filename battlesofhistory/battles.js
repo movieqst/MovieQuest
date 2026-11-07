@@ -211,5 +211,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '50% 45%',
     coverCredit: 'John Trumbull, The Battle of Bunker\u2019s Hill, June 17, 1775, oil on canvas, 1786. Yale University Art Gallery, Trumbull Collection, via Wikimedia Commons, public domain. A later painting, not evidence of the battle',
     status: 'in progress'
+  },
+  {
+    folder: 'redriver', progress: 5, lat: 49.8873, lon: -97.1316,
+    order: 18,
+    era: 'Canada, 1869–1870',
+    title: 'Red River Resistance',
+    date: 'October 1869 – August 1870', year: 1869,
+    place: 'The Red River Settlement and Upper Fort Garry (today Winnipeg, Manitoba, Canada)',
+    sides: 'The Métis provisional government of Louis Riel vs. the Canadian government and its supporters at Red River',
+    blurb: 'When Canada buys Rupert’s Land from the Hudson’s Bay Company without asking the people who live there, the Métis of Red River stop the surveyors, seize Upper Fort Garry and form a provisional government under Louis Riel. Their negotiations bring Manitoba into Canada, but the execution of Thomas Scott and the military expedition of 1870 send Riel into exile.',
+    cover: 'images/cover.jpg', coverPos: '50% 30%',
+    coverCredit: 'Louis Riel, photograph by I. Bennetto & Co., Winnipeg (probably about 1884). University of Manitoba Archives, PC 107. Public domain. A placeholder: later than the events',
+    status: 'in progress'
   }
 ];
