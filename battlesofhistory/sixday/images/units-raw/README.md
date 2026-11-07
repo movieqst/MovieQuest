@@ -78,3 +78,16 @@ These are original illustrations for this project (AI-generated): an artist's im
 | leader-nasser (from leader-nasser-redo) | ACCEPT. Dark civilian suit and tie, a good likeness, rows in order. A walking sheet (the prompt asked for standing and gesturing); walking works for the Region map. |
 | jor-hunter-redo-draft | FIX, not used. The intakes and the solid nose are now right, but it is one three-quarter view in 2 × 4 frames, not the four-direction sheet the game needs (top, side, tail, side, like the Mirage), and row 2 shows an afterburner flame (the Hunter had none). It also has Arabic numerals on the nose (no readable text). |
 | leaders-five-concept-ONLY | Not used: a concept picture of five leaders, not production sheets. Ask for each as its own 4 × 4 sheet. |
+
+**Batch 8 (7 November):** originals in units-raw/batch8/.
+
+| sheet | review |
+|---|---|
+| jor-hunter (from hunter-aircraft-draft-A) | ACCEPT. Wing-root intakes, solid nose, no afterburner, camouflage and Jordanian markings; head-on, side, tail and side views like the Mirage sheet. Rows were south, west, north, east: reordered. Cut a little smaller than the Mirage (the Hunter was the smaller aircraft). |
+| hunter-aircraft-draft-B | Not used: mixed views in a 1536 × 1024 sheet; A is better. |
+| fallen-syr (from fallen-soldier-draft) | ACCEPT for now, as the Syrian fallen: olive-green uniform, Soviet-style helmets, AK rifles, no blood, 16 poses (all facing the same way). Small red-white-black flag patches, tiny at game size. |
+| leader-hussein (from king-hussein-keffiyeh-draft) | ACCEPT for now. Field uniform with a red-and-white shemagh. A dark-beret version (as on 30 May in Cairo) is still wanted. |
+| king-hussein-beret-draft | Not used: it is a peaked cap with a red band, not a beret. |
+| leader-eshkol (from levi-eshkol-civilian-draft) | ACCEPT. Bald, glasses, dark suit: a good likeness. |
+| officer-draft-A to D | Not used yet: unnamed. Each needs to be labelled with the person it was drawn for (Amer, Shazly, Riad, Dayan, Elazar…) before it can be checked against photos. |
+| multi-asset-concept-not-sprite | Not used: concept only. |
