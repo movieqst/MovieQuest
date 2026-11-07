@@ -53,6 +53,10 @@ SAY = [(r'\bVimy\b', 'Vimmy'), (r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'G
        (r'\bAmbroise Champagne\b', 'Om-bwahz Shom-pan-yuh'), (r'\bPascal Montour\b', 'Pass-kal Mon-toor'), (r'\bOuellette\b', 'Wel-ett'),
        (r'\bQu\'Appelle\b', 'Ka-pell'), (r'\bVan Straubenzie\b', 'Van Straw-ben-zee'), (r'\bzareba\b', 'za-ree-ba'),
        (r'\bJolie\b', 'Zho-lee'), (r'\bcoulee\b', 'koo-lee'),
+       # Fish Creek: French and Métis names
+       (r'\bTourond\b', 'Too-ron'), (r'\bMontizambert\b', 'Mon-tee-zam-bair'), (r'\bÉdouard\b', 'Ay-dwar'), (r'\bCaron\b', 'Ka-ron'),
+       (r'\bParenteau\b', 'Pa-ron-toe'), (r'\bVermette\b', 'Ver-met'), (r'\bJosé\b', 'Zho-zay'), (r'\bJosephte\b', 'Zho-zett'),
+       (r'\bDoucet\b', 'Doo-set'), (r'\bMelgund\b', 'Mel-gund'), (r'\bCoulee\b', 'Koo-lee'),
        # Six-Day War: Arabic and Hebrew names, respelled for the English voices
        (r'\bNasser\b', 'Nasser'), (r'\bAmer\b', 'Ah-mer'), (r'\bShazly\b', 'Shaz-lee'), (r'\bAbu-Ageila\b', 'Abu Ah-gay-la'),
        (r'\bUm Katef\b', 'Oom Kah-tef'), (r'\bQuneitra\b', 'Koo-nay-tra'), (r'\bTel Faher\b', 'Tel Fa-her'), (r'\bGolani\b', 'Go-lah-nee'),
