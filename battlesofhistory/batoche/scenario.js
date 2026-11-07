@@ -213,7 +213,7 @@ Object.assign(window.BATOCHE_SCENARIO, {
         "tag": "estimate"
       },
       {
-        "text": "The village lay on the east bank of the river. To the south, the church and the rectory stood on higher ground, with the cemetery beyond. Along the wooded slopes and ravines, the defenders had dug rifle pits: shallow holes with a low wall of earth and logs, hard to see and hard to hit.",
+        "text": "The village lay on the east bank of the river. To the south, the church and the rectory stood on higher ground, with the cemetery beyond. Along the wooded slopes and ravines, the defenders had dug rifle pits: holes three or four feet deep with a low wall of earth and logs, hard to see and hard to hit.",
         "tag": "established"
       }
     ],
@@ -294,7 +294,7 @@ Object.assign(window.BATOCHE_SCENARIO, {
     "title": "Running short",
     "clock": "10 and 11 May",
     "tag": "account",
-    "text": "In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Hildebrandt writes that some fired nails when the bullets made from scavenged lead ran out; how often that happened is uncertain."
+    "text": "In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Hildebrandt writes that some fired nails when the bullets made from scavenged lead ran out, and Bishop Grandin later said they were reduced to firing small stones and nails. How often that happened is uncertain."
   },
   {
     "title": "The feint",
@@ -337,19 +337,31 @@ Object.assign(window.BATOCHE_SCENARIO, {
     "tag": "estimate"
   },
   {
-    "text": "On the 15th of May, Louis Riel gave himself up. Gabriel Dumont stayed near Batoche for some days; when he heard that Riel had surrendered, he escaped to the United States.",
+    "text": "Middleton walked over the ground afterwards. He wrote that he was \"astonished at the strength of the position and at the ingenuity and care displayed in the construction of the rifle pits.\"",
+    "tag": "account"
+  },
+  {
+    "text": "On the last day Riel had written on the back of one of Middleton's messages: \"I do not like war.\" On the 13th of May Middleton wrote that he would receive Riel and his council and protect them until the government decided their case. Riel answered: \"My council are dispersed. I wish you would let them go quiet and free… I will go to fulfil God's will.\" On the 15th of May he gave himself up to two scouts.",
+    "tag": "account"
+  },
+  {
+    "text": "Gabriel Dumont refused to surrender. \"I still have ninety cartridges to spend on his men,\" he answered. He stayed near Batoche for some days, then escaped to the United States.",
+    "tag": "account"
+  },
+  {
+    "text": "Poundmaker came in to Battleford on the 26th of May, and Big Bear gave himself up at Fort Carlton on the 2nd of July. Both were sent to prison, and both died soon after their release in 1887.",
     "tag": "established"
   },
   {
-    "text": "Poundmaker surrendered at the end of May, and Big Bear in early July. Both were sent to prison.",
-    "tag": "established"
-  },
-  {
-    "text": "Riel was tried for high treason at Regina. The jury found him guilty but asked for mercy. He was hanged on the 16th of November 1885. Eleven days later, on the 27th of November, six Cree and two Nakoda (Assiniboine) men were hanged together at Battleford.",
+    "text": "Riel was tried for high treason at Regina, before a jury of six English-speaking men. His lawyers argued that he was insane; Riel himself rejected that defence in his speeches to the jury. The jury found him guilty but asked for mercy. He was hanged on the 16th of November 1885. Eleven days later, on the 27th of November, six Cree and two Nakoda (Assiniboine) men were hanged together at Battleford.",
     "tag": "established"
   },
   {
     "text": "Riel's death divided Canada for a generation, French against English, Catholic against Protestant.",
+    "tag": "established"
+  },
+  {
+    "text": "For the Métis of Batoche, the war's end brought loss. Many homes had been burned or looted. Some sold the land scrip they were given for far less than it was worth, and many moved away, north and west.",
     "tag": "established"
   },
   {
