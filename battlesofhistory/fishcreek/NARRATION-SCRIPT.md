@@ -53,9 +53,9 @@ by Gabriel Dumont.
 ### 4. Dumont's plan
 - Dumont wanted to fight as the buffalo hunters knew how: small groups, hidden in wooded coulees and bluffs, striking the soldiers on the march and keeping them from sleeping. *(account; Dumont, quoted in H89 pp. 91–92)*
 - Riel did not agree. He feared, among other things, that they might fire on French-Canadian friends among the soldiers. Dumont gave way, trusting, he said later, in Riel's faith and prayers. Riel allowed one ambush only: the one at Fish Creek. *(account; Dumont, quoted in H89 pp. 91–92)*
-- On the 23rd of April Dumont rode out of Batoche with about 200 men, and Riel went with them. On the way, word came that police might march on Batoche from Prince Albert. Riel turned back with about fifty men. Accounts differ on the details. Some say Gabriel's brother, Édouard Dumont, also stayed to guard the village. *(disputed)*
+- On the 23rd of April Dumont rode out of Batoche with about 200 men: Métis, Cree, Saulteaux and Dakota. Riel went with them, and led prayers at the halts. On the way, word came that police might march on Batoche from Prince Albert. Riel turned back with about fifty men. Accounts differ on the details. Some say Gabriel's brother, Édouard Dumont, also stayed to guard the village. *(disputed; Stanley 1936, p. 358)*
 - That night Dumont's scouts found Middleton's camp. The fighters chose to wait where the trail to Batoche dropped down into Fish Creek. *(account)*
-- By one account, Dumont hid about 130 men in a hollow beside the creek, and took about twenty horsemen further along. The plan was to let the column march down into the coulee, and then strike it from all sides. *(account; Indigenous Peoples Atlas of Canada)*
+- Dumont hid about 130 men in a hollow beside the creek, and took about twenty horsemen further along. The plan was to let the column march down into the coulee, and then strike it from all sides. "I wanted to treat them the way we hunt buffalo," he said. *(account; Dumont, quoted in Stanley 1936, p. 358; Indigenous Peoples Atlas of Canada)*
 
 ### 5. The ground
 - Fish Creek is a small stream. It winds through a deep, wooded valley, a coulee, and runs into the South Saskatchewan River from the east. *(established)*
@@ -66,7 +66,7 @@ by Gabriel Dumont.
 ### 6. The forces
 - On paper, Middleton's whole force came to about 900 men, though not all of them were in the fight. A history written in 1885 lists the column on his side of the river as about 300 men of the 90th Winnipeg Rifles, 120 gunners of "A" Battery with two nine-pounder guns, 40 infantry of "C" School, and about 60 mounted men of Boulton's Scouts, raised in southern Manitoba by Major Charles Boulton. *(estimate; Mulvany, 1885; H89 p. 29)*
 - Across the river, the other column, about 400 with its teamsters, had the 10th Royal Grenadiers from Toronto, the Winnipeg Field Battery with two more guns, and French's Scouts under Captain John French. Lieutenant-Colonel Montizambert commanded it, and Lord Melgund, Middleton's chief of staff, rode with it. *(estimate; Mulvany, 1885; H89)*
-- Parks Canada counts about 150 defenders: Métis, Dakota and Cree. Hildebrandt says 200 Métis. Other counts run higher and lower. *(estimate; disputed)*
+- Parks Canada counts about 150 defenders: Métis, Dakota and Cree, and Stanley adds Saulteaux. Hildebrandt says 200 Métis. Other counts run higher and lower. *(estimate; disputed)*
 - The Dakota came from Whitecap's band at Moose Woods, near Saskatoon. How many Dakota and Cree fought at Fish Creek, no source tells us. *(account; H89 pp. 19–20; numbers unknown)*
 - The soldiers had single-shot rifles and four cannon. The defenders had hunting rifles, some repeating Winchesters, many double-barrelled shotguns, and little ammunition. The army's rapid-firing Gatling gun had not yet arrived. *(established; H89 pp. 21, 30, 33)*
 
@@ -100,7 +100,7 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
    The fighters' horses are tied in the woods of the ravine. From the rim, the soldiers can see them more easily than the men in the pits. Many of the horses are killed. For people of the buffalo hunt, horses meant food, freedom and speed. It is a heavy loss. Without them, the Métis will find it much harder to move fast across the prairie. *(established; "many", the DCB; the number is uncertain)*
 
 9. **The edge of the ravine** · Afternoon
-   The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, fewer than fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel. *(established; Nault, account, Dumont; the numbers, disputed)*
+   The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, only about fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel. *(established; Nault, account, Dumont; the numbers, disputed)*
 
 10. **The grass fire** · Afternoon
     Dumont is down to a few cartridges; he later said he had only seven. He sets the dry grass alight, so that the wind carries fire and smoke toward the soldiers. Parks Canada says the soldiers put the fire out. *(account; Dumont; Parks Canada)*
@@ -127,6 +127,7 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
 ## The aftermath (debrief)
 - Middleton stayed at Fish Creek for about two weeks. He buried his dead, drilled his men, and waited for supplies and the river steamer *Northcote*, which arrived on the 5th of May. From then on, his army always marched together. *(established; H89 pp. 22, 29–30)*
 - Parks Canada calls Fish Creek a Métis psychological victory: a small force had stopped an army and lost fewer men. Hildebrandt ranks it, with Duck Lake, among the Métis' greatest military successes. Military historians answer that Middleton soon took back the lead, and Hildebrandt defends his slow, careful advance as the right way to fight an enemy in the bush. *(established; Parks Canada; H89 pp. 92, 107)*
+- Riel called it a victory. In a letter to the Cree chief Poundmaker, he wrote that the volunteers at Fish Creek had fought "not only as brave men, but as heroes", and asked for two or three hundred men to come to Batoche. Maxime Lépine, who fought at Fish Creek, remembered it differently: "We prayed all the day, and I think prayer did more than the bullets." *(account; Riel's letter and Lépine, in Stanley 1936, pp. 359, 365)*
 - The victory had a cost. Many horses were lost, and much of the ammunition was spent. Riel allowed no more ambushes. Dumont said later that the soldiers could easily have been attacked on the way, "and Riel never consented to let them do it." *(account; the DCB; Dumont, quoted in H89 p. 30)*
 - Middleton had learned something too. Before Batoche he said that the Métis were only dangerous "when you play their game, bush fighting." *(account; H89 p. 79)*
 - On the 7th of May the army marched on toward Batoche. Two days later the battle there began. This time the Métis did not wait in a coulee on the trail. They dug in around their village. That battle has its own page. *(established; H89 pp. 31–33)*
@@ -213,3 +214,8 @@ Answer as a list of changes, chapter by chapter. Do not rewrite the whole script
 6. Event 13: the seventy from Parks Canada; Édouard Dumont and Marguerite Caron as later accounts.
 7. Outcome: the named Métis dead removed from the spoken text (kept in the research notes as leads).
 8. Outcome: "many of the wounded … by one account".
+
+## Change log, draft 3 (7 November 2026, from Stanley, *The Birth of Western Canada*, pp. 356–365)
+- Intro 4: the defenders included Saulteaux (Métis, Cree, Saulteaux and Dakota); Riel led prayers at the halts; the 130 + 20 plan now also rests on Dumont's own account, with his words "the way we hunt buffalo".
+- Event 9: "only about fifty" (Stanley: fifty-four at the end).
+- Aftermath (outcome clip): Riel's letter to Poundmaker calling it a victory, and Maxime Lépine's "We prayed all the day…".

@@ -134,7 +134,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
         "tag": "account"
       },
       {
-        "text": "On the 23rd of April Dumont rode out of Batoche with about 200 men, and Riel went with them. On the way, word came that police might march on Batoche from Prince Albert. Riel turned back with about fifty men. Accounts differ on the details. Some say Gabriel's brother, Édouard Dumont, also stayed to guard the village.",
+        "text": "On the 23rd of April Dumont rode out of Batoche with about 200 men: Métis, Cree, Saulteaux and Dakota. Riel went with them, and led prayers at the halts. On the way, word came that police might march on Batoche from Prince Albert. Riel turned back with about fifty men. Accounts differ on the details. Some say Gabriel's brother, Édouard Dumont, also stayed to guard the village.",
         "tag": "disputed"
       },
       {
@@ -142,7 +142,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
         "tag": "account"
       },
       {
-        "text": "By one account, Dumont hid about 130 men in a hollow beside the creek, and took about twenty horsemen further along. The plan was to let the column march down into the coulee, and then strike it from all sides.",
+        "text": "Dumont hid about 130 men in a hollow beside the creek, and took about twenty horsemen further along. The plan was to let the column march down into the coulee, and then strike it from all sides. \"I wanted to treat them the way we hunt buffalo,\" he said.",
         "tag": "account"
       }
     ],
@@ -190,7 +190,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
         "tag": "estimate"
       },
       {
-        "text": "Parks Canada counts about 150 defenders: Métis, Dakota and Cree. Hildebrandt says 200 Métis. Other counts run higher and lower.",
+        "text": "Parks Canada counts about 150 defenders: Métis, Dakota and Cree, and Stanley adds Saulteaux. Hildebrandt says 200 Métis. Other counts run higher and lower.",
         "tag": "estimate"
       },
       {
@@ -265,7 +265,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     "title": "The edge of the ravine",
     "clock": "Afternoon, 24 April",
     "tag": "disputed",
-    "text": "The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, fewer than fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel."
+    "text": "The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, only about fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel."
   },
   {
     "title": "The grass fire",
@@ -326,6 +326,10 @@ Object.assign(window.FISHCREEK_SCENARIO, {
   {
     "text": "Parks Canada calls Fish Creek a Métis psychological victory: a small force had stopped an army and lost fewer men. Hildebrandt ranks it, with Duck Lake, among the Métis' greatest military successes. Military historians answer that Middleton soon took back the lead, and Hildebrandt defends his slow, careful advance as the right way to fight an enemy in the bush.",
     "tag": "established"
+  },
+  {
+    "text": "Riel called it a victory. In a letter to the Cree chief Poundmaker, he wrote that the volunteers at Fish Creek had fought \"not only as brave men, but as heroes\", and asked for two or three hundred men to come to Batoche. Maxime Lépine, who fought at Fish Creek, remembered it differently: \"We prayed all the day, and I think prayer did more than the bullets.\"",
+    "tag": "account"
   },
   {
     "text": "The victory had a cost. Many horses were lost, and much of the ammunition was spent. Riel allowed no more ambushes. Dumont said later that the soldiers could easily have been attacked on the way, \"and Riel never consented to let them do it.\"",
