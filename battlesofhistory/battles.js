@@ -135,7 +135,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sixday', progress: 50, lat: 31.78, lon: 35.23,
+    folder: 'sixday', progress: 70, lat: 31.78, lon: 35.23,
     order: 12,
     era: 'Arab–Israeli Wars',
     title: 'The Six-Day War',
@@ -174,7 +174,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'tyre', progress: 35, lat: 33.27, lon: 35.2,
+    folder: 'tyre', progress: 55, lat: 33.27, lon: 35.2,
     order: 15,
     era: 'Classical Antiquity',
     title: 'Battle of Tyre',
@@ -187,7 +187,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'fishcreek', progress: 80, lat: 52.54, lon: -106.15,
+    folder: 'fishcreek', progress: 85, lat: 52.54, lon: -106.15,
     order: 16,
     era: 'Canada, 1885',
     title: 'Battle of Fish Creek',
