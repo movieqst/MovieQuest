@@ -12,3 +12,12 @@ Originals here; game-size cuts in ../units/ (infantry 160 px cells, figures 130 
 | tyre-wall-defenders | ACCEPT. Three defenders on the wall: the heated bronze shield of glowing sand (Diodorus 17.44, Curtius 4.3.25–26), the net, the hooked pole. |
 
 Macedonians: reused from gaugamela/images/units (leader-alexander, macedonian-spearman, macedonian-archer, macedonian-cavalry).
+
+**Batch 2, the ships (7 November):** originals in units-raw/batch2/. These are 16-frame STORY sheets (rows 1–2 sailing, rows 3–4 hit, burning, sinking), all with the ship facing ONE way (bow to the left), not the four directions of the rule.
+
+| sheet | review |
+|---|---|
+| ship-tyrian-trireme-damage (from tyre-trireme-draft) | ACCEPT as the damage/sinking sheet: rowing, then fire, then sinking. Red sail with an eye emblem; black hull, ram, painted eye. The game mirrors it for the other side. Still needed: a 4-direction rowing sheet. |
+| ship-allied-quinquereme-damage (from allied-quinquereme-draft) | ACCEPT as the damage sheet. Blue sail with the Macedonian sun (the Vergina star) and small flags: a readable "Alexander's side" mark, though the real allied ships were Phoenician and Cypriot and flew no such sail (artistic licence; caption it). Still needed: 4-direction rowing. |
+| ship-fireship (from tyre-fireship-draft) | ACCEPT FOR NOW: a warship catching fire and burning out. Arrian 2.19 describes a horse-transport packed with brushwood, its stern weighted so the bow rode high, with cauldrons of pitch and sulphur hung from two masts: a redo closer to that is wanted. |
+| ram-ship-draft | REDO: one ship with a tower, not two ships lashed together carrying a ram. Not used. |
