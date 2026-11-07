@@ -116,3 +116,12 @@ These are original illustrations for this project (AI-generated): an artist's im
 | leader-hussein-beret | ACCEPT, as a second Hussein sheet: khaki uniform and a dark beret, as in Cairo on 30 May 1967. The shemagh sheet (leader-hussein) stays for the battle scenes. |
 | leader-tal | ACCEPT, replacing the helmet-and-goggles one: black armoured-corps beret, headset round his neck. |
 | leader-sharon | ACCEPT, replacing the slim one: heavy-set, broad face, bare-headed. |
+
+**Batch 12, the last Egyptian sheets (7 November):** originals in units-raw/batch12/. Rows in order.
+
+| sheet | review |
+|---|---|
+| egy-airfield (from egy-airfield-ALTERNATE-DRAFT) | ACCEPT. Silver MiG-21 with Egyptian roundels: intact, hit, burning, burnt-out wreck, in four directions. Chosen over the other draft because it has no square of concrete under the jet, so it sits on the painted map. |
+| fallen-egy | ACCEPT after cleaning: sand-khaki uniforms, 16 poses; the red bloodstains were recoloured to khaki here (no-blood rule). |
+| egy-t34-fire (from egy-t34-dugin-DRAFT) | ACCEPT as a T-34/85 firing in the open (not dug in). The muzzle flash is at the end of the gun in every row. Small "115" numbers and flags on the turret, tiny at game size. A berm added here by hand looked crude and was not used. |
+| egy-t34-dugin | STILL NEEDED: a T-34 dug into a sand pit, only the turret above a low sand wall. |
