@@ -107,3 +107,12 @@ These are original illustrations for this project (AI-generated): an artist's im
 | leader-dayan | ACCEPT. Bald crown, black patch over the LEFT eye (checked in the front view), plain khaki shirt with no rank badges. In the side views the patch reads a little like sunglasses; invisible at game size. |
 | leader-riad | ACCEPT. Egyptian general's khaki, red collar tabs, peaked cap, moustache. |
 | leader-shazly | ACCEPT for now. Almost the same figure as Riad (peaked cap, moustache). The prompt asked for a lean face and a dark paratroop beret, which would tell them apart; a redo is wanted. They appear on different maps (Riad in Jordan, Shazly in Sinai), so this does not block the release. |
+
+**Batch 11, leader corrections (7 November):** originals in units-raw/batch11/. Rows in order. They replace the earlier sheets (whose originals stay in units-raw).
+
+| sheet | review |
+|---|---|
+| leader-shazly | ACCEPT, replacing the first one. Lean face, thin moustache, dark (maroon) paratroop beret: now clearly different from Riad. |
+| leader-hussein-beret | ACCEPT, as a second Hussein sheet: khaki uniform and a dark beret, as in Cairo on 30 May 1967. The shemagh sheet (leader-hussein) stays for the battle scenes. |
+| leader-tal | ACCEPT, replacing the helmet-and-goggles one: black armoured-corps beret, headset round his neck. |
+| leader-sharon | ACCEPT, replacing the slim one: heavy-set, broad face, bare-headed. |
