@@ -562,6 +562,8 @@ Stanley wrote from the official records and Dumont's own account (his notes, not
 - **Stanley's verdict:** indecisive; Middleton not defeated but no victory; the left wing across the river helpless; the attack on Batoche delayed over a fortnight (p. 359).
 - **Forces of 1885 (p. 352):** the 90th Winnipeg 317, the 91st 452, the Winnipeg Light Infantry 327, the Winnipeg Field Battery 62, a cavalry corps 32; in all 5,334 soldiers plus 2,648 staff, transport, commissariat, medical and other corps (7,982), and about 500 Mounted Police; nine guns and two machine guns. (Mulvany has the Winnipeg battery at 52 and the 90th at 304 in Middleton's columns: different counts.)
 
+- **More from pp. 350–365:** Middleton was ordered west on 23 March and reached Qu'Appelle by 2 April (p. 351). Eastern strengths (p. 351): "A" Battery, Quebec, 120; the Royal Grenadiers, Toronto, 265; the Infantry School 92. **After Fish Creek, Riel sent runners to Poundmaker and Big Bear** asking them to come to Batoche (p. 363). Riel's letter to Poundmaker (in French, p. 365) calls Fish Creek a "victory", says the volunteers fought "not only as brave men but as heroes", and asks for two hundred to three hundred men. A Métis view of the result for the aftermath, attributed to Riel's letter.
+
 **For the narration:** add the Saulteaux to the defenders (Métis, Cree, Saulteaux and Dakota); Dumont's "the way you hunt buffalo" plan (intro 4 or event 2); Lépine's "We prayed all the day…" (outcome or event 14); "fifty-four at the end" beside "fewer than fifty" (event 9, disputed). Map p. 355 (the military columns, Bond) shows the march routes only, not the battlefield.
 
 ---
