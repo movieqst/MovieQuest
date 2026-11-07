@@ -33,3 +33,12 @@
 ## Labels
 - **Schematic:** both harbours, the walls and towers, the temple, and the breach sector are marked **schematic** or **approx.** in the guide and in the narration.
 - **Separate layer:** Roman and later features (the arch, the hippodrome, the Crusader walls, the modern port) go only on an optional "Tyre today" layer.
+
+## Reference seen 7 November 2026: Hammond's map of ancient Tyre (emersonkent.com/map_archive/tyre.htm)
+**© Hammond Inc.: reference only, never copied into the game.** What it supports for our own drawing:
+- The **Harbour of Sidon** on the island's north-east side, opening toward the mainland; the **Harbour of Egypt** on the south-east side.
+- The **causeway** runs from the mainland due east of the island to the island's east side, between the two harbours.
+- South of the walled city, a chain of low rocks and islets, **"Island of Hercules (now submerged)"**: the same southern extension that Brocard et al. 2024 reconstruct (~450 m beyond today's headland).
+- The **present coastline** (the isthmus) drawn over the old strait, as on our plan.
+- Its **Old Tyre** label sits at the mainland end of the causeway; most scholars place Palaetyrus/Ushu further south, near Tell Rachidieh and Ras el-Ain, so treat that label as schematic.
+- Scale: the island about 1 km across east–west including the harbours; the strait about 700–800 m. Consistent with Brocard's ~750 m.
