@@ -91,3 +91,11 @@ These are original illustrations for this project (AI-generated): an artist's im
 | leader-eshkol (from levi-eshkol-civilian-draft) | ACCEPT. Bald, glasses, dark suit: a good likeness. |
 | officer-draft-A to D | Not used yet: unnamed. Each needs to be labelled with the person it was drawn for (Amer, Shazly, Riad, Dayan, Elazar…) before it can be checked against photos. |
 | multi-asset-concept-not-sprite | Not used: concept only. |
+
+**Batch 9 (7 November):** originals in units-raw/batch9/. Rows in order (south, east, north, west).
+
+| sheet | review |
+|---|---|
+| leader-amer (from leader-amer-command-DRAFT) | ACCEPT. Khaki service dress, red collar tabs, gold-braided peaked cap; standing, then leaning over a map. Placed at headquarters on the Region map, so a standing sheet is right. |
+| leader-assad (from leader-assad-command-DRAFT) | ACCEPT. Blue-grey Syrian air force uniform with wings and peaked cap, short moustache; standing, then on the telephone at a map table. |
+| leader-elazar (from leader-elazar-walk-DRAFT) | ACCEPT. Black beret, olive field uniform, rank slides, field glasses; walking. |
