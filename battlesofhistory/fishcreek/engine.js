@@ -990,7 +990,7 @@ function updateCamera() {
 }
 const ACTION_Z = () => WATCH_Z, WHOLE_Z = () => Math.min(view.w / W.w, view.h * TR() / W.h) * .98;
 
-function CAM_IN(z, f, k) { cam.fit = false; cam.tz = z; frame(f.x, f.y, k); }
+function CAM_IN(z, f, k) { cam.fit = false; cam.tz = z; frame(f.x, f.y, document.body.classList.contains('dl') ? .06 : k); }   // the desktop layout keeps the caption off the map: frame the action near the middle
 function CAM_WHOLE() { cam.fit = false; cam.tz = WHOLE_Z(); focusOn(W.w / 2, W.h / 2); }   // the whole map, centred
 
 /* ---- the camera's rule (every battle): the whole map while the narrator talks; in on the action, then back out.

@@ -393,7 +393,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
         MOUTH = { x: 1420, y: 560 }, WESTCOL = { x: 860, y: 250 };
   const TRAIL = [{ x: 1240, y: 1790 }, { x: 1270, y: 1640 }, { x: 1300, y: 1500 }, { x: 1340, y: 1390 }, { x: 1420, y: 1260 }, { x: 1500, y: 1120 }];
   const RIVER_UP = [{ x: 720, y: 1000 }, { x: 850, y: 800 }, { x: 1010, y: 600 }, { x: 1150, y: 450 }];   // the river's course, downstream to upstream
-  const FIRE = [{ x: 1735, y: 1172 }, { x: 1775, y: 1218 }, { x: 1815, y: 1264 }, { x: 1855, y: 1310 }, { x: 1895, y: 1356 }];
+  const FIRE = [...Array(9).keys()].map(i => ({ x: 1715 + i * 25, y: 1150 + i * 28.5 }));   // Dumont's grass fire: a line just below the south-west rim
   Object.assign(S, {
     titleCard: {
       title: 'BATTLE OF FISH CREEK', date: '24 April 1885',
@@ -490,7 +490,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     { id: 'middleton', name: 'Maj-Gen Middleton', side: 'allied', x: 1210, y: 1700, facing: -PI / 2 },
     { id: 'boulton', name: 'Maj. Boulton', side: 'allied', x: 1300, y: 1640, facing: -PI / 2, noAttack: true },
     { id: 'melgund', name: 'Lord Melgund', side: 'allied', x: WESTCOL.x + 120, y: WESTCOL.y + 40, facing: PI / 4, noAttack: true },
-    { id: 'dumont', name: 'Gabriel Dumont', side: 'french', x: BLUFF.x + 40, y: BLUFF.y - 50, facing: PI, hidden: true }
+    { id: 'dumont', name: 'Gabriel Dumont', side: 'french', x: BLUFF.x + 100, y: BLUFF.y + 25, facing: PI, hidden: true }
   ];
 
   const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; e.t = i * 14; });
@@ -520,10 +520,10 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     { id: 'scouts', to: RIMR, speed: 35, state: 'attack', face }, { leader: 'boulton', to: { x: RIMR.x - 40, y: RIMR.y + 50 }, speed: 35 },
     { id: 'horse', to: { x: 1850, y: 1180 }, via: [{ x: 1900, y: 1420 }], speed: 40, state: 'attack', face: RIM90 }, { leader: 'dumont', to: { x: 1850, y: 1075 }, via: [{ x: 1930, y: 1380 }], speed: 40 } ] });
   // 5. The Tourond house: shelled; set smoking, then burning (when exactly, no source says)
-  set(4, { focus: { x: 1820, y: 1050 }, zoom: 1.4, markers: [ Object.assign({ label: 'the Tourond house' }, { x: TOUROND.x, y: TOUROND.y - 40 }) ], orders: [
+  set(4, { focus: { x: 1850, y: 1000 }, zoom: 1.4, markers: [ Object.assign({ label: 'the Tourond house' }, { x: TOUROND.x, y: TOUROND.y - 40 }) ], orders: [
     { obj: 'farm', col: 1 }, { obj: 'farm', col: 2, delay: 5 }, { id: 'guns', state: 'attack' }, { id: 'pits', state: 'attack' }, { id: 'pits2', state: 'attack' } ] });
   // 6. Into the ravine: the 90th rush down twice and are driven back to the rim, then lie flat and fire
-  set(5, { media: R['record-incidents-1885.jpg'], focus: { x: 1720, y: 1180 }, zoom: 1.6, markers: [ { x: 1745, y: 1175, label: 'the 90th rush the coulee', side: 'allied' } ], orders: [
+  set(5, { media: R['record-incidents-1885.jpg'], focus: { x: 1720, y: 1180 }, zoom: 1.6, markers: [ { x: 1730, y: 1195, label: 'the 90th rush the coulee', side: 'allied' } ], orders: [
     { id: 'r90', to: { x: 1735, y: 1180 }, speed: 45, state: 'attack' }, { id: 'r90', strengthTo: 91, over: 10 },
     { id: 'r90', to: RIM90, speed: 40, state: 'attack', face, delay: 4 },
     { id: 'r90', to: { x: 1715, y: 1195 }, speed: 45, state: 'attack', delay: 7 },
@@ -541,7 +541,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
   set(8, { focus: { x: 1830, y: 1150 }, zoom: 1.45, markers: [ { x: 1850, y: 1075, label: 'Dumont, with Napoléon Nault', side: 'french' } ], orders: [
     { obj: 'farm', col: 3 },
     { id: 'pits', strengthTo: 45, over: 10, state: 'attack' }, { id: 'pits2', strengthTo: 35, over: 10, state: 'attack' }, { id: 'horse', strengthTo: 45, over: 10 },
-    { id: 'fn', to: { x: 2250, y: 620 }, via: [{ x: 1900, y: 900 }], speed: 22, delay: 2 }, { id: 'fn', visible: false, delay: 13 },
+    { id: 'fn', to: { x: 2250, y: 620 }, via: [{ x: 1900, y: 900 }], speed: 22, delay: 2 }, { id: 'fn', state: 'withdrawn', delay: 13 },
     { id: 'r90', state: 'attack' }, { id: 'guns', state: 'attack' } ] });
   // 10. The grass fire: Dumont, down to a few cartridges, sets the dry grass alight; the wind carries it toward the soldiers
   set(9, { focus: { x: 1790, y: 1260 }, zoom: 1.6, markers: [ { x: 1815, y: 1250, label: 'Dumont’s grass fire', side: 'french' } ], orders: [
@@ -561,8 +561,8 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     { id: 'pits', strengthTo: 30, over: 10, state: 'hold' }, { id: 'pits2', state: 'hold' }, { id: 'horse', state: 'hold' },
     { id: 'r90', state: 'hold' }, { id: 'guns', state: 'hold' }, { id: 'scouts', state: 'hold' }, { id: 'mason', state: 'hold' } ] });
   // 13. Riders from Batoche: about seventy horsemen come down from the north
-  set(12, { rain: .35, focus: { x: 2050, y: 760 }, zoom: 1.3, hold: 11, markers: [ { x: 2150, y: 470, label: 'about seventy riders from Batoche', side: 'french' } ], orders: [
-    { id: 'edouard', visible: true, to: { x: 2010, y: 980 }, via: [{ x: 2190, y: 450 }], speed: 75, state: 'attack' }, { id: 'pits', state: 'attack' } ] });
+  set(12, { rain: .35, focus: { x: 2080, y: 700 }, zoom: 1.3, hold: 11, markers: [ { x: 2150, y: 470, label: 'about seventy riders from Batoche', side: 'french' } ], orders: [
+    { id: 'edouard', visible: true, at: { x: 2230, y: 330 }, to: { x: 2010, y: 980 }, via: [{ x: 2170, y: 560 }], speed: 70, state: 'attack' }, { id: 'pits', state: 'attack' } ] });
   // 14. Back to camp: the army pulls back about a kilometre, the Grenadiers left along the ridge; the defenders draw back
   set(13, { media: R['record-solemn-scene-1885.jpg'], zoom: 'fit', markers: [ Object.assign({ label: 'the camp, behind a wall of wagons', side: 'allied' }, CAMP), { x: 1700, y: 1300, label: 'Grenadiers along the ridge', side: 'allied' } ], orders: [
     { id: 'r90', to: { x: CAMP.x - 40, y: CAMP.y - 10 }, via: [TRAIL[3]], speed: 30, state: 'move' }, { id: 'guns', to: { x: CAMP.x + 60, y: CAMP.y + 20 }, via: [TRAIL[3]], speed: 30, state: 'move' },
