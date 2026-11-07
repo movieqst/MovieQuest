@@ -45,3 +45,15 @@ These are original illustrations for this project (AI-generated): an artist's im
 | egy-mig21 | PASS. Rows were south, west, north, east: reordered. Sand camouflage and roundels. |
 | idf-guns-fire, egy-guns-fire | PASS, adapted. The sheets are one three-quarter view in 16 frames (aim, load, fire, smoke), not four directions. The firing row was used for every direction, mirrored for the south and east rows. Ammunition boxes with flags are tiny at game size. |
 | jor-hunter | REJECTED: its air intake is in the nose; a Hawker Hunter's intakes are at the wing roots. |
+
+**Batch 5 (7 November):** all rows in order (south, east, north, west). Cut at 240 × 200 cells.
+
+| sheet | review |
+|---|---|
+| egy-t55 (from egy-t55-move-v1) | ACCEPT. Chosen over v2 because it matches the firing sheet's tank exactly. v2 kept in units-raw. |
+| egy-t55-fire | ACCEPT. Cut at the same scale as the moving sheet. The rear-row flash sits at the far end of the gun (pointing away), which reads correctly at game size. |
+| egy-btr152 | ACCEPT. Six wheels, open troop compartment, rows in order. |
+| idf-halftrack, idf-halftrack-fire | ACCEPT. M3 layout, crew in the back, a Browning on the pintle in the firing sheet. The moving frames are subtle; the engine moves the sprite, so this is fine. |
+| syr-bunker-fire | ACCEPT. Basalt and sandbag position with a machine gun. The belt on a DP pan gun is a small inaccuracy, invisible at game size. |
+| syr-panzer4-dugin | ACCEPT. Dug-in Panzer IV (Syria had them on the Golan); long gun, proportions fine at game size. |
+| syr-t34-dugin | ACCEPT. Dug-in T-34/85 (Syria used dug-in T-34s on the heights). |
