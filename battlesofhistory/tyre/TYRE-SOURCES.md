@@ -22,3 +22,4 @@
 
 ## Reference maps (consulted, not reproduced)
 - **Hammond Inc., "Tyre" (map of ancient Tyre)**, as shown on Emerson Kent's map archive: https://www.emersonkent.com/map_archive/tyre.htm. © Hammond Inc., Maplewood, N.J. **Not used on the site:** consulted only for the layout of the island, the Harbour of Sidon (north-east), the Harbour of Egypt (south-east), the causeway, the submerged "Island of Hercules" to the south and the present coastline. Our maps are drawn independently from elevation data and Brocard et al. 2024; see TYRE-MAP-GUIDE.md.
+- **Site rule (agreed 7 November 2026):** copyrighted pictures are never copied or hot-linked. They appear as **link cards** ("See also": title, owner, one-line description, a button that opens the original page in a new tab). Only CC BY, CC BY-SA, CC0 and public-domain images are hosted on the site.
