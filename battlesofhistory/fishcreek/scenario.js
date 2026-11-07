@@ -447,7 +447,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     sheets: ['field-rifles', 'field-grenadier', 'field-scout', 'field-gun', 'metis-rifle', 'metis-shotgun', 'metis-horse', 'firstnations-fighter', 'ferry-scow'],
     sheetBy: { allied: { infantry: 'field-grenadier', archers: 'field-rifles', cavalry: 'field-scout' }, french: { infantry: 'metis-rifle', archers: 'metis-rifle', cavalry: 'metis-horse' } },
     sideArt: { allied: { cloth: '#7a1f1a', cloth2: '#222', pennant: '#c0392b' }, french: { cloth: '#2a3550', cloth2: '#3a2a1a', pennant: '#2e5aa8' } },
-    legend: [ { label: 'North-West Field Force', color: '#c0392b', kind: 'dot' }, { label: 'Métis, Dakota and Cree defenders', color: '#2e5aa8', kind: 'dot' } ],
+    legend: [ { label: 'North-West Field Force', short: 'Field Force', color: '#c0392b', kind: 'dot' }, { label: 'Métis, Dakota and Cree defenders', short: 'Defenders', color: '#2e5aa8', kind: 'dot' } ],
     clockYear: 1885,
     ai: { plans: {} }, commandLines: {},
     debrief: { allied: { victory: { title: 'Field Force victory', text: '' }, defeat: { title: 'Field Force defeat', text: '' }, stalemate: { title: 'Stalemate', text: '' } },
@@ -509,7 +509,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     { id: 'pits', visible: true, state: 'attack', delay: 5 }, { id: 'pits2', visible: true, state: 'attack', delay: 6 }, { id: 'fn', visible: true, state: 'attack', delay: 7 },
     { id: 'r90', to: { x: 1320, y: 1480 }, speed: 30 }, { leader: 'middleton', to: { x: 1290, y: 1520 }, speed: 35 } ] });
   // 3. The aides: Wise sent back for the main body; his horse hit; the soldiers fall back a little
-  set(2, { media: R['record-incidents-1885.jpg'], focus: { x: 1420, y: 1460 }, zoom: 1.45, markers: [ { x: 1330, y: 1525, label: 'Captain Wise’s horse is hit', side: 'allied' } ], orders: [
+  set(2, { media: R['record-incidents-1885.jpg'], focus: { x: 1420, y: 1460 }, zoom: 1.45, markers: [ { x: 1235, y: 1585, label: 'Wise’s horse is hit', side: 'allied' } ], orders: [
     { id: 'scouts', to: { x: 1440, y: 1500 }, speed: 30, state: 'attack', face: BLUFF }, { id: 'scouts', strengthTo: 88, over: 8 },
     { leader: 'boulton', to: { x: 1420, y: 1455 }, speed: 30 }, { id: 'r90', to: { x: 1350, y: 1430 }, speed: 30 }, { id: 'guns', to: { x: 1290, y: 1560 }, via: [TRAIL[1]], speed: 30 },
     { leader: 'middleton', to: { x: 1300, y: 1470 }, speed: 30 } ] });

@@ -709,7 +709,7 @@ setInterval(() => {
 const NP_OPEN = 11;
 const NowPlaying = (() => {
   let el = null, timer = 0, cur = null;
-  const css = `#nowPlaying{position:fixed;left:16px;bottom:16px;z-index:90;max-width:min(460px,calc(100vw - 32px));font-family:system-ui,'Segoe UI',Arial,sans-serif;color:#f4efe2;display:none}
+  const css = `#nowPlaying{position:fixed;left:16px;bottom:16px;z-index:90;max-width:min(500px,calc(100vw - 32px));font-family:system-ui,'Segoe UI',Arial,sans-serif;color:#f4efe2;display:none}
 #nowPlaying.on{display:block}
 #nowPlaying .np-card{position:relative;display:flex;gap:14px;align-items:flex-start;padding:16px 18px 16px 16px;background:rgba(8,18,26,.93);border:1px solid rgba(233,199,122,.75);border-left:5px solid #e9c77a;border-radius:12px;box-shadow:0 10px 34px rgba(0,0,0,.6);backdrop-filter:blur(6px);animation:npIn .45s ease-out}
 #nowPlaying.pill .np-card{display:none}
@@ -924,10 +924,11 @@ function drawClockStamp() {
 }
 // Legend, top right of the map: S.legend ([{ label, color, kind: 'line' | 'dot' }]) or, by default, each side's colour.
 function drawLegend() {
-  const items = S.legend || Object.keys(S.sides || {}).map(k => ({ label: S.sides[k].short || S.sides[k].name, color: S.sides[k].color, kind: 'dot' }));
+  let items = S.legend || Object.keys(S.sides || {}).map(k => ({ label: S.sides[k].short || S.sides[k].name, color: S.sides[k].color, kind: 'dot' }));
+  if (view.w < 620) items = items.map(it => Object.assign({}, it, { label: it.short || it.label }));   // a phone: the short names, beside the date stamp
   if (!items.length || (mode === 'intro' && introIdx === 0)) return;
   ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
-  const x = view.w - w - 14, y = 12; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
+  const x = view.w - w - 14, y = view.w < w + 240 ? 92 : view.w < 620 ? 46 : 12;   // a phone: below the zoom buttons ctx.fillStyle = 'rgba(6,16,24,.72)';   // still too narrow: under the date stamp, not over it ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
   ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
   ctx.font = "13px system-ui, sans-serif";

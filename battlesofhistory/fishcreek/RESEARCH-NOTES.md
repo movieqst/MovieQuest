@@ -549,6 +549,23 @@ Licence logic: Canadian works published in 1885, by artists who died more than 7
 
 ---
 
+## 13. Stanley, *The Birth of Western Canada* (1936; 1960 edition), pp. 352–359 (read from the site owner's screenshots, 7 November 2026)
+
+Stanley wrote from the official records and Dumont's own account (his notes, not checked here). Use for facts only; his 1936 wording ("half-breed tactics" etc.) is not used.
+- **The march:** Middleton halted at Clarke's Crossing on 17 April, about 40 miles from Batoche, after about 180 miles in eleven days; the Royal Grenadiers caught up there, bringing the column to about 800 men. Cold: "fearfully cold" nights on the march (p. 356). The force was then split, the second column taken across the river (p. 356).
+- **Scouts:** the Métis followed Middleton's march through Indian and Métis scouts; one, Jérôme Henry, travelled with the troops as a government freighter (p. 356).
+- **Dumont's plan and Riel:** Dumont's account (in French, p. 357): about 350 men in all, 200 of them armed; he proposed harassing the troops by night, which Riel refused as too savage ("trop sauvage"), saying the soldiers were not to be treated so. Riel feared weakening Batoche with the Mounted Police at Prince Albert, and Dumont had been wounded at Duck Lake: Riel's memorandum of 22 April (p. 357).
+- **23 April:** Dumont set out with **about 200 Métis, Cree, Saulteaux and Sioux (Dakota)**; Riel went with them and held religious services at the halts. When news came that the Mounted Police were coming out of Prince Albert, Riel went back with **fifty men** (p. 358). [new: the Saulteaux]
+- **The plan:** the next morning Dumont with **20 men** went to within half a mile of Middleton's camp; the **main body of 130** waited in the coulee of Fish Creek. The plan was to draw the troops into the coulee and fire on them from the trees. Dumont: "Je voulais les traiter comme on traite les buffles" — "I wanted to treat them the way you hunt buffalo" (p. 358). [confirms the 130 + 20]
+- **24 April:** Middleton broke camp; Boulton's Scouts went ahead, Middleton and his staff with them. The scouts found the traces of camp fires; Dumont's advance party fired on them; Boulton's men dismounted and fired back, and Dumont's men fell back to the edge of the coulee. The defenders fired on the soldiers as they came over the rise. They tried to drive the troops back by setting the prairie on fire, "without success". The heavy fire, especially the artillery's, discouraged many; deserters were many, and **at the end only fifty-four men** were left (p. 359). The defenders held the coulee at the end of the day (p. 359).
+- **Maxime Lépine** (p. 359, quoting Lépine): **"We prayed all the day, and I think prayer did more than the bullets."** A Métis voice for the narration (source: Stanley's note, to check).
+- **Stanley's verdict:** indecisive; Middleton not defeated but no victory; the left wing across the river helpless; the attack on Batoche delayed over a fortnight (p. 359).
+- **Forces of 1885 (p. 352):** the 90th Winnipeg 317, the 91st 452, the Winnipeg Light Infantry 327, the Winnipeg Field Battery 62, a cavalry corps 32; in all 5,334 soldiers plus 2,648 staff, transport, commissariat, medical and other corps (7,982), and about 500 Mounted Police; nine guns and two machine guns. (Mulvany has the Winnipeg battery at 52 and the 90th at 304 in Middleton's columns: different counts.)
+
+**For the narration:** add the Saulteaux to the defenders (Métis, Cree, Saulteaux and Dakota); Dumont's "the way you hunt buffalo" plan (intro 4 or event 2); Lépine's "We prayed all the day…" (outcome or event 14); "fifty-four at the end" beside "fewer than fifty" (event 9, disputed). Map p. 355 (the military columns, Bond) shows the march routes only, not the battlefield.
+
+---
+
 ## Bibliography
 
 ° = read only through search-engine extracts in this session (page fetching was blocked). Check before recording.
