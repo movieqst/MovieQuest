@@ -24,7 +24,13 @@ for n, t, body in re.findall(r'^### (\d+)\. (.+?)$(.*?)(?=^### |^---|^## |\Z)', 
     clips.append(('intro-' + n, title(clean(t)) + '. ' + ' '.join(lines)))
 for n, body in re.findall(r'^(\d+)\. \*\*.+?\*\*.*?$(.*?)(?=^\d+\. \*\*|^## |\Z)', section('The reenactment'), re.M | re.S):
     clips.append(('event-' + n, clean(body)))
-out = [clean(x) for s in ('The outcome', 'The aftermath') for x in re.findall(r'^- (.+?)(?=^- |\Z)', section(s).strip() + '\n', re.M | re.S)]
+if not section('The reenactment'):
+    # Six-Day War format: '## Part N: …' sections of '### N. Title' + bullets (event-N); the Debrief's bullets are the outcome
+    parts = ''.join(m.group(0) for m in re.finditer(r'^## Part .*?$.*?(?=^## |\Z)', src.split('## Notes for the reviewer')[0], re.M | re.S))
+    for n, t, body in re.findall(r'^### (\d+)\. (.+?)$(.*?)(?=^### |^---|^## |\Z)', parts, re.M | re.S):
+        lines = [clean(x) for x in re.findall(r'^- (.+?)(?=^- |\Z)', body.strip() + '\n', re.M | re.S)]
+        clips.append(('event-' + n, title(clean(t)) + '. ' + ' '.join(lines)))
+out = [clean(x) for s in ('The outcome', 'The aftermath', 'Debrief') for x in re.findall(r'^- (.+?)(?=^- |\Z)', re.sub(r'^(#|---).*$', '', section(s), flags=re.M).strip() + '\n', re.M | re.S)]
 clips.append(('outcome', ' '.join(out)))
 # names respelled for the synthesiser only (the captions keep the real spelling)
 SAY = [(r'\bVimy\b', 'Vimmy'), (r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b', 'Loobeck'), (r'\bScalacronica\b', 'Scala-cronica'),
@@ -46,7 +52,22 @@ SAY = [(r'\bVimy\b', 'Vimmy'), (r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'G
        (r'\bXavier\b', 'Zav-yay'), (r'\bMoulin\b', 'Moo-lan'), (r'\bGarnot\b', 'Gar-no'), (r'\bFleury\b', 'Flur-ee'),
        (r'\bAmbroise Champagne\b', 'Om-bwahz Shom-pan-yuh'), (r'\bPascal Montour\b', 'Pass-kal Mon-toor'), (r'\bOuellette\b', 'Wel-ett'),
        (r'\bQu\'Appelle\b', 'Ka-pell'), (r'\bVan Straubenzie\b', 'Van Straw-ben-zee'), (r'\bzareba\b', 'za-ree-ba'),
-       (r'\bJolie\b', 'Zho-lee'), (r'\bcoulee\b', 'koo-lee')]
+       (r'\bJolie\b', 'Zho-lee'), (r'\bcoulee\b', 'koo-lee'),
+       # Fish Creek: French and Métis names
+       (r'\bTourond\b', 'Too-ron'), (r'\bMontizambert\b', 'Mon-tee-zam-bair'), (r'\bÉdouard\b', 'Ay-dwar'), (r'\bCaron\b', 'Ka-ron'),
+       (r'\bParenteau\b', 'Pa-ron-toe'), (r'\bVermette\b', 'Ver-met'), (r'\bJosé\b', 'Zho-zay'), (r'\bJosephte\b', 'Zho-zett'),
+       (r'\bDoucet\b', 'Doo-set'), (r'\bMelgund\b', 'Mel-gund'), (r'\bCoulee\b', 'Koo-lee'),
+       # Six-Day War: Arabic and Hebrew names, respelled for the English voices
+       (r'\bNasser\b', 'Nasser'), (r'\bAmer\b', 'Ah-mer'), (r'\bShazly\b', 'Shaz-lee'), (r'\bAbu-Ageila\b', 'Abu Ah-gay-la'),
+       (r'\bUm Katef\b', 'Oom Kah-tef'), (r'\bQuneitra\b', 'Koo-nay-tra'), (r'\bTel Faher\b', 'Tel Fa-her'), (r'\bGolani\b', 'Go-lah-nee'),
+       (r'\bJiradi\b', 'Jee-rah-dee'), (r'\bEl Arish\b', 'El Ah-reesh'), (r'\bMitla\b', 'Mitt-la'), (r'\bGiddi\b', 'Giddy'),
+       (r'\bSharm el-Sheikh\b', 'Sharm el Shake'), (r'\bTiran\b', 'Tee-rahn'), (r'\bRiad\b', 'Ree-ahd'), (r'\bNarkiss\b', 'Nar-keess'),
+       (r'\bEshkol\b', 'Esh-coal'), (r'\bDayan\b', 'Dye-ahn'), (r'\bGavish\b', 'Gah-veesh'), (r'\bYoffe\b', 'Yoffy'), (r'\bElazar\b', 'El-ah-zar'),
+       (r'\bHaram al-Sharif\b', 'Ha-rahm al Sha-reef'), (r'\bMughrabi\b', 'Moog-rah-bee'), (r'\bKraishan\b', 'Kray-shahn'), (r'\bAjloun\b', 'Aj-loon'),
+       (r'\bMafraq\b', 'Maf-rack'), (r'\bKhan Yunis\b', 'Khan Yoo-nis'), (r'\bQalqilya\b', 'Kal-kill-ya'), (r'\bImwas\b', 'Im-wahs'),
+       (r'\bLatrun\b', 'La-troon'), (r'\bNablus\b', 'Nab-loos'), (r'\bJenin\b', 'Je-neen'), (r'\bUNEF\b', 'you-nef'), (r'\bU Thant\b', 'Oo Thant'),
+       (r'\bShuqayri\b', 'Shoo-kay-ree'), (r'\bZu\'bi\b', 'Zoo-bee'), (r'\bal-Naksa\b', 'al Nak-sa'), (r'\bNakba\b', 'Nak-ba'), (r'\bWaqf\b', 'Wakf'),
+       (r'\bTzahal\b', 'Tsa-hal'), (r'\bUgda\b', 'Oog-da'), (r'\bRafah\b', 'Rah-fah'), (r'\bFawzi\b', 'Fow-zee'), (r'\bSadat\b', 'Sa-daht')]
 def say(t):
     for a, b in SAY: t = re.sub(a, b, t)
     return t
