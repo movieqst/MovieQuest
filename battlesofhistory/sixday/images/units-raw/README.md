@@ -124,4 +124,4 @@ These are original illustrations for this project (AI-generated): an artist's im
 | egy-airfield (from egy-airfield-ALTERNATE-DRAFT) | ACCEPT. Silver MiG-21 with Egyptian roundels: intact, hit, burning, burnt-out wreck, in four directions. Chosen over the other draft because it has no square of concrete under the jet, so it sits on the painted map. |
 | fallen-egy | ACCEPT after cleaning: sand-khaki uniforms, 16 poses; the red bloodstains were recoloured to khaki here (no-blood rule). |
 | egy-t34-fire (from egy-t34-dugin-DRAFT) | ACCEPT as a T-34/85 firing in the open (not dug in). The muzzle flash is at the end of the gun in every row. Small "115" numbers and flags on the turret, tiny at game size. A berm added here by hand looked crude and was not used. |
-| egy-t34-dugin | STILL NEEDED: a T-34 dug into a sand pit, only the turret above a low sand wall. |
+| egy-t34-dugin | ACCEPT. A T-34/85 dug into a pit behind sandbags, only the turret and a strip of hull showing; still, firing (flash at the end of the barrel in every row), smoke, recoiled. Smoke tint neutralised to grey here. |
