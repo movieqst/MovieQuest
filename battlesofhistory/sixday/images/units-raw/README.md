@@ -99,3 +99,11 @@ These are original illustrations for this project (AI-generated): an artist's im
 | leader-amer (from leader-amer-command-DRAFT) | ACCEPT. Khaki service dress, red collar tabs, gold-braided peaked cap; standing, then leaning over a map. Placed at headquarters on the Region map, so a standing sheet is right. |
 | leader-assad (from leader-assad-command-DRAFT) | ACCEPT. Blue-grey Syrian air force uniform with wings and peaked cap, short moustache; standing, then on the telephone at a map table. |
 | leader-elazar (from leader-elazar-walk-DRAFT) | ACCEPT. Black beret, olive field uniform, rank slides, field glasses; walking. |
+
+**Batch 10 (7 November):** originals in units-raw/batch10/. Rows in order.
+
+| sheet | review |
+|---|---|
+| leader-dayan | ACCEPT. Bald crown, black patch over the LEFT eye (checked in the front view), plain khaki shirt with no rank badges. In the side views the patch reads a little like sunglasses; invisible at game size. |
+| leader-riad | ACCEPT. Egyptian general's khaki, red collar tabs, peaked cap, moustache. |
+| leader-shazly | ACCEPT for now. Almost the same figure as Riad (peaked cap, moustache). The prompt asked for a lean face and a dark paratroop beret, which would tell them apart; a redo is wanted. They appear on different maps (Riad in Jordan, Shazly in Sinai), so this does not block the release. |
