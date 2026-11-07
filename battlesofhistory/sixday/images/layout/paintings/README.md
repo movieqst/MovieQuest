@@ -10,3 +10,12 @@ Checked by drawing the coastlines and lakes of each base over the painting (and 
 | 04-golan-tel-faher | REDO. The western escarpment and the plateau are invented and do not follow the base's ridges (the diagonal ridge and the gorge in the north-east); the bunkers are invented. |
 
 The two close-ups are too detailed for an image generator to keep in place. Option: colour them ourselves from the elevation data (exact by construction), with ChatGPT painting only small details.
+
+## Round 2 (7 November): Jerusalem and the Golan, from the paintovers and contour guides
+
+Checked by drawing the guide's bold contour lines (and, in Jerusalem, the Old City wall outline) over each painting.
+
+| painting | verdict |
+|---|---|
+| 03-jerusalem-round2 | ACCEPT. The Old City fits the wall outline exactly; Mount Scopus (university buildings), Augusta Victoria, Ammunition Hill with the Police School, and the Kidron valley east of the walls follow the contours. Scaled up as ../../terrain-jerusalem.jpg. |
+| 04-golan-round2 | ACCEPT. The gorge in the north-east follows the contours closely; the valley fields stop at the foot of the slope; Ein Fit and Za'ura are at their places. Scaled up as ../../terrain-golan.jpg. |
