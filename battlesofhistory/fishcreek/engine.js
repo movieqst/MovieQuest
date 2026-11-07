@@ -760,7 +760,7 @@ const NowPlaying = (() => {
 function fireEvent(ev) {
   if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   if (ev.trenches !== undefined) setTrench(ev.trenches);
-  currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o));   // `delay`: seconds into the chapter if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || [];
+  currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o)); if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || [];   // o.delay: seconds into the chapter
   camForEvent(ev);
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((stage === 'campaign' && ev.clock ? ev.clock : fmtTime(ev.t)) + ' ' + ev.title);
