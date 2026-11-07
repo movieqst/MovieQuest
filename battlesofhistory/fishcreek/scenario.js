@@ -370,3 +370,251 @@ Object.assign(window.FISHCREEK_SCENARIO, {
 }
 });
 
+/* ======================================================================================================================
+   Maps, armies, leaders and their moves.
+     battle map  images/terrain-battle.jpg  52.5641–52.5270 N, 106.2220–106.1405 W (about 5.5 x 4.1 km, 2400 x 1800 world px,
+                 435 px to the km). x = (lon + 106.222) / 0.0815 * 2400; y = (52.5641 - lat) / 0.0371 * 1800.
+   ILLUSTRATIVE POSITIONS. No 1885 plan of the battle has been lined up with today's ground (RESEARCH-NOTES.md, sections 4
+   and 12), so every place below except the river and the coulee is our estimate, placed on the PAINTED ground: the cart
+   trail comes up from the south as painted; it drops into the coulee and crosses Fish Creek north-east of the painted farm
+   buildings; the rifle pits are in the brush below the north-east rim, the Field Force line along the south-west rim, the
+   horses in the woods of the ravine. The Tourond house stands on the creek's east side, as Parks Canada places it (about
+   500 m north-west of the Parks Canada site point, 52.53901 N 106.152659 W, which the painting puts inside the coulee).
+   The painted farm on the west rim is left as a farm the soldiers pass. The scow crossing (Melgund) is placed near the
+   creek mouth; where it really was is unknown. The camp is about 1 km back down the trail (Parks Canada: "approximately
+   one kilometre"; the direction is ours). Every move is our reconstruction from the narration.
+   ====================================================================================================================== */
+(() => {
+  const S = window.FISHCREEK_SCENARIO;
+  const PI = Math.PI, NE = -PI / 4;   // the Field Force faces north-east, across the coulee
+  const TOUROND = { x: 1990, y: 890 }, CROSSING = { x: 1725, y: 1065 }, PITS = { x: 1800, y: 1120 }, PITS2 = { x: 1900, y: 1240 }, FN = { x: 1770, y: 1000 },
+        BLUFF = { x: 1720, y: 1560 }, CAMPSITE = { x: 1400, y: 1350 }, RIM90 = { x: 1640, y: 1250 }, GUNLINE = { x: 1565, y: 1250 }, RIMR = { x: 1830, y: 1455 },
+        CAMP = { x: 1380, y: 1690 }, W_LAND = { x: 1113, y: 285 }, E_LAND = { x: 1340, y: 530 }, HORSES = { x: 1990, y: 1265 }, HORSES2 = { x: 2085, y: 1305 },
+        MOUTH = { x: 1420, y: 560 }, WESTCOL = { x: 860, y: 250 };
+  const TRAIL = [{ x: 1240, y: 1790 }, { x: 1270, y: 1640 }, { x: 1300, y: 1500 }, { x: 1340, y: 1390 }, { x: 1420, y: 1260 }, { x: 1500, y: 1120 }];
+  const RIVER_UP = [{ x: 720, y: 1000 }, { x: 850, y: 800 }, { x: 1010, y: 600 }, { x: 1150, y: 450 }];   // the river's course, downstream to upstream
+  const FIRE = [{ x: 1735, y: 1172 }, { x: 1775, y: 1218 }, { x: 1815, y: 1264 }, { x: 1855, y: 1310 }, { x: 1895, y: 1356 }];
+  Object.assign(S, {
+    titleCard: {
+      title: 'BATTLE OF FISH CREEK', date: '24 April 1885',
+      dateNote: 'At a wooded coulee on the trail to Batoche, Gabriel Dumont’s Métis, Dakota and Cree fighters ambush a Canadian army many times their number, and hold it back for most of a day.',
+      dateRef: 'Parks Canada, Battle of Tourond’s Coulee / Fish Creek National Historic Site; Walter Hildebrandt, The Battle of Batoche (1989)',
+      place: 'Tourond’s Coulee, beside the South Saskatchewan River, North-West Territories (today Saskatchewan, Canada)',
+      sides: 'The North-West Field Force of Major-General Frederick Middleton  ·  The Métis, Dakota and Cree fighters of Gabriel Dumont'
+    },
+    world: { w: 2400, h: 1800 },
+    terrain: 'terrain-battle.jpg',
+    duration: 196, commandDuration: 300, commandFocus: { x: 1700, y: 1200 },
+    battlefield: {
+      scale: { px: 435, label: '1 km' },
+      labels: [
+        { x: 520, y: 1290, text: 'South Saskatchewan River', small: true, rotate: -.62 }, { x: 560, y: 1335, text: 'kisiskāciwani-sīpiy', small: true, rotate: -.62 },
+        { x: 1560, y: 760, text: 'Fish Creek', small: true, rotate: .95 }, { x: 2190, y: 1500, text: 'Tourond’s Coulee', small: true, rotate: .5 },
+        { x: 560, y: 120, text: 'west bank', small: true }, { x: 1180, y: 1720, text: 'trail from the south', small: true },
+        { x: 2240, y: 440, text: 'to Batoche, about 25 km ▲', small: true }
+      ]
+    },
+    eventMarkers: true,   // the chapters' pulsing rings are shown on the battle map
+    globe: { target: { lon: -106.1527, lat: 52.539 }, region: { lon: -100, lat: 54 }, pull: 3.2, startLat: 35,
+      periodNote: 'Canada in 1885',
+      stop2: { center: { lon: -106.1, lat: 52.6 }, pull: 18, todayNote: 'Today’s towns', thenNote: 'The places of 1885' },
+      labels: [ { lon: -75.70, lat: 45.42, text: 'Ottawa', size: .5, dot: true }, { lon: -97.14, lat: 49.90, text: 'Winnipeg', size: .5, dot: true },
+                { lon: -106.1527, lat: 52.539, text: 'FISH CREEK', size: .85, pin: true, early: true } ] },
+    establishing: [
+      { file: 'establish-continent.jpg', secs: 5, pulse: { x: .3625, y: .574 }, credit: 'Canada and the northern United States. Painted for this project (AI-generated) over real elevation data.' },
+      { file: 'establish-campaign.jpg', secs: 5, pulse: { x: .5476, y: .3818 }, credit: 'The North-West in 1885: the railway, Middleton’s march from Qu’Appelle (route approximate) and the fights of the spring. Painted for this project (AI-generated) over real elevation data.' },
+      { file: 'establish-region.jpg', secs: 6, pulse: { x: .5995, y: .619 }, credit: 'The South Branch: Clarke’s Crossing, Fish Creek, Gabriel’s Crossing and Batoche. Painted for this project (AI-generated) over real elevation data.' }
+    ],
+    // The narration clips go in audio/<voice>/ (welcome, intro-1 … intro-6, event-1 … event-14, outcome), recorded from
+    // tools/fishcreek-clear-lines.tsv. Until they are there, the page shows the text and the browser's own voice reads it.
+    imageBase: 'images/', audioBase: 'audio/',
+    voices: [
+      { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 }, { id: 'light', name: 'Narrator 2 · light', speaker: 60 },
+      { id: 'bright', name: 'Narrator 3 · bright', speaker: 0 }, { id: 'deep', name: 'Narrator 4 · deep', speaker: 400 },
+      { id: 'warm', name: 'Narrator 5 · warm', speaker: 7 }, { id: 'computer', name: 'Computer · calm', speaker: 500 }
+    ],
+    // Music: "Métis Fiddling for Dancing" (Métis Nation of Alberta), free for educational use; ../sounds/music/metis-fiddling/README.md.
+    // The opening tune plays over the globe, the maps and the introduction; the fighting has none; a Red River Jig under the debrief.
+    musicBase: '../sounds/music/metis-fiddling/',
+    musicCredit: { instrument: 'fiddle', album: 'Métis Fiddling for Dancing', albumBy: 'Alex Kusturok, Donny L’Hirondelle & Garry Pruden · Métis Nation of Alberta',
+      links: [ { label: 'Album (free download)', url: 'https://albertametis.com/culture/metis-fiddling-for-dancing/' }, { label: 'Alex Kusturok', url: 'https://alexkusturok.com' } ] },
+    introMusic: { file: '06-fiddle-creek-two-step-garry-pruden.mp3', vol: .42, title: 'Fiddle Creek Two Step', artist: 'Garry Pruden' },
+    outcomeMusic: { file: '10-red-river-jig-alex-kusturok.mp3', vol: .42, title: 'Red River Jig', artist: 'Alex Kusturok' },
+    sfx: { rifle: ['lee-enfield-shot-02.mp3', 'lee-enfield-shot-03.mp3'], vol: .16 },
+    attackSheets: { 'field-rifles': 'field-rifles-fire', 'field-grenadier': 'field-grenadier-attack', 'field-gun': 'field-gun-fire',
+                    'metis-rifle': 'metis-rifle-fire', 'metis-shotgun': 'metis-shotgun-fire', 'firstnations-fighter': 'firstnations-fighter-fire' },
+    fallen: { bySide: { allied: 'fallen-field', french: 'fallen-defenders' } },
+    sheets: ['field-rifles', 'field-grenadier', 'field-scout', 'field-gun', 'metis-rifle', 'metis-shotgun', 'metis-horse', 'firstnations-fighter', 'ferry-scow'],
+    sheetBy: { allied: { infantry: 'field-grenadier', archers: 'field-rifles', cavalry: 'field-scout' }, french: { infantry: 'metis-rifle', archers: 'metis-rifle', cavalry: 'metis-horse' } },
+    sideArt: { allied: { cloth: '#7a1f1a', cloth2: '#222', pennant: '#c0392b' }, french: { cloth: '#2a3550', cloth2: '#3a2a1a', pennant: '#2e5aa8' } },
+    legend: [ { label: 'North-West Field Force', color: '#c0392b', kind: 'dot' }, { label: 'Métis, Dakota and Cree defenders', color: '#2e5aa8', kind: 'dot' } ],
+    clockYear: 1885,
+    ai: { plans: {} }, commandLines: {},
+    debrief: { allied: { victory: { title: 'Field Force victory', text: '' }, defeat: { title: 'Field Force defeat', text: '' }, stalemate: { title: 'Stalemate', text: '' } },
+               french: { victory: { title: 'The defenders hold', text: '' }, defeat: { title: 'The coulee falls', text: '' }, stalemate: { title: 'Stalemate', text: '' } } }
+  });
+  S.sides.allied.rally = { x: 1300, y: 1700 }; S.sides.french.rally = { x: 2100, y: 700 };
+
+  // Things on the map that change through the day (engine: S.mapObjects): the Tourond house (cells: intact, smoking,
+  // burning, burnt), the smouldering camp the scouts find, the tethered horses and where they fell, the grass fire.
+  const horse = (id, at, k) => ({ id, sheet: 'horses-fallen', x: at.x, y: at.y, h: 34, row: Math.floor(k / 4), col: k % 4, hidden: true, ground: true });
+  S.mapObjects = [
+    { id: 'farm', sheet: 'tourond-farm', x: TOUROND.x, y: TOUROND.y, h: 120, row: 0, col: 0, label: 'Tourond house' },
+    { id: 'campfire', sheet: 'prairie-fire', x: CAMPSITE.x, y: CAMPSITE.y, h: 34, hidden: true, anim: { cells: [12, 13, 14, 15], fps: 1.5, mode: 'pingpong' } },
+    { id: 'horses1', sheet: 'metis-horses', x: HORSES.x, y: HORSES.y, h: 52, anim: { row: 1, fps: 1.2, mode: 'pingpong' } },
+    { id: 'horses2', sheet: 'metis-horses', x: HORSES2.x, y: HORSES2.y, h: 52, anim: { row: 3, fps: 1, mode: 'pingpong' } },
+    horse('fallen1', { x: HORSES.x - 18, y: HORSES.y + 4 }, 0), horse('fallen2', { x: HORSES.x + 22, y: HORSES.y - 6 }, 5), horse('fallen3', { x: HORSES2.x - 20, y: HORSES2.y + 6 }, 10), horse('fallen4', { x: HORSES2.x + 18, y: HORSES2.y - 4 }, 13),
+    ...FIRE.map((p, i) => ({ id: 'fire' + i, sheet: 'prairie-fire-line', x: p.x, y: p.y, h: 58, hidden: true }))
+  ];
+
+  const F = (o) => Object.assign({ power: 1, confidence: 'reconstruction' }, o);
+  S.formations = [
+    // Middleton's column on the east bank, up the trail from the south (Mulvany 1885, nominal strengths)
+    F({ id: 'scouts', side: 'allied', name: 'Boulton’s Scouts', division: 'Boulton’s Scouts', type: 'cavalry', sheet: 'field-scout', cols: 4, rows: 1, x: 1262, y: 1660, facing: -PI / 2, confidence: 'established', note: 'Mounted volunteers raised in southern Manitoba by Major Charles Boulton: about 60 on paper, about 40 in the troop that day.' }),
+    F({ id: 'r90', side: 'allied', name: '90th Winnipeg Rifles', division: '90th Rifles', type: 'archers', sheet: 'field-rifles', cols: 6, rows: 2, x: 1244, y: 1735, facing: -PI / 2, confidence: 'established', note: 'Winnipeg militia in dark rifle green: about 300 men (Mulvany). For most of them, the first time under fire.' }),
+    F({ id: 'guns', side: 'allied', name: '"A" Battery', division: '"A" Battery', type: 'archers', sheet: 'field-gun', cols: 2, rows: 1, power: .8, h: 30, x: 1238, y: 1785, facing: -PI / 2, confidence: 'established', note: 'Canada’s small regular artillery from Quebec: about 120 gunners with two nine-pounder muzzle-loading guns.' }),
+    // the column on the west bank of the river (Montizambert, with Lord Melgund)
+    F({ id: 'gren', side: 'allied', name: '10th Royal Grenadiers', division: 'Royal Grenadiers', type: 'infantry', sheet: 'field-grenadier', cols: 5, rows: 2, x: WESTCOL.x, y: WESTCOL.y, facing: PI / 4, confidence: 'established', note: 'Toronto militia in scarlet: about 250 men, on the west bank of the river with the second column.' }),
+    F({ id: 'wfb', side: 'allied', name: 'Winnipeg Field Battery', division: 'Winnipeg Battery', type: 'archers', sheet: 'field-gun', cols: 2, rows: 1, power: .8, h: 30, x: WESTCOL.x - 110, y: WESTCOL.y + 90, facing: PI / 4, confidence: 'established', note: 'Two more nine-pounders, with the west-bank column. Whether they crossed and fired that day is not known.' }),
+    F({ id: 'french', side: 'allied', name: 'French’s Scouts', division: 'French’s Scouts', type: 'cavalry', sheet: 'field-scout', cols: 3, rows: 1, x: WESTCOL.x + 90, y: WESTCOL.y - 120, facing: PI / 4, confidence: 'established', note: 'Mounted scouts under Captain John French, with the west-bank column.' }),
+    F({ id: 'scow', side: 'allied', name: 'The scow', division: 'the scow', type: 'cavalry', sheet: 'ferry-scow', cols: 1, rows: 1, h: 62, power: .1, x: 600, y: 1120, facing: -PI / 3, note: 'The second column’s only scow, a flat river boat: sent off that morning to fetch fodder.' }),
+    F({ id: 'mason', side: 'allied', name: 'Royal Grenadiers under Captain Mason', division: 'Grenadiers (Mason)', type: 'infantry', sheet: 'field-grenadier', cols: 4, rows: 2, hidden: true, x: E_LAND.x, y: E_LAND.y, confidence: 'account', note: 'The Grenadiers Melgund brought across by scow in the afternoon (Middleton, quoted by Black, 1913).' }),
+    // the defenders, hidden in the coulee until the first shots
+    F({ id: 'pits', side: 'french', name: 'Métis riflemen in the pits', division: 'Métis', type: 'archers', sheet: 'metis-rifle', cols: 5, rows: 1, hidden: true, x: PITS.x, y: PITS.y, facing: 3 * PI / 4, note: 'Rifle pits dug in the brush below the rim, where the trail drops into the coulee.' }),
+    F({ id: 'pits2', side: 'french', name: 'Métis with shotguns', division: 'Métis', type: 'archers', sheet: 'metis-shotgun', cols: 4, rows: 1, hidden: true, x: PITS2.x, y: PITS2.y, facing: 3 * PI / 4, note: 'Many of the defenders had double-barrelled shotguns, and little ammunition.' }),
+    F({ id: 'fn', side: 'french', name: 'Dakota and Cree fighters', division: 'Dakota and Cree', type: 'archers', sheet: 'firstnations-fighter', cols: 4, rows: 1, hidden: true, x: FN.x, y: FN.y, facing: 3 * PI / 4, confidence: 'account', note: 'Dakota of Whitecap’s band from Moose Woods, and Cree. How many fought, no source tells us.' }),
+    F({ id: 'horse', side: 'french', name: 'Dumont’s horsemen', division: 'Dumont’s riders', type: 'cavalry', sheet: 'metis-horse', cols: 3, rows: 1, hidden: true, x: BLUFF.x, y: BLUFF.y, facing: PI, confidence: 'account', note: 'About twenty riders Dumont took further along the trail (one account).' }),
+    F({ id: 'edouard', side: 'french', name: 'Riders from Batoche', division: 'Riders from Batoche', type: 'cavalry', sheet: 'metis-horse', cols: 4, rows: 2, hidden: true, x: 2250, y: 40, facing: PI / 2, confidence: 'established', note: 'About seventy horsemen (Parks Canada), led by most accounts by Gabriel’s brother Édouard Dumont.' })
+  ];
+  S.leaders = [
+    { id: 'middleton', name: 'Maj-Gen Middleton', side: 'allied', x: 1210, y: 1700, facing: -PI / 2 },
+    { id: 'boulton', name: 'Maj. Boulton', side: 'allied', x: 1300, y: 1640, facing: -PI / 2, noAttack: true },
+    { id: 'melgund', name: 'Lord Melgund', side: 'allied', x: WESTCOL.x + 120, y: WESTCOL.y + 40, facing: PI / 4, noAttack: true },
+    { id: 'dumont', name: 'Gabriel Dumont', side: 'french', x: BLUFF.x + 40, y: BLUFF.y - 50, facing: PI, hidden: true }
+  ];
+
+  const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; e.t = i * 14; });
+  const set = (i, o) => Object.assign(EV[i], o);
+  const R = S.record, rim = (dx, dy) => ({ x: RIM90.x + dx, y: RIM90.y + dy }), face = { x: 1850, y: 1150 };
+  // 1. The scouts: the column comes up the trail in the rain; the scouts find the abandoned camp
+  set(0, { media: R['cover.jpg'], rain: .45, zoom: 'fit', markers: [ Object.assign({ label: 'a camp just left, fires still smouldering' }, CAMPSITE) ], orders: [
+    { obj: 'campfire', visible: true },
+    { id: 'scouts', to: { x: 1350, y: 1420 }, via: TRAIL.slice(1, 3), speed: 34 }, { leader: 'boulton', to: { x: 1395, y: 1395 }, speed: 34 },
+    { id: 'r90', to: { x: 1285, y: 1590 }, via: [TRAIL[1]], speed: 14 }, { id: 'guns', to: { x: 1262, y: 1690 }, speed: 12 },
+    { leader: 'middleton', to: { x: 1225, y: 1600 }, speed: 14 } ] });
+  // 2. First shots: a scout follows the tracks toward Dumont's horsemen; the coulee opens fire
+  set(1, { focus: { x: 1560, y: 1420 }, zoom: 1.35, markers: [ Object.assign({ label: 'Dumont’s horsemen', side: 'french' }, BLUFF) ], orders: [
+    { id: 'horse', visible: true, state: 'attack' }, { leader: 'dumont', visible: true },
+    { id: 'scouts', to: { x: 1500, y: 1470 }, speed: 45, state: 'attack', face: BLUFF }, { leader: 'boulton', to: { x: 1470, y: 1420 }, speed: 45 },
+    { id: 'pits', visible: true, state: 'attack', delay: 5 }, { id: 'pits2', visible: true, state: 'attack', delay: 6 }, { id: 'fn', visible: true, state: 'attack', delay: 7 },
+    { id: 'r90', to: { x: 1320, y: 1480 }, speed: 30 }, { leader: 'middleton', to: { x: 1290, y: 1520 }, speed: 35 } ] });
+  // 3. The aides: Wise sent back for the main body; his horse hit; the soldiers fall back a little
+  set(2, { media: R['record-incidents-1885.jpg'], focus: { x: 1420, y: 1460 }, zoom: 1.45, markers: [ { x: 1330, y: 1525, label: 'Captain Wise’s horse is hit', side: 'allied' } ], orders: [
+    { id: 'scouts', to: { x: 1440, y: 1500 }, speed: 30, state: 'attack', face: BLUFF }, { id: 'scouts', strengthTo: 88, over: 8 },
+    { leader: 'boulton', to: { x: 1420, y: 1455 }, speed: 30 }, { id: 'r90', to: { x: 1350, y: 1430 }, speed: 30 }, { id: 'guns', to: { x: 1290, y: 1560 }, via: [TRAIL[1]], speed: 30 },
+    { leader: 'middleton', to: { x: 1300, y: 1470 }, speed: 30 } ] });
+  // 4. The guns: "A" Battery comes up at a run to the edge; the 90th spread along the rim; Dumont's riders back into the coulee
+  set(3, { focus: { x: 1640, y: 1240 }, zoom: 1.45, markers: [ Object.assign({ label: '“A” Battery at the edge', side: 'allied' }, { x: GUNLINE.x, y: GUNLINE.y - 10 }) ], orders: [
+    { id: 'guns', to: GUNLINE, via: TRAIL.slice(3, 5), speed: 65, state: 'attack', face }, { id: 'guns', strengthTo: 86, over: 12 },
+    { id: 'r90', to: RIM90, via: [TRAIL[3]], speed: 40, state: 'attack', face }, { leader: 'middleton', to: { x: 1520, y: 1320 }, via: [TRAIL[3]], speed: 40 },
+    { id: 'scouts', to: RIMR, speed: 35, state: 'attack', face }, { leader: 'boulton', to: { x: RIMR.x - 40, y: RIMR.y + 50 }, speed: 35 },
+    { id: 'horse', to: { x: 1850, y: 1180 }, via: [{ x: 1900, y: 1420 }], speed: 40, state: 'attack', face: RIM90 }, { leader: 'dumont', to: { x: 1850, y: 1075 }, via: [{ x: 1930, y: 1380 }], speed: 40 } ] });
+  // 5. The Tourond house: shelled; set smoking, then burning (when exactly, no source says)
+  set(4, { focus: { x: 1820, y: 1050 }, zoom: 1.4, markers: [ Object.assign({ label: 'the Tourond house' }, { x: TOUROND.x, y: TOUROND.y - 40 }) ], orders: [
+    { obj: 'farm', col: 1 }, { obj: 'farm', col: 2, delay: 5 }, { id: 'guns', state: 'attack' }, { id: 'pits', state: 'attack' }, { id: 'pits2', state: 'attack' } ] });
+  // 6. Into the ravine: the 90th rush down twice and are driven back to the rim, then lie flat and fire
+  set(5, { media: R['record-incidents-1885.jpg'], focus: { x: 1720, y: 1180 }, zoom: 1.6, markers: [ { x: 1745, y: 1175, label: 'the 90th rush the coulee', side: 'allied' } ], orders: [
+    { id: 'r90', to: { x: 1735, y: 1180 }, speed: 45, state: 'attack' }, { id: 'r90', strengthTo: 91, over: 10 },
+    { id: 'r90', to: RIM90, speed: 40, state: 'attack', face, delay: 4 },
+    { id: 'r90', to: { x: 1715, y: 1195 }, speed: 45, state: 'attack', delay: 7 },
+    { id: 'r90', to: rim(0, 6), speed: 35, state: 'attack', face, delay: 10 }, { id: 'pits', state: 'attack' }, { id: 'fn', state: 'attack' } ] });
+  // 7. Middleton's cap: he rides along the line; Wise is shot in the foot at the edge
+  set(6, { media: R['record-incidents-1885.jpg'], focus: { x: 1700, y: 1340 }, zoom: 1.6, markers: [ { x: 1700, y: 1330, label: 'a bullet through Middleton’s cap', side: 'allied' } ], orders: [
+    { leader: 'middleton', to: { x: 1790, y: 1420 }, via: [{ x: 1600, y: 1310 }, { x: 1700, y: 1350 }], speed: 28 },
+    { id: 'r90', state: 'attack' }, { id: 'guns', state: 'attack' }, { id: 'scouts', state: 'attack' }, { id: 'pits', state: 'attack' } ] });
+  // 8. The horses: tied in the woods of the ravine, seen from the rim; many are killed
+  set(7, { focus: { x: 2000, y: 1290 }, zoom: 1.7, markers: [ { x: 2035, y: 1280, label: 'the horses in the ravine', side: 'french' } ], orders: [
+    { id: 'scouts', state: 'attack' }, { id: 'guns', state: 'attack' },
+    { obj: 'horses1', visible: false, delay: 4 }, { obj: 'fallen1', visible: true, delay: 4 }, { obj: 'fallen2', visible: true, delay: 4.5 },
+    { obj: 'horses2', visible: false, delay: 6 }, { obj: 'fallen3', visible: true, delay: 6 }, { obj: 'fallen4', visible: true, delay: 6.5 } ] });
+  // 9. The edge of the ravine: deadlock; many defenders slip away; Dumont and Nault keep firing; the house is rubble
+  set(8, { focus: { x: 1830, y: 1150 }, zoom: 1.45, markers: [ { x: 1850, y: 1075, label: 'Dumont, with Napoléon Nault', side: 'french' } ], orders: [
+    { obj: 'farm', col: 3 },
+    { id: 'pits', strengthTo: 45, over: 10, state: 'attack' }, { id: 'pits2', strengthTo: 35, over: 10, state: 'attack' }, { id: 'horse', strengthTo: 45, over: 10 },
+    { id: 'fn', to: { x: 2250, y: 620 }, via: [{ x: 1900, y: 900 }], speed: 22, delay: 2 }, { id: 'fn', visible: false, delay: 13 },
+    { id: 'r90', state: 'attack' }, { id: 'guns', state: 'attack' } ] });
+  // 10. The grass fire: Dumont, down to a few cartridges, sets the dry grass alight; the wind carries it toward the soldiers
+  set(9, { focus: { x: 1790, y: 1260 }, zoom: 1.6, markers: [ { x: 1815, y: 1250, label: 'Dumont’s grass fire', side: 'french' } ], orders: [
+    ...FIRE.map((p, i) => ({ obj: 'fire' + i, visible: true, anim: { cells: [...Array(16).keys()], fps: 1.25, mode: 'once', delay: i * .6 } })),
+    { id: 'r90', state: 'attack' }, { id: 'pits', state: 'attack' } ] });
+  // 11. The scow: back from fetching fodder, it carries Melgund and some Grenadiers across; they relieve the tired 90th
+  set(10, { media: R['record-incidents-1885.jpg'], focus: { x: 1180, y: 470 }, zoom: 1.35, hold: 14, markers: [ Object.assign({ label: 'the scow crosses', side: 'allied' }, { x: 1225, y: 400 }) ], orders: [
+    { id: 'scow', to: W_LAND, via: RIVER_UP, speed: 150 }, { id: 'gren', to: { x: W_LAND.x - 60, y: W_LAND.y - 40 }, speed: 40 }, { leader: 'melgund', to: { x: W_LAND.x - 40, y: W_LAND.y + 10 }, speed: 40 },
+    { id: 'gren', strengthTo: 65, over: 1, delay: 7.5 }, { leader: 'melgund', visible: false, delay: 7.5 },
+    { id: 'scow', to: E_LAND, speed: 60, delay: 7.6 },
+    { id: 'mason', visible: true, at: E_LAND, to: { x: 1700, y: 1320 }, via: [{ x: 1300, y: 760 }, { x: 1420, y: 1000 }, { x: 1560, y: 1200 }], speed: 60, state: 'attack', face, delay: 12.6 },
+    { leader: 'melgund', visible: true, at: { x: E_LAND.x - 20, y: E_LAND.y + 20 }, to: { x: 1630, y: 1340 }, speed: 60, delay: 12.6 },
+    { id: 'r90', to: rim(-90, 60), speed: 25, face, delay: 13 } ] });
+  // 12. Sleet: the firing dies down; the fire is out
+  set(11, { rain: 1, sleet: true, zoom: 'fit', orders: [
+    ...FIRE.map((p, i) => ({ obj: 'fire' + i, visible: false })), { obj: 'campfire', visible: false },
+    { id: 'pits', strengthTo: 30, over: 10, state: 'hold' }, { id: 'pits2', state: 'hold' }, { id: 'horse', state: 'hold' },
+    { id: 'r90', state: 'hold' }, { id: 'guns', state: 'hold' }, { id: 'scouts', state: 'hold' }, { id: 'mason', state: 'hold' } ] });
+  // 13. Riders from Batoche: about seventy horsemen come down from the north
+  set(12, { rain: .35, focus: { x: 2050, y: 760 }, zoom: 1.3, hold: 11, markers: [ { x: 2150, y: 470, label: 'about seventy riders from Batoche', side: 'french' } ], orders: [
+    { id: 'edouard', visible: true, to: { x: 2010, y: 980 }, via: [{ x: 2190, y: 450 }], speed: 75, state: 'attack' }, { id: 'pits', state: 'attack' } ] });
+  // 14. Back to camp: the army pulls back about a kilometre, the Grenadiers left along the ridge; the defenders draw back
+  set(13, { media: R['record-solemn-scene-1885.jpg'], zoom: 'fit', markers: [ Object.assign({ label: 'the camp, behind a wall of wagons', side: 'allied' }, CAMP), { x: 1700, y: 1300, label: 'Grenadiers along the ridge', side: 'allied' } ], orders: [
+    { id: 'r90', to: { x: CAMP.x - 40, y: CAMP.y - 10 }, via: [TRAIL[3]], speed: 30, state: 'move' }, { id: 'guns', to: { x: CAMP.x + 60, y: CAMP.y + 20 }, via: [TRAIL[3]], speed: 30, state: 'move' },
+    { id: 'scouts', to: { x: CAMP.x + 70, y: CAMP.y - 60 }, speed: 30, state: 'move' }, { leader: 'middleton', to: { x: CAMP.x, y: CAMP.y - 70 }, speed: 30 }, { leader: 'boulton', to: { x: CAMP.x + 110, y: CAMP.y - 90 }, speed: 30 },
+    { id: 'mason', to: { x: 1700, y: 1300 }, speed: 20, state: 'hold', face }, { leader: 'melgund', to: { x: 1640, y: 1350 }, speed: 20 },
+    { id: 'pits', to: { x: 1940, y: 1010 }, speed: 18, state: 'move', delay: 3 }, { id: 'pits2', to: { x: 2010, y: 1110 }, speed: 18, state: 'move', delay: 3 },
+    { id: 'horse', to: { x: 1990, y: 950 }, speed: 20, state: 'move', delay: 3 }, { id: 'edouard', to: { x: 2080, y: 900 }, speed: 20, state: 'move', delay: 3 }, { leader: 'dumont', to: { x: 1960, y: 1020 }, speed: 18, delay: 3 } ] });
+
+  // The introduction's battle map: where the armies are at dawn, and the places the narrator names
+  S.intro[3].markers = [ Object.assign({ label: 'the hollow: about 130 men', side: 'french' }, PITS), Object.assign({ label: 'Dumont and about twenty horsemen', side: 'french' }, BLUFF) ];
+  Object.assign(S.intro[3], { focus: { x: 1650, y: 1350 }, zoom: 1.2 });
+  S.intro[4].markers = [ Object.assign({ label: 'the Tourond house' }, { x: TOUROND.x, y: TOUROND.y - 40 }), Object.assign({ label: 'the trail crosses Fish Creek' }, CROSSING), Object.assign({ label: 'the horses' }, HORSES) ];
+  Object.assign(S.intro[4], { focus: { x: 1800, y: 1100 }, zoom: 1.3 });
+  S.intro[5].markers = [ Object.assign({ label: 'Middleton’s column', side: 'allied' }, { x: 1250, y: 1700 }), Object.assign({ label: 'the second column, across the river', side: 'allied' }, WESTCOL) ];
+
+  S.units = [
+    { side: 'allied', type: 'archers', sheet: 'field-rifles', portrait: 'rifles', name: '90th Winnipeg Rifles', desc: 'Winnipeg militia in dark rifle green, with Snider rifles.', tag: 'established',
+      lines: [ { text: 'About 300 men in the column (Mulvany, 1885). They tried to rush the coulee and were driven back; then they lay along the edge and fired down. An 1885 newspaper names Private Alexander Ferguson as the first man killed.', tag: 'account' } ] },
+    { side: 'allied', type: 'archers', sheet: 'field-gun', portrait: false, name: '“A” Battery', desc: 'Canada’s regular gunners, with two nine-pounder guns.', tag: 'established', photos: ['rml-9-pounder-gun.jpg'],
+      lines: [ { text: 'Out on the open rim they were easy targets: three killed and twelve wounded by the end of the day, the first men of Canada’s small regular army killed in battle.', tag: 'account' } ] },
+    { side: 'allied', type: 'cavalry', sheet: 'field-scout', portrait: 'scout', name: 'Boulton’s Scouts', desc: 'Mounted volunteers from southern Manitoba, riding ahead of the column.', tag: 'established',
+      lines: [ { text: 'Their warning kept the column from walking into the trap (Hildebrandt). About forty in the troop; eight wounded by the end of the day.', tag: 'account' } ] },
+    { side: 'allied', type: 'infantry', sheet: 'field-grenadier', portrait: 'grenadier', name: '10th Royal Grenadiers', desc: 'Toronto militia in scarlet, with the column on the west bank.', tag: 'established',
+      lines: [ { text: 'Some of them, under Captain Mason, crossed by scow in the afternoon and took the place of the tired 90th.', tag: 'account' } ] },
+    { side: 'allied', type: 'infantry', portrait: 'middleton', name: 'Maj-Gen Frederick Middleton', desc: 'A British officer, aged 59, commanding Canada’s militia.', tag: 'established', photos: ['middleton-1885-topley.jpg'],
+      lines: [ { text: 'A bullet passed through his fur cap. He called it Dumont’s bullet, but no one can say who fired it.', tag: 'account' } ] },
+    { side: 'french', type: 'archers', sheet: 'metis-rifle', portrait: 'metis', name: 'Métis fighters', desc: 'Buffalo hunters and farmers in rifle pits below the rim, with hunting rifles and shotguns.', tag: 'established',
+      lines: [ { text: 'About 150 defenders in all, Métis, Dakota and Cree (Parks Canada); Hildebrandt says 200 Métis. By some counts fewer than fifty were left by the afternoon.', tag: 'estimate' } ] },
+    { side: 'french', type: 'archers', sheet: 'firstnations-fighter', portrait: 'firstnations', name: 'Dakota and Cree fighters', desc: 'Dakota of Whitecap’s band from Moose Woods, and Cree.', tag: 'account',
+      lines: [ { text: 'How many Dakota and Cree fought at Fish Creek, no source tells us.', tag: 'account' } ] },
+    { side: 'french', type: 'cavalry', portrait: 'dumont', name: 'Gabriel Dumont', desc: 'Buffalo-hunt captain, aged 47; the Métis military leader.', tag: 'established', photos: ['dumont-1885-buckskin.jpg'],
+      lines: [ { text: 'He kept firing at every target he could find to give the others heart, and, down to a few cartridges, set the grass alight. He dictated his account of the battle in 1889.', tag: 'account' } ] }
+  ];
+  const C = (title, intro, items) => ({ title, intro, items: items.map(([ref, note]) => ({ ref, note })) });
+  S.citations = {
+    established: C('Established', 'Agreed by historians.', [['Parks Canada, Battle of Tourond’s Coulee / Fish Creek National Historic Site', 'The site, the time of the first shots, the house shelled into rubble, the seventy riders, the casualties.'], ['Walter Hildebrandt, The Battle of Batoche (Parks Canada, 1989)', 'The march, the coulee, the six hours of fighting.'], ['Dictionary of Canadian Biography', 'Dumont, Middleton, the horses.']]),
+    account: C('Account', 'One witness or one historian.', [['Middleton’s report and his account, quoted by Black (1913) and Hildebrandt (1989)', 'The aides, the cap, the scow and Melgund.'], ['Gabriel Dumont’s account, dictated in 1889', 'Nault beside him, the seven cartridges, the grass fire.'], ['Gabriel Dumont Institute, the Tourond family history', 'Josephte Tourond and her family.'], ['The Illustrated War News, 1885', 'Private Ferguson; the soldiers’ view of the day.']]),
+    disputed: C('Disputed', 'The sources disagree.', [['Parks Canada; Hildebrandt (1989); the Encyclopedia of Saskatchewan', 'How many defenders stayed to the end; when the Grenadiers crossed; who led the riders from Batoche.']]),
+    estimate: C('Estimate', 'An estimate, not a recorded figure.', [['C. P. Mulvany, History of the North-West Rebellion of 1885 (1885)', 'The nominal strengths of the two columns.'], ['Parks Canada; Dictionary of Canadian Biography', 'About 150 defenders; about 55 Field Force killed or wounded.']]),
+    reconstruction: C('Reconstruction', 'Our own choice, to make the battle visible.', [['Battles of History', 'Every position and move on the map: no 1885 plan of the battle has been lined up with today’s ground. The painted map follows real elevation data.']])
+  };
+  const MUS = 'Métis Fiddling for Dancing: Alex Kusturok, Donny L’Hirondelle and Garry Pruden, fiddle; presented by the Métis Nation of Alberta (Otipemisiwak Métis Government). Recorded at Astromonical Studio, St. Paul, Alberta, engineered by Calvin Vollrath; produced by Alex Kusturok and Calvin Vollrath. On this page: “Fiddle Creek Two Step” (Garry Pruden) for the opening and “Red River Jig” (Alex Kusturok) for the debrief. Offered by the album page “FREE to anyone to use for educational purposes, for dancing, for listening, and most importantly, for the preservation of the Métis dance music”; used on that basis, with thanks. ' +
+    '<a href="https://albertametis.com/culture/metis-fiddling-for-dancing/" target="_blank" rel="noopener">Album page (free download)</a> · <a href="https://alexkusturok.com" target="_blank" rel="noopener">Alex Kusturok</a>';
+  S.sources = [
+    { title: 'Parks Canada, Battle of Tourond’s Coulee / Fish Creek National Historic Site', note: 'The site, its plaque and the 2007 management plan.' },
+    { title: 'Walter Hildebrandt, The Battle of Batoche: British Small Warfare and the Entrenched Métis, revised edition (Canadian Parks Service, 1989)', note: 'The march north and Fish Creek. parkscanadahistory.com/series/saah/battlebatoche.pdf' },
+    { title: 'C. P. Mulvany, History of the North-West Rebellion of 1885 (Toronto, 1885)', note: 'The order of march of the two columns.' },
+    { title: 'Dictionary of Canadian Biography: Gabriel Dumont, Frederick Middleton', note: 'biographi.ca' },
+    { title: 'Gabriel Dumont Institute, Virtual Museum of Métis History and Culture', note: 'The Tourond family history; the 1885 prints.' },
+    { title: 'The Illustrated War News (Toronto, 1885)', note: 'The prints on this page. Public domain. See images/README.md for every picture and its licence.' },
+    { title: 'Music: Métis Fiddling for Dancing (Métis Nation of Alberta)', note: MUS },
+    { title: 'Sound: rifle shots', note: 'Recorded by Kris Eyvindson for Battles of History, used with permission (a Lee-Enfield standing in for the Snider of 1885). See ../sounds/README.md.' }
+  ];
+  S.library = [];
+})();

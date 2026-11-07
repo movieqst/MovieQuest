@@ -187,7 +187,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'fishcreek', progress: 20, lat: 52.54, lon: -106.15,
+    folder: 'fishcreek', progress: 80, lat: 52.54, lon: -106.15,
     order: 16,
     era: 'Canada, 1885',
     title: 'Battle of Fish Creek',

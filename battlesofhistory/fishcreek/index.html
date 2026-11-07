@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Battle of Batoche — Historical Reenactment</title>
+<title>Battle of Fish Creek — Historical Reenactment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -275,7 +275,7 @@
 </head>
 <body data-mode="intro">
 <header>
-  <div><div class="brand">BATTLE OF BATOCHE</div><div class="subtitle">Historical reenactment · 9–12 May 1885 · runs locally, no install</div></div>
+  <div><div class="brand">BATTLE OF FISH CREEK</div><div class="subtitle">Historical reenactment · Tourond’s Coulee, 24 April 1885 · runs locally, no install</div></div>
   <div class="top-actions">
     <button id="introBtn">📜 Intro</button>
     <button id="watchBtn" class="primary">▶ Watch reenactment</button>
@@ -333,10 +333,10 @@
     <button id="playBig" title="Begin with narration" aria-label="Begin with narration"><span></span></button>
     <button id="playGame" title="Play" aria-label="Play"><span></span></button>
     <div id="playMenu">
-      <div class="pm-title">BATTLE OF BATOCHE</div>
+      <div class="pm-title">BATTLE OF FISH CREEK</div>
       <button id="pmWatch" class="primary">▶ Play the reenactment</button>
       <button id="pmAllied" class="primary">⚔ Play as the Field Force</button>
-      <button id="pmFrench" class="primary">⚔ Play as the defenders of Batoche</button>
+      <button id="pmFrench" class="primary">⚔ Play as the defenders of the coulee</button>
       <button id="pmClose">Back</button>
     </div>
     <div id="titleCard"></div>
@@ -353,7 +353,7 @@
           <div class="actions" id="startGate">
             <button id="beginVoice" class="primary big">🔊 Begin with narration</button>
             <button id="beginSilent" class="big">Begin without sound</button>
-            <span class="muted">Narration is pre-recorded, so it plays in any browser.</span>
+            <span class="muted">The recorded narration is on its way; until then the text is shown and your browser’s own voice reads it.</span>
           </div>
           <div class="actions" id="introChoice" style="display:none">
             <button id="chooseWatch" class="primary big">▶ Watch the battle unfold</button>
@@ -449,7 +449,7 @@
     <section class="card cmd-only">
       <h2>Orders</h2>
       <div class="orders"><label class="tiny">Side <select id="sideSel"><option value="allied">Field Force</option><option value="french">Defenders</option></select></label><button id="selectAll">Select all</button><button id="haltBtn">Halt</button><button id="retreatBtn">Fall back</button></div>
-      <p class="muted">Choose your side. Click a formation or drag a box around several to select them (Ctrl-drag adds). Right-click the map for the order menu: attack-move, move, face, halt, fall back. Pan with the arrow keys, the minimap or the wheel; Shift-drag draws a zoom box. As the French you hold the centre and the chariot force; the Allied advance as history had it until they sight you. Chariots are fast and hit marching infantry hardest; infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
+      <p class="muted">Choose your side. Click a formation or drag a box around several to select them (Ctrl-drag adds). Right-click the map for the order menu: attack-move, move, face, halt, fall back. Pan with the arrow keys, the minimap or the wheel; Shift-drag draws a zoom box. The side you do not command moves as history had it until it sights you. Infantry that halts and holds its ground takes less damage. A formation below 25% strength routs.</p>
     </section>
     <section class="card">
       <h2>Battle log</h2>
@@ -461,13 +461,12 @@
       </details>
     </section>
     <section class="card">
-      <details><summary>Sources & further reading</summary><ul id="sources"></ul><p class="tiny"><a href="../library.html?battle=batoche">📚 Library of sources: the old books themselves ▸</a></p></details>
+      <details><summary>Sources & further reading</summary><ul id="sources"></ul><p class="tiny"><a href="../library.html">📚 Library of sources: the old books themselves ▸</a></p></details>
     </section>
   </aside>
 </main>
-<footer><nav class="bhbar"><a href="../library.html?battle=batoche">📚 Library</a><a href="../gallery.html?battle=batoche&kind=art">🖼 Art gallery</a><a href="../gallery.html?battle=batoche&kind=photo">📷 Photographs</a><a href="../gallery.html">All battles’ pictures</a><a href="../atlas.html?battle=batoche">🗺 Atlas</a></nav><span class="bhnote">Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</span></footer>
+<footer><nav class="bhbar"><a href="../library.html">📚 Library</a><a href="../gallery.html">🖼 All battles’ pictures</a><a href="../atlas.html?battle=fishcreek">🗺 Atlas</a><a href="../batoche/index.html">▶ Two weeks later: Batoche</a></nav><span class="bhnote">Standalone HTML · no install, account, network or WebGL required · historical facts are tagged by confidence; positions, timings and the map are a reconstruction.</span></footer>
 <script src="scenario.js"></script>
-<script src="lang-fr.js"></script>
 <script src="../lang-ui.js"></script>
 <script src="../lang.js"></script>
 <script src="../desktop.js"></script>

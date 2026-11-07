@@ -1228,7 +1228,7 @@ function unitSprite(c, u, big) {
 }
 function renderArmies() {
   const units = S.units || [];
-  const card = (u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`;
+  const card = (u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas>${u.portrait === false ? '' : `<img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')">`}</div><div><b style="color:${u.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`;
   // Each side shows its first two cards; the rest fold away under a "more" button.
   $('armies').innerHTML = [...new Set(units.map(u => u.side))].map(sd => {
     const idx = units.map((u, i) => i).filter(i => units[i].side === sd), rest = idx.slice(2);
@@ -1250,7 +1250,7 @@ function openUnit(i) {
   $('unitKicker').textContent = ((S.sides[u.side] || {}).name || u.side) + ' · ' + (unitIdx + 1) + ' / ' + units.length;
   $('unitTitle').innerHTML = `<span style="color:${u.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</span> ${tagChip(u.tag)}`;
   const base = S.imageBase || 'images/';
-  $('unitBody').innerHTML = `<div class="uhead"><canvas id="unitSprite" width="112" height="80"></canvas><img class="portrait" alt="" style="width:112px;height:80px;object-fit:cover;border-radius:4px;display:none" src="${base}portraits/${PN(u)}.jpg" onload="this.style.display='block';this.previousElementSibling.style.display='none'"><div class="side">${u.desc}</div></div>` + (u.lines || []).map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
+  $('unitBody').innerHTML = `<div class="uhead"><canvas id="unitSprite" width="112" height="80"></canvas>${u.portrait === false ? '' : `<img class="portrait" alt="" style="width:112px;height:80px;object-fit:cover;border-radius:4px;display:none" src="${base}portraits/${PN(u)}.jpg" onload="this.style.display='block';this.previousElementSibling.style.display='none'">`}<div class="side">${u.desc}</div></div>` + (u.lines || []).map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   unitSprite($('unitSprite').getContext('2d'), u, true);
   const ph = unitPhotos(u);
   $('unitThumbs').innerHTML = ph.map((m, k) => `<button data-k="${k}" title="${esc(m.caption || m.file || '')}"><img alt="" src="${base}${m.file}"></button>`).join('');
