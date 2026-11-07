@@ -64,7 +64,7 @@ by Gabriel Dumont.
 - The trail to Batoche ran down into the coulee, crossed the creek, and climbed out again. Below the rim, in brush and trees, the fighters dug rifle pits. They tied up their horses in the woods of the ravine. Parks Canada places the Tourond homestead on the east side of the creek, and the soldiers' positions on its west side. *(established; the pits and horses, account; the positions on our map, reconstruction)*
 
 ### 6. The forces
-- Middleton's whole force came to about 900 men. A history written in 1885 lists the column on his side of the river as about 300 men of the 90th Winnipeg Rifles, 120 gunners of "A" Battery with two nine-pounder guns, 40 infantry of "C" School, and about 60 mounted men of Boulton's Scouts, raised in southern Manitoba by Major Charles Boulton. *(estimate; Mulvany, 1885; H89 p. 29)*
+- On paper, Middleton's whole force came to about 900 men, though not all of them were in the fight. A history written in 1885 lists the column on his side of the river as about 300 men of the 90th Winnipeg Rifles, 120 gunners of "A" Battery with two nine-pounder guns, 40 infantry of "C" School, and about 60 mounted men of Boulton's Scouts, raised in southern Manitoba by Major Charles Boulton. *(estimate; Mulvany, 1885; H89 p. 29)*
 - Across the river, the other column, about 400 with its teamsters, had the 10th Royal Grenadiers from Toronto, the Winnipeg Field Battery with two more guns, and French's Scouts under Captain John French. Lieutenant-Colonel Montizambert commanded it, and Lord Melgund, Middleton's chief of staff, rode with it. *(estimate; Mulvany, 1885; H89)*
 - Parks Canada counts about 150 defenders: Métis, Dakota and Cree. Hildebrandt says 200 Métis. Other counts run higher and lower. *(estimate; disputed)*
 - The Dakota came from Whitecap's band at Moose Woods, near Saskatoon. How many Dakota and Cree fought at Fish Creek, no source tells us. *(account; H89 pp. 19–20; numbers unknown)*
@@ -84,11 +84,11 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
 3. **The aides** · Morning
    Middleton sends his aide, Captain Wise, back to hurry the main body forward. A shot from the bluffs hits Wise's horse. His other aide, Lieutenant Doucet, is wounded, and so are several men. At first the soldiers fall back a little. Boulton's small troop, about forty men, will have eight wounded by the end of the day. *(account; Middleton's report; Boulton's numbers, a trooper's letter)*
 
-4. **The guns** · About 10:15 a.m.
-   The two nine-pounder guns of "A" Battery come up at a run and swing into place near the edge. One of their officers, Captain James Peters, carries a camera. He photographs his own guns going into action. His pictures are thought to be the first ever taken under fire in battle. Out on the open rim, the gunners make easy targets for the riflemen below. By the end of the day "A" Battery has lost three men killed and twelve wounded: the first men of Canada's small regular army ever killed in battle. *(account; the time, Peters's inscription, to check; the losses, the Royal Canadian Artillery Museum)*
+4. **The guns** · Morning
+   The two nine-pounder guns of "A" Battery come up at a run and swing into place near the edge. One of their officers, Captain James Peters, carries a camera. He photographs his own guns going into action; one picture is inscribed about a quarter past ten. They are among the earliest surviving photographs taken during a battle. Out on the open rim, the gunners make easy targets for the riflemen below. By the end of the day "A" Battery has lost three men killed and twelve wounded: the first men of Canada's small regular army ever killed in battle. *(reconstruction; the time, Peters's reported inscription; the losses, account, the Royal Canadian Artillery Museum)*
 
-5. **The Tourond house** · Late morning
-   The gunners fire at the buildings above the coulee. Josephte Tourond's family has fled: her elderly mother, a sick son, daughters, daughters-in-law and grandchildren. Their home is shelled into rubble. But the rifle pits lie low in the ravine, and the shells mostly pass over them. The guns are made to hit things they can see, and in the coulee there is little to see. *(established, Parks Canada; the family, account, Gabriel Dumont Institute)*
+5. **The Tourond house** · Morning
+   The gunners fire at the buildings above the coulee. Josephte Tourond's family has fled: her elderly mother, a sick son, daughters, daughters-in-law and grandchildren. During the battle their home is shelled into rubble; exactly when, no source says. But the rifle pits lie low in the ravine, and the shells mostly pass over them. The guns are made to hit things they can see, and in the coulee there is little to see. *(established, Parks Canada; the time, reconstruction; the family, account, Gabriel Dumont Institute)*
 
 6. **Into the ravine** · Late morning
    The 90th Winnipeg Rifles try to rush down into the coulee and clear it. Each time, fire from the pits drives them back. For most of these young men, it is the first time anyone has shot at them. Soon they stop trying to rush. They crawl to the edge, lie flat, and fire down into the trees. One of Peters's photographs shows them there. An 1885 newspaper names Private Alexander Ferguson of the 90th as the first man killed. *(established; H89 p. 22; Ferguson, account, Illustrated War News)*
@@ -100,7 +100,7 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
    The fighters' horses are tied in the woods of the ravine. From the rim, the soldiers can see them more easily than the men in the pits. Many of the horses are killed. For people of the buffalo hunt, horses meant food, freedom and speed. It is a heavy loss. Without them, the Métis will find it much harder to move fast across the prairie. *(established; "many", the DCB; the number is uncertain)*
 
 9. **The edge of the ravine** · Afternoon
-   The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Beside him is Napoléon Nault, Riel's cousin. By some counts, fewer than fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel. *(established; the numbers, disputed)*
+   The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, fewer than fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel. *(established; Nault, account, Dumont; the numbers, disputed)*
 
 10. **The grass fire** · Afternoon
     Dumont is down to a few cartridges; he later said he had only seven. He sets the dry grass alight, so that the wind carries fire and smoke toward the soldiers. Parks Canada says the soldiers put the fire out. *(account; Dumont; Parks Canada)*
@@ -112,7 +112,7 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
     The rain turns to sleet. The firing dies down. Hildebrandt counts about six hours of fighting. On the rim, the soldiers are soaked and cold. In the coulee, the few defenders who are left are nearly out of cartridges. *(account; Encyclopedia of Saskatchewan; H89 p. 22)*
 
 13. **Riders from Batoche** · Evening
-    Late in the day, help arrives from Batoche: about seventy horsemen, led, by most accounts, by Gabriel's brother, Édouard Dumont. Many of the defenders have already gone. For those still in the pits, the riders bring hope, and a safe way home. One account says that Marguerite Caron, whose husband and son were in the coulee, urged Riel to send them. *(established, Parks Canada; Édouard and Marguerite Caron, account)*
+    Late in the day, help arrives from Batoche: about seventy horsemen, led, by most accounts, by Gabriel's brother, Édouard Dumont. Many of the defenders have already gone. For those still in the pits, the riders bring hope, and a safe way home. One account says that Marguerite Caron, whose husband and son were in the coulee, urged Riel to send them. *(the seventy, established, Parks Canada; Édouard Dumont and Marguerite Caron, later accounts)*
 
 14. **Back to camp** · Evening
     Middleton decides not to try the coulee again. His army pulls back about a kilometre to camp, with the Grenadiers left along the ridge to cover them. Some defenders are still in their pits as the soldiers leave. They draw back to the far side of the coulee, and in the morning ride home to Batoche. The soldiers spend a cold, wet night in camp, behind a wall of wagons, caring for their wounded. *(established; Parks Canada; H89 p. 107)*
@@ -120,9 +120,9 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
 ## The outcome
 - The army held the field, but it had not cleared the coulee, and its advance had stopped. A force of perhaps 150 had stopped one of about 400. *(established; the numbers, estimate)*
 - Middleton's force had about 55 men killed or wounded. Sources differ on how many died. Parks Canada says ten dead and almost forty-five wounded; the Dictionary of Canadian Biography says six and forty-nine. Some of the wounded may have died later. *(estimate; disputed)*
-- Parks Canada counts six casualties among the defenders. Hildebrandt says four Métis were killed; some counts add two Dakota. Among the Métis dead named in later accounts are José Vermette and Pierre Parenteau, Gabriel Dumont's nephew. *(estimate; disputed; the names, account)*
+- Parks Canada counts six casualties among the defenders. Hildebrandt says four Métis were killed; some counts add two Dakota. *(estimate; disputed)*
 - The day after the battle, a soldier named Thomas Bull wrote to his father about how many of his comrades had fallen. Four days later, the gunners' commander, Captain Drury, wrote his list of wounded on a piece of birch bark. It is kept today in the Royal Canadian Artillery Museum. *(account; Library and Archives Canada; RCA Museum)*
-- With no steamer yet on the river, the army's wounded were carried by wagon about forty miles to Saskatoon, where settlers nursed them in their homes. One of them, Trooper D'Arcy Baker of Boulton's Scouts, died two days after the battle and was buried beside his comrades. *(account; Black, 1913; Baker's letter)*
+- With no steamer yet on the river, many of the army's wounded were carried by wagon about forty miles to Saskatoon, by one account, where settlers nursed them in their homes. One of them, Trooper D'Arcy Baker of Boulton's Scouts, died two days after the battle and was buried beside his comrades. *(account; Black, 1913; Baker's letter)*
 
 ## The aftermath (debrief)
 - Middleton stayed at Fish Creek for about two weeks. He buried his dead, drilled his men, and waited for supplies and the river steamer *Northcote*, which arrived on the 5th of May. From then on, his army always marched together. *(established; H89 pp. 22, 29–30)*
@@ -130,7 +130,7 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
 - The victory had a cost. Many horses were lost, and much of the ammunition was spent. Riel allowed no more ambushes. Dumont said later that the soldiers could easily have been attacked on the way, "and Riel never consented to let them do it." *(account; the DCB; Dumont, quoted in H89 p. 30)*
 - Middleton had learned something too. Before Batoche he said that the Métis were only dangerous "when you play their game, bush fighting." *(account; H89 p. 79)*
 - On the 7th of May the army marched on toward Batoche. Two days later the battle there began. This time the Métis did not wait in a coulee on the trail. They dug in around their village. That battle has its own page. *(established; H89 pp. 31–33)*
-- The Tourond family lost their home. The family remembers soldiers burning it, killing their livestock and taking their belongings; they managed to hide the family clock, which survives today. Less than three weeks later they lost two sons, Calixte and Elzéar, who were killed at Batoche on the 12th of May. Josephte Tourond lived until 1928. *(account; Gabriel Dumont Institute)*
+- The Tourond family lost their home. The family's own memory, told apart from the shelling, is of soldiers burning it, killing their livestock and taking their belongings; they managed to hide the family clock, which survives today. Less than three weeks later they lost two sons, Calixte and Elzéar, who were killed at Batoche on the 12th of May. Josephte Tourond lived until 1928. *(account; Gabriel Dumont Institute)*
 - The battlefield was named a National Historic Site in 1923. Today it is called the Battle of Tourond's Coulee / Fish Creek National Historic Site, to honour its Métis name. Archaeologists have found what is probably the cellar of the Tourond house, and the old trail. Middleton's camp, with a gravestone for some of the soldiers, is a separate site nearby. In Winnipeg, the Volunteer Monument remembers the 90th's dead. The Métis remember Tourond's Coulee in their own stories, and in Gabriel Dumont's account of the battle, which he dictated in 1889. *(established; Parks Canada; Manitoba Historical Society)*
 
 ---
@@ -202,3 +202,14 @@ Check especially: Riel turning back on 23 April, the scout at first contact, Pet
 Dumont's seven cartridges, Édouard Dumont and Marguerite Caron, the Métis dead by name, and the 42 miles to Saskatoon.
 Answer as a list of changes, chapter by chapter. Do not rewrite the whole script.
 ```
+
+
+## Change log, draft 2 (7 November 2026, after ChatGPT's review)
+1. Intro 6: "on paper, about 900 … not all of them were in the fight" (Mulvany's nominal strengths are 407 + 524 = 931, not 991; corrected in RESEARCH-NOTES.md section 12).
+2. Event 4: no clock time in the heading; Peters's "about a quarter past ten" is a reported inscription; "among the earliest surviving photographs taken during a battle", not "the first ever".
+3. Event 5: the homestead shelled during the battle, "exactly when, no source says"; the family's memory of soldiers burning it kept apart from the shelling.
+4. Event 6: Ferguson stays attributed to the 1885 newspaper (spellings differ: Ferguson/Fergusson, initials A. M. or A. W.).
+5. Events 9–10: Nault and the seven cartridges attributed to Dumont's later account.
+6. Event 13: the seventy from Parks Canada; Édouard Dumont and Marguerite Caron as later accounts.
+7. Outcome: the named Métis dead removed from the spoken text (kept in the research notes as leads).
+8. Outcome: "many of the wounded … by one account".
