@@ -2,3 +2,4 @@
 | file | what | credit and licence |
 |---|---|---|
 | cover.jpg | Alexander points toward the island city of Tyre while his men build the causeway; the city burns, and ships are in the strait | Battle Games, AI-generated (ChatGPT) for this project. An artist's impression for the title card, not evidence: the walls look medieval, and the mole is drawn as a timber trestle. Arrian describes a mole of stones and earth, with towers built on it |
+| record-tyre-south-side-2021.jpg | Tyre today, seen from the beach of the Tyre Coast Nature Reserve to the south: the modern town on the sandy isthmus that grew against Alexander's mole, with the old island's low headland at the far left. Taken 26 November 2021 | Photo: **Roman Deckert**, own work. **CC BY-SA 4.0** (https://creativecommons.org/licenses/by-sa/4.0/). Wikimedia Commons, "File:Tyre-Southside RomanDeckert26112021.jpg". Credit on the page: "Roman Deckert, CC BY-SA 4.0, via Wikimedia Commons". Resized only. |
