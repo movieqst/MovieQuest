@@ -520,7 +520,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     { id: 'scouts', to: RIMR, speed: 35, state: 'attack', face }, { leader: 'boulton', to: { x: RIMR.x - 40, y: RIMR.y + 50 }, speed: 35 },
     { id: 'horse', to: { x: 1850, y: 1180 }, via: [{ x: 1900, y: 1420 }], speed: 40, state: 'attack', face: RIM90 }, { leader: 'dumont', to: { x: 1850, y: 1075 }, via: [{ x: 1930, y: 1380 }], speed: 40 } ] });
   // 5. The Tourond house: shelled; set smoking, then burning (when exactly, no source says)
-  set(4, { focus: { x: 1850, y: 1000 }, zoom: 1.4, markers: [ Object.assign({ label: 'the Tourond house' }, { x: TOUROND.x, y: TOUROND.y - 40 }) ], orders: [
+  set(4, { focus: { x: 1870, y: 970 }, zoom: 1.4, markers: [ Object.assign({ label: 'the Tourond house' }, { x: TOUROND.x, y: TOUROND.y - 40 }) ], orders: [
     { obj: 'farm', col: 1 }, { obj: 'farm', col: 2, delay: 5 }, { id: 'guns', state: 'attack' }, { id: 'pits', state: 'attack' }, { id: 'pits2', state: 'attack' } ] });
   // 6. Into the ravine: the 90th rush down twice and are driven back to the rim, then lie flat and fire
   set(5, { media: R['record-incidents-1885.jpg'], focus: { x: 1720, y: 1180 }, zoom: 1.6, markers: [ { x: 1730, y: 1195, label: 'the 90th rush the coulee', side: 'allied' } ], orders: [
@@ -548,27 +548,27 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     ...FIRE.map((p, i) => ({ obj: 'fire' + i, visible: true, anim: { cells: [...Array(16).keys()], fps: 1.25, mode: 'once', delay: i * .6 } })),
     { id: 'r90', state: 'attack' }, { id: 'pits', state: 'attack' } ] });
   // 11. The scow: back from fetching fodder, it carries Melgund and some Grenadiers across; they relieve the tired 90th
-  set(10, { media: R['record-incidents-1885.jpg'], focus: { x: 1180, y: 470 }, zoom: 1.35, hold: 14, markers: [ Object.assign({ label: 'the scow crosses', side: 'allied' }, { x: 1225, y: 400 }) ], orders: [
+  set(10, { media: R['record-incidents-1885.jpg'], focus: { x: 1210, y: 400 }, zoom: 1.35, hold: 14, markers: [ Object.assign({ label: 'the crossing (place uncertain)' }, { x: E_LAND.x + 40, y: E_LAND.y + 30 }) ], orders: [
     { id: 'scow', to: W_LAND, via: RIVER_UP, speed: 150 }, { id: 'gren', to: { x: W_LAND.x - 60, y: W_LAND.y - 40 }, speed: 40 }, { leader: 'melgund', to: { x: W_LAND.x - 40, y: W_LAND.y + 10 }, speed: 40 },
     { id: 'gren', strengthTo: 65, over: 1, delay: 7.5 }, { leader: 'melgund', visible: false, delay: 7.5 },
     { id: 'scow', to: E_LAND, speed: 60, delay: 7.6 },
     { id: 'mason', visible: true, at: E_LAND, to: { x: 1700, y: 1320 }, via: [{ x: 1300, y: 760 }, { x: 1420, y: 1000 }, { x: 1560, y: 1200 }], speed: 60, state: 'attack', face, delay: 12.6 },
     { leader: 'melgund', visible: true, at: { x: E_LAND.x - 20, y: E_LAND.y + 20 }, to: { x: 1630, y: 1340 }, speed: 60, delay: 12.6 },
-    { id: 'r90', to: rim(-90, 60), speed: 25, face, delay: 13 } ] });
+    { id: 'r90', to: rim(-90, 60), speed: 40, face, delay: 9 } ] });
   // 12. Sleet: the firing dies down; the fire is out
   set(11, { rain: 1, sleet: true, zoom: 'fit', orders: [
     ...FIRE.map((p, i) => ({ obj: 'fire' + i, visible: false })), { obj: 'campfire', visible: false },
     { id: 'pits', strengthTo: 30, over: 10, state: 'hold' }, { id: 'pits2', state: 'hold' }, { id: 'horse', state: 'hold' },
-    { id: 'r90', state: 'hold' }, { id: 'guns', state: 'hold' }, { id: 'scouts', state: 'hold' }, { id: 'mason', state: 'hold' } ] });
+    { id: 'r90', state: 'hold' }, { id: 'guns', state: 'hold' }, { id: 'scouts', state: 'hold' }, { id: 'mason', then: 'hold' } ] });
   // 13. Riders from Batoche: about seventy horsemen come down from the north
   set(12, { rain: .35, focus: { x: 2080, y: 700 }, zoom: 1.3, hold: 11, markers: [ { x: 2150, y: 470, label: 'about seventy riders from Batoche', side: 'french' } ], orders: [
     { id: 'edouard', visible: true, at: { x: 2230, y: 330 }, to: { x: 2010, y: 980 }, via: [{ x: 2170, y: 560 }], speed: 70, state: 'attack' }, { id: 'pits', state: 'attack' } ] });
   // 14. Back to camp: the army pulls back about a kilometre, the Grenadiers left along the ridge; the defenders draw back
-  set(13, { media: R['record-solemn-scene-1885.jpg'], zoom: 'fit', markers: [ Object.assign({ label: 'the camp, behind a wall of wagons', side: 'allied' }, CAMP), { x: 1700, y: 1300, label: 'Grenadiers along the ridge', side: 'allied' } ], orders: [
+  set(13, { media: R['record-solemn-scene-1885.jpg'], focus: { x: 1580, y: 1470 }, zoom: 1.0, hold: 14, markers: [ Object.assign({ label: 'the camp, behind a wall of wagons', side: 'allied' }, CAMP), { x: 1700, y: 1300, label: 'Grenadiers along the ridge', side: 'allied' } ], orders: [
     { id: 'r90', to: { x: CAMP.x - 40, y: CAMP.y - 10 }, via: [TRAIL[3]], speed: 30, state: 'move' }, { id: 'guns', to: { x: CAMP.x + 60, y: CAMP.y + 20 }, via: [TRAIL[3]], speed: 30, state: 'move' },
     { id: 'scouts', to: { x: CAMP.x + 70, y: CAMP.y - 60 }, speed: 30, state: 'move' }, { leader: 'middleton', to: { x: CAMP.x, y: CAMP.y - 70 }, speed: 30 }, { leader: 'boulton', to: { x: CAMP.x + 110, y: CAMP.y - 90 }, speed: 30 },
-    { id: 'mason', to: { x: 1700, y: 1300 }, speed: 20, state: 'hold', face }, { leader: 'melgund', to: { x: 1640, y: 1350 }, speed: 20 },
-    { id: 'pits', to: { x: 1940, y: 1010 }, speed: 18, state: 'move', delay: 3 }, { id: 'pits2', to: { x: 2010, y: 1110 }, speed: 18, state: 'move', delay: 3 },
+    { id: 'mason', to: { x: 1700, y: 1300 }, speed: 30, face }, { leader: 'melgund', to: { x: 1640, y: 1350 }, speed: 20 },
+    { id: 'pits', strengthTo: 25, over: 3 }, { id: 'pits', to: { x: 1940, y: 1010 }, speed: 18, state: 'move', delay: 3 }, { id: 'pits2', to: { x: 2010, y: 1110 }, speed: 18, state: 'move', delay: 3 },
     { id: 'horse', to: { x: 1990, y: 950 }, speed: 20, state: 'move', delay: 3 }, { id: 'edouard', to: { x: 2080, y: 900 }, speed: 20, state: 'move', delay: 3 }, { leader: 'dumont', to: { x: 1960, y: 1020 }, speed: 18, delay: 3 } ] });
 
   // The introduction's battle map: where the armies are at dawn, and the places the narrator names
