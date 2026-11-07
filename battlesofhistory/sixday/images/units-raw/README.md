@@ -69,3 +69,12 @@ These are original illustrations for this project (AI-generated): an artist's im
 | leader-sharon (from leader-sharon-redo) | ACCEPT for now. Too slim: Sharon at 39 was heavy-set with a broad face and light-brown wavy hair. A heavier redo would be better. |
 | leader-gur | ACCEPT. The paratroopers' red beret is right for Gur in Jerusalem. |
 | leader-nasser | REDO, not used. He is in a military uniform with ribbons; in 1967 Nasser appeared as President in a dark civilian suit and tie (the prompt asked for that), standing and gesturing. |
+
+**Batch 7, corrections (7 November):**
+
+| sheet | review |
+|---|---|
+| fallen-jor (from fallen-jor-redo) | ACCEPT after cleaning. Khaki battledress, distinct poses, Lee-Enfields. It had red blood marks; these were recoloured to khaki here (units-raw/fallen-jor-redo-cleaned.png) to match the no-blood rule. Still no shemaghs; fine. |
+| leader-nasser (from leader-nasser-redo) | ACCEPT. Dark civilian suit and tie, a good likeness, rows in order. A walking sheet (the prompt asked for standing and gesturing); walking works for the Region map. |
+| jor-hunter-redo-draft | FIX, not used. The intakes and the solid nose are now right, but it is one three-quarter view in 2 × 4 frames, not the four-direction sheet the game needs (top, side, tail, side, like the Mirage), and row 2 shows an afterburner flame (the Hunter had none). It also has Arabic numerals on the nose (no readable text). |
+| leaders-five-concept-ONLY | Not used: a concept picture of five leaders, not production sheets. Ask for each as its own 4 × 4 sheet. |
