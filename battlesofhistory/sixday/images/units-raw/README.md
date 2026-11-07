@@ -57,3 +57,15 @@ These are original illustrations for this project (AI-generated): an artist's im
 | syr-bunker-fire | ACCEPT. Basalt and sandbag position with a machine gun. The belt on a DP pan gun is a small inaccuracy, invisible at game size. |
 | syr-panzer4-dugin | ACCEPT. Dug-in Panzer IV (Syria had them on the Golan); long gun, proportions fine at game size. |
 | syr-t34-dugin | ACCEPT. Dug-in T-34/85 (Syria used dug-in T-34s on the heights). |
+
+**Batch 6, leaders and the fallen (7 November):** rows in order (south, east, north, west). Leaders cut at 160 px cells, figures 130 px; the fallen at 240 × 200, 110 px.
+
+| sheet | review |
+|---|---|
+| fallen-idf | ACCEPT. Sixteen still poses, no blood, rifles and helmets beside them. |
+| fallen-jor | REDO, not used. Pose for pose the same as fallen-idf, in Israeli-style olive with M1 helmets and webbing, plus Jordanian flag patches. It needs khaki battledress of British style, some red-and-white shemaghs, British steel helmets, Lee-Enfields, and no flag patches. |
+| leader-rabin | ACCEPT. Olive uniform, rank slides, field glasses. A fair likeness at game size. |
+| leader-tal | ACCEPT for now. The prompt asked for a black armoured-corps beret and a headset; he has a helmet with goggles. Fine at game size; a beret version would be more accurate. |
+| leader-sharon (from leader-sharon-redo) | ACCEPT for now. Too slim: Sharon at 39 was heavy-set with a broad face and light-brown wavy hair. A heavier redo would be better. |
+| leader-gur | ACCEPT. The paratroopers' red beret is right for Gur in Jerusalem. |
+| leader-nasser | REDO, not used. He is in a military uniform with ribbons; in 1967 Nasser appeared as President in a dark civilian suit and tie (the prompt asked for that), standing and gesturing. |
