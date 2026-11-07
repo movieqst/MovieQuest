@@ -78,8 +78,8 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
 1. **The scouts** · Early morning
    A light rain is falling. Boulton's Scouts ride ahead of the column, up the trail toward Fish Creek. They pass farmhouses that have been raided, and a camp the Métis have only just left, with its fires still smouldering. They send word back. Hildebrandt writes that this warning kept the column from walking straight into the trap. *(account; H89 p. 22)*
 
-2. **First shots** · About 9 a.m.
-   Near the coulee, a scout follows fresh tracks toward Dumont's horsemen. Dumont tries to stop him; the accounts differ on how. Shots ring out. Boulton's men jump down from their horses, lie flat in the grass and fire back, while riders gallop to warn Middleton. From the coulee, the hidden fighters open fire. Parks Canada puts the start of the battle at about nine in the morning. *(established; the scout, account; the time, Parks Canada)*
+2. **First shots** · Morning
+   Near the coulee, a scout follows fresh tracks toward Dumont's horsemen. Dumont tries to stop him; the accounts differ on how. Shots ring out. Boulton charges, then shouts: "Halt! Dismount! Extend in skirmishing order and lie down." His men lie flat in the grass. "Fire away, boys, and lie close," he tells them; "never mind if you don't see anything." From the coulee the hidden fighters open fire, popping up for a quick shot and vanishing again. One by one Boulton's men are hit. Trooper D'Arcy Baker is shot in the chest. Dumont put the first shots at half past seven; Parks Canada puts the start of the battle at about nine. *(account; Boulton and Dumont, quoted by Black, 1913; the time, disputed)*
 
 3. **The aides** · Morning
    Middleton sends his aide, Captain Wise, back to hurry the main body forward. A shot from the bluffs hits Wise's horse. His other aide, Lieutenant Doucet, is wounded, and so are several men. At first the soldiers fall back a little. Boulton's small troop, about forty men, will have eight wounded by the end of the day. *(account; Middleton's report; Boulton's numbers, a trooper's letter)*
@@ -100,29 +100,31 @@ All the chapters play on the battle map. No plan of the battle from 1885 has yet
    The fighters' horses are tied in the woods of the ravine. From the rim, the soldiers can see them more easily than the men in the pits. Many of the horses are killed. For people of the buffalo hunt, horses meant food, freedom and speed. It is a heavy loss. Without them, the Métis will find it much harder to move fast across the prairie. *(established; "many", the DCB; the number is uncertain)*
 
 9. **The edge of the ravine** · Afternoon
-   The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, only about fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel. *(established; Nault, account, Dumont; the numbers, disputed)*
+   The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, only about fifty are left in the coulee. To keep up their courage, Isidore Dumont starts an old song about Napoleon, and all the men in the pits join in the chorus. *(established; Nault and the song, account, Dumont via Black; the numbers, disputed)*
 
 10. **The grass fire** · Afternoon
-    Dumont is down to a few cartridges; he later said he had only seven. He sets the dry grass alight, so that the wind carries fire and smoke toward the soldiers. Parks Canada says the soldiers put the fire out. *(account; Dumont; Parks Canada)*
+    Dumont is down to a few cartridges; he later said he had only seven. He sets the dry grass alight, so that the wind carries fire and smoke toward the soldiers. Under the smoke, the defenders push toward the soldiers' right. Army teamsters run forward and beat out the flames. Along the line, a young bugler of the 90th, William Buchanan, carries ammunition to the men, calling in his high voice: "Now, boys, who's for more cartridges?" *(account; Dumont; Middleton, quoted by Black, 1913)*
 
 11. **The scow** · Afternoon
-    Across the river, the second column hears the firing. Its only scow, a flat river boat, had been sent off that morning to fetch fodder. Soldiers on the far bank shout across the water. Melgund cannot make out the words, but guesses that he is needed. When the scow is back, he takes some of the Royal Grenadiers, under Captain Mason, across the river. They come up into the line and take the place of the tired 90th. Most of the column crosses too late to fight. No source gives the time. *(account; Middleton, quoted by Black; the rest, disputed)*
+    Across the river, the second column hears the firing. Its only scow, a flat river boat, had been sent off that morning to fetch fodder. Soldiers on the far bank shout across the water. Melgund cannot make out the words, but guesses that he is needed. When the scow is back, the crossing begins. It holds barely sixty men. With no cable to pull on, the men row it with oars hacked out with axes, against the current, through mud, boulders and blocks of ice, between banks a hundred feet high. About two hundred and fifty men and two guns of the Winnipeg Battery get across without an accident. The Royal Grenadiers, under Captain Mason, come up into the line and take the place of the tired 90th. No source gives the time. *(account; Middleton, quoted by Black, 1913)*
 
 12. **Sleet** · Late afternoon
-    The rain turns to sleet. The firing dies down. Hildebrandt counts about six hours of fighting. On the rim, the soldiers are soaked and cold. In the coulee, the few defenders who are left are nearly out of cartridges. *(account; Encyclopedia of Saskatchewan; H89 p. 22)*
+    The rain turns to sleet. By about three in the afternoon, Middleton wrote, the firing had almost stopped. Some soldiers ask to rush the last rifle pits. Middleton refuses. He wrote that he could not help "a feeling of admiration and respect for their stubborn defense when deserted by their comrades." On the rim, the soldiers are soaked and cold. In the coulee, the few defenders who are left are nearly out of cartridges. *(account; Middleton, quoted by Black, 1913; H89 p. 22)*
 
 13. **Riders from Batoche** · Evening
-    Late in the day, help arrives from Batoche: about seventy horsemen, led, by most accounts, by Gabriel's brother, Édouard Dumont. Many of the defenders have already gone. For those still in the pits, the riders bring hope, and a safe way home. One account says that Marguerite Caron, whose husband and son were in the coulee, urged Riel to send them. *(the seventy, established, Parks Canada; Édouard Dumont and Marguerite Caron, later accounts)*
+    Late in the day, help arrives from Batoche: about seventy horsemen, eighty in Dumont's telling, led, by most accounts, by Gabriel's brother, Édouard Dumont. Many of the defenders have already gone. For those still in the pits, the riders bring hope, and a safe way home. One account says that Marguerite Caron, whose husband and son were in the coulee, urged Riel to send them. *(the seventy, established, Parks Canada; Édouard Dumont and Marguerite Caron, later accounts)*
 
 14. **Back to camp** · Evening
-    Middleton decides not to try the coulee again. His army pulls back about a kilometre to camp, with the Grenadiers left along the ridge to cover them. Some defenders are still in their pits as the soldiers leave. They draw back to the far side of the coulee, and in the morning ride home to Batoche. The soldiers spend a cold, wet night in camp, behind a wall of wagons, caring for their wounded. *(established; Parks Canada; H89 p. 107)*
+    Middleton decides not to try the coulee again. His army pulls back about a kilometre to camp, with the Grenadiers left along the ridge to cover them. Some defenders are still in their pits as the soldiers leave. They draw back to the far side of the coulee, and ride home to Batoche, carrying their dead and wounded. The soldiers spend a cold, wet night in camp, behind a wall of wagons, caring for their wounded. *(established; Parks Canada; H89 p. 107)*
 
 ## The outcome
 - The army held the field, but it had not cleared the coulee, and its advance had stopped. A force of perhaps 150 had stopped one of about 400. *(established; the numbers, estimate)*
 - Middleton's force had about 55 men killed or wounded. Sources differ on how many died. Parks Canada says ten dead and almost forty-five wounded; the Dictionary of Canadian Biography says six and forty-nine. Some of the wounded may have died later. *(estimate; disputed)*
 - Parks Canada counts six casualties among the defenders. Hildebrandt says four Métis were killed; some counts add two Dakota. *(estimate; disputed)*
 - The day after the battle, a soldier named Thomas Bull wrote to his father about how many of his comrades had fallen. Four days later, the gunners' commander, Captain Drury, wrote his list of wounded on a piece of birch bark. It is kept today in the Royal Canadian Artillery Museum. *(account; Library and Archives Canada; RCA Museum)*
-- With no steamer yet on the river, many of the army's wounded were carried by wagon about forty miles to Saskatoon, by one account, where settlers nursed them in their homes. One of them, Trooper D'Arcy Baker of Boulton's Scouts, died two days after the battle and was buried beside his comrades. *(account; Black, 1913; Baker's letter)*
+- The army's dead were six men killed outright and four who died of their wounds, among them two gunners of "A" Battery and Lieutenant Charles Swinford of the 90th. *(account; Black, 1913)*
+- With no steamer yet on the river, the army's wounded were carried in makeshift ambulances about forty-two miles to Saskatoon, where settlers nursed them in their homes. One of them, Trooper D'Arcy Baker of Boulton's Scouts, died two days after the battle and was buried beside his comrades. *(account; Black, 1913; Baker's letter)*
+- Middleton wrote that his men "had borne their baptism of fire well". The band of the 90th carried in the wounded under fire. *(account; Middleton, quoted by Black, 1913)*
 
 ## The aftermath (debrief)
 - Middleton stayed at Fish Creek for about two weeks. He buried his dead, drilled his men, and waited for supplies and the river steamer *Northcote*, which arrived on the 5th of May. From then on, his army always marched together. *(established; H89 pp. 22, 29–30)*
@@ -219,3 +221,12 @@ Answer as a list of changes, chapter by chapter. Do not rewrite the whole script
 - Intro 4: the defenders included Saulteaux (Métis, Cree, Saulteaux and Dakota); Riel led prayers at the halts; the 130 + 20 plan now also rests on Dumont's own account, with his words "the way we hunt buffalo".
 - Event 9: "only about fifty" (Stanley: fifty-four at the end).
 - Aftermath (outcome clip): Riel's letter to Poundmaker calling it a victory, and Maxime Lépine's "We prayed all the day…".
+
+## Change log, draft 4 (7 November 2026, from Black, *History of Saskatchewan and the Old North West*, 1913, ch. XXIII, quoting Boulton, Middleton and Dumont)
+- Event 2: Boulton's own words at first contact; Baker shot; Dumont's 7:30 beside Parks Canada's 9 a.m. (no clock time in the heading).
+- Event 9: Isidore Dumont's song of Napoleon (replaces "only seven with Gabriel").
+- Event 10: the teamsters beat out the fire; the bugler William Buchanan.
+- Event 11: the scow: sixty men a trip, oars cut with axes, mud and ice; about 250 men and two Winnipeg guns crossed.
+- Event 12: "by about three" the firing stopped; Middleton's "admiration and respect".
+- Events 13–14: eighty riders in Dumont's telling; the defenders carried home their dead and wounded.
+- Outcome: the ten dead (six killed, four died of wounds); "forty-two miles"; "baptism of fire"; the 90th's band.

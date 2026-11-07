@@ -221,9 +221,9 @@ Object.assign(window.FISHCREEK_SCENARIO, {
   },
   {
     "title": "First shots",
-    "clock": "About 9 a.m., 24 April",
-    "tag": "established",
-    "text": "Near the coulee, a scout follows fresh tracks toward Dumont's horsemen. Dumont tries to stop him; the accounts differ on how. Shots ring out. Boulton's men jump down from their horses, lie flat in the grass and fire back, while riders gallop to warn Middleton. From the coulee, the hidden fighters open fire. Parks Canada puts the start of the battle at about nine in the morning."
+    "clock": "Morning, 24 April",
+    "tag": "disputed",
+    "text": "Near the coulee, a scout follows fresh tracks toward Dumont's horsemen. Dumont tries to stop him; the accounts differ on how. Shots ring out. Boulton charges, then shouts: \"Halt! Dismount! Extend in skirmishing order and lie down.\" His men lie flat in the grass. \"Fire away, boys, and lie close,\" he tells them; \"never mind if you don't see anything.\" From the coulee the hidden fighters open fire, popping up for a quick shot and vanishing again. One by one Boulton's men are hit. Trooper D'Arcy Baker is shot in the chest. Dumont put the first shots at half past seven; Parks Canada puts the start of the battle at about nine."
   },
   {
     "title": "The aides",
@@ -265,37 +265,37 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     "title": "The edge of the ravine",
     "clock": "Afternoon, 24 April",
     "tag": "disputed",
-    "text": "The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, only about fifty are left in the coulee. One account says that at the worst moment only seven were still with Gabriel."
+    "text": "The battle settles into a deadlock. The soldiers lie along the rim and fire down into the trees. The defenders stay in their pits and fire up. Neither side can move the other. Through the afternoon, many defenders slip away. Dumont keeps firing at every target he can find, to give the others heart. Dumont later said that Napoléon Nault, Riel's cousin, stayed beside him. By some counts, only about fifty are left in the coulee. To keep up their courage, Isidore Dumont starts an old song about Napoleon, and all the men in the pits join in the chorus."
   },
   {
     "title": "The grass fire",
     "clock": "Afternoon, 24 April",
     "tag": "account",
-    "text": "Dumont is down to a few cartridges; he later said he had only seven. He sets the dry grass alight, so that the wind carries fire and smoke toward the soldiers. Parks Canada says the soldiers put the fire out."
+    "text": "Dumont is down to a few cartridges; he later said he had only seven. He sets the dry grass alight, so that the wind carries fire and smoke toward the soldiers. Under the smoke, the defenders push toward the soldiers' right. Army teamsters run forward and beat out the flames. Along the line, a young bugler of the 90th, William Buchanan, carries ammunition to the men, calling in his high voice: \"Now, boys, who's for more cartridges?\""
   },
   {
     "title": "The scow",
     "clock": "Afternoon, 24 April",
-    "tag": "disputed",
-    "text": "Across the river, the second column hears the firing. Its only scow, a flat river boat, had been sent off that morning to fetch fodder. Soldiers on the far bank shout across the water. Melgund cannot make out the words, but guesses that he is needed. When the scow is back, he takes some of the Royal Grenadiers, under Captain Mason, across the river. They come up into the line and take the place of the tired 90th. Most of the column crosses too late to fight. No source gives the time."
+    "tag": "account",
+    "text": "Across the river, the second column hears the firing. Its only scow, a flat river boat, had been sent off that morning to fetch fodder. Soldiers on the far bank shout across the water. Melgund cannot make out the words, but guesses that he is needed. When the scow is back, the crossing begins. It holds barely sixty men. With no cable to pull on, the men row it with oars hacked out with axes, against the current, through mud, boulders and blocks of ice, between banks a hundred feet high. About two hundred and fifty men and two guns of the Winnipeg Battery get across without an accident. The Royal Grenadiers, under Captain Mason, come up into the line and take the place of the tired 90th. No source gives the time."
   },
   {
     "title": "Sleet",
     "clock": "Late afternoon, 24 April",
     "tag": "account",
-    "text": "The rain turns to sleet. The firing dies down. Hildebrandt counts about six hours of fighting. On the rim, the soldiers are soaked and cold. In the coulee, the few defenders who are left are nearly out of cartridges."
+    "text": "The rain turns to sleet. By about three in the afternoon, Middleton wrote, the firing had almost stopped. Some soldiers ask to rush the last rifle pits. Middleton refuses. He wrote that he could not help \"a feeling of admiration and respect for their stubborn defense when deserted by their comrades.\" On the rim, the soldiers are soaked and cold. In the coulee, the few defenders who are left are nearly out of cartridges."
   },
   {
     "title": "Riders from Batoche",
     "clock": "Evening, 24 April",
     "tag": "established",
-    "text": "Late in the day, help arrives from Batoche: about seventy horsemen, led, by most accounts, by Gabriel's brother, Édouard Dumont. Many of the defenders have already gone. For those still in the pits, the riders bring hope, and a safe way home. One account says that Marguerite Caron, whose husband and son were in the coulee, urged Riel to send them."
+    "text": "Late in the day, help arrives from Batoche: about seventy horsemen, eighty in Dumont's telling, led, by most accounts, by Gabriel's brother, Édouard Dumont. Many of the defenders have already gone. For those still in the pits, the riders bring hope, and a safe way home. One account says that Marguerite Caron, whose husband and son were in the coulee, urged Riel to send them."
   },
   {
     "title": "Back to camp",
     "clock": "Evening, 24 April",
     "tag": "established",
-    "text": "Middleton decides not to try the coulee again. His army pulls back about a kilometre to camp, with the Grenadiers left along the ridge to cover them. Some defenders are still in their pits as the soldiers leave. They draw back to the far side of the coulee, and in the morning ride home to Batoche. The soldiers spend a cold, wet night in camp, behind a wall of wagons, caring for their wounded."
+    "text": "Middleton decides not to try the coulee again. His army pulls back about a kilometre to camp, with the Grenadiers left along the ridge to cover them. Some defenders are still in their pits as the soldiers leave. They draw back to the far side of the coulee, and ride home to Batoche, carrying their dead and wounded. The soldiers spend a cold, wet night in camp, behind a wall of wagons, caring for their wounded."
   }
 ],
   outcome: [
@@ -316,7 +316,15 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     "tag": "account"
   },
   {
-    "text": "With no steamer yet on the river, many of the army's wounded were carried by wagon about forty miles to Saskatoon, by one account, where settlers nursed them in their homes. One of them, Trooper D'Arcy Baker of Boulton's Scouts, died two days after the battle and was buried beside his comrades.",
+    "text": "The army's dead were six men killed outright and four who died of their wounds, among them two gunners of \"A\" Battery and Lieutenant Charles Swinford of the 90th.",
+    "tag": "account"
+  },
+  {
+    "text": "With no steamer yet on the river, the army's wounded were carried in makeshift ambulances about forty-two miles to Saskatoon, where settlers nursed them in their homes. One of them, Trooper D'Arcy Baker of Boulton's Scouts, died two days after the battle and was buried beside his comrades.",
+    "tag": "account"
+  },
+  {
+    "text": "Middleton wrote that his men \"had borne their baptism of fire well\". The band of the 90th carried in the wounded under fire.",
     "tag": "account"
   },
   {
