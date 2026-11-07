@@ -529,6 +529,26 @@ Licence logic: Canadian works published in 1885, by artists who died more than 7
 
 ---
 
+## 12. ChatGPT's fact-check, round 2 (7 November 2026; full text in research/RESEARCH-CHATGPT-CHECK2.md)
+
+**Settled or corrected:**
+- **West bank:** commanded by **Lt.-Col. Montizambert, with Lord Melgund as Middleton's chief of staff** riding with it (C. P. Mulvany, *History of the North-West Rebellion of 1885*, 1885, ch. 127 [primary]). This agrees with H89; Parks Canada's "Melgund's column" is shorthand.
+- **Order of march (Mulvany ch. 127), nominal strengths:** West: French's Scouts 25, Winnipeg Field Battery 52, 10th Royal Grenadiers 250, teamsters 80 = 407. East (Middleton; Lt.-Col. Houghton chief of staff): 90th Battalion 304, "A" Battery 120, "C" School infantry 40, Boulton's Mounted Corps 60 = 584. Total 991 with teamsters; Parks Canada rounds to about 800, 400 in the engaged column. Tag as [estimate]; not a morning return.
+- **Riel on 23 April:** a scouting report in Riel's captured papers (cited in a 1976 Parks Canada study, publications.gc.ca R32-428-1976-2) has Riel asking for 40 men and about 50 turning back. Use "about 50"; tag [disputed] until Dumont's text is read.
+- **"Banks":** Parks Canada's "east bank / west bank of Fish Creek" means the banks of the **creek** (the Tourond homestead on its east side, the Canadian positions on its west side), not the two columns on the banks of the **river**. Keep the two apart on the map.
+- **The Tourond homestead:** destroyed **during the battle**, "shelled into rubble" by nine-pounders (Parks Canada) [established]. Later burning of other buildings during the camp: open.
+- **Times:** about 9 a.m. with the Field Force's shellfire (Parks Canada); Peters's "about 10:15" is a reported inscription, not checked; the end is "late afternoon or evening", not a clock time.
+- **Reinforcements:** "70 arrived that evening" is Parks Canada's; the 80 variant, the names and any charge are not verified.
+- **Casualties:** "55 Field Force casualties; sources differ on how many died" (10 dead and almost 45 wounded, Parks Canada; 6 and 49, DCB). Defenders: six casualties (Parks Canada). Named dead on both sides stay unconfirmed until the official nominal return is read.
+- **The camp and graves:** a separate 16-hectare Parks Canada property, distinct from the 36-hectare battlefield.
+- **Middleton's cap:** also in Buchan's *Lord Minto: A Memoir* (about p. 81) [later account]; do not say Dumont personally fired the shot.
+
+**Not to show as fact yet:** Riel praying with his arms in a cross during Fish Creek (no source found); named Dakota dead; a named officiant, band or date for the burial (the print is an 1885 depiction, not proof of detail); the horse count of 55 (unverified; say "many horses"); exact coordinates of pits, guns, cellar or crossing (illustrative only, flagged low confidence); the Winnipeg battery firing from a particular place.
+
+**New sources to read next:** Mulvany ch. 127 (mccasa.ca PDF); the 1976 Parks Canada study (publications.gc.ca, R32-428-1976-2), which cites Dumont's scouting report and a published Fish Creek battle map; Buchan, *Lord Minto* (p. 81); the 1885 official reports (iportal.usask.ca/record/30684).
+
+---
+
 ## Bibliography
 
 ° = read only through search-engine extracts in this session (page fetching was blocked). Check before recording.
