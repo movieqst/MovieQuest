@@ -53,6 +53,15 @@ SAY = [(r'\bVimy\b', 'Vimmy'), (r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'G
        (r'\bAmbroise Champagne\b', 'Om-bwahz Shom-pan-yuh'), (r'\bPascal Montour\b', 'Pass-kal Mon-toor'), (r'\bOuellette\b', 'Wel-ett'),
        (r'\bQu\'Appelle\b', 'Ka-pell'), (r'\bVan Straubenzie\b', 'Van Straw-ben-zee'), (r'\bzareba\b', 'za-ree-ba'),
        (r'\bJolie\b', 'Zho-lee'), (r'\bcoulee\b', 'koo-lee'),
+       # Tyre: Greek, Phoenician and Cypriot names
+       (r'\bAzemilcus\b', 'Azz-em-ILL-kus'), (r'\bMelqart\b', 'Mel-kart'), (r'\bHecatombaeon\b', 'Heck-a-tom-BEE-on'), (r'\bPnytagoras\b', 'Nye-TAG-o-ras'),
+       (r'\bAndrocles\b', 'AN-dro-kleez'), (r'\bPasicrates\b', 'Pa-SICK-ra-teez'), (r'\bAmathus\b', 'AM-a-thus'), (r'\bCurium\b', 'KYOO-ree-um'),
+       (r'\bAdmetus\b', 'Ad-MEE-tus'), (r'\bCoenus\b', 'SEE-nus'), (r'\bAristander\b', 'Arris-TAN-der'), (r'\bAndromachus\b', 'An-DROM-a-kus'),
+       (r'\bhypaspists\b', 'hy-PASS-pists'), (r'\bquinqueremes?\b', lambda m: 'kwin-kwi-reem' + ('s' if m.group(0).endswith('s') else '')),
+       (r'\bquadriremes?\b', lambda m: 'kwod-ri-reem' + ('s' if m.group(0).endswith('s') else '')), (r'\btriremes?\b', lambda m: 'try-reem' + ('s' if m.group(0).endswith('s') else '')),
+       (r'\bArrian\b', 'Arry-an'), (r'\bDiodorus\b', 'Dye-o-DOR-us'), (r'\bCurtius\b', 'KUR-shus'), (r'\bPalaetyrus\b', 'Pally-TYE-rus'),
+       (r'\bAgenor\b', 'a-JEE-nor'), (r'\bProteas\b', 'PRO-tee-as'), (r'\bCleander\b', 'Klee-AN-der'), (r'\bLysimachus\b', 'Lye-SIM-a-kus'),
+       (r'\bAradus\b', 'AR-a-dus'), (r'\bArwad\b', 'Ar-wad'), (r'\bSour\b', 'Soor'), (r'\bMallus\b', 'MAL-us'),
        # Fish Creek: French and Métis names
        (r'\bTourond\b', 'Too-ron'), (r'\bMontizambert\b', 'Mon-tee-zam-bair'), (r'\bÉdouard\b', 'Ay-dwar'), (r'\bCaron\b', 'Ka-ron'),
        (r'\bParenteau\b', 'Pa-ron-toe'), (r'\bVermette\b', 'Ver-met'), (r'\bJosé\b', 'Zho-zay'), (r'\bJosephte\b', 'Zho-zett'),
