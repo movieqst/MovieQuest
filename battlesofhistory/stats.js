@@ -42,7 +42,8 @@
     const head = battle && document.querySelector('header'), bar = battle && document.querySelector('footer .bhbar');
     if (head) {   // battle pages: at the far left of the top bar (the strip of buttons that "Controls" shows and hides)
       el.style.cssText = 'align-self:center;margin-right:auto;padding:3px 7px;border:1px solid #2a3e48;border-radius:5px;font:600 10px/1 system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#a9bac0;white-space:nowrap;';
-      head.insertBefore(el, head.firstChild);
+      const logo = document.getElementById('bhLogo');   // the logo link (desktop.js) stays just right of the count
+      if (logo) { el.style.marginRight = '0'; head.insertBefore(el, logo); } else head.insertBefore(el, head.firstChild);
     } else if (bar) {   // no top bar: in the bottom bar, just left of the Library link
       el.style.cssText = 'align-self:center;font:600 10px/1 system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#8fa1a8;white-space:nowrap;';
       bar.insertBefore(el, bar.firstChild);

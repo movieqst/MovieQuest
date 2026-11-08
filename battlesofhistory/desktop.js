@@ -49,6 +49,9 @@
      while the rest of the right sidebar scrolls under them */
   body.dl #dlRightTop{display:flex;flex-direction:column;gap:8px;background:#071017;padding-bottom:2px;flex-shrink:0}
   body.dl #dlNav{display:flex;gap:6px}
+  #bhLogo{align-self:center;margin-right:auto;margin-left:8px;display:flex;align-items:center;text-decoration:none;font:700 14px 'Cinzel',Georgia,serif;letter-spacing:.08em;color:var(--gold);white-space:nowrap}
+  #bhLogo img{height:34px;width:auto;display:block}
+  #bhLogo:hover{filter:brightness(1.15)}
   body.dl #dlNav>*{flex:1;text-align:center;padding:7px 6px;font-size:12px;border:1px solid #526873;border-radius:6px;background:#172a36;color:#f2f4ef;font-weight:600;text-decoration:none;white-space:nowrap}
   body.dl #dlNav>*:hover{filter:brightness(1.18)}
   body.dl #dlNav>#fsBtn,body.dl #dlNav>#voiceWrap{flex:none}
@@ -133,18 +136,29 @@
   const rtop = document.createElement('div'); rtop.id = 'dlRightTop'; right.insertBefore(rtop, right.firstChild);
   const nav = document.createElement('div'); nav.id = 'dlNav'; rtop.appendChild(nav);
   const homeLink = top && top.querySelector(':scope > a.home');
-  if (homeLink) { homeLink.textContent = '\u25c0 Battles'; homeLink.title = 'Back to Battles of History'; nav.appendChild(homeLink); top.querySelectorAll('.sep').forEach((sp, i, all) => { if (i === all.length - 1) sp.remove(); }); }
+  if (homeLink) { homeLink.textContent = '\u25c0 Battles'; homeLink.title = 'Back to Battles of History'; top.querySelectorAll('.sep').forEach((sp, i, all) => { if (i === all.length - 1) sp.remove(); }); }
   // Full and Voice sit between "Battles of History" and "Hide controls", so they stay reachable with the top bar hidden
   { const fsb = $('fsBtn'), vw = $('voiceWrap'); if (fsb) nav.appendChild(fsb); if (vw) nav.appendChild(vw); }
   const hide = document.createElement('button'); hide.id = 'dlHideTop'; nav.appendChild(hide);
   let hidden = false; try { hidden = localStorage.getItem('bh-hidetop') === '1'; } catch (e) {}
   const setHidden = h => { hidden = h; document.body.classList.toggle('hidetop', h); hide.textContent = h ? '\u25be Controls' : '\u25b4 Controls'; hide.title = h ? 'Show the buttons along the top' : 'Hide the buttons along the top for a bigger map'; try { localStorage.setItem('bh-hidetop', h ? '1' : '0'); } catch (e) {} dispatchEvent(new Event('resize')); };
   hide.onclick = () => setHidden(!hidden); setHidden(hidden);
+  if (homeLink) nav.appendChild(homeLink);   // "Battles" at the far right of the row: Full, Voice, Controls, Battles
+  // the Battles of History logo at the left of the top bar, after the visit count: a second way back to the contents page
+  { const head = document.querySelector('header');
+    if (head) {
+      const logo = document.createElement('a'); logo.id = 'bhLogo'; logo.href = '../index.html'; logo.title = 'Battles of History: all the battles';
+      const img = new Image(); img.alt = 'Battles of History'; img.src = '../images/logo-bar.png';
+      img.onload = () => { logo.textContent = ''; logo.appendChild(img); };
+      logo.textContent = 'BATTLES OF HISTORY';   // until the logo picture is in place
+      const vis = document.getElementById('visits');
+      if (vis) { vis.style.marginRight = '0'; vis.after(logo); } else head.insertBefore(logo, head.firstChild);
+    } }
   if (mmw) { const card = document.createElement('section'); card.className = 'card'; card.id = 'mmCard'; card.innerHTML = '<h2>Battlefield map</h2>'; card.appendChild(mmw); rtop.appendChild(card); }
   // everything else in the right sidebar goes into its own scrolling area below the minimap
   { const sc = document.createElement('div'); sc.id = 'dlRScroll'; [...right.children].forEach(ch => { if (ch !== rtop) sc.appendChild(ch); }); right.appendChild(sc); }
   // the battle's title moves to the top of the left sidebar
-  const titleBox = document.querySelector('header > div:first-child');
+  const titleBox = document.querySelector('header > div:not(.top-actions)');
   if (titleBox && !titleBox.classList.contains('top-actions')) { titleBox.id = 'dlTitle'; left.insertBefore(titleBox, left.firstChild); }
   // slideshow to the left sidebar
   const media = $('mediaCard'); if (media) left.appendChild(media);
