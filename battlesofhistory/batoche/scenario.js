@@ -237,6 +237,13 @@ Object.assign(window.BATOCHE_SCENARIO, {
         "caption": "\"Sketch of Battle Field of Batoche fought May 12th 1885\", Plate VII: the river, Batoche crossing, rifle pits, church and cemetery, the entrenched camp, the direction of attack and the feigned attack. Main reference for the battle map",
         "credit": "Unknown surveyor, Canada Bank Note Co. lithograph, in Sessional Papers of the Dominion of Canada, vol. 19 no. 5 (1886, no. 6). Digitized by Library and Archives Canada (nlc-4369). Public domain (Crown copyright expired; published before 1931). Wikimedia Commons: Batoche_Battle_Field_1885.jpg (900 × 668 version)",
         "fit": "contain"
+      },
+      {
+        "at": 38,
+        "file": "record-rifle-pit-haig-1885.jpg",
+        "caption": "A Métis rifle pit at Batoche, sketched by Captain Haig of the Royal Engineers, 1885. The men stood on one of the square notches in the front wall to fire",
+        "credit": "Drawing by Captain Haig, R.E., 1885. Glenbow Archives, Calgary, NA-2274-21. Public domain (a drawing from 1885). Cropped from Hildebrandt, The Battle of Batoche (Parks Canada 1985), plate 17.",
+        "fit": "contain"
       }
     ]
   }
