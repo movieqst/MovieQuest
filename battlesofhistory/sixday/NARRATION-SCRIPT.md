@@ -1,4 +1,4 @@
-# Six-Day War: narration script (DRAFT 3, after ChatGPT's final check)
+# Six-Day War: narration script (DRAFT 3, final, after ChatGPT's final check)
 
 This is what the narrators will read. Draft 1 was written 6 November 2026 from the research in `research/` and the plan in `plan/` (timeline.md sections 1, 2 and 4; characters.md section 4 for the sensitive wording). Draft 2 applies ChatGPT's review of 8 November 2026 (`research/CHATGPT-NARRATION-REVIEW-2026-11-08.md`) and our Dunstan check (`research/dunstan-check.md`). Details held back until their original sources are recovered are listed in `draft2-parts/part*-holds.md`. Draft 3 applies ChatGPT's final check of draft 2 (`research/CHATGPT-DRAFT2-FINAL-CHECK-2026-11-08.md`); the details it removed are listed in the Notes at the end.
 
@@ -181,7 +181,7 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 - Between two and four in the afternoon, Israeli jets struck Syrian bases around Damascus and beyond. Israel claimed about two-thirds of Syria's air force, fifty to sixty-one aircraft. Other accounts say Syria had spread its aircraft to distant bases, and lost far fewer. *(disputed)*
 - At about three, four Israeli Vautour bombers struck the Iraqi base called H-3, in the western desert. Israel claimed about ten aircraft destroyed there. A single Lebanese Hunter was also shot down. *(israeli)*
 - That night the chief of staff, Yitzhak Rabin, announced on the radio that four hundred enemy planes had been destroyed. Earlier, Defence Minister Moshe Dayan had asked the press not to publish the number. *(israeli)*
-- Bahat also recalled hearing an Egyptian broadcast claiming that Tel Aviv had fallen. *(israeli)*
+- David Bahat, the young Israeli paratrooper, later recalled hearing an Egyptian broadcast claiming that Tel Aviv had fallen. *(israeli)*
 - The next morning, the 6th of June, an Iraqi bomber dropped bombs on a main street of Netanya. *(established; IDF timeline)*
 - Anti-aircraft guns shot the bomber down near Afula. It fell on an army camp, killing its crew and about a dozen Israeli reservists. *(estimate)*
 - On the 7th of June, Iraqi accounts credit Iraqi, Jordanian and Pakistani pilots flying Hunters from H-3 with shooting down two Vautours and a Mirage. *(arab: Iraqi)*
@@ -412,9 +412,9 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 - Mahmoud Muali, the Palestinian radio man in the Jordanian army, later recalled that he was ordered to retreat. He recalled leaving his rifle at the base and walking for two days to his village. Back there, he burned photographs and evidence of his army service. "Everyone was shocked. Even me," he said. *(arab: Palestinian)*
 - On the 7th, Israel's Jerusalem Brigade pushed south. Bethlehem fell after a brief fight; an Israeli account gives about forty Jordanian defenders killed. *(israeli)*
 - Nablus also fell on the 7th. *(established)*
-- Further south, Israeli forces occupied Hebron as Jordanian troops withdrew. *(established)*
+- On the 8th of June, Israeli forces occupied Hebron as Jordanian troops withdrew. *(established)*
 - Hebron's Jordanian brigade, the Hittin Brigade under Bahjat al-Muhaisen, withdrew across the river. *(arab: Jordanian)*
-- That evening Israeli troops reached Jericho and the river Jordan. *(established)*
+- On the evening of the 7th of June, Israeli troops reached Jericho and the river Jordan. *(established)*
 - The bridges over the Jordan were blown. Accounts differ on who blew them and when. *(disputed)*
 - Over the next three months, about 200,000 people crossed east over the river. Many of them were refugees from 1948 for a second time. *(estimate)*
 - Some fled from fear and the bombing. Others were pushed out by loudspeakers or put on buses. How many fled and how many were pushed out is still argued. *(disputed)*
@@ -490,7 +490,8 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 - A few hours later Dayan changed his mind. He had read an intercepted message from Nasser urging Syria to stop fighting. He had also read an analyst's report that the Syrian army was collapsing. *(israeli)*
 - At six or seven in the morning, the accounts differ, Dayan phoned Elazar himself. He went around the chief of staff, Yitzhak Rabin. Elazar recalled the question: could he attack? Then attack. Prime Minister Levi Eshkol was told afterwards. *(israeli)*
 - In interviews published after his death, Dayan said the reason he had given was an excuse. He said Syria was no threat by the fourth day, and that the attack was a mistake. *(israeli)*
-- Eshkol, Elazar and the kibbutz leaders said the attack was needed to end the shelling. Historians still debate the security arguments. *(disputed)*
+- Eshkol, Elazar and the kibbutz leaders said the attack was needed to end the shelling. *(israeli)*
+- Historians still debate the security arguments. *(disputed)*
 
 ### 24. The climb and Tel Faher
 *Map: Golan · 9 June, about half past eleven in the morning to evening*
@@ -625,3 +626,5 @@ Draft 3 applies ChatGPT's final check of draft 2 (research/CHATGPT-DRAFT2-FINAL-
 - **Ch 21, the aside that the Governor and the Mayor shared a family name**: removed as an aside (optional item); it belongs in the character notes, with each man introduced when he acts.
 - **Ch 24, Horovitz's failed radio and hand signals**: a specifically identified source (the Dunstan check says he moved to a tank with a working radio). **A three-to-seven-hour duration for Tel Faher**: sources with matching start and end events.
 - **Ch 26, Kollek's "slums" and Salman's "one of the hardest" orders**: the original passages (the research has only a Forward article).
+
+**Last check (8 November 2026):** ChatGPT compared draft 3 with its final check and found every Required and Tag-only item applied, with no new factual or fairness problem. Its three small fixes are made: Bahat re-introduced in chapter 7, the Hebron (8 June) and Jericho (evening of 7 June) dates made explicit in chapter 20, and the chapter 23 tag split. Ready to record.
