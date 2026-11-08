@@ -135,6 +135,13 @@ Object.assign(window.FISHCREEK_SCENARIO, {
         "fit": "contain"
       },
       {
+        "at": 25,
+        "file": "record-ox-wagons-1885.jpg",
+        "caption": "Ox-drawn transport wagons and their infantry escort in the Touchwood Hills, 1885 (probably the York and Simcoe Battalion)",
+        "credit": "Photographer unknown, 1885. Saskatchewan Archives Board, R-A 441. Public domain (a photograph from 1885). Caption after Hildebrandt, The Battle of Batoche, plate 72.",
+        "fit": "contain"
+      },
+      {
         "at": 32.5,
         "file": "record-snowbank-1885.jpg",
         "caption": "“‘A’ Battery in the Touchwood Hills — Stuck in a Snow-Bank”, April 1885",
