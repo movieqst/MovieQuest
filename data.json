@@ -11681,5 +11681,111 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "bob-seger-greatest-hits-cd",
+    "title": "Bob Seger & The Silver Bullet Band: Greatest Hits",
+    "year": 1994,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/bob-seger-greatest-hits-cd-1.jpg",
+    "photos": [
+      "images/bob-seger-greatest-hits-cd-1.jpg",
+      "images/bob-seger-greatest-hits-cd-2.jpg",
+      "images/bob-seger-greatest-hits-cd-3.jpg",
+      "images/bob-seger-greatest-hits-cd-4.jpg",
+      "images/bob-seger-greatest-hits-cd-5.jpg",
+      "images/bob-seger-greatest-hits-cd-6.jpg",
+      "images/bob-seger-greatest-hits-cd-7.jpg",
+      "images/bob-seger-greatest-hits-cd-8.jpg",
+      "images/bob-seger-greatest-hits-cd-9.jpg",
+      "images/bob-seger-greatest-hits-cd-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Bob%20Seger%20Greatest%20Hits%20CD&campid=5339133571&customid=bob-seger-greatest-hits-cd",
+    "price": null,
+    "categories": [
+      "music"
+    ],
+    "artist": "Bob Seger & The Silver Bullet Band",
+    "genre": "Rock / Heartland Rock",
+    "label": "Capitol Records / EMI Music Canada",
+    "released": "1994",
+    "producers": "Bob Seger; Punch Andrews",
+    "titleNote": "Capitol CD (C2 7243 8 30334 2 3) / EMI Music Canada / 1994",
+    "tagline": "Music CD / Bob Seger / Greatest Hits / Night Moves / Turn The Page / Old Time Rock & Roll / Capitol / 1990s",
+    "desc": "Fourteen of Bob Seger's biggest songs in one place: \"Night Moves\", \"Turn The Page\", \"Old Time Rock & Roll\", \"Hollywood Nights\", \"Against The Wind\", \"Like A Rock\", \"Mainstreet\", \"We've Got Tonight\" and more, plus \"C'est La Vie\" and \"In Your Time\". Canadian pressing, made in Canada by EMI Music Canada.",
+    "tracks": [
+      "Roll Me Away (4:36)",
+      "Night Moves (5:25)",
+      "Turn The Page (5:01)",
+      "You'll Accomp'ny Me (3:59)",
+      "Hollywood Nights (4:59)",
+      "Still The Same (3:19)",
+      "Old Time Rock & Roll (3:12)",
+      "We've Got Tonight (4:38)",
+      "Against The Wind (5:32)",
+      "Mainstreet (3:42)",
+      "The Fire Inside (5:53)",
+      "Like A Rock (5:53)",
+      "C'est La Vie (2:58)",
+      "In Your Time (3:05)"
+    ],
+    "trivia": [
+      {
+        "heading": "Diamond Certified",
+        "text": "Greatest Hits has sold over 10 million copies in the US and was certified Diamond by the RIAA."
+      },
+      {
+        "heading": "Album of the Decade",
+        "text": "Billboard and Nielsen SoundScan named it the No. 1 catalog album of the decade for 2000 to 2010."
+      },
+      {
+        "heading": "Two New Songs",
+        "text": "The 1994 compilation included two songs not previously on a Seger album: a cover of Chuck Berry's \"C'est La Vie\" and the new song \"In Your Time\"."
+      },
+      {
+        "heading": "Cole Seger, 17 Months",
+        "text": "The photo on the back cover is Bob Seger's young son Cole, credited as \"Cole Seger – 17 Months\"."
+      }
+    ],
+    "tidbits": [
+      "Greatest Hits has sold over 10 million copies in the US and was certified Diamond by the RIAA.",
+      "Billboard and Nielsen SoundScan named it the No. 1 catalog album of the decade for 2000 to 2010.",
+      "The 1994 compilation included two songs not previously on a Seger album: a cover of Chuck Berry's \"C'est La Vie\" and the new song \"In Your Time\".",
+      "The photo on the back cover is Bob Seger's young son Cole, credited as \"Cole Seger – 17 Months\"."
+    ],
+    "copies": [
+      {
+        "id": "bob-seger-greatest-hits-cd-1",
+        "added": "2026-11-08",
+        "format": "CD",
+        "edition": "Capitol / EMI Music Canada CD (C2 7243 8 30334 2 3), made in Canada",
+        "photos": [
+          "images/bob-seger-greatest-hits-cd-1.jpg",
+          "images/bob-seger-greatest-hits-cd-2.jpg",
+          "images/bob-seger-greatest-hits-cd-3.jpg",
+          "images/bob-seger-greatest-hits-cd-4.jpg",
+          "images/bob-seger-greatest-hits-cd-5.jpg",
+          "images/bob-seger-greatest-hits-cd-6.jpg",
+          "images/bob-seger-greatest-hits-cd-7.jpg",
+          "images/bob-seger-greatest-hits-cd-8.jpg",
+          "images/bob-seger-greatest-hits-cd-9.jpg",
+          "images/bob-seger-greatest-hits-cd-10.jpg"
+        ],
+        "gif": "images/bob-seger-greatest-hits-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Jewel case clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Original front insert (fold-out with credits) and back card.",
+          "notes": "Capitol Records, distributed by EMI Music Canada (1994), catalogue C2 7243 8 30334 2 3, UPC 724383033423, made in Canada. ℗ & © 1994 Capitol Records, Inc. 14 tracks. Mastered by Wally Traugott at Tower Mastering, Capitol Records."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
