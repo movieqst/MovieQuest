@@ -21,7 +21,7 @@
 - In July 1967 Clark Clifford reported on the attack for the White House. He found no evidence then available of a planned attack on a ship known to be American. He held Israel responsible for gross negligence, meaning very serious carelessness, and called it "flagrant". *(established)*
 - Many survivors believe the attack was deliberate. They point to the morning's identification, and to the ship's size and shape, which did not match the much smaller *El Quseir*. *(disputed)*
 - A privately organised commission, chaired by a retired admiral, Thomas Moorer, published its findings in October 2003. It alleged a deliberate attack and a cover-up. *(disputed)*
-- In 2004 Captain Ward Boston, a lawyer on the Navy inquiry, said in a sworn statement that he and Kidd had privately believed the attack was deliberate. This is Boston's own account of what the two men believed. *(disputed)*
+- Captain Ward Boston was a lawyer on the Navy inquiry. In 2004 he said in a sworn statement that he and Kidd had privately believed the attack was deliberate. This is Boston's own account of what the two men believed. *(disputed)*
 - Israel later paid compensation to the families, to the wounded, and to the US government for the ship. *(established)*
 - Paying compensation did not settle the question of intent. Whether the attack was a mistake or deliberate is still disputed, and this page does not decide it. *(disputed)*
 
@@ -30,7 +30,7 @@
 ### 23. The decision on Syria
 *Map: Golan · 8–9 June, night to morning*
 - The Golan Heights rise steeply above the Hula and Jordan valleys and the Sea of Galilee. They were Syrian territory. Syria had fortified them with bunkers, trenches and minefields up to fifteen kilometres deep. *(established)*
-- Israeli accounts say that for about nineteen years, Syrian guns on the heights had fired down on the Israeli kibbutzim, communal farming settlements, and on the villages below. At Gadot, children spent much of their lives in shelters. Residents said they could smell the coffee the Syrian soldiers brewed above them. *(israeli)*
+- Israeli accounts say that for about nineteen years, Syrian guns on the heights had fired down on the villages below. Among them were kibbutzim, Israeli communal farming settlements. At Gadot, children spent much of their lives in shelters. Residents said they could smell the coffee the Syrian soldiers brewed above them. *(israeli)*
 - Who caused that border fighting is argued. Syria and some historians blame Israeli farming in the demilitarised zones, strips along the border where armed forces were not allowed. In interviews published after his death, Moshe Dayan said most of the clashes began when Israel sent tractors into those zones. *(disputed)*
 - When the war began on the 5th of June, Syria shelled Israeli settlements and its jets attacked Galilee. *(established)*
 - Israeli attacks severely damaged Syria's air force. Sources disagree on the number of aircraft lost. *(estimate)*
@@ -83,7 +83,7 @@
 - A history drawn mainly from Israeli sources dates Israel's helicopter landing on Mount Hermon to the 12th of June, two days after the ceasefire. *(israeli; Dunstan pp. 17, 88)*
 - Between about one hundred and fifteen and one hundred and forty Israelis were killed on the Syrian front. *(estimate)*
 - Syrian military deaths are uncertain, and published estimates differ widely. One Western history gives about five hundred Syrians killed and two and a half thousand wounded. *(estimate)*
-- In August 1967 an Israeli census of the part of the Golan that Israel now occupied found about six thousand people still living there, most of them Druze. *(estimate)*
+- In August 1967 Israel held a census in the part of the Golan it now occupied. It found about six thousand people still living there, most of them Druze. *(estimate)*
 - Many residents fled during the fighting. Red Cross delegates later witnessed deportations, people being forcibly removed, from the occupied Golan. Many villages on the Golan were destroyed afterwards. *(established)*
 - The scale and timing of flight and forced removal remain contested. Israeli officials said people left on their own. *(disputed)*
 
@@ -118,7 +118,7 @@
 ## Debrief
 
 ### Losses (all estimates)
-- Israel: Israel's Defence Ministry archive records seven hundred and seventy-six military deaths between the 5th and the 14th of June, and two thousand five hundred and ninety-three soldiers injured in the fighting. *(israeli; Defence Ministry archive)*
+- Israel: Israel's Defence Ministry archive records seven hundred and seventy-six military deaths between the 5th and the 14th of June. It records two thousand five hundred and ninety-three soldiers injured in the fighting. *(israeli; Defence Ministry archive)*
 - Other publications use different totals for Israel's losses. *(estimate)*
 - Egypt: estimates of Egyptian military deaths run into the thousands. Sources disagree substantially. The number killed must be kept separate from the missing, the wounded and the captured. *(estimate)*
 - More than four thousand Egyptian soldiers were taken prisoner. Many others died of thirst in the desert. *(estimate)*
