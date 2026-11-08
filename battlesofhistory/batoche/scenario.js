@@ -73,8 +73,8 @@ Object.assign(window.BATOCHE_SCENARIO, {
       {
         "at": 0,
         "file": "batoche-village-1885.jpg",
-        "caption": "The village of Batoche, about 1885: log cabin, frame houses and the two-storey store, looking across the prairie (some walls show damage)",
-        "credit": "Photographer unknown, c. 1885. Bibliothèque et Archives nationales du Québec, P600,S6,D5,P1309. Public domain in Canada (photo before 1949) and in the US (published before 1931). Wikimedia Commons: Batoche_1885.jpg (1280 px copy)"
+        "caption": "The main street of Batoche in July 1885, two months after the battle: the stores of Letendre, Garnot, Boyer and Fisher, some still showing the damage of the fighting",
+        "credit": "Photographer unknown, c. 1885. Bibliothèque et Archives nationales du Québec, P600,S6,D5,P1309 (another print: Saskatchewan Archives Board R-A 2517; date and store names from Hildebrandt, The Battle of Batoche, plate 4). Public domain in Canada (photo before 1949) and in the US (published before 1931). Wikimedia Commons: Batoche_1885.jpg (1280 px copy)"
       },
       {
         "at": 12,
