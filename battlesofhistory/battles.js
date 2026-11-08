@@ -192,7 +192,7 @@ window.BATTLES = [
     era: 'Canada, 1885',
     title: 'Battle of Tourond\u2019s Coulee / Fish Creek',
     date: '24 April 1885', year: 1885,
-    place: 'Fish Creek (Tourond\u2019s Coulee), on the South Saskatchewan River south of Batoche (today in Saskatchewan, Canada)',
+    place: 'Tourond\u2019s Coulee / Fish Creek, on the South Saskatchewan River south of Batoche (today in Saskatchewan, Canada)',
     sides: 'The North-West Field Force of Major-General Frederick Middleton vs. the Métis and First Nations fighters of Gabriel Dumont',
     blurb: 'Dumont\u2019s fighters ambush Middleton\u2019s column from a wooded coulee, stop it in its tracks and hold their ground until nightfall. Middleton waits two weeks before marching on Batoche.',
     cover: 'images/cover.jpg', coverPos: '50% 50%',

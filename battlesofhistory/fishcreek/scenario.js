@@ -12,7 +12,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
   id: 'fishcreek',
   title: 'Battle of Tourond\u2019s Coulee / Fish Creek',
   date: '24 April 1885',
-  place: 'Fish Creek (Tourond’s Coulee), beside the South Saskatchewan River (today in Saskatchewan, Canada)',
+  place: 'Tourond’s Coulee / Fish Creek, beside the South Saskatchewan River (today in Saskatchewan, Canada)',
   tagline: 'The North-West Field Force vs. the Métis, Dakota and Cree fighters of Gabriel Dumont',
   confidence: {
     established:    { label: 'Established',    color: '#5fcf8a', desc: 'Agreed by historians.' },
