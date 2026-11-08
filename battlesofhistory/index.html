@@ -51,7 +51,7 @@
   /* Timeline between the poster and the cards */
   #tlwrap{max-width:1100px;margin:18px auto 6px;padding:0 16px}
   #tlbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
-  #tlbar .lbl{font:600 13px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.1em}
+  #tlbar .lft{display:flex;align-items:center;gap:10px}#tlbar #tlScale b{color:var(--gold)}#tlbar .lbl{font:600 13px 'Cinzel',Georgia,serif;color:var(--gold);letter-spacing:.1em}
   #tlbar .ctl{display:flex;gap:6px}#tlbar button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer;font:inherit;font-size:12px}#tlbar button:hover{border-color:var(--gold)}
   #tl{position:relative;height:272px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,#0d1b24,#0a151d);cursor:grab;user-select:none;touch-action:none}
   #tl.drag{cursor:grabbing}
@@ -105,7 +105,7 @@
   <h1 class="logo"><img src="images/logo.webp" srcset="images/logo-1000.webp 1000w, images/logo.webp 2000w" sizes="min(92vw, 860px)" width="2000" height="557" alt="Battles of History"></h1>
 </header>
 <section id="tlwrap">
-  <div id="tlbar"><span class="lbl">TIMELINE</span><span class="ctl"><button id="tlOut" title="Zoom out">−</button><button id="tlIn" title="Zoom in">+</button><button id="tlFit" title="Show the whole timeline">Fit</button></span></div>
+  <div id="tlbar"><span class="lft"><span class="lbl">TIMELINE</span><button id="tlScale" title="Switch between a logarithmic timeline (recent centuries get more room) and a true-to-scale one">LOG ⇄ LINE</button></span><span class="ctl"><button id="tlOut" title="Zoom out">−</button><button id="tlIn" title="Zoom in">+</button><button id="tlFit" title="Show the whole timeline">Fit</button></span></div>
   <div id="tl"><div id="tltrack"></div></div>
   <div id="tlhint">The timeline is squeezed toward the past: each step to the left covers more years, so recent battles have room. Scroll or pinch to zoom, drag to move. Click a battle to open it.</div>
 </section>
@@ -174,8 +174,10 @@
   const tl = document.getElementById('tl'), track = document.getElementById('tltrack'); if (!B.length) { document.getElementById('tlwrap').style.display = 'none'; return; }
   const NOW = new Date().getFullYear(), AGE_PAD = 25;
   const first = Math.min(...B.map(b => b.year));
-  const u = y => Math.log(NOW - y + AGE_PAD);                      // larger for older years
-  const U0 = u(first), U1 = u(NOW);                     // a little room before the first battle and after today
+  // LOG (the default) squeezes the past; LINE puts every year the same width apart, true to scale. The choice is remembered.
+  let logScale = true; try { logScale = localStorage.getItem('bh-timeline-scale') !== 'line'; } catch (e) {}
+  const u = y => logScale ? Math.log(NOW - y + AGE_PAD) : (NOW - y);   // larger for older years
+  let U0 = u(first), U1 = u(NOW);                     // a little room before the first battle and after today
   const yrLabel = y => y < 0 ? (-y) + ' BCE' : y === 0 ? '1 CE' : String(y);
   let zoom = 1, off = 0, W = 0;                                    // zoom factor, horizontal offset in px, visible width
   const M0 = 66, M1 = 46;                                          // px kept clear at the ends, so the first and last cards fit
@@ -216,6 +218,10 @@
   function zoomAt(f, cx) { const z2 = Math.max(minZoom(), Math.min(400, zoom * f)); if (z2 === zoom) return; const worldX = (cx - off) / zoom; zoom = z2; off = cx - worldX * zoom; build(); }
   document.getElementById('tlIn').onclick = () => zoomAt(1.6, W / 2); document.getElementById('tlOut').onclick = () => zoomAt(1 / 1.6, W / 2);
   document.getElementById('tlFit').onclick = () => { zoom = minZoom(); off = 0; build(); };
+  const HINT = { log: 'The timeline is squeezed toward the past: each step to the left covers more years, so recent battles have room. Scroll or pinch to zoom, drag to move. Click a battle to open it.', line: 'True to scale: every century is the same width, so recent battles crowd together at the right. Zoom in to see them. Scroll or pinch to zoom, drag to move. Click a battle to open it.' };
+  const showScale = () => { document.getElementById('tlScale').innerHTML = logScale ? '<b>LOG</b> ⇄ LINE' : 'LOG ⇄ <b>LINE</b>'; document.getElementById('tlhint').textContent = logScale ? HINT.log : HINT.line; };
+  document.getElementById('tlScale').onclick = () => { logScale = !logScale; try { localStorage.setItem('bh-timeline-scale', logScale ? 'log' : 'line'); } catch (e) {} U0 = u(first); U1 = u(NOW); zoom = minZoom(); off = logScale ? 0 : -1e9; build(); showScale(); };
+  showScale();
   tl.addEventListener('wheel', e => { e.preventDefault(); const r = tl.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 1 / 1.25, e.clientX - r.left); }, { passive: false });
   let drag = null;
   tl.addEventListener('pointerdown', e => { if (e.button) return; drag = { x: e.clientX, off, moved: false, link: e.target.closest('a.mini') }; tl.setPointerCapture(e.pointerId); tl.classList.add('drag'); });
