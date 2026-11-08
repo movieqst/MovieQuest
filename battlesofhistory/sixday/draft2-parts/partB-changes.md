@@ -105,4 +105,4 @@ Draft 1 lines 135–290 of NARRATION-SCRIPT.md. "Review" = CHATGPT-NARRATION-REV
 - Ch. 6: the "established" tag on the shelters line depends on attaching a technical air-war source.
 - Ch. 7: "One account says" about the Jordanian Hunters' target was not flagged by the review, so it was kept. Under the review's general rule 8, it needs its source named.
 
-Count: 74 changes (the entries above, counting each removed or replaced detail once).
+Count: 73 change entries across chapters 6–15 (some entries cover several small edits to one bullet).
