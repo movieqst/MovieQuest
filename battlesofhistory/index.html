@@ -149,7 +149,7 @@
   document.getElementById('wipList').innerHTML = (window.BATTLES || []).filter(b => b.status !== 'ready').sort((a, b) => (b.progress || 0) - (a.progress || 0) || (b.order || 0) - (a.order || 0)).slice(0, 4).reverse().map(b => `
     <a class="wcard" href="${esc(b.folder)}/index.html"><div class="th" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')${b.coverPos ? ';background-position:' + esc(b.coverPos) : ''}"></div>
       <div class="t"><b>${esc(b.title)}</b>${esc(b.date)}<br><span class="s">${esc(b.status)}</span></div></a>`).join('');
-  document.getElementById('list').innerHTML = (window.BATTLES || []).filter(b => b.status === 'ready').sort((a, b) => (b.order || 0) - (a.order || 0)).map(b => `
+  document.getElementById('list').innerHTML = (window.BATTLES || []).filter(b => b.status === 'ready').sort((a, b) => (b.readyOrder || b.order || 0) - (a.readyOrder || a.order || 0))   /* newest ready first */.map(b => `
     ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')${b.coverPos ? ';background-position:' + esc(b.coverPos) : ''}">
         <span class="era">${esc(b.era)}</span>
