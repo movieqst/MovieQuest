@@ -11574,5 +11574,112 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "huey-lewis-fore-cd",
+    "title": "Huey Lewis and the News: Fore!",
+    "year": 1986,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/huey-lewis-fore-cd-1.jpg",
+    "photos": [
+      "images/huey-lewis-fore-cd-1.jpg",
+      "images/huey-lewis-fore-cd-2.jpg",
+      "images/huey-lewis-fore-cd-3.jpg",
+      "images/huey-lewis-fore-cd-4.jpg",
+      "images/huey-lewis-fore-cd-5.jpg",
+      "images/huey-lewis-fore-cd-6.jpg",
+      "images/huey-lewis-fore-cd-7.jpg",
+      "images/huey-lewis-fore-cd-8.jpg",
+      "images/huey-lewis-fore-cd-9.jpg",
+      "images/huey-lewis-fore-cd-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Huey%20Lewis%20Fore%20CD%20Chrysalis&campid=5339133571&customid=huey-lewis-fore-cd",
+    "price": null,
+    "categories": [
+      "music"
+    ],
+    "artist": "Huey Lewis and the News",
+    "genre": "Rock / Pop",
+    "label": "Chrysalis Records",
+    "released": "1986",
+    "producers": "Huey Lewis and the News",
+    "titleNote": "Chrysalis CD (VK 41534) / Made in USA / 1986",
+    "tagline": "Music CD / Huey Lewis and the News / Fore! / Stuck With You / Hip To Be Square / Chrysalis / 1980s",
+    "desc": "Huey Lewis and the News followed up their blockbuster Sports with Fore!, a No. 1 album packed with hits: \"Stuck With You\", \"Jacob's Ladder\", \"Hip To Be Square\", \"I Know What I Like\" and \"Doing It All For My Baby\". An original 1986 Chrysalis compact disc pressing, made in the USA, with all 10 tracks.",
+    "tracks": [
+      "Jacob's Ladder (3:30)",
+      "Stuck With You (4:20)",
+      "Whole Lotta Lovin' (3:27)",
+      "Doing It All For My Baby (3:38)",
+      "Hip To Be Square (4:03)",
+      "I Know What I Like (4:00)",
+      "I Never Walk Alone (3:41)",
+      "Forest For The Trees (3:25)",
+      "Naturally (2:54)",
+      "Simple As That (4:30)"
+    ],
+    "trivia": [
+      {
+        "heading": "A Number One Album",
+        "text": "Fore! was released on August 20, 1986 and went to No. 1 on the Billboard 200. It was later certified triple platinum in the US."
+      },
+      {
+        "heading": "Two Number One Singles",
+        "text": "The album produced five top-10 hits on the Billboard Hot 100. \"Stuck with You\" and \"Jacob's Ladder\" both went all the way to No. 1."
+      },
+      {
+        "heading": "A Hornsby Song",
+        "text": "\"Jacob's Ladder\" was written by Bruce and John Hornsby. Huey Lewis was producing Bruce Hornsby's album, and when Hornsby didn't like his own band's arrangement, the song went to Huey Lewis and the News."
+      },
+      {
+        "heading": "Hip to Be Square",
+        "text": "Fore! and \"Hip to Be Square\" became famous all over again in the 2000 film American Psycho, where Patrick Bateman calls it \"the group's most accomplished album\"."
+      },
+      {
+        "heading": "Self-Produced",
+        "text": "The album was produced by Huey Lewis and the News themselves, the follow-up to their 1983 blockbuster Sports."
+      }
+    ],
+    "tidbits": [
+      "Fore! was released on August 20, 1986 and went to No. 1 on the Billboard 200. It was later certified triple platinum in the US.",
+      "The album produced five top-10 hits on the Billboard Hot 100. \"Stuck with You\" and \"Jacob's Ladder\" both went all the way to No. 1.",
+      "\"Jacob's Ladder\" was written by Bruce and John Hornsby. Huey Lewis was producing Bruce Hornsby's album, and when Hornsby didn't like his own band's arrangement, the song went to Huey Lewis and the News.",
+      "Fore! and \"Hip to Be Square\" became famous all over again in the 2000 film American Psycho, where Patrick Bateman calls it \"the group's most accomplished album\".",
+      "The album was produced by Huey Lewis and the News themselves, the follow-up to their 1983 blockbuster Sports."
+    ],
+    "copies": [
+      {
+        "id": "huey-lewis-fore-cd-1",
+        "added": "2026-11-08",
+        "format": "CD",
+        "edition": "Original Chrysalis CD (VK 41534), made in USA",
+        "photos": [
+          "images/huey-lewis-fore-cd-1.jpg",
+          "images/huey-lewis-fore-cd-2.jpg",
+          "images/huey-lewis-fore-cd-3.jpg",
+          "images/huey-lewis-fore-cd-4.jpg",
+          "images/huey-lewis-fore-cd-5.jpg",
+          "images/huey-lewis-fore-cd-6.jpg",
+          "images/huey-lewis-fore-cd-7.jpg",
+          "images/huey-lewis-fore-cd-8.jpg",
+          "images/huey-lewis-fore-cd-9.jpg",
+          "images/huey-lewis-fore-cd-10.jpg"
+        ],
+        "gif": "images/huey-lewis-fore-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Jewel case with light scuffs on the front; front insert and back card clean.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Original front insert (fold-out with band photo inside) and back card.",
+          "notes": "Chrysalis Records (1986), catalogue VK 41534 / DIDY 754, disc DIDY 000754, CRC (Columbia House) club pressing, made in USA. ℗ & © 1986 Chrysalis Records. 10 tracks. Produced by Huey Lewis and the News."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
