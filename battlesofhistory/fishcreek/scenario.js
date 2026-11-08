@@ -1,5 +1,5 @@
 /*
-  Historical Scenario File — Battle of Fish Creek (Tourond's Coulee), 24 April 1885
+  Historical Scenario File — Battle of Tourond's Coulee / Fish Creek, 24 April 1885
   -----------------------------------------------------------------
   The narrated introduction (`intro`), the reenactment chapters (`events`), the debrief (`outcome`) and the captions of the
   "From the record" prints (`record`), word for word from NARRATION-SCRIPT.md (draft 2), which is what the narrators will
@@ -10,7 +10,7 @@
 window.FISHCREEK_SCENARIO = window.FISHCREEK_SCENARIO || {};
 Object.assign(window.FISHCREEK_SCENARIO, {
   id: 'fishcreek',
-  title: 'Battle of Fish Creek',
+  title: 'Battle of Tourond\u2019s Coulee / Fish Creek',
   date: '24 April 1885',
   place: 'Fish Creek (Tourond’s Coulee), beside the South Saskatchewan River (today in Saskatchewan, Canada)',
   tagline: 'The North-West Field Force vs. the Métis, Dakota and Cree fighters of Gabriel Dumont',
@@ -118,6 +118,34 @@ Object.assign(window.FISHCREEK_SCENARIO, {
         "file": "middleton-1885-topley.jpg",
         "caption": "Major-General Frederick Middleton in his 1885 campaign dress, photographed in September 1885",
         "credit": "Photo: William James Topley (1845–1930), Ottawa. Library and Archives Canada, PA-026732 (MIKAN 3420736). Public domain (the photographer died in 1930). Wikimedia Commons: FrederickMiddleton.jpg",
+        "fit": "contain"
+      },
+      {
+        "at": 9.5,
+        "file": "record-flatcar-1885.jpg",
+        "caption": "“Cold Comfort in a Flat Car”: the 10th Royal Grenadiers of Toronto riding west in open railway cars, April 1885",
+        "credit": "The Illustrated War News, Vol. 1, No. 3, 18 April 1885. Library and Archives Canada, C-7683. Public domain. Hildebrandt (The Battle of Batoche, plate 69) calls it ‘perhaps somewhat overdramatized’, but the hardships were real. Cropped from Hildebrandt's reprint; a sharper LAC scan would be better.",
+        "fit": "contain"
+      },
+      {
+        "at": 19.5,
+        "file": "middleton-1885-topley.jpg",
+        "caption": "Major-General Frederick Middleton in his 1885 campaign dress, photographed in September 1885",
+        "credit": "Photo: William James Topley (1845–1930), Ottawa. Library and Archives Canada, PA-026732 (MIKAN 3420736). Public domain (the photographer died in 1930). Wikimedia Commons: FrederickMiddleton.jpg",
+        "fit": "contain"
+      },
+      {
+        "at": 25,
+        "file": "record-ox-wagons-1885.jpg",
+        "caption": "Ox-drawn transport wagons and their infantry escort in the Touchwood Hills, 1885 (probably the York and Simcoe Battalion)",
+        "credit": "Photographer unknown, 1885. Saskatchewan Archives Board, R-A 441. Public domain (a photograph from 1885). Caption after Hildebrandt, The Battle of Batoche, plate 72.",
+        "fit": "contain"
+      },
+      {
+        "at": 32.5,
+        "file": "record-snowbank-1885.jpg",
+        "caption": "“‘A’ Battery in the Touchwood Hills — Stuck in a Snow-Bank”, April 1885",
+        "credit": "The Illustrated War News, Vol. 1, No. 3, 18 April 1885. Library and Archives Canada, C-11537. Public domain. Cropped from Hildebrandt's reprint (plate 70).",
         "fit": "contain"
       }
     ]
@@ -408,7 +436,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
   const FIRE = [...Array(9).keys()].map(i => ({ x: 1715 + i * 25, y: 1150 + i * 28.5 }));   // Dumont's grass fire: a line just below the south-west rim
   Object.assign(S, {
     titleCard: {
-      title: 'BATTLE OF FISH CREEK', date: '24 April 1885',
+      title: 'BATTLE OF TOUROND’S COULEE / FISH CREEK', date: '24 April 1885',
       dateNote: 'At a wooded coulee on the trail to Batoche, Gabriel Dumont’s Métis, Dakota and Cree fighters ambush a Canadian army many times their number, and hold it back for most of a day.',
       dateRef: 'Parks Canada, Battle of Tourond’s Coulee / Fish Creek National Historic Site; Walter Hildebrandt, The Battle of Batoche (1989)',
       place: 'Tourond’s Coulee, beside the South Saskatchewan River, North-West Territories (today Saskatchewan, Canada)',
@@ -525,7 +553,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     { leader: 'boulton', to: { x: 1420, y: 1455 }, speed: 30 }, { id: 'r90', to: { x: 1350, y: 1430 }, speed: 30 }, { id: 'guns', to: { x: 1290, y: 1560 }, via: [TRAIL[1]], speed: 30 },
     { leader: 'middleton', to: { x: 1300, y: 1470 }, speed: 30 } ] });
   // 4. The guns: "A" Battery comes up at a run to the edge; the 90th spread along the rim; Dumont's riders back into the coulee
-  set(3, { focus: { x: 1640, y: 1240 }, zoom: 1.45, markers: [ Object.assign({ label: '“A” Battery at the edge', side: 'allied' }, { x: GUNLINE.x, y: GUNLINE.y - 10 }) ], orders: [
+  set(3, { photo: { file: 'record-peters-guns-1885.jpg', at: 6, secs: 16, caption: '“A” Battery’s guns in action, photographed by Captain James Peters, 1885', credit: 'One of the earliest photographs taken during a battle. Fish Creek or Batoche: to confirm. Public domain.' }, focus: { x: 1640, y: 1240 }, zoom: 1.45, markers: [ Object.assign({ label: '“A” Battery at the edge', side: 'allied' }, { x: GUNLINE.x, y: GUNLINE.y - 10 }) ], orders: [
     { id: 'guns', to: GUNLINE, via: TRAIL.slice(3, 5), speed: 65, state: 'attack', face }, { id: 'guns', strengthTo: 86, over: 12 },
     { id: 'r90', to: RIM90, via: [TRAIL[3]], speed: 40, state: 'attack', face }, { leader: 'middleton', to: { x: 1520, y: 1320 }, via: [TRAIL[3]], speed: 40 },
     { id: 'scouts', to: RIMR, speed: 35, state: 'attack', face }, { leader: 'boulton', to: { x: RIMR.x - 40, y: RIMR.y + 50 }, speed: 35 },

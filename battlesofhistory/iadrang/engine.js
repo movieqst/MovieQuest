@@ -399,7 +399,7 @@ function moveLeaders() {
 }
 function drawLeader(c, L) {
   if (!leaderOn(L)) return; const q = P(L.x, L.y), FS = PART.figScale || 1, s = q.s * FS; if (!(s > 0)) return;
-  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); c.fillStyle = 'rgba(233,199,122,.32)'; c.strokeStyle = '#f2d27e'; c.lineWidth = Math.max(1.5, 2 * s);
+  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); { const sc = (S.sides && S.sides[L.side] && S.sides[L.side].color) || '#f2d27e', n = parseInt(sc.slice(1), 16); c.fillStyle = `rgba(${n >> 16},${n >> 8 & 255},${n & 255},.38)`; c.strokeStyle = sc; }   // the leader's disc in the side's colour (red / blue), as the formations' rings c.lineWidth = Math.max(1.5, 2 * s);
   c.beginPath(); c.ellipse(0, 0, 20 * s, 8 * s, 0, 0, PI * 2); c.fill(); c.stroke(); c.restore();
   const sh = artOn ? LSHEET[L.sheet || L.id] : null;
   if (sh) { const row = { s: 0, e: 1, n: 2, w: 3 }[dirOf(L.facing)], fr = L.state === 'move' ? Math.floor(wall * 6) % 4 : 0, h = 26 * 1.3 * 1.7 * s, dd = h / 130 * 160;

@@ -73,8 +73,8 @@ Object.assign(window.BATOCHE_SCENARIO, {
       {
         "at": 0,
         "file": "batoche-village-1885.jpg",
-        "caption": "The village of Batoche, about 1885: log cabin, frame houses and the two-storey store, looking across the prairie (some walls show damage)",
-        "credit": "Photographer unknown, c. 1885. Bibliothèque et Archives nationales du Québec, P600,S6,D5,P1309. Public domain in Canada (photo before 1949) and in the US (published before 1931). Wikimedia Commons: Batoche_1885.jpg (1280 px copy)"
+        "caption": "The main street of Batoche in July 1885, two months after the battle: the stores of Letendre, Garnot, Boyer and Fisher, some still showing the damage of the fighting",
+        "credit": "Photographer unknown, c. 1885. Bibliothèque et Archives nationales du Québec, P600,S6,D5,P1309 (another print: Saskatchewan Archives Board R-A 2517; date and store names from Hildebrandt, The Battle of Batoche, plate 4). Public domain in Canada (photo before 1949) and in the US (published before 1931). Wikimedia Commons: Batoche_1885.jpg (1280 px copy)"
       },
       {
         "at": 12,
@@ -236,6 +236,13 @@ Object.assign(window.BATOCHE_SCENARIO, {
         "file": "battlefield-sketch-1885.jpg",
         "caption": "\"Sketch of Battle Field of Batoche fought May 12th 1885\", Plate VII: the river, Batoche crossing, rifle pits, church and cemetery, the entrenched camp, the direction of attack and the feigned attack. Main reference for the battle map",
         "credit": "Unknown surveyor, Canada Bank Note Co. lithograph, in Sessional Papers of the Dominion of Canada, vol. 19 no. 5 (1886, no. 6). Digitized by Library and Archives Canada (nlc-4369). Public domain (Crown copyright expired; published before 1931). Wikimedia Commons: Batoche_Battle_Field_1885.jpg (900 × 668 version)",
+        "fit": "contain"
+      },
+      {
+        "at": 38,
+        "file": "record-rifle-pit-haig-1885.jpg",
+        "caption": "A Métis rifle pit at Batoche, sketched by Captain Haig of the Royal Engineers, 1885. The men stood on one of the square notches in the front wall to fire",
+        "credit": "Drawing by Captain Haig, R.E., 1885. Glenbow Archives, Calgary, NA-2274-21. Public domain (a drawing from 1885). Cropped from Hildebrandt, The Battle of Batoche (Parks Canada 1985), plate 17.",
         "fit": "contain"
       }
     ]

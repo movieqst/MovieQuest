@@ -190,7 +190,7 @@ window.BATTLES = [
     folder: 'fishcreek', progress: 85, lat: 52.54, lon: -106.15,
     order: 16,
     era: 'Canada, 1885',
-    title: 'Battle of Fish Creek',
+    title: 'Battle of Tourond\u2019s Coulee / Fish Creek',
     date: '24 April 1885', year: 1885,
     place: 'Fish Creek (Tourond\u2019s Coulee), on the South Saskatchewan River south of Batoche (today in Saskatchewan, Canada)',
     sides: 'The North-West Field Force of Major-General Frederick Middleton vs. the Métis and First Nations fighters of Gabriel Dumont',
@@ -223,6 +223,19 @@ window.BATTLES = [
     blurb: 'When Canada buys Rupert’s Land from the Hudson’s Bay Company without asking the people who live there, the Métis of Red River stop the surveyors, seize Upper Fort Garry and form a provisional government under Louis Riel. Their negotiations bring Manitoba into Canada, but the execution of Thomas Scott and the military expedition of 1870 send Riel into exile.',
     cover: 'images/cover.jpg', coverPos: '50% 30%',
     coverCredit: 'Louis Riel, photograph by I. Bennetto & Co., Winnipeg (probably about 1884). University of Manitoba Archives, PC 107. Public domain. A placeholder: later than the events',
+    status: 'in progress'
+  },
+  {
+    folder: 'vukovar', progress: 5, lat: 45.3517, lon: 19.0012,
+    order: 19,
+    era: 'Croatia, 1991',
+    title: 'Battle of Vukovar',
+    date: '25 August – 18 November 1991', year: 1991,
+    place: 'Vukovar, on the Danube in eastern Slavonia (then in Yugoslavia, today in Croatia)',
+    sides: 'The Yugoslav People\u2019s Army (JNA) with Serb volunteer and Territorial Defence units vs. the Croatian National Guard, police and local volunteers',
+    blurb: 'As Yugoslavia breaks apart, the Yugoslav army and Serb forces besiege the Croatian town of Vukovar on the Danube. For 87 days a few thousand defenders hold out against a much larger force with tanks and artillery, while the town is shelled to ruins. After it falls, about 200 people taken from the hospital are killed at nearby Ovčara.',
+    cover: 'images/cover.jpg', coverPos: '12% 35%',
+    coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0 (creativecommons.org/licenses/by/2.0). Sky extended for this page',
     status: 'in progress'
   }
 ];

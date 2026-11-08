@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Battle of Fish Creek — Historical Reenactment</title>
+<title>Battle of Tourond’s Coulee / Fish Creek — Historical Reenactment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -271,6 +271,8 @@
   .intro-media .plate.contain img.show{animation:none}
   .intro-media .plate.contain img.pulse.show{animation:heartbeat 1.6s ease-in-out infinite}
   @keyframes heartbeat{0%{opacity:0}18%{opacity:1}36%{opacity:.25}50%{opacity:1}70%{opacity:0}100%{opacity:0}}
+  #relatedBattles{margin-top:14px;padding-top:10px;border-top:1px solid #2a3e48;display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}#relatedBattles .kicker{width:100%}
+  .relbat{flex:1 1 220px;display:block;text-decoration:none;padding:10px 12px;border:1px solid #c9a34a;border-radius:8px;background:#13222c;color:#e8f0ea}.relbat:hover{background:#1b3040}.relbat b{display:block;font:600 15px 'Cinzel',Georgia,serif;color:#e7c66b}.relbat span{font-size:12px;color:#aebcc0}
 </style>
 </head>
 <body data-mode="intro">
@@ -410,6 +412,7 @@
         <div class="kicker">Historical debrief</div>
         <h3 id="debriefTitle"></h3>
         <div id="debriefBody"></div>
+        <div id="relatedBattles"><div class="kicker">Continue the story</div><a class="relbat" href="../batoche/index.html"><b>Battle of Batoche ▸</b><span>9–12 May 1885: two weeks later, the same armies meet at the Métis village</span></a><!-- Red River Resistance (1869–70): add a link here when its page is ready --></div>
         <div class="actions" style="margin-top:12px">
           <button id="debriefWatch" class="primary">▶ Watch again</button>
           <button id="debriefCommand" class="primary">⚔ Take command</button>

@@ -23,3 +23,14 @@ Macedonians: reused from gaugamela/images/units (leader-alexander, macedonian-sp
 | ram-ship-draft | REDO: one ship with a tower, not two ships lashed together carrying a ram. Not used. |
 | ship-ram-pair-damage (from ram-pair-draft2) | ACCEPT as the ram ships' damage sheet: two warships lashed side by side under a wooden frame, a heavy ram slung between the bows, crew on the frame; sailing, then set on fire, then wrecked. Same one-direction story format; the ram does not swing. Still needed: the 4-direction sheet with the ram drawn back and swung forward. Macedonian sun on the sails and flags, as on the quinquereme. |
 | ship-ram-pair (from ram-pair-action) | ACCEPT. The action sheet in 4 directions, rows in order (bows toward the viewer, right, away, left): two lashed warships under a frame, the ram hanging, drawn back, swinging, striking with a splash. Plain sails, no emblems. |
+
+**Batch 3, siege works, workers and a ship (8 November):** originals in units-raw/batch3/ (1536 × 1024 sheets).
+
+| sheet | review |
+|---|---|
+| siege-ram (from tyre-covered-battering-ram) | ACCEPT. A wheeled "tortoise" ram under a gabled timber roof, the crew pushing and swinging; 4 directions, the 4th frame striking a wall (the wall bit is in the sprite: fine for the mole's end). Used on the mole. |
+| mole-workers (from tyre-mole-workers-A) | ACCEPT as a work sheet: the rows are four tasks (carrying stones, setting stones, driving a pile, carrying a beam), not four directions; workers are placed facing the mole. |
+| mole-workers-2 (from tyre-mole-workers-B) | ACCEPT AFTER FIX: the wheelbarrow row was removed (the wheelbarrow is not known in the Mediterranean in 332 BCE; it appears in China around the 1st–2nd century CE and in Europe in the Middle Ages) and replaced with the digging-and-pile row. |
+| siege-tower (from tyre-siege-tower-alternate) | ACCEPT. Hide-covered tower with archers on top, rolled in 4 directions, a bridge let down in the last frame. The Macedonian sun on the front, as on the allied ships. |
+| ship-allied-quinquereme (from tyre-warship-alternate) | ACCEPT: the 4-direction sheet at last (bow toward the viewer, right, away, left); frames 1–3 rowing, frame 4 a bow catapult firing. |
+| tyre-catapult-draft | REDO: a one-armed throwing machine with a sling cup (the later Roman onager, 4th century CE). Alexander's stone-throwers were torsion machines with TWO arms, like a giant crossbow on a stand (lithobolos). Not used. |

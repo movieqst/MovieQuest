@@ -398,7 +398,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "fishcreek",
-"battleTitle": "Battle of Fish Creek",
+"battleTitle": "Battle of Tourond’s Coulee / Fish Creek",
 "year": 1885,
 "status": "in progress",
 "file": "fishcreek/images/terrain-battle.jpg",

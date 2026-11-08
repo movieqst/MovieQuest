@@ -65,7 +65,7 @@ IM = {0: [media('cover.jpg', 0), media('capture-of-batoche-curzon.jpg', 14)],
       2: [media('st-laurent-mission-1891.jpg', 0), dict(media('cree-syllabics-chart.png', 10, 'contain'), caption=CREE), media('riel-1884-bennetto.jpg', 26)],
       3: [media('dumont-1885-buckskin.jpg', 0, 'contain'), media('riel-c1880-lac.jpg', 18, 'contain'), media('middleton-1885-topley.jpg', 34, 'contain')],
       4: [media('heroes-of-batoche-belleville.jpg', 0)],
-      5: [media('rml-9-pounder-gun.jpg', 0), media('howard-gatling-1885.jpg', 14, 'contain'), media('battlefield-sketch-1885.jpg', 28, 'contain')]}
+      5: [media('rml-9-pounder-gun.jpg', 0), media('howard-gatling-1885.jpg', 14, 'contain'), media('battlefield-sketch-1885.jpg', 28, 'contain'), media('record-rifle-pit-haig-1885.jpg', 38, 'contain')]}   # the pit: at 'Along the wooded slopes…' (retime after the Stanley redo is recorded)
 for i, ms in IM.items(): intro[i]['media'] = [m for m in ms if m['caption']]
 
 def js(o): return json.dumps(o, ensure_ascii=False, indent=2)

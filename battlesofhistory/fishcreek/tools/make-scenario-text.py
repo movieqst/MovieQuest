@@ -69,15 +69,16 @@ for blk in re.split(r'\n### ', '\n' + rec_md.strip())[1:]:
 # ---- pictures for each intro slide (seconds into its narration)
 IM = {0: [record['cover.jpg']],
       1: [media('metis-flag.png', 0, 'contain'), media('michif-chart.png', 14, 'contain'), media('riel-1884-bennetto.jpg', 30, 'contain')],
-      2: [media('middleton-1885-topley.jpg', 0, 'contain')],
+      2: [media('middleton-1885-topley.jpg', 0, 'contain'), media('record-flatcar-1885.jpg', 9.5, 'contain'), media('middleton-1885-topley.jpg', 19.5, 'contain'),
+          media('record-ox-wagons-1885.jpg', 25, 'contain'), media('record-snowbank-1885.jpg', 32.5, 'contain')],   # at the narrator's lines: railway, Middleton, the march, the snowbank
       3: [media('dumont-1885-buckskin.jpg', 0, 'contain')],
       4: [],
       5: [media('rml-9-pounder-gun.jpg', 0)]}
-for i, ms in IM.items(): intro[i]['media'] = [m for m in ms if m['caption']]
+for i, ms in IM.items(): intro[i]['media'] = [m for m in ms if m['caption'] and os.path.exists(os.path.join(V, 'images', m['file']))]   # a picture still to come is left out
 
 def js(o): return json.dumps(o, ensure_ascii=False, indent=2)
 head = f"""/*
-  Historical Scenario File — Battle of Fish Creek (Tourond's Coulee), 24 April 1885
+  Historical Scenario File — Battle of Tourond's Coulee / Fish Creek, 24 April 1885
   -----------------------------------------------------------------
   The narrated introduction (`intro`), the reenactment chapters (`events`), the debrief (`outcome`) and the captions of the
   "From the record" prints (`record`), word for word from NARRATION-SCRIPT.md (draft 2), which is what the narrators will
@@ -88,7 +89,7 @@ head = f"""/*
 window.FISHCREEK_SCENARIO = window.FISHCREEK_SCENARIO || {{}};
 Object.assign(window.FISHCREEK_SCENARIO, {{
   id: 'fishcreek',
-  title: 'Battle of Fish Creek',
+  title: 'Battle of Tourond\\u2019s Coulee / Fish Creek',
   date: '24 April 1885',
   place: 'Fish Creek (Tourond’s Coulee), beside the South Saskatchewan River (today in Saskatchewan, Canada)',
   tagline: 'The North-West Field Force vs. the Métis, Dakota and Cree fighters of Gabriel Dumont',
