@@ -197,7 +197,7 @@ window.BATTLES = [
     blurb: 'Dumont\u2019s fighters ambush Middleton\u2019s column from a wooded coulee, stop it in its tracks and hold their ground until nightfall. Middleton waits two weeks before marching on Batoche.',
     cover: 'images/cover.jpg', coverPos: '50% 50%',
     coverCredit: 'The Battle of Fish Creek, coloured lithograph, 1885. Public domain',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'bunkerhill', progress: 10, lat: 42.3763, lon: -71.0608,

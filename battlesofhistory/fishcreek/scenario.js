@@ -441,9 +441,8 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     // tools/fishcreek-clear-lines.tsv. Until they are there, the page shows the text and the browser's own voice reads it.
     imageBase: 'images/', audioBase: 'audio/',
     voices: [
-      { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 }, { id: 'light', name: 'Narrator 2 · light', speaker: 60 },
-      { id: 'bright', name: 'Narrator 3 · bright', speaker: 0 }, { id: 'deep', name: 'Narrator 4 · deep', speaker: 400 },
-      { id: 'warm', name: 'Narrator 5 · warm', speaker: 7 }, { id: 'computer', name: 'Computer · calm', speaker: 500 }
+      { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 }
+      // the other five (light, bright, deep, warm, computer) are added when their recordings arrive
     ],
     // Music: "Métis Fiddling for Dancing" (Métis Nation of Alberta), free for educational use; ../sounds/music/metis-fiddling/README.md.
     // The opening tune plays over the globe, the maps and the introduction; the fighting has none; a Red River Jig under the debrief.
