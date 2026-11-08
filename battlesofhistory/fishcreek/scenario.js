@@ -119,6 +119,27 @@ Object.assign(window.FISHCREEK_SCENARIO, {
         "caption": "Major-General Frederick Middleton in his 1885 campaign dress, photographed in September 1885",
         "credit": "Photo: William James Topley (1845–1930), Ottawa. Library and Archives Canada, PA-026732 (MIKAN 3420736). Public domain (the photographer died in 1930). Wikimedia Commons: FrederickMiddleton.jpg",
         "fit": "contain"
+      },
+      {
+        "at": 9.5,
+        "file": "record-flatcar-1885.jpg",
+        "caption": "“Cold Comfort in a Flat Car”: the 10th Royal Grenadiers of Toronto riding west in open railway cars, April 1885",
+        "credit": "The Illustrated War News, Vol. 1, No. 3, 18 April 1885. Library and Archives Canada, C-7683. Public domain. Hildebrandt (The Battle of Batoche, plate 69) calls it ‘perhaps somewhat overdramatized’, but the hardships were real. Cropped from Hildebrandt's reprint; a sharper LAC scan would be better.",
+        "fit": "contain"
+      },
+      {
+        "at": 19.5,
+        "file": "middleton-1885-topley.jpg",
+        "caption": "Major-General Frederick Middleton in his 1885 campaign dress, photographed in September 1885",
+        "credit": "Photo: William James Topley (1845–1930), Ottawa. Library and Archives Canada, PA-026732 (MIKAN 3420736). Public domain (the photographer died in 1930). Wikimedia Commons: FrederickMiddleton.jpg",
+        "fit": "contain"
+      },
+      {
+        "at": 32.5,
+        "file": "record-snowbank-1885.jpg",
+        "caption": "“‘A’ Battery in the Touchwood Hills — Stuck in a Snow-Bank”, April 1885",
+        "credit": "The Illustrated War News, Vol. 1, No. 3, 18 April 1885. Library and Archives Canada, C-11537. Public domain. Cropped from Hildebrandt's reprint (plate 70).",
+        "fit": "contain"
       }
     ]
   },
