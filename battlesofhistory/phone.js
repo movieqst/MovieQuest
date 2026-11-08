@@ -50,6 +50,21 @@
 
   const fit = () => { setBig(true); setTimeout(() => dispatchEvent(new Event('resize')), 80); };   // the globe sizes itself on resize
   fit(); addEventListener('orientationchange', () => setTimeout(fit, 300));
+  let rz = null; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { setBig(true); placeSubs(); }, 250); });   // some phone browsers turn the screen without an orientationchange event
+
+  // Upright phone: the map is wider than tall, so there is an empty dark band under it. The subtitles go there, in larger
+  // type with room for more lines, instead of over the map. Sideways they stay over the bottom of the map.
+  const sc = document.createElement('style'); sc.textContent = `body.phone.subsbelow #subs{position:fixed;left:8px;right:8px;transform:none;width:auto;bottom:auto;background:none;box-shadow:none;padding:6px 6px 4px}
+    body.phone.subsbelow #subs .st{font-size:12px} body.phone.subsbelow #subs .sl{font-size:16px;line-height:1.45;-webkit-line-clamp:5;min-height:0}`; document.head.appendChild(sc);
+  // Trying it on Vimy first; to turn it on for every battle, set SUBS_BELOW = true.
+  const SUBS_BELOW = /\/vimy\//.test(location.pathname);
+  function placeSubs() {
+    const sb = $('subs'), pn = $('battlePanel'); if (!sb || !pn) return;
+    const r = pn.getBoundingClientRect(), room = innerHeight - r.bottom, upright = innerHeight > innerWidth;
+    const below = SUBS_BELOW && upright && room >= 90; document.body.classList.toggle('subsbelow', below);
+    if (below) { sb.style.top = Math.round(r.bottom + 6) + 'px'; sb.style.maxHeight = Math.round(room - 12) + 'px'; } else { sb.style.top = ''; sb.style.maxHeight = ''; }
+  }
+  setTimeout(placeSubs, 400); setInterval(placeSubs, 1500);
   // Leaving the full-map view is not possible on a phone: Escape and the fullscreen button are hidden, and the view is re-applied if anything turns it off.
   setInterval(() => { if (!document.body.classList.contains('bigmap')) setBig(true); }, 1000);
 })();
