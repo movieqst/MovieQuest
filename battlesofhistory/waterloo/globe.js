@@ -192,7 +192,15 @@ window.WaterlooGlobe = (() => {
       const fs = Math.max(9, Math.min(22, R / 110));
       if (s.modern > 0) {
         c.globalAlpha = s.modern; c.strokeStyle = 'rgba(255,255,255,.85)'; c.lineWidth = 1.3; c.setLineDash([]);
-        BORDERS.modern.forEach(co => { co.rings.forEach(r => { c.beginPath(); if (path(r)) c.stroke(); }); });
+        // the countries were clipped to a box when the data was made (make-borders.py): skip the straight cuts along its edges
+        if (!BORDERS._box) { let a = 180, b = -180, cc = 90, d = -90; BORDERS.modern.forEach(co => co.rings.forEach(r => r.forEach(q => { a = Math.min(a, q[0]); b = Math.max(b, q[0]); cc = Math.min(cc, q[1]); d = Math.max(d, q[1]); }))); BORDERS._box = [a, b, cc, d]; }
+        const [bx0, bx1, by0, by1] = BORDERS._box, onEdge = (q, r) => { const e = 1e-3; return (Math.abs(q[0] - bx0) < e && Math.abs(r[0] - bx0) < e) || (Math.abs(q[0] - bx1) < e && Math.abs(r[0] - bx1) < e) || (Math.abs(q[1] - by0) < e && Math.abs(r[1] - by0) < e) || (Math.abs(q[1] - by1) < e && Math.abs(r[1] - by1) < e); };
+        const strokeRing = r => { c.beginPath(); let pen = false;
+          for (let i = 0; i < r.length; i++) { const p = proj(r[i][0] * D, Math.cos(r[i][1] * D), Math.sin(r[i][1] * D));
+            if (!p || (i && onEdge(r[i - 1], r[i]))) { pen = false; if (p) { c.moveTo(p[0], p[1]); pen = true; } continue; }
+            pen ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); pen = true; }
+          c.stroke(); };
+        BORDERS.modern.forEach(co => co.rings.forEach(strokeRing));
         c.font = `600 ${fs * .8}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
         BORDERS.modern.forEach(co => { if (!co.label) return; const p = proj(co.label[0] * D, Math.cos(co.label[1] * D), Math.sin(co.label[1] * D)); if (!p) return; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText(co.name.toUpperCase(), p[0], p[1]); c.fillStyle = '#ffffff'; c.fillText(co.name.toUpperCase(), p[0], p[1]); });
         c.globalAlpha = s.modern; c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText('Today\u2019s borders', 16, 22); c.fillStyle = '#dfe9f3'; c.fillText('Today\u2019s borders', 16, 22);
