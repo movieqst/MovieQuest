@@ -757,11 +757,42 @@ const NowPlaying = (() => {
   function hide() { clearTimeout(timer); cur = null; if (el) el.classList.remove('on', 'pill'); }
   return { show, hide, open, get el() { return el; } };
 })();
+/* ---- a photograph over the battle map when the narrator speaks of it: ev.photo { file, caption, credit, at (seconds into
+   the chapter, default 3), secs (on screen, default 14) }. It sits in the top-left corner of the map, can be clicked to
+   see it larger, and the x closes it. Several per chapter: ev.photo can be a list. */
+const MapPhoto = (() => {
+  let el = null, timers = [];
+  const make = () => { if (el) return el; el = document.createElement('figure'); el.id = 'mapPhoto';
+    el.innerHTML = '<button class="mpx" title="Close">✕</button><img alt=""><figcaption><b></b><span></span></figcaption>';
+    const css = document.createElement('style');
+    css.textContent = `#mapPhoto{position:absolute;left:12px;top:12px;z-index:40;margin:0;max-width:min(46%,420px);background:rgba(8,14,20,.92);border:1px solid #c9a34a;border-radius:8px;padding:8px;box-shadow:0 6px 24px rgba(0,0,0,.6);opacity:0;transform:translateY(-6px);transition:opacity .6s,transform .6s;pointer-events:none}
+      #mapPhoto.on{opacity:1;transform:none;pointer-events:auto}
+      #mapPhoto img{display:block;width:100%;max-height:42vh;object-fit:contain;border-radius:4px;cursor:zoom-in;background:#000}
+      #mapPhoto.big{left:50%;top:50%;transform:translate(-50%,-50%);max-width:92%;z-index:41}#mapPhoto.big img{max-height:72vh;cursor:zoom-out}
+      #mapPhoto figcaption{font:12px/1.4 system-ui,sans-serif;color:#dfe7e4;margin-top:6px}#mapPhoto figcaption b{display:block;color:#e7c66b;font:600 13px 'Cinzel',Georgia,serif;margin-bottom:2px}
+      #mapPhoto figcaption span{color:#9fb0b5;font-size:11px}
+      #mapPhoto .mpx{position:absolute;right:6px;top:6px;z-index:1;background:rgba(0,0,0,.6);color:#fff;border:1px solid #556;border-radius:4px;cursor:pointer;font-size:12px;padding:1px 6px}`;
+    document.head.appendChild(css);
+    const panel = $('battlePanel') || document.body; panel.appendChild(el);
+    el.querySelector('.mpx').onclick = e => { e.stopPropagation(); hide(); };
+    el.querySelector('img').onclick = () => el.classList.toggle('big');
+    return el; };
+  function one(p) { make(); el.classList.remove('big');
+    el.querySelector('img').src = (S.imageBase || 'images/') + p.file;
+    el.querySelector('b').textContent = p.caption || ''; el.querySelector('span').textContent = p.credit || '';
+    el.classList.add('on'); }
+  function hide() { timers.forEach(clearTimeout); timers = []; if (el) el.classList.remove('on', 'big'); }
+  function show(ph) { hide(); if (!ph) return; [].concat(ph).forEach(p => {
+      timers.push(setTimeout(() => one(p), (p.at === undefined ? 3 : p.at) * 1000));
+      timers.push(setTimeout(() => { if (el && el.querySelector('img').src.endsWith(p.file)) el.classList.remove('on', 'big'); }, ((p.at === undefined ? 3 : p.at) + (p.secs || 14)) * 1000)); }); }
+  return { show, hide };
+})();
 function fireEvent(ev) {
   if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   if (ev.trenches !== undefined) setTrench(ev.trenches);
   currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o)); if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || [];   // o.delay: seconds into the chapter
   camForEvent(ev);
+  MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((stage === 'campaign' && ev.clock ? ev.clock : fmtTime(ev.t)) + ' ' + ev.title);
   renderTimeline();
@@ -778,7 +809,7 @@ function moveLeaders() { leaders.forEach(L => { const dx = L.tx - L.x, dy = L.ty
   if (d > 2) { const st = Math.min(d, (L.speed || 70) * DT); L.x += dx / d * st; L.y += dy / d * st; L.facing = Math.atan2(dy, dx); L.state = 'move'; } else L.state = 'hold'; }); }
 function drawLeader(c, L) {
   if (!L.shown) return; const q = P(L.x, L.y), s = q.s; if (!(s > 0)) return;
-  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); c.fillStyle = 'rgba(233,199,122,.32)'; c.strokeStyle = '#f2d27e'; c.lineWidth = Math.max(1.5, 2 * s);
+  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); { const sc = (S.sides && S.sides[L.side] && S.sides[L.side].color) || '#f2d27e', n = parseInt(sc.slice(1), 16); c.fillStyle = `rgba(${n >> 16},${n >> 8 & 255},${n & 255},.38)`; c.strokeStyle = sc; }   // the leader's disc in the side's colour (red / blue), as the formations' rings c.lineWidth = Math.max(1.5, 2 * s);
   c.beginPath(); c.ellipse(0, 0, 24 * s, 10 * s, 0, 0, PI * 2); c.fill(); c.stroke(); c.restore();
   const own = SHEETS['leader-' + L.id];
   const fight = formations.some(f => alive(f) && f.side !== L.side && f.fight && Math.hypot(f.x - L.x, f.y - L.y) < 140);

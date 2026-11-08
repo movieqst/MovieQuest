@@ -525,7 +525,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
     { leader: 'boulton', to: { x: 1420, y: 1455 }, speed: 30 }, { id: 'r90', to: { x: 1350, y: 1430 }, speed: 30 }, { id: 'guns', to: { x: 1290, y: 1560 }, via: [TRAIL[1]], speed: 30 },
     { leader: 'middleton', to: { x: 1300, y: 1470 }, speed: 30 } ] });
   // 4. The guns: "A" Battery comes up at a run to the edge; the 90th spread along the rim; Dumont's riders back into the coulee
-  set(3, { focus: { x: 1640, y: 1240 }, zoom: 1.45, markers: [ Object.assign({ label: '“A” Battery at the edge', side: 'allied' }, { x: GUNLINE.x, y: GUNLINE.y - 10 }) ], orders: [
+  set(3, { photo: { file: 'record-peters-guns-1885.jpg', at: 6, secs: 16, caption: '“A” Battery’s guns in action, photographed by Captain James Peters, 1885', credit: 'One of the earliest photographs taken during a battle. Fish Creek or Batoche: to confirm. Public domain.' }, focus: { x: 1640, y: 1240 }, zoom: 1.45, markers: [ Object.assign({ label: '“A” Battery at the edge', side: 'allied' }, { x: GUNLINE.x, y: GUNLINE.y - 10 }) ], orders: [
     { id: 'guns', to: GUNLINE, via: TRAIL.slice(3, 5), speed: 65, state: 'attack', face }, { id: 'guns', strengthTo: 86, over: 12 },
     { id: 'r90', to: RIM90, via: [TRAIL[3]], speed: 40, state: 'attack', face }, { leader: 'middleton', to: { x: 1520, y: 1320 }, via: [TRAIL[3]], speed: 40 },
     { id: 'scouts', to: RIMR, speed: 35, state: 'attack', face }, { leader: 'boulton', to: { x: RIMR.x - 40, y: RIMR.y + 50 }, speed: 35 },

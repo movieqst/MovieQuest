@@ -714,7 +714,7 @@ function moveLeaders() { leaders.forEach(L => { const dx = L.tx - L.x, dy = L.ty
   if (d > 2) { const st = Math.min(d, (L.speed || 70) * DT); L.x += dx / d * st; L.y += dy / d * st; L.facing = Math.atan2(dy, dx); L.state = 'move'; } else L.state = 'hold'; }); }
 function drawLeader(c, L) {
   if (!L.shown) return; const q = P(L.x, L.y), s = q.s; if (!(s > 0)) return;
-  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); c.fillStyle = 'rgba(233,199,122,.32)'; c.strokeStyle = '#f2d27e'; c.lineWidth = Math.max(1.5, 2 * s);
+  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); { const sc = (S.sides && S.sides[L.side] && S.sides[L.side].color) || '#f2d27e', n = parseInt(sc.slice(1), 16); c.fillStyle = `rgba(${n >> 16},${n >> 8 & 255},${n & 255},.38)`; c.strokeStyle = sc; }   // the leader's disc in the side's colour (red / blue), as the formations' rings c.lineWidth = Math.max(1.5, 2 * s);
   c.beginPath(); c.ellipse(0, 0, 24 * s, 10 * s, 0, 0, PI * 2); c.fill(); c.stroke(); c.restore();
   const own = SHEETS['leader-' + L.id];
   const fight = formations.some(f => alive(f) && f.side !== L.side && f.fight && Math.hypot(f.x - L.x, f.y - L.y) < 140);
