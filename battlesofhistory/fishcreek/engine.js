@@ -1329,7 +1329,8 @@ function showMedia(elapsed) {
 }
 function beginIntro(voice) {
   Narr.set(voice, true); if (!voice) Narr.stop();
-  if (S.introMusic) setMusic(S.introMusic);   // the opening music: the globe, the maps, the introduction (this tap lets it play)
+  // the opening music waits for the battle map: none over the globe (it stuttered while the globe was drawing)
+  if (S.introMusic && !(G && G.active())) setMusic(S.introMusic);
   $('playBig').classList.remove('show');
   const go = () => { introStarted = true; $('startGate').style.display = 'none'; $('introNav').style.display = 'flex'; introTimer = 0; showOverlay('intro'); showIntro(0); };
   if (G && G.active()) { hideOverlay('intro'); showTitleCard(); G.begin(); introSpunCb = go; } else go();
@@ -1367,7 +1368,7 @@ function showEstablishing() {
       establishT.push(setTimeout(() => { img.onload = () => placePulse(m); img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; if (img.complete) placePulse(m); }, i ? 600 : 0)); }, at * 1000));
     at += (m.secs || 5);
   });
-  establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
+  establishT.push(setTimeout(() => { el.classList.remove('on'); if (S.introMusic && mode === 'intro') setMusic(S.introMusic); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
 }
 function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
 function startIntro() { setMusic(null, true); hideEstablishing(); clearTimeout(stageT); mode = 'intro'; setStage('battle'); resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
