@@ -51,7 +51,7 @@ Sources: review = research/CHATGPT-NARRATION-REVIEW-2026-11-08.md (section named
 - "One Syrian account says an armoured brigade ordered forward that night went back toward Damascus": held (see holds; review "Most important changes" item 8 and ch 24 on untraceable balancing anecdotes). The remaining strip sentence retagged *(disputed)* → *(israeli)*.
 
 ## Ch 25 — Quneitra
-- First bullet split: UN observers' log *(established)*; Banias *(disputed)* now names the disagreement, adding Dunstan's earlier date (9 June) and a third claimant implied by "which Israeli unit" (Dunstan row 37, pp. 74, 76, 79).
+- First bullet split: UN observers' log *(established)*; Banias *(disputed)* now names the disagreement, adding Dunstan's earlier date (9 June) and the third claimant (paratroopers) covered by "which Israeli unit" (Dunstan row 37, pp. 74, 76, 79).
 - Radio Damascus: "At about half past eight in the morning" → "On the morning of the 10th" (review "Clocks": foreign-source hour without a recorded time standard).
 - Zu'bi bullet: correction sentence split off; "Communiqué" glossed.
 - Removed the repeated sentence "Damascus radio announced the fall of Quneitra before Israeli troops arrived" (duplicated the bullet above); "who ordered it" kept as disputed.
@@ -112,5 +112,5 @@ Sources: review = research/CHATGPT-NARRATION-REVIEW-2026-11-08.md (section named
 - Numbers: "are all still given as ranges" → "are still uncertain" (some figures are now single confirmed counts, e.g. the UN's fifteen).
 
 ## Totals
-- About 95 individual changes (lines above), across 5 chapters and the 3 debrief sections.
-- 18 held details (partD-holds.md), plus 5 items moved to the silent source card.
+- 93 change-log lines across 5 chapters and the 3 debrief sections (some lines group several small edits to one bullet).
+- 19 held details (partD-holds.md), plus 5 items moved to the silent source card.
