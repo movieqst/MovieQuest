@@ -11787,5 +11787,98 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "kid-rock-cocky-cd",
+    "title": "Kid Rock: Cocky",
+    "year": 2001,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/kid-rock-cocky-cd-1.jpg",
+    "photos": [
+      "images/kid-rock-cocky-cd-1.jpg",
+      "images/kid-rock-cocky-cd-2.jpg",
+      "images/kid-rock-cocky-cd-3.jpg",
+      "images/kid-rock-cocky-cd-4.jpg",
+      "images/kid-rock-cocky-cd-5.jpg",
+      "images/kid-rock-cocky-cd-6.jpg",
+      "images/kid-rock-cocky-cd-7.jpg",
+      "images/kid-rock-cocky-cd-8.jpg",
+      "images/kid-rock-cocky-cd-9.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Kid%20Rock%20Cocky%20CD&campid=5339133571&customid=kid-rock-cocky-cd",
+    "price": null,
+    "categories": [
+      "music"
+    ],
+    "artist": "Kid Rock",
+    "genre": "Rock / Southern Rock / Rap Rock",
+    "label": "Lava / Atlantic Records",
+    "released": "2001",
+    "producers": "Kid Rock",
+    "titleNote": "Lava / Atlantic CD (83482) / Explicit / 2001",
+    "tagline": "Music CD / Kid Rock / Cocky / Picture / Forever / Lava Atlantic / Explicit Lyrics / 2000s",
+    "desc": "Kid Rock's multi-platinum 2001 album Cocky, featuring the hit duet \"Picture\" with Sheryl Crow, plus \"Forever\" and \"Lonely Road of Faith\". Produced by Kid Rock. Original Lava / Atlantic CD with Canadian bilingual explicit-lyrics sticker.",
+    "trivia": [
+      {
+        "heading": "Multi-Platinum",
+        "text": "Cocky was certified 5x platinum by the RIAA, with over five million copies sold in the US."
+      },
+      {
+        "heading": "Picture with Sheryl Crow",
+        "text": "The duet \"Picture\" with Sheryl Crow became Kid Rock's first big crossover hit, reaching No. 4 on the Billboard Hot 100 and No. 2 on the Adult Contemporary chart."
+      },
+      {
+        "heading": "Two Versions of Picture",
+        "text": "When Kid Rock first performed \"Picture\" at Farm Aid, Allison Moorer sang Sheryl Crow's part. Her version was released as a single in November 2002, before Crow's version followed in January 2003."
+      },
+      {
+        "heading": "The Singles",
+        "text": "\"Forever\" was the first single, followed by \"Lonely Road of Faith\" in January 2002."
+      },
+      {
+        "heading": "Produced by Kid Rock",
+        "text": "Kid Rock produced the album himself. It was his fifth studio album and his third for Atlantic Records."
+      }
+    ],
+    "tidbits": [
+      "Cocky was certified 5x platinum by the RIAA, with over five million copies sold in the US.",
+      "The duet \"Picture\" with Sheryl Crow became Kid Rock's first big crossover hit, reaching No. 4 on the Billboard Hot 100 and No. 2 on the Adult Contemporary chart.",
+      "When Kid Rock first performed \"Picture\" at Farm Aid, Allison Moorer sang Sheryl Crow's part. Her version was released as a single in November 2002, before Crow's version followed in January 2003.",
+      "\"Forever\" was the first single, followed by \"Lonely Road of Faith\" in January 2002.",
+      "Kid Rock produced the album himself. It was his fifth studio album and his third for Atlantic Records."
+    ],
+    "copies": [
+      {
+        "id": "kid-rock-cocky-cd-1",
+        "added": "2026-11-08",
+        "format": "CD",
+        "edition": "Lava / Atlantic CD 83482, Canadian issue (explicit)",
+        "photos": [
+          "images/kid-rock-cocky-cd-1.jpg",
+          "images/kid-rock-cocky-cd-2.jpg",
+          "images/kid-rock-cocky-cd-3.jpg",
+          "images/kid-rock-cocky-cd-4.jpg",
+          "images/kid-rock-cocky-cd-5.jpg",
+          "images/kid-rock-cocky-cd-6.jpg",
+          "images/kid-rock-cocky-cd-7.jpg",
+          "images/kid-rock-cocky-cd-8.jpg",
+          "images/kid-rock-cocky-cd-9.jpg"
+        ],
+        "gif": "images/kid-rock-cocky-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Jewel case clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Original front insert and back card. Bilingual explicit-lyrics sticker printed on the front.",
+          "notes": "Lava / Atlantic Records (2001), catalogue CD 83482, inserts printed in Canada, disc made in USA by WEA Manufacturing. ℗ © 2001 Atlantic Recording Corporation for the United States and WEA International Inc. for the world outside of the United States. Explicit lyrics. Produced by Kid Rock."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
