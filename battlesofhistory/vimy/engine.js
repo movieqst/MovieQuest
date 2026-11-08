@@ -382,6 +382,13 @@ function drawTrenches(drawWorld) {
   layers.forEach(([n, al, op]) => { const C = neonLayer(n); if (!C || al <= 0) return; ctx.save(); ctx.globalAlpha = al; if (op) ctx.globalCompositeOperation = op; drawWorld(C);
     if (NEONB[n] && !op) { ctx.globalAlpha = Math.min(1, al * 1.7); drawWorld(NEONB[n]); } ctx.restore(); });
 }
+function drawSourceNote() {
+  srcHit = null; const gr = growthNow(), n = gr ? gr.g.layer : curTrench, src = n && (S.trenchSources || {})[n]; if (!src) return;
+  const t = '🗺 Trench map sources: ' + src.title + '  ⓘ'; ctx.save(); ctx.font = '600 12px system-ui, sans-serif'; const w = ctx.measureText(t).width + 18, x = 12, y = view.h - 64;
+  ctx.fillStyle = 'rgba(8,16,22,.78)'; ctx.strokeStyle = 'rgba(127,233,255,.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.roundRect(x, y, w, 24, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#d6f6ff'; ctx.textBaseline = 'middle'; ctx.fillText(t, x + 9, y + 12); ctx.restore(); srcHit = { x0: x, x1: x + w, y0: y, y1: y + 24, g: src };
+}
+let srcHit = null;
 function drawGuessNote() {
   guessHit = null;
   const gr = growthNow(), shown = gr ? [gr.g.layer, gr.prev && gr.prev.layer] : [curTrench];
@@ -401,6 +408,8 @@ function showGuessInfo(g) {
 }
 canvas.addEventListener('click', e => { if (!guessHit) return; const r = canvas.getBoundingClientRect(), x = (e.clientX - r.left) * canvas.width / r.width / (window.devicePixelRatio || 1), y = (e.clientY - r.top) * canvas.height / r.height / (window.devicePixelRatio || 1);
   if (x >= guessHit.x0 && x <= guessHit.x1 && y >= guessHit.y0 && y <= guessHit.y1) { e.stopImmediatePropagation(); showGuessInfo(guessHit.g); } }, true);
+canvas.addEventListener('click', e => { if (!srcHit) return; const r = canvas.getBoundingClientRect(), x = (e.clientX - r.left) * canvas.width / r.width / (window.devicePixelRatio || 1), y = (e.clientY - r.top) * canvas.height / r.height / (window.devicePixelRatio || 1);
+  if (x >= srcHit.x0 && x <= srcHit.x1 && y >= srcHit.y0 && y <= srcHit.y1) { e.stopImmediatePropagation(); showGuessInfo(srcHit.g); } }, true);
 function drawGrowthLabel() {
   const gr = growthNow(); if (!gr || !gr.g.label) return;
   ctx.save(); ctx.globalAlpha = .4 + .6 * gr.f; ctx.shadowColor = '#7fe9ff'; ctx.shadowBlur = 18;
@@ -1094,7 +1103,7 @@ function render() {
   });
   if (!document.querySelector('.overlay.show, #debrief.show')) { drawClockStamp(); drawLegend(); }   // not over the debrief
   if (BR && mode === 'intro') BR.draw(ctx);
-  drawGuessNote(); drawGrowthLabel();
+  drawGuessNote(); drawSourceNote(); drawGrowthLabel();
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];

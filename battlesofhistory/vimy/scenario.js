@@ -363,6 +363,22 @@ Object.assign(window.VIMY_SCENARIO, {
         '<p>For February 1916 we have a British trench map of the north end of the ridge only. For the south end (Neuville-St-Vaast, Thélus, Roclincourt) no map of that date has been found online, so these trenches are copied from the next map we have, of October 1916, and drawn in purple: <span style="color:#e146c8">reddish purple</span> for German trenches, <span style="color:#8c6eff">bluish purple</span> for British and French. The front line here probably did not move much between those dates, but the smaller trenches will differ.</p>' +
         '<p><b>The map that would fix it:</b> sheet 51B NW 1 “Roclincourt”, 1:10,000, trenches as at <b>16 February 1916</b> (Ordnance Survey, GSGS 3062). One copy is known: <b>Australian War Memorial</b>, Canberra, library call number <b>G5830 s10</b>, record <a href="https://www.awm.gov.au/collection/LIB100005557" target="_blank" rel="noopener" style="color:#c8a8ff">LIB100005557</a>. Not scanned online. The National Library of Scotland’s earliest edition of this sheet is October 1916.</p>' +
         '<p class="muted" style="color:#a99bb8">Have a scan of this map? It is public domain (1916). Please let us know.</p>' } },
+    // The British trench maps each trench layer is traced from: a clickable note at the bottom left of the map opens this list.
+    trenchSources: (() => {
+      const M = { '101465023': ['Sheet 36C S.W. (Vimy–Lens), 1:20,000, Edition 6', 'trenches to 15 February 1916', 'the north half of the ridge'],
+                  '101465071': ['Sheet 51B N.W. (Arras), 1:20,000, Edition 4A', 'trenches to 10 October 1916', 'the south half'],
+                  '101464753': ['Sheet 51B N.W.1 Roclincourt, 1:10,000, Edition 5A', 'trenches to 27 December 1916', 'the south half, in fine detail'],
+                  '101465068': ['Sheet 51B N.W. (Arras), 1:20,000, Edition 6A', 'trenches to 4 March 1917', 'the south half, five weeks before the attack'] };
+      const row = id => `<li><b>${M[id][0]}</b>, ${M[id][1]}: ${M[id][2]}.<br><a href="sources/trench-maps/nls/nls-${id}.jpg" target="_blank" rel="noopener" style="color:#9fe6ff">Open the map (large image)</a> · <a href="https://maps.nls.uk/view/${id}" target="_blank" rel="noopener" style="color:#9fe6ff">National Library of Scotland viewer</a></li>`;
+      const box = (title, ids, extra) => ({ title, info: `<b style="color:#bff3ff;font-family:Cinzel,Georgia,serif">Where these trenches come from: ${title}</b>` +
+        `<p>Red: German trenches. Blue: British, Canadian and French. Traced from these British Army trench maps, lined up with today’s ground (accurate to about 100–200 m):</p><ul style="padding-left:18px">${ids.map(row).join('')}${extra || ''}</ul>` +
+        `<p style="color:#9fb1b8;font-size:12px">Ordnance Survey / GSGS, Crown copyright expired. Scans: National Library of Scotland, CC BY. All the maps, with notes: <a href="../library.html?battle=vimy" target="_blank" rel="noopener" style="color:#9fe6ff">📚 Library of sources</a>.</p>` });
+      const ed7a = '<li><b>Sheet 36C S.W.3 “Vimy”, 1:10,000, Edition 7A</b> (north half; McMaster University web preview, date of the edition still to read).<br><a href="sources/trench-maps/36C-SW3-ed7A-north-preview.jpg" target="_blank" rel="noopener" style="color:#9fe6ff">Open the preview</a></li>';
+      return { 'trenches-1916-02.png': box('February 1916', ['101465023'], '<li>The south end, in purple: <b>not verified</b>, see the note on the map.</li>'),
+               'trenches-1916-10.png': box('October 1916', ['101465023', '101465071']),
+               'trenches-1916-12.png': box('December 1916', ['101465023', '101465071', '101464753']),
+               'trenches-1917-03.png': box('March 1917', ['101465023', '101465068'], ed7a) };
+    })(),
     defaultTrench: 'trenches-1917-03.png', introTrench: 'trenches-1917-03.png', trenchAlpha: .45,
     duration: 182, commandDuration: 300, commandFocus: { x: 1100, y: 800 },
     battlefield: {
