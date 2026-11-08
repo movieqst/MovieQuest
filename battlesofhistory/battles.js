@@ -224,5 +224,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '50% 30%',
     coverCredit: 'Louis Riel, photograph by I. Bennetto & Co., Winnipeg (probably about 1884). University of Manitoba Archives, PC 107. Public domain. A placeholder: later than the events',
     status: 'in progress'
+  },
+  {
+    folder: 'vukovar', progress: 5, lat: 45.3517, lon: 19.0012,
+    order: 19,
+    era: 'Croatia, 1991',
+    title: 'Battle of Vukovar',
+    date: '25 August – 18 November 1991', year: 1991,
+    place: 'Vukovar, on the Danube in eastern Slavonia (then in Yugoslavia, today in Croatia)',
+    sides: 'The Yugoslav People\u2019s Army (JNA) with Serb volunteer and Territorial Defence units vs. the Croatian National Guard, police and local volunteers',
+    blurb: 'As Yugoslavia breaks apart, the Yugoslav army and Serb forces besiege the Croatian town of Vukovar on the Danube. For 87 days a few thousand defenders hold out against a much larger force with tanks and artillery, while the town is shelled to ruins. After it falls, about 200 people taken from the hospital are killed at nearby Ovčara.',
+    cover: 'images/cover.jpg', coverPos: '50% 30%',
+    coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0',
+    status: 'in progress'
   }
 ];
