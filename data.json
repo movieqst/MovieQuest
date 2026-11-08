@@ -12308,5 +12308,90 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "mr-stitch-1995-dvd",
+    "title": "Mr. Stitch (Mr Stitch: Le voleur d'âmes)",
+    "year": 1995,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/mr-stitch-1995-dvd-1.jpg",
+    "photos": [
+      "images/mr-stitch-1995-dvd-1.jpg",
+      "images/mr-stitch-1995-dvd-2.jpg",
+      "images/mr-stitch-1995-dvd-3.jpg",
+      "images/mr-stitch-1995-dvd-4.jpg",
+      "images/mr-stitch-1995-dvd-5.jpg",
+      "images/mr-stitch-1995-dvd-6.jpg",
+      "images/mr-stitch-1995-dvd-7.jpg",
+      "images/mr-stitch-1995-dvd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Mr%20Stitch%20Rutger%20Hauer%20DVD&campid=5339133571&customid=mr-stitch-1995-dvd",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Rutger Hauer, Wil Wheaton, Nia Peeples, Ron Perlman, Taylor Negron, Michael Harris",
+    "director": "Roger Avary",
+    "producers": "Morgan Mason; executive producers Rutger Hauer, Roger Avary, Morgan Mason",
+    "company": "Rysher Entertainment / Studio Megaboom / Metropolitan Filmexport / Seven 7 (France)",
+    "titleNote": "French Import DVD / PAL Region 2 / French Audio Only / 1995",
+    "tagline": "DVD / French Import / PAL Region 2 / Rutger Hauer / Wil Wheaton / Ron Perlman / Roger Avary / Sci-Fi Horror / 1990s",
+    "desc": "In the near future, in a secret government laboratory, Dr. Wakeman (Rutger Hauer) creates Subject No. 3: a living being assembled from 88 corpses, designed to be the ultimate warrior. But No. 3 is haunted by memories of other lives, and soon slips beyond anyone's control. Written and directed by Roger Avary (Pulp Fiction, Killing Zoe), with Wil Wheaton, Ron Perlman and special effects by Tom Savini. French-language edition from France.",
+    "trivia": [
+      {
+        "heading": "From the Pulp Fiction Writer",
+        "text": "Mr. Stitch was written and directed by Roger Avary, who shared the Academy Award for Best Original Screenplay with Quentin Tarantino for Pulp Fiction and directed Killing Zoe."
+      },
+      {
+        "heading": "Made from 88 Bodies",
+        "text": "The story follows Subject No. 3, a man created in a secret government lab from the parts of 88 corpses, who begins to remember the lives of the people he was made from."
+      },
+      {
+        "heading": "A Stand by Me Reunion of Sorts",
+        "text": "Wil Wheaton, who starred in Stand by Me, co-stars with Rutger Hauer and Ron Perlman."
+      },
+      {
+        "heading": "Savini Effects",
+        "text": "Make-up effects legend Tom Savini (Creepshow, Friday the 13th) created the special effects, and French stunt legend Rémy Julienne handled the stunts."
+      }
+    ],
+    "tidbits": [
+      "Mr. Stitch was written and directed by Roger Avary, who shared the Academy Award for Best Original Screenplay with Quentin Tarantino for Pulp Fiction and directed Killing Zoe.",
+      "The story follows Subject No. 3, a man created in a secret government lab from the parts of 88 corpses, who begins to remember the lives of the people he was made from.",
+      "Wil Wheaton, who starred in Stand by Me, co-stars with Rutger Hauer and Ron Perlman.",
+      "Make-up effects legend Tom Savini (Creepshow, Friday the 13th) created the special effects, and French stunt legend Rémy Julienne handled the stunts."
+    ],
+    "copies": [
+      {
+        "id": "mr-stitch-1995-dvd-1",
+        "added": "2026-11-08",
+        "format": "DVD",
+        "edition": "French import, Metropolitan Filmexport / Seven 7 (EDV 518), PAL Region 2",
+        "photos": [
+          "images/mr-stitch-1995-dvd-1.jpg",
+          "images/mr-stitch-1995-dvd-2.jpg",
+          "images/mr-stitch-1995-dvd-3.jpg",
+          "images/mr-stitch-1995-dvd-4.jpg",
+          "images/mr-stitch-1995-dvd-5.jpg",
+          "images/mr-stitch-1995-dvd-6.jpg",
+          "images/mr-stitch-1995-dvd-7.jpg",
+          "images/mr-stitch-1995-dvd-8.jpg"
+        ],
+        "gif": "images/mr-stitch-1995-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Clear DVD case and cover art clean, with only light shelf wear.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None",
+          "notes": "PLEASE NOTE: French import. Audio is FRENCH ONLY (Français 2.0 stereo), with no English audio or subtitles. PAL, Region 2: needs a Region 2 / region-free, PAL-compatible DVD player; most computers will play it. Metropolitan Filmexport (editor, EDV 518) / Seven Sept (distribution, EDV 517), France, graphics 2001; barcode 3512391104580. DVD 5, approx. 1 h 34 min, 1.66 4:3. Rated: not for under 12 (France). Extras: chapters, French trailer, Killing Zoe trailer."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
