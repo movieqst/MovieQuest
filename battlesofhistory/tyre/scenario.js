@@ -127,6 +127,12 @@ Object.assign(window.TYRE_SCENARIO, {
     "media": [
       {
         "at": 0,
+        "file": "art-island.jpg",
+        "caption": "Tyre before the siege, seen from the mainland: the sea wall, a walled harbour at each end, and the temple of Melqart in the middle. An artist’s impression made for this page from our map; the exact shape of the harbours is not known.",
+        "credit": "AI-generated (ChatGPT) for this project from our layout guide (images/layout/view-from-mainland-guide.png): an artist's impression. The island's width and the temple's place follow our map; the harbours' exact shapes are not known."
+      },
+      {
+        "at": 53,
         "file": "record-tyre-heritage-panorama-2024.jpg",
         "caption": "The Al Mina part of the Tyre World Heritage Site, with the sea and the hills of the mainland on the left: the hills that supplied timber for the mole, Diodorus says.",
         "credit": "Osmhsn2004, CC0 1.0, via Wikimedia Commons."

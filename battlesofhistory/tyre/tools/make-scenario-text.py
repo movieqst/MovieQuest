@@ -71,7 +71,7 @@ COVER = media('cover.jpg', 0, None, 'An artist’s impression of the siege, made
 
 # ---- pictures for each intro slide (seconds into its narration)
 IM = {0: [COVER, dict(record.get('record-tyre-south-side-2021.jpg', {}), at=16)],
-      1: [media('art-envoys.jpg', 26, None, 'Envoys from Tyre, among them the king’s son, meet Alexander on the road and promise to do whatever he commands (Arrian). An artist’s impression made for this page, not evidence: the faces and the city in the distance are imagined.')], 2: [dict(record.get('record-tyre-heritage-panorama-2024.jpg', {}), at=0)], 3: [], 4: [], 5: []}
+      1: [media('art-envoys.jpg', 26, None, 'Envoys from Tyre, among them the king’s son, meet Alexander on the road and promise to do whatever he commands (Arrian). An artist’s impression made for this page, not evidence: the faces and the city in the distance are imagined.')], 2: [media('art-island.jpg', 0, None, 'Tyre before the siege, seen from the mainland: the sea wall, a walled harbour at each end, and the temple of Melqart in the middle. An artist’s impression made for this page from our map; the exact shape of the harbours is not known.'), dict(record.get('record-tyre-heritage-panorama-2024.jpg', {}), at=53)], 3: [], 4: [], 5: []}
 for i, ms in IM.items(): intro[i]['media'] = [m for m in ms if m.get('file') and os.path.exists(os.path.join(V, 'images', m['file']))]
 
 def js(o): return json.dumps(o, ensure_ascii=False, indent=2)
