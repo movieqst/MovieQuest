@@ -24,6 +24,7 @@ a=R.T@np.vstack([sx.ravel()-t[0], sy.ravel()-t[1]])
 E=(a[0]/s[0]).reshape(H,W); N=(-a[1]/s[1]).reshape(H,W)
 PV=json.load(open('prev2sheet.json'))
 VIRT={'ed7a':('/home/user/MovieQuest/battlesofhistory/vimy/sources/trench-maps/36C-SW3-ed7A-north-preview.jpg','to023'),
+      'giv':('/home/user/MovieQuest/battlesofhistory/vimy/sources/trench-maps/nls/nls-101464726.jpg','giv_to023'),   # 36B SE4 & 36C SW3 Givenchy, Ed 7A, trenches to 8 April 1916 (fit through 11 square centres, RMS about 7 m)
       'ed8a':('/home/user/MovieQuest/battlesofhistory/vimy/sources/trench-map-36C-SW3-vimy-ed8A-feb-1917.jpg','8a_to023')}
 def render(id):
     virt=VIRT.get(id); sid='101465023' if virt else id
@@ -35,6 +36,7 @@ def render(id):
         qx,qy=px-cx[2],py-cy[2]; px,py=Mi[0,0]*qx+Mi[0,1]*qy, Mi[1,0]*qx+Mi[1,1]*qy
         im=np.asarray(Image.open(virt[0]).convert('RGB'))
         inside&=(px>=0)&(py>=0)&(px<im.shape[1]-1)&(py<im.shape[0]-1)
+        if id=='giv': inside&=(px>=455)&(px<=6863)&(py>=342)&(py<=4291)   # inside the neatline only (no margin notes)
     else: im=np.asarray(Image.open('/home/user/MovieQuest/battlesofhistory/vimy/sources/trench-maps/nls/nls-%s.jpg'%id).convert('RGB'))
     rgb=np.stack([map_coordinates(im[...,k],[py,px],order=1,cval=255) for k in range(3)],-1).astype(np.int16)
     r,g,b=rgb[...,0],rgb[...,1],rgb[...,2]

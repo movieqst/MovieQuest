@@ -36,6 +36,8 @@
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   document.getElementById('back').href = B + '/index.html';
   document.getElementById('bsel').value = B;
+  // Some battles keep data their scenario needs in a file of its own (Vimy: lines.js); load it first if there is one.
+  const pre = document.createElement('script'); pre.src = B + '/lines.js';
   const sc = document.createElement('script'); sc.src = B + '/scenario.js';
   sc.onload = () => {
     const S = window[Object.keys(window).find(k => /SCENARIO$/.test(k))]; if (!S) return;
@@ -50,7 +52,7 @@
         ${b.archive ? `<a href="${esc(b.archive)}" target="_blank" rel="noopener">Internet Archive</a>` : ''}
         ${b.link ? `<a href="${esc(b.link)}" target="_blank" rel="noopener">${esc(b.linkLabel || 'Read online')}</a>` : ''}</div></div>`).join('') || '<p>No books listed yet.</p>';
   };
-  document.head.appendChild(sc);
+  pre.onload = pre.onerror = () => document.head.appendChild(sc); document.head.appendChild(pre);
 </script>
 <script src="sounds/catalog.js"></script>
 <script>
