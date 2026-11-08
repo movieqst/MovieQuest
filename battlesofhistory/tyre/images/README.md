@@ -12,3 +12,4 @@
 |---|---|---|
 | trenches/mole-1.png … mole-5.png | Alexander's mole, drawn stage by stage over the siege map by tools/make-mole-layers.py. How far it had reached in each chapter is our reconstruction | Drawn for this project |
 | units/*.png | The sprite sheets: Tyrians, ships, siege engines and builders painted for this project (AI-generated, reviewed in ART-PROMPTS-UNITS.md and ART-PROMPTS-ROUND-4.md); the Macedonians and Alexander from the Gaugamela page; the fire from the Fish Creek page. ship-fireship-east and the *-damage-west sheets are mirrored copies | AI-generated for this project |
+| art-envoys.jpg | Envoys from Tyre, among them the king's son, meet Alexander on the coast road in Phoenicia (intro 2, at "Tyre also sent envoys") | AI-generated (ChatGPT) for this project: an artist's impression, not evidence. Its armour and helmets borrow from later Greek and Roman art, and the city's walls and temple are imagined. |

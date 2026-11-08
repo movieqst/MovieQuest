@@ -83,7 +83,14 @@ Object.assign(window.TYRE_SCENARIO, {
         "tag": "arrian"
       }
     ],
-    "media": []
+    "media": [
+      {
+        "at": 26,
+        "file": "art-envoys.jpg",
+        "caption": "Envoys from Tyre, among them the king’s son, meet Alexander on the road and promise to do whatever he commands (Arrian). An artist’s impression made for this page: the armour and the city are imagined, not evidence.",
+        "credit": "AI-generated (ChatGPT) for this project: an artist's impression, not evidence. Its armour and helmets borrow from later Greek and Roman art, and the city's walls and temple are imagined."
+      }
+    ]
   },
   {
     "title": "The island city",
