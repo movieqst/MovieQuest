@@ -190,7 +190,7 @@ window.BATTLES = [
     folder: 'fishcreek', progress: 85, lat: 52.54, lon: -106.15,
     order: 16,
     era: 'Canada, 1885',
-    title: 'Battle of Fish Creek',
+    title: 'Battle of Tourond\u2019s Coulee / Fish Creek',
     date: '24 April 1885', year: 1885,
     place: 'Fish Creek (Tourond\u2019s Coulee), on the South Saskatchewan River south of Batoche (today in Saskatchewan, Canada)',
     sides: 'The North-West Field Force of Major-General Frederick Middleton vs. the Métis and First Nations fighters of Gabriel Dumont',

@@ -588,6 +588,22 @@ Black quotes Boulton's *Reminiscences* (1886), Middleton's articles in the *Unit
 
 ---
 
+## 15. Pelletier, *Gabriel Dumont* (Gabriel Dumont Institute curriculum unit, Regina, 1985; ISBN 0-920915-01-9) (read in full from the site owner's PDF, 8 November 2026)
+
+A short school booklet built on Woodcock (1976), Stanley's 1949 translation of Dumont's account, Charlebois and McKee. © GDI: **text and pictures are not to be copied onto the site.** Facts only, tagged [Pelletier/GDI].
+
+- **Fish Creek (p. 9):** "the Metis had fewer than 100 fighters and the government forces numbered approximately 400"; the Métis "were able to defend Fish Creek and once again force the government troops into temporary retreat." Fits our "a small force stopped an army" line. [Pelletier/GDI]
+- **Isidore Dumont (p. 8):** Dumont's own account (Stanley 1949, quoted) says the shot at Duck Lake "killed my brother Isidore and made him fall from his horse, stone dead." So the **Isidore Dumont who started the Napoleon song at Fish Creek (Black) cannot be Gabriel's brother.** Probably another family member of the same name (Isidore's son?). **To check** in *Gabriel Dumont Speaks* (Michael Barnholden's translation). The narration only says "Isidore Dumont", never "his brother", so it stays as it is for now.
+- **Batoche (p. 9):** fewer than 300 Métis against about 800 soldiers, with a Gatling gun "which could fire up to 1200 bullets a minute"; by the end the Métis loaded their rifles "with rocks and whatever other pieces of metal they could find." [Pelletier/GDI] (The Gatling rate is a booklet figure: the 1885 gun's practical rate was far lower. Do not use it without a better source.)
+- **Aftermath (p. 14):** Dumont to Moïse Ouellette: "You can say to Middleton that I am in the woods and I still have 90 bullets to use on his soldiers" (via Charlebois). Dumont and Michel Dumas reached the United States after eleven days' riding, were arrested on 27 May and held at Fort Assiniboine, and were released on 29 May. Lieutenant Howard later told him he "had always been careful at Batoche to aim his Gatling gun above Gabriel's head" (Woodcock p. 236). Useful for the Batoche debrief.
+- **Later life (p. 18):** amnesty in July 1886; back at Batoche in 1890; title to his land only on 2 January 1902; died 19 May 1906 after his usual walk; buried at Batoche.
+
+**Pictures the booklet reproduces that we could look for free copies of (archive originals, not the booklet scans):**
+- "**Metis Scouts captured before Fish Creek**" (p. 13): Public Archives of Canada. Probably another of Captain James Peters' 1885 photographs, so probably public domain. **Find it on LAC/Commons**: a good photo-overlay for event 2 or 3.
+- "General Middleton … and his wounded aides" (p. 12, PAC): likely Peters again; would fit the after-battle event (Doucet and Wise were Middleton's two wounded aides at Fish Creek).
+- "View looking towards Batoche, from position whence guns fired on 9th May, 1885" (p. 10): Plate IX of the government's 1886 report (RCMP Museum copy). An 1886 government print, so public domain: for the Batoche page.
+- Dumont at Fort Assiniboine, 1885 (p. 15), and the later portraits: historical photos; search for archive copies before using any.
+
 ## Bibliography
 
 ° = read only through search-engine extracts in this session (page fetching was blocked). Check before recording.

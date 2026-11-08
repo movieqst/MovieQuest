@@ -1,5 +1,5 @@
 /*
-  Historical Scenario File — Battle of Fish Creek (Tourond's Coulee), 24 April 1885
+  Historical Scenario File — Battle of Tourond's Coulee / Fish Creek, 24 April 1885
   -----------------------------------------------------------------
   The narrated introduction (`intro`), the reenactment chapters (`events`), the debrief (`outcome`) and the captions of the
   "From the record" prints (`record`), word for word from NARRATION-SCRIPT.md (draft 2), which is what the narrators will
@@ -10,7 +10,7 @@
 window.FISHCREEK_SCENARIO = window.FISHCREEK_SCENARIO || {};
 Object.assign(window.FISHCREEK_SCENARIO, {
   id: 'fishcreek',
-  title: 'Battle of Fish Creek',
+  title: 'Battle of Tourond\u2019s Coulee / Fish Creek',
   date: '24 April 1885',
   place: 'Fish Creek (Tourond’s Coulee), beside the South Saskatchewan River (today in Saskatchewan, Canada)',
   tagline: 'The North-West Field Force vs. the Métis, Dakota and Cree fighters of Gabriel Dumont',
@@ -408,7 +408,7 @@ Object.assign(window.FISHCREEK_SCENARIO, {
   const FIRE = [...Array(9).keys()].map(i => ({ x: 1715 + i * 25, y: 1150 + i * 28.5 }));   // Dumont's grass fire: a line just below the south-west rim
   Object.assign(S, {
     titleCard: {
-      title: 'BATTLE OF FISH CREEK', date: '24 April 1885',
+      title: 'BATTLE OF TOUROND’S COULEE / FISH CREEK', date: '24 April 1885',
       dateNote: 'At a wooded coulee on the trail to Batoche, Gabriel Dumont’s Métis, Dakota and Cree fighters ambush a Canadian army many times their number, and hold it back for most of a day.',
       dateRef: 'Parks Canada, Battle of Tourond’s Coulee / Fish Creek National Historic Site; Walter Hildebrandt, The Battle of Batoche (1989)',
       place: 'Tourond’s Coulee, beside the South Saskatchewan River, North-West Territories (today Saskatchewan, Canada)',
