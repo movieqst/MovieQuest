@@ -39,3 +39,8 @@ Tyrian townspeople taking refuge in the temple of Melqart: women in long dresses
 ```
 
 **After ChatGPT:** send the PNGs in a zip. I key out the green, cut each sheet to game size, check the row order and the 332 BCE details, and say ACCEPT or REDO for each.
+
+## Review (8 November 2026; TYRE-TRIREME-ADDITIONAL-DAMAGE and TYRE-BOARDING-BRIDGE zips)
+- **ship-tyrian-trireme-damage-ALTERNATE: not used.** Good, but no better than v1, and its all-gold hull is further from the rowing sheet's red bow panel. v1 stays.
+- **ship-boarding-bridge-deployment-DRAFT: REDO.** The sequence is right (bridge lowered on ropes from a tall frame, then men crossing) and one side view is enough: 16 frames, which we can mirror for the other direction. But it is **the wrong side's ship**: the purple dolphin sail is Tyre's. The bridge ships were Alexander's. Redo the same sequence on an allied ship (as the ram pair: blue-and-gold hull band, lion figurehead) with a furled red-and-white sail and hypaspists with bronze shields.
+- Still not received: **ship-tyrian-trireme-dolphin** (rowing, 4 directions) and **siege-catapult** (two-armed).
