@@ -234,8 +234,8 @@ window.BATTLES = [
     place: 'Vukovar, on the Danube in eastern Slavonia (then in Yugoslavia, today in Croatia)',
     sides: 'The Yugoslav People\u2019s Army (JNA) with Serb volunteer and Territorial Defence units vs. the Croatian National Guard, police and local volunteers',
     blurb: 'As Yugoslavia breaks apart, the Yugoslav army and Serb forces besiege the Croatian town of Vukovar on the Danube. For 87 days a few thousand defenders hold out against a much larger force with tanks and artillery, while the town is shelled to ruins. After it falls, about 200 people taken from the hospital are killed at nearby Ovčara.',
-    cover: 'images/cover.jpg', coverPos: '50% 30%',
-    coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0',
+    cover: 'images/cover.jpg', coverPos: '12% 35%',
+    coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0 (creativecommons.org/licenses/by/2.0). Sky extended for this page',
     status: 'in progress'
   }
 ];
