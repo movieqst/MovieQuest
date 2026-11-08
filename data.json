@@ -11880,5 +11880,112 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "billy-joel-river-of-dreams-cd",
+    "title": "Billy Joel: River of Dreams",
+    "year": 1993,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/billy-joel-river-of-dreams-cd-1.jpg",
+    "photos": [
+      "images/billy-joel-river-of-dreams-cd-1.jpg",
+      "images/billy-joel-river-of-dreams-cd-2.jpg",
+      "images/billy-joel-river-of-dreams-cd-3.jpg",
+      "images/billy-joel-river-of-dreams-cd-4.jpg",
+      "images/billy-joel-river-of-dreams-cd-5.jpg",
+      "images/billy-joel-river-of-dreams-cd-6.jpg",
+      "images/billy-joel-river-of-dreams-cd-7.jpg",
+      "images/billy-joel-river-of-dreams-cd-8.jpg",
+      "images/billy-joel-river-of-dreams-cd-9.jpg",
+      "images/billy-joel-river-of-dreams-cd-10.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Billy%20Joel%20River%20of%20Dreams%20CD&campid=5339133571&customid=billy-joel-river-of-dreams-cd",
+    "price": null,
+    "categories": [
+      "music"
+    ],
+    "artist": "Billy Joel",
+    "genre": "Pop / Rock",
+    "label": "Columbia Records",
+    "released": "1993",
+    "producers": "Danny Kortchmar; additional production Billy Joel and Dave Thoener; co-produced by Joe Nicolo",
+    "titleNote": "Columbia CD (CCK 53003) / Columbia House Canada / 1993",
+    "tagline": "Music CD / Billy Joel / River of Dreams / Lullabye / Columbia / 1990s",
+    "desc": "Billy Joel's No. 1 1993 album River of Dreams, with the hit title song, \"All About Soul\", \"No Man's Land\", \"The Great Wall of China\" and \"Lullabye (Goodnight, My Angel)\". All 10 songs written by Billy Joel. Cover painting by Christie Brinkley.",
+    "tracks": [
+      "No Man's Land",
+      "The Great Wall of China",
+      "Blonde Over Blue",
+      "A Minor Variation",
+      "Shades of Grey",
+      "All About Soul",
+      "Lullabye (Goodnight, My Angel)",
+      "The River of Dreams",
+      "Two Thousand Years",
+      "Famous Last Words"
+    ],
+    "trivia": [
+      {
+        "heading": "His Last No. 1",
+        "text": "River of Dreams was released on August 10, 1993 and spent three weeks at No. 1 on the Billboard 200, Billy Joel's fourth and last chart-topping album."
+      },
+      {
+        "heading": "Painted by Christie Brinkley",
+        "text": "The colourful cover painting is by Christie Brinkley, Joel's wife at the time."
+      },
+      {
+        "heading": "His Last Pop Album",
+        "text": "It is still Billy Joel's most recent album of original pop and rock songs. His next studio album, Fantasies & Delusions (2001), was classical piano music."
+      },
+      {
+        "heading": "Four Grammy Nominations",
+        "text": "It was nominated for Album of the Year, and the title song was up for Song of the Year, Record of the Year and Best Male Pop Vocal Performance."
+      },
+      {
+        "heading": "A Lullaby for Alexa",
+        "text": "\"Lullabye (Goodnight, My Angel)\" was written for his daughter Alexa Ray Joel and became one of his best-loved songs."
+      }
+    ],
+    "tidbits": [
+      "River of Dreams was released on August 10, 1993 and spent three weeks at No. 1 on the Billboard 200, Billy Joel's fourth and last chart-topping album.",
+      "The colourful cover painting is by Christie Brinkley, Joel's wife at the time.",
+      "It is still Billy Joel's most recent album of original pop and rock songs. His next studio album, Fantasies & Delusions (2001), was classical piano music.",
+      "It was nominated for Album of the Year, and the title song was up for Song of the Year, Record of the Year and Best Male Pop Vocal Performance.",
+      "\"Lullabye (Goodnight, My Angel)\" was written for his daughter Alexa Ray Joel and became one of his best-loved songs."
+    ],
+    "copies": [
+      {
+        "id": "billy-joel-river-of-dreams-cd-1",
+        "added": "2026-11-08",
+        "format": "CD",
+        "edition": "Columbia CD (CCK 53003), Columbia House Canada club issue",
+        "photos": [
+          "images/billy-joel-river-of-dreams-cd-1.jpg",
+          "images/billy-joel-river-of-dreams-cd-2.jpg",
+          "images/billy-joel-river-of-dreams-cd-3.jpg",
+          "images/billy-joel-river-of-dreams-cd-4.jpg",
+          "images/billy-joel-river-of-dreams-cd-5.jpg",
+          "images/billy-joel-river-of-dreams-cd-6.jpg",
+          "images/billy-joel-river-of-dreams-cd-7.jpg",
+          "images/billy-joel-river-of-dreams-cd-8.jpg",
+          "images/billy-joel-river-of-dreams-cd-9.jpg",
+          "images/billy-joel-river-of-dreams-cd-10.jpg"
+        ],
+        "gif": "images/billy-joel-river-of-dreams-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Jewel case with light shelf wear; cover art clean.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Original front insert and back card.",
+          "notes": "Columbia Records / Sony Music Entertainment (1993), catalogue CCK 53003, UPC 777497571954, distributed in Canada by Columbia House (CRC club pressing). 10 tracks. Words and music by Billy Joel. Produced by Danny Kortchmar."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
