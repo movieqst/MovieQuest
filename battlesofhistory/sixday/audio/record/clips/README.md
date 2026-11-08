@@ -2,7 +2,7 @@
 
 Cut automatically from the full recordings in ../ (which stay whole for the library and "From the record"). Chosen by sound alone, without understanding the Hebrew: the busiest stretches of radio traffic, scored by how much of the time someone is talking, how fast the exchanges come, and how much LOUDER and HIGHER-PITCHED the voices are than usual (signs of excitement). File names: recording-rank-start time in the full recording (mmss).
 
-**Not yet checked for content:** a translation is needed before any clip goes on the page (what is said, who speaks, whether it fits the chapter). Ask ChatGPT to translate these nine short clips first; it is much easier than the hours of full recordings.
+**Not yet checked for content:** a translation is needed before any clip goes on the page (what is said, who speaks, whether it fits the chapter). Ask ChatGPT to translate these twelve short clips first; it is much easier than the hours of full recordings.
 
 | clip | from | starts at |
 |---|---|---|
@@ -15,6 +15,9 @@ Cut automatically from the full recordings in ../ (which stay whole for the libr
 | danny-manor-1-3143.mp3 | Danny Manor (Focus IV) | 31:43 |
 | danny-manor-2-4531.mp3 | Danny Manor (Focus IV) | 45:31 |
 | danny-manor-3-5507.mp3 | Danny Manor (Focus IV) | 55:07 |
+| mordechai-lavon-1-2643.mp3 | Mordechai Lavon (Focus III) | 26:43 |
+| mordechai-lavon-2-2746.mp3 | Mordechai Lavon (Focus III) | 27:46 |
+| mordechai-lavon-3-3002.mp3 | Mordechai Lavon (Focus III) | 30:02 |
 
 **Explosions and jet noise:** none usable. The recordings are cockpit and ground radio, which carries only the voice band (nothing above about 4 kHz): engines, guns and explosions were not picked up. The few "bangs" found were microphone clicks and the edit at the start of the video. For battle sounds, use free sound effects (CC0 or CC BY) instead.
 
