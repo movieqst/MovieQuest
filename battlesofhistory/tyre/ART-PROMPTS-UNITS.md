@@ -43,3 +43,17 @@ HISTORY (332 BCE, eastern Mediterranean, summer):
 16. **tyre-civilians** (walking): `Tyrian townspeople fleeing to the temple: women in long dresses and veils, an old man, children, carrying bundles and a clay jar. 4 frames of walking. No weapons, no blood.`
 
 **After ChatGPT:** I key out the green, cut each sheet to game size, check the row order and the 332 BCE details, and say ACCEPT or REDO for each.
+
+## Review of the ship bundle (8 November 2026; TYRE-SHIPS-CLAUDE-REVIEW-2026-11-07.zip)
+
+**tyrian-trireme-rowing-4-directions.png: ACCEPT** → cut as `images/units/ship-tyrian-trireme.png` (960×800, cells 240×200, rows s/e/n/w as drawn). Clean: bow towards the viewer in row 1, bow right in row 2, stern in row 3, bow left in row 4; the bow wave grows across the frames.
+- Notes, not blockers: one bank of oars (a trireme had three; fine at sprite size); the sail is set (warships usually left masts and sails ashore before a battle); a trident on the sail is a Greek (Poseidon) sign, not a Tyrian one. Tyre's own coins showed Melqart riding a sea-horse, a dolphin, or an owl.
+- **Mismatch to fix:** the damage sheet (`ship-tyrian-trireme-damage.png`) has a red sail with an Egyptian eye emblem, so a ship would change colour when hit. **REDO the damage sheet to match this one:** same hull and purple sail, same angle as the side view (bow right), 16 frames: rowing, holed and listing, burning, sinking. Ask for a plain purple sail or a dolphin emblem on both sheets if redone.
+
+**boarding-bridge-and-siege-sequences-MIXED.png: not cut as a sheet.** Row by row:
+- Row 1 (trireme rowing right, white sail with a purple trident): REDO not needed: duplicate of the accepted trireme in a different sail. Skip.
+- Row 2 (warship lowering a boarding bridge, marines crossing): **ACCEPT as an effect** (one direction, mirror for the other). Arrian (2.23) says Alexander's ships carried bridges for the final assault on the breach. **Flag:** the flag is the "Vergina sun", which is a modern association for Macedon (from the 1977 tomb finds); ancient warships did not fly it. Ask for the flag to be removed or made a plain pennant.
+- Row 3 (ladders against a wall from the ground): **REDO / not for Tyre.** The island city's walls rose from the water; the final assault came from ships with bridges onto a breach, not ladders from dry ground. (Could suit Gaza, the next siege, if we ever do it.)
+- Row 4 (miners tunnelling under a wall): **not for Tyre** (an island: no mining). Alexander did mine the walls at **Gaza** two months later. Keep for that.
+
+**previous-review files:** already decided earlier and in use (quinquereme, ram pair, fireship). `ram-ship-draft-NEEDS-REVIEW.png` stays superseded by the accepted ram sheets.
