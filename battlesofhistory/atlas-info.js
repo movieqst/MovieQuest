@@ -321,7 +321,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "batoche",
-"battleTitle": "Batoche",
+"battleTitle": "Battle of Batoche",
 "year": 1885,
 "status": "in progress",
 "file": "batoche/images/terrain-battle.jpg",
@@ -332,7 +332,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "batoche",
-"battleTitle": "Batoche",
+"battleTitle": "Battle of Batoche",
 "year": 1885,
 "status": "in progress",
 "file": "batoche/images/terrain-campaign.jpg",
@@ -343,7 +343,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "batoche",
-"battleTitle": "Batoche",
+"battleTitle": "Battle of Batoche",
 "year": 1885,
 "status": "in progress",
 "file": "batoche/images/terrain-continent.jpg",
@@ -354,7 +354,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "batoche",
-"battleTitle": "Batoche",
+"battleTitle": "Battle of Batoche",
 "year": 1885,
 "status": "in progress",
 "file": "batoche/images/establish-campaign.jpg",
@@ -365,7 +365,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "batoche",
-"battleTitle": "Batoche",
+"battleTitle": "Battle of Batoche",
 "year": 1885,
 "status": "in progress",
 "file": "batoche/images/establish-continent.jpg",
@@ -376,7 +376,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "batoche",
-"battleTitle": "Batoche",
+"battleTitle": "Battle of Batoche",
 "year": 1885,
 "status": "in progress",
 "file": "batoche/images/establish-region.jpg",
@@ -387,7 +387,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "batoche",
-"battleTitle": "Batoche",
+"battleTitle": "Battle of Batoche",
 "year": 1885,
 "status": "in progress",
 "file": "batoche/images/terrain-region.jpg",
