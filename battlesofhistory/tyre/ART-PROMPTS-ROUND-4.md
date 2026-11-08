@@ -56,3 +56,8 @@ Tyrian townspeople taking refuge in the temple of Melqart: women in long dresses
 - **siege-catapult: ACCEPT** → `images/units/siege-catapult.png`. Now a true lithobolos: a giant crossbow on a stand, two arms out sideways from twisted-rope springs, one bowstring, a flat trough and a winch; the stone shoots forward along the trough in each direction. Crew of three in tunics.
 
 Round 4 complete. Optional still open: leader-azemilcus, tyre-civilians.
+
+## Review (8 November 2026; TYRE-OPTIONAL-TWO-SPRITES zip)
+- **leader-azemilcus: ACCEPT** → `images/units/leader-azemilcus.png` (640×640, 160 cells). Rows s/e/n/w in order. Rows 1 and 3: standing, then a gesture, then both arms raised (good for "the king takes refuge in the temple of Melqart"). Rows 2 and 4: walking. He looks nearer 35 than 50, and a diadem rather than a tall cap; fine. **An artist's reconstruction: no portrait of Azemilcus survives.** Say so on his card.
+- **tyre-civilians: ACCEPT** → `images/units/tyre-civilians.png`. A family of three walking in four directions (a man with a sack, a veiled woman or an old man with a staff, a child). A white line down the left edge of the sheet was removed before cutting.
+- **Tyre's sprite list is complete.**
