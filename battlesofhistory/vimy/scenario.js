@@ -357,6 +357,30 @@ Object.assign(window.VIMY_SCENARIO, {
     world: { w: 2400, h: 1800 },
     terrain: 'terrain-battle.jpg',
     trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1916-12.png', 'trenches-1917-03.png'], trenchNeonAlpha: .6,
+    // February 1916: no trench map of the south end for that date has been found, so the October 1916 trenches stand in there, in purple
+    trenchGuess: { 'trenches-1916-02.png': { file: 'trenches-1916-02-guess.png', note: { x: 1350, y: 1150 }, why: 'Guessed from the October 1916 map: no February 1916 map of this part found',
+      info: '<b style="color:#e6c8ff;font-family:Cinzel,Georgia,serif">Not verified: the trenches in purple</b>' +
+        '<p>For February 1916 we have a British trench map of the north end of the ridge only. For the south end (Neuville-St-Vaast, Thélus, Roclincourt) no map of that date has been found online, so these trenches are copied from the next map we have, of October 1916, and drawn in purple: <span style="color:#e146c8">reddish purple</span> for German trenches, <span style="color:#8c6eff">bluish purple</span> for British and French. The front line here probably did not move much between those dates, but the smaller trenches will differ.</p>' +
+        '<p><b>The map that would fix it:</b> sheet 51B NW 1 “Roclincourt”, 1:10,000, trenches as at <b>16 February 1916</b> (Ordnance Survey, GSGS 3062). One copy is known: <b>Australian War Memorial</b>, Canberra, library call number <b>G5830 s10</b>, record <a href="https://www.awm.gov.au/collection/LIB100005557" target="_blank" rel="noopener" style="color:#c8a8ff">LIB100005557</a>. Not scanned online. The National Library of Scotland’s earliest edition of this sheet is October 1916.</p>' +
+        '<p class="muted" style="color:#a99bb8">Have a scan of this map? It is public domain (1916). Please let us know.</p>' } },
+    // The British trench maps each trench layer is traced from: a clickable note at the bottom left of the map opens this list.
+    trenchSources: (() => {
+      const M = { '101465023': ['Sheet 36C S.W. (Vimy–Lens), 1:20,000, Edition 6', 'trenches to 15 February 1916', 'the north half of the ridge'],
+                  '101464726': ['Sheet 36B S.E.4 & 36C S.W.3 Givenchy, 1:10,000, Edition 7A', 'trenches to 8 April 1916', 'the north half in fine detail, from Souchez and Givenchy to Hill 145, La Folie Wood and Vimy (the February sheet fills in the edges)'],
+                  '101465071': ['Sheet 51B N.W. (Arras), 1:20,000, Edition 4A', 'trenches to 10 October 1916', 'the south half'],
+                  '101464753': ['Sheet 51B N.W.1 Roclincourt, 1:10,000, Edition 5A', 'trenches to 27 December 1916', 'the south half, in fine detail'],
+                  '101465068': ['Sheet 51B N.W. (Arras), 1:20,000, Edition 6A', 'trenches to 4 March 1917', 'the south half, five weeks before the attack'] };
+      const row = id => `<li><b>${M[id][0]}</b>, ${M[id][1]}: ${M[id][2]}.<br><a href="sources/trench-maps/nls/nls-${id}.jpg" target="_blank" rel="noopener" style="color:#9fe6ff">Open the map (large image)</a> · <a href="https://maps.nls.uk/view/${id}" target="_blank" rel="noopener" style="color:#9fe6ff">National Library of Scotland viewer</a></li>`;
+      const box = (title, ids, extra) => ({ title, info: `<b style="color:#bff3ff;font-family:Cinzel,Georgia,serif">Where these trenches come from: ${title}</b>` +
+        `<p>Red: German trenches. Blue: British, Canadian and French. Traced from these British Army trench maps, lined up with today’s ground (accurate to about 100–200 m):</p><ul style="padding-left:18px">${ids.map(row).join('')}${extra || ''}</ul>` +
+        `<p style="color:#9fb1b8;font-size:12px">Ordnance Survey / GSGS, Crown copyright expired. Scans: National Library of Scotland, CC BY. All the maps, with notes: <a href="../library.html?battle=vimy" target="_blank" rel="noopener" style="color:#9fe6ff">📚 Library of sources</a>.</p>` });
+      const NOTE_N = '<li style="color:#ffd27a">The north half is older than the date shown: no British map of it dated between May and December 1916 has been found. The German attack of 21 May 1916 took about 1,500 yards of British trenches there, so the front in the north was a little further west by the autumn.</li>';
+      const ed7a = '<li><b>Sheet 36C S.W.3 “Vimy”, 1:10,000, Edition 7A</b> (north half; McMaster University web preview, date of the edition still to read).<br><a href="sources/trench-maps/36C-SW3-ed7A-north-preview.jpg" target="_blank" rel="noopener" style="color:#9fe6ff">Open the preview</a></li>';
+      return { 'trenches-1916-02.png': box('February 1916', ['101465023'], '<li>The south end, in purple: <b>not verified</b>, see the note on the map.</li>'),
+               'trenches-1916-10.png': box('October 1916', ['101464726', '101465023', '101465071'], NOTE_N),
+               'trenches-1916-12.png': box('December 1916', ['101464726', '101465023', '101465071', '101464753'], NOTE_N),
+               'trenches-1917-03.png': box('March 1917', ['101465023', '101465068'], ed7a) };
+    })(),
     defaultTrench: 'trenches-1917-03.png', introTrench: 'trenches-1917-03.png', trenchAlpha: .45,
     duration: 182, commandDuration: 300, commandFocus: { x: 1100, y: 800 },
     battlefield: {
@@ -366,7 +390,8 @@ Object.assign(window.VIMY_SCENARIO, {
         Object.assign({}, FOLIE, { y: FOLIE.y + 40, text: 'La Folie Farm', small: true }), Object.assign({}, THELUS, { y: THELUS.y + 50, text: 'Thélus', small: true }),
         Object.assign({}, FARBUS, { y: FARBUS.y + 50, text: 'Farbus', small: true }), Object.assign({}, VIMY, { y: VIMY.y + 50, text: 'Vimy', small: true }),
         Object.assign({}, NEUVILLE, { y: NEUVILLE.y + 60, text: 'Neuville-St-Vaast', small: true }), Object.assign({}, GIVENCHY, { y: GIVENCHY.y + 50, text: 'Givenchy', small: true }),
-        { x: 543, y: 290, text: 'Souchez', small: true }, { x: 1997, y: 1090, text: 'Willerval', small: true }
+        { x: 543, y: 290, text: 'Souchez', small: true }, { x: 1997, y: 1090, text: 'Willerval', small: true },
+        { x: 1000, y: 40, text: '▲ The front runs on north: Lens, Ypres, the North Sea', small: true }, { x: 1560, y: 1770, text: '▼ and south: Arras, the Somme, Verdun, Switzerland', small: true }
       ]
     },
     globe: { target: { lon: 2.77, lat: 50.37 }, region: { lon: 3.2, lat: 49.4 }, pull: 4.5, lift: false, keepBorders: true, keepTowns: true, frontSides: { east: '230,70,55', west: '90,150,255' }, startLat: 35,
@@ -533,8 +558,11 @@ Object.assign(window.VIMY_SCENARIO, {
   I[0].noUnits = true; I[0].trenches = null;
   // dates for the stamp at the top left of the map (the trench build-up shows its own)
   [['Easter Monday, 9 April'], ['1914 to 1917'], ['Winter 1916 to 1917'], ['20 March to 9 April'], ['1916 to 1917'], ['April 1917']].forEach(([c], i) => { const sl = I[i === 0 ? 0 : i]; if (sl && !sl.growth) sl.clock = c; });
+  // No man's land: halfway between the two front lines of 8 April 1917 (lines.js), every 100 px from north to south.
+  // (lines.js is not loaded on the library page, so the path is only made when the lines are there)
+  const NOMANS = []; if (L.canadianFront && L.germanFront) for (let y = 140; y <= 1700; y += 80) { const q = pt([(xAt(L.canadianFront, y) + xAt(L.germanFront, y)) / 2, y]); NOMANS.push([q.x, q.y]); }
   I.splice(1, 0, {
-    title: 'Four years of trenches', extra: true, noUnits: true, auto: 32, trenches: null,
+    title: 'Four years of trenches', extra: true, noUnits: true, auto: 50, trenches: null,
     lines: [
       { text: 'The Germans took Vimy Ridge in October 1914 and dug in. French attacks in 1915 reached the crest but could not hold it.', tag: 'established' },
       { text: 'In February 1916 the British took over this part of the line from the French. The Canadians arrived in October 1916.', tag: 'established' },
@@ -543,11 +571,17 @@ Object.assign(window.VIMY_SCENARIO, {
     ],
     growth: [
       { at: 0, layer: null, label: '1914 to 1915' },
-      { at: 7, layer: 'trenches-1916-02.png', label: 'February 1916' },
-      { at: 13, layer: 'trenches-1916-10.png', label: 'October 1916' },
-      { at: 19, layer: 'trenches-1916-12.png', label: 'December 1916' },
-      { at: 25, layer: 'trenches-1917-03.png', label: 'March 1917' }
-    ]
+      { at: 4, layer: 'trenches-1916-02.png', label: 'February 1916' },
+      { at: 10, layer: 'trenches-1916-10.png', label: 'October 1916' },
+      { at: 37, layer: 'trenches-1916-12.png', label: 'December 1916' },
+      { at: 43, layer: 'trenches-1917-03.png', label: 'March 1917' }
+    ],
+    // the flyover: from the Pimple in the north to Farbus in the south, along no man's land between the two front lines
+    // (flown over the October 1916 layer: the first date with trench maps for the whole length of the ridge)
+    tour: { from: 12, to: 30, zoom: 1.7, path: NOMANS,
+      // then in close on Hill 145: the highest point of the ridge and the Germans' strongest position; the Vimy Memorial stands on it today
+      finale: Object.assign({}, HILL145, { zoom: 2.6, until: 35 }) },
+    markers: [ Object.assign({}, HILL145, { y: HILL145.y - 70, label: 'Hill 145: the strongest German position · today the Vimy Memorial', side: 'french' }) ]
   });
 })();
 
@@ -566,6 +600,8 @@ Object.assign(window.VIMY_SCENARIO, {
         citedIn: 'The narration and the battle lines', rights: 'Canadian Crown copyright, 1962; public domain in Canada.', localLabel: '🗺 Map 7',
         local: 'nicholson-map7-vimy-ridge-9-12-april-1917.jpg', localNote: 'The full book is free from the Department of National Defence (Directorate of History and Heritage).' },
       M('101465023', 'Sheet 36C S.W. (Vimy–Lens), 1:20,000, Edition 6', 'Trenches to 15 February 1916', 'The whole of Vimy Ridge and Lens while the French still held the line, a month before the British took over. German trenches in red, French and British in blue.'),
+      M('101464726', 'Sheet 36B S.E.4 & 36C S.W.3 Givenchy, 1:10,000, Edition 7A', 'Trenches to 8 April 1916', 'The north half of the battlefield in fine detail: Souchez, Givenchy, Hill 145, La Folie Wood, Petit Vimy and Vimy, with the British front line dashed in blue. Used for the north of the October and December 1916 trench pictures.'),
+      M('101464747', 'Sheet 36C S.W.4 Rouvroy, 1:10,000, Edition 7 (redrawn) A', 'Trenches to 6 August 1916', 'Just east of our battle map: Méricourt, Acheville, Rouvroy and Fresnoy on the Douai plain, with the German rear lines. For reference only (it lies off the map).'),
       M('101465071', 'Sheet 51B N.W. (Arras), 1:20,000, Edition 4A', 'Trenches to 10 October 1916', 'The south half of the ridge (Neuville-St-Vaast, Thélus, Farbus) as the Canadian Corps arrived.'),
       M('101464753', 'Sheet 51B.NW.1 Roclincourt, 1:10,000, Edition 5A', 'Trenches to 27 December 1916', 'The south half of the battlefield in fine detail, every German trench named: Zwölfer Graben, Hapsburger Weg, the Albrecht Stellung.'),
       M('101464744', 'Sheet 36C.SW.1 Lens, 1:10,000, Edition 8A', 'Trenches to 10 February 1917', 'Lens, Liévin and Angres: the north-east edge of the battlefield, toward the Pimple.'),

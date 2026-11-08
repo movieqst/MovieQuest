@@ -115,6 +115,12 @@
   <aside id="wip"><div class="lbl">IN PROGRESS</div><div id="wipList"></div></aside>
 </section>
 <main id="list"></main>
+<script>
+  // On phones (one column) the battles come first: the globe and the in-progress list move below the cards, back up on wider screens.
+  (function () { const mq = matchMedia('(max-width:800px)'), ex = document.getElementById('explore'), list = document.getElementById('list');
+    const place = () => { if (mq.matches) list.after(ex); else list.before(ex); window.dispatchEvent(new Event('resize')); };
+    place(); mq.addEventListener('change', place); })();
+</script>
 <nav class="bhbar"><a href="library.html">📚 Library of sources</a><a href="gallery.html?kind=art">🖼 Art gallery</a><a href="gallery.html?kind=photo">📷 Photographs</a><a href="gallery.html">All pictures</a><a href="atlas.html">🗺 Atlas</a></nav>
 <script>
   // Use the painted poster as the header background once images/poster.jpg exists.

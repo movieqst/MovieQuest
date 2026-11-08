@@ -337,6 +337,8 @@ const SHEET_BY = S.sheetBy || {};
    chapter with 'trenches' switches the layer (null: none); S.defaultTrench is the one shown when the battle starts. */
 const TRENCH = {}, TCACHE = {}; let curTrench = S.defaultTrench || null;
 (S.trenchLayers || []).forEach(n => { const im = new Image(); im.onload = () => { TRENCH[n] = im; if (curTrench === n) applyArt(); }; im.src = (S.imageBase || 'images/') + 'trenches/' + n; });
+// S.trenchGuess: { layer: guessFile } — trenches NOT taken from a dated map for that date, drawn in purple with a warning (see tools/make-guess-layer.py)
+const GUESS = {}; Object.entries(S.trenchGuess || {}).forEach(([n, g]) => { const im = new Image(); im.onload = () => { GUESS[n] = im; delete NEON[n]; }; im.src = (S.imageBase || 'images/') + 'trenches/' + g.file; });
 /* Neon trenches: each layer recoloured once to glowing lines (German red, British and Canadian blue) on a canvas the size of
    the terrain, then drawn over the map every frame, so a layer can fade in. An intro slide with `growth`
    ([{ at: seconds, layer, label }]) builds the trench system up stage by stage; `noUnits` hides the soldiers. */
@@ -349,7 +351,9 @@ function neonLayer(n) {
   try { const d = a.getImageData(0, 0, w, h), px = d.data, bd = new ImageData(w, h), bp = bd.data;   // opened from a file, the browser may refuse: then the lines keep their colours
     for (let i = 0; i < px.length; i += 4) { if (px[i + 3] < 50) { px[i + 3] = 0; continue; } const red = px[i] > px[i + 2]; px[i] = red ? 255 : 60; px[i + 1] = red ? 50 : 225; px[i + 2] = red ? 95 : 255; px[i + 3] = 255;
       if (!red) { bp[i] = 90; bp[i + 1] = 235; bp[i + 2] = 255; bp[i + 3] = 255; } }
-    a.putImageData(d, 0, 0); Bc.getContext('2d').putImageData(bd, 0, 0); blue = Bc; } catch (e) {}
+    a.putImageData(d, 0, 0); Bc.getContext('2d').putImageData(bd, 0, 0); blue = Bc;
+  } catch (e) {}
+  if (GUESS[n]) a.drawImage(GUESS[n], 0, 0, w, h);   // already purple (tools/make-guess-layer.py)
   if (blue) { const BB = document.createElement('canvas'); BB.width = w; BB.height = h; const b = BB.getContext('2d');
     b.filter = 'blur(10px)'; b.drawImage(blue, 0, 0); b.drawImage(blue, 0, 0); b.filter = 'none';
     for (let dx = -2; dx <= 2; dx++) for (let dy = -2; dy <= 2; dy++) if (dx * dx + dy * dy <= 5) b.drawImage(blue, dx, dy);
@@ -357,7 +361,14 @@ function neonLayer(n) {
   const C = document.createElement('canvas'); C.width = w; C.height = h; const c = C.getContext('2d');
   c.filter = 'blur(7px)'; c.drawImage(A, 0, 0); c.drawImage(A, 0, 0); c.filter = 'blur(2px)'; c.drawImage(A, 0, 0); c.filter = 'none';
   [[-1, 0], [1, 0], [0, -1], [0, 1], [0, 0]].forEach(([dx, dy]) => c.drawImage(A, dx, dy));
+  [C, NEONB[n]].forEach(fadeEdges);
   NEON[n] = C; return C;
+}
+// The front runs on far beyond the map: fade the trench lines out over the top and bottom edges instead of cutting them off.
+function fadeEdges(K) {
+  if (!K) return; const g = K.getContext('2d'), h = K.height, e = h * .07; g.save(); g.globalCompositeOperation = 'destination-out';
+  let gr = g.createLinearGradient(0, 0, 0, e); gr.addColorStop(0, 'rgba(0,0,0,1)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, K.width, e);
+  gr = g.createLinearGradient(0, h - e, 0, h); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,1)'); g.fillStyle = gr; g.fillRect(0, h - e, K.width, e); g.restore();
 }
 function growthNow() {
   const sl = mode === 'intro' && S.intro[introIdx]; if (!sl || !sl.growth) return null;
@@ -371,6 +382,34 @@ function drawTrenches(drawWorld) {
   layers.forEach(([n, al, op]) => { const C = neonLayer(n); if (!C || al <= 0) return; ctx.save(); ctx.globalAlpha = al; if (op) ctx.globalCompositeOperation = op; drawWorld(C);
     if (NEONB[n] && !op) { ctx.globalAlpha = Math.min(1, al * 1.7); drawWorld(NEONB[n]); } ctx.restore(); });
 }
+function drawSourceNote() {
+  srcHit = null; const gr = growthNow(), n = gr ? gr.g.layer : curTrench, src = n && (S.trenchSources || {})[n]; if (!src) return;
+  const t = '🗺 Trench map sources: ' + src.title + '  ⓘ'; ctx.save(); ctx.font = '600 12px system-ui, sans-serif'; const w = ctx.measureText(t).width + 18, x = 12, y = view.h - 64;
+  ctx.fillStyle = 'rgba(8,16,22,.78)'; ctx.strokeStyle = 'rgba(127,233,255,.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.roundRect(x, y, w, 24, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#d6f6ff'; ctx.textBaseline = 'middle'; ctx.fillText(t, x + 9, y + 12); ctx.restore(); srcHit = { x0: x, x1: x + w, y0: y, y1: y + 24, g: src };
+}
+let srcHit = null;
+function drawGuessNote() {
+  guessHit = null;
+  const gr = growthNow(), shown = gr ? [gr.g.layer, gr.prev && gr.prev.layer] : [curTrench];
+  Object.entries(S.trenchGuess || {}).forEach(([n, g]) => { if (!shown.includes(n) || !GUESS[n]) return;
+    const q = P(g.note.x, g.note.y); if (!(q.s > 0)) return;
+    ctx.save(); ctx.shadowColor = '#c08cff'; ctx.shadowBlur = 12; outlined(ctx, 'NOT VERIFIED TRENCHES IN PURPLE  ⓘ', q.x, q.y, 15, { fill: '#e6c8ff' });
+    ctx.shadowBlur = 0; outlined(ctx, (g.why || '') + ' · click for details', q.x, q.y + 18, 11, { fill: '#d8c4f0', weight: 'italic' }); ctx.restore();
+    guessHit = { x0: q.x - 190, x1: q.x + 190, y0: q.y - 14, y1: q.y + 26, g }; });
+}
+// The note opens a box that says what the purple means and where the missing map is, so it can be found later.
+let guessHit = null;
+function showGuessInfo(g) {
+  let box = $('guessInfo'); if (!box) { box = document.createElement('div'); box.id = 'guessInfo'; canvas.parentElement.appendChild(box);
+    box.style.cssText = 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:45;width:min(460px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;background:#140f1e;border:1px solid #9a6ad8;border-radius:10px;padding:14px 16px;color:#eee;font-size:14px;line-height:1.45;box-shadow:0 8px 30px rgba(0,0,0,.6)';
+    box.addEventListener('click', e => { if (e.target.closest('.x')) box.remove(); e.stopPropagation(); }); }
+  box.innerHTML = `<button class="x" style="float:right;background:none;border:0;color:#ccc;font-size:18px;cursor:pointer">✕</button>${g.info || ''}`;
+}
+canvas.addEventListener('click', e => { if (!guessHit) return; const r = canvas.getBoundingClientRect(), x = (e.clientX - r.left) * canvas.width / r.width / (window.devicePixelRatio || 1), y = (e.clientY - r.top) * canvas.height / r.height / (window.devicePixelRatio || 1);
+  if (x >= guessHit.x0 && x <= guessHit.x1 && y >= guessHit.y0 && y <= guessHit.y1) { e.stopImmediatePropagation(); showGuessInfo(guessHit.g); } }, true);
+canvas.addEventListener('click', e => { if (!srcHit) return; const r = canvas.getBoundingClientRect(), x = (e.clientX - r.left) * canvas.width / r.width / (window.devicePixelRatio || 1), y = (e.clientY - r.top) * canvas.height / r.height / (window.devicePixelRatio || 1);
+  if (x >= srcHit.x0 && x <= srcHit.x1 && y >= srcHit.y0 && y <= srcHit.y1) { e.stopImmediatePropagation(); showGuessInfo(srcHit.g); } }, true);
 function drawGrowthLabel() {
   const gr = growthNow(); if (!gr || !gr.g.label) return;
   ctx.save(); ctx.globalAlpha = .4 + .6 * gr.f; ctx.shadowColor = '#7fe9ff'; ctx.shadowBlur = 18;
@@ -944,11 +983,28 @@ window.__cam = () => ({ z: view.z, x: view.x, y: view.y, w: view.w, h: view.h, w
 function camBack() { if (cam.follow && cam.backAt != null && simTime >= cam.backAt) { cam.backAt = null; CAM_WHOLE(); } }
 let introZoom = null;
 function introCamStart(sl) {
+  tourState = 0;
   cam.tx = null; cam.tz = null; cam.fy = null; cam.backAt = null; if ('fit' in cam) cam.fit = false;
   view.z = WHOLE_Z(); view.x = W.w / 2 - VW() / 2; view.y = W.h / 2 - VH() / 2; clampView();
   introZoom = sl && sl.focus && typeof sl.zoom === 'number' && sl.zoom > WHOLE_Z() * 1.6 ? { z: sl.zoom, f: sl.focus, stage: 0 } : null;
 }
+/* A slide's `tour` ({ from, to, zoom, path: [[x, y]...] }, in seconds of the slide): the camera starts on the whole map,
+   zooms in at the start of the path at `from`, flies along it at an even pace, and eases back out to the whole map at `to`.
+   Vimy: along no man's land from the Pimple to Farbus while the trenches build up. */
+let tourState = 0;
+function tourTick(sl) {
+  const T = sl.tour, t = Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer;
+  if (!T._len) { let L = 0; T._seg = T.path.slice(1).map((p, i) => { const d = Math.hypot(p[0] - T.path[i][0], p[1] - T.path[i][1]); L += d; return d; }); T._len = L; }
+  const Fi = T.finale;   // after the glide, an optional close look at one place ({ x, y, zoom, until })
+  if (Fi && t > T.to && t < Fi.until) { tourState = 1; cam.fit = false; cam.tz = Fi.zoom; frame(Fi.x, Fi.y, .2); return; }
+  if (t < T.from || t > (Fi ? Fi.until : T.to)) { if (tourState === 1) { tourState = 2; CAM_WHOLE(); } return; }
+  const u = (t - T.from) / (T.to - T.from), e = u < .1 ? 0 : Math.min(1, (u - .1) / .8), want = e * e * (3 - 2 * e) * T._len;   // a moment to zoom in, then glide
+  let k = 0, acc = 0; while (k < T._seg.length - 1 && acc + T._seg[k] < want) { acc += T._seg[k]; k++; }
+  const a = T.path[k], b = T.path[k + 1], f = T._seg[k] ? (want - acc) / T._seg[k] : 0, x = a[0] + (b[0] - a[0]) * f, y = a[1] + (b[1] - a[1]) * f;
+  tourState = 1; cam.fit = false; cam.tz = T.zoom; frame(x, y, .2);
+}
 function introCamTick(frac, done) {
+  const sl = mode === 'intro' && S.intro[introIdx]; if (sl && sl.tour && cam.follow) { tourTick(sl); return; }
   if (!introZoom || !cam.follow) return;
   if (introZoom.stage === 0 && frac >= .18 && !done) { introZoom.stage = 1; CAM_IN(introZoom.z, introZoom.f, .27); }
   else if (introZoom.stage === 1 && (frac >= .82 || done)) { introZoom.stage = 2; CAM_WHOLE(); }
@@ -1047,7 +1103,7 @@ function render() {
   });
   if (!document.querySelector('.overlay.show, #debrief.show')) { drawClockStamp(); drawLegend(); }   // not over the debrief
   if (BR && mode === 'intro') BR.draw(ctx);
-  drawGrowthLabel();
+  drawGuessNote(); drawSourceNote(); drawGrowthLabel();
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
@@ -1693,5 +1749,5 @@ new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();
 requestAnimationFrame(tick);
 // For the shared page add-ons (../phone.js, ../subtitles.js): the narrator and the full-map switch.
-window.BattlePage = { Narr, setBig };
+window.BattlePage = { Narr, setBig, showIntro };   // showIntro: for tests
 })();
