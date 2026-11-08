@@ -337,6 +337,8 @@ const SHEET_BY = S.sheetBy || {};
    chapter with 'trenches' switches the layer (null: none); S.defaultTrench is the one shown when the battle starts. */
 const TRENCH = {}, TCACHE = {}; let curTrench = S.defaultTrench || null;
 (S.trenchLayers || []).forEach(n => { const im = new Image(); im.onload = () => { TRENCH[n] = im; if (curTrench === n) applyArt(); }; im.src = (S.imageBase || 'images/') + 'trenches/' + n; });
+// S.trenchGuess: { layer: guessFile } — trenches NOT taken from a dated map for that date, drawn in purple with a warning (see tools/make-guess-layer.py)
+const GUESS = {}; Object.entries(S.trenchGuess || {}).forEach(([n, g]) => { const im = new Image(); im.onload = () => { GUESS[n] = im; delete NEON[n]; }; im.src = (S.imageBase || 'images/') + 'trenches/' + g.file; });
 /* Neon trenches: each layer recoloured once to glowing lines (German red, British and Canadian blue) on a canvas the size of
    the terrain, then drawn over the map every frame, so a layer can fade in. An intro slide with `growth`
    ([{ at: seconds, layer, label }]) builds the trench system up stage by stage; `noUnits` hides the soldiers. */
@@ -349,7 +351,9 @@ function neonLayer(n) {
   try { const d = a.getImageData(0, 0, w, h), px = d.data, bd = new ImageData(w, h), bp = bd.data;   // opened from a file, the browser may refuse: then the lines keep their colours
     for (let i = 0; i < px.length; i += 4) { if (px[i + 3] < 50) { px[i + 3] = 0; continue; } const red = px[i] > px[i + 2]; px[i] = red ? 255 : 60; px[i + 1] = red ? 50 : 225; px[i + 2] = red ? 95 : 255; px[i + 3] = 255;
       if (!red) { bp[i] = 90; bp[i + 1] = 235; bp[i + 2] = 255; bp[i + 3] = 255; } }
-    a.putImageData(d, 0, 0); Bc.getContext('2d').putImageData(bd, 0, 0); blue = Bc; } catch (e) {}
+    a.putImageData(d, 0, 0); Bc.getContext('2d').putImageData(bd, 0, 0); blue = Bc;
+  } catch (e) {}
+  if (GUESS[n]) a.drawImage(GUESS[n], 0, 0, w, h);   // already purple (tools/make-guess-layer.py)
   if (blue) { const BB = document.createElement('canvas'); BB.width = w; BB.height = h; const b = BB.getContext('2d');
     b.filter = 'blur(10px)'; b.drawImage(blue, 0, 0); b.drawImage(blue, 0, 0); b.filter = 'none';
     for (let dx = -2; dx <= 2; dx++) for (let dy = -2; dy <= 2; dy++) if (dx * dx + dy * dy <= 5) b.drawImage(blue, dx, dy);
@@ -377,6 +381,13 @@ function drawTrenches(drawWorld) {
   else if (curTrench) layers.push([curTrench, mode === 'intro' ? .95 : (S.trenchNeonAlpha || .6)]);
   layers.forEach(([n, al, op]) => { const C = neonLayer(n); if (!C || al <= 0) return; ctx.save(); ctx.globalAlpha = al; if (op) ctx.globalCompositeOperation = op; drawWorld(C);
     if (NEONB[n] && !op) { ctx.globalAlpha = Math.min(1, al * 1.7); drawWorld(NEONB[n]); } ctx.restore(); });
+}
+function drawGuessNote() {
+  const gr = growthNow(), shown = gr ? [gr.g.layer, gr.prev && gr.prev.layer] : [curTrench];
+  Object.entries(S.trenchGuess || {}).forEach(([n, g]) => { if (!shown.includes(n) || !GUESS[n]) return;
+    const q = P(g.note.x, g.note.y); if (!(q.s > 0)) return;
+    ctx.save(); ctx.shadowColor = '#c08cff'; ctx.shadowBlur = 12; outlined(ctx, 'NOT VERIFIED TRENCHES IN PURPLE', q.x, q.y, 15, { fill: '#e6c8ff' });
+    ctx.shadowBlur = 0; outlined(ctx, g.why || '', q.x, q.y + 18, 11, { fill: '#d8c4f0', weight: 'italic' }); ctx.restore(); });
 }
 function drawGrowthLabel() {
   const gr = growthNow(); if (!gr || !gr.g.label) return;
@@ -1071,7 +1082,7 @@ function render() {
   });
   if (!document.querySelector('.overlay.show, #debrief.show')) { drawClockStamp(); drawLegend(); }   // not over the debrief
   if (BR && mode === 'intro') BR.draw(ctx);
-  drawGrowthLabel();
+  drawGuessNote(); drawGrowthLabel();
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];

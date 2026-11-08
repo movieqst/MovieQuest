@@ -357,6 +357,8 @@ Object.assign(window.VIMY_SCENARIO, {
     world: { w: 2400, h: 1800 },
     terrain: 'terrain-battle.jpg',
     trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1916-12.png', 'trenches-1917-03.png'], trenchNeonAlpha: .6,
+    // February 1916: no trench map of the south end for that date has been found, so the October 1916 trenches stand in there, in purple
+    trenchGuess: { 'trenches-1916-02.png': { file: 'trenches-1916-02-guess.png', note: { x: 1350, y: 1150 }, why: 'Guessed from the October 1916 map: no February 1916 map of this part found' } },
     defaultTrench: 'trenches-1917-03.png', introTrench: 'trenches-1917-03.png', trenchAlpha: .45,
     duration: 182, commandDuration: 300, commandFocus: { x: 1100, y: 800 },
     battlefield: {
