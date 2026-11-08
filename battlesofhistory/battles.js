@@ -174,17 +174,17 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'tyre', progress: 55, lat: 33.27, lon: 35.2,
+    folder: 'tyre', progress: 100, lat: 33.27, lon: 35.2,
     order: 15,
     era: 'Classical Antiquity',
-    title: 'Battle of Tyre',
+    title: 'Siege of Tyre',
     date: '332 BCE, about seven months', year: -332,
     place: 'Tyre, an island city off the coast of Phoenicia (today in Lebanon)',
     sides: 'The Macedonian army of Alexander III vs. the Tyrians under King Azemilcus',
-    blurb: 'Tyre refuses Alexander entry, trusting in its island walls half a mile out to sea. For seven months his army builds a causeway across the strait while the Tyrians fight back with fireships and sorties, until a fleet of Phoenician and Cypriot ships helps him breach the walls.',
+    blurb: 'Tyre refuses Alexander entry, trusting in its island walls half a mile out to sea. For seven months his army builds a causeway across the strait while the Tyrians fight back with a fireship, divers and a surprise sortie, until a fleet of Phoenician and Cypriot ships helps him breach the walls.',
     cover: 'images/cover.jpg', coverPos: '70% 40%',
     coverCredit: 'Original illustration for this project (AI-generated): an artist’s impression, not evidence',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'fishcreek', progress: 85, lat: 52.54, lon: -106.15,
