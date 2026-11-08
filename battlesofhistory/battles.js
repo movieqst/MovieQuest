@@ -135,7 +135,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sixday', progress: 50, lat: 31.78, lon: 35.23,
+    folder: 'sixday', progress: 70, lat: 31.78, lon: 35.23,
     order: 12,
     era: 'Arab–Israeli Wars',
     title: 'The Six-Day War',
@@ -174,7 +174,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'tyre', progress: 35, lat: 33.27, lon: 35.2,
+    folder: 'tyre', progress: 55, lat: 33.27, lon: 35.2,
     order: 15,
     era: 'Classical Antiquity',
     title: 'Battle of Tyre',
@@ -187,7 +187,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'fishcreek', progress: 20, lat: 52.54, lon: -106.15,
+    folder: 'fishcreek', progress: 85, lat: 52.54, lon: -106.15,
     order: 16,
     era: 'Canada, 1885',
     title: 'Battle of Fish Creek',
@@ -197,7 +197,7 @@ window.BATTLES = [
     blurb: 'Dumont\u2019s fighters ambush Middleton\u2019s column from a wooded coulee, stop it in its tracks and hold their ground until nightfall. Middleton waits two weeks before marching on Batoche.',
     cover: 'images/cover.jpg', coverPos: '50% 50%',
     coverCredit: 'The Battle of Fish Creek, coloured lithograph, 1885. Public domain',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'bunkerhill', progress: 10, lat: 42.3763, lon: -71.0608,
@@ -210,6 +210,19 @@ window.BATTLES = [
     blurb: 'On the night of 16 June, New England militia dig a redoubt on Breed\u2019s Hill above British-held Boston. By afternoon the Royal Navy and Howe\u2019s infantry are crossing the Charles River to storm it. The British take the hill, but at a terrible cost.',
     cover: 'images/cover.jpg', coverPos: '50% 45%',
     coverCredit: 'John Trumbull, The Battle of Bunker\u2019s Hill, June 17, 1775, oil on canvas, 1786. Yale University Art Gallery, Trumbull Collection, via Wikimedia Commons, public domain. A later painting, not evidence of the battle',
+    status: 'in progress'
+  },
+  {
+    folder: 'redriver', progress: 5, lat: 49.8873, lon: -97.1316,
+    order: 18,
+    era: 'Canada, 1869–1870',
+    title: 'Red River Resistance',
+    date: 'October 1869 – August 1870', year: 1869,
+    place: 'The Red River Settlement and Upper Fort Garry (today Winnipeg, Manitoba, Canada)',
+    sides: 'The Métis provisional government of Louis Riel vs. the Canadian government and its supporters at Red River',
+    blurb: 'When Canada buys Rupert’s Land from the Hudson’s Bay Company without asking the people who live there, the Métis of Red River stop the surveyors, seize Upper Fort Garry and form a provisional government under Louis Riel. Their negotiations bring Manitoba into Canada, but the execution of Thomas Scott and the military expedition of 1870 send Riel into exile.',
+    cover: 'images/cover.jpg', coverPos: '50% 30%',
+    coverCredit: 'Louis Riel, photograph by I. Bennetto & Co., Winnipeg (probably about 1884). University of Manitoba Archives, PC 107. Public domain. A placeholder: later than the events',
     status: 'in progress'
   }
 ];

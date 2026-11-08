@@ -60,7 +60,7 @@ Major-General Frederick Middleton and the Métis and First Nations fighters of L
 ### 6. The armies and the ground
 - Middleton counted 886 men on land: militia from Winnipeg, Toronto and Ontario towns, mounted scouts, and gunners of A Battery. He had four nine-pounder guns, a Gatling gun, and about fifty more men on the steamer. *(established; H89)*
 - The defenders were Métis, Cree and Dakota fighters, perhaps 250 to 300 at the start. Their numbers changed as the battle went on. They had hunting rifles, shotguns and old muzzle-loaders, and little ammunition. *(estimate; H89)*
-- The village lay on the east bank of the river. To the south, the church and the rectory stood on higher ground, with the cemetery beyond. Along the wooded slopes and ravines, the defenders had dug rifle pits: shallow holes with a low wall of earth and logs, hard to see and hard to hit. *(established; the positions on our map, reconstruction)*
+- The village lay on the east bank of the river. To the south, the church and the rectory stood on higher ground, with the cemetery beyond. Along the wooded slopes and ravines, the defenders had dug rifle pits: holes three or four feet deep with a low wall of earth and logs, hard to see and hard to hit. *(established; Stanley 1936, p. 369; the positions on our map, reconstruction)*
 
 ---
 
@@ -92,7 +92,7 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
    Middleton rides out with Boulton's mounted men and Howard's Gatling gun onto the open prairie to the north, the Jolie Prairie. The Gatling fires a few rounds into the rifle pits. Defenders hurry across to meet him, and he sees that the line in front of his infantry grows thin when they do. *(established; H89 pp. 67–70)*
 
 9. **Running short** · 10 and 11 May
-   In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Hildebrandt writes that some fired nails when the bullets made from scavenged lead ran out; how often that happened is uncertain. *(account; H89 p. 73)*
+   In the pits, cartridges are running out. Witnesses describe men searching the ground the soldiers have left for dropped cartridges, and melting down lead. Hildebrandt writes that some fired nails when the bullets made from scavenged lead ran out, and Bishop Grandin later said they were reduced to firing small stones and nails. How often that happened is uncertain. *(account; H89 p. 73; Grandin, in Stanley 1936, p. 370)*
 
 10. **The feint** · Morning, 12 May
     Middleton tries the trick again. He leads the mounted men, a nine-pounder and the Gatling out onto the Jolie Prairie, to draw the defenders north. The infantry are to attack when they hear his guns. A rider comes out under a white flag: John Astley, a surveyor held prisoner by Riel, with a letter warning that if the women and children are harmed, the prisoners will be too. Middleton answers that the families should gather in one house under a white flag. *(established; H89 pp. 71–72)*
@@ -112,12 +112,15 @@ All the chapters play on the battle map. The positions follow Hildebrandt's maps
 ## The outcome
 - The army won. Hildebrandt counts twenty-five dead in the four days: soldiers, Métis and First Nations. *(estimate; H89, introduction)*
 - By the last day, only 50 to 60 defenders were still fighting, with about 40 rifles between them; the rest had double-barrelled shotguns. *(estimate; H89 p. 73)*
+- Middleton walked over the ground afterwards. He wrote that he was "astonished at the strength of the position and at the ingenuity and care displayed in the construction of the rifle pits." *(account; Middleton, in Stanley 1936, p. 369)*
 
 ## The aftermath (debrief)
-- On the 15th of May, Louis Riel gave himself up. Gabriel Dumont stayed near Batoche for some days; when he heard that Riel had surrendered, he escaped to the United States. *(established; DCB)*
-- Poundmaker surrendered at the end of May, and Big Bear in early July. Both were sent to prison. *(established)*
-- Riel was tried for high treason at Regina. The jury found him guilty but asked for mercy. He was hanged on the 16th of November 1885. Eleven days later, on the 27th of November, six Cree and two Nakoda (Assiniboine) men were hanged together at Battleford. *(established; Parks Canada)*
+- On the last day Riel had written on the back of one of Middleton's messages: "I do not like war." On the 13th of May Middleton wrote that he would receive Riel and his council and protect them until the government decided their case. Riel answered: "My council are dispersed. I wish you would let them go quiet and free… I will go to fulfil God's will." On the 15th of May he gave himself up to two scouts. *(account; the letters, in Stanley 1936, p. 371)*
+- Gabriel Dumont refused to surrender. "I still have ninety cartridges to spend on his men," he answered. He stayed near Batoche for some days, then escaped to the United States. *(account; Dumont, in Stanley 1936, p. 372; DCB)*
+- Poundmaker came in to Battleford on the 26th of May, and Big Bear gave himself up at Fort Carlton on the 2nd of July. Both were sent to prison, and both died soon after their release in 1887. *(established; Stanley 1936, pp. 373, 377, 379)*
+- Riel was tried for high treason at Regina, before a jury of six English-speaking men. His lawyers argued that he was insane; Riel himself rejected that defence in his speeches to the jury. The jury found him guilty but asked for mercy. He was hanged on the 16th of November 1885. Eleven days later, on the 27th of November, six Cree and two Nakoda (Assiniboine) men were hanged together at Battleford. *(established; Parks Canada)*
 - Riel's death divided Canada for a generation, French against English, Catholic against Protestant. *(established)*
+- For the Métis of Batoche, the war's end brought loss. Many homes had been burned or looted. Some sold the land scrip they were given for far less than it was worth, and many moved away, north and west. *(established; Stanley 1936, p. 378)*
 - Dumont later toured the United States with Buffalo Bill's Wild West show. After an amnesty he came home, and he died near Batoche in 1906. *(established; to check)*
 - Today Batoche is a National Historic Site. Riel, once hanged as a traitor, is remembered as the founder of Manitoba, and statues of Riel and Dumont stand in Winnipeg and Saskatoon. *(established)*
 
@@ -204,3 +207,9 @@ Answer as a list of changes, chapter by chapter. Do not rewrite the whole script
   
   These were added or firmed up in event-2, event-8 to event-12 and the outcome.
 - **Not found in the text** (the scan's text layer is patchy): Ouellette's age, the prisoners' identities and the wedding-ring witness. They stay tagged as accounts.
+
+## Change log, draft 3 (7 November 2026, from Stanley, *The Birth of Western Canada*, pp. 366–385)
+- **Clips changed (to re-record):** intro-6, event-9 and outcome (3 per voice), and the same three in French.
+- Intro 6: rifle pits "three or four feet deep" (not "shallow").
+- Event 9: Bishop Grandin's "small stones and nails" beside Hildebrandt.
+- Outcome and aftermath: Middleton "astonished" at the rifle pits; Riel's "I do not like war" and his letter of surrender; surrender to two scouts; Dumont's "ninety cartridges"; Poundmaker 26 May, Big Bear 2 July, both freed 1887; the six-man jury and Riel rejecting the insanity plea; what the war's end meant for the Métis of Batoche.
