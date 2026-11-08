@@ -383,12 +383,24 @@ function drawTrenches(drawWorld) {
     if (NEONB[n] && !op) { ctx.globalAlpha = Math.min(1, al * 1.7); drawWorld(NEONB[n]); } ctx.restore(); });
 }
 function drawGuessNote() {
+  guessHit = null;
   const gr = growthNow(), shown = gr ? [gr.g.layer, gr.prev && gr.prev.layer] : [curTrench];
   Object.entries(S.trenchGuess || {}).forEach(([n, g]) => { if (!shown.includes(n) || !GUESS[n]) return;
     const q = P(g.note.x, g.note.y); if (!(q.s > 0)) return;
-    ctx.save(); ctx.shadowColor = '#c08cff'; ctx.shadowBlur = 12; outlined(ctx, 'NOT VERIFIED TRENCHES IN PURPLE', q.x, q.y, 15, { fill: '#e6c8ff' });
-    ctx.shadowBlur = 0; outlined(ctx, g.why || '', q.x, q.y + 18, 11, { fill: '#d8c4f0', weight: 'italic' }); ctx.restore(); });
+    ctx.save(); ctx.shadowColor = '#c08cff'; ctx.shadowBlur = 12; outlined(ctx, 'NOT VERIFIED TRENCHES IN PURPLE  ⓘ', q.x, q.y, 15, { fill: '#e6c8ff' });
+    ctx.shadowBlur = 0; outlined(ctx, (g.why || '') + ' · click for details', q.x, q.y + 18, 11, { fill: '#d8c4f0', weight: 'italic' }); ctx.restore();
+    guessHit = { x0: q.x - 190, x1: q.x + 190, y0: q.y - 14, y1: q.y + 26, g }; });
 }
+// The note opens a box that says what the purple means and where the missing map is, so it can be found later.
+let guessHit = null;
+function showGuessInfo(g) {
+  let box = $('guessInfo'); if (!box) { box = document.createElement('div'); box.id = 'guessInfo'; canvas.parentElement.appendChild(box);
+    box.style.cssText = 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:45;width:min(460px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;background:#140f1e;border:1px solid #9a6ad8;border-radius:10px;padding:14px 16px;color:#eee;font-size:14px;line-height:1.45;box-shadow:0 8px 30px rgba(0,0,0,.6)';
+    box.addEventListener('click', e => { if (e.target.closest('.x')) box.remove(); e.stopPropagation(); }); }
+  box.innerHTML = `<button class="x" style="float:right;background:none;border:0;color:#ccc;font-size:18px;cursor:pointer">✕</button>${g.info || ''}`;
+}
+canvas.addEventListener('click', e => { if (!guessHit) return; const r = canvas.getBoundingClientRect(), x = (e.clientX - r.left) * canvas.width / r.width / (window.devicePixelRatio || 1), y = (e.clientY - r.top) * canvas.height / r.height / (window.devicePixelRatio || 1);
+  if (x >= guessHit.x0 && x <= guessHit.x1 && y >= guessHit.y0 && y <= guessHit.y1) { e.stopImmediatePropagation(); showGuessInfo(guessHit.g); } }, true);
 function drawGrowthLabel() {
   const gr = growthNow(); if (!gr || !gr.g.label) return;
   ctx.save(); ctx.globalAlpha = .4 + .6 * gr.f; ctx.shadowColor = '#7fe9ff'; ctx.shadowBlur = 18;

@@ -358,7 +358,11 @@ Object.assign(window.VIMY_SCENARIO, {
     terrain: 'terrain-battle.jpg',
     trenchLayers: ['trenches-1916-02.png', 'trenches-1916-10.png', 'trenches-1916-12.png', 'trenches-1917-03.png'], trenchNeonAlpha: .6,
     // February 1916: no trench map of the south end for that date has been found, so the October 1916 trenches stand in there, in purple
-    trenchGuess: { 'trenches-1916-02.png': { file: 'trenches-1916-02-guess.png', note: { x: 1350, y: 1150 }, why: 'Guessed from the October 1916 map: no February 1916 map of this part found' } },
+    trenchGuess: { 'trenches-1916-02.png': { file: 'trenches-1916-02-guess.png', note: { x: 1350, y: 1150 }, why: 'Guessed from the October 1916 map: no February 1916 map of this part found',
+      info: '<b style="color:#e6c8ff;font-family:Cinzel,Georgia,serif">Not verified: the trenches in purple</b>' +
+        '<p>For February 1916 we have a British trench map of the north end of the ridge only. For the south end (Neuville-St-Vaast, Thélus, Roclincourt) no map of that date has been found online, so these trenches are copied from the next map we have, of October 1916, and drawn in purple: <span style="color:#e146c8">reddish purple</span> for German trenches, <span style="color:#8c6eff">bluish purple</span> for British and French. The front line here probably did not move much between those dates, but the smaller trenches will differ.</p>' +
+        '<p><b>The map that would fix it:</b> sheet 51B NW 1 “Roclincourt”, 1:10,000, trenches as at <b>16 February 1916</b> (Ordnance Survey, GSGS 3062). One copy is known: <b>Australian War Memorial</b>, Canberra, library call number <b>G5830 s10</b>, record <a href="https://www.awm.gov.au/collection/LIB100005557" target="_blank" rel="noopener" style="color:#c8a8ff">LIB100005557</a>. Not scanned online. The National Library of Scotland’s earliest edition of this sheet is October 1916.</p>' +
+        '<p class="muted" style="color:#a99bb8">Have a scan of this map? It is public domain (1916). Please let us know.</p>' } },
     defaultTrench: 'trenches-1917-03.png', introTrench: 'trenches-1917-03.png', trenchAlpha: .45,
     duration: 182, commandDuration: 300, commandFocus: { x: 1100, y: 800 },
     battlefield: {
