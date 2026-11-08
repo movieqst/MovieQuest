@@ -517,11 +517,12 @@ Object.assign(window.TYRE_SCENARIO, {
   const set = (i, o) => Object.assign(EV[i], o);
   const R = S.record;
   // 1. The mole begins: from the beach, the builders carry stones out into the shallows
-  set(0, { trenches: 'mole-1.png', zoom: 'fit', markers: [ { x: H1 + 30, y: MY - 40, label: 'the mole begins', side: 'allied' }, { x: 2200, y: 640, label: 'Old Tyre (place approximate)' } ], orders: [
+  const ART = (file, caption) => ({ at: 0, file, caption, credit: 'AI-generated (ChatGPT) for this project: an artist’s impression, not evidence.' });
+  set(0, { media: ART('art-mole-carts.jpg', 'Ox-carts bring stones from the ruins of Old Tyre and timber from the mountains out along the new mole. Diodorus says the stones came from Old Tyre; Curtius adds timber from Mount Lebanon. No writer says how they were carried: carts are our best guess.'), trenches: 'mole-1.png', zoom: 'fit', markers: [ { x: H1 + 30, y: MY - 40, label: 'the mole begins', side: 'allied' }, { x: 2200, y: 640, label: 'Old Tyre (place approximate)' } ], orders: [
     { id: 'workers', to: head(H1), speed: 20, state: 'move' }, { id: 'workers2', to: { x: 1680, y: MY + 30 }, speed: 18, state: 'move' },
     { leader: 'alexander', to: { x: 1700, y: 830 }, speed: 20 } ] });
   // 2. The sea fights back: Tyrian triremes row along the mole; the towers go up at its head
-  set(1, { trenches: 'mole-2.png', focus: { x: 1380, y: MY }, zoom: 1.5, markers: [ { x: H2 + 30, y: MY - 70, label: 'two towers, covered with hides', side: 'allied' } ], orders: [
+  set(1, { media: ART('art-mole-builders.jpg', 'Builders carry stones and baskets of earth and drive stakes into the mud, while Tyrian archers shoot at them from boats. Arrian says the stakes went in easily and the mud held the stones together.'), trenches: 'mole-2.png', focus: { x: 1380, y: MY }, zoom: 1.5, markers: [ { x: H2 + 30, y: MY - 70, label: 'two towers, covered with hides', side: 'allied' } ], orders: [
     { id: 'workers', to: head(H2), speed: 24, state: 'move' }, { obj: 'tower1', visible: true, delay: 3 }, { obj: 'tower2', visible: true, delay: 3.5 },
     { id: 'engines', visible: true, at: { x: H2 + 80, y: MY }, state: 'attack', delay: 4 },
     { id: 'tfN', to: { x: 1380, y: MY - 80 }, via: [NMOUTH, { x: 1200, y: 700 }], speed: 60, state: 'attack' },
