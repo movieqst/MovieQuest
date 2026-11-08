@@ -16,5 +16,5 @@
 
 ## Notes on map 3 (Eastern Slavonia)
 - The JNA's main advance came from Šid in Serbia on 20/21 September 1991 (OG 3/1, 1st Guards Mechanized Division), heading north-west towards Vinkovci and Vukovar.
-- The Croatian 1st Osijek Operational Zone held the line from Osijek down past Vinkovci (brigades 106, 107/Armor-Mech 117, 109, 122, 124, 130, 131, 132, 135, 160, 3rd Guards elements); Osijek itself was besieged from the north.
+- The Croatian 1st Osijek Operational Zone held the line from Osijek down past Vinkovci (brigades 101, 105, 106, 109, 122, 124, 130, 131, 132, 135, 160, the 117th armoured-mechanized unit and 3rd Guards elements); Osijek itself was besieged from the north.
 - Vukovar shows as a pocket on the Danube, with its own small front line (30 September and 30 October dashes) separate from the main front to the west.
