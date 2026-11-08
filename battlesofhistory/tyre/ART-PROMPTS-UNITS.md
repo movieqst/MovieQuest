@@ -57,3 +57,9 @@ HISTORY (332 BCE, eastern Mediterranean, summer):
 - Row 4 (miners tunnelling under a wall): **not for Tyre** (an island: no mining). Alexander did mine the walls at **Gaza** two months later. Keep for that.
 
 **previous-review files:** already decided earlier and in use (quinquereme, ram pair, fireship). `ram-ship-draft-NEEDS-REVIEW.png` stays superseded by the accepted ram sheets.
+
+### Trireme damage, 3 versions (8 November 2026)
+- **v1: ACCEPT** → `images/units/ship-tyrian-trireme-damage.png` (replaces the red-sail sheet). Clearest at sprite size: the hole and the water pouring in are easy to see in row 2, the fire grows through row 3, and row 4 ends in floating wreckage.
+- v2: good too (tearing sail, strong list), but the hole is smaller. Kept as a spare in the review zip.
+- v3: the holes are hard to see at sprite size.
+- **Remaining mismatch:** these have the **dolphin** sail; the accepted rowing sheet (`ship-tyrian-trireme.png`) still has the **trident**. Redo the rowing sheet with the dolphin sail, same four directions, or edit the emblem by hand.
