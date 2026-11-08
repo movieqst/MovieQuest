@@ -12204,5 +12204,109 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "gaither-how-great-thou-art-cd",
+    "title": "Bill & Gloria Gaither Present: How Great Thou Art",
+    "year": 2007,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/gaither-how-great-thou-art-cd-1.jpg",
+    "photos": [
+      "images/gaither-how-great-thou-art-cd-1.jpg",
+      "images/gaither-how-great-thou-art-cd-2.jpg",
+      "images/gaither-how-great-thou-art-cd-3.jpg",
+      "images/gaither-how-great-thou-art-cd-4.jpg",
+      "images/gaither-how-great-thou-art-cd-5.jpg",
+      "images/gaither-how-great-thou-art-cd-6.jpg",
+      "images/gaither-how-great-thou-art-cd-7.jpg",
+      "images/gaither-how-great-thou-art-cd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Gaither%20How%20Great%20Thou%20Art%20Homecoming%20CD&campid=5339133571&customid=gaither-how-great-thou-art-cd",
+    "price": null,
+    "categories": [
+      "music"
+    ],
+    "artist": "Bill & Gloria Gaither and the Homecoming Friends",
+    "genre": "Southern Gospel / Hymns",
+    "label": "Spring House / Gaither Music Group",
+    "released": "2007",
+    "producers": "Bill Gaither; music director Ben Speer",
+    "titleNote": "Gaither Gospel Series CD (SHD2726) / 2007",
+    "tagline": "Music CD / Gaither Homecoming / How Great Thou Art / Great Hymns / Southern Gospel / 2000s",
+    "desc": "Experience the great hymns with the Homecoming Friends. Bill & Gloria Gaither present 16 beloved hymns, from \"How Great Thou Art\" and \"It Is Well with My Soul\" to \"Great Is Thy Faithfulness\" and \"Leaning on the Everlasting Arms\", sung by the Oak Ridge Boys, David Phelps, the Crabb Family, Wintley Phipps, Janet Paschal, Ivan Parker and more.",
+    "tracks": [
+      "How Great Thou Art (Reggie Smith, Shane McConnell, Wesley Pritchard, Gene McDonald)",
+      "Down at the Cross (TaRanda Greene, the Hayes Family)",
+      "Shall We Gather at the River (Buddy Greene, Jeff Taylor, Gordon Mote)",
+      "God Leads Us Along (Reggie & Ladye Love Smith, Joy Gardner)",
+      "God Will Take Care of You (the Oak Ridge Boys)",
+      "What a Friend We Have in Jesus (Larry Ford)",
+      "It Is Well with My Soul (Wintley Phipps)",
+      "Fairest Lord Jesus (Janet Paschal)",
+      "I'd Rather Have Jesus (the Crabb Family)",
+      "O, How I Love Jesus (the Homecoming Friends)",
+      "Great Is Thy Faithfulness (Wes Hampton)",
+      "There Is a Fountain Filled with Blood (David Phelps)",
+      "What a Precious Friend Is He (Lily Fern Weatherford)",
+      "Since Jesus Came into My Heart (Doyle Lawson & Quicksilver)",
+      "Leaning on the Everlasting Arms (Solveig Henderson)",
+      "Thank You (Ivan Parker)"
+    ],
+    "trivia": [
+      {
+        "heading": "A Swedish Hymn",
+        "text": "\"How Great Thou Art\" began as the Swedish poem \"O Store Gud\", written by Carl Boberg in 1885. Stuart K. Hine's English version became one of the best-loved hymns in the world."
+      },
+      {
+        "heading": "The Homecoming Series",
+        "text": "Bill and Gloria Gaither's Homecoming recordings bring together generations of gospel singers to sing around the piano, and have become one of the best-selling series in gospel music."
+      },
+      {
+        "heading": "Sixteen Great Hymns",
+        "text": "This 2007 collection features 16 classic hymns, with guests including the Oak Ridge Boys, David Phelps, the Crabb Family, Wintley Phipps, Doyle Lawson & Quicksilver and Janet Paschal."
+      },
+      {
+        "heading": "Recorded with an Orchestra",
+        "text": "Produced by Bill Gaither with music director Ben Speer, the album features a full orchestra conducted by Lari Goss."
+      }
+    ],
+    "tidbits": [
+      "\"How Great Thou Art\" began as the Swedish poem \"O Store Gud\", written by Carl Boberg in 1885. Stuart K. Hine's English version became one of the best-loved hymns in the world.",
+      "Bill and Gloria Gaither's Homecoming recordings bring together generations of gospel singers to sing around the piano, and have become one of the best-selling series in gospel music.",
+      "This 2007 collection features 16 classic hymns, with guests including the Oak Ridge Boys, David Phelps, the Crabb Family, Wintley Phipps, Doyle Lawson & Quicksilver and Janet Paschal.",
+      "Produced by Bill Gaither with music director Ben Speer, the album features a full orchestra conducted by Lari Goss."
+    ],
+    "copies": [
+      {
+        "id": "gaither-how-great-thou-art-cd-1",
+        "added": "2026-11-08",
+        "format": "CD",
+        "edition": "Spring House / Gaither Music Group CD (SHD2726)",
+        "photos": [
+          "images/gaither-how-great-thou-art-cd-1.jpg",
+          "images/gaither-how-great-thou-art-cd-2.jpg",
+          "images/gaither-how-great-thou-art-cd-3.jpg",
+          "images/gaither-how-great-thou-art-cd-4.jpg",
+          "images/gaither-how-great-thou-art-cd-5.jpg",
+          "images/gaither-how-great-thou-art-cd-6.jpg",
+          "images/gaither-how-great-thou-art-cd-7.jpg",
+          "images/gaither-how-great-thou-art-cd-8.jpg"
+        ],
+        "gif": "images/gaither-how-great-thou-art-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Jewel case with light shelf wear; cover art clean.",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Original front insert (tracklist and credits inside) and back card.",
+          "notes": "Spring House Productions / Gaither Music Group (2007), catalogue SHD2726, UPC 617884272623, distributed in the USA by EMI CMG Distribution, printed in USA. Gaither Gospel Series. 16 tracks. Executive producer/producer Bill Gaither, music director Ben Speer, orchestra conductor Lari Goss. Recorded and mastered at Gaither Studios."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
