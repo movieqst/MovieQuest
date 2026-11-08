@@ -608,6 +608,29 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'spear', state: 'hold' }, { id: 'hyp', to: { x: 820, y: 1100 }, speed: 18, state: 'move' }, { id: 'phalanx', state: 'hold' } ] });
   EV[14].end = false;
 
+  // Wider maps (engine: S.altMaps; a slide or chapter's `altMap`) when the narrator talks about other cities. Places from
+  // their latitude and longitude (images/layout/maps.json): campaign 29.4–37.9 N, 26.9–40.5 E; coast 32.75–35.25 N, 34.2–38.2 E.
+  S.altMaps = { campaign: 'terrain-campaign.jpg', coast: 'terrain-coast.jpg' };
+  const CM = { issus: { x: 1634, y: 224 }, aradus: { x: 1579, y: 645 }, byblos: { x: 1542, y: 801 }, sidon: { x: 1493, y: 918 }, tyre: { x: 1462, y: 980 },
+    gaza: { x: 1334, y: 1355 }, egypt: { x: 994, y: 1453 }, cyprus: { x: 1234, y: 576 }, rhodes: { x: 233, y: 311 }, lycia: { x: 476, y: 307 }, soli: { x: 1347, y: 244 }, mallus: { x: 1512, y: 244 } };
+  const CO = { aradus: { x: 990, y: 284 }, byblos: { x: 863, y: 814 }, sidon: { x: 698, y: 1215 }, tyre: { x: 595, y: 1425 }, antileb: { x: 1104, y: 1116 }, damascus: { x: 1248, y: 1253 } };
+  const ring = (p, label, r, o) => ({ ring: Object.assign({}, p, { label, r: r || 40 }, o || {}) });
+  // Intro 2, "After Issus": the eastern Mediterranean, the march down the coast, the cities as they are named
+  Object.assign(S.intro[1], { altMap: 'campaign', focus: { x: 1420, y: 760 }, zoom: .95, cues: [
+    Object.assign({ on: 'at Issus' }, ring(CM.issus, 'Issus, 333 BCE', 45)),
+    { on: 'marched south', arrow: { pts: [[1634, 250], [1600, 420], [1585, 620], [1545, 800], [1495, 915]], label: 'Alexander marches south', col: '#c0392b' } },
+    Object.assign({ on: 'Aradus did' }, ring(CM.aradus, 'Aradus', 30)), Object.assign({ on: 'and Byblos' }, ring(CM.byblos, 'Byblos', 30)),
+    Object.assign({ on: 'people of Sidon' }, ring(CM.sidon, 'Sidon', 30)), Object.assign({ on: 'Tyre also sent' }, ring(CM.tyre, 'Tyre', 34, { lx: -70 })),
+    Object.assign({ on: 'Cypriot ships' }, ring(CM.cyprus, 'Cyprus', 60)),
+    { on: 'road to Egypt', arrow: { pts: [[1455, 1010], [1400, 1200], [1330, 1360], [1000, 1450]], label: 'the road to Egypt', col: '#e9c77a' } } ] });
+  // Chapter 5, the fleet changes sides: where the ships came from
+  Object.assign(EV[4], { altMap: 'campaign', zoom: 'fit', markers: [ Object.assign({ label: 'Sidon: Alexander gathers the fleet', side: 'allied' }, CM.sidon), Object.assign({ label: 'Aradus' }, CM.aradus), Object.assign({ label: 'Byblos' }, CM.byblos),
+    Object.assign({ label: 'Rhodes: ten ships' }, CM.rhodes), Object.assign({ label: 'Lycia: ten' }, CM.lycia), Object.assign({ label: 'Soli: three' }, CM.soli), Object.assign({ label: 'Mallus: three' }, CM.mallus),
+    Object.assign({ label: 'Cyprus: about 120' }, CM.cyprus), Object.assign({ label: 'Tyre', side: 'french' }, CM.tyre) ] });
+  // Chapter 6, ten days in the mountains: Sidon and the Antilebanon
+  Object.assign(EV[5], { altMap: 'coast', zoom: 'fit', markers: [ Object.assign({ label: 'Sidon', side: 'allied' }, CO.sidon), Object.assign({ label: 'the Antilebanon mountains (area approximate)', side: 'allied' }, CO.antileb),
+    Object.assign({ label: 'Tyre, still besieged', side: 'french' }, CO.tyre) ] });
+
   // The introduction's map: the island, the harbours and the temple the narrator names
   Object.assign(S.intro[2], { markers: [ Object.assign({ label: 'harbour toward Sidon' }, NHARB), Object.assign({ label: 'harbour toward Egypt' }, SHARB), Object.assign({ label: 'temple of Melqart (place approximate)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], focus: { x: 1100, y: 900 }, zoom: 1.0 });
   Object.assign(S.intro[4], { markers: [ Object.assign({ label: 'Alexander’s army, on the mainland', side: 'allied' }, CAMP), Object.assign({ label: 'Tyre: walls and fleet', side: 'french' }, { x: 800, y: 760 }) ] });
