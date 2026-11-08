@@ -164,7 +164,7 @@ window.BATTLES = [
     folder: 'batoche', progress: 90, lat: 52.75, lon: -106.12,
     order: 14, readyOrder: 14,
     era: 'Canada, 1885',
-    title: 'Battle of Batoche',
+    title: 'Batoche',
     date: '9–12 May 1885', year: 1885,
     place: 'Batoche, on the South Saskatchewan River (today in Saskatchewan, Canada)',
     sides: 'The North-West Field Force of Major-General Frederick Middleton vs. the Métis and First Nations fighters of Louis Riel and Gabriel Dumont',

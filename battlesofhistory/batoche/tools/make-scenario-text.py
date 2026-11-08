@@ -80,7 +80,7 @@ head = f"""/*
 window.BATOCHE_SCENARIO = window.BATOCHE_SCENARIO || {{}};
 Object.assign(window.BATOCHE_SCENARIO, {{
   id: 'batoche',
-  title: 'Battle of Batoche',
+  title: 'Batoche',
   date: '9–12 May 1885',
   place: 'Batoche, on the South Saskatchewan River (today in Saskatchewan, Canada)',
   tagline: 'The North-West Field Force vs. the Métis and First Nations fighters',

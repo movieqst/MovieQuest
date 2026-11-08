@@ -9,7 +9,7 @@
 window.BATOCHE_SCENARIO = window.BATOCHE_SCENARIO || {};
 Object.assign(window.BATOCHE_SCENARIO, {
   id: 'batoche',
-  title: 'Battle of Batoche',
+  title: 'Batoche',
   date: '9–12 May 1885',
   place: 'Batoche, on the South Saskatchewan River (today in Saskatchewan, Canada)',
   tagline: 'The North-West Field Force vs. the Métis and First Nations fighters',
@@ -397,7 +397,7 @@ Object.assign(window.BATOCHE_SCENARIO, {
   const RIVER = [{ x: 1540, y: 1790 }, { x: 1540, y: 1520 }, { x: 1440, y: 1400 }, { x: 1120, y: 1380 }, { x: 940, y: 1240 }, { x: 860, y: 1000 }, { x: 720, y: 800 }, FERRY];
   Object.assign(S, {
     titleCard: {
-      title: 'BATTLE OF BATOCHE', date: '9–12 May 1885',
+      title: 'BATOCHE', date: '9–12 May 1885',
       dateNote: 'For four days a Canadian government army presses against the rifle pits dug by the Métis around their village on the South Saskatchewan. On the fourth day it breaks through, and the North-West Resistance of 1885 comes to an end.',
       dateRef: 'Walter Hildebrandt, The Battle of Batoche (Parks Canada, 1989); Dictionary of Canadian Biography',
       place: 'Batoche, on the South Saskatchewan River, North-West Territories (today Saskatchewan, Canada)',
