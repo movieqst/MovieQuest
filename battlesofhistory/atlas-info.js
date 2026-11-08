@@ -431,7 +431,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "dunkirk",
-"battleTitle": "Dunkirk",
+"battleTitle": "Withdrawal at Dunkirk",
 "year": 1940,
 "status": "ready",
 "file": "dunkirk/images/map1.jpg",
@@ -442,7 +442,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "dunkirk",
-"battleTitle": "Dunkirk",
+"battleTitle": "Withdrawal at Dunkirk",
 "year": 1940,
 "status": "ready",
 "file": "dunkirk/images/map2.jpg",
@@ -453,7 +453,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "dunkirk",
-"battleTitle": "Dunkirk",
+"battleTitle": "Withdrawal at Dunkirk",
 "year": 1940,
 "status": "ready",
 "file": "dunkirk/images/map3.jpg",
@@ -464,7 +464,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "dunkirk",
-"battleTitle": "Dunkirk",
+"battleTitle": "Withdrawal at Dunkirk",
 "year": 1940,
 "status": "ready",
 "file": "dunkirk/images/establish-1-channel.jpg",
@@ -475,7 +475,7 @@ window.BH_ATLAS = [
 },
 {
 "battle": "dunkirk",
-"battleTitle": "Dunkirk",
+"battleTitle": "Withdrawal at Dunkirk",
 "year": 1940,
 "status": "ready",
 "file": "dunkirk/images/establish-2-channel-smoke.jpg",

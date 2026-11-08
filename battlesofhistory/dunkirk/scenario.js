@@ -32,13 +32,13 @@ const MOLE_TIP = { x: 829, y: 552 }, MOLE_BASE = { x: 900, y: 722 }, SEAWARD = -
 
 window.DUNKIRK_SCENARIO = {
   id: 'dunkirk',
-  title: 'Dunkirk evacuation',
+  title: 'Withdrawal at Dunkirk',
   date: '26 May – 4 June 1940',
   place: 'Dunkirk, northern France',
   tagline: 'The British, French and Belgian armies against the German Army and Luftwaffe',
   duration: 216,
   titleCard: {
-    title: 'DUNKIRK',
+    title: 'WITHDRAWAL AT DUNKIRK',
     date: '26 May – 4 June 1940',
     place: 'Dunkirk and the Strait of Dover',
     sides: 'British, French and Belgian armies  ·  the German Army and Luftwaffe'

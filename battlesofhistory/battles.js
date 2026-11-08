@@ -99,7 +99,7 @@ window.BATTLES = [
     folder: 'dunkirk', lat: 51.03, lon: 2.37,
     order: 10,
     era: 'Second World War',
-    title: 'Dunkirk',
+    title: 'Withdrawal at Dunkirk',
     date: '26 May – 4 June 1940', year: 1940,
     place: 'Dunkirk and its beaches, northern France',
     sides: 'The British Expeditionary Force and the French army vs. the German army and Luftwaffe',
