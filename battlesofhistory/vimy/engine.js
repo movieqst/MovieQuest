@@ -357,7 +357,14 @@ function neonLayer(n) {
   const C = document.createElement('canvas'); C.width = w; C.height = h; const c = C.getContext('2d');
   c.filter = 'blur(7px)'; c.drawImage(A, 0, 0); c.drawImage(A, 0, 0); c.filter = 'blur(2px)'; c.drawImage(A, 0, 0); c.filter = 'none';
   [[-1, 0], [1, 0], [0, -1], [0, 1], [0, 0]].forEach(([dx, dy]) => c.drawImage(A, dx, dy));
+  [C, NEONB[n]].forEach(fadeEdges);
   NEON[n] = C; return C;
+}
+// The front runs on far beyond the map: fade the trench lines out over the top and bottom edges instead of cutting them off.
+function fadeEdges(K) {
+  if (!K) return; const g = K.getContext('2d'), h = K.height, e = h * .07; g.save(); g.globalCompositeOperation = 'destination-out';
+  let gr = g.createLinearGradient(0, 0, 0, e); gr.addColorStop(0, 'rgba(0,0,0,1)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, K.width, e);
+  gr = g.createLinearGradient(0, h - e, 0, h); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,1)'); g.fillStyle = gr; g.fillRect(0, h - e, K.width, e); g.restore();
 }
 function growthNow() {
   const sl = mode === 'intro' && S.intro[introIdx]; if (!sl || !sl.growth) return null;
@@ -944,11 +951,28 @@ window.__cam = () => ({ z: view.z, x: view.x, y: view.y, w: view.w, h: view.h, w
 function camBack() { if (cam.follow && cam.backAt != null && simTime >= cam.backAt) { cam.backAt = null; CAM_WHOLE(); } }
 let introZoom = null;
 function introCamStart(sl) {
+  tourState = 0;
   cam.tx = null; cam.tz = null; cam.fy = null; cam.backAt = null; if ('fit' in cam) cam.fit = false;
   view.z = WHOLE_Z(); view.x = W.w / 2 - VW() / 2; view.y = W.h / 2 - VH() / 2; clampView();
   introZoom = sl && sl.focus && typeof sl.zoom === 'number' && sl.zoom > WHOLE_Z() * 1.6 ? { z: sl.zoom, f: sl.focus, stage: 0 } : null;
 }
+/* A slide's `tour` ({ from, to, zoom, path: [[x, y]...] }, in seconds of the slide): the camera starts on the whole map,
+   zooms in at the start of the path at `from`, flies along it at an even pace, and eases back out to the whole map at `to`.
+   Vimy: along no man's land from the Pimple to Farbus while the trenches build up. */
+let tourState = 0;
+function tourTick(sl) {
+  const T = sl.tour, t = Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer;
+  if (!T._len) { let L = 0; T._seg = T.path.slice(1).map((p, i) => { const d = Math.hypot(p[0] - T.path[i][0], p[1] - T.path[i][1]); L += d; return d; }); T._len = L; }
+  const Fi = T.finale;   // after the glide, an optional close look at one place ({ x, y, zoom, until })
+  if (Fi && t > T.to && t < Fi.until) { tourState = 1; cam.fit = false; cam.tz = Fi.zoom; frame(Fi.x, Fi.y, .2); return; }
+  if (t < T.from || t > (Fi ? Fi.until : T.to)) { if (tourState === 1) { tourState = 2; CAM_WHOLE(); } return; }
+  const u = (t - T.from) / (T.to - T.from), e = u < .1 ? 0 : Math.min(1, (u - .1) / .8), want = e * e * (3 - 2 * e) * T._len;   // a moment to zoom in, then glide
+  let k = 0, acc = 0; while (k < T._seg.length - 1 && acc + T._seg[k] < want) { acc += T._seg[k]; k++; }
+  const a = T.path[k], b = T.path[k + 1], f = T._seg[k] ? (want - acc) / T._seg[k] : 0, x = a[0] + (b[0] - a[0]) * f, y = a[1] + (b[1] - a[1]) * f;
+  tourState = 1; cam.fit = false; cam.tz = T.zoom; frame(x, y, .2);
+}
 function introCamTick(frac, done) {
+  const sl = mode === 'intro' && S.intro[introIdx]; if (sl && sl.tour && cam.follow) { tourTick(sl); return; }
   if (!introZoom || !cam.follow) return;
   if (introZoom.stage === 0 && frac >= .18 && !done) { introZoom.stage = 1; CAM_IN(introZoom.z, introZoom.f, .27); }
   else if (introZoom.stage === 1 && (frac >= .82 || done)) { introZoom.stage = 2; CAM_WHOLE(); }
@@ -1693,5 +1717,5 @@ new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();
 requestAnimationFrame(tick);
 // For the shared page add-ons (../phone.js, ../subtitles.js): the narrator and the full-map switch.
-window.BattlePage = { Narr, setBig };
+window.BattlePage = { Narr, setBig, showIntro };   // showIntro: for tests
 })();

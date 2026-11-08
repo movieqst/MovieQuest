@@ -366,7 +366,8 @@ Object.assign(window.VIMY_SCENARIO, {
         Object.assign({}, FOLIE, { y: FOLIE.y + 40, text: 'La Folie Farm', small: true }), Object.assign({}, THELUS, { y: THELUS.y + 50, text: 'Thélus', small: true }),
         Object.assign({}, FARBUS, { y: FARBUS.y + 50, text: 'Farbus', small: true }), Object.assign({}, VIMY, { y: VIMY.y + 50, text: 'Vimy', small: true }),
         Object.assign({}, NEUVILLE, { y: NEUVILLE.y + 60, text: 'Neuville-St-Vaast', small: true }), Object.assign({}, GIVENCHY, { y: GIVENCHY.y + 50, text: 'Givenchy', small: true }),
-        { x: 543, y: 290, text: 'Souchez', small: true }, { x: 1997, y: 1090, text: 'Willerval', small: true }
+        { x: 543, y: 290, text: 'Souchez', small: true }, { x: 1997, y: 1090, text: 'Willerval', small: true },
+        { x: 1000, y: 40, text: '▲ The front runs on north: Lens, Ypres, the North Sea', small: true }, { x: 1560, y: 1770, text: '▼ and south: Arras, the Somme, Verdun, Switzerland', small: true }
       ]
     },
     globe: { target: { lon: 2.77, lat: 50.37 }, region: { lon: 3.2, lat: 49.4 }, pull: 4.5, lift: false, keepBorders: true, keepTowns: true, frontSides: { east: '230,70,55', west: '90,150,255' }, startLat: 35,
@@ -533,8 +534,10 @@ Object.assign(window.VIMY_SCENARIO, {
   I[0].noUnits = true; I[0].trenches = null;
   // dates for the stamp at the top left of the map (the trench build-up shows its own)
   [['Easter Monday, 9 April'], ['1914 to 1917'], ['Winter 1916 to 1917'], ['20 March to 9 April'], ['1916 to 1917'], ['April 1917']].forEach(([c], i) => { const sl = I[i === 0 ? 0 : i]; if (sl && !sl.growth) sl.clock = c; });
+  // No man's land: halfway between the two front lines of 8 April 1917 (lines.js), every 100 px from north to south.
+  const NOMANS = []; for (let y = 140; y <= 1700; y += 80) { const q = pt([(xAt(L.canadianFront, y) + xAt(L.germanFront, y)) / 2, y]); NOMANS.push([q.x, q.y]); }
   I.splice(1, 0, {
-    title: 'Four years of trenches', extra: true, noUnits: true, auto: 32, trenches: null,
+    title: 'Four years of trenches', extra: true, noUnits: true, auto: 50, trenches: null,
     lines: [
       { text: 'The Germans took Vimy Ridge in October 1914 and dug in. French attacks in 1915 reached the crest but could not hold it.', tag: 'established' },
       { text: 'In February 1916 the British took over this part of the line from the French. The Canadians arrived in October 1916.', tag: 'established' },
@@ -543,11 +546,17 @@ Object.assign(window.VIMY_SCENARIO, {
     ],
     growth: [
       { at: 0, layer: null, label: '1914 to 1915' },
-      { at: 7, layer: 'trenches-1916-02.png', label: 'February 1916' },
-      { at: 13, layer: 'trenches-1916-10.png', label: 'October 1916' },
-      { at: 19, layer: 'trenches-1916-12.png', label: 'December 1916' },
-      { at: 25, layer: 'trenches-1917-03.png', label: 'March 1917' }
-    ]
+      { at: 4, layer: 'trenches-1916-02.png', label: 'February 1916' },
+      { at: 10, layer: 'trenches-1916-10.png', label: 'October 1916' },
+      { at: 37, layer: 'trenches-1916-12.png', label: 'December 1916' },
+      { at: 43, layer: 'trenches-1917-03.png', label: 'March 1917' }
+    ],
+    // the flyover: from the Pimple in the north to Farbus in the south, along no man's land between the two front lines
+    // (flown over the October 1916 layer: the first date with trench maps for the whole length of the ridge)
+    tour: { from: 12, to: 30, zoom: 1.7, path: NOMANS,
+      // then in close on Hill 145: the highest point of the ridge and the Germans' strongest position; the Vimy Memorial stands on it today
+      finale: Object.assign({}, HILL145, { zoom: 2.6, until: 35 }) },
+    markers: [ Object.assign({}, HILL145, { y: HILL145.y - 70, label: 'Hill 145: the strongest German position · today the Vimy Memorial', side: 'french' }) ]
   });
 })();
 
