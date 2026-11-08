@@ -43,3 +43,23 @@ HISTORY (332 BCE, eastern Mediterranean, summer):
 16. **tyre-civilians** (walking): `Tyrian townspeople fleeing to the temple: women in long dresses and veils, an old man, children, carrying bundles and a clay jar. 4 frames of walking. No weapons, no blood.`
 
 **After ChatGPT:** I key out the green, cut each sheet to game size, check the row order and the 332 BCE details, and say ACCEPT or REDO for each.
+
+## Review of the ship bundle (8 November 2026; TYRE-SHIPS-CLAUDE-REVIEW-2026-11-07.zip)
+
+**tyrian-trireme-rowing-4-directions.png: ACCEPT** → cut as `images/units/ship-tyrian-trireme.png` (960×800, cells 240×200, rows s/e/n/w as drawn). Clean: bow towards the viewer in row 1, bow right in row 2, stern in row 3, bow left in row 4; the bow wave grows across the frames.
+- Notes, not blockers: one bank of oars (a trireme had three; fine at sprite size); the sail is set (warships usually left masts and sails ashore before a battle); a trident on the sail is a Greek (Poseidon) sign, not a Tyrian one. Tyre's own coins showed Melqart riding a sea-horse, a dolphin, or an owl.
+- **Mismatch to fix:** the damage sheet (`ship-tyrian-trireme-damage.png`) has a red sail with an Egyptian eye emblem, so a ship would change colour when hit. **REDO the damage sheet to match this one:** same hull and purple sail, same angle as the side view (bow right), 16 frames: rowing, holed and listing, burning, sinking. Ask for a plain purple sail or a dolphin emblem on both sheets if redone.
+
+**boarding-bridge-and-siege-sequences-MIXED.png: not cut as a sheet.** Row by row:
+- Row 1 (trireme rowing right, white sail with a purple trident): REDO not needed: duplicate of the accepted trireme in a different sail. Skip.
+- Row 2 (warship lowering a boarding bridge, marines crossing): **ACCEPT as an effect** (one direction, mirror for the other). Arrian (2.23) says Alexander's ships carried bridges for the final assault on the breach. **Flag:** the flag is the "Vergina sun", which is a modern association for Macedon (from the 1977 tomb finds); ancient warships did not fly it. Ask for the flag to be removed or made a plain pennant.
+- Row 3 (ladders against a wall from the ground): **REDO / not for Tyre.** The island city's walls rose from the water; the final assault came from ships with bridges onto a breach, not ladders from dry ground. (Could suit Gaza, the next siege, if we ever do it.)
+- Row 4 (miners tunnelling under a wall): **not for Tyre** (an island: no mining). Alexander did mine the walls at **Gaza** two months later. Keep for that.
+
+**previous-review files:** already decided earlier and in use (quinquereme, ram pair, fireship). `ram-ship-draft-NEEDS-REVIEW.png` stays superseded by the accepted ram sheets.
+
+### Trireme damage, 3 versions (8 November 2026)
+- **v1: ACCEPT** → `images/units/ship-tyrian-trireme-damage.png` (replaces the red-sail sheet). Clearest at sprite size: the hole and the water pouring in are easy to see in row 2, the fire grows through row 3, and row 4 ends in floating wreckage.
+- v2: good too (tearing sail, strong list), but the hole is smaller. Kept as a spare in the review zip.
+- v3: the holes are hard to see at sprite size.
+- **Remaining mismatch:** these have the **dolphin** sail; the accepted rowing sheet (`ship-tyrian-trireme.png`) still has the **trident**. Redo the rowing sheet with the dolphin sail, same four directions, or edit the emblem by hand.
