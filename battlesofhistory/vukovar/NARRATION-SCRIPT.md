@@ -165,6 +165,12 @@ Chapters 1 to 6 play on the area map; chapters 7 to 15 move between the area map
 > A wrecked M-84 tank photographed in Vukovar on 29 November 1991, after the battle. The M-84 is the Yugoslav development of the Soviet T-72.
 **Credit:** Photo: Peter Denton, via Wikimedia Commons (File:Croatian_War_1991_Vukovar_destroyed_tank.jpg), CC BY-SA 2.0. Mark any crop as a change.
 
+### The old town after the battle (with intro slide 3, "A town on the Danube", and the outcome)
+**Picture:** images/record-old-town-1991.jpg (Commons: File:Croatian_War_1991_Vukovar_destruction.jpg; licence to confirm).
+**Caption:**
+> Vukovar's baroque old centre in late November 1991: the arcaded houses on the main street, their roofs broken and walls marked by shells.
+**Credit:** Photo: Peter Denton, via Wikimedia Commons (from Flickr), CC BY-SA 2.0.
+
 ### A street in Vukovar after the battle (with chapter 15, "After the guns", and the outcome)
 **Picture:** images/record-street-1991.jpg (Commons: File:Croatian_War_1991_Vukovar_street.jpg; 500 × 334, the largest size there).
 **Caption:**
