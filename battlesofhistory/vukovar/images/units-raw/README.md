@@ -24,3 +24,8 @@ Credit: Battle Games, AI-generated (ChatGPT) from our prompts (ART-PROMPTS-UNITS
 | hr-cornfield.png | carriers on the night corn-field track ("4x4 Croatian defenders in a cornfield") | good: night light, ammunition boxes, a wounded man carried on a back, no blood |
 | msf-convoy.png | medical convoy ("Humanitarian Convoy RTS Sprite Sheet") | good: white four-wheel-drive with a white flag leading a white van; no logos, no red cross |
 | monitors.png | European monitors ("Four-way monitor and car sprite sheet") | good: two men in white beside a white car, talking, one pointing |
+| fallen-jna.png | fallen JNA soldiers ("Autumn 1991 Fallen Soldier Sprite Sheet") | good: 16 different poses, olive-grey, helmets and rifles beside them, no blood |
+| fallen-hr.png | fallen defenders ("Vukovar Fallen Defender Sprite Sheet") | good: 16 poses in mixed camouflage, police blue and civilian jackets, no blood |
+| leader-mrksic.png | Mrkšić walking (1374 × 1145, leader cells) | good: JNA officer's field uniform and cap, binoculars, no badges; face is generic (no checked photo) |
+| leader-mrksic-attack.png | Mrkšić at a field table ("Four-angle field officer sprite sheet") | good: studying the map, then on the field telephone |
+| leader-bratic.png | Bratić walking ("Mladen Bratić Vukovar walking sprite sheet") | good: older general in JNA field uniform and cap; generic face. Reads close to Mrkšić at map size: the page tells them apart by name label |
