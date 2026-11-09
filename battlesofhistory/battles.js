@@ -226,14 +226,14 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'vukovar', progress: 5, lat: 45.3517, lon: 19.0012,
+    folder: 'vukovar', progress: 75, lat: 45.3517, lon: 19.0012,
     order: 19,
     era: 'Croatia, 1991',
     title: 'Battle of Vukovar',
     date: '25 August – 18 November 1991', year: 1991,
     place: 'Vukovar, on the Danube in eastern Slavonia (then in Yugoslavia, today in Croatia)',
     sides: 'The Yugoslav People\u2019s Army (JNA) with Serb volunteer and Territorial Defence units vs. the Croatian National Guard, police and local volunteers',
-    blurb: 'As Yugoslavia breaks apart, the Yugoslav army and Serb forces besiege the Croatian town of Vukovar on the Danube. For 87 days a few thousand defenders hold out against a much larger force with tanks and artillery, while the town is shelled to ruins. After it falls, about 200 people taken from the hospital are killed at nearby Ovčara.',
+    blurb: 'As Yugoslavia breaks apart, the Yugoslav People\u2019s Army (JNA), with local Territorial Defence and volunteer units, besieges the town of Vukovar on the Danube. For about three months a few thousand Croatian defenders hold out against a much larger force with tanks and artillery, while the town is shelled to ruins. After it falls, prisoners taken from the hospital are killed at nearby Ovčara: the international court found 194 named victims.',
     cover: 'images/cover.jpg', coverPos: '12% 35%',
     coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0 (creativecommons.org/licenses/by/2.0). Sky extended for this page',
     status: 'in progress'
