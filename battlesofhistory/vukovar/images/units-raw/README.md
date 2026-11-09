@@ -29,3 +29,9 @@ Credit: Battle Games, AI-generated (ChatGPT) from our prompts (ART-PROMPTS-UNITS
 | leader-mrksic.png | Mrkšić walking (1374 × 1145, leader cells) | good: JNA officer's field uniform and cap, binoculars, no badges; face is generic (no checked photo) |
 | leader-mrksic-attack.png | Mrkšić at a field table ("Four-angle field officer sprite sheet") | good: studying the map, then on the field telephone |
 | leader-bratic.png | Bratić walking ("Mladen Bratić Vukovar walking sprite sheet") | good: older general in JNA field uniform and cap; generic face. Reads close to Mrkšić at map size: the page tells them apart by name label |
+| leader-bratic-attack.png | Bratić with binoculars, then pointing ("Grey-haired officer with binoculars, four directions") | good |
+| leader-kadijevic.png | Kadijević at a desk, gesturing ("Four-direction general sprite sheet") | good: JNA general's service uniform and peaked cap; for the intro slide |
+| leader-dedakovic.png | Dedaković walking ("Jastreb Four-Direction RTS Walk Cycle") | good: woodland camouflage, radio on his belt, bareheaded, no badges |
+| leader-borkovic.png | Borković walking ("Branko Borkovic Four-Direction Walking Sprite Sheet") | good: young, slim, woodland camouflage, radio |
+| leader-borkovic-attack.png | Borković at a broken wall with binoculars, then waving men forward ("Camouflaged scout 4x4 action sheet") | good |
+| leader-dedakovic-attack.png | Dedaković in a cellar command post ("Four-by-four field command radio grid") | **redo requested:** the lamp's shade is the same bright green as the background, so it would be cut out with it. Not saved |
