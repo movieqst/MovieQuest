@@ -3,3 +3,4 @@
 | file | what | licence |
 |---|---|---|
 | cover.jpg | The Vukovar water tower, shell-damaged in 1991 and kept as a memorial, photographed 7 March 2010 | Photo: anjči (London, UK), via Wikimedia Commons (File:Vukovar-watertower-after-war.jpg), CC BY 2.0 (creativecommons.org/licenses/by/2.0). Building shown under Croatian freedom of panorama (Copyright Act 2021, art. 204). Sky extended to the right by the site owner (Photoshop) for the title card: changed from the original, as the licence requires us to say. |
+| area-painting.jpg | The area map: Vinkovci to the Danube, Trpinja to Negoslavci, as the land looked in autumn 1991 (27 × 21 km; frame in layout/maps.json) | Painted for this page with ChatGPT (AI-generated) over our base map made from real elevation (AWS Terrain Tiles; SRTM, public domain). Towns placed from the CIA's map of 1991 (*Balkan Battlegrounds*, map 2, public domain). A painting, not a photograph: fields and houses are imagined. |
