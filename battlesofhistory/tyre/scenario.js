@@ -83,7 +83,14 @@ Object.assign(window.TYRE_SCENARIO, {
         "tag": "arrian"
       }
     ],
-    "media": []
+    "media": [
+      {
+        "at": 26,
+        "file": "art-envoys.jpg",
+        "caption": "Envoys from Tyre, among them the king’s son, meet Alexander on the road and promise to do whatever he commands (Arrian). An artist’s impression made for this page, not evidence: the faces and the city in the distance are imagined.",
+        "credit": "AI-generated (ChatGPT) for this project: an artist's impression, not evidence. Redrawn with Macedonian linen corslets, bronze helmets and round shields; the city in the distance is imagined."
+      }
+    ]
   },
   {
     "title": "The island city",
@@ -120,6 +127,12 @@ Object.assign(window.TYRE_SCENARIO, {
     "media": [
       {
         "at": 0,
+        "file": "art-island.jpg",
+        "caption": "Tyre before the siege, seen from the mainland: the sea wall, a walled harbour at each end, and the temple of Melqart in the middle. An artist’s impression made for this page from our map; the exact shape of the harbours is not known.",
+        "credit": "AI-generated (ChatGPT) for this project from our layout guide (images/layout/view-from-mainland-guide.png): an artist's impression. The island's width and the temple's place follow our map; the harbours' exact shapes are not known."
+      },
+      {
+        "at": 53,
         "file": "record-tyre-heritage-panorama-2024.jpg",
         "caption": "The Al Mina part of the Tyre World Heritage Site, with the sea and the hills of the mainland on the left: the hills that supplied timber for the mole, Diodorus says.",
         "credit": "Osmhsn2004, CC0 1.0, via Wikimedia Commons."
@@ -504,11 +517,12 @@ Object.assign(window.TYRE_SCENARIO, {
   const set = (i, o) => Object.assign(EV[i], o);
   const R = S.record;
   // 1. The mole begins: from the beach, the builders carry stones out into the shallows
-  set(0, { trenches: 'mole-1.png', zoom: 'fit', markers: [ { x: H1 + 30, y: MY - 40, label: 'the mole begins', side: 'allied' }, { x: 2200, y: 640, label: 'Old Tyre (place approximate)' } ], orders: [
+  const ART = (file, caption) => ({ at: 0, file, caption, credit: 'AI-generated (ChatGPT) for this project: an artist’s impression, not evidence.' });
+  set(0, { media: ART('art-mole-carts.jpg', 'Ox-carts bring stones from the ruins of Old Tyre and timber from the mountains out along the new mole. Diodorus says the stones came from Old Tyre; Curtius adds timber from Mount Lebanon. No writer says how they were carried: carts are our best guess.'), trenches: 'mole-1.png', zoom: 'fit', markers: [ { x: H1 + 30, y: MY - 40, label: 'the mole begins', side: 'allied' }, { x: 2200, y: 640, label: 'Old Tyre (place approximate)' } ], orders: [
     { id: 'workers', to: head(H1), speed: 20, state: 'move' }, { id: 'workers2', to: { x: 1680, y: MY + 30 }, speed: 18, state: 'move' },
     { leader: 'alexander', to: { x: 1700, y: 830 }, speed: 20 } ] });
   // 2. The sea fights back: Tyrian triremes row along the mole; the towers go up at its head
-  set(1, { trenches: 'mole-2.png', focus: { x: 1380, y: MY }, zoom: 1.5, markers: [ { x: H2 + 30, y: MY - 70, label: 'two towers, covered with hides', side: 'allied' } ], orders: [
+  set(1, { photo: { file: 'art-towers.jpg', at: 20, secs: 10, caption: 'Two towers at the head of the mole, covered with animal hides, with engines on top to shoot back (Arrian)', credit: 'Artist’s impression, AI-generated for this page; not evidence.' }, media: ART('art-mole-builders.jpg', 'Builders carry stones and baskets of earth and drive stakes into the mud, while Tyrian archers shoot at them from boats. Arrian says the stakes went in easily and the mud held the stones together.'), trenches: 'mole-2.png', focus: { x: 1380, y: MY }, zoom: 1.5, markers: [ { x: H2 + 30, y: MY - 70, label: 'two towers, covered with hides', side: 'allied' } ], orders: [
     { id: 'workers', to: head(H2), speed: 24, state: 'move' }, { obj: 'tower1', visible: true, delay: 3 }, { obj: 'tower2', visible: true, delay: 3.5 },
     { id: 'engines', visible: true, at: { x: H2 + 80, y: MY }, state: 'attack', delay: 4 },
     { id: 'tfN', to: { x: 1380, y: MY - 80 }, via: [NMOUTH, { x: 1200, y: 700 }], speed: 60, state: 'attack' },
@@ -607,6 +621,29 @@ Object.assign(window.TYRE_SCENARIO, {
     { leader: 'azemilcus', visible: true }, { leader: 'alexander', to: { x: 840, y: 1060 }, speed: 18 },
     { id: 'spear', state: 'hold' }, { id: 'hyp', to: { x: 820, y: 1100 }, speed: 18, state: 'move' }, { id: 'phalanx', state: 'hold' } ] });
   EV[14].end = false;
+
+  // Wider maps (engine: S.altMaps; a slide or chapter's `altMap`) when the narrator talks about other cities. Places from
+  // their latitude and longitude (images/layout/maps.json): campaign 29.4–37.9 N, 26.9–40.5 E; coast 32.75–35.25 N, 34.2–38.2 E.
+  S.altMaps = { campaign: 'terrain-campaign.jpg', coast: 'terrain-coast.jpg' };
+  const CM = { issus: { x: 1634, y: 224 }, aradus: { x: 1579, y: 645 }, byblos: { x: 1542, y: 801 }, sidon: { x: 1493, y: 918 }, tyre: { x: 1462, y: 980 },
+    gaza: { x: 1334, y: 1355 }, egypt: { x: 994, y: 1453 }, cyprus: { x: 1234, y: 576 }, rhodes: { x: 233, y: 311 }, lycia: { x: 476, y: 307 }, soli: { x: 1347, y: 244 }, mallus: { x: 1512, y: 244 } };
+  const CO = { aradus: { x: 990, y: 284 }, byblos: { x: 863, y: 814 }, sidon: { x: 698, y: 1215 }, tyre: { x: 595, y: 1425 }, antileb: { x: 1104, y: 1116 }, damascus: { x: 1248, y: 1253 } };
+  const ring = (p, label, r, o) => ({ ring: Object.assign({}, p, { label, r: r || 40 }, o || {}) });
+  // Intro 2, "After Issus": the eastern Mediterranean, the march down the coast, the cities as they are named
+  Object.assign(S.intro[1], { altMap: 'campaign', focus: { x: 1420, y: 760 }, zoom: .95, cues: [
+    Object.assign({ on: 'at Issus' }, ring(CM.issus, 'Issus, 333 BCE', 45)),
+    { on: 'marched south', arrow: { pts: [[1634, 250], [1600, 420], [1585, 620], [1545, 800], [1495, 915]], label: 'Alexander marches south', col: '#c0392b' } },
+    Object.assign({ on: 'Aradus did' }, ring(CM.aradus, 'Aradus', 30)), Object.assign({ on: 'and Byblos' }, ring(CM.byblos, 'Byblos', 30)),
+    Object.assign({ on: 'people of Sidon' }, ring(CM.sidon, 'Sidon', 30)), Object.assign({ on: 'Tyre also sent' }, ring(CM.tyre, 'Tyre', 34, { lx: -70 })),
+    Object.assign({ on: 'Cypriot ships' }, ring(CM.cyprus, 'Cyprus', 60)),
+    { on: 'road to Egypt', arrow: { pts: [[1455, 1010], [1400, 1200], [1330, 1360], [1000, 1450]], label: 'the road to Egypt', col: '#e9c77a' } } ] });
+  // Chapter 5, the fleet changes sides: where the ships came from
+  Object.assign(EV[4], { altMap: 'campaign', zoom: 'fit', markers: [ Object.assign({ label: 'Sidon: Alexander gathers the fleet', side: 'allied' }, CM.sidon), Object.assign({ label: 'Aradus' }, CM.aradus), Object.assign({ label: 'Byblos' }, CM.byblos),
+    Object.assign({ label: 'Rhodes: ten ships' }, CM.rhodes), Object.assign({ label: 'Lycia: ten' }, CM.lycia), Object.assign({ label: 'Soli: three' }, CM.soli), Object.assign({ label: 'Mallus: three' }, CM.mallus),
+    Object.assign({ label: 'Cyprus: about 120' }, CM.cyprus), Object.assign({ label: 'Tyre', side: 'french' }, CM.tyre) ] });
+  // Chapter 6, ten days in the mountains: Sidon and the Antilebanon
+  Object.assign(EV[5], { altMap: 'coast', zoom: 'fit', markers: [ Object.assign({ label: 'Sidon', side: 'allied' }, CO.sidon), Object.assign({ label: 'the Antilebanon mountains (area approximate)', side: 'allied' }, CO.antileb),
+    Object.assign({ label: 'Tyre, still besieged', side: 'french' }, CO.tyre) ] });
 
   // The introduction's map: the island, the harbours and the temple the narrator names
   Object.assign(S.intro[2], { markers: [ Object.assign({ label: 'harbour toward Sidon' }, NHARB), Object.assign({ label: 'harbour toward Egypt' }, SHARB), Object.assign({ label: 'temple of Melqart (place approximate)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], focus: { x: 1100, y: 900 }, zoom: 1.0 });
