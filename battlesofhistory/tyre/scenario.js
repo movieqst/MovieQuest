@@ -616,7 +616,7 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'spear', strengthTo: 15, over: 12, delay: 2 }, { id: 'archersN', strengthTo: 10, over: 12, delay: 2 }, { id: 'slingers', strengthTo: 10, over: 12, delay: 2 },
     { leader: 'alexander', to: { x: 800, y: 1250 }, speed: 18 } ] });
   // 15. The sanctuary: the king, the leading men and the Carthaginian envoys in the temple of Melqart
-  set(14, { focus: { x: 790, y: 980 }, zoom: 1.8, markers: [ Object.assign({ label: 'the temple of Melqart (Heracles)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], orders: [
+  set(14, { media: ART('art-temple.jpg', 'In the courtyard of the temple of Melqart, King Azemilcus, the leading men of Tyre and the envoys from Carthage wait. Arrian says Alexander spared those who had taken refuge in the temple; his soldiers stand at the gate.'), focus: { x: 790, y: 980 }, zoom: 1.8, markers: [ Object.assign({ label: 'the temple of Melqart (Heracles)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], orders: [
     { obj: 'civ1', visible: true, at: { x: 640, y: 960 } }, { obj: 'civ2', visible: true, at: { x: 790, y: 860 } },
     { leader: 'azemilcus', visible: true }, { leader: 'alexander', to: { x: 840, y: 1060 }, speed: 18 },
     { id: 'spear', state: 'hold' }, { id: 'hyp', to: { x: 820, y: 1100 }, speed: 18, state: 'move' }, { id: 'phalanx', state: 'hold' } ] });

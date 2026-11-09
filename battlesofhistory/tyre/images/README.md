@@ -22,3 +22,4 @@
 | art-divers.jpg | Tyrian divers cutting a Macedonian ship's anchor rope under the water (chapter 8) | AI-generated (ChatGPT) for this project: an artist's impression. |
 | art-walls.jpg | Tyrian defenders pouring heated sand and throwing nets from the wall; a ram ship below (chapter 9) | AI-generated (ChatGPT) for this project: an artist's impression. |
 | art-assault.jpg | Hypaspists crossing a boarding bridge onto the breach in the south wall (chapter 12) | AI-generated (ChatGPT) for this project: an artist's impression. |
+| art-temple.jpg | The king, the leading men and the Carthaginian envoys in the courtyard of the temple of Melqart; Macedonian soldiers at the gate (chapter 15) | AI-generated (ChatGPT) for this project: an artist's impression. The temple's plan is imagined; no plan of it survives. |
