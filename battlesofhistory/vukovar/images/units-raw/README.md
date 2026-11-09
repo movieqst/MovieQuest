@@ -15,3 +15,5 @@ Credit: Battle Games, AI-generated (ChatGPT) from our prompts (ART-PROMPTS-UNITS
 | jna-mortar-fire.png | 120 mm mortar crew (ChatGPT's file: "Vukovar 1991 mortar crew sprite sheet") | good: sandbagged pit, M59-type helmets, bomb, duck, flash, next bomb |
 | to-volunteer.png | Territorial Defence fighter walking (ChatGPT's file: "Autumn Croatian Rifleman Walk Cycle", misnamed) | good, matches the to-volunteer prompt: old olive-grey jacket, knitted cap, M70, no insignia. **It is the TO fighter, not a Croatian defender** |
 | to-volunteer-fire.png | the same fighter behind a garden wall (ChatGPT's file: "Four-Direction Rifleman Behind Garden Wall") | good: aim, fire, reload, move on |
+| hr-defender.png | Croatian defender walking (ChatGPT's file: "Vukovar defender 4×4 animation sheet") | good: woodland-pattern camouflage jacket and trousers, knitted cap, chest rig, M70-type rifle, no insignia; clearly different from the TO fighter's plain dark jacket |
+| hr-antitank.png | two-man anti-tank team (ChatGPT's file: "Croatian Antitank Team 4x4 Sprite Sheet") | good: wait, aim, fire with back-blast, run back; a plain olive tube, no model shown; no tank in the picture |
