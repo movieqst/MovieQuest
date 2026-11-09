@@ -11574,5 +11574,115 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "american-dad-volume-4-dvd",
+    "title": "American Dad! Volume 4",
+    "year": 2009,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/american-dad-volume-4-dvd-1.jpg",
+    "photos": [
+      "images/american-dad-volume-4-dvd-1.jpg",
+      "images/american-dad-volume-4-dvd-2.jpg",
+      "images/american-dad-volume-4-dvd-3.jpg",
+      "images/american-dad-volume-4-dvd-4.jpg",
+      "images/american-dad-volume-4-dvd-5.jpg",
+      "images/american-dad-volume-4-dvd-6.jpg",
+      "images/american-dad-volume-4-dvd-7.jpg",
+      "images/american-dad-volume-4-dvd-8.jpg",
+      "images/american-dad-volume-4-dvd-9.jpg",
+      "images/american-dad-volume-4-dvd-10.jpg",
+      "images/american-dad-volume-4-dvd-11.jpg",
+      "images/american-dad-volume-4-dvd-12.jpg",
+      "images/american-dad-volume-4-dvd-13.jpg",
+      "images/american-dad-volume-4-dvd-14.jpg",
+      "images/american-dad-volume-4-dvd-15.jpg",
+      "images/american-dad-volume-4-dvd-16.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=American%20Dad%20Volume%204%20DVD&campid=5339133571&customid=american-dad-volume-4-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2007-2008",
+    "createdBy": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "starring": "Seth MacFarlane, Wendy Schaal, Scott Grimes, Rachael MacFarlane, Dee Bradley Baker",
+    "producers": "Seth MacFarlane, Mike Barker, Matt Weitzman",
+    "company": "Fuzzy Door Productions / Underdog Productions / 20th Century Fox Television",
+    "titleNote": "Volume 4 / 3-Disc Set / 2007-2008",
+    "tagline": "DVD / Volume 4 / 14 Episodes / 3 Discs / Seth MacFarlane / Animated Comedy / 2000s",
+    "desc": "From Mike Barker, Matt Weitzman and Family Guy creator Seth MacFarlane comes this star-spangled salute to the American race. CIA Agent Stan Smith hosts a torturously funny CIA telethon, endures botched kidnappings and beefcake body doubles, while Roger is reunited with his ex-fiancé and hosts a booze-soaked spring break and Steve is pushed through puberty. 14 episodes on 3 discs, with audio commentary on all episodes.",
+    "trivia": [
+      {
+        "heading": "The Christmas Episode Left for Last",
+        "text": "\"The Most Adequate Christmas Ever\" first aired on December 16, 2007 but was left off Volume 3. It closes out Volume 4 as the final episode on Disc 3."
+      },
+      {
+        "heading": "A Two-Season Volume",
+        "text": "The 14 episodes span the back half of the show's third season and the start of its fourth, which is why the set was released in two parts alongside Volume 3."
+      },
+      {
+        "heading": "Uncensored Audio",
+        "text": "\"Tearjerker\" and \"Oedipal Panties\" include an uncensored audio option on the DVDs, and all 14 episodes have audio commentary."
+      },
+      {
+        "heading": "Hello, Steve Hely",
+        "text": "\"Red October Sky\" was written by Steve Hely, who later wrote for The Office (US), 30 Rock and Veep. Its title mashes up the Cold War thriller The Hunt for Red October with the film October Sky."
+      },
+      {
+        "heading": "Release Day",
+        "text": "Fox released Volume 4 on April 28, 2009, with a suggested retail price of $39.98 US and $54.98 Canada. It shipped in a slim clear three-disc case."
+      }
+    ],
+    "tidbits": [
+      "\"The Most Adequate Christmas Ever\" first aired on December 16, 2007 but was left off Volume 3. It closes out Volume 4 as the final episode on Disc 3.",
+      "The 14 episodes span the back half of the show's third season and the start of its fourth, which is why the set was released in two parts alongside Volume 3.",
+      "\"Tearjerker\" and \"Oedipal Panties\" include an uncensored audio option on the DVDs, and all 14 episodes have audio commentary.",
+      "\"Red October Sky\" was written by Steve Hely, who later wrote for The Office (US), 30 Rock and Veep. Its title mashes up the Cold War thriller The Hunt for Red October with the film October Sky.",
+      "Fox released Volume 4 on April 28, 2009, with a suggested retail price of $39.98 US and $54.98 Canada. It shipped in a slim clear three-disc case."
+    ],
+    "copies": [
+      {
+        "id": "american-dad-volume-4-dvd-1",
+        "added": "2026-11-08",
+        "format": "DVD",
+        "edition": "20th Century Fox 3-disc set (2009)",
+        "photos": [
+          "images/american-dad-volume-4-dvd-1.jpg",
+          "images/american-dad-volume-4-dvd-2.jpg",
+          "images/american-dad-volume-4-dvd-3.jpg",
+          "images/american-dad-volume-4-dvd-4.jpg",
+          "images/american-dad-volume-4-dvd-5.jpg",
+          "images/american-dad-volume-4-dvd-6.jpg",
+          "images/american-dad-volume-4-dvd-7.jpg",
+          "images/american-dad-volume-4-dvd-8.jpg",
+          "images/american-dad-volume-4-dvd-9.jpg",
+          "images/american-dad-volume-4-dvd-10.jpg",
+          "images/american-dad-volume-4-dvd-11.jpg",
+          "images/american-dad-volume-4-dvd-12.jpg",
+          "images/american-dad-volume-4-dvd-13.jpg",
+          "images/american-dad-volume-4-dvd-14.jpg",
+          "images/american-dad-volume-4-dvd-15.jpg",
+          "images/american-dad-volume-4-dvd-16.jpg"
+        ],
+        "gif": "images/american-dad-volume-4-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good. Clear 3-disc case with the episode guide printed inside. Light surface wear on the case and back cover art, as shown in the photos.",
+          "discs": [
+            "Very Good",
+            "Very Good",
+            "Very Good"
+          ],
+          "inserts": "None. Episode guide printed on the inside of the cover.",
+          "notes": "20th Century Fox Home Entertainment (2009), UPC 024543572619, NTSC. 3 dual layer discs, 14 episodes, approx. 305 minutes, colour (2007-2008), full frame 1.33:1. English 5.1 Dolby Digital; English, French, Spanish and Portuguese subtitles. Disc labels match the case (Disc One, Two and Three, Volume 4). Disc 1: Tearjerker; Oedipal Panties; Widowmaker; Red October Sky; Office Spaceman. Disc 2: Stanny Slickers II: The Legend of Ollie's Gold; Spring Break-Up; 1600 Candles; The One That Got Away; One Little Word. Disc 3: Choosey Wives Choose Smith; Escape from Pearl Bailey; Pulling Double Booty; The Most Adequate Christmas Ever. Special features: audio commentary on all episodes; deleted scenes; featurettes Tearjerker: And Then They Will Cry, Roger: Master of Disguise and Comic-Con 2008."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
