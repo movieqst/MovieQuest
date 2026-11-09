@@ -26,9 +26,10 @@ Object.assign(window.TYRE_SCENARIO, {
     estimate:       { label: 'Estimate',       color: '#e9c77a', desc: 'A rounded or converted number (stades into metres, for example).' },
     reconstruction: { label: 'Reconstruction', color: '#c8a2ff', desc: 'Our own placing of something no source pins down: where each ship and soldier stood, and the exact line of walls and harbours.' }
   },
+  // Colours: Alexander blue (the Macedonian sprites from Gaugamela are painted blue), Tyre red.
   sides: {
-    allied: { name: 'Alexander’s army and fleet', short: 'Macedonians', army: 'Alexander of Macedon, with his army and the fleets of the cities that joined him', color: '#c0392b', light: '#ffd6d0' },
-    french: { name: 'The city of Tyre', short: 'Tyrians', army: 'The Phoenician island city of Tyre, its walls and its fleet', color: '#2e5aa8', light: '#d0dcff' }
+    allied: { name: 'Alexander’s army and fleet', short: 'Macedonians', army: 'Alexander of Macedon, with his army and the fleets of the cities that joined him', color: '#2e5aa8', light: '#d0dcff' },
+    french: { name: 'The city of Tyre', short: 'Tyrians', army: 'The Phoenician island city of Tyre, its walls and its fleet', color: '#c0392b', light: '#ffd6d0' }
   },
   welcome: "Welcome to Battles of History. Today we are learning about the Siege of Tyre, fought in 332 BCE on the coast of what is now Lebanon. On one side was Alexander the Great, king of Macedon, with his army and, later, a fleet of ships from the cities that had joined him. On the other was Tyre, a Phoenician city built on an island, with its walls, its harbours and its fleet. The siege lasted about seven months.",
   intro: [
@@ -431,7 +432,7 @@ Object.assign(window.TYRE_SCENARIO, {
       labels: [
         { x: 790, y: 1530, text: 'Tyre', small: false }, { x: 1330, y: 1600, text: 'the strait', small: true },
         { x: 2050, y: 330, text: 'the mainland', small: true }, { x: 2150, y: 1700, text: 'to Egypt ▼', small: true }, { x: 2150, y: 80, text: '▲ to Sidon', small: true },
-        { x: 1110, y: 480, text: 'harbour toward Sidon', small: true }, { x: 1150, y: 1120, text: 'harbour toward Egypt', small: true }
+        { x: 1010, y: 585, text: 'harbour toward Sidon', small: true }, { x: 1015, y: 1215, text: 'harbour toward Egypt', small: true }
       ]
     },
     eventMarkers: true,
@@ -454,8 +455,8 @@ Object.assign(window.TYRE_SCENARIO, {
     attackSheets: { 'tyre-spearman': 'tyre-spearman-attack' },
     sheetBy: { allied: { infantry: 'macedonian-spearman', archers: 'macedonian-archer', cavalry: 'macedonian-cavalry', ship: 'ship-allied-quinquereme' },
                french: { infantry: 'tyre-spearman', archers: 'tyre-archer', cavalry: 'tyre-spearman', ship: 'ship-tyrian-trireme' } },
-    sideArt: { allied: { cloth: '#7a1f1a', cloth2: '#c9a24a', pennant: '#c0392b' }, french: { cloth: '#5a2a6a', cloth2: '#e6dcc0', pennant: '#2e5aa8' } },
-    legend: [ { label: 'Alexander’s army and fleet', short: 'Macedonians', color: '#c0392b', kind: 'dot' }, { label: 'The city of Tyre', short: 'Tyrians', color: '#2e5aa8', kind: 'dot' } ],
+    sideArt: { allied: { cloth: '#1f3a7a', cloth2: '#c9a24a', pennant: '#2e5aa8' }, french: { cloth: '#5a2a6a', cloth2: '#e6dcc0', pennant: '#c0392b' } },
+    legend: [ { label: 'Alexander’s army and fleet', short: 'Macedonians', color: '#2e5aa8', kind: 'dot' }, { label: 'The city of Tyre', short: 'Tyrians', color: '#c0392b', kind: 'dot' } ],
     ai: { plans: {} }, commandLines: {},
     debrief: { allied: { victory: { title: 'Tyre is taken', text: '' }, defeat: { title: 'The siege fails', text: '' }, stalemate: { title: 'The siege drags on', text: '' } },
                french: { victory: { title: 'Tyre holds', text: '' }, defeat: { title: 'Tyre falls', text: '' }, stalemate: { title: 'The siege drags on', text: '' } } }
@@ -568,13 +569,13 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'cyp', to: CYP, via: [{ x: 700, y: 330 }], speed: 50, state: 'move', delay: 4 }, { id: 'others', to: { x: 450, y: 700 }, speed: 40, state: 'move', delay: 4 },
     { obj: 'tN1', visible: false, delay: 14 }, { obj: 'tN2', visible: false, delay: 14 }, { obj: 'tN3', visible: false, delay: 14 } ] });
   // 8. Stones, divers and chains: the engine ships come up to the walls; the stones in the water are hauled clear
-  set(7, { trenches: 'mole-4.png', focus: { x: 1150, y: MY }, zoom: 1.35, markers: [ { x: 1080, y: 760, label: 'stones in the water at the foot of the walls' }, { x: 1110, y: 990, label: 'divers cut the anchor ropes', side: 'french' } ], orders: [
+  set(7, { media: ART('art-divers.jpg', 'Tyrian divers swim under the water to cut the anchor ropes of the Macedonian ships near the walls; at last the Macedonians use chains instead (Arrian).'), trenches: 'mole-4.png', focus: { x: 1150, y: MY }, zoom: 1.35, markers: [ { x: 1080, y: 760, label: 'stones in the water at the foot of the walls' }, { x: 1110, y: 990, label: 'divers cut the anchor ropes', side: 'french' } ], orders: [
     { id: 'ram1', visible: true, at: { x: 1400, y: 1060 }, to: { x: 1100, y: 980 }, speed: 25, state: 'move' }, { id: 'ram2', visible: true, at: { x: 1400, y: 700 }, to: { x: 1100, y: 760 }, speed: 25, state: 'move' },
     { id: 'workers', to: head(H4), speed: 24, state: 'move' }, { id: 'engines', visible: true, at: { x: H4 + 90, y: MY }, strength: 100, state: 'attack' },
     { obj: 'tower3', visible: true, delay: 2 }, { obj: 'tower4', visible: true, delay: 2.5 },
     { id: 'tfS', to: { x: 1080, y: 1010 }, via: [SMOUTH], speed: 45, state: 'attack', delay: 3 }, { id: 'tfS', to: SHARB, via: [SMOUTH], speed: 45, state: 'move', delay: 10 } ] });
   // 9. Machines against machines: the walls answer with hot sand, nets and hooks
-  set(8, { focus: { x: 1080, y: MY }, zoom: 1.6, markers: [ { x: 990, y: 800, label: 'hot sand, nets and hooks', side: 'french' } ], orders: [
+  set(8, { media: ART('art-walls.jpg', 'On the walls, the Tyrians pour red-hot sand from bronze shields and throw nets down on the attackers, as Diodorus describes; a ram ship strikes the wall below.'), focus: { x: 1080, y: MY }, zoom: 1.6, markers: [ { x: 990, y: 800, label: 'hot sand, nets and hooks', side: 'french' } ], orders: [
     { id: 'wallE', state: 'attack' }, { id: 'slingers', state: 'attack' }, { id: 'archersN', state: 'attack' },
     { id: 'engines', state: 'attack' }, { id: 'ram1', state: 'attack' }, { id: 'ram2', state: 'attack' },
     { id: 'ram1', strengthTo: 75, over: 10 }, { id: 'engines', strengthTo: 70, over: 10 }, { id: 'wallE', strengthTo: 80, over: 10 } ] });
@@ -596,7 +597,7 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'workers', to: head(H5 + 20), speed: 24, state: 'move' }, { id: 'engines', at: { x: H5 + 120, y: MY }, state: 'attack' },
     { id: 'wallS', strengthTo: 65, over: 8, state: 'attack' } ] });
   // 12. The final assault: calm weather; the rams open a wide breach; the bridges go down; Admetus first onto the wall
-  set(11, { focus: { x: 930, y: 1320 }, zoom: 1.7, hold: 16, markers: [ { x: 900, y: 1290, label: 'Admetus, first onto the wall', side: 'allied' } ], orders: [
+  set(11, { media: ART('art-assault.jpg', 'Hypaspists, the foot guards, cross a boarding bridge from a ship onto the breach in the south wall. Arrian says Admetus was the first man onto the wall.'), focus: { x: 930, y: 1320 }, zoom: 1.7, hold: 16, markers: [ { x: 900, y: 1290, label: 'Admetus, first onto the wall', side: 'allied' } ], orders: [
     { id: 'bships', visible: true, at: { x: 1350, y: 1420 }, to: { x: 1000, y: 1310 }, speed: 45, state: 'move' },
     { id: 'bships', gone: true, delay: 8 }, { obj: 'bridgeA', visible: true, anim: { cells: [12, 13, 14, 15], fps: 1.2, mode: 'once' }, delay: 8 }, { obj: 'bridgeB', visible: true, anim: { cells: [12, 13, 14, 15], fps: 1.2, mode: 'once' }, delay: 8.3 },
     { id: 'hyp', visible: true, at: { x: 925, y: 1325 }, to: { x: 840, y: 1270 }, speed: 18, state: 'attack', delay: 11.5 }, { leader: 'alexander', visible: true, at: { x: 950, y: 1330 }, to: { x: 860, y: 1290 }, speed: 18, delay: 12.5 },
@@ -616,7 +617,7 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'spear', strengthTo: 15, over: 12, delay: 2 }, { id: 'archersN', strengthTo: 10, over: 12, delay: 2 }, { id: 'slingers', strengthTo: 10, over: 12, delay: 2 },
     { leader: 'alexander', to: { x: 800, y: 1250 }, speed: 18 } ] });
   // 15. The sanctuary: the king, the leading men and the Carthaginian envoys in the temple of Melqart
-  set(14, { focus: { x: 790, y: 980 }, zoom: 1.8, markers: [ Object.assign({ label: 'the temple of Melqart (Heracles)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], orders: [
+  set(14, { media: ART('art-temple.jpg', 'In the courtyard of the temple of Melqart, King Azemilcus, the leading men of Tyre and the envoys from Carthage wait. Arrian says Alexander spared those who had taken refuge in the temple; his soldiers stand at the gate.'), focus: { x: 790, y: 980 }, zoom: 1.8, markers: [ Object.assign({ label: 'the temple of Melqart (Heracles)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], orders: [
     { obj: 'civ1', visible: true, at: { x: 640, y: 960 } }, { obj: 'civ2', visible: true, at: { x: 790, y: 860 } },
     { leader: 'azemilcus', visible: true }, { leader: 'alexander', to: { x: 840, y: 1060 }, speed: 18 },
     { id: 'spear', state: 'hold' }, { id: 'hyp', to: { x: 820, y: 1100 }, speed: 18, state: 'move' }, { id: 'phalanx', state: 'hold' } ] });
@@ -630,11 +631,11 @@ Object.assign(window.TYRE_SCENARIO, {
   const CO = { aradus: { x: 990, y: 284 }, byblos: { x: 863, y: 814 }, sidon: { x: 698, y: 1215 }, tyre: { x: 595, y: 1425 }, antileb: { x: 1104, y: 1116 }, damascus: { x: 1248, y: 1253 } };
   const ring = (p, label, r, o) => ({ ring: Object.assign({}, p, { label, r: r || 40 }, o || {}) });
   // Intro 2, "After Issus": the eastern Mediterranean, the march down the coast, the cities as they are named
-  Object.assign(S.intro[1], { altMap: 'campaign', focus: { x: 1420, y: 760 }, zoom: .95, cues: [
+  Object.assign(S.intro[1], { altMap: 'campaign', focus: { x: 1420, y: 760 }, zoom: .95, cueFocus: true, cues: [
     Object.assign({ on: 'at Issus' }, ring(CM.issus, 'Issus, 333 BCE', 45)),
     { on: 'marched south', arrow: { pts: [[1634, 250], [1600, 420], [1585, 620], [1545, 800], [1495, 915]], label: 'Alexander marches south', col: '#c0392b' } },
     Object.assign({ on: 'Aradus did' }, ring(CM.aradus, 'Aradus', 30)), Object.assign({ on: 'and Byblos' }, ring(CM.byblos, 'Byblos', 30)),
-    Object.assign({ on: 'people of Sidon' }, ring(CM.sidon, 'Sidon', 30)), Object.assign({ on: 'Tyre also sent' }, ring(CM.tyre, 'Tyre', 34, { lx: -70 })),
+    Object.assign({ on: 'people of Sidon' }, ring(CM.sidon, 'Sidon', 30)), Object.assign({ on: 'Tyre also sent' }, ring(CM.tyre, 'Tyre', 34, { lx: -70 })), Object.assign({ on: 'meet him on the road' }, ring({ x: 1500, y: 870 }, 'Tyre’s envoys meet him on the road', 26, { lx: 150, ly: 0 })),
     Object.assign({ on: 'Cypriot ships' }, ring(CM.cyprus, 'Cyprus', 60)),
     { on: 'road to Egypt', arrow: { pts: [[1455, 1010], [1400, 1200], [1330, 1360], [1000, 1450]], label: 'the road to Egypt', col: '#e9c77a' } } ] });
   // Chapter 5, the fleet changes sides: where the ships came from
@@ -646,7 +647,7 @@ Object.assign(window.TYRE_SCENARIO, {
     Object.assign({ label: 'Tyre, still besieged', side: 'french' }, CO.tyre) ] });
 
   // The introduction's map: the island, the harbours and the temple the narrator names
-  Object.assign(S.intro[2], { markers: [ Object.assign({ label: 'harbour toward Sidon' }, NHARB), Object.assign({ label: 'harbour toward Egypt' }, SHARB), Object.assign({ label: 'temple of Melqart (place approximate)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], focus: { x: 1100, y: 900 }, zoom: 1.0 });
+  Object.assign(S.intro[2], { markers: [ Object.assign({ label: '' }, NHARB), Object.assign({ label: '' }, SHARB), Object.assign({ label: 'temple of Melqart (place approximate)' }, { x: TEMPLE.x, y: TEMPLE.y - 60 }) ], focus: { x: 1100, y: 900 }, zoom: 1.0 });
   Object.assign(S.intro[4], { markers: [ Object.assign({ label: 'Alexander’s army, on the mainland', side: 'allied' }, CAMP), Object.assign({ label: 'Tyre: walls and fleet', side: 'french' }, { x: 800, y: 760 }) ] });
 
   S.units = [

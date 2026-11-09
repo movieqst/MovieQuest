@@ -103,9 +103,10 @@ Object.assign(window.TYRE_SCENARIO, {{
     estimate:       {{ label: 'Estimate',       color: '#e9c77a', desc: 'A rounded or converted number (stades into metres, for example).' }},
     reconstruction: {{ label: 'Reconstruction', color: '#c8a2ff', desc: 'Our own placing of something no source pins down: where each ship and soldier stood, and the exact line of walls and harbours.' }}
   }},
+  // Colours: Alexander blue (the Macedonian sprites from Gaugamela are painted blue), Tyre red.
   sides: {{
-    allied: {{ name: 'Alexander’s army and fleet', short: 'Macedonians', army: 'Alexander of Macedon, with his army and the fleets of the cities that joined him', color: '#c0392b', light: '#ffd6d0' }},
-    french: {{ name: 'The city of Tyre', short: 'Tyrians', army: 'The Phoenician island city of Tyre, its walls and its fleet', color: '#2e5aa8', light: '#d0dcff' }}
+    allied: {{ name: 'Alexander’s army and fleet', short: 'Macedonians', army: 'Alexander of Macedon, with his army and the fleets of the cities that joined him', color: '#2e5aa8', light: '#d0dcff' }},
+    french: {{ name: 'The city of Tyre', short: 'Tyrians', army: 'The Phoenician island city of Tyre, its walls and its fleet', color: '#c0392b', light: '#ffd6d0' }}
   }},
   welcome: {json.dumps(welcome, ensure_ascii=False)},
   intro: {js(intro)},

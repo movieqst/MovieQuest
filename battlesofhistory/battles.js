@@ -180,7 +180,7 @@ window.BATTLES = [
     title: 'Siege of Tyre',
     date: '332 BCE, about seven months', year: -332,
     place: 'Tyre, an island city off the coast of Phoenicia (today in Lebanon)',
-    sides: 'The Macedonian army of Alexander III vs. the Tyrians under King Azemilcus',
+    sides: 'The Tyrians under King Azemilcus vs. the Macedonian army of Alexander III',   // Tyre first: red; Alexander blue, as his painted army
     blurb: 'Tyre refuses Alexander entry, trusting in its island walls half a mile out to sea. For seven months his army builds a causeway across the strait while the Tyrians fight back with a fireship, divers and a surprise sortie, until a fleet of Phoenician and Cypriot ships helps him breach the walls.',
     cover: 'images/cover.jpg', coverPos: '70% 40%',
     coverCredit: 'Original illustration for this project (AI-generated): an artist’s impression, not evidence',

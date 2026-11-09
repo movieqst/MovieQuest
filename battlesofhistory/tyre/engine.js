@@ -1090,7 +1090,7 @@ function drawFormation(c, f) {
   // label + strength
   const half = (FR / 2) * sy + 10, ly = f.y + Math.max(half, (FC / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
   const suffix = f.gun && f.gun.phase === 'limber' ? ' \u00b7 limbering' : f.gun && f.gun.phase === 'unlimber' ? ' \u00b7 unlimbering' : f.state === 'captured' ? ' \u00b7 captured' : f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
-  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'allied' ? '#ffe1d6' : '#dceeff' });
+  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: (S.sides[f.side] && S.sides[f.side].light) || (f.side === 'allied' ? '#ffe1d6' : '#dceeff') });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
     c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(pl.x - 22 * ts, pl.y + 8 * ts, 44 * ts, 5 * ts);
     c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(pl.x - 21 * ts, pl.y + 9 * ts, 42 * ts * f.strength / 100, 3 * ts);
@@ -1120,6 +1120,7 @@ function render() {
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
   if (stage !== 'campaign' && !altMapNow()) PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
   const ALT = altMapNow(); if (ALT !== lastAlt) applyArt();
+  if (!ALT && stage !== 'campaign') drawPlaceLabels();
   if (stage !== 'campaign' && !ALT) drawFallen(ctx, y0v, y1v, x0v, x1v);
   if (!ALT) { objects.forEach(ob => { if (ob.ground) drawObject(ctx, ob); else scene.push({ y: ob.y, ob }); });
   formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L })); }
@@ -1769,7 +1770,7 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
 // Labels, river course and props still come from the scenario, so the painting must follow the guide's positions.
 { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height);
     g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); if (B.city) outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); if (B.camp) outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
-    B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
+    // (Tyre: the place names are drawn live over the map, drawPlaceLabels, so they stay readable at every zoom)
     PAINTEDTER = T; applyArt(); }; img.src = (S.imageBase || 'images/') + (S.terrain || 'terrain.jpg'); }
 /* Tyre: wider maps for the slides and chapters that talk about other cities (S.altMaps: { id: file }, all 2400 x 1800 like
    the siege map; a slide or chapter with `altMap: id` shows that map instead, without the siege's armies, mole or ships). */
@@ -1777,6 +1778,11 @@ const ALTTER = {};
 Object.entries(S.altMaps || {}).forEach(([id, file]) => { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; T.getContext('2d').drawImage(img, 0, 0, T.width, T.height); ALTTER[id] = T; if (altMapNow() === id) applyArt(); }; img.src = (S.imageBase || 'images/') + file; });
 function altMapNow() { const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; return it && it.altMap && ALTTER[it.altMap] ? it.altMap : null; }
 let lastAlt = null;
+// The siege map's place names (B.labels), drawn on screen at a size that stays readable whatever the zoom.
+function drawPlaceLabels() {
+  (B.labels || []).forEach(l => { const q = P(l.x, l.y); if (!(q.s > 0)) return; const base = l.small ? 13 : 26, sz = clamp(base * q.s, l.small ? 12 : 18, l.small ? 20 : 36);
+    outlined(ctx, l.text, q.x, q.y, sz, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }); });
+}
 function applyArt() {
   const alt = altMapNow(); lastAlt = alt; if (alt) { TER = ALTTER[alt]; PAINTED = true; buildMiniBase(); return; }
   if (stage === 'campaign') { TER = CAMPTER; PAINTED = true; buildMiniBase(); return; }
