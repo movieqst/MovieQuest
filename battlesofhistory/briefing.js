@@ -13,14 +13,14 @@
   const PI = Math.PI;
   window.BHBriefing = {
     create(opt) {
-      let cues = [];
+      let cues = [], focus = false;   // focus (a slide's cueFocus): only the newest ring pulses; earlier ones stay, still and faint
       const now = () => performance.now() / 1000;
       const text = (c, s, x, y, size, align) => {
         if (opt.outlined) return opt.outlined(c, s, x, y, size, { fill: '#fff3c9', align: align || 'center' });
         c.save(); c.font = `bold ${size}px Georgia, serif`; c.textAlign = align || 'center'; c.textBaseline = 'middle'; c.lineWidth = 4; c.strokeStyle = 'rgba(20,16,8,.85)'; c.strokeText(s, x, y); c.fillStyle = '#fff3c9'; c.fillText(s, x, y); c.restore();
       };
       return {
-        set(sl) { cues = ((sl && sl.cues) || []).map(q => Object.assign({}, q)); },
+        set(sl) { cues = ((sl && sl.cues) || []).map(q => Object.assign({}, q)); focus = !!(sl && sl.cueFocus); },
         clear() { cues = []; },
         update(sl, frac, done) {
           if (!cues.length || !sl) return;
@@ -30,13 +30,14 @@
             if (done || (ph && line && line.includes(ph)) || frac >= at + (line ? .05 : 0)) q.t0 = now() + (q.delay || 0); });
         },
         draw(c) {
-          const t = now(), P = opt.P;
+          const t = now(), P = opt.P; let newest = -1; if (focus) cues.forEach(q => { if (q.ring && q.t0 !== undefined && t >= q.t0 && q.t0 > newest) newest = q.t0; });
           cues.forEach(q => {
             if (q.t0 === undefined || t < q.t0) return; const age = t - q.t0;
             c.save(); c.globalAlpha = Math.min(1, age / .6);
-            if (q.ring) { const R = q.ring, p = P(R.x, R.y), r0 = R.r || 22, r = r0 * (1 + .2 * Math.sin(t * 3));
-              c.strokeStyle = '#ffd36b'; c.lineWidth = 3; c.beginPath(); c.arc(p.x, p.y, r, 0, PI * 2); c.stroke();
-              c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 8; c.beginPath(); c.arc(p.x, p.y, r + 7, 0, PI * 2); c.stroke();
+            if (q.ring) { const R = q.ring, p = P(R.x, R.y), r0 = R.r || 22, live = !focus || q.t0 === newest, r = r0 * (live ? 1 + .2 * Math.sin(t * 3) : 1);
+              if (!live) c.globalAlpha *= .45;
+              c.strokeStyle = '#ffd36b'; c.lineWidth = live ? 3 : 2; c.beginPath(); c.arc(p.x, p.y, r, 0, PI * 2); c.stroke();
+              if (live) { c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 8; c.beginPath(); c.arc(p.x, p.y, r + 7, 0, PI * 2); c.stroke(); }
               if (R.label) text(c, R.label, p.x + (R.lx || 0), p.y + (R.ly !== undefined ? R.ly : -r0 - 18), 14, R.align); }
             if (q.arrow) { const A = q.arrow, pts = A.pts.map(([x, y]) => P(x, y)), grow = Math.min(1, age / (A.secs || 1.8)), col = A.col || '#ffd36b';
               let L = 0; const seg = []; for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y); seg.push(d); L += d; }
