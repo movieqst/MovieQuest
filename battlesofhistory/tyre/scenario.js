@@ -26,9 +26,10 @@ Object.assign(window.TYRE_SCENARIO, {
     estimate:       { label: 'Estimate',       color: '#e9c77a', desc: 'A rounded or converted number (stades into metres, for example).' },
     reconstruction: { label: 'Reconstruction', color: '#c8a2ff', desc: 'Our own placing of something no source pins down: where each ship and soldier stood, and the exact line of walls and harbours.' }
   },
+  // Colours: Alexander blue (the Macedonian sprites from Gaugamela are painted blue), Tyre red.
   sides: {
-    allied: { name: 'Alexander’s army and fleet', short: 'Macedonians', army: 'Alexander of Macedon, with his army and the fleets of the cities that joined him', color: '#c0392b', light: '#ffd6d0' },
-    french: { name: 'The city of Tyre', short: 'Tyrians', army: 'The Phoenician island city of Tyre, its walls and its fleet', color: '#2e5aa8', light: '#d0dcff' }
+    allied: { name: 'Alexander’s army and fleet', short: 'Macedonians', army: 'Alexander of Macedon, with his army and the fleets of the cities that joined him', color: '#2e5aa8', light: '#d0dcff' },
+    french: { name: 'The city of Tyre', short: 'Tyrians', army: 'The Phoenician island city of Tyre, its walls and its fleet', color: '#c0392b', light: '#ffd6d0' }
   },
   welcome: "Welcome to Battles of History. Today we are learning about the Siege of Tyre, fought in 332 BCE on the coast of what is now Lebanon. On one side was Alexander the Great, king of Macedon, with his army and, later, a fleet of ships from the cities that had joined him. On the other was Tyre, a Phoenician city built on an island, with its walls, its harbours and its fleet. The siege lasted about seven months.",
   intro: [
@@ -454,8 +455,8 @@ Object.assign(window.TYRE_SCENARIO, {
     attackSheets: { 'tyre-spearman': 'tyre-spearman-attack' },
     sheetBy: { allied: { infantry: 'macedonian-spearman', archers: 'macedonian-archer', cavalry: 'macedonian-cavalry', ship: 'ship-allied-quinquereme' },
                french: { infantry: 'tyre-spearman', archers: 'tyre-archer', cavalry: 'tyre-spearman', ship: 'ship-tyrian-trireme' } },
-    sideArt: { allied: { cloth: '#7a1f1a', cloth2: '#c9a24a', pennant: '#c0392b' }, french: { cloth: '#5a2a6a', cloth2: '#e6dcc0', pennant: '#2e5aa8' } },
-    legend: [ { label: 'Alexander’s army and fleet', short: 'Macedonians', color: '#c0392b', kind: 'dot' }, { label: 'The city of Tyre', short: 'Tyrians', color: '#2e5aa8', kind: 'dot' } ],
+    sideArt: { allied: { cloth: '#1f3a7a', cloth2: '#c9a24a', pennant: '#2e5aa8' }, french: { cloth: '#5a2a6a', cloth2: '#e6dcc0', pennant: '#c0392b' } },
+    legend: [ { label: 'Alexander’s army and fleet', short: 'Macedonians', color: '#2e5aa8', kind: 'dot' }, { label: 'The city of Tyre', short: 'Tyrians', color: '#c0392b', kind: 'dot' } ],
     ai: { plans: {} }, commandLines: {},
     debrief: { allied: { victory: { title: 'Tyre is taken', text: '' }, defeat: { title: 'The siege fails', text: '' }, stalemate: { title: 'The siege drags on', text: '' } },
                french: { victory: { title: 'Tyre holds', text: '' }, defeat: { title: 'Tyre falls', text: '' }, stalemate: { title: 'The siege drags on', text: '' } } }
