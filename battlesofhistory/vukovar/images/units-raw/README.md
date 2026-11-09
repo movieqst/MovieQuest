@@ -8,3 +8,6 @@ Credit: Battle Games, AI-generated (ChatGPT) from our prompts (ART-PROMPTS-UNITS
 | jna-infantry-fire.png | firing behind brick rubble | good: aim, fire, reload, move on; same soldier and scale as the walk sheet |
 | jna-m84.png | move | good: flat olive, commander in the hatch, no markings. Side view reads as a T-72-family tank at map size |
 | jna-m84-fire.png | firing | good, but the tank is drawn about 2/3 the size of jna-m84.png: scale it up to match when cutting |
+| jna-m80.png | move | good: small one-man turret with 20 mm cannon, six road wheels, rear doors, flat olive, no markings |
+| jna-t55.png | move | good: dome turret, fuel drums on the back, commander in a black tanker's helmet; a muddy ground patch under it (fine on the autumn map) |
+| jna-m80-move.png | dismounting | **redo requested:** soldiers step across the cell edges in 6 of 16 cells (rows 2–4, frames 2–4), so the sheet cannot be cut cleanly. Not saved |
