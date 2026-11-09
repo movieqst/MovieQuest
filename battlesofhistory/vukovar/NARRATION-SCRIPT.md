@@ -159,8 +159,8 @@ Chapters 1 to 6 play on the area map; chapters 7 to 15 move between the area map
 > The CIA's map of the battle, from *Balkan Battlegrounds* (2002). It shows the front lines of 14 September, 30 September and 10 November 1991, and the units of both sides. Our map's front lines are traced from it.
 **Credit:** Central Intelligence Agency, *Balkan Battlegrounds*, vol. I, map 2 (2002). Public domain. Library of Congress.
 
-### A wrecked M-84 tank in Vukovar (with chapter 4, "Trpinjska cesta") — NOT YET DOWNLOADED
-**Picture:** Wikimedia Commons, Peter Denton's photo of a wrecked tank in Vukovar, 1991 (CC BY-SA 2.0). To download.
+### A wrecked M-84 tank in Vukovar (with chapter 4, "Trpinjska cesta")
+**Picture:** images/record-m84-wreck.jpg (Commons: File:Croatian_War_1991_Vukovar_destroyed_tank.jpg; 640 × 442, the largest size there).
 **Caption:**
 > A wrecked M-84 tank photographed in Vukovar on 29 November 1991, after the battle. The M-84 is the Yugoslav development of the Soviet T-72.
 **Credit:** Photo: Peter Denton, via Wikimedia Commons (File:Croatian_War_1991_Vukovar_destroyed_tank.jpg), CC BY-SA 2.0. Mark any crop as a change.
