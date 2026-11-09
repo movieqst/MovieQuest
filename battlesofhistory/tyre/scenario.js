@@ -437,7 +437,7 @@ Object.assign(window.TYRE_SCENARIO, {
     },
     eventMarkers: true,
     trenchLayers: ['mole-1.png', 'mole-2.png', 'mole-3.png', 'mole-4.png', 'mole-5.png'], trenchAlpha: 1, defaultTrench: null, introTrench: null,
-    globe: { target: { lon: 35.1937, lat: 33.2707 }, region: { lon: 31, lat: 36 }, pull: 3.2, startLat: 25,
+    globe: { target: { lon: 35.1937, lat: 33.2707 }, region: { lon: 37, lat: 41 }, pull: 4.6,   // the pull-back frames both realms: Alexander's conquests (blue) and the Persian Empire (red) startLat: 25,
       periodNote: 'Early 332 BCE: approximate extents, a reconstruction',
       labels: [ { lon: 22.94, lat: 40.64, text: 'Macedon', size: .55 }, { lon: 36.17, lat: 36.84, text: 'Issus', size: .5, dot: true },
                 { lon: 35.37, lat: 33.56, text: 'Sidon', size: .5, dot: true }, { lon: 34.46, lat: 31.5, text: 'Gaza', size: .5, dot: true },
