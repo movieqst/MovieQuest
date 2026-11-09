@@ -5,7 +5,13 @@ window.BattleGlobe = (() => {
   const D = Math.PI / 180, GS = ((window.BATTLE_SCENARIO || window[Object.keys(window).find(k => /_SCENARIO$/.test(k))] || {}).globe) || {}, KADESH = GS.target || { lon: 0, lat: 0 }, START_LAT = GS.startLat !== undefined ? GS.startLat : 24;
   const RINGS = (window.BATTLE_WORLD && window.BATTLE_WORLD.rings) || [];
   const BORDERS = window.BATTLE_BORDERS || { modern: [], ancient: [] };
-  const NEAR_EAST = GS.region || KADESH;   // centre of the pull-back that shows the whole region
+  const NEAR_EAST = GS.region || KADESH;
+  // each painted map is copied onto a canvas with its edges faded out, so its frame never shows as a hard line on the globe
+  const PAINT = (GS.paintings || []).map((pm, i) => { const im = new Image(); im.onload = () => { const C = document.createElement('canvas'); C.width = im.width; C.height = im.height; const g = C.getContext('2d'); g.drawImage(im, 0, 0);
+    g.globalCompositeOperation = 'destination-out'; const f = Math.min(C.width, C.height) * (pm.feather || .12);
+    [[0, 0, f, 0, 0, 0, f, C.height], [C.width, 0, C.width - f, 0, C.width - f, 0, f, C.height], [0, 0, 0, f, 0, 0, C.width, f], [0, C.height, 0, C.height - f, 0, C.height - f, C.width, f]].forEach(([x0, y0, x1, y1, rx, ry, rw, rh]) => {
+      const gr = g.createLinearGradient(x0, y0, x1, y1); gr.addColorStop(0, 'rgba(0,0,0,1)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(rx, ry, rw, rh); });
+    PAINT[i] = C; C.complete = true; C.naturalWidth = C.width; }; im.src = (pm.base || 'images/') + pm.file; return null; });   // centre of the pull-back that shows the whole region
   // Pre-computed per ring: Float32 arrays of lon(rad), cos(lat), sin(lat), plus a lon/lat bounding box.
   const PRE = RINGS.map(r => {
     const n = r.length, lon = new Float32Array(n), cl = new Float32Array(n), sl = new Float32Array(n);
@@ -203,8 +209,18 @@ window.BattleGlobe = (() => {
         if (!s.stop2) BORDERS.modern.forEach(co => { if (!co.label) return; const p = proj(co.label[0] * D, Math.cos(co.label[1] * D), Math.sin(co.label[1] * D)); if (!p) return; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText(co.name.toUpperCase(), p[0], p[1]); c.fillStyle = '#ffffff'; c.fillText(co.name.toUpperCase(), p[0], p[1]); });
         c.globalAlpha = s.modern; c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; if (!s.stop2) { c.strokeText('Today\u2019s borders', 16, 22); c.fillStyle = '#dfe9f3'; c.fillText('Today\u2019s borders', 16, 22); }
       }
+      // GS.paintings: painted maps laid onto the globe by their corners ({ file, lat0, lat1, lon0, lon1 }), shown as s.paint[i] (0..1),
+      // so the globe can fade into a painted map, and that into the battle map, without a jump. Drawn in a 6 x 6 grid of
+      // pieces, each placed by its own projected corners, so the image follows the globe's curve.
+      (GS.paintings || []).forEach((pm, i) => { const a = s.paint && s.paint[i]; if (!(a > 0) || !PAINT[i] || !PAINT[i].complete || !PAINT[i].naturalWidth) return; const im = PAINT[i], N = 6;
+        c.globalAlpha = a;
+        for (let gy = 0; gy < N; gy++) for (let gx = 0; gx < N; gx++) {
+          const la1 = pm.lat1 - (pm.lat1 - pm.lat0) * gy / N, la0 = pm.lat1 - (pm.lat1 - pm.lat0) * (gy + 1) / N, lo0 = pm.lon0 + (pm.lon1 - pm.lon0) * gx / N, lo1 = pm.lon0 + (pm.lon1 - pm.lon0) * (gx + 1) / N;
+          const tl = proj(lo0 * D, Math.cos(la1 * D), Math.sin(la1 * D)), br = proj(lo1 * D, Math.cos(la0 * D), Math.sin(la0 * D)); if (!tl || !br) continue;
+          const sw = im.width / N, sh = im.height / N; c.drawImage(im, gx * sw, gy * sh, sw, sh, tl[0], tl[1], br[0] - tl[0] + .6, br[1] - tl[1] + .6); }
+        c.globalAlpha = 1; });
       if (s.ancient > 0) {
-        c.globalAlpha = s.ancient;
+        c.globalAlpha = s.ancient * (1 - .65 * ((s.paint && s.paint[0]) || 0));   // lighter tint once the painted map is under it
         BORDERS.ancient.forEach(k => (k.rings || [k.ring]).forEach(ring => { c.beginPath(); if (path(ring)) { c.closePath(); c.fillStyle = `rgba(${k.color},.26)`; c.fill(); c.setLineDash([7, 5]); c.strokeStyle = `rgba(${k.color},.95)`; c.lineWidth = 2; c.stroke(); c.setLineDash([]); } }));
         // a front line of the time (BORDERS.front: { name, line: [[lon, lat]...], color, label }), drawn over the realms
         const FR = BORDERS.front; if (FR) { c.beginPath(); if (path(FR.line)) { c.setLineDash([]); c.lineWidth = Math.max(3, Math.min(7, R / 260)) * (GS.frontSides ? 1.8 : 1); c.strokeStyle = 'rgba(20,10,10,.75)'; c.stroke(); if (!GS.frontSides) { c.lineWidth = Math.max(2, Math.min(5, R / 360)); c.strokeStyle = `rgb(${FR.color})`; c.stroke(); } }
@@ -265,7 +281,7 @@ window.BattleGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = GS.pull || 5, CLOSE = 26;
+  const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = GS.dive2Secs || 4, FADE_SECS = 1.6, PULL = GS.pull || 5, CLOSE = 26;
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
@@ -303,12 +319,14 @@ window.BattleGlobe = (() => {
       // the towns of the time and the old realms fade in over today's, then today's fade out
       const e = now - t0, x = Math.min(1, e / XFADE_SECS);
       st.tThen = x; st.ancient = x; st.tToday = e < XFADE_SECS + 1 ? 1 : Math.max(0, 1 - (e - XFADE_SECS - 1) / XFADE_SECS); st.modern = .8 * st.tToday;
+      if (GS.paintings) st.paint = [Math.max(0, Math.min(1, (e - XFADE_SECS - 1.5) / 1.5)), 0];
       if (e >= THEN_SECS) { st.phase = 'dive2'; t0 = now; }
     } else if (st.phase === 'dive2') {
       // drop onto Kadesh
       const k = Math.min(1, (now - t0) / DIVE2_SECS), e = ease(k);
-      const F = st.from || { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }, CL = Math.max(CLOSE, F.pull * 1.5);
+      const F = st.from || { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }, CL = GS.closePull || Math.max(CLOSE, F.pull * 1.5);
       st.R = R0 * F.pull * Math.pow(CL / F.pull, e); st.lat0 = F.lat + (KADESH.lat - F.lat) * e; st.lon0 = F.lon + (KADESH.lon - F.lon) * e;
+      if (GS.paintings) st.paint = [1, Math.max(0, Math.min(1, (k - .65) / .3))];
       st.ancient = GS.keepBorders ? 1 : Math.max(0, 1 - k / .4); st.tThen = st.stop2 ? (GS.keepTowns ? 1 : Math.max(0, 1 - k / .3)) : 0; st.modern = 0; st.tToday = 0; st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = (F.oy !== undefined ? F.oy : -h * (cb.lift ? .22 : .04)) * (1 - e) - h * .05 * e;
       if (k >= 1) { st.phase = 'fade'; t0 = now; if (cb.onFade) cb.onFade(); }
     } else if (st.phase === 'fade') {
