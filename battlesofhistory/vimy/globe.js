@@ -220,7 +220,7 @@ window.BattleGlobe = (() => {
           const sw = im.width / N, sh = im.height / N; c.drawImage(im, gx * sw, gy * sh, sw, sh, tl[0], tl[1], br[0] - tl[0] + .6, br[1] - tl[1] + .6); }
         c.globalAlpha = 1; });
       if (s.ancient > 0) {
-        c.globalAlpha = s.ancient;
+        c.globalAlpha = s.ancient * (1 - .65 * ((s.paint && s.paint[0]) || 0));   // lighter tint once the painted map is under it
         BORDERS.ancient.forEach(k => (k.rings || [k.ring]).forEach(ring => { c.beginPath(); if (path(ring)) { c.closePath(); c.fillStyle = `rgba(${k.color},.26)`; c.fill(); c.setLineDash([7, 5]); c.strokeStyle = `rgba(${k.color},.95)`; c.lineWidth = 2; c.stroke(); c.setLineDash([]); } }));
         // a front line of the time (BORDERS.front: { name, line: [[lon, lat]...], color, label }), drawn over the realms
         const FR = BORDERS.front; if (FR) { c.beginPath(); if (path(FR.line)) { c.setLineDash([]); c.lineWidth = Math.max(3, Math.min(7, R / 260)) * (GS.frontSides ? 1.8 : 1); c.strokeStyle = 'rgba(20,10,10,.75)'; c.stroke(); if (!GS.frontSides) { c.lineWidth = Math.max(2, Math.min(5, R / 360)); c.strokeStyle = `rgb(${FR.color})`; c.stroke(); } }
