@@ -17,3 +17,10 @@ Credit: Battle Games, AI-generated (ChatGPT) from our prompts (ART-PROMPTS-UNITS
 | to-volunteer-fire.png | the same fighter behind a garden wall (ChatGPT's file: "Four-Direction Rifleman Behind Garden Wall") | good: aim, fire, reload, move on |
 | hr-defender.png | Croatian defender walking (ChatGPT's file: "Vukovar defender 4×4 animation sheet") | good: woodland-pattern camouflage jacket and trousers, knitted cap, chest rig, M70-type rifle, no insignia; clearly different from the TO fighter's plain dark jacket |
 | hr-antitank.png | two-man anti-tank team (ChatGPT's file: "Croatian Antitank Team 4x4 Sprite Sheet") | good: wait, aim, fire with back-blast, run back; a plain olive tube, no model shown; no tank in the picture |
+| hr-defender-fire.png | defender at a ruined window ("Ruined Window Defender Animation Sheet") | good: aim, fire, duck, run to the next corner; same camouflage as hr-defender |
+| hr-police.png | Croatian police officer walking ("Croatian MUP Officer Sprite Sheet") | good: dark blue uniform, period vest, dark helmet, M70, no badges or text |
+| hr-police-fire.png | police officer at a barricade ("Police barricade action sprite sheet") | good: tipped cart and sandbags; aim, fire, reload, move on |
+| hr-mortar-fire.png | two defenders with an 82 mm mortar ("Croatian 82mm Mortar Crew Sprite Sheet") | good: behind a low brick wall, mixed camouflage and civilian clothes |
+| hr-cornfield.png | carriers on the night corn-field track ("4x4 Croatian defenders in a cornfield") | good: night light, ammunition boxes, a wounded man carried on a back, no blood |
+| msf-convoy.png | medical convoy ("Humanitarian Convoy RTS Sprite Sheet") | good: white four-wheel-drive with a white flag leading a white van; no logos, no red cross |
+| monitors.png | European monitors ("Four-way monitor and car sprite sheet") | good: two men in white beside a white car, talking, one pointing |
