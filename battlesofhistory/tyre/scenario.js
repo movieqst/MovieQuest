@@ -529,7 +529,7 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'tfS', to: { x: 1400, y: MY + 80 }, via: [SMOUTH, { x: 1200, y: 1040 }], speed: 60, state: 'attack' },
     { id: 'workers', strengthTo: 82, over: 10 }, { id: 'wallE', state: 'attack' }, { id: 'slingers', state: 'attack' } ] });
   // 3. The fireship: towed in by triremes, set alight, driven against the head of the mole; both towers burn
-  set(2, { focus: { x: 1320, y: MY }, zoom: 1.6, hold: 14, markers: [ { x: H2 + 20, y: MY - 80, label: 'the fireship strikes the mole', side: 'french' } ], orders: [
+  set(2, { media: ART('art-fireship.jpg', 'The Tyrian fireship, packed with dry wood, pitch and sulphur, is towed against the head of the mole, and both towers catch fire (Arrian). The dusk light is the artist’s choice: Arrian does not give the time of day.'), focus: { x: 1320, y: MY }, zoom: 1.6, hold: 14, markers: [ { x: H2 + 20, y: MY - 80, label: 'the fireship strikes the mole', side: 'french' } ], orders: [
     { id: 'tfN', to: { x: 1180, y: 760 }, speed: 50, state: 'move' }, { id: 'tfS', to: { x: 1220, y: 990 }, speed: 50, state: 'move' },
     { id: 'fireship', visible: true, at: { x: 1080, y: MY }, to: { x: H2 - 20, y: MY }, speed: 30, state: 'move' },
     { id: 'fireship', gone: true, delay: 8 }, { obj: 'fire3', visible: true, anim: { cells: [...Array(16).keys()], fps: 1.6, mode: 'once' }, delay: 7.5 },
@@ -556,7 +556,7 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'cav', gone: true, delay: 9 }, { id: 'agr', gone: true, delay: 11 }, { id: 'hyp', gone: true, delay: 11 }, { id: 'archers', gone: true, delay: 11 },
     { id: 'mercs', visible: true, at: { x: 2380, y: 420 }, to: { x: 2100, y: 640 }, speed: 30, state: 'move', delay: 6 } ] });
   // 7. The blockade: the fleet sails down in battle order; the Tyrians stay in harbour; three Tyrian ships rammed at the north harbour
-  set(6, { focus: { x: 1150, y: 760 }, zoom: 1.05, hold: 14, markers: [ { x: 1110, y: 560, label: 'three Tyrian ships rammed', side: 'allied' } ], orders: [
+  set(6, { media: ART('art-fleet.jpg', 'Alexander’s new fleet of Phoenician and Cypriot warships rows toward Tyre in battle order; the Tyrians stay in their harbours (Arrian).'), focus: { x: 1150, y: 760 }, zoom: 1.05, hold: 14, markers: [ { x: 1110, y: 560, label: 'three Tyrian ships rammed', side: 'allied' } ], orders: [
     { leader: 'alexander', visible: true, at: { x: 1700, y: 230 } , to: { x: 1760, y: 900 }, speed: 70 },
     { id: 'cav', visible: true, at: { x: 2300, y: 980 }, to: { x: 2150, y: 880 }, speed: 40, state: 'move' }, { id: 'agr', visible: true, at: { x: 2300, y: 1180 }, to: { x: 2060, y: 1180 }, speed: 30, state: 'move' },
     { id: 'hyp', visible: true, at: { x: 2300, y: 1060 }, to: { x: 2040, y: 1060 }, speed: 30, state: 'move' }, { id: 'archers', visible: true, at: { x: 2300, y: 760 }, to: { x: 1780, y: 760 }, speed: 30, state: 'move' },

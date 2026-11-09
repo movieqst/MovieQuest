@@ -17,3 +17,5 @@
 | art-mole-carts.jpg | Ox-carts bringing stone blocks and logs out along the mole (chapter 1) | AI-generated (ChatGPT) for this project: an artist's impression. No ancient writer says how the stones were carried; carts are our guess. |
 | art-mole-builders.jpg | Builders carrying stones and baskets and driving stakes, Tyrian archers shooting from boats (chapter 2) | AI-generated (ChatGPT) for this project: an artist's impression. |
 | art-towers.jpg | The two hide-covered siege towers with stone-throwers at the head of the mole; Tyrian triremes alongside (chapter 2, over the map at "two towers") | AI-generated (ChatGPT) for this project: an artist's impression. |
+| art-fireship.jpg | The fireship towed against the head of the mole, the two towers burning, the builders running (chapter 3) | AI-generated (ChatGPT) for this project: an artist's impression. |
+| art-fleet.jpg | Alexander's Phoenician and Cypriot warships rowing toward Tyre in battle order (chapter 7) | AI-generated (ChatGPT) for this project: an artist's impression. |
