@@ -568,13 +568,13 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'cyp', to: CYP, via: [{ x: 700, y: 330 }], speed: 50, state: 'move', delay: 4 }, { id: 'others', to: { x: 450, y: 700 }, speed: 40, state: 'move', delay: 4 },
     { obj: 'tN1', visible: false, delay: 14 }, { obj: 'tN2', visible: false, delay: 14 }, { obj: 'tN3', visible: false, delay: 14 } ] });
   // 8. Stones, divers and chains: the engine ships come up to the walls; the stones in the water are hauled clear
-  set(7, { trenches: 'mole-4.png', focus: { x: 1150, y: MY }, zoom: 1.35, markers: [ { x: 1080, y: 760, label: 'stones in the water at the foot of the walls' }, { x: 1110, y: 990, label: 'divers cut the anchor ropes', side: 'french' } ], orders: [
+  set(7, { media: ART('art-divers.jpg', 'Tyrian divers swim under the water to cut the anchor ropes of the Macedonian ships near the walls; at last the Macedonians use chains instead (Arrian).'), trenches: 'mole-4.png', focus: { x: 1150, y: MY }, zoom: 1.35, markers: [ { x: 1080, y: 760, label: 'stones in the water at the foot of the walls' }, { x: 1110, y: 990, label: 'divers cut the anchor ropes', side: 'french' } ], orders: [
     { id: 'ram1', visible: true, at: { x: 1400, y: 1060 }, to: { x: 1100, y: 980 }, speed: 25, state: 'move' }, { id: 'ram2', visible: true, at: { x: 1400, y: 700 }, to: { x: 1100, y: 760 }, speed: 25, state: 'move' },
     { id: 'workers', to: head(H4), speed: 24, state: 'move' }, { id: 'engines', visible: true, at: { x: H4 + 90, y: MY }, strength: 100, state: 'attack' },
     { obj: 'tower3', visible: true, delay: 2 }, { obj: 'tower4', visible: true, delay: 2.5 },
     { id: 'tfS', to: { x: 1080, y: 1010 }, via: [SMOUTH], speed: 45, state: 'attack', delay: 3 }, { id: 'tfS', to: SHARB, via: [SMOUTH], speed: 45, state: 'move', delay: 10 } ] });
   // 9. Machines against machines: the walls answer with hot sand, nets and hooks
-  set(8, { focus: { x: 1080, y: MY }, zoom: 1.6, markers: [ { x: 990, y: 800, label: 'hot sand, nets and hooks', side: 'french' } ], orders: [
+  set(8, { media: ART('art-walls.jpg', 'On the walls, the Tyrians pour red-hot sand from bronze shields and throw nets down on the attackers, as Diodorus describes; a ram ship strikes the wall below.'), focus: { x: 1080, y: MY }, zoom: 1.6, markers: [ { x: 990, y: 800, label: 'hot sand, nets and hooks', side: 'french' } ], orders: [
     { id: 'wallE', state: 'attack' }, { id: 'slingers', state: 'attack' }, { id: 'archersN', state: 'attack' },
     { id: 'engines', state: 'attack' }, { id: 'ram1', state: 'attack' }, { id: 'ram2', state: 'attack' },
     { id: 'ram1', strengthTo: 75, over: 10 }, { id: 'engines', strengthTo: 70, over: 10 }, { id: 'wallE', strengthTo: 80, over: 10 } ] });
@@ -596,7 +596,7 @@ Object.assign(window.TYRE_SCENARIO, {
     { id: 'workers', to: head(H5 + 20), speed: 24, state: 'move' }, { id: 'engines', at: { x: H5 + 120, y: MY }, state: 'attack' },
     { id: 'wallS', strengthTo: 65, over: 8, state: 'attack' } ] });
   // 12. The final assault: calm weather; the rams open a wide breach; the bridges go down; Admetus first onto the wall
-  set(11, { focus: { x: 930, y: 1320 }, zoom: 1.7, hold: 16, markers: [ { x: 900, y: 1290, label: 'Admetus, first onto the wall', side: 'allied' } ], orders: [
+  set(11, { media: ART('art-assault.jpg', 'Hypaspists, the foot guards, cross a boarding bridge from a ship onto the breach in the south wall. Arrian says Admetus was the first man onto the wall.'), focus: { x: 930, y: 1320 }, zoom: 1.7, hold: 16, markers: [ { x: 900, y: 1290, label: 'Admetus, first onto the wall', side: 'allied' } ], orders: [
     { id: 'bships', visible: true, at: { x: 1350, y: 1420 }, to: { x: 1000, y: 1310 }, speed: 45, state: 'move' },
     { id: 'bships', gone: true, delay: 8 }, { obj: 'bridgeA', visible: true, anim: { cells: [12, 13, 14, 15], fps: 1.2, mode: 'once' }, delay: 8 }, { obj: 'bridgeB', visible: true, anim: { cells: [12, 13, 14, 15], fps: 1.2, mode: 'once' }, delay: 8.3 },
     { id: 'hyp', visible: true, at: { x: 925, y: 1325 }, to: { x: 840, y: 1270 }, speed: 18, state: 'attack', delay: 11.5 }, { leader: 'alexander', visible: true, at: { x: 950, y: 1330 }, to: { x: 860, y: 1290 }, speed: 18, delay: 12.5 },

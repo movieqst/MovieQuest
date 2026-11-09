@@ -19,3 +19,6 @@
 | art-towers.jpg | The two hide-covered siege towers with stone-throwers at the head of the mole; Tyrian triremes alongside (chapter 2, over the map at "two towers") | AI-generated (ChatGPT) for this project: an artist's impression. |
 | art-fireship.jpg | The fireship towed against the head of the mole, the two towers burning, the builders running (chapter 3) | AI-generated (ChatGPT) for this project: an artist's impression. |
 | art-fleet.jpg | Alexander's Phoenician and Cypriot warships rowing toward Tyre in battle order (chapter 7) | AI-generated (ChatGPT) for this project: an artist's impression. |
+| art-divers.jpg | Tyrian divers cutting a Macedonian ship's anchor rope under the water (chapter 8) | AI-generated (ChatGPT) for this project: an artist's impression. |
+| art-walls.jpg | Tyrian defenders pouring heated sand and throwing nets from the wall; a ram ship below (chapter 9) | AI-generated (ChatGPT) for this project: an artist's impression. |
+| art-assault.jpg | Hypaspists crossing a boarding bridge onto the breach in the south wall (chapter 12) | AI-generated (ChatGPT) for this project: an artist's impression. |
