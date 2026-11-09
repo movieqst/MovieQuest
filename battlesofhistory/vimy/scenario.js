@@ -396,7 +396,7 @@ Object.assign(window.VIMY_SCENARIO, {
     },
     globe: { target: { lon: 2.77, lat: 50.37 }, region: { lon: 3.2, lat: 49.4 }, pull: 4.5, lift: false, keepBorders: true, keepTowns: true, frontSides: { east: '230,70,55', west: '90,150,255' }, startLat: 35,
       periodNote: 'Western Europe in April 1917',
-      stop2: { center: { lon: 2.8, lat: 50.38 }, pull: 34, todayNote: 'Today’s towns and cities', thenNote: 'Towns of April 1917' },
+      stop2: { center: { lon: 2.72, lat: 50.68 }, pull: 66, todayNote: 'Today’s towns and cities', thenNote: 'Towns of April 1917' },
       labels: [
         { lon: 2.3522, lat: 48.8566, text: 'Paris', size: .55, dot: true }, { lon: -0.1276, lat: 51.5072, text: 'London', size: .55, dot: true },
         { lon: 4.3517, lat: 50.8503, text: 'Brussels', size: .5, dot: true },
