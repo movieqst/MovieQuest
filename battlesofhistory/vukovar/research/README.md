@@ -18,3 +18,10 @@
 - The JNA's main advance came from Šid in Serbia on 20/21 September 1991 (OG 3/1, 1st Guards Mechanized Division), heading north-west towards Vinkovci and Vukovar.
 - The Croatian 1st Osijek Operational Zone held the line from Osijek down past Vinkovci (brigades 101, 105, 106, 109, 122, 124, 130, 131, 132, 135, 160, the 117th armoured-mechanized unit and 3rd Guards elements); Osijek itself was besieged from the north.
 - Vukovar shows as a pocket on the Danube, with its own small front line (30 September and 30 October dashes) separate from the main front to the west.
+
+## Traced lines (`cia-lines.geojson`, made by `tools/trace-cia-map.py`)
+- The CIA map is georeferenced from its own 1-km grid (UTM zone 34). Check: the printed 19°00'E and 45°20'N ticks come out within about 30 m. One map pixel is about 14 m.
+- **Front lines:** 14 September (one line, from Zankovac north of Nuštar round Borovo Naselje and Vukovar and back south-west to Vinkovci), 30 September (the pocket of Vukovar and Borovo Naselje), 10 November (two pieces: the Borovo Naselje pocket and the Vukovar pocket). These are the only dated lines on the map.
+- **Attack arrows** (JNA/TO), tail to head, with the date printed beside them: 14 September (×3), 30 September (×4), 16 October (×5), 3 November (×2), 8 November (×2), and four arrows inside the south of the town plus the 211th Brigade's arrow that carry **no date**. Where a label could belong to more than one arrow, the file says so.
+- The pockets in the town are drawn where the CIA put them; the CIA's map is a reconstruction made in 2002, at the scale of a town plan, so treat a line as accurate to about a street block.
+- `cia-lines-check.jpg`: the traces drawn over the map (blue 14 Sept, green 30 Sept, magenta 10 Nov, orange arrows) to check by eye.

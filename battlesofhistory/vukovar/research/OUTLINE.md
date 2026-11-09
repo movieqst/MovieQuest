@@ -289,7 +289,7 @@ Each chapter has:
 ## Still to do before the narration is written
 
 These are checks, not new research. When they are done, each 🔶 becomes ✅ or the wording changes.
-1. Trace the CIA lines (14 Sept, 30 Sept, 10 Nov) and arrows onto our map, from the full-size scan.
+1. ~~Trace the CIA lines (14 Sept, 30 Sept, 10 Nov) and arrows.~~ **Done:** `cia-lines.geojson` (see README).
 2. Find the ICTY paragraph numbers for chapters 14, 15 and the debrief.
 3. Check Marijan's history for the dates in chapters 2 and 7 (the Croatian archive site that hosts it blocked our download; ChatGPT can read it if needed).
 4. Find balanced eyewitness voices: a Croatian defender, a Croatian civilian or nurse, a Serb civilian of Vukovar, a JNA conscript, an international observer.
