@@ -35,3 +35,5 @@ Credit: Battle Games, AI-generated (ChatGPT) from our prompts (ART-PROMPTS-UNITS
 | leader-borkovic.png | Borković walking ("Branko Borkovic Four-Direction Walking Sprite Sheet") | good: young, slim, woodland camouflage, radio |
 | leader-borkovic-attack.png | Borković at a broken wall with binoculars, then waving men forward ("Camouflaged scout 4x4 action sheet") | good |
 | leader-dedakovic-attack.png | Dedaković in a cellar command post ("Four-by-four field command radio grid") | **redo requested:** the lamp's shade is the same bright green as the background, so it would be cut out with it. Not saved |
+| leader-zadro.png | Zadro walking ("Autumn Commander Walking Sprite Sheet") | good: camouflage jacket over a dark sweater, rifle slung, bareheaded |
+| leader-zadro-attack.png | Zadro at the corner of a factory building ("Four-direction factory corner action sheet") | good: looks round the brick corner, then points his team forward. Small green gaps (between arm and body) are background and cut out correctly |
