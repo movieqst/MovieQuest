@@ -396,6 +396,9 @@ Object.assign(window.VIMY_SCENARIO, {
     },
     globe: { target: { lon: 2.77, lat: 50.37 }, region: { lon: 3.2, lat: 49.4 }, pull: 4.5, lift: false, keepBorders: true, keepTowns: true, frontSides: { east: '230,70,55', west: '90,150,255' }, startLat: 35,
       periodNote: 'Western Europe in April 1917',
+      // the painted region map, then the battle map, laid onto the globe so it fades from one to the next (tools/draw-region-guide.py)
+      paintings: [ { file: 'region-painting.jpg', lat0: 49.95, lat1: 51.25, lon0: 1.55, lon1: 4.2808 }, { file: 'terrain-battle.jpg', lat0: 50.322, lat1: 50.402, lon0: 2.710, lon1: 2.877 } ],
+      closePull: 1100, dive2Secs: 6,
       stop2: { center: { lon: 2.72, lat: 50.68 }, pull: 66, todayNote: 'Today’s towns and cities', thenNote: 'Towns of April 1917' },
       labels: [
         { lon: 2.3522, lat: 48.8566, text: 'Paris', size: .55, dot: true }, { lon: -0.1276, lat: 51.5072, text: 'London', size: .55, dot: true },
