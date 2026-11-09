@@ -1118,10 +1118,11 @@ function render() {
   }
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
-  if (stage !== 'campaign') PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
-  if (stage !== 'campaign') drawFallen(ctx, y0v, y1v, x0v, x1v);
-  objects.forEach(ob => { if (ob.ground) drawObject(ctx, ob); else scene.push({ y: ob.y, ob }); });
-  formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L }));
+  if (stage !== 'campaign' && !altMapNow()) PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
+  const ALT = altMapNow(); if (ALT !== lastAlt) applyArt();
+  if (stage !== 'campaign' && !ALT) drawFallen(ctx, y0v, y1v, x0v, x1v);
+  if (!ALT) { objects.forEach(ob => { if (ob.ground) drawObject(ctx, ob); else scene.push({ y: ob.y, ob }); });
+  formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L })); }
   scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.ob ? drawObject(ctx, o.ob) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
   drawSmoke(ctx);
   if (mode === 'watch' && currentEvent && currentEvent.rain) drawRain(ctx, currentEvent.rain === true ? 1 : currentEvent.rain, currentEvent.sleet);
@@ -1152,9 +1153,11 @@ function render() {
     ctx.fillStyle = 'rgba(255,211,107,.12)'; ctx.fill(); ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 2; ctx.setLineDash([8, 6]); ctx.stroke(); ctx.setLineDash([]);
   }
   // scale bar (at the near edge of the view)
+  if (!altMapNow()) {   // (no scale bar on the wider maps)
   const SCL = stage === 'campaign' ? CAMP.scale : B.scale, sb = SCL.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55;
   ctx.fillRect(300, sy0 - 20, sb + 16, 20);
   ctx.fillStyle = '#e9c77a'; ctx.fillRect(308, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'left'; ctx.fillText(SCL.label, 308, sy0 - 10); ctx.restore();
+  }
   drawMini();
 }
 // Rain over the whole view (campaign chapters with rain: true): a darker sky and falling streaks.
@@ -1768,7 +1771,14 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
     g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); if (B.city) outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); if (B.camp) outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
     B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
     PAINTEDTER = T; applyArt(); }; img.src = (S.imageBase || 'images/') + (S.terrain || 'terrain.jpg'); }
+/* Tyre: wider maps for the slides and chapters that talk about other cities (S.altMaps: { id: file }, all 2400 x 1800 like
+   the siege map; a slide or chapter with `altMap: id` shows that map instead, without the siege's armies, mole or ships). */
+const ALTTER = {};
+Object.entries(S.altMaps || {}).forEach(([id, file]) => { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; T.getContext('2d').drawImage(img, 0, 0, T.width, T.height); ALTTER[id] = T; if (altMapNow() === id) applyArt(); }; img.src = (S.imageBase || 'images/') + file; });
+function altMapNow() { const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; return it && it.altMap && ALTTER[it.altMap] ? it.altMap : null; }
+let lastAlt = null;
 function applyArt() {
+  const alt = altMapNow(); lastAlt = alt; if (alt) { TER = ALTTER[alt]; PAINTED = true; buildMiniBase(); return; }
   if (stage === 'campaign') { TER = CAMPTER; PAINTED = true; buildMiniBase(); return; }
   if (artOn && PAINTEDTER) { TER = withTrench(PAINTEDTER); PAINTED = true; }
   else { if (!DRAWNTER) DRAWNTER = buildTerrain(); TER = withTrench(DRAWNTER); PAINTED = false; }
@@ -1787,5 +1797,5 @@ new ResizeObserver(resize).observe(panel); resize();
 view.x = 700; view.y = 300; startIntro();
 requestAnimationFrame(tick);
 // For the shared page add-ons (../phone.js, ../subtitles.js): the narrator and the full-map switch.
-window.BattlePage = { Narr, setBig };
+window.BattlePage = { Narr, setBig, showIntro };   // showIntro: for tests
 })();
