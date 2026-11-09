@@ -154,7 +154,7 @@ Chapters 1 to 6 play on the area map; chapters 7 to 15 move between the area map
 **Credit:** Photo: anjči, 7 March 2010, via Wikimedia Commons (File:Vukovar-watertower-after-war.jpg), CC BY 2.0. Sky extended for the title card by the site owner, not the photographer.
 
 ### The CIA's map of the battle (with intro slide 5, "How this page tells it")
-**Picture:** images/record-cia-map-2.jpg (to copy from research/loc-map2-battle-of-vukovar.jpg), NOT YET ON THE PAGE
+**Picture:** images/record-cia-map-2.jpg (copied from research/loc-map2-battle-of-vukovar.jpg)
 **Caption:**
 > The CIA's map of the battle, from *Balkan Battlegrounds* (2002). It shows the front lines of 14 September, 30 September and 10 November 1991, and the units of both sides. Our map's front lines are traced from it.
 **Credit:** Central Intelligence Agency, *Balkan Battlegrounds*, vol. I, map 2 (2002). Public domain. Library of Congress.
