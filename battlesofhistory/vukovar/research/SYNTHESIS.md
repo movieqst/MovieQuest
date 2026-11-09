@@ -311,6 +311,8 @@ Reliability note: **good** = a primary document or institution that was actually
 
 ## 5. Suggested chapter outline (intro + 16 chapters + debrief)
 
+**Superseded by `OUTLINE.md`** (15 chapters, each fact marked solid / page to check / safe wording / one side's account). Kept here for the record.
+
 Narration rules for every chapter:
 - Use "the JNA", "the TO", "Croatian forces", "ZNG" or "MUP"; never an ethnicity as the actor.
 - The narrator says the town **"fell"** or was **"captured"**. "Liberation" is used only as attributed speech.
