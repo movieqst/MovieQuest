@@ -1,6 +1,6 @@
 # Battle of Vukovar (1991): chapter outline to confirm
 
-Draft 1, 9 November 2026. Made from `SYNTHESIS.md` (our research compared with ChatGPT's).
+Draft 2, 9 November 2026. Made from `SYNTHESIS.md` (our research compared with ChatGPT's), then checked against ChatGPT's follow-up answers (`RESEARCH-CHATGPT-FOLLOWUP.md`: Marijan's pages, the ICTY paragraphs, the disputed dates, voices, coordinates). In this outline, "para." means a paragraph of the ICTY judgement in the Mrkšić case (2007).
 **Nothing is narrated yet.** Read each chapter, then tick its box or write what to change.
 
 ## How to read this outline
@@ -70,10 +70,11 @@ Each chapter has:
 
 **The story**
 1. **25 August 1991** is the date usually given for the start of the battle: a large attack from several sides, and shelling almost every day from then on. ✅
-2. **Mile Dedaković "Jastreb"** (the Hawk), a former JNA lieutenant colonel, took command of the town's defence from **31 August**. 🔶 (Marijan; page to check)
+2. At the **start of September**, **Mile Dedaković "Jastreb"** (the Hawk), a former JNA lieutenant colonel, took command of the town's defence. ⚖️ (Marijan p. 370 gives 31 August; *Hrvatski vojnik* gives 1 September)
 3. The hospital moved its patients into the basement. Its history notes: "Power and water sometimes fail; generators are switched on." 💬 (hospital history, quoted)
 4. A track through the corn fields still linked the town with the outside. ✅
-5. The **water tower** became a landmark that everyone could see. ✅ (No count of shell hits unless we say whose count it is.)
+5. People lived in cellars. A Croatian woman, Manda Patko, remembered: "There were days when you couldn't even come out from the basement." 💬 (BIRN, 2021) A Serb woman of Vukovar, quoted as Kafa, remembered her street's cellar before she left on 7 September: "All our neighbors were in one cellar and all stuck together. Croats, Serbs and Ruthenians." 💬 (a study published in Belgrade, 2004, p. 236)
+6. The **water tower** became a landmark that everyone could see. ✅ (No count of shell hits unless we say whose count it is.)
 
 **Map:** the town: the water tower, the hospital, the JNA barracks, the Vuka and the Danube.
 **Left out:** the "more than 600 hits" on the water tower as a fact (it is the memorial group's figure, and can be given as theirs if you want it).
@@ -99,11 +100,11 @@ Each chapter has:
 1. The **51st Mechanised Brigade** attacked from the north toward Borovo Naselje. ✅ (CIA arrows dated 14 Sept)
 2. Armoured columns came down **Trpinjska cesta**, the main road in. Some tanks were the **M-84**, a Yugoslav version of the Soviet T-72. ✅ (photo of a wrecked M-84 in Vukovar, 1991)
 3. The defenders used mines and small mobile anti-tank teams. ✅ (CIA vol. I p. 100)
-4. One attack, on **18 September**, was driven back, and the road became known in Croatia as a "tank graveyard". 💬 (Croatian sources)
+4. On **18 September** "two large columns of tanks" attacked and were driven back, and the road became known in Croatia as a "tank graveyard". 💬 (the ALFA police veterans' chronology; Croatian sources)
 5. The defence of Borovo Naselje was led by **Blago Zadro**. ✅
 
 **Map:** Borovo Naselje; CIA arrows of 14 Sept.
-**Left out:** the number of tanks ("30" or "60" in different Croatian sources; neither is solid); the names of anti-tank weapons (not confirmed for Vukovar).
+**Left out:** the number of tanks (the veterans give numbers only for 14 September, and those are their own claims); the names of anti-tank weapons (not confirmed for Vukovar).
 ☐ OK?
 
 ## 5. The offensive from Šid (20 – 25 September)
@@ -114,10 +115,11 @@ Each chapter has:
 1. Around **20–21 September** the **1st Guards Mechanised Division** advanced from **Šid**, in Serbia, into eastern Croatia. ✅ (CIA map 3)
 2. On **25 September** the JNA garrison left its barracks at **Vinkovci**, the next town west. ✅ (CIA vol. I pp. 99–100)
 3. In Vukovar, the defenders were organised as the **204th Vukovar Brigade**. Croatia marks its founding on 25 September. 💬 (Croatian Ministry of Veterans)
-4. The JNA's defence secretary, **Gen. Veljko Kadijević**, later wrote that the campaign was aimed at the main Croatian forces. Historians dispute this. 💬 (his memoir, through Marijan)
+4. Not every soldier wanted this war. About **2,000 reservists** from Kragujevac went home from Šid, and on **23 September** a reservist, **Vladimir Živković**, drove an armoured vehicle to the Federal Parliament in Belgrade in protest. 💬 (Youth Initiative for Human Rights, a Serbian group, *War in Serbia*, 2020, p. 40; a Croatian book of 2011 also tells it)
+5. The JNA's defence secretary, **Gen. Veljko Kadijević**, later wrote that the campaign was aimed at the main Croatian forces. Historians dispute this. 💬 (his memoir, through Marijan)
 
 **Map:** the region (CIA map 3): Šid, Vinkovci, Vukovar, the Danube.
-**Left out:** the reservists' protest at Šid (a good story that shows not every soldier wanted to fight, but our only source is weak. It can come back if we find a better one).
+**Left out:** what kind of vehicle Živković drove (one book says a tank, another an armoured personnel carrier, so we say "an armoured vehicle").
 ☐ OK?
 
 ## 6. Two new commands (30 September – early October)
@@ -125,11 +127,11 @@ Each chapter has:
 **In one sentence:** The JNA split the battle into a southern and a northern command and tightened the ring.
 
 **The story**
-1. From **30 September** the JNA had two commands: **Operational Group South**, under **Col. Mile Mrkšić**, with its headquarters at **Negoslavci**, and **Operational Group North**, under **Gen. Mladen Bratić**. ✅ (CIA map; ICTY judgement)
+1. From **30 September** the JNA had two commands: **Operational Group South**, under **Col. Mile Mrkšić** (the court found he had "sole command" of its combat operations, para. 86), with its headquarters at **Negoslavci**, and **Operational Group North**, under **Gen. Mladen Bratić**. ✅ (CIA map; ICTY judgement)
 2. The core of OG South was the **Guards Motorised Brigade** from Belgrade. ✅ (CIA map label "From 30 September"; ICTY)
 3. Fighting alongside the JNA were the local Territorial Defence and volunteer groups, among them Arkan's **Serb Volunteer Guard** and the **Leva Supoderica** detachment. ✅ (ICTY; a JNA report of October 1991)
 4. The front line now held Vukovar and Borovo Naselje together in one pocket. ✅ (CIA line of 30 Sept)
-5. On **3 October** a Croatian counterattack outside the town pushed back an overextended JNA advance. 🔶 (CIA vol. I p. 100; place to check)
+5. On **3 and 5 October** the JNA attacked **Nuštar**, the village on the road to Vinkovci, and was pushed back. ✅ (CIA vol. I p. 100; *Hrvatski vojnik*, 2024)
 
 **Map:** **CIA line of 30 September**; arrows of the 252nd Armoured Brigade south of the Vuka; arrow on Bogdanovci.
 **Note:** the CIA map shows two units called "1 Guards". They are different brigades and get different labels on our map. ✅
@@ -140,10 +142,10 @@ Each chapter has:
 **In one sentence:** With the main road cut, the town's only link to the outside was a path through the corn fields.
 
 **The story**
-1. **During October** the JNA cut the road west through **Marinci**. ⚖️ (one history says 1 October, other sources about 19 October. Both are in October.)
+1. On **1 October** the JNA captured **Marinci** and cut the road west. ✅ (Marijan p. 381)
 2. After that, people, ammunition and the wounded moved at night along a track through the corn fields, through **Bogdanovci**. ✅
 3. Croatian forces outside tried to break through to the town and failed to open a lasting corridor. ✅ (Marijan pp. 385–389)
-4. Dedaković went out to **Vinkovci** to lead the relief from outside. **Branko Borković**, a former JNA captain, took command inside the town in **mid-October**. 🔶 (Marijan gives 11 October; page to check)
+4. Dedaković went out to **Vinkovci** to lead the relief from outside. **Branko Borković**, a former JNA captain, took command inside the town in **mid-October**. ⚖️ (Marijan p. 370 gives 11 October; *Hrvatski vojnik* gives 16 October)
 
 **Map:** Vinkovci, Nuštar, Marinci, Bogdanovci, Vukovar; the corn-field route drawn as a reconstruction (no source maps its exact line).
 ☐ OK?
@@ -166,9 +168,10 @@ Each chapter has:
 
 **The story**
 1. A convoy organised with **Médecins Sans Frontières** (Doctors Without Borders) reached the hospital. ✅
-2. On **19 October** it took **more than a hundred** badly wounded patients out. ⚖️ (MSF counted 109; the hospital, 112)
+2. On **19 October**, at 11:20 in the morning, it left the hospital with **more than a hundred** badly wounded patients, along a narrow road through the corn fields. ✅ for the date, time and road (MSF's meeting minutes, *Speaking Out*, pp. 36–38); ⚖️ for the number (MSF counted 109; the hospital, 112)
 3. On the way back, a mine injured two MSF nurses. ✅ (MSF's own account)
 4. It was a single convoy, not an opened road. The siege went on. ✅
+5. At an MSF meeting four days later, the convoy's leader, Alain Destexhe, recalled: "I promised we would be back the day after." 💬 (MSF minutes, 23 October 1991; the context of the promise is to check before recording)
 
 **Map:** the town; the convoy's route out, drawn as a reconstruction.
 ☐ OK?
@@ -192,8 +195,8 @@ Each chapter has:
 **In one sentence:** The JNA attacked from the Danube side and began to cut Borovo Naselje off from the town.
 
 **The story**
-1. On **3 November** the JNA attacked from the Danube side at **Lužac** and took the port area. ✅ (CIA arrow dated 3 Nov; CIA vol. II pp. 203–204)
-2. **Gen. Mladen Bratić**, commander of OG North, was killed **in early November**. ⚖️ (sources give 2, 3 or 4 November)
+1. **At the start of November** the JNA attacked from the Danube side and took **Lužac** and the port area, cutting the town in two. ⚖️ (the city of Vukovar marks Lužac's fall on 2 November; the CIA's arrow is dated 3 November)
+2. **Gen. Mladen Bratić**, commander of OG North, was killed **in early November**. ⚖️ (a Serbian report on his memorial gives 2 November, a Croatian book 3 November) He was followed by **Gen. Andrija Biorčević**. 🔶 (a witness at a 2012 trial)
 3. On **8 November** another JNA attack pushed into Borovo Naselje. ✅ (CIA arrow dated 8 Nov)
 4. On **9 November** the defenders pulled back to positions at Lužac and Budžak. 💬 (Croatian report)
 
@@ -217,13 +220,13 @@ Each chapter has:
 **In one sentence:** The defence broke into separate pockets as the JNA, the Territorial Defence and volunteers pushed in from all sides.
 
 **The story**
-1. On **13 November** the defenders lost the grain silo in Borovo Naselje. ✅ (CIA; "Grain elevator" on the CIA map)
-2. From then on, each part of the town fought on its own. ✅
-3. The CIA describes the attackers' infantry, tanks and engineers working together better in this last phase. ✅ (CIA vol. I p. 101)
-4. A Serbian reporter with the attacking side, **Jovan Dulović**, wrote in his diary on 14 November: "I don't see who's in command, who obeys who." 💬 (*Vreme*, 1991)
+1. On the evening of **12 November** Croatian forces outside made a last attack toward Marinci to break through. They had too few troops and it failed. ✅ (Marijan pp. 395–396; the Nuštar municipality dates it 13 November)
+2. On **13 November** the defenders lost the grain silo in Borovo Naselje. ✅ (CIA; "Grain elevator" on the CIA map)
+3. From then on, each part of the town fought on its own. ✅
+4. The CIA describes the attackers' infantry, tanks and engineers working together better in this last phase. ✅ (CIA vol. I p. 101)
+5. A Serbian reporter with the attacking side, **Jovan Dulović**, wrote in his diary on 14 November: "I don't see who's in command, who obeys who." 💬 (*Vreme*, 1991)
 
 **Map:** the town and Borovo Naselje, the pockets shaded as a reconstruction.
-**Left out:** a "last relief attempt on 12–13 November" (weak source).
 ☐ OK?
 
 ## 14. The fall (18 November)
@@ -231,7 +234,7 @@ Each chapter has:
 **In one sentence:** After 87 days, the defenders of Vukovar surrendered, and the town lay in ruins.
 
 **The story**
-1. On **18 November** the defenders of **Mitnica**, in the south-east, surrendered first, to the JNA. ✅ (ICTY)
+1. On **18 November** the defenders of **Mitnica**, in the south-east, surrendered first. They insisted on surrendering to the JNA, not to the Territorial Defence. ✅ (paras. 145–153)
 2. The ICTY records that the Croatian forces in the area of Vukovar "capitulated on 18 November 1991". ✅ (quoted)
 3. The same day in **Zagreb**, an agreement put the JNA in charge of evacuating the hospital, with international organisations to watch. ✅
 4. The narrator says the town **fell**. In 1991 the JNA and the Serb authorities called it a liberation and marked the day as "Liberation Day". 💬
@@ -245,11 +248,11 @@ Each chapter has:
 **In one sentence:** In the days after the surrender, people were gathered, sorted and taken away, and the international observers were kept out.
 
 **The story**
-1. People from the town were held and questioned at **Velepromet**, a warehouse in Sajmište. ✅ (ICTY)
-2. On **19 November** OG South took control of the hospital. The European monitors (ECMM) were kept out, and the Red Cross (ICRC) was given only limited access. 🔶 (ICTY summary; paragraph to check)
-3. A JNA officer, **Maj. Veselin Šljivančanin**, stopped a Red Cross official, **Nicolas Borsinger**, at a bridge. The argument was filmed by Serbian television. 🔶
-4. The hospital's director, **Dr Vesna Bosanac**, was arrested. She was released in a prisoner exchange on 10 December. 🔶
-5. In Borovo Naselje the last defenders gave up **in the days after the fall**. ⚖️ (sources give 19, 20 or 21 November)
+1. On **19 November** people from the town, civilians and defenders, were held and questioned at **Velepromet**, a warehouse in Sajmište. ✅ (paras. 161–163)
+2. On **19 November** OG South took control of the hospital. The European monitors (ECMM) were kept out, and the Red Cross (ICRC) was given only limited access. ✅ (paras. 136–144, 187)
+3. On **20 November** a JNA officer, **Maj. Veselin Šljivančanin**, stopped a Red Cross official, **Nicolas Borsinger**, at a bridge. The court found he "deliberately delayed" the Red Cross. ✅ (paras. 209–211)
+4. The hospital's director, **Dr Vesna Bosanac**, was questioned through the night and returned to the hospital at 6 in the morning on 20 November. She was then taken prisoner, and released in a prisoner exchange on **10 December**. ✅ (para. 142; Amnesty International, 11 December 1991)
+5. In Borovo Naselje the organised defence ended on **19 November**, and the last groups gave up by **20 November**. ⚖️ (Marijan p. 398 gives 19 November; BIRN gives 20 November for the last ones)
 6. On **20 November** the remaining patients left in a convoy. ✅
 
 **Map:** the town: the hospital, Velepromet, the barracks, Borovo Naselje.
@@ -261,9 +264,9 @@ Each chapter has:
 
 **The story**
 1. **Ovčara**, as the court found it ✅ (ICTY, Mrkšić judgement):
-   - On 20 November, men taken from the hospital were driven by bus via the JNA barracks to a hangar on the **Ovčara** farm, about 5 km south-east of the town.
-   - That evening the JNA guard was withdrawn on Mrkšić's order. Members of the local Territorial Defence and paramilitaries then killed the prisoners and buried them in a mass grave.
-   - The court found that **194** named people were murdered. **200** bodies were later recovered from the grave.
+   - On 20 November, men taken from the hospital (from about 10 in the morning) were driven by bus via the JNA barracks (leaving there between 1 and 2 in the afternoon) to a hangar on the **Ovčara** farm, about 5 km south-east of the town. (paras. 208, 222–224)
+   - That evening, no later than 9 o'clock, the JNA guard was withdrawn on Mrkšić's order. (para. 294) Members of the local Territorial Defence and paramilitaries then killed the prisoners and buried them in a mass grave.
+   - The court found that **194** named people were murdered (paras. 509, 712). **200** bodies were later recovered from the grave (para. 495). The two numbers count different things.
    - Told in plain words, with no pictures of victims, and with the map showing the hangar and the grave as two separate places.
 2. **Camps in Serbia**: thousands of prisoners from Croatia were held in camps such as Sremska Mitrovica and Stajićevo. ✅ (Humanitarian Law Center, Belgrade)
 3. **Trials** ✅ (ICTY):
@@ -279,7 +282,8 @@ Each chapter has:
    - **350** Serb residents of the Vukovar area died in 1991 (203 Territorial Defence members and 147 civilians). 💬 (Croatian researchers using Serb records, which are incomplete)
    - **More than 36,000** JNA, Territorial Defence and volunteer troops around Vukovar, and **2,000–2,300** defenders. ✅ (CIA estimates; the numbers were not at the same place at the same time, so they are not a head-to-head count)
    - No agreed total exists for JNA dead. ⚖️
-6. **Memory today**: every 18 November a procession walks from the hospital to the Memorial Cemetery in Vukovar. In Serbia there is no single view: some still call it a liberation, while Serbian human-rights groups and journalists remember the victims. ✅ The water tower, rebuilt with its shell holes, is a memorial. ✅
+6. **A soldier's question**: a JNA veteran, Mile Milošević, asked a reporter in 2017: "Did it have to be that way?" 💬 (BIRN, 2017)
+7. **Memory today**: every 18 November a procession walks from the hospital to the Memorial Cemetery in Vukovar. In Serbia there is no single view: some still call it a liberation, while Serbian human-rights groups and journalists remember the victims. ✅ The water tower, rebuilt with its shell holes, is a memorial. ✅
 
 **Map:** the town, then Ovčara (hangar and grave as two markers), then the region.
 ☐ OK?
@@ -290,7 +294,7 @@ Each chapter has:
 
 These are checks, not new research. When they are done, each 🔶 becomes ✅ or the wording changes.
 1. ~~Trace the CIA lines (14 Sept, 30 Sept, 10 Nov) and arrows.~~ **Done:** `cia-lines.geojson` (see README).
-2. Find the ICTY paragraph numbers for chapters 14, 15 and the debrief.
-3. Check Marijan's history for the dates in chapters 2 and 7 (the Croatian archive site that hosts it blocked our download; ChatGPT can read it if needed).
-4. Find balanced eyewitness voices: a Croatian defender, a Croatian civilian or nurse, a Serb civilian of Vukovar, a JNA conscript, an international observer.
-5. Coordinates for the barracks, Velepromet, Lužac, Trpinjska cesta, the grain silo, the Vuka bridges and the OG South headquarters.
+2. ~~ICTY paragraph numbers.~~ **Done** (ChatGPT follow-up).
+3. ~~Marijan's dates.~~ **Done**; where Marijan and other sources still differ, the outline uses safe wording.
+4. ~~Voices.~~ **Found**: Manda Patko and Kafa (ch. 2), Alain Destexhe (ch. 9), Jovan Dulović (ch. 13), Mile Milošević (debrief). A Croatian defender's voice is still weak (only a 2024 interview with Ivica Arbanas giving his opinion); we can look for a better one.
+5. Coordinates: **found** for the barracks (today's memorial, 45.33805, 19.00468: it sits exactly where the CIA's 14 September arrows end), Lužac (45.36017, 18.97030: on the CIA's "Lužac" label) and Milovo brdo (45.34983, 18.99202). **Still missing:** Velepromet, the ends of Trpinjska cesta, the grain silo, the Vuka bridges, the OG South headquarters house. For the battle map we can read these off the CIA map and mark them as approximate.
