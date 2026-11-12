@@ -76,7 +76,21 @@ SAY = [(r'\bVimy\b', 'Vimmy'), (r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'G
        (r'\bMafraq\b', 'Maf-rack'), (r'\bKhan Yunis\b', 'Khan Yoo-nis'), (r'\bQalqilya\b', 'Kal-kill-ya'), (r'\bImwas\b', 'Im-wahs'),
        (r'\bLatrun\b', 'La-troon'), (r'\bNablus\b', 'Nab-loos'), (r'\bJenin\b', 'Je-neen'), (r'\bUNEF\b', 'you-nef'), (r'\bU Thant\b', 'Oo Thant'),
        (r'\bShuqayri\b', 'Shoo-kay-ree'), (r'\bZu\'bi\b', 'Zoo-bee'), (r'\bal-Naksa\b', 'al Nak-sa'), (r'\bNakba\b', 'Nak-ba'), (r'\bWaqf\b', 'Wakf'),
-       (r'\bTzahal\b', 'Tsa-hal'), (r'\bUgda\b', 'Oog-da'), (r'\bRafah\b', 'Rah-fah'), (r'\bFawzi\b', 'Fow-zee'), (r'\bSadat\b', 'Sa-daht')]
+       (r'\bTzahal\b', 'Tsa-hal'), (r'\bUgda\b', 'Oog-da'), (r'\bRafah\b', 'Rah-fah'), (r'\bFawzi\b', 'Fow-zee'), (r'\bSadat\b', 'Sa-daht'),
+       # Vukovar: Croatian and Serbian names, respelled for the English voices
+       (r'\bVukovar\b', 'Voo-ko-var'), (r'\bBorovo Naselje\b', 'Bor-oh-vo Nah-sel-yeh'), (r'\bBorovo Selo\b', 'Bor-oh-vo Sell-oh'), (r'\bBorovo\b', 'Bor-oh-vo'),
+       (r'\bNaselje\b', 'Nah-sel-yeh'), (r'\bBogdanovci\b', 'Bog-dah-nov-tsee'), (r'\bVinkovci\b', 'Veen-kov-tsee'), (r'\bOvčara\b', 'Ov-chara'),
+       (r'\bLužac\b', 'Loo-zhats'), (r'\bVuka\b', 'Voo-ka'), (r'\bTrpinjska cesta\b', 'Ter-pin-ska tses-ta'), (r'\bTrpinjska\b', 'Ter-pin-ska'),
+       (r'\bTrpinja\b', 'Ter-pin-ya'), (r'\bRužić\b', 'Roo-zhich'), (r'\bNuštar\b', 'Noosh-tar'), (r'\bNegoslavci\b', 'Neg-oh-slav-tsee'),
+       (r'\bMrkšić\b', 'Merk-shich'), (r'\bMarinci\b', 'Ma-rin-tsee'), (r'\bBratić\b', 'Brah-tich'), (r'\bBlago Zadro\b', 'Blah-go Zah-dro'),
+       (r'\bŠljivančanin\b', 'Shlyee-van-cha-nin'), (r'\bVeselin\b', 'Vess-el-in'), (r'\bVojislav\b', 'Voy-ee-slav'), (r'\bŠešelj\b', 'Sheh-shel'),
+       (r'\bVelepromet\b', 'Vel-eh-pro-met'), (r'\bStajićevo\b', 'Stah-yee-cheh-vo'), (r'\bSremska Mitrovica\b', 'Srem-ska Mee-tro-vit-sa'),
+       (r'\bRažnatović\b', 'Razh-na-to-vich'), (r'\bMitnica\b', 'Meet-nit-sa'), (r'\bMiroslav\b', 'Mee-ro-slav'), (r'\bRadić\b', 'Rah-dich'),
+       (r'\bMile\b', 'Mee-leh'), (r'\bMilošević\b', 'Mee-lo-sheh-vich'), (r'\bDedaković\b', 'Deh-dah-ko-vich'), (r'\bManda Patko\b', 'Man-da Pat-ko'),
+       (r'\bKragujevac\b', 'Krag-oo-yeh-vats'), (r'\bJovan Dulović\b', 'Yo-van Doo-lo-vich'), (r'\bJastreb\b', 'Yas-treb'), (r'\bHadžić\b', 'Hah-jich'),
+       (r'\bVesna Bosanac\b', 'Ves-na Boss-a-nats'), (r'\bBosanac\b', 'Boss-a-nats'), (r'\bDavor Marijan\b', 'Dah-vor Mar-ee-yan'), (r'\bBudžak\b', 'Boo-jak'),
+       (r'\bBorković\b', 'Bor-ko-vich'), (r'\bŠid\b', 'Sheed'), (r'\bMédecins Sans Frontières\b', 'May-deh-san Son Fron-tyair'), (r'\bRusyns\b', 'Roo-sins'),
+       (r'\bArkan\b', 'Ar-kahn'), (r'\bSlavonia\b', 'Sla-vo-nia'), (r'\bDulović\b', 'Doo-lo-vich'), (r'\bŽeljko\b', 'Zhel-ko'), (r'\bŽivić\b', 'Zhee-vich'), (r'\bŽivković\b', 'Zhiv-ko-vich')]
 def say(t):
     for a, b in SAY: t = re.sub(a, b, t)
     return t
