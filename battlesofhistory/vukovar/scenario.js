@@ -457,7 +457,7 @@ Object.assign(window.VUKOVAR_SCENARIO, {
     trenchLayers: [], trenchAlpha: 1, defaultTrench: null, introTrench: null,
     globe: { target: { lon: 19.0012, lat: 45.3517 }, region: { lon: 21.0, lat: 44.5 }, pull: 4.6, fit: { lon0: 13, lon1: 29, lat0: 40, lat1: 49, margin: .03 }, lift: false, keepBorders: true, keepTowns: true, startLat: 35,
       periodNote: 'Yugoslavia in 1991: its six republics',
-      paintings: [ { file: 'area-painting.jpg', lat0: 45.247, lat1: 45.432, lon0: 18.77, lon1: 19.1209249 }, { file: 'town-painting.jpg', lat0: 45.32, lat1: 45.398, lon0: 18.932, lon1: 19.0800085 }, { file: 'region-painting.jpg', lat0: 34.5, lat1: 51.5, lon0: 3.5, lon1: 34.5, stage: 'region' } ],   // the first stop's painted map (images/layout/ART-PROMPT-REGION.md), under the outlines
+      paintings: [ { file: 'area-painting.jpg', lat0: 45.247, lat1: 45.432, lon0: 18.77, lon1: 19.1209249 }, { file: 'town-painting.jpg', lat0: 45.32, lat1: 45.398, lon0: 18.932, lon1: 19.0800085 }, { file: 'region-painting.jpg', lat0: 34.5, lat1: 51.5, lon0: 3.5, lon1: 34.5, stage: 'region' }, { file: 'close-painting.jpg', lat0: 38.5, lat1: 50.0, lon0: 10.0, lon1: 31.5, stage: 'region' } ],   // the first stop's painted map (images/layout/ART-PROMPT-REGION.md), under the outlines
       closePull: 1100, dive2Secs: 6,
       stop2: { center: { lon: 19.0, lat: 45.33 }, pull: 30, todayNote: 'Today’s towns and cities', thenNote: 'The same towns in autumn 1991' },
       labels: [

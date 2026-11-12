@@ -31,3 +31,10 @@ DO NOT ADD: borders, roads, railways, text, labels, dots, grid lines, flags, arr
 
 **When it comes back:** checked against the base's coastlines; if accepted it goes in as `../close-painting.jpg` and replaces
 the wider painting at the first stop.
+
+**Result (12 November 2026):** ChatGPT's closer painting came back slightly zoomed out and shifted (its coastlines did not sit
+on the base's). Instead of a redo, it was warped into place: the scale and shift that best match its seas to the base's
+(x × 1.094, y × 1.016, plus a small shift; 94 % agreement) were found by search, and the strips it does not reach (about 1.4°
+on the left, a sliver on the right, all outside the first stop's view) were filled from the wider painting with a soft blend.
+The original is kept as `close-painting-original.png`; the aligned map is `../close-painting.jpg`, laid on the globe over
+the wider painting at the first stop.
