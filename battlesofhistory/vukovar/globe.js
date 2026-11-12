@@ -281,10 +281,15 @@ window.BattleGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = GS.dive2Secs || 4, FADE_SECS = 1.6, PULL = GS.pull || 5, CLOSE = 26;
+  const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = GS.dive2Secs || 4, FADE_SECS = 1.6, PULL0 = GS.pull || 5, CLOSE = 26;
+  // GS.fit = { lon0, lon1, lat0, lat1, margin }: the first stop zooms so that this box (the outlined countries) fills the view,
+  // with only `margin` (default 5%) to spare on each side, whatever the size of the screen
+  const fitPull = R0 => { const f = GS.fit, m = f.margin == null ? .05 : f.margin, d = D, latc = (f.lat0 + f.lat1) / 2;
+    const bw = (f.lon1 - f.lon0) * d * Math.cos(latc * d), bh = (f.lat1 - f.lat0) * d; return Math.min(w / (bw * (1 + 2 * m)), h / (bh * (1 + 2 * m))) / R0; };
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
+    const PULL = GS.fit ? fitPull(R0) : PULL0;
     if (st.phase === 'idle') { st.lon0 = KADESH.lon; st.R = R0; st.lat0 = START_LAT; st.labels = 0; }
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
@@ -296,7 +301,7 @@ window.BattleGlobe = (() => {
       if (cb.onSpinProgress) cb.onSpinProgress(1);
       // pull in until the whole Near East fills the view
       const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
-      st.R = R0 * Math.pow(PULL, e); st.lat0 = START_LAT + (NEAR_EAST.lat - START_LAT) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;
+      st.R = R0 * Math.pow(PULL, e); st.lat0 = START_LAT + (NEAR_EAST.lat - START_LAT) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = GS.fit ? 0 : -h * (cb.lift ? .22 : .04) * e;
       if (k >= 1) { st.phase = 'modern'; t0 = now; }
     } else if (st.phase === 'modern') {
       const k = Math.min(1, (now - t0) / MODERN_SECS); st.modern = 1;
