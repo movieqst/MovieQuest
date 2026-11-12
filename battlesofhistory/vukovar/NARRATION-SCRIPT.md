@@ -166,7 +166,7 @@ Chapters 1 to 6 play on the area map; chapters 7 to 15 move between the area map
 **Credit:** Photo: Peter Denton, via Wikimedia Commons (File:Croatian_War_1991_Vukovar_destroyed_tank.jpg), CC BY-SA 2.0. Mark any crop as a change.
 
 ### The old town after the battle (with intro slide 3, "A town on the Danube", and the outcome)
-**Picture:** images/record-old-town-1991.jpg (Commons: File:Croatian_War_1991_Vukovar_destruction.jpg; licence to confirm).
+**Picture:** images/record-old-town-1991.jpg (Commons: File:Croatian_War_1991_Vukovar_destruction.jpg; CC BY-SA 2.0, confirmed by the Flickr upload bot on 5 September 2011).
 **Caption:**
 > Vukovar's baroque old centre in late November 1991: the arcaded houses on the main street, their roofs broken and walls marked by shells.
 **Credit:** Photo: Peter Denton, via Wikimedia Commons (from Flickr), CC BY-SA 2.0.
