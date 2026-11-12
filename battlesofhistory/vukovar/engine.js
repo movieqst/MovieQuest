@@ -1144,7 +1144,10 @@ function render() {
     const mc = markerColors(m);
     ctx.strokeStyle = mc.ring; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
     ctx.strokeStyle = mc.glow; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
-    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
+    // the label above the ring (or below it, m.below, when two places are close), kept inside the map view
+    ctx.save(); ctx.font = "bold 14px 'Cinzel', Georgia, serif"; const half = ctx.measureText(m.label).width / 2 + 6; ctx.restore();
+    const lx = clamp(p.x, half, Math.max(half, view.w - half)), ly = m.below ? p.y + r * p.k + 16 : p.y - r * p.k - 16;
+    outlined(ctx, m.label, lx, ly, 14, { fill: mc.text });
   });
   if (!document.querySelector('.overlay.show, #debrief.show')) { drawClockStamp(); drawLegend(); }   // not over the debrief
   if (BR && mode === 'intro') BR.draw(ctx);
