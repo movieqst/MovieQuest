@@ -264,7 +264,7 @@ window.BattleGlobe = (() => {
     // early pins: pulse over the border overlays from the moment the political boundaries appear
     const early = Math.max(0, Math.min(1, Math.max(s.modern, s.ancient))) * (1 - s.labels);
     if (early > 0) { c.globalAlpha = early; LABELS.forEach(L => { if (!L.early) return; const p = proj(L.lon * D, Math.cos(L.lat * D), Math.sin(L.lat * D)); if (!p) return; const r = 7 + 4 * Math.sin(now * 4 + L.lon); c.strokeStyle = '#ffd36b'; c.lineWidth = 2; c.beginPath(); c.arc(p[0], p[1], r, 0, 6.283); c.stroke(); c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 6; c.beginPath(); c.arc(p[0], p[1], r + 6, 0, 6.283); c.stroke();
-      const fs = Math.max(10, Math.min(16, R / 300)); c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; const ty = p[1] + (L.below ? r + 6 + fs * .8 : -(r + 6 + fs * .7)); c.strokeText(L.text, p[0], ty); c.fillStyle = '#ffd36b'; c.fillText(L.text, p[0], ty); }); c.globalAlpha = 1; }
+      const fs = Math.max(10, Math.min(16, R / 300)); c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; const ty = p[1] + (L.below ? r + 6 + fs * .8 : -(r + 6 + fs * .7)); if (!s.stop2) { c.strokeText(L.text, p[0], ty); c.fillStyle = '#ffd36b'; c.fillText(L.text, p[0], ty); } }); c.globalAlpha = 1; }   // at the towns stop the town's own name is enough
     // labels
     if (s.labels > 0) {
       c.globalAlpha = s.labels;
@@ -288,7 +288,7 @@ window.BattleGlobe = (() => {
   const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = GS.dive2Secs || 4, FADE_SECS = 1.6, PULL0 = GS.pull || 5, CLOSE = 26;
   // GS.fit = { lon0, lon1, lat0, lat1, margin }: the first stop zooms so that this box (the outlined countries) fills the view,
   // with only `margin` (default 5%) to spare on each side, whatever the size of the screen
-  const fitPull = R0 => { const f = GS.fit, m = f.margin == null ? .05 : f.margin, d = D, latc = (f.lat0 + f.lat1) / 2;
+  const fitPull = (R0, box) => { const f = box || GS.fit, m = f.margin == null ? .05 : f.margin, d = D, latc = (f.lat0 + f.lat1) / 2;
     const bw = (f.lon1 - f.lon0) * d * Math.cos(latc * d), bh = (f.lat1 - f.lat0) * d; return Math.min(w / (bw * (1 + 2 * m)), h / (bh * (1 + 2 * m))) / R0; };
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
@@ -317,7 +317,7 @@ window.BattleGlobe = (() => {
       if (k >= 1) { st.phase = STOP2 ? 'mid' : 'dive2'; t0 = now; st.from = { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }; }
     } else if (st.phase === 'mid') {
       // down to the second stop; the old realms fade, today's borders come back as thin lines with today's towns
-      const k = Math.min(1, (now - t0) / MID_SECS), e = ease(k), P2 = STOP2.pull || 14, C2 = STOP2.center || KADESH; st.stop2 = true;
+      const k = Math.min(1, (now - t0) / MID_SECS), e = ease(k), P2 = STOP2.fit ? fitPull(R0, STOP2.fit) : (STOP2.pull || 14), C2 = STOP2.fit ? { lon: (STOP2.fit.lon0 + STOP2.fit.lon1) / 2, lat: (STOP2.fit.lat0 + STOP2.fit.lat1) / 2 } : (STOP2.center || KADESH); st.stop2 = true;
       st.R = R0 * PULL * Math.pow(P2 / PULL, e); st.lat0 = NEAR_EAST.lat + (C2.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (C2.lon - NEAR_EAST.lon) * e;
       st.ancient = Math.max(0, 1 - k / .5); st.modern = Math.max(0, (k - .5) / .5) * .8; st.tToday = Math.max(0, (k - .6) / .4);
       if (st.oyMid === undefined) st.oyMid = st.oy; st.oy = st.oyMid * (1 - e);

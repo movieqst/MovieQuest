@@ -459,7 +459,7 @@ Object.assign(window.VUKOVAR_SCENARIO, {
       periodNote: 'Yugoslavia in 1991: its six republics',
       paintings: [ { file: 'area-painting.jpg', lat0: 45.247, lat1: 45.432, lon0: 18.77, lon1: 19.1209249 }, { file: 'town-painting.jpg', lat0: 45.32, lat1: 45.398, lon0: 18.932, lon1: 19.0800085 }, { file: 'region-painting.jpg', lat0: 34.5, lat1: 51.5, lon0: 3.5, lon1: 34.5, stage: 'region' }, { file: 'close-painting.jpg', lat0: 38.5, lat1: 50.0, lon0: 10.0, lon1: 31.5, stage: 'region' } ],   // the first stop's painted map (images/layout/ART-PROMPT-REGION.md), under the outlines
       closePull: 1100, dive2Secs: 6,
-      stop2: { center: { lon: 19.0, lat: 45.33 }, pull: 30, todayNote: 'Today’s towns and cities', thenNote: 'The same towns in autumn 1991' },
+      stop2: { center: { lon: 19.0, lat: 45.33 }, pull: 30, fit: { lon0: 17.75, lon1: 20.3, lat0: 44.95, lat1: 45.9, margin: .04 } /* the towns: Đakovo to Novi Sad, Sombor to Šid */, todayNote: 'Today’s towns and cities', thenNote: 'The same towns in autumn 1991' },
       labels: [
         { lon: 15.98, lat: 45.81, text: 'Zagreb', size: .55, dot: true }, { lon: 20.46, lat: 44.82, text: 'Belgrade', size: .55, dot: true },
         { lon: 18.41, lat: 43.86, text: 'Sarajevo', size: .5, dot: true }, { lon: 14.51, lat: 46.06, text: 'Ljubljana', size: .5, dot: true },
