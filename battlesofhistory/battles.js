@@ -237,5 +237,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '12% 35%',
     coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0 (creativecommons.org/licenses/by/2.0). Sky extended for this page',
     status: 'in progress'
+  },
+  {
+    folder: 'somalia1988', progress: 2, lat: 9.5600, lon: 44.0650,
+    order: 20,
+    era: 'Somalia, 1988',
+    title: 'Somalia 1988 Genocide',
+    date: 'May–July 1988', year: 1988,
+    place: 'Hargeisa and Burao, northern Somalia (the region that declared itself Somaliland in 1991)',
+    sides: 'The government of Mohamed Siad Barre and its army vs. the Somali National Movement (SNM); the Isaaq civilians of the north',
+    blurb: 'In May 1988 the Somali National Movement attacked Burao and Hargeisa. The government of Siad Barre answered with bombardment and killings aimed at the Isaaq civilians of the north. Tens of thousands were killed and hundreds of thousands fled to Ethiopia. Genocide researchers call it the Isaaq genocide.',
+    cover: 'images/cover.jpg', coverPos: '50% 35%',   // the downed MiG and the words 1988
+    coverCredit: 'The Hargeisa War Memorial: a downed Somali Air Force MiG over the words “Xus oo xasuusnow 1988” (“Remember and recall 1988”), 2019. Photo: Gerard van de Bruinhorst, African Studies Centre Leiden, Wikimedia Commons, CC BY-SA 4.0. Cropped',
+    status: 'in progress'
   }
 ];

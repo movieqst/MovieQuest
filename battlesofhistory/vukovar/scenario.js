@@ -360,11 +360,11 @@ Object.assign(window.VUKOVAR_SCENARIO, {
   }
 ],
   record: {
-  "cover.jpg": {
+  "record-water-tower-2003.jpg": {
     "at": 0,
-    "file": "cover.jpg",
-    "caption": "The damaged Vukovar water tower, photographed in 2010. It was hit many times during the siege and became the town's symbol. It was later restored as a memorial, keeping its shell damage.",
-    "credit": "Photo: anjči, 7 March 2010, via Wikimedia Commons (File:Vukovar-watertower-after-war.jpg), CC BY 2.0. Sky extended for the title card by the site owner, not the photographer."
+    "file": "record-water-tower-2003.jpg",
+    "caption": "The Vukovar water tower in the summer of 2003, still as the siege left it, its walls holed by shells. It was hit many times in 1991 and became the town's symbol. It was later restored as a memorial, keeping its shell damage.",
+    "credit": "Photo: El Capitan, summer 2003, via Wikimedia Commons (File:Vukovar_turm.jpg), CC BY-SA 3.0 (also GFDL)."
   },
   "record-cia-map-2.jpg": {
     "at": 0,
@@ -455,11 +455,11 @@ Object.assign(window.VUKOVAR_SCENARIO, {
     },
     eventMarkers: true,
     trenchLayers: [], trenchAlpha: 1, defaultTrench: null, introTrench: null,
-    globe: { target: { lon: 19.0012, lat: 45.3517 }, region: { lon: 18.5, lat: 44.0 }, pull: 4.6, lift: false, keepBorders: true, keepTowns: true, startLat: 35,
+    globe: { target: { lon: 19.0012, lat: 45.3517 }, region: { lon: 21.0, lat: 44.5 }, pull: 4.6, fit: { lon0: 13, lon1: 29, lat0: 40, lat1: 49, margin: .03 }, lift: false, keepBorders: true, keepTowns: true, startLat: 35,
       periodNote: 'Yugoslavia in 1991: its six republics',
-      paintings: [ { file: 'area-painting.jpg', lat0: 45.247, lat1: 45.432, lon0: 18.77, lon1: 19.1209249 }, { file: 'town-painting.jpg', lat0: 45.32, lat1: 45.398, lon0: 18.932, lon1: 19.0800085 } ],
+      paintings: [ { file: 'area-painting.jpg', lat0: 45.247, lat1: 45.432, lon0: 18.77, lon1: 19.1209249 }, { file: 'town-painting.jpg', lat0: 45.32, lat1: 45.398, lon0: 18.932, lon1: 19.0800085 }, { file: 'region-painting.jpg', lat0: 34.5, lat1: 51.5, lon0: 3.5, lon1: 34.5, stage: 'region' }, { file: 'close-painting.jpg', lat0: 38.5, lat1: 50.0, lon0: 10.0, lon1: 31.5, stage: 'region' } ],   // the first stop's painted map (images/layout/ART-PROMPT-REGION.md), under the outlines
       closePull: 1100, dive2Secs: 6,
-      stop2: { center: { lon: 19.0, lat: 45.33 }, pull: 30, todayNote: 'Today’s towns and cities', thenNote: 'The same towns in autumn 1991' },
+      stop2: { center: { lon: 19.0, lat: 45.33 }, pull: 30, fit: { lon0: 17.75, lon1: 20.3, lat0: 44.95, lat1: 45.9, margin: .04 } /* the towns: Đakovo to Novi Sad, Sombor to Šid */, todayNote: 'Today’s towns and cities', thenNote: 'The same towns in autumn 1991' },
       labels: [
         { lon: 15.98, lat: 45.81, text: 'Zagreb', size: .55, dot: true }, { lon: 20.46, lat: 44.82, text: 'Belgrade', size: .55, dot: true },
         { lon: 18.41, lat: 43.86, text: 'Sarajevo', size: .5, dot: true }, { lon: 14.51, lat: 46.06, text: 'Ljubljana', size: .5, dot: true },
@@ -627,7 +627,8 @@ Object.assign(window.VUKOVAR_SCENARIO, {
 
   // the introduction: which map, lines and pictures each slide shows
   const IS = S.intro, M = (f) => R[f] ? [R[f]] : [];
-  Object.assign(IS[0], { media: M('cover.jpg').concat(M('record-street-1991.jpg').map(m => Object.assign({}, m, { at: 14 }))) });
+  if (R['record-water-tower-2003.jpg']) R['record-water-tower-2003.jpg'].fit = 'contain';   // an upright photo: show the whole tower, not a crop
+  Object.assign(IS[0], { media: M('record-water-tower-2003.jpg').concat(M('record-street-1991.jpg').map(m => Object.assign({}, m, { at: 14 }))) });
   Object.assign(IS[1], { altMap: 'area', markers: [ { ...aVUK, label: 'Vukovar' }, { ...aVINK, label: 'Vinkovci' } ] });
   Object.assign(IS[2], { media: M('record-old-town-1991.jpg'), markers: [ { ...TOWER, label: 'the water tower' }, { ...HOSP, label: 'the hospital' }, { ...BOROVO, label: 'Borovo Naselje' } ] });
   Object.assign(IS[4], { altMap: 'area', fronts: ['sep14', 'sep30', 'nov10'], media: M('record-cia-map-2.jpg') });

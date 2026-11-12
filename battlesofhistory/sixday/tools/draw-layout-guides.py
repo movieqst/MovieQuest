@@ -28,6 +28,9 @@ MAPS = {  # name: (map number in plan/maps.md, TL lat, TL lon, BR lat, BR lon, z
   'airstrike': (2, 31.9042, 30.4532, 27.6958, 36.8868, 7, 'wide', 'THE AIR STRIKE, 5 June 1967: Egypt, Sinai and the Straits'),
   'jerusalem': (6, 31.8090, 35.1880, 31.7494, 35.2810, 15, 'battle', 'JERUSALEM, 5-7 June 1967: Ammunition Hill to Government House'),
   'golan': (8, 33.2578, 35.6381, 33.1902, 35.7453, 15, 'battle', 'GOLAN: TEL FAHER, 9 June 1967'),
+  # Abu-Ageila: widened to 16 x 12 km (12 Nov 2026) so that every estimated point (Um Katef ridge, Ruafa dam, Position 181,
+  # the dunes) is inside; the trench lines are drawn by the page, not painted
+  'abuageila': (4, 30.9190, 34.0260, 30.8110, 34.1940, 14, 'battle', 'ABU-AGEILA / UM KATEF, 5-6 June 1967'),
 }
 want = sys.argv[1:] or list(MAPS)
 mj = os.path.join(OUT, 'maps.json'); metas = {m['file']: m for m in (json.load(open(mj)) if os.path.exists(mj) else [])}

@@ -43,8 +43,8 @@ towns_today = [dict(lon=lo, lat=la, text=n, size=s, dot=True, **({'side': sd} if
     ('Novi Sad', 19.8335, 45.2671, .6, None), ('Šid', 19.2264, 45.1283, .5, 'b'), ('Ilok', 19.3797, 45.2225, .45, 'r'),
     ('Sombor', 19.1122, 45.7742, .45, None), ('Đakovo', 18.4108, 45.3100, .45, 'l')]]
 towns_then = [dict(lon=lo, lat=la, text=n, sub=sub, size=s, dot=True, **({'side': sd} if sd else {})) for n, lo, la, s, sub, sd in [
-    ('Vukovar', 19.0033, 45.3511, .66, 'besieged, late August – 18 November 1991', 'r'),
-    ('Vinkovci', 18.8050, 45.2880, .52, 'Croatian forces; relief attempts set out from here', 'l'),
+    ('Vukovar', 19.0033, 45.3511, .66, 'besieged, late Aug. – 18 Nov. 1991', 'r'),
+    ('Vinkovci', 18.8050, 45.2880, .52, 'relief attempts set out from here', 'l'),
     ('Osijek', 18.6955, 45.5550, .55, 'under attack in autumn 1991', 'l'),
     ('Novi Sad', 19.8335, 45.2671, .55, 'Novi Sad Corps (JNA)', None),
     ('Šid', 19.2264, 45.1283, .48, 'JNA offensive set out, about 20 September', 'b')]]

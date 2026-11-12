@@ -19,3 +19,9 @@ Checked by drawing the guide's bold contour lines (and, in Jerusalem, the Old Ci
 |---|---|
 | 03-jerusalem-round2 | ACCEPT. The Old City fits the wall outline exactly; Mount Scopus (university buildings), Augusta Victoria, Ammunition Hill with the Police School, and the Kidron valley east of the walls follow the contours. Scaled up as ../../terrain-jerusalem.jpg. |
 | 04-golan-round2 | ACCEPT. The gorge in the north-east follows the contours closely; the valley fields stop at the foot of the slope; Ein Fit and Za'ura are at their places. Scaled up as ../../terrain-golan.jpg. |
+
+## Abu-Ageila / Um Katef (12 November 2026), from the schematic guide
+
+| painting | verdict |
+|---|---|
+| 05-abuageila | ACCEPT. Checked by drawing the guide's lines over it: the three roads, the junction (huts, well, palms), the Batur track through Position 181 to the Ruafa dam and the edge of the dunes all match. The dry Wadi El Arish is painted a little west of the guide but runs the same way; the Um Katef ridge is painted slightly east of the guide line, astride the Nitzana road, so the page's trench lines follow the painted ridge. Painted at 1448 × 1086, scaled up as ../../terrain-abuageila.jpg (2400 × 1800). Positions are approximate (schematic map). |
