@@ -7,13 +7,13 @@ window.BATOCHE_LANG.fr = {
  "title": "Bataille de Batoche",
  "date": "9–12 mai 1885",
  "place": "Batoche, sur la rivière Saskatchewan Sud (aujourd’hui en Saskatchewan, Canada)",
- "tagline": "La Force de campagne du Nord-Ouest contre les combattants métis et des Premières Nations",
+ "tagline": "La Force expéditionnaire du Nord-Ouest contre les combattants métis et des Premières Nations",
  "titleCard": {
   "title": "BATAILLE DE BATOCHE",
   "date": "9–12 mai 1885",
   "place": "Batoche, sur la rivière Saskatchewan Sud, Territoires du Nord-Ouest (aujourd’hui la Saskatchewan, Canada)",
   "dateNote": "Pendant quatre jours, une armée du gouvernement canadien se heurte aux fosses de tir creusées par les Métis autour de leur village sur la Saskatchewan Sud. Le quatrième jour, elle perce, et la Résistance du Nord-Ouest de 1885 prend fin.",
-  "sides": "La Force de campagne du Nord-Ouest du major-général Frederick Middleton  ·  Les combattants métis, cris et dakotas de Louis Riel et de Gabriel Dumont"
+  "sides": "La Force expéditionnaire du Nord-Ouest du major-général Frederick Middleton  ·  Les combattants métis, cris et dakotas de Louis Riel et de Gabriel Dumont"
  },
  "tags": {
   "established": "Établi",
@@ -23,7 +23,7 @@ window.BATOCHE_LANG.fr = {
   "reconstruction": "Reconstitution"
  },
  "sides": {
-  "allied": "Force de campagne",
+  "allied": "Force expéditionnaire",
   "french": "Défenseurs"
  },
  "scaleLabel": "1 km",
