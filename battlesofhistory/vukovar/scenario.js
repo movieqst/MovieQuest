@@ -467,7 +467,11 @@ Object.assign(window.VUKOVAR_SCENARIO, {
       ] },
     establishing: [],
     imageBase: 'images/', audioBase: 'audio/',
-    voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],
+    voices: [
+      { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 }, { id: 'light', name: 'Narrator 2 · light', speaker: 60 },
+      { id: 'bright', name: 'Narrator 3 · bright', speaker: 0 }, { id: 'deep', name: 'Narrator 4 · deep', speaker: 400 },
+      { id: 'warm', name: 'Narrator 5 · warm', speaker: 7 }, { id: 'computer', name: 'Computer · calm', speaker: 500 }
+    ],
     sheets: ['jna-infantry', 'jna-infantry-fire', 'to-volunteer', 'to-volunteer-fire', 'jna-m84', 'jna-m84-fire', 'jna-t55', 'jna-m80', 'jna-m80-move', 'jna-guns-fire', 'jna-mortar-fire',
              'hr-defender', 'hr-defender-fire', 'hr-police', 'hr-police-fire', 'hr-antitank', 'hr-mortar-fire', 'hr-cornfield'],
     attackSheets: { 'jna-infantry': 'jna-infantry-fire', 'to-volunteer': 'to-volunteer-fire', 'jna-m84': 'jna-m84-fire', 'jna-m80': 'jna-m80-move', 'hr-defender': 'hr-defender-fire', 'hr-police': 'hr-police-fire' },
