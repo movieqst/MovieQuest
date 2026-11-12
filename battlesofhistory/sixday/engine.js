@@ -1788,7 +1788,7 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
      S.lines.fronts[key] = { map, pts: [[lon, lat], ...], col, dash, label }       a line (a front, a border, a ceasefire line)
      S.lines.arrows[key] = { map, pts: [[lon, lat], ...], side, label }            an attack or a move, in the side's colour
    Every line and arrow is a reconstruction drawn to follow the narration, not a traced map, unless its label says so. */
-const FL = S.lines || { fronts: {}, arrows: {} };
+const FL = S.lines || window.SIXDAY_LINES || { fronts: {}, arrows: {} };
 function geoXY(lon, lat, key) { const g = (S.geo || {})[key || MAIN_MAP]; if (!g) return { x: 0, y: 0 }; return { x: (lon - g.lon0) / (g.lon1 - g.lon0) * W.w, y: (g.lat1 - lat) / (g.lat1 - g.lat0) * W.h }; }
 function drawFronts() {
   const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; if (!it) return;

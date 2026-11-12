@@ -194,6 +194,7 @@ window.BattleGlobe = (() => {
       c.save(); c.beginPath(); c.arc(cx, cy, R, 0, 6.283); c.clip();
       const path = ring => { let pen = false, any = false; for (let i = 0; i < ring.length; i++) { const p = proj(ring[i][0] * D, Math.cos(ring[i][1] * D), Math.sin(ring[i][1] * D)); if (p) { pen ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); pen = true; any = true; } else pen = false; } return any; };
       const fs = Math.max(9, Math.min(22, R / 110));
+      (GS.paintings || []).forEach((pm, i) => { if (pm.stage === 'region') drawPainting(pm, i, s.regionPaint); });   // the first stop's painted map, under the outlines
       if (s.modern > 0) {
         c.globalAlpha = s.modern; c.strokeStyle = 'rgba(255,255,255,.85)'; c.lineWidth = 1.3; c.setLineDash([]);
         // the countries were clipped to a box when the data was made (make-borders.py): skip the straight cuts along its edges
@@ -212,13 +213,16 @@ window.BattleGlobe = (() => {
       // GS.paintings: painted maps laid onto the globe by their corners ({ file, lat0, lat1, lon0, lon1 }), shown as s.paint[i] (0..1),
       // so the globe can fade into a painted map, and that into the battle map, without a jump. Drawn in a 6 x 6 grid of
       // pieces, each placed by its own projected corners, so the image follows the globe's curve.
-      (GS.paintings || []).forEach((pm, i) => { const a = s.paint && s.paint[i]; if (!(a > 0) || !PAINT[i] || !PAINT[i].complete || !PAINT[i].naturalWidth) return; const im = PAINT[i], N = 6;
+      (GS.paintings || []).forEach((pm, i) => { if (pm.stage === 'region') return; drawPainting(pm, i, s.paint && s.paint[i]); });
+      function drawPainting(pm, i, a) { if (!(a > 0) || !PAINT[i] || !PAINT[i].complete || !PAINT[i].naturalWidth) return; const im = PAINT[i], N = (pm.lon1 - pm.lon0) > 5 ? 24 : 6;   // a finer grid for a big painting, so the globe's curve opens no gaps
         c.globalAlpha = a;
         for (let gy = 0; gy < N; gy++) for (let gx = 0; gx < N; gx++) {
           const la1 = pm.lat1 - (pm.lat1 - pm.lat0) * gy / N, la0 = pm.lat1 - (pm.lat1 - pm.lat0) * (gy + 1) / N, lo0 = pm.lon0 + (pm.lon1 - pm.lon0) * gx / N, lo1 = pm.lon0 + (pm.lon1 - pm.lon0) * (gx + 1) / N;
-          const tl = proj(lo0 * D, Math.cos(la1 * D), Math.sin(la1 * D)), br = proj(lo1 * D, Math.cos(la0 * D), Math.sin(la0 * D)); if (!tl || !br) continue;
-          const sw = im.width / N, sh = im.height / N; c.drawImage(im, gx * sw, gy * sh, sw, sh, tl[0], tl[1], br[0] - tl[0] + .6, br[1] - tl[1] + .6); }
-        c.globalAlpha = 1; });
+          // each piece covers all four of its projected corners (meridians lean together towards the pole), with a pixel to spare
+          const q = [proj(lo0 * D, Math.cos(la1 * D), Math.sin(la1 * D)), proj(lo1 * D, Math.cos(la1 * D), Math.sin(la1 * D)), proj(lo0 * D, Math.cos(la0 * D), Math.sin(la0 * D)), proj(lo1 * D, Math.cos(la0 * D), Math.sin(la0 * D))]; if (q.some(p => !p)) continue;
+          const x0 = Math.min(q[0][0], q[2][0]), x1 = Math.max(q[1][0], q[3][0]), y0 = Math.min(q[0][1], q[1][1]), y1 = Math.max(q[2][1], q[3][1]);
+          const sw = im.width / N, sh = im.height / N; c.drawImage(im, gx * sw, gy * sh, sw, sh, x0 - .5, y0 - .5, x1 - x0 + 1, y1 - y0 + 1); }
+        c.globalAlpha = 1; }
       if (s.ancient > 0) {
         c.globalAlpha = s.ancient * (1 - .65 * ((s.paint && s.paint[0]) || 0));   // lighter tint once the painted map is under it
         BORDERS.ancient.forEach(k => (k.rings || [k.ring]).forEach(ring => { c.beginPath(); if (path(ring)) { c.closePath(); c.fillStyle = `rgba(${k.color},.26)`; c.fill(); c.setLineDash([7, 5]); c.strokeStyle = `rgba(${k.color},.95)`; c.lineWidth = 2; c.stroke(); c.setLineDash([]); } }));
@@ -260,7 +264,7 @@ window.BattleGlobe = (() => {
     // early pins: pulse over the border overlays from the moment the political boundaries appear
     const early = Math.max(0, Math.min(1, Math.max(s.modern, s.ancient))) * (1 - s.labels);
     if (early > 0) { c.globalAlpha = early; LABELS.forEach(L => { if (!L.early) return; const p = proj(L.lon * D, Math.cos(L.lat * D), Math.sin(L.lat * D)); if (!p) return; const r = 7 + 4 * Math.sin(now * 4 + L.lon); c.strokeStyle = '#ffd36b'; c.lineWidth = 2; c.beginPath(); c.arc(p[0], p[1], r, 0, 6.283); c.stroke(); c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 6; c.beginPath(); c.arc(p[0], p[1], r + 6, 0, 6.283); c.stroke();
-      const fs = Math.max(10, Math.min(16, R / 300)); c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; const ty = p[1] + (L.below ? r + 6 + fs * .8 : -(r + 6 + fs * .7)); c.strokeText(L.text, p[0], ty); c.fillStyle = '#ffd36b'; c.fillText(L.text, p[0], ty); }); c.globalAlpha = 1; }
+      const fs = Math.max(10, Math.min(16, R / 300)); c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; const ty = p[1] + (L.below ? r + 6 + fs * .8 : -(r + 6 + fs * .7)); if (!s.stop2) { c.strokeText(L.text, p[0], ty); c.fillStyle = '#ffd36b'; c.fillText(L.text, p[0], ty); } }); c.globalAlpha = 1; }   // at the towns stop the town's own name is enough
     // labels
     if (s.labels > 0) {
       c.globalAlpha = s.labels;
@@ -281,10 +285,15 @@ window.BattleGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = GS.dive2Secs || 4, FADE_SECS = 1.6, PULL = GS.pull || 5, CLOSE = 26;
+  const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = GS.dive2Secs || 4, FADE_SECS = 1.6, PULL0 = GS.pull || 5, CLOSE = 26;
+  // GS.fit = { lon0, lon1, lat0, lat1, margin }: the first stop zooms so that this box (the outlined countries) fills the view,
+  // with only `margin` (default 5%) to spare on each side, whatever the size of the screen
+  const fitPull = (R0, box) => { const f = box || GS.fit, m = f.margin == null ? .05 : f.margin, d = D, latc = (f.lat0 + f.lat1) / 2;
+    const bw = (f.lon1 - f.lon0) * d * Math.cos(latc * d), bh = (f.lat1 - f.lat0) * d; return Math.min(w / (bw * (1 + 2 * m)), h / (bh * (1 + 2 * m))) / R0; };
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
+    const PULL = GS.fit ? fitPull(R0) : PULL0;
     if (st.phase === 'idle') { st.lon0 = KADESH.lon; st.R = R0; st.lat0 = START_LAT; st.labels = 0; }
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
@@ -296,7 +305,7 @@ window.BattleGlobe = (() => {
       if (cb.onSpinProgress) cb.onSpinProgress(1);
       // pull in until the whole Near East fills the view
       const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
-      st.R = R0 * Math.pow(PULL, e); st.lat0 = START_LAT + (NEAR_EAST.lat - START_LAT) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;
+      st.R = R0 * Math.pow(PULL, e); st.lat0 = START_LAT + (NEAR_EAST.lat - START_LAT) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.regionPaint = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = GS.fit ? 0 : -h * (cb.lift ? .22 : .04) * e;
       if (k >= 1) { st.phase = 'modern'; t0 = now; }
     } else if (st.phase === 'modern') {
       const k = Math.min(1, (now - t0) / MODERN_SECS); st.modern = 1;
@@ -308,7 +317,7 @@ window.BattleGlobe = (() => {
       if (k >= 1) { st.phase = STOP2 ? 'mid' : 'dive2'; t0 = now; st.from = { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }; }
     } else if (st.phase === 'mid') {
       // down to the second stop; the old realms fade, today's borders come back as thin lines with today's towns
-      const k = Math.min(1, (now - t0) / MID_SECS), e = ease(k), P2 = STOP2.pull || 14, C2 = STOP2.center || KADESH; st.stop2 = true;
+      const k = Math.min(1, (now - t0) / MID_SECS), e = ease(k), P2 = STOP2.fit ? fitPull(R0, STOP2.fit) : (STOP2.pull || 14), C2 = STOP2.fit ? { lon: (STOP2.fit.lon0 + STOP2.fit.lon1) / 2, lat: (STOP2.fit.lat0 + STOP2.fit.lat1) / 2 } : (STOP2.center || KADESH); st.stop2 = true;
       st.R = R0 * PULL * Math.pow(P2 / PULL, e); st.lat0 = NEAR_EAST.lat + (C2.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (C2.lon - NEAR_EAST.lon) * e;
       st.ancient = Math.max(0, 1 - k / .5); st.modern = Math.max(0, (k - .5) / .5) * .8; st.tToday = Math.max(0, (k - .6) / .4);
       if (st.oyMid === undefined) st.oyMid = st.oy; st.oy = st.oyMid * (1 - e);
@@ -326,7 +335,7 @@ window.BattleGlobe = (() => {
       const k = Math.min(1, (now - t0) / DIVE2_SECS), e = ease(k);
       const F = st.from || { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }, CL = GS.closePull || Math.max(CLOSE, F.pull * 1.5);
       st.R = R0 * F.pull * Math.pow(CL / F.pull, e); st.lat0 = F.lat + (KADESH.lat - F.lat) * e; st.lon0 = F.lon + (KADESH.lon - F.lon) * e;
-      if (GS.paintings) st.paint = [1, Math.max(0, Math.min(1, (k - .65) / .3))];
+      if (GS.paintings) st.paint = [1, Math.max(0, Math.min(1, (k - .65) / .3))]; st.regionPaint = Math.max(0, 1 - k / .5);
       st.ancient = GS.keepBorders ? 1 : Math.max(0, 1 - k / .4); st.tThen = st.stop2 ? (GS.keepTowns ? 1 : Math.max(0, 1 - k / .3)) : 0; st.modern = 0; st.tToday = 0; st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = (F.oy !== undefined ? F.oy : -h * (cb.lift ? .22 : .04)) * (1 - e) - h * .05 * e;
       if (k >= 1) { st.phase = 'fade'; t0 = now; if (cb.onFade) cb.onFade(); }
     } else if (st.phase === 'fade') {

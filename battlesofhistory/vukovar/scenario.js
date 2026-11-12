@@ -395,6 +395,12 @@ Object.assign(window.VUKOVAR_SCENARIO, {
     "file": "record-street-1991.jpg",
     "caption": "A street in Vukovar on 29 November 1991, eleven days after the fall: damaged houses, broken roofs and rubble, and a tractor moving down the street.",
     "credit": "Photo: Peter Denton, via Wikimedia Commons (from Flickr), CC BY-SA 2.0."
+  },
+  "record-memorial-cemetery-2015.jpg": {
+    "at": 0,
+    "file": "record-memorial-cemetery-2015.jpg",
+    "caption": "The Memorial Cemetery of the Homeland War Victims in Vukovar, with its eternal flame, in 2015. The remembrance procession on the eighteenth of November ends here.",
+    "credit": "Photo: Tromber, 29 April 2015, via Wikimedia Commons, CC BY-SA 4.0."
   }
 }
 });
@@ -628,6 +634,7 @@ Object.assign(window.VUKOVAR_SCENARIO, {
   // the introduction: which map, lines and pictures each slide shows
   const IS = S.intro, M = (f) => R[f] ? [R[f]] : [];
   if (R['record-water-tower-2003.jpg']) R['record-water-tower-2003.jpg'].fit = 'contain';   // an upright photo: show the whole tower, not a crop
+  S.outcome.forEach(l => { if (/Memorial Cemetery/.test(l.text) && R['record-memorial-cemetery-2015.jpg']) l.media = R['record-memorial-cemetery-2015.jpg']; });   // the remembrance on 18 November
   Object.assign(IS[0], { media: M('record-water-tower-2003.jpg').concat(M('record-street-1991.jpg').map(m => Object.assign({}, m, { at: 14 }))) });
   Object.assign(IS[1], { altMap: 'area', markers: [ { ...aVUK, label: 'Vukovar' }, { ...aVINK, label: 'Vinkovci' } ] });
   Object.assign(IS[2], { media: M('record-old-town-1991.jpg'), markers: [ { ...TOWER, label: 'the water tower' }, { ...HOSP, label: 'the hospital' }, { ...BOROVO, label: 'Borovo Naselje' } ] });
