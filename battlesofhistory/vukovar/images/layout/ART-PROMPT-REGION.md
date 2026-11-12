@@ -15,3 +15,19 @@ DO NOT ADD: borders, roads, railways, text, labels, dots, grid lines, flags, arr
 ```
 
 **When it comes back:** I check it by drawing the base's coastlines over the painting. If it is accepted, it goes in as `../region-painting.jpg`, and the globe fades into it at the first stop, under the outlines.
+
+## The closer view (12 November 2026): close-base.png + close-guide.png
+
+The first stop now zooms to the user's frame (13–29°E, 40–49°N). This closer painting covers that view with a margin on
+every side, at a sharper scale; made by `tools/draw-region-guide.py close`. **Attach:** `close-base.png`, then
+`close-guide.png`. Ask for **exactly 2400 × 1800 pixels**.
+
+```text
+Repaint the first image (close-base.png) as a realistic, high aerial view of south-eastern Europe in the autumn of 1991, like a gentle satellite photograph, about 1,700 km across. The second image is a guide only: do not copy its labels, borders, dots or grid.
+ALIGNMENT: exactly the same framing, 4:3, north at the top. Do not crop, zoom, rotate or shift. It covers 50.0°N 10.0°E (top left) to 38.5°N 31.5°E (bottom right) in a simple latitude-longitude grid, so the land looks a little wider than on a globe: keep it exactly like that. Every coastline, island, lake and river stays EXACTLY where it is in the first image: the Adriatic coast with all its Croatian islands, the Italian coast and the heel of Italy, northern Greece and the Aegean coast, the Black Sea coast, the Danube delta, the Bosphorus and the Sea of Marmara, Lake Balaton, Lake Ohrid and Lake Prespa, the Danube, the Sava, the Drava, the Tisza and the Morava.
+PAINT, AUTUMN 1991, NATURAL COLOURS: the eastern Alps (top left) with rock, dark forest and a little early snow on the highest peaks; the Carpathians in a great curve through Romania, dark green forest and russet beech woods; the Dinaric mountains along the Adriatic in grey limestone and dark forest; the wide flat Pannonian plain (Hungary, northern Serbia and eastern Croatia, around Vukovar where the Danube turns south) in a patchwork of harvested fields, brown and gold, with the Danube winding through it; the Wallachian plain north of Bulgaria in the same autumn fields; green-brown hills in the central Balkans; dry olive-green and ochre lowlands in Italy, Greece and Turkey; the seas in deep blue, a little darker in the Black Sea, with soft light at the coasts. Faint grey patches for the big cities only (Vienna, Budapest, Belgrade, Bucharest, Sofia, Istanbul, Zagreb), seen from very high, no detail.
+DO NOT ADD: borders, roads, railways, text, labels, dots, grid lines, flags, arrows, clouds over the land, or anything that looks like a map symbol. A photograph from orbit, not a painted poster.
+```
+
+**When it comes back:** checked against the base's coastlines; if accepted it goes in as `../close-painting.jpg` and replaces
+the wider painting at the first stop.

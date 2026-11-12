@@ -6,7 +6,7 @@ at any screen size; the globe lays it on by its corners (scenario.js, globe.pain
     python3 battlesofhistory/vukovar/tools/draw-region-guide.py
 Writes vukovar/images/layout/region-base.png (land, sea, lakes, rivers; no borders, no names) and region-guide.png (with
 today's borders in grey and the main cities, for orientation)."""
-import os, json, tempfile
+import os, json, sys, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, '..', 'images', 'layout'); os.makedirs(OUT, exist_ok=True)
 SD = os.path.join(HERE, '..', '..', 'sixday', 'tools', 'draw-layout-guides.py')
 src = open(SD).read().split('want = sys.argv')[0]
@@ -14,10 +14,13 @@ G = {'__file__': SD, '__name__': 'vk-region'}; exec(src, G)
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy.ndimage import label
-LA1, LO0, LA0, LO1 = 51.5, 3.5, 34.5, 34.5          # 31 x 17 degrees: Italy to the Black Sea, Germany to Crete
+# 'region': 31 x 17 degrees, Italy to the Black Sea, Germany to Crete. 'close': the first stop as the user framed it
+# (13-29 E, 40-49 N), with a margin on every side: 21.5 x 11.5 degrees, about 4:3 on the ground.
+NAME = (sys.argv[1:] or ['region'])[0]
+LA1, LO0, LA0, LO1, ZOOM = {'region': (51.5, 3.5, 34.5, 34.5, 6), 'close': (50.0, 10.0, 38.5, 31.5, 7)}[NAME]
 Gd = G['G']; Gd['OUT'] = OUT; G['OUT'] = OUT
 Gd['RAMP'][:] = [(0, (150, 168, 108)), (200, (160, 172, 112)), (500, (170, 166, 118)), (900, (160, 146, 110)), (1500, (140, 128, 104)), (2500, (180, 176, 170))]
-g = G['Guide']('region-guide.png', LA0, LA1, LO0, LO1, 6, None, None)
+g = G['Guide'](NAME + '-guide.png', LA0, LA1, LO0, LO1, ZOOM, None, None)
 low = g.e <= .5
 lab, n = label(low); edge = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
 sea = np.isin(lab, list(edge)); rgb = g.rgb.copy(); rgb[sea] = (78, 118, 160)
@@ -27,7 +30,7 @@ def clean(p):
     d = json.load(open(p)); d['features'] = [f for f in d['features'] if f.get('geometry')]
     o = os.path.join(tempfile.gettempdir(), 'clean-' + os.path.basename(p)); json.dump(d, open(o, 'w')); return o
 g.lakes(clean(os.path.join(CACHE, 'ne_10m_lakes.geojson'))); g.geojson_lines(clean(os.path.join(CACHE, 'ne_rivers.geojson')), G['WATER'], 4)
-g.im.save(os.path.join(OUT, 'region-base.png'), optimize=True)
+g.im.save(os.path.join(OUT, NAME + '-base.png'), optimize=True)
 g.geojson_lines(clean(os.path.join(CACHE, 'ne_10m_admin_0_boundary_lines_land.geojson')), (90, 90, 90), 3)
 for name, la, lo in [('Vukovar', 45.35, 19.00), ('Zagreb', 45.81, 15.98), ('Belgrade', 44.82, 20.46), ('Sarajevo', 43.86, 18.41), ('Ljubljana', 46.06, 14.51),
                      ('Budapest', 47.50, 19.04), ('Vienna', 48.21, 16.37), ('Rome', 41.90, 12.50), ('Bucharest', 44.43, 26.10), ('Sofia', 42.70, 23.32),
