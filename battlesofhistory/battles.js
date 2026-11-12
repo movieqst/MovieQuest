@@ -247,8 +247,8 @@ window.BATTLES = [
     place: 'Hargeisa and Burao, northern Somalia (the region that declared itself Somaliland in 1991)',
     sides: 'The government of Mohamed Siad Barre and its army vs. the Somali National Movement (SNM); the Isaaq civilians of the north',
     blurb: 'In May 1988 the Somali National Movement attacked Burao and Hargeisa. The government of Siad Barre answered with bombardment and killings aimed at the Isaaq civilians of the north. Tens of thousands were killed and hundreds of thousands fled to Ethiopia. Genocide researchers call it the Isaaq genocide.',
-    cover: 'images/cover.jpg', coverPos: '45% 50%',
-    coverCredit: 'A Somali Air Force MiG fighter kept as a memorial in central Hargeisa, 2021. Photo: O.Mustafin, Wikimedia Commons (File:HG_0249.jpg), CC0 (public domain). A placeholder cover',
+    cover: 'images/cover.jpg', coverPos: '50% 35%',   // the downed MiG and the words 1988
+    coverCredit: 'The Hargeisa War Memorial: a downed Somali Air Force MiG over the words “Xus oo xasuusnow 1988” (“Remember and recall 1988”), 2019. Photo: Gerard van de Bruinhorst, African Studies Centre Leiden, Wikimedia Commons, CC BY-SA 4.0. Cropped',
     status: 'in progress'
   }
 ];
