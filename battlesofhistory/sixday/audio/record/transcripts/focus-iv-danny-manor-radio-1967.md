@@ -97,7 +97,7 @@
 | 51:26 | [כותנה] … מיג 17 / בכברית … על המסלול | [Kutna] [...] a MiG-17. / At Kabrit [...] on the runway. | unclear |
 | 51:36 | … אי אפשר להמריא, יש עשרה מטוסים … על הקרקע / בכברית | [...] it's impossible to take off; there are ten aircraft [...] on the ground. / At Kabrit. | unclear |
 | 51:43 | השעה עשר [ו]ארבעים ושתיים | The time is ten forty-two. | likely |
-| 52:46 | [כותנה] נמצא מעל מלז, מעל ג'בל ליבני? / מעל [ביר] גפגפה | [Kutna] is over Melez, over [Bir] Gifgafa. | unclear |
+| 52:46 | [כותנה] נמצא מעל מלז, מעל [ביר] גפגפה | [Kutna] is over Melez, over [Bir] Gifgafa. | unclear |
 | 54:01 | בכברית יש עוד מיגים על הקרקע | At Kabrit there are still MiGs on the ground. | likely |
 | 54:43 | תזהירו את קישון, … מישהו נכנס אליו | Warn Kishon, [...] someone is coming at him. | likely |
 | 54:53 | איפה? / איפה קישון? | Where? / Where's Kishon? | sure |
