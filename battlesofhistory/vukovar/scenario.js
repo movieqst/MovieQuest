@@ -574,7 +574,7 @@ Object.assign(window.VUKOVAR_SCENARIO, {
   const R = S.record;
   const area = (o) => Object.assign({ altMap: 'area', zoom: 'fit' }, o);
   // 1. Borovo Selo: the area map
-  set(0, area({ markers: [ { ...aBOROVOSELO, label: 'Borovo Selo, 2 May' }, { ...aVUK, label: 'Vukovar' } ] }));
+  set(0, area({ markers: [ { ...aBOROVOSELO, label: 'Borovo Selo, 2 May' }, { ...aVUK, label: '' } ] }));   // the map already names Vukovar
   // 2. The siege begins: shelling; the hospital goes underground; the corn-field tracks
   set(1, { zoom: 'fit', markers: [ { ...HOSP, label: 'the hospital: patients moved to the basement' }, { ...TOWER, label: 'the water tower' } ], orders: [
     { leader: 'dedakovic', visible: true, delay: 3 }, { id: 'gunsS', state: 'hold' }, { id: 'mortS', state: 'hold' },
