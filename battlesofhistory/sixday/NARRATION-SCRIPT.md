@@ -86,7 +86,7 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 - Yet the Egyptian troops kept moving into Sinai. *(established)*
 - In Israel, the army's Chief of Staff, Lieutenant-General Yitzhak Rabin, asked to call up the reserves. Prime Minister Levi Eshkol was also Defence Minister. He refused, and allowed only a higher state of alert. *(israeli)*
 - On the 15th of May, at a song festival in West Jerusalem, Shuli Natan sang Naomi Shemer's new song, "Jerusalem of Gold", for the first time. It longs for the Old City, then in Jordanian hands. It became an unofficial song of the war for many Israelis. *(established)*
-- For the Palestinian families who lived in the Old City, it was home. Haifa Khalidi was nineteen in 1967. She later recalled that she had been born in a house beside the Mughrabi, or Moroccan, Quarter, next to the Western Wall. *(arab: Palestinian)*
+- For the Palestinian families who lived in the Old City, it was home. Haifa Khalidi was nineteen in 1967. She later recalled that she had been born in a house beside the Mughrabi, or Moroccan, Quarter, next to the Western Wall, known in Arabic as the al-Buraq Wall. *(arab: Palestinian)*
 
 ### 2. The peacekeepers go
 *Map: Region · 16 to 19 May 1967*
@@ -213,7 +213,7 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 *Map: North Sinai · 5–8 June*
 - The Gaza Strip was a narrow coastal strip under Egyptian administration, crowded with refugees from the 1948 war and their children. *(established)*
 - It was defended by the 20th Palestinian Division of the Palestine Liberation Army, a Palestinian military force under Arab state command. The division was under Egyptian military command, with Egyptian units beside it. *(established)*
-- Defence Minister Dayan had ordered his troops to keep out of the Strip. Then guns in Gaza shelled Nirim and Kissufim, two kibbutzim, Israeli communal farming settlements. Rabin overruled Dayan, and sent in Colonel Yehuda Reshef's 11th Mechanised Brigade. *(israeli)*
+- Defence Minister Dayan had ordered his troops to keep out of the Strip. Then guns in Gaza shelled Nirim and Kissufim, two kibbutzim, Israeli communal farming communities. According to Israeli accounts, Rabin approved Southern Command's request to enter the Strip without consulting Dayan. Colonel Yehuda Reshef's 11th Mechanised Brigade was sent in. *(israeli)*
 - The last UN peacekeepers were still in their camps, waiting to leave. At half past two in the afternoon, the Indian battalion's main camp was shelled. The UN reported that Israeli artillery hit the Indian camp, killing an officer and a soldier. *(established)*
 - The same day, by the UN's report, Israeli aircraft attacked a white-painted UN convoy with gunfire, south of Khan Yunis. Three Indian soldiers were killed. At the Rafah camp, a Brazilian soldier was wounded. *(established)*
 - The UN's confirmed list records fifteen peacekeepers killed: fourteen from India and one from Brazil. *(established)*
@@ -431,7 +431,7 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 - At half past eight, Gur's paratroopers attacked on three lines. By half past nine they had linked up on the ridge and turned toward the walls. *(israeli)*
 - At about a quarter to ten, Israeli troops entered through the Lions' Gate, also called St Stephen's Gate, under covering fire. Gur's half-track went in. One Jordanian soldier fired a Bren gun from the minaret above the gate. *(israeli)*
 - The paratroopers went first onto the great platform that Jews call the Temple Mount and Muslims call al-Haram al-Sharif, the Noble Sanctuary. On it stand the Dome of the Rock and al-Aqsa Mosque. At about ten, Gur spoke on the radio, in his own words: "The Temple Mount is in our hands." Then he ordered all firing to stop. *(israeli)*
-- A little later the paratroopers came down to the Western Wall. It is a surviving retaining wall of the ancient Temple platform, and a deeply sacred Jewish place of prayer. Narkiss asked where it was. The army's Chief Rabbi, Shlomo Goren, said prayers and blew the shofar, the ram's horn. *(established)*
+- A little later the paratroopers came down to the Western Wall, known in Arabic as the al-Buraq Wall. It is a surviving retaining wall of the ancient Temple platform, and a deeply sacred Jewish place of prayer. Narkiss asked where it was. The army's Chief Rabbi, Shlomo Goren, said prayers and blew the shofar, the ram's horn. *(established)*
 - Looking back in a 2017 interview, one paratrooper, Yitzhak Yifat, said: "We realised that we had conquered another people." *(israeli)*
 - Paratroopers tied an Israeli flag beside the Wall, and a flag was also raised on the Dome of the Rock. Dayan ordered that flag taken down. In the afternoon Dayan, Rabin and Narkiss walked through the Lions' Gate to the Wall. *(established)*
 - Dayan left the running of the Haram al-Sharif with the Islamic Waqf, the Muslim religious administration. Israel retained overall security control, while Muslim authorities administered the holy compound. *(established)*
@@ -477,7 +477,7 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 ### 23. The decision on Syria
 *Map: Golan · 8–9 June, night to morning*
 - The Golan Heights rise steeply above the Hula and Jordan valleys and the Sea of Galilee. They were Syrian territory. Syria had fortified them with bunkers, trenches and minefields up to fifteen kilometres deep. *(established)*
-- Israeli accounts say that for about nineteen years, Syrian guns on the heights had fired down on the villages below. Among them were kibbutzim, Israeli communal farming settlements. Residents of Gadot recalled children repeatedly taking shelter during shelling. Residents said they could smell the coffee the Syrian soldiers brewed above them. *(israeli)*
+- Israeli accounts say that for about nineteen years, Syrian guns on the heights had fired down on the villages below. Among them were kibbutzim, Israeli communal farming communities. Residents of Gadot recalled children repeatedly taking shelter during shelling. Residents said they could smell the coffee the Syrian soldiers brewed above them. *(israeli)*
 - Who caused that border fighting is argued. Syria and some historians blame Israeli farming in the demilitarised zones, strips along the border where the armistice restricted military forces. In interviews published after his death, Moshe Dayan said most of the clashes began when Israel sent tractors into those zones. *(disputed)*
 - When the war began on the 5th of June, Syria shelled Israeli settlements and its jets attacked Galilee. *(established)*
 - Israeli attacks severely damaged Syria's air force. Sources disagree on the number of aircraft lost. *(estimate)*
@@ -549,7 +549,7 @@ Welcome to Battles of History. Today we are learning about the Six-Day War, foug
 - The area under Israeli control was now roughly four times its pre-war size. After the displacement, roughly a million people remained in the occupied areas, under Israeli military control. *(estimate)*
 - This was military control. It did not mean that the world recognised these lands as part of Israel. *(established)*
 - On the 11th the UN Security Council condemned the violations of the ceasefire. It called on troops that had moved forward after it to go back. The last UN peacekeepers left Egypt on the 17th. *(established)*
-- On the night of the 10th and 11th of June, Israeli authorities began demolishing the Mughrabi, or Moroccan, Quarter beside the Western Wall. Residents were forced to leave so that a large prayer plaza could be created. *(established)*
+- On the night of the 10th and 11th of June, Israeli authorities began demolishing the Mughrabi, or Moroccan, Quarter beside the Western Wall, the al-Buraq Wall in Arabic. Residents were forced to leave so that a large prayer plaza could be created. *(established)*
 - Records list roughly one hundred and thirty-five houses destroyed. *(estimate)*
 - About six hundred and fifty people are thought to have lived there. They were given only hours to leave. *(estimate)*
 - The exact number of residents and deaths is uncertain. Some accounts report an elderly woman killed during the demolition. *(disputed)*

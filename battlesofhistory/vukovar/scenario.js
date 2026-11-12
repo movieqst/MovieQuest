@@ -467,7 +467,11 @@ Object.assign(window.VUKOVAR_SCENARIO, {
       ] },
     establishing: [],
     imageBase: 'images/', audioBase: 'audio/',
-    voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],
+    voices: [
+      { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 }, { id: 'light', name: 'Narrator 2 · light', speaker: 60 },
+      { id: 'bright', name: 'Narrator 3 · bright', speaker: 0 }, { id: 'deep', name: 'Narrator 4 · deep', speaker: 400 },
+      { id: 'warm', name: 'Narrator 5 · warm', speaker: 7 }, { id: 'computer', name: 'Computer · calm', speaker: 500 }
+    ],
     sheets: ['jna-infantry', 'jna-infantry-fire', 'to-volunteer', 'to-volunteer-fire', 'jna-m84', 'jna-m84-fire', 'jna-t55', 'jna-m80', 'jna-m80-move', 'jna-guns-fire', 'jna-mortar-fire',
              'hr-defender', 'hr-defender-fire', 'hr-police', 'hr-police-fire', 'hr-antitank', 'hr-mortar-fire', 'hr-cornfield'],
     attackSheets: { 'jna-infantry': 'jna-infantry-fire', 'to-volunteer': 'to-volunteer-fire', 'jna-m84': 'jna-m84-fire', 'jna-m80': 'jna-m80-move', 'hr-defender': 'hr-defender-fire', 'hr-police': 'hr-police-fire' },
@@ -570,7 +574,7 @@ Object.assign(window.VUKOVAR_SCENARIO, {
   const R = S.record;
   const area = (o) => Object.assign({ altMap: 'area', zoom: 'fit' }, o);
   // 1. Borovo Selo: the area map
-  set(0, area({ markers: [ { ...aBOROVOSELO, label: 'Borovo Selo, 2 May' }, { ...aVUK, label: 'Vukovar' } ] }));
+  set(0, area({ markers: [ { ...aBOROVOSELO, label: 'Borovo Selo, 2 May' }, { ...aVUK, label: '' } ] }));   // the map already names Vukovar
   // 2. The siege begins: shelling; the hospital goes underground; the corn-field tracks
   set(1, { zoom: 'fit', markers: [ { ...HOSP, label: 'the hospital: patients moved to the basement' }, { ...TOWER, label: 'the water tower' } ], orders: [
     { leader: 'dedakovic', visible: true, delay: 3 }, { id: 'gunsS', state: 'hold' }, { id: 'mortS', state: 'hold' },
@@ -584,14 +588,14 @@ Object.assign(window.VUKOVAR_SCENARIO, {
     { leader: 'zadro', visible: true }, { id: 'tankN', visible: true, at: TRP0, to: TRPEND, speed: 34, state: 'attack', delay: 1 },
     { id: 'hrAT', state: 'attack', delay: 4 }, { id: 'tankN', strengthTo: .6, over: 6, delay: 7 }, { id: 'tankN', to: TRP1, speed: 30, state: 'move', delay: 10 } ] });
   // 5. The offensive from Šid: the area map
-  set(4, area({ fronts: ['sep14'], markers: [ { ...aSID, label: '▼ to Šid (Serbia)', side: 'allied' }, { ...aVINK, label: 'Vinkovci: the JNA garrison withdraws, 25 Sept' } ] }));
+  set(4, area({ fronts: ['sep14'], markers: [ { ...aSID, label: '▼ to Šid (Serbia)', side: 'allied' }, { ...aVINK, label: 'Vinkovci: JNA garrison leaves, 25 Sept' } ] }));
   // 6. Two new commands: the area map, the CIA line and arrows of 30 September
-  set(5, area({ fronts: ['sep30'], arrows: ['sep30'], markers: [ { ...aNEGO, label: 'Negoslavci: Operational Group South', side: 'allied' }, { ...aNUSTAR, label: 'Nuštar: attacks of 3 and 5 October' } ] }));
+  set(5, area({ fronts: ['sep30'], arrows: ['sep30'], markers: [ { ...aNEGO, label: 'Negoslavci: Op. Group South', side: 'allied' }, { ...aNUSTAR, label: 'Nuštar: attacks, 3 and 5 Oct', below: true } ] }));
   // 7. The corn-field road: Marinci is cut; Dedaković goes out to Vinkovci; Borković takes over in the town
-  set(6, area({ fronts: ['sep30'], markers: [ { ...aMARINCI, label: 'Marinci: captured, 1 October', side: 'allied' }, { ...aBOGD, label: 'Bogdanovci' }, { ...aVINK, label: 'Vinkovci: Dedaković leads the relief' } ], orders: [
+  set(6, area({ fronts: ['sep30'], markers: [ { ...aMARINCI, label: 'Marinci: captured, 1 Oct', side: 'allied', below: true }, { ...aBOGD, label: 'Bogdanovci' }, { ...aVINK, label: 'Vinkovci: Dedaković leads relief' } ], orders: [
     { leader: 'dedakovic', visible: false }, { leader: 'borkovic', visible: true } ] }));
   // 8. The northern attack: four arrows of 16 October on Borovo Naselje; Zadro is killed
-  set(7, { focus: { x: BOROVO.x + 60, y: BOROVO.y + 60 }, zoom: 1.4, fronts: ['sep30'], arrows: ['oct16'], markers: [ { ...LUZAC, label: 'Lužac: fighting over a floating bridge, 17–18 Oct (place approx.)' } ], orders: [
+  set(7, { focus: { x: (BOROVO.x + LUZAC.x) / 2, y: (BOROVO.y + LUZAC.y) / 2 }, zoom: 1.15, fronts: ['sep30'], arrows: ['oct16'], markers: [ { ...LUZAC, label: 'Lužac: floating bridge, 17–18 Oct (approx.)' } ], orders: [
     { leader: 'bratic', visible: true }, { leader: 'mrksic', visible: true },
     { id: 'jnaN', visible: true, at: { x: TRP1.x, y: TRP1.y - 40 }, to: { x: BOROVO.x - 30, y: BOROVO.y }, speed: 26, state: 'attack' },
     { id: 'apcN', visible: true, at: TRP1, to: TRPEND, speed: 30, state: 'attack', delay: 1 }, { id: 'tankN', strength: .8, to: { x: TRPEND.x - 20, y: TRPEND.y - 30 }, speed: 30, state: 'attack', delay: 2 },
@@ -609,7 +613,7 @@ Object.assign(window.VUKOVAR_SCENARIO, {
   // 12. The ring closes: the area map and the CIA line of 10 November
   set(11, area({ fronts: ['nov10'], markers: [ { ...aBOGD, label: 'Bogdanovci falls, 10 November', side: 'allied' } ] }));
   // 13. Pockets: the CIA line of 10 November in the town
-  set(12, { zoom: 'fit', fronts: ['nov10'], markers: [ { ...SILO, label: 'grain silo, lost 13 Nov (CIA; place approx.)' } ], orders: [
+  set(12, { zoom: 'fit', fronts: ['nov10'], markers: [ { ...SILO, label: 'grain silo, lost 13 Nov (place approx.)', below: true } ], orders: [
     { id: 'toS', visible: true, to: { x: SAJM.x + 40, y: SAJM.y + 40 }, speed: 24, state: 'attack' }, { id: 'jnaS', to: { x: MILOVO.x - 20, y: MILOVO.y + 50 }, speed: 22, state: 'attack' },
     { id: 'hrB', strengthTo: .35, over: 10 }, { id: 'hrT', strengthTo: .55, over: 10 }, { id: 'hrM', strengthTo: .6, over: 10 }, { id: 'hrPol', strengthTo: .5, over: 10 } ] });
   // 14. The fall: Mitnica surrenders to the JNA
