@@ -148,10 +148,10 @@ Chapters 1 to 6 play on the area map; chapters 7 to 15 move between the area map
 ## "From the record" pictures (left panel; captions, not narration)
 
 ### The water tower (with intro slide 1, "Battle of Vukovar", and the debrief)
-**Picture:** images/cover.jpg, already on the title card.
+**Picture:** images/record-water-tower-2003.jpg (the battle's card keeps cover.jpg, the 2010 photo).
 **Caption:**
-> The damaged Vukovar water tower, photographed in 2010. It was hit many times during the siege and became the town's symbol. It was later restored as a memorial, keeping its shell damage.
-**Credit:** Photo: anjči, 7 March 2010, via Wikimedia Commons (File:Vukovar-watertower-after-war.jpg), CC BY 2.0. Sky extended for the title card by the site owner, not the photographer.
+> The Vukovar water tower in the summer of 2003, still as the siege left it, its walls holed by shells. It was hit many times in 1991 and became the town's symbol. It was later restored as a memorial, keeping its shell damage.
+**Credit:** Photo: El Capitan, summer 2003, via Wikimedia Commons (File:Vukovar_turm.jpg), CC BY-SA 3.0 (also GFDL).
 
 ### The CIA's map of the battle (with intro slide 5, "How this page tells it")
 **Picture:** images/record-cia-map-2.jpg (copied from research/loc-map2-battle-of-vukovar.jpg)
