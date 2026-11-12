@@ -449,7 +449,11 @@ Object.assign(window.TYRE_SCENARIO, {
       { file: 'terrain-region.jpg', secs: 6, pulse: { x: .2438, y: .718 }, credit: 'Tyre and the mainland opposite, with Old Tyre. The island’s outline follows the 2024 reconstruction (Brocard et al.). Painted for this project (AI-generated).' }
     ],
     imageBase: 'images/', audioBase: 'audio/',
-    voices: [ { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 } ],
+    voices: [
+      { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 }, { id: 'light', name: 'Narrator 2 · light', speaker: 60 },
+      { id: 'bright', name: 'Narrator 3 · bright', speaker: 0 }, { id: 'deep', name: 'Narrator 4 · deep', speaker: 400 },
+      { id: 'warm', name: 'Narrator 5 · warm', speaker: 7 }, { id: 'computer', name: 'Computer · calm', speaker: 500 }
+    ],
     sheets: ['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'mole-workers', 'mole-workers-2', 'siege-catapult', 'ship-allied-quinquereme', 'ship-ram-pair', 'ship-fireship-east',
              'tyre-spearman', 'tyre-archer', 'tyre-slinger', 'tyre-wall-defenders', 'tyre-civilians', 'ship-tyrian-trireme'],
     attackSheets: { 'tyre-spearman': 'tyre-spearman-attack' },
