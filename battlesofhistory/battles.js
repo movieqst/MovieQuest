@@ -5,7 +5,7 @@
    progress (0-100, roughly how far along: research, maps, art, script, voices) decides which 4 show beside the globe. */
 window.BATTLES = [
   {
-    folder: 'kadesh', lat: 34.56, lon: 36.52, osmZoom: 12, osmNote: 'Tell Nebi Mend, the site of Kadesh; the battlefield around it is not exactly known',
+    folder: 'kadesh', osmArea: 5,  lat: 34.56, lon: 36.52, osmZoom: 12, osmNote: 'Tell Nebi Mend, the site of Kadesh; the battlefield around it is not exactly known',
     order: 1,
     era: 'Bronze Age',
     title: 'Battle of Kadesh',
@@ -44,7 +44,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'gaugamela', lat: 36.56, lon: 43.44, osmZoom: 10, osmNote: 'the exact site is not known',
+    folder: 'gaugamela', osmArea: 12, osmSites: [[36.62, 43.44, 'Tell Gomel (most often proposed)'], [36.32, 43.40, 'a site further south (another proposal)']],  lat: 36.56, lon: 43.44, osmZoom: 10, osmNote: 'the exact site is not known',
     order: 4,
     era: 'Classical Antiquity',
     title: 'Battle of Gaugamela',
@@ -70,7 +70,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'edington', lat: 51.27, lon: -2.1, osmZoom: 12, osmNote: 'the site of Ethandun is debated',
+    folder: 'edington', osmSites: [[51.263, -2.142, 'Edington and Bratton Camp, Wiltshire (most often proposed)'], [51.155, -2.876, 'Edington, Somerset (another proposal)']],  lat: 51.27, lon: -2.1, osmZoom: 12, osmNote: 'the site of Ethandun is debated',
     order: 7,
     era: 'Viking Age',
     title: 'Battle of Edington',
@@ -83,7 +83,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'talas', lat: 42.9, lon: 71.4, osmZoom: 8, osmNote: 'the exact site is not known',
+    folder: 'talas', osmArea: 25, osmSites: [[42.90, 71.37, 'Taraz (old Talas)'], [42.7153, 71.2644, 'Atlakh'], [42.6819, 71.3097, 'Joon-Döbö']],  lat: 42.9, lon: 71.4, osmZoom: 8, osmNote: 'the exact site is not known',
     order: 6,
     era: 'Tang and Abbasid',
     title: 'Battle of Talas',
@@ -252,7 +252,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'granicus-issus', progress: 5, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
+    folder: 'granicus-issus', osmArea: 10, osmSites: [[36.76, 36.21, 'Payas river'], [36.93, 36.18, 'Deli Çay']],  progress: 5, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
     order: 21,
     era: 'Classical Antiquity',
     title: 'Granicus & Issus',
