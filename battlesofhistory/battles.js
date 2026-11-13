@@ -242,7 +242,7 @@ window.BATTLES = [
     folder: 'somalia1988', progress: 2, lat: 9.5600, lon: 44.0650,
     order: 20,
     era: 'Somalia, 1988',
-    title: 'Somalia 1988 Genocide',
+    title: 'The Isaaq Genocide (1988)',   // the name researchers use (Yale GSP, Lemkin Institute, the 2002 UN-commissioned study); no court has ruled on genocide: the page explains
     date: 'May–July 1988', year: 1988,
     place: 'Hargeisa and Burao, northern Somalia (the region that declared itself Somaliland in 1991)',
     sides: 'The government of Mohamed Siad Barre and its army vs. the Somali National Movement (SNM); the Isaaq civilians of the north',
