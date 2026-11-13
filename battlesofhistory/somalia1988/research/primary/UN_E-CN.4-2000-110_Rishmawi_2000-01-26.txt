@@ -1,0 +1,1734 @@
+TITLE: E/CN.4/2000/110 - Situation of human rights in Somalia, report by Mona Rishmawi
+DATE: 26 January 2000
+URL: https://documents.un.org/api/symbol/access?s=E/CN.4/2000/110&l=en&t=pdf
+RETRIEVED: 2026-11-13 (curl; text extracted with pdftotext; OCR/line-break artefacts may remain)
+==================================================================
+ UNITED
+ NATIONS                                                                                                                          E
+                        Economic and Social                                                         Distr.
+                        Council                                                                     GENERAL
+
+                                                                                                    E/CN.4/2000/110
+                                                                                                    26 January 2000
+
+                                                                                                    Original: ENGLISH
+
+
+COMMISSION ON HUMAN RIGHTS
+Fifty-sixth session
+Item 19 of the provisional agenda
+
+                             ADVISORY SERVICES AND TECHNICAL COOPERATION
+                                  IN THE FIELD OF HUMAN RIGHTS
+
+                                                   Situation of human rights in Somalia
+
+                         Report of the Special Rapporteur, Ms. Mona Rishmawi, submitted in
+                          accordance with Commission on Human Rights resolution 1999/75
+
+                                                                CONTENTS
+
+                                                                                                                   Paragraphs   Page
+
+Executive summary .......................................................................................................         4
+
+Introduction         ...........................................................................................      1-9         7
+
+   I.     THE SECURITY SITUATION ...................................................                                 10 - 21      8
+
+  II.     THE POLITICAL SITUATION ..................................................                                 22 - 31     10
+
+ III.      LEGAL FRAMEWORK .............................................................                             32 - 39     12
+
+  IV. RESPECT FOR HUMAN RIGHTS AND
+      HUMANITARIAN LAW ............................................................                                  40 - 64     15
+
+          A.         Violence against life .........................................................                 41 - 45     16
+
+          B.         Intentional attacks against the civilian population
+                     and civilian objects ...........................................................                  46        16
+
+
+GE.00-10396 (E)
+E/CN.4/2000/110
+page 2
+
+                                                CONTENTS (continued)
+
+                                                                                                          Paragraphs   Page
+
+       C.       Pillage ...............................................................................       47        16
+
+       D.       The conscription of children under 15 .............................                           48        17
+
+       E.       Rape and other forms of sexual violence .........................                             49        17
+
+       F.       Persecution .......................................................................           50        17
+
+       G.       The illegal ordering of the displacement of civilians .......                              51 - 61      17
+
+       H.       The denial of due process .................................................                 62 - 64     19
+
+  V.   THE VISIT TO BAIDOA ............................................................                     65 - 77     20
+
+ VI. THE VISIT TO “SOMALILAND” ..............................................                               78 - 115    22
+
+       A.       The laws ...........................................................................        83 - 86     23
+
+       B.       The judiciary ....................................................................          87 - 95     23
+
+       C.       The lawyers ......................................................................            96        24
+
+       D.       Prisons ..............................................................................      97 - 102    25
+
+       E.       Freedom of expression .....................................................               103 - 105     25
+
+       F.       Protection of human rights defenders ...............................                      106 - 107     26
+
+       G.       Education ..........................................................................          108       26
+
+       H.       The situation of women and children ...............................                       109 - 110     26
+
+       I.       Minorities .........................................................................      111 - 112     27
+
+       J.       Allegations concerning toxic waste ..................................                         113       27
+
+       K.       Mass graves ......................................................................        114 - 115     28
+                                                                                               E/CN.4/2000/110
+                                                                                               page 3
+
+                                               CONTENTS (continued)
+
+                                                                                                       Paragraphs   Page
+
+VII.    THE VISIT TO “PUNTLAND” ..................................................                     116 - 142     28
+
+        A.      The “Parliament” ..............................................................        120 - 121     29
+
+        B.      The laws ...........................................................................   122 - 124     29
+
+        C.      The judiciary ....................................................................     125 - 130     29
+
+        D.      Law enforcement ..............................................................         131 - 136     30
+
+        E.      Freedom of expression .....................................................            137 - 138     31
+
+        F.      Protection of human rights defenders ...............................                       139       31
+
+        G.      Displacement ....................................................................      140 - 142     32
+
+VIII.   BUILDING A HUMAN RIGHTS NUCLEUS IN SOMALIA ...                                                 143 - 162     32
+
+ IX. CONCLUSIONS AND RECOMMENDATIONS ......................                                            163 - 169     35
+E/CN.4/2000/110
+page 4
+
+                                         Executive summary
+
+       Despite the serious human rights and humanitarian crisis many Somalis have to endure
+on a daily basis, civilians, in particular women, children and the intellectuals, aspire to live in a
+peaceful and stable Somalia ruled on a basis of dignity and respect.
+
+        During 1999, approximately half of the territory of Somalia has been peaceful, especially
+in the north, although the country has remained without a national government since 1991. The
+two northern territories, known as “Somaliland” and “Puntland”, have made remarkable progress
+in maintaining and strengthening the atmosphere of peace and security that they had already
+established in the areas under their control. This has not been without some difficulties,
+however.
+
+        With the growing decline of the powers of the warlords and their defeat in several areas
+in the south of Somalia, such as Baidoa and Kismayo, much of the violence in the country now is
+criminal rather than political.
+
+        A new power has emerged in various parts of central and southern Somalia, particularly
+in the coastal areas, with the institution of shariah courts that are supported by their own militia.
+This system is finding financial support among the business community in order to clear the area
+of banditry and ensure security. There are no reports until now of corporal punishments having
+been handed down by these courts; instead detention, rehabilitation and re-education are
+employed. There is a degree of tranquillity and economic growth in the areas under the control
+of the shariah courts, mainly due to the deterrence of banditry.
+
+       There is also al-Ittihad, a religious fundamentalist group, that operates mainly in
+south-west Somalia and has a growing influence in “Puntland”.
+
+        The recent initiative by President Ismail Omar Guelleh of Djibouti has raised hopes
+for ending the clan-based conflict in Somalia. In his speech before the United Nations
+GeneralAssembly on 22 September 1999, President Guelleh identified various phases for his
+plan. The initiative involves the convening of a reconciliation conference bringing together
+representatives of civil society and the warlords, the disarming of the faction leaders and the
+conversion of their factions into political parties that compete in elections. If this fails, the
+international community could take measures to prosecute the warlords for crimes against
+humanity, or other measures to bring to an end the gross violations of human rights committed in
+Somalia. The initiative of the President of Djibouti has the support of the international
+community, but more importantly, it has the support of the Somali people.
+
+        Many acts that could be qualified as war crimes or crimes against humanity are being
+committed now in Somalia, in particular in the south of the country. War crimes and crimes
+against humanity give rise to international criminal jurisdiction, either by an international
+criminal tribunal or by the exercise of universal jurisdiction by national courts. The independent
+expert encourages the authorities in foreign countries to take steps to bring to justice those
+                                                                        E/CN.4/2000/110
+                                                                        page 5
+
+suspected of committing such crimes in Somalia. She reminds States that the United Nations
+Security Council, in its resolution 1265 (1999), emphasized the responsibility of States to end
+impunity and to prosecute those responsible for genocide, crimes against humanity and serious
+violations of international humanitarian law.
+
+       The report considers acts of violence against life, intentional attacks against the civilian
+population and objects, pillage, the conscription of children under 15, rape and other forms of
+sexual violence, the persecution of minorities, illegal ordering of the displacement of civilians
+and denial of due process. Most of the violations described in the report are taking place in the
+south and centre of the country.
+
+        The independent expert visited Baidoa on 17 and 18 November 1999. Aideed’s militia
+held this town for the previous four years. During that time, allegedly, individuals were
+massacred, women were raped, wells were destroyed, villages were looted and burnt, and
+persons were allegedly detained without charge or trial. As a result, the town, mainly inhabited
+by the Rahanwein minority group, had been largely deserted.
+
+        The independent expert met with the leadership of the Rahanwein Resistance Army
+(RRA), which defeated Aideed, allegedly with military assistance from Ethiopia. She visited the
+village of Doynounay, one of the villages burnt during the time Aideed’s troops were present in
+the area. On her way back to Baidoa, a military roadblock of two soldiers in military uniform
+stopped the independent expert’s car. They were believed to be Ethiopians. Other soldiers in the
+nearby bushes were also believed to be Ethiopians.
+
+        The independent expert visited “Somaliland”, an unrecognized entity in the north-west,
+which in 1991 separated from Somalia. She also visited “Puntland”, in the north-east of the
+country, which still considers itself as a regional administration within Somalia. “Somaliland”
+and “Puntland” are now considered the most stable areas of Somalia. “Somaliland” has made
+the greater progress in this respect.
+
+        In “Somaliland” and “Puntland”, the independent expert met with various officials.
+There is a sharp contrast between these territories and areas in the south, such as Baidoa. The
+two territories each have a regional administration, and a parliament, as well as a judicial system,
+albeit basic and often accused of corruption. They also have law-enforcement agencies, although
+they have no training and are sometimes accused of human rights violations, including torture.
+The prisons are functioning, but they are often crowded and half of the detainees are still
+awaiting trial, particularly in “Somaliland”. There is a level of freedom of expression in both
+regions; “Somaliland” seems to be more advanced in this respect, but is not without problems.
+In “Puntland”, there are reports of journalists being arrested for criticizing the administration.
+Local human rights groups exist in both regions; from time to time they are harassed and
+intimidated. There are also problems of discrimination against minorities and internally
+displaced persons.
+E/CN.4/2000/110
+page 6
+
+        The independent expert hopes that, with consolidated work in the field, the Commission
+on Human Rights and OHCHR will be able to give meaningful assistance to the people of
+Somalia in the area of human rights at this crucial period of their history. There are several
+possibilities for building a nucleus for human rights work in Somalia. Such work will advance
+peace and stability in the country, in addition to paving the way for better respect of human
+rights.
+
+        Several assistance programmes are already under way particularly in the northern areas.
+The various projects mentioned in the report highlight the need for enhanced coordination. A
+working strategy should be developed so that structured programmes within a coordinated
+framework, not piecemeal activities, are carried out. Enhanced coordination will lead to better
+rationalization of the use of the scarce resources available for Somalia. The arrival of the
+OHCHR officer with his significant human rights expertise should fill a major gap in the system.
+
+       The conclusions of the independent expert include a welcome for President Ismail Omar
+Guelleh’s peace initiative, particularly his proposal for the possible trial of those suspected of
+war crimes and crimes against humanity. She stresses, however, that peace and justice
+should not be alternatives, but should go hand in hand. She also reminds States that the
+Security Council has imposed an arms embargo on Somalia and calls on them to respect this
+embargo. She reiterates what was already stated by the Security Council, that the continued
+supplying of arms to the various factions still fighting in Somalia impedes humanitarian aid,
+prolongs the conflict, puts the lives of civilians in jeopardy and undermines security and the
+confidence required for a return to peace and stability.
+
+        Lastly, the Independent Expert welcomes the placement by OHCHR of a human rights
+officer for Somalia in Nairobi, Kenya. She reiterates her belief that working close to Somalia,
+and in a sustained manner, will pave the way for more meaningful work on Somalia by the
+Commission on Human Rights and OHCHR. She calls on the various United Nations agencies
+operating in Somalia to facilitate the officer’s task and on the donor community to support this
+important endeavour.
+                                                                      E/CN.4/2000/110
+                                                                      page 7
+
+                                           Introduction
+
+1.      At its fifty-fifth session, on 28 April 1999, the Commission on Human Rights adopted
+resolution 1999/75 in which it welcomed the report of the independent expert on the situation of
+human rights in Somalia (E/CN.4/1999/103) and, in particular, her conclusions and
+recommendations and took note with concern of the addendum to that report
+(E/CN.4/1999/103/Add.1), which contained a preliminary assessment of mass graves in the
+vicinity of Hargeisa, in north-west Somalia. The Commission also welcomed the decision of the
+United Nations High Commissioner for Human Rights to appoint a human rights officer in the
+framework of the office of the United Nations Resident Humanitarian Coordinator for Somalia in
+Nairobi, Kenya, and stressed the importance of implementing that decision. The Commission
+requested the independent expert to report on the human rights situation in Somalia to the
+Commission at its fifty-sixth session.
+
+2.       As a result, the independent expert has been following the implementation of the decision
+of the United Nations High Commissioner for Human Rights to appoint a human rights officer
+for Somalia. She is pleased to report that the officer was finally placed in Nairobi in
+October 1999 and immediately started his work. As will be discussed later, this appointment has
+filled a significant gap in the United Nations work in Somalia and has been much appreciated.
+
+3.      The independent expert has been following the developments in the human rights
+situation in Somalia. On a visit to the region from 14 to 24 November 1999, she went to
+Nairobi, where she met with representatives of the United Nations agencies dealing with
+Somalia, of Governments, of the International Committee of the Red Cross (ICRC) and of
+international non-governmental organizations working in Somalia. She then visited the town of
+Baidoa in the southern part of Somalia, “Somaliland” in the north-west and “Puntland” in the
+north-east. During her mission, the independent expert was accompanied by the OHCHR desk
+officer for Somalia and the newly-appointed human rights officer, now based in Nairobi.
+
+4.       The independent expert deeply appreciates the welcoming attitude and the warmth she
+has been met with while in Somalia. Despite the serious human rights and humanitarian crisis
+most Somalis have to endure on a daily basis, civilians, in particular women, children and the
+intellectuals, aspire to live in a peaceful and stable Somalia ruled on a basis of dignity and
+respect. The independent expert particularly appreciates the deep sense of pride that the Somali
+people share. She is grateful to all the Somalis who aided her during her mission. Special
+thanks are due to the Somali journalists, human rights defenders, women’s groups, other NGOs
+and individuals. The independent expert is also grateful to all the Somali officials who
+facilitated her visit, met with her and provided her with useful information.
+
+5.       The independent expert is also thankful to the staff of all the international agencies who
+met with her, and in particular to the Special Representative of the Secretary-General in Somalia,
+Mr. David Stephen, and his staff for their enthusiasm and support for human rights work on
+Somalia. Mr. Stephen, invited the independent expert to attend a meeting organized by his office
+in Nairobi with representatives of Somali civil society on 16 November 1999 to discuss the
+initiative of President Ismail Omar Guelleh of Djibouti, which will be considered below.
+Mr. Stephen singled out the independent expert and welcomed her before the more
+than 500 participants. The independent expert greatly values this public support.
+E/CN.4/2000/110
+page 8
+
+6.       Thanks are also due to the United Nations Development Programme (UNDP), the
+United Nations Children’s Fund (UNICEF), and the World Food Programme (WFP) for sharing
+their insights and experience with the independent expert. Special thanks are due to UNDP,
+which made the administrative arrangements for the mission, and to UNICEF, which particularly
+facilitated her visit to Baidoa.
+
+7.     The independent expert also met with the representatives of Sweden and the
+United States of America in Nairobi. She is grateful to them for providing her with useful
+information and sharing their insights, activities and policies regarding Somalia.
+
+8.      In addition, the independent expert met with the representative of the European
+Commission - Somalia Unit, who also chairs the Somalia Aid Coordination Body (SACB), and
+his staff. SACB was created by virtue of the 1 December 1993 Addis Ababa Declaration of the
+Fourth Coordination Meeting on Humanitarian Assistance for Somalia, organized by the
+United Nations Operation in Somalia (UNOSOM.). This body is a voluntary coordination body
+based in Nairobi. It comprises donors, United Nations agencies, NGOs and other international
+organizations and provides a framework for developing a common approach to the allocation of
+international aid to Somalia. The independent expert examined the role of this body in a
+previous report (E/CN.4/1997/88), particularly with respect to the Code of Conduct for
+International Rehabilitation and Development Assistance to Somalia, which establishes the link
+between humanitarian assistance and human rights.1
+
+9.     The independent expert particularly values the work of the ICRC and international
+non-governmental organizations in Somalia. She appreciates the deep, wise and useful analysis
+they provided to her during her mission.
+
+                               I. THE SECURITY SITUATION
+
+10.     There are three major tendencies in Somalia today. The first could be characterized by
+the existence of relatively peaceful regions, particularly in the north of Somalia. The second is
+the decline in the power of the warlords. The third is the emergence of shariah courts, which are
+trying to fill the gap and maintain law and order.
+
+11.     During 1999, approximately half of the territory of Somalia has been peaceful,2
+especially in the north, although the country has remained without a national government
+since 1991. The two northern territories, known as “Somaliland” and “Puntland”, have made
+remarkable progress in maintaining and strengthening the atmosphere of peace and security they
+had already established in the areas under their control. This has not been without some
+difficulties. In October 1999, for instance, there was an exchange of hand-grenades in the
+“Puntland” town of Galcayo. There was also violence in the demining project in “Somaliland”,
+over its control. Furthermore, the two administrations are in dispute over the two regions of Sool
+and Sanag.
+
+12.     With the growing decline in power of the leaders of the conflict and their defeat in
+several areas in the south of Somalia, such as Baidoa and Kismayo, much of the violence in the
+country is now criminal rather than political. In his report to the Security Council of
+16 August 1999, the Secretary-General stated that “a general review of the role of the
+                                                                          E/CN.4/2000/110
+                                                                          page 9
+
+United Nations in Somalia, including the possible relocation of some United Nations
+programmes and agencies, as well as the Political Office, to Somalia” could be considered.3 In
+fact, two thirds of the United Nations staff (national and international) working on Somalia are
+now already based inside the country, in particular in “Somaliland” and “Puntland”. 4 This
+is not without difficulty. From time to time United Nations staff have been considered
+persona non grata in some regions, as was the case in December 1999 in “Puntland”.
+
+13.     As for the south, Gedo, Middle Shabelle and Lower Juba are still engulfed in serious
+conflict. The Somali capital, Mogadishu, continues to be torn among different groups. There is
+considerable banditry and fighting and casualties among United Nations national staff are
+increasing. While the power of the traditional faction leaders seriously declined during 1999,
+owing to their defeat on various fronts, they still have a significant following in Somalia, despite
+the fact that Mr. Ali Mahdi has been in Cairo and Mr. Aideed has been in Nairobi for almost a
+year. There is total anarchy in the capital. The Islamic courts, which will be elaborated on
+below, have been trying to fill the vacuum in authority, initially in south Mogadishu and now
+extending towards the north of the town. Heavy fighting for control of the port broke out
+on 23 November 1999 between the shariah court-supported Abgaal-Harti Warsengeli militia
+and the militia of the two warlords, Musa Sudi and Ali Mahdi Mohammed.5
+
+14.     General Hersi Morgan was defeated in the strategic southern agricultural port of Kismayo
+in June 1999. He is now living in Baidoa and enjoys the support of the Rahanwein Resistance
+Army (RRA), as well as the leadership in “Puntland”. The situation in Kismayo is currently
+tense. “Intermittent conflict between the Marehan and the Haber Gedir militia on the one hand,
+and the four Marehan factions competing for leadership on the other hand has contributed to an
+environment of anarchy. There is no effective leadership, and kidnap, ransom, rape and murder
+are common occurrences ... Médecins Sans Frontières (MSF)-Belgium has not returned to the
+city due to the security situation”.6 In fact, there is a major difficulty in delivering supplies to the
+health centres in the town.
+
+15.     With military backing from Ethiopia, the RRA, which was established in 1995, has been
+able to gain control over large parts of Bay and Bakool and defeat Mr. Aideed’s militias, which
+were backed by Eritrea. There are claims of an Ethiopian military presence in these territories
+and some Ethiopian soldiers were observed in Baidoa. There are also claims of Ethiopian troops
+in the western parts of Somalia. The objectives of the Ethiopian presence in Somalia seem to be
+to crush Ethiopian Oromo armed opposition groups, which are supported by Aideed, and to
+defeat fundamentalism in the western regions of Somalia. Some reports indicate that certain
+elements in Mogadishu are criticizing the United Nations for “preferring to conduct assistance
+operations in Ethiopian-occupied areas of Somalia”.7
+
+16.     The areas under RRA control still lack administration and there are differences within the
+RRA leadership. There have been some developments in terms of peace initiatives among the
+clans in the Hiran region. Galgadud has also experienced some stability, with no major clashes
+lately.
+
+17.    As was mentioned above, a new power has emerged in various parts of central and
+southern Somalia, such as in the towns of Merka, Brava and Coryoley. This is the institution of
+E/CN.4/2000/110
+page 10
+
+shariah courts, supported by their own militia. Unlike other powers in Somalia, those in charge
+of these courts are not so much interested in creating a regional government or administration;
+rather, they are interested in the judiciary.
+
+18.     Those in charge of these courts claim that they do not have any affiliation with the
+warlords, or with al-Ittihad, a religious fundamentalist group that operates mainly in south-west
+Somalia and has growing influence in “Puntland”. Both the shariah court officials and al-Ittihad
+cut across the clan system that has prevailed so far. In fact, there seems to be some rivalry
+between the Islamic courts and al-Ittihad; this rivalry should not be underestimated. Both are
+being provided with financial support from the business community in order to ensure security
+and clear the area of banditry and of the militia, who have been collecting sums of money at road
+blocks.
+
+19.      Although the shariah courts’ agenda seems to focus on the enforcement of the shariah for
+all, there are no reports until now of corporal punishments being handed down by these courts.
+Instead, they employ detention, rehabilitation and re-education. There is a degree of tranquillity
+and economic growth in the areas under the shariah courts’ control, mainly due to the absence of
+banditry. Relations with the United Nations agencies and the relief community seem to be
+generally cordial as they have been able to continue their work in these regions.8
+
+20.    The Islamic courts in Merka have apparently requested United Nations support for
+vocational training of the captured and convicted militia and bandits. Eighty-eight
+individuals were said to have been tried by these courts: 22 were acquitted and 66 convicted.
+The 66 prisoners have been sentenced for a period of up to one year. The shariah militias feed
+them and train them in shariah law, and literacy in the Somali language.9
+
+21.      Some international relief work is carried out in the areas controlled by Al-Ittihad.
+Relations with the United Nations and the international community seem to be tense, however.
+It is not possible to deploy female international staff.
+
+                               II. THE POLITICAL SITUATION
+
+22.      The recent initiative by President Ismail Omar Guelleh of Djibouti has raised hopes
+for ending the clan-based conflict in Somalia. In his speech before the United Nations
+General Assembly on 22 September 1999,10 President Guelleh identified three phases for his
+plan. The first phase involves the convening of a reconciliation conference, with representatives
+of civil society and the warlords coming together to commit themselves to the path of peace and
+national reconciliation. During this phase, the warlords are called upon to disarm and “to
+convert their factions into political parties that compete in elections, if they choose to do so”.
+The second phase involves the prosecution of the warlords for crimes against humanity, if they
+do not accept to participate in the first phase of the process. The third phase calls for action,
+primarily by the Organization of African Unity (OAU) and the League of Arab States, with
+support from the United Nations, so that the warlords would not be allowed “to continue
+indefinitely to commit flagrant violations of human rights and to hold [the] country hostage for
+ever”.11
+                                                                      E/CN.4/2000/110
+                                                                      page 11
+
+23.     The independent expert welcomes this significant initiative, which differs from the
+previous peace attempts for Somalia in its focus on civil society. Her only concern is that peace
+and justice should go hand in hand, not be alternatives to each other. In the context of Somalia,
+where serious violations of human rights and humanitarian law rise to the level of war crimes
+and crimes against humanity, ending impunity for such crimes by prosecuting those who commit
+them should be among the main objectives of all States and an integral part of, not an alternative
+to, a peace plan. The Security Council emphasized this principle in its resolution 1265 (1999)
+of 17 September 1999 on the protection of civilians in armed conflict.
+
+24.      The public stand President Ismail Omar Guelleh has taken against the warlords with his
+initiative has contributed to the crumbling of their power. The initiative has the backing of the
+Inter-Governmental Authority on Development (IGAD) and the League of Arab States. More
+importantly, the initiative enjoys wide support among Somalis. When President Guelleh's
+speech was brought to the attention of the Somali people by the BBC Somali Service, people in
+various parts of the country, particularly Mogadishu, took to the streets in support of his
+initiative.
+
+25.     On 16 November 1999, while in Nairobi, the independent expert attended a meeting
+organized by UNPOS and chaired by the Special Representative of the Secretary-General for
+Somalia. It was attended by around 500 Somalis, including representatives of the various
+factions, of civil society groups and of the Somali business community, and Somali intellectuals.
+Various representatives of the international community also attended.
+
+26.    During this meeting wide support for President Guelleh's initiative was expressed,
+including by the various political factions. President Guelleh's ethnic Somali origin was
+frequently cited to emphasize their appreciation for his understanding of the situation in Somalia,
+his concern and commitment to find a just solution to the conflict, as well as his courage.
+
+27.     The role of the BBC Somalia Service, which spread the news of the initiative, was
+particularly acknowledged during the meeting. There was a great sense of hope expressed by
+the various speakers that Somalia might finally be moving more steadily towards peace.
+President Guelleh's emphasis on the organizations of civil society was particularly appreciated
+and it was stressed that it provided the first opportunity for civilians to express their views.
+
+28.      Participants in the meeting also expressed fear that the Djibouti initiative could also be
+the last attempt by the international community to achieve peace in Somalia. There was concern
+that, should it fail, Somalis would lose hope and turn to Islamic fundamentalism. In this respect,
+there were calls upon the international community to pursue a unified and coordinated stand on
+Somalia and to stop legitimizing the warlords by “hosting them in expensive hotels in various
+capitals”.
+
+29.    Much emphasis was placed on the importance of respecting the arms embargo imposed
+on Somalia by the Security Council since 1991, and on disarming the militias, as proposed by
+President Guelleh in his initiative.
+
+30.    Several Somali women attended the meeting and spoke clearly and firmly in favour of
+peace and reconciliation.
+E/CN.4/2000/110
+page 12
+
+31.      In the past, several initiatives have been sponsored by IGAD, the League of Arab States
+or others with regard to the Somali conflict. The previous initiatives, which all failed,
+emphasized bringing peace among the warlords, rather than the Somali population. This is the
+first initiative that focuses on the elements and forces of civil society in Somalia.
+
+                                   III. LEGAL FRAMEWORK
+
+32.     Many atrocities that could be qualified as war crimes and crimes against humanity are
+frequently committed in Somalia, particularly in the south. War crimes and crimes against
+humanity give rise to international criminal jurisdiction, either by an international criminal
+tribunal, or by the exercise of universal jurisdiction by national courts. Until the time comes
+when an international criminal tribunal has a mandate to try those suspected of committing war
+crimes and crimes against humanity in Somalia, national courts, in countries where such suspects
+are said to live or frequently to travel to, such as Djibouti, Canada, Egypt, Ethiopia, Kenya, Italy,
+the United Kingdom, the United States of America and Yemen, can bring them to justice. The
+independent expert encourages the prosecuting authorities in these countries to take steps in this
+regard. She reminds States that the Security Council, in its resolution 1265 (1999) on the
+protection of civilians in armed conflict, emphasized “the responsibility of States to end
+impunity and to prosecute those responsible for genocide, crimes against humanity and serious
+violations of international humanitarian law”.
+
+33.     As for what constitutes war crimes or crimes against humanity in the Somali context,
+the independent expert has been asserting that international humanitarian law relating to
+non-international armed conflict applies in the whole territory of Somalia, irrespective of
+whether a specific area is engulfed in active fighting or not. This application extends to the
+“Puntland” regional government in the north-east, which considers itself part of Somalia, as well
+as to “Somaliland”, which is asserting independence, although there is no international
+recognition of its separate status.
+
+34.     As a result, all parties to the conflict are bound by the laws and customs applicable in
+armed conflicts not of an international nature. These principles are mainly aimed at protecting
+the civilian population. They prohibit deliberate attacks upon civilians and outlaw indiscriminate
+attacks. They forbid attacks on non-military objectives and require precautions when attacking
+military targets. Three main bodies of rules are essential in this respect.
+
+35.    First, article 3 common to the four Geneva Conventions of 12 August 1949 spells out
+elements that were considered by the International Criminal Tribunal on the Former Yugoslavia
+as constituting war crimes. It reads:
+
+       “ … each Party to the conflict shall be bound to apply, as a minimum, the following
+       provisions:
+                                                                        E/CN.4/2000/110
+                                                                        page 13
+
+        (1) Persons taking no active part in the hostilities, including members of armed forces
+        who have laid down their arms and those placed hors de combat by sickness, wounds,
+        detention, or any other cause, shall in all circumstances be treated humanely, without any
+        adverse distinction founded on race, colour, religion or faith, sex, birth or wealth, or any
+        other similar criteria. To this end, the following acts are and shall remain prohibited at
+        any time and in any place whatsoever with respect to the above-mentioned persons:
+
+               (a) violence to life and person, in particular murder of all kinds, mutilation, cruel
+        treatment and torture;
+
+               (b) taking of hostages;
+
+               (c) outrages upon personal dignity, in particular humiliating and degrading
+        treatment;
+
+               (d) the passing of sentences and the carrying out of executions without previous
+        judgement pronounced by a regularly constituted court, affording all the judicial
+        guarantees which are recognized as indispensable by civilized peoples.
+
+        (2) The wounded and sick shall be collected and cared for.”
+
+36.     Second, the Statue of the International Criminal Court, adopted in Rome on 17 July 1998,
+provides further indications as to what constitute customary international law norms with regard
+to war crimes committed in an armed conflict not of an international character. The Statute thus
+sheds light on additional crimes under customary international law with regard to Somalia.
+Under article 8.2 (e) of the Rome Statute the following acts are considered as war crimes:
+
+     “(i)      Intentionally directing attacks against the civilian population as such or against
+               individual civilians not taking direct part in hostilities;
+
+     (ii)      Intentionally directing attacks against buildings, material, medical units and
+               transport, and personnel using the distinctive emblems of the Geneva Conventions
+               in conformity with international law;
+
+     (iii)     Intentionally directing attacks against personnel, installations, material, units or
+               vehicles involved in a humanitarian assistance or peacekeeping mission in
+               accordance with the Charter of the United Nation, as long as they are entitled to
+               the protection given to civilians or civilian objects under the law of armed
+               conflict;
+
+     (iv)      Intentionally directing attacks against buildings dedicated to religion, education,
+               art, science or charitable purposes, historic monuments, hospitals and places
+               where the sick and wounded are collected, provided they are not military
+               objectives;
+
+      (v)      Pillaging a town or place, even when taken by assault;
+E/CN.4/2000/110
+page 14
+
+     (vi)      Committing rape, sexual slavery, enforced prostitution, forced pregnancy, as
+               defined in article 7, paragraph 2 (f) [of the Statute], enforced sterilization, and any
+               other form of sexual violence also constituting a serious violation of article 3
+               common to the four Geneva Conventions;
+
+    (vii)      Conscripting or enlisting children under the age of 15 years into armed forces or
+               groups or using them to participate actively in hostilities;
+
+   (viii)      Ordering the displacement of the civilian population for reasons related to the
+               conflict, unless the security of the civilians involved or imperative military
+               reasons so demand;
+
+     (ix)      Killing or wounding treacherously a combatant adversary;
+
+      (x)      Declaring that no quarter will be given;
+
+     (xi)      Subjecting persons who are in the power of another party to the conflict to
+               physical mutilation or to medical or scientific experiments of any kind which are
+               neither justified by the medical, dental, hospital treatment of the person concerned
+               nor carried out in his or her interest, and which cause death to or seriously
+               endanger the health of such person or persons;
+
+    (xii)      Destroying or seizing the property of an adversary unless such destruction or
+               seizure be imperatively demanded by the necessities of the conflict.”
+
+37.      Third, the Rome Statute provides indications as to what constitutes crimes against
+humanity, which are also prohibited by customary international law. They are enumerated in
+article 7.1 of the Statute:
+
+       “(a)    murder;
+
+       (b)     Extermination;
+
+       (c)     Enslavement;
+
+       (d)     Deportation or forcible transfer of population;
+
+      (e)     Imprisonment or other severe deprivation of physical liberty in violation of
+fundamental rules of international law;
+
+       (f)     Torture;
+
+         (g)     Rape, sexual slavery, enforced prostitution, forced pregnancy, enforced
+sterilization, or any other form of sexual violence of comparable gravity;
+                                                                        E/CN.4/2000/110
+                                                                        page 15
+
+        (h)     Persecution against any identifiable group or collectivity on political, racial,
+national, ethnic, cultural, religious, gender as defined in paragraph 3 [of art. 7], or other grounds
+that are universally recognized as impermissible under international law …;
+
+       (i)     Enforced disappearance of persons;
+
+       (j)     The crime of apartheid;
+
+        (k)     Other inhumane acts of a similar character intentionally causing great suffering,
+or serious injury to body or to mental or physical health.”
+
+The definition of some of these crimes is elaborated further in the Statute.
+
+38.     In its resolution 1265 (1999), the Security Council spelled out rules with regard to the
+protection of civilians in armed conflicts. The Council expressed grave concern at “the
+hardships borne by civilians during armed conflict, in particular as a result of acts of violence
+directed against them, specially women, children and other vulnerable groups, including refugees
+and internally displaced persons”. It emphasized the responsibility of States to end impunity and
+to prosecute those responsible for crimes against humanity and other serious violations of
+international humanitarian law; underlined the “importance of safe and unhindered access of
+humanitarian personnel to civilians in armed conflict ... and the protection of humanitarian
+assistance to them”; emphasized the need “for combatants to ensure safety, security and freedom
+of movement of United Nations and associated personnel, as well as personnel of international
+humanitarian organizations”; expressed “its willingness to respond to situations of armed conflict
+where civilians are being targeted or humanitarian assistance to civilians is being deliberately
+obstructed”; noted that the destabilizing effect of small arms and light weapons posed a
+considerable impediment to the provision of humanitarian assistance and had a potential to
+exacerbate and prolong conflicts, endanger the lives of civilians and undermine security and the
+confidence required for a return to peace and stability; and reiterated its grave concern at the
+harmful and widespread impact of armed conflict on children.
+
+39.     These are significant principles that should be kept in mind by the parties to the Somali
+conflict, by States and by international organizations. They reflect the determination of the
+international community to deal seriously with the impact of conflict on civilians and to take
+measures to protect civilians, including prosecuting those who commit crimes against humanity
+and other relevant international crimes, and intervening to ensure that civilians and humanitarian
+aid to them are not deliberately targeted during conflicts.
+
+             IV. RESPECT FOR HUMAN RIGHTS AND HUMANITARIAN LAW
+
+40.     In this section, the independent expert will consider how some of the fundamental
+principles mentioned above are being violated in Somalia. As was emphasized earlier, war
+crimes and crimes against humanity could provoke international criminal prosecution either
+through an international tribunal or by national courts in neighbouring or other countries through
+the exercise of universal jurisdiction. Most of the violations described below are taking place in
+the south and centre of the country.
+E/CN.4/2000/110
+page 16
+
+                                     A. Violence against life
+
+41.     The right to life is among the rights most violated in Somalia. The taking of life is
+common practice. The independent expert received chilling allegations during her visit to
+Baidoa regarding the massacre of civilians by Aideed’s militias during the battle over the town
+with the RRA. On 24 February 1999, an RRA spokesman told Agence France Presse (AFP)
+that 40 civilians were killed in Baidoa and the neighbouring village of Doyounay in one
+weekend. During her visit to Somalia in November 1999, the independent expert visited the
+village and was told that, during the invasion of the village by Aideed’s group,
+about 60 individuals had been rounded up and taken to Baidoa, where they were shot. The
+independent expert met with an individual who claimed that he had survived the massacre only
+because the militiamen thought that he was dead. He showed the independent expert what
+appeared to be bullets which were still in his body. During this time women were allegedly
+raped, wells were destroyed, and the village itself was burnt.
+
+42.   As was stated earlier, the United Nations reported in November 1999 that kidnapping,
+ransom, rape and murder are common occurrences in Kismayo.12
+
+43.     The situation in Mogadishu is serious. The town is now mostly controlled by banditry
+and fighting. There are intentional attacks against the civilian population and objects, which
+constitute war crimes, as set out above (para. 53). The increase in casualties among the
+United Nations national staff, inflicted by the militia and bandits, has led the United Nations to
+consider elaborating strategies for collecting evidence, identifying criminals and establishing
+responsibility. Various legal avenues are being explored to bring the perpetrators to justice. 13
+
+44.     During the battle over Kismayo and in the Juba Valley between General Morgan and
+Somali National Front (SNF)/Somali National Alliance (SNA) militia, there were allegations that
+each side had massacred dozens of captured militiamen. Some of the captured militia were held
+in the Kismayo hospital, which was previously run by MSF.
+
+45.    On 17 January 1999, an unknown number of individuals were apparently killed or injured
+when inter-clan fighting broke out in Jamame district, about 70 km north of Kismayo, between
+Sheikhal and Biyomal clansmen. Reports indicated that clan elders have since started to
+negotiate a settlement.
+
+            B. Intentional attacks against the civilian population and civilian objects
+
+46.     As is apparent from the previous section of the present report, intentional attacks against
+the civilian population and civilian objects, which constitute war crimes, are frequently carried
+out in Somalia. Commercial vessels are also often seized, sometimes for political reasons, but
+often for ransom.
+
+                                            C. Pillage
+
+47.    Pillage and looting are a common practice. In November 1999, humanitarian relief
+material was looted near Baidoa from UNICEF. When the independent expert visited Baidoa,
+the head of UNICEF Somalia was holding a high-level meeting with the RRA leadership to
+                                                                           E/CN.4/2000/110
+                                                                           page 17
+
+ensure that such actions would not be repeated in the future. Around the same time, the
+compound of MSF-Holland in Galcayo, “Puntland”, was invaded by unknown armed men and
+looted. Following this incident, MSF stayed out of Galcayo because of the poor level of security
+there.
+
+                               D. The conscription of children under 15
+
+48.   In many parts of Somalia, children under the age of 15 are recruited by the militias.
+Some faction leaders recruit children as young as 10 years of age to serve as their personal
+bodyguards.
+
+                              E. Rape and other forms of sexual violence
+
+49.     Rape and other forms of sexual violence are often reported. There are many allegations
+of rape, particularly in the Kismayo area, as well as in and around Baidoa during Aideed’s four
+years of control over the town.
+
+                                            F. Persecution
+
+50.     This crime against humanity is defined in the Rome Statute as “persecution against any
+identifiable group or collectivity on political, racial, national, ethnic, cultural, religious, gender ...
+or other grounds that are universally recognized as impermissible under international law”.
+There is systematic discrimination against minorities. In her report to the Commission on
+Human Rights at its fifty-fifth session (E/CN.4/1999/103) the independent expert explored the
+situation of minorities, particularly the Bantus. The situation remains unchanged. Bantus
+continue to be forced off their land, their property continues to be looted and their villages
+destroyed.
+
+                      G. The illegal ordering of the displacement of civilians
+
+51.     Displacement is a major problem in Somalia. The illegal ordering of the displacement of
+civilians constitutes a war crime, as was stated above. Somalis in the conflict areas are often
+either chased away from their normal place of residence or are forced to flee because of the
+conflict. The situation of the internally displaced is described further below. In this respect, the
+independent expert wishes to draw attention to the Guiding Principles on internal displacement
+prepared by the Representative of the Secretary-General on internally displaced persons and
+contained in document E/CN.4/1998/53/Add.2. The 30 Guiding Principles address the specific
+needs of the internally displaced and identify the rights and responsibilities relevant to their
+protection. The Principles were welcomed by the Inter-Agency Standing Committee (IASC),
+which encouraged its members to share them with their Executive Boards for further
+dissemination.
+
+52.     Principle 3 states:
+
+        “National authorities have the primary duty and responsibility to provide protection and
+        humanitarian assistance to internally displaced persons within their jurisdiction.
+E/CN.4/2000/110
+page 18
+
+        “Internally displaced persons have the right to request and to receive protection and
+        humanitarian assistance from these authorities. They shall not be persecuted or punished
+        for making such a request.”
+
+Principle 5 states:
+
+        “All authorities and international actors shall respect and ensure respect for their
+        obligations under international law, including human rights and humanitarian law, in all
+        circumstances, so as to prevent and avoid conditions that might lead to displacement of
+        persons.”
+
+53.     The independent expert highlighted the situation of Somali refugees in Djibouti, Ethiopia,
+Kenya, and Yemen in her previous report. She also stressed that the Office of the
+United Nations High Commissioner for Refugees (UNHCR), which continues to assist Somali
+refugees, insists that it cannot force individuals to go back to Somalia because of the situation of
+conflict, but applies a policy of voluntary repatriation. As was clarified before, those who
+ordered the displacement could be tried for committing war crimes. The independent expert
+wishes to take this opportunity to highlight some other issues relating to the situation of the
+refugees themselves.
+
+54.     On 12 October 1999, the independent expert issued a statement expressing concern over
+proposed European Union (EU) policy on Somali refugees. She called upon the European
+leaders meeting in Tampere, Finland, on 15 and 16 October 1999 not to adopt an asylum policy
+that could put the human rights and fundamental liberties of Somalis in further jeopardy.14
+
+55.     A draft plan of action for Somalia was put before that meeting of the EU Council of
+Ministers. The draft plan considers that, while there is no central government in Somalia and
+most of the country is engulfed in conflict, there are some “peaceful” areas. Although
+acknowledging that the absence of a central government means there is in practice no national
+guarantee for the protection of human rights on the basis of international law and a Constitution,
+the draft plan recommends that the EU enter into “constructive dialogue” with the authorities in
+different regions, particularly in the north, to agree on arrangements for identification and
+documentation of returnees to respective areas. The plan would not grant recognition to these
+regions.
+
+56.     The independent expert expressed alarm at the content of the draft plan, which, she said,
+would make it difficult for Somalis to seek asylum in EU States. She called upon those States
+not to force individuals to return to Somalia in the absence of recognized structures in Somalia
+that the international community could formally call upon to protect the human rights of
+returnees. The independent expert also highlighted the fact that the number of Somalis seeking
+asylum in EU countries is very small in comparison with those who are hosted in countries
+neighbouring Somalia and pointed out that millions of Somali refugees live in refugee camps run
+by UNHCR in Kenya, Ethiopia, Djibouti and Yemen.
+                                                                       E/CN.4/2000/110
+                                                                       page 19
+
+57.     The independent expert said that the draft plan had some positive aspects, nonetheless,
+and she welcomed such recommendations for improving the human rights situation in Somalia as
+those related to providing support for the work on the country by OHCHR, which will be
+elaborated on below.
+
+58.     While in Nairobi, the independent expert met with officials at the Embassy of Sweden,
+with whom she discussed, inter alia, the situation of Somali refugees in Sweden. A Swedish
+official told her that there had been four cases of forced return of Somalis to Somalia from
+Sweden. She was informed that the cases involved individuals accepted by Sweden on
+humanitarian grounds who had been convicted of crimes in Sweden. They were repatriated
+through Dubai or Djibouti.
+
+59.     The independent expert was also informed that there had been cases of voluntary
+repatriation of Somalis who had already acquired permanent residency status in Sweden.
+Sweden provides a standard sum of US$ 1,200 per individual or US$ 5,000 per family, as
+general assistance to those who would like to be repatriated. There are 14,000 to 15,000 Somalis
+in Sweden.
+
+60.     On 29 November 1999, the independent expert attended a hearing organized by the
+Committee on Human Rights and Humanitarian Aid of the German Parliament (Bundestag) on
+non-State persecution and refugees. The independent expert was requested to address issues
+relating inter alia to the categories and patterns that could distinguish non-State persecution as
+well as gender-specific persecution in the context of refugee laws. The independent expert
+focused her attention on the situation of Somali refugees.
+
+61.    Further analysis of the question of Somali refugees in Europe was provided in the
+independent expert’s report to the Commission on Human Rights at its fifty-fifth session
+(E/CN.4/1999/103).
+
+                                   H. The denial of due process
+
+62.    The independent expert wishes, lastly, to highlight the crime of denial of due process,
+which is listed in common article 3 of the Geneva Convention, as well as in the Rome Statute,
+which consider as a war crime “The passing of sentences and the carrying out of executions
+without previous judgement pronounced by a regularly constituted court affording all the judicial
+guarantees which are recognized as indispensable by civilized peoples.”
+
+63.     Several irregular courts are in operation throughout Somalia. They include the shariah
+courts in south and central Somalia, and the court structures in “Somaliland” and “Puntland”.
+Without judging the functioning of these courts at this stage, as this requires in-depth
+examination and thorough field research, the independent expert wishes to point to some
+indicators that could be considered in the determination of the crime of denial of due process.
+These indicators could serve also as a basis for those who wish to assist the administration of
+justice in Somalia - and there are a few, as is elaborated below in the section on “Building a
+human rights nucleus in Somalia” - so that war crimes are not committed in this area.
+E/CN.4/2000/110
+page 20
+
+64.     During the elaboration of the elements of the crime of denial of due process by the
+Preparatory Commission for the Establishment of the International Criminal Court,15 it was
+suggested that the “judicial guarantees which are generally recognized as indispensable” could
+include: the right to a fair and public hearing by an independent and impartial tribunal
+established by law, including the right of access to a court; the right to be informed of the
+charges against him/her without delay; the right to be afforded before and during the trial all
+necessary rights and means of defence, which includes the following pre-trial and trial minimum
+guarantees: the right to be brought promptly before a judge or other officer authorized by law to
+exercise judicial power; the right to be entitled to take proceedings before a court, in order that
+that court may decide without delay on the lawfulness of detention and order release; the right to
+have adequate time and facilities for the preparation of one’s defence and to communicate with
+counsel of one’s choosing; the right to defend oneself in person or through legal assistance; the
+right to be tried without undue delay; the right to present and examine witnesses; the right to an
+interpreter; no one shall be convicted of an offence except on the basis of individual penal
+responsibility; the principle of nullum crimen, nulla poena sine lege and the prohibition of a
+heavier penalty; the right to be presumed innocent; the right to be tried in one’s presence; the
+right not to be compelled to testify against oneself or to confess guilt; the right to be advised of
+one’s judicial or other remedies and of the time-limits within which they may be exercised; the
+right to have the judgment pronounced publicly; the principle of ne bis in idem.16
+
+                                  V. THE VISIT TO BAIDOA
+
+65.     The independent expert visited Baidoa on 17 and 18 November 1999. Aideed’s militia
+had held this town, which was dubbed, during the peak of the Somali famine, “the city of death”,
+for the previous four years. During this period, the people of Baidoa and its surroundings left.
+Allegedly, individuals were massacred, women were raped, wells were destroyed, and villages
+were looted and burnt. Persons were allegedly detained without charge or trial, sometimes in
+containers. Their families were forced to pay to secure their release. As a result, the town,
+mainly inhabited by Rahanweins, was largely deserted. The Rahanwein are a minority group in
+Somalia, who have been widely discriminated against.
+
+66.     After several years of fighting, the RRA, which was formed in 1995, took control of the
+town in June 1999, apparently with the military support of Ethiopia, and defeated Aideed’s
+group. At the time of the independent expert’s visit, the inhabitants of Baidoa had started
+returning to it. They were mending their homes and resuming their normal life.
+
+67.     The independent expert met with the leadership of the RRA. The RRA Chairman,
+Mr. Hassan Mohammed Nur, known as ‘Shatti Gudud’, is a legally trained Rahanwein Somali,
+who served at one time as the head of Siad Barre’s Security Court. The independent expert, who
+has reported in previous years on the bleak human rights situation in Baidoa during the time
+Aideed’s militia were in control there, explained her mandate. The RRA expressed appreciation
+to the expert for her previous reports and provided her with further details of the death and
+destruction caused by Aideed’s militia in the area. The need to establish accountability for what
+happened was particularly stressed.
+                                                                     E/CN.4/2000/110
+                                                                     page 21
+
+68.     The RRA referred to the situation of the internally displaced persons from the
+Lower Shabelle region who are coming to Baidoa. The harsh conditions in the town make their
+absorption difficult. The RRA also emphasized that the Rahanwein in Lower Shabelle are still
+living under oppressive conditions.
+
+69.     The RRA seems to have plans to establish a form of administration in the area. Some
+internal tensions within the RRA ranks appear to be delaying the establishment of such a
+regional administration, however. The RRA priority seems to be to defeat Aideed’s groups,
+particularly in the Lower Shabelle region towards the coast.
+
+70.     There continue to be many child soldiers in the area. Women also take part in militia
+activity, which is unusual in Somalia.
+
+71.     During the fighting between Aideed’s troops and the RRA, both sides captured prisoners,
+the RRA even capturing Aideed’s wife. Most of the prisoners were released, one remains in
+Baidoa. The RRA proposed that the independent expert meet this prisoner. This visit did not
+take place, however, for logistical reasons pertaining to the RRA.
+
+72.    Concerning the initiative of the President of Djibouti, the RRA representatives told the
+independent expert that they found many positive elements in it, but were mainly concerned
+about representation; some areas where there were Rahanweins were currently controlled by
+Aideed. They said that they had sent their comments and proposals to President Guelleh.
+
+73.     Accompanied by the RRA, the independent expert visited the village of Doynounay, on
+the way to Mogadishu. She was told that, in the past, Doynounay had been one of the main
+commercially important villages around Baidoa. During the time Aideed’s troops controlled the
+area, the village was allegedly looted and burnt. The only building spared was said to have been
+the mosque. The village has now been entirely rebuilt. When the independent expert visited it, a
+few traces of the burning could be seen.
+
+74.     Many serious violations allegedly took place in Doynounay. As mentioned above
+(para. 41), the independent expert met a man who had allegedly survived a massacre. He told
+her that about 60 men from the village were rounded up and taken to Baidoa, where they were
+shot. He said that he had survived the massacre because the militiamen thought that he was
+dead. He showed the independent expert what appeared to be bullets that were still in his body.
+During that time, women were allegedly raped, wells were destroyed and the village itself was
+burnt.
+
+75.    Other stories of mass killings and destruction were also told. One woman told the
+independent expert that one night about 20 men arrived at the village and entered her house. She
+was raped and shot. She lost so much blood that her arm had to be amputated.
+
+76.    The independent expert was also informed that some individuals from the village were
+also imprisoned and subsequently released after paying 60,000 Somali shillings.
+
+77.    On the way back to Baidoa, two soldiers in proper military uniform stopped the
+independent expert’s car at a military roadblock. They were believed to be Ethiopians. One
+E/CN.4/2000/110
+page 22
+
+soldier approached the car and, despite the intervention of the RRA representative, inspected it,
+before eventually allowing it to continue. There were other soldiers in the nearby bushes, also
+believed to be Ethiopians. The RRA commander who accompanied the independent expert said,
+however, that the soldiers belonged to the RRA.
+
+                              VI. THE VISIT TO “SOMALILAND”
+
+78.    The independent expert visited Hargeisa in “Somaliland” from 18 to 20 November 1999.
+This was her fourth visit to “Somaliland” since taking on this mandate in December 1996.
+
+79.     In 1991, when the central Government in Somalia collapsed, “Somaliland” declared itself
+independent and sought separation from Somalia, citing the massive discrimination its people
+had suffered during the regime of Siad Barre. Although, the international community and the
+United Nations, which upholds the territorial integrity of Somalia, have not recognized the
+separate status of “Somaliland”, the international community has acknowledged with deep
+appreciation the good level of security and stability that “Somaliland” has achieved over the
+years. The continued increase in the level of stability and improvement in the quality of life of
+the residents of “Somaliland” impressed the independent expert.
+
+80.    Upon her arrival, the independent expert convened a round-table discussion, which was
+attended by the “Minister of Justice”, the “Deputy Speaker” of the “Parliament”, the Chairperson
+and some members of the Technical Commission for the Investigation of War Crimes, as well as
+representatives of non-governmental organizations and the press. The “Minister of Justice” was
+new. This is the third different “Minister of Justice” the independent expert has met in two
+years.
+
+81.    In addition, the independent expert met informally with the “Minister for Foreign
+Affairs” and the “Minister of Aviation”. The independent expert also visited the courts. There
+was a new “President of the Supreme Court”, who was hostile and combative. Although
+concerned about the continued reshuffling of officials, which affects the continuity of
+discussions and follow-up, the independent expert appreciates the constructive dialogue she had
+with the officials in “Somaliland”. After her return to Geneva, the independent expert wrote on
+26 November 1999 to Mr. Mohammed Ibrahim Egal, the “President” of “Somaliland”, inquiring
+about some of the issues raised during the visit. As of 15 December 1999, the date on which she
+submitted the present report to OHCHR, no response had been received.
+
+82.     There follows a description of the issues that were raised during these discussions. For
+the stable regions, such as “Somaliland” and “Puntland”, the independent expert will use the
+elements of democracy that were elaborated in Commission on Human Rights
+resolution 1999/57, as a standard and indication of good government. These elements include:
+respect of the rights to freedom of opinion and expression, of thought, conscience and religion,
+and of peaceful association and assembly; respect of the right to freedom to seek, receive and
+impart information and ideas through any media; respect of the rule of law, including legal
+protection of citizens' rights, interests and personal security, and fairness in the administration of
+justice and independence of the judiciary; respect of the right of universal and equal suffrage, as
+                                                                       E/CN.4/2000/110
+                                                                       page 23
+
+well as free voting procedures and periodic and free elections; respect of the right of political
+participation, including equal opportunity for all citizens to become candidates; the existence of
+transparent and accountable government institutions; respect of the right of citizens to choose
+their governmental system through constitutional or other democratic means.
+
+                                           A. The laws
+
+83.    The “Somaliland” legal system is based on a combination of shariah, English, Egyptian
+and Siad Barre era traditions. Owing to the multiplicity of references, the system is extremely
+confusing and considered archaic.
+
+84.     “Somaliland” now has an active elected “House of Representatives”. The “Deputy
+Speaker” of the “House of Representatives” told the independent expert of the need to update the
+“Somaliland” laws in the light of international human rights standards. Facilitating that task is
+the fact that the Universal Declaration of Human Rights is already available in Somali and is
+known in “Somaliland”, as it was referred to in the Constitution of Somalia as a basis of
+governance. A legal committee within the “House of Representatives” mostly considers
+constitutional matters. Only two members of “Parliament” are qualified lawyers, however.
+
+85.    In this context, the independent expert welcomes the repeal of the emergency law by the
+“Parliament”. A new public order law is being drafted, however. The independent expert
+requested that a copy of this draft be sent for comments to the human rights officer in Nairobi.
+
+86.    Several other draft laws are being considered - on political parties, elections, the press
+and land dispute management.
+
+                                         B. The Judiciary
+
+87.     According to the “Minister of Justice”, in “Somaliland” there are a total
+of 50 judges, 7 of them in the “Supreme Court”, 17 district attorneys and 106 supporting
+staff. A judicial service commission has been created, composed of three “Supreme Court
+judges”, the “Attorney General”, the Director-General of the “Ministry of Justice” and four
+members of “Parliament”.
+
+88.     The court system is spread out throughout the region. The resources allocated to the
+judiciary are inadequate, however. The independent expert was told that, during the ban on the
+export of livestock, the budget allocated to the judiciary would not even cover the purchase of
+stationery, which was therefore hardly ever available. The judicial system generates some
+income from court fees, collected by the “Ministry of Finance”.
+
+89.     The “Parliament” has apparently recently debated the annual budget. Despite the poor
+court conditions, only about half of one per cent of the total budget was allocated to the
+judiciary, while about 70 per cent was allocated to the police and armed forces. The courts
+were consulted when the budget was discussed in “Parliament” through the “Head of the
+Supreme Court”
+E/CN.4/2000/110
+page 24
+
+90.     The difficult working conditions of the courts are reflected in the small salaries received
+by judges in comparison to those of ministers and members of “Parliament”, and the lack of
+access to laws and codes. The salary of a judge amounts to US$ 15 a month. Although an
+increase has repeatedly been requested, it has never been granted, in spite of the fact that
+parliamentarians have just approved an increase in their own salaries from US$ 300 to US$ 400.
+It was said that the “Government” opposes any increase in judges’ salaries, possibly for political
+reasons.
+
+91.      The independent expert wishes to stress that low judicial salaries constitute an invitation
+for corruption. The low budget allocation reflects the low status of the judiciary in the
+“Somaliland” administration. This is ironic, as the judiciary is a major stabilizing factor,
+facilitating the peaceful resolution of conflicts. In a letter to Mr. Egal, the “President” of
+“Somaliland” the independent expert urged him to reconsider the situation and order that at least
+10 per cent of the budget be allocated to the judiciary to allow it to perform its functions
+adequately.
+
+92.    The independent expert visited the “Supreme Court” on 20 November, after informing
+the “Ministry of Foreign Affairs” of her intention to do so. The main purpose of her visit to the
+court was to update herself on the situation of justice. The staff and members of the Supreme
+Court whom she met were helpful and pleasant.
+
+93.    The independent expert was informed that 86 civil cases were filed with the
+Supreme Court during 1999 (56 concluded and 30 pending). and 18 criminal cases (11 concluded
+and 7 pending). In addition, 11 administrative cases were filed in this court in 1999 (9 concluded
+and 2 pending). The independent expert was told that constitutional cases were rare. They
+usually concerned disputes connected with electoral matters.
+
+94.    During the visit, the new “President” of the “Supreme Court”, Mr. Mohammed Hagi
+Saeed, was not in his office. He arrived as the independent expert was about to leave.
+Unfortunately, he was hostile and unwelcoming.
+
+95.     The court conditions are extremely poor. Various individuals the independent expert met
+stressed that most judges in “Somaliland” lacked adequate qualifications, and stressed the need
+for appropriate training, adequate material and legal texts.
+
+                                          C. The lawyers
+
+96.     There are a number of qualified lawyers practising in “Somaliland”, but there is no bar
+association. A vibrant and independent bar would be a positive catalyst for the establishment
+and institutionalization of the rule of law. The “Parliament” has already passed a bar association
+law. This law was presented to Mr. Egal’s office for promulgation. This has not taken place,
+however. The independent expert raised this issue with Mr. Egal in her letter of
+26 November 1999.
+                                                                       E/CN.4/2000/110
+                                                                       page 25
+
+                                            D. Prisons
+
+97.    It seems that there are currently no political prisoners in “Somaliland”. The independent
+expert has already welcomed this fact in her previous report to the Commission on Human
+Rights (E/CN.4/1999/103).
+
+98.     There is, however, another problem: about half of the detainees in “Somaliland” are still
+awaiting trial. Some are not even charged as the judicial system has not been able to process
+their cases in court adequately and effectively.
+
+99.      The “Minister of Justice” informed the expert that there are currently nine detention
+facilities in “Somaliland”, as a new prison has been opened in Sool, an area disputed with
+“Puntland”. There are, 1,250 wardens and about 2,000 inmates in “Somaliland”.
+
+100. According to human rights defenders, conditions in prisons continue to be harsh. Health
+conditions are poor. In February 1999, there was an outbreak of cholera at the prison in Hargeisa
+and more than 29 persons had to be hospitalized.
+
+101. Owing to the lack of mental hospitals, mentally disturbed persons are held in jail. In this
+connection, it was reported that post-traumatic stress disorders are widespread in “Somaliland”.
+
+102. In her previous report (E/CN.4/1999/103), the independent expert raised the case of two
+persons from Cameroon who had been held in Hargeisa prison since September 1998. She was
+informed by human rights defenders that they were apparently still detained, without charges and
+with no opportunity to seek legal aid.
+
+                                    E. Freedom of expression
+
+103. “Somaliland” enjoys a certain degree of freedom of expression, but more can be done in
+this respect. The “Parliament” is now debating a press law that is not accepted by journalists.
+They have already submitted their comments to the “Parliament” and provided a copy of these
+comments to the independent expert. They acknowledged that the law contains several positive
+elements, but had two major objections concerning the broad provisions relating to defamation,
+and the process of licensing that they said allows governmental control over the press.
+
+104. The “Government” argues that journalism in “Somaliland” is young and immature and
+therefore harm is being caused to the reputation of some individuals through the press.
+Journalists respond that the answer could be self-regulation through a code of ethics and the
+creation of a journalists’ association that would enforce such a code. They insist, however, that
+only the independent press should be part of this association. Some journalists have asked for
+models of codes of conduct for journalists.
+
+105. In her letter to Mr. Egal, the independent expert stressed that while freedom of speech
+could be regulated, regulation should not empty this freedom of its content. She requested a
+copy of the proposed legislation for the OHCHR human rights officer to study and comment on.
+E/CN.4/2000/110
+page 26
+
+                             F. Protection of human rights defenders
+
+106. There are two human rights groups operating in “Somaliland”, the Somaliland Horn
+Watch and the Guardians of Civil Liberties. They operate with relative freedom. The
+independent expert was disturbed to learn, however, that Mr. Suleiman Ismail Bolaleh, of
+Somaliland Horn Watch, had been arrested and had spent four days in jail when his organization
+was investigating some torture allegations. The apparent reason for the arrest was that
+Mr. Bolaleh sent a letter of complaint to the “Minister of the Interior”, who arrested the
+policeman responsible for torture whom Mr. Bolaleh’s complaint concerned..
+
+107. Another individual, who makes regular public weekly speeches on human rights related
+matters, has also been harassed. The independent expert was informed that since March 1997
+Mr. Abdirashid Osman Jama has been making one-hour public addresses on human
+rights-related matters in a specific location at the same time every week. At first the authorities
+tolerated him. After eight months, they arrested him on charges of insulting the “Somaliland”
+administration. After 40 days he was brought to court, where he was released for lack of
+evidence. When he resumed his speeches, he was brought before the “Attorney-General” on
+charges of refusing to stop making his speeches. But he was released and had the impression
+that the “Attorney-General” approved of his activities. However, one year later he was arrested
+again, this time on charges of distributing leaflets criticizing the “President of Somaliland”.
+Mr. Jama says that the leaflets were distributed during one of his speeches, but without his
+knowledge or approval. In court, he was notified that the “Government” wanted him to stop
+making his speeches.
+
+                                           G. Education
+
+108. The “Assistant Minister of Education and Sports” told the independent expert
+that 20,000 students attend 24 government schools all over “Somaliland”. The age for schooling
+is from 7 to 18. Co-education of girls and boys takes place until the age of 12. School
+attendance used to be compulsory. It is currently optional, owing to the lack of schools and
+material, including chairs and desks. UNICEF supports most of the schools. There are also
+private schools. Plans are under way to provide more updated and comprehensive educational
+materials, starting in 2000. The independent expert believes that this is an important opportunity
+for OHCHR and UNICEF to integrate human rights and civic education into the curriculum.
+
+                             H. The situation of women and children
+
+109. Human rights defenders reported to the independent expert that there are many cases of
+sexual abuse of women and children, particularly among the internally displaced population.
+The situation with regard to internal displacement is making the number of street children rise.
+Although most of these children are “Somalilanders”, there are also other groups, including
+Ethiopians. An increase in the use of alcohol and hashish among children has also been cited.
+
+110. There are currently several committees on the rights of the child with the specific task of
+raising awareness on child rights. UNICEF has advocated the creation of these committees and
+is assisting them.
+                                                                        E/CN.4/2000/110
+                                                                        page 27
+
+                                           I. Minorities
+
+111. Despite the legal equality of all ”Somalilanders” by virtue of their “Constitution”,
+minorities are socially discriminated against, in particular the Tumaals, the Midgaans and the
+Hebrews. The independent expert was told that these are outcast communities that are only
+allowed to perform certain menial jobs and functions. They are not allowed to inter-marry with
+other clans.
+
+112. While it is appreciated that the “Constitution” grants these minorities equal political
+rights, they seem to be unable to enjoy these rights because of their lack of resources. In her
+letter to Mr. Egal, the independent expert suggested that an affirmative action scheme is perhaps
+needed, so that the status of these minorities is raised within the community. Two recent cases
+of inter-marriage resulted in some communal violence and police intervention.
+
+                              J. Allegations concerning toxic waste
+
+113. An individual case relating to the adverse effects of toxic substances on health and the
+environment was brought to the attention of the independent expert. Mr. Mohamed Hassan Said
+and six other individuals have claimed that they are suffering serious health complications as a
+result of their exposure to toxic components of paint. Reportedly, Berbera Fuel Storage Tanks,
+managed by MEG-Total in Berbera hired Mr. Mohamed Hassan Said at the beginning of
+September 1999, together with six other individuals. After working for 14 days, all of them
+started experiencing respiratory problems and developed skin rashes on their fingers. On
+24 September, they stopped working to undergo a medical check-up. The company refused to
+provide them with transportation, so they had to walk to the hospital, where they coincidentally
+came across the Director-General of the “Ministry of Health”, who was briefed on the case and
+ordered that all concerned be hospitalized. Blood samples were apparently taken, which seem to
+have showed traces of toxic chemicals. A further more thorough medical check-up outside
+Berbera was recommended. Reportedly, the company, which is scheduled to leave the country
+in December 1999, refused to cover their medical expenses and suspended payment of their
+salaries. It eventually re-employed four of the above-mentioned individuals at higher salaries
+(US$ 13 a day instead of US$ 10). They were also reportedly offered reduced working hours,
+provided they stopped complaining. The other three, including Mr. Mohamed Hassan Said,
+refused the deal and continued their medical check-up in Hargeisa, where they approached the
+“Minister of Health”, requesting that an official letter stating the facts to be produced in court in
+Berbera. The director of regional health sent a letter to the company and the labour services
+dated 25 September 1999, in which he denounced the unfavourable conditions of work
+experienced by the above-mentioned individuals. The letter was also published in the newspaper
+Maandeeq on 9 October 1999. No reply had been received by 18 November 1999, the date of
+the independent expert’s visit to “Somaliland”. In her letter to Mr. Egal of 26 November 1999,
+the independent expert suggested that further control was needed to ensure that such toxic
+material was not utilized or dumped in “Somaliland”.
+E/CN.4/2000/110
+page 28
+
+                                         K. Mass graves
+
+114. The independent expert reported to the Commission at its previous session on the
+preliminary assessment by a team of forensic experts sent by OHCHR of mass graves in the
+vicinity of Hargeisa, in north-west Somalia (E/CN.4/1999/103/Add.1). A “technical committee
+for the investigation of war crimes” was set up in Hargeisa. Its work continues to focus on the
+identification of the victims. The committee’s main concern is to preserve evidence of mass
+graves, as well as the sites themselves. This is not an easy task since the land is increasingly
+being claimed by the internally displaced for resettlement. The municipality of Hargeisa has
+helped to protect some sites, but more work in this respect is needed, particularly in other areas.
+Representatives of the committee visit the sites to make further assessments, sometimes
+accompanied by doctors who have been trained by the two international forensic experts sent by
+OHCHR..
+
+115. This effort is crucial, especially in the context of possible action by the international
+community to bring the perpetrators of the killings to justice. In this connection, the independent
+expert was informed that some of those suspected of committing these atrocities are living in the
+United States, the United Kingdom, Italy and Kenya.
+
+                              VII. THE VISIT TO “PUNTLAND”
+
+116. The independent expert visited “Puntland” on 21 and 22 November 1999. She landed in
+Garowe, the capital of “Puntland”, and travelled for about six hours by road to the port town of
+Bosasso on the Gulf of Aden. This was the second time the independent expert had visited
+Bosasso. A previous visit took place from 9 to 12 November 1997, during the floods.
+
+117. In contrast with ”Somaliland”, “Puntland” does not consider itself a separate entity.
+Rather, it describes itself as a regional government of Somalia. In her report to the previous
+session of the Commission on Human Rights (E/CN.4/1999/103), the independent expert
+reported on how “Puntland” came into being in 1998. The “Puntland” Constitutional Conference
+was held in Garowe, between 15 May and 30 July 1998. It was attended by 470 delegates from
+the Bari, Nugal, Sool and Sanaag regions, as well as hundreds of observers. None of the
+delegates were women. The conference ended by formulating a new “social contract” as a basis
+for the restoration of effective State authority in these regions.
+
+118. During her visit, the independent expert met the “Vice-President” of “Puntland”, the
+“Director of Foreign Affairs”, the “Deputy Speaker of Parliament” and the “Chairperson of the
+Parliamentary Foreign Relations Committee”, the “Minister of Justice”, the “Head of the
+Supreme Court”, and the “Director-General of the Ministry of Foreign Affairs”. She visited the
+“Parliament” while it was in session and also visited the shariah courts in Garowe and Bosasso,
+the Bosasso central prison and the police academy in Bosasso.
+
+119. The issues raised during the visit are described below. As was explained earlier, in the
+section on”Somaliland”, for the stable regions, such as “Somaliland” and “Puntland”, the
+independent expert will use as a standard the elements of democracy that were elaborated in
+Commission on Human Rights resolution 1999/57. These elements provide a useful indication
+of good governance. They are listed in paragraph 82 above.
+                                                                       E/CN.4/2000/110
+                                                                       page 29
+
+                                       A. The “Parliament”
+
+120. The independent expert visited the “Parliament”, while it was in session. She attended
+part of the presentation by the “Minister of Information” of his report to the “Parliament”. The
+independent expert was later informed that the “Parliament” received basic training on
+parliamentary work by a Canadian parliamentarian brought to “Puntland” by Parliamentarians
+for Global Action.
+
+121. The independent expert was informed that there are 66 members of “Parliament”,
+including five women, each representing one of the five regions of “Puntland”. The
+“Parliament” meets once every six months and each session may last for up to one month.
+Rules, regulations and laws are drafted by the “Government” and submitted to “Parliament” for
+discussion and approval. The “Government” also submits the budget, for debate and approval.
+Five members of “Parliament”, including the “Chairman” and the “Vice-President”, have legal
+training.
+
+                                           B. The laws
+
+122. The independent expert was informed by the “President” of the “Supreme Court”, who is
+a legally-qualified jurist, that the laws currently enforced in “Puntland” are based on the colonial
+Italian laws, as well as the laws which were enacted in Somalia after its independence. The
+judge informed the independent expert, however, that the “Puntland” administration prefers to
+apply Islamic law. It applies laws inherited from previous regimes where they do not contradict
+shariah law.
+
+123. The independent expert was informed that the current “Puntland” “Parliament” has
+already passed a press law, which was prepared and presented by the “Minister of Information”,
+and a foreign investment law, which was prepared and presented by the “Minister of
+Commerce”. The “Attorney-General” is in charge of collecting all the laws passed by the
+“Parliament”, printing them and making them available.
+
+124. The “Puntland” charter, which serves as its Constitution, provides for separation of the
+three governmental powers: legislative, executive and judicial. It also bases “Puntland” on a
+market economy, as opposed to the socialist approach which characterized Siad Barre’s era.
+
+                                         C. The judiciary
+
+125. The “President” of the “Supreme Court” and the “Minister of Justice” informed the
+independent expert that there are currently three different levels of courts in “Puntland”:
+primary, appeals and supreme. Also, there is a “Constitutional Court” and the
+“Attorney-General”’s chamber, which are part of the “Ministry of Justice”. Primary courts can
+be found in all the major towns of Bosasso, Galcayo, Garowe, Lasa’not, and Baraan.
+
+126. There are 44 judges, 13 clerks and 13 court registrars working in the court’s
+administration, bringing the number of employees to 70. They are under the “Ministry of
+Justice”. The judicial budget depends on government allocation and is currently about
+62 million Somali shillings, which is around US$ 6,200 per year.
+E/CN.4/2000/110
+page 30
+
+127. Many conflicts are resolved outside the courts, however, on the basis of Islamic law. The
+main problem here is the lack of written laws in Somali, particularly following the war, in which
+most of the material was looted or destroyed.
+
+128. In Garowe, the independent expert visited the “Court of First Instance”. Although the
+judge hardly spoke Arabic, he was using an ancient Arabic textbook as his basic legal document.
+The courtroom was full. The judge said that he had examined mainly personal status cases that
+day.
+
+129. The independent expert also visited the “Court of Appeals” in Bosasso. The sign on the
+building read “The Islamic Court of Bosasso”. The “Court of Appeal” was hearing a murder
+trial. The “Court of First Instance” convicted the appellant and his family appealed the
+decision. A lawyer was apparently defending the appellant. A policeman represented the
+“Attorney-General” of “Puntland”.
+
+130. The conditions in the two courts were very basic. The “Minister of Justice” and the judge
+stressed that they needed modern legal texts. They also said that they did not have a sufficient
+number of judges. There are also problems with regard to knowledge of international treaties, in
+particular international human rights law, as well as the law of the sea as Somali has long coasts
+and Bosasso is an active port.
+
+                                      D. Law enforcement
+
+131. The “Director-General of Foreign Affairs” informed the independent expert upon her
+arrival in Garowe that among the main achievements of the “Puntland” administration in less
+that 18 months following its establishment was the decreasing level of crime. In most areas, the
+roadblocks that were set up by militias and bandits to collect money have virtually disappeared.
+Those who were responsible for these roadblocks have been arrested, tried and given prison
+sentences of up to 5 years. He also cited as an achievement the decrease in the number of
+persons carrying weapons.
+
+132. While in Bosasso, the independent expert met the commander of the police force and
+visited the central prison. She had already visited this facility in 1997, when it was under
+construction and reported (E/CN.4/1998/96, para. 87) that the construction of this prison was
+supported by the United Nations Conference on Trade and Development and the European
+Commission.
+
+133. During her visit in 1999, there were 120 inmates in the prison, including 7 women. The
+women were in one section, separate from the men. When the independent expert visited, they
+were being taught some basic Arabic and the Koran by two males. The teaching books were
+donated by Islamic organizations in Kuwait and Saudi Arabia. Five of the women were
+convicted and imprisoned for fighting among themselves, and the two others for smuggling.
+One of the women had a child with her, perhaps one year old. One of the female prisoners
+appeared to be a minor, about 15 years old. She was kept in the same area as the rest of the
+women. The independent expert was told that all the women had been sentenced by a court.
+                                                                       E/CN.4/2000/110
+                                                                       page 31
+
+134. The men’s section of the prison appeared crowded. According to the officials, their
+charges ranged from theft and smuggling, to murder. Those who had committed serious crimes,
+such as murder, are not separated from those who had committed petty crimes. Those who are
+convicted of murder are sentenced to death. The independent expert was told that seven
+executions by firing squad had already taken place in “Puntland” since it came into
+existence 18 months ago.
+
+135. There were no separate facilities for juveniles. Young offenders were kept with other
+inmates, irrespective of their age. The independent expert saw a 16-year-old boy who was kept
+with adults.
+
+136. The independent expert also visited the police-training academy, in very modest premises
+made of tree branches, near the sea, the training taking place in the open air. The facilities were
+extremely basic and lacked equipment of any kind, including proper accommodation: the beds
+were just straw mats on the floor; there was neither water nor electricity. Twenty-one policemen
+were being trained there. About half of them were in uniform. They belonged to the emergency
+police. Some members of this unit had already been sent to Galcayo to assist in a problem
+related to the theft of MSF-Holland medical and emergency relief supplies there, mentioned
+elsewhere in this report. The academy lacked all training materials and had no paper, although
+some of the policemen could read and write. The trainers were mainly using their pre-1991
+experience to train the others.
+
+                                    E. Freedom of expression
+
+137. There is a governmental press and an independent press in “Puntland”. They are
+apparently close to the Muslim fundamentalists. There is less tolerance for freedom of
+expression in “Puntland”. The independent expert was informed about several cases of
+journalists or researchers detained because they had published material that the administration
+did not agree with. One case involved a Canadian female researcher of Somali origin working
+with the United Nations Somalia War-torn Society Project, who was detained because of her
+published views on the compatibility of female genital mutilation with shariah.
+
+138. Another case involved Mr. Bile Maxamuud Qabowsade, a journalist, who allegedly was
+arrested and beaten for reporting about a plane coming from Ethiopia. He apparently reported
+that it was carrying ammunition. The editor of the Sahan newspaper appears to have been
+imprisoned on two occasions for criticizing the Government.
+
+                             F. Protection of human rights defenders
+
+139. The OHCHR team accompanying the independent expert met two representatives of the
+non-governmental organization Human Rights Watch in “Puntland”. They learnt about the
+independent expert’s visit by accident and therefore did not come with documentation.
+However, they reported on the little tolerance the “Puntland” administration has for dissent.
+E/CN.4/2000/110
+page 32
+
+                                        G. Displacement
+
+140. The independent expert in her report to the Commission in 1998 (E/CN.4/1998/96)
+reported about the situation of the internally displaced. She said that Bosasso hosted tens of
+thousands of internally displaced persons, who constituted about one third of the city’s
+population. She reported that many internally displaced preferred that part of their family
+became refugees by crossing the Gulf of Aden by boat to Yemen in order to be eligible for
+refugee status and to be assisted by UNHCR, or that they continued to Saudi Arabia. The boat
+owners would often drop people close to the coast; some of them drowned.
+
+141. The local administration is trying to control this phenomenon by arresting the boat
+people. The strong measures taken against them has discouraged the internally displaced from
+coming to Bosasso, because of the difficulties in crossing the Gulf of Aden. Therefore, their
+numbers have now decreased significantly.
+
+142. In fact, there were even claims that some internally displaced were actively forced back
+to their area of origin, for instance Kismayo or Mogadishu, in spite of the conflict, on the
+grounds that they were illegal immigrants.
+
+              VIII. BUILDING A HUMAN RIGHTS NUCLEUS IN SOMALIA
+
+143. The independent expert recommended in her 1998 report to the Commission on Human
+Rights (E/CN.4/1998/96) that OHCHR place a human rights officer for Somalia in Nairobi. The
+United Nations High Commissioner for Human Rights decided to appoint this officer in the
+framework of the Office of the United Nations Resident Humanitarian Coordinator for Somalia
+in Nairobi, Kenya, and the Commission on Human Rights welcomed this decision at its
+fifty-fifth session, in resolution 1999/75.
+
+144. The independent expert is pleased that this officer was finally placed in Nairobi in
+October 1999, after significant bureaucratic difficulties were overcome. The human rights
+officer will pursue the following objectives: (a) monitoring the human rights situation in
+Somalia; (b) mainstreaming and integrating a human rights perspective into the work of all the
+United Nations agencies regarding Somalia; (c) providing technical assistance in the field of
+human rights; (d) supporting Somali human rights NGOs; (e) raising awareness in the area of the
+administration of justice; and (f) assisting the independent expert in fulfilling her mandate.
+
+145. The independent expert was pleased with the efforts that the human rights officer has
+already made. Although he only started his work one month before the independent expert’s
+visit, she found that he had already made two trips to Somalia, established useful contacts and
+started to prepare his work plan for the next year. The independent expert hopes that, with
+consolidated work in the field, the Commission on Human Rights and OHCHR will be able to
+give meaningful assistance to the people of Somalia in the area of human rights at this crucial
+period of their history.
+
+146. As the independent expert has been asserting, there are several possibilities for building a
+nucleus for human rights work in Somalia. This work will not only advance peace and stability
+in the country, but will also pave the way for better respect of human rights. In her previous
+                                                                       E/CN.4/2000/110
+                                                                       page 33
+
+report, the independent expert already identified four areas that could be addressed. They remain
+of vital concern. They are: (a) support for Somali human rights defenders; (b) integrating
+human rights into the work of the United Nations agencies; (c) raising awareness on women’s
+rights; (d) raising human rights awareness in the area of law enforcement.
+
+147. Work on issues relating to the administration of justice should take into account the
+elements of due process rights, elaborated elsewhere in this report, so that the international
+community avoids being accomplice to the commission of war crimes.
+
+148. During the independent expert’s visits to Somalia, several entities, ranging from regional
+administrations, the police, and non-governmental groups asked for assistance in the field of
+human rights. Their requests range from asking for documentation, such as factsheets and
+training manuals in the area of human rights, to evaluating laws and their compatibility with
+human rights standards, to training of law enforcement agencies and NGOs.
+
+149. Several assistance programmes are already under way particularly in the northern areas.
+Currently, three United Nations agencies are providing technical cooperation in Somalia in the
+area of the administration of justice. There is also an assistance programme created by a
+Swedish NGO and supported by the Swedish Embassy in Nairobi.
+
+150. The Somali Civil Protection Programme (SCPP) is an autonomous programme created
+by UNDP. When this programme was started in late 1997, it was intended to focus on
+demobilization of the militia; demining; community participation, including public information
+and human rights. In 1998, a consultant was hired to explore the possibility of integrating
+human rights into the work of SCPP. She identified some appropriate points of intervention,
+such as the judiciary, law enforcement mechanisms and parliaments. She also recommended the
+preparation of training manuals and the adoption of a participatory approach to human rights
+training. She further outlined a training programme for the judiciary and another project to assist
+parliamentarians in the creation of a legislative framework for the promotion and protection of
+human rights. She called for the establishment of independent government-supported human
+rights commissions and advocated the extension of support to the nascent human rights and civil
+society groups.
+
+151. An evaluation of SCPP itself seems to have taken place, emphasizing that the main SCPP
+objectives of consolidating and reinforcing peace and enhancing economic and social recovery
+should be fulfilled through efforts involving law enforcement agencies, including the police, the
+custodial and correctional services and the judiciary. While this focus is welcome, the
+independent expert is concerned that a human rights dimension should be fully integrated in this
+work and the expertise of OHCHR fully utilized in this respect.
+
+152. SCPP is now proposing a project with an estimated budget of $11 million in the areas
+of capacity building for the judiciary and legal reform, human rights, law enforcement,
+demobilization, drug abuse and mine action. This project will cover “Somaliland” and
+“Puntland”, as well as Hiran, and Bay and Bakool in central and southern Somalia. The
+Government of Italy has apparently agreed to provide $3,600,000 to support SCPP for the
+year 2000; $4,002,000 for the year 2001 and $4,213,000 for the year 2002.
+E/CN.4/2000/110
+page 34
+
+153. The independent expert is pleased to learn that, following a meeting with the OHCHR
+human rights officer, the SCPP team has agreed on full cooperation with OHCHR in the areas of
+the implementation of human rights, law enforcement and the judiciary aspects of SCPP projects.
+
+154. Other projects are being implemented for the same regions by other United Nations
+bodies and NGOs. For instance, the United Nations Development Office for Somalia (UNDOS),
+an autonomous programme created by UNDP, has started to work on assistance to the judiciary
+in “Somaliland”. A team composed of a “Somaliland” jurist and a United Nations Volunteer
+(UNV) prepared a report in November 1999 on this issue. The report, of which the independent
+expert has a draft copy, provides, inter alia, detailed recommendations on training of judges of
+different levels, as well as of the attorney-general’s staff and of court registries; charges UNDOS
+with the task of creating a code of ethics for judges; and calls for the establishment of libraries
+for various courts. The report does not dwell on the content of the training and the materials to
+be used in it. Neither does it make reference to human rights in its recommendations. The report
+estimates a minimum budget of $110,000 for these proposed activities.
+
+155. The independent expert was informed that, at a meeting with the OHCHR human rights
+officer, UNDOS directors stressed that they had been undertaking projects in the area of law
+enforcement and the judiciary because no one else was there to do so. At present, they were in a
+time of transition and reassessment. They welcomed close cooperation and constant consultation
+with OHCHR, however.
+
+156. The Somali Rehabilitation Program (SRP) has a project for “Puntland” of three days
+duration and with a budget of $34,000. Its stated objective is to assist in the setting up of a
+judiciary in line with the “Puntland” transitional charter by advising the “Government” in
+general and the “Ministry of Justice and Religious Affairs” in particular. A three-day workshop
+is proposed for this purpose. It is suggested that it be attended by the “Minister of Justice and
+Religious Affairs”, the “Chief Justice” and justices of the “Supreme Court”, heads of “Appeals
+Courts”, the “Attorney-General”, members of the high judicial council and director-generals and
+directors of ministries, totalling a maximum of 20 participants. It seems that this project has
+been put on hold.
+
+157. A fourth project in the same area is proposed by Diakonia, a Swedish NGO supported by
+the Swedish Embassy in Nairobi. The project focuses exclusively on “Puntland” and covers the
+following major areas: legal support; education; governance; and law enforcement. In the legal
+support section, the project calls for a team of consultants comprising a legal consultant and
+two members of the judiciary to be retained to assess all legal codes and practice and present its
+findings to a seminar in which various governmental departments and NGOs are represented.
+The findings would thereafter be distributed to all the courts. The team would consist of one
+scholar from Egypt’s Alazhar Islamic University, one member of the “Puntland” judiciary and a
+representative of Diakonia, Sweden as a coordinator. The programme would include organizing
+compulsory training programmes for all judges, with particular focus on basic legal studies and
+the current legal framework in “Puntland”. It would harmonize the codified law, shariah law and
+human rights law. It would also provide an assessment of the challenges and obstacles. The
+project aims to place a foreign expert within “Puntland’s” “Constitutional Commission” to help
+in the drafting of the constitution and the incorporation of human rights in that draft.
+                                                                      E/CN.4/2000/110
+                                                                      page 35
+
+158. Additionally, the governance part of this project calls for the creation of a team headed
+by a Swedish police consultant with two members of the “Puntland” police force, to undertake
+an assessment of the training needs of the police. The training would focus on legal training,
+with emphasis on human rights, basic policing, treatment of offenders and community-based
+solutions.
+
+159. The project document does not elaborate on the content of the human rights training to be
+undertaken or the pedagogic methods it is intended to use. There is also no reference in the
+project to OHCHR, or its training manuals or to the issue of cooperation with other partners.
+
+160. The various projects mentioned above highlight the need for enhanced coordination with
+regard to human rights assistance programmes for Somalia. A working strategy should be
+developed so that structured programmes within a coordinated framework, not piecemeal
+activities, are carried out. Enhanced coordination will lead to more rational use of the scarce
+technical cooperation resources available to Somalia.
+
+161. Despite the difficult situation in Somalia, the independent expert is pleased that several
+international donors have maintained their sustained support for Somalia. The main challenge
+for any technical assistance programme is to have some lasting impact. The delicate and
+complex situation in Somalia necessitates that the sustainability of any proposed project should
+always be kept in mind. Duplicative and substandard activities do not help in this regard.
+
+162. In this connection, the appointment of an OHCHR officer with significant human rights
+expertise should fill a major gap in the system. In her previous report to the Commission on
+Human Rights (E/CN.4/1999/103) the independent expert had already foreseen that the OHCHR
+officer should serve as a focal point for discussions on human rights assistance to Somalia within
+the United Nations agencies and beyond. This fits well within the mandate of the United Nations
+High Commissioner for Human Rights conferred upon her by the Secretary-General in his report
+"Renewing the United Nations: a programme for reform" (A/51/950). In this report, the
+Secretary-General designated the High Commissioner for Human Rights as focal point to assess
+all United Nations technical assistance activities in this field.
+
+                      IX. CONCLUSIONS AND RECOMMENDATIONS
+
+163. Despite the serious human rights and humanitarian crisis many Somalis have to endure
+on a daily basis, civilians, in particular women, children and intellectuals, aspire to live in a
+peaceful and stable Somalia ruled on the basis of dignity and respect. The independent expert
+particularly appreciates the deep sense of pride that the Somali people share and the welcoming
+attitude and warmth she is met with in Somalia.
+
+164. During 1999, about half of Somalia has been living in peace. The power of the war-lords
+has declined. The initiative of President Ismail Omar Guelleh of Djibouti as announced by his
+speech in September 1999 to the General Assembly has raised hope within Somalia and beyond.
+His emphasis on the role of civil society and not the war-lords has met with the approval of the
+majority of Somalis. The independent expert welcomes his proposal for the possible trial of
+those suspected of war crimes and crimes against humanity. She would like to stress in this
+regard that peace and justice should go hand in hand and not be alternatives to each other.
+E/CN.4/2000/110
+page 36
+
+165. Meanwhile, the independent expert is concerned about the serious human rights crisis in
+central and southern Somalia, particularly in Mogadishu and Kismayo. She is concerned about
+the fate of civilians who are suffering serious violence against their life and property, looting,
+rape and other forms of sexual violence, and persecution. She is particularly alarmed by the
+conscription of child soldiers, and the fate of the internally displaced. Much of what is
+happening in these areas amounts to war crimes and crimes against humanity.
+
+166. In this respect, she reminds States that the Security Council has already imposed an arms
+embargo on Somalia and calls on them to respect this embargo. The continued supplying of
+arms to the various factions still fighting in Somalia impedes humanitarian aid, prolongs the
+conflict, puts the lives of civilians in jeopardy and undermines security and the confidence
+required for a return to peace and stability.
+
+167. The independent expert particularly welcomes the enhanced peace and stability that the
+two northern regions in Somalia enjoy, and calls upon other regions to follow suit.
+
+168. Despite the difficult situation in Somalia, the independent expert welcomes the fact that
+several international donors within the international community have maintained their sustained
+support for Somalia, not only for humanitarian relief, but also for encouraging governance and
+reconstruction. The main challenge in all technical assistance programmes is their sustainability.
+The delicate and complex situation in the country as described in the present report necessitates
+that the issue of sustainability be particularly kept in mind. Duplicative and substandard
+activities do not help in this regard.
+
+169. The independent expert welcomes the placement by OHCHR of a human rights officer
+for Somalia in Nairobi. She believes that working close to Somalia in a sustained manner will
+pave the way for more meaningful work on Somalia by the Commission on Human Rights and
+OHCHR. She calls upon the various United Nations agencies operating in Somalia to facilitate
+the task of this officer and calls upon the donor community to support this important endeavour.
+
+
+                                              Notes
+1
+   See Code of Conduct for International Rehabilitation and Development Assistance to Somalia
+of 8 February 1995 and the Clarification of the Code of Conduct for International Rehabilitation
+and Development Assistance to Somalia, July 1995, available at the Documentation Unit of the
+United Nations Development Office for Somalia (UNDOS), Nairobi.
+2
+  See Report of the Secretary-General on the Situation in Somalia to the Security Council
+(S/1999/882), para. 67.
+3
+    Ibid., para. 70.
+4
+    Ibid., para. 45.
+5
+    The United Nations country team for Somalia weekly security update, 19-26 November 1999.
+                                                                       E/CN.4/2000/110
+                                                                       page 37
+
+6
+     Ibid.
+7
+     Ibid.
+8
+     Interview with the United Nations Somalia Chief Security Advisor on 15 November 1999.
+9
+     The United Nations country team for Somalia weekly security update, 19-26 November 1999.
+10
+     See document A/54/PV.9.
+11
+     Ibid.
+12
+     The United Nations country team for Somalia weekly security update, 19-26 November 1999.
+13
+   A draft proposal is being elaborated by the office of the United Nations Resident Coordinator
+for Somalia concerning the protection of aid workers in conflict zones.
+14
+  “Independent expert on Somalia expresses concern over proposed European Union policy on
+Somali refugees”, United Nations press release HR/99/96, 12 October 1999.
+15
+   This Commission was created by virtue of the Final Act of the Rome Diplomatic Conference
+of Plenipotentiaries for the Establishment of an International Criminal Court, which was adopted
+on 17 July 1998.
+16
+   This list is based on the discussions around the proposal on article 8, paragraph 2 (c) of the
+Rome Statute of the International Criminal Court submitted by Costa Rica, Hungary, and
+Switzerland to the Working Group on Elements of Crimes of the Preparatory Commission for
+the International Criminal Court, 19 July 1999 (PCNICC/1999/WGE/DP.10).
+
+
+                                                -----
+

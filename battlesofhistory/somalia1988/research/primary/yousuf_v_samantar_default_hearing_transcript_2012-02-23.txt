@@ -1,0 +1,1014 @@
+TITLE: Yousuf v. Samantar, E.D. Va., transcript of colloquy/default hearing (23 Feb 2012)
+DATE: 23 February 2012
+URL: https://cja.org/cja/downloads/2012%202%2023%20Yousuf%20v.%20Samantar.Default%20Hearing.pdf
+RETRIEVED: 2026-11-13 (curl; text extracted with pdftotext; OCR/line-break artefacts may remain)
+==================================================================
+                                                                                            1
+
+                          UNITED STATES DISTRICT COURT
+                      FOR THE EASTERN DISTRICT OF VIRGINIA
+                              ALEXANDRIA DIVISION
+
+BASHE ABDI YOUSUF;                        .          Civil Action No. 1:04cv1360
+AZIZ MOHAMED DERIA, in his                .
+capacity as the personal                  .
+representative of the estate              .
+of Mohamed Deria Ali;
+AZIZ MOHAMED DERIA, in his                .
+capacity as the personal                  .
+representative of the estate              .
+of Mustafa Mohamed Deria;                 .
+BURALLE SALAH MOHAMOUD;                   .
+AZIZ MOHAMED DERIA, in his                .
+capacity as the personal                  .
+representative of the estate              .
+of Abdullahi Salah Mahamoud               .
+(the deceased brother of                  .
+Buralle Salah Mohamoud);                  .
+AZIZ MOHAMED DERIA, in his                .
+capacity as the personal                  .
+representative of the estate              .
+of Cawil Salah Mahamoud                   .
+(the deceased brother of                  .
+Buralle Salah Mohamoud); and              .
+AHMED JAMA GULAID,                        .
+                                          .
+                      Plaintiffs,         .
+                                          .
+        vs.                               .          Alexandria, Virginia
+                                          .          February 23, 2012
+MOHAMED ALI SAMANTAR,                     .          10:06 a.m.
+                                          .
+                      Defendant.          .
+                                          .
+.   .   .     .   .   .   .   .   .   .   .
+
+                           TRANSCRIPT OF HEARING
+                  BEFORE THE HONORABLE LEONIE M. BRINKEMA
+                        UNITED STATES DISTRICT JUDGE
+
+
+
+                                  (Pages 1 - 18)
+
+
+
+              COMPUTERIZED TRANSCRIPTION OF STENOGRAPHIC NOTES
+
+
+
+
+                                              Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                               2
+
+ 1   APPEARANCES:
+
+ 2   FOR THE PLAINTIFFS:        L. KATHLEEN ROBERTS, ESQ.
+                                Center for Justice and
+ 3                              Accountability
+                                870 Market Street, Suite 680
+ 4                              San Francisco, CA 94102
+                                  and
+ 5                              THOMAS P. McLISH, ESQ.
+                                DEBRA A. DRAKE, ESQ.
+ 6                              JOSEPH W. WHITEHEAD, ESQ.
+                                Akin Gump Strauss Hauer &
+ 7                              Feld LLP
+                                1333 New Hampshire Avenue, N.W.
+ 8                              Washington, D.C. 20036
+
+ 9
+     FOR THE DEFENDANT:         JOSEPH PETER DRENNAN, ESQ.
+10                              218 North Lee Street, Third Floor
+                                Alexandria, VA 22314
+11
+
+12   SOMALI INTERPRETER:        ABDURAHMAN KHASSE
+
+13
+     ALSO PRESENT:              MOHAMED ALI SAMANTAR
+14
+
+15   OFFICIAL COURT REPORTER:   ANNELIESE J. THOMSON, RDR, CRR
+                                U.S. District Court
+16                              401 Courthouse Square
+                                Alexandria, VA 22314
+17                              (703)299-8595
+
+18
+
+19
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+
+
+
+                                 Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                     3
+
+ 1                           P R O C E E D I N G S
+
+ 2             THE CLERK:    Civil Action 04-1360, Bashe Abdi Yousuf
+
+ 3   et al. v. Mohamed Ali Samantar.      Would counsel please note
+
+ 4   their appearances for the record.
+
+ 5             MR. McLISH:     Good morning, Your Honor.           Tom McLish
+
+ 6   for the plaintiffs.    With me are Debra Drake, Kathy Roberts,
+
+ 7   and Joseph Whitehead.
+
+ 8             THE COURT:    Good morning.
+
+ 9             MR. McLISH:     Good morning, Your Honor.
+
+10             MS. ROBERTS:    Good morning.
+
+11             MR. DRENNAN:    Good morning, Your Honor.            Joseph Peter
+
+12   Drennan on behalf of the defendant, Mohamed Ali Samantar, who
+
+13   is seated next to me at counsel table.
+
+14             THE COURT:    All right.    Now, again, Mr. Drennan, you
+
+15   were late this morning.    You need to be on time for court
+
+16   proceedings.
+
+17             MR. DRENNAN:    I apologize, Your Honor.            We had delay
+
+18   in security and also with me getting Mr. Samantar here, we
+
+19   walked -- we parked about a block away, and he walks very
+
+20   slowly, and I apologize to the Court.
+
+21             THE COURT:    Well, but you need to leave enough time,
+
+22   understanding that those things can happen.           In any case --
+
+23             MR. DRENNAN:    I do understand, Your Honor.
+
+24             THE COURT:    All right.    Now, what concerns the
+
+25   Court -- and we need to address this issue quickly, because
+
+
+
+
+                                       Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                      4
+
+ 1   I've got approximately 50 civilians downstairs in the jury
+
+ 2   assembly room who were called to be here today, because this
+
+ 3   case, as you know, was delayed two days because of the
+
+ 4   bankruptcy filing.    The bankruptcy stay has been lifted to let
+
+ 5   this matter go forward.
+
+ 6               We received a call this morning from your office
+
+ 7   indicating that Mr. Samantar is not planning to contest this
+
+ 8   case.    Is that correct?
+
+ 9               MR. DRENNAN:    That, that is indeed correct, Your
+
+10   Honor.    I have just been apprised of that.          I've been preparing
+
+11   for trial, and Mr. Samantar has reached the conclusion that,
+
+12   that his circumstances basically make it impossible for him to
+
+13   proceed, and he has elected to, to take a default at this point
+
+14   and not to contest.
+
+15               THE COURT:   Now, is that both liability and damages?
+
+16               MR. DRENNAN:    Yes.
+
+17               THE COURT:   All right, I'm going to need to get on
+
+18   the record from Mr. Samantar himself --
+
+19               MR. DRENNAN:    I understand, Your Honor.
+
+20               THE COURT:   All right.     Mr. Samantar, come up to the
+
+21   lectern.
+
+22               MR. DRENNAN:    Can we have an interpreter, Your Honor?
+
+23               Is the interpreter here?
+
+24               THE INTERPRETER:    Yeah.
+
+25               THE COURT:   All right, we'll have the interpreter
+
+
+
+
+                                        Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                       5
+
+ 1   come up, please.    I need Mr. Samantar right by the -- will the
+
+ 2   interpreter please state your name and slowly spell it for us.
+
+ 3                THE INTERPRETER:    Your Honor, I am a Somali
+
+ 4   interpreter.    Last name is Khasse, last name, K-h-a-s-s-e,
+
+ 5   first name Abdurahman, A-b-d-u-r-a-h-m-a-n.
+
+ 6                THE COURT:    All right.   And what is your professional
+
+ 7   background such that we can accept you as an interpreter in
+
+ 8   this case?
+
+ 9                THE INTERPRETER:    Well, Your Honor, I came from
+
+10   Minnesota, and we take a test.       I'm on the roster in Minnesota
+
+11   Supreme Court, and we do different federal, state, and civil
+
+12   cases.
+
+13                THE COURT:    So you've appeared as a Somali translator
+
+14   in federal court?
+
+15                THE INTERPRETER:    Yes, Your Honor.
+
+16                THE COURT:    All right.   Then I'll have our clerk
+
+17   administer an affirmation to you at this time, and unless
+
+18   there's an objection from the plaintiffs, we'll accept this
+
+19   gentleman as a proper interpreter.
+
+20                MR. McLISH:    No objection, Your Honor.
+
+21                THE COURT:    All right, that's fine.         We'll administer
+
+22   the affirmation.
+
+23    (ABDURAHMAN KHASSE affirmed to translate Somali into English.)
+
+24                THE COURT:    Now, Mr. Samantar, I'm going to place you
+
+25   under an affirmation.      That means a promise to tell the truth
+
+
+
+
+                                         Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                       6
+
+ 1   in answering the Court's questions.         Do you understand that?
+
+ 2             MR. SAMANTAR:    Yes.
+
+ 3             THE COURT:   All right.       Please raise your right hand.
+
+ 4              MOHAMED ALI SAMANTAR, DEFENDANT, AFFIRMED
+
+ 5             THE COURT:   All right.       Now, will you please for the
+
+ 6   record state your full name.
+
+ 7             MR. SAMANTAR:    Mohamed Ali Samantar.
+
+ 8             THE COURT:   All right.       And, Mr. Samantar, do you
+
+ 9   understand that all of your answers to the Court's questions
+
+10   must be completely truthful and that if you were to lie in
+
+11   answering any question, you would be subject to possible
+
+12   prosecution, criminal prosecution for perjury?              Do you
+
+13   understand that?
+
+14             MR. SAMANTAR:    Yes.
+
+15             THE COURT:   All right.       Do you understand that your
+
+16   lawyer has told the Court this morning that you no longer want
+
+17   to contest this lawsuit?
+
+18             MR. SAMANTAR:    Right.
+
+19             THE COURT:   Now, have you had enough time to talk
+
+20   with Mr. Drennan about this decision not to further contest or
+
+21   debate or rebut the claims in this lawsuit?
+
+22             MR. SAMANTAR:    Yes.
+
+23             THE COURT:   Is it your decision today that you don't
+
+24   want to contest this lawsuit?
+
+25             MR. SAMANTAR:    Yes.
+
+
+
+
+                                         Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                      7
+
+ 1             THE COURT:     Now, do you understand if the Court
+
+ 2   accepts your position, that means I am going to find that you
+
+ 3   are liable for all the actions that are described in the
+
+ 4   plaintiffs' complaint?
+
+ 5             MR. SAMANTAR:     Yes.
+
+ 6             THE COURT:     That means among other things you will be
+
+ 7   found liable for causing the deaths that are at issue in this
+
+ 8   case, for being responsible for the extrajudicial killings, the
+
+ 9   attempted extrajudicial killings, the rape, the torture, and
+
+10   the other very serious allegations in this complaint.                 Do you
+
+11   understand that?
+
+12             MR. DRENNAN:    Your Honor, if I might, the rape cause
+
+13   of action was nonsuited by -- dismissed by the, by the
+
+14   plaintiffs earlier.    That action is no longer a part of the
+
+15   case.
+
+16             THE COURT:     I'm sorry.    That's correct, correct?
+
+17             MR. McLISH:     That's right.
+
+18             THE COURT:     All right.    Omitting the rape, the other
+
+19   serious allegations in the complaint, you would be admitting to
+
+20   being liable for them.    Do you understand that?
+
+21             MR. SAMANTAR:     I understand, but, but I want to say
+
+22   something here to clarify.    I want to stop this litigation.
+
+23   The reason is I don't have any economical, you know --
+
+24             THE COURT:     Wait, I'm sorry, I'm not getting -- we
+
+25   need to stop, because I can't get the interpreter's English.
+
+
+
+
+                                        Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                      8
+
+ 1   Yeah.    Could you repeat that, please?
+
+ 2               MR. SAMANTAR:   What I say is I want this case -- this
+
+ 3   court to be stopped.     The reason is to continue this
+
+ 4   proceeding, it needs to have some money, and I don't have any
+
+ 5   money.    Because of that, I request to accept default, but that
+
+ 6   doesn't mean that, you know, I'm guilty or I commit any crime.
+
+ 7               THE COURT:   Well, you can't have it both ways.               This
+
+ 8   is not a criminal case, so we're not talking guilt, but we are
+
+ 9   a civil case, so we are talking about liability.
+
+10               MR. SAMANTAR:   Yes.
+
+11               THE COURT:   If you default, if you choose not to
+
+12   fight this case, then the way the law is structured, the Court
+
+13   will accept all of the well-pleaded allegations in the amended,
+
+14   second amended complaint that have not been nonsuited, and the
+
+15   only issue that will be left -- there still is going to be,
+
+16   have to be a trial on the issue of damages.            Whether you can
+
+17   pay the damages if damages are ultimately awarded or not is a
+
+18   completely separate issue, but I want to make sure you
+
+19   understand that just taking a default and walking away doesn't
+
+20   stop the litigation.
+
+21               Do you understand that?
+
+22               MR. SAMANTAR:   Yes.
+
+23               THE COURT:   And has -- Mr. Drennan, had you basically
+
+24   discussed what I've just been trying to explain to your client
+
+25   with him so he understands that with a default, that doesn't
+
+
+
+
+                                        Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                      9
+
+ 1   stop the litigation in the sense that it doesn't prevent a
+
+ 2   judgment from issuing?
+
+ 3             MR. DRENNAN:    I have indeed discussed that with, with
+
+ 4   my client, Your Honor.    He understands fully that his electing
+
+ 5   to take a default will give rise to liability, as Your Honor
+
+ 6   just indicated, on all the well-pleaded causes of action in
+
+ 7   respect to the case.   He also understands further that this
+
+ 8   decision will invariably give rise to the Court assessing
+
+ 9   damages against him, both compensatory and possibly, in the
+
+10   Court's discretion, punitive as well.
+
+11             THE COURT:     All right.    Mr. Samantar, you heard what
+
+12   Mr. Drennan just explained to the Court, did you?
+
+13             MR. SAMANTAR:     Yes.
+
+14             THE COURT:     And is that an accurate description of
+
+15   the conversation he had with you about the default?
+
+16             MR. SAMANTAR:     Yes.
+
+17             THE COURT:     All right.    Has anybody -- other than
+
+18   your financial situation, has anybody put any force or pressure
+
+19   on you to make the decision to default?
+
+20             MR. SAMANTAR:     No.
+
+21             THE COURT:     Has your medical condition in any respect
+
+22   and the medications you may be taking made it difficult for you
+
+23   to understand your conversations with Mr. Drennan?
+
+24             MR. SAMANTAR:     No, I understand them well.
+
+25             THE COURT:     All right.    And, Mr. Drennan, for the
+
+
+
+
+                                        Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                  10
+
+ 1   record, do you use an interpreter when you're communicating
+
+ 2   with your client, or does he have moderately decent English
+
+ 3   capability?
+
+ 4             MR. DRENNAN:   Your Honor, Mr. Samantar's present
+
+ 5   English capability is exceedingly modest, and my communications
+
+ 6   with him are through his siblings, the older of which are
+
+ 7   fluent in Somali and English, primarily Yusuf Samantar, who is
+
+ 8   here in court, and Ayanle Samantar --
+
+ 9             THE COURT:    All right.
+
+10             MR. DRENNAN:   -- his brother.
+
+11             THE COURT:    All right.   I think on this record, there
+
+12   is no question that the defendant has made the decision to
+
+13   default on the issue of liability and damages with the full
+
+14   advice of counsel, that he's made this decision in a knowing
+
+15   and voluntary fashion, and nothing has been brought to the
+
+16   Court's attention to in any respect have concerns about the
+
+17   legitimacy of the default.
+
+18             Is there anything further the plaintiffs want the
+
+19   Court to establish on this issue?
+
+20             MR. McLISH:    I don't think so, Your Honor.
+
+21             THE COURT:    All right.   I'm accepting then this
+
+22   position that the defendant is defaulting, and that means
+
+23   therefore the Court is going to go ahead and find, because I
+
+24   reread the amended complaint this morning, that the allegations
+
+25   are adequately well-pleaded, they are consistent with the
+
+
+
+
+                                      Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                   11
+
+ 1   statutory requirements, and that liability is established as to
+
+ 2   all of the claims still at issue in the second amended
+
+ 3   complaint, and that leaves for us then the determination of
+
+ 4   damages.
+
+ 5              Now, we have a jury downstairs, but I've researched
+
+ 6   this issue this morning, and I'm satisfied that this issue of
+
+ 7   the damages should be tried to the Bench, and unless the
+
+ 8   plaintiffs have any objection, I want to excuse the jury at
+
+ 9   this point.
+
+10              MR. McLISH:    Your Honor --
+
+11              THE COURT:    Mr. Samantar, you may now sit next to
+
+12   your counsel.
+
+13              And the interpreter can stay at table so Mr. Samantar
+
+14   can understand the proceedings.
+
+15              Yes, sir.
+
+16              MR. McLISH:    Your Honor, we just found out about the
+
+17   defendant's intention this morning, also, so we've had a
+
+18   limited opportunity to research the issue.           We believe that
+
+19   Your Honor does have the discretion to order a jury trial on
+
+20   the damages in this situation, so the plaintiffs would ask that
+
+21   you, that you do that, that they be allowed to present their
+
+22   damages evidence to a jury, and then we proceed in that
+
+23   fashion.
+
+24              THE COURT:    Well, I'm going to exercise my discretion
+
+25   and deny that request.    I think the time that juries spend is
+
+
+
+
+                                       Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                   12
+
+ 1   very precious time.   We have almost 50 people downstairs
+
+ 2   waiting to come in, but a jury trial will greatly extend the
+
+ 3   length of these proceedings, which in my view is not necessary.
+
+ 4              For the amount of time to voir dire the jury, to get
+
+ 5   them in place, the need to at the end of the proceedings give
+
+ 6   them instructions, the very extensive verdict form, which I
+
+ 7   agree would be shorter but still it would definitely be adding
+
+ 8   many, many additional hours to the trial, plus the wear and
+
+ 9   tear on members of our community, which in my view is
+
+10   unnecessary, the law does not -- and I've looked at the case
+
+11   law carefully on this.   I think the opinion that is most
+
+12   instructive is the Mwani -- that's M-w-a-n-i -- et al. v. Bin
+
+13   Laden and al Qaeda, it's a 2007 decision out of the District of
+
+14   Columbia by Judge Kollar-Kotelly.      It's a very, very articulate
+
+15   description of the issues, and although I don't believe the
+
+16   Fourth Circuit has addressed this issue, I'm satisfied that
+
+17   there's not a Seventh Amendment right, absolute right to a
+
+18   trial by jury on damages in a default case, and the defendant
+
+19   has defaulted not only on liability but on damages.               He's not
+
+20   contesting or planning to be here to fight the damage issue.
+
+21              Your clients want their day in court, they're here,
+
+22   and we're ready to start within the next two or three minutes
+
+23   the damage portion of the case.     Do you need a few minutes
+
+24   to -- because again, I'm not going to take a significant amount
+
+25   of time.   It's not going to be necessary to establish the facts
+
+
+
+
+                                       Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                       13
+
+ 1   in the second amended complaint.        They're deemed admitted, and
+
+ 2   the issue will then be what evidence you have as to what the
+
+ 3   appropriate damages should be.
+
+ 4               MR. McLISH:    Your Honor, I think we do need a short
+
+ 5   amount of time to, to figure out exactly how we would like to
+
+ 6   do that and to work out a way to do it as efficiently as
+
+ 7   possible.   We came here prepared to put on our full case.                   It
+
+ 8   sounds very much to me like Your Honor does not think we should
+
+ 9   do that, so --
+
+10               THE COURT:    No.   Again, your clients will have their
+
+11   day in court, but the parameters of that day in court or two
+
+12   days in court is what is a reasonable presentation of the
+
+13   appropriate evidence that is now needed to decide the issues
+
+14   that are before us.
+
+15               What I want to do is this:        I'm going to excuse the
+
+16   jury.   I had given serious thought to imposing the costs of a
+
+17   second jury on the defendant, but I realize that the issue
+
+18   about whether or not there would still be a trial by jury even
+
+19   in an ex parte situation is an open question.
+
+20               I mean, I'm satisfied the courts that have looked at
+
+21   it have all gone in this direction, and I'm going to go in this
+
+22   direction as well, conducting it as a bench trial, but giving
+
+23   the defendant the benefit of the doubt on that, I will not
+
+24   impose the costs, but I came close to doing it.
+
+25               So how much time do you need to get yourselves
+
+
+
+
+                                         Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                     14
+
+ 1   organized?
+
+ 2                MR. McLISH:    Bear with me one moment, Your Honor?
+
+ 3                Your Honor, in the interests of efficiency, I think
+
+ 4   if we could have an hour, maybe two hours to cull down our case
+
+ 5   to efficiently address what, you know, the current posture of
+
+ 6   the case?    We didn't know what was going to be left after this
+
+ 7   morning's proceeding, so if we could have a recess of maybe two
+
+ 8   hours and come back and get started?
+
+ 9                THE COURT:    All right, I'll give you until 12:00.
+
+10   It's an hour and a half, all right?         So we can get some of this
+
+11   started before the lunch break.
+
+12                Now, as I recall, Mr. Deria is the plaintiff who
+
+13   traveled across country to be here?         Isn't he the person with
+
+14   the large family, or is it one of the other plaintiffs?
+
+15                MR. McLISH:    All of the plaintiffs have various
+
+16   travel issues, Your Honor.
+
+17                THE COURT:    All right.
+
+18                MR. McLISH:    And we need to take that into
+
+19   consideration in deciding who's going to testify when.                  We do
+
+20   have several people who need to testify and be on their way as
+
+21   soon as possible.
+
+22                THE COURT:    That's fine.    All right, so 12:00 noon I
+
+23   want to get this started.
+
+24                The -- if we don't finish the evidentiary hearing
+
+25   today, we will go into tomorrow, probably not starting until
+
+
+
+
+                                         Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                   15
+
+ 1   eleven, and I would think we would conclude the evidence in two
+
+ 2   days if we don't finish it today, I mean, because again, a
+
+ 3   significant number of the issues are already resolved through
+
+ 4   the default, all right?
+
+ 5             MR. McLISH:     Understood, Your Honor.
+
+ 6             THE COURT:    Anything else?
+
+ 7             MR. McLISH:     One other thing.      Rule 55 of Federal
+
+ 8   Rules of Civil Procedure does provide for a seven-day notice to
+
+ 9   the defaulting party before there'd be a hearing on the default
+
+10   judgment, and I just want to establish clearly on the record
+
+11   that that seven-day period is being waived.
+
+12             THE COURT:    Mr. Drennan?
+
+13             MR. DRENNAN:    Your Honor, I would waive the seven-day
+
+14   notice period in Rule 55, and I would state to the Court that I
+
+15   know that the Court has expressed when we were here on Tuesday
+
+16   some concerns about the timing of the bankruptcy filing on
+
+17   Sunday evening.   Mr. Samantar has defaulted -- or elected to
+
+18   take his default as to liability and damages this morning.
+
+19             Your Honor, this is a most extraordinary case, and
+
+20   one factor that Mr. Samantar did not mention to the Court is
+
+21   that today, there is an extraordinarily historic conference
+
+22   presently underway in London convened at the behest of Prime
+
+23   Minister David Cameron.    There are leaders of 45 countries
+
+24   there to discuss the future of Somalia.         Secretary of State
+
+25   Hillary Clinton is there.    French Foreign Minister Alain Juppe
+
+
+
+
+                                       Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                   16
+
+ 1   is there.    Leaders of all of the countries that surround
+
+ 2   Somalia are there.
+
+ 3                Mr. Cameron said as he convened the hearing early
+
+ 4   this morning that the world will pay a high price if the
+
+ 5   problems of Somalia are not addressed.         Secretary Clinton gave
+
+ 6   her remarks, and just one sentence or two here, she stated:
+
+ 7   "For decades, the world has focused on what we could prevent
+
+ 8   from happening in Somalia, be it conflict, famine, or other
+
+ 9   disasters.    Now we are focused on what we can build.             The
+
+10   opportunity is real."
+
+11                My client concurs with that sentiment, Your Honor,
+
+12   and although perhaps not articulated at the podium, that, too,
+
+13   is a factor in his decision.    He believes that it would be
+
+14   destructive to the very, very fragile peace process underway
+
+15   for a two-week trial on liability and damages, with daily press
+
+16   reports, with the plaintiffs' counsel promising the world to
+
+17   provide daily feeds on Twitter and Facebook.
+
+18                Counsel represented to the bankruptcy court
+
+19   yesterday -- or Tuesday rather, that tens of thousands of
+
+20   dollars have been expended to bring this case forward.                Counsel
+
+21   represented among other things having rented office space
+
+22   across the court -- across from the court here, referring to
+
+23   that office space as a war room.
+
+24                Your Honor, one last point on this:         Clausewitz said
+
+25   that war is politics by another means.         Litigation should not
+
+
+
+
+                                       Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                 17
+
+ 1   be an atavistic prolongation of clan conflict by other means.
+
+ 2             Mr. Samantar and his family have suffered greatly
+
+ 3   over the last seven years, and I know that the plaintiffs claim
+
+ 4   to have suffered.   I won't speak to that.       We've defaulted.
+
+ 5   But what I can speak to is the sentiment that Somalia needs
+
+ 6   better than this.   Somalia does not need more clan conflict.
+
+ 7   Somalia needs peace and reconciliation, Your Honor.
+
+ 8             THE COURT:   Well, Mr. Drennan, I think that argument,
+
+ 9   which you made in a somewhat different context two or three
+
+10   years ago, we gave the United States executive branch, the
+
+11   State Department over two years to put their -- make a
+
+12   position -- take a position in this case.        They chose not to.
+
+13             As you know, more recently in the matter that's
+
+14   pending before the Fourth Circuit and it was before us as well
+
+15   on the issue of common law immunity, the United States
+
+16   government did not come in on your side.
+
+17             I mean, the government -- the executive branch could
+
+18   have stopped this litigation if they felt that it was going to
+
+19   have the kind of negative impact that you discuss on the
+
+20   delicate efforts to heal the problems in Somalia.            That's an
+
+21   area of expertise beyond this Court 's area, but I think it's
+
+22   fair to say so the record is clear that whatever dire impact
+
+23   you feel this case might have on that process is not shared by
+
+24   our State Department or any other executive branch officials,
+
+25   and that's reflected in the position that's been taken in this
+
+
+
+
+                                     Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+                                                                                    18
+
+ 1   case.
+
+ 2                So we're going to go ahead and treat this just like
+
+ 3   any other, because that's what it is, this is a civil case in
+
+ 4   which the plaintiffs are seeking compensatory and punitive
+
+ 5   damages, and it will be treated like any other case in that
+
+ 6   posture.
+
+ 7                So we'll recess until noon, at which time I expect
+
+ 8   the plaintiffs to be ready to go forward.           Thank you.
+
+ 9                MR. McLISH:   Thank you, Your Honor.
+
+10                                (Which were all the proceedings
+
+11                                 had at this time.)
+
+12
+
+13                        CERTIFICATE OF THE REPORTER
+
+14           I certify that the foregoing is a correct transcript of
+
+15   the record of proceedings in the above-entitled matter.
+
+16
+
+17
+
+18                                                  /s/
+                                             Anneliese J. Thomson
+19
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+
+
+
+                                        Anneliese J. Thomson OCR-USDC/EDVA (703)299-8595
+

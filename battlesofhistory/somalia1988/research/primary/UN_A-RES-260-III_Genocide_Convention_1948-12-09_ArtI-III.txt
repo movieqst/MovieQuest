@@ -1,0 +1,29 @@
+TITLE: UN General Assembly resolution 260 (III) A - Adoption of the Convention on the Prevention and Punishment of the Crime of Genocide, and text of the Convention
+DATE: 9 December 1948
+URL: https://documents.un.org/api/symbol/access?s=A/RES/260(III)&l=en&t=pdf
+RETRIEVED: 2026-11-13 (curl; text extracted with pdftotext; OCR/line-break artefacts may remain)
+==================================================================
+[Source PDF is a scanned image; no text layer. The following is a manual transcription of the English text of the preamble-adjacent operative part and Articles I-III(b) as visible on page 174 of the scanned resolution, checked visually on 2026-11-13.]
+
+260 (III). Prevention and punishment of the crime of genocide
+A
+ADOPTION OF THE CONVENTION ON THE PREVENTION AND PUNISHMENT OF THE CRIME OF GENOCIDE, AND TEXT OF THE CONVENTION
+The General Assembly
+Approves the annexed Convention on the Prevention and Punishment of the Crime of Genocide and proposes it for signature and ratification or accession in accordance with its article XI.
+Hundred and seventy-ninth plenary meeting, 9 December 1948.
+
+ANNEX - TEXT OF THE CONVENTION
+Article I
+The Contracting Parties confirm that genocide, whether committed in time of peace or in time of war, is a crime under international law which they undertake to prevent and to punish.
+Article II
+In the present Convention, genocide means any of the following acts committed with intent to destroy, in whole or in part, a national, ethnical, racial or religious group, as such:
+(a) Killing members of the group;
+(b) Causing serious bodily or mental harm to members of the group;
+(c) Deliberately inflicting on the group conditions of life calculated to bring about its physical destruction in whole or in part;
+(d) Imposing measures intended to prevent births within the group;
+(e) Forcibly transferring children of the group to another group.
+Article III
+The following acts shall be punishable:
+(a) Genocide;
+(b) Conspiracy to commit genocide;
+[...remaining text on later pages not transcribed]
