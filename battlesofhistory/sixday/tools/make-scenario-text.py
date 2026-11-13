@@ -21,7 +21,7 @@ def tag_list(s):
             if t and t not in [x[0] for x in out]: out.append((t, w.split(':', 1)[1].strip() if t == 'arab' and ':' in w else ''))
     return out
 def clean(s):
-    s = re.sub(r'\s*\*\([^)]*\)\*\s*', ' ', s); s = s.replace('*', ''); return re.sub(r'\s+', ' ', s).strip()
+    s = re.sub(r'\s*\*\([^)]*\)\*\s*', ' ', s); s = s.replace('*', ''); s = re.sub(r'\s*-{3,}\s*$', '', s.strip()); return re.sub(r'\s+', ' ', s).strip()
 def line(l):
     t = tag_list(l); o = {'text': clean(l), 'tag': t[0][0] if t else 'established'}
     if t and t[0][1]: o['who'] = t[0][1]

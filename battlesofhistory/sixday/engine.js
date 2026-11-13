@@ -834,12 +834,42 @@ const RadioCard = (() => {
   function show(r) { hide(); if (!r) return; list = [].concat(r); idx = 0; fill(); }
   return { show, hide };
 })();
+/* ---- a song the narrator talks about: ev.song { title, by, note, link, when: ['words in the caption', ...] }. A small card
+   (bottom right of the map) appears when the spoken caption reaches one of the `when` phrases (in any language), with a
+   link to listen on YouTube (opens a new tab; nothing is played or kept on this site). The x closes it; the next chapter
+   clears it. */
+const SongCard = (() => {
+  let el = null, mo = null, cur = null;
+  const make = () => { if (el) return el; el = document.createElement('div'); el.id = 'songCard';
+    el.innerHTML = '<div class="sch">🎵 <span class="scl">The song</span> <button class="scx" title="Close">✕</button></div><b></b><div class="scb"></div><div class="scn"></div><a target="_blank" rel="noopener"></a>';
+    const css = document.createElement('style');
+    css.textContent = `#songCard{position:absolute;right:12px;bottom:12px;z-index:39;width:min(300px,60%);background:rgba(8,14,20,.94);border:1px solid #c9a34a;border-radius:8px;padding:8px 10px;font:12.5px/1.4 system-ui,sans-serif;color:#dfe7e4;box-shadow:0 6px 24px rgba(0,0,0,.6);opacity:0;transform:translateY(8px);transition:opacity .6s,transform .6s;pointer-events:none}
+      #songCard.on{opacity:1;transform:none;pointer-events:auto}#songCard .sch{color:#e7c66b;font:600 12px 'Cinzel',Georgia,serif;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center;gap:6px}
+      #songCard .scl{flex:1}#songCard .scx{background:#26343c;color:#fff;border:1px solid #556;border-radius:5px;cursor:pointer;font-size:12px;padding:0 6px}
+      #songCard b{display:block;margin:4px 0 1px;font-size:14px;color:#fff}#songCard .scb{color:#c9d6d4}#songCard .scn{color:#9fb0b5;font-size:11.5px;margin:4px 0 6px}
+      #songCard a{display:inline-block;background:#b3261e;color:#fff;text-decoration:none;font-weight:600;border-radius:6px;padding:4px 10px}#songCard a:hover{background:#d0322a}`;
+    document.head.appendChild(css); ($('battlePanel') || document.body).appendChild(el);
+    el.querySelector('.scx').onclick = e => { e.stopPropagation(); el.classList.remove('on'); };
+    return el; };
+  const tr = t => (((window.BH_UI || {})[window.BH_LANG] || {})[t]) || t;
+  function open() { const s = cur; if (!s) return; make();
+    el.querySelector('.scl').textContent = tr('The song'); el.querySelector('b').textContent = s.title; el.querySelector('.scb').textContent = s.by || '';
+    el.querySelector('.scn').textContent = s.note || ''; const a = el.querySelector('a'); a.href = s.link; a.textContent = tr('▶ Find it on YouTube ↗');
+    el.classList.add('on'); }
+  function hide() { if (mo) { mo.disconnect(); mo = null; } cur = null; if (el) el.classList.remove('on'); }
+  function show(s) { hide(); if (!s) return; cur = s; const words = [].concat(s.when || []);
+    const check = n => { const t = (n && n.textContent) || ''; if (cur === s && words.some(w => t.includes(w))) { open(); if (mo) { mo.disconnect(); mo = null; } } };
+    mo = new MutationObserver(ms => ms.forEach(m => { const n = m.target.nodeType === 3 ? m.target.parentNode : m.target; if (n && n.closest && n.closest('#cc .cl, .sl')) check(n); }));
+    mo.observe(document.body, { subtree: true, childList: true, characterData: true });
+    document.querySelectorAll('#cc .cl, .sl').forEach(check); }
+  return { show, hide };
+})();
 function fireEvent(ev) {
   if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   if (ev.trenches !== undefined) setTrench(ev.trenches);
   currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o)); if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || [];   // o.delay: seconds into the chapter
   camForEvent(ev);
-  RadioCard.show(fastForward ? null : ev.radio); MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
+  RadioCard.show(fastForward ? null : ev.radio); SongCard.show(fastForward ? null : ev.song); MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((stage === 'campaign' && ev.clock ? ev.clock : fmtTime(ev.t)) + ' ' + ev.title);
   renderTimeline();
@@ -880,7 +910,7 @@ function setStage(st) {
   S.events = src.events; S.formations = src.formations; S.leaders = src.leaders; S.duration = src.duration;
   document.body.dataset.stage = st; applyArt();
 }
-function endWatch() { RadioCard.hide(); battleOver = 'history'; paused = true; showDebrief(); }
+function endWatch() { RadioCard.hide(); SongCard.hide(); battleOver = 'history'; paused = true; showDebrief(); }
 function jumpTo(t) {
   fastForward = true; resetSim(); 
   while (simTime < t) { simTime += DT; stepWatch(); }
@@ -967,14 +997,14 @@ function checkEnd() {
 // "Night, 20 October"). Pieces naming a month, a "Day N" or a year are the date; the rest is the time of day. A chapter
 // that gives only a time keeps the last date. S.clockYear is added to dates without a year; ev.clockTag ('disputed',
 // 'estimate') tints it. An intro slide can carry its own `clock`.
-const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
+const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b|يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر|ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר/i;   // with the Arabic and Hebrew months
 function clockTime(t) {
   const m = /^(\d{1,2}):(\d{2})$/.exec(t.trim()); if (!m) return t;
   let h = +m[1]; const pm = h >= 12, lead = m[1].length === 2; if (!lead && h < 12) return h + ':' + m[2] + ' a.m.';
   if (h === 12 && m[2] === '00') return 'Noon'; const h12 = h % 12 || 12; return h12 + ':' + m[2] + (pm ? ' p.m.' : ' a.m.');
 }
 function clockParts(c) {
-  const bits = String(c).split(/\s+·\s+|,\s+/).map(x => x.trim()).filter(Boolean); let date = null; const time = [];
+  const bits = String(c).split(/\s+·\s+|[,،]\s+|;\s+/).map(x => x.trim()).filter(Boolean); let date = null; const time = [];
   bits.forEach(b => { if (!date && CLOCK_DATE.test(b)) date = b; else time.push(clockTime(b)); });
   if (date && S.clockYear && !/\b\d{3,4}\b/.test(date) && !/\bdays? \d/i.test(date)) date += ' ' + S.clockYear;
   const tm = time.join(', '); return { date, time: tm ? tm[0].toUpperCase() + tm.slice(1) : '' };
@@ -995,9 +1025,10 @@ function drawClockStamp() {
   const x = 14, y = 12, w = Math.max(w1, w2) + 28, h = (L1 ? 30 : 0) + (L2 ? 24 : 0) + 12;
   ctx.globalAlpha = .35 + .65 * f; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.shadowColor = col; ctx.shadowBlur = 10 + 20 * glow;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.shadowBlur = 8 + 14 * glow; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-  if (L1) { ctx.font = "bold 22px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#f2fbff'; ctx.fillText(L1, x + 14, y + 8); }
-  if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, x + 14, y + (L1 ? 38 : 9)); }
+  const rtl = document.documentElement.dir === 'rtl', tx = rtl ? x + w - 14 : x + 14;   // Arabic and Hebrew dates read right to left
+  ctx.shadowBlur = 8 + 14 * glow; ctx.direction = rtl ? 'rtl' : 'ltr'; ctx.textAlign = rtl ? 'right' : 'left'; ctx.textBaseline = 'top';
+  if (L1) { ctx.font = "bold 22px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#f2fbff'; ctx.fillText(L1, tx, y + 8); }
+  if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, tx, y + (L1 ? 38 : 9)); }
   ctx.restore();
 }
 // Legend, top right of the map: S.legend ([{ label, color, kind: 'line' | 'dot' }]) or, by default, each side's colour.
@@ -1008,7 +1039,7 @@ function drawLegend() {
   ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
   const x = view.w - w - 14, y = view.w < w + 240 ? 92 : view.w < 620 ? 46 : 12;   // a phone: below the zoom buttons ctx.fillStyle = 'rgba(6,16,24,.72)';   // still too narrow: under the date stamp, not over it ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText(((window.BH_UI || {})[window.BH_LANG] || {}).LEGEND || 'LEGEND', x + 12, y + 14);
   ctx.font = "13px system-ui, sans-serif";
   items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
     if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }

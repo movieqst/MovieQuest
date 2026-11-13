@@ -28,11 +28,12 @@
       each(sl.lines, t.lines, (ln, tx) => set(ln, 'text', typeof tx === 'string' ? tx : tx.text));
       each(sl.media, t.media, (m, tx) => set(m, 'caption', typeof tx === 'string' ? tx : tx.caption));
     });
-    const evs = (list, tr) => each(list, tr, (e, t) => { ['title', 'text', 'explain', 'clock'].forEach(k => set(e, k, t[k])); if (e.media && t.media) set(e.media, 'caption', typeof t.media === 'string' ? t.media : t.media.caption); });
+    const evs = (list, tr) => each(list, tr, (e, t) => { ['title', 'text', 'explain', 'clock', 'partTitle'].forEach(k => set(e, k, t[k])); if (e.media && t.media) set(e.media, 'caption', typeof t.media === 'string' ? t.media : t.media.caption);
+      each(e.lines, t.lines, (ln, tx) => set(ln, 'text', typeof tx === 'string' ? tx : tx.text)); });   // the Six-Day War: each chapter's lines too
     evs(S.events, L.events);
     if (S.campaign && L.campaign) { set(S.campaign, 'title', L.campaign.title); set(S.campaign, 'subtitle', L.campaign.subtitle); evs(S.campaign.events, L.campaign.events); }
     if (S.parts && L.parts) each(S.parts, L.parts, (p, t) => { set(p, 'title', t.title); set(p, 'subtitle', t.subtitle); evs(p.events, t.events); });
-    each(S.outcome, L.outcome, (o, t) => set(o, 'text', typeof t === 'string' ? t : t.text));
+    each(S.outcome, L.outcome, (o, t) => { set(o, 'text', typeof t === 'string' ? t : t.text); if (t && t.heading) set(o, 'heading', t.heading); });
     if (L.commandLines && S.commandLines) Object.keys(L.commandLines).forEach(k => set(S.commandLines, k, L.commandLines[k]));
     if (L.debrief && S.debrief) Object.keys(L.debrief).forEach(side => S.debrief[side] && Object.keys(L.debrief[side]).forEach(r => { const d = S.debrief[side][r], t = L.debrief[side][r]; if (d && t) { set(d, 'title', t.title); set(d, 'text', t.text); } }));
     each(S.units, L.units, (u, t) => { Object.keys(t).forEach(k => typeof u[k] === 'string' && set(u, k, t[k])); each(u.lines, t.lines, (ln, tx) => set(ln, 'text', typeof tx === 'string' ? tx : tx.text)); });
@@ -53,8 +54,25 @@
     }
     // the computer's captions in command mode
     if (S.ai && S.ai.plans && L.ai) Object.keys(L.ai).forEach(side => each(S.ai.plans[side], L.ai[side], (st, t) => { if (t && st.caption) { set(st.caption, 'title', t.title); set(st.caption, 'text', t.text); } }));
+    if (L.record && S.record) Object.keys(L.record).forEach(f => S.record[f] && set(S.record[f], 'caption', L.record[f]));   // the 'From the record' pictures (Vukovar)
     if (L.voices) S.voices = L.voices;               // the translated narrators (audio/<id>/…)
+    /* L.strings { 'English text': 'translation' }: every other word the page shows (the armies' cards, map labels and markers,
+       captions of photos, the radio card, the library, the globe's names), replaced wherever it appears as a value of one of
+       these keys, in the scenario and in the battle's other data (borders.js, lines.js). Exact matches only. */
+    if (L.strings) {
+      const KEYS = /^(text|label|name|short|army|division|note|desc|caption|credit|title|when|subtitle|sub|about|kind|citedIn|rights|linkLabel|author|year|dateNote|dateRef|place|sides|date|periodNote|todayNote|thenNote|heading|who|count|by)$/;
+      const seen = new Set(), D = L.strings;
+      const walk = o => { if (!o || typeof o !== 'object' || seen.has(o)) return; seen.add(o);
+        if (Array.isArray(o)) { o.forEach((v, i) => { if (typeof v === 'string' && D[v] !== undefined && Array.isArray(o) && o.length === 2 && typeof o[0] === 'number') o[i] = D[v]; else walk(v); }); return; }
+        Object.keys(o).forEach(k => { const v = o[k]; if (typeof v === 'string') { if (KEYS.test(k) && D[v] !== undefined) o[k] = D[v]; } else walk(v); }); };
+      walk(S); [window.BATTLE_BORDERS, window.SIXDAY_LINES].forEach(walk);
+    }
     document.documentElement.lang = lang;
+    if (L.dir === 'rtl' && document.head) { document.documentElement.dir = 'rtl'; document.documentElement.classList.add('rtl');
+      const css = document.createElement('style'); css.textContent = 'html.rtl canvas{direction:ltr}'   // map text keeps its own alignment
+        + 'html.rtl #narrList .ni .t{float:left!important;margin-right:8px}'   // the chapter times move to the other side of the titles
+        + 'html.rtl .clockbox,html.rtl #clockBox{direction:rtl}';
+      document.head.appendChild(css); }   // Arabic, Hebrew: the page is mirrored (the maps are not)
   }
 
   /* ---- the switch: a button in the top bar ---- */

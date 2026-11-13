@@ -928,7 +928,7 @@ function checkEnd() {
 // "Night, 20 October"). Pieces naming a month, a "Day N" or a year are the date; the rest is the time of day. A chapter
 // that gives only a time keeps the last date. S.clockYear is added to dates without a year; ev.clockTag ('disputed',
 // 'estimate') tints it. An intro slide can carry its own `clock`.
-const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
+const CLOCK_DATE = /\b(jan|feb|mar|apr|may|maj|jun|jul|aug|avg|sep|oct|okt|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
 function clockTime(t) {
   const m = /^(\d{1,2}):(\d{2})$/.exec(t.trim()); if (!m) return t;
   let h = +m[1]; const pm = h >= 12, lead = m[1].length === 2; if (!lead && h < 12) return h + ':' + m[2] + ' a.m.';
@@ -969,7 +969,7 @@ function drawLegend() {
   ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
   const x = view.w - w - 14, y = view.w < w + 240 ? 92 : view.w < 620 ? 46 : 12;   // a phone: below the zoom buttons ctx.fillStyle = 'rgba(6,16,24,.72)';   // still too narrow: under the date stamp, not over it ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText(((window.BH_UI || {})[window.BH_LANG] || {}).LEGEND || 'LEGEND', x + 12, y + 14);
   ctx.font = "13px system-ui, sans-serif";
   items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
     if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }
@@ -1787,6 +1787,7 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
    whichever map is showing. S.geo gives each map's corners: { town: {...}, area: {...} } ('town' is the main map).
    A slide or chapter shows them with `fronts: ['sep14', ...]` and `arrows: ['oct16', ...]`; `frontNote` labels the lines. */
 const FL = window.VUKOVAR_LINES || { fronts: {}, arrows: {} };
+const UIT = t => (((window.BH_UI || {})[window.BH_LANG] || {})[t]) || t;   // the map's own words, in the page's language
 const FSTYLE = { sep14: { col: '#2b2b2b', dash: [], label: 'front line, 14 September (CIA)' }, sep30: { col: '#7a2e8e', dash: [16, 9], label: 'front line, 30 September (CIA)' }, nov10: { col: '#d9690f', dash: [6, 6], label: 'front line, 10 November (CIA)' } };
 const ADATE = { sep14: '14 Sept', sep30: '30 Sept', oct16: '16 Oct', nov3: '3 Nov', nov8: '8 Nov', undated: '' };
 function geoXY(lon, lat, key) { const g = (S.geo || {})[key || 'town']; if (!g) return { x: 0, y: 0 }; return { x: (lon - g.lon0) / (g.lon1 - g.lon0) * W.w, y: (g.lat1 - lat) / (g.lat1 - g.lat0) * W.h }; }
@@ -1811,8 +1812,8 @@ function drawFronts(ALT) {
   const ks = (it.fronts || []).filter(k => FSTYLE[k]); if (ks.length || (it.arrows || []).length) {
     let y = view.h - (mode === 'watch' ? 70 : 40) - (ks.length + ((it.arrows || []).length ? 1 : 0)) * 18; ctx.font = '12px system-ui'; ctx.textAlign = 'left';
     ctx.fillStyle = 'rgba(9,19,26,.72)'; ctx.fillRect(10, y - 14, 250, (ks.length + ((it.arrows || []).length ? 1 : 0)) * 18 + 8);
-    ks.forEach(k => { const st = FSTYLE[k]; ctx.strokeStyle = st.col === '#2b2b2b' ? '#ddd' : st.col; ctx.lineWidth = 3.5; ctx.setLineDash(st.dash.map(d => d * .6)); ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(56, y - 4); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = '#e8f0ea'; ctx.fillText(st.label, 64, y); y += 18; });
-    if ((it.arrows || []).length) { ctx.strokeStyle = red; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(52, y - 4); ctx.stroke(); ctx.fillStyle = red; ctx.beginPath(); ctx.moveTo(58, y - 4); ctx.lineTo(50, y - 9); ctx.lineTo(50, y + 1); ctx.fill(); ctx.fillStyle = '#e8f0ea'; ctx.fillText('JNA attack, as dated on the CIA map', 64, y); }
+    ks.forEach(k => { const st = FSTYLE[k]; ctx.strokeStyle = st.col === '#2b2b2b' ? '#ddd' : st.col; ctx.lineWidth = 3.5; ctx.setLineDash(st.dash.map(d => d * .6)); ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(56, y - 4); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = '#e8f0ea'; ctx.fillText(UIT(st.label), 64, y); y += 18; });
+    if ((it.arrows || []).length) { ctx.strokeStyle = red; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(52, y - 4); ctx.stroke(); ctx.fillStyle = red; ctx.beginPath(); ctx.moveTo(58, y - 4); ctx.lineTo(50, y - 9); ctx.lineTo(50, y + 1); ctx.fill(); ctx.fillStyle = '#e8f0ea'; ctx.fillText(UIT('JNA attack, as dated on the CIA map'), 64, y); }
   }
   ctx.restore();
 }
