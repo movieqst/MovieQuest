@@ -242,8 +242,8 @@ window.BATTLES = [
     folder: 'somalia1988', progress: 2, lat: 9.5600, lon: 44.0650,
     order: 20,
     era: 'Somalia, 1988',
-    title: 'The Isaaq Genocide (1988)',   // the name researchers use (Yale GSP, Lemkin Institute, the 2002 UN-commissioned study); no court has ruled on genocide: the page explains
-    date: 'May–July 1988', year: 1988,
+    title: 'Somalia 1988: War in the North and the Isaaq Genocide',   // the war, and the name researchers use for the killing of Isaaq civilians (Yale GSP, Lemkin Institute, the 2002 UN-commissioned study); no court has ruled on genocide: the page explains
+    date: '1987–1989 (the main attack: May–July 1988)', year: 1988,
     place: 'Hargeisa and Burao, northern Somalia (the region that declared itself Somaliland in 1991)',
     sides: 'The government of Mohamed Siad Barre and its army vs. the Somali National Movement (SNM); the Isaaq civilians of the north',
     blurb: 'In May 1988 the Somali National Movement attacked Burao and Hargeisa. The government of Siad Barre answered with bombardment and killings aimed at the Isaaq civilians of the north. Tens of thousands were killed and hundreds of thousands fled to Ethiopia. Genocide researchers call it the Isaaq genocide.',
