@@ -263,5 +263,57 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '30% 40%',   // Alexander and Bucephalus
     coverCredit: 'Title painting made for this page with ChatGPT (AI-generated), checked against Arrian, Plutarch and Xenophon: an imagined scene combining the two battles, not a record',
     status: 'in progress'
+  },
+  {
+    folder: 'yugoslavia-escalation', progress: 1, lat: 44.0, lon: 18.5, osmZoom: 6, osmNote: 'the whole of the former Yugoslavia',
+    order: 22,
+    era: 'Yugoslavia, 1980–1991',
+    title: 'Yugoslavia: Escalation',
+    date: 'May 1980 – June 1991 (the road to war)', year: 1985,
+    place: 'The six republics and two autonomous provinces of Yugoslavia: Slovenia, Croatia, Bosnia and Herzegovina, Serbia (with Vojvodina and Kosovo), Montenegro and Macedonia',
+    sides: 'The Yugoslav federation, its republics and their leaders, and the Yugoslav People’s Army (JNA)',
+    blurb: 'How Yugoslavia came apart: Tito’s death in 1980, the debt crisis, the Kosovo protests of 1981 and 1989, the rise of Slobodan Milošević, the end of the League of Communists in January 1990, the first free elections in the republics, and the armed incidents of 1990–1991, until Slovenia and Croatia declared independence on 25 June 1991.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'tenday', progress: 1, lat: 46.05, lon: 14.51, osmZoom: 8, osmNote: 'the whole of Slovenia; the fighting was at border crossings, barracks, the airport and the roads',
+    order: 23,
+    era: 'Slovenia, 1991',
+    title: 'The Ten-Day War',
+    date: '27 June – 7 July 1991', year: 1991,
+    place: 'Slovenia: its border crossings with Italy, Austria and Hungary, and the roads, barracks and airport across the republic',
+    sides: 'Slovenian Territorial Defence and police vs. the Yugoslav People’s Army (JNA)',
+    blurb: 'Two days after Slovenia declared independence, the Yugoslav army moved to take over its border crossings. The Slovenian Territorial Defence and police blocked the roads and surrounded the barracks. After ten days of fighting, the Brioni Agreement of 7 July ended the war, and the army later left Slovenia.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'dubrovnik', progress: 1, lat: 42.6411, lon: 18.11, osmZoom: 13, osmNote: 'the old town; the fighting reached the hills, Cavtat and the Pelješac road',
+    order: 24,
+    era: 'Croatia, 1991–1992',
+    title: 'Siege of Dubrovnik',
+    date: '1 October 1991 – 31 May 1992 (the siege lifted; fighting nearby until October 1992)', year: 1991,
+    place: 'Dubrovnik and its coast, southern Croatia, with the hills of Srđ and the border with Montenegro and Herzegovina',
+    sides: 'The Yugoslav People’s Army (JNA) and forces from Montenegro vs. Croatian forces defending Dubrovnik',
+    blurb: 'In October 1991 the Yugoslav army and forces from Montenegro surrounded Dubrovnik. The old town, a World Heritage Site, was shelled, most heavily on 6 December 1991; the fort on Srđ hill held. A court later convicted JNA officers for the shelling of the old town. The siege was lifted in May 1992.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'sarajevo', progress: 1, lat: 43.8563, lon: 18.4131, osmZoom: 12, osmNote: 'the city and the hills around it',
+    order: 25,
+    era: 'Bosnia and Herzegovina, 1992–1996',
+    title: 'Siege of Sarajevo',
+    date: '5 April 1992 – 29 February 1996', year: 1992,
+    place: 'Sarajevo, capital of Bosnia and Herzegovina, and the hills and mountains around it',
+    sides: 'The Army of Republika Srpska (VRS) around the city vs. the Army of the Republic of Bosnia and Herzegovina (ARBiH) inside it',
+    blurb: 'For almost four years Sarajevo was surrounded. The Bosnian Serb army held the hills; the city lived under shelling and sniper fire, without regular water, power or food. The tunnel under the airport, the market shellings and NATO’s air strikes of 1995 mark the story. The UN war crimes court convicted the Bosnian Serb commanders for a campaign of shelling and sniping against civilians.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner
+    coverCredit: '',
+    status: 'in progress'
   }
 ];
