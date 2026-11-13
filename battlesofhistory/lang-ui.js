@@ -350,3 +350,5 @@ return [
 })();
 Object.assign(window.BH_UI.sh, { 'front line, 14 September (CIA)': 'linija fronta, 14. septembra (CIA)', 'front line, 30 September (CIA)': 'linija fronta, 30. septembra (CIA)',
   'front line, 10 November (CIA)': 'linija fronta, 10. novembra (CIA)', 'JNA attack, as dated on the CIA map': 'napad JNA, s datumom kao na karti CIA-e' });
+// the link to OpenStreetMap in the bar at the bottom of battle pages
+['fr', 'zh', 'sco', 'gd', 'ar', 'he', 'sh'].forEach(c => window.BH_UI[c] && Object.assign(window.BH_UI[c], { '📍 The place today': { fr: '📍 Le lieu aujourd’hui', zh: '📍 今日的地点', sco: '📍 The place the day', gd: '📍 An t-àite an-diugh', ar: '📍 المكان اليوم', he: '📍 המקום היום', sh: '📍 Mjesto danas' }[c] }));

@@ -5,7 +5,7 @@
    progress (0-100, roughly how far along: research, maps, art, script, voices) decides which 4 show beside the globe. */
 window.BATTLES = [
   {
-    folder: 'kadesh', lat: 34.56, lon: 36.52,
+    folder: 'kadesh', lat: 34.56, lon: 36.52, osmZoom: 12, osmNote: 'Tell Nebi Mend, the site of Kadesh; the battlefield around it is not exactly known',
     order: 1,
     era: 'Bronze Age',
     title: 'Battle of Kadesh',
@@ -18,7 +18,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'iadrang', lat: 13.57, lon: 107.72,
+    folder: 'iadrang', lat: 13.57, lon: 107.72, osmZoom: 11,
     order: 2,
     era: 'Vietnam War',
     title: 'Battle of the Ia Drang',
@@ -31,7 +31,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'pegasus', lat: 49.24, lon: -0.27,
+    folder: 'pegasus', lat: 49.24, lon: -0.27, osmZoom: 14,
     order: 3,
     era: 'Second World War',
     title: 'Pegasus Bridge',
@@ -44,7 +44,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'gaugamela', lat: 36.56, lon: 43.44,
+    folder: 'gaugamela', lat: 36.56, lon: 43.44, osmZoom: 10, osmNote: 'the exact site is not known',
     order: 4,
     era: 'Classical Antiquity',
     title: 'Battle of Gaugamela',
@@ -57,7 +57,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'waterloo', lat: 50.68, lon: 4.41,
+    folder: 'waterloo', lat: 50.68, lon: 4.41, osmZoom: 13,
     order: 5,
     era: 'Napoleonic Wars',
     title: 'Battle of Waterloo',
@@ -70,7 +70,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'edington', lat: 51.27, lon: -2.1,
+    folder: 'edington', lat: 51.27, lon: -2.1, osmZoom: 12, osmNote: 'the site of Ethandun is debated',
     order: 7,
     era: 'Viking Age',
     title: 'Battle of Edington',
@@ -83,7 +83,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'talas', lat: 42.9, lon: 71.4,
+    folder: 'talas', lat: 42.9, lon: 71.4, osmZoom: 8, osmNote: 'the exact site is not known',
     order: 6,
     era: 'Tang and Abbasid',
     title: 'Battle of Talas',
@@ -96,7 +96,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'dunkirk', lat: 51.03, lon: 2.37,
+    folder: 'dunkirk', lat: 51.03, lon: 2.37, osmZoom: 11,
     order: 10,
     era: 'Second World War',
     title: 'Withdrawal at Dunkirk',
@@ -109,7 +109,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'stirling', lat: 56.12, lon: -3.94,
+    folder: 'stirling', lat: 56.12, lon: -3.94, osmZoom: 14,
     order: 9,
     era: 'Middle Ages',
     title: 'Battle of Stirling Bridge',
@@ -122,7 +122,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'vimy', lat: 50.38, lon: 2.77,
+    folder: 'vimy', lat: 50.38, lon: 2.77, osmZoom: 13,
     order: 11,
     era: 'First World War',
     title: 'Battle of Vimy Ridge',
@@ -135,7 +135,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sixday', progress: 100, lat: 31.78, lon: 35.23,
+    folder: 'sixday', progress: 100, lat: 31.78, lon: 35.23, osmZoom: 7, osmNote: 'the whole region: Sinai, the West Bank and the Golan Heights',
     order: 12, readyOrder: 18,
     era: 'Arab–Israeli Wars',
     title: 'The Six-Day War',
@@ -148,7 +148,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sekigahara', lat: 35.37, lon: 136.47,
+    folder: 'sekigahara', lat: 35.37, lon: 136.47, osmZoom: 13,
     order: 13,
     era: 'Sengoku Japan',
     title: 'Battle of Sekigahara',
@@ -161,7 +161,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'batoche', progress: 90, lat: 52.75, lon: -106.12,
+    folder: 'batoche', progress: 90, lat: 52.75, lon: -106.12, osmZoom: 14,
     order: 14, readyOrder: 14,
     era: 'Canada, 1885',
     title: 'Battle of Batoche',
@@ -174,7 +174,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'tyre', progress: 100, lat: 33.27, lon: 35.2,
+    folder: 'tyre', progress: 100, lat: 33.27, lon: 35.2, osmZoom: 14,
     order: 15, readyOrder: 16,
     era: 'Classical Antiquity',
     title: 'Siege of Tyre',
@@ -187,7 +187,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'fishcreek', progress: 85, lat: 52.54, lon: -106.15,
+    folder: 'fishcreek', progress: 85, lat: 52.54, lon: -106.15, osmZoom: 14,
     order: 16, readyOrder: 15,
     era: 'Canada, 1885',
     title: 'Battle of Tourond\u2019s Coulee / Fish Creek',
@@ -200,7 +200,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'bunkerhill', progress: 10, lat: 42.3763, lon: -71.0608,
+    folder: 'bunkerhill', progress: 10, lat: 42.3763, lon: -71.0608, osmZoom: 15,
     order: 17,
     era: 'American Revolution',
     title: 'Battle of Bunker Hill',
@@ -213,7 +213,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'redriver', progress: 5, lat: 49.8873, lon: -97.1316,
+    folder: 'redriver', progress: 5, lat: 49.8873, lon: -97.1316, osmZoom: 13,
     order: 18,
     era: 'Canada, 1869–1870',
     title: 'Red River Resistance',
@@ -226,7 +226,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'vukovar', progress: 100, lat: 45.3517, lon: 19.0012,
+    folder: 'vukovar', progress: 100, lat: 45.3517, lon: 19.0012, osmZoom: 14,
     order: 19, readyOrder: 17,
     era: 'Croatia, 1991',
     title: 'Battle of Vukovar',
@@ -239,7 +239,7 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'somalia1988', progress: 2, lat: 9.5600, lon: 44.0650,
+    folder: 'somalia1988', progress: 2, lat: 9.5600, lon: 44.0650, osmZoom: 8, osmNote: 'centred on Hargeisa; Burao and Berbera lie to the east and north-east',
     order: 20,
     era: 'Somalia, 1988',
     title: 'Somalia 1988: War in the North and the Isaaq Genocide',   // the war, and the name researchers use for the killing of Isaaq civilians (Yale GSP, Lemkin Institute, the 2002 UN-commissioned study); no court has ruled on genocide: the page explains
@@ -252,7 +252,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'granicus-issus', progress: 5, lat: 36.75, lon: 36.20,
+    folder: 'granicus-issus', progress: 5, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
     order: 21,
     era: 'Classical Antiquity',
     title: 'Granicus & Issus',
