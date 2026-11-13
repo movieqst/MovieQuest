@@ -1,4 +1,15 @@
-# Vukovar: a sharper town map in four quarters (prompts for ChatGPT, 13 November 2026, version 2 with streets)
+# Vukovar: a sharper town map in four quarters (prompts for ChatGPT, 13 November 2026, version 3)
+
+**Version 3: why the quarters came back wrong, and what changes.** Quarters 1–3 of version 2 put the Danube and the Vuka
+up to 700 m from their real places. The likely cause: the third picture, the *style* image, was cut from the old town map,
+whose river is in the wrong place, and ChatGPT copied its river. The tower close-up, sent without that image, came back
+right (91.5 % match). So now:
+- the style picture is **`style-tower-close.png`**, ChatGPT's own good tower close-up (same look, correct geography);
+- use **Edit** mode on each base (upload the base, choose Edit, select the whole picture), one quarter per chat;
+- attach only **base, guide, style-tower-close.png**, in that order.
+
+---
+*Version 2 notes:*
 
 **Version 2:** the bases now carry the real streets, railway and river outlines (OpenStreetMap), with the side streets
 limited to the town of about 1990 (EU GHSL 1990 built-up map), and the town of 1990 lightly shaded. The Franciscan church,
@@ -12,20 +23,20 @@ seams. Made by `tools/draw-town-quarters.py`.
 For each quarter there are three images:
 - `town-qN-base.png`: the real terrain and water, **the one to repaint** (it fixes the framing);
 - `town-qN-guide.png`: what is where; the **red crosses** are landmarks to put exactly on the cross;
-- `town-qN-style.png`: the same area cut from the present painting, so all four quarters keep its look.
+- `style-tower-close.png`: the style to copy (the good tower close-up). **Do not use the old `town-qN-style.png`.**
 
 Quarters: **1** top left (Borovo Naselje, Lužac, the Vuka), **2** top right (the Danube bend, the hospital),
 **3** bottom left (Sajmište, the fields to the south-west), **4** bottom right (the town centre, the water tower, the
 barracks, Mitnica, Vučedol).
 
-**How:** one chat. Paste the first prompt once, then for each quarter attach its three images **in this order: base,
-guide, style**, paste that quarter's prompt, and ask for **exactly 2400 × 1800 px, landscape**. Send the four results back
+**How:** one new chat per quarter, in **Edit** mode on the base. Paste the first prompt, attach the three images **in this order: base,
+guide, style-tower-close.png**, paste that quarter's prompt, and ask for **exactly 2400 × 1800 px, landscape**. Send the four results back
 to Claude in a zip, as originals (PNG if offered).
 
 ## Paste once
 ```text
 I am making an educational, narrated reenactment of the Battle of Vukovar (Croatia, autumn 1991) for students aged 12 and up. I need a painted map of the town, made in four overlapping quarters that will be joined into one map, so the four paintings must match each other in style, colour and light.
-For each quarter I attach three images in this order: (1) the BASE, real terrain and water, which you repaint; (2) the GUIDE, which says what is where; (3) the STYLE, the same area from an earlier, softer painting: copy its style, colours and light, but with much more detail.
+For each quarter I attach three images in this order: (1) the BASE, real terrain and water, which you repaint; (2) the GUIDE, which says what is where; (3) the STYLE, a painting of the town centre in exactly the look we want: copy only its style, colours, light and level of detail. It shows a DIFFERENT, smaller area: do NOT copy its river, streets or layout; the river and streets come only from the base.
 Rules for every quarter:
 - Keep every street, road (light lines) and the railway (dark line) exactly where it is in the base, as 1991 streets lined with trees; do not add or move streets. Where the base has no streets and no shading, there were few buildings in 1991: keep it fields, meadows and orchards.
 - Keep EXACTLY the framing of the base: same size (2400 x 1800, landscape 4:3), north at the top. Do not crop, zoom, rotate or shift. The Danube, the river Vuka, the islands and the slopes stay exactly where they are in the base.
@@ -35,7 +46,7 @@ Rules for every quarter:
 - No text, labels, lines, grid, crosses, borders, compass or frame: do not copy anything drawn on the guide.
 ```
 
-## Quarter 1 (top left): attach `town-q1-base.png`, `town-q1-guide.png`, `town-q1-style.png`
+## Quarter 1 (top left): attach `town-q1-base.png`, `town-q1-guide.png`, `style-tower-close.png`
 ```text
 Quarter 1 of 4. The north-west of the town map: Borovo Naselje and the Vuka meadows.
 - Borovo Naselje, at the grey built-up shape in the guide: a planned 1930s factory town. A very large shoe and rubber factory (Bata / Borovo): long parallel halls of grey concrete and red brick with sawtooth roofs, a tall chimney, rail sidings; around it a grid of tree-lined streets with blocks of flats and small houses with gardens.
@@ -45,7 +56,7 @@ Quarter 1 of 4. The north-west of the town map: Borovo Naselje and the Vuka mead
 - If the hospital cross is at the bottom right edge: a large hospital complex of several 3–5-storey blocks with flat roofs, on the Danube road.
 ```
 
-## Quarter 2 (top right): attach `town-q2-base.png`, `town-q2-guide.png`, `town-q2-style.png`
+## Quarter 2 (top right): attach `town-q2-base.png`, `town-q2-guide.png`, `style-tower-close.png`
 ```text
 Quarter 2 of 4. The north-east of the town map: the Danube.
 - The Danube fills much of this quarter, wide and grey-green, as in the base, with its islands; on the far bank (Serbia) low floodplain woods, willows, oxbow ponds and meadows.
@@ -53,7 +64,7 @@ Quarter 2 of 4. The north-east of the town map: the Danube.
 - On the near bank at the bottom left, the northern edge of the town: red-roofed houses with gardens; the grey built-up shapes in the guide show where.
 ```
 
-## Quarter 3 (bottom left): attach `town-q3-base.png`, `town-q3-guide.png`, `town-q3-style.png`
+## Quarter 3 (bottom left): attach `town-q3-base.png`, `town-q3-guide.png`, `style-tower-close.png`
 ```text
 Quarter 3 of 4. The south-west of the town map.
 - The Vuka at the top, winding through marshy meadows with willows, as in the base.
@@ -61,7 +72,7 @@ Quarter 3 of 4. The south-west of the town map.
 - Elsewhere: the gently rolling loess plateau south of the Vuka, with large harvested fields, strip fields, a few orchards and vineyards, rows of trees along straight country roads.
 ```
 
-## Quarter 4 (bottom right): attach `town-q4-base.png`, `town-q4-guide.png`, `town-q4-style.png`
+## Quarter 4 (bottom right): attach `town-q4-base.png`, `town-q4-guide.png`, `style-tower-close.png`
 ```text
 Quarter 4 of 4. The south-east of the town map: the town centre and the water tower. The most important quarter: place the landmarks exactly.
 - At the red cross "WATER TOWER": Vukovar's water tower, a tall concrete tower whose slender stem widens into a large round tank at the top, about 50 m tall, seen from above (we see the round top of the tank, with a short shadow); its foot exactly on the cross, in a small grassy park among houses. Undamaged.
