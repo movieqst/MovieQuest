@@ -65,3 +65,22 @@ Map 5, the port town of Berbera in 1988 (12 x 9 km).
 - Around: the hot, flat coastal plain of pale sand and gravel, dry wadis, sparse thorn bush.
 - Intact and quiet, no people, no aircraft, no smoke.
 ```
+
+## Round 2 (13 November 2026): the first paintings did not keep the framing
+
+ChatGPT's first five paintings are beautiful but cannot be used as maps: they are **tilted, bird's-eye views with a
+horizon**, not views from straight above, and on the north, core and Berbera maps the **coast is in the wrong place**
+(far more sea, the coast pushed south; Berbera's harbour a different shape). The page lays each map flat by its corner
+coordinates, so the painting must match the base pixel for pixel. Paste this in the same chat, then re-attach each
+map's **base and guide** again with its prompt from round 1.
+
+```text
+These are beautiful, but they cannot be used: I need MAPS, not landscape views. Please redo each one with these strict rules:
+1. Seen from DIRECTLY ABOVE (a vertical satellite photograph, nadir view): no tilt, no perspective, no horizon, no sky, no mountains seen from the side. North is at the top.
+2. Use the BASE image as the exact canvas: repaint ON TOP of it. Every coastline, bay, harbour, hill and valley must stay exactly where it is in the base, in the same size. The sea (blue in the base) stays sea, and the land stays land: do NOT add sea where the base has land, and do not move the coast.
+3. Same size and shape as the base: 2400 x 1800 pixels, landscape. Do not crop, zoom, rotate or shift.
+4. Keep the lovely colours and detail of your first versions, just seen from above and lined up with the base.
+```
+
+**When they come back:** Claude draws the base's coastlines over each painting again; if the coast lines up (as the
+Granicus and Issus maps did, 90–98 %), they go on the page.
