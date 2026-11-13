@@ -11,7 +11,7 @@ CMIX = 'highpass=f=90,lowpass=f=4800,bass=g=4:f=140,acompressor=threshold=0.25:r
 VOICES = [('clear', 25, '1.08', '-', MIX), ('light', 60, '1.08', '-', MIX), ('bright', 0, '1.08', '-', MIX), ('deep', 400, '1.08', '-', MIX),
           ('warm', 7, '1.08', '-', MIX), ('computer', 500, '1.3', '--noise-scale 0.4 --noise-w 0.3', CMIX)]
 SMALL = {'a', 'an', 'the', 'of', 'and', 'or', 'to', 'in', 'on', 'at', 'by', 'for'}
-def clean(t): return re.sub(r'\s+', ' ', re.sub(r'\*\([^)]*\)\*', '', t).replace('**', '').replace('---', '')).strip()
+def clean(t): return re.sub(r'\s+', ' ', re.sub(r'\*\([^)]*\)\*', '', t).replace('**', '').replace('*', '').replace('---', '')).strip()
 def title(t):
     if t != t.upper(): return t
     w = t.lower().split(); return ' '.join(x if i and x in SMALL else x[:1].upper() + x[1:] for i, x in enumerate(w))
@@ -24,10 +24,16 @@ for n, t, body in re.findall(r'^### (\d+)\. (.+?)$(.*?)(?=^### |^---|^## |\Z)', 
     clips.append(('intro-' + n, title(clean(t)) + '. ' + ' '.join(lines)))
 for n, body in re.findall(r'^(\d+)\. \*\*.+?\*\*.*?$(.*?)(?=^\d+\. \*\*|^## |\Z)', section('The reenactment'), re.M | re.S):
     clips.append(('event-' + n, clean(body)))
-out = [clean(x) for s in ('The outcome', 'The aftermath') for x in re.findall(r'^- (.+?)(?=^- |\Z)', section(s).strip() + '\n', re.M | re.S)]
+if not section('The reenactment'):
+    # Six-Day War format: '## Part N: …' sections of '### N. Title' + bullets (event-N); the Debrief's bullets are the outcome
+    parts = ''.join(m.group(0) for m in re.finditer(r'^## Part .*?$.*?(?=^## |\Z)', src.split('## Notes for the reviewer')[0], re.M | re.S))
+    for n, t, body in re.findall(r'^### (\d+)\. (.+?)$(.*?)(?=^### |^---|^## |\Z)', parts, re.M | re.S):
+        lines = [clean(x) for x in re.findall(r'^- (.+?)(?=^- |\Z)', body.strip() + '\n', re.M | re.S)]
+        clips.append(('event-' + n, title(clean(t)) + '. ' + ' '.join(lines)))
+out = [clean(x) for s in ('The outcome', 'The aftermath', 'Debrief') for x in re.findall(r'^- (.+?)(?=^- |\Z)', re.sub(r'^(#|---).*$', '', section(s), flags=re.M).strip() + '\n', re.M | re.S)]
 clips.append(('outcome', ' '.join(out)))
 # names respelled for the synthesiser only (the captions keep the real spelling)
-SAY = [(r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b', 'Loobeck'), (r'\bScalacronica\b', 'Scala-cronica'),
+SAY = [(r'\bVimy\b', 'Vimmy'), (r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b', 'Loobeck'), (r'\bScalacronica\b', 'Scala-cronica'),
        (r'\bThweng\b', 'Thweng'), (r'\bCressingham\b', 'Cressing-um'),
        # Sekigahara: Japanese names, respelled for the English voices (stress-free, syllable by syllable)
        (r'\bSekigahara\b', 'Seki-gahara'), (r'\bIeyasu\b', 'Ee-eh-yasu'), (r'\bMitsunari\b', 'Mitsu-nari'), (r'\bKobayakawa\b', 'Koba-yakawa'),
@@ -39,7 +45,52 @@ SAY = [(r'\bMoray\b', 'Murray'), (r'\bGuisborough\b', 'Gizbruh'), (r'\bLübeck\b
        (r'\bNangū\b', 'Nan-goo'), (r'\bNakasendō\b', 'Naka-sen-doh'), (r'\bAonogahara\b', 'Ah-oh-no-gahara'), (r'\bFushimi\b', 'Foo-shimi'),
        (r'\bTorii Mototada\b', 'Toh-ree-ee Moto-tada'), (r'\bUeda\b', 'Oo-eh-da'), (r'\bUesugi\b', 'Oo-eh-sugi'), (r'\bKagekatsu\b', 'Kah-geh-katsu'),
        (r'\bEdo\b', 'Eh-doh'), (r'\bshōgun(ate)?\b', lambda m: 'show-gun' + (m.group(1) or '')), (r'\bChōshū\b', 'Choh-shoo'), (r'\bIse\b', 'Ee-seh'),
-       (r'\bIi Naomasa\b', 'Ee-ee Nao-masa'), (r'\bToyotomi\b', 'Toyo-tomi'), (r'\bTokugawa\b', 'Toku-gawa'), (r'\bŌmi\b', 'Oh-mee')]
+       (r'\bIi Naomasa\b', 'Ee-ee Nao-masa'), (r'\bToyotomi\b', 'Toyo-tomi'), (r'\bTokugawa\b', 'Toku-gawa'), (r'\bŌmi\b', 'Oh-mee'),
+       # Batoche: French and Métis names, respelled for the English voices
+       (r'\bMétis\b', 'May-tee'), (r'\bBatoche\b', 'Ba-tosh'), (r'\bRiel\b', 'Ree-el'), (r'\bDumont\b', 'Doo-mon'),
+       (r'\bMichif\b', 'Mitchif'), (r'\bSaint-Antoine-de-Padoue\b', 'San-tan-twan duh Pa-doo'), (r'\bLetendre\b', 'Luh-tondr'),
+       (r'\bXavier\b', 'Zav-yay'), (r'\bMoulin\b', 'Moo-lan'), (r'\bGarnot\b', 'Gar-no'), (r'\bFleury\b', 'Flur-ee'),
+       (r'\bAmbroise Champagne\b', 'Om-bwahz Shom-pan-yuh'), (r'\bPascal Montour\b', 'Pass-kal Mon-toor'), (r'\bOuellette\b', 'Wel-ett'),
+       (r'\bQu\'Appelle\b', 'Ka-pell'), (r'\bVan Straubenzie\b', 'Van Straw-ben-zee'), (r'\bzareba\b', 'za-ree-ba'),
+       (r'\bJolie\b', 'Zho-lee'), (r'\bcoulee\b', 'koo-lee'),
+       # Tyre: Greek, Phoenician and Cypriot names
+       (r'\bAzemilcus\b', 'Azz-em-ILL-kus'), (r'\bMelqart\b', 'Mel-kart'), (r'\bHecatombaeon\b', 'Heck-a-tom-BEE-on'), (r'\bPnytagoras\b', 'Nye-TAG-o-ras'),
+       (r'\bAndrocles\b', 'AN-dro-kleez'), (r'\bPasicrates\b', 'Pa-SICK-ra-teez'), (r'\bAmathus\b', 'AM-a-thus'), (r'\bCurium\b', 'KYOO-ree-um'),
+       (r'\bAdmetus\b', 'Ad-MEE-tus'), (r'\bCoenus\b', 'SEE-nus'), (r'\bAristander\b', 'Arris-TAN-der'), (r'\bAndromachus\b', 'An-DROM-a-kus'),
+       (r'\bhypaspists\b', 'hy-PASS-pists'), (r'\bquinqueremes?\b', lambda m: 'kwin-kwi-reem' + ('s' if m.group(0).endswith('s') else '')),
+       (r'\bquadriremes?\b', lambda m: 'kwod-ri-reem' + ('s' if m.group(0).endswith('s') else '')), (r'\btriremes?\b', lambda m: 'try-reem' + ('s' if m.group(0).endswith('s') else '')),
+       (r'\bArrian\b', 'Arry-an'), (r'\bDiodorus\b', 'Dye-o-DOR-us'), (r'\bCurtius\b', 'KUR-shus'), (r'\bPalaetyrus\b', 'Pally-TYE-rus'),
+       (r'\bAgenor\b', 'a-JEE-nor'), (r'\bProteas\b', 'PRO-tee-as'), (r'\bCleander\b', 'Klee-AN-der'), (r'\bLysimachus\b', 'Lye-SIM-a-kus'),
+       (r'\bAradus\b', 'AR-a-dus'), (r'\bArwad\b', 'Ar-wad'), (r'\bSour\b', 'Soor'), (r'\bMallus\b', 'MAL-us'),
+       # Fish Creek: French and Métis names
+       (r'\bTourond\b', 'Too-ron'), (r'\bMontizambert\b', 'Mon-tee-zam-bair'), (r'\bÉdouard\b', 'Ay-dwar'), (r'\bCaron\b', 'Ka-ron'),
+       (r'\bParenteau\b', 'Pa-ron-toe'), (r'\bVermette\b', 'Ver-met'), (r'\bJosé\b', 'Zho-zay'), (r'\bJosephte\b', 'Zho-zett'),
+       (r'\bDoucet\b', 'Doo-set'), (r'\bMelgund\b', 'Mel-gund'), (r'\bCoulee\b', 'Koo-lee'),
+       # Six-Day War: Arabic and Hebrew names, respelled for the English voices
+       (r'\bNasser\b', 'Nasser'), (r'\bAmer\b', 'Ah-mer'), (r'\bShazly\b', 'Shaz-lee'), (r'\bAbu-Ageila\b', 'Abu Ah-gay-la'),
+       (r'\bUm Katef\b', 'Oom Kah-tef'), (r'\bQuneitra\b', 'Koo-nay-tra'), (r'\bTel Faher\b', 'Tel Fa-her'), (r'\bGolani\b', 'Go-lah-nee'),
+       (r'\bJiradi\b', 'Jee-rah-dee'), (r'\bEl Arish\b', 'El Ah-reesh'), (r'\bMitla\b', 'Mitt-la'), (r'\bGiddi\b', 'Giddy'),
+       (r'\bSharm el-Sheikh\b', 'Sharm el Shake'), (r'\bTiran\b', 'Tee-rahn'), (r'\bRiad\b', 'Ree-ahd'), (r'\bNarkiss\b', 'Nar-keess'),
+       (r'\bEshkol\b', 'Esh-coal'), (r'\bDayan\b', 'Dye-ahn'), (r'\bGavish\b', 'Gah-veesh'), (r'\bYoffe\b', 'Yoffy'), (r'\bElazar\b', 'El-ah-zar'),
+       (r'\bHaram al-Sharif\b', 'Ha-rahm al Sha-reef'), (r'\bMughrabi\b', 'Moog-rah-bee'), (r'\bKraishan\b', 'Kray-shahn'), (r'\bAjloun\b', 'Aj-loon'),
+       (r'\bMafraq\b', 'Maf-rack'), (r'\bKhan Yunis\b', 'Khan Yoo-nis'), (r'\bQalqilya\b', 'Kal-kill-ya'), (r'\bImwas\b', 'Im-wahs'),
+       (r'\bLatrun\b', 'La-troon'), (r'\bNablus\b', 'Nab-loos'), (r'\bJenin\b', 'Je-neen'), (r'\bUNEF\b', 'you-nef'), (r'\bU Thant\b', 'Oo Thant'),
+       (r'\bShuqayri\b', 'Shoo-kay-ree'), (r'\bZu\'bi\b', 'Zoo-bee'), (r'\bal-Naksa\b', 'al Nak-sa'), (r'\bNakba\b', 'Nak-ba'), (r'\bWaqf\b', 'Wakf'),
+       (r'\bTzahal\b', 'Tsa-hal'), (r'\bUgda\b', 'Oog-da'), (r'\bRafah\b', 'Rah-fah'), (r'\bFawzi\b', 'Fow-zee'), (r'\bSadat\b', 'Sa-daht'),
+       # Vukovar: Croatian and Serbian names, respelled for the English voices
+       (r'\bVukovar\b', 'Voo-ko-var'), (r'\bBorovo Naselje\b', 'Bor-oh-vo Nah-sel-yeh'), (r'\bBorovo Selo\b', 'Bor-oh-vo Sell-oh'), (r'\bBorovo\b', 'Bor-oh-vo'),
+       (r'\bNaselje\b', 'Nah-sel-yeh'), (r'\bBogdanovci\b', 'Bog-dah-nov-tsee'), (r'\bVinkovci\b', 'Veen-kov-tsee'), (r'\bOvčara\b', 'Ov-chara'),
+       (r'\bLužac\b', 'Loo-zhats'), (r'\bVuka\b', 'Voo-ka'), (r'\bTrpinjska cesta\b', 'Ter-pin-ska tses-ta'), (r'\bTrpinjska\b', 'Ter-pin-ska'),
+       (r'\bTrpinja\b', 'Ter-pin-ya'), (r'\bRužić\b', 'Roo-zhich'), (r'\bNuštar\b', 'Noosh-tar'), (r'\bNegoslavci\b', 'Neg-oh-slav-tsee'),
+       (r'\bMrkšić\b', 'Merk-shich'), (r'\bMarinci\b', 'Ma-rin-tsee'), (r'\bBratić\b', 'Brah-tich'), (r'\bBlago Zadro\b', 'Blah-go Zah-dro'),
+       (r'\bŠljivančanin\b', 'Shlyee-van-cha-nin'), (r'\bVeselin\b', 'Vess-el-in'), (r'\bVojislav\b', 'Voy-ee-slav'), (r'\bŠešelj\b', 'Sheh-shel'),
+       (r'\bVelepromet\b', 'Vel-eh-pro-met'), (r'\bStajićevo\b', 'Stah-yee-cheh-vo'), (r'\bSremska Mitrovica\b', 'Srem-ska Mee-tro-vit-sa'),
+       (r'\bRažnatović\b', 'Razh-na-to-vich'), (r'\bMitnica\b', 'Meet-nit-sa'), (r'\bMiroslav\b', 'Mee-ro-slav'), (r'\bRadić\b', 'Rah-dich'),
+       (r'\bMile\b', 'Mee-leh'), (r'\bMilošević\b', 'Mee-lo-sheh-vich'), (r'\bDedaković\b', 'Deh-dah-ko-vich'), (r'\bManda Patko\b', 'Man-da Pat-ko'),
+       (r'\bKragujevac\b', 'Krag-oo-yeh-vats'), (r'\bJovan Dulović\b', 'Yo-van Doo-lo-vich'), (r'\bJastreb\b', 'Yas-treb'), (r'\bHadžić\b', 'Hah-jich'),
+       (r'\bVesna Bosanac\b', 'Ves-na Boss-a-nats'), (r'\bBosanac\b', 'Boss-a-nats'), (r'\bDavor Marijan\b', 'Dah-vor Mar-ee-yan'), (r'\bBudžak\b', 'Boo-jak'),
+       (r'\bBorković\b', 'Bor-ko-vich'), (r'\bŠid\b', 'Sheed'), (r'\bMédecins Sans Frontières\b', 'May-deh-san Son Fron-tyair'), (r'\bRusyns\b', 'Roo-sins'),
+       (r'\bArkan\b', 'Ar-kahn'), (r'\bSlavonia\b', 'Sla-vo-nia'), (r'\bDulović\b', 'Doo-lo-vich'), (r'\bŽeljko\b', 'Zhel-ko'), (r'\bŽivić\b', 'Zhee-vich'), (r'\bŽivković\b', 'Zhiv-ko-vich')]
 def say(t):
     for a, b in SAY: t = re.sub(a, b, t)
     return t

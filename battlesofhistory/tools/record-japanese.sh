@@ -19,8 +19,8 @@ fi
 "$ENV/bin/python" -c "import unidic, os, sys; sys.exit(0 if os.path.exists(os.path.join(unidic.DICDIR, 'mecabrc')) else 1)" 2>/dev/null || "$ENV/bin/pip" uninstall -q -y unidic 2>/dev/null || true
 "$ENV/bin/pip" show -q unidic-lite >/dev/null 2>&1 || "$ENV/bin/pip" install -q unidic-lite
 MIX='highpass=f=70,agate=threshold=0.035:ratio=6:attack=8:release=160:knee=2,volume=1.6,alimiter=limit=0.95'
-LINES=${1:?usage: record-japanese.sh test | lines.tsv}
-if [ "$LINES" = test ]; then
+LIST=${1:?usage: record-japanese.sh test | lines.tsv}
+if [ "$LIST" = test ]; then
   T=$(mktemp)
   S='関ヶ原の戦い。慶長五年九月十五日、徳川家康の東軍と石田三成の西軍が、美濃国関ヶ原で戦いました。小早川秀秋は松尾山に陣を構えていました。'
   printf 'ja-test\tja-kumo\tjm_kumo\t1.0\t-\t%s\ttest\t%s\n'  "$MIX" "$S" >  "$T"
@@ -31,5 +31,5 @@ if [ "$LINES" = test ]; then
   echo "Then:  cd ~ && zip -r ja-test.zip voices/ja-test   and send ja-test.zip back."
   exit 0
 fi
-"$ENV/bin/python" "$HERE/kokoro-say.py" "$LINES" "$OUT"
+"$ENV/bin/python" "$HERE/kokoro-say.py" "$LIST" "$OUT"
 echo "All done. Zip the battle's ja-kumo and ja-alpha folders under $OUT and send them back."

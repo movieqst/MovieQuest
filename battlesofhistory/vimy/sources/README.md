@@ -36,3 +36,14 @@
   - the map of the Canadian advance (CWM 19750215-030).
 - **Photographs** (16): aerial view of craters (CWM 19740387-060), a tank crossing a trench, the Douai plain from the ridge, the 29th Battalion advancing through wire, fortifications, casualties, artillery, Byng, cemeteries, the 1936 dedication and pilgrims, Allward.
 - The wartime photos and the 1917 maps are public domain; get them by their CWM numbers from the museum's online collection or Library and Archives Canada.
+
+## National Library of Scotland trench maps (sources/trench-maps/nls/)
+Downloaded piece by piece with tools/fetch-nls-map.sh at half the scan's resolution, then stitched. The NLS licence is **CC BY**: credit "Reproduced with the permission of the National Library of Scotland".
+| file | NLS map | sheet | edition |
+|---|---|---|---|
+| nls-101465023.jpg (7134 × 5654) | 101465023 | 36C S.W. (Vimy–Lens), 1:20,000 | Edition 6, trenches corrected to 15 February 1916 |
+| nls-101464753.jpg (7388 × 5476) | 101464753 | 51B.NW.1 Roclincourt, 1:10,000 (Neuville-St-Vaast, Thélus: the south half) | Edition 5A, trenches corrected to 27 December 1916, published January 1917 |
+| nls-101464744.jpg (7355 × 5466) | 101464744 | 36C.SW.1 Lens, 1:10,000 (Lens, Liévin, Angres) | Edition 8A, trenches corrected to 10 February 1917 |
+| nls-101465068.jpg (7106 × 5178) | 101465068 | 51B N.W. (Arras; Neuville–Thélus–Farbus in the top-left corner), 1:20,000 | Edition 6A, trenches corrected to 4 March 1917: **five weeks before the attack** |
+| nls-101465071.jpg (7106 × 5270) | 101465071 | 51B N.W., 1:20,000 | Edition 4A, trenches corrected to 10 October 1916: as the Canadians arrived |
+| nls-101465065.jpg (7100 × 5250) | 101465065 | 51B N.W., 1:20,000 | Edition 7A, trenches corrected to 25 May 1917: **after the battle**, the new front on the plain. It shows the German trenches and also British ones up to about 200 yards inside our front line on 27 May 1917 |

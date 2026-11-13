@@ -125,7 +125,7 @@ window.KADESH_SCENARIO = {
         { at: 15, file: '09-egyptian-archers.jpg', caption: 'Archers in Egyptian service, from the same tomb at Asyut: bow in one hand, a fistful of arrows in the other.', ref: 'Egyptian Museum, Cairo, CG 257; photographed by Ludwig Borchardt', credit: 'Photo: L. Borchardt, Catalogue g\u00e9n\u00e9ral (1911); public domain' },
       ],
       focus: { x: 1050, y: 520 }, zoom: .8,
-      markers: [ { x: 1020, y: 465, label: 'Amun division' }, { x: 1180, y: 1420, label: 'Re division' }, { x: 1900, y: 1760, label: 'Ptah division' } ],
+      markers: [ { x: 1020, y: 465, label: 'Amun division', side: 'egypt' }, { x: 1180, y: 1420, label: 'Re division', side: 'egypt' }, { x: 1900, y: 1760, label: 'Ptah division', side: 'egypt' } ],
       auto: 22,
       lines: [
         { text: 'Four divisions, each named for a god: Amun, Re, Ptah and Seth.', tag: 'established' },
@@ -142,7 +142,7 @@ window.KADESH_SCENARIO = {
         { at: 15, file: '12-hattusa-lion-gate.jpg', caption: 'The Lion Gate of Hattusa, the Hittite capital in central Anatolia, 700 km north of Kadesh.', ref: 'Hattusa, Bo\u011fazkale, Turkey', credit: 'Photo: KapuskaCoFabli, Wikimedia Commons, CC BY-SA 4.0' }
       ],
       focus: { x: 1880, y: 620 }, zoom: .9,
-      markers: [ { x: 1900, y: 450, label: 'Hittite army, concealed' } ],
+      markers: [ { x: 1900, y: 450, label: 'Hittite army, concealed', side: 'hittite' } ],
       auto: 22,
       lines: [
         { text: 'Egyptian texts claim 37,000 infantry and 2,500 chariots in the first charge, with 1,000 more held back. Most historians think these figures are inflated.', tag: 'egyptian', cite: 'The Poem: Lichtheim, AEL II, pp. 57–72; Kitchen, KRI II, pp. 2–147' },
@@ -174,7 +174,7 @@ window.KADESH_SCENARIO = {
         { at: 8,  file: '15-egyptian-camp-relief.jpg', caption: 'The battle carved course by course across the first pylon of the Ramesseum: chariots, horses and fallen men fill every block.', ref: 'Ramesseum, Luxor, first pylon', credit: 'Photo: CyArk, Wikimedia Commons, CC BY-SA 3.0' },
       ],
       focus: { x: 1100, y: 500 }, zoom: .9,
-      markers: [ { x: 1020, y: 465, label: 'The king’s camp' }, { x: 1900, y: 450, label: 'Hittites, behind the city' } ],
+      markers: [ { x: 1020, y: 465, label: 'The king’s camp', side: 'egypt' }, { x: 1900, y: 450, label: 'Hittites, behind the city', side: 'hittite' } ],
       auto: 18,
       lines: [
         { text: 'Egyptian scouts capture two Hittite spies near the camp. Beaten, they confess: the Hittite army is standing right behind Kadesh.', tag: 'egyptian', cite: 'The Bulletin; relief caption at the Ramesseum and Luxor showing the two scouts being beaten' },

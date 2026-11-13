@@ -1,11 +1,11 @@
-/* Opening shot: the Earth from space, two slow turns, then a dive to Mesopotamia.
+/* Opening shot: the Earth from space, one slow turn, then a dive to the battlefield (scenario.globe).
    Orthographic projection drawn by hand on a 2D canvas; land from world.js. */
-window.GaugamelaGlobe = (() => {
+window.BattleGlobe = (() => {
   'use strict';
-  const D = Math.PI / 180, REGION = { lon: 43.6, lat: 35.8 };
-  const RINGS = (window.GAUGAMELA_WORLD && window.GAUGAMELA_WORLD.rings) || [];
-  const BORDERS = window.GAUGAMELA_BORDERS || { modern: [], ancient: [] };
-  const NEAR_EAST = { lon: 44, lat: 33 };   // centre of the pull-back that shows the whole region
+  const D = Math.PI / 180, GS = ((window.BATTLE_SCENARIO || window[Object.keys(window).find(k => /_SCENARIO$/.test(k))] || {}).globe) || {}, KADESH = GS.target || { lon: 0, lat: 0 }, START_LAT = GS.startLat !== undefined ? GS.startLat : 24;
+  const RINGS = (window.BATTLE_WORLD && window.BATTLE_WORLD.rings) || [];
+  const BORDERS = window.BATTLE_BORDERS || { modern: [], ancient: [] };
+  const NEAR_EAST = GS.region || KADESH;   // centre of the pull-back that shows the whole region
   // Pre-computed per ring: Float32 arrays of lon(rad), cos(lat), sin(lat), plus a lon/lat bounding box.
   const PRE = RINGS.map(r => {
     const n = r.length, lon = new Float32Array(n), cl = new Float32Array(n), sl = new Float32Array(n);
@@ -91,19 +91,22 @@ window.GaugamelaGlobe = (() => {
     [[32.5,15.6],[31.5,12.0],[30.5,9.5],[30.0,6.0],[31.5,3.5],[32.5,1.0]],                                                                                            // White Nile
     [[38.5,39.5],[38.0,37.8],[38.8,36.8],[39.5,36.0],[40.5,35.0],[41.8,34.3],[43.0,33.5],[44.3,32.5],[45.5,31.5],[46.5,31.0],[47.5,30.5],[48.5,30.0]],                 // Euphrates
     [[40.0,40.0],[41.0,38.5],[42.2,37.2],[43.0,36.3],[43.8,35.5],[44.2,34.5],[44.4,33.3],[45.5,32.5],[46.5,31.5],[47.5,30.5]],                                         // Tigris
+    [[36.4,33.9],[36.5,34.3],[36.52,34.56],[36.6,35.0],[36.2,35.6],[36.0,36.3],[36.2,36.6]],                                                                           // Orontes
     [[35.8,33.2],[35.6,32.5],[35.55,31.8],[35.5,31.4]],                                                                                                               // Jordan
     [[38.5,39.0],[36.5,38.5],[34.5,38.5],[33.5,39.5],[34.5,40.5],[35.5,41.0],[36.0,41.7]],                                                                            // Kizilirmak (Halys)
     [[40.5,38.0],[42.5,38.5],[44.0,39.5],[46.5,40.5],[48.5,39.7],[49.5,39.3]],                                                                                        // Aras
     [[21.5,43.0],[25.0,43.7],[28.0,44.2],[29.5,45.0]],                                                                                                                // Danube (lower)
-    [[73.0,34.0],[72.5,32.0],[71.0,29.5],[69.5,27.5],[68.5,25.5],[67.8,24.0]]                                                                                         // Indus
+    [[73.0,34.0],[72.5,32.0],[71.0,29.5],[69.5,27.5],[68.5,25.5],[67.8,24.0]],                                                                                        // Indus
+    [[98.0,30.0],[99.5,26.5],[100.3,22.0],[101.5,19.5],[103.0,18.0],[104.8,17.0],[105.5,15.5],[105.8,13.5],[105.3,11.8],[106.3,10.5],[106.7,9.8]],                      // Mekong
+    [[103.5,23.8],[104.8,22.6],[105.8,21.2],[106.5,20.3]],                                                                                                            // Red River
+    [[100.0,17.5],[100.4,15.5],[100.5,13.7]],                                                                                                                         // Chao Phraya
+    [[97.0,26.5],[96.0,22.0],[95.5,19.0],[95.0,16.5]],                                                                                                                // Irrawaddy
+    [[91.0,33.0],[100.0,30.0],[104.5,29.5],[108.0,30.5],[112.0,30.0],[116.0,30.5],[119.0,31.5],[121.5,31.4]]                                                          // Yangtze
   ];
   const ICE = [ [[-55,60],[-45,60],[-20,70],[-18,80],[-30,83],[-60,82],[-70,78]] ];                                      // Greenland
   const SAND = '#cdb57c', SAND_EDGE = 'rgba(205,181,124,0)';
-  const LABELS = [
-    { lon: 30.5, lat: 27, text: 'EGYPT', size: 1 }, { lon: 53, lat: 32, text: 'PERSIA', size: 1 }, { lon: 22, lat: 34.5, text: 'MEDITERRANEAN SEA', size: .7, italic: true },
-    { lon: 44.42, lat: 32.54, text: 'Babylon', size: .55, dot: true }, { lon: 44.01, lat: 36.19, text: 'Arbela (Erbil)', size: .55, dot: true },
-    { lon: REGION.lon, lat: REGION.lat, text: 'NORTHERN MESOPOTAMIA', size: .85, pin: true }
-  ];
+  const LABELS = GS.labels || [];
+  const STOP2 = GS.stop2 || null;   // optional second, lower stop: today's towns, then the towns of the time
   let cv, c, w, h, raf = 0, stars = [], cb = {}, st = null, t0 = 0, lastT = 0, dpr = 1;
   const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   const jit = (i, k) => { const s = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return s - Math.floor(s); };
@@ -187,22 +190,55 @@ window.GaugamelaGlobe = (() => {
       const fs = Math.max(9, Math.min(22, R / 110));
       if (s.modern > 0) {
         c.globalAlpha = s.modern; c.strokeStyle = 'rgba(255,255,255,.85)'; c.lineWidth = 1.3; c.setLineDash([]);
-        BORDERS.modern.forEach(co => { co.rings.forEach(r => { c.beginPath(); if (path(r)) c.stroke(); }); });
+        // the countries were clipped to a box when the data was made (make-borders.py): skip the straight cuts along its edges
+        if (!BORDERS._box) { let a = 180, b = -180, cc = 90, d = -90; BORDERS.modern.forEach(co => co.rings.forEach(r => r.forEach(q => { a = Math.min(a, q[0]); b = Math.max(b, q[0]); cc = Math.min(cc, q[1]); d = Math.max(d, q[1]); }))); BORDERS._box = [a, b, cc, d]; }
+        const [bx0, bx1, by0, by1] = BORDERS._box, onEdge = (q, r) => { const e = 1e-3; return (Math.abs(q[0] - bx0) < e && Math.abs(r[0] - bx0) < e) || (Math.abs(q[0] - bx1) < e && Math.abs(r[0] - bx1) < e) || (Math.abs(q[1] - by0) < e && Math.abs(r[1] - by0) < e) || (Math.abs(q[1] - by1) < e && Math.abs(r[1] - by1) < e); };
+        const strokeRing = r => { c.beginPath(); let pen = false;
+          for (let i = 0; i < r.length; i++) { const p = proj(r[i][0] * D, Math.cos(r[i][1] * D), Math.sin(r[i][1] * D));
+            if (!p || (i && onEdge(r[i - 1], r[i]))) { pen = false; if (p) { c.moveTo(p[0], p[1]); pen = true; } continue; }
+            pen ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); pen = true; }
+          c.stroke(); };
+        BORDERS.modern.forEach(co => co.rings.forEach(strokeRing));
         c.font = `600 ${fs * .8}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
-        BORDERS.modern.forEach(co => { if (!co.label) return; const p = proj(co.label[0] * D, Math.cos(co.label[1] * D), Math.sin(co.label[1] * D)); if (!p) return; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText(co.name.toUpperCase(), p[0], p[1]); c.fillStyle = '#ffffff'; c.fillText(co.name.toUpperCase(), p[0], p[1]); });
-        c.globalAlpha = s.modern; c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText('Today\u2019s borders', 16, 22); c.fillStyle = '#dfe9f3'; c.fillText('Today\u2019s borders', 16, 22);
+        if (!s.stop2) BORDERS.modern.forEach(co => { if (!co.label) return; const p = proj(co.label[0] * D, Math.cos(co.label[1] * D), Math.sin(co.label[1] * D)); if (!p) return; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; c.strokeText(co.name.toUpperCase(), p[0], p[1]); c.fillStyle = '#ffffff'; c.fillText(co.name.toUpperCase(), p[0], p[1]); });
+        c.globalAlpha = s.modern; c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)'; if (!s.stop2) { c.strokeText('Today\u2019s borders', 16, 22); c.fillStyle = '#dfe9f3'; c.fillText('Today\u2019s borders', 16, 22); }
       }
       if (s.ancient > 0) {
         c.globalAlpha = s.ancient;
-        BORDERS.ancient.forEach(k => { c.beginPath(); if (path(k.ring)) { c.closePath(); c.fillStyle = `rgba(${k.color},.26)`; c.fill(); c.setLineDash([7, 5]); c.strokeStyle = `rgba(${k.color},.95)`; c.lineWidth = 2; c.stroke(); c.setLineDash([]); } });
-        BORDERS.ancient.forEach(k => { const p = proj(k.label[0] * D, Math.cos(k.label[1] * D), Math.sin(k.label[1] * D)); if (!p) return;
+        BORDERS.ancient.forEach(k => (k.rings || [k.ring]).forEach(ring => { c.beginPath(); if (path(ring)) { c.closePath(); c.fillStyle = `rgba(${k.color},.26)`; c.fill(); c.setLineDash([7, 5]); c.strokeStyle = `rgba(${k.color},.95)`; c.lineWidth = 2; c.stroke(); c.setLineDash([]); } }));
+        // a front line of the time (BORDERS.front: { name, line: [[lon, lat]...], color, label }), drawn over the realms
+        const FR = BORDERS.front; if (FR) { c.beginPath(); if (path(FR.line)) { c.setLineDash([]); c.lineWidth = Math.max(3, Math.min(7, R / 260)); c.strokeStyle = 'rgba(20,10,10,.75)'; c.stroke(); c.lineWidth = Math.max(2, Math.min(5, R / 360)); c.strokeStyle = `rgb(${FR.color})`; c.stroke(); }
+          if (!s.stop2 && FR.label) { const p = proj(FR.label[0] * D, Math.cos(FR.label[1] * D), Math.sin(FR.label[1] * D)); if (p) { c.font = `700 ${fs * .8}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(FR.name, p[0], p[1]); c.fillStyle = `rgb(${FR.color})`; c.fillText(FR.name, p[0], p[1]); } } }
+        if (!s.stop2) BORDERS.ancient.forEach(k => { const p = proj(k.label[0] * D, Math.cos(k.label[1] * D), Math.sin(k.label[1] * D)); if (!p) return;
           c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(k.name, p[0], p[1]); c.fillStyle = `rgb(${k.color})`; c.fillText(k.name, p[0], p[1]);
           if (k.sub) { c.font = `italic ${fs * .65}px Georgia, serif`; c.lineWidth = 3; c.strokeText(k.sub, p[0], p[1] + fs * .95); c.fillStyle = '#f6e9c6'; c.fillText(k.sub, p[0], p[1] + fs * .95); } });
         c.font = `500 ${fs * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)';
-        const note = 'The main powers around 1274 BCE \u00b7 approximate extents, a reconstruction'; c.strokeText(note, 16, 22); c.fillStyle = '#f3dfad'; c.fillText(note, 16, 22);
+        const note = GS.periodNote || 'Approximate extents, a reconstruction'; if (!s.stop2) { c.strokeText(note, 16, 22); c.fillStyle = '#f3dfad'; c.fillText(note, 16, 22); }
       }
       c.globalAlpha = 1; c.restore();
     }
+    // stop 2: today's towns and cities, then the towns of the time
+    const townLayer = (list, a, today) => {
+      if (!(a > 0) || !list) return; c.globalAlpha = a; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
+      const fs0 = Math.max(11, Math.min(26, R / 230));
+      list.forEach(T => { const p = proj(T.lon * D, Math.cos(T.lat * D), Math.sin(T.lat * D)); if (!p) return; const fs = fs0 * (T.size || .5) * 1.5;
+        c.fillStyle = today ? '#ffffff' : '#f3dfad'; c.strokeStyle = 'rgba(5,10,20,.9)'; c.lineWidth = 2;
+        if (today) { c.beginPath(); c.arc(p[0], p[1], 3.5, 0, 6.283); c.fill(); c.stroke(); } else { c.fillRect(p[0] - 3.5, p[1] - 3.5, 7, 7); c.strokeRect(p[0] - 3.5, p[1] - 3.5, 7, 7); }
+        c.font = today ? `600 ${fs}px system-ui, sans-serif` : `700 ${fs}px 'Cinzel', Georgia, serif`; c.lineWidth = 4;
+        // label side: above (default), 'l' left, 'r' right, 'b' below, so close towns don't overlap
+        const sd = T.side, lx = sd === 'l' ? p[0] - 8 : sd === 'r' ? p[0] + 8 : p[0], ly = sd === 'l' || sd === 'r' ? p[1] : sd === 'b' ? p[1] + fs * .95 : p[1] - fs * .95;
+        c.textAlign = sd === 'l' ? 'right' : sd === 'r' ? 'left' : 'center';
+        c.strokeText(T.text, lx, ly); c.fillText(T.text, lx, ly);
+        if (!today && T.sub) { c.font = `italic ${fs * .72}px Georgia, serif`; c.lineWidth = 3; const sy = ly + fs * (sd === 'b' ? .9 : sd ? .95 : 1.9); c.strokeText(T.sub, lx, sy); c.fillStyle = '#e8eef2'; c.fillText(T.sub, lx, sy); } c.textAlign = 'center'; });
+      c.font = `500 ${Math.max(9, Math.min(22, R / 110)) * .7}px system-ui, sans-serif`; c.textAlign = 'left'; c.lineWidth = 3; c.strokeStyle = 'rgba(5,10,20,.8)';
+      const note = today ? (STOP2.todayNote || 'Today\u2019s towns and cities') : (STOP2.thenNote || 'Towns of the time'); if (today ? !(s.tThen >= .5) : s.tThen >= .5) { c.strokeText(note, 16, 22); c.fillStyle = today ? '#dfe9f3' : '#f3dfad'; c.fillText(note, 16, 22); }
+      c.globalAlpha = 1;
+    };
+    townLayer(BORDERS.townsToday, s.tToday, true); townLayer(BORDERS.townsThen, s.tThen, false);
+    // early pins: pulse over the border overlays from the moment the political boundaries appear
+    const early = Math.max(0, Math.min(1, Math.max(s.modern, s.ancient))) * (1 - s.labels);
+    if (early > 0) { c.globalAlpha = early; LABELS.forEach(L => { if (!L.early) return; const p = proj(L.lon * D, Math.cos(L.lat * D), Math.sin(L.lat * D)); if (!p) return; const r = 7 + 4 * Math.sin(now * 4 + L.lon); c.strokeStyle = '#ffd36b'; c.lineWidth = 2; c.beginPath(); c.arc(p[0], p[1], r, 0, 6.283); c.stroke(); c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 6; c.beginPath(); c.arc(p[0], p[1], r + 6, 0, 6.283); c.stroke();
+      const fs = Math.max(10, Math.min(16, R / 300)); c.font = `700 ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; const ty = p[1] + (L.below ? r + 6 + fs * .8 : -(r + 6 + fs * .7)); c.strokeText(L.text, p[0], ty); c.fillStyle = '#ffd36b'; c.fillText(L.text, p[0], ty); }); c.globalAlpha = 1; }
     // labels
     if (s.labels > 0) {
       c.globalAlpha = s.labels;
@@ -212,7 +248,7 @@ window.GaugamelaGlobe = (() => {
         c.font = `${L.italic ? 'italic ' : ''}${L.pin ? '700' : '600'} ${fs}px 'Cinzel', Georgia, serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
         if (L.dot) { c.fillStyle = '#f6e9c6'; c.beginPath(); c.arc(p[0], p[1], 3, 0, 6.283); c.fill(); }
         if (L.pin) { const r = 10 + 5 * Math.sin(now * 4); c.strokeStyle = '#ffd36b'; c.lineWidth = 2.5; c.beginPath(); c.arc(p[0], p[1], r, 0, 6.283); c.stroke(); c.strokeStyle = 'rgba(255,211,107,.35)'; c.lineWidth = 7; c.beginPath(); c.arc(p[0], p[1], r + 7, 0, 6.283); c.stroke(); }
-        const ty = p[1] + (L.dot ? fs : L.pin ? -fs * 1.6 : 0);
+        const ty = p[1] + (L.dot ? fs : L.pin ? (L.below ? fs * 1.6 : -fs * 1.6) : 0);
         c.lineWidth = 4; c.strokeStyle = 'rgba(5,10,20,.85)'; c.strokeText(L.text, p[0], ty); c.fillStyle = L.pin ? '#ffd36b' : '#f6e9c6'; c.fillText(L.text, p[0], ty);
       });
       c.globalAlpha = 1;
@@ -223,22 +259,22 @@ window.GaugamelaGlobe = (() => {
     }
   }
   // ---- animation phases: idle (slow turn behind the start screen) -> spin (two turns) -> dive -> fade
-  const SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = 5, CLOSE = 26;
+  const MID_SECS = 3.2, TODAY_SECS = 4.5, THEN_SECS = 5.5, SPIN_TURNS = 1, SPIN_SECS = 11, DIVE1_SECS = 4, MODERN_SECS = 4.5, XFADE_SECS = 1.0, OVERLAP_SECS = 2.0, ANCIENT_SECS = 4.5, DIVE2_SECS = 4, FADE_SECS = 1.6, PULL = GS.pull || 5, CLOSE = 26;
   function frame(t) {
     if (!st) return; const now = t / 1000, dt = Math.min(.1, now - (lastT || now)); lastT = now;
     const R0 = Math.min(w, h) * .42;
-    if (st.phase === 'idle') { st.lon0 = REGION.lon; st.R = R0; st.lat0 = 24; st.labels = 0; }
+    if (st.phase === 'idle') { st.lon0 = KADESH.lon; st.R = R0; st.lat0 = START_LAT; st.labels = 0; }
     else if (st.phase === 'spin') {
       const k = Math.min(1, (now - t0) / SPIN_SECS), e = k < .15 ? k / .15 * .5 : k > .85 ? .5 + (1 - (1 - k) / .15) * .5 : .5; // soft start and stop, constant in the middle
-      st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = 24; st.labels = 0;
+      st.lon0 = st.spinFrom - SPIN_TURNS * 360 * smooth(k); st.R = R0; st.lat0 = START_LAT; st.labels = 0;
       if (cb.onSpinProgress) cb.onSpinProgress(k);
       if (!st.spun && k >= .25) { st.spun = true; if (cb.onSpun) cb.onSpun(); }   // narration starts a quarter of the way round
-      if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = REGION.lon; }
+      if (k >= 1) { st.phase = 'dive1'; t0 = now; st.lon0 = KADESH.lon; }
     } else if (st.phase === 'dive1') {
       if (cb.onSpinProgress) cb.onSpinProgress(1);
       // pull in until the whole Near East fills the view
       const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
-      st.R = R0 * Math.pow(PULL, e); st.lat0 = 24 + (NEAR_EAST.lat - 24) * e; st.lon0 = REGION.lon + (NEAR_EAST.lon - REGION.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;
+      st.R = R0 * Math.pow(PULL, e); st.lat0 = START_LAT + (NEAR_EAST.lat - START_LAT) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = -h * (cb.lift ? .22 : .04) * e;
       if (k >= 1) { st.phase = 'modern'; t0 = now; }
     } else if (st.phase === 'modern') {
       const k = Math.min(1, (now - t0) / MODERN_SECS); st.modern = 1;
@@ -247,13 +283,28 @@ window.GaugamelaGlobe = (() => {
       // ancient borders fade in over today's, both show together for a while, then today's fade out
       const e = now - t0, k = Math.min(1, e / (XFADE_SECS + OVERLAP_SECS + XFADE_SECS + ANCIENT_SECS));
       st.ancient = Math.min(1, e / XFADE_SECS); st.modern = e < XFADE_SECS + OVERLAP_SECS ? 1 : Math.max(0, 1 - (e - XFADE_SECS - OVERLAP_SECS) / XFADE_SECS);
-      if (k >= 1) { st.phase = 'dive2'; t0 = now; }
+      if (k >= 1) { st.phase = STOP2 ? 'mid' : 'dive2'; t0 = now; st.from = { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }; }
+    } else if (st.phase === 'mid') {
+      // down to the second stop; the old realms fade, today's borders come back as thin lines with today's towns
+      const k = Math.min(1, (now - t0) / MID_SECS), e = ease(k), P2 = STOP2.pull || 14, C2 = STOP2.center || KADESH; st.stop2 = true;
+      st.R = R0 * PULL * Math.pow(P2 / PULL, e); st.lat0 = NEAR_EAST.lat + (C2.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (C2.lon - NEAR_EAST.lon) * e;
+      st.ancient = Math.max(0, 1 - k / .5); st.modern = Math.max(0, (k - .5) / .5) * .8; st.tToday = Math.max(0, (k - .6) / .4);
+      if (st.oyMid === undefined) st.oyMid = st.oy; st.oy = st.oyMid * (1 - e);
+      if (k >= 1) { st.phase = 'today'; t0 = now; st.from = { lon: C2.lon, lat: C2.lat, pull: P2, oy: 0 }; }
+    } else if (st.phase === 'today') {
+      st.modern = .8; st.tToday = 1; if (now - t0 >= TODAY_SECS) { st.phase = 'then'; t0 = now; }
+    } else if (st.phase === 'then') {
+      // the towns of the time and the old realms fade in over today's, then today's fade out
+      const e = now - t0, x = Math.min(1, e / XFADE_SECS);
+      st.tThen = x; st.ancient = x; st.tToday = e < XFADE_SECS + 1 ? 1 : Math.max(0, 1 - (e - XFADE_SECS - 1) / XFADE_SECS); st.modern = .8 * st.tToday;
+      if (e >= THEN_SECS) { st.phase = 'dive2'; t0 = now; }
     } else if (st.phase === 'dive2') {
-      // drop onto the region
+      // drop onto Kadesh
       const k = Math.min(1, (now - t0) / DIVE2_SECS), e = ease(k);
-      st.R = R0 * PULL * Math.pow(CLOSE / PULL, e); st.lat0 = NEAR_EAST.lat + (REGION.lat - NEAR_EAST.lat) * e; st.lon0 = NEAR_EAST.lon + (REGION.lon - NEAR_EAST.lon) * e;
-      st.ancient = Math.max(0, 1 - k / .4); st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = -h * ((cb.lift ? .22 : .04) * (1 - e) + .05 * e);
-      if (k >= 1) { st.phase = 'fade'; t0 = now; }
+      const F = st.from || { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL }, CL = Math.max(CLOSE, F.pull * 1.5);
+      st.R = R0 * F.pull * Math.pow(CL / F.pull, e); st.lat0 = F.lat + (KADESH.lat - F.lat) * e; st.lon0 = F.lon + (KADESH.lon - F.lon) * e;
+      st.ancient = Math.max(0, 1 - k / .4); st.tThen = st.stop2 ? Math.max(0, 1 - k / .3) : 0; st.modern = 0; st.tToday = 0; st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = (F.oy !== undefined ? F.oy : -h * (cb.lift ? .22 : .04)) * (1 - e) - h * .05 * e;
+      if (k >= 1) { st.phase = 'fade'; t0 = now; if (cb.onFade) cb.onFade(); }
     } else if (st.phase === 'fade') {
       const k = Math.min(1, (now - t0) / FADE_SECS); cv.style.opacity = String(1 - k);
       if (k >= 1) { stop(); if (cb.onDone) cb.onDone(); return; }
@@ -263,7 +314,7 @@ window.GaugamelaGlobe = (() => {
   function smooth(k) { return k < .12 ? (k / .12) * (k / .12) * .06 : k > .88 ? 1 - ((1 - k) / .12) * ((1 - k) / .12) * .06 : .06 + (k - .12) / .76 * .88; }
   function start(canvas, callbacks) {
     cv = canvas; c = cv.getContext('2d'); cb = callbacks || {}; size(); window.addEventListener('resize', size);
-    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: REGION.lon, lat0: 24, R: 100, labels: 0, modern: 0, ancient: 0, ox: 0, oy: 0 }; lastT = 0;
+    cv.style.opacity = '1'; cv.style.display = 'block'; st = { phase: 'idle', lon0: KADESH.lon, lat0: START_LAT, R: 100, labels: 0, modern: 0, ancient: 0, ox: 0, oy: 0 }; lastT = 0;
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
   }
   const nowS = () => performance.now() / 1000;   // same time base as the animation-frame timestamps

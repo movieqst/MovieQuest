@@ -548,16 +548,6 @@
       screen.hidden = true;
       idle.hidden = false;
       idle.textContent = '';
-<<<<<<< HEAD
-      idle.style.background = `transparent url("${showingUrl}") center/contain no-repeat`;
-    } else if (/^audio\//.test(file.type)) {
-      screen.hidden = true;
-      idle.hidden = false;
-      idle.textContent = '♫ ' + file.name;
-      idle.style.background = 'transparent';
-      screen.src = showingUrl;
-      screen.play().catch(() => { screen.muted = true; screen.play().catch(() => {}); });
-=======
       idle.style.background = `#060010 url("${showingUrl}") center/contain no-repeat`;
     } else if (/^audio\//.test(file.type)) {
       screen.hidden = true;
@@ -567,7 +557,6 @@
       const audio = new Audio(showingUrl);
       audio.play().catch(() => {});
       extractAudioMetadata(file, audio);
->>>>>>> origin/main
     } else {
       idle.hidden = true;
       screen.hidden = false;

@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Turn a ChatGPT sprite sheet (a 4 x 4 grid on a green #00FF00 background) into the sheet the battle engines use.
 
-    python3 -I tools/prepare-sprite-sheet.py IN.png OUT.png [cell, e.g. 160 or 240x200] [figure-height]
+    python3 -I tools/prepare-sprite-sheet.py IN.png OUT.png [cell, e.g. 160 or 240x200] [figure-height] [fit]
 
 - keys out the green (soft edges, and green spill on the figure's outline is pulled back toward neutral)
 - finds the figure in each of the 16 cells, ignoring specks
 - scales every figure by the SAME amount, so the tallest is `figure-height` px (default 130)
 - centres each one left to right and stands its feet 8 px above the bottom of a `cell` x `cell` cell (default 160)
 Rows stay as drawn: south, east, north, west; columns are the four walking frames.
+`scale=K` (Vukovar): use exactly scale K (to match another sheet of the same vehicle); anything wider than the cell, such as
+a muzzle flash, is cut at the cell edge instead of shrinking that frame.
+`fit` (Vukovar): one scale for the whole sheet that also fits the WIDEST figure in the cell, so a tank seen from the side
+is not shrunk more than the same tank seen from the front.
 """
 import sys
 from PIL import Image
@@ -17,6 +21,8 @@ src, dst = sys.argv[1], sys.argv[2]
 CW, CH = (map(int, sys.argv[3].split('x')) if 'x' in sys.argv[3] else (int(sys.argv[3]),) * 2) if len(sys.argv) > 3 else (160, 160)   # cell: 160 or 240x200
 FIG = int(sys.argv[4]) if len(sys.argv) > 4 else 130
 FOOT = 8
+FIT = len(sys.argv) > 5 and sys.argv[5] == 'fit'
+FIXED = float(sys.argv[5][6:]) if len(sys.argv) > 5 and sys.argv[5].startswith('scale=') else None
 
 im = np.asarray(Image.open(src).convert('RGB')).astype(float)
 H, W = im.shape[:2]
@@ -43,11 +49,17 @@ for row in range(4):
         boxes.append((xs[0], ys[0], xs[-1] + 1, ys[-1] + 1)); cells.append(c)
 tallest = max(b[3] - b[1] for b in boxes)
 k = FIG / tallest
+if FIT: k = min(k, (CW - 4) / max(b[2] - b[0] for b in boxes))
+if FIXED: k = FIXED
 out = Image.new('RGBA', (CW * 4, CH * 4), (0, 0, 0, 0))
 for i, (c, (bx0, by0, bx1, by1)) in enumerate(zip(cells, boxes)):
     fig = Image.fromarray(c[by0:by1, bx0:bx1], 'RGBA')
     fw, fh = max(1, round((bx1 - bx0) * k)), max(1, round((by1 - by0) * k))
     fig = fig.resize((fw, fh), Image.LANCZOS)
+    if FIXED and fw > CW - 4:   # cut at the cell edge, keeping the figure centred
+        cut = (fw - (CW - 4)) // 2; fig = fig.crop((cut, 0, cut + CW - 4, fh)); fw = CW - 4
+    if fh > CH - FOOT:
+        fig = fig.crop((0, fh - (CH - FOOT), fw, fh)); fh = CH - FOOT
     if fw > CW - 4:   # very wide figure (a spear held sideways): shrink to fit the cell
         s = (CW - 4) / fw; fig = fig.resize((CW - 4, max(1, round(fh * s))), Image.LANCZOS); fw, fh = fig.size
     col, row = i % 4, i // 4

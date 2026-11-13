@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas — Battles of History</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#e9c77a;--panel:#101f29;--line:#38505c;--text:#edf1ed;--muted:#9fb1b8}
+  html,body{margin:0;background:#071017;color:var(--text);font:15px/1.5 system-ui,sans-serif}
+  main{max-width:1200px;margin:0 auto;padding:16px 16px 40px}
+  h1{font:600 clamp(22px,4vw,32px) 'Cinzel',Georgia,serif;color:var(--gold);margin:6px 0 2px}
+  h2{font:600 18px 'Cinzel',Georgia,serif;color:var(--gold);margin:26px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  h2 a{color:inherit;text-decoration:none} h2 .y{color:var(--muted);font:13px system-ui,sans-serif;margin-left:8px}
+  a{color:#9fc8ff} .muted{color:var(--muted)} .small{font-size:12px;color:var(--muted)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin:12px 0}
+  .filters label{font-size:13px;color:var(--muted)}
+  select{background:#0b1821;color:var(--text);border:1px solid var(--line);border-radius:6px;padding:5px 7px;font:inherit;font-size:13px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips button{background:#0b1821;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:13px;cursor:pointer}
+  .chips button.on{border-color:var(--gold);color:var(--gold)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .item{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column}
+  .item:hover{border-color:var(--gold)}
+  .item img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#05080c;display:block}
+  .item .t{padding:6px 8px 8px;font-size:13px;line-height:1.35}
+  .badge{display:inline-block;font-size:10px;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:4px}
+  .badge.game{color:#e9c77a;border-color:#7a6838}.badge.historical{color:#8fd9a8;border-color:#386a4c}.badge.wip{color:#ffcf6b;border-color:#7a5a20}
+  #view{position:fixed;inset:0;background:rgba(3,8,12,.985);display:none;z-index:10;overflow:auto}
+  #view.show{display:block} #view .in{max-width:1300px;margin:0 auto;padding:16px}
+  #view img{max-width:100%;max-height:78vh;display:block;margin:0 auto 10px;border-radius:6px}
+  #close{float:right;background:none;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+</style></head>
+<body><main>
+  <a href="index.html">◀ Battles of History</a>
+  <h1>Atlas</h1>
+  <p class="muted" style="margin:0">Every map from every battle, in order of date: the maps painted for the reenactments (each lined up with real elevation data and checked against the real rivers and coasts), and maps from the historical record. Click a map to see it large, with its credit.</p>
+  <div class="filters">
+    <div class="chips" id="kinds"></div>
+    <label>Battle <select id="battle"><option value="">All battles</option></select></label>
+  </div>
+  <p class="small" id="count"></p>
+  <div id="list"></div>
+</main>
+<div id="view"><div class="in"><button id="close">✕ Close</button><div id="vbody"></div></div></div>
+<script src="atlas-info.js"></script>
+<script>
+  const A = window.BH_ATLAS || [], $ = id => document.getElementById(id);
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const md = t => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\*(.+?)\*/g, '<i>$1</i>');
+  const yr = y => y < 0 ? (-y) + ' BCE' : String(y);
+  const KINDS = [['', 'All maps'], ['game', 'Painted for the game'], ['historical', 'From the record']];
+  const LABEL = { game: 'Painted for the game', historical: 'From the record' };
+  const P = new URLSearchParams(location.search); let kind = P.get('kind') || '', battle = P.get('battle') || '';
+  const battles = [...new Map(A.map(a => [a.battle, a])).values()];
+  battles.forEach(b => { const o = document.createElement('option'); o.value = b.battle; o.textContent = b.battleTitle; $('battle').appendChild(o); });
+  $('battle').value = battle;
+  $('kinds').innerHTML = KINDS.map(([k, t]) => `<button data-k="${k}">${t}</button>`).join('');
+  $('kinds').onclick = e => { const b = e.target.closest('button'); if (!b) return; kind = b.dataset.k; draw(); };
+  $('battle').onchange = () => { battle = $('battle').value; draw(); };
+  function draw() {
+    [...$('kinds').children].forEach(b => b.classList.toggle('on', b.dataset.k === kind));
+    const show = A.filter(a => (!kind || a.kind === kind) && (!battle || a.battle === battle));
+    $('count').textContent = show.length + ' map' + (show.length === 1 ? '' : 's');
+    let html = '', cur = null;
+    show.forEach((a, i) => {
+      if (a.battle !== cur) { if (cur) html += '</div>'; cur = a.battle;
+        html += `<h2><a href="${esc(a.battle)}/index.html">${esc(a.battleTitle)}</a><span class="y">${yr(a.year)}${a.status !== 'ready' ? ' · in progress' : ''}</span></h2><div class="grid">`; }
+      html += `<div class="item" data-i="${A.indexOf(a)}"><img loading="lazy" src="${esc(a.file)}" alt=""><div class="t"><span class="badge ${a.kind}">${LABEL[a.kind]}</span><b>${esc(a.title)}</b>${a.what ? '<br><span class="small">' + md(a.what).slice(0, 400) + '</span>' : ''}</div></div>`;
+    });
+    if (cur) html += '</div>'; $('list').innerHTML = html || '<p class="muted">No maps.</p>';
+    history.replaceState(null, '', '?' + new URLSearchParams(Object.entries({ kind, battle }).filter(([, v]) => v)).toString());
+  }
+  $('list').onclick = e => { const it = e.target.closest('.item'); if (!it) return; const a = A[+it.dataset.i];
+    $('vbody').innerHTML = `<h1 style="font-size:24px">${esc(a.title)} <span class="small">· ${esc(a.battleTitle)}</span></h1><img src="${esc(a.file)}" alt="">
+      <p><span class="badge ${a.kind}">${LABEL[a.kind]}</span>${md(a.what)}</p>${a.credit ? '<p class="small">' + md(a.credit) + '</p>' : ''}
+      <p class="small"><a href="${esc(a.file)}" target="_blank">Open the full-size map ▸</a> · <a href="${esc(a.battle)}/index.html">Go to the battle ▸</a></p>`;
+    $('view').classList.add('show'); window.scrollTo(0, 0); };
+  $('close').onclick = () => $('view').classList.remove('show');
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') $('view').classList.remove('show'); });
+  draw();
+</script>
+<script src="stats.js"></script>
+</body></html>

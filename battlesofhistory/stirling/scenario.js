@@ -317,8 +317,9 @@ window.STIRLING_SCENARIO = {
         { x: 1220, y: 1130, text: 'River Forth', small: true }
       ]
     },
-    globe: { target: { lon: -3.94, lat: 56.13 }, region: { lon: -3.6, lat: 56.0 }, pull: 3.6, startLat: 40,
+    globe: { target: { lon: -3.94, lat: 56.13 }, region: { lon: -3.6, lat: 55.0 }, pull: 8, startLat: 40,
       periodNote: 'Scotland and England in 1297',
+      stop2: { center: { lon: -3.4, lat: 56.05 }, pull: 42, todayNote: 'Today’s towns and cities', thenNote: 'Towns and castles of 1297' },
       labels: [
         { lon: -3.19, lat: 55.95, text: 'Edinburgh', size: .5, dot: true }, { lon: -2.0, lat: 55.77, text: 'Berwick', size: .45, dot: true },
         { lon: -0.13, lat: 51.51, text: 'London', size: .55, dot: true }, { lon: -3.44, lat: 56.40, text: 'Perth', size: .45, dot: true },
@@ -487,3 +488,6 @@ window.STIRLING_SCENARIO = {
     Object.assign({ on: 'two horsemen' }, ring(BRIDGE, 'the bridge of 1297', { r: 40 })),
     Object.assign({ on: 'four stone piers' }, ring(BRIDGE, 'the pier remains', { r: 70, ly: 90 })) ];
 })();
+
+// The year shown with the dates in the stamp at the top left of the map
+window.STIRLING_SCENARIO.clockYear = 1297;

@@ -79,3 +79,49 @@ Our notes only; the site's photos are © greatwar.co.uk, so they are not to be u
 - **Around them:** cratered ground, still uncleared of munitions; visitors stay on the paths.
 - **Use:** a "Today" marker on the timeline's final frame, with our own text and a free photo (search Commons for "Vimy preserved trenches").
 - **Position checked on Google Maps (3 Nov 2026):** the preserved trenches are at about **50.37158, 2.77125**, matching the 50°22′17″N 2°46′17″E above. The Visitor Education Centre and the **Grange Tunnel entrance** are about 100–150 m west and south-west of them, and the Memorial on Hill 145 is about 1 km north. (The satellite view is © Google/Airbus/Maxar and is not to be used. Positions only.)
+
+## National Library of Scotland trench maps (found 3 November 2026)
+NLS has dated editions of both Vimy sheets. The sheets are also listed on the NLS trench-map index.
+
+**Received so far, as small print-PDFs only** (about 600 px of map, too small to trace):
+| NLS map no. | sheet | edition / date |
+|---|---|---|
+| 101465023 | 36C S.W. (Vimy–Lens), 1:20,000 | Edition 6, trenches to 15 Feb 1916 |
+| 101465068 | 51B N.W. (Arras; Neuville–Thélus–Farbus in the top-left corner) | edition to be read |
+| 101465071 | 51B N.W. | another edition, to be read |
+| 101464753 | **51B.NW.1 Roclincourt**, 1:10,000 (Neuville-St-Vaast to Thélus, the south half of the battlefield in detail) | Edition 5A, trenches to 27 Dec 1916 |
+| 101464744 | **36C.SW.1 Lens**, 1:10,000 (Lens, Liévin, Angres: north-east of the ridge, toward the Pimple) | Edition 8A, trenches to 10 Feb 1917 |
+| 101465065 | a neighbouring sheet with the front on its right-hand side (probably 51C N.E., west of Arras) | not needed |
+
+**Still to get, all at full size:**
+- 51B.NW Ed. 6A (4 Mar 1917)
+- 51B.NW.1 Roclincourt Ed. 5A (27 Dec 1916, 1:10,000)
+- 36C.SW.1 Lens Ed. 8A (10 Feb 1917, 1:10,000)
+- 36C.SW.3 Givenchy (8 Apr 1916, 1:10,000)
+- 51B.NW Ed. 4A (Oct 1916) and 7A (May 1917)
+- 36C.SW Ed. 11A (Nov 1917)
+
+## Where the work stands (3 November 2026)
+- **Maps in hand:** six NLS sheets at full detail, in sources/trench-maps/nls/ and in the Library: Feb 1916, Oct 1916, Dec 1916, Feb 1917, Mar 1917, May 1917.
+- **Tools:** tools/fetch-nls-map.sh downloads a map in 512 px pieces; tools/stitch-nls-map.py joins them.
+- **Next, georeferencing:** a first affine fit of 36C S.W. from village names on the downsampled sheet was 150–800 m out, because labels were used rather than exact points. Planned method:
+  1. Pick exact control points (road crossings, churches, the "1°31′ W of Brussels" meridian line printed on 36C S.W.) on full-resolution crops.
+  2. Match them to the same points on battle-nicholson.jpg, which is already fitted to the battle frame.
+  3. Then fit an affine or thin-plate warp per sheet.
+- **Then tracing:** warp each sheet into the battle frame, pick out the red (German) and blue (British) trench ink, and save one transparent overlay per date. The page cross-fades between them on the timeline.
+- **Side project for later:** nicer painted Vimy maps built on these overlays.
+
+## Georeferencing notes (5 November 2026)
+**The sheet frames are labelled in one shared grid.** Distances are W of origin and N/S of origin; the 1:20,000 sheets are in yards, the 1:10,000 in metres:
+| NLS no. | sheet | frame W → E | frame N → S |
+|---|---|---|---|
+| 101465023 | 36C SW Ed 6 (Feb 1916), 1:20,000 | 126,861 → 109,361 yds W (116,001 → 100,000 m) | 7,918 yds N → 3,019 yds S (7,240 m N → 2,760 m S) |
+| 101465071 / 068 / 065 | 51B NW Eds 4A, 6A, 7A, 1:20,000 | 116,000 → 100,000 m W | 2,760 → 12,760 m S |
+| 101464753 | 51B NW1 Roclincourt 5A, 1:10,000 | 116,000 → 108,000 m W | 2,760 → 7,760 m S |
+| 101464744 | 36C SW1 Lens 8A, 1:10,000 | 116,000 → 108,000 m W | 7,240 → 2,240 m N |
+
+So every sheet can be placed in that one grid from its frame corners. For 36C SW, frame top-left ≈ px (360, 458) and top-right ≈ (6603, 468); the 1,000-yd grid lines are about 358 px apart.
+
+**Ground truth:** Nicholson's map is too schematic for precise control points, and online map services are blocked here. Plan: fit one grid → world transform by matching the sheets' printed contour lines (orange, 5 m interval) to the real elevation (DEM), then check it against the "1°31′ W of Brussels" meridian printed on 36C SW.
+
+**Coverage gap:** the 1:10,000 sheet **36C SW3** (Givenchy–Vimy, 2,240 m N → 2,760 m S), which holds the heart of the battle (Hill 145, the Pimple, the craters), is only covered by the Feb 1916 1:20,000 sheet. A 1917 edition of 36C SW3, or of the 1:20,000 36C SW (Eds 8–9, early 1917), would complete the timeline there.

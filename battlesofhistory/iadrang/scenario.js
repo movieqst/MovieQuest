@@ -246,7 +246,7 @@ window.BATTLE_SCENARIO = {
     watchOnly: true, autoNext: true,      // the lead-up: shown in Watch mode only, then straight on to LZ X-Ray
     duration: 168, commandDuration: 168,
     world: { w: 2400, h: 1800 },          // the campaign map: 14.02 N 107.42 E (top left) to 13.46 N 108.19 E, about 83 x 62 km (1 px = 35 m)
-    figScale: .8, startZoom: .6, planeDir: 3.14, tilt: 0,
+    figScale: .8, startZoom: .6, planeDir: 3.14,
     clockStart: '19 Oct 1965',
     heliFrom: { x: 1932, y: 267 },        // Camp Holloway, beside Pleiku
     rally: { us: { x: 1551, y: 1294 }, pavn: { x: 800, y: 1550 } },
@@ -948,3 +948,6 @@ window.BATTLE_SCENARIO = {
     belt:     'The enemy is inside a hundred metres. Fire support on them now would hit your own men.'
   }
 };
+
+// The year shown with the dates in the stamp at the top left of the map
+window.BATTLE_SCENARIO.clockYear = 1965;

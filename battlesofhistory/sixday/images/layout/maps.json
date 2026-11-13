@@ -1,0 +1,57 @@
+[
+ {
+  "file": "region-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 29.4067,
+  "lat1": 33.8033,
+  "lon0": 30.5502,
+  "lon1": 37.3998,
+  "km_w": 649.4,
+  "km_h": 489.43
+ },
+ {
+  "file": "airstrike-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 27.6958,
+  "lat1": 31.9042,
+  "lon0": 30.4532,
+  "lon1": 36.8868,
+  "km_w": 621.48,
+  "km_h": 468.48
+ },
+ {
+  "file": "jerusalem-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 31.7494,
+  "lat1": 31.809,
+  "lon0": 35.188,
+  "lon1": 35.281,
+  "km_w": 8.8,
+  "km_h": 6.63
+ },
+ {
+  "file": "golan-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 33.1902,
+  "lat1": 33.2578,
+  "lon0": 35.6381,
+  "lon1": 35.7453,
+  "km_w": 9.98,
+  "km_h": 7.53
+ },
+ {
+  "file": "abuageila-guide.png",
+  "width": 2400,
+  "height": 1800,
+  "lat0": 30.811,
+  "lat1": 30.919,
+  "lon0": 34.026,
+  "lon1": 34.194,
+  "km_w": 16.0,
+  "km_h": 12.0
+ }
+]

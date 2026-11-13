@@ -1,0 +1,13 @@
+feature,period,status,evidence,how to draw,do not
+Island of Tyre (rock outline),pre-332,reconstructed,"Brocard et al. 2024: rocky island about 1500 x 600 m, 450 m longer to the south than today's headland; relative sea level >2.5 m lower",outline traced by hand over the modern headland and extended south; soft edge,do not use the modern peninsula
+Strait between island and mainland,pre-332,reconstructed,"Ancient: about 4 stades (Diodorus 17.40.4); Brocard ~750 m; Marriner ~1,000 m; shallow sandbank in the middle",open water with a lighter shallow band along the mole line,no isthmus or sand spit before the siege
+Mainland shore (Palaetyrus side),332,approximate,Brocard 2024 Fig. 9 (reference only); modern coast as a guide,low sandy coast with Old Tyre (Palaetyrus) and fields behind,no modern city
+Old Tyre / Palaetyrus,332,approximate,"Arrian 2.16.7; Diodorus 17.40.5 (its stones used for the mole)",village and temple ruins on the shore opposite the island,exact site uncertain: label 'approx.'
+The mole (causeway),332,staged; reconstructed,"Arrian 2.18–19; Diodorus 17.40.5 (two plethra, ~60 m wide, literary); Curtius 4.2.18–24",overlay in stages (S1–S4): stone and earth with timber piles; towers and screens at its head,do not paint it fully built on the base map; not a timber trestle
+North (Sidonian) harbour,332,schematic,"Arrian 2.20.8–10, 2.21.8, 2.24.1; Brocard 2024 (harbours later buried)",an enclosed harbour on the north side facing the mainland/Sidon with a narrow mouth,shape and moles are not known: mark schematic
+South (Egyptian) harbour,332,schematic,"Arrian 2.20.10, 2.24.1",an enclosed harbour on the south/south-east side with a narrow mouth,shape not known: mark schematic
+City walls,332,illustrative,"Arrian 2.18.3, 2.21.4 (very high walls on the mole side, ~150 ft claimed, to confirm)",high stone walls round the island edge with towers,no medieval crenellated castle; tower positions are illustrative
+Breach,332,approximate sector,Arrian 2.22.6–2.23.2: south side toward Egypt,a breached section on the south side,exact place unknown
+Temple of Heracles (Melqart),332,illustrative,Arrian 2.16; 2.24.5–6; Herodotus 2.44,a large temple inside the city,location in the city unknown
+Rocks sunk at the wall foot,332,illustrative,Arrian 2.21.4,rocks along the sea walls (S5),
+Later features,Roman and later,exclude,"Roman road, arch, hippodrome, Crusader walls, modern port",keep on a separate 'today' layer only,never on the 332 base map

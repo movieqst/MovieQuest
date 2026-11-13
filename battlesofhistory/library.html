@@ -21,7 +21,7 @@
 <body><main>
   <a id="back" href="index.html">◀ Back to the battle</a>
   <h1>Library of sources</h1>
-  <p><label class="small">Battle <select id="bsel" onchange="location.search='?battle='+this.value"><option value="kadesh">Kadesh</option><option value="gaugamela">Gaugamela</option><option value="waterloo">Waterloo</option><option value="pegasus">Pegasus Bridge</option><option value="iadrang">Ia Drang</option><option value="dunkirk">Dunkirk</option></select></label> · <a href="gallery.html">🖼 Gallery of pictures</a></p>
+  <p><label class="small">Battle <select id="bsel" onchange="location.search='?battle='+this.value"><option value="kadesh">Kadesh</option><option value="gaugamela">Gaugamela</option><option value="waterloo">Waterloo</option><option value="pegasus">Pegasus Bridge</option><option value="iadrang">Ia Drang</option><option value="dunkirk">Dunkirk</option><option value="talas">Talas</option><option value="stirling">Stirling Bridge</option><option value="vimy">Vimy Ridge</option><option value="vukovar">Vukovar</option><option value="sixday">Six-Day War</option></select></label> · <a href="gallery.html">🖼 Gallery of pictures</a></p>
   <p class="lead" id="lead"></p>
   <p class="small">Each book we keep is a PDF of a printed copy, so it still opens if an outside site moves. Modern works still in copyright are listed with a link only.</p>
   <div id="lib"></div>
@@ -36,6 +36,8 @@
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   document.getElementById('back').href = B + '/index.html';
   document.getElementById('bsel').value = B;
+  // Some battles keep data their scenario needs in a file of its own (Vimy: lines.js); load it first if there is one.
+  const pre = document.createElement('script'); pre.src = B + '/lines.js';
   const sc = document.createElement('script'); sc.src = B + '/scenario.js';
   sc.onload = () => {
     const S = window[Object.keys(window).find(k => /SCENARIO$/.test(k))]; if (!S) return;
@@ -45,12 +47,13 @@
       <div class="meta">${esc(b.author)} · ${esc(b.year)} · ${esc(b.kind)}</div><div>${esc(b.about)}</div>
       <div class="small" style="margin-top:6px">Used in the game: ${esc(b.citedIn)} · ${esc(b.rights)}</div>
       ${b.localNote ? `<div class="small">${esc(b.localNote)}</div>` : ''}
-      <div class="links">${b.local ? `<a class="own" href="${B}/sources/${esc(b.local)}" target="_blank" rel="noopener">📄 Read the book (PDF) ▸</a>` : b.linkOnly ? '<span>Still in copyright: link only</span>' : '<span>📄 PDF: to be added</span>'}
+      ${b.audio ? `<audio controls preload="none" src="${B}/${esc(b.audio)}" style="width:100%;margin:6px 0"></audio>` : ''}
+      <div class="links">${b.local ? `<a class="own" href="${B}/sources/${esc(b.local)}" target="_blank" rel="noopener">${esc(b.localLabel || '📄 Read the book (PDF) ▸')}</a>` : b.linkOnly ? '<span>Still in copyright: link only</span>' : b.audio ? '' : '<span>📄 PDF: to be added</span>'}
         ${b.gutenberg ? `<a href="${esc(b.gutenberg)}" target="_blank" rel="noopener">Project Gutenberg</a>` : ''}
         ${b.archive ? `<a href="${esc(b.archive)}" target="_blank" rel="noopener">Internet Archive</a>` : ''}
-        ${b.link ? `<a href="${esc(b.link)}" target="_blank" rel="noopener">${esc(b.linkLabel || 'Read online')}</a>` : ''}</div></div>`).join('') || '<p>No books listed yet.</p>';
+        ${b.link ? `<a href="${/^https?:/.test(b.link) ? esc(b.link) : B + '/' + esc(b.link)}" target="_blank" rel="noopener">${esc(b.linkLabel || 'Read online')}</a>` : ''}</div></div>`).join('') || '<p>No books listed yet.</p>';
   };
-  document.head.appendChild(sc);
+  pre.onload = pre.onerror = () => document.head.appendChild(sc); document.head.appendChild(pre);
 </script>
 <script src="sounds/catalog.js"></script>
 <script>

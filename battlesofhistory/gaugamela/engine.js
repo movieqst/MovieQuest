@@ -1,4 +1,6 @@
-/* Battles of History — reenactment & command engine (Gaugamela build; battle-neutral except where noted).
+/* Battles of History — reenactment & command engine (Talas build, used for Gaugamela; battle-neutral except where noted).
+   Vimy additions: trench layers on the map (S.trenchLayers, slide/chapter 'trenches'), the creeping barrage
+   (chapter 'barrage'), and fallen soldiers per side (S.fallen.bySide).
    Reads window.GAUGAMELA_SCENARIO (scenario.js). Plain 2D Canvas, no libraries. */
 (() => {
 'use strict';
@@ -9,6 +11,13 @@ const S = window.GAUGAMELA_SCENARIO, W = S.world, B = S.battlefield;
 if (!B.city) B.city = { name: '', x: -1e5, y: -1e5, w: 0, h: 0 };
 if (!B.camp) B.camp = { name: '', x: -1e5, y: -1e5, w: 0, h: 0 };
 if (!B.bridge) B.bridge = { x: -1e5, y: -1e5 };
+/* The campaign (S.campaign): an opening part on its own map (15 to 17 June), played in Watch mode before the battle.
+   setStage() swaps the chapters, formations, leaders, length and map; the battle's own are kept in BATTLE. Both maps are
+   2400 x 1800 world pixels. Command mode is always the battle. */
+const BATTLE = { events: S.events, formations: S.formations, leaders: S.leaders, duration: S.duration };
+const CAMP = S.campaign || null;
+let stage = 'battle', stageT = null;
+let CAMPTER = null;   // the campaign map, painted (set when its image arrives)
 const $ = id => document.getElementById(id);
 const canvas = $('battle'), ctx = canvas.getContext('2d');
 const mini = $('minimap'), mctx = mini.getContext('2d');
@@ -26,11 +35,11 @@ let paused = false, cinematic = false, speed = 1, simTime = 0, acc = 0, lastFram
 let formations = [], byId = {};
 let eventIndex = 0, currentEvent = null, aiFlags = {}, battleOver = null, fastForward = false;
 let selected = new Set();
-let player = 'macedon'; try { const sv = localStorage.getItem('gaugamela-side'); if (sv === 'persia' || sv === 'macedon') player = sv; } catch (e) {}
+let player = 'allied'; try { const sv = localStorage.getItem('gaugamela-side'); if (sv === 'french' || sv === 'allied') player = sv; } catch (e) {}
 const setPlayer = sd => { player = sd; try { localStorage.setItem('gaugamela-side', sd); } catch (e) {} const sel = $('sideSel'); if (sel) sel.value = sd; };
 let dragging = false, last = null, dragMoved = false, band = null, overview = null;
 let introIdx = 0, introTimer = 0, introTail = 0, introPaused = false, introStarted = false, introMedia = [], mediaIdx = -1;
-const G = window.GaugamelaGlobe;
+const G = window.BattleGlobe;
 const INTRO_BREAK = 5, CHAPTER_BREAK = 2.5;
 let markers = [];
 let TER = null, MINIBASE = null, PAINTED = false, PAINTEDTER = null, DRAWNTER = null, artOn = true; try { artOn = localStorage.getItem('gaugamela-art') !== '0'; } catch (e) {}
@@ -43,6 +52,7 @@ const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').
 const tagChip = (tag, cite) => { const c = S.confidence[tag] || S.confidence.reconstruction; return `<button class="chip" style="--c:${c.color}" title="${c.desc} Click for the sources." data-tag="${tag}" data-cite="${esc(cite)}">${c.label}</button>`; };
 let voiceId = (S.voices && S.voices[0]) ? S.voices[0].id : '';
 try { const v = localStorage.getItem('gaugamela-voice'); if (v && S.voices.some(x => x.id === v)) voiceId = v; } catch (e) {}
+const evAudio = ev => ev.audio || (ev.clipNo ? audioFor('event', ev.clipNo) : audioFor(stage === 'campaign' ? 'event-campaign' : 'event', S.events.indexOf(ev) + 1));   // clipNo: the chapter's own clip number (Talas)
 const audioFor = (kind, n) => S.audioBase ? S.audioBase + (voiceId ? voiceId + '/' : '') + kind + (n !== undefined ? '-' + n : '') + '.mp3' : undefined;
 
 function riverXAt(y) {
@@ -192,7 +202,7 @@ function buildTerrain() {
   c.fillStyle = '#9a8a62'; c.beginPath(); c.roundRect(ct.x - 8, ct.y - 8, ct.w + 16, ct.h + 16, 10); c.fill();
   c.fillStyle = '#b6a477'; c.fillRect(ct.x, ct.y, ct.w, ct.h);
   outlined(c, ct.name, ct.x + ct.w / 2, ct.y + ct.h + 46, 20, { fill: '#f8e9bf' });
-  // the Macedonian camp: trampled ground; shields and tents stand (see drawCamp)
+  // the Allied camp: trampled ground; shields and tents stand (see drawCamp)
   const cp = B.camp;
   c.fillStyle = 'rgba(210,190,140,.35)'; c.fillRect(cp.x, cp.y, cp.w, cp.h);
   outlined(c, cp.name, cp.x + cp.w / 2, cp.y - 18, 12, { fill: '#dce9ff' });
@@ -210,14 +220,17 @@ function tent(c, x, y, s, col, royal) {
 }
 
 /* ---------------- unit sprites (drawn facing +x, origin at the feet) ---------------- */
+// Two sides: 'allied' and 'french' are the engine's names for the scenario's first and second side (Talas: Tang in red,
+// the Abbasids in black). The scenario can override these colours (S.sideArt).
 const SIDE_ART = {
-  macedon:   { skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' },
-  persia: { skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' }
+  allied: { skin: '#b57a4a', head: '#b58a3c', headStroke: '#4a3418', shield: '#8a3a30', shieldStroke: '#3a1a14', cab: '#c9463a', cabLight: '#ff9d8a', wheel: '#3a2a1c', horse: '#5a3a26', horse2: '#7a4e34', pennant: '#d44c3e', trim: '#f3d9a0' },
+  french: { skin: '#c98b58', head: '#f2ead3', headStroke: '#6a5a3a', shield: '#d9c38a', shieldStroke: '#5a4020', cab: '#3985d7', cabLight: '#7fb6ff', wheel: '#4b3a26', horse: '#6b4a2f', horse2: '#8a6240', pennant: '#3985d7', trim: '#e9c77a' }
 };
+if (S.sideArt) Object.keys(S.sideArt).forEach(k => Object.assign(SIDE_ART[k] || (SIDE_ART[k] = {}), S.sideArt[k]));
 /* Upright three-quarter-view figures (origin at the feet, drawn facing one of four directions). */
 const dirOf = facing => { const a = ((facing % (2 * PI)) + 2 * PI) % (2 * PI); return a < PI / 4 || a > 7 * PI / 4 ? 'e' : a < 3 * PI / 4 ? 's' : a < 5 * PI / 4 ? 'w' : 'n'; };
 function figInfantry(c, side, archer, s, i, dir, step) {
-  const A = SIDE_ART[side], hit = side === 'persia', skin = A.skin, cloth = hit ? '#8a3a30' : '#f4efe2', cloth2 = hit ? '#6a2a22' : '#ddd3bb';
+  const A = SIDE_ART[side], hit = side === 'allied', skin = A.skin, cloth = A.cloth || (hit ? '#8a3a30' : '#f4efe2'), cloth2 = A.cloth2 || (hit ? '#6a2a22' : '#ddd3bb');
   c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, 5 * s, 2 * s, 0, 0, PI * 2); c.fill();
   const side_ = dir === 'e' || dir === 'w', back = dir === 'n', sw = Math.sin(step) * 1.6 * s;
   // legs
@@ -255,7 +268,7 @@ function figInfantry(c, side, archer, s, i, dir, step) {
     c.stroke(); c.fillStyle = '#7a5a30'; c.fillRect(-4.6 * s, -16 * s, 1.8 * s, 6 * s); // quiver
   }
 }
-/* Drawn stand-in for the elephant until a painted sheet (images/units/persia-elephant.png) is present. */
+/* Drawn stand-in for the elephant until a painted sheet (images/units/french-elephant.png) is present. */
 function figElephant(c, side, s, moving, dir, step) {
   const A = SIDE_ART[side], side_on = dir === 'e', bob = moving ? Math.sin(step) * .8 * s : 0;
   c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, (side_on ? 15 : 10) * s, 3.6 * s, 0, 0, PI * 2); c.fill();
@@ -274,7 +287,7 @@ function figElephant(c, side, s, moving, dir, step) {
   c.fillStyle = A.cab; c.fillRect((side_on ? 4.6 : -1.4) * s, -22 * s + bob, 2.8 * s, 3 * s);
 }
 function figChariot(c, side, s, i, moving, dir, step) {
-  const A = SIDE_ART[side], crew = side === 'persia' ? 3 : 2, sw = moving ? Math.sin(step) * 1.8 * s : 0;
+  const A = SIDE_ART[side], crew = side === 'french' ? 3 : 2, sw = moving ? Math.sin(step) * 1.8 * s : 0;
   c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(1 * s, .6 * s, (dir === 'e' || dir === 'w' ? 15 : 9) * s, 3.4 * s, 0, 0, PI * 2); c.fill();
   if (moving) { c.fillStyle = 'rgba(210,190,140,.35)'; c.beginPath(); c.arc(-12 * s, -1 * s, 3.5 * s, 0, PI * 2); c.arc(-15 * s, -3 * s, 2.6 * s, 0, PI * 2); c.fill(); }
   const wheelSide = (x, y, r) => { c.fillStyle = A.wheel; c.beginPath(); c.arc(x, y, r, 0, PI * 2); c.fill(); c.strokeStyle = '#8a7a5a'; c.lineWidth = .7 * s; for (let k = 0; k < 3; k++) { const a = k * PI / 3 + (moving ? wall * 9 : 0); c.beginPath(); c.moveTo(x - Math.cos(a) * r, y - Math.sin(a) * r); c.lineTo(x + Math.cos(a) * r, y + Math.sin(a) * r); c.stroke(); } c.strokeStyle = '#2a1a0c'; c.lineWidth = .9 * s; c.beginPath(); c.arc(x, y, r, 0, PI * 2); c.stroke(); };
@@ -291,7 +304,7 @@ function figChariot(c, side, s, i, moving, dir, step) {
     c.fillStyle = A.cab; c.beginPath(); c.moveTo(-10 * s, -5.5 * s); c.lineTo(-10 * s, -12.5 * s); c.quadraticCurveTo(-6 * s, -13.5 * s, -1.5 * s, -11.5 * s); c.lineTo(-1.5 * s, -5.5 * s); c.closePath(); c.fill(); c.strokeStyle = A.trim; c.lineWidth = .9 * s; c.stroke();
     c.fillStyle = A.cabLight; c.fillRect(-9.2 * s, -11.8 * s, 1.6 * s, 5.6 * s);
     crewAt(crew === 2 ? [-7.6 * s, -4.2 * s] : [-8 * s, -5.6 * s, -3.2 * s], -12 * s, s);
-    if (side === 'macedon') { c.strokeStyle = '#4e3424'; c.lineWidth = .9 * s; c.beginPath(); c.arc(-2.5 * s, -15.5 * s, 3.2 * s, -PI / 2, PI / 2); c.stroke(); }
+    if (side === 'allied') { c.strokeStyle = '#4e3424'; c.lineWidth = .9 * s; c.beginPath(); c.arc(-2.5 * s, -15.5 * s, 3.2 * s, -PI / 2, PI / 2); c.stroke(); }
     else { c.strokeStyle = '#5a3b22'; c.lineWidth = 1 * s; c.beginPath(); c.moveTo(-6 * s, -14 * s); c.lineTo(4 * s, -19 * s); c.stroke(); c.fillStyle = A.shieldStroke; c.beginPath(); c.arc(-5.6 * s, -14.6 * s, 2.3 * s, 0, PI * 2); c.fill(); c.fillStyle = A.shield; c.beginPath(); c.arc(-5.6 * s, -14.6 * s, 1.5 * s, 0, PI * 2); c.fill(); }
     wheelSide(-6 * s, -3.2 * s, 3.6 * s);
     horse(8 * s, 0, A.horse, false);
@@ -310,17 +323,188 @@ function figChariot(c, side, s, i, moving, dir, step) {
     crewAt(crew === 2 ? [-2.6 * s, 2.6 * s] : [-3.4 * s, 0, 3.4 * s], -9.5 * s, .95 * s);
   }
 }
-/* Painted sprite sheets (images/units/<side>-<type>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
-   Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1. */
+/* Painted sprite sheets (images/units/<name>.png): 4 rows s,e,n,w x 4 frames, feet at the bottom centre of each cell.
+   Gun sheets differ: one facing (east, mirrored for west), and the rows are actions: move, push (limber/unlimber), load, fire.
+   Used when loaded; the drawn figures remain the fallback. Sizes are in world units at scale 1.
+   A formation may name its own sheet (`sheet`, e.g. the Prussians or the Scots Greys); otherwise it follows its side and type. */
 const SHEETS = {};
-const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 }, elephant: { cw: 240, ch: 200, h: 72 } };
-['macedonian-spearman', 'macedonian-archer', 'macedonian-cavalry', 'persia-spearman', 'persia-chariot', 'persia-cavalry', 'persia-elephant'].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
-const sheetFor = (side, type) => SHEETS[(side === 'macedon' ? 'macedonian' : 'persia') + '-' + (type === 'chariot' ? 'chariot' : type === 'elephant' ? 'elephant' : type === 'cavalry' ? 'cavalry' : type === 'archers' ? 'archer' : 'spearman')];
+let armiesRedraw = null;   // set by renderArmies: redraws the card figures when a sheet arrives
+const SHEET_SPEC = { infantry: { cw: 160, ch: 160, h: 26 }, archers: { cw: 160, ch: 160, h: 26 }, cavalry: { cw: 240, ch: 200, h: 30 }, chariot: { cw: 240, ch: 200, h: 30 }, elephant: { cw: 240, ch: 200, h: 72 }, artillery: { cw: 384, ch: 256, h: 34 } };
+// the painted sheets this battle uses (S.sheets) and which sheet each side and type takes (S.sheetBy)
+(S.sheets || []).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; if (armiesRedraw) armiesRedraw(); }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const SHEET_BY = S.sheetBy || {};
+/* Trench layers (images/trenches/<name>, the same size ratio as the battle map), laid over the terrain: an intro slide or
+   chapter with 'trenches' switches the layer (null: none); S.defaultTrench is the one shown when the battle starts. */
+const TRENCH = {}, TCACHE = {}; let curTrench = S.defaultTrench || null;
+(S.trenchLayers || []).forEach(n => { const im = new Image(); im.onload = () => { TRENCH[n] = im; if (curTrench === n) applyArt(); }; im.src = (S.imageBase || 'images/') + 'trenches/' + n; });
+function setTrench(n) { if (n === undefined || n === curTrench) return; curTrench = n; applyArt(); }
+function withTrench(base) {
+  if (!curTrench || !TRENCH[curTrench] || !base) return base; const key = curTrench + (base === PAINTEDTER ? 'p' : 'd');
+  if (!TCACHE[key]) { const T = document.createElement('canvas'); T.width = base.width; T.height = base.height; const g = T.getContext('2d'); g.drawImage(base, 0, 0); g.globalAlpha = S.trenchAlpha || .85; g.drawImage(TRENCH[curTrench], 0, 0, T.width, T.height); TCACHE[key] = T; }
+  return TCACHE[key];
+}
+const sheetName = f => f.sheet || (SHEET_BY[f.side] || {})[f.type];
+const sheetFor = f => SHEETS[sheetName(f)];
+/* Combat animation. S.attackSheets maps a walking sheet to its attack sheet (the same 4 x 4 layout: rows s, e, n, w; four
+   frames of a spear thrust, a sword stroke, a charge, a bow drawn...). A formation that is fighting (it struck or was struck
+   in the last moment, or its strength is falling by the script) draws its attack sheet instead, a little faster.
+   Leaders use 'leader-<id>-attack' when an enemy formation is fighting close by. */
+const ATTACK = S.attackSheets || {};
+[...new Set(Object.values(ATTACK))].forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+const fighting = f => simTime - (f.lastStrike ?? -99) < 1.2 || simTime - (f.lastHit ?? -99) < 1.2 || (f.strengthTarget !== null && f.strengthTarget !== undefined && f.strengthTarget < f.strength);
+/* The fallen. When a formation loses men, the figures that drop out are left lying where they stood: a body from
+   S.fallen.soldier (a 4 x 4 sheet of 16 different fallen poses, 240 x 200 cells), and for horsemen now and then a dead
+   horse (S.fallen.horse). They lie on the ground under everything else and are cleared when the battle restarts. */
+const FALLEN = [], FALLEN_MAX = 700, FS = S.fallen || {}; window.__fallen = FALLEN;   // for tests
+Object.values(FS.bySide || {}).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+[FS.soldier, FS.horse].filter(Boolean).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+function drawFallen(c, y0v, y1v, x0v, x1v) {
+  if (!artOn) return;
+  FALLEN.forEach(b => {
+    if (b.y < y0v || b.y > y1v || b.x < x0v || b.x > x1v) return;
+    const sh = SHEETS[b.horse ? FS.horse : ((FS.bySide || {})[b.side] || FS.soldier)], q = P(b.x, b.y); if (!(q.s > 0)) return;
+    if (!sh) { c.fillStyle = 'rgba(40,30,20,.55)'; c.beginPath(); c.ellipse(q.x, q.y, 6 * q.s, 2.5 * q.s * (q.k || 1), 0, 0, PI * 2); c.fill(); return; }
+    const k = b.k % 16, cw = 240, ch = 200, h = (b.horse ? 24 : 16) * 1.3 * q.s, sc = h / ch * 1.6;
+    c.drawImage(sh, (k % 4) * cw, Math.floor(k / 4) * ch, cw, ch, q.x - cw * sc / 2, q.y - ch * sc * .62, cw * sc, ch * sc);
+  });
+}
+/* ---------------- artillery ----------------
+   A battery is a formation of gun figures (three guns stand for a whole battery). It fires only when unlimbered: a battery
+   ordered to move first limbers up, moves slowly, and must unlimber again before it can fire. It fires volleys on a reload
+   cycle at the nearest enemy it can see: roundshot at long range, canister (a can of musket balls) close in, which is far
+   deadlier. Troops behind the crest of a ridge (`S.cover`) are half-hidden from roundshot. Crews do not fight hand to hand:
+   when cavalry is on top of the guns they take shelter and the battery falls silent, and enemy troops in contact damage it.
+   Numbers are a game model, not to scale. */
+const GUN = { lay: 1.5, range: 620, canister: 190, reload: 2.6, limber: 1.6, unlimber: 2.2, round: 2.6, canisterDmg: 9, shelter: 60 };
+const SMOKE = [];   // world-space smoke puffs and dust: { x, y, t0, life, r, kind }
+// Fire orders (Command mode, the player's batteries): 'will' = fire at the nearest enemy in sight (the default and the computer's way);
+// 'aim' = lay the guns on one target, then wait; 'fire' = one volley at it as soon as the guns are laid, then wait again;
+// 'auto' = keep firing at it until it is gone or out of range; 'hold' = cease fire.
+// Laying the guns on a new target takes GUN.lay seconds; a target must be in sight and within range.
+function gunInit(f) { f.gun = { deployed: true, phase: 'ready', t: 0, cd: 1 + (f.cols || 3) * .3 * Math.random(), lastShot: -99, aim: null, mode: 'will', target: null, laid: 0 }; }
+const gunFacesWest = f => f.gun && f.gun.aim ? f.gun.aim.x < f.x - 8 : Math.cos(f.facing) < -.2;
+// Pose for gun figure i: which row and frame of the sheet. Guns in a battery fire one after another, a quarter second apart.
+function gunPose(f, i) {
+  const g = f.gun || { phase: 'ready', lastShot: -99, cd: 0 }, since = simTime - g.lastShot - i * .25;
+  if (g.phase === 'moving') return { row: 0, frame: Math.floor(wall * 6 + i) % 4 };
+  if (g.phase === 'limber' || g.phase === 'unlimber') return { row: 1, frame: Math.floor(wall * 4 + i) % 4 };
+  if (since >= 0 && since < .8) return { row: 3, frame: since < .12 ? 1 : since < .45 ? 2 : 3 };
+  if (since >= .8 && g.cd > .4) return { row: 2, frame: Math.floor(wall * 3 + i) % 4 };
+  return { row: 3, frame: 0 };
+}
+function drawGunSheet(c, sh, f, x, y, i, s) {
+  const spec = SHEET_SPEC.artillery, pose = gunPose(f, i), scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
+  c.save(); c.translate(x, y); if (gunFacesWest(f)) c.scale(-1, 1);
+  c.drawImage(sh, pose.frame * spec.cw, pose.row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore();
+}
+// Drawn stand-in for a gun and its crew, facing east (the caller mirrors it for west).
+function figGun(c, side, s, i, row) {
+  const A = SIDE_ART[side], recoil = row === 3 ? -1.5 * s : 0;
+  c.fillStyle = 'rgba(25,20,10,.3)'; c.beginPath(); c.ellipse(0, .6 * s, 14 * s, 3.2 * s, 0, 0, PI * 2); c.fill();
+  c.strokeStyle = side === 'french' ? '#4c5a66' : '#55603a'; c.lineWidth = 2.6 * s; c.beginPath(); c.moveTo(-12 * s + recoil, -1 * s); c.lineTo(2 * s + recoil, -5 * s); c.stroke();
+  c.fillStyle = '#b08a3a'; c.save(); c.translate(3 * s + recoil, -6 * s); c.rotate(-.08); c.fillRect(-5 * s, -1.6 * s, 15 * s, 3.2 * s); c.restore();
+  c.strokeStyle = '#3a2c1c'; c.lineWidth = 1.2 * s; c.beginPath(); c.arc(2 * s + recoil, -4 * s, 4.2 * s, 0, PI * 2); c.stroke();
+  [-9, -4].forEach((dx, k) => { c.fillStyle = A.cab; c.fillRect((dx - 1.4) * s, -12 * s, 2.8 * s, 6 * s); c.fillStyle = A.skin; c.beginPath(); c.arc(dx * s, -13.5 * s, 1.5 * s, 0, PI * 2); c.fill();
+    c.fillStyle = '#1d1d1d'; c.fillRect((dx - 1.3) * s, -17 * s, 2.6 * s, 2.6 * s); c.fillStyle = '#e8e2d2'; c.fillRect((dx - 1.2) * s, -6 * s, 1 * s, 6 * s); c.fillRect((dx + .2) * s, -6 * s, 1 * s, 6 * s); });
+}
+// Can this side see that formation? In Command mode each side has its own picture; in the reenactment, what the narration shows.
+function sees(side, t) { if (!alive(t) || !t.present) return false; if (mode !== 'command') return t.known; return side === player ? t.known : t.aiKnown; }
+// One volley per battery when it is ready. `apply` = false in the reenactment: the guns fire for the eye, the script decides losses.
+function artillery(apply) {
+  formations.forEach(f => {
+    if (f.type !== 'artillery' || !alive(f) || !f.gun || f.state === 'rout' || f.state === 'captured' || f.holdFire) return;
+    const g = f.gun; if (!g.deployed) return;
+    if (g.mode === 'hold') return;
+    if (g.mode === 'aim' || g.mode === 'fire' || g.mode === 'auto') {                        // a battery laid on one target by the player
+      const t = byId[g.target];
+      if (!t || !alive(t) || t.state === 'captured' || !sees(f.side, t)) { g.mode = 'will'; g.target = null; if (f.side === player) addLog(f.division + ': target lost, firing at will'); return; }
+      g.aim = { x: t.x, y: t.y }; f.facing = Math.atan2(t.y - f.y, t.x - f.x); const was = g.laid; g.laid += DT;
+      if (was < GUN.lay && g.laid >= GUN.lay && selected.has(f.id)) { renderSelection(); if (g.mode === 'aim') addLog(f.division + ': guns laid on ' + t.division + ', ready to fire'); }
+      if (g.mode === 'aim' || g.laid < GUN.lay) return;
+      g.cd -= DT; if (g.cd > 0) return;
+      const d = dist(f, t); if (d > GUN.range) { g.cd = .5; return; }   // out of range: hold, laid, until it comes back in
+      if (formations.some(e => e.side !== f.side && alive(e) && dist(f, e) < GUN.shelter && (e.type === 'cavalry' || e.type === 'infantry'))) { g.cd = .5; return; }
+      volley(f, t, d, apply); if (g.mode === 'fire') { g.mode = 'aim'; if (selected.has(f.id)) renderSelection(); } return;
+    }
+    g.cd -= DT; if (g.cd > 0) return;
+    let best = null, bd = GUN.range, near = false;
+    formations.forEach(t => { if (t.side === f.side || !alive(t) || t.state === 'captured') return; const d = dist(f, t);
+      if (d < GUN.shelter && (t.type === 'cavalry' || t.type === 'infantry')) near = true;
+      const dd = t.type === 'artillery' ? d * 1.6 : d;   // gunners were told to fire at troops, not at the enemy's guns
+      if (dd < bd && d < GUN.range && sees(f.side, t)) { bd = dd; best = t; } });
+    if (best) bd = dist(f, best);
+    if (near) { g.cd = .5; return; }                       // crews take shelter while enemy troops are on the guns
+    if (!best) { g.cd = .4; g.aim = null; return; }
+    volley(f, best, bd, apply);
+  });
+  for (let k = SMOKE.length - 1; k >= 0; k--) if (simTime - SMOKE[k].t0 > SMOKE[k].life || simTime < SMOKE[k].t0 - 5) SMOKE.splice(k, 1);
+}
+// One volley from battery f at target t, bd away. Canister (close in) sprays the target. Roundshot: each gun's ball lands
+// somewhere around the point aimed at (the further the shot, the wider the spread) and hurts any troops or guns near where
+// it lands, whichever side they are on. `apply` = false in the reenactment: the shots are for the eye only.
+const BALL = { spread: .14, hit: 70 };
+function volley(f, best, bd, apply) {
+  const g = f.gun, n = f.cols * f.rows, canister = bd < GUN.canister;
+  g.aim = { x: best.x, y: best.y }; g.lastShot = simTime; g.cd = GUN.reload * (.9 + .2 * Math.random());
+  const base = (canister ? GUN.canisterDmg * (1 - .5 * bd / GUN.canister) : GUN.round * (1 - .4 * bd / GUN.range)) * (f.power || 1) * (f.strength / 100);
+  const hurt = (t, dmg) => {
+    if (!canister && S.cover && t.side === S.cover.side && t.y < S.cover.yMax) dmg *= S.cover.k;   // behind the crest
+    if (t.state === 'hold' && t.type === 'infantry') dmg *= 1.2;                                      // a square or a halted line is a dense target
+    if (t.fortified) dmg *= .12;                                                                       // behind the thick walls of a farm
+    t.strength -= dmg; t.lastHit = simTime;
+  };
+  for (let i = 0; i < n; i++) {
+    const west = best.x < f.x - 8, mx = f.x + (i - (n - 1) / 2) * 52 + (west ? -26 : 26), my = f.y - 9, at = simTime + i * .25;   // at the muzzle
+    SMOKE.push({ x: mx, y: my, t0: at, life: 3.2, r: 10, kind: 'smoke' });
+    if (canister) { SMOKE.push({ x: best.x + (Math.random() - .5) * 60, y: best.y + (Math.random() - .5) * 30, t0: at + .2, life: 1.2, r: 14, kind: 'spray' }); continue; }
+    const sp = bd * BALL.spread, a = Math.random() * PI * 2, r = sp * Math.sqrt(Math.random()), ix = best.x + Math.cos(a) * r, iy = best.y + Math.sin(a) * r * .6;
+    SMOKE.push({ x: ix, y: iy, t0: at + .25, life: 1.4, r: 9, kind: 'dust' });
+    if (apply) formations.forEach(t => { if (!alive(t) || t === f || t.state === 'captured') return; const d = Math.hypot(t.x - ix, t.y - iy); if (d < BALL.hit) hurt(t, base / n * 1.6 * (1 - d / BALL.hit)); });
+  }
+  if (apply && canister) hurt(best, base);
+}
+/* The creeping barrage (chapter 'barrage': { from: [[x,y]...], to: [[x,y]...], secs, rate }): a line of shell bursts that
+   walks from the 'from' line to the 'to' line (same number of points) over 'secs' seconds of battle time. */
+/* Sound effects (S.sfx: { rifle: [files], gun: [files], vol }, files in ../sounds/): a rifle crack now and then while
+   formations are fighting, and the guns under the barrage. Quiet, rate-limited, and only while a battle is running. */
+const SFX = S.sfx || null, SFXP = {};
+function sfx(kind, vol) {
+  if (!SFX || !SFX[kind] || fastForward || paused || mode === 'intro' || document.hidden) return;
+  const now = performance.now(), gap = kind === 'gun' ? 1800 : 260; if (now - (SFXP[kind] || 0) < gap) return; SFXP[kind] = now;
+  const list = SFX[kind], a = new Audio((SFX.base || '../sounds/') + list[Math.floor(Math.random() * list.length)]);
+  a.volume = Math.max(0, Math.min(1, (vol || 1) * (SFX.vol || .3))); a.playbackRate = .92 + Math.random() * .16; a.play().catch(() => {});
+}
+function barrage() {
+  const e = currentEvent; if (!e || !e.barrage || fastForward) return; const B2 = e.barrage, a = simTime - e.t; if (a < 0 || a > B2.secs) return;
+  const k = a / B2.secs, n = B2.from.length; if (Math.random() > (B2.rate || .9)) return;
+  const u = Math.random() * (n - 1), i = Math.floor(u), f = u - i, lerp = (A, j) => [A[j][0] + (B2.to[j][0] - A[j][0]) * k, A[j][1] + (B2.to[j][1] - A[j][1]) * k];
+  const p0 = lerp(B2.from, i), p1 = lerp(B2.from, Math.min(n - 1, i + 1)), x = p0[0] + (p1[0] - p0[0]) * f + (Math.random() - .5) * 30, y = p0[1] + (p1[1] - p0[1]) * f + (Math.random() - .5) * 30;
+  SMOKE.push({ x, y, t0: simTime, life: 2.4, r: 9, kind: 'smoke' }); SMOKE.push({ x, y, t0: simTime + .05, life: 1.3, r: 11, kind: 'dust' }); sfx('gun', .8);
+}
+function drawSmoke(c) {
+  SMOKE.forEach(p => { const a = simTime - p.t0; if (a < 0) return; const k = a / p.life, q = P(p.x + a * 6, p.y - a * 4); if (!(q.s > 0)) return;
+    if (p.kind === 'smoke') {
+      if (a < .12) { const fl = c.createRadialGradient(q.x, q.y, 0, q.x, q.y, 9 * q.s); fl.addColorStop(0, 'rgba(255,240,180,.95)'); fl.addColorStop(1, 'rgba(255,150,40,0)'); c.fillStyle = fl; c.beginPath(); c.arc(q.x, q.y, 9 * q.s, 0, PI * 2); c.fill(); }
+      // a soft, drifting cloud of powder smoke: a few overlapping puffs that grow and fade
+      [[0, 0, 1], [-6, -4, .8], [7, -6, .7], [2, -11, .6]].forEach(([ox, oy, w]) => { const r = (p.r + a * 11) * w * q.s, cx = q.x + ox * q.s * (1 + a), cy = q.y + oy * q.s * (1 + a * .6);
+        const g = c.createRadialGradient(cx, cy, 0, cx, cy, r); g.addColorStop(0, `rgba(232,230,224,${.42 * (1 - k)})`); g.addColorStop(.6, `rgba(215,213,206,${.22 * (1 - k)})`); g.addColorStop(1, 'rgba(210,208,200,0)');
+        c.fillStyle = g; c.beginPath(); c.arc(cx, cy, r, 0, PI * 2); c.fill(); });
+    } else if (p.kind === 'dust') {
+      c.fillStyle = `rgba(120,95,60,${.5 * (1 - k)})`; c.beginPath(); c.arc(q.x, q.y, (p.r + a * 10) * q.s, 0, PI * 2); c.fill();
+    } else {
+      c.strokeStyle = `rgba(80,70,55,${.6 * (1 - k)})`; c.lineWidth = 1; for (let m = 0; m < 7; m++) { const ang = m / 7 * PI * 2; c.beginPath(); c.moveTo(q.x, q.y); c.lineTo(q.x + Math.cos(ang) * (p.r + a * 20) * q.s, q.y + Math.sin(ang) * (p.r + a * 20) * .5 * q.s); c.stroke(); }
+    }
+  });
+}
 function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   if (!(s > 0)) return;   // beyond the horizon of a very short, tilted view: nothing to draw
-  const sh = artOn ? sheetFor(f.side, f.type) : null;
+  const sh = artOn ? sheetFor(f) : null;
+  if (sh && f.type === 'artillery') { drawGunSheet(c, sh, f, x, y, i, s); return; }
   if (sh) {
     const spec = SHEET_SPEC[f.type] || SHEET_SPEC.infantry, d = dirOf(facing), row = { s: 0, e: 1, n: 2, w: 3 }[d];
+    const atk = f.fight && f.state !== 'rout' ? SHEETS[f.attackSheet || ATTACK[sheetName(f)]] : null;
+    if (atk) { const frame = Math.floor(wall * 7 + i * 1.3) % 4, scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
+      c.drawImage(atk, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, x - dw / 2, y - dh + 2 * s, dw, dh); return; }
     const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', frame = moving ? Math.floor(wall * 6 + i) % 4 : (Math.floor(wall * 1.2 + i) % 2);
     const scale = spec.h * s / spec.ch, dw = spec.cw * scale, dh = spec.ch * scale;
     c.save(); c.translate(x, y); if (k !== 1) c.scale(1, 1); c.drawImage(sh, frame * spec.cw, row * spec.ch, spec.cw, spec.ch, -dw / 2, -dh + 2 * s, dw, dh); c.restore(); return;
@@ -328,6 +512,7 @@ function drawSprite(c, f, x, y, facing, i, s = 1, k = 1) {
   c.save(); c.translate(x, y);
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', d = dirOf(facing), step = moving ? wall * 8 + i * 1.7 : 0;
   if (d === 'w') c.scale(-1, 1);
+  if (f.type === 'artillery') { if (d === 'w') c.scale(-1, 1); if (gunFacesWest(f)) c.scale(-1, 1); figGun(c, f.side, s, i, gunPose(f, i).row); c.restore(); return; }
   if (f.type === 'chariot') figChariot(c, f.side, s, i, moving, d === 'w' ? 'e' : d, step);
   else if (f.type === 'elephant') figElephant(c, f.side, s, moving, d === 'w' ? 'e' : d, step);
   else figInfantry(c, f.side, f.type === 'archers' || (f.type === 'infantry' && i % 3 === 2), s, i, d === 'w' ? 'e' : d, step);
@@ -396,15 +581,22 @@ function drawCity(c) {
 
 /* ---------------- formations ---------------- */
 function createFormations() {
+  if (mode !== 'intro') setTrench(S.defaultTrench || null);
   formations = S.formations.map(d => Object.assign({}, d, {
     tx: d.x, ty: d.y, strength: 100, strengthTarget: null, strengthRate: 0,
-    state: 'hold', known: !d.hidden, aiKnown: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : d.type === 'cavalry' ? 40 : d.type === 'elephant' ? 14 : 16),
-    facing: d.facing !== undefined ? d.facing : (d.side === 'macedon' ? -PI / 2 : PI), spread: 1, then: null, aiPhase: null, lastHit: -99
+    state: 'hold', known: !d.hidden, aiKnown: !d.hidden, present: !d.offmap, speed: d.speed || (d.type === 'chariot' ? 60 : d.type === 'cavalry' ? 40 : d.type === 'elephant' ? 14 : d.type === 'artillery' ? 10 : 16),
+    facing: d.facing !== undefined ? d.facing : (d.side === 'allied' ? PI / 2 : -PI / 2), spread: 1,   // the Allies hold the north, facing south
+    holdFire: mode === 'watch' && !!d.holdFire, then: null, aiPhase: null, lastHit: -99
   }));
-  byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations;
+  formations.forEach(f => { if (f.type === 'artillery') gunInit(f); }); SMOKE.length = 0; FALLEN.length = 0;
+  byId = {}; formations.forEach(f => byId[f.id] = f); window.__fm = formations; window.__sel = selected;
 }
 function applyOrder(o) {
+  if (o.leader) { const L = leaders.find(l => l.id === o.leader); if (!L) return;
+    if (o.at) { L.x = L.tx = o.at.x; L.y = L.ty = o.at.y; } if (o.to) { L.tx = o.to.x; L.ty = o.to.y; }
+    if (o.visible !== undefined) L.shown = o.visible; if (o.speed) L.speed = o.speed; return; }
   const f = byId[o.id]; if (!f) return;
+  if (o.side) f.side = o.side;   // changing sides (Talas: the Karluks)
   if (o.visible !== undefined) { f.known = o.visible; if (o.visible) f.present = true; }
   if (o.at) { f.x = o.at.x; f.y = o.at.y; }
   // `via`: waypoints taken in order before `to`, e.g. to go round the end of a line rather than through it.
@@ -413,6 +605,7 @@ function applyOrder(o) {
   if (o.strength !== undefined) { f.strength = o.strength; f.strengthTarget = null; }
   if (o.strengthTo !== undefined) { f.strengthTarget = o.strengthTo; f.strengthRate = Math.abs(f.strength - o.strengthTo) / (o.over || 5); }
   if (o.spread) f.spread = o.spread;
+  if (o.fire !== undefined) f.holdFire = !o.fire;
   f.then = o.then || null;
 }
 function moveFormation(f) {
@@ -422,6 +615,13 @@ function moveFormation(f) {
     if (Math.abs(d) <= step) { f.strength = f.strengthTarget; f.strengthTarget = null; } else f.strength += Math.sign(d) * step;
   }
   f.inWater = inWater(f.x, f.y);
+  if (f.type === 'artillery' && f.gun) {
+    const g = f.gun, wantsMove = (f.state === 'move' || f.state === 'attack' || f.state === 'rout') && Math.hypot(f.tx - f.x, f.ty - f.y) > 2;
+    if (wantsMove && g.deployed) { g.phase = 'limber'; g.t += DT; if (g.t < GUN.limber) return; g.deployed = false; g.t = 0; }
+    if (wantsMove) g.phase = 'moving';
+    else if (!g.deployed) { g.phase = 'unlimber'; g.t += DT; if (g.t >= GUN.unlimber) { g.deployed = true; g.t = 0; g.phase = 'ready'; g.cd = .5; if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; } return; }
+    else { g.phase = 'ready'; g.t = 0; }
+  }
   if (f.state === 'hold' || f.state === 'loot' || f.state === 'scattered' || f.state === 'captured') return;
   // (re)plan when the target changes
   if (!f.path || f.pathTx !== f.tx || f.pathTy !== f.ty) { const g = legal({ x: f.tx, y: f.ty }); f.tx = g.x; f.ty = g.y; f.path = planPath({ x: f.x, y: f.y }, g); f.pathTx = f.tx; f.pathTy = f.ty; }
@@ -439,26 +639,69 @@ function moveFormation(f) {
 }
 
 /* ---------------- watch mode ---------------- */
+/* ---- music: a chapter can start a piece (ev.music: { file, vol } from audio/music/) or stop it (music: null); it ducks
+   under the narrator and fades when paused */
+const MUSIC = { el: new Audio(), file: '', target: 0 };
+function setMusic(m, instant) {
+  if (!m || !m.vol) { MUSIC.target = 0; if (instant) { MUSIC.el.pause(); MUSIC.el.volume = 0; MUSIC.file = ''; } return; }
+  if (MUSIC.file !== m.file) { MUSIC.file = m.file; MUSIC.el.src = (S.audioBase || 'audio/') + 'music/' + m.file; MUSIC.el.volume = 0; MUSIC.el.play().catch(() => {}); }
+  else if (MUSIC.el.paused) MUSIC.el.play().catch(() => {});
+  MUSIC.target = m.vol;
+}
+setInterval(() => {
+  const speaking = Narr.on && Narr.audio && !Narr.audio.paused && !Narr.audio.ended, want = MUSIC.target * (speaking ? .55 : 1) * (paused && mode !== 'intro' && !battleOver ? 0 : 1);
+  const v = MUSIC.el.volume, nv = Math.abs(want - v) < .01 ? want : v + (want - v) * .08; MUSIC.el.volume = Math.max(0, Math.min(1, nv));
+  if (MUSIC.target === 0 && MUSIC.el.volume < .005 && !MUSIC.el.paused) { MUSIC.el.pause(); MUSIC.file = ''; }
+}, 100);
 function fireEvent(ev) {
-  currentEvent = ev; ev.orders.forEach(applyOrder);
+  if (ev.music !== undefined && !fastForward) setMusic(ev.music);
+  if (ev.trenches !== undefined) setTrench(ev.trenches);
+  currentEvent = ev; ev.orders.forEach(applyOrder); if (stage === 'campaign') markers = ev.markers || [];
   camForEvent(ev);
-  caption(ev.title, ev.text, ev.tag, !fastForward, ev.audio || audioFor('event', S.events.indexOf(ev) + 1), ev.cite);
-  addLog(fmtTime(ev.t) + ' ' + ev.title);
+  caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
+  addLog((stage === 'campaign' && ev.clock ? ev.clock : fmtTime(ev.t)) + ' ' + ev.title);
   renderTimeline();
   if (ev.end && !fastForward) endWatch();
+}
+/* ---------------- leaders: the commanders, a bigger figure on a gold disc with the name below.
+   Each has its own painted sheet (images/units/leader-<id>.png, 240x200 cells like the cavalry); until it arrives a
+   rider of the side's cavalry stands in. Moved by event orders { leader: 'ney', to: {x, y} }. They take no part in the fighting. */
+let leaders = [];
+[...new Map((S.leaders || []).concat(CAMP ? CAMP.leaders || [] : []).filter(L => !L.noSheet).map(L => [L.id, L])).values()].forEach(L => { const im = new Image(); im.onload = () => { SHEETS['leader-' + L.id] = im; }; im.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '.png';
+  if (S.attackSheets) { const ia = new Image(); ia.onload = () => { SHEETS['leader-' + L.id + '-attack'] = ia; }; ia.src = (S.imageBase || 'images/') + 'units/leader-' + L.id + '-attack.png'; } });
+function createLeaders() { leaders = (S.leaders || []).map(L => Object.assign({}, L, { tx: L.x, ty: L.y, shown: !L.hidden, facing: L.facing !== undefined ? L.facing : -PI / 2, state: 'hold' })); }
+function moveLeaders() { leaders.forEach(L => { const dx = L.tx - L.x, dy = L.ty - L.y, d = Math.hypot(dx, dy);
+  if (d > 2) { const st = Math.min(d, (L.speed || 70) * DT); L.x += dx / d * st; L.y += dy / d * st; L.facing = Math.atan2(dy, dx); L.state = 'move'; } else L.state = 'hold'; }); }
+function drawLeader(c, L) {
+  if (!L.shown) return; const q = P(L.x, L.y), s = q.s; if (!(s > 0)) return;
+  c.save(); c.translate(q.x, q.y); c.scale(1, q.k || 1); { const sc = (S.sides && S.sides[L.side] && S.sides[L.side].color) || '#f2d27e', n = parseInt(sc.slice(1), 16); c.fillStyle = `rgba(${n >> 16},${n >> 8 & 255},${n & 255},.38)`; c.strokeStyle = sc; }   // the leader's disc in the side's colour (red / blue), as the formations' rings c.lineWidth = Math.max(1.5, 2 * s);
+  c.beginPath(); c.ellipse(0, 0, 24 * s, 10 * s, 0, 0, PI * 2); c.fill(); c.stroke(); c.restore();
+  const own = SHEETS['leader-' + L.id];
+  const fight = formations.some(f => alive(f) && f.side !== L.side && f.fight && Math.hypot(f.x - L.x, f.y - L.y) < 140);
+  drawSprite(c, { side: L.side, type: 'cavalry', state: L.state, sheet: own ? 'leader-' + L.id : undefined, fight, attackSheet: 'leader-' + L.id + '-attack' }, q.x, q.y, L.facing, 0, s * 1.6, q.k);
+  outlined(c, L.name.toUpperCase(), q.x, q.y + 15 * s + 7, 12 * Math.max(.9, Math.min(1.5, s)), { fill: '#ffe7a8' });
 }
 function stepWatch() {
   while (eventIndex < S.events.length && S.events[eventIndex].t <= simTime) fireEvent(S.events[eventIndex++]);
   camBack();
-  formations.forEach(moveFormation);
-  if (simTime >= S.duration && !battleOver && !fastForward) endWatch();
+  formations.forEach(moveFormation); moveLeaders(); artillery(false); barrage();
+  if (Math.random() < .08 && formations.some(f => alive(f) && f.present && f.state !== 'rout' && fighting(f))) sfx('rifle', .6);   // rifle fire while units are fighting
+  if (simTime >= S.duration && !battleOver && !fastForward) { if (stage === 'campaign') toBattle(); else endWatch(); }
+}
+// The end of the campaign: the camera closes in on the ridge of Mont-Saint-Jean, then the battle map takes over.
+function toBattle() { battleOver = 'next'; cam.backAt = null; if (cam.follow) { const at = (CAMP && CAMP.toBattleAt) || { x: 825, y: 680 }; cam.tz = 2.2; frame(at.x, at.y); } clearTimeout(stageT); stageT = setTimeout(() => startMode('watch', { stage: 'battle' }), 2600); }
+function setStage(st) {
+  if (st === 'campaign' && !CAMP) st = 'battle';
+  stage = st; const src = st === 'campaign' ? CAMP : BATTLE;
+  S.events = src.events; S.formations = src.formations; S.leaders = src.leaders; S.duration = src.duration;
+  document.body.dataset.stage = st; applyArt();
 }
 function endWatch() { battleOver = 'history'; paused = true; showDebrief(); }
 function jumpTo(t) {
   fastForward = true; resetSim(); 
   while (simTime < t) { simTime += DT; stepWatch(); }
   fastForward = false; paused = false; battleOver = null; hideOverlay('debrief');
-  if (currentEvent) caption(currentEvent.title, currentEvent.text, currentEvent.tag, true, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1), currentEvent.cite);
+  if (currentEvent) caption(currentEvent.title, currentEvent.text, currentEvent.tag, true, evAudio(currentEvent), currentEvent.cite);
   updatePauseBtn(); $('clock').textContent = fmtTime(simTime); render();
   if (currentEvent && currentEvent.end) endWatch();
 }
@@ -466,7 +709,7 @@ function jumpTo(t) {
 /* ---------------- command mode ---------------- */
 // The side the computer commands is always the one the player is not. Its plan (S.ai.plans) is a list of timed orders
 // as history had them; afterwards each formation reacts to the enemies it has spotted.
-const aiSide = () => player === 'macedon' ? 'persia' : 'macedon';
+const aiSide = () => player === 'allied' ? 'french' : 'allied';
 function stepCommand() {
   const ai = aiSide(), plan = (S.ai.plans && S.ai.plans[ai]) || [];
   plan.forEach((st, i) => {
@@ -486,12 +729,12 @@ function stepCommand() {
       if (best) { f.tx = best.x; f.ty = best.y; f.state = 'attack'; } else { f.tx = S.ai.holdPoint.x; f.ty = S.ai.holdPoint.y; f.state = 'move'; }
     }
   });
-  formations.forEach(moveFormation); combat(); fog(); checkEnd();
+  formations.forEach(moveFormation); moveLeaders(); artillery(true); combat(); fog(); checkEnd();
 }
 // The computer side without a hunting role: charges the nearest enemy it has spotted (chariots from further off), or holds.
 function aiReact(side, enemies) {
   formations.forEach(f => {
-    if (f.side !== side || f.hunter || f.aiHold || !alive(f) || f.state === 'rout') return;   // aiHold: stays put, as the sources have it
+    if (f.side !== side || f.hunter || f.aiHold || f.type === 'artillery' || !alive(f) || f.state === 'rout') return;   // aiHold: stays put, as the sources have it; guns fire where they stand
     let best = null, bd = f.type === 'chariot' ? 650 : 260; enemies.forEach(e => { const d = dist(e, f); if (d < bd) { bd = d; best = e; } });
     if (best) {
       if (f.type === 'chariot') { f.tx = best.x; f.ty = best.y; f.state = 'attack'; f.aiPhase = 'engaged'; }
@@ -501,17 +744,18 @@ function aiReact(side, enemies) {
   });
 }
 // Elephants (a what-if in Command mode: the sources do not show them fighting) hit hard, frighten horses, and are hard for cavalry to hurt.
-const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5, cavalry: 5, elephant: 3 }, infantry: { infantry: 6, chariot: 6, archers: 8, cavalry: 4, elephant: 4 }, archers: { infantry: 5, chariot: 5, archers: 5, cavalry: 5, elephant: 5 }, cavalry: { infantry: 5, chariot: 5, archers: 6, cavalry: 5, elephant: 2 },
-  elephant: { infantry: 7, chariot: 7, archers: 7, cavalry: 9, elephant: 5 } };
+const DMG = { chariot: { infantry: 4, archers: 6, chariot: 5, cavalry: 5, elephant: 3, artillery: 6 }, infantry: { infantry: 6, chariot: 6, archers: 8, cavalry: 4, elephant: 4, artillery: 6 }, archers: { infantry: 5, chariot: 5, archers: 5, cavalry: 5, elephant: 5, artillery: 4 }, cavalry: { infantry: 5, chariot: 5, archers: 6, cavalry: 5, elephant: 2, artillery: 9 },
+  elephant: { infantry: 7, chariot: 7, archers: 7, cavalry: 9, elephant: 5, artillery: 8 } };
 function combat() {
   const live = formations.filter(f => alive(f) && f.state !== 'rout' && f.state !== 'captured');
   live.forEach(a => live.forEach(d => {
-    if (a.side === d.side) return;
+    if (a.side === d.side || a.type === 'artillery') return;   // guns fire in artillery(), they do not fight hand to hand
     const range = a.type === 'archers' ? 150 : 62; if (dist(a, d) > range) return;
     let dmg = DMG[a.type][d.type] * (a.power || 1) * (a.strength / 100) * DT;
     if (a.type === 'chariot' && d.state === 'move') dmg *= 1.3;
     if (d.state === 'hold' && d.type !== 'chariot') dmg *= .7;
-    d.strength -= dmg; d.lastHit = simTime;
+    if (d.fortified && d.state === 'hold') dmg *= .45;   // a walled farm (Hougoumont, La Haye Sainte)
+    d.strength -= dmg; d.lastHit = simTime; a.lastStrike = simTime; if (Math.random() < .1) sfx('rifle', .6);
     if (a.state === 'hold') a.facing = Math.atan2(d.y - a.y, d.x - a.x);
   }));
   formations.forEach(f => {
@@ -535,6 +779,70 @@ function checkEnd() {
 }
 
 /* ---------------- rendering ---------------- */
+// Date and time stamp, top left of the map: what the chapter's `clock` says (e.g. "9 April, 5:30", "Day 2 · 07:55",
+// "Night, 20 October"). Pieces naming a month, a "Day N" or a year are the date; the rest is the time of day. A chapter
+// that gives only a time keeps the last date. S.clockYear is added to dates without a year; ev.clockTag ('disputed',
+// 'estimate') tints it. An intro slide can carry its own `clock`.
+const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
+function clockTime(t) {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(t.trim()); if (!m) return t;
+  let h = +m[1]; const pm = h >= 12, lead = m[1].length === 2; if (!lead && h < 12) return h + ':' + m[2] + ' a.m.';
+  if (h === 12 && m[2] === '00') return 'Noon'; const h12 = h % 12 || 12; return h12 + ':' + m[2] + (pm ? ' p.m.' : ' a.m.');
+}
+function clockParts(c) {
+  const bits = String(c).split(/\s+·\s+|,\s+/).map(x => x.trim()).filter(Boolean); let date = null; const time = [];
+  bits.forEach(b => { if (!date && CLOCK_DATE.test(b)) date = b; else time.push(clockTime(b)); });
+  if (date && S.clockYear && !/\b\d{3,4}\b/.test(date) && !/\bdays? \d/i.test(date)) date += ' ' + S.clockYear;
+  const tm = time.join(', '); return { date, time: tm ? tm[0].toUpperCase() + tm.slice(1) : '' };
+}
+function clockStampNow() {
+  if (mode === 'intro') { const sl = S.intro && S.intro[introIdx]; return sl && sl.clock && !sl.growth ? Object.assign(clockParts(sl.clock), { tag: sl.clockTag }) : null; }
+  const ev = currentEvent; if (!ev || !ev.clock) return null; const list = S.events || [], i = list.indexOf(ev);
+  let date = null; for (let k = 0; k <= i; k++) if (list[k] && list[k].clock) { const p = clockParts(list[k].clock); if (p.date) date = p.date; }
+  const p = clockParts(ev.clock); return { date: p.date || date, time: p.time, tag: ev.clockTag };
+}
+let clockShown = '', clockSince = -9;
+function drawClockStamp() {
+  const st = clockStampNow(); if (!st || !(st.date || st.time)) { clockShown = ''; return; }
+  const key = st.date + '|' + st.time; if (key !== clockShown) { clockShown = key; clockSince = wall; }
+  const f = Math.min(1, (wall - clockSince) / .8), glow = 1 - f, col = st.tag === 'disputed' ? '#ffb36b' : st.tag === 'estimate' ? '#ffe08a' : '#7fe9ff';
+  const L1 = (st.date || '').toUpperCase(), L2 = st.time || '';
+  ctx.save(); ctx.font = "bold 22px 'Cinzel', Georgia, serif"; const w1 = ctx.measureText(L1).width; ctx.font = "16px system-ui, sans-serif"; const w2 = ctx.measureText(L2).width;
+  const x = 14, y = 12, w = Math.max(w1, w2) + 28, h = (L1 ? 30 : 0) + (L2 ? 24 : 0) + 12;
+  ctx.globalAlpha = .35 + .65 * f; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.shadowColor = col; ctx.shadowBlur = 10 + 20 * glow;
+  ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+  ctx.shadowBlur = 8 + 14 * glow; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  if (L1) { ctx.font = "bold 22px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#f2fbff'; ctx.fillText(L1, x + 14, y + 8); }
+  if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, x + 14, y + (L1 ? 38 : 9)); }
+  ctx.restore();
+}
+// Legend, top right of the map: S.legend ([{ label, color, kind: 'line' | 'dot' }]) or, by default, each side's colour.
+function drawLegend() {
+  const items = S.legend || Object.keys(S.sides || {}).map(k => ({ label: S.sides[k].short || S.sides[k].name, color: S.sides[k].color, kind: 'dot' }));
+  if (!items.length || (mode === 'intro' && introIdx === 0)) return;
+  ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
+  const x = view.w - w - 14, y = 12; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
+  ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "13px system-ui, sans-serif";
+  items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
+    if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.arc(x + 23, cy, 5, 0, Math.PI * 2); ctx.fill(); }
+    ctx.shadowBlur = 0; ctx.fillStyle = '#e8eef2'; ctx.fillText(it.label, x + 42, cy); });
+  ctx.restore();
+}
+// Pulsing rings (markers): gold for a place or a neutral event; the side's own colour when the ring points at that side's
+// men. A marker can say so with side: '<side key>' (or side: 'neutral' to stay gold); without it, a ring whose label names
+// one of the formations takes that formation's side.
+function markerColors(m) {
+  let sd = m.side;
+  if (sd === undefined && m.label) { const l = m.label.toLowerCase(), f = formations.find(f => f.name && f.name.length >= 4 && l.includes(f.name.toLowerCase())); sd = f && f.side; }
+  const c = sd && S.sides && S.sides[sd] && S.sides[sd].color;
+  if (!c || !/^#[0-9a-f]{6}$/i.test(c)) return { ring: '#ffd36b', glow: 'rgba(255,211,107,.4)', text: '#fff3c9' };
+  const n = parseInt(c.slice(1), 16), rr = n >> 16, gg = n >> 8 & 255, bb = n & 255, lift = v => Math.round(v + (255 - v) * .45);
+  return { ring: `rgb(${lift(rr)},${lift(gg)},${lift(bb)})`, glow: `rgba(${rr},${gg},${bb},.5)`, text: S.sides[sd].light || '#ffffff' };
+}
+
 function resize() {
   const r = panel.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
   canvas.width = Math.max(1, Math.floor(r.width * dpr)); canvas.height = Math.max(1, Math.floor(r.height * dpr));
@@ -611,12 +919,21 @@ function drawFormation(c, f) {
   const concealed = !f.known && !(mode === 'command' && f.side === player);
   c.save(); if (concealed) c.globalAlpha = .5;
   // In the flat view a subtle depth cue remains: units nearer the south edge draw a little larger. The tilted view does this by projection.
-  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'elephant' ? 62 : f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'elephant' ? 30 : f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
+  const SS = 1.3 * (tiltOn() ? 1 : (1 + .18 * (f.y / W.h - .5))), sx = (f.type === 'artillery' ? 40 : f.type === 'elephant' ? 62 : f.type === 'chariot' ? 30 : 13) * 1.3, sy = (f.type === 'artillery' ? 26 : f.type === 'elephant' ? 30 : f.type === 'chariot' ? 22 : 14) * 1.3, n = f.cols * f.rows;
   // In the water a formation squeezes into a double file (single for chariots) along its line of march.
   const FC = f.inWater ? (f.type === 'chariot' ? 1 : 2) : f.cols, FR = f.inWater ? Math.ceil(n / FC) : f.rows;
   const cos = Math.cos(f.facing), sin = Math.sin(f.facing), shown = Math.ceil(n * Math.max(.15, f.strength / 100));
   const moving = f.state === 'move' || f.state === 'attack' || f.state === 'rout', scatter = f.state === 'rout' || f.state === 'scattered';
-  const pts = [];
+  const pts = []; f.fight = fighting(f);
+  // men lost since the last frame are left lying where they stood (not when a chapter jumps the strength at once)
+  if (FS.soldier && f._shown !== undefined && shown < f._shown && f._shown - shown <= 6 && !f.inWater) {
+    for (let i = shown; i < f._shown; i++) {
+      const col = i % FC, row = Math.floor(i / FC), d = -(row - (FR - 1) / 2) * sy, a = (col - (FC - 1) / 2) * sx;
+      FALLEN.push({ side: f.side, x: f.x + cos * d - sin * a + (jitter(i, 4) - .5) * 6, y: f.y + sin * d + cos * a + (jitter(i, 5) - .5) * 6, k: Math.floor(jitter(i + f.x, 6) * 16), horse: f.type === 'cavalry' && FS.horse && i % 2 === 0 });
+    }
+    if (FALLEN.length > FALLEN_MAX) FALLEN.splice(0, FALLEN.length - FALLEN_MAX);
+  }
+  f._shown = shown;
   for (let i = 0; i < n; i++) {
     if (i >= shown) continue;
     const col = i % FC, row = Math.floor(i / FC);
@@ -632,8 +949,8 @@ function drawFormation(c, f) {
   c.strokeStyle = SIDE_ART[f.side].trim; c.lineWidth = .8; c.stroke();
   // label + strength
   const half = (FR / 2) * sy + 10, ly = f.y + Math.max(half, (FC / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
-  const suffix = f.state === 'captured' ? ' \u00b7 captured' : f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
-  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'macedon' ? '#dceeff' : '#ffe1d6' });
+  const suffix = f.gun && f.gun.phase === 'limber' ? ' \u00b7 limbering' : f.gun && f.gun.phase === 'unlimber' ? ' \u00b7 unlimbering' : f.state === 'captured' ? ' \u00b7 captured' : f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
+  outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'allied' ? '#ffe1d6' : '#dceeff' });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
     c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(pl.x - 22 * ts, pl.y + 8 * ts, 44 * ts, 5 * ts);
     c.fillStyle = f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'; c.fillRect(pl.x - 21 * ts, pl.y + 9 * ts, 42 * ts * f.strength / 100, 3 * ts);
@@ -661,16 +978,26 @@ function render() {
   }
   const scene = [];
   const y0v = view.y - 120, y1v = view.y + vh + 60, x0v = view.x - 200, x1v = view.x + vw + 200;
-  PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
-  formations.forEach(f => scene.push({ y: f.y, f }));
-  scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : drawFormation(ctx, o.f));
+  if (stage !== 'campaign') PROPS.forEach(p => { if (PAINTED && artOn && p.kind === 'tree') return; if (p.kind === 'city' ? (B.city.y + B.city.h > y0v - 200 && B.city.y < y1v) : (p.y > y0v && p.y < y1v && p.x > x0v && p.x < x1v)) scene.push({ y: p.y, prop: p }); });
+  if (stage !== 'campaign') drawFallen(ctx, y0v, y1v, x0v, x1v);
+  formations.forEach(f => scene.push({ y: f.y, f })); leaders.forEach(L => scene.push({ y: L.y, L }));
+  scene.sort((a, b) => a.y - b.y).forEach(o => o.prop ? drawProp(ctx, o.prop) : o.L ? drawLeader(ctx, o.L) : drawFormation(ctx, o.f));
+  drawSmoke(ctx);
+  if (mode === 'watch' && currentEvent && currentEvent.rain) drawRain(ctx);
+  // aim lines from the player's selected batteries to their targets: dashed while laying, solid once the guns are on
+  formations.forEach(f => { const g = f.gun, t = g && g.target && byId[g.target]; if (!t || f.side !== player || !selected.has(f.id) || !alive(t)) return;
+    const a = P(f.x, f.y - 8), b = P(t.x, t.y - 8), laid = g.laid >= GUN.lay; ctx.save(); ctx.strokeStyle = g.mode === 'auto' || g.mode === 'fire' ? '#ff6a4a' : '#ffd36b'; ctx.lineWidth = 2;
+    ctx.setLineDash(laid ? [] : [8, 6]); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); ctx.setLineDash([]); ctx.beginPath(); ctx.arc(b.x, b.y, 14 * b.s, 0, PI * 2); ctx.stroke(); ctx.restore(); });
   markers.forEach(m => {
     const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
-    ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,211,107,.4)'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
-    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: '#fff3c9' });
+    const mc = markerColors(m);
+    ctx.strokeStyle = mc.ring; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
+    ctx.strokeStyle = mc.glow; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(0, 0, r + 8, 0, PI * 2); ctx.stroke(); ctx.restore();
+    outlined(ctx, m.label, p.x, p.y - r * p.k - 16, 14, { fill: mc.text });
   });
+  if (!document.querySelector('.overlay.show, #debrief.show')) { drawClockStamp(); drawLegend(); }   // not over the debrief
+  if (BR && mode === 'intro') BR.draw(ctx);
   if (marquee) {
     const x0 = Math.min(marquee.x0, marquee.x1), y0 = Math.min(marquee.y0, marquee.y1), x1 = Math.max(marquee.x0, marquee.x1), y1 = Math.max(marquee.y0, marquee.y1);
     const c4 = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
@@ -684,20 +1011,26 @@ function render() {
     ctx.fillStyle = 'rgba(255,211,107,.12)'; ctx.fill(); ctx.strokeStyle = '#ffd36b'; ctx.lineWidth = 2; ctx.setLineDash([8, 6]); ctx.stroke(); ctx.setLineDash([]);
   }
   // scale bar (at the near edge of the view)
-  const sb = B.scale.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55;
+  const SCL = stage === 'campaign' ? CAMP.scale : B.scale, sb = SCL.px * z; ctx.fillStyle = 'rgba(9,23,32,.8)'; const sy0 = mode === 'watch' ? view.h - 42 : view.h - 12; ctx.save(); ctx.globalAlpha = .55;
   ctx.fillRect(300, sy0 - 20, sb + 16, 20);
-  ctx.fillStyle = '#e9c77a'; ctx.fillRect(308, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'left'; ctx.fillText(B.scale.label, 308, sy0 - 10); ctx.restore();
+  ctx.fillStyle = '#e9c77a'; ctx.fillRect(308, sy0 - 7, sb, 3); ctx.font = '10px system-ui'; ctx.fillStyle = '#e8f0ea'; ctx.textAlign = 'left'; ctx.fillText(SCL.label, 308, sy0 - 10); ctx.restore();
   drawMini();
+}
+// Rain over the whole view (campaign chapters with rain: true): a darker sky and falling streaks.
+function drawRain(c) {
+  c.save(); c.fillStyle = 'rgba(16,24,36,.22)'; c.fillRect(0, 0, view.w, view.h); c.strokeStyle = 'rgba(205,218,235,.38)'; c.lineWidth = 1; c.beginPath();
+  for (let i = 0; i < 280; i++) { const x = ((jitter(i, 21) * view.w - wall * 90) % view.w + view.w) % view.w, y = (jitter(i, 22) * view.h + wall * 620 * (.8 + jitter(i, 23) * .4)) % view.h; c.moveTo(x, y); c.lineTo(x - 5, y + 17); }
+  c.stroke(); c.restore();
 }
 function buildMiniBase() {
   MINIBASE = document.createElement('canvas'); MINIBASE.width = mini.width; MINIBASE.height = mini.height;
-  const g = MINIBASE.getContext('2d'); g.drawImage(TER, 0, 0, mini.width, mini.height);
+  const g = MINIBASE.getContext('2d'); if (!TER) return; g.drawImage(TER, 0, 0, mini.width, mini.height); if (stage === 'campaign') return;
   const sx = mini.width / W.w, sy = mini.height / W.h; g.fillStyle = '#4a6a36'; PROPS.forEach(p => { if (p.kind === 'tree') g.fillRect(p.x * sx - 1, p.y * sy - 1, 2, 2); });
   g.fillStyle = '#8c7d5a'; g.fillRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy); g.strokeStyle = '#4d4230'; g.lineWidth = 1; g.strokeRect(B.city.x * sx, B.city.y * sy, B.city.w * sx, B.city.h * sy);
 }
 function drawMini() {
   const w = mini.width, h = mini.height, sx = w / W.w, sy = h / W.h;
-  mctx.drawImage(MINIBASE, 0, 0);
+  mctx.fillStyle = '#000'; mctx.fillRect(0, 0, w, h); if (TER) mctx.drawImage(MINIBASE, 0, 0);
   formations.forEach(f => { if (!f.present || !alive(f)) return; if (!f.known && mode === 'command' && f.side !== player) return; mctx.globalAlpha = (f.known || (mode === 'command' && f.side === player)) ? 1 : .45; mctx.fillStyle = SIDE_ART[f.side].pennant; mctx.strokeStyle = '#fff'; mctx.lineWidth = .8; mctx.beginPath(); mctx.arc(f.x * sx, f.y * sy, f.type === 'chariot' ? 3.6 : 3, 0, PI * 2); mctx.fill(); mctx.stroke(); });
   mctx.globalAlpha = 1; mctx.strokeStyle = '#ff3030'; mctx.lineWidth = 2.5; const q = [U(0, 0), U(view.w, 0), U(view.w, view.h), U(0, view.h)];
   mctx.beginPath(); q.forEach((p, i) => i ? mctx.lineTo(p.x * sx, p.y * sy) : mctx.moveTo(p.x * sx, p.y * sy)); mctx.closePath(); mctx.stroke();
@@ -727,13 +1060,13 @@ const Narr = {
   tts(text) {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(text); u.rate = .92 * this.rate; u.pitch = .85;
-    const vs = speechSynthesis.getVoices(), pref = vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
+    const LG = window.BH_LANG || 'en', vs = speechSynthesis.getVoices(), pref = (LG === 'en' && vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name))) || vs.find(v => new RegExp('^' + LG, 'i').test(v.lang)) || vs[0];   // the browser's voice in the page's language
     if (pref) u.voice = pref; u.onend = () => { const n = this.next; this.next = null; if (n) n(); }; speechSynthesis.speak(u);
     if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
   },
   stop() { clearTimeout(this.leadT); this.next = null; if (this.audio) { this.audio.pause(); this.audio = null; } if ('speechSynthesis' in window) speechSynthesis.cancel(); },
   pause(p) { if ('speechSynthesis' in window) { p ? speechSynthesis.pause() : speechSynthesis.resume(); } if (this.audio) { p ? this.audio.pause() : this.audio.play(); } },
-  set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '\ud83d\udd0a Voice' : '\ud83d\udd07 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); },
+  set(on, quiet) { this.on = on; $('voiceBtn').textContent = on ? '🔊 Voice on' : '🔇 Voice off'; $('voiceBtn').classList.toggle('active', on); $('voiceMenuBtn').textContent = on ? '\ud83d\udd0a Voice' : '\ud83d\udd07 Voice'; $('voiceMenuBtn').classList.toggle('active', on); if (!on) { this.stop(); this.status(''); } else if (quiet) { } else if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) this.speak(currentEvent.text, evAudio(currentEvent)); },
   toggle() { this.set(!this.on); }
 };
 // The first slide opens with the welcome line (S.welcome, clip welcome.mp3) when it has been recorded.
@@ -768,24 +1101,25 @@ function fmtTime(t) { return `${String(Math.floor(t / 60)).padStart(2, '0')}:${S
 function renderSelection() {
   const box = $('selection');
   if (!selected.size) { box.innerHTML = '<p class="muted">Click a formation on the map to see who they are.</p>'; return; }
-  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</b><div class="tiny">${f.type} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
+  box.innerHTML = [...selected].map(id => { const f = byId[id]; return `<div class="sel"><b style="color:${f.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</b><div class="tiny">${f.type}${f.gun ? ' (' + (!f.gun.deployed ? 'limbered, cannot fire' : f.gun.target && byId[f.gun.target] ? ({ aim: f.gun.laid < GUN.lay ? 'laying guns on ' : 'aimed at ', fire: 'firing a volley at ', auto: 'autofire at ' }[f.gun.mode] || '') + byId[f.gun.target].division : { hold: 'ceasefire', will: 'firing at will' }[f.gun.mode] || '') + ')' : ''} · ${f.count} ${tagChip(f.confidence)}</div><div class="bar"><i style="width:${f.strength}%;background:${f.strength > 50 ? '#5fcf8a' : f.strength > 25 ? '#e9c77a' : '#ff6b5a'}"></i></div><div class="tiny">State: ${f.state}</div><p class="note">${f.note}</p></div>`; }).join('');
 }
 function renderTimeline() {
   const tl = $('timeline'); if (!tl) return;
   tl.innerHTML = S.events.map(e => `<button class="tick${currentEvent === e ? ' on' : ''}" style="left:${e.t / S.duration * 100}%" data-t="${e.t}" title="${fmtTime(e.t)} ${e.title}"></button>`).join('') + `<i id="tlNow" style="left:${simTime / S.duration * 100}%"></i>`;
   tl.querySelectorAll('.tick').forEach(b => b.onclick = ev => { ev.stopPropagation(); jumpTo(+b.dataset.t); });
   tl.onclick = ev => { const r = tl.getBoundingClientRect(); jumpTo(clamp((ev.clientX - r.left) / r.width, 0, 1) * S.duration); };
-  $('eventList').innerHTML = S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${fmtTime(e.t)}</span> ${e.title}</button>`).join('');
+  $('eventList').innerHTML = (CAMP && mode === 'watch' ? `<div class="stagesel"><button data-st="campaign" class="${stage === 'campaign' ? 'on' : ''}">The campaign <i>15–17 June</i></button><button data-st="battle" class="${stage === 'battle' ? 'on' : ''}">The battle <i>18 June</i></button></div>` : '') + S.events.map(e => `<button class="ev${currentEvent === e ? ' on' : ''}" data-t="${e.t}"><span>${stage === 'campaign' && e.clock ? e.clock : fmtTime(e.t)}</span> ${e.title}</button>`).join('');
   $('eventList').querySelectorAll('.ev').forEach(b => b.onclick = () => jumpTo(+b.dataset.t));
+  $('eventList').querySelectorAll('.stagesel button').forEach(b => b.onclick = () => startMode('watch', { stage: b.dataset.st }));
 }
-const PN = u => (u.side === 'macedon' ? 'macedonian' : 'persia') + '-' + (u.type === 'chariot' ? 'chariot' : u.type === 'elephant' ? 'elephant' : u.type === 'cavalry' ? 'cavalry' : u.type === 'archers' ? 'archer' : 'spearman');
+const PN = u => u.portrait || ((SHEET_BY[u.side] || {})[u.type] || u.side + '-' + u.type);   // portrait file name; the painted figure is the fallback
 function unitSprite(c, u, big) {
   const w = c.canvas.width, h = c.canvas.height; c.fillStyle = '#c0ad75'; c.fillRect(0, 0, w, h);
-  drawSprite(c, { side: u.side, type: u.type, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' ? 1.8 : 2) * (big ? h / 60 : 1));
+  drawSprite(c, { side: u.side, type: u.type, sheet: u.sheet, state: 'hold' }, w / 2, h - 6, 0, u.type === 'archers' ? 2 : 1, (u.type === 'chariot' || u.type === 'artillery' ? 1.5 : 2) * (big ? h / 60 : 1));
 }
 function renderArmies() {
   const units = S.units || [];
-  const card = (u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`;
+  const card = (u, i) => `<div class="ucard" data-unit="${i}" title="Click for the full write-up and photographs"><div class="pwrap"><canvas id="uc${i}" width="84" height="60"></canvas><img class="portrait" alt="" src="${(S.imageBase || 'images/')}portraits/${PN(u)}.jpg" onload="this.classList.add('show')"></div><div><b style="color:${u.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</b><div class="tiny">${u.desc}</div>${tagChip(u.tag)}<div class="more">More ▸</div></div></div>`;
   // Each side shows its first two cards; the rest fold away under a "more" button.
   $('armies').innerHTML = [...new Set(units.map(u => u.side))].map(sd => {
     const idx = units.map((u, i) => i).filter(i => units[i].side === sd), rest = idx.slice(2);
@@ -793,7 +1127,7 @@ function renderArmies() {
   }).join('');
   $('armies').querySelectorAll('.ufold').forEach(b => { const n = +b.dataset.n, label = open => open ? '\u25b4 Show fewer' : `\u25be ${n} more unit${n > 1 ? 's' : ''}`; b.textContent = label(false);
     b.onclick = () => { const m = b.previousElementSibling, open = m.hidden; m.hidden = !open; b.textContent = label(open); }; });
-  units.forEach((u, i) => { const c = $('uc' + i).getContext('2d'); unitSprite(c, u); setTimeout(() => unitSprite(c, u), 1500); });
+  armiesRedraw = () => units.forEach((u, i) => { const el = $('uc' + i); if (el) unitSprite(el.getContext('2d'), u); }); armiesRedraw();
   $('armies').querySelectorAll('.ucard').forEach(el => el.onclick = e => { if (e.target.closest('button.chip')) return; openUnit(+el.dataset.unit); });
 }
 // Unit write-up overlay. Photos are looked up by file name across the intro slides so
@@ -804,8 +1138,8 @@ function unitPhotos(u) { return (u.photos || []).map(p => typeof p === 'string' 
 function openUnit(i) {
   const units = S.units || []; if (!units.length) return;
   unitIdx = (i + units.length) % units.length; const u = units[unitIdx]; unitPhoto = 0;
-  $('unitKicker').textContent = (u.side === 'macedon' ? 'Macedonian army' : 'Persian army and allies') + ' · ' + (unitIdx + 1) + ' / ' + units.length;
-  $('unitTitle').innerHTML = `<span style="color:${u.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</span> ${tagChip(u.tag)}`;
+  $('unitKicker').textContent = ((S.sides[u.side] || {}).name || u.side) + ' · ' + (unitIdx + 1) + ' / ' + units.length;
+  $('unitTitle').innerHTML = `<span style="color:${u.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${u.name}</span> ${tagChip(u.tag)}`;
   const base = S.imageBase || 'images/';
   $('unitBody').innerHTML = `<div class="uhead"><canvas id="unitSprite" width="112" height="80"></canvas><img class="portrait" alt="" style="width:112px;height:80px;object-fit:cover;border-radius:4px;display:none" src="${base}portraits/${PN(u)}.jpg" onload="this.style.display='block';this.previousElementSibling.style.display='none'"><div class="side">${u.desc}</div></div>` + (u.lines || []).map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   unitSprite($('unitSprite').getContext('2d'), u, true);
@@ -837,16 +1171,23 @@ function renderBriefing() {
 function showOverlay(id) { $(id).classList.add('show'); }
 let unitPausedIntro = false;
 function hideOverlay(id) { $(id).classList.remove('show'); if (id === 'debrief' && typeof textOff !== 'undefined' && textOff) document.body.classList.add('textoff'); if (id === 'unit') { document.body.classList.remove('unitopen'); if (unitPausedIntro) { unitPausedIntro = false; if (mode === 'intro' && introPaused) togglePause(); } } }
+// briefing marks on the introduction's maps (../briefing.js)
+const BR = window.BHBriefing ? window.BHBriefing.create({ P: (x, y) => P(x, y), outlined: (c, t, x, y, sz, o) => outlined(c, t, x, y, sz, o), sideColor: sd => (S.sides[sd] || {}).color || '#888' }) : null;
+// Reading time for a slide without the voice: its own 'auto', or about 2.5 words a second (at least 8 s).
+function slideSecs(sl) { if (sl.auto) return sl.auto; const n = (sl.lines || []).map(l => l.text).join(' ').split(/\s+/).length + String(sl.title || '').split(/\s+/).length; return Math.max(8, n / 2.5 + 2); }
 function showIntro(i) {
-  introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
+  introIdx = clamp(i, 0, S.intro.length - 1); const sl = S.intro[introIdx]; introTimer = 0; introTail = 0; introEnded = false; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   $('introKicker').textContent = `Historical introduction · ${introIdx + 1} / ${S.intro.length}`;
   $('introTitle').textContent = sl.title; $('introSub').textContent = sl.subtitle || '';
   $('introLines').innerHTML = sl.lines.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
   $('introNav').style.display = sl.choice ? 'none' : 'flex'; $('ctrlStrip').classList.toggle('lit', false); $('introChoice').style.display = 'none'; $('playGame').classList.toggle('show', !!sl.choice); $('playMenu').classList.remove('show'); document.body.classList.toggle('choice', !!sl.choice);
   $('introBack').disabled = introIdx === 0; $('introBar').style.width = '0%';
-  markers = sl.markers || [];
+  // a slide can show the campaign map (sl.map: 'campaign') or the battle map, with their armies where they start
+  if (CAMP) { const st = sl.map === 'campaign' ? 'campaign' : 'battle'; if (st !== stage) { setStage(st); resetSim(); } }
+  markers = sl.markers || []; if (BR) BR.set(sl);
   introCamStart(sl);   // the whole map; a small subject is eased in on as the narrator reaches it
   $('startGate').style.display = introStarted ? 'none' : 'flex'; if (!introStarted) $('introNav').style.display = 'none';
+  setTrench(sl.trenches === undefined ? (S.introTrench || null) : sl.trenches);
   introMedia = sl.media || []; mediaIdx = -1; $('mediaCard').classList.toggle('nomedia', !introMedia.length); placeMedia(); showMedia(0);
   if (introStarted) speakSlide(sl);
 }
@@ -857,20 +1198,24 @@ $('introBar').parentElement.addEventListener('click', e => {
   const r = e.currentTarget.getBoundingClientRect(), k = clamp((e.clientX - r.left) / r.width, 0, 1), sl = S.intro[introIdx];
   introTail = 0; $('introNext').textContent = 'Next \u25b6'; $('introNext').classList.remove('ready');
   if (Narr.on && Narr.audio && Narr.audio.duration) { const au = Narr.audio; au.currentTime = k * au.duration; if (au.ended || au.paused) au.play().catch(() => {}); Narr.endedAt = -99; }
-  else introTimer = k * sl.auto;
+  else introTimer = k * slideSecs(sl);
   mediaIdx = -1; showMedia(Narr.on && Narr.audio && Narr.audio.duration ? Narr.audio.currentTime : introTimer);
 });
+// media.pulse: a second file shown over the first with a heartbeat fade (the glowing Silk Road map)
+function setPulse(el, m) { if (!el) return; if (m && m.pulse) { el.src = (S.imageBase || 'images/') + m.pulse; el.classList.add('show'); } else { el.classList.remove('show'); el.removeAttribute('src'); } }
 function showMedia(elapsed) {
   let k = -1; introMedia.forEach((m, i) => { if ((m.at || 0) <= elapsed) k = i; });
   if (k === mediaIdx) return; mediaIdx = k; const m = introMedia[k];
   const img = $('introImg'), ph = $('introPh');
   img.classList.remove('show'); ph.classList.remove('show');
-  if (!m) { $('introCap').textContent = ''; $('introRef').textContent = ''; return; }
+  if (!m) { $('introCap').textContent = ''; $('introRef').textContent = ''; setPulse($('introPulse'), null); return; }
   $('introCap').textContent = m.caption || ''; $('introRef').textContent = [m.ref, m.credit].filter(Boolean).join(' \u00b7 ');
   if (document.body.classList.contains('fsmedia')) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
   ph.textContent = 'Photo to add: ' + (m.file || '') + (m.caption ? ' \u2014 ' + m.caption : '');
   img.onload = () => { img.classList.add('show'); }; img.onerror = () => { ph.classList.add('show'); };
+  img.parentElement.classList.toggle('contain', m.fit === 'contain');
   img.src = (S.imageBase || 'images/') + m.file; if (swapped) $('bigPhotoImg').src = img.src;
+  setPulse($('introPulse'), m); if (swapped) setPulse($('bigPhotoPulse'), m);
 }
 function beginIntro(voice) {
   Narr.set(voice, true); if (!voice) Narr.stop();
@@ -891,13 +1236,38 @@ function titleCardProgress(k) {
   if (k >= 1) el.classList.remove('show');
 }
 $('playBig').onclick = () => beginIntro(true);
-let introSpunCb = null;
-function startIntro() { mode = 'intro'; resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
+let introSpunCb = null; var introEnded = false;   // var: showIntro may run before this line
+// Establishing pictures (S.establishing: [{ file, secs, credit, pulse: { x, y } }]): after the globe's dive, before the battle
+// map, each fades in, holds for `secs` (about 5) while the narration carries on, and fades out. `pulse` (fractions of the
+// picture's width and height) puts a pulsing ring on the picture, e.g. on the battle's town.
+let establishT = [];
+function placePulse(m) {
+  const el = $('establish'), img = el.querySelector('img'), ring = el.querySelector('.epulse');
+  if (!m.pulse || !img.naturalWidth) { ring.style.display = 'none'; return; }
+  const W = el.clientWidth, H = el.clientHeight, k = Math.min(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * k, h = img.naturalHeight * k;
+  ring.style.left = ((W - w) / 2 + m.pulse.x * w) + 'px'; ring.style.top = ((H - h) / 2 + m.pulse.y * h) + 'px'; ring.style.display = 'block';
+}
+function showEstablishing() {
+  const list = S.establishing || [], el = $('establish'); if (!list.length || !el) return;
+  establishT.forEach(clearTimeout); establishT = []; const img = el.querySelector('img'), cap = el.querySelector('.ecap');
+  let at = 0; el.style.transition = 'none'; el.classList.add('show', 'on'); void el.offsetWidth; el.style.transition = '';   // opaque at once, under the fading globe: the battle map never shows through
+  list.forEach((m, i) => {
+    establishT.push(setTimeout(() => { img.style.opacity = 0; el.querySelector('.epulse').style.display = 'none';
+      establishT.push(setTimeout(() => { img.onload = () => placePulse(m); img.src = (S.imageBase || 'images/') + m.file; img.style.opacity = 1; cap.textContent = m.credit || ''; if (img.complete) placePulse(m); }, i ? 600 : 0)); }, at * 1000));
+    at += (m.secs || 5);
+  });
+  establishT.push(setTimeout(() => { el.classList.remove('on'); establishT.push(setTimeout(() => el.classList.remove('show'), 1300)); }, at * 1000));
+}
+function hideEstablishing() { establishT.forEach(clearTimeout); establishT = []; const el = $('establish'); if (el) el.classList.remove('on', 'show'); }
+function startIntro() { setMusic(null, true); hideEstablishing(); clearTimeout(stageT); mode = 'intro'; setStage('battle'); resetSim(); markers = []; introPaused = false; introStarted = false; Narr.stop();
   $('titleCard').classList.remove('show'); $('playBig').classList.add('show'); hideOverlay('intro');
-  if (G && window.GAUGAMELA_WORLD) G.start($('globe'), { lift: true, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
+  if (G && window.BATTLE_WORLD) G.start($('globe'), { lift: true, onFade: showEstablishing, onSpinProgress: titleCardProgress, onSpun: () => { if (introSpunCb) { const f = introSpunCb; introSpunCb = null; f(); } }, onDone: () => {} }); $('introPause').textContent = 'Ⅱ Pause'; setModeButtons(); hideOverlay('debrief'); $('caption').classList.remove('show'); showIntro(0); if (G && G.active()) hideOverlay('intro'); else showOverlay('intro'); }
 function startMode(m, opts) {
+  hideEstablishing();
   const skipGlobe = opts && opts.skipGlobe; $('playBig').classList.remove('show'); $('titleCard').classList.remove('show'); $('playGame').classList.remove('show'); $('playMenu').classList.remove('show'); document.body.classList.remove('choice');
+  if (!(opts && opts.stage === 'battle')) setMusic(null, true);   // the music carries over from the campaign into the battle
   mode = m; markers = []; if (G) G.stop(); hideOverlay('intro'); hideOverlay('debrief'); hideOverlay('explain'); Narr.stop();
+  clearTimeout(stageT); setStage(m === 'watch' && !(opts && opts.stage === 'battle') ? 'campaign' : 'battle');
   resetSim(); paused = false; cam.follow = true; updatePauseBtn(); setModeButtons();
   document.body.dataset.mode = m; $('caption').classList.remove('show'); placeMedia();
   renderTimeline(); renderSelection();
@@ -911,7 +1281,7 @@ function startMode(m, opts) {
   begin();
 }
 $('globe').addEventListener('click', () => { if (G && G.active()) { G.skip(); $('titleCard').classList.remove('show'); } });
-function resetSim() { createFormations(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
+function resetSim() { createFormations(); createLeaders(); simTime = 0; acc = 0; eventIndex = 0; currentEvent = null; aiFlags = {}; battleOver = null; selected.clear(); log = []; $('log').innerHTML = ''; renderSelection(); renderTimeline(); }
 function setModeButtons() { $('watchBtn').classList.toggle('active', mode === 'watch'); $('commandBtn').classList.toggle('active', mode === 'command'); $('introBtn').classList.toggle('active', mode === 'intro'); document.body.dataset.mode = mode; }
 function updatePauseBtn() { $('pauseBtn').textContent = paused ? '▶ Resume' : 'Ⅱ Pause'; }
 function togglePause() { if (cinematic) return; if (mode === 'intro') { introPaused = !introPaused; $('introPause').textContent = introPaused ? '▶ Resume' : 'Ⅱ Pause'; Narr.pause(introPaused); return; } if (battleOver) return; paused = !paused; updatePauseBtn(); Narr.pause(paused); }
@@ -922,7 +1292,7 @@ function showDebrief() {
   if (battleOver === 'history') { head = 'What the sources say happened next'; body = ''; }
   else {
     const txt = S.debrief[player][battleOver].text;
-    const rows = formations.filter(f => f.known || f.side === 'macedon').map(f => `<tr><td style="color:${f.side === 'macedon' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</td><td>${f.state}</td><td>${Math.round(f.strength)}%</td></tr>`).join('');
+    const rows = formations.filter(f => f.known || f.side === 'allied').map(f => `<tr><td style="color:${f.side === 'allied' ? '#9fc8ff' : '#ffb3a7'}">${f.name}</td><td>${f.state}</td><td>${Math.round(f.strength)}%</td></tr>`).join('');
     head = S.debrief[player][battleOver].title;
     body = `<p class="lead">${txt}</p><p class="muted">Your battle is a what-if simulation. Nothing about it is a claim about what really happened. Compare it with the historical outcome below.</p><div class="tablewrap"><table><tr><th>Formation</th><th>State</th><th>Strength</th></tr>${rows}</table></div>`;
   }
@@ -934,7 +1304,7 @@ function showDebrief() {
 function showExplain() {
   const ev = currentEvent; if (!ev || !ev.explain) return;
   if (!paused) togglePause(); $('explainTitle').textContent = ev.title; $('explainBody').textContent = ev.explain; showOverlay('explain');
-  Narr.speak(ev.explain, ev.explainAudio || audioFor('explain', S.events.indexOf(ev) + 1));
+  Narr.speak(ev.explain, ev.explainAudio || audioFor('explain', ev.clipNo || S.events.indexOf(ev) + 1));
 }
 
 /* ---------------- input ---------------- */
@@ -963,6 +1333,15 @@ function orderMove(p, state) {
 function orderHalt() { ownSelected().forEach(f => { if (f.state === 'move' || f.state === 'attack') f.state = 'hold'; }); addLog('Halt'); renderSelection(); }
 function orderFace(p) { ownSelected().forEach(f => { f.facing = Math.atan2(p.y - f.y, p.x - f.x); f.state = 'hold'; }); addLog('Facing changed'); renderSelection(); }
 function orderFallBack() { $('retreatBtn').click(); }
+// Gun orders for the selected batteries. Aim: turn and lay the guns on a target in sight and in range (takes GUN.lay seconds).
+// Fire: one volley as soon as the guns are laid. Autofire: keep firing at the target until it is gone or out of range.
+const ownGuns = () => ownSelected().filter(f => f.type === 'artillery' && f.gun);
+function orderAim(t) { ownGuns().forEach(f => { if (dist(f, t) > GUN.range) { addLog(f.division + ': ' + t.division + ' is out of range'); return; }
+  if (f.gun.target !== t.id) f.gun.laid = 0; f.gun.target = t.id; f.gun.mode = 'aim'; if (f.state === 'move' || f.state === 'attack') { f.tx = f.x; f.ty = f.y; f.state = 'hold'; } });
+  addLog('Aim at ' + t.division); renderSelection(); }
+window.__gunOrders = { orderAim: t => orderAim(t), orderGunMode: m => orderGunMode(m), screenOf: id => P(byId[id].x, byId[id].y) };   // for tests
+function orderGunMode(mode) { ownGuns().forEach(f => { if ((mode === 'fire' || mode === 'auto') && !f.gun.target) return; f.gun.mode = mode; if (mode === 'hold' || mode === 'will') f.gun.target = null; });
+  addLog({ fire: 'Fire!', auto: 'Autofire', hold: 'Cease fire', will: 'Fire at will' }[mode]); renderSelection(); }
 function showMenu(sx, sy, p) {
   menuTarget = p; const m = $('ctxMenu'), fs = ownSelected(), enemy = pickFormation(p), onEnemy = enemy && enemy.side !== player;
   const items = [];
@@ -972,9 +1351,23 @@ function showMenu(sx, sy, p) {
     items.push({ t: '\u21bb Face this way', f: () => orderFace(p) });
     items.push({ t: '\u25a0 Halt / hold ground', f: orderHalt });
     items.push({ t: '\u21a9 Fall back', f: orderFallBack });
+    const guns = fs.filter(f => f.type === 'artillery' && f.gun);
+    if (guns.length) {
+      items.push({ sep: true });
+      if (onEnemy && sees(player, enemy)) {
+        const inRange = guns.some(f => dist(f, enemy) <= GUN.range);
+        items.push({ t: '\ud83c\udfaf Aim at ' + enemy.division + (inRange ? '' : ' (out of range)'), f: () => orderAim(enemy), off: !inRange });
+      }
+      if (guns.some(f => f.gun.target)) {
+        items.push({ t: '\ud83d\udca5 Fire (one volley)', f: () => orderGunMode('fire') });
+        items.push({ t: '\ud83d\udd01 Autofire (keep firing)', f: () => orderGunMode('auto') });
+      }
+      items.push({ t: '\u270b Cease fire', f: () => orderGunMode('hold') });
+      items.push({ t: '\ud83c\udfb2 Fire at will (choose own targets)', f: () => orderGunMode('will') });
+    }
     items.push({ sep: true });
   }
-  items.push({ t: '\u2611 Select all ' + (player === 'macedon' ? 'Macedonian' : 'Persian') + ' formations', f: () => $('selectAll').click() });
+  items.push({ t: '\u2611 Select all ' + ((S.sides[player] || {}).short || player) + ' formations', f: () => $('selectAll').click() });
   if (enemy && enemy.side === player) items.push({ t: '\u2610 Select ' + enemy.name, f: () => { selected.clear(); selected.add(enemy.id); renderSelection(); } });
   if (selected.size) items.push({ t: '\u2715 Deselect', f: () => { selected.clear(); renderSelection(); } });
   items.push({ t: '\ud83c\udfa5 Look here', f: () => { manualCamera(); focusOn(p.x, p.y); } });
@@ -1050,8 +1443,8 @@ function fitSwappedMap() {
 function swapPhoto(on) {
   if (on && !document.body.classList.contains('fsmedia')) return;
   swapped = on; document.body.classList.toggle('swapped', on);
-  if (on) { const m = introMedia[mediaIdx]; if (m) $('bigPhotoImg').src = (S.imageBase || 'images/') + m.file; requestAnimationFrame(fitSwappedMap); }
-  else { canvas.style.transform = ''; const plate = $('fsMediaWrap').querySelector('.plate'); if (plate) plate.style.minHeight = ''; }
+  if (on) { const m = introMedia[mediaIdx]; if (m) { $('bigPhotoImg').src = (S.imageBase || 'images/') + m.file; setPulse($('bigPhotoPulse'), m); } requestAnimationFrame(fitSwappedMap); }
+  else { setPulse($('bigPhotoPulse'), null); canvas.style.transform = ''; const plate = $('fsMediaWrap').querySelector('.plate'); if (plate) plate.style.minHeight = ''; }
   if (document.body.classList.contains('fsmedia')) requestAnimationFrame(() => document.body.style.setProperty('--mm-top', ($('fsMediaWrap').offsetHeight + 22) + 'px'));
 }
 $('swapBtn').onclick = e => { e.stopPropagation(); swapPhoto(!swapped); };
@@ -1140,12 +1533,12 @@ $('watchBtn').onclick = () => startMode('watch');
 // Take command: ask which side to lead (the same menu as the start screen, without the reenactment button).
 $('commandBtn').onclick = () => { $('playMenu').classList.add('show', 'cmdpick'); };
 $('pauseBtn').onclick = togglePause;
-$('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode); };
+$('resetBtn').onclick = () => { if (mode === 'intro') startIntro(); else startMode(mode, { stage }); };
 $('speedSel').onchange = e => { speed = +e.target.value; $('ffBtn').classList.toggle('active', speed > 1); $('ffBtn').textContent = speed > 1 ? '\u23e9 ' + speed + '\u00d7' : '\u23e9 FF'; };
 // FF: 1x -> 2x -> 4x -> back to 1x
 $('ffBtn').onclick = () => { speed = speed >= 4 ? 1 : speed >= 2 ? 4 : 2; $('speedSel').value = String(speed); $('speedSel').onchange({ target: $('speedSel') }); };
 // Skip: jump to the start of the next chapter (Watch mode)
-function skipChapter() { if (mode !== 'watch') return; const next = S.events.find(e => e.t > simTime + .01); if (next) jumpTo(next.t); }
+function skipChapter() { if (mode !== 'watch') return; const next = S.events.find(e => e.t > simTime + .01); if (next) jumpTo(next.t); else if (stage === 'campaign') startMode('watch', { stage: 'battle' }); }
 $('skipBtn').onclick = skipChapter;
 $('followBtn').onclick = () => { cam.follow = !cam.follow; $('followBtn').classList.toggle('active', cam.follow); if (cam.follow && currentEvent && currentEvent.focus) frame(currentEvent.focus.x, currentEvent.focus.y); };
 $('explainBtn').onclick = showExplain;
@@ -1155,7 +1548,7 @@ document.addEventListener('click', e => { if (!e.target.closest('#voiceWrap')) $
 $('voiceBtn').onclick = () => Narr.toggle();
 if (S.voices && S.voices.length) {
   const sel = $('voiceSel'); sel.innerHTML = S.voices.map(v => `<option value="${v.id}"${v.id === voiceId ? ' selected' : ''}>${v.name}</option>`).join('');
-  sel.onchange = () => { voiceId = sel.value; try { localStorage.setItem('gaugamela-voice', voiceId); } catch (e) {} if (Narr.on) { if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) Narr.speak(currentEvent.text, currentEvent.audio || audioFor('event', S.events.indexOf(currentEvent) + 1)); } };
+  sel.onchange = () => { voiceId = sel.value; try { localStorage.setItem('gaugamela-voice', voiceId); } catch (e) {} if (Narr.on) { if (mode === 'intro') speakSlide(S.intro[introIdx]); else if (currentEvent) Narr.speak(currentEvent.text, evAudio(currentEvent)); } };
 } else $('voiceSel').style.display = 'none';
 try { const r = parseFloat(localStorage.getItem('gaugamela-voice-rate')); if (r >= .5 && r <= 2) Narr.rate = r; } catch (e) {}
 $('voiceRate').value = String(Narr.rate);
@@ -1175,7 +1568,7 @@ $('unitPrev').onclick = () => openUnit(unitIdx - 1);
 $('unitNext').onclick = () => openUnit(unitIdx + 1);
 $('unitPlate').onclick = () => { const u = (S.units || [])[unitIdx]; if (!u) return; const n = unitPhotos(u).length; if (n > 1) showUnitPhoto((unitPhoto + 1) % n); };
 $('chooseWatch').onclick = () => startMode('watch', { skipGlobe: true });
-$('chooseCommand').onclick = () => { setPlayer('macedon'); startMode('command', { skipGlobe: true }); };
+$('chooseCommand').onclick = () => { setPlayer('allied'); startMode('command', { skipGlobe: true }); };
 $('explainClose').onclick = () => { hideOverlay('explain'); Narr.stop(); if (paused && !battleOver) togglePause(); };
 $('debriefWatch').onclick = () => startMode('watch');
 $('debriefCommand').onclick = () => startMode('command');
@@ -1183,12 +1576,12 @@ $('debriefIntro').onclick = startIntro;
 $('selectAll').onclick = () => { selected.clear(); formations.forEach(f => { if (f.side === player && alive(f) && f.state !== 'rout') selected.add(f.id); }); renderSelection(); };
 $('sideSel').value = player;
 $('sideSel').onchange = () => { setPlayer($('sideSel').value); if (mode === 'command') startMode('command'); };
-$('chooseCommandH').onclick = () => { setPlayer('persia'); startMode('command', { skipGlobe: true }); };
+$('chooseCommandH').onclick = () => { setPlayer('french'); startMode('command', { skipGlobe: true }); };
 $('playGame').onclick = () => { $('playGame').classList.remove('show'); $('playMenu').classList.remove('cmdpick'); $('playMenu').classList.add('show'); };
 $('pmClose').onclick = () => { const fromCmd = $('playMenu').classList.contains('cmdpick'); $('playMenu').classList.remove('show', 'cmdpick'); if (!fromCmd) $('playGame').classList.add('show'); };
 $('pmWatch').onclick = () => $('chooseWatch').click();
-$('pmMacedon').onclick = () => $('chooseCommand').click();
-$('pmPersian').onclick = () => $('chooseCommandH').click();
+$('pmAllied').onclick = () => $('chooseCommand').click();
+$('pmFrench').onclick = () => $('chooseCommandH').click();
 $('haltBtn').onclick = () => { selected.forEach(id => { const f = byId[id]; if (f.state === 'move' || f.state === 'attack') { f.state = 'hold'; } }); };
 $('retreatBtn').onclick = () => { const r = S.sides[player].rally; let i = 0; selected.forEach(id => { const f = byId[id]; if (!alive(f) || f.state === 'rout' || f.side !== player) return; f.tx = r.x + (i % 3) * 60; f.ty = r.y + Math.floor(i / 3) * 60; f.state = 'move'; i++; }); };
 
@@ -1202,38 +1595,44 @@ function tick(t) {
       let tail = false, frac = 0;
       if (Narr.on && Narr.audio) { const au = Narr.audio; if (au.ended && au.currentTime >= au.duration - .05) tail = true; else frac = au.duration ? Math.min(1, au.currentTime / au.duration) : 0; }
       else if (Narr.on && 'speechSynthesis' in window && speechSynthesis.speaking) frac = .5;
-      else { if (!(G && G.active())) introTimer += dt; frac = Math.min(1, introTimer / sl.auto); if (introTimer >= sl.auto) tail = true; }
+      else { if (!(G && G.active())) introTimer += dt; frac = Math.min(1, introTimer / slideSecs(sl)); if (introTimer >= slideSecs(sl)) tail = true; }
       showMedia(Narr.on && Narr.audio ? Narr.audio.currentTime * (Narr.rate || 1) / (Narr.rate || 1) : introTimer);
       const nb = $('introNext');
-      if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) showIntro(introIdx + 1); }
+      if (tail) { introTail += dt; frac = 1; nb.textContent = `Next narration \u25b6 ${Math.max(0, Math.ceil(INTRO_BREAK - introTail))}`; nb.classList.add('ready'); $('ctrlStrip').classList.add('lit'); if (introTail >= INTRO_BREAK) { if (introIdx < S.intro.length - 1) showIntro(introIdx + 1); else if (!introEnded) { introEnded = true; $('playGame').classList.add('show'); } } }   // after the last slide: stop and offer Watch / Play (no looping)
       else { introTail = 0; if (nb.classList.contains('ready')) { nb.textContent = 'Next \u25b6'; nb.classList.remove('ready'); $('ctrlStrip').classList.remove('lit'); } }
-      $('introBar').style.width = Math.min(100, frac * 100) + '%'; introCamTick(frac, tail);
+      $('introBar').style.width = Math.min(100, frac * 100) + '%'; introCamTick(frac, tail); if (BR) BR.update(sl, frac, tail);
     }
   } else if (!paused && !battleOver && !cinematic) {
     acc += dt * speed;
     while (acc >= DT) {
       // In Watch mode, hold at a chapter boundary while the narrator is still speaking the previous one.
-      if (mode === 'watch' && Narr.on && Narr.audio && (!Narr.audio.ended || wall - Narr.endedAt < CHAPTER_BREAK) && eventIndex < S.events.length && S.events[eventIndex].t <= simTime + DT) { acc = 0; break; }
+      if (mode === 'watch' && Narr.on && Narr.audio && (!Narr.audio.ended || wall - Narr.endedAt < CHAPTER_BREAK) && ((eventIndex < S.events.length && S.events[eventIndex].t <= simTime + DT) || (stage === 'campaign' && simTime + DT >= S.duration))) { acc = 0; break; }
       acc -= DT; simTime += DT; if (mode === 'watch') stepWatch(); else stepCommand();
     }
-    $('clock').textContent = fmtTime(simTime); const now = $('tlNow'); if (now) now.style.left = (simTime / S.duration * 100) + '%';
+    $('clock').textContent = stage === 'campaign' && currentEvent && currentEvent.clock ? currentEvent.clock : fmtTime(simTime); const now = $('tlNow'); if (now) now.style.left = (simTime / S.duration * 100) + '%';
   }
   render(); requestAnimationFrame(tick);
 }
 
 /* ---------------- boot ---------------- */
-TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderArmies(); createFormations();
+TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderArmies(); createFormations(); createLeaders();
 // Optional painted terrain (images/terrain.jpg, painted to the layout guide): when present it replaces the drawn ground.
 // Labels, river course and props still come from the scenario, so the painting must follow the guide's positions.
 { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height);
     g.scale(TS, TS); B.fords.forEach(f => outlined(g, f.name, f.x, f.y + 34, 12, { fill: '#e8f4f6' })); if (B.city) outlined(g, B.city.name, B.city.x + B.city.w / 2, B.city.y + B.city.h + 46, 20, { fill: '#f8e9bf' }); if (B.camp) outlined(g, B.camp.name, B.camp.x + B.camp.w / 2, B.camp.y - 18, 12, { fill: '#dce9ff' });
     B.labels.forEach(l => outlined(g, l.text, l.x, l.y, l.small ? 13 : 26, { rotate: l.rotate || 0, fill: l.small ? '#efe3c3' : '#dff3f6', weight: l.small ? 'italic' : 'bold' }));
-    PAINTEDTER = T; applyArt(); }; img.src = (S.imageBase || 'images/') + 'terrain.jpg'; }
+    PAINTEDTER = T; applyArt(); }; img.src = (S.imageBase || 'images/') + (S.terrain || 'terrain.jpg'); }
 function applyArt() {
-  if (artOn && PAINTEDTER) { TER = PAINTEDTER; PAINTED = true; }
-  else { if (!DRAWNTER) DRAWNTER = buildTerrain(); TER = DRAWNTER; PAINTED = false; }
+  if (stage === 'campaign') { TER = CAMPTER; PAINTED = true; buildMiniBase(); return; }
+  if (artOn && PAINTEDTER) { TER = withTrench(PAINTEDTER); PAINTED = true; }
+  else { if (!DRAWNTER) DRAWNTER = buildTerrain(); TER = withTrench(DRAWNTER); PAINTED = false; }
   buildMiniBase(); document.body.classList.toggle('drawnmode', !artOn); const b = $('artBtn'); if (b) { b.classList.toggle('active', artOn); b.textContent = artOn ? '\ud83c\udfa8 Art' : '\u270f Drawn'; b.title = artOn ? 'Painted battlefield (click for the drawn map)' : 'Drawn battlefield (click for the painting)'; }
 }
+// The campaign map (S.campaign.terrain), with the towns written on it.
+if (CAMP) { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; const g = T.getContext('2d'); g.drawImage(img, 0, 0, T.width, T.height); g.scale(TS, TS);
+    CAMP.towns.forEach(t => { g.fillStyle = '#1b130a'; g.beginPath(); g.arc(t.x, t.y, t.big ? 9 : 6, 0, PI * 2); g.fill(); g.fillStyle = t.big ? '#ffd36b' : '#f6e9c6'; g.beginPath(); g.arc(t.x, t.y, t.big ? 6 : 4, 0, PI * 2); g.fill();
+      outlined(g, t.name, t.x, t.y - (t.big ? 26 : 19), t.big ? 30 : 20, { fill: t.big ? '#ffe7a8' : '#f6e9c6' }); });
+    CAMPTER = T; if (stage === 'campaign') applyArt(); }; img.src = (S.imageBase || 'images/') + CAMP.terrain; }
 $('artBtn').onclick = () => { artOn = !artOn; try { localStorage.setItem('gaugamela-art', artOn ? '1' : '0'); } catch (e) {} applyArt(); };
 // When the title font finishes loading, redo the drawn labels; never overwrite a painting that has already arrived.
 if (document.fonts && document.fonts.load) document.fonts.load("bold 20px 'Cinzel'").then(() => { DRAWNTER = buildTerrain(); applyArt(); }).catch(() => {});
