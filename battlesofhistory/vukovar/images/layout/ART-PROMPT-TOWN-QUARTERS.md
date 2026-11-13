@@ -1,0 +1,72 @@
+# Vukovar: a sharper town map in four quarters (prompts for ChatGPT, 13 November 2026)
+
+The town map (`../town-painting.jpg`, 12 × 9 km) came back from ChatGPT at about 1450 px wide, stretched to 2400: soft. The
+water tower also stands about 60 m from its real place, and is drawn from the side. This time the town map is painted in
+**four overlapping quarters** (each 6.4 × 4.8 km), so each one has about 2.4 times the detail; Claude joins them with soft
+seams. Made by `tools/draw-town-quarters.py`.
+
+For each quarter there are three images:
+- `town-qN-base.png`: the real terrain and water, **the one to repaint** (it fixes the framing);
+- `town-qN-guide.png`: what is where; the **red crosses** are landmarks to put exactly on the cross;
+- `town-qN-style.png`: the same area cut from the present painting, so all four quarters keep its look.
+
+Quarters: **1** top left (Borovo Naselje, Lužac, the Vuka), **2** top right (the Danube bend, the hospital),
+**3** bottom left (Sajmište, the fields to the south-west), **4** bottom right (the town centre, the water tower, the
+barracks, Mitnica, Vučedol).
+
+**How:** one chat. Paste the first prompt once, then for each quarter attach its three images **in this order: base,
+guide, style**, paste that quarter's prompt, and ask for **exactly 2400 × 1800 px, landscape**. Send the four results back
+to Claude in a zip, as originals (PNG if offered).
+
+## Paste once
+```text
+I am making an educational, narrated reenactment of the Battle of Vukovar (Croatia, autumn 1991) for students aged 12 and up. I need a painted map of the town, made in four overlapping quarters that will be joined into one map, so the four paintings must match each other in style, colour and light.
+For each quarter I attach three images in this order: (1) the BASE, real terrain and water, which you repaint; (2) the GUIDE, which says what is where; (3) the STYLE, the same area from an earlier, softer painting: copy its style, colours and light, but with much more detail.
+Rules for every quarter:
+- Keep EXACTLY the framing of the base: same size (2400 x 1800, landscape 4:3), north at the top. Do not crop, zoom, rotate or shift. The Danube, the river Vuka, the islands and the slopes stay exactly where they are in the base.
+- Seen from almost straight above (a high aerial photograph), not from the side: buildings show their roofs, and tall things like towers are seen from above with their foot exactly at their place, not leaning over the map.
+- Wherever the guide has a red cross, the landmark named next to it must stand exactly on that cross.
+- Late October 1991, soft clear light, autumn colours. The town as it was before the war: no damage, no smoke, no fires, no vehicles, no soldiers, no people.
+- No text, labels, lines, grid, crosses, borders, compass or frame: do not copy anything drawn on the guide.
+```
+
+## Quarter 1 (top left): attach `town-q1-base.png`, `town-q1-guide.png`, `town-q1-style.png`
+```text
+Quarter 1 of 4. The north-west of the town map: Borovo Naselje and the Vuka meadows.
+- Borovo Naselje, at the grey built-up shape in the guide: a planned 1930s factory town. A very large shoe and rubber factory (Bata / Borovo): long parallel halls of grey concrete and red brick with sawtooth roofs, a tall chimney, rail sidings; around it a grid of tree-lined streets with blocks of flats and small houses with gardens.
+- The Danube on the right, wide and grey-green, sandy banks, willows; across it (top right) flat floodplain woods and meadows in Serbia.
+- The Vuka at the bottom: a small winding river with willows and marshy meadows (Lužac), as in the base.
+- Everywhere else: large harvested fields (pale maize stubble, brown ploughed land, some green winter wheat), long strip fields, rows of poplars along the roads.
+- If the hospital cross is at the bottom right edge: a large hospital complex of several 3–5-storey blocks with flat roofs, on the Danube road.
+```
+
+## Quarter 2 (top right): attach `town-q2-base.png`, `town-q2-guide.png`, `town-q2-style.png`
+```text
+Quarter 2 of 4. The north-east of the town map: the Danube.
+- The Danube fills much of this quarter, wide and grey-green, as in the base, with its islands; on the far bank (Serbia) low floodplain woods, willows, oxbow ponds and meadows.
+- At the red cross "HOSPITAL" (bottom left): Vukovar hospital, a large complex of several 3–5-storey blocks with flat roofs and a courtyard, on the road along the Danube.
+- On the near bank at the bottom left, the northern edge of the town: red-roofed houses with gardens; the grey built-up shapes in the guide show where.
+```
+
+## Quarter 3 (bottom left): attach `town-q3-base.png`, `town-q3-guide.png`, `town-q3-style.png`
+```text
+Quarter 3 of 4. The south-west of the town map.
+- The Vuka at the top, winding through marshy meadows with willows, as in the base.
+- The western edge of Vukovar on the right (the grey built-up shapes in the guide): streets of family houses with red tiled roofs, gardens and orchards.
+- Elsewhere: the gently rolling loess plateau south of the Vuka, with large harvested fields, strip fields, a few orchards and vineyards, rows of trees along straight country roads.
+```
+
+## Quarter 4 (bottom right): attach `town-q4-base.png`, `town-q4-guide.png`, `town-q4-style.png`
+```text
+Quarter 4 of 4. The south-east of the town map: the town centre and the water tower. The most important quarter: place the landmarks exactly.
+- At the red cross "WATER TOWER": Vukovar's water tower, a tall concrete tower whose slender stem widens into a large round tank at the top, about 50 m tall, seen from above (we see the round top of the tank, with a short shadow); its foot exactly on the cross, in a small grassy park among houses. Undamaged.
+- At the red cross "JNA BARRACKS": a walled army barracks compound of long low buildings with red roofs around a large parade ground.
+- At the crosses "Franciscan church" and "Eltz Palace" (top left): the baroque old town by the Danube: a large church with a tall bell tower on a small hill, a long baroque palace with gardens, and the arcaded old streets with red tiled roofs.
+- Mitnica and Sajmište: streets of family houses with gardens and orchards, as the grey built-up shapes in the guide.
+- The Danube across the top, with its islands; the far bank in Serbia, flat floodplain woods.
+- East of the town (right): Vučedol, slopes with vineyards and orchards above the Danube; fields to the south.
+```
+
+**When they come back:** Claude checks each quarter's Danube and Vuka against the base, puts the tower on its cross, joins
+the four with soft seams into a new `../town-painting.jpg` (the old one is kept as `town-painting-2026-11.jpg`), and
+checks the markers on the page.
