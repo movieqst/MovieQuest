@@ -90,7 +90,7 @@
   #gcard .x{position:absolute;right:6px;top:6px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:50%;width:24px;height:24px;cursor:pointer}
   #gzoom{position:absolute;right:14px;bottom:10px;display:flex;gap:4px} #gzoom button{background:#0b1821;color:#e8eef2;border:1px solid var(--line);border-radius:6px;padding:2px 9px;cursor:pointer}
   #wip{display:flex;flex-direction:column;min-width:0} #wipList{display:flex;flex-direction:column;gap:10px}
-  #wip .wcard.more{display:none} #wip.all .wcard.more{display:flex}   /* only the 4 furthest along, unless 'Show all' is chosen (right-click the title) */
+  #wip .wcard.more{display:none} #wip.all .wcard.more{display:grid}   /* only the 4 furthest along, unless 'Show all' is chosen (right-click the title) */
   #wip .lbl{cursor:context-menu;user-select:none}
   #wipMenu{position:fixed;z-index:9999;background:#0c1921;border:1px solid #c9a34a;border-radius:7px;box-shadow:0 6px 20px rgba(0,0,0,.55);padding:4px;display:none;font:13px system-ui,sans-serif}
   #wipMenu.on{display:block} #wipMenu button{display:block;width:100%;text-align:left;background:none;border:0;color:#e8f0ea;padding:7px 12px;border-radius:5px;cursor:pointer;white-space:nowrap}

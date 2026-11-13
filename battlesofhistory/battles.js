@@ -286,8 +286,8 @@ window.BATTLES = [
     place: 'Slovenia: its border crossings with Italy, Austria and Hungary, and the roads, barracks and airport across the republic',
     sides: 'Slovenian Territorial Defence and police vs. the Yugoslav People’s Army (JNA)',
     blurb: 'Two days after Slovenia declared independence, the Yugoslav army moved to take over its border crossings. The Slovenian Territorial Defence and police blocked the roads and surrounded the barracks. After ten days of fighting, the Brioni Agreement of 7 July ended the war, and the army later left Slovenia.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner
-    coverCredit: '',
+    cover: 'images/cover.jpg', coverPos: '55% 60%',   // the tanks at the crossing
+    coverCredit: 'Slovenian Territorial Defence fighters hit a Yugoslav Army (JNA) tank at the crossroads before the Rožna Dolina border crossing, Nova Gorica, June 1991. Photo: Peter Božič, Wikimedia Commons, CC BY 3.0',
     status: 'in progress'
   },
   {
