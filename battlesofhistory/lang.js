@@ -60,7 +60,7 @@
        captions of photos, the radio card, the library, the globe's names), replaced wherever it appears as a value of one of
        these keys, in the scenario and in the battle's other data (borders.js, lines.js). Exact matches only. */
     if (L.strings) {
-      const KEYS = /^(text|label|name|short|army|division|note|desc|caption|credit|title|when|subtitle|sub|about|kind|citedIn|rights|linkLabel|author|year|dateNote|dateRef|place|sides|date|periodNote|todayNote|thenNote|heading|who|count)$/;
+      const KEYS = /^(text|label|name|short|army|division|note|desc|caption|credit|title|when|subtitle|sub|about|kind|citedIn|rights|linkLabel|author|year|dateNote|dateRef|place|sides|date|periodNote|todayNote|thenNote|heading|who|count|by)$/;
       const seen = new Set(), D = L.strings;
       const walk = o => { if (!o || typeof o !== 'object' || seen.has(o)) return; seen.add(o);
         if (Array.isArray(o)) { o.forEach((v, i) => { if (typeof v === 'string' && D[v] !== undefined && Array.isArray(o) && o.length === 2 && typeof o[0] === 'number') o[i] = D[v]; else walk(v); }); return; }

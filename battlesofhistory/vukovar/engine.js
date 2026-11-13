@@ -1787,6 +1787,7 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
    whichever map is showing. S.geo gives each map's corners: { town: {...}, area: {...} } ('town' is the main map).
    A slide or chapter shows them with `fronts: ['sep14', ...]` and `arrows: ['oct16', ...]`; `frontNote` labels the lines. */
 const FL = window.VUKOVAR_LINES || { fronts: {}, arrows: {} };
+const UIT = t => (((window.BH_UI || {})[window.BH_LANG] || {})[t]) || t;   // the map's own words, in the page's language
 const FSTYLE = { sep14: { col: '#2b2b2b', dash: [], label: 'front line, 14 September (CIA)' }, sep30: { col: '#7a2e8e', dash: [16, 9], label: 'front line, 30 September (CIA)' }, nov10: { col: '#d9690f', dash: [6, 6], label: 'front line, 10 November (CIA)' } };
 const ADATE = { sep14: '14 Sept', sep30: '30 Sept', oct16: '16 Oct', nov3: '3 Nov', nov8: '8 Nov', undated: '' };
 function geoXY(lon, lat, key) { const g = (S.geo || {})[key || 'town']; if (!g) return { x: 0, y: 0 }; return { x: (lon - g.lon0) / (g.lon1 - g.lon0) * W.w, y: (g.lat1 - lat) / (g.lat1 - g.lat0) * W.h }; }
@@ -1811,8 +1812,8 @@ function drawFronts(ALT) {
   const ks = (it.fronts || []).filter(k => FSTYLE[k]); if (ks.length || (it.arrows || []).length) {
     let y = view.h - (mode === 'watch' ? 70 : 40) - (ks.length + ((it.arrows || []).length ? 1 : 0)) * 18; ctx.font = '12px system-ui'; ctx.textAlign = 'left';
     ctx.fillStyle = 'rgba(9,19,26,.72)'; ctx.fillRect(10, y - 14, 250, (ks.length + ((it.arrows || []).length ? 1 : 0)) * 18 + 8);
-    ks.forEach(k => { const st = FSTYLE[k]; ctx.strokeStyle = st.col === '#2b2b2b' ? '#ddd' : st.col; ctx.lineWidth = 3.5; ctx.setLineDash(st.dash.map(d => d * .6)); ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(56, y - 4); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = '#e8f0ea'; ctx.fillText(st.label, 64, y); y += 18; });
-    if ((it.arrows || []).length) { ctx.strokeStyle = red; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(52, y - 4); ctx.stroke(); ctx.fillStyle = red; ctx.beginPath(); ctx.moveTo(58, y - 4); ctx.lineTo(50, y - 9); ctx.lineTo(50, y + 1); ctx.fill(); ctx.fillStyle = '#e8f0ea'; ctx.fillText('JNA attack, as dated on the CIA map', 64, y); }
+    ks.forEach(k => { const st = FSTYLE[k]; ctx.strokeStyle = st.col === '#2b2b2b' ? '#ddd' : st.col; ctx.lineWidth = 3.5; ctx.setLineDash(st.dash.map(d => d * .6)); ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(56, y - 4); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = '#e8f0ea'; ctx.fillText(UIT(st.label), 64, y); y += 18; });
+    if ((it.arrows || []).length) { ctx.strokeStyle = red; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(18, y - 4); ctx.lineTo(52, y - 4); ctx.stroke(); ctx.fillStyle = red; ctx.beginPath(); ctx.moveTo(58, y - 4); ctx.lineTo(50, y - 9); ctx.lineTo(50, y + 1); ctx.fill(); ctx.fillStyle = '#e8f0ea'; ctx.fillText(UIT('JNA attack, as dated on the CIA map'), 64, y); }
   }
   ctx.restore();
 }

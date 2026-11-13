@@ -2640,6 +2640,10 @@ Object.assign(window.SIXDAY_SCENARIO, {
   const showAF = AFIDS.map(id => ({ obj: id, visible: true }));
 
   // Part 1: the crisis (the region map)
+  // the song in chapter 1: a link to listen (YouTube); the page keeps no copy of it
+  EV[0].song = { title: '“Jerusalem of Gold” (Yerushalayim Shel Zahav)', by: 'Words and music: Naomi Shemer, 1967. First sung by Shuli Natan, 15 May 1967.',
+    note: 'Still in copyright: find a recording on YouTube (opens a new tab).', link: 'https://www.youtube.com/results?search_query=Shuli+Natan+Jerusalem+of+Gold+1967',   // a search, not one video: it keeps working if a video is removed
+    when: ['Jerusalem of Gold', 'أورشليم من ذهب', 'ירושלים של זהב'] };
   set(0, { zoom: 'fit', fronts: ['armistice'], markers: [ { ...rDAMASCUS, label: 'Soviet warning: Israeli troops massing (none were found)' }, { ...rCAIRO, label: 'Cairo' } ], orders: [
     { leader: 'nasser', visible: true }, { id: 'rEgy', to: R(30.85, 33.75), speed: 20, state: 'move', delay: 4 } ] });
   set(1, { zoom: 'fit', fronts: ['armistice'], markers: [ { ...R(31.2, 34.3), label: 'UNEF along the border: withdrawn 19 May', side: 'french' } ], orders: [

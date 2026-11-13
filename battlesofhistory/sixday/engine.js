@@ -834,12 +834,42 @@ const RadioCard = (() => {
   function show(r) { hide(); if (!r) return; list = [].concat(r); idx = 0; fill(); }
   return { show, hide };
 })();
+/* ---- a song the narrator talks about: ev.song { title, by, note, link, when: ['words in the caption', ...] }. A small card
+   (bottom right of the map) appears when the spoken caption reaches one of the `when` phrases (in any language), with a
+   link to listen on YouTube (opens a new tab; nothing is played or kept on this site). The x closes it; the next chapter
+   clears it. */
+const SongCard = (() => {
+  let el = null, mo = null, cur = null;
+  const make = () => { if (el) return el; el = document.createElement('div'); el.id = 'songCard';
+    el.innerHTML = '<div class="sch">🎵 <span class="scl">The song</span> <button class="scx" title="Close">✕</button></div><b></b><div class="scb"></div><div class="scn"></div><a target="_blank" rel="noopener"></a>';
+    const css = document.createElement('style');
+    css.textContent = `#songCard{position:absolute;right:12px;bottom:12px;z-index:39;width:min(300px,60%);background:rgba(8,14,20,.94);border:1px solid #c9a34a;border-radius:8px;padding:8px 10px;font:12.5px/1.4 system-ui,sans-serif;color:#dfe7e4;box-shadow:0 6px 24px rgba(0,0,0,.6);opacity:0;transform:translateY(8px);transition:opacity .6s,transform .6s;pointer-events:none}
+      #songCard.on{opacity:1;transform:none;pointer-events:auto}#songCard .sch{color:#e7c66b;font:600 12px 'Cinzel',Georgia,serif;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center;gap:6px}
+      #songCard .scl{flex:1}#songCard .scx{background:#26343c;color:#fff;border:1px solid #556;border-radius:5px;cursor:pointer;font-size:12px;padding:0 6px}
+      #songCard b{display:block;margin:4px 0 1px;font-size:14px;color:#fff}#songCard .scb{color:#c9d6d4}#songCard .scn{color:#9fb0b5;font-size:11.5px;margin:4px 0 6px}
+      #songCard a{display:inline-block;background:#b3261e;color:#fff;text-decoration:none;font-weight:600;border-radius:6px;padding:4px 10px}#songCard a:hover{background:#d0322a}`;
+    document.head.appendChild(css); ($('battlePanel') || document.body).appendChild(el);
+    el.querySelector('.scx').onclick = e => { e.stopPropagation(); el.classList.remove('on'); };
+    return el; };
+  const tr = t => (((window.BH_UI || {})[window.BH_LANG] || {})[t]) || t;
+  function open() { const s = cur; if (!s) return; make();
+    el.querySelector('.scl').textContent = tr('The song'); el.querySelector('b').textContent = s.title; el.querySelector('.scb').textContent = s.by || '';
+    el.querySelector('.scn').textContent = s.note || ''; const a = el.querySelector('a'); a.href = s.link; a.textContent = tr('▶ Find it on YouTube ↗');
+    el.classList.add('on'); }
+  function hide() { if (mo) { mo.disconnect(); mo = null; } cur = null; if (el) el.classList.remove('on'); }
+  function show(s) { hide(); if (!s) return; cur = s; const words = [].concat(s.when || []);
+    const check = n => { const t = (n && n.textContent) || ''; if (cur === s && words.some(w => t.includes(w))) { open(); if (mo) { mo.disconnect(); mo = null; } } };
+    mo = new MutationObserver(ms => ms.forEach(m => { const n = m.target.nodeType === 3 ? m.target.parentNode : m.target; if (n && n.closest && n.closest('#cc .cl, .sl')) check(n); }));
+    mo.observe(document.body, { subtree: true, childList: true, characterData: true });
+    document.querySelectorAll('#cc .cl, .sl').forEach(check); }
+  return { show, hide };
+})();
 function fireEvent(ev) {
   if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   if (ev.trenches !== undefined) setTrench(ev.trenches);
   currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o)); if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || [];   // o.delay: seconds into the chapter
   camForEvent(ev);
-  RadioCard.show(fastForward ? null : ev.radio); MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
+  RadioCard.show(fastForward ? null : ev.radio); SongCard.show(fastForward ? null : ev.song); MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((stage === 'campaign' && ev.clock ? ev.clock : fmtTime(ev.t)) + ' ' + ev.title);
   renderTimeline();
@@ -880,7 +910,7 @@ function setStage(st) {
   S.events = src.events; S.formations = src.formations; S.leaders = src.leaders; S.duration = src.duration;
   document.body.dataset.stage = st; applyArt();
 }
-function endWatch() { RadioCard.hide(); battleOver = 'history'; paused = true; showDebrief(); }
+function endWatch() { RadioCard.hide(); SongCard.hide(); battleOver = 'history'; paused = true; showDebrief(); }
 function jumpTo(t) {
   fastForward = true; resetSim(); 
   while (simTime < t) { simTime += DT; stepWatch(); }

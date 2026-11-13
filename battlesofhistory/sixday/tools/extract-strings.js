@@ -4,7 +4,7 @@
 global.window = {}; const D = __dirname + '/../';
 require(D + 'lines.js'); require(D + 'scenario.js'); require(D + 'borders.js');
 const S = window.SIXDAY_SCENARIO;
-const KEYS = /^(text|label|name|short|army|division|note|desc|caption|credit|title|when|subtitle|sub|about|kind|citedIn|rights|linkLabel|author|year|dateNote|dateRef|place|sides|date|periodNote|todayNote|thenNote|heading|who|count)$/;
+const KEYS = /^(text|label|name|short|army|division|note|desc|caption|credit|title|when|subtitle|sub|about|kind|citedIn|rights|linkLabel|author|year|dateNote|dateRef|place|sides|date|periodNote|todayNote|thenNote|heading|who|count|by)$/;
 const SKIP = new Set(['intro', 'events', 'outcome', 'welcome', 'voices']); const out = new Set(), seen = new Set();
 const walk = (o, top) => { if (!o || typeof o !== 'object' || seen.has(o)) return; seen.add(o);
   if (Array.isArray(o)) { if (o.length === 2 && typeof o[0] === 'number' && typeof o[1] === 'string') out.add(o[1]); else o.forEach(v => walk(v)); return; }

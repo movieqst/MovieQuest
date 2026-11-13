@@ -1188,6 +1188,9 @@ window.SIXDAY_LANG.ar = {
   "…at Ramat David…": "…في رمات دافيد…",
   "◀ to Jebel Libni": "◀ إلى جبل لبني",
   "Maj.-Gen. Avraham Yoffe’s reserve division crossed the dunes between Tal and Sharon.": "عبرت فرقة الاحتياط بقيادة اللواء أبراهام يوفي الكثبان الرملية بين طال وشارون.",
-  "Maj.-Gen. Israel Tal’s division: Pattons and Centurions, with paratroopers. Through Khan Yunis and Rafah, then the coast road to El Arish.": "فرقة اللواء يسرائيل طال: دبابات باتون وسنتوريون، مع المظليين. عبر خان يونس ورفح، ثم الطريق الساحلي إلى العريش."
+  "Maj.-Gen. Israel Tal’s division: Pattons and Centurions, with paratroopers. Through Khan Yunis and Rafah, then the coast road to El Arish.": "فرقة اللواء يسرائيل طال: دبابات باتون وسنتوريون، مع المظليين. عبر خان يونس ورفح، ثم الطريق الساحلي إلى العريش.",
+  "“Jerusalem of Gold” (Yerushalayim Shel Zahav)": "«أورشليم من ذهب» (يروشلايم شل زهاف)",
+  "Words and music: Naomi Shemer, 1967. First sung by Shuli Natan, 15 May 1967.": "كلمات وألحان: نعومي شيمر، 1967. غنتها شولي ناتان لأول مرة في 15 مايو 1967.",
+  "Still in copyright: find a recording on YouTube (opens a new tab).": "محمية بحقوق النشر: ابحث عن تسجيل على يوتيوب (تفتح في نافذة جديدة)."
  }
 };
