@@ -967,14 +967,14 @@ function checkEnd() {
 // "Night, 20 October"). Pieces naming a month, a "Day N" or a year are the date; the rest is the time of day. A chapter
 // that gives only a time keeps the last date. S.clockYear is added to dates without a year; ev.clockTag ('disputed',
 // 'estimate') tints it. An intro slide can carry its own `clock`.
-const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
+const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b|يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر|ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר/i;   // with the Arabic and Hebrew months
 function clockTime(t) {
   const m = /^(\d{1,2}):(\d{2})$/.exec(t.trim()); if (!m) return t;
   let h = +m[1]; const pm = h >= 12, lead = m[1].length === 2; if (!lead && h < 12) return h + ':' + m[2] + ' a.m.';
   if (h === 12 && m[2] === '00') return 'Noon'; const h12 = h % 12 || 12; return h12 + ':' + m[2] + (pm ? ' p.m.' : ' a.m.');
 }
 function clockParts(c) {
-  const bits = String(c).split(/\s+·\s+|,\s+/).map(x => x.trim()).filter(Boolean); let date = null; const time = [];
+  const bits = String(c).split(/\s+·\s+|[,،]\s+|;\s+/).map(x => x.trim()).filter(Boolean); let date = null; const time = [];
   bits.forEach(b => { if (!date && CLOCK_DATE.test(b)) date = b; else time.push(clockTime(b)); });
   if (date && S.clockYear && !/\b\d{3,4}\b/.test(date) && !/\bdays? \d/i.test(date)) date += ' ' + S.clockYear;
   const tm = time.join(', '); return { date, time: tm ? tm[0].toUpperCase() + tm.slice(1) : '' };
