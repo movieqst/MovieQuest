@@ -1,4 +1,8 @@
-# Vukovar: a sharper town map in four quarters (prompts for ChatGPT, 13 November 2026)
+# Vukovar: a sharper town map in four quarters (prompts for ChatGPT, 13 November 2026, version 2 with streets)
+
+**Version 2:** the bases now carry the real streets, railway and river outlines (OpenStreetMap), with the side streets
+limited to the town of about 1990 (EU GHSL 1990 built-up map), and the town of 1990 lightly shaded. The Franciscan church,
+Eltz Palace and the barracks crosses are at their real positions. Same files, same prompts below, plus one rule on streets.
 
 The town map (`../town-painting.jpg`, 12 × 9 km) came back from ChatGPT at about 1450 px wide, stretched to 2400: soft. The
 water tower also stands about 60 m from its real place, and is drawn from the side. This time the town map is painted in
@@ -23,6 +27,7 @@ to Claude in a zip, as originals (PNG if offered).
 I am making an educational, narrated reenactment of the Battle of Vukovar (Croatia, autumn 1991) for students aged 12 and up. I need a painted map of the town, made in four overlapping quarters that will be joined into one map, so the four paintings must match each other in style, colour and light.
 For each quarter I attach three images in this order: (1) the BASE, real terrain and water, which you repaint; (2) the GUIDE, which says what is where; (3) the STYLE, the same area from an earlier, softer painting: copy its style, colours and light, but with much more detail.
 Rules for every quarter:
+- Keep every street, road (light lines) and the railway (dark line) exactly where it is in the base, as 1991 streets lined with trees; do not add or move streets. Where the base has no streets and no shading, there were few buildings in 1991: keep it fields, meadows and orchards.
 - Keep EXACTLY the framing of the base: same size (2400 x 1800, landscape 4:3), north at the top. Do not crop, zoom, rotate or shift. The Danube, the river Vuka, the islands and the slopes stay exactly where they are in the base.
 - Seen from almost straight above (a high aerial photograph), not from the side: buildings show their roofs, and tall things like towers are seen from above with their foot exactly at their place, not leaning over the map.
 - Wherever the guide has a red cross, the landmark named next to it must stand exactly on that cross.
@@ -61,7 +66,7 @@ Quarter 3 of 4. The south-west of the town map.
 Quarter 4 of 4. The south-east of the town map: the town centre and the water tower. The most important quarter: place the landmarks exactly.
 - At the red cross "WATER TOWER": Vukovar's water tower, a tall concrete tower whose slender stem widens into a large round tank at the top, about 50 m tall, seen from above (we see the round top of the tank, with a short shadow); its foot exactly on the cross, in a small grassy park among houses. Undamaged.
 - At the red cross "JNA BARRACKS": a walled army barracks compound of long low buildings with red roofs around a large parade ground.
-- At the crosses "Franciscan church" and "Eltz Palace" (top left): the baroque old town by the Danube: a large church with a tall bell tower on a small hill, a long baroque palace with gardens, and the arcaded old streets with red tiled roofs.
+- At the crosses "Franciscan church" and "Eltz Palace" (top left): the baroque old town by the Danube: at "Franciscan church", on the hill south of the Vuka, a large church with a tall bell tower and a monastery round a courtyard; at "Eltz Palace", north of the Vuka, a long baroque palace with a park; between them the arcaded old streets with red tiled roofs.
 - Mitnica and Sajmište: streets of family houses with gardens and orchards, as the grey built-up shapes in the guide.
 - The Danube across the top, with its islands; the far bank in Serbia, flat floodplain woods.
 - East of the town (right): Vučedol, slopes with vineyards and orchards above the Danube; fields to the south.

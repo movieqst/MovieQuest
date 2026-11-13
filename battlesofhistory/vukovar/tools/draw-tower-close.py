@@ -4,6 +4,10 @@ the Danube bank and the mouth of the Vuka exactly in place. Made after ChatGPT k
 larger maps: the base here already shows the rivers with their sandy banks, the 1991 built-up area and the tower seen
 from directly above (a round top with its shadow), so the painter only has to colour it in.
     python3 battlesofhistory/vukovar/tools/draw-tower-close.py
+Roads, railway, the Vuka and the landmarks come from OpenStreetMap (tools/osm-vukovar.json, © OpenStreetMap contributors,
+ODbL); the 1990 town from the GHSL built-up grid (tools/ghsl-vukovar.json, EC JRC, CC BY 4.0). OSM shows today's town,
+so only the main roads and the railway are drawn everywhere; side streets are kept where the 1990 grid shows buildings
+(see vk_osm.py), as an estimate of the town in 1991.
 Writes images/layout/tower-base.png (to repaint), tower-guide.png (labels and crosses) and tower.json (the corners)."""
 import os, json, math
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -18,34 +22,17 @@ T = dict(lat0=45.32, lat1=45.398, lon0=18.932, lon1=19.0800085)    # the town ma
 LATC, LONC, KMW = 45.3468, 19.0075, 3.6                              # the tower, the Danube bank and the Vuka mouth
 dla = KMW * .75 / 111.32; dlo = KMW / (111.32 * math.cos(math.radians(LATC)))
 la0, la1, lo0, lo1 = LATC - dla / 2, LATC + dla / 2, LONC - dlo / 2, LONC + dlo / 2
-# the water, traced on the whole town map (the Vuka needs the frame's west edge), then cut out and smoothed
-G['RAMP'][:] = RAMP
-gw = Guide('tower-water-tmp.png', T['lat0'], T['lat1'], T['lon0'], T['lon1'], 15, None, None)
-water(gw, 74.5, [[('W', 45.33, 45.37), VUKA_TOWN, VUKA_MOUTH]], 2)
-wm = np.all(np.asarray(gw.im) == np.array(NS['WATER']), axis=2)
-for f in ('tower-water-tmp.png', 'tower-water-tmp-base.png'):
-    try: os.remove(os.path.join(OUT, f))
-    except OSError: pass
-fx0 = (lo0 - T['lon0']) / (T['lon1'] - T['lon0']) * W; fx1 = (lo1 - T['lon0']) / (T['lon1'] - T['lon0']) * W
-fy0 = (T['lat1'] - la1) / (T['lat1'] - T['lat0']) * H; fy1 = (T['lat1'] - la0) / (T['lat1'] - T['lat0']) * H
-crop = Image.fromarray((wm * 255).astype('uint8')).crop((round(fx0), round(fy0), round(fx1), round(fy1))).resize((W, H), Image.BICUBIC).filter(ImageFilter.GaussianBlur(6))
-WM = np.asarray(crop) > 127
-lab, n = ndi.label(WM); sizes = ndi.sum(WM, lab, range(1, n + 1)); WM = lab == (1 + int(np.argmax(sizes)))   # the Danube only
-# the Vuka as a gentle curve (the traced line is blocky at this scale): from the west edge, south of the old town, into the Danube
-def lonlat_px(la, lo): return ((lo - lo0) / (lo1 - lo0) * W, (la1 - la) / (la1 - la0) * H)
-P = [lonlat_px(*p) for p in [(45.3478, 18.9840), (45.3486, 18.9895), (45.3495, 18.9950), (45.3508, 18.9995), (45.3518, 19.0030), (45.3530, 19.0060)]]
-P = [P[0]] + P + [P[-1]]; pts = []
-for i in range(1, len(P) - 2):
-    p0, p1, p2, p3 = P[i - 1], P[i], P[i + 1], P[i + 2]
-    for t in np.linspace(0, 1, 40, endpoint=False):
-        pts.append(tuple(.5 * (2 * p1[k] + (-p0[k] + p2[k]) * t + (2 * p0[k] - 5 * p1[k] + 4 * p2[k] - p3[k]) * t * t + (-p0[k] + 3 * p1[k] - 3 * p2[k] + p3[k]) * t ** 3) for k in (0, 1)))
-vk = Image.new('L', (W, H), 0); ImageDraw.Draw(vk).line(pts + [P[-2]], fill=255, width=22, joint='curve'); WM = WM | (np.asarray(vk) > 0)
+import vk_osm
+F = vk_osm.Frame(la0, la1, lo0, lo1, W, H)
+WM = vk_osm.water_mask(F)                                         # the Danube and the Vuka from OpenStreetMap
 g = Guide('tower-guide.png', la0, la1, lo0, lo1, 15, None, None)
-shade_builtup(g, col=(150, 120, 110), a=.55)
 rgb = np.asarray(g.im).astype(float)
-bank = ndi.binary_dilation(WM, iterations=14) & ~WM
+B90 = vk_osm.built_mask(F, 1990) & ~WM                            # the town in 1990 (GHSL), shaded
+rgb[B90] = rgb[B90] * .45 + np.array((150, 120, 110)) * .55
+bank = ndi.binary_dilation(WM, iterations=10) & ~WM
 rgb[bank] = rgb[bank] * .3 + np.array((222, 205, 160)) * .7      # sandy banks
 rgb[WM] = (70, 112, 128)                                          # the water, deep green-blue
+print('side streets kept (built-up by 1990), left out (probably newer):', vk_osm.roads(F, rgb, WM))
 im = Image.fromarray(rgb.clip(0, 255).astype('uint8')); d = ImageDraw.Draw(im)
 # the water tower seen from directly above: a round concrete top (about 25 m across) with its shadow to the north-east
 tx, ty = g.xy(*TOWER); r = 13
@@ -61,8 +48,10 @@ def cross(la, lo, name, sub=''):
     g.d.text((x + 50, y - 34), name, fill=NS['BLACK'], font=NS['F'](34), stroke_width=4, stroke_fill=NS['WHITE'])
     if sub: g.d.text((x + 50, y + 6), sub, fill=NS['RED'], font=NS['F'](26), stroke_width=3, stroke_fill=NS['WHITE'])
 cross(*TOWER, 'WATER TOWER', 'the round top, exactly here')
-cross(*VUKA_MOUTH, 'the Vuka meets the Danube (approx.)')
-cross(45.3478, 19.0004, 'Franciscan church (approx.)'); cross(45.3497, 19.0012, 'Eltz Palace (approx.)'); cross(*BARRACKS, 'JNA barracks')
+PL = vk_osm.OSM['places']
+cross(*PL['Franciscan monastery and church of Sts Philip and James'], 'Franciscan church', 'on the hill')
+cross(*PL['Eltz Palace (Dvorac Eltz)'], 'Eltz Palace'); cross(*PL['barracks (today Vojarna 204. brigade; the JNA barracks in 1991)'], 'JNA barracks')
+cross(*PL['Hotel Dunav'], 'Hotel Dunav'); cross(*PL['hospital (today Nacionalna memorijalna bolnica)'], 'HOSPITAL')
 g.text(45.3525, 19.022, 'DANUBE', NS['BLUE'], 50, True); g.text(45.3485, 18.992, 'Vuka', NS['BLUE'], 40, True)
-g.frame('VUKOVAR: THE WATER TOWER AND THE TOWN CENTRE (close-up, 3.6 x 2.7 km)', 'Real elevation; the Danube and the Vuka from the elevation; 1991 built-up area from the CIA map (shaded); the tower drawn from above at its real place.', .01)
+g.frame('VUKOVAR: THE WATER TOWER AND THE TOWN CENTRE (close-up, 3.6 x 2.7 km)', 'Water, roads, railway and landmarks: OpenStreetMap (© OSM contributors, ODbL); side streets only where the 1990 built-up map shows buildings, shaded (GHSL 1990, EC JRC, CC BY 4.0); the tower drawn from above at its real place.', .01)
 meta = g.save(); json.dump(meta, open(os.path.join(OUT, 'tower.json'), 'w'), indent=1); print(meta)

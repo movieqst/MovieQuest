@@ -6,7 +6,9 @@ joined with a soft seam. Same frame as the town map (images/town-painting.jpg), 
     python3 battlesofhistory/vukovar/tools/draw-town-quarters.py
 Writes images/layout/town-q1..q4-base.png (terrain and water, to repaint), -guide.png (places, built-up areas of 1991,
 the exact foot of the water tower and other landmarks) and -style.png (the same area cut from the present painting, so
-the four quarters keep its look), and town-quarters.json (the corners)."""
+the four quarters keep its look), and town-quarters.json (the corners).
+Water, roads, railway and landmarks from OpenStreetMap (© OSM contributors, ODbL); the 1990 town from the GHSL built-up
+grid (EC JRC, CC BY 4.0): side streets only where it shows buildings in 1990 (see vk_osm.py)."""
 import os, json
 HERE = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(HERE, 'draw-layout-guides.py')).read().split('# ================= 1.')[0]
@@ -18,27 +20,25 @@ T = dict(lat0=45.32, lat1=45.398, lon0=18.932, lon1=19.0800085)   # the town map
 F, O = .55, .45                                                    # each quarter: 55 % of the frame; offsets 0 or 45 %
 PAINT = Image.open(os.path.join(HERE, '..', 'images', 'town-painting.jpg')).convert('RGB')
 # landmarks the painter must place exactly: (lat, lon, label, what it is)
-MARKS = [(*TOWER, 'WATER TOWER', 'foot of the tower exactly here'), (*HOSPITAL, 'HOSPITAL', ''), (*BARRACKS, 'JNA BARRACKS', ''),
-         (45.3478, 19.0004, 'Franciscan church', 'approx.'), (45.3497, 19.0012, 'Eltz Palace', 'approx.')]
-# the water, traced once on the whole town map (the Vuka needs the west edge of the whole frame), then cut per quarter
+import vk_osm
+PL = vk_osm.OSM['places']
+MARKS = [(*TOWER, 'WATER TOWER', 'foot of the tower exactly here'), (*HOSPITAL, 'HOSPITAL', ''),
+         (*PL['barracks (today Vojarna 204. brigade; the JNA barracks in 1991)'], 'JNA BARRACKS', ''),
+         (*PL['Franciscan monastery and church of Sts Philip and James'], 'Franciscan church', ''), (*PL['Eltz Palace (Dvorac Eltz)'], 'Eltz Palace', '')]
 import numpy as np
-G['RAMP'][:] = RAMP
-gw = Guide('town-water-tmp.png', T['lat0'], T['lat1'], T['lon0'], T['lon1'], 15, None, None)
-water(gw, 74.5, [[('W', 45.33, 45.37), VUKA_TOWN, VUKA_MOUTH]], 3)
-WMASK = Image.fromarray((np.all(np.asarray(gw.im) == np.array(NS['WATER']), axis=2) * 255).astype('uint8'))
-for f in ('town-water-tmp.png', 'town-water-tmp-base.png'):
-    try: os.remove(os.path.join(OUT, f))
-    except OSError: pass
+from scipy import ndimage as ndi
 metas = []
 for q, (fx, fy) in enumerate([(0, 0), (O, 0), (0, O), (O, O)], 1):
     lon0 = T['lon0'] + fx * (T['lon1'] - T['lon0']); lon1 = lon0 + F * (T['lon1'] - T['lon0'])
     lat1 = T['lat1'] - fy * (T['lat1'] - T['lat0']); lat0 = lat1 - F * (T['lat1'] - T['lat0'])
     G['RAMP'][:] = RAMP
     g = Guide('town-q%d-guide.png' % q, lat0, lat1, lon0, lon1, 15, None, None)
-    mw, mh = WMASK.size; m = np.asarray(WMASK.crop((round(fx * mw), round(fy * mh), round((fx + F) * mw), round((fy + F) * mh))).resize((W, H), Image.BILINEAR)) > 127
-    rgb = g.rgb.copy(); rgb[m] = NS['WATER']; g.im = Image.fromarray(rgb.clip(0, 255).astype('uint8')); g.d = NS['ImageDraw'].Draw(g.im)
+    FR = vk_osm.Frame(lat0, lat1, lon0, lon1, W, H); m = vk_osm.water_mask(FR)
+    rgb = g.rgb.copy().astype(float); b90 = vk_osm.built_mask(FR, 1990) & ~m
+    rgb[b90] = rgb[b90] * .6 + np.array((150, 120, 110)) * .4       # the town in 1990, lightly shaded
+    bank = ndi.binary_dilation(m, iterations=6) & ~m; rgb[bank] = rgb[bank] * .4 + np.array((222, 205, 160)) * .6
+    rgb[m] = NS['WATER']; print('quarter', q, 'side streets kept, left out:', vk_osm.roads(FR, rgb, m)); g.im = Image.fromarray(rgb.clip(0, 255).astype('uint8')); g.d = NS['ImageDraw'].Draw(g.im)
     g.im.save(os.path.join(OUT, 'town-q%d-base.png' % q), optimize=True)
-    shade_builtup(g)
     inside = lambda la, lo: lat0 < la < lat1 and lon0 < lo < lon1
     for la, lo, name, sub in MARKS:
         if not inside(la, lo): continue
@@ -50,7 +50,7 @@ for q, (fx, fy) in enumerate([(0, 0), (O, 0), (0, O), (O, O)], 1):
         if inside(la, lo): g.town(la, lo, name, '', 26, BLACK, 8, -30)
     if inside(45.372, 19.02): g.text(45.372, 19.02, 'DANUBE', BLUE, 44, True)
     if inside(45.3478, 18.962): g.text(45.3478, 18.962, 'Vuka', BLUE, 30, True)
-    g.frame('VUKOVAR TOWN MAP, QUARTER %d of 4 (layout guide)' % q, 'Real elevation; 1991 built-up areas from the CIA map; red crosses: landmarks to place exactly. Do not paint labels or marks.', .01)
+    g.frame('VUKOVAR TOWN MAP, QUARTER %d of 4 (layout guide)' % q, 'Real elevation; water, roads and railway from OpenStreetMap (side streets only where the 1990 GHSL grid shows buildings); shaded: the town in 1990; red crosses: landmarks to place exactly. Do not paint labels or marks.', .01)
     metas.append(dict(g.save(), quarter=q, fx=fx, fy=fy))
     # the same area of the present painting, for the style
     pw, ph = PAINT.size; PAINT.crop((round(fx * pw), round(fy * ph), round((fx + F) * pw), round((fy + F) * ph))).resize((W, H), Image.LANCZOS).save(os.path.join(OUT, 'town-q%d-style.png' % q), optimize=True)
