@@ -1,0 +1,2039 @@
+TITLE: Yousuf v. Samantar, No. 1:04cv1360 (LMB/JFA), E.D. Va., Memorandum Opinion (Dkt. 366), Judge Leonie M. Brinkema
+DATE: Filed 28 August 2012
+URL: https://cja.org/cja/downloads/Samantar%20Final%20Judgment.pdf
+RETRIEVED: 2026-11-13 (curl; text extracted with pdftotext; OCR/line-break artefacts may remain)
+==================================================================
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 1 of 38 PageID# 2431
+
+
+
+                                                                        I      L
+              IN THE UNITED STATES DISTRICT COURT FOR THE
+                      EASTERN DISTRICT OF VIRGINIA
+                           Alexandria Division
+                                                                        MJB2820I2            L
+
+
+ BASHE ABDI YOUSUF,    et al.,                                     CLERK, U.S. DISTRICT COUffl"
+                                                                      ALEXANDRIA. VIRGINIA
+
+
+            Plaintiffs
+
+
+                                                1:04CV1360(LMB/JFA)
+
+ MOHAMED ALI SAMANTAR,
+
+            Defendant,
+
+
+
+                            MEMORANDUM OPINION
+
+
+       This matter came before the Court on a        bench trial for
+
+
+ damages following defendant's decision to accept a default
+
+ judgment as to liability and not contest damages.
+
+                              I.   BACKGROUND
+
+
+         A. Procedural Background
+
+       The plaintiffs in this litigation, all natives of Somalia,
+
+ are Bashe Abdi Yousuf    ("Yousuf"), Buralle Salah Mohamoud
+
+ ("Buralle"), Ahmed Jama Gulaid ("Gulaid"),         and Aziz Mohamed
+
+ Deria ("Aziz"). Aziz proceeds solely in his capacity as personal
+
+ representative of the estates of his father Mohamed Deria Ali
+
+ ("Mohamed"), his brother Mustafa Mohamed Deria {"Mustafa"), and
+
+ the brothers of plaintiff Buralle, Abdullahi Salah Mahamoud
+
+ ("Abdullahi")   and Cawil Salah Mahamoud ("Cawil"). See Second Am.
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 2 of 38 PageID# 2432
+
+
+
+ Compl. H1 8-10, 12; Dkt. No. 304.1
+
+       The second amended complaint raises claims under the Alien
+
+ Tort Statute ("ATS"), 28 U.S.C. § 1350, which gives the district
+
+ courts "original jurisdiction of any civil action by an alien
+
+ for a tort only, committed in violation of the law of nations or
+
+ a treaty of the United States."2 The second amended complaint
+
+ also alleges violations of the Alien Torture Victim Protection
+
+ Act ("TVPA"), Pub. L. No. 102-256, 106 Stat. 73 (1992) (codified
+
+ at 28 U.S.C. § 1350 note), which provides:
+
+       An individual who, under actual or apparent authority,
+       or color of law, of any foreign nation--
+            (1) subjects an individual to torture shall,            in a
+            civil   action,   be   liable    for    damages    to   that
+            individual; or
+            (2)  subjects   an  individual  to  extrajudicial
+            killing shall, in a civil action, be liable for
+            damages to the individual's legal representative,
+            or to any person who may be a claimant in an
+            action for wrongful death.
+
+ § 1350 note sec. 2(a).3
+
+
+
+ 1 Aziz was originally named as an individual plaintiff. Then, in
+ 2007, the Virginia Circuit Court for the City of Alexandria
+ appointed Aziz administrator of the estates of the four
+ decedents, Mohamed, Mustafa, Abdullahi, and Cawil. See Dkt. No.
+ 77 at 2. In the second amended complaint, the caption was
+ changed to reflect Aziz's status as personal representative of
+ these four estates, rather than as a plaintiff pursuing claims
+ in his individual capacity. Id.; see also Dkt. No. 81 at 2 n.2.
+
+ 2 Codified as part of the Judiciary Act of 1789, the ATS is also
+ commonly called the Alien Tort Claims Act ("ATCA").
+
+3 Unlike the ATS, the TVPA is not itself a jurisdictional
+statute; rather, 28 U.S.C. § 1331 provides its jurisdictional
+basis. Yousuf v. Samantar, 552 F.3d 371, 375 (4th Cir. 2009).
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 3 of 38 PageID# 2433
+
+
+
+         Plaintiffs allege that defendant is liable for
+
+ extrajudicial killing; attempted extrajudicial killing; torture;
+
+ cruel, inhuman, and degrading treatment or punishment; arbitrary
+
+ detention; crimes against humanity; and war crimes committed
+
+ during his tenure as First Vice President and Minister of
+
+ Defense of Somalia's central government from January 1980 to
+
+ December 1986 and as Prime Minister from January 1987 to
+
+ September 1990.
+
+        On January 1, 2005, plaintiffs were granted permission to
+
+ proceed anonymously.4 On August 30, 2005, the action was stayed
+
+ to allow the United States Department of State ("State
+
+ Department")   to submit its position as to whether defendant was
+
+ entitled to head of state immunity. After nearly a year and a
+
+ half, during which time the State Department never responded,
+
+ the case was returned to the active docket on January 22, 2007.
+
+ Plaintiffs thereafter filed a second amended complaint, and on
+
+ April 27, 2007,   the defendant's first motion to dismiss was
+
+ granted on the basis that Samantar was immune from suit under
+
+ the Foreign Sovereign Immunities Act ("FSIA"). That decision was
+
+ reversed and remanded. Yousuf v. Samantar,        552 F.3d 371 (4th
+
+ Cir.   2009), aff'd Samantar v. Yousuf,     130 S. Ct. 2278 (2010).
+
+        Following remand,   defendant filed a second motion to
+
+
+ 4 On February 1, 2012, a consent motion to amend the case caption
+was granted, after which the plaintiffs who had proceeded under
+pseudonyms were named.
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 4 of 38 PageID# 2434
+
+
+
+ dismiss in which he argued, among other things, that defendant
+
+ was entitled to common law immunity even if the FSIA did not bar
+
+ plaintiffs' claims. The United States then filed a Statement of
+
+ Interest asserting that defendant was not immune from suit for
+
+ the acts alleged, a view that was based on an opinion submitted
+
+ by the State Department's Office of the Legal Adviser. See Dkt.
+
+ No. 147. Defendant's motion to dismiss was thereafter denied, as
+
+ were his subsequent motions for reconsideration and for a stay
+
+ pending appeal. See Dkt. No. 158; Dkt. No. 168.s
+
+      Defendant thereafter moved for summary judgment on the
+
+ grounds that the second amended complaint failed to state a
+
+ claim and failed to allege a basis for secondary liability, that
+
+ the TVPA did not apply to claims arising before 1991, and that
+
+ plaintiffs' claims were untimely and nonjusticiable. The Court
+
+ denied defendant's motion from the bench on December 22, 2011,
+
+ rejecting defendant's legal arguments that plaintiffs could not
+
+ prevail under the ATS, the TVPA, or on a theory of secondary
+
+ liability, and finding that equitable tolling applied to the
+
+ statutes. A jury trial was then scheduled to start on Tuesday,
+
+  Defendant later filed a renewed motion for a stay, which was
+denied on February 14, 2012. He also filed a motion to stay with
+the Court of Appeals, in which he requested a stay pending that
+court's ruling on his appeal of the denial of common law
+immunity; however, that motion was denied on February 17, 2012.
+On May 16, 2012, the Court of Appeals heard oral argument on
+defendant's appeal of the denial of common law immunity. See
+Yousuf v. Samantar, No. 11-1479, Dkt. No. 78 (4th Cir. filed May
+6, 2011). No opinion has yet issued.
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 5 of 38 PageID# 2435
+
+
+
+ February 21, 2012.
+
+       On Sunday,    February 19, 2012, defense counsel filed a
+
+ Suggestion of Bankruptcy informing the Court that defendant had
+
+ filed a petition for relief under Chapter 7 of Title 11 of the
+
+ United States Code. The case was stayed pursuant to the
+
+ automatic stay provision of 11 U.S.C.        § 362. See Hearing Tr. at
+
+ 3:11-4:14 (Feb. 21, 2012, Dkt. No. 350). Plaintiffs immediately
+
+ sought relief from the bankruptcy court, which lifted the
+
+ automatic stay with respect to this litigation; accordingly,
+
+ this Court vacated its Order imposing the stay. See Dkt. No.
+
+ 351. The jury trial was rescheduled to begin on Thursday,
+
+ February 23, 2012.     Id.
+
+       On the morning of February 23, 2012,       defense counsel
+
+ informed the Court that defendant intended to take a           default
+
+
+ rather than contest liability and damages. See Colloquy Tr. at
+
+ 4:6-19 (Feb. 23, 2012, Dkt. No. 355). During a subsequent
+
+ colloquy with Samantar, the Court explained the consequences of
+
+ default, which Samantar stated had also been explained to him by
+
+ counsel.   Id.   at 6:15-9:24.   Based on defense counsel's
+
+ representations and defendant's answers during the colloquy, the
+
+ Court found that defendant had knowingly and voluntarily
+
+ conceded liability. Id. at 10:11-11:4; see Dkt. No. 353 (minute
+
+ entry). Plaintiffs' request for a jury trial as to damages was
+
+ denied, and the case proceeded to a bench trial on that issue.
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 6 of 38 PageID# 2436
+
+
+
+
+ See, e.g., Mwani v. Bin Ladin, 244 F.R.D.         20, 23-24 (D.D.C.
+
+ 2007)(denying request for jury trial after entry of default in
+
+ ATS case because no right to jury trial on damages exists).
+
+          B. Factual Background
+
+       Because defendant has agreed to a default, plaintiffs'
+
+ uncontested factual allegations in the second amended complaint,
+
+ as well as uncontroverted and credible testimony produced during
+
+ the bench trial, are accepted as true. See, e.g., DIRECTV, Inc.
+
+ v. Rawlins, 523 F.3d 318, 322 n.2        (4th Cir. 2008)(citation
+
+ omitted); Licea v. Curacao Drydock Co., 584 F. Supp. 2d 1355,
+
+ 1358 (S.D. Fla. 2008)(citing Nishimatsu Constr. Co. v. Houston
+
+ Nat'l Bank, 515 F.2d 1200, 1206 (5th Cir.        1975)). Plaintiffs
+
+ allege that defendant is liable under the ATS and TVPA for the
+
+ extrajudicial killing of Mohamed, Mustafa, Abdullahi, and Cawil;
+
+ the attempted extrajudicial killing of Gulaid; the torture of
+
+ Yousuf, Gulaid, and Buralle; the cruel, inhuman, or degrading
+
+ treatment of Gulaid and Buralle; and the arbitrary detention of
+
+ Gulaid and Buralle. See Second Am. Compl. ffl 92-138. In
+
+ addition, Gulaid, Buralle, and Aziz, in his capacity as personal
+
+ representative of the estates of the decedents, allege that
+
+ defendant perpetrated crimes against humanity and war crimes.
+
+ See id. HU 139-56.
+
+      Based on the allegations in the second amended complaint
+
+and the evidence presented at trial,        the Court finds that in
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 7 of 38 PageID# 2437
+
+
+
+
+ October 1969,   Major General Mohamed Siad Barre ("Barre")
+
+ overthrew Somalia's democratically elected government and
+
+ installed a military regime that targeted certain Somali clans,
+
+ particularly the Isaaq clan, to which all of the plaintiffs and
+
+ decedents belong. Id. HH 14-16, 19-20. The Barre regime
+
+ maintained its control over the population through its security
+
+ and intelligence forces, including the Somali Armed Forces, of
+
+ which defendant Mohamed Ali Samantar was commander during the
+
+ relevant period. Id. HH 17-18. Samantar, a Somali citizen who
+
+ now resides in Fairfax, Virginia, served in the Barre government
+
+ as First Vice President and Minister of Defense from January
+
+ 1980 through December 1986, and as Prime Minister from January
+
+ 1987 through September 1990. Id^ M        6-7.
+
+       In response to the brutality of the Barre regime, some
+
+ members of the Isaaq clan formed a resistance organization
+
+ called the Somali National Movement ("SNM"). Id. U 20. The Barre
+
+ regime tried to suppress the SNM through a violent military
+
+ campaign, which included indiscriminate attacks on areas
+
+ populated by Isaaq clan members, and it "intentionally
+
+ disregarded the distinction between civilians and SNM fighters."
+
+ Id. 1 21. The violence between the SNM and the Barre regime
+
+ continued from 1983 through 1990.
+
+      A State Department report found that the systematic
+
+ assaults on unarmed civilians by the Somali Armed Forces
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 8 of 38 PageID# 2438
+
+
+
+ resulted in more than 5,000 deaths and the internal displacement
+
+ of more than one million Somalis. See Pis.'         Ex.   112 at 60-61
+
+  (State Department-commissioned report on effect of conflict in
+
+ Northern Somalia); Pis.'     Ex. 20 at 6, 9-11 (Ambassador James
+
+ Keough Bishop's expert report on human rights in Somalia).6
+
+ Another 400,000 people fled to Ethiopia as refugees. Pis.' Ex.
+
+ 129 at 351 (State Department Report to United States Senate
+
+ Committee on Foreign Relations). Hargeisa, Somalia's second
+
+ largest city and where many plaintiffs lived, experienced
+
+ particularly heavy fighting. Second Am. Compl. % 23.
+
+       In January 1991, armed opposition factions succeeding in
+
+ ousting Barre from power, and his government collapsed. Id.
+
+ H 24. Members of that government, including Samantar, fled
+
+ Somalia. Samantar settled first in Italy and then relocated to
+
+ the United States in 1997. Id^
+
+                             II.   DISCUSSION
+
+
+    A. Statutes of Limitations and Equitable Tolling
+
+      At summary judgment, defendant unsuccessfully argued that
+
+ plaintiffs' causes of action are barred by the applicable
+
+
+
+
+ 6 As the Court observed at trial, some of plaintiffs' exhibits
+ also reference battle tactics and human rights violations,
+ smaller in scope, by the SNM. See Pis.' Ex. 112 at 42
+ (describing SNM fighters' tactic of hiding among civilians in
+Hargeisa), 64 (same), 62 (giving accounts of SNM combatants
+killing unarmed civilians).
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 9 of 38 PageID# 2439
+
+
+
+
+ statutes of limitations.7 Although Samantar subsequently waived
+ this defense by defaulting and thereby failing to contest the
+
+ issue at trial, this issue will be addressed below in the
+
+ interest of creating a complete record. See Xuncax v. Gramajo,
+
+ 886 F. Supp. 162, 192 (D. Mass. 1995)(defaulting defendant
+
+ waived statute of limitations defense); cf. Bradford-White Corp.
+
+ v. Ernst & Whinney, 872 F.2d 1153, 1160-61 (3d Cir. 1989)
+
+ (holding that defendant waived statute of limitations defense
+
+ when it raised issue in the answer but failed to further press
+
+ the defense), cert, denied, 493 U.S.       993   (1989).
+
+       Statutes of limitations are designed to assure fairness to
+
+ a defendant and to relieve courts of the burden of evaluating
+
+ stale claims brought by a plaintiff who failed to exercise due
+
+ diligence in asserting his or her rights. See, e.g., Burnett v.
+
+ N.Y. Cent. R.R. Co.,    380 U.S. 424, 428 (1965). The TVPA
+
+ prescribes a limitations period of ten years from the date the
+
+ cause of action arose. 28 U.S.C. § 1350 note sec. 2(c). Although
+
+ the ATS does not include a statute of limitations, the TVPA's
+
+ ten-year limitations period is widely applied to the ATS. E.g.,
+
+ Chavez v. Carranza, 559 F.3d 486, 491-92 (6th Cir. 2009)("Like
+
+all courts that have decided this issue ... we conclude that
+
+the ten-year limitations period applicable to claims under the
+
+  Summary judgment as to the statutes of limitation was orally
+denied, and resolution of the issue was continued to the trial
+for development of the full factual record. See Dkt. No. 290.
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 10 of 38 PageID# 2440
+
+
+
+
+  TVPA likewise applies to claims made under the ATS."); Doe v.
+
+  Islamic Salvation Front, 257 F. Supp. 2d 115, 119 (D.D.C.
+
+  2003)(following "federal courts [that] found the TVPA to be
+
+  closely analogous to the [ATS] and borrowed its ten-year statute
+
+  of limitations for the [ATS]"). In this case, the alleged
+
+  violations occurred between 1981 and 198 9, yet this civil action
+
+  was not filed until 2004, well outside the ten-year window.
+
+       In civil suits between private litigants, however,
+
+  limitations periods "are customarily subject to equitable
+
+  tolling." Irwin v. Dep't of Veterans Affairs, 498 U.S. 89, 95
+
+  (1990)(quoting Hallstrom v. Tillamook Cnty., 493 U.S. 20, 27
+
+  (1989))(internal quotation marks omitted). "Equitable tolling is
+
+ a discretionary doctrine that turns on the facts and
+
+ circumstances of a particular case." Crabill v. Charlotte
+
+ Mecklenburg Bd. of Educ., 423 F. App'x 314, 321 (4th Cir.
+
+ 2011)(internal quotation marks omitted). Application of the
+
+ doctrine to permit an otherwise time-barred case to proceed is
+
+ appropriate when "extraordinary circumstances beyond [a
+
+ plaintiff's] control prevented him from complying with the
+
+ statutory time limit." Spencer v. Sutton, 239 F.3d 626, 630 (4th
+
+ Cir. 2001)(quoting Harris v. Hutchinson, 209 F.3d 325, 330 (4th
+
+ Cir. 2000))(internal quotation marks omitted).
+
+      Courts evaluating the ATS and TVPA have consistently held
+
+ that equitable tolling applies to these statutes. See, e.g.,
+
+                                     10
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 11 of 38 PageID# 2441
+
+
+
+
+  Arce v. Garcia, 400 F.3d 1340, 1346 (11th Cir. 2005), rev'd on
+
+  other grounds (applying "general rule . . . that statutes of
+
+  limitations are subject to equitable tolling" because "nothing
+  in the text, structure, or legislative history of the TVPA . . .
+
+  changes this general rule"); Hilao v. Estate of Marcos, 103 F.3d
+
+  767, 773 (9th Cir. 1996)(applying equitable tolling to find
+
+  plaintiff's suit under the ATS and TVPA timely).
+
+       There are several recognized bases for tolling the
+
+  limitations period under the ATS and TVPA. For example, courts
+
+ have held that either a defendant's absence from the United
+
+ States or a plaintiff's lack of access to a judicial remedy in
+
+ his native country due to extreme unrest and legitimate fear of
+
+ retaliation can serve as grounds to toll a statute of
+
+ limitations. See, e.g., Chavez, 559 F.3d at 493-94 (listing fear
+
+ of reprisal and lack of system for administering justice as two
+
+ grounds for tolling); Arce v. Garcia, 434 F.3d 1254, 1262-
+
+ 63 (11th Cir. 2006)(same); Jean v. Dorelien, 431 F.3d 776, 779-
+
+ 80 (11th Cir. 2005)(tolling statute of limitations until the
+
+ defendant arrived in the United States after his government had
+
+ lost power).
+
+       As previously discussed, the military government that
+
+ defendant served between January 1980 and September 1990 was
+
+ violently overthrown in 1991, and Somalia's central government
+
+ collapsed. See Second Am. Compl. Ufl 5-6, 86. Plaintiffs allege
+
+                                     li
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 12 of 38 PageID# 2442
+
+
+
+
+  that after this collapse, the country "fell into increasing
+
+  chaos" as the 1990s progressed, resulting in the killing,
+
+  displacement, and mass starvation of tens of thousands of Somali
+
+  citizens. Id. at 86. The United Nations, which had attempted to
+
+  bring stability through a military intervention in 1992, was
+
+  driven from the country in 1994. Id. Plaintiffs allege that
+
+  deliberate killing and kidnapping of Somalis as a result of
+
+  their clan membership was systematic in the ensuing years. Id.
+
+       For these reasons,    "[c]onditions in Somalia precluded human
+
+  rights cases against former commanders of the Somali Armed
+
+  Forces," such as the defendant,     "from being brought either in
+
+ Somalia or the United States or elsewhere." Id. 11 87. To this
+
+ day, Somalia "remains without a functioning national government
+
+ and national judicial system" that could hear and adjudicate
+
+ claims for human rights abuses during the Barre administration.
+
+ Id. UU 87-91. Plaintiffs' allegation that it was impossible to
+
+ file suit while they and their relatives continued to reside
+
+ inside a destabilized and violent Somalia is unrefuted.
+
+       In addition to the turmoil within Somali, defendant's
+
+ absence-and plaintiffs' lack of knowledge about his whereabouts
+
+ in the years following his departure from Somalia—prevented the
+
+ commencement of this lawsuit. It is undisputed that Samantar did
+
+ not relocate to the United States until 1997. Id. U 84. From
+
+ 1991 to 1997, he resided within Italy. At summary judgment,
+
+                                     12
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 13 of 38 PageID# 2443
+
+
+
+  Samantar cited to the TVPA's legislative history, which states
+
+  that the limitations period "should be tolled during the time
+
+  the defendant was absent from" the United States or any other
+
+  similar jurisdiction permitting this kind of cause of action and
+
+  affording a remedy that "is adequate and available." S. Rep. No.
+
+  102-249, 102d Cong.   (1991), available at 1991 WL 258662, at *11.
+
+  Based on this passage, Samantar argued that the statute of
+
+  limitations should not be tolled during those six years because
+
+  plaintiffs should have located him and filed their claims in
+
+  Italy, which would have afforded them an adequate remedy.
+
+        Samantar's only evidence that Italian law provided an
+
+  adequate and available remedy was the affidavit of an Italian
+
+  corporate law attorney, Cosimo Rucellai, who was deemed by this
+
+  Court not to be an expert and whose testimony was stricken.
+
+ Meanwhile, plaintiffs' expert, the director of the Geneva
+
+ Academy of International Humanitarian Law and Human Rights,
+
+ stated during her deposition that it would have been impossible
+
+ for plaintiffs to have obtained relief in Italy because no cause
+
+ of action similar to the ATS or TVPA existed under Italian law.
+
+ It would therefore have been uncontested at trial that Italy did
+
+
+
+
+                                     13
+Case 1:04-cv-01360-LMB-JFA Document 366    Filed 08/28/12 Page 14 of 38 PageID# 2444
+
+
+
+  not afford plaintiffs an adequate or available remedy.8
+
+        The violations alleged took place between 1981 and 1989 and
+
+  was part of ongoing conduct before the fall of the Barre regime
+
+  in 1991. For the reasons discussed above, the statutes of
+
+  limitations on plaintiffs' claims were tolled between 1991 and
+
+  1997 when defendant resided in Italy and did not start running
+
+  on these claims until Samantar's 1997 arrival in the United
+
+  States. Plaintiffs filed this civil action in 2004, which was
+
+  within seven years of defendant's arrival in the United States
+
+  and was, therefore, not time-barred. See Doe v. Saravia, 348 F.
+
+  Supp. 2d 1112, 1146-48 (E.D. Cal. 2004); cf^ United States v.
+
+ Buchanan, 638 F.3d 448, 457 (4th Cir. 2011)(holding that time
+
+ remaining on a statute of limitations "clock" is calculated by
+
+ subtracting the duration of the pause for equitable tolling from
+
+ the total time on the clock)(citing United States v. Ibarra, 502
+
+ U.S.   1, 4 n.2   (1991)).
+
+    B. Factual Findings
+
+          1. Bashe Abdi   Yousuf
+
+
+        Plaintiff Yousuf,     now a United States citizen who has
+
+
+
+
+   Even had an adequate remedy been available in Italy, evidence
+ at summary judgment showed that Samantar did not work,
+ contribute taxes, or pay rent on his apartment, which was
+ provided by the Italian government, while in that country. He
+ also did not know whether his name was listed in the Rome
+ telephone directory. Defendant's own affidavit was the only
+ evidence that he had lived openly in Italy, such that plaintiffs
+ could have found him.
+
+                                      14
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 15 of 38 PageID# 2445
+
+
+
+  resided in this country since 1991, was born in Hargeisa,
+
+  Somalia in 1953. He ran a successful family business in Hargeisa
+
+  until 1981, when he was arrested for his participation in a
+
+  charitable group called UFFO, which he described as being
+
+  dedicated to improving education and healthcare in the city. See
+
+  Trial Tr. Vol. 1 at 8:2-10:12 (Feb. 23, 2012, Dkt. No. 357);
+
+  Second Am. Compl. HH 25-27. In particular, UFFO cleaned the
+
+  sewage system of the Hargeisa General Hospital and raised money
+
+  to procure medical supplies. See Trial Tr. Vol. 1 at 9:15-10:1;
+
+ Second Am. Compl. U 26.
+
+       On November 19, 1981, while conducting business at his
+
+ warehouse, Yousuf was arrested by National Security Services
+
+ agents who took him to a government building being used for
+
+ interrogations of Isaaq UFFO members. Trial Tr. Vol. 1 at 11:1-
+
+ 23; Second Am. Compl. U 27. He was thereafter locked in a room
+
+ for two days and deprived of food and water. Id. On the third
+
+ day, an armed member of the Somali Armed Forces, as well as
+
+ several plain-clothed individuals, removed Yousuf from the room
+
+ and questioned him about his association with UFFO.
+
+       Yousuf was returned to that room and detained for three
+
+ weeks before his interrogators returned. They questioned him
+
+ about whether he had ever thrown a bomb; upon denying that he
+
+ had ever "once even seen a bomb, let alone throwing [sic] it,"
+
+ he was returned to his room.     See Trial Tr.     Vol.   1 at 13:17-
+
+
+                                     15
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 16 of 38 PageID# 2446
+
+
+
+
+  14:13. At midnight, the men returned again and forced a
+
+  blindfolded Yousuf into a Land Cruiser, after which he was
+
+  driven outside the city through a military checkpoint. Id. at
+
+  14:14-15:12. Once outside the city, Yousuf was forced to lie
+
+  face-down on the ground with his hands and feet tightly bound
+
+  together in what is known as the "Mig" position. See Trial Tr.
+
+  Vol. 1 at 15:14-16:7; Second Am. Compl. UH 28-29. Pressure was
+
+  placed on his back through a rock or a foot,         causing him
+
+  significant pain. Id. Interrogators then turned Yousuf onto his
+
+  back and continued the torture by forcing water into his mouth
+
+  while cutting off air passageways until he lost consciousness.
+
+  See Trial Tr. Vol. 1 at 15:20-24; Second Am. Compl. % 30. Yousuf
+
+  sustained injuries that night, including cuts, and was unable to
+
+  walk for several days. See Trial Tr. Vol.        1 at 16:8-15.
+
+       Yousuf was tortured in the same manner         "at least four or
+
+
+  five times" during his detention. Id. at 17:2. Interrogators
+
+  also once applied electric shocks through Yousuf's armpits. Id.
+
+  at 17:3-4.9 Around February 19, 1982, after approximately three
+ months in detention, Yousuf was charged with high treason. See
+
+  Second Am. Compl. H 32. He was able to meet for only five to ten
+
+ 9 There are discrepancies between allegations in the second
+ amended complaint and the testimony as to the number of times
+ that Yousuf was tortured. For example, the complaint alleges
+ that Yousuf was tortured eight times, not four or five as he
+ stated on the stand, and that electric shock was used twice, not
+ once. These are relatively minor discrepancies that do not
+ impeach Yousuf's overall credibility.
+
+                                     16
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 17 of 38 PageID# 2447
+
+
+
+
+  minutes with a court-appointed defense attorney who "admitted
+
+  there was no redress available." Id. On February 28, 1982,
+
+  Yousuf and over two dozen other members of UFFO were tried over
+
+  the course of two days in the National Security Court, a
+
+  "military court with jurisdiction over civilians accused of
+
+  national security crimes." Id. H 33. Two judges, a military
+
+  officer and a police captain, presided, and only government
+
+  witnesses testified; Yousuf and the other defendants were not
+
+  permitted to speak. Id. U 34; Trial Tr. Vol. 1 at 18:19-19:25.
+
+  On March 3, 1982, Yousuf and 20 of the other defendants were
+
+  convicted, and Yousuf was sentenced to twenty years in prison.
+
+  Trial Tr. Vol. 1 at 21:7-21; Second Am. Compl. U 35. After eight
+ months in the Hargeisa jail, which was infested and had no
+
+ bathroom, Yousuf "was transferred to Labaatan Jirow prison, a
+
+ notorious maximum security prison for political prisoners" where
+
+ he was housed in a small, windowless cell infested with rodents
+
+ and insects. See Trial Tr. Vol. 1 at 22:5-10, 24:13-25:12,
+
+ 28:22-29:9; Second Am. Compl. H 36. In that cell, which was
+
+ entirely dark when the door was closed, he remained primarily in
+ solitary confinement for seven years. See Trial Tr. Vol. 1 at
+
+ 26:1-4, 27:18-22, 29:18-31:19; Second Am. Compl. H 36. As Yousuf
+
+ testified, "I did not speak with anybody. ... I was sometimes
+
+ wondering if I still remember my, even my native language. . . .
+ The worst torture you can go through is isolation. You turn into
+
+                                     17
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 18 of 38 PageID# 2448
+
+
+
+
+  an animal." Trial Tr. Vol.     1 at 26:2-4,    31:7-8.
+
+        In 1989, Yousuf was blindfolded and placed in a Land
+
+  Cruiser with other prisoners. He was released, without
+
+  explanation, near the city of Biadaba. After traveling first to
+
+  Saudi Arabia, Yousuf applied for political asylum in the United
+
+  States and relocated to this country in 1991.
+
+          2. Buralle Salah Mohamoud
+
+
+       Plaintiff Buralle, who testified through the assistance of
+
+  an interpreter, was born in 1962 and lives in the Burao region
+
+  of Somalia in a village that, during the relevant period, was an
+
+  hour away from the closest town. Plaintiff tended goats and
+
+  camels, a life-long occupation. In 1984, plaintiff's family was
+
+  engaged in a religious ceremony when the colonel from a nearby
+
+  military base and 60-70 members of the Somali Armed Forces
+
+ arrived at his home and encircled plaintiff's family. See Trial
+
+ Tr. Vol. 1 at 42:3-43:24; Second Am. Compl. H 43. After shooting
+
+ into the air and stating that they were looking for SNM members,
+
+ the soldiers seized plaintiff and his two brothers, decedents
+
+ Abdullahi and Cawil. See Trial Tr.       Vol.   1 at 44:l-43:24.10
+
+       Plaintiff and his brothers were kept overnight by the
+
+ military. In the morning, they were driven to another town,
+
+
+
+ 10 Although the estates of Cawil and Abdullahi are represented in
+ this litigation by plaintiff Aziz, the allegations supporting
+ the claims of their estates will be addressed in this section
+ for purposes of clarity.
+
+                                     18
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 19 of 38 PageID# 2449
+
+
+
+
+  where they were beaten and tied into the Mig position. Id. at
+
+  45:9-46:8. Plaintiff and his brothers were loaded into a truck
+
+  and taken to military headquarters in Burao where they were
+
+  untied and, unable to move after having been tightly restrained
+
+  for over an hour, were beaten again. Id. at 48:1-16. Soldiers
+
+  asked plaintiff and his brothers whether they had hidden SNM
+
+  members. They denied having any information about SNM but were
+
+  nevertheless put inside a crowded, filthy, windowless jail with
+
+  other Isaaq men. Id. at 48:23-51:6.
+
+       After four nights, the men were taken to a military court
+
+  located only 15 minutes from the jail. Eighty prisoners in total
+
+  were brought to the court, which was surrounded by Somali
+
+  government soldiers. Id. at 51:8-22. A military lawyer was
+
+  appointed, although plaintiff asserts that "he didn't do
+
+  anything for us." Id. at 52:2-5. The men were not permitted to
+
+  speak on their own behalf. Id. at 52:20-53:3. The only evidence
+
+ presented against Buralle and his brothers was the large meal
+
+  the family had been cooking, which military prosecutors had
+
+ argued proved that they were aiding the SNM; plaintiff, however,
+
+ testified in this case that the family meal was part of a
+
+ religious ceremony. Id. at 52:13-19.
+
+       Following the proceeding, plaintiff and his brothers were
+
+ returned to jail, and during the next eight days, their
+
+ handcuffs were never removed. Id. at 55:1-12. They were then
+
+                                     19
+Case 1:04-cv-01360-LMB-JFA Document 366            Filed 08/28/12 Page 20 of 38 PageID# 2450
+
+
+
+
+  brought back to court where they were convicted and sentenced to
+
+  death along with 40 other prisoners. Id. at 56:17-57:11. Because
+
+  the sentence was to be executed immediately, the military began
+
+  loading the prisoners into trucks. While plaintiff was queued
+
+  behind his brothers, a man began calling the names of the
+
+  convicted.     Id.    at 57:18-58:2.
+
+
+        Q. And what happened when the man who was calling the
+        names called out the names of each of your brothers
+        and then you?
+        A. First they call my brothers. Then they call me.
+        Q.    And then what?
+        A. Then he ask me, "Where are you?" when he call my
+        name. Then I said, "I'm here." Then he did cry a
+        little bit. So then he have a pen, so he bite his pen.
+        Q. And then after he bit his pen?
+        A. So he called the person who was having the key,
+        that we being handcuffed together, so he called the
+        person who had the handcuff key. Then he say, you
+        know, "Handcuff him and just keep him here."
+        Q. Then what happened next?
+        A. So they separate me from the rest -- they put me on
+        side in front of         the court    --    inside the court.      So the
+        rest    of     the   group,   40   or more,     so   they took to     the
+        truck.
+
+
+ Id.   at    58:25-59:16.
+
+
+        The truck drove away, and sometime later, plaintiff heard
+
+ the sound of gun shots. Id. at 59:1-23. Thirty minutes after the
+
+ truck had left, it returned carrying none of the prisoners, but
+
+ the soldiers held numerous empty handcuffs. Id. Plaintiff never
+
+ saw his brothers, or any of the men sentenced that day, again.
+
+ Id. After watching soldiers load the truck with another group of
+
+ convicted prisoners and convincing a guard that he was one of
+
+
+
+                                             20
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 21 of 38 PageID# 2451
+
+
+
+
+  the few released prisoners, plaintiff slipped away. Id. at 60:4-
+
+  11. Feeling ill and having been told that soldiers were looking
+
+  for him, plaintiff hid at the homes of his uncles for two days
+
+  and then left the city by foot.     Id. at 60:21-61:9.
+
+            3. Ahmed Jama Gulaid
+
+
+       Plaintiff Gulaid, who testified through the assistance of
+
+  an interpreter, was born in Hargeisa in 1950. From 1968 to 1988,
+
+  he served in the Somali National Army. See Trial Tr. Vol. 1 at
+
+  134:25-135:6; Second Am. Compl. H 61. On June 4, 1988, Gulaid, a
+
+  member of the Isaaq clan, was stationed at the Hargeisa General
+
+  Hospital when he was arrested by an Army captain and four
+
+  military policeman, whose uniforms included red berets. See
+
+  Trial Tr. Vol. 1 at 136:4-138:13,       144:6-14. He was taken to a
+
+ military base where, by his estimate, there were 1,500 Army
+
+  soldiers in camouflage carrying guns. Id. at 138:1-11. Army
+
+ officers were being instructed to clean and hand over their
+
+ weapons until they had all been disarmed.         Id. at 139:11-20,
+
+ 141:4-6.
+
+
+       The captain who had detained Gulaid removed a list from his
+
+ pocket and began calling names. The first name belonged to
+
+ plaintiff, who was instructed to stand inside a circle of
+
+ military police who were wearing red berets. Id. at 140:20-
+
+ 141:13. Sixty-three names of Isaaq officers were called. As
+
+ these 63 officers stood in the circle of red berets, weapons
+
+                                     21
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 22 of 38 PageID# 2452
+
+
+
+
+  were returned to the non-Isaaq military police. Id. at 141:7-12,
+
+  142:2-13. The 63 unarmed Isaaq officers were loaded into a truck
+
+  and driven to a military police base, where they were divided
+
+  into two cells. Id. at 143:1-145:21. In the distance, Gulaid
+
+  could hear the bombardment of Hargeisa. Id. 153:11-20.
+
+       Soon after arriving at the base, the military police began
+
+ pulling men out of the cells, tying groups of four men together
+
+ with rope, and loading them into a truck. Id. at 145:22-146:17.
+
+ After the truck departed, Gulaid could hear gunshots in the
+
+ distance and was confident the men were being killed. Id. at
+
+ 147:4-17. When his group of four prisoners was loaded into a
+
+ truck, they were driven to a nearby site called Malko Dur-Duro.
+
+ They were then forced to stand between two poles where six
+
+ groups, each group consisting of four men tied together, had
+
+ already been made to stand before officers with guns. Id. at
+
+ 147:22-148:8, 149:21-150:15. Other officers were nearby to move
+
+ dead bodies as they fell. Id. When the order was given to shoot
+
+ Gulaid's group, the man to his right and two men to his left
+
+ fell, pulling Gulaid down as well. Id. at 151:2-11. The
+
+ commanding officer checked the fallen men, and announcing
+
+ "[t]hey're still alive," ordered his policemen to "shoot them.
+
+ Give them five bullets each." Id. at 151:12-15. At this point,
+
+ Gulaid lost consciousness. Id. at 151:16-23. When he awoke, he
+
+ was covered by the bodies of his now-deceased colleagues. He
+
+                                     22
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 23 of 38 PageID# 2453
+
+
+
+  climbed up and out of the pile of the dead, retrieved his shoes,
+
+  which were still near the poles where he had been tied and shot,
+
+  and made his way home.    Id. at 152:4-153:20.
+
+          4. Aziz Mohamed Deria
+
+
+        Plaintiff Aziz, currently residing in Seattle, Washington
+
+  testified that he was one of 11 children born in 1964 to a happy
+
+  family in Hargeisa, Somalia. See Trial Tr. Vol. 1 at 65:25,
+
+  76:13-23; Second Am. Compl. HU 38-42. His father, decedent
+
+  Mohamed, was a businessman and head of the Pepsi-Cola Bottling
+
+  Company in Hargeisa. In 1981, Aziz was a student financially
+
+  supported by his family. Trial Tr. Vol. 1 at 78:5-10.
+
+       That year,   General Gaani of the Somali Armed Forces was
+
+  placed in charge of the military sector that included Hargeisa.
+
+  He began to impose his authority on the locals, including Aziz's
+
+  teachers, many of whom were arrested without cause. Id. at
+
+  78:17-79:12. Aziz protested these arrests, and he witnessed the
+
+  arrests of many fellow students and the harassment of their
+
+ parents. Id. Aziz testified that he was "shocked" by the force
+
+ used by the government because "[w]e were innocent students who
+
+ had no weapons . . . yet we were crushed so badly by the
+
+ military forces led by General Gaani and Samantar." Id. at 80:9-
+
+ 12. Fearing for his life, Aziz fled Somalia. After years of
+
+ living abroad, he was in the United States when he learned that
+
+ his father and brother had been killed.
+
+
+                                     23
+Case 1:04-cv-01360-LMB-JFA Document 366        Filed 08/28/12 Page 24 of 38 PageID# 2454
+
+
+
+       In June 1988,   the Somalia Armed Forces "launched an
+
+  indiscriminate . . . aerial and ground attack on Hargeisa."
+
+  Second Am. Compl. U 39. Aziz's sister, Nimo Mohamed Dirie
+
+  ("Nimo"), who now resides in Kuwait with her family, testified
+
+  that before the attacks in 1988, Mohamed and Mustafa were
+
+  successful businessmen who owned storage facilities, a hotel,
+
+  and many houses. See Trial Tr. Vol. 1 at 64:22-65:1. She stated
+
+  that although her family is Isaaq, they did not support either
+
+  side of the conflict and that neither Mohamed nor Mustafa was an
+
+ SNM or UFFO member.      Id.   at 66:11-16,      67:11-12.   Nimo testified
+
+  that when the war came to Hargeisa,           the family was forced to
+
+ remain indoors    "all the     time."   Id.   at 67:4-67:18.     She heard
+
+
+  shooting, rockets, and bombs and could frequently see armed
+
+ Somali government soldiers outside the windows. Id.
+
+       On June 1, 1988,     nine or ten soldiers came inside the
+
+ house, pointing guns and searching the home. Id. at 68:4-69:9.
+
+ Fewer than two weeks later, 12 government soldiers returned and
+
+ forcibly took Mohamed, who was around 49 years old. Id. at
+
+ 69:10-70:17. Later in the day,          soldiers returned and took
+
+ Mustafa,   who was 22,   and their cousin.         Id.   at 70:23-71:11. The
+
+ soldiers came back a third time that day, taking Nimo, her eight
+
+ remaining siblings, and her mother outside to a neighbor's
+
+ fence, where they were questioned about their clan and
+
+ threatened with execution. Id. at 71:12-73:17. At some point,
+
+                                         24
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 25 of 38 PageID# 2455
+
+
+
+
+  the family was loaded into a truck; they were later released
+
+  without explanation. Id. Nimo never again saw Mohamed or
+
+  Mustafa. Id. at 73:22-74:11. The family left Hargeisa in July
+
+  1988, two months after fighting there had started, for a refugee
+
+  camp in Ethiopia where they lived for a year. Id. at 75:1-13.
+
+ Nimo testified that when they left Hargeisa, she saw blood
+
+ covering the ground and 50-60 dead bodies, and she smelled a
+
+ pervasive bad odor. Id. at 74:3-24.
+
+    C. Secondary Liability
+
+       The seven claims for relief in the second amended complaint
+
+ allege that defendant is liable for the harms suffered by
+
+ plaintiffs under three theories of secondary liability: command
+
+ responsibility, aiding and abetting liability, and joint
+
+ criminal enterprise liability. The Supreme Court recently
+
+ affirmed that "the TVPA contemplates liability against officers
+
+ who do not personally execute the torture or extrajudicial
+
+ killing." Mohamad v. Palestinian Auth., 132 S. Ct. 1702, 1709
+
+ (2012)(citation omitted). Even before Mohamad, "virtually every
+
+ court to address the issue" has "recogniz[ed]          secondary
+
+ liability for violations of international law since the founding
+
+ of the Republic." Aziz v. Alcolac,       Inc.,   658 F.3d 388, 396 (4th
+
+ Cir. 2011)(internal quotation marks and alterations omitted);
+
+ accord Doe VIII v. Exxon Mobil Corp.,        654 F.3d 11, 19     (D.C. Cir.
+
+ 2011)(citing The Presbyterian Church of Sudan v. Talisman, 582
+
+
+                                     25
+Case 1:04-cv-01360-LMB-JFA Document 366      Filed 08/28/12 Page 26 of 38 PageID# 2456
+
+
+
+  F.3d 244, 258-59 (2d Cir. 2009); Khulumani v. Barclay Nat'l
+
+  Bank, 504 F.3d 254, 260 (2d Cir. 2007)(per curiam); Sinaltrainal
+
+  v. Coca-Cola Co., 578 F.3d 1252, 1258 n.5 (11th Cir. 2009),
+
+  abrogated on other grounds, Mohamad, 132 S. Ct. at 1706 & n.2).
+
+         For command responsibility to apply, three elements must be
+
+  established:
+
+
+         (1) [A] superior-subordinate relationship between the
+         defendant/military commander and the person or persons
+         who   committed   human   rights   abuses;   (2)   the
+         defendant/military commander knew,    or should have
+         known, in light of the circumstances at the time, that
+         subordinates had committed, were committing, or were
+         about to commit human rights abuses; and (3)       the
+         defendant/military   commander  failed   to   take all
+         necessary and reasonable measures to prevent human
+         rights abuses and punish human rights abusers.
+
+  Chavez, 559 F.3d at 499 (holding that "command responsibility
+
+ does not require proof that a commander's behavior proximately
+
+ caused the victim's injuries")(citing Ford v. Garcia, 289 F.3d
+
+ 1283,    1288 (11th Cir. 2002)); see also Hilao, 103 F.3d at 776-79
+
+  (same); see generally Doe v. Qi, 349 F. Supp. 2d 1258, 1329
+
+  (N.D. Cal. 2004)("The principle of command responsibility that
+
+ holds a superior responsible for the actions of subordinates
+
+ appears to be well accepted in U.S. and international law in
+
+ connection with acts committed in wartime . . . .") (citing In
+
+ re Yamashita,    327 U.S.   1, 14-16   (1946)).
+
+         The Chavez test accords with the legislative history of the
+
+ TVPA, which explains that a "higher official need not have
+
+
+
+                                        26
+Case 1:04-cv-01360-LMB-JFA Document 366       Filed 08/28/12 Page 27 of 38 PageID# 2457
+
+
+
+
+  personally . . . ordered the abuses in order to be held liable."
+
+  S. Rep. No.    102-249,    at 9 (1991). Rather,        "[u]nder international
+
+  law, responsibility for torture, summary execution, or
+
+  disappearances extends beyond the person or persons who actually
+
+  committed those acts —        anyone with higher authority who
+
+  authorized, tolerated or knowingly ignored those acts is liable
+
+  for them."    Id.
+
+
+       Plaintiffs also allege that defendant aided and abetted his
+
+  officers in carrying out violations of international law. See
+
+  Second Am. Compl. HU 95, 104, 114, 124, 134, 143, 152. "[A]iding
+
+  and abetting liability is well established under the ATS." Aziz,
+
+  658 F.3d at 396. In this circuit,           "for liability to attach under
+
+  the ATS for aiding and abetting a violation of international
+
+  law, a defendant must provide substantial assistance with the
+
+ purpose of facilitating the alleged violation." Id. at 401. Put
+
+ another way, "the ATS imposes liability for aiding and abetting
+
+ violations of international law, but only if the attendant
+
+ conduct is purposeful." Id. at 390.
+
+       Plaintiffs' final basis for secondary liability is the less
+
+ developed doctrine of joint criminal enterprise, which is the
+
+ "[international law] analog to a conspiracy as a completed
+
+ offense." Presbyterian Church of Sudan, 582 F.3d at 260 (citing
+
+ Hamdan v. Rumsfeld,        548 U.S.   557,   611 n.40   (2006)). An
+
+ "essential element of a joint criminal enterprise is '^ criminal
+
+                                         27
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 28 of 38 PageID# 2458
+
+
+
+
+  intention to participate in a common criminal design.'" Id.
+
+  (assuming without deciding that plaintiffs could assert such a
+                                                                  j
+
+  theory in an ATS action)(quoting Prosecutor v. Tadic, Case No.
+
+  IT-94-1-A, Appeal Judgment, 1 206 (July 15, 1999)). Providing "a
+
+  theory of liability for proving a specific crime," the doctrine
+
+  "considers each member of an organized criminal group
+
+  individually responsible for crimes committed by the group
+
+  within the common plan or purpose, and it requires an overt act
+
+  in support of the offense." United States v. Hamdan, 801 F.
+
+  Supp. 2d 1247, 1285-86 (U.S.C.M.C.R. 2011)(explaining that joint
+
+  criminal enterprise is "not a stand-alone substantive offense").
+
+       The uncontested evidence supports imposing secondary
+
+  liability. As First Vice President and Minister of Defense from
+
+ January 1980 through December 1986, Samantar was the loader of
+
+ the Somali Armed Forces and was the primary military figure in
+
+ Barre's military regime. Having participated in the 1969 coup,
+
+ he remained the leader of Somalia's military apparatusiand a
+
+ close confidante of Barre until 1991.
+
+       As Prime Minister, Samantar was in command during the
+
+ Hargeisa bombing of 1988 and admitted he was himself in Hargeisa
+
+ in June of 1988 when the major crimes against the civilian
+
+ population occurred. Pis.' Ex. 5. In 1989, as Prime Minister of
+
+ Somalia,   Samantar traveled to London to meet Prime Minister
+
+ Margaret Thatcher and the British foreign affairs secretary.
+
+                                     28
+Case 1:04-cv-01360-LMB-JFA Document 366     Filed 08/28/12 Page 29 of 38 PageID# 2459
+
+
+
+  During that diplomatic trip, BBC reporter Elizabeth Ohene
+
+  conducted an in-person interview with Samantar at his London
+
+  hotel and recorded that interview, which was conducted in
+
+  English. Trial Tr. Vol.       1 at 88:13-90:16 (Ohene bene esse
+
+  deposition authenticating recording of Samantar interview)
+
+  During the interview, Samantar acknowledged his leadership role
+
+  in the attacks on Hargeisa:
+
+       Ohene: Prime Minister, yesterday we had a call to our
+       office from people that you might call dissidents and
+       they say that last year's total mayhem, chaos, at
+       Hargeisa airport was a result of operations ordered by
+       you personally.
+       Samantar: I was there at that time,           but I was not the
+       commander of the unit. I was the higher ranking person
+       in Hargeisa;    therefore,  it was necessary     those
+       commanders to    [sic]    consult with me and to have         [sic]
+       directions from myself. As you know, the top person in
+       the area of conflict should give the last okay. Yes, I
+       give this okay. How to use tactically, how to employ
+       the units; it was my task to give them directions and
+       directives.
+
+ Pis.' Ex. 5 (transcript of Pis.' Ex. 2A, audio recording of
+ Ohene-Samantar interview).
+
+       Samantar's admission during that interview accords with the
+
+ expert opinion of Colonel Kenneth Culwell, a former Defense
+
+ Intelligence Agency attache reporting to the United States
+
+ Ambassador in Somalia, who testified to the command structure of
+
+ the Barre regime and the mass destruction he observed in 1990,
+
+ the year he spent in Somalia:
+
+
+
+
+                                       29
+Case 1:04-cv-01360-LMB-JFA Document 366          Filed 08/28/12 Page 30 of 38 PageID# 2460
+
+
+
+       Q:  What  role would the highest-ranking military
+       officer in Somalia play in the shelling of a major
+       city within Somalia?
+       A: He would most likely approve it or authorize it.
+       Given, however, the scarce resources in Somalia, he
+       would have to allocate resources to it                 ...   .
+
+  Trial Tr.    Vol.   1 at 106:18-22.
+
+
+       There was also evidence from Colonel Yousuf Sharmkrke
+
+  ("Sharmarke") who in May 1988 overheard President Barre
+
+  communicating through the Somali Armed Forces' radio system with
+
+  "General [] Samantar [who] was - military-wise ... of higher
+
+  rank than the President . . . ." Trial Tr.               Vol.   2 (Feb. 24,
+
+ 2012, Dkt. No. 358) at 164:5-165:25 (reading of Sharmarke's
+
+ deposition testimony). Sharmarke testified that Barre and
+
+ Samantar were discussing the fighting between SNM and the Somali
+
+ Armed Forces in the town of Burao, which was still filled with
+ civilians:
+
+
+               General       Mohamed     Ali     Samantar      received     the
+       communication that the SNM was fighting from within
+       the people, the position - the decision reached by
+       Mohamed Ali Samantar was to use heavy - artillery to
+       drive    the    SNM    out   of   town.    I   heard   [Barre]
+       saying Samantar,   Samantar, Samantar,"  concern with
+       that -- that might not be in order. . . . Samantar,
+       don't be quick in bombarding the town, and Samantar
+       said, Samantar saying it was -- it is must that we do
+       that.
+
+
+ Id. at 166:5-24. This testimony demonstrates the authority that
+ Samantar exerted with respect to military strategy and command
+
+ over the Armed Forces.         Sharmarke also overheard Samantar himself
+
+
+
+
+                                           30
+Case 1:04-cv-01360-LMB-JFA Document 366            Filed 08/28/12 Page 31 of 38 PageID# 2461
+
+
+
+
+  order Colonel Kahiye of the Somali Armed Forces to carry out the
+
+  heavy artillery attack. Id. at 178:9-179:6.
+
+       During Sharmarke's deposition, defense counsel pointed out
+
+  that Samantar was not the defense minister in May 1988, but
+
+  Sharmarke testified that Samantar remained the functional head
+
+
+  of Somalia's military:
+
+       A: He was transferred from that post there afterwards,
+       but Samantar had many other roles to play. He was the
+       deputy of the National Security Committee, which was
+       the biggest post. He was the prime minister, second
+       decision-maker, and he was the expert in the aict of
+       war, the only one in Somalia. Whenever there was
+       equipment, he was the one who used to take over that,
+       and most of the time he was successful.
+       Q:   Isn't      it    true   that   under    the   Somali   Constitution,
+       it   is   the       President   who   is    the    commander-in-chief    of
+       the Armed Forces, not the prime minister?
+       A: He was initially, but when he was - but when he was
+       elected,  the   chairman of   the  Socialist Party of
+       Somalia, he gave -- he gave that role -- he passed
+       that to Samantar. He left -- he no longer used the
+       uniform of the army -- the army uniform. He put aside
+       the army uniform, and from there Samantar took over.
+       And when the war and the conflicts,                   that was the duty
+       of   Samantar.
+
+
+  Trial Tr.   Vol.     2    at   174:9-175:1.
+
+
+       In light of Samantar's own words, Culwell's testimony, and
+ Sharmarke's deposition testimony, the three elements of the
+
+ command responsibility test outlined in Chavez — a
+
+ superior/subordinate relationship, the superior's knowledge of
+
+  the subordinate's abuses, and failure by the superior to take
+
+ reasonable measures — are clearly met. Samantar's subordinates
+
+ in the Somali Armed Forces and affiliated intelligence and
+
+
+                                             31
+Case 1:04-cv-01360-LMB-JFA Document 366    Filed 08/28/12 Page 32 of 38 PageID# 2462
+
+
+
+  security agencies were committing human rights abuses;            Samantar
+
+
+  not only knew about this conduct and failed to take necessary
+
+  and reasonable measures to prevent it, but he in fact ordered
+
+  and affirmatively permitted such violations. The well-pleaded
+
+  allegations and uncontested evidence submitted at triajl also
+  sufficiently establish that Samantar "substantial[ly]
+
+  assist[ed]" his subordinates with "the purpose of facilitating"
+
+  the acts alleged in the second amended complaint. See Aziz, 658
+
+  F.3d at 401. Accordingly, plaintiffs have established (secondary
+  liability with respect to the claims alleged by plaintiffs u
+     D. Damages
+
+
+          Credible, unrebutted testimony introduced at trial
+
+  demonstrates that plaintiffs have suffered the harms alleged and
+
+  are entitled to recover damages under the ATS and TVPA. See,
+
+  e.g.,   28 U.S.C.   § 1350 note sec.    1(a); Ditullio v. Boehm,      662
+
+  F.3d 1091, 1096-98 (9th Cir. 2011)(holding that because the TVPA
+
+  "creates a cause of action that sounds in tort" and explicitly
+
+  allows a victim to "recover damages," both compensatory and
+
+  punitive damages are available); Arce, 434 F.3d at 1256
+
+  (upholding jury verdicts for plaintiffs who sued defense
+
+  ministers and military general on a command responsibility
+
+  theory for their abductions and torture by soldiers)
+
+
+  11 Because command responsibility and aiding and abetting are
+ well-established, liability predicated on joint criminal
+ enterprise need not be addressed.
+
+                                     32
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 33 of 38 PageID# 2463
+
+
+
+
+        It is hornbook law that uncertain, contingent, or
+
+  speculative damages may not be recovered. It is equally true
+
+  that "[a]n injured party is not barred from a reasonable
+
+  recovery merely because he is unable to prove his damages with
+
+  absolute certainty." Thompson v. Bhd. of Sleeping Car [Porters,
+
+  367 F.2d 489, 493 (4th Cir. 1966). Surveying the cases
+
+  calculating compensatory and punitive damages under the ATS
+
+  and/or TVPA, one district court found six factors that weighed
+
+  heavily in decisions across the circuits: the brutality of the
+
+  act; the egregiousness of defendant's conduct; unavailability of
+
+  a criminal remedy; international condemnation of the act;
+
+  general deterrence; and interest in providing redress to
+
+  plaintiff, his country and the world. Saravia, 348 F. Supp. 2d
+
+  at 1158-59 (collecting cases and awarding $5 million in
+
+  compensatory and $5 million in punitive damages for claims of
+
+  extrajudicial killing and crimes against humanity). Damages in
+
+  cases under the relevant statutes vary widely. See, e.g., Abebe-
+
+ Jira v. Negewo, 72 F.3d 844, 846 (11th Cir. 1996)(upholding
+
+ award to three plaintiffs for $200,000 each in compensatory
+
+ damages and $300,000 each in punitive damages for torture and
+
+ cruel, inhuman, and degrading treatment by former Ethiopian
+
+ government official); Licea, 584 F. Supp. 2d at 1363-66
+
+  (awarding over $20 million to each plaintiff for human
+
+ trafficking and forced labor conspiracy).
+
+                                     33
+Case 1:04-cv-01360-LMB-JFA Document 366    Filed 08/28/12 Page 34 of 38 PageID# 2464
+
+
+
+
+           1. Compensatory Damages
+
+
+        Compensatory damages are recoverable for physical) and
+  psychological injuries. See, e.g., Mehinovic v. Vuckovic, 198 F.
+
+  Supp. 2d 1322, 1358-59 (N.D. Ga. 2002)(awarding damages based on
+
+  testimony by plaintiffs about the abuses and isolation they
+
+  suffered and their continued "nightmares, difficulty sleeping,
+
+  flashbacks, anxiety, difficulty relating to others, and feeling
+
+  abnormal"); Licea, 584 F. Supp. 2d at 1364-65 (awarding damages
+
+  based on testimony by plaintiffs as to physical injuries, lack
+
+  of medical care,   and psychological trauma suffered).
+
+        Plaintiffs in this case did not produce evidence bf special
+
+  damages, such as bills for medical or therapeutic treatment or
+
+  any costs directly associated with the deaths of relatives, but
+
+  they provided credible and compelling testimony of cognizable
+
+  injuries stemming from the alleged violations. See Hilao, 103
+
+  F.3d at 793 (holding that plaintiff who had waived any claim to
+
+  special damages could have his claim for pain and suffering,
+
+  based only on his own testimony, submitted to the jury).
+
+  Specifically, Yousuf testified that he endured torture            and seven
+
+
+  years of imprisonment,    largely in solitary confinement           See Tr.
+
+
+  Vol. 1 at 37:7-38:14; see also Second Am. Compl. HH 29 •31,            36,
+
+  110-119 (Claim III) . He testified that the imprisonment and
+
+  torture has had long-lasting effects on his memory and emotional
+
+  health. He suffers from depression and nightmares and still re-
+
+
+                                      34
+Case 1:04-cv-01360-LMB-JFA Document 366      Filed 08/28/12 Page 35 of 38 PageID# 2465
+
+
+
+
+  lives the feeling of pacing the five-step length of his cell
+
+  See Tr.   Vol.   1   at 37:7-38:14.
+
+
+       Baralle was tortured and, for unknown reasons, barely
+
+  escaped the execution that in all likelihood befell his two
+
+  brothers,   decendents Abdullahi and Cawil.         See Trial Tr. Vol.      1
+
+  at 61:13-61:21; see also Second Am. Compl. flH 110, 120, 133,
+
+  139-47, 148-55 (Claims III,        IV, V, VI, VII). Baralle tsstified
+
+  that he continues to suffer effects of the Somali Armed Forces'
+
+  acts. He experiences pain and an occasional shaking on the               left
+
+
+  side of his body as well as flashbacks. Trial Tr. Vol. 1 at
+
+  61:13-61:21. Following the extrajudicial killings of his two
+
+ brothers, he and his family took responsibility for raising the
+
+ brothers'    children.    Id.   at 61:22-62:7.
+
+
+       Targeted by a military police firing squad, plaintiff
+
+ Gulaid lacked even the perfunctory process that was af::orded to
+
+ Yousuf and Baralle in their trials; ultimately, he escaped death
+
+ thanks to what appears to be the executioner's error. See Second
+
+ Am. Compl. HH 110, 120, 130, 139, 148 (Claims III, IV, V, VI,
+
+ VII). Gulaid testified that he continues to suffer the emotional
+
+ effects of his near-death experience. He has nightmares,
+
+ flashbacks, and anxiety. Trial Tr. Vol. 1 at 153:22-154::5. He
+
+ also suffers from memory loss, high blood pressure, and poor
+
+ vision, which he attributes to the experience. Id. at 154:6-
+
+ 154:10. Finally, the testimony of plaintiff Aziz and hijs sister
+
+                                        35
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 36 of 38 PageID# 2466
+
+
+
+
+  Nimo presents compelling circumstantial evidence of the
+
+  extrajudicial executions of their father Mohamed, the jfamily's
+
+  breadwinner and a successful businessman, and their brother
+
+  Mustafa.
+
+
+        Calculating the appropriate amount of damages in cases such
+
+  as this one is indisputably a difficult task. See Mushikiwabo v.
+
+  Barayagwiza, No. 94cv3627, 1996 WL 164496, at *2 (S.D.N.Y. Apr,
+
+  9, 1996). In light of the testimony and evidence submitted as
+
+  well as the range of awards to plaintiffs who have suffered
+
+  similar harms, each plaintiff suing in his individual capacity
+
+  will be awarded a sum of $1 million for pain and suffea ing while
+                                                                  f
+  the estates of each of the four decedents will be awarded a              sum
+
+  of $1 million for each decedent.
+
+           2. Punitive Damages
+
+        Plaintiffs also entered evidence to show that "defendant's
+
+ conduct was intentional, malicious, wanton, and reckless
+ justifying punitive damages. Trial Tr. Vol. 2 at 190:1               190:5.
+
+
+ Although punitive damages are typically governed by s tate law,
+
+ to comply with due process, the Fourth Circuit require^ courts
+ to consider four factors when assessing any such award:
+
+    •   Proportionality, meaning that "any penalty imposed should
+        bear a relationship to the nature and extent of the conduct
+        and the harm caused" in light of "the reprehensibility of
+        the conduct,   the harm caused,   the defendant's awareness of
+        the conduct's wrongfulness, the duration of the conduct,               []
+        any concealment," and the amount of the compensatory damage
+        award;
+
+
+                                     36
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 37 of 38 PageID# 2467
+
+
+
+
+     •   Penalties already imposed, such as other criminal or civil
+         sanctions or any other punitive damages award arising out
+         of the same conduct, which should be mitigating factors in
+         the punitive damages calculation;
+     • Improper profits and the plaintiff's costs, to deprive the
+       defendant of profits improperly derived and to ease the
+       burden on the plaintiff of prosecuting the claim; and
+     • Limitations on a defendant's ability to pay, given that
+       punitive damages are intended to punish but "not effect
+       economic bankruptcy."
+
+  Mattison v. Dallas Carrier Corp., 947 F.2d 95, 110 (4th Cir.
+
+  1991). Punitive damages are commonly awarded in cases under the
+
+  ATS and TVPA. See, e.g., Paul v. Avril, 901 F. Supp. 330,
+
+  336 (S.D. Fla. 1994)(awarding $4 million in punitive damages per
+
+  plaintiff because "the acts committed by the defendant were
+
+  malicious, wanton, and oppressive" and the award "musti reflect
+
+  the egregiousness of the defendant's conduct,         the central role
+
+  he played in the abuses, and the international condemnation with
+  which these abuses are viewed").
+
+         Keeping in mind these factors, an award of $2 million in
+
+  punitive damages to each individual plaintiff and the ::our
+
+  estates is appropriate. This amount is intended to reflect the
+
+  seriousness of Samantar's uncontested conduct and to ease any
+
+ burden on plaintiffs in having to bring this case, while also
+
+ recognizing the substantial compensatory damages awarded and the
+
+ lack of evidence that Samantar possesses profits from his
+
+ wrongful conduct that should be disgorged. The sum also takes
+
+ into consideration Samantar's financial condition, specifically
+
+
+                                     37
+Case 1:04-cv-01360-LMB-JFA Document 366   Filed 08/28/12 Page 38 of 38 PageID# 2468
+
+
+
+
+  his ongoing Chapter 7 bankruptcy proceeding.
+
+                             III.   CONCLUSION
+
+
+        For the above-stated reasons, a total judgment of $21
+
+  million, consisting of $1 million in compensatory damages and $2
+
+  million in punitive damages for the three individual plaintiffs
+
+  and four represented estates, will be entered against defendant.
+
+  The execution of the judgment will be stayed pending resolution
+
+  of defendant's bankruptcy proceedings; however,            the time for
+
+  appeal of the Court's decision runs from the entry of [the Order
+  accompanying this Memorandum Opinion.
+
+       Entered this   oto day of August,     2012.
+
+  Alexandria, Virginia
+
+
+
+
+                                              Leonie M. Brinkema
+                                              United States District Jiidge
+
+
+
+
+                                     38
+

@@ -1,0 +1,3134 @@
+TITLE: Why Somalis Flee: Synthesis of Accounts of Conflict Experience in Northern Somalia by Somali Refugees, Displaced Persons and Others | AUTHOR: Robert Gersony, Consultant, Bureau for Refugee Programs, US Department of State | DATE: August 1989 | URL: https://cja.org/wp-content/uploads/2019/07/Gersony-Why-Somalis-Flee-Aug-1989.pdf | Text extracted with pdftotext -layout; '=== PDF page N ===' markers give the PDF page; the report's own printed page numbers appear in the text.
+
+=== PDF page 1 ===
+                               WHY SOMALIS FLEE
+
+
+
+                Synthesis of Accounts of Conflict Experience
+
+                               in Northern Somalia
+
+            by Somali Refugees, Displaced Persons and Others
+
+
+
+
+                             Report Submitted to:
+
+                             Robert L. Funseth, Acting Director
+                             Bureau for Refugee Programs
+
+                             Ambassador Herman J. Cohen
+                             Assistant Secretary of State
+                             Bureau for African Affairs
+
+
+
+                                                 Report Submitted by:
+
+                                                 Robert Gersony
+                                                 Consultant
+COPIES OF THIS REPORT                            Bureau for Refugee Programs
+MAY BE OBTAINED FROM:                            Department of State
+                                                 August 1989
+Bureau for African Affairs
+AF/P, Room 3509 NS
+Department of State
+Washington, D. C. 20520
+(202) 647-7371
+
+Bureau for Refugee Programs
+RP/PA, Room 1282 SA-1
+Department of State
+Washington, D. C. 20520
+(202) 663-1026
+
+=== PDF page 2 ===
+                              TABLE OF CONTENTS
+
+
+                                                  Page No.
+
+
+INTRODUCTION                                          1
+
+ASSESSMENT PROCEDURES                                 4
+
+        Source of Findings                            4
+
+        Geographical Scope                            4
+
+        Host Government Cooperation                   5
+
+        Selection of Interviewees                     6
+
+        Categories of Interviewees                    7
+
+        Interview Accounts                            9
+
+        Limitations of Interviews                    11
+
+        Limitations of Precision of Data             12
+
+
+REPORTS FROM SOMALI REFUGEES IN ETHIOPIA AND KENYA    13
+
+        Interview Locations                          13
+
+        Sex of Interviewees                          13
+
+        Age                                          13
+
+        Marital Status                               14
+
+        Home of Origin                               14
+
+        Place of Birth                               14
+
+        Previous Travel Outside Somalia              14
+
+        Mode of Travel to Ethiopia/Kenya             14
+
+        Clan Identification                          16
+
+        Formal Education                             16
+
+        Occupation                                   17
+
+        Refugee Family Participation in SNM          17
+
+=== PDF page 3 ===
+                                                  Page No.
+
+
+        Reports of Violence Against Civilians       19
+
+        Civilians Killed Near Battle Areas          20
+
+        Attacks on Villages and Watering Points     21
+
+        Attacks on Asylum Seekers                   22
+
+        Summary Executions and Other Killings       23
+
+        Systematic Elimination Outside
+        Conflict Zone                               25
+
+        Deaths and Ill-treatment in Prison          27
+
+        Deaths During Looting and Rape              30
+
+        Recapitulation                              32
+
+        SNM Executions of Prisoners of War          34
+
+
+REPORTS FROM SOMALIS IN NORTHERN SOMALIA            35
+
+        Categories of Interviewees                  35
+
+        Interview Locations                         35
+
+        Sex of Interviewees                         35
+
+        Age                                         36
+
+        Marital Status                              36
+
+        Home of Origin                              36
+
+        Clan Identification                         37
+
+        Formal Education                            37
+
+        Occupation                                  38
+
+        Reports of Violence Against Civilians       39
+
+        Attacks on Sanctuary/Asylum Seekers         40
+
+=== PDF page 4 ===
+                                               Page No.
+
+
+        Civilians Killed Near Battle Areas       40
+
+        Burao Executions                         40
+
+        SNM Tactics in Hargeisa Attack           42
+
+        SNM Attacks on UNHCR Refugee Camps       42
+
+        Deaths Attributed to
+        Somali Armed Forces                      43
+
+        Deaths Attributed to
+        the Gadabursi Front                      43
+
+        Recapitulation                           44
+
+
+REPORTS FROM ETHIOPIAN REFUGEES IN NORTHERN SOMALIA   45
+
+        Categories of Interviewees               45
+
+        Interview Locations                      45
+
+        Refugee Camp Residence                   46
+
+        Age                                      46
+
+        Sex of Interviewees                      47
+
+        Marital Status                           47
+
+        Home of Origin                           47
+
+        Clan Identification                      47
+
+        Formal Education                         48
+
+        Occupation                               48
+
+        Roles in Somalia/Ethiopia War            48
+
+        Attacks Against UN Refugee Camps         49
+
+        Camp Defenses                            50
+
+        Agabar/Las Dhure – The First Attacks     51
+
+=== PDF page 5 ===
+                                                       Page No.
+
+
+            Ethiopian Refugee-Combatants                 53
+
+                 Forced Conscription                     53
+
+                 Induced Participation Post-May 1988     55
+
+            Repatriation to Ethiopia                     57
+
+
+FINDINGS AND CONCLUSIONS                                 60
+
+      Somali Armed Forces Conduct in the Conflict        60
+
+      SNM Conduct in the Conflict                        62
+
+      Conduct of Both Sides                              63
+
+      ….Concerning UN Refugee Camps                      63
+
+      ….Concerning the Battle for Hargeisa               64
+
+      ….Concerning the Presence of Potential
+           Victims                                       65
+
+      Other Findings and Conclusions                     65
+
+
+
+
+LIST OF MAPS AND CHARTS
+
+
+Map              Northern Somalia/Eastern Ethiopia        3
+
+
+Chart A          Categories of Interviewees               8
+
+Chart B          Villages of Origin
+                 Ethiopia/Kenya Interviewees             15
+
+Chart C          Occupations of Issak Refugees           18
+
+Chart D          Types of Ill-Treatment of Prisoners     28
+
+=== PDF page 6 ===
+                                                                                    1
+
+INTRODUCTION
+
+
+       In February 1989, the author was engaged by the Department of State’s
+Bureau for Refugee Programs to undertake an assessment of designated Somali
+and Ethiopian refugee issues. The Bureau’s Director decided to have the
+assessment conducted as a result of the Bureau’s perception of a mounting
+refugee crisis in this area of the Horn of Africa. A longstanding civil conflict
+between the insurgent Somali National Movement (SNM) and the Government of
+Somalia had suddenly intensified in May 1988 and was thought to be the
+principal cause of this crisis.
+
+        In the eight months between May 1988 and January 1989, an estimated
+300,000 – 500,000 Somali refugees had arrived in eastern Ethiopia from northern
+Somalia, sometimes at the rate of 4,000 a day. Mobilized through the United
+Nations High Commissioner for Refugees, the international community provided
+food and cash contributions approaching an annualized level of roughly US$50
+million to assure the survival of these refugees. Somali refugees were said to be
+arriving in Djibouti and Kenya as well. Hundreds of thousands of other Somalis
+were thought to be internally displaced inside Somalia.
+
+       Another population of concern to the Refugee Bureau were hundreds of
+thousands of refugees who had fled from Ethiopia to sanctuary in Somalia as
+many as ten years earlier, who were still residing in refugee camps in northern
+Somalia and who were also severely affected by the intense fighting which broke
+out there in May 1988. These refugee camps had been established under the
+auspices of the United Nations High Commissioner for Refugees (UNHCR).
+
+       In August 1988 the Deputy Assistant Secretary for International Refugee
+Assistance in the Bureau for Refugee Programs visited the affected region. His
+reports suggested that detailed study of numerous aspects of the northern
+Somalia situation was required. Among the concerns was how scarce
+assistance resources for the Somali refugees in the inhospitable environment of
+eastern Ethiopia should be allocated, based in part on an assessment of how
+long they were likely to stay there and the possibilities for their voluntary
+repatriation. An additional concern was whether it would be possible to return to
+a normal, internationally monitored program of refugee assistance for the
+Ethiopian refugees in northern Somalia. The answer to both concerns hinged in
+large measure on the experiences, motivations and intentions of the refugees
+themselves.
+
+       The author was engaged by the Bureau for Refugee Programs to examine
+such issues as the root causes of refugee flows, internal displacement, and
+disruption of the UN refugee camps in northern Somalia; refugee protection
+issues; and prospects for repatriation and return strategies which could offer
+durable solutions for the affected populations.
+
+=== PDF page 7 ===
+                                                                                   2
+
+
+
+
+        To do this, the author conducted a field visit of nearly three months to
+thirty-one different locations in three countries – Ethiopia, Somalia and Kenya. In
+these places, which were separated by as many as 1,000 miles, he spoke at
+length and individually with more than three hundred randomly selected
+individuals who fell into two broad categories:
+
+      n He interviewed over two hundred and fifty refugees and displaced
+        persons who had fled from or who continued to reside in conflict-
+        affected locations in northern Somalia. The bulk of the information
+        included in this report is derived from these interviews. Their reports
+        focused on violence against unarmed civilian non-combatants.
+
+      n For comparative purposes, he spoke with twenty Ethiopian refugees
+        residing in UNHCR refugee camps in southern Somalia and with thirty
+        Ethiopian refugees who had until recently resided in those camps and
+        who had just repatriated to their homes in southern Ethiopia. None of
+        these fifty refugees/returnees were directly affected by the intensified
+        civil conflict in northern Somalia.
+
+       Throughout the eleven week field trip, the author spoke with many national
+and international personnel who provided valuable complementary information,
+and with Government officials.
+
+       The map which appears on the following page describes some key
+reference points for northern Somalia and the areas of eastern Ethiopia where
+refugee camps are located. The 252 interviews which are the primary basis of
+this report's conclusions were conducted in some of these locations.
+
+This report synthesizes the information gathered during the assessment. It is
+divided into the following sections:
+
+      n General Assessment Procedures
+
+      n Reports from Somali Refugees in Ethiopia and Kenya
+
+      n Reports from Somalis in Northern Somalia
+
+      n Reports from Ethiopian Refugees in Northern Somalia
+
+      n Findings and Conclusions
+
+=== PDF page 8 ===
+      3
+
+
+MAP
+
+=== PDF page 9 ===
+                                                                                   4
+ASSESSMENT PROCEDURES
+
+Source of Findings
+
+         The field research for this assessment was conducted during a period of
+eleven weeks, between March and May 1989, in Ethiopia, Somalia and Kenya.
+The principal source of the assessment’s findings were three hundred and two
+individual interviews with refugees, displaced persons and others who provided
+eyewitness accounts of incidents and patterns of conduct related to the subject of
+this study. In the national capitals, regional administrative centers and in some
+field sites, the author met with about forty national and international personnel
+with first-hand experience in the field. They provided background information
+and an opportunity to better understand and sometimes corroborate aspects of
+the information provided in the three hundred interviews with local eyewitnesses.
+The author also met with host Government, United States Embassy and United
+States Agency for International Development officials.
+
+Geographical Scope
+
+      The assessment was conducted in thirty-one locations in Ethiopia,
+Somalia and Kenya which included:
+
+      n Sixteen sanctuary sites for Somali refugees and displaced persons
+        directly affected by conflict violence in northern Somalia. Among these
+        were:
+
+          n Five refugee camps in western Ethiopia
+
+          n Ten sites in northern Somalia
+
+          n One location in Kenya.
+
+      Almost all of the 252 interviews with families directly affected by the war in
+      northern Somalia were conducted in these locations. The bulk of the data
+      in this report is based on these 252 interviews.
+
+      n Two longstanding UNHCR camps in northern Somalia for Ethiopian
+        refugees which had not been directly affected by the conflict.
+
+      n Three national capitals (Addis Ababa, Mogadishu and Nairobi) and five
+        regional administrative centers where relief operations are based.
+
+      n Two refugee camps in southern Somalia which were not directly
+        affected by the conflict in the north; and four "returnee" re-integration
+        settlements in southern Ethiopia for families who had recently returned
+        from refugee camps in southern Somalia. None of these had been
+        directly affected by the fighting in northern Somalia, and it was in these
+        camps that, for comparative purposes, fifty of the interviews were
+        conducted.
+
+=== PDF page 10 ===
+                                                                                   5
+
+
+Host Government Cooperation
+
+       Both the Government of Ethiopia and the Government of Somalia, in
+whose countries 97% of the interviews were conducted, provided full cooperation
+to the author. This cooperation in both countries included:
+
+      n Prompt approval of the author’s requests for lengthy travel programs
+        with loose advance itineraries, to which neither Government was
+        accustomed in these border and conflict areas.
+
+      n Freedom to use his time and to alter the travel plan without prior notice
+        within the regions visited as he felt necessary.
+
+      n Unimpeded access to the refugee, displaced persons and other sites
+        during daylight hours. For security reasons which in both countries
+        appeared reasonable and warranted by local circumstances, the
+        author was in some cases required to return to nearby administrative
+        towns at sunset. In northern Somalia, the duration of access to some
+        sites was curtailed because of security concerns.
+
+      n Almost all travel in both countries was conducted without Government
+        accompaniment. However, in northern Somalia, security
+        accompaniment on the road was deemed necessary during some
+        daytime travel. In southern Ethiopia, accompaniment did not include
+        participation in the substantive work of the trip such as decisions about
+        random selection or conduct of the interviews.
+
+      n Freedom to randomly select subjects for interviews and to organize the
+        interview process in accordance with his own procedures.
+
+      n Freedom to engage the translators of his choice.
+
+      n No Government presence in the interviews. However, in one refugee
+        camp in eastern Ethiopia, a local employee of the Ethiopian
+        Government’s relief unit insisted upon being present during parts of
+        four interviews conducted in that particular camp. This presence was
+        discontinued after consultation with the Government's senior camp
+        coordinator.
+
+      n Assistance with logistics when local weather (in Ethiopia) or conflict
+        conditions (in Somalia) generated unanticipated requirements.
+
+       Given the security and logistics constraints present in northern Somalia,
+the freedom of movement and activity and the logistical and security assistance
+extended to the author by Government of Somalia officials are particularly
+noteworthy.
+
+=== PDF page 11 ===
+                                                                                 6
+
+
+
+
+Selection of Interviewees
+
+        The three hundred interviews described earlier were conducted in twenty-
+four locations in three countries. The author personally selected or directed the
+selection for interviews of refugees, displaced persons and others as randomly
+as possible. They were selected without reference to the type of problems they
+might have experienced (except at the author’s request in five cases in northern
+Somalia, described later in this report). In Ethiopia, the author also placed
+particular emphasis on selection of those who came from as wide a geographical
+distribution as possible.
+
+       The author attempted to select refugees, displaced persons and others
+who became displaced throughout the eight-month period when the refugee
+flows and displacement had occurred. In the case of Somali refugees in
+Ethiopia, the majority of the refugees had arrived in the June/September 1988
+period. The author selected refugees who had arrived in the thirty days
+preceding the interviews in somewhat higher numbers than the proportion of all
+refugees which they represented.
+
+=== PDF page 12 ===
+                                                                                   7
+
+
+Categories of Interviewees
+
+      Interviewees in this study fell into the following categories:
+
+      n 120 individuals interviewed in refugee camps in eastern Ethiopia and
+        10 individuals interviewed in Kenya all described themselves as Somali
+        citizens of the Issak clan family, which is based predominantly in
+        northern Somalia. Most had fled their home region as a result of the
+        intense violence which broke out in May 1988.
+
+      n 122 individuals interviewed in northern Somalia fell into three sub-
+        categories:
+
+             n Thirty-three were Somalis who had been displaced by the
+               intense violence and who continued to live as displaced persons
+               in sanctuary areas in northern Somalia far from their home
+               towns. Most of these were non-Issaks.
+
+             n Twenty-four were Somalis who had remained in their
+               hometowns in northern Somalia despite intense violence, or
+               who had temporarily fled to a nearby location for sanctuary and
+               returned to their homes shortly thereafter when the violence
+               abated. Most of these were also non-Issaks.
+
+             n Sixty-five were Ethiopian refugees who had fled their own
+               country because of a war there some ten years ago and had
+               been living in UNHCR refugee camps in northern Somalia since
+               then. When these camps had been directly affected by the
+               violence in northern Somalia, these refugees had either fled to
+               different sanctuary locations or, despite the violence, had
+               remained in their refugee camps.
+
+       Thus, about half of the interviews conducted in northern Somalia involved
+Ethiopian refugees affected by the conflict. The emphasis which the author
+placed on visits to these refugee camps and interviews with the affected refugees
+was the result, in part, of the access they provided to concentrated populations
+and of the Refugee Bureau’s special concern for them. It was also a function of
+the relatively greater difficulty of locating and identifying the displaced Somali
+population, which tended to reside in very dispersed patterns.
+
+      n Fifty of the interviewees, described earlier in the report, were
+        interviewed for comparative purposes in southern Somalia and
+        southern Ethiopia, and had not been directly affected by the conflict in
+        northern Somalia.
+
+=== PDF page 13 ===
+                                                                                    8
+
+
+      Chart A on this page illustrates the categories of interviewees described
+above.
+
+
+
+
+                                                              CHART A
+
+
+
+                            CATEGORIES OF INTERVIEWEES
+
+
+
+
+                            NORTHERN SOMALIA RELATED
+                                 252 interviewees
+
+
+
+
+       Issak Refugees               Northern Somalis          Ethiopian Refugees
+    Ethiopia     Kenya              DPs    Non-DPs            in Northern Somalia
+
+
+      120         10                 33      24                      65
+
+
+
+
+                            SOUTHERN SOMALIA RELATED
+                                  50 interviewees
+
+
+
+                       Southern Somalia                Southern Ethiopia
+                       Ethiopian Refugees                 Returnees
+
+
+                             20                               30
+
+=== PDF page 14 ===
+                                                                                  9
+
+
+
+Interview Accounts
+
+        Interviewees provided eyewitness and other detailed, credible accounts of
+their experiences; spontaneous responses to many follow-up questions; and, in
+some cases, diagrams which illustrated the manner in which the incidents they
+described had occurred. The majority of the respondents had no formal
+education or literacy skills. But they described effectively what they had seen
+and what had happened to them, and these observations are the principal basis
+for the data and findings of this report. A small number appeared reluctant to
+provide any information. But the great majority appeared to speak forthrightly
+and with confidence about their experiences.
+
+        Except where otherwise indicated, the violent incidents described in this
+report refer only to those committed by armed combatants against unarmed
+civilians in the absence of combatants of the other side. Thus, except as
+otherwise specified, the stated presence of SNM soldiers at the scene of violence
+attributed to the Somali Armed Forces automatically excluded the incident from
+this report. This applied equally to reports concerning negative actions by the
+SNM. Crossfire deaths were attributed to neither party to the conflict.
+
+       This report includes statistical compilations of deaths and other casualties
+eyewitnessed or described in credible detail by interviewees. Where possible
+and in contexts in which it was reasonable to expect that the interviewee would
+be able to provide them, the author collected the names of as many as possible
+of the victims of each incident as the interviewee could provide. Criteria for
+accepting reports were relatively stringent and, in the author’s view, have had the
+effect of underestimating the statistics for the numbers of deaths and other
+casualties witnessed by all interviewees.
+
+        The reports from the refugees who had fled Somalia, regardless of which
+of the five refugee camps in Ethiopia they resided in, and for the small number
+interviewed in Kenya, tended to be consistent, even though the interview sites
+were separated by hundreds – and in some cases nearly 1,000 – miles. In
+addition, some of the reports of the same incidents, received from randomly
+selected refugees in different interview locations, corroborated each other.
+
+        The sanctuary sites in northern Somalia were quite dispersed – with some
+up to hundreds of miles apart. The number of sanctuary locations in which
+interviews were conducted in northern Somalia was about twice the number of
+interview sites in eastern Ethiopia. The reports received from individuals within
+the group of 122 interviews conducted in northern Somalia also tended to be
+consistent and mutually corroborative.
+
+=== PDF page 15 ===
+                                                                                 10
+
+
+
+
+      The interviewees provided sufficient detail so that accounts by several of
+them – sometimes received in different countries – could be readily identified and
+thus not "double-counted" in the quantitative tabulations.
+
+       All of the interviewees appeared to be able to readily identify and
+distinguish between the two parties to the conflict.
+
+       Where differences in perceptions or reports emerged between the Somali
+Issak refugees outside Somalia and the principally non-Issak Somalis and
+Ethiopian refugees interviewed within Somalia, these are described in the report.
+
+       The same consistency and mutual corroboration which characterized the
+252 northern Somalia-related cases applied within the groups of fifty refugees
+and returnees interviewed, respectively, in southern Somalia and in southern
+Ethiopia.
+
+       To describe the refugee accounts of why they had fled from their homes
+and from other sanctuary sites as clearly and accurately as possible, the author
+analyzed their reports and divided their accounts of conflict violence into nominal
+categories of conflict conduct by both parties, recognizing that some categories
+overlap in some respects.
+
+=== PDF page 16 ===
+                                                                                  11
+
+
+Limitations of Interviews
+
+        Serious negative reports concerning the conduct of both parties to the civil
+conflict in northern Somalia were described in the interviews. Negative reports
+about each side tended to contain the same level of detail and authority, to be
+conveyed with the same level of conviction, and to permit the same level of
+mutual corroboration.
+
+       The Issak clan members who had fled their homes in northern Somalia
+had overwhelmingly chosen Ethiopia as their destination. They provided a few
+negative reports concerning SNM actions. But almost all of their negative reports
+concerned actions by the Somali Government’s Armed Forces which had
+compelled them to flee from their homes. It is said that Ethiopia has in the past
+provided sanctuary and assistance to the predominantly Issak SNM forces, and
+most Issak clan members who fled when the violence intensified went to
+Ethiopia.
+
+       These displaced persons and others who when forced to flee had chosen
+sanctuary within Somalia or who had remained in conflicted areas under
+Government protection, identified themselves mostly as Darod, Dir and other
+non-Issak clans. The Government of Somalia is dominated politically by
+Marehan and other Darod clans. The interviewees provided some negative
+reports concerning Government forces. But the overwhelming majority of their
+negative reports concerned specific actions by SNM forces which had forced
+them to flee their homes or exposed them to danger.
+
+        In the political and geographical context of this particular conflict, these
+destination choices appear consistent, even predictable. The forces in this
+conflict are rather clear cut. Those affected by the war tended to seek sanctuary
+with the side which they did not fear, which did not take the action which
+generated their flight, or which they believed would extend protection to them,
+generally consistent with the clan divisions which appear to be at the heart of the
+conflict. The accounts provided by those who had fled in both directions usually
+seemed equally credible and consistent.
+
+        A small number of affected individuals interviewed on both sides may
+have had a natural hesitation to provide negative reports of incidents carried out
+by the side under whose flag they have sought protection. It is believed that this
+factor is unlikely to have significantly affected the findings of this assessment.
+
+        Interviews with about forty national and international personnel sources
+contributed to the findings and conclusions of this report. Some of these sources
+were eyewitnesses to the events in northern Somalia reported by the
+interviewees or were present in the immediate areas from which these reports
+emerged.
+
+=== PDF page 17 ===
+                                                                                   12
+
+
+
+
+Limitations of Precision of Data
+
+       The great majority of the reports provided by the 252 interviewees
+described incidents which occurred within the nine-month period (June 1988 –
+February 1989) during which they had been forced, in most cases, to flee their
+homes or to endure intense levels of violence around them. Some of their
+reports can be pinpointed in time in relation to an event whose date is widely
+known. For example, many respondents could estimate the number of days
+between the SNM attacks on Burao and Hargeisa (May 27 and 31, 1988,
+respectively) and the incidents which they described in the interviews. But as the
+incidents they described occurred more distantly from the period immediately
+before or after these important events, or from commonly-known religious days, it
+became increasingly difficult to pinpoint with precision the date of the incident
+they reported.
+
+       However, many of the incidents described by the interviewees can be
+assigned to relatively specific time periods before and after the conflict
+intensified. These periods are described in more detail in the body of the report.
+
+       The knowledge of numbers among these interviewees was imperfect but
+more developed than similar skills in interviewees in other countries in which the
+author has conducted similar assessments. The author believes that the
+stringent criteria applied to the statistical compilation of these accounts, as
+described in an earlier section of this report, has had the effect of under-counting
+the deaths and other human rights abuses witnessed by the interviewees.
+
+      The author believes that these two limitations – pinpointing of dates and
+numbers – would affect all of the reports collected – inside and outside Somalia –
+in equal proportion and do not materially affect the conclusions of the
+assessment.
+
+        The foregoing limitations notwithstanding, the ability of the interviewees to
+effectively describe what they had seen and what happened to them in credible
+detail; the relatively stringent criteria governing acceptance of their reports; and
+the reinforcement by instances of mutual corroboration of the same accounts
+from refugees in places separated by hundreds of miles, established a high level
+of credibility for the 252 accounts of events in northern Somalia and to the fifty
+accounts from southern Somalia and southern Ethiopia which are synthesized in
+this report.
+
+=== PDF page 18 ===
+                                                                                   13
+
+
+REPORTS FROM SOMALI REFUGEES IN ETHIOPIA AND KENYA
+
+       The first part of this section of the report describes the locations in which
+the 130 Somali refugees in Ethiopia and Kenya were interviewed and some
+characteristics of this group. The second part of this section describes the
+reports which these 130 refugees provided.
+
+
+Interview Locations
+
+       Interviews with the 130 Somali refugees were conducted in the following
+locations:
+
+       Ethiopia Refugee Camps                            120 interviews (92%)
+
+               Hartesheikh/Harshin               50 interviews (39%)
+               Rabasso                           20 interviews (15%)
+               Daror                             16 interviews (12%)
+               Cam Aboker                        34 interviews (26%)
+                                                 120 interviews (92%)
+
+       Kenya                                              10 interviews (8%)
+                                                         ________________
+
+       TOTAL                                             130 interviews (100%)
+
+
+Sex of Interviewees
+
+      Of the 130 Somali refugees interviewed in Ethiopia and Kenya, eighty
+(61%) were men, fifty (39%) were women.
+
+
+Age
+
+The ages of the 130 interviewees were as follows:
+
+               18 and under                     3%
+               19 – 29 years                   32%
+               30 – 39 years                   20%
+               40 – 49 years                   22%
+               50 and over                     23%
+               Total                          100%
+
+The ten Kenya interviewees fell into the 19 – 39 year age range; seven of the ten
+were men.
+
+=== PDF page 19 ===
+                                                                                 14
+
+
+Marital Status
+
+       Of the 130 interviewees, 80% described themselves as currently married.
+Of the married men, 65% reported being married to one woman, 35% to two
+women.
+
+Home of Origin
+
+       In order to gather information concerning the causes of refugee migrations
+from the widest number and types of origins, the author placed emphasis on
+selection of individuals who came from as many different locations in northern
+Somalia as possible. Thus, the following statistical breakdown should not be
+construed as a proportionate sample of the towns and villages of origin of all of
+the Somali refugees in Ethiopia and Kenya. Had the author not sought the
+widest geographical dispersion in the sample, a far greater proportion than listed
+on the chart on the next page would have been former residents of Hargeisa and
+Burao towns in northern Somalia. The breakdown which follows reflects only the
+composition of the interview sample.
+
+       The 130 refugees identified their hometowns (or home areas) in Somalia
+as the forty-three which appear on Chart B on the following page. Many of these
+locations appear on the map in this report.
+
+Place of Birth
+
+       Of the 130 refugees, 47% reported that they had been born in the same
+town or village where they had been living when they were forced to flee by the
+war. Some 53% of the sample indicated that they had moved to the area from
+which they had fled many years before the war intensified.
+
+Previous Travel Outside Somalia
+
+        About 70% of the refugees reported that they had never traveled outside
+Somalia before circumstances related to the civil conflict obliged them to flee to
+Ethiopia or Kenya. Of those who were interviewed in Ethiopia, 94% reported that
+they had never visited Ethiopia before; 25% said that they had made previous
+visits to Djibouti. Three times as many men as women had visited Djibouti. Of
+the ten interviewees in Kenya, one reported having visited Kenya before.
+
+Mode of Travel from Somalia to Ethiopia/Kenya
+
+        Nearly 80% of the 130 interviewees reported that they had made the
+entire journey from their homes to the sanctuary site in which they were
+interviewed by foot. About 20% indicated that a part of their journey had been
+made by vehicle.
+
+=== PDF page 20 ===
+                                                                           15
+
+                                                                 CHART B
+
+                                       Villages of Origin
+                               130 Somali Refugees Interviewed
+                                    in Ethiopia and Kenya
+
+Town/Village                             Percentage
+
+Hargeisa                                     25%
+Berbera                                      12%
+Burao                                        13%
+Subtotal                                     50%
+
+Dobolok*                                      5%
+Erigavo*                                      5%
+Odweina                                       4%
+Mogadishu                                     3%
+Adadle                                        2%
+Ainabo                                        2%
+El Afwein                                     2%
+Gebile                                        2%
+Maigaga                                       2%
+Subtotal                                     27%
+
+Arapsio
+Bali Matan
+Bederwanak
+Ber
+Beye Gure
+Bihendulah
+Bohol
+Dabogoryale
+Daragodleh
+Daraweina
+Darburuk
+Deaad Budo
+Deregod
+Derewoyne
+Dokoshe
+Dulmadoba
+Ged Balaad
+Gelole
+Habale
+Hahe area
+Kismayo
+Laso Dahwo
+Leferuk
+Libo
+Lugh
+Mait
+Ogh
+Qaradag
+Ramale
+Sheikh
+Wadamago                                     __
+Subtotal                                     23%
+
+TOTAL                                      100%
+______________________
+* Reported particularly among relatively recent arrivals.
+
+=== PDF page 21 ===
+                                                                                16
+
+
+
+
+Clan Identification
+
+       One of the 130 individuals interviewed outside Somalia declined to identify
+his clan. All of the other respondents identified themselves as members of the
+Issak clan family, and described their individual clans as follows:
+
+
+  Clan                                          Percentage
+
+Habr Awal                                          26%
+Habr Joelo                                         25%
+Habr Yunis                                         21%
+Edegelle                                           18%
+Arab                                                3%
+Other                                               4%
+Unnoted                                             3%
+
+TOTAL                                             100%
+
+
+Formal Education
+
+      The 130 individuals interviewed in Ethiopia and Somalia reported that they
+had received formal education or schooling for the following numbers of years:
+
+
+      No. Years Education                       Percentage
+
+      None                                         78%
+      1 –2 years                                    3%
+      3 – 6 years                                   6%
+      7 – 9 years                                   6%
+      10 years and over                             7%
+      Total                                       100%
+
+Approximately 90% of the women reported having no years of formal education,
+as compared with 70% of the men. The Kenya interviewees had higher levels of
+formal education than those interviewed in Ethiopia; three of the ten Kenya
+interviewees had more than ten years of education.
+
+=== PDF page 22 ===
+                                                                                17
+
+
+
+
+Occupation
+
+       The 130 individuals interviewed in Ethiopia and Kenya identified their
+principal occupations as described on Chart C on the following page.
+
+
+Refugee Family Participation in SNM
+
+        Forty (33%) of the 120 Issak refugees interviewed in refugee camps in
+eastern Ethiopia reported that members of their immediate families (defined as
+parents, spouse, children and siblings) were SNM combatants in northern
+Somalia. They were said to have joined the SNM before the intensification of the
+conflict in May 1988 or in Somalia immediately thereafter. They reported an
+aggregate number of 85 such relatives in the SNM, of whom 72 (85%) remained
+active and 13 (15%) had been killed in action. The Issak refugees in Kenya
+reported no family members in the SNM.
+
+=== PDF page 23 ===
+                                                         18
+
+
+                                               CHART C
+
+                   Occupations of Issak Refugees
+
+Small business                            33%
+Shopowners, traders, merchants
+
+Housewife                                 19%
+Family duties
+
+Nomad/Herder                               8%
+
+Transportation Owner/Driver                8%
+
+Tradesperson                               6%
+Plumber/Mechanic/Carpenter
+
+Farmer                                     5%
+
+Worker/Laborer                             5%
+
+Government Employee                        3%
+Policeman/Port official/News Agency
+
+Soldier                                    2%
+
+Religious Man                              2%
+
+Livestock Export                           1%
+
+Professional                               1%
+Engineer/Accountant
+
+Student                                    1%
+
+Teacher                                    1%
+
+Charcoal producer                          1%
+
+Cook                                       1%
+
+Other                                      3%
+
+                                        ____
+
+TOTAL                                    100%
+
+=== PDF page 24 ===
+                                                                                   19
+
+
+
+
+Conflict Experience: Reports of Violence Against Civilians
+
+In explaining why they had fled Somalia, most of the refugee reports in Ethiopia
+and Kenya focused on incidents of violence against unarmed, civilian non-
+combatants which had driven them to leave their homes or, having left their
+homes, forced them to abandon another place to which they had gone to escape
+the violence. Ninety (nearly 70%) of the 130 interviewees had witnessed the
+killing of unarmed civilian non-combatants, and almost all of these were
+attributed to the Somali Armed Forces. (Two incidents, which involved eleven
+killings attributed to the SNM, are described at the conclusion of this section of
+the report.) Some of the reports concerned events said to have occurred before
+the conflict intensified in May 1988; but the overwhelming majority were said to
+have occurred thereafter.
+
+The refugee reports of violence against non-combatants tended to fall into a
+number of distinct categories of incidents which reflected similar patterns. The
+author has divided the reports into these nominal categories, which are
+presented in the following order:
+
+      n Civilians killed near battle areas
+
+      n Attacks on unarmed civilian villages and watering points
+
+      n Attacks on unarmed asylum seekers
+
+      n Summary executions and other killings
+
+      n Systematic elimination outside conflict zone
+
+      n Deaths and ill-treatment in prison
+
+      n Deaths during looting and rape
+
+In the following pages, each of these patterns of conduct and statistical analysis
+for them are described.
+
+=== PDF page 25 ===
+                                                                                  20
+
+
+
+
+Civilians Killed Near Battle Areas
+
+        The 130 refugees in Ethiopia and Kenya, like their 122 counterparts in
+northern Somalia, witnessed crossfire deaths too numerous to record during the
+interviews and, both groups said, too numerous to count. Their accounts
+suggest that crossfire deaths ascended into the thousands, particularly in the
+battles for Hargeisa and Burao.
+
+        A separate, non-crossfire category of deaths which was recorded,
+however, were those said to have taken place near a battle, but not at its
+immediate scene, where soldiers of only one side to the conflict killed unarmed
+civilians who offered no resistance. Seven Issak refugees in Ethiopia reported
+twelve such incidents involving twenty-six deaths of Issak civilians which were
+attributed to Somali Armed Forces soldiers.
+
+        Nineteen (73%) of the victims were identified by name. According to
+these reports, nearly 75% of the victims of these actions were women, children
+and elderly persons. They include a very elderly man who had left his house to
+search for water and who was stabbed to death with a bayonet; two boys (ages
+one and seven) who were beheaded; a religious man reading the Koran in front
+of a mosque; a father and three young children shot when Somali Armed Forces
+soldiers entered their home; and two women and a man, all unarmed, who were
+standing still at the order of Somali army soldiers. The remainder of the cases
+describe civilians, including several unaccompanied women and children, shot
+while fleeing from their houses in areas which were not the scene of immediate
+conflict.
+
+      These deaths were ascribed to the following time periods:
+
+
+      Timing                         No. Deaths               Percentage
+
+May 27/August 31, 1988                  24                     92%
+
+September/December 1988                  0                        0%
+
+January/March 1989                       2                        8%
+
+TOTAL                                   26                    100%
+
+=== PDF page 26 ===
+                                                                                  21
+
+Attacks on Villages and Watering Points
+
+       Thirty (23%) of the Issak refugees reported eyewitness and/or credible
+detailed accounts of twenty-six separate surprise armed attacks on unarmed,
+undefended civilian villages in the reported absence of resistance, conflict or
+SNM forces. These attacks were targeted at civilians in and immediately around
+Issak villages, and at Issak civilians and their livestock at watering points and
+grazing areas near the villages. All of these attacks were attributed to the Somali
+Armed Forces.
+
+       A total of 254 civilians were reported to have been killed in these attacks,
+of whom 64% were identified by name. Of the 254 victims, 58% were reported to
+be men, 25% women, 16% children. The gender and age of two (1%) of the
+victims were not noted.
+
+      These deaths were ascribed to the following time periods:
+
+      Timing                        No. Deaths                 Percentage
+
+January/May 26, 1988                       2                      1%
+
+May 27/August 31, 1988                  188                      74%
+
+September/December 1988                  16                       6%
+
+January/March 1989                       44                      18%
+
+Undetermined                               4                      1%
+
+TOTAL                                   254                    100%
+
+       Of the twenty-six reports of these types of incidents, twenty-three were
+said to have been conducted by ground forces; three were air attacks.
+
+      Ground Attacks
+
+       Twenty of the ground attacks were reported to have been directed against
+villages, three against watering points. Fifteen were separate instances in which
+the pattern of attack was the same. In these cases, a column of uniformed
+Somali Armed Forces soldiers surrounded a small village or watering point.
+These troops were sometimes said to have originated from the Somali Armed
+Forces camps on the outskirts of the villages, and sometimes from military
+camps in nearby towns. The residents of these villages were said to have been
+almost exclusively Issaks. Without warning, the soldiers were said to have
+opened fire on the villages/watering points at their fleeing occupants. Some
+refugees reported that while shooting appeared indiscriminate, the attackers
+seemed to give higher priority as targets to Issak men.
+
+=== PDF page 27 ===
+                                                                                22
+
+
+
+
+      Air Attacks
+
+        The three air attacks, which accounted for eleven of the 254 deaths, were
+said to take place during the May 27/August 31, 1988 period. Seven of the
+reported deaths were attributed to strafing, i.e., machine-gunning from the
+aircraft; four were attributed to bombing. Two of the attacks were directed at
+villages; one at a grazing area.
+
+
+Attacks on Asylum Seekers
+
+       Nine (7%) of the 130 Issak refugees reported witnessing ground or air
+attacks on unarmed civilians as they were fleeing by foot from conflict areas in
+search of sanctuary and asylum in Ethiopia. These attacks tended to take place
+as the refugees were walking along a road or track, or as they were resting or
+preparing a meal along the journey.
+
+       The nine refugees observed a combined total of 54 deaths of Issak
+asylum seekers in these incidents. Eight of the nine refugees ascribed their
+reports to the May 27/August 31, 1988 period; the timing of the ninth report could
+not be determined. Of the nine reports, four were made by refugees from
+Hartesheikh/Harshin; three from Daror and two from Cam Aboker.
+
+      n Four of the nine cases, accounting for 33% of the deaths, were
+        observed to have been committed by Somali Armed Forces ground
+        soldiers. Sixteen (89%) of the victims were killed by gunshots; two
+        (11%) were knifed to death. About 50% of the victims were identified
+        by name.
+
+      n Five of the nine cases, accounting for 67% of the deaths, were caused
+        by air attacks against the asylum seekers. Of these, 12 (33%) were
+        said to be caused by strafing; 24 deaths (67%) were caused by aerial
+        bombing. About 40% of the victims of the air attacks were identified by
+        name by the witnesses.
+
+      Of the 54 victims of the nine attacks on asylum seekers, 15% were said to
+be men, 67% women and children. The sex and ages of ten of the victims were
+inadvertently not noted.
+
+=== PDF page 28 ===
+                                                                                 23
+
+
+
+Summary Executions and Other Killings
+
+        Twenty-eight of the Issak refugees, about 22% of those interviewed in
+Ethiopia and Kenya, reported eyewitness or credible detailed accounts of thirty-
+two incidents of executions conducted in a summary manner, in the absence of
+judicial process, by the Somali Armed Forces. Twenty-nine of the incidents were
+reported by refugees in Ethiopia, three by refugees in Kenya. Because some
+refugees reported both single and multiple instances of these types of incidents,
+including some duplicate reports of the same incident, there is a difference
+between the number of refugees whose reports fall into this category and the
+number of reported incidents of these types of deaths.
+
+       A total of 233 civilians were reported to have been killed in these
+executions, of whom about 43% were identified by name. About 77% of the
+victims of these executions were said to have been men. These deaths were
+ascribed to the following time periods:
+
+
+       Timing                   No. Deaths                Percentage
+
+1982/1986                            10                          4%
+
+1987                                  1                          1%
+
+January/May 26, 1988                 33                        14%
+
+May 27/August 31, 1988              156                        67%
+
+September/December 1988               1                          1%
+
+January/March 1989                   27                        11%
+
+Undetermined                        _ 5                          2%
+
+TOTAL                               233                       100%
+
+
+        The 233 reported deaths fall into three general categories: executions
+conducted in reprisal for actions known or suspected by the Somali Armed
+Forces to have been conducted by the SNM; executions of Issaks immediately
+upon their apprehension where the motive is uncertain and the conduct of a
+judicial process can be ruled out; and other killings.
+
+=== PDF page 29 ===
+                                                                                  24
+
+       Reprisal Deaths
+
+        Some 111 deaths – about 48% of those reported in the category of
+"executions and other killings" – were described as reprisals exacted against the
+local civilian population by the Somali Armed Forces. About 91% of the victims
+were said to have been killed by shooting; 6% by knifing; and 3% by other
+methods.
+
+        These deaths were placed in the "reprisal" category because the refugees
+reporting them made a link between them and a related security incident. Such
+reprisals were reported to have been conducted after landmine explosions
+believed to be the work of the SNM killed Somali Armed Forces soldiers; after the
+hijacking of a truck; in reprisal for suspected harboring of SNM forces in a village;
+in reprisal for SNM attacks on nearby Somali military camps; and in reprisal for
+an SNM execution of an alleged Somali military agent. (The SNM execution is
+described later in this section.)
+
+       The reports characterized these incidents as a random roundup of local
+citizens followed immediately by their executions.
+
+       Summary Executions Without Process – Motive Unknown
+
+      This category of executions took much the same form as the "reprisal"
+executions, except that the witnesses to them said that they were not aware of
+the Somali Armed Forces’ motive for the actions or were unable to make a link
+between these executions and security incidents in the area.
+
+       A total of 103 individuals were said to have been killed in this manner,
+equal to about 44% of those 233 said to have been killed in the "executions and
+other killings" category. These incidents included the indiscriminate massacre on
+one occasion of seventeen civilians (16 named individuals, 15 of them men) who
+had just been summoned to a location by the military authorities, and numerous
+cases in which army soldiers collected small groups of people (about 80% of
+them men) and almost immediately executed them nearby. About 75% of these
+cases took place during the May 27/August 31, 1988 period, and after abating for
+several months, appeared to surface again in reports for January/March 1989,
+the last period covered by this assessment.
+
+       Other Killings
+
+       The smallest number of deaths in this category – some 19 deaths
+accounting for 8% of the "executions and other killings" – are comprised of
+numerous small incidents. For example, five incidents, involving five deaths,
+were said to have occurred when the individuals attempted to flee from an
+involuntary unpaid labor system in Berbera. Two incidents, which resulted in
+thirteen deaths, took place when individuals attempted to flee from Somali Armed
+Forces roundups of Issaks which were sometimes preludes to the types of
+executions described above.
+
+=== PDF page 30 ===
+                                                                                   25
+
+
+
+Systematic Elimination Outside the Conflict Zone
+
+       Fifteen of the refugees interviewed identified the port town of Berbera as
+their home (no Berbera residents were interviewed in Kenya). Berbera has not
+been the object of an SNM attack or the scene of violent conflict to date. It would
+thus not be expected to generate many refugees and displaced persons,
+although it apparently has. A sizeable proportion of Berbera’s population before
+May 1988 was Issak.
+
+        Fourteen of the fifteen Issak refugees who described conditions in Berbera
+stated that they fled Berbera in order to avoid violence and persecution. All of
+these fourteen made reference to the killings of Issak civilian men. Five made
+direct reference to substantial numbers of systematic deaths of Issak men which
+they had witnessed or of which they had credible, detailed information. Four
+others provided anecdotal information which, while failing the test as "eyewitness
+or credible, detailed accounts," was nonetheless consistent with and
+corroborative of the first five accounts. Other refugees reported witnessing in
+Berbera the deaths or the corpses of Issak men killed in other ways, including
+several executions in town and two murders in the course of an army looting
+incident.
+
+        According to many of these refugee accounts, shortly after the SNM’s May
+27, 1988 attack on Burao, and continuing at least until September 1988, Somali
+Armed Forces soldiers systematically collected large numbers of Issak males on
+the sole basis of their clan association. Some of these men were placed in
+prison in the town of Berbera; other victims were said to be held in two or three
+different locations outside the town near the Berbera airport. According to the
+accounts, prisoners and detainees, after remaining in these locations for varying
+lengths of time, were routinely taken out at night in groups of five to fifty persons,
+and believed to have been killed. The individuals so removed were not seen or
+heard of again by the refugees who provided these accounts. None of the
+witnesses or others knew of a judicial process of any type which had been
+applied to the victim population. Other victims were said to have been taken
+directly from the location where they were collected to an execution area, where
+they were immediately killed.
+
+        Those held in prison in Berbera reported that they saw or heard of no
+deaths in the prisons themselves. Two of the refugees (each in a different
+refugee camp in Ethiopia) reported that their own freedom from a prison in
+Berbera town had been obtained through payment of 50,000 and 200,000 Somali
+shillings, respectively, to a Somali Armed Forces official. They stated that this
+practice had been used by Somali officials to obtain funds from other Issak men
+who had the means to raise such amounts. (One other refugee from northern
+Somalia and one from southern Somalia also reported this practice.)
+
+=== PDF page 31 ===
+                                                                                 26
+
+
+
+
+        Two eyewitness accounts were provided by refugees who had been kept
+in prison for varying lengths of time and had then themselves been taken out with
+a larger group for the purpose of being killed. They stated that they had
+witnessed the deaths on those occasions of all those who had been taken from
+prison with them. They said that they had survived because the Somali Armed
+Forces soldiers either thought they were dead or decided to question them
+further. A third account was provided by a man who witnessed such killings
+because of the location of his detention facility but who was never himself taken
+out of the building to be killed. These three, and the two other credible, detailed
+accounts, report that the killings took place in several Berbera locations always
+with large knives chopped into the necks of the victims. The bodies were then
+said to be buried close to the place where they were killed. Several refugees
+identified one burial location about one kilometer from the end of the Berbera
+airport runway.
+
+       These accounts describe a pattern of activity which appears systematic,
+organized and sustained over a period of at least several months. The author
+believes that at least five hundred and perhaps many more Issak men were
+systematically eliminated in Berbera in this manner solely because they were
+Issaks.
+
+=== PDF page 32 ===
+                                                                                  27
+
+
+
+
+Deaths and Ill-Treatment in Prison
+
+        Twenty-eight interviewees reported cases of ill-treatment, sometimes
+resulting in deaths and/or cases of executions of prisoners who had been held in
+Somali Government prisons. Eight of these 28 refugees described ill-treatment
+of prisoners and the death of some who had been subject to this treatment.
+Twenty-two of these refugees reported cases of execution of prisoners by
+Government forces.
+
+
+       Ill-Treatment and Resulting Deaths
+
+       Eight refugees – about 6% of the 130 persons interviewed in Ethiopia and
+Kenya – reported eyewitness accounts of ill-treatment in Somali Government
+prisons. They stated that virtually all of the prisoners whose ill-treatment they
+reported were accused of supporting the SNM. Four said they had personally
+experienced this ill-treatment (three of them had prominent scars which were
+consistent with their accounts); two had themselves been prisoners and reported
+witnessing the ill-treatment of other prisoners; one routinely visited the prison in
+connection with his occupation and had frequent opportunity to observe such
+practices; and one, who lived opposite a prison, witnessed one incident of ill-
+treatment which occurred in front of the prison building. Six of these cases were
+reported by refugees interviewed in Ethiopia; two were reported by refugees in
+Kenya.
+
+        The accounts of three refugees who observed prison conditions for weeks
+or months either as prisoners or, in one case, as an individual who had reason to
+routinely observe conditions there, suggest that ill-treatment of prisoners as
+described below was a routine practice during the periods of their observation.
+The interviewees state that they eyewitnessed the deaths of five prisoners as the
+result of this ill-treatment. Their accounts included reference to the practices
+listed on Chart D on the following page.
+
+=== PDF page 33 ===
+                                                             28
+
+
+
+
+                                                        CHART D
+
+
+
+
+               Types of Ill-Treatment of Prisoners
+
+                 In Somali Government Prisons
+
+            Reported by Refugees in Ethiopia/Kenya
+
+
+
+
+n Beatings with gunbutts
+
+n Beatings with sticks and clubs
+
+n Stabbing with knives
+
+n Burning plastic dripped over or attached to subject
+
+n Prolonged poking
+
+n Petrol poured in ears
+
+n Use of clips to tear flesh
+
+n Use of clips on testicles
+
+n Electric shock to testicles
+
+n Immersion in excrement sewage tank
+
+n Prolonged chaining in own excrement
+
+n Buried alive for limited periods
+
+n Wrists and ankles bound
+
+n Prolonged nakedness
+
+=== PDF page 34 ===
+                                                                                   29
+
+
+
+
+       Execution of Prisoners
+
+        Twenty-two interviewees described ten cases of execution by Government
+authorities of a total of 101 persons (all men, 61% of whom were named) who
+had been held in Government prisons. Several of the cases were reported by
+more than one interviewee. Six of the eight cases were said to have taken place
+prior to the May 1988 SNM attack on Burao, including two particular cases which
+between them comprised 81 (80%) of the victims.
+
+       n One case, involving approximately 44 persons executed, was said to
+         have taken place in Burao three or more years earlier, apparently in
+         the month of December. This case was reported separately by thirteen
+         interviewees, who among them provided the names of most of those
+         executed.
+
+       n A second case, reported by one refugee, indicated that 37 individuals
+         were executed in Hargeisa during early 1988. This refugee also said
+         that he witnessed the ill-treatment in prison of one of the persons
+         executed with this group.
+
+       A common characteristic of these accounts is that many of the persons
+executed had been detained in prison for some time. They were said to have
+been Issak men accused by the government of being SNM collaborators. The
+accounts suggested that the length of pre-execution detention in many cases
+was sufficient to have permitted some type of judicial process, which some were
+said to have received before they were executed. Some of these executions
+were reported to have been public and were well-known events in the local
+community.
+
+        Some of the Issak refugees who reported these incidents asserted that, in
+fact, in many cases there had been no judicial process; that where a process had
+been conducted it was substantially flawed; that the accused were innocent; and
+that some, in fact, had been sentenced to ten years in prison but had instead
+been executed.
+
+        Given the significant number of refugees who asserted that they
+witnessed or who provided credible details about some of these events, it
+appears certain that they in fact took place. For this report, it is not possible to
+conclude whether or not judicial process was received; if so, whether or how it
+was flawed; or whether its results, if not calling for execution, were superseded.
+Therefore, these 101 deaths are not included in recapitulations which appear
+later in this report.
+
+=== PDF page 35 ===
+                                                                               30
+
+
+
+
+Deaths During Looting and Rape
+
+        Issak refugees in Ethiopia and Kenya reported that they witnessed events
+of looting and rape in their home towns, both before and after May 1998, which
+occasioned the deaths of 57 persons.
+
+       Looting
+
+        Forty (31%) of the 130 interviewees in Ethiopia and Kenya (two of the
+interviewees were in Kenya) said that they had eyewitnessed one or more cases
+of looting. Of these, half reported that they themselves had been the victims of
+such incidents. One incident, reported not to have occasioned any deaths, was
+said to have occurred in September/December 1988, and was attributed to the
+SNM. The other thirty-nine reported incidents were attributed to Somali Armed
+Forces soldiers, and included 22 lootings of houses, 20 incidents of theft of
+significant numbers of livestock, and three vehicle thefts (some cases involved
+more than one of these).
+
+       Forth-nine persons were said to have been killed by Somali Armed Forces
+soldiers when they resisted the looting. About 70% of the victims were identified
+by name. About 63% were men, 25% women and 12% children.
+
+       These deaths were reported to have taken place in the following periods:
+
+
+Time Period                                       No./% Deaths
+
+1982/1986                                           0           0%
+
+1987                                                1           2%
+
+January/May 26, 1988                                3           6%
+
+May 27/August 31, 1988                            21           43%
+
+September/December 1988                           15           31%
+
+January/March 1989                                  7          14%
+
+Undetermined                                        2           4%
+
+TOTAL                                             49          100%
+
+=== PDF page 36 ===
+                                                                                  31
+
+
+
+
+       Rape
+
+       Sixteen of the refugees in Ethiopia reported witnessing or provided
+credible, detailed accounts of at least twenty-five separate instances of single or
+multiple rape of Issak women by Somali Armed Forces soldiers. Inquiries
+concerning rape were made of 50% of the interviewees in Ethiopia; thus, about
+27% of those asked reported such incidents. The great majority of the reported
+rapes were said to have occurred before May 1988. The sixteen refugees
+reporting these incidents said that eight women, all named, (six in 1987, two
+between May 27/August 31, 1988) died as a result of these rapes.
+
+=== PDF page 37 ===
+                                                                               32
+
+RECAPITULATION:
+
+CONFLICT VIOLENCE ATTRIBUTED TO THE SOMALI ARMED FORCES
+
+        The 130 Issak refugees interviewed in Ethiopia and Kenya provided
+eyewitness and/or credible, detailed accounts of the killings of a total of 629
+unarmed, non-combatant civilians by Somali Armed Forces soldiers. Nearly 70%
+of the interviewees had witnessed such killings. Of those who died, over 55%
+were identified by name. About 60% of the victims were men, including elderly
+men, 24% women, 14% children and 2% of inadvertently unnoted sex and age.
+About 86% were reported shot; 5% knifed; 1% beaten to death; and 8% killed by
+aerial strafing or bombing. The contexts in which these killings were said to have
+been committed were described as follows:
+
+       Context                          Number/Percentage of Deaths
+
+Near Battle Area                                   26             4%
+
+Attacks on Villages                               254            40%
+and Watering Points
+
+Attacks on Asylum Seekers                           54            9%
+
+Reprisal Killings                                 111           18%
+
+Summary Executions and Others                     122           19%
+
+Deaths Arising from Ill-Treatment                    5            1%
+
+Deaths Arising from Looting                        49             8%
+
+Deaths Arising from Rape                             8            1%
+
+
+TOTAL                                             629 deaths 100%
+
+
+      The following categories of death reports are not included in the 629
+deaths:
+
+       n Crossfire deaths, which are not attributed to either side;
+
+       n Execution of prisoners held in Government prisons, particularly the
+         deaths of 101 persons in which the report was unable to conclude
+         whether judicial process had been received prior to execution; and
+
+       n Systematic eliminations in Berbera, for which a separate death
+         estimate of at least 500 and perhaps many more was provided.
+
+=== PDF page 38 ===
+                                                                               33
+
+
+        The time periods associated with these 629 deaths are:
+
+        Time Period                       Number/Percentage
+
+1982 – 1986                          10             1%
+
+1987                                  8             1%
+
+January/May 26, 1988                 41             7%
+
+May 27/August 31, 1988              441            70%
+
+September/December 1988              32             5%
+
+January/March 1989                   80            13%
+
+Undetermined                         17             3%
+
+TOTAL                               629          100%
+
+        Family Mortality
+
+         In about 110 interviews, time permitted discussion of the whereabouts of
+each immediate family member (defined parents, children, spouses and siblings)
+of the interviewee. These 110 individuals reported that ninety-one of their
+immediate relatives (see breakdown below), all civilian non-combatants, had lost
+their lives in the civil conflict in northern Somalia, both through the types of
+killings described in this section and in crossfire deaths.
+
+Relation                                    Number Killed
+
+Fathers                                            21
+
+Mothers                                            11
+
+Husbands                                            2
+
+Wives                                               4
+
+Children                                           36
+
+Brothers                                           12
+
+Sisters                                             5
+
+TOTAL                                              91
+
+=== PDF page 39 ===
+                                                                             34
+
+
+
+
+SNM Executions of Prisoners of War
+
+       Two of the 130 Issak interviewees provided eyewitness accounts of SNM
+executions of 11 prisoners of war. One of these prisoners was said to have been
+executed in the May 27/August 31, 1988 period; ten during the January/March
+1989 period. The ten prisoners executed in the more recent case were
+described as Ethiopian refugees who had received weapons from the Somali
+Armed Forces in order to combat the SNM. According to this account, six told
+the interviewee before they were killed that they had resided at the United
+Nations refugee camp at Sabaad. This interviewee also claimed to have
+routinely eyewitnessed execution of prisoners by the SNM.
+
+=== PDF page 40 ===
+                                                                                 35
+
+
+
+REPORTS FROM SOMALIS IN NORTHERN SOMALIA
+
+      The first part of this section of the report describes the locations in which
+57 Somalis were interviewed in northern Somalia and some characteristics of this
+group. The second part of this section describes and quantifies the reports which
+these persons provided.
+
+
+Categories of Interviewees
+
+       The 57 interviewees whose reports are included in this section fell into the
+following categories:
+
+      n Thirty-three were Somalis who had been displaced by the intense
+        violence and who continued to live as displaced persons in sanctuary
+        areas in northern Somalia far from their home towns.
+
+      n Twenty-four were Somalis who had remained in their hometowns in
+        northern Somalia despite intense violence, or who had temporarily fled
+        to a nearby location for sanctuary and returned to their homes shortly
+        thereafter when the violence abated.
+
+
+Interview Locations
+
+      Interviews with these Somalis were conducted in the following locations:
+
+             Location                              No./Percentage
+
+             Boroma                                 14 interviews (25%)
+             Burao                                  15 interviews (26%)
+             Hargeisa                               10 interviews (18%)
+             Las Anod                               16 interviews (28%)
+             Other                                   2 interviews (3%)
+             TOTAL                                  57 interviews (100%)
+
+
+Sex of Interviewees
+
+      Of these 57 Somalis interviewed in northern Somalia, 30 (53%) were men,
+27 (47%) were women.
+
+=== PDF page 41 ===
+                                                                                36
+
+
+Age
+
+      The ages of the 57 interviewees were as follows:
+
+             18 and under                           3%
+             19 – 29 years                         28%
+             30 – 39 years                         23%
+             40 – 49 years                         25%
+             50 and over                           21%
+             Total                                100%
+
+Marital Status
+
+       Of the 57 interviewees, 85% described themselves as currently married.
+Of the married men, 83% reported being married to one woman, 17% to two
+women.
+
+Home of Origin
+
+       In the selection of the 33 displaced interviewees, the author placed
+emphasis on selection of individuals who came from as many different locations
+in northern Somalia as possible. This emphasis was not possible in the selection
+of (previously-displaced) returnees because the number of persons who could be
+located for interviews was very small. The 57 Somali interviewees identified their
+home or area of origin as shown below. Many of these locations appear on the
+map in this report.
+
+      Town/Village                             Percentage
+
+      Hargeisa                                     40%
+      Burao                                        33%
+      Calabeir                                      9%
+      Erigavo                                       4%
+      Subtotal                                     86%
+
+      Agabar village
+      Alebede
+      Ber
+      Buhotleh
+      Gebile
+      Mogadishu
+      Nasiya
+      Nomadic area
+      Subtotal                                     14%
+
+      TOTAL                                       100%
+
+=== PDF page 42 ===
+                                                                               37
+
+
+
+Clan Identification
+
+      The interviewees identified themselves as members of the following clans:
+
+
+      Clan                                     Percentage
+
+      Dolbahante                                   23%
+      Mitgang                                      23%
+      Issak                                        18%
+      Gadabursi                                    16%
+      Subtotal                                     80%
+
+      Dir                                           3%
+      Hawiya                                        3%
+      Marehan                                       3%
+      Warsenghelli                                  3%
+      Subtotal                                     12%
+
+      Batire
+      Gueri
+      Issa
+      Ogadeni                                      __
+      Subtotal                                      8%
+
+      TOTAL                                       100%
+
+
+Formal Education
+
+        The 57 individuals interviewed in northern Somalia reported that they had
+participated in formal education or schooling for the following numbers of years:
+
+             No. Years Education               Percentage
+
+             None                                  86%
+             1 – 2 years                            2%
+             3 – 6 years                            4%
+             7 – 9 years                            5%
+             10 years and over                      3%
+             Total                                100%
+
+Approximately 93% of the women reported having no years of formal education,
+as compared with 80% of the men.
+
+=== PDF page 43 ===
+                                                                                38
+
+
+
+
+Occupation
+
+      The 57 individuals interviewed in northern Somalia identified their principal
+occupations as follows:
+
+
+       Occupation                              Percentage
+
+
+Small business                                      39%
+Shopowners, traders, merchants
+Video rentals, coffee shop
+
+Housewife                                           23%
+Family duties
+
+Tradesperson                                        14%
+Blacksmith/Butcher/Potter
+Shoemaker/Wireman
+
+Farmer                                               7%
+
+Soldier                                              5%
+Current or Pensioner
+
+Transportation/Driver                                4%
+
+Government Employee                                  2%
+Tourism department
+
+Cook                                                 2%
+
+Worker/laborer                                       2%
+
+Relief worker                                        2%
+
+Student                                              2%
+
+                                            ________________
+
+TOTAL                                             100%
+
+=== PDF page 44 ===
+                                                                                   39
+
+
+
+
+Conflict Experience: Reports of Violence Against Civilians
+
+        In explaining why they had fled their homes or how they had been affected
+by the conflict, seven (about 14%) of the 52 randomly selected northern Somalia
+interviewees and five non-randomly selected interviewees reported witnessing
+killings of unarmed civilian Somali non-combatants which they attributed to the
+SNM. All of the reports concerned incidents said to have occurred after May
+1988, when the war intensified. (Two interviewees reported the deaths of
+Ethiopian refugees in UN refugee camps – these are described in a later
+section.)
+
+      The refugee reports concerning SNM human rights abuses fell into distinct
+categories, which are presented in the following order:
+
+      n Attacks on asylum/sanctuary seekers
+
+      n Civilians killed near battle areas
+
+      n Burao executions
+
+      n Attacks on UNHCR refugee camps
+
+
+       In the following pages, each of these patterns of conduct and statistical
+analysis for them are described.
+
+       In addition, three (6%) of the randomly selected interviewees in northern
+Somalia reported incidents of deaths of civilians attributed to the Somali Armed
+Forces or to the (non-Governmental) Gadabursi Front clan militia. A synthesis of
+these reports appears at the conclusion of this section.
+
+=== PDF page 45 ===
+                                                                                 40
+
+
+
+
+Attacks on Sanctuary/Asylum Seekers
+
+        Two (4%) of the 52 randomly-selected northern Somali interviewees
+reported witnessing two incidents which resulted in the killing of five unarmed
+civilians as they were fleeing on foot from conflict areas in search of sanctuary in
+northern Somalia. Four of the victims were identified by name. All five were non-
+Issaks and were killed by gunshots. Both incidents took place between May 27
+and August 31, 1988.
+
+        Both incidents reportedly took place at SNM checkpoints along the road.
+In the first case, a woman was shot by SNM combatants when she resisted the
+looting of the belongings she was carrying. Two men who protested her killing
+were themselves killed in the same manner. In a second incident, two men were
+stopped at a checkpoint, asked to identify their clan (they were non-Issaks),
+taken away and later killed.
+
+
+Civilians Killed Near Battle Areas
+
+       Five (10%) of the randomly selected 52 Somali interviewees reported
+eyewitness or credible, detailed accounts of five incidents of killings of
+noncombatants by the SNM involving the deaths of 21 non-Issaks, of whom 50%
+were identified by name, and 80% were men, 20% women. Three of the
+reported incidents happened in Hargeisa and Burao, two in rural areas. The
+motives for these killings were not known, although two of the interviewee reports
+indicate that SNM combatants were seeking out non-Issak males randomly for
+execution.
+
+
+Burao Executions
+
+        At the outset of the assessment, the author received reports through
+independent human rights sources concerning alleged systematic execution of
+prisoners by the SNM in Burao during the period when the battle for that city was
+being waged. Some of these reports suggested that Somali Armed forces and
+Government officials of Burao had been the victims of these incidents. Upon
+arrival in Burao, the author visited the buildings and sites allegedly used for
+detentions and executions. At the author’s request, Government authorities in
+Burao identified eyewitnesses to the alleged detentions and/or executions, each
+of whom the author interviewed individually and privately. Four of these
+individuals were interviewed in Burao; a fifth witness was interviewed in
+Mogadishu.
+
+=== PDF page 46 ===
+                                                                                  41
+
+       The accounts reported by these five men in Burao and Mogadishu were
+detailed, credible and consistent, as well as mutually corroborative in many
+respects. All five reported that they had been detained by the SNM in Burao.
+The specific characteristics of these five men were:
+
+      Interviewee          Age         Occupation            Clan
+
+        Number 1           20          Taxidriver            Hawiya
+
+        Number 2           22          Small trader          Ogadeni
+                                                             Born in Burao
+
+        Number 3           42          Businessman           Dolbahante
+
+        Number 4           42          Businessman           Dolbahante
+
+        Number 5           35          Government            Warsenghelli
+                                       Tourist Office
+                                       Employee
+
+      Substance of Reports
+
+      The five interviewee accounts appeared highly credible and are
+synthesized as follows:
+
+        Within days of the May 27, 1988 arrival of the SNM in Burao, these men
+and several hundred others were rounded up by SNM combatants. Some of
+those detained were Issaks who then either joined forces with the SNM or were
+released. But in these five and probably in the vast majority of cases, the men
+appeared to have been arrested principally because they were non-Issaks. In
+some cases they were identified or denounced to SNM combatants by local Issak
+civilians.
+
+        The five interviewees reported that many of the detainees remained in
+custody until a short time after the SNM withdrew from its attack on Burao.
+During that period the detainees apparently received food once daily and were
+permitted out of their detention rooms at routine times twice daily. The five
+interviewees did not report witnessing incidents of ill-treatment of detainees.
+
+        In some cases, it appears that a type of preemptory court martial was
+conducted. One of the interviewees received such a judicial process, which he
+described as having a duration of ten minutes. According to his account, he was
+accused of being an officer in the Somali Armed Forces but was given no
+opportunity to respond. A sentence of death was pronounced immediately and
+he was removed from the proceedings. (This interviewee was apparently a
+civilian who had never served in the Somali Armed Forces or held a government
+or political party position.)
+
+=== PDF page 47 ===
+                                                                                 42
+
+
+
+        Of the several hundred men who were detained, it appears that about fifty
+were executed, three of whom were identified by name by the five interviewees.
+A few individuals who complained about the detention or the theft of their money
+were killed individually on the spot. But most were executed more
+systematically: they were shot in a pit dug in the earth under a tree near the
+buildings in which many of the detainees were kept. One reported that he had
+escaped from the pit just as he was about to be killed. These reports suggest
+that at least some of the detainees were civilian businessmen and others who
+had played no role whatsoever in government or politics. When the SNM
+position in Burao collapsed, a significant proportion of the detainees were
+apparently taken to Ethiopia and released unharmed.
+
+
+SNM Tactics in Hargeisa Attack
+
+        Some Issak and non-Issak interviewees in northern Somalia – as well as
+Issak refugees in Ethiopia – reported that as it began its attack on Hargeisa and
+increasingly as the battle evolved, the SNM dispersed its combatants throughout
+the densely populated, principally Issak residential areas of Hargeisa. This
+placed civilian residents in the immediate line of fire between the two sides.
+Some SNM combatants were said to be wearing distinct uniforms; some wore
+civilian clothes with a distinctive sash to identify themselves as SNM combatants.
+But others wore only civilian clothes or were not readily distinguishable from
+ordinary civilians. Some SNM combatants also were said to occupy empty
+houses in civilian neighborhoods which were still densely populated by non-
+combatants.
+
+        Civilian crossfire deaths in Hargeisa may have ascended into the
+thousands. Both the Somali Armed Forces and the SNM were reported to have
+used artillery in the Hargeisa battle, although the more powerful artillery was
+used by the Somali Armed Forces. The Somali Armed Forces also used military
+aircraft to strafe and bomb residential areas in which SNM forces were
+dispersed.
+
+
+SNM Attacks on UNHCR Refugee Camps
+
+        Of the 57 Somali interviewees, 14 (25%) fled to UNHCR refugee camps
+near their towns and villages when the conflict erupted. They did so because
+they believed that refugee camps established under international auspices would
+be immune to the hostilities. The next section of this report will address the issue
+of SNM violence against such camps. The data of two of the 57 Somali
+interviewees who provided reports of deaths in UNHCR refugee camps in which
+they had sought sanctuary are taken into account in the findings and
+conclusions.
+
+=== PDF page 48 ===
+                                                                               43
+
+
+
+
+Deaths Attributed to Somali Armed Forces
+
+       Two northern Somali interviewees reported two incidents in which fifteen
+individuals had been killed by the Somali Armed Forces. The victims, none of
+whom were identified by name, were said to include five men, three women and
+seven children.
+
+       In one incident, Somali Armed Forces reportedly returned to a small town
+which earlier had been the scene of a battle and fired on five unarmed men who
+fled when they saw the soldiers coming. Four of the victims were non-Issaks,
+one was an Issak. In a second incident, soldiers were said to have fired on a
+group of Issak women and children who were apparently sanctuary seekers.
+
+
+Deaths Attributed to the Gadabursi Front
+
+       One Issak refugee reported that her brother, who suffered from mental
+retardation, was apprehended by members of the Gadabursi Front clan militia
+and executed, in an apparent anti-SNM reprisal killing. The Gadabursi Front is a
+loose amalgam of Gadabursi men who are armed and whose objective is to
+protect Gadabursi clan interests. Although it has at times received arms from the
+Somali Armed Forces, it operates under its own direction.
+
+=== PDF page 49 ===
+                                                                                  44
+
+
+
+
+RECAPITULATION:
+
+CONFLICT VIOLENCE ATTRIBUTED TO THE SNM
+
+        Seven interviewees (about 14%) of the 52 randomly selected northern
+Somalia interviewees and all of the five non-randomly selected interviewees
+reported witnessing killings of unarmed civilian non-combatants which they
+attributed to the SNM. All of the incidents were said to have occurred during the
+May 27/August 31, 1988 period.
+
+        The fifty-two randomly selected interviewees in northern Somalia provided
+eyewitness and/or credible detailed accounts of the killings of twenty-six
+unarmed, non-combatant Somali civilians by SNM combatants. Of the twenty-six
+who were killed, half were identified by name, and 80% were men. Twenty-one
+(81%) of the deaths were described as killings near battle areas; five (19%) had
+civilians seeking sanctuary as their victims.
+
+      The five non-randomly selected interviewees provided credible eyewitness
+accounts of the detention in Burao of several hundred men and the summary
+execution of approximately fifty of them, including civilians with no links to
+government, politics or the conflict.
+
+       Killings attributed to the SNM are recapitulated in the following chart:
+
+       Context                          Number/Percentage of Deaths
+
+Attacks on Sanctuary/Asylum Seekers                   5             6%
+
+Civilians killed near battle areas                   21           28%
+
+Burao Executions                                     50           66%
+
+                                                 _____          _______
+
+TOTAL                                                76 deaths 100%
+
+
+        Two (4%) of the interviewees reported two incidents of the killing of
+civilians attributed to the Somali Armed Forces; one (2%) of the interviewees
+reported a death attributed to the Gadabursi Front clan militia.
+
+=== PDF page 50 ===
+                                                                                   45
+
+
+REPORTS FROM ETHIOPIAN REFUGEES IN NORTHERN SOMALIA
+
+      For up to ten years, as many as several hundred thousand Ethiopian
+refugees who fled a war between Somalia and Ethiopia have resided in twelve
+refugee camps established in northern Somalia (of a total of forty-one such
+camps established throughout Somalia) under the auspices of the United Nations
+High Commissioner for Refugees (UNHCR).
+
+       The first part of this section of the report describes the locations in which
+65 Ethiopian refugees were interviewed in northern Somalia and some
+characteristics of this group. The second part of this section describes and
+quantifies the reports which these refugees provided.
+
+
+Categories of Interviewees
+
+       The sixty-five refugee interviewees whose reports are included in this
+section fell into the following categories:
+
+   n Ten of the interviewees were residents of two UNHCR refugee camps,
+     Dawaale and Darimaan, which had not been the objects of attack or the
+     scene of conflict-related violence.
+
+   n Twenty-five of the interviewees had resided in four UNHCR refugee
+     camps which were said to have been attacked once, after which they had
+     fled to other sites.
+
+   n Thirty of the refugees had resided in five UNHCR refugee camps which
+     had been attacked several times. Some had been forced to flee after
+     these attacks to second locations thought to offer greater safety. Five of
+     these refugees had felt obligated to flee once again to third locations
+     because of security or assistance problems.
+
+
+Interview Locations
+
+        In some cases, refugee interviews were conducted in the refugee camps
+where the interviewees resided. In most cases, either because the camp offered
+insufficiently private interview sites or because security did not permit lengthy
+presence in the camp, it was necessary to travel with the refugees who had been
+randomly selected to nearby towns where conditions were more appropriate.
+Because of security constraints on road travel, eight of the sixty-five interviewees
+– in particular of those who were previous residents of Biyoley and Bixen refugee
+camps – were selected by the author from a group which was pre-selected by
+Government officials.
+
+=== PDF page 51 ===
+                                                                             46
+
+
+      The sixty-five interviews were conducted in the following locations:
+
+      Location                                          Percentage
+
+      Boroma                                       23 interviews (35%)
+      Berbera                                      17 interviews (26%)
+      Hargeisa                                     13 interviews (20%)
+      Darimaan                                      8 interviews (12%)
+      Dila                                          4 interviews (6%)
+
+      TOTAL                                        65 interviews (100%)
+
+
+Refugee Camp Residence
+
+      The refugee camps in which refugee interviewees had been residing until
+May 27, 1988, were as follows:
+
+
+      UNHCR Refugee Camp                                No./Percentage
+
+      Adiades                                       3            5%
+      Agabar                                        9           14%
+      Arapsio                                       4            6%
+      Bixin                                         7           11%
+      Biyoley                                       7           11%
+      Dam                                           8           12%
+      Darimaan                                      8           12%
+      Dawaale                                       2            3%
+      Las Dhure                                     8           12%
+      Sabaad                                        5            8%
+      Tug Wajale                                    4            6%
+
+      TOTAL                                        65          100%
+
+Age
+
+      The ages of the 65 interviewees were as follows:
+
+      18 and under                                  0%
+      19 – 29 years                                22%
+      30 – 39 years                                23%
+      40 – 49 years                                28%
+      50 and over                                  28%
+
+      TOTAL                                      100%
+
+=== PDF page 52 ===
+                                                                                      47
+
+
+Sex of Interviewees
+
+      Of these 65 Ethiopian refugees interviewed in northern Somalia, 48 (74%)
+were men, 17 (26%) were women.
+
+
+Marital Status
+
+       Of the 65 interviewees, some 97% described themselves as currently
+married. Of the married men, 70% reported being married to one woman, 30%
+to two women.
+
+
+Home of Origin
+
+       The 65 Ethiopian refugee interviewees were selected without respect to
+the location of their homes of origin. Virtually all identified their home areas in
+the Degeh Bur/Harar region of eastern Ethiopia.
+
+
+Clan Identification
+
+        The Ethiopian refugee interviewees identified themselves as members of
+the following clans or ethnic groups:
+
+       Clan                                     Percentage
+
+       Ogadeni                                       29%
+       Oromo                                         26%
+       Gadabursi                                     19%
+       Subtotal                                      74%
+
+       Gueri                                          8%
+       Shekhash                                       6%
+       Hawiya                                         5%
+       Subtotal                                      19%
+
+       Abaskul
+       Akisha
+       Bartire
+       Dir
+       Subtotal                                        7%
+
+       TOTAL                                        100%
+
+=== PDF page 53 ===
+                                                                                  48
+
+
+
+
+Formal Education
+
+        The 65 refugees interviewed in northern Somalia reported that they had
+participated in formal education or schooling for the following numbers of years:
+
+
+       No. Years Education                          Percentage
+
+       None                                          92%
+       1 – 2 years                                    2%
+       3 – 6 years                                    0%
+       7 – 9 years                                    6%
+       10 years and over                              0%
+       Total                                        100%
+
+
+Occupation
+
+        The 65 individuals interviewed in northern Somalia identified their principal
+source of support as resources provided to them by the UNHCR assistance
+program. Most of the refugees supplemented these resources by working as
+daily laborers or through small trades like collecting and selling firewood.
+
+
+Roles in Somalia/Ethiopia War
+
+        Eleven (23%) of the forty-eight refugee men who were interviewees
+identified themselves as ex-combatants who had been associated with either the
+Western Somali Liberation Front (WSLF) or the Oromo Liberation Front (OLF).
+The WSLF had been active in the war between Somalia and Ethiopia; the OLF is
+an insurgency which to some degree remains active in Ethiopia.
+
+=== PDF page 54 ===
+                                                                                49
+
+
+
+
+Attacks Against United Nations Refugee Camps
+
+        Ethiopian refugees who had until May 27, 1988, resided in eleven different
+United Nations High Commissioner for Refugees (UNHCR) refugee camps were
+interviewed during the assessment. Of these eleven refugee camps, two (18%)
+of the camps (accounting for ten of the interviewees) had not been the objects of
+conflict violence. Nine (82%) of the camps (accounting for fifty-five of the
+interviewees) were reported to have been the objects of at least one and usually
+several violent attacks which took place between May 27 and December 31,
+1988. The attacks against these interviewees from these camps provided
+eyewitness accounts of such attacks, all of which were attributed to the SNM.
+
+       The fifty-five Ethiopian refugees who resided in the nine camps which had
+been attacked reported that they observed the deaths of 241 unarmed civilian
+refugees during these attacks. Refugees from one particular camp did not
+eyewitness deaths during the attack which they experienced. The camps
+reported to have been attacked and the number and proportion of reported
+refugee victims were as follows:
+
+
+           UN Camps Attacked                       No./Percentage Victims
+
+           Adiades                                 38           16%
+           Agabar                                  18            7%
+           Arapsio                                  0            0%
+           Bixin                                   33           14%
+           Biyoley                                 36           15%
+           Dam                                     52           21%
+           Las Dhure                               25           10%
+           Sabaad                                  38           16%
+           Tug Wajale                               1            1%
+
+           TOTAL                                  241          100%
+
+
+       Of the 241 victims, 66% were identified by name. About 59% of the
+victims were reported to be men, including elderly men, 17% women, 21%
+children. The sex and age of seven (3%) of the victims were inadvertently not
+noted. Some refugees reported that while shooting appeared indiscriminate, the
+attackers seemed to give higher priority as targets to the Ethiopian refugee men.
+
+=== PDF page 55 ===
+                                                                                  50
+
+
+
+        About 90% of the victims were said to have been killed by gunshots; 5%
+by artillery shell explosions; 3% by knifing; and 2% by other means. About 80%
+of the killings reportedly took place in the immediate context of an armed attack
+on the refugee camps. About 8% were said to have been summary execution
+killings of people selected only because they were refugee men, and 11% were
+reported to have taken place on roads outside the camps as the refugees were
+attempting to flee to safety.
+
+      Two Hargeisa residents who are Somali citizens and had fled for
+sanctuary to Dam refugee camp also reported the deaths of four refugees (a
+woman and three children) in these attacks. Three of the victims were identified
+by name.
+
+
+Camp Defenses
+
+       Each of the camps was said by its residents to have had about twelve
+armed refugee civilians who were employed as food warehouse guards by a
+humanitarian agency responsible for food distribution and logistics. In addition to
+providing warehouse security, they were described as assisting in the
+maintenance of order on food distribution days. It appeared that this group
+performed virtually no strategic defense role for the camps. In most cases, they
+were said to have fled from the camps together with the refugees themselves at
+the onset of the SNM attacks.
+
+       In a small fraction of the attacks it was reported that detachments of
+twelve to thirty Somali Armed Forces soldiers or civilian militia were present,
+usually also around the food warehouses; however, they reportedly offered no
+more than token response to the attacks. After many of the attacks on the
+camps had been underway for some time, interviewees said that the Somali
+Armed Forces arrived to defend them, usually after many refugees were reported
+to have been killed.
+
+       According to the refugee accounts, although the tactics for each attack
+varied a bit, they invariably began with indiscriminate artillery and/or ground fire
+by heavily armed SNM combatants against the residential sections of the camps
+where not even the token guard forces were present.
+
+       It appears from the refugee accounts that four of the camps were
+abandoned by their residents after the first SNM attack. These four camps were
+located fairly close to Government controlled towns such as Dila and Boroma,
+which were not attacked by the SNM and to which many of the refugees fled for
+sanctuary.
+
+=== PDF page 56 ===
+                                                                                 51
+
+
+        In the cases of five of the nine camps, after repeated attacks, the refugees
+asserted that they had demanded that the Government of Somalia deploy
+sufficient military forces in the camps to deter and defend against such attacks.
+The United Nations, under whose auspices the camps are established, is not
+mandated to provide physical protection for them. The protection of these United
+Nations camps is the responsibility of the Government of Somalia. Government
+authorities assert that because its armed forces at that time were fully engaged
+combating the SNM offensive, Somali Armed Forces units could not be assigned
+to the defense of the refugee camps.
+
+        Consequently, the refugees insisted that the Government provide them
+directly with weapons for their own self-defense. The refugee interviewees
+explained that although ultimately the Government complied with their demand,
+the weapons had come too late to prevent the worst attacks, and that too few
+weapons – and weapons of poor quality in comparison with those of their
+attackers – had been delivered. The refugees said that both before and after
+they received these weapons, they had been actively searching for and collecting
+weapons from dead combatants of both the Somali Armed Forces and the SNM.
+
+      Of the 241 refugee deaths witnessed by the refugee interviewees, 90%
+were said to have taken place before the camps received arms with which to
+defend themselves; 10% were said to have taken place thereafter. The refugees
+asserted that their self-defense efforts had deterred SNM attacks or limited the
+number of refugee deaths arising out of them.
+
+
+Agabar and Las Dhure – The First Attacks
+
+        Two United Nations refugee camps, Agabar and Las Dhure, were the first
+of the refugee camps to be attacked by the SNM. The camps are located within
+miles of each other, northwest of Hargeisa. According to refugee reports and
+corroborating information, it appears that the SNM attacked these camps on May
+30 or 31, a few days after the SNM attack on Burao and within about one day of
+its attack on Hargeisa. The timing and manner of this attack suggested that it
+had been an integral part of the SNM plan of attack in that region.
+
+         Both Agabar and Las Dhure were described as having their respective
+complements of twelve warehouse guards. The reports suggest that, in addition,
+after the attacks began, a detachment of thirty Somali Armed Forces soldiers
+was dispatched to defend the two camps. The unit was said to be present first in
+one, then in the other camp. But it was withdrawn from the entire area soon
+thereafter. All of the deaths reported by the Agabar and Las Dhure refugees
+were said to have taken place when this detachment was far from the camps or
+after it had been fully withdrawn from the area.
+
+=== PDF page 57 ===
+                                                                                  52
+
+
+
+
+       Refugee and other reports indicate that the refugees in Agabar and Las
+Dhure camps had not been armed for self-defense at any time before these
+attacks, nor had refugees from these camps played active roles in opposing the
+SNM offensive in the area, which had only begun within hours of these actions.
+
+       The method and objective of the SNM attack on these camps appeared to
+be to employ violence to force the refugees out of the area. The SNM prohibited
+the refugees from taking any of their personal belongings with them as they left.
+It appears that at least in some cases the SNM stopped them along the road and
+took the few belongings they attempted to carry away.
+
+        According to the refugee accounts of these attacks in Agabar and Las
+Dhure, fourteen refugees were killed through indiscriminate shooting inside the
+camps; thirteen were rounded up and summarily executed; and sixteen were
+killed on the road outside the camps as they were complying with the order to
+evacuate. Of these, eleven of those forced out of the camp were witnessed to
+have been massacred on the road after they complied with an SNM checkpoint
+order to stop.
+
+       Of the 43 unarmed refugee deaths reported for Agabar and Las Dhure,
+40% were identified by name; 63% were men, 37% women and children. Over
+90% were killed by shooting. Three refugee children died of dehydration on the
+forced march which took place after the SNM forced the Agabar/Las Dhure
+refugees out of their camps.
+
+=== PDF page 58 ===
+                                                                                  53
+
+
+
+
+Ethiopian Refugee-Combatants
+
+       It has been alleged that, in violation of the conditions which govern their
+internationally protected status, significant numbers of Ethiopian refugees from
+United Nations refugee camps in Somalia were forced or induced to become
+members of the Somali Armed Forces or associated para-military groups. These
+allegations contend that these "refugee combatants" became actively engaged in
+the conflict in northern Somalia against the SNM.
+
+        Each of the two allegations – of forced conscription and of induced
+participation of refugees in the war – was examined separately.
+
+
+      Forced Conscription
+
+        During the assessment, the author had the opportunity to privately
+interview in four different locations thirty Ethiopians who had for many years
+resided in eight different United Nations refugee camps in southern Somalia and
+who had recently repatriated to their homes in Ethiopia under UNHCR auspices.
+The eight UN camps in southern Somalia in which they had lived were:
+
+
+           Ali Matan
+           Ban Mandule
+           Bur Dhubo
+           Dorialey
+           Halba I
+           Malka Hidday
+           Suriye
+
+
+       Twenty-four (80%) of these returnees reported eyewitness accounts of
+one or more instances of involuntary recruitment of Ethiopian refugees by the
+Somali Armed Forces. Of these twenty-four returnees, four had at least once
+themselves experienced this involuntary recruitment; they had later either been
+rejected from active service because of physical deficiencies or had escaped
+from the army training center.
+
+       Six of these interviewees reported that Somali Armed Forces soldiers had
+wounded or killed male and female refugees inside the United Nations refugee
+camps during the recruitment roundups. Three of the interviewees knew of
+involuntarily conscripted refugees who had been killed in action in the war in
+northern Somalia following its intensification in May 1988.
+
+=== PDF page 59 ===
+                                                                                54
+
+
+
+
+       Forced conscription appears to have been conducted inside the UN
+refugee camps over a period of many years. Several of the interviewees
+witnessed or experienced more than one instance of this recruitment. The
+number of reported cases and the time periods in which they occurred were as
+follows:
+
+
+       SOMALI ARMY CONSCRIPTION IN UNHCR REFUGEE CAMPS
+
+
+Time Period                            No. Reported Instances
+
+
+Through 1982                                        4
+
+1983 – 1985                                        13
+
+1986                                                5
+
+1987                                                7
+
+January/May 1988                                    3
+
+June 1988/March 1989                                3
+
+
+       There are reports of six additional eyewitnessed or experienced accounts
+of conscription of Ethiopian refugees outside the UN camps during 1988. These
+involved refugees who had been traveling to a market, to Mogadishu, or, in one
+instance, to a UNHCR agricultural project site.
+
+        This small sample appears to corroborate allegations that over the years,
+in violation of their internationally protected status, and despite vigorous UNHCR
+protests, a large number of Ethiopian refugees were systematically and
+involuntarily conscripted into the Somali Armed Forces. Some of these "refugee-
+combatants" appear to have played an active role in the Somali Armed Forces
+military operations against the SNM since May 1988.
+
+       The sixty-five Ethiopian refugees interviewed in northern Somalia reported
+very few cases of conscription which affected refugees who lived in their refugee
+camps. Other authoritative sources reported that the frequency and magnitude
+of such conscriptions were somewhat greater than the interviewees had
+indicated.
+
+=== PDF page 60 ===
+                                                                                55
+
+
+
+
+Induced Participation
+
+
+       It has been alleged that almost immediately following the SNM attacks on
+Burao and Hargeisa in May 1988, men who had been residing as refugees in
+some of the UN refugee camps in northern Somalia were induced to assist the
+Somali Armed Forces as para-military combatants to fight outside the camps
+against the SNM. This allegation was in part corroborated by refugee interviews
+in Ethiopia and by authoritative independent sources, but generally denied by
+most Ethiopian refugees residing in UN refugee camps in northern Somalia.
+
+      Ethiopia Interviews
+
+       Seven Issak interviewees in Daror and Cam Aboker UN camps in eastern
+Ethiopia, and one Hawiya returnee who had just repatriated from a refugee camp
+in northern Somalia to southern Ethiopia, provided eyewitness accounts which
+suggest circumstantially that, at least in part, the allegations were correct. Five
+Issak sources reported observing the fulltime presence in Berbera of refugee
+combatants from Bixin, Biyoley and Adiades refugee camps. A sixth Issak
+source reported that in Erigavo he saw refugee para-military groups from Sabaad
+refugee camp. A seventh reported SNM summary executions of prisoners of war
+which included refugees from Sabaad refugee camp who were members of such
+para-military units.
+
+       For example, one of the sources said that he had routinely employed and
+supervised the work of Bixin/Biyoley refugees in the port town of Berbera before
+May 1988 and knew some of them by name and by face. In Berbera immediately
+after May 1988, he recognized some of them he named – who had lived in Bixin,
+Biyoley and Adiades refugee camps wearing military uniforms, carrying arms,
+and assisting Somali Armed Forces personnel in the roundup and jailing of
+Issaks in Berbera. Several other former residents of Berbera reported witnessing
+armed, uniformed refugees from Bixin and Biyoley performing this function.
+
+       A truck owner reported that before May 1988 one of the routine
+commercial activities of his truck was to carry refugee passengers and cargo
+between Berbera town and Bixin refugee camp. He asserts that after the SNM
+attack on Burao, his truck was stolen by "Ogadeni refugees" whom he
+recognized in Berbera five days later – armed and in uniform – in the same truck.
+
+       Five accounts consistently stated that: (a) men who were refugees living
+in UN camps before May 1988 were seen in Berbera armed and in uniform
+shortly thereafter, in some cases performing police functions, but also that (b)
+none witnessed the participation of such refugees in combat.
+
+=== PDF page 61 ===
+                                                                                   56
+
+
+
+
+        A sixth Issak source reported very credible eyewitness accounts of SNM
+prisoner of war executions (reported in an earlier section). This source identified
+six of the executed prisoners as Ogadeni refugees who, according to his account
+of their statements, had been residents before May 1988 of Sabaad refugee
+camp.
+
+       A seventh source – the Hawiya returnee in southern Ethiopia – claimed
+that he had made a visit to Biyoley refugee camp some time after the war began.
+While he was there he said that he witnessed an SNM attack. He claimed that
+many refugees in the camp had been armed by the Government. He had on two
+days seen armed refugees leaving the camp by truck headed for a combat area
+– but he added that he was certain that they had not engaged in combat at that
+time. He said that half of these armed refugees departed the camp for these
+purposes only under duress.
+
+        Three Issak refugees reported that “Ogadeni refugees” who had been
+armed by the Government after the war had looted them of livestock or other
+property. None of the three witnessed killings in connection with these incidents,
+although one had later heard from former neighbors that some of the looting
+victims had died in these incidents. These reports point credibly to abuses of
+local populations around the camps by armed refugees but not to the military
+roles, if any, which such refugees may also have been playing.
+
+        Finally, just after the beginnings of the SNM offensive there, authoritative
+independent sources eyewitnessed the delivery in Hargeisa of weapons to a
+relatively small number of refugees whom they knew as residents of nearby
+refugee camps.
+
+
+       Refutation of Allegations
+
+      Two interviewees said that they knew refugee men who had left the UN
+camps to fight in the conflict after the May 1988 SNM offensive began. These
+refugees were apparently affiliated with the WSLF and OLF.
+
+        Most of the sixty-five refugees residing in northern Somalia denied that
+they had witnessed refugee men from their camps who had joined these para-
+military combatant forces. They also argued that the men would not have
+abandoned their families' defense to fight in behalf of the Government in a war
+which was not their own. They emphasized that this would have been
+particularly true when it became clear that the refugee camps were targets of
+repeated, violent SNM attacks which occasioned heavy casualties and could
+force all the refugees empty-handed from their homes.
+
+=== PDF page 62 ===
+                                                                                    57
+
+Repatriation to Ethiopia
+
+       The Ethiopian refugee interviewees in northern Somalia were asked about
+their possible interest in repatriation under UNHCR auspices to their home areas
+in Ethiopia. At this time, the UNHCR is implementing a repatriation program for
+Ethiopian refugees living in UN refugee camps in southern Somalia who want to
+return to their homes in southern Ethiopia. The procedures of this program were
+explained to the northern Somalia interviewees. They include a system of
+advance screening by Ethiopian government authorities of the applications of
+those who wish to return and a UNHCR-financed transportation and assistance
+package which assists the refugees to accelerate their economic reactivation in
+their home areas.
+
+       Of the group of sixty-five interviewees as a whole, 62% indicated a
+readiness for immediate repatriation on condition that this be in conjunction with
+the UNHCR repatriation package (positive response). Another 21% expressed
+interest in considering the possibility but were undecided (undetermined
+response). Seventeen per cent said they would not be interested in returning to
+Ethiopia (negative response).
+
+        For those who indicated a readiness to repatriate, the advance screening
+of their repatriation applications by Ethiopian Government authorities was
+perceived by them to be the single most vital element of the process. Having fled
+during a divisive and violent war from Ethiopia to a country which was Ethiopia’s
+antagonist in that war, they felt it important that the Ethiopian authorities be
+advised that they wished to return peacefully and that they be assured in
+advance that they were welcome.
+
+       The variations in refugee responses to the possibility of repatriation are
+reported below.
+
+Camp Security
+
+      Variations in responses concerning the prospects of repatriation were
+observed in camps which had never been attacked; which had been attacked
+once and immediately evacuated; and attacked several times.
+
+       No. Attacks          Positive            Undetermined         Negative
+
+Never attacked               30%                    20%                50%
+
+Attacked once
+and evacuated                65%                    22%                13%
+
+Several Attacks              80%                    12%                22%
+
+All refugees                 62%                    21%                17%
+
+=== PDF page 63 ===
+                                                                                 58
+
+
+
+
+Clan Variations
+
+        Variations by clan in response to questions about repatriation follow.
+
+
+   Clan                     Positive             Undetermined        Negative
+
+Ogadeni                      74%                     10%               16%
+Oromo                        50%                     19%               31%
+Gadabursi                    45%                     22%               33%
+
+Gueri                        60%                     40%                0%
+Shekhash                     75%                     25%                0%
+Hawiya                      100%                      0%                0%
+
+Other                        60%                      0%               40%
+
+All refugees                 62%                     21%               17%
+
+
+
+Previous WSLF/OLF Association
+
+       Variations in responses concerning the prospects of repatriation were
+observed between the group of eleven previous WSLF or OLF combatants and
+other refugees.
+
+
+ WSLF/OLF Status            Positive             Undetermined        Negative
+
+Ex-WSLF/OLF                  40%                     10%               50%
+
+Others                       67%                     18%               15%
+
+All refugees                 62%                     21%               17%
+
+=== PDF page 64 ===
+                                                                           59
+
+
+
+
+Immediate Family Killed in Ethiopian-Somali War
+
+      Variations in responses concerning the prospects of repatriation were
+observed between interviewees whose immediate family members had and had
+not been killed in the 1977 Somalia/Ethiopia war, although they seemed to be
+minimal.
+
+
+ Family Deaths           Positive           Undetermined       Negative
+
+Family killed             69%                    8%              23%
+
+No family killed          60%                   19%              21%
+
+All refugees              62%                   21%              17%
+
+=== PDF page 65 ===
+                                                                                60
+
+
+
+
+FINDINGS AND CONCLUSIONS
+
+
+These findings are based principally on interviews with over two hundred and fifty
+residents and former residents of northern Somalia, including Issaks who have
+fled to Ethiopia and Kenya, and non-Issaks and Issaks who have remained in
+Somalia and who have been affected by the intensification of the civil conflict
+there since May 1988. These interviews were conducted in three countries in
+twenty-four locations, many of which were hundreds of miles from each other.
+They are based also on information received from national and international
+personnel who witnessed some of the events discussed in this report or who
+have had daily contact with the conflict victims. These reports, if accurate,
+compel certain unavoidable findings and conclusions by the author.
+
+For clarity in presentation, the findings and conclusions are organized in four
+parts: those concerning the conduct of the Somali Armed Forces in the conflict;
+those concerning the Somali National Movement; those concerning the conduct
+of both parties; and other findings and conclusions.
+
+
+SOMALI ARMED FORCES CONDUCT IN THE CONFLICT
+
+1. In response to the SNM’s May 1988 intensification of the civil conflict in
+   northern Somalia, the Somali Armed Forces appears to have engaged in a
+   widespread, systematic and extremely violent assault on the unarmed civilian
+   Issak population of northern Somalia in places where and at times when
+   neither resistance to these actions nor danger to the Somali Armed Forces
+   was present.
+
+2. The Somali Armed Forces conducted what appears to be a systematic
+   pattern of attacks against unarmed, civilian Issak villages, watering points and
+   grazing areas of northern Somalia, killing many of their residents and forcing
+   the survivors to flee for safety to remote areas within Somalia or to other
+   countries.
+
+3. Simultaneously, the Somali Armed Forces engaged in a pattern of roundups,
+   summary executions and massacres of many hundreds, if not more, unarmed
+   civilian Issaks. Some of these actions appear to have been reprisals for acts
+   committed by the SNM; the motives for others are not clear. But the
+   appearance that victims were selected for these killings principally because of
+   their ethnic identity is unmistakable.
+
+=== PDF page 66 ===
+                                                                                 61
+
+
+
+4. In an additional pattern of systematic, organized and sustained Somali Armed
+   Forces actions in Berbera, which has not been the object of an SNM attack or
+   the scene of conflict, at least five hundred, and perhaps many more Issak
+   men were systematically rounded up and murdered, mainly by having their
+   throats cut, and then buried in mass graves, during the four months following
+   the intensification of the conflict, apparently solely because they were Issaks.
+
+5. In the course of battles with the SNM in the towns of Hargeisa and Burao,
+   Somali Armed Forces soldiers sometimes engaged in the looting and killing of
+   unarmed civilians in areas fairly well removed from the immediate scene of
+   danger or battle.
+
+6. While some survivors of these kinds of actions, as well as civilians simply
+   escaping the major battles in Hargeisa and Burao, were attempting to flee to
+   sanctuary in Ethiopia, they were attacked by Somali ground and air forces,
+   which probably resulted in the deaths of hundreds of asylum seekers.
+
+7. Civilian detainees in Somali Government prisons accused of supporting the
+   SNM appear to have been, at least at times routinely, the objects of ill-
+   treatment, including severe beatings, stabbing, prolonged choking, use of
+   metal clips and electric shock on flesh and testicles, and immersion in
+   excrement. This ill-treatment sometimes resulted in death.
+
+8. It is conservatively estimated that at least 5,000 unarmed civilian Issaks were
+   purposefully murdered by the Somali Armed Forces between May 1988 and
+   March 1989, in the absence of resistance and in contexts which presented no
+   immediate danger to these forces.
+
+9. About 70% of the Issak refugees interviewed in Ethiopia and Kenya reported
+   witnessing Somali Armed Forces murders. The 130 refugees reported over
+   six hundred such murders, excluding the Berbera mass killings and the
+   execution of prisoners in Government prisons, an average of 4.8 killings each.
+
+10. Of the over six hundred killings described above, about 70% were said to
+    have taken place during the May 27/August 31, 1988 period. Five per cent
+    were attributed to the September/December 1988 period, and about thirteen
+    per cent were attributed to the January/March 1989 period.
+
+11. The overwhelming majority of the hundreds of thousands of Issak refugees
+    who eventually arrived in UNHCR refugee camps in eastern Ethiopia did so
+    by September 1988, by which time most internally displaced Issaks were
+    already in remote interior locations in northern Somalia. By September 1988,
+    these migrations placed the majority of Issaks far from most areas in which
+    the Somali Armed Forces military operations were conducted.
+
+=== PDF page 67 ===
+                                                                               62
+
+
+
+
+CONDUCT OF THE SOMALI NATIONAL MOVEMENT IN THE CONFLICT
+
+
+
+1. During the first three months of its 1988 offensive in northern Somalia, SNM
+   combatants killed unarmed civilians in individual instances which together
+   may have resulted in the deaths of at least several hundred or more persons.
+   These killings occurred when neither resistance to these actions nor danger
+   to the SNM was present. The victims included civilians fleeing conflict areas
+   who resisted looting and men sought out and killed apparently only because
+   they were not Issaks. In one region, the SNM was also reported to execute
+   prisoners of war following their interrogation.
+
+2. Fourteen per cent of the randomly selected Somali interviewees in northern
+   Somalia reported witnessing 26 SNM murders of Somalis, excluding the
+   Burao executions, an average of 0.5 killings each. Eighty-six per cent of the
+   interviewees reported witnessing no murders by the SNM.
+
+3. During its presence in Burao, the SNM conducted summary executions of fifty
+   or more prisoners, some after perfunctory court martials. Some of the victims
+   may have been Somali Armed Forces soldiers or officers, while others were
+   civilians who had played no role whatsoever in government, the military or
+   politics. Events surrounding these killings suggest that SNM commanders
+   must have been aware of and at least condoned these executions.
+
+4. All of the killings attributed to the SNM were said to have taken place between
+   May 27 and August 31, 1988.
+
+=== PDF page 68 ===
+                                                                                63
+CONDUCT OF BOTH PARTIES
+
+
+…..CONCERNING UN REFUGEE CAMPS
+
+
+1. Both parties to the conflict systematically engaged in grave violations of the
+   internationally-protected status of the Ethiopian refugees in United Nations
+   refugee camps. The SNM conducted systematic violent attacks against
+   camps which in at least some cases were defenseless and whose residents
+   had played no role in the conflict. Four hundred or more refugees were killed
+   in the process. The Government of Somalia routinely and forcibly conscripted
+   refugees from UN camps into its Armed Forces and after May 1988 induced
+   some residents of camps in northern Somalia to participate in the conflict.
+   These actions have created a serious humanitarian emergency which at this
+   time faces the Ethiopian refugees and the international community.
+
+2. Beginning about May 30 and continuing through the balance of 1988, the
+   SNM conducted dozens of attacks against United Nations refugee camps in
+   which it is conservatively estimated that at least four hundred unarmed civilian
+   refugees were killed. About 60% of those reported killed were men, including
+   elderly men, and about 40% were women and children. The sixty-five United
+   Nations refugee camp residents – which included ten who resided in camps
+   which were not attacked – reported 241 killings in SNM attacks, an average of
+   3.7 killings each.
+
+3. The United Nations High Commissioner for Refugees (UNHCR), under whose
+   auspices the refugee camps in northern Somalia were established, is not
+   mandated to provide armed protection for them. This is the responsibility of
+   the Government of Somalia, whose armed forces were said to be so fully
+   engaged elsewhere combating the SNM that they could not be assigned to
+   defend the camps against SNM attacks. Consequently, at the refugees’
+   insistence, and after many SNM attacks on the camps, the Government of
+   Somalia provided residents of some of them with weapons for their own self-
+   defense, which the refugees asserted deterred or limited the number of
+   deaths in later attacks. About 90% of the reported refugee deaths were said
+   to have occurred before the distribution of these weapons.
+
+4. In violation of the conditions which govern their internationally protected
+   status, and notwithstanding vigorous protests by the UNHCR, a large number
+   of Ethiopian refugees were systematically and involuntarily conscripted during
+   many years before May 1988 by and into the Somali Armed Forces. Once
+   conscripted, they no longer resided in the refugee camps. Although reports
+   concerning a second issue vary, it also appears that after May 27, 1988, at
+   least several hundred and perhaps more of the 100,000 or more refugees
+   said to reside in United Nations camps in northern Somalia were provided
+   weapons and induced by the Somali Armed Forces to become active in para-
+   military operations of undetermined scale and frequency outside the camps in
+   behalf of the Government.
+
+=== PDF page 69 ===
+                                                                                 64
+
+
+
+
+5. Provocation for some of the later SNM attacks might have been present in a
+   few of the refugee camps if the refugee groups which participated in para-
+   military operations outside their camps had repeatedly used their camps as a
+   base. For example, if such groups routinely departed from a camp for combat
+   operations, remained outside the camp for several days, and then returned to
+   the camp for several days of rest, such camps could have been considered
+   partially militarized. But the author was unable to determine whether, where
+   and to what degree this may or may not have taken place in camps which
+   were the objects of later attacks. Nonetheless, it appears that at least some
+   of these later SNM attacks were aimed primarily at undefended sections of
+   the camps and at their unarmed civilian population.
+
+6. At least two camps which were the objects of the first SNM attacks had been
+   neither armed for their own defense nor had their residents been induced to
+   participate in para-military forces when the attacks occurred. Attacks on
+   these two camps were among the first SNM military operations in the
+   offensive. Thus, whether or not the camps were armed for their own defense
+   or whether their residents had been induced to participate in para-military
+   operations did not appear to be decisive factors in the SNM’s preparedness to
+   take such camps as targets of violent attacks.
+
+
+
+…..CONCERNING THE BATTLE FOR HARGEISA
+
+
+1. One SNM tactic had particularly profound consequences for the civilian
+   population of Hargeisa. By dispersing its combatants in military and civilian
+   dress throughout many of the densely populated, principally Issak residential
+   areas of Hargeisa, the SNM placed this population in the immediate line of
+   fire between the two sides. Civilian deaths resulting in part from this factor
+   may have ascended into the thousands.
+
+2. Some reports have attributed responsibility for the high casualty figures in
+   Hargeisa exclusively to the Somali Armed Forces, citing its lack of restraint –
+   or its lack of intent or ability to pinpoint targets within these areas to avoid
+   unnecessary civilian casualties. The refugee reports suggest factors which
+   might mitigate the absolute nature of such judgments without absolving either
+   side of proportionate responsibility for avoidable actions which affected
+   Hargeisa’s civilian non-combatants.
+
+=== PDF page 70 ===
+                                                                                  65
+
+
+…..CONCERNING THE PRESENCE OF POTENTIAL VICTIMS
+
+
+        The northern Somalia conflict has to date been waged principally in the
+traditional Issak clan areas of the region. Until the war forced their evacuation,
+the population of the major towns – for example, Hargeisa and Burao – was
+considered to be predominantly Issak; the population of the rural areas is
+reported to have been overwhelmingly – in many cases almost exclusively –
+Issak. Once the non-Issak populations had evacuated the major towns, the
+principal concentrations of non-Issaks in the region were the UN refugee camps.
+The proportionate presence and geographical distribution of populations which
+were the potential victims of both sides in this clan-oriented conflict are among
+the factors which can be considered in the evaluation of the reports concerning
+the conduct of both parties to the conflict.
+
+
+OTHER FINDINGS AND CONCLUSIONS
+
+
+1. More than 60% of the Ethiopian refugee interviewees in northern Somalia
+   expressed readiness for peaceful repatriation under UNHCR auspices to their
+   homes in Ethiopia. An additional twenty per cent expressed a willingness to
+   consider such a decision. They all asserted that a vital element of a
+   repatriation program would be a screening process which would inform local
+   Ethiopian Government authorities of their desire to return home and would, in
+   their view, assure their protection once they arrived. Ethiopian Government
+   readiness to receive returnees in a timely manner would be a vital part of this
+   humanitarian effort.
+
+   Unimpeded and secure private UNHCR access to these refugee families in
+   Somalia would be required for implementation of such a program. Donor
+   countries of the UNHCR would have to be prepared to make available the
+   resources which would provide the trucks, reception centers, re-integration
+   assistance and UNHCR program staff required to return the refugees safely
+   to their homes and to resolve a serious costly long-standing humanitarian
+   problem.
+
+2. None of the Issak refugee interviewees in eastern Ethiopia or in Kenya
+   indicated a readiness to return to Somalia under current circumstances.
+
+3. Although this information was not generally elicited, several of the
+   interviewees who provided information concerning the northern Somalia
+   conflict cited instances of heroic efforts in which non-Issak civilians saved the
+   lives of Issak civilians and of heroic actions in which Issak civilians saved the
+   lives of non-Issaks in similar circumstances.

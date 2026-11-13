@@ -350,3 +350,16 @@ return [
 })();
 Object.assign(window.BH_UI.sh, { 'front line, 14 September (CIA)': 'linija fronta, 14. septembra (CIA)', 'front line, 30 September (CIA)': 'linija fronta, 30. septembra (CIA)',
   'front line, 10 November (CIA)': 'linija fronta, 10. novembra (CIA)', 'JNA attack, as dated on the CIA map': 'napad JNA, s datumom kao na karti CIA-e' });
+// the link to OpenStreetMap in the bar at the bottom of battle pages
+['fr', 'zh', 'sco', 'gd', 'ar', 'he', 'sh'].forEach(c => window.BH_UI[c] && Object.assign(window.BH_UI[c], { '📍 The place today': { fr: '📍 Le lieu aujourd’hui', zh: '📍 今日的地点', sco: '📍 The place the day', gd: '📍 An t-àite an-diugh', ar: '📍 المكان اليوم', he: '📍 המקום היום', sh: '📍 Mjesto danas' }[c] }));
+// the small present-day map under the battlefield map (osm-link.js)
+(() => { const D = {
+  'The place today': { fr: 'Le lieu aujourd’hui', zh: '今日的地点', sco: 'The place the day', gd: 'An t-àite an-diugh', ar: 'المكان اليوم', he: 'המקום היום', sh: 'Mjesto danas' },
+  'Open the full map ↗': { fr: 'Ouvrir la carte ↗', zh: '打开完整地图 ↗', sco: 'Open the hale map ↗', gd: 'Fosgail am mapa slàn ↗', ar: 'افتح الخريطة كاملة ↗', he: 'פתחו את המפה המלאה ↗', sh: 'Otvori cijelu kartu ↗' },
+  'The exact site is not known. Proposed sites:': { fr: 'Le lieu exact n’est pas connu. Lieux proposés :', zh: '确切地点不详。推测地点：', sco: 'The exact steid isnae kent. Steids pit forrit:', gd: 'Chan eil fios air an dearbh àite. Àiteachan a chaidh a mholadh:', ar: 'الموقع الدقيق غير معروف. المواقع المقترحة:', he: 'המקום המדויק אינו ידוע. מקומות שהוצעו:', sh: 'Točno mjesto nije poznato. Predložena mjesta:' },
+  'The dashed ring shows the possible area.': { fr: 'Le cercle en pointillé montre la zone possible.', zh: '虚线圈表示可能的范围。', sco: 'The dashed ring shaws the possible aurie.', gd: 'Tha an cearcall briste a’ sealltainn an raoin a dh’fhaodadh a bhith ann.', ar: 'تُظهر الدائرة المتقطعة المنطقة المحتملة.', he: 'הטבעת המקווקווה מראה את האזור האפשרי.', sh: 'Isprekidani krug pokazuje moguće područje.' },
+  'Approximate site: the exact place is not known; the dashed ring shows the possible area.': { fr: 'Lieu approximatif : l’endroit exact n’est pas connu ; le cercle en pointillé montre la zone possible.', zh: '大致地点：确切位置不详；虚线圈表示可能的范围。', sco: 'Approximate steid: the exact place isnae kent; the dashed ring shaws the possible aurie.', gd: 'Àite timcheall air: chan eil fios air an dearbh àite; tha an cearcall briste a’ sealltainn an raoin.', ar: 'موقع تقريبي: المكان الدقيق غير معروف؛ تُظهر الدائرة المتقطعة المنطقة المحتملة.', he: 'מקום משוער: המקום המדויק אינו ידוע; הטבעת המקווקווה מראה את האזור האפשרי.', sh: 'Približno mjesto: točno mjesto nije poznato; isprekidani krug pokazuje moguće područje.' },
+  'Map data ©': { fr: 'Données cartographiques ©', zh: '地图数据 ©', sco: 'Map data ©', gd: 'Dàta a’ mhapa ©', ar: 'بيانات الخريطة ©', he: 'נתוני המפה ©', sh: 'Podaci karte ©' },
+  'OpenStreetMap contributors': { fr: 'les contributeurs d’OpenStreetMap', zh: 'OpenStreetMap 贡献者', sco: 'OpenStreetMap contributors', gd: 'luchd-cuideachaidh OpenStreetMap', ar: 'مساهمو OpenStreetMap', he: 'תורמי OpenStreetMap', sh: 'suradnici OpenStreetMapa' } };
+  Object.keys(window.BH_UI || {}).forEach(c => { const o = {}; for (const k in D) if (D[k][c]) o[k] = D[k][c]; Object.assign(window.BH_UI[c], o); });
+})();

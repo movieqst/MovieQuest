@@ -1,0 +1,1067 @@
+TITLE: Yousuf v. Samantar, 699 F.3d 763 (4th Cir. 2012), No. 11-1479, opinion of Traxler, C.J. (as reproduced in Appendix A of Samantar's 2013 cert petition; pagination = petition appendix 'a' pages, not F.3d pages)
+DATE: Decided 2 November 2012
+URL: https://cja.org/cja/downloads/Samantar%20Certiorari%20Petition%20.pdf
+RETRIEVED: 2026-11-13 (curl; text extracted with pdftotext; OCR/line-break artefacts may remain)
+==================================================================
+APPENDIX A
+  
+United States Court of Appeals,
+Fourth Circuit.
+Bashe Abdi YOUSUF;; John Doe 1;; John Doe 2;; Aziz
+Deria, Plaintiffs-­Appellees,
+and
+John Doe 3;; John Doe 4;; Jane Doe 1, Plaintiffs,
+v.
+Mohamed Ali SAMANTAR, Defendant-­Appellant.
+United States of America, Amicus Supporting
+Appellees.
+No. 11-­1479.
+Argued: May 16, 2012.
+Decided: November 2, 2012.
+ARGUED:
+Joseph Peter Drennan, Alexandria,
+Virginia, for Appellant. James Edward Tysse, Akin,
+Gump, Strauss, Hauer & Feld, LLP, Washington,
+D.C., for Appellees. Lewis Yelin, United States
+Department of Justice, Washington, D.C., for Amicus
+Supporting Appellees. ON BRIEF: Natasha E. Fain,
+Center for Justice & Accountability, San Francisco,
+California;; Patricia A. Millett, Steven H. Schulman,
+Akin, Gump, Strauss, Hauer & Feld, LLP,
+Washington, D.C., for Appellees. Harold Hongju
+Koh, Legal Adviser, Department of State,
+Washington, D.C.;; Tony West, Assistant Attorney
+General, Douglas N. Letter, United States
+Department of Justice, Washington, D.C.;; Neil H.
+MacBride, United States Attorney, Alexandria,
+Virginia, for Amicus Supporting Appellees.
+
+2a
+Before TRAXLER, Chief Judge, and KING and
+DUNCAN, Circuit Judges.
+OPINION
+TRAXLER, Chief Judge:
+For the second time in this case, we are presented
+with the question of whether Appellant Mohamed AN
+Samantar enjoys immunity from suit under the
+Torture Victim Protection Act of 1991 (“TVPA”), see
+Pub.L. 102-­256, 106 Stat. 73 (1992), 28 U.S.C. § 1350
+note, and the Alien Tort Statute (“ATS”), see 28
+U.S.C. § 1350. In the previous appeal, we rejected
+Samantar’s claim to statutory immunity under the
+Foreign Sovereign Immunities Act (“FSIA”), see 28
+U.S.C. § 1602-­1611, but held open the possibility that
+Samantar could “successfully invoke an immunity
+doctrine arising under pre-­FSIA common law.”
+Yousuf v. Samantar, 552 F.3d 371, 383-­84 (4th
+Cir.2009). The Supreme Court affirmed our reading
+of the FSIA and likewise suggested Samantar would
+have the opportunity to assert common law immunity
+on remand. See Samantar v. Yousuf, ____U.S. ____,
+130 S.Ct. 2278, 2293, 176 L.Ed.2d 1047 (2010)
+(noting that the viability of a common law immunity
+defense was a “matter[] to be addressed in the first
+instance by the District Court”).
+On remand to the district court, Samantar sought
+dismissal of the claims against him based on common
+law immunities afforded to heads of state and also to
+other foreign officials for acts performed in their
+official capacity. The district court rejected his
+claims for immunity and denied the motion to
+dismiss. See Yousuf v. Samantar, 2011 WL 7445583
+(E.D.Va. Feb. 15, 2011). For the reasons that follow,
+
+3a
+we agree with the district court and affirm its
+decision.
+I.
+Because our previous opinion recounted the
+underlying facts at length, see Samantar, 552 F.3d at
+373-­74, we will provide only a brief summary here.
+Samantar was a high-­ranking government official in
+Somalia while the military regime of General
+Mohamed Barre held power from about 1969 to 1991.
+Plaintiffs are natives of Somalia and members of the
+“prosperous and well-­educated Isaaq clan, which the
+[Barre] government viewed as a threat.” Id. at 373.
+Plaintiffs allege that they, or members of their
+families, were subjected to “torture, arbitrary
+detention and extra-­judicial killing” by government
+agents under the command and control of Samantar,
+who served as “Minister of Defense from January
+1980 to December 1986, and as Prime Minister from
+January 1987 to September 1990.”
+Id. at 374
+(internal quotation marks omitted). Following the
+collapse of the Barre regime in January 1991,
+Samantar fled Somalia for the United States. He
+now resides in Virginia as a permanent legal
+resident. Two of the plaintiffs also reside in the
+United States, having become naturalized citizens.
+Plaintiffs brought a civil action against Samantar
+under the TVPA and the ATS. See 28 U.S.C. § 1350
+and note. Samantar moved to dismiss plaintiffs’
+claims on the ground that he was immune from suit
+under the FSIA, and the district court dismissed the
+case. This court reversed, however, concluding that
+the FSIA applies to sovereign states but not “to
+individual foreign government agents.” Samantar,
+552 F.3d at 381. We remanded the case for the
+
+4a
+district court to consider whether Samantar could
+“successfully invoke an immunity doctrine arising
+under pre-­FSIA common law.” Id. at 383-­84.
+The Supreme Court granted Samantar’s petition
+for certiorari and affirmed our decision, holding that
+the FSIA — based on its text, purpose and history —
+governs only foreign state sovereign immunity, not
+the immunity of individual officials. See Samantar,
+130 S.Ct. at 2289 (“Reading the FSIA as a whole,
+there is nothing to suggest we should read ‘foreign
+state’ in § 1603(a) to include an official acting on
+behalf of the foreign state, and much to indicate that
+this meaning was not what Congress enacted.”). It is
+now clear after Samantar that the common law, not
+the FSIA, governs the claims to immunity of
+individual foreign officials. See id. at 2292 (“[W]e
+think this case, in which respondents have sued
+[Samantar] in his personal capacity and seek
+damages from his own pockets, is properly governed
+by the common law because it is not a claim against a
+foreign state as the [FSIA] defines that term.”).
+On remand, Samantar renewed his motion to
+dismiss based on two common law immunity
+doctrines. First, Samantar alleged he was entitled to
+head-­of-­state immunity because at least some of the
+alleged wrongdoing occurred while Samantar was
+Prime Minister. Second, Samantar sought foreign
+official immunity on the basis that any actions for
+which the plaintiffs sought to hold him responsible
+were taken in the course and scope of his official
+duties.
+The district court renewed its request to the State
+Department for a response to Samantar’s immunity
+claims.
+Despite having remained silent during
+
+5a
+Samantar’s first appeal, the State Department here
+took a position expressly opposing immunity for
+Samantar. The United States submitted to the
+district court a Statement of Interest (SOI)
+announcing that the Department of State, having
+considered “the potential impact of such a[n]
+[immunity] decision on the foreign relations interests
+of the United States,” J.A. 73, had determined that
+Samantar was not entitled to immunity from
+plaintiffs’ lawsuit.
+The SOI indicated that two
+factors were particularly important to the State
+Department’s determination that Samantar should
+not enjoy immunity. First, the State Department
+concluded that Samantar’s claim for immunity was
+undermined by the fact that he “is a former official of
+a state with no currently recognized government to
+request immunity on his behalf,” or to take a position
+as to “whether the acts in question were taken in an
+official capacity.”
+J.A. 71.
+Noting that “[t]he
+immunity protecting foreign officials for their official
+acts ultimately belongs to the sovereign rather than
+the official,” J.A. 71, the government reasoned that
+Samantar should not be afforded immunity “[i]n the
+absence of a recognized government . . . to assert or
+waive [Samantar’s] immunity,” J.A. 73. Second,
+Samantar’s status as a permanent legal resident was
+particularly relevant to the State Department’s
+immunity determination. According to the SOI, “U.S.
+residents like Samantar who enjoy the protections of
+U.S. law ordinarily should be subject to the
+jurisdiction of our courts, particularly when sued by
+U.S. residents” or naturalized citizens such as two of
+the plaintiffs. J.A. 71.
+The district court denied Samantar’s motion to
+dismiss, apparently viewing the Department of
+
+6a
+State’s position as controlling and surrendering
+jurisdiction over the issue to the State Department:
+“The government has determined that the defendant
+does not have foreign official immunity. Accordingly,
+defendant’s common law sovereign immunity defense
+is no longer before the Court, which will now proceed
+to consider the remaining issues in defendant’s
+Motion to Dismiss.” Samantar, 2011 WL 7445583, at
+*1. But, in denying Samantar’s subsequent motion to
+reconsider, the district court implied that it
+performed its own analysis and merely took the State
+Department’s view into account: “The Executive
+Branch has spoken on this issue and . . . [is] entitled
+to a great deal of deference. They don’t control but
+they are entitled to deference in this case.” J.A. 81
+(emphasis added). The district court noted that both
+“the residency of the defendant” and “the lack of a
+recognized government” were factors properly
+considered in the immunity calculus. J.A. 82.
+Samantar immediately appealed the district
+court’s denial of common law immunity. 1 Samantar
+advances a two-­fold argument. First, he contends
+that the order denying him immunity cannot stand
+because the district court improperly deferred to the
+Department of State and abdicated its duty to
+1 A pretrial order denying sovereign immunity is immediately
+
+appealable under the collateral-­order exception to the final
+judgment rule. See Cohen v. Beneficial Indus. Loan Corp., 337
+U.S. 541, 546, 69 S.Ct. 1221, 93 L.Ed. 1528 (1949). This court
+has previously determined that an order denying a claim of
+sovereign immunity under the FSIA is immediately appealable.
+See Rux v. Republic of Sudan, 461 F.3d 461, 467 n. 1 (4th
+Cir.2006). We see no reason to draw a distinction in this regard
+for orders denying claims of sovereign immunity under the
+common law.
+
+7a
+independently assess his immunity claim.
+In
+contrast to the view offered by the United States in
+its amicus brief that the State Department is owed
+absolute deference from the courts on any question of
+foreign sovereign immunity, Samantar claims that
+deference to the Executive’s immunity determination
+is appropriate only when the State Department
+recommends that immunity be granted. Second,
+Samantar argues that under the common law, he is
+entitled to immunity for all actions taken within the
+scope of his duties and in his capacity as a foreign
+government official, and that he is immune to any
+claims alleging wrongdoing while he was the Somali
+Prime Minister. We address these arguments below.
+II.
+Before proceeding further, we must decide the
+appropriate level of deference courts should give the
+Executive Branch’s view on case-­specific questions of
+individual foreign sovereign immunity. The FSIA
+displaced the common law regime for resolving
+questions of foreign state immunity and shifted the
+Executive’s role as primary decision maker to the
+courts. See Samantar, 130 S.Ct. at 2285. After
+Samantar, it is clear that the FSIA did no such thing
+with respect to the immunity of individual foreign
+officials;; the common law, not the FSIA, continues to
+govern foreign official immunity. See id. at 2292.
+And, in light of the continued viability of the common
+law for such claims, the Court saw “no reason to
+believe that Congress saw as a problem, or wanted to
+eliminate, the State Department’s role in
+determinations
+regarding
+individual
+official
+immunity” under the common law. Id. at 2291. The
+extent of the State Department’s role, however,
+
+8a
+depends in large part on what kind of immunity has
+been asserted.
+A.
+In this case, Samantar claims two forms of
+immunity:
+(1) head-­of-­state immunity and (2)
+“foreign official” or “official acts” immunity. “Head-­
+of-­state immunity is a doctrine of customary
+international law” pursuant to which an incumbent
+“head of state is immune from the jurisdiction of a
+foreign state’s courts.” In re Grand Jury Proceedings,
+817 F.2d 1108, 1110 (4th Cir.1987). “Like the related
+doctrine of sovereign [state] immunity, the rationale
+of head-­of-­state immunity is to promote comity
+among nations by ensuring that leaders can perform
+their duties without being subject to detention, arrest
+or embarrassment in a foreign country’s legal
+system.” Id.
+“A head-­of-­state recognized by the United States
+government is absolutely immune from personal
+jurisdiction in United States courts unless that
+immunity has been waived by statute or by the
+foreign government recognized by the United States.”
+Lafontant v. Aristide, 844 F.Supp. 128, 131-­32
+(E.D.N.Y.1994). Although all forms of individual
+immunity derive from the State, head-­of-­state
+immunity is tied closely to the sovereign immunity of
+foreign states. See Restatement (Second) of Foreign
+Relations Law § 66(b) (“The immunity of a foreign
+state . . . extends to . . . its head of state”). Indeed,
+head-­of-­state immunity “is premised on the concept
+
+9a
+that a state and its ruler are one for purposes of
+immunity.” Lafontant, 844 F.Supp. at 132. 2
+Samantar also seeks immunity on the separate
+ground that all of the actions for which plaintiffs seek
+to hold him liable occurred during the course of his
+official duties within the Somali government. See
+
+Restatement (Second) of Foreign Relations Law
+§ 66(f) (stating that “[t]he immunity of a foreign
+
+state . . . extends to . . . any . . . public minister,
+official, or agent of the state with respect to acts
+performed in his official capacity if the effect of
+exercising jurisdiction would be to enforce a rule of
+law against the state”);; Matar v. Dichter, 563 F.3d 9,
+14 (2d Cir.2009) (“At the time the FSIA was enacted,
+the common law of foreign sovereign immunity
+recognized an individual official’s entitlement to
+immunity for acts performed in his official capacity.”)
+(internal quotation marks omitted);; Samantar, 130
+S.Ct. at 2290-­91 (“[W]e do not doubt that in some
+circumstances the immunity of the foreign state
+extends to an individual for acts taken in his official
+capacity.”). This is a conduct-­based immunity that
+applies to current and former foreign officials. See
+Matar, 563 F.3d at 14 (“An immunity based on acts
+— rather than status — does not depend on tenure in
+office.”).
+
+2 “Under customary international law, head of state immunity
+
+encompasses the immunity of not only the heads of state but
+also of other ‘holders of high-­ranking office in a State’ such as
+“the Head of Government and Minister of Foreign Affairs.’”
+Lewis S. Yelin, Head of State Immunity As Sole Executive
+Lawmaking, 44 Vand. J. Transnat’l L. 911, 921 n. 42 (2011).
+
+10a
+B.
+The United States, participating as amicus curiae,
+takes the position that federal courts owe absolute
+deference to the State Department’s view of whether
+a foreign official is entitled to sovereign immunity on
+either ground. According to the government, under
+long-­established Supreme Court precedent, the State
+Department’s opinion on any foreign immunity issue
+is binding upon the courts. The State Department’s
+position allows for the federal courts to function as
+independent decision makers on foreign sovereign
+immunity questions in only one instance: when the
+State Department remains silent on a particular
+case. 3 Thus, the United States contends that the
+State Department resolved the issues once it
+presented the district court with its view that
+Samantar was not entitled to immunity.
+Samantar, by contrast, advocates the view that
+deference to the Executive’s immunity determination
+is required only when the State Department
+explicitly recommends that immunity be granted.
+Samantar argues that when the State Department
+concludes, as it did in this case, that a foreign official
+is not entitled to immunity or remains silent on the
+issue, courts can and must decide independently
+whether to grant immunity. And, the plaintiffs offer
+yet a third view, suggesting that the State
+Department’s position on foreign sovereign immunity
+does not completely control, but that courts must
+3 Even then, however, the State Department insists that the
+
+courts must fashion a decision based on principles that it has
+articulated. See Samantar, 130 S.Ct. at 2284. In making this
+argument, the government fails to distinguish between status-­
+based and conduct-­based immunity.
+
+11a
+defer “to the reasonable views of the Executive
+Branch” regardless of whether the State Department
+suggests that immunity be granted or denied.
+Appellees’ Response Brief at 20.
+In this case,
+plaintiffs contend the State Department’s rationale
+for urging denial of immunity, as set forth in its SOI,
+was reasonable and that the district court properly
+deferred to it.
+1. Executive’s Pre-­FSIA Role in Foreign State
+Immunity
+We begin by observing that, although the doctrine
+of foreign sovereign immunity has well-­established
+roots in American jurisprudence, the Executive
+Branch’s assumption of the role of primary
+decisionmaker on various foreign sovereign immunity
+matters is of a more recent vintage.
+Foreign
+sovereign immunity, insofar as American courts are
+concerned, has its doctrinal roots in The Schooner
+Exchange v. McFaddon, 11 U.S. (7 Cranch) 116, 3
+L.Ed. 287 (1812), which ushered in nearly a century
+of “absolute” or “classical” immunity, “under which a
+sovereign [could not], without his consent, be made a
+respondent in the courts of another sovereign.”
+
+Permanent Mission of India to the United Nations v.
+City of New York, 551 U.S. 193, 199, 127 S.Ct. 2352,
+
+168 L.Ed.2d 85 (2007) (internal quotation marks
+omitted);; see Samantar, 130 S.Ct. at 2284 (explaining
+The Schooner Exchange “was interpreted as
+extending virtually absolute immunity to foreign
+sovereigns as a matter of grace and comity”) (internal
+quotation marks omitted). 4 “Absolute” immunity for
+4 For nearly a century, “foreign sovereigns in national courts
+
+enjoyed a high level of immunity and exceptions, if any, were
+not widely recognized.”
+Wuerth, Ingrid, Foreign Official
+
+12a
+the foreign sovereign, however, is not to be confused
+with absolute judicial deference to the Executive
+Branch.
+In fact, during the lengthy period of
+absolute immunity, courts did not necessarily
+consider themselves obliged to follow executive
+pronouncements regarding immunity.
+In The
+Schooner Exchange itself, for example, the Court
+received and considered the view of the Executive
+Branch on the immunity claim but conducted its own
+independent review of the relevant international law
+doctrines. See 11 U.S. (7 Cranch) at 132-­35, 136-­47.
+As late as the 1920s, the Court still did not
+necessarily view questions of foreign sovereign
+immunity as matters solely for the Executive Branch.
+For example, the Court in Berizzi Bros. Co. v.
+Steamship Pesaro, 271 U.S. 562, 576, 46 S.Ct. 611,70
+L.Ed. 1088 (1926), concluded that a steamship owned
+by a foreign sovereign was entitled to immunity
+despite the fact that the Secretary of State had
+expressed the opposite view earlier in the litigation.
+See The Pesaro, 277 F. 473, 479 n. 3 (S.D.N.Y.1921).
+It was not until the late 1930s — in the context of
+in rem actions against foreign ships — that judicial
+deference
+to
+executive
+foreign
+immunity
+determinations emerged as standard practice. See
+
+Compania Espanola de Navegacion Maritima, S.A. v.
+The Navemar, 303 U.S. 68, 74, 58 S.Ct. 432, 82 L.Ed.
+667 (1938) (“If the claim is recognized and allowed by
+the executive branch of the government, it is then the
+duty of the courts to release the vessel upon
+appropriate suggestion by the Attorney General of
+the United States, or other officer acting under his
+Immunity Determinations in U.S. Courts: The Case Against the
+State Dep’t, 51 Va. J. Int’l Law 915, 925(2011).
+
+13a
+direction.”);; Ex parte Republic of Peru, 318 U.S. 578,
+587-­89, 63 S.Ct. 793, 87 L.Ed. 1014 (1943);; Republic
+of Mexico v. Hoffman, 324 U.S. 30, 34-­36, 65 S.Ct.
+530, 89 L.Ed. 729 (1945). Citing a line of cases
+involving ships owned by foreign sovereigns,
+Samantar explained that
+a two-­step procedure developed for resolving
+a foreign state’s claim of sovereign immunity,
+typically asserted on behalf of seized vessels.
+See, e.g., Republic of Mexico v. Hoffman, 324
+U.S. 30, 34-­36, 65 S.Ct. 530, 89 L.Ed. 729
+(1945);; Ex parte Peru, 318 U.S. 578, 587-­589,
+63 S.Ct. 793, 87 L.Ed. 1014 (1943);; Compania
+
+Espanola de Navegacion Maritima, S.A. v.
+The Navemar, 303 U.S. 68, 74-­75, 58 S.Ct.
+
+432, 82 L.Ed. 667 (1938).
+Under that
+procedure, the diplomatic representative of
+the sovereign could request a “suggestion of
+immunity” from the State Department. Ex
+parte Peru, 318 U.S. at 581, 63 S.Ct. 793. If
+the request was granted, the district court
+surrendered its jurisdiction. Id. at 588, 63
+S.Ct. 793;; see also Hoffman, 324 U.S. at 34,
+65 S.Ct. 530.
+But “in the absence of
+recognition of the immunity by the
+Department of State,” a district court “had
+authority to decide for itself whether all the
+requisites for such immunity existed.” Ex
+parte Peru, 318 U.S. at 587, 63 S.Ct. 793;; see
+also Compania Espanola, 303 U.S. at 75, 58
+S.Ct. 432 (approving judicial inquiry into
+sovereign immunity when the “Department of
+State . . . declined to act”);; Heaney v.
+Government of Spain, 445 F.2d 501, 503, and
+n. 2 (2d Cir. 1971) (evaluating sovereign
+
+14a
+immunity when the State Department had
+not responded to a request for its views). In
+making that decision, a district court
+inquired “whether the ground of immunity is
+one which it is the established policy of the
+[State Department] to recognize.” Hoffman,
+324 U.S. at 36, 65 S.Ct. 530.
+
+Samantar, 130 S.Ct. at 2284 (citations omitted;;
+alteration in original). Subsequently, there was a
+shift in State Department policy from a theory of
+absolute immunity to restrictive immunity, but this
+shift “had little, if any, impact on federal courts’
+approach to immunity analyses . . . and courts
+continued to abide by that Department’s suggestions
+of immunity.” Republic of Austria v. Altmann, 541
+U.S. 677, 690, 124 S.Ct. 2240, 159 L.Ed.2d 1 (2004)
+(internal quotation marks and alteration omitted). 5
+Thus, at the time that Congress enacted the FSIA,
+the clearly established practice of judicial deference
+to executive immunity determinations had been
+expressed largely in admiralty cases.
+5
+
+Interestingly, even at this point the State Department
+expressed uncertainty about the relationship between the
+executive and judicial branches on questions of foreign
+sovereign immunity. The State Department announced its
+change in policy through a 1952 letter to the Attorney General
+from Jack B. Tate, Legal Adviser to the State Department. The
+“Tate Letter,” as it has come to be known, stated that “[i]t is
+realized that a shift in policy by the executive cannot control the
+courts but it is felt that the courts are less likely to allow a plea
+of sovereign immunity where the executive has declined to do
+so.” See Letter from Jack B. Tate, Acting Legal Adviser, Dep’t
+of State, to Philip B. Perlman, Acting Att’y Gen. (May 19, 1952),
+26 Dep’t St. Bull. 984-­85 (1952), reprinted in Alfred Dunhill of
+London, Inc. v. Republic of Cuba, 425 U.S. 682, 714 app. 2, 96
+S.Ct 1854, 48 L.Ed.2d 301 (1976).
+
+15a
+In this pre-­FSIA era, decisions involving claims of
+
+individual foreign sovereign immunity were scarce.
+See Samantar, 130 S.Ct. at 2291 (noting that
+
+“questions of official immunity . . . in the pre-­FSIA
+period . . . were few and far between”). But, to the
+extent such individual claims arose, they generally
+involved status-­based immunities such as head-­of-­
+state immunity, see, e.g., Ye v. Zemin, 383 F.3d 620,
+624-­25 (7th Cir.2004), or diplomatic immunity arising
+under international treaties, see Vienna Convention
+on Consular Relations art. 43, Apr. 24, 1963, 21
+U.S.T. 77, 596 U.N.T.S. 261;; Vienna Convention on
+Diplomatic Relations art. 31, Apr. 18, 1961, 23 U.S.T.
+3227, 500 U.N.T.S. 95. The rare cases involving
+immunity asserted by lower-­level foreign officials
+provided inconsistent results. See generally Chimene
+I. Keitner, The Common Law of Foreign Official
+Immunity, 14 Green Bag2d 61 (2010) [hereinafter
+Keitner].
+2. Executive Power
+The Constitution assigns the power to “receive
+Ambassadors and other public Ministers” to the
+Executive Branch, U.S. Const, art. II, § 3, which
+includes, by implication, the power to accredit
+diplomats and recognize foreign heads of state.
+Courts have generally treated executive “suggestions
+of immunity” for heads of state as a function of the
+Executive’s constitutional power and, therefore, as
+controlling on the judiciary. See, e.g., Ye, 383 F.3d at
+626 (“[A] determination by the Executive Branch that
+a foreign head of state is immune from suit is
+conclusive and a court must accept such a
+determination without reference to the underlying
+claims of a plaintiff.”);; Doe v. State of Israel, 400
+
+16a
+F.Supp.2d 86, 111 (D.D.C.2005) (“When, as here, the
+Executive has filed a Suggestion of Immunity as to a
+recognized head of a foreign state, the jurisdiction of
+the Judicial Branch immediately ceases.”);; United
+States v. Noriega, 117 F.3d 1206, 1212 (11th
+Cir.1997) (deferring to the Executive Branch where it
+“manifested its clear sentiment that Noriega should
+be denied head-­of-­state immunity”);; see generally
+Keitner, 14 Green Bag 2d at 71 (reasoning that
+“[c]ourts should treat Executive representations
+about status-­based immunity as conclusive because
+they are a function of the Executive’s power under
+Article II, section 3 of the Constitution”). Like
+diplomatic
+immunity,
+head-­of-­state
+immunity
+involves “a formal act of recognition,” that is “a
+quintessentially executive function” for which
+absolute deference is proper. Peter B. Rutledge,
+
+Samantar, Official Immunity & Federal Common
+Law, 15 Lewis & Clark L.Rev. 589, 606 (2011).
+
+Accordingly, consistent with the Executive’s
+constitutionally delegated powers and the historical
+practice of the courts, we conclude that the State
+Department’s pronouncement as to head-­of-­state
+immunity is entitled to absolute deference. The State
+Department has never recognized Samantar as the
+head of state for Somalia;; indeed, the State
+Department does not recognize the Transitional
+Federal Government or any other entity as the
+official government of Somalia, from which immunity
+would derive in the first place. The district court
+properly deferred to the State Department’s position
+that Samantar be denied head-­of-­state immunity.
+Unlike head-­of-­state immunity and other status-­
+based immunities, there is no
+equivalent
+
+17a
+constitutional basis suggesting that the views of the
+Executive Branch control questions of foreign official
+immunity. Such cases do not involve any act of
+recognition for which the Executive Branch is
+constitutionally empowered;; rather, they simply
+involve matters about the scope of defendant’s official
+duties.
+This is not to say, however, that the Executive
+Branch has no role to play in such suits. These
+immunity decisions turn upon principles of
+customary international law and foreign policy, areas
+in which the courts respect, but do not automatically
+follow, the views of the Executive Branch. See Sosa
+v. Alvarez-­Machain, 542 U.S. 692, 733 n. 21, 124
+S.Ct. 2739, 159 L.Ed.2d 718 (2004) (noting that
+“there is a strong argument that federal courts
+should give serious weight to the Executive Branch’s
+view of [a] case’s impact on foreign policy”);; Altmann,
+541 U.S. at 702, 124 S.Ct. 2240 (suggesting that with
+respect to foreign sovereign immunity, “should the
+State Department choose to express its opinion on
+the implications of exercising jurisdiction over
+particular petitioners in connection with their alleged
+conduct, that opinion might well be entitled to
+deference as the considered judgment of the
+Executive on a particular question of foreign policy”)
+(footnote omitted). With respect to foreign official
+immunity, the Executive Branch still informs the
+court about the diplomatic effect of the court’s
+exercising jurisdiction over claims against an official
+of a foreign state, and the Executive Branch may
+urge the court to grant or deny official-­act immunity
+based on such considerations.
+“That function,
+however, concerns the general assessment of a case’s
+impact on the foreign relations of the United States,”
+
+18a
+Rutledge, 15 Lewis & Clark L.Rev. at 606, rather
+than a controlling determination of whether an
+individual is entitled to conduct-­based immunity.
+In sum, we give absolute deference to the State
+Department’s position on status-­based immunity
+doctrines such as head-­of-­state immunity. The State
+Department’s determination regarding conduct-­based
+immunity, by contrast, is not controlling, but it
+carries substantial weight in our analysis of the
+issue.
+III.
+A.
+We turn to the remaining question of whether
+Samantar is entitled to foreign official immunity
+under the common law. In considering the contours
+of foreign official immunity, we must draw from the
+relevant principles found in both international and
+domestic immunity law, as well as the experience and
+judgment of the State Department, to which we give
+considerable, but not controlling, weight.
+From the earliest Supreme Court decisions,
+international law has shaped the development of the
+common law of foreign sovereign immunity. See The
+Schooner Exchange, 11 U.S. (7 Cranch) at 136, 145-­
+46 (noting that “a principle of public law” derived
+from “common usage” and “common opinion” that
+“national ships of war, entering the port of a friendly
+power open for their reception, are to be considered
+as exempted by the consent of that power from its
+jurisdiction”);; Restatement (Third) of the Foreign
+Relations Law part IV, ch. 5, subch. A intro. note
+(“The immunity of a state from the jurisdiction of the
+courts of another state is an undisputed principle of
+customary international law.”). Indeed, an important
+
+19a
+purpose of the FSIA was the “codification of
+international law at the time of the FSIA’s
+enactment.” Samantar, 130 S.Ct. at 2289 (internal
+quotation marks omitted);; see id. (“[O]ne of the
+primary purposes of the FSIA was to codify the
+restrictive theory of sovereign immunity, which
+Congress recognized as consistent with extant
+international law.”).
+Even after the FSIA was
+enacted, international law continued to be relevant to
+questions of foreign sovereign immunity as the Court
+interpreted the FSIA in light of international law.
+See Permanent Mission of India, 551 U.S. at 200-­01,
+127 S.Ct. 2352.
+As previously noted, customary international law
+has long distinguished between status-­based
+immunity afforded to sitting heads-­of-­state and
+conduct-­based immunity available to other foreign
+officials, including former heads-­of-­state.
+With
+respect to conduct-­based immunity, foreign officials
+are immune from “claims arising out of their official
+acts while in office.” Restatement (Third) of Foreign
+Relations Laiv § 464, reprt. note 14;; Matar, 563 F.3d
+at 14 (“An immunity based on acts — rather than
+status — does not depend on tenure in office.”). This
+type of immunity stands on the foreign official’s
+actions, not his or her status, and therefore applies
+whether the individual is currently a government
+official or not. See Chimene I. Keitner, Officially
+Immune? A Response to Bradley and Goldsmith, 36
+Yale J. Int’l L. Online 1, *9 (2010) (“Conduct-­based
+immunity is both narrower and broader than status-­
+based immunity: it is narrower, because it only
+provides immunity for specific acts . . . but it is also
+broader, because it endures even after an individual
+has left office.”). This conduct-­based immunity for a
+
+20a
+foreign official derives from the immunity of the
+State: “The doctrine of the imputability of the acts of
+the individual to the State . . . in classical law . . .
+imputes the act solely to the state, who alone is
+responsible for its consequence. In consequence any
+act performed by the individual as an act of the State
+enjoys the immunity which the State enjoys.” Hazel
+Fox, The Law of State Immunity at 455 (2d ed. 2008).
+At least as early as its decision in Underhill v.
+Hernandez, 168 U.S. 250, 252, 18 S.Ct. 83, 42 L.Ed.
+456 (1897), the Supreme Court embraced the
+international law principle that sovereign immunity,
+which belongs to a foreign state, extends to an
+individual official acting on behalf of that foreign
+state. By the time the FSIA was enacted, numerous
+domestic courts had embraced the notion, stemming
+from international law, that “[t]he immunity of a
+foreign state . . . extends to . . . any . . . public
+minister, official, or agent of the state with respect to
+acts performed in his official capacity if the effect of
+exercising jurisdiction would be to enforce a rule of
+law against the state.” Restatement (Second) of
+Foreign Relations Law § 66(f). Although the context
+for these cases was different — almost all involved
+the erroneous (pre-­Samantar) application of the FSIA
+to individual foreign officials claiming immunity —
+these decisions are instructive for post-­Samantar
+questions of common law immunity. See, e.g., Belhas
+v. Ya’alon, 515 F.3d 1279, 1285 (D.C.Cir.2008)
+(observing that the FSIA had incorporated the well-­
+settled principle of international law that former
+officials could still claim immunity for acts performed
+on behalf of the government);; Chuidian v. Philippine
+Nat’l Bank, 912 F.2d 1095, 1106 (9th Cir.1990)
+(recognizing that an individual is not “entitled to
+
+21a
+sovereign immunity for acts not committed in his
+official capacity” and explaining that where “the
+officer purports to act as an individual and not as an
+official, a suit directed against that action is not a
+suit against the sovereign”) (internal quotation
+marks omitted);; Hilao v. Estate of Marcos (In re
+
+Estate of Ferdinand Marcos, Human Rights
+Litigation), 25 F.3d 1467, 1472 (9th Cir.1994) (stating
+that “[i]mmunity is extended to an individual only
+when acting on behalf of the state because actions
+against those individuals are the practical equivalent
+of a suit against the sovereign directly” and that “[a]
+lawsuit against a foreign official acting outside the
+scope of his authority does not implicate any of the
+foreign diplomatic concerns involved in bringing suit
+against another government in United States courts”)
+(internal quotation marks omitted);; Matar, 563 F.3d
+at 14 (concluding that even if Dichter was not
+entitled to statutory immunity under the FSIA, he
+was “nevertheless immune from suit under common-­
+law principles [i.e., conduct-­based foreign official
+immunity] that pre-­date, and survive, the enactment
+of that statute”).
+
+These cases sketch out the general contours of
+official-­act immunity: a foreign official may assert
+immunity for official acts performed within the scope
+of his duty, but not for private acts where “the officer
+purports to act as an individual and not as an official,
+[such that] a suit directed against that action is not a
+suit against the sovereign.” Chuidian, 912 F.2d at
+1106 (internal quotation marks omitted). A foreign
+official or former head-­of-­state will therefore not be
+able to assert this immunity for private acts that are
+not arguably attributable to the state, such as drug
+possession or fraud. See, e.g., In re Doe, 860 F.2d 40,
+
+22a
+45 (2d Cir. 1988) (“[W]ere we to reach the merits of
+the issue, we believe there is respectable authority
+for denying head-­of-­state immunity to a former head-­
+of-­state for private or criminal acts in violation of
+American law.”).
+B.
+In response, plaintiffs contend that Samantar
+cannot raise this immunity as a shield against
+atrocities such as torture, genocide, indiscriminate
+executions and prolonged arbitrary imprisonment or
+any other act that would violate a jus cogens norm of
+international law. A jus cogens norm, also known as
+a “peremptory norm of general international law,”
+can be defined as “a norm accepted and recognized by
+the international community of States as a whole as
+a norm from which no derogation is permitted and
+which can be modified only by a subsequent norm of
+general international law having the same
+character.”
+Vienna Convention on the Law of
+Treaties art. 53, May 23, 1969, 1155 U.N.T.S. 331;;
+see Siderman de Blake v. Republic of Argentina, 965
+F.2d 699, 714 (9th Cir.1992) (adopting same
+definition). Prohibitions against the acts involved in
+this case — torture, summary execution and
+prolonged arbitrary imprisonment — are among
+these universally agreed-­upon norms. See, e.g., Evan
+J. Criddle & Evan Fox-­Decent, A Fiduciary Theory of
+Jus Cogens, 34 Yale J. Int’l L. 331, 331 (2009)
+(explaining that “jus cogens . . . include[s], at a
+minimum, the prohibitions against genocide;; slavery
+or slave trade;; murder or disappearance of
+individuals;; torture or other cruel, inhuman, or
+degrading treatment or punishment;; prolonged
+arbitrary detention”);; Tel-­Oren v. Libyan Arab
+
+23a
+
+Republic, 726 F.2d 774, 791 n. 20 (D.C.Cir.1984)
+
+(Edwards, J., concurring) (“On the basis of
+international
+covenants,
+agreements
+and
+declarations, commentators have identified at least
+four acts that are now subject to unequivocal
+international condemnation:
+torture, summary
+execution, genocide and slavery.”);; Restatement
+(Third) of Foreign Relations Law § 702 and cmt. n
+(identifying murder, torture and “pro-­longed
+arbitrary detention” as jus cogens violations). Unlike
+private acts that do not come within the scope of
+foreign official immunity, jus cogens violations may
+well be committed under color of law and, in that
+sense, constitute acts performed in the course of the
+foreign official’s employment by the Sovereign.
+However, as a matter of international and domestic
+law, jus cogens violations are, by definition, acts that
+are not officially authorized by the Sovereign. See,
+e.g., Siderman de Blake, 965 F.2d at 718
+(“International law does not recognize an act that
+violates jus cogens as a sovereign act.”);; Paul v. Avril,
+812 F.Supp. 207, 212 (S.D.Fla.1993) (“[A]cts . . . [of
+torture, cruel, inhuman and degrading treatment,
+and arbitrary detention in violation of customary
+international law] hardly qualify as official public
+acts.”). 6
+
+6 In spite of this, allegations of jus cogens violations do not
+
+overcome head-­of-­state or any other status-­based immunity.
+See, e.g., Case Concerning the Arrest Warrant of 11 April 2000
+(Democratic Republic of Congo v. Belgium) (2002) ICJ 3
+(concluding that the sitting foreign minister of the Democratic
+Republic of Congo was entitled to status-­based immunity
+against alleged jus cogens violations).
+
+24a
+There has been an increasing trend in
+international law to abrogate foreign official
+immunity for individuals who commit acts, otherwise
+attributable to the State, that violate jus cogens
+norms — i.e., they commit international crimes or
+human rights violations:
+Over the last decade . . . a growing number of
+domestic and international judicial decisions
+have considered whether a foreign official
+acts as an arm of the state, and thus is
+entitled to conduct immunity, when that
+official allegedly violates a jus cogens norm of
+international law or commits an international
+crime.
+Curtis
+
+A.
+
+Bradley
+
+&
+
+Laurence
+
+R.
+
+Heifer,
+
+International Law and the U.S. Common Law of
+Foreign Official Immunity, 2010 Sup.Ct. Rev. 213,
+
+236-­37 (2011). A number of decisions from foreign
+national courts have reflected a willingness to deny
+official-­act immunity in the criminal context for
+alleged jus cogens violations, most notably the
+British House of Lords’ Pinochet decision denying
+official-­acts immunity to a former Chilean head of
+state accused of directing widespread torture. See
+Regina v. Bartle, ex parte Pinochet, 38 I.L.M. 581,
+593-­95 (H.L.1999) (concluding that official-­acts
+immunity is unavailable to shield foreign officials
+from prosecution for international crimes because
+acts of torture do not constitute officially-­approved
+acts). “In the decade following Pinochet, courts and
+prosecutors across Europe and elsewhere . . .
+commenced criminal proceedings against former
+officials of other nations for torture and other
+violations of jus cogens.” Bradley & Heifer, 2010
+
+25a
+Sup. Ct. Rev. at 239. Some foreign national courts
+have pierced the veil of official-­acts immunity to hear
+civil claims alleging jus cogens violations, but the jus
+cogens exception appears to be less settled in the civil
+context. Compare Ferrini v. Germany, Oxford Rep.
+Int’l in Dom. Cts. 19 (Italian Ct. of Cassation 2004)
+(denying “the functional immunity of foreign state
+organs” for jus cogens violations in criminal context),
+with Jones v. Saudi Arabia, 129 I.L.R. 713, at ¶ 24
+(H.L.2006) (rejecting jus cogens exception to foreign
+official immunity in civil context).
+American courts have generally followed the
+foregoing trend, concluding that jus cogens violations
+are not legitimate official acts and therefore do not
+merit foreign official immunity but still recognizing
+that head-­of-­state immunity, based on status, is of an
+absolute nature and applies even against jus cogens
+claims. Compare Sarei v. Rio Tinto, PLC, 487 F.3d
+1193, 1209 (9th Cir.2007) (recognizing that acts in
+“violation” of jus cogens norms . . . cannot constitute
+official sovereign acts”);; Siderman de Blake, 965 F.2d
+at 718 (“International law does not recognize an act
+that violates jus cogens as a sovereign act.”);; Enahoro
+v. Abubakar, 408 F.3d 877, 893 (7th Cir.2005)
+(Cudahy, J., dissenting) (“[Officials receive no
+immunity for acts that violate international jus
+cogens human rights norms (which by definition are
+not legally authorized acts).”), with Ye, 383 F.3d at
+626-­27 (deferring to Executive’s suggestion that
+head-­of-­state immunity be allowed for individual
+accused of international crimes);; Devi v. Rajapaksa,
+No. 11 Civ. 6634, 2012 WL 3866495, at *3 (S.D.N.Y.
+Sept. 4, 2012) (holding that a sitting head of state is
+entitled to immunity, even in the context of alleged
+jus cogens violations). We conclude that, under
+
+26a
+international and domestic law, officials from other
+countries are not entitled to foreign official immunity
+for jus cogens violations, even if the acts were
+performed in the defendant’s official capacity.
+Moreover, we find Congress’s enactment of the
+TVPA, and the policies it reflects, to be both
+instructive and consistent with our view of the
+common law regarding these aspects of jus cogens.
+Plaintiffs asserted claims against Samantar under
+the TVPA which authorizes a civil cause of action
+against “[a]n individual who, under actual or
+apparent authority, or color of law, of any foreign
+nation . . . subjects an individual to torture” or
+“extrajudicial killing.” Pub.L. 102-­256, § 2(a), 28
+U.S.C. 1350 note.
+“The TVPA thus recognizes
+explicitly what was perhaps implicit in the Act of
+1789 — that the law of nations is incorporated into
+the law of the United States and that a violation of
+the international law of human rights is (at least
+with regard to torture) ipso facto a violation of U.S.
+domestic law.” Wiwa v. Royal Dutch Petroleum Co.,
+226 F.3d 88, 105 (2d Cir.2000). Thus, in enacting the
+TVPA, Congress essentially created an express
+private right of action for individuals victimized by
+torture and extrajudicial killing that constitute
+violations of jus cogens norms. See S.Rep. No. 102-­
+249, at 8 (1991) (“[B]ecause no state officially
+condones torture or extrajudicial killings, few such
+acts, if any, would fall under the rubric of ‘official
+actions’ taken in the course of an official’s duties.”).
+C. SOI from the State Department
+In its SOI, the State Department submitted a
+suggestion of non-­immunity. The SOI highlighted
+the fact that Samantar “is a former official of a state
+
+27a
+with no currently recognized government to request
+immunity on his behalf or to take a position as to
+“whether the acts in question were taken in an
+official capacity.”
+J.A. 71.
+Noting that “[t]he
+immunity protecting foreign officials for their official
+acts ultimately belongs to the sovereign rather than
+the official,” J.A. 71, the government reasoned that
+Samantar should not be afforded immunity “[i]n the
+absence of a recognized government . . . to assert or
+waive [Samantar’s] immunity,” J.A. 73. The second
+major basis for the State Department’s view that
+Samantar was not entitled to immunity was
+Samantar’s status as a permanent legal resident.
+According to the SOI, “U.S. residents like Samantar
+who enjoy the protections of U.S. law ordinarily
+should be subject to the jurisdiction of the courts,
+particularly when sued by U.S. residents” or
+naturalized citizens such as two of the plaintiffs. J.A.
+71.
+Both of these factors add substantial weight in
+favor of denying immunity.
+Because the State
+Department has not officially recognized a Somali
+government, the court does not face the usual risk of
+offending a foreign nation by exercising jurisdiction
+over the plaintiffs’ claims. Likewise, as a permanent
+legal resident, Samantar has a binding tie to the
+United States and its court system.
+Because this case involves acts that violated jus
+cogens norms, including torture, extrajudicial killings
+and prolonged arbitrary imprisonment of politically
+and ethnically disfavored groups, we conclude that
+Samantar is not entitled to conduct-­based official
+immunity under the common law, which in this area
+incorporates international law. Moreover, the SOI
+
+28a
+has supplied us with additional reasons to support
+this conclusion. Thus, we affirm the district court’s
+denial of Samantar’s motion to dismiss based on
+foreign official immunity.
+IV.
+For the foregoing reasons, we affirm the district
+court’s denial of both head-­of-­state and foreign official
+immunity to Samantar.
+
+AFFIRMED
+
+29a
+  
+APPENDIX B
