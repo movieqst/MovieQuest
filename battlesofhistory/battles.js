@@ -315,5 +315,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg',   // the title card: coming from the owner
     coverCredit: '',
     status: 'in progress'
+  },
+  {
+    folder: 'medak', osmArea: 6, progress: 1, lat: 44.49, lon: 15.42, osmZoom: 11, osmNote: 'approximate: the villages of the Medak pocket (Divoselo, Čitluk, Počitelj) south of Gospić',
+    order: 26,
+    era: 'Croatia, 1993',
+    title: 'Medak Pocket',
+    date: '9–17 September 1993', year: 1993,
+    place: 'The Medak pocket south of Gospić, in the Lika region of Croatia',
+    sides: 'Croatian Army (HV) and special police vs. Army of the Republic of Serbian Krajina (SVK)',
+    blurb: 'In September 1993 the Croatian Army took a small salient of Serb-held land near Gospić. Under a ceasefire, UN peacekeepers, Canadian and French, moved in to separate the two sides and came under fire; behind the Croatian lines the villages were destroyed and Serb civilians and prisoners were killed. A Croatian court later convicted one of the commanders and acquitted another.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner
+    coverCredit: '',
+    status: 'in progress'
   }
 ];
