@@ -250,5 +250,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '50% 35%',   // the downed MiG and the words 1988
     coverCredit: 'The Hargeisa War Memorial: a downed Somali Air Force MiG over the words “Xus oo xasuusnow 1988” (“Remember and recall 1988”), 2019. Photo: Gerard van de Bruinhorst, African Studies Centre Leiden, Wikimedia Commons, CC BY-SA 4.0. Cropped',
     status: 'in progress'
+  },
+  {
+    folder: 'granicus-issus', progress: 5, lat: 36.75, lon: 36.20,
+    order: 21,
+    era: 'Classical Antiquity',
+    title: 'Granicus & Issus',
+    date: 'May 334 – November 333 BCE', year: -334,
+    place: 'The Granicus river in north-western Anatolia, and the coast of Issus between the Amanus mountains and the sea (both in today’s Turkey)',
+    sides: 'Macedonian army under Alexander III vs. Persian army under Darius III',
+    blurb: 'Alexander’s first two battles against Persia, a year apart: the cavalry charge across the Granicus and up its steep bank, then the long march across Anatolia, the two armies passing each other on either side of the mountains, and the clash at the river Pinarus where Darius fled and his family was captured. The story before Tyre and Gaugamela.',
+    cover: 'images/cover.jpg', coverPos: '30% 40%',   // Alexander and Bucephalus
+    coverCredit: 'Title painting made for this page with ChatGPT (AI-generated), checked against Arrian, Plutarch and Xenophon: an imagined scene combining the two battles, not a record',
+    status: 'in progress'
   }
 ];
