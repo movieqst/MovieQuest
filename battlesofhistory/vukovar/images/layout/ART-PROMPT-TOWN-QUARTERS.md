@@ -1,3 +1,5 @@
+> **Superseded:** use `ART-PROMPT-QUARTERS-V4.md`. The quarter texts below describe the river wrongly (written for the old version-1 bases).
+
 # Vukovar: a sharper town map in four quarters (prompts for ChatGPT, 13 November 2026, version 3)
 
 **Version 3: why the quarters came back wrong, and what changes.** Quarters 1–3 of version 2 put the Danube and the Vuka
