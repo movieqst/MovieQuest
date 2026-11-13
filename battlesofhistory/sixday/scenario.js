@@ -2330,3 +2330,398 @@ Object.assign(window.SIXDAY_SCENARIO, {
 });
 
 /* ======== maps, armies and moves (kept by make-scenario-text.py) ======== */
+/* ======================================================================================================================
+   Maps, armies, leaders and their moves.
+     region     images/terrain-region.jpg     33.80–29.41 N, 30.55–37.40 E (650 × 489 km): Cairo to Damascus. The main map.
+     airstrike  images/terrain-airstrike.jpg  31.90–27.70 N, 30.45–36.89 E (621 × 468 km): Egypt, Sinai and the Straits.
+     abuageila  images/terrain-abuageila.jpg  30.92–30.81 N, 34.03–34.19 E (16 × 12 km): the Um Katef position.
+     jerusalem  images/terrain-jerusalem.jpg  31.81–31.75 N, 35.19–35.28 E (8.8 × 6.6 km).
+     golan      images/terrain-golan.jpg      33.26–33.19 N, 35.64–35.75 E (10 × 7.5 km): Kfar Szold to Tel Faher.
+   All are paintings made for this page (AI-generated) over real elevation (plan/maps.md). Every unit, leader and object
+   belongs to one map (`map`); a chapter shows the map named by its `altMap` (none: the region map).
+   THE LINES on the region map are Natural Earth's (public domain), approximate (tools/make-lines.py, lines.js). EVERY UNIT
+   POSITION AND MOVE IS OURS, placed to follow the narration: a reconstruction, not a record of where each unit stood.
+   Places: plan/maps.md (coordinates marked 'estimate' there are approximate on the map too).
+   Sides: Israel is 'allied' (red); Egypt, Jordan and Syria are 'french' (blue), each with its own figures.
+   ====================================================================================================================== */
+(() => {
+  const S = window.SIXDAY_SCENARIO;
+  const PI = Math.PI, E = 0, Wd = PI, N = -PI / 2, So = PI / 2;
+  const GEO = { region: { lat0: 29.4067, lat1: 33.8033, lon0: 30.5502, lon1: 37.3998 }, airstrike: { lat0: 27.6958, lat1: 31.9042, lon0: 30.4532, lon1: 36.8868 },
+                abuageila: { lat0: 30.811, lat1: 30.919, lon0: 34.026, lon1: 34.194 }, jerusalem: { lat0: 31.7494, lat1: 31.809, lon0: 35.188, lon1: 35.281 },
+                golan: { lat0: 33.1902, lat1: 33.2578, lon0: 35.6381, lon1: 35.7453 } };
+  const at = (g, lat, lon) => ({ x: Math.round((lon - g.lon0) / (g.lon1 - g.lon0) * 2400), y: Math.round((g.lat1 - lat) / (g.lat1 - g.lat0) * 1800) });
+  const R = (la, lo) => at(GEO.region, la, lo), A = (la, lo) => at(GEO.airstrike, la, lo), U = (la, lo) => at(GEO.abuageila, la, lo),
+        J = (la, lo) => at(GEO.jerusalem, la, lo), G = (la, lo) => at(GEO.golan, la, lo);
+  const mid = (p, q, f = .5) => ({ x: Math.round(p.x + (q.x - p.x) * f), y: Math.round(p.y + (q.y - p.y) * f) });
+  const off = (p, dx, dy) => ({ x: p.x + dx, y: p.y + dy });
+  // the region map
+  const rCAIRO = R(30.0444, 31.2357), rDAMASCUS = R(33.513, 36.292), rAMMAN = R(31.9539, 35.9106), rJER = R(31.7683, 35.2137), rTELAVIV = R(32.0853, 34.7818),
+        rGAZA = R(31.502, 34.467), rRAFAH = R(31.27, 34.22), rARISH = R(31.1319, 33.8033), rABU = R(30.8431, 34.1177), rLIBNI = R(30.66, 33.65), rGIFGAFA = R(30.4072, 33.1542),
+        rMITLA = R(30.0146, 32.8834), rSUEZ = R(29.967, 32.55), rISMAILIA = R(30.6043, 32.2723), rQANTARA = R(30.86, 32.33), rKUNTILLA = R(30.003, 34.682), rNAKHL = R(29.9, 33.75),
+        rEILAT = R(29.5577, 34.9519), rNITZANA = R(30.88, 34.43), rKUNEITRA = R(33.1256, 35.8239), rKFARSZOLD = R(33.1953, 35.6575), rHERMON = R(33.4161, 35.8575),
+        rNABLUS = R(32.2211, 35.2608), rJENIN = R(32.4611, 35.3), rJERICHO = R(31.8561, 35.46), rALLENBY = R(31.8742, 35.5408), rDAMIYA = R(32.1028, 35.5353), rHEBRON = R(31.5286, 35.0969),
+        rLATRUN = R(31.8319, 34.9814), rQALQILYA = R(32.19, 34.97), rMAFRAQ = R(32.3564, 36.2592), rLIBERTY = R(31.3833, 33.3833), rBANIAS = R(33.2486, 35.6944), rRAFID = R(32.955, 35.9014),
+        rMASADE = R(33.2331, 35.7575), rGALILEE = R(32.83, 35.59), rPORTSAID = R(31.2625, 32.3061), rSINAI = R(30.2, 33.8), rAQABA = R(29.53, 35.0);
+  // the air-strike map (Egypt, Sinai and the Straits)
+  const aCAIROW = A(30.1167, 30.9167), aINSHAS = A(30.3297, 31.45), aALMAZA = A(30.0847, 31.3514), aHELWAN = A(29.8333, 31.3167), aBILBEIS = A(30.4167, 31.6),
+        aBENISUEF = A(29.2119, 31.0158), aABUSUWEIR = A(30.5722, 32.0958), aFAYID = A(30.3303, 32.2697), aKABRIT = A(30.2458, 32.49), aARISHAF = A(31.0733, 33.8358),
+        aLIBNIAF = A(30.8016, 33.7795), aGIFGAFA = A(30.4072, 33.1542), aTHAMADA = A(30.15, 33.35), aHATZOR = A(31.7625, 34.7272), aTELNOV = A(31.8394, 34.8217),
+        aRAFAH = A(31.27, 34.22), aKHANYUNIS = A(31.346, 34.306), aGAZA = A(31.502, 34.467), aSHEIKHZ = A(31.2119, 34.1106), aJIRADI = A(31.15, 33.95), aARISH = A(31.1319, 33.8033),
+        aLAHFAN = A(30.97, 33.79), aABU = A(30.8431, 34.1177), aLIBNI = A(30.66, 33.65), aHASANA = A(30.47, 33.77), aNAKHL = A(29.9, 33.75), aKUNTILLA = A(30.003, 34.682),
+        aMITLA = A(30.0146, 32.8834), aGIDDI = A(30.217, 33.167), aSUEZ = A(29.967, 32.55), aISMAILIA = A(30.6043, 32.2723), aQANTARA = A(30.86, 32.33), aPORTSAID = A(31.2625, 32.3061),
+        aSHARM = A(27.915, 34.3275), aNASRANI = A(27.97, 34.42), aTIRAN = A(28.0039, 34.4653), aEILAT = A(29.5577, 34.9519), aLIBERTY = A(31.3833, 33.3833), aNITZANA = A(30.88, 34.43),
+        aKUSSEIMA = A(30.68, 34.35), aTOR = A(28.24, 33.62), aCAIRO = A(30.0444, 31.2357), aSEA = A(31.75, 33.2);
+  // Abu-Ageila / Um Katef (places estimated, plan/maps.md)
+  const uJUNC = U(30.8431, 34.1177), uKATEF = U(30.85, 34.15), uRUAFA = U(30.87, 34.07), u181 = U(30.88, 34.13), uLZ = U(30.905, 34.115), uGUNS = U(30.862, 34.112),
+        uEAST = U(30.852, 34.188), uDUNES = U(30.908, 34.16), uNORTH = U(30.875, 34.152), uWEST = U(30.835, 34.04), uLANE = U(30.848, 34.172), uTANKS = U(30.843, 34.135);
+  // Jerusalem
+  const jAMMO = J(31.7994, 35.2281), jPOLICE = J(31.7985, 35.2305), jMANDEL = J(31.7875, 35.2268), jSHEIKHJ = J(31.7925, 35.2295), jSCOPUS = J(31.7925, 35.2442),
+        jAUGUSTA = J(31.7867, 35.2492), jROCKEF = J(31.783, 35.242), jDAMGATE = J(31.7816, 35.2305), jLIONS = J(31.7808, 35.2369), jTEMPLE = J(31.7781, 35.2358),
+        jWALL = J(31.7767, 35.2345), jDUNG = J(31.7761, 35.2352), jZION = J(31.7717, 35.2286), jABUTOR = J(31.762, 35.229), jGOVHOUSE = J(31.7543, 35.2364),
+        jMUKABER = J(31.7547, 35.2411), jSHUFAT = J(31.805, 35.241), jMIVTAR = J(31.801, 35.2335), jWESTJ = J(31.785, 35.205), jSOUTHW = J(31.758, 35.215), jEAST = J(31.775, 35.27);
+  // the Golan (Tel Faher derived, ±300 m)
+  const gKFARSZOLD = G(33.1953, 35.6575), gHAEM = G(33.213, 35.665), gAZAZIAT = G(33.2254, 35.6667), gBURJ = G(33.2254, 35.677), gFAHER = G(33.2254, 35.6882),
+        gDAN = G(33.235, 35.657), gSHEAR = G(33.225, 35.65), gBANIAS = G(33.2486, 35.6944), gEINFIT = G(33.2239, 35.7042), gZAURA = G(33.2188, 35.7099), gJUBATA = G(33.25, 35.733),
+        gCLIMB = G(33.205, 35.672), gSOUTHE = G(33.195, 35.735);
+
+  const RECORD = (file, caption, credit, o) => Object.assign({ file, caption, credit }, o || {});
+  const IMG = {
+    cover: RECORD('cover.jpg', 'Israeli half-tracks on the Golan Heights, 20 July 1967, six weeks after the war.', 'Photo: I.P.P.A. / Dan Hadani collection, National Library of Israel, CC BY 4.0.'),
+    pact: RECORD('13-hussein-nasser-amer-30-may-1967.jpg', 'King Hussein of Jordan (left), President Nasser (centre) and Field Marshal Amer in Cairo, 30 May 1967, before signing the Egyptian–Jordanian defence pact.', 'Photographer not credited; Bibliotheca Alexandrina. Public domain in Egypt and the US.'),
+    field: RECORD('07-soldiers-in-the-field-may-1967.jpg', 'Israeli reservists in the field during the waiting weeks, May 1967.', 'Government Press Office (Israel), D325-068, CC BY-SA 4.0.'),
+    mig: RECORD('record-mig21-bir-gifgafa-1967.jpg', 'Israeli Air Force officers beside a destroyed Egyptian MiG-21 at the Bir Gifgafa air base in Sinai, June 1967.', 'Photo: Yehezkel Rahamim, 1967, via Wikimedia Commons, CC BY-SA 2.0.'),
+    rafah: RECORD('09-rafah-5-june-1967.jpg', 'Israeli troops on a self-propelled gun at Rafah, 5 June 1967.', 'Government Press Office (Israel), D326-032, CC BY-SA 4.0.'),
+    jeeps: RECORD('02-sinai-recoilless-jeeps.jpg', 'Jeeps with recoilless guns in Sinai, 1967, from a photograph of the fighting between Israeli and Egyptian forces.', 'Unknown author, via Wikimedia Commons; public domain in Egypt and the US.'),
+    canal: RECORD('11-suez-canal-opposite-ismailia-june-1967.jpg', 'Israeli soldiers on the east bank of the Suez Canal, opposite Ismailia, 22 June 1967, after the ceasefire.', 'Photo: Moshe Milner, Government Press Office (Israel), D326-110, CC BY-SA 4.0.'),
+    jerusalem: RECORD('05-jerusalem-6-june-1967-carmi.jpg', 'Israeli soldiers in Jerusalem, 6 June 1967.', 'Photo: Boris Carmi / Meitar Collection / National Library of Israel, CC BY 4.0.'),
+    plaza: RECORD('15-western-wall-plaza-june-1967.jpg', 'The Western Wall, about June 1967: bulldozers clearing the ground in front of the Wall, where the houses of the Mughrabi Quarter stood until the night of 10–11 June.', 'Photo: Yehuda Greenberg, Pikiwiki Israel, CC BY 2.5.'),
+    wedding: RECORD('06-western-wall-wedding-9-june-1967.jpg', 'A paratrooper who fought in the Old City celebrates his wedding at the Western Wall, 9 June 1967.', 'Photo: Aharon Tzukerman, Government Press Office (Israel), CC BY-SA 4.0.'),
+    golanTanks: RECORD('03-golan-tanks-behind-trees.jpg', 'Israeli Sherman tanks gathering behind trees before the attack on the Golan Heights, June 1967.', 'Photo: Yosef Levita / IDF Spokesperson’s Unit, CC BY-SA 3.0.'),
+    golanMap: RECORD('10-map-golan-heights-es.png', 'A map of the battle for the Golan Heights, 9–10 June 1967 (in Spanish), with the three Israeli lines of attack.', 'Rowanwindwhistler, after Honza Havlíček, via Wikimedia Commons, CC0.'),
+    orderOfDay: RECORD('14-soldiers-order-of-the-day-end-of-war.jpg', 'Israeli soldiers listening to the order of the day at the end of the war, June 1967.', 'Government Press Office (Israel), D326-124, CC BY-SA 4.0.')
+  };
+  // radio "from the record" (audio/record/clips): draft translations from Hebrew, to be checked by a Hebrew speaker
+  const LIB = '../library.html?battle=sixday', RCREDIT = 'IDF Spokesperson’s Unit / IDF and Defense Establishment Archive, via Wikimedia Commons, CC BY-SA 3.0.',
+        RNOTE = 'Translated from Hebrew (draft; the 1967 radio is hard to hear).';
+  const RADIO = {
+    manor: { file: 'clips/danny-manor-1-3143.mp3', title: '“Four Ilyushins at Abu Suweir”', when: 'Israeli Air Force radio, 5 June 1967 (Operation Focus, part IV)', note: RNOTE, credit: RCREDIT, full: LIB,
+      lines: [[8, 'Who’s going to Abu Suweir?'], [9, 'Yes.'], [10, 'There are still four Ilyushins in square thirty-two.'], [21, 'At Abu Suweir.'], [25, 'Okay, four Ilyushins.'], [27, 'We’ll take care of them.']] },
+    lavonRadio: { file: 'clips/mordechai-lavon-1-2643.mp3', title: '“What is Israel Radio saying?”', when: 'Israeli Air Force radio, 5 June 1967 (Operation Focus, part III)', note: RNOTE + ' Cairo radio’s claims of Israeli losses were far above the real ones.', credit: RCREDIT, full: LIB,
+      lines: [[0, 'Alex, Lazar… do you have a radio?'], [7, 'Here’s the radio: the Egyptian report claims forty Zionist planes.'], [13, 'Forty of our planes?'], [15, 'No… they have two planes down.'], [21, 'What is Kol Israel [Israel Radio] reporting?'], [24, 'Kol Israel says… armoured forces…'], [28, 'What’s happening in Jerusalem?'], [31, 'In Jerusalem, right now, nothing.']] },
+    megiddo: { file: 'clips/megiddo-2-0223.mp3', title: '“Scramble another pair”', when: 'Israeli Air Force radio, 5 June 1967: the air battle over Megiddo', note: RNOTE, credit: RCREDIT, full: LIB,
+      lines: [[0, '…at Ramat David…'], [6, 'Okay, who do you have in the air now?'], [12, 'Scramble another pair.'], [15, 'Copy.'], [17, 'What’s happening with 6662 over there?'], [30, 'Okay, what’s after him?']] },
+    lavonSea: { file: 'clips/mordechai-lavon-3-3002.mp3', title: '“Where is the ship?”', when: 'Israeli Air Force radio, 5 June 1967: the search for a pilot down in the sea off Gaza', note: RNOTE + ' The pilot, Mordechai Lavon, was picked up by a United Nations boat.', credit: RCREDIT, full: LIB,
+      lines: [[0, 'His task now is the search at sea. This is Seven.'], [5, 'What are you saying?'], [9, 'We’ve sent him off to the search and rescue.'], [13, 'This is Seven.'], [16, 'Now they’ve spotted him, and he’s asking where the ship is that’s looking for him.'], [21, 'Where is the ship he’s looking for?'], [26, 'Yavne, this is Ben Aharon.']] }
+  };
+
+  Object.assign(S, {
+    titleCard: {
+      title: 'THE SIX-DAY WAR', date: '5–10 June 1967',
+      dateNote: 'After three weeks of crisis, Israel fights Egypt, Jordan and Syria. In six days the map of the Middle East changes.',
+      dateRef: 'UN records; Oren (2002); Mutawi (1987); Parker (1996); Israeli and Arab official histories',
+      place: 'Sinai and Gaza, Jerusalem and the West Bank, the Golan Heights',
+      sides: 'Israel  ·  Egypt, Jordan and Syria (with Iraqi forces in Jordan)'
+    },
+    world: { w: 2400, h: 1800 },
+    spokenTitles: true,   // each chapter's recording starts with its title (tools/caption-timings.py)
+    mainMap: 'region', terrain: 'terrain-region.jpg', geo: GEO,
+    altMaps: { airstrike: 'terrain-airstrike.jpg', abuageila: 'terrain-abuageila.jpg', jerusalem: 'terrain-jerusalem.jpg', golan: 'terrain-golan.jpg' },
+    altLabels: {
+      airstrike: [ { ...aCAIRO, y: aCAIRO.y + 34, text: 'Cairo' }, { ...aISMAILIA, x: aISMAILIA.x - 70, text: 'Ismailia', small: true }, { ...aSUEZ, x: aSUEZ.x - 50, y: aSUEZ.y + 26, text: 'Suez', small: true },
+        { ...aARISH, y: aARISH.y - 28, text: 'El Arish', small: true }, { ...aGAZA, y: aGAZA.y - 28, text: 'Gaza', small: true }, { ...aEILAT, x: aEILAT.x + 60, text: 'Eilat', small: true },
+        { ...aSHARM, x: aSHARM.x - 90, text: 'Sharm el-Sheikh', small: true }, { ...aTIRAN, x: aTIRAN.x + 70, y: aTIRAN.y - 20, text: 'Straits of Tiran', small: true },
+        { ...A(29.3, 33.4), text: 'SINAI' }, { ...A(30.8, 31.9), text: 'Suez Canal', small: true }, { ...A(31.4, 34.85), text: 'ISRAEL', small: true }, { ...A(29.0, 31.3), text: 'EGYPT', small: true } ],
+      abuageila: [ { ...uJUNC, y: uJUNC.y + 34, text: 'Abu-Ageila crossroads' }, { ...uKATEF, y: uKATEF.y - 34, text: 'Um Katef ridge' }, { ...uRUAFA, y: uRUAFA.y - 30, text: 'Ruafa dam', small: true },
+        { ...u181, y: u181.y - 28, text: 'Position 181', small: true }, { ...U(30.915, 34.17), text: 'dunes', small: true }, { ...U(30.84, 34.19), text: 'to Nitzana ▶', small: true },
+        { ...U(30.815, 34.04), text: '◀ to Jebel Libni', small: true } ],
+      jerusalem: [ { ...J(31.7775, 35.2325), text: 'Old City' }, { ...jAMMO, y: jAMMO.y - 30, text: 'Ammunition Hill', small: true }, { ...jSCOPUS, y: jSCOPUS.y - 30, text: 'Mount Scopus', small: true },
+        { ...jGOVHOUSE, y: jGOVHOUSE.y + 30, text: 'Government House', small: true }, { ...jAUGUSTA, y: jAUGUSTA.y + 30, text: 'Augusta Victoria', small: true },
+        { ...J(31.79, 35.198), text: 'West Jerusalem', small: true }, { ...J(31.79, 35.262), text: 'East Jerusalem', small: true }, { ...jSHUFAT, y: jSHUFAT.y - 26, text: 'Shu’fat Hill', small: true } ],
+      golan: [ { ...gKFARSZOLD, y: gKFARSZOLD.y + 30, text: 'Kfar Szold' }, { ...gFAHER, y: gFAHER.y - 34, text: 'Tel Faher' }, { ...gAZAZIAT, y: gAZAZIAT.y - 30, text: 'Tel Azaziat', small: true },
+        { ...gDAN, y: gDAN.y - 26, text: 'Kibbutz Dan', small: true }, { ...gBANIAS, y: gBANIAS.y - 26, text: 'Banias', small: true }, { ...gJUBATA, y: gJUBATA.y + 28, text: 'Jubata ez-Zeit', small: true },
+        { ...G(33.2, 35.715), text: 'GOLAN HEIGHTS (Syria)', small: true }, { ...G(33.198, 35.645), text: 'ISRAEL', small: true }, { ...G(33.193, 35.735), text: 'to Qala and Quneitra ▼', small: true } ]
+    },
+    duration: 26 * 14 + 30, commandDuration: 300, commandFocus: rJER,
+    battlefield: {
+      scale: { px: 37, label: '10 km' },
+      labels: [
+        { ...rCAIRO, y: rCAIRO.y + 34, text: 'Cairo' }, { ...rDAMASCUS, y: rDAMASCUS.y + 34, text: 'Damascus' }, { ...rAMMAN, y: rAMMAN.y + 32, text: 'Amman' },
+        { ...rTELAVIV, x: rTELAVIV.x - 60, text: 'Tel Aviv', small: true }, { ...rJER, x: rJER.x - 70, text: 'Jerusalem', small: true }, { ...R(30.1, 33.6), text: 'SINAI' },
+        { ...R(31.0, 34.85), text: 'ISRAEL', small: true }, { ...R(31.2, 36.6), text: 'JORDAN', small: true }, { ...R(33.0, 36.6), text: 'SYRIA', small: true },
+        { ...R(30.0, 31.5), text: 'EGYPT', small: true }, { ...R(32.4, 33.0), text: 'Mediterranean Sea', small: true }, { ...R(30.7, 32.2), text: 'Suez Canal', small: true },
+        { ...R(32.25, 35.25), text: 'West Bank', small: true }, { ...R(33.1, 35.98), text: 'Golan', small: true }, { ...rGAZA, x: rGAZA.x - 55, text: 'Gaza', small: true },
+        { ...R(29.52, 35.1), text: 'Eilat ▼ Straits of Tiran', small: true } ]
+    },
+    eventMarkers: true,
+    trenchLayers: [], trenchAlpha: 1, defaultTrench: null, introTrench: null,
+    globe: { target: { lon: 34.0, lat: 31.6 }, region: { lon: 34.0, lat: 31.0 }, pull: 4.6, fit: { lon0: 27, lon1: 41, lat0: 27.5, lat1: 36, margin: .03 }, lift: false, keepBorders: true, keepTowns: true, startLat: 25,
+      periodNote: 'The lines of 4 June 1967',
+      paintings: [ { file: 'terrain-airstrike.jpg', lat0: 27.6958, lat1: 31.9042, lon0: 30.4532, lon1: 36.8868 }, { file: 'terrain-region.jpg', lat0: 29.4067, lat1: 33.8033, lon0: 30.5502, lon1: 37.3998 } ],
+      closePull: 90, dive2Secs: 6,
+      stop2: { center: { lon: 33.97, lat: 31.6 }, pull: 12, fit: { lon0: 30.55, lon1: 37.4, lat0: 29.41, lat1: 33.8, margin: .02 } /* the region map */, todayNote: 'Today’s towns and cities', thenNote: 'The same places on 4 June 1967' },
+      labels: [ { lon: 35.2137, lat: 31.7683, text: 'JERUSALEM', size: .8, pin: true, early: true } ] },
+    establishing: [],
+    imageBase: 'images/', audioBase: 'audio/',
+    voices: [
+      { id: 'clear', name: 'Narrator 1 · clear', speaker: 25 }, { id: 'light', name: 'Narrator 2 · light', speaker: 60 },
+      { id: 'bright', name: 'Narrator 3 · bright', speaker: 0 }, { id: 'deep', name: 'Narrator 4 · deep', speaker: 400 },
+      { id: 'warm', name: 'Narrator 5 · warm', speaker: 7 }, { id: 'computer', name: 'Computer · calm', speaker: 500 }
+    ],
+    sheets: ['idf-infantry', 'idf-infantry-fire', 'idf-para', 'idf-para-attack', 'idf-centurion', 'idf-centurion-fire', 'idf-sherman', 'idf-sherman-fire', 'idf-halftrack', 'idf-halftrack-fire',
+             'idf-guns-fire', 'idf-mirage', 'idf-supermystere', 'egy-infantry', 'egy-infantry-fire', 'egy-trench-fire', 'egy-t55', 'egy-t55-fire', 'egy-t34-dugin', 'egy-t34-fire', 'egy-guns-fire',
+             'egy-btr152', 'egy-mig21', 'egy-airfield', 'jor-infantry', 'jor-infantry-fire', 'jor-trench-fire', 'jor-patton', 'jor-patton-fire', 'jor-hunter',
+             'syr-infantry', 'syr-trench-fire', 'syr-bunker-fire', 'syr-t55', 'syr-t55-fire', 'syr-t34-dugin', 'syr-panzer4-dugin'],
+    attackSheets: { 'idf-infantry': 'idf-infantry-fire', 'idf-para': 'idf-para-attack', 'idf-centurion': 'idf-centurion-fire', 'idf-sherman': 'idf-sherman-fire', 'idf-halftrack': 'idf-halftrack-fire',
+                    'egy-infantry': 'egy-infantry-fire', 'egy-t55': 'egy-t55-fire', 'jor-infantry': 'jor-infantry-fire', 'jor-patton': 'jor-patton-fire', 'syr-infantry': 'syr-trench-fire', 'syr-t55': 'syr-t55-fire' },
+    sheetBy: { allied: { infantry: 'idf-infantry', archers: 'idf-para', cavalry: 'idf-centurion' }, french: { infantry: 'egy-infantry', archers: 'jor-infantry', cavalry: 'egy-t55' } },
+    fallen: { soldier: 'fallen-egy', bySide: { allied: 'fallen-idf', french: 'fallen-egy' }, extra: ['fallen-jor', 'fallen-syr'] },
+    sideArt: { allied: { cloth: '#6b6a4a', cloth2: '#4f5038', pennant: '#c0392b' }, french: { cloth: '#8a7a55', cloth2: '#5e5a44', pennant: '#2e5aa8' } },
+    legend: [ { label: 'Israel', short: 'Israel', color: '#c0392b', kind: 'dot' }, { label: 'Egypt, Jordan and Syria', short: 'Egypt, Jordan, Syria', color: '#2e5aa8', kind: 'dot' } ],
+    ai: { plans: {} }, commandLines: {},
+    debrief: { allied: { victory: { title: 'After six days', text: '' }, defeat: { title: 'After six days', text: '' }, stalemate: { title: 'After six days', text: '' } },
+               french: { victory: { title: 'After six days', text: '' }, defeat: { title: 'After six days', text: '' }, stalemate: { title: 'After six days', text: '' } } },
+    sources: [
+      { title: 'United Nations records', note: 'Security Council resolutions 233–236 and 242 (1967); the Secretary-General’s reports on UNEF (A/6730 and addenda); UNTSO reports. un.org' },
+      { title: 'Michael B. Oren, Six Days of War', note: 'Oxford University Press, 2002: the crisis, the fronts and the diplomacy, from Israeli, Arab, American and Soviet archives.' },
+      { title: 'Samir A. Mutawi, Jordan in the 1967 War', note: 'Cambridge University Press, 1987: the Jordanian front from Jordanian sources and interviews.' },
+      { title: 'Richard B. Parker (ed.), The Six-Day War: A Retrospective', note: 'University Press of Florida, 1996: Egyptian, Israeli, Jordanian, Soviet and American participants.' },
+      { title: 'Kenneth M. Pollack, Arabs at War', note: 'University of Nebraska Press, 2002: the Egyptian, Jordanian and Syrian armies.' },
+      { title: 'Trevor N. Dupuy, Elusive Victory', note: 'Harper & Row, 1978: the battles, with both sides’ figures.' },
+      { title: 'Abdel Moneim Riad, Mohamed Fawzi and others', note: 'Egyptian memoirs and studies of the war (in Arabic), as cited in the research notes.' },
+      { title: 'US Navy Court of Inquiry, USS Liberty', note: 'June 1967; the position of the attack on the map is the court’s.' },
+      { title: 'Natural Earth', note: 'The borders and lines on the maps (public domain), simplified.' },
+      { title: 'This page', note: 'The research, the plan, the narration script, and ChatGPT’s reviews, are in the sixday/research and sixday/plan folders.' }
+    ]
+  });
+  S.confidence = S.confidence || {
+    established: { label: 'Established', color: '#5fcf8a', desc: 'Strongly supported by the evidence; not a claim that every government agrees.' },
+    israeli: { label: 'Israeli account', color: '#f0b46a', desc: 'A specifically Israeli account or interpretation.' },
+    arab: { label: 'Arab account', color: '#e6a0c8', desc: 'A specifically Egyptian, Jordanian, Syrian, Iraqi or Palestinian account (the line says whose); not a claim that the speaker represents everyone.' },
+    disputed: { label: 'Disputed', color: '#ff9a86', desc: 'Identifiable accounts disagree: the line says who says what.' },
+    estimate: { label: 'Estimate', color: '#e9c77a', desc: 'An uncertain number, with its date, place and what it counts.' },
+    reconstruction: { label: 'Reconstruction', color: '#c8a2ff', desc: 'Our own placing on the map: unit positions and moves are drawn to follow the narration.' },
+    editorial: { label: 'About this page', color: '#9aa6ab', desc: 'How this page works: not a claim about the past.' } };
+  S.sides = S.sides || {
+    allied: { name: 'Israel', short: 'Israel', army: 'The Israel Defence Forces (IDF), mostly reservists', color: '#c0392b', light: '#ffd6d0' },
+    french: { name: 'Egypt, Jordan and Syria', short: 'Egypt, Jordan, Syria', army: 'The armies of Egypt, Jordan and Syria, with Iraqi forces in Jordan', color: '#2e5aa8', light: '#d0dcff' } };
+  S.sides.allied.rally = rTELAVIV; S.sides.french.rally = rCAIRO;
+
+  // the Library of sources page (library.html?battle=sixday): the radio recordings in full, and link cards
+  const L = (o) => Object.assign({ linkOnly: true, link: '', rights: 'Still in copyright: link only' }, o);
+  const REC = (file, title, about) => ({ title, author: 'IDF Spokesperson’s Unit / IDF and Defense Establishment Archive (IDFA)', year: '1967 (released 2017)', kind: 'radio recording (Hebrew)',
+    about, citedIn: 'chapters 6 and 7', rights: 'CC BY-SA 3.0 (VRT ticket 2019122710000829): kept on this site', link: 'audio/record/' + file, linkLabel: 'Download the recording (MP3)', audio: 'audio/record/' + file });
+  S.library = [
+    REC('first-wave-radio-1967.mp3', 'Operation Focus: the first wave of attack', 'Israeli Air Force radio from the first strikes on Egypt’s airfields, 5 June 1967 (14 minutes). A transcript and draft translation are in audio/record/transcripts.'),
+    REC('megiddo-radio-1967.mp3', 'Operation Focus: the battle over the Megiddo airstrip', 'Israeli Air Force radio from the air battle over northern Israel, 5 June 1967 (7 minutes).'),
+    REC('focus-iii-mordechai-lavon-radio-1967.mp3', 'Operation Focus III: Mordechai Lavon', 'The radio on the day pilot Mordechai Lavon came down in the sea off Gaza and was picked up by a United Nations boat (44 minutes).'),
+    REC('focus-iv-danny-manor-radio-1967.mp3', 'Operation Focus IV: Danny Manor', 'The radio on the day pilot Danny Manor was shot down over Abu Suweir and taken prisoner; he came home in a prisoner exchange after the war (1 hour 2 minutes).'),
+    { title: 'Security Council resolution 242', author: 'United Nations Security Council', year: '1967', kind: 'UN resolution', about: 'Passed on 22 November 1967: withdrawal of Israeli armed forces “from territories occupied in the recent conflict”, and the right of every state in the area to live in peace within secure and recognised boundaries.', citedIn: 'chapter 26', rights: 'UN document: quoted, linked', link: 'https://digitallibrary.un.org/record/90717', linkLabel: 'UN Digital Library' },
+    { title: 'Report of the Secretary-General on the withdrawal of UNEF', author: 'U Thant, United Nations', year: '1967', kind: 'UN report', about: 'Why the UN Emergency Force left Sinai and Gaza in May 1967 (A/6730 and addenda).', citedIn: 'chapter 2', rights: 'UN document: quoted, linked', link: 'https://digitallibrary.un.org/', linkLabel: 'UN Digital Library' },
+    L({ title: 'Six Days of War: June 1967 and the Making of the Modern Middle East', author: 'Michael B. Oren', year: '2002', kind: 'book', about: 'A day-by-day history from archives on all sides.', citedIn: 'throughout' }),
+    L({ title: 'Jordan in the 1967 War', author: 'Samir A. Mutawi', year: '1987', kind: 'book', about: 'The Jordanian front from Jordanian records and interviews with commanders.', citedIn: 'chapters 5, 16–21' }),
+    L({ title: 'The Six-Day War: A Retrospective', author: 'Richard B. Parker (ed.)', year: '1996', kind: 'book (conference)', about: 'Egyptian, Israeli, Jordanian, Soviet and American participants talk about the crisis and the war.', citedIn: 'chapters 1–5' }),
+    L({ title: 'Arabs at War: Military Effectiveness, 1948–1991', author: 'Kenneth M. Pollack', year: '2002', kind: 'book', about: 'The Egyptian, Jordanian and Syrian armies in 1967.', citedIn: 'chapters 8–15, 23–25' }),
+    { title: 'USS Liberty: Court of Inquiry record', author: 'US Navy', year: '1967', kind: 'official record', about: 'The court’s findings and the ship’s position at the time of the attack.', citedIn: 'chapter 22', rights: 'US government work: public domain', link: 'https://www.history.navy.mil/', linkLabel: 'Naval History and Heritage Command' }
+  ];
+
+  // the armies panel
+  S.units = [
+    { side: 'allied', type: 'cavalry', sheet: 'idf-centurion', portrait: false, name: 'Israeli tanks', desc: 'British Centurions, American Pattons, and older Shermans rebuilt in Israel.', tag: 'established',
+      lines: [ { text: 'Israel mobilised its reservists in May. Most of its army in June 1967 were reservists.', tag: 'established' } ] },
+    { side: 'allied', type: 'infantry', sheet: 'idf-infantry', portrait: false, name: 'Israeli infantry', desc: 'Reservists and conscripts; the Golani Brigade on the Golan Heights.', tag: 'established', lines: [] },
+    { side: 'allied', type: 'archers', sheet: 'idf-para', portrait: false, name: 'Israeli paratroopers', desc: 'Gur’s 55th Brigade in Jerusalem; Danny Matt’s paratroopers at Abu-Ageila.', tag: 'established', lines: [] },
+    { side: 'allied', type: 'cavalry', sheet: 'idf-mirage', portrait: false, name: 'Israeli Air Force', desc: 'French-built Mirages, Super Mystères, Mystères and Ouragans.', tag: 'established',
+      lines: [ { text: 'On the morning of 5 June almost every Israeli combat jet was sent against Egypt’s airfields; a handful stayed behind to guard Israel.', tag: 'established' } ] },
+    { side: 'french', type: 'infantry', sheet: 'egy-infantry', portrait: false, name: 'Egyptian Army', desc: 'Seven divisions in Sinai by early June, with Soviet tanks and guns.', tag: 'established',
+      lines: [ { text: 'Many Egyptian units had only just arrived in Sinai; tens of thousands of troops were still in Yemen.', tag: 'established' } ] },
+    { side: 'french', type: 'cavalry', sheet: 'egy-mig21', portrait: false, name: 'Egyptian Air Force', desc: 'Soviet MiG-21s, MiG-17s, Su-7s and Il-28 and Tu-16 bombers.', tag: 'established', lines: [] },
+    { side: 'french', type: 'archers', sheet: 'jor-infantry', portrait: false, name: 'Jordanian Arab Army', desc: 'Infantry brigades on the West Bank and in Jerusalem, with M48 Patton tanks.', tag: 'established',
+      lines: [ { text: 'Under the pact of 30 May, an Egyptian general, Abdel Moneim Riad, took command of the Jordanian front.', tag: 'established' } ] },
+    { side: 'french', type: 'infantry', sheet: 'syr-infantry', portrait: false, name: 'Syrian Army', desc: 'Fortified positions on the Golan Heights: bunkers, trenches and dug-in tanks.', tag: 'established', lines: [] }
+  ];
+
+  // airfields, ships and the like: hidden until a chapter shows them
+  const O = (o) => Object.assign({ hidden: true }, o);
+  const AF = (id, p, row, label) => O({ id, map: 'airstrike', sheet: 'egy-airfield', x: p.x, y: p.y, h: 44, row, col: 0, label, labelColor: '#ffffff' });
+  S.mapObjects = [
+    AF('afCairoW', aCAIROW, 0, 'Cairo West'), AF('afInshas', aINSHAS, 1, 'Inshas'), AF('afAlmaza', aALMAZA, 2, 'Almaza'), AF('afBilbeis', aBILBEIS, 3, 'Bilbeis'), AF('afBeniSuef', aBENISUEF, 0, 'Beni Suef'),
+    AF('afAbuSuweir', aABUSUWEIR, 1, 'Abu Suweir'), AF('afFayid', aFAYID, 2, 'Fayid'), AF('afKabrit', aKABRIT, 3, 'Kabrit'), AF('afArish', aARISHAF, 0, 'El Arish'),
+    AF('afLibni', aLIBNIAF, 1, 'Jebel Libni'), AF('afGifgafa', aGIFGAFA, 2, 'Bir Gifgafa'), AF('afThamada', aTHAMADA, 3, 'Bir Thamada')
+  ];
+  const AFIDS = ['afCairoW', 'afInshas', 'afAlmaza', 'afBilbeis', 'afBeniSuef', 'afAbuSuweir', 'afFayid', 'afKabrit', 'afArish', 'afLibni', 'afGifgafa', 'afThamada'];
+
+  const F = (o) => Object.assign({ power: 1, confidence: 'reconstruction' }, o);
+  const tank = (o) => F(Object.assign({ type: 'cavalry', cols: 3, rows: 1, h: 34 }, o));
+  S.formations = [
+    // ---- the region map: the armies as tokens
+    F({ id: 'rIdfS', map: 'region', side: 'allied', name: 'Israel’s Southern Command', division: 'Tal, Yoffe and Sharon', type: 'cavalry', sheet: 'idf-centurion', cols: 3, rows: 1, h: 30, x: R(31.05, 34.5).x, y: R(31.05, 34.5).y, facing: Wd, note: 'Three divisions on the Sinai border: Tal in the north, Yoffe in the middle, Sharon facing Abu-Ageila.' }),
+    F({ id: 'rIdfC', map: 'region', side: 'allied', name: 'Israel’s Central Command', division: 'Narkiss', type: 'infantry', cols: 2, rows: 1, h: 26, x: R(31.85, 34.95).x, y: R(31.85, 34.95).y, facing: E, hidden: true }),
+    F({ id: 'rIdfN', map: 'region', side: 'allied', name: 'Israel’s Northern Command', division: 'Elazar', type: 'cavalry', sheet: 'idf-sherman', cols: 2, rows: 1, h: 30, x: R(32.95, 35.45).x, y: R(32.95, 35.45).y, facing: E, hidden: true }),
+    F({ id: 'rEgy', map: 'region', side: 'french', name: 'The Egyptian Army in Sinai', division: 'Seven divisions', type: 'infantry', sheet: 'egy-infantry', cols: 4, rows: 2, h: 26, x: R(30.7, 33.4).x, y: R(30.7, 33.4).y, facing: E, note: 'Egypt moved its army into Sinai from 14 May.' }),
+    F({ id: 'rEgyArm', map: 'region', side: 'french', name: 'Egyptian armour', division: '4th Armoured Division', type: 'cavalry', sheet: 'egy-t55', cols: 3, rows: 1, h: 30, x: R(30.35, 33.15).x, y: R(30.35, 33.15).y, facing: E }),
+    F({ id: 'rJor', map: 'region', side: 'french', name: 'The Jordanian Arab Army', division: 'West Bank', type: 'archers', sheet: 'jor-infantry', fallen: 'fallen-jor', cols: 3, rows: 1, h: 26, x: R(32.1, 35.3).x, y: R(32.1, 35.3).y, facing: Wd, hidden: true }),
+    F({ id: 'rJorArm', map: 'region', side: 'french', name: 'Jordanian armour', division: '40th and 60th Armoured Brigades', type: 'cavalry', sheet: 'jor-patton', fallen: 'fallen-jor', cols: 2, rows: 1, h: 30, x: R(31.9, 35.5).x, y: R(31.9, 35.5).y, facing: Wd, hidden: true }),
+    F({ id: 'rSyr', map: 'region', side: 'french', name: 'The Syrian Army on the Golan', division: 'Golan front', type: 'infantry', sheet: 'syr-infantry', fallen: 'fallen-syr', cols: 3, rows: 1, h: 26, x: R(33.05, 35.85).x, y: R(33.05, 35.85).y, facing: Wd, hidden: true }),
+    // ---- the air-strike map: the jets, the Sinai divisions
+    F({ id: 'aJets1', map: 'airstrike', side: 'allied', name: 'Israeli jets (first wave)', division: 'Israeli Air Force', type: 'cavalry', sheet: 'idf-mirage', cols: 3, rows: 1, h: 40, x: aSEA.x + 300, y: aSEA.y - 80, facing: Wd, hidden: true, noFallen: true,
+       note: 'Most of the first wave flew low over the sea, under Egypt’s radar, and turned in from the north and west.' }),
+    F({ id: 'aJets2', map: 'airstrike', side: 'allied', name: 'Israeli jets (Sinai airfields)', division: 'Israeli Air Force', type: 'cavalry', sheet: 'idf-supermystere', cols: 2, rows: 1, h: 40, x: aNITZANA.x + 80, y: aNITZANA.y, facing: Wd, hidden: true, noFallen: true }),
+    F({ id: 'aMig', map: 'airstrike', side: 'french', name: 'Egyptian MiG-21s', division: 'Egyptian Air Force', type: 'cavalry', sheet: 'egy-mig21', cols: 2, rows: 1, h: 38, x: aABUSUWEIR.x + 40, y: aABUSUWEIR.y - 60, facing: E, hidden: true, noFallen: true }),
+    tank({ id: 'aTal', map: 'airstrike', side: 'allied', name: 'Tal’s division', division: 'Northern Sinai', sheet: 'idf-centurion', x: A(31.33, 34.42).x, y: A(31.33, 34.42).y, facing: Wd, note: 'Brig.-Gen. Israel Tal’s division: Pattons and Centurions, with paratroopers. Through Khan Yunis and Rafah, then the coast road to El Arish.' }),
+    tank({ id: 'aYoffe', map: 'airstrike', side: 'allied', name: 'Yoffe’s division', division: 'Central Sinai', sheet: 'idf-centurion', cols: 2, x: A(31.0, 34.38).x, y: A(31.0, 34.38).y, facing: Wd, note: 'Brig.-Gen. Avraham Yoffe’s reserve division crossed the dunes between Tal and Sharon.' }),
+    tank({ id: 'aSharon', map: 'airstrike', side: 'allied', name: 'Sharon’s division', division: 'Abu-Ageila', sheet: 'idf-sherman', cols: 2, x: aNITZANA.x + 30, y: aNITZANA.y + 30, facing: Wd }),
+    F({ id: 'aEgy7', map: 'airstrike', side: 'french', name: 'Egyptian 7th Division', division: 'Rafah', type: 'infantry', sheet: 'egy-infantry', cols: 3, rows: 2, x: aRAFAH.x - 40, y: aRAFAH.y + 30, facing: E }),
+    F({ id: 'aEgyPal', map: 'airstrike', side: 'french', name: 'Gaza garrison', division: '20th Palestinian Division', type: 'infantry', sheet: 'egy-infantry', cols: 2, rows: 1, x: aGAZA.x - 30, y: aGAZA.y + 20, facing: E,
+       note: 'The Palestinian Liberation Army’s 20th Division, under Egyptian command, held the Gaza Strip.' }),
+    F({ id: 'aEgy2', map: 'airstrike', side: 'french', name: 'Egyptian 2nd Division', division: 'Abu-Ageila', type: 'infantry', sheet: 'egy-trench-fire', cols: 3, rows: 1, h: 30, x: aABU.x - 20, y: aABU.y + 10, facing: E }),
+    F({ id: 'aEgy3', map: 'airstrike', side: 'french', name: 'Egyptian 3rd Division', division: 'Jebel Libni', type: 'infantry', sheet: 'egy-infantry', cols: 3, rows: 1, x: aLIBNI.x, y: aLIBNI.y, facing: E }),
+    tank({ id: 'aEgy4', map: 'airstrike', side: 'french', name: 'Egyptian 4th Armoured Division', division: 'Bir Gifgafa', sheet: 'egy-t55', x: aGIFGAFA.x + 40, y: aGIFGAFA.y + 40, facing: E }),
+    tank({ id: 'aShazly', map: 'airstrike', side: 'french', name: 'Shazly Force', division: 'Kuntilla', sheet: 'egy-t55', cols: 2, x: aKUNTILLA.x - 90, y: aKUNTILLA.y + 30, facing: E,
+       note: 'A mixed force under Maj.-Gen. Saad el-Din el-Shazly, placed in central Sinai to strike toward the Negev.' }),
+    F({ id: 'aSharm', map: 'airstrike', side: 'french', name: 'Sharm el-Sheikh garrison', division: 'Straits of Tiran', type: 'infantry', sheet: 'egy-trench-fire', cols: 2, rows: 1, h: 28, x: aNASRANI.x - 20, y: aNASRANI.y, facing: E }),
+    // ---- Abu-Ageila / Um Katef
+    F({ id: 'uTrench', map: 'abuageila', side: 'french', name: 'Egyptian 12th Brigade, in the trenches', division: '2nd Infantry Division', type: 'infantry', sheet: 'egy-trench-fire', cols: 5, rows: 2, h: 30, x: uKATEF.x, y: uKATEF.y, facing: E,
+       note: 'Three lines of trenches with concrete bunkers, minefields and barbed wire, all facing east.' }),
+    F({ id: 'uDugin', map: 'abuageila', side: 'french', name: 'Egyptian dug-in tanks', division: '2nd Infantry Division', type: 'cavalry', sheet: 'egy-t34-dugin', cols: 3, rows: 1, h: 32, x: uTANKS.x, y: uTANKS.y, facing: E }),
+    F({ id: 'u181', map: 'abuageila', side: 'french', name: 'Position 181', division: '2nd Infantry Division', type: 'cavalry', sheet: 'egy-btr152', cols: 2, rows: 1, h: 30, x: u181.x, y: u181.y, facing: E }),
+    F({ id: 'uGuns', map: 'abuageila', side: 'french', name: 'Egyptian artillery', division: 'Artillery brigade', type: 'cavalry', sheet: 'egy-guns-fire', cols: 3, rows: 1, h: 32, power: .4, x: uGUNS.x, y: uGUNS.y, facing: E }),
+    tank({ id: 'uEgyT55', map: 'abuageila', side: 'french', name: 'Egyptian tank regiment', division: '2nd Infantry Division', sheet: 'egy-t55', cols: 2, x: uJUNC.x + 40, y: uJUNC.y - 30, facing: E }),
+    tank({ id: 'uZippori', map: 'abuageila', side: 'allied', name: 'Zippori’s Shermans', division: 'Sharon’s division', sheet: 'idf-sherman', x: uEAST.x, y: uEAST.y, facing: Wd }),
+    tank({ id: 'uNir', map: 'abuageila', side: 'allied', name: 'Nir’s Centurions', division: 'Sharon’s division', sheet: 'idf-centurion', x: uDUNES.x + 80, y: uDUNES.y - 40, facing: Wd, hidden: true }),
+    F({ id: 'uAdam', map: 'abuageila', side: 'allied', name: 'Kuti Adam’s infantry', division: 'Infantry brigade (with reservists)', type: 'infantry', sheet: 'idf-infantry', cols: 5, rows: 2, x: uDUNES.x + 120, y: uDUNES.y, facing: Wd, hidden: true }),
+    F({ id: 'uMatt', map: 'abuageila', side: 'allied', name: 'Danny Matt’s paratroopers', division: 'Paratroopers (by helicopter)', type: 'archers', sheet: 'idf-para', cols: 3, rows: 2, x: uLZ.x, y: uLZ.y, facing: So, hidden: true }),
+    F({ id: 'uArty', map: 'abuageila', side: 'allied', name: 'Israeli artillery', division: 'Six artillery battalions', type: 'cavalry', sheet: 'idf-guns-fire', cols: 3, rows: 1, h: 32, power: .4, x: uEAST.x + 60, y: uEAST.y - 120, facing: Wd }),
+    // ---- Jerusalem
+    F({ id: 'jJorN', map: 'jerusalem', side: 'french', name: 'Jordanian defenders of Ammunition Hill', division: 'King Hussein (2nd) Battalion', type: 'archers', sheet: 'jor-trench-fire', fallen: 'fallen-jor', cols: 3, rows: 2, h: 30, x: jAMMO.x, y: jAMMO.y, facing: Wd,
+       note: 'Major Mansour Kraishan’s battalion held the Police School and the trenches and bunkers of Ammunition Hill.' }),
+    F({ id: 'jJorOld', map: 'jerusalem', side: 'french', name: 'Jordanian troops at the walls', division: 'Ata Ali’s brigade', type: 'archers', sheet: 'jor-infantry', fallen: 'fallen-jor', cols: 3, rows: 1, x: jDAMGATE.x + 30, y: jDAMGATE.y + 30, facing: Wd }),
+    F({ id: 'jJorS', map: 'jerusalem', side: 'french', name: 'Jordanian troops at Government House', division: 'Southern sector', type: 'archers', sheet: 'jor-infantry', fallen: 'fallen-jor', cols: 3, rows: 1, x: jGOVHOUSE.x + 40, y: jGOVHOUSE.y + 20, facing: Wd, hidden: true }),
+    F({ id: 'jJorAV', map: 'jerusalem', side: 'french', name: 'Jordanian troops on Augusta Victoria', division: 'East of the city', type: 'archers', sheet: 'jor-infantry', fallen: 'fallen-jor', cols: 2, rows: 1, x: jAUGUSTA.x, y: jAUGUSTA.y, facing: Wd }),
+    F({ id: 'jJbde', map: 'jerusalem', side: 'allied', name: 'Jerusalem Brigade', division: 'Amitai (reservists)', type: 'infantry', sheet: 'idf-infantry', cols: 3, rows: 2, x: jSOUTHW.x, y: jSOUTHW.y, facing: E }),
+    tank({ id: 'jJShermans', map: 'jerusalem', side: 'allied', name: 'Jerusalem Brigade tanks', division: 'Six Shermans', sheet: 'idf-sherman', cols: 2, x: jSOUTHW.x - 60, y: jSOUTHW.y + 40, facing: E }),
+    F({ id: 'jParas', map: 'jerusalem', side: 'allied', name: 'Gur’s paratroopers', division: '55th Paratroop Brigade', type: 'archers', sheet: 'idf-para', cols: 4, rows: 2, x: jWESTJ.x, y: jWESTJ.y, facing: E, hidden: true }),
+    tank({ id: 'jHT', map: 'jerusalem', side: 'allied', name: 'Paratroopers’ half-tracks', division: '55th Paratroop Brigade', sheet: 'idf-halftrack', cols: 2, x: jWESTJ.x - 40, y: jWESTJ.y + 30, facing: E, hidden: true }),
+    // ---- the Golan
+    F({ id: 'gFaher', map: 'golan', side: 'french', name: 'Syrian company at Tel Faher', division: 'Captain Ahmad Khalili (Israeli sources)', type: 'infantry', sheet: 'syr-bunker-fire', fallen: 'fallen-syr', cols: 3, rows: 2, h: 30, x: gFAHER.x, y: gFAHER.y, facing: Wd,
+       note: 'A hilltop fortress of trenches, barbed wire and bunkers.' }),
+    F({ id: 'gAzaziat', map: 'golan', side: 'french', name: 'Syrian position at Tel Azaziat', division: 'Above Kibbutz Dan', type: 'infantry', sheet: 'syr-trench-fire', fallen: 'fallen-syr', cols: 3, rows: 1, h: 28, x: gAZAZIAT.x, y: gAZAZIAT.y, facing: Wd }),
+    F({ id: 'gDugin', map: 'golan', side: 'french', name: 'Syrian dug-in tanks', division: 'Golan defences', type: 'cavalry', sheet: 'syr-panzer4-dugin', fallen: 'fallen-syr', cols: 2, rows: 1, h: 32, x: gBURJ.x, y: gBURJ.y - 40, facing: Wd }),
+    F({ id: 'gT34', map: 'golan', side: 'french', name: 'Syrian dug-in T-34s', division: 'Golan defences', type: 'cavalry', sheet: 'syr-t34-dugin', fallen: 'fallen-syr', cols: 2, rows: 1, h: 32, x: gZAURA.x, y: gZAURA.y, facing: Wd }),
+    tank({ id: 'gMendler', map: 'golan', side: 'allied', name: 'Mendler’s 8th Armoured Brigade', division: 'Northern Command', sheet: 'idf-sherman', x: gKFARSZOLD.x - 40, y: gKFARSZOLD.y + 60, facing: N }),
+    F({ id: 'gGolani', map: 'golan', side: 'allied', name: 'Golani Brigade', division: 'Efrat', type: 'infantry', sheet: 'idf-infantry', cols: 4, rows: 2, x: gKFARSZOLD.x - 120, y: gKFARSZOLD.y + 80, facing: N, hidden: true }),
+    tank({ id: 'gHT', map: 'golan', side: 'allied', name: 'Golani half-tracks', division: 'Klein’s battalion', sheet: 'idf-halftrack', cols: 2, x: gKFARSZOLD.x - 80, y: gKFARSZOLD.y + 110, facing: N, hidden: true })
+  ];
+  S.formations.forEach(f => { if (f.hidden) f.offmap = true; });   // not on the map at all until a chapter brings it in (not drawn faded as 'concealed')
+  // the three battle maps are only 9-16 km across: their figures are drawn larger, so they read at the whole-map view
+  S.formations.forEach(f => { if (['abuageila', 'jerusalem', 'golan'].includes(f.map)) f.h = Math.round((f.h || (f.type === 'cavalry' ? 30 : 26)) * 1.8); });
+  const LD = (o) => Object.assign({ hidden: true, noAttack: true }, o);
+  S.leaders = [
+    LD({ id: 'nasser', name: 'Nasser', side: 'french', map: 'region', x: rCAIRO.x + 40, y: rCAIRO.y - 40, facing: E }),
+    LD({ id: 'amer', name: 'Field Marshal Amer', side: 'french', map: 'region', x: rCAIRO.x + 110, y: rCAIRO.y - 10, facing: E }),
+    LD({ id: 'hussein', name: 'King Hussein', side: 'french', map: 'region', x: rAMMAN.x + 40, y: rAMMAN.y - 30, facing: Wd }),
+    LD({ id: 'riad', name: 'Gen. Riad', side: 'french', map: 'region', x: rAMMAN.x - 30, y: rAMMAN.y + 40, facing: Wd }),
+    LD({ id: 'assad', name: 'Hafez al-Assad', side: 'french', map: 'region', x: rDAMASCUS.x - 30, y: rDAMASCUS.y + 40, facing: Wd }),
+    LD({ id: 'eshkol', name: 'Eshkol', side: 'allied', map: 'region', x: rTELAVIV.x + 40, y: rTELAVIV.y - 40, facing: E }),
+    LD({ id: 'rabin', name: 'Rabin', side: 'allied', map: 'region', x: rTELAVIV.x + 20, y: rTELAVIV.y + 40, facing: E }),
+    LD({ id: 'dayan', name: 'Dayan', side: 'allied', map: 'region', x: rTELAVIV.x + 90, y: rTELAVIV.y + 10, facing: E }),
+    LD({ id: 'tal', name: 'Tal', side: 'allied', map: 'airstrike', x: A(31.36, 34.48).x, y: A(31.36, 34.48).y, facing: Wd }),
+    LD({ id: 'shazly', name: 'Shazly', side: 'french', map: 'airstrike', x: aKUNTILLA.x - 160, y: aKUNTILLA.y + 50, facing: E }),
+    LD({ id: 'sharon', name: 'Sharon', side: 'allied', map: 'abuageila', x: uEAST.x + 40, y: uEAST.y + 80, facing: Wd }),
+    LD({ id: 'gur', name: 'Motta Gur', side: 'allied', map: 'jerusalem', x: jWESTJ.x - 60, y: jWESTJ.y - 30, facing: E }),
+    LD({ id: 'elazar', name: 'Elazar', side: 'allied', map: 'golan', x: gKFARSZOLD.x - 200, y: gKFARSZOLD.y + 40, facing: N })
+  ];
+
+  const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; e.t = i * 14; });
+  const set = (i, o) => Object.assign(EV[i], o);
+  const air = (o) => Object.assign({ altMap: 'airstrike', zoom: 'fit' }, o), jer = (o) => Object.assign({ altMap: 'jerusalem' }, o),
+        abu = (o) => Object.assign({ altMap: 'abuageila' }, o), gol = (o) => Object.assign({ altMap: 'golan' }, o);
+  const hitAll = (ids, from, step) => ids.map((id, k) => ({ obj: id, anim: { row: S.mapObjects.find(o => o.id === id).row, mode: 'once', fps: 1.2 }, delay: from + k * step }));
+  const showAF = AFIDS.map(id => ({ obj: id, visible: true }));
+
+  // Part 1: the crisis (the region map)
+  set(0, { zoom: 'fit', fronts: ['armistice'], markers: [ { ...rDAMASCUS, label: 'Soviet warning: Israeli troops massing (none were found)' }, { ...rCAIRO, label: 'Cairo' } ], orders: [
+    { leader: 'nasser', visible: true }, { id: 'rEgy', to: R(30.85, 33.75), speed: 20, state: 'move', delay: 4 } ] });
+  set(1, { zoom: 'fit', fronts: ['armistice'], markers: [ { ...R(31.2, 34.3), label: 'UNEF along the border: withdrawn 19 May', side: 'french' } ], orders: [
+    { id: 'rEgy', to: R(30.95, 34.0), speed: 16, state: 'move' }, { id: 'rEgyArm', to: R(30.55, 33.5), speed: 16, state: 'move', delay: 3 }, { leader: 'amer', visible: true } ] });
+  set(2, { zoom: 'fit', fronts: ['armistice'], markers: [ { ...rEILAT, label: 'Eilat: the straits closed to Israeli shipping, 22–23 May', side: 'allied' } ], orders: [ { leader: 'eshkol', visible: true } ] });
+  set(3, { zoom: 'fit', fronts: ['armistice'], media: IMG.field, markers: [ { ...rTELAVIV, label: 'Israel mobilises its reserves' } ], orders: [
+    { leader: 'rabin', visible: true }, { id: 'rIdfC', visible: true }, { id: 'rIdfN', visible: true }, { id: 'rIdfS', to: R(31.0, 34.42), speed: 12, state: 'move' } ] });
+  set(4, { zoom: 'fit', fronts: ['armistice'], media: IMG.pact, markers: [ { ...rAMMAN, label: 'Amman' } ], orders: [
+    { leader: 'hussein', visible: true }, { leader: 'riad', visible: true, delay: 6 }, { leader: 'dayan', visible: true, delay: 10 }, { id: 'rJor', visible: true, delay: 4 }, { id: 'rJorArm', visible: true, delay: 5 }, { id: 'rSyr', visible: true, delay: 6 } ] });
+  // Part 2: the air war (the air-strike map)
+  set(5, air({ radio: [RADIO.manor, RADIO.lavonRadio], photo: Object.assign({}, IMG.mig, { at: 40, secs: 14 }), markers: [ { ...aHATZOR, label: 'Israeli air bases', side: 'allied' }, { ...aCAIRO, label: '' } ], orders: [
+    ...showAF, { id: 'aJets1', visible: true, at: { x: aSEA.x + 300, y: aSEA.y - 120 }, to: { x: aINSHAS.x + 40, y: aINSHAS.y - 40 }, via: [ { x: aSEA.x - 600, y: aSEA.y - 160 } ], speed: 260, state: 'move' },
+    { id: 'aJets2', visible: true, to: { x: aGIFGAFA.x + 40, y: aGIFGAFA.y - 30 }, via: [aARISHAF, aLIBNIAF], speed: 200, state: 'move', delay: 3 },
+    ...hitAll(['afArish', 'afLibni', 'afGifgafa', 'afThamada', 'afAbuSuweir', 'afKabrit', 'afFayid', 'afInshas', 'afCairoW', 'afAlmaza', 'afBilbeis', 'afBeniSuef'], 6, 1.2),
+    { id: 'aMig', visible: true, delay: 9 }, { id: 'aMig', strengthTo: .3, over: 6, delay: 12 } ] }));
+  set(6, { zoom: 'fit', radio: [RADIO.megiddo, RADIO.lavonSea], markers: [ { ...rMAFRAQ, label: 'Mafraq', side: 'french' }, { ...rDAMASCUS, label: 'Syrian air bases' }, { ...R(32.6, 35.18), label: 'Ramat David and Megiddo' } ], orders: [
+    { id: 'rJor', visible: true }, { id: 'rJorArm', visible: true }, { id: 'rSyr', visible: true } ] });
+  // Part 3: Sinai and Gaza (the air-strike map, closer)
+  set(7, air({ zoom: 2.2, focus: mid(aRAFAH, aARISH), media: IMG.rafah, markers: [ { ...aKHANYUNIS, label: 'Khan Yunis' }, { ...aRAFAH, label: 'Rafah junction', side: 'french' }, { ...aJIRADI, label: 'the Jiradi defile' }, { ...aARISH, label: 'El Arish' } ], orders: [
+    { leader: 'tal', visible: true }, { id: 'aTal', to: aRAFAH, via: [aKHANYUNIS], speed: 30, state: 'attack' }, { id: 'aEgy7', strengthTo: .4, over: 10, delay: 6 },
+    { id: 'aTal', to: { x: aARISH.x + 30, y: aARISH.y }, via: [aSHEIKHZ, aJIRADI], speed: 30, state: 'attack', delay: 14 }, { id: 'aEgy7', gone: true, delay: 20 } ] }));
+  set(8, air({ zoom: 3, focus: aGAZA, markers: [ { ...aGAZA, label: 'Gaza City and Ali Muntar' }, { ...aKHANYUNIS, label: 'Khan Yunis' } ], orders: [
+    { id: 'aEgyPal', strengthTo: .3, over: 14, delay: 4 }, { id: 'aEgyPal', gone: true, delay: 20 } ] }));
+  set(9, abu({ zoom: .7, focus: mid(uKATEF, u181), media: IMG.jeeps, markers: [ { ...uJUNC, label: 'the crossroads' }, { ...u181, label: 'Position 181: taken about 4 pm', side: 'allied' } ], orders: [
+    { leader: 'sharon', visible: true }, { id: 'uZippori', to: off(uLANE, 60, 0), speed: 24, state: 'attack' }, { id: 'uZippori', to: uEAST, speed: 24, state: 'move', delay: 8 },
+    { id: 'uNir', visible: true, to: off(u181, 60, -20), speed: 30, state: 'attack', delay: 6 }, { id: 'u181', strengthTo: .2, over: 6, delay: 10 }, { id: 'u181', gone: true, delay: 16 },
+    { id: 'uNir', to: off(uRUAFA, 40, 30), via: [off(u181, -60, -40)], speed: 30, state: 'move', delay: 17 } ] }));
+  set(10, abu({ zoom: .65, focus: mid(uKATEF, uGUNS), markers: [ { ...uLZ, label: 'the helicopter landing area' }, { ...uLANE, label: 'the minefield lanes (2:30 and 4 am)' } ], orders: [
+    { id: 'uMatt', visible: true }, { id: 'uAdam', visible: true, at: off(uDUNES, 160, -20), to: uNORTH, speed: 18, state: 'move', delay: 2 },
+    { id: 'uArty', state: 'attack', delay: 6 }, { id: 'uMatt', to: off(uGUNS, 0, -40), speed: 20, state: 'attack', delay: 9 }, { id: 'uGuns', strengthTo: .1, over: 6, delay: 11 },
+    { id: 'uAdam', to: off(uKATEF, 20, -30), speed: 14, state: 'attack', delay: 10 }, { id: 'uTrench', strengthTo: .35, over: 18, delay: 12 },
+    { id: 'uZippori', to: uKATEF, via: [uLANE], speed: 22, state: 'attack', delay: 20 }, { id: 'uNir', to: off(uTANKS, -40, 0), speed: 22, state: 'attack', delay: 20 },
+    { id: 'uDugin', strengthTo: .1, over: 8, delay: 24 }, { id: 'uEgyT55', strengthTo: .2, over: 8, delay: 24 }, { id: 'uTrench', gone: true, delay: 34 }, { id: 'uGuns', gone: true, delay: 34 } ] }));
+  set(11, air({ markers: [ { ...aMITLA, label: 'Mitla Pass' }, { ...aGIDDI, label: 'Giddi Pass' }, { ...aCAIRO, label: 'Amer’s order to retreat' } ], orders: [
+    { id: 'aEgy2', gone: true }, { id: 'aEgy3', to: aGIDDI, speed: 40, state: 'move', delay: 4 }, { id: 'aEgy4', to: off(aMITLA, 40, 20), speed: 40, state: 'move', delay: 4 },
+    { id: 'aShazly', to: off(aMITLA, 60, -40), speed: 40, state: 'move', delay: 6 }, { leader: 'shazly', visible: true } ] }));
+  set(12, air({ markers: [ { ...aSHARM, label: 'Sharm el-Sheikh: found empty, 7 June', side: 'allied' }, { ...aTIRAN, label: 'Straits of Tiran' } ], orders: [ { id: 'aSharm', gone: true, delay: 5 } ] }));
+  set(13, air({ markers: [ { ...aMITLA, label: 'Mitla Pass' }, { ...aGIDDI, label: 'Giddi Pass' } ], orders: [
+    { id: 'aYoffe', to: off(aMITLA, 70, 0), via: [aLAHFAN, aHASANA], speed: 50, state: 'attack' }, { id: 'aSharon', to: aNAKHL, via: [aKUSSEIMA], speed: 40, state: 'move', delay: 2 },
+    { id: 'aTal', to: off(aGIFGAFA, 40, 0), speed: 40, state: 'attack', delay: 3 }, { id: 'aEgy4', strengthTo: .3, over: 12, delay: 6 }, { id: 'aEgy3', strengthTo: .3, over: 12, delay: 6 } ] }));
+  set(14, air({ media: IMG.canal, markers: [ { ...aISMAILIA, label: 'Ismailia' }, { ...aQANTARA, label: 'El Qantara' }, { ...aSUEZ, label: 'Suez' } ], orders: [
+    { id: 'aTal', to: off(aISMAILIA, 60, 0), speed: 50, state: 'move' }, { id: 'aYoffe', to: off(aSUEZ, 60, 0), speed: 50, state: 'move' }, { id: 'aEgy4', gone: true, delay: 6 }, { id: 'aEgy3', gone: true, delay: 6 }, { id: 'aShazly', gone: true, delay: 8 } ] }));
+  // Part 4: Jerusalem and the West Bank
+  set(15, jer({ zoom: .6, focus: mid(jGOVHOUSE, jDAMGATE), markers: [ { ...jGOVHOUSE, label: 'Government House (UN headquarters): taken by Jordanian troops', side: 'french' }, { ...jSCOPUS, label: 'Mount Scopus enclave' } ], orders: [
+    { id: 'jJorS', visible: true, to: jGOVHOUSE, speed: 20, state: 'attack', delay: 6 } ] }));
+  set(16, jer({ zoom: .9, focus: jGOVHOUSE, markers: [ { ...jGOVHOUSE, label: 'Government House retaken', side: 'allied' } ], orders: [
+    { id: 'jJShermans', to: off(jGOVHOUSE, -40, 20), speed: 30, state: 'attack' }, { id: 'jJbde', to: off(jGOVHOUSE, -60, -20), speed: 22, state: 'attack', delay: 1 },
+    { id: 'jJorS', strengthTo: .3, over: 8, delay: 5 }, { id: 'jJorS', gone: true, delay: 14 }, { id: 'jParas', visible: true, delay: 16 }, { leader: 'gur', visible: true, delay: 16 } ] }));
+  set(17, jer({ zoom: 1, focus: jAMMO, media: IMG.jerusalem, markers: [ { ...jMANDEL, label: 'crossing near the Mandelbaum Gate' }, { ...jPOLICE, label: 'the Police School' } ], orders: [
+    { id: 'jParas', at: off(jMANDEL, -60, 20), to: off(jAMMO, -30, 30), speed: 16, state: 'attack' }, { id: 'jJorN', strengthTo: .2, over: 20, delay: 6 }, { id: 'jParas', strengthTo: .7, over: 20, delay: 6 },
+    { id: 'jJorN', gone: true, delay: 30 } ] }));
+  set(18, jer({ zoom: .7, focus: mid(jSHEIKHJ, jROCKEF), markers: [ { ...jROCKEF, label: 'Rockefeller Museum' }, { ...jSCOPUS, label: 'Mount Scopus: reached about midday', side: 'allied' }, { ...jSHUFAT, label: 'Shu’fat Hill' }, { ...jABUTOR, label: 'Abu Tor' } ], orders: [
+    { id: 'jParas', to: off(jROCKEF, -20, -30), via: [jSHEIKHJ], speed: 16, state: 'attack' }, { id: 'jHT', visible: true, to: off(jSHEIKHJ, 30, 0), speed: 20, state: 'move', delay: 2 } ] }));
+  set(19, { zoom: 'fit', fronts: ['armistice'], markers: [ { ...rJENIN, label: 'Jenin' }, { ...rNABLUS, label: 'Nablus' }, { ...rHEBRON, label: 'Hebron' }, { ...rALLENBY, label: 'Allenby Bridge: refugees cross east' }, { ...rLATRUN, label: 'Latrun' } ], orders: [
+    { id: 'rIdfC', to: R(32.0, 35.25), speed: 14, state: 'attack' }, { id: 'rIdfN', to: R(32.35, 35.3), speed: 14, state: 'attack' }, { id: 'rJor', to: rALLENBY, speed: 12, state: 'move', delay: 6 },
+    { id: 'rJorArm', to: off(rALLENBY, 60, 0), speed: 14, state: 'move', delay: 6 }, { id: 'rJor', gone: true, delay: 16 } ] });
+  set(20, jer({ zoom: .9, focus: mid(jLIONS, jWALL), photo: [ Object.assign({}, IMG.wedding, { at: 50, secs: 12 }), Object.assign({}, IMG.plaza, { at: 75, secs: 14 }) ], markers: [ { ...jLIONS, label: 'Lions’ Gate' }, { ...jTEMPLE, label: 'Temple Mount / al-Haram al-Sharif' }, { ...jWALL, label: 'the Western Wall (al-Buraq Wall)', below: true }, { ...jDUNG, label: 'Dung Gate', below: true } ], orders: [
+    { id: 'jJorOld', to: jDUNG, speed: 14, state: 'move' }, { id: 'jJorOld', gone: true, delay: 8 }, { id: 'jJorAV', gone: true, delay: 6 },
+    { id: 'jParas', to: off(jLIONS, 40, 0), via: [off(jAUGUSTA, -40, 0)], speed: 16, state: 'attack', delay: 8 }, { id: 'jHT', to: jLIONS, via: [off(jROCKEF, 20, 10)], speed: 18, state: 'move', delay: 10 },
+    { id: 'jParas', to: jTEMPLE, speed: 12, state: 'move', delay: 22 }, { leader: 'gur', to: jLIONS, delay: 12 } ] }));
+  // Part 5: the USS Liberty
+  set(21, air({ zoom: 2, focus: aLIBERTY, markers: [ { ...aLIBERTY, label: 'USS Liberty, about 2 pm, 8 June (US Navy Court of Inquiry)' }, { ...aARISH, label: 'El Arish' } ] }));
+  // Part 6: the Golan Heights
+  set(22, { zoom: 'fit', fronts: ['armistice'], media: IMG.golanTanks, markers: [ { ...rKFARSZOLD, label: 'Kfar Szold' }, { ...rKUNEITRA, label: 'Quneitra' } ], orders: [
+    { id: 'rSyr', visible: true }, { id: 'rIdfN', to: R(33.1, 35.55), speed: 16, state: 'move' }, { leader: 'assad', visible: true } ] });
+  set(23, gol({ zoom: .6, focus: mid(gKFARSZOLD, gFAHER), photo: Object.assign({}, IMG.golanMap, { at: 20, secs: 12 }), markers: [ { ...gCLIMB, label: 'the bulldozers’ track' } ], orders: [
+    { leader: 'elazar', visible: true }, { id: 'gMendler', to: off(gEINFIT, -20, 40), via: [gCLIMB, off(gBURJ, 0, 60)], speed: 18, state: 'attack' }, { id: 'gDugin', strengthTo: .3, over: 10, delay: 8 },
+    { id: 'gGolani', visible: true, to: off(gAZAZIAT, -40, 30), speed: 14, state: 'attack', delay: 6 }, { id: 'gAzaziat', strengthTo: .1, over: 8, delay: 12 }, { id: 'gAzaziat', gone: true, delay: 21 },
+    { id: 'gHT', visible: true, to: off(gFAHER, -70, 40), speed: 18, state: 'attack', delay: 14 }, { id: 'gHT', strengthTo: .3, over: 4, delay: 20 },
+    { id: 'gGolani', to: off(gFAHER, -30, 20), speed: 12, state: 'attack', delay: 22 }, { id: 'gFaher', strengthTo: .1, over: 14, delay: 24 }, { id: 'gGolani', strengthTo: .7, over: 14, delay: 24 }, { id: 'gFaher', gone: true, delay: 40 } ] }));
+  set(24, { zoom: 2.4, focus: mid(rKFARSZOLD, rKUNEITRA), fronts: ['armistice'], markers: [ { ...rKUNEITRA, label: 'Quneitra: entered the afternoon of 10 June' }, { ...rBANIAS, label: 'Banias' }, { ...rMASADE, label: 'Mas’ade' }, { ...rRAFID, label: 'Rafid' } ], orders: [
+    { id: 'rIdfN', to: off(rKUNEITRA, -10, -20), speed: 14, state: 'attack' }, { id: 'rSyr', to: off(rKUNEITRA, 140, -60), speed: 12, state: 'move', delay: 4 } ] });
+  // Part 7: after the six days
+  set(25, { zoom: 'fit', fronts: ['armistice', 'cease67'], media: IMG.orderOfDay, markers: [ { ...rSINAI, label: 'Sinai: held by Israel' }, { ...R(32.0, 35.3), label: 'the West Bank and East Jerusalem' }, { ...R(33.12, 35.75), label: 'the Golan Heights' } ] });
+
+  // the introduction: which map, lines and pictures each slide shows
+  const IS = S.intro;
+  Object.assign(IS[0], { media: [IMG.cover] });
+  Object.assign(IS[1], { fronts: ['armistice'], markers: [ { ...rJER, label: 'Jerusalem, divided since 1948' }, { ...rGAZA, label: 'the Gaza Strip (run by Egypt)' }, { ...R(32.1, 35.3), label: 'the West Bank (held by Jordan)' } ] });
+  Object.assign(IS[2], { altMap: 'airstrike', markers: [ { ...aTIRAN, label: 'Straits of Tiran' }, { ...aPORTSAID, label: 'Port Said' }, { ...aSHARM, label: 'Sharm el-Sheikh' } ] });
+  Object.assign(IS[3], { markers: [ { ...rCAIRO, label: 'Cairo' }, { ...rDAMASCUS, label: 'Damascus' }, { ...rTELAVIV, label: 'Tel Aviv' } ] });
+  Object.assign(IS[4], { fronts: ['armistice'], markers: [ { ...rBANIAS, label: 'Banias spring' }, { ...rGALILEE, label: 'Sea of Galilee' }, { ...rKUNEITRA, label: 'Quneitra' } ] });
+  Object.assign(IS[5], { media: [IMG.field] });
+  Object.assign(IS[6], { fronts: ['armistice'] });
+})();

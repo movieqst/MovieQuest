@@ -183,6 +183,14 @@ Chapters 1 to 6 play on the area map; chapters 7 to 15 move between the area map
 > A street in Vukovar on 29 November 1991, eleven days after the fall: damaged houses, broken roofs and rubble, and a tractor moving down the street.
 **Credit:** Photo: Peter Denton, via Wikimedia Commons (from Flickr), CC BY-SA 2.0.
 
+### The Memorial Cemetery (with the debrief: the remembrance on 18 November)
+**Picture:** images/record-memorial-cemetery-2015.jpg (Commons: File:Vukovar Memorial Cemetery – Eternal Flame, 20150429160745.jpg; CC BY-SA 4.0).
+**Caption:**
+> The Memorial Cemetery of the Homeland War Victims in Vukovar, with its eternal flame, in 2015. The remembrance procession on the eighteenth of November ends here.
+**Credit:** Photo: Tromber, 29 April 2015, via Wikimedia Commons, CC BY-SA 4.0.
+
+**With it, in a small gallery:** the candles on the graves on the evening of 18 November 2023 (Hrvoje Franjetić, CC BY-SA 4.0); the memorial from the side, May 2009 (Seiya123, CC BY 3.0); the memorial inside the hospital, May 2009 (Seiya123, CC BY-SA 3.0); the "Vukovar 91" memorial on Korčula, 2012 (Quahadi Añtó, CC BY-SA 3.0). Credits in images/README.md.
+
 ---
 
 ## Notes for review (draft 1)

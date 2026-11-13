@@ -135,8 +135,8 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'sixday', progress: 70, lat: 31.78, lon: 35.23,
-    order: 12,
+    folder: 'sixday', progress: 100, lat: 31.78, lon: 35.23,
+    order: 12, readyOrder: 18,
     era: 'Arab–Israeli Wars',
     title: 'The Six-Day War',
     date: '5–10 June 1967', year: 1967,
@@ -145,7 +145,7 @@ window.BATTLES = [
     blurb: 'In six days in June 1967, after weeks of rising tension, Israel struck the Egyptian air force on the ground, then fought on three fronts: across Sinai to the Suez Canal, into the West Bank and Jerusalem, and up the Golan Heights.',
     cover: 'images/cover.jpg', coverPos: '65% 50%',   // the half-track, not the helmet in the foreground
     coverCredit: 'Israeli half-tracks on the Golan Heights, 1967. Photo: Israel Press and Photo Agency (I.P.P.A.), Dan Hadani collection, National Library of Israel, CC BY 4.0',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'sekigahara', lat: 35.37, lon: 136.47,
@@ -226,8 +226,8 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'vukovar', progress: 75, lat: 45.3517, lon: 19.0012,
-    order: 19,
+    folder: 'vukovar', progress: 100, lat: 45.3517, lon: 19.0012,
+    order: 19, readyOrder: 17,
     era: 'Croatia, 1991',
     title: 'Battle of Vukovar',
     date: '25 August – 18 November 1991', year: 1991,
@@ -236,7 +236,7 @@ window.BATTLES = [
     blurb: 'As Yugoslavia breaks apart, the Yugoslav People\u2019s Army (JNA), with local Territorial Defence and volunteer units, besieges the town of Vukovar on the Danube. For about three months a few thousand Croatian defenders hold out against a much larger force with tanks and artillery, while the town is shelled to ruins. After it falls, prisoners taken from the hospital are killed at nearby Ovčara: the international court found 194 named victims.',
     cover: 'images/cover.jpg', coverPos: '12% 35%',
     coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0 (creativecommons.org/licenses/by/2.0). Sky extended for this page',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'somalia1988', progress: 2, lat: 9.5600, lon: 44.0650,

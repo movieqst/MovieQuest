@@ -362,13 +362,13 @@ const fighting = f => simTime - (f.lastStrike ?? -99) < 1.2 || simTime - (f.last
    S.fallen.soldier (a 4 x 4 sheet of 16 different fallen poses, 240 x 200 cells), and for horsemen now and then a dead
    horse (S.fallen.horse). They lie on the ground under everything else and are cleared when the battle restarts. */
 const FALLEN = [], FALLEN_MAX = 700, FS = S.fallen || {}; window.__fallen = FALLEN;   // for tests
-Object.values(FS.bySide || {}).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
+Object.values(FS.bySide || {}).concat(FS.extra || []).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 [FS.soldier, FS.horse].filter(Boolean).forEach(n => { const im = new Image(); im.onload = () => { SHEETS[n] = im; }; im.src = (S.imageBase || 'images/') + 'units/' + n + '.png'; });
 function drawFallen(c, y0v, y1v, x0v, x1v) {
   if (!artOn) return;
   FALLEN.forEach(b => {
     if (b.y < y0v || b.y > y1v || b.x < x0v || b.x > x1v || !onMap(b)) return;
-    const sh = SHEETS[b.horse ? FS.horse : ((FS.bySide || {})[b.side] || FS.soldier)], q = P(b.x, b.y); if (!(q.s > 0)) return;
+    const sh = SHEETS[b.horse ? FS.horse : (b.fs || (FS.bySide || {})[b.side] || FS.soldier)], q = P(b.x, b.y); if (!(q.s > 0)) return;
     if (!sh) { c.fillStyle = 'rgba(40,30,20,.55)'; c.beginPath(); c.ellipse(q.x, q.y, 6 * q.s, 2.5 * q.s * (q.k || 1), 0, 0, PI * 2); c.fill(); return; }
     const k = b.k % 16, cw = 240, ch = 200, h = (b.horse ? 24 : 16) * 1.3 * q.s, sc = h / ch * 1.6;
     c.drawImage(sh, (k % 4) * cw, Math.floor(k / 4) * ch, cw, ch, q.x - cw * sc / 2, q.y - ch * sc * .62, cw * sc, ch * sc);
@@ -795,12 +795,51 @@ const MapPhoto = (() => {
       timers.push(setTimeout(() => { if (el && el.querySelector('img').src.endsWith(p.file)) el.classList.remove('on', 'big'); }, ((p.at === undefined ? 3 : p.at) + (p.secs || 14)) * 1000)); }); }
   return { show, hide };
 })();
+/* ---- the Six-Day War: radio "from the record" in a chapter. ev.radio { file (in audio/record/), title, when, credit,
+   lines: [[seconds, 'English line'], ...], note, full (link to the whole recording) }; a list for several. A small card
+   at the bottom left of the map with a play button: the narration pauses while the clip plays, and the English lines
+   (translated from Hebrew) show in time. Nothing plays by itself. */
+const RadioCard = (() => {
+  let el = null, au = null, list = [], idx = 0, wePaused = false;
+  const make = () => { if (el) return el; el = document.createElement('div'); el.id = 'radioCard';
+    el.innerHTML = '<div class="rch">📻 From the record <button class="rcx" title="Close">✕</button></div><b></b><div class="rcw"></div>'
+      + '<button class="rcp">▶ Listen (35 s)</button><span class="rcn"></span><p class="rcl"></p><div class="rcf"></div>';
+    const css = document.createElement('style');
+    css.textContent = `#radioCard{position:absolute;left:12px;bottom:12px;z-index:39;width:min(330px,62%);background:rgba(8,14,20,.93);border:1px solid #c9a34a;border-radius:8px;padding:8px 10px;font:12.5px/1.4 system-ui,sans-serif;color:#dfe7e4;box-shadow:0 6px 24px rgba(0,0,0,.6);display:none}
+      #radioCard.on{display:block}#radioCard .rch{color:#e7c66b;font:600 12px 'Cinzel',Georgia,serif;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
+      #radioCard b{display:block;margin:3px 0 1px;font-size:13px;color:#fff}#radioCard .rcw{color:#9fb0b5;font-size:11.5px;margin-bottom:6px}
+      #radioCard .rcp,#radioCard .rcx{background:#26343c;color:#fff;border:1px solid #556;border-radius:5px;cursor:pointer;font-size:12px;padding:3px 9px}#radioCard .rcx{padding:0 6px}
+      #radioCard .rcn{margin-left:8px;color:#9fb0b5;font-size:11px}
+      #radioCard .rcl{min-height:2.8em;margin:7px 0 4px;padding:5px 7px;background:#000;border-radius:4px;color:#fff;font-size:13.5px;line-height:1.35}
+      #radioCard .rcl:empty{display:none}#radioCard .rcf{color:#9fb0b5;font-size:10.5px}#radioCard .rcf a{color:#e7c66b}`;
+    document.head.appendChild(css);
+    ($('battlePanel') || document.body).appendChild(el);
+    el.querySelector('.rcx').onclick = e => { e.stopPropagation(); hide(); };
+    el.querySelector('.rcp').onclick = e => { e.stopPropagation(); if (au && !au.paused) stop(); else play(); };
+    return el; };
+  function stop() { if (au) { au.pause(); } el.querySelector('.rcp').textContent = '▶ Listen (35 s)'; el.querySelector('.rcl').textContent = '';
+    if (wePaused) { wePaused = false; if (paused && !battleOver) togglePause(); } }
+  function play() { const r = list[idx]; if (!r) return;
+    if (!paused && mode === 'watch' && !battleOver) { togglePause(); wePaused = true; }
+    au = au || new Audio(); au.src = (S.audioBase || 'audio/') + 'record/' + r.file; au.currentTime = 0;
+    au.ontimeupdate = () => { const t = au.currentTime; let line = ''; (r.lines || []).forEach(([s, txt]) => { if (t >= s) line = txt; }); el.querySelector('.rcl').textContent = line; };
+    au.onended = () => { stop(); if (idx < list.length - 1) { idx++; fill(); } };
+    au.play().catch(() => {}); el.querySelector('.rcp').textContent = 'Ⅱ Stop'; }
+  function fill() { const r = list[idx]; make();
+    el.querySelector('b').textContent = r.title || ''; el.querySelector('.rcw').textContent = r.when || '';
+    el.querySelector('.rcn').textContent = list.length > 1 ? (idx + 1) + ' of ' + list.length : '';
+    el.querySelector('.rcf').innerHTML = (r.note ? r.note + ' ' : '') + (r.credit || '') + (r.full ? ` <a href="${r.full}" target="_blank" rel="noopener">The full recording ↗</a>` : '');
+    el.querySelector('.rcl').textContent = ''; el.classList.add('on'); }
+  function hide() { if (el) { if (au && !au.paused) stop(); el.classList.remove('on'); } list = []; }
+  function show(r) { hide(); if (!r) return; list = [].concat(r); idx = 0; fill(); }
+  return { show, hide };
+})();
 function fireEvent(ev) {
   if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   if (ev.trenches !== undefined) setTrench(ev.trenches);
   currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o)); if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || [];   // o.delay: seconds into the chapter
   camForEvent(ev);
-  MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
+  RadioCard.show(fastForward ? null : ev.radio); MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
   addLog((stage === 'campaign' && ev.clock ? ev.clock : fmtTime(ev.t)) + ' ' + ev.title);
   renderTimeline();
@@ -841,7 +880,7 @@ function setStage(st) {
   S.events = src.events; S.formations = src.formations; S.leaders = src.leaders; S.duration = src.duration;
   document.body.dataset.stage = st; applyArt();
 }
-function endWatch() { battleOver = 'history'; paused = true; showDebrief(); }
+function endWatch() { RadioCard.hide(); battleOver = 'history'; paused = true; showDebrief(); }
 function jumpTo(t) {
   fastForward = true; resetSim(); 
   while (simTime < t) { simTime += DT; stepWatch(); }
@@ -1075,7 +1114,7 @@ function drawFormation(c, f) {
   if (FS.soldier && f._shown !== undefined && shown < f._shown && f._shown - shown <= 6 && !f.inWater && f.type !== 'ship' && !f.noFallen) {
     for (let i = shown; i < f._shown; i++) {
       const col = i % FC, row = Math.floor(i / FC), d = -(row - (FR - 1) / 2) * sy, a = (col - (FC - 1) / 2) * sx;
-      FALLEN.push({ map: f.map, side: f.side, x: f.x + cos * d - sin * a + (jitter(i, 4) - .5) * 6, y: f.y + sin * d + cos * a + (jitter(i, 5) - .5) * 6, k: Math.floor(jitter(i + f.x, 6) * 16), horse: f.type === 'cavalry' && FS.horse && i % 2 === 0 });
+      FALLEN.push({ map: f.map, side: f.side, fs: f.fallen, x: f.x + cos * d - sin * a + (jitter(i, 4) - .5) * 6, y: f.y + sin * d + cos * a + (jitter(i, 5) - .5) * 6, k: Math.floor(jitter(i + f.x, 6) * 16), horse: f.type === 'cavalry' && FS.horse && i % 2 === 0 });
     }
     if (FALLEN.length > FALLEN_MAX) FALLEN.splice(0, FALLEN.length - FALLEN_MAX);
   }
@@ -1139,7 +1178,7 @@ function render() {
     const a = P(f.x, f.y - 8), b = P(t.x, t.y - 8), laid = g.laid >= GUN.lay; ctx.save(); ctx.strokeStyle = g.mode === 'auto' || g.mode === 'fire' ? '#ff6a4a' : '#ffd36b'; ctx.lineWidth = 2;
     ctx.setLineDash(laid ? [] : [8, 6]); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); ctx.setLineDash([]); ctx.beginPath(); ctx.arc(b.x, b.y, 14 * b.s, 0, PI * 2); ctx.stroke(); ctx.restore(); });
   markers.forEach(m => {
-    const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s;
+    const p = P(m.x, m.y), r = (26 + 8 * Math.sin(wall * 3)) * p.s; if (!(p.s > 0)) return;   // behind the tilted camera
     ctx.save(); ctx.translate(p.x, p.y); ctx.scale(1, p.k);
     const mc = markerColors(m);
     ctx.strokeStyle = mc.ring; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, r, 0, PI * 2); ctx.stroke();
@@ -1788,7 +1827,7 @@ TER = buildTerrain(); DRAWNTER = TER; buildMiniBase(); renderBriefing(); renderA
      S.lines.fronts[key] = { map, pts: [[lon, lat], ...], col, dash, label }       a line (a front, a border, a ceasefire line)
      S.lines.arrows[key] = { map, pts: [[lon, lat], ...], side, label }            an attack or a move, in the side's colour
    Every line and arrow is a reconstruction drawn to follow the narration, not a traced map, unless its label says so. */
-const FL = S.lines || { fronts: {}, arrows: {} };
+const FL = S.lines || window.SIXDAY_LINES || { fronts: {}, arrows: {} };
 function geoXY(lon, lat, key) { const g = (S.geo || {})[key || MAIN_MAP]; if (!g) return { x: 0, y: 0 }; return { x: (lon - g.lon0) / (g.lon1 - g.lon0) * W.w, y: (g.lat1 - lat) / (g.lat1 - g.lat0) * W.h }; }
 function drawFronts() {
   const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; if (!it) return;

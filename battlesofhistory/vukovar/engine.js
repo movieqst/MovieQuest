@@ -1456,7 +1456,7 @@ function showDebrief() {
     body = `<p class="lead">${txt}</p><p class="muted">Your battle is a what-if simulation. Nothing about it is a claim about what really happened. Compare it with the historical outcome below.</p><div class="tablewrap"><table><tr><th>Formation</th><th>State</th><th>Strength</th></tr>${rows}</table></div>`;
   }
   $('debriefTitle').textContent = head;
-  $('debriefBody').innerHTML = body + '<h4>The historical outcome</h4>' + S.outcome.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>`).join('');
+  $('debriefBody').innerHTML = body + '<h4>The historical outcome</h4>' + S.outcome.map(l => `<p>${l.text} ${tagChip(l.tag, l.cite)}</p>` + (l.media ? `<div class="dbgal">${[].concat(l.media).map(m => `<figure class="dbfig"><img src="${(S.imageBase || 'images/') + m.file}" alt="" loading="lazy" onclick="this.closest('figure').classList.toggle('big')"><figcaption>${m.caption || ''} <span class="muted">${m.credit || ''}</span></figcaption></figure>`).join('')}</div>` : '')).join('');   // a line can carry a picture (l.media)
   if (Narr.on && battleOver === 'history') Narr.speak(S.outcome.map(l => l.text).join(' '), S.outcomeAudio || audioFor('outcome'));
   if (battleOver === 'history' && S.outcomeMusic) setMusic(S.outcomeMusic);
   showOverlay('debrief');
