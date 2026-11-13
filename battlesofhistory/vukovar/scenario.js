@@ -634,7 +634,13 @@ Object.assign(window.VUKOVAR_SCENARIO, {
   // the introduction: which map, lines and pictures each slide shows
   const IS = S.intro, M = (f) => R[f] ? [R[f]] : [];
   if (R['record-water-tower-2003.jpg']) R['record-water-tower-2003.jpg'].fit = 'contain';   // an upright photo: show the whole tower, not a crop
-  S.outcome.forEach(l => { if (/Memorial Cemetery/.test(l.text) && R['record-memorial-cemetery-2015.jpg']) l.media = R['record-memorial-cemetery-2015.jpg']; });   // the remembrance on 18 November
+  // the remembrance on 18 November: the Memorial Cemetery from several sides, the hospital, and a memorial far away on Korčula
+  const MEM = [R['record-memorial-cemetery-2015.jpg'],
+    { file: 'record-memorial-candles-2023.jpg', caption: 'Candles on the graves of the Memorial Cemetery on the evening of 18 November 2023, the day of remembrance.', credit: 'Photo: Hrvoje Franjetić (Hrc Franc), via Wikimedia Commons, CC BY-SA 4.0.' },
+    { file: 'record-memorial-cemetery-2009.jpg', caption: 'The memorial at the cemetery from the side, with the rows of white crosses behind, during a school visit in May 2009.', credit: 'Photo: Seiya123, via Wikimedia Commons, CC BY 3.0.' },
+    { file: 'record-hospital-memorial-2009.jpg', caption: 'Students at the memorial inside Vukovar hospital, May 2009. It remembers the patients and staff taken from the hospital after the town fell.', credit: 'Photo: Seiya123, via Wikimedia Commons, CC BY-SA 3.0.' },
+    { file: 'record-memorial-korcula-2012.jpg', caption: '“Vukovar 91”: a memorial to Vukovar on the island of Korčula, on the far side of Croatia, 2012.', credit: 'Photo: Quahadi Añtó, via Wikimedia Commons, CC BY-SA 3.0 (also GFDL).' }].filter(Boolean);
+  S.outcome.forEach(l => { if (/Memorial Cemetery/.test(l.text)) l.media = MEM; });   // the remembrance on 18 November
   Object.assign(IS[0], { media: M('record-water-tower-2003.jpg').concat(M('record-street-1991.jpg').map(m => Object.assign({}, m, { at: 14 }))) });
   Object.assign(IS[1], { altMap: 'area', markers: [ { ...aVUK, label: 'Vukovar' }, { ...aVINK, label: 'Vinkovci' } ] });
   Object.assign(IS[2], { media: M('record-old-town-1991.jpg'), markers: [ { ...TOWER, label: 'the water tower' }, { ...HOSP, label: 'the hospital' }, { ...BOROVO, label: 'Borovo Naselje' } ] });
