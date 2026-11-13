@@ -995,9 +995,10 @@ function drawClockStamp() {
   const x = 14, y = 12, w = Math.max(w1, w2) + 28, h = (L1 ? 30 : 0) + (L2 ? 24 : 0) + 12;
   ctx.globalAlpha = .35 + .65 * f; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.shadowColor = col; ctx.shadowBlur = 10 + 20 * glow;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.shadowBlur = 8 + 14 * glow; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-  if (L1) { ctx.font = "bold 22px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#f2fbff'; ctx.fillText(L1, x + 14, y + 8); }
-  if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, x + 14, y + (L1 ? 38 : 9)); }
+  const rtl = document.documentElement.dir === 'rtl', tx = rtl ? x + w - 14 : x + 14;   // Arabic and Hebrew dates read right to left
+  ctx.shadowBlur = 8 + 14 * glow; ctx.direction = rtl ? 'rtl' : 'ltr'; ctx.textAlign = rtl ? 'right' : 'left'; ctx.textBaseline = 'top';
+  if (L1) { ctx.font = "bold 22px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#f2fbff'; ctx.fillText(L1, tx, y + 8); }
+  if (L2) { ctx.font = "16px system-ui, sans-serif"; ctx.fillStyle = col; ctx.fillText(L2, tx, y + (L1 ? 38 : 9)); }
   ctx.restore();
 }
 // Legend, top right of the map: S.legend ([{ label, color, kind: 'line' | 'dot' }]) or, by default, each side's colour.
@@ -1008,7 +1009,7 @@ function drawLegend() {
   ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
   const x = view.w - w - 14, y = view.w < w + 240 ? 92 : view.w < 620 ? 46 : 12;   // a phone: below the zoom buttons ctx.fillStyle = 'rgba(6,16,24,.72)';   // still too narrow: under the date stamp, not over it ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText(((window.BH_UI || {})[window.BH_LANG] || {}).LEGEND || 'LEGEND', x + 12, y + 14);
   ctx.font = "13px system-ui, sans-serif";
   items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
     if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }

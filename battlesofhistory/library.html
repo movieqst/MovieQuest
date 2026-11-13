@@ -39,7 +39,12 @@
   // Some battles keep data their scenario needs in a file of its own (Vimy: lines.js); load it first if there is one.
   const pre = document.createElement('script'); pre.src = B + '/lines.js';
   const sc = document.createElement('script'); sc.src = B + '/scenario.js';
-  sc.onload = () => {
+  // a battle in another language (?lang=xx, or the last choice): its lang-xx.js, then ../lang.js translates the list
+  let LG = new URLSearchParams(location.search).get('lang'); try { if (!LG) LG = localStorage.getItem('bh-lang'); } catch (e) {}
+  LG = (LG || '').replace(/[^a-z]/g, '');
+  const load = src => new Promise(r => { const x = document.createElement('script'); x.src = src; x.onload = x.onerror = r; document.head.appendChild(x); });
+  sc.onload = async () => {
+    if (LG && LG !== 'en') { await load(B + '/lang-' + LG + '.js'); await load('lang-ui.js'); await load('lang.js'); }
     const S = window[Object.keys(window).find(k => /SCENARIO$/.test(k))]; if (!S) return;
     document.title = S.title + ' — Library of sources';
     document.getElementById('lead').textContent = 'The books and records behind the ' + S.title + '.';
