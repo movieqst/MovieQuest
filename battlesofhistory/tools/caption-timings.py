@@ -20,7 +20,7 @@ DUMP = r"""
 const S = require(process.argv[1] + '/../tools/load-scenario.js')(process.argv[1], process.argv[2]), out = {};   // the page's text, in the voice's language
 let ic = 0; (S.intro || []).forEach((sl, i) => { if (sl.extra) return; ic++; if (sl.choice) return; out['intro-' + ic] = { pre: [sl.title + '.'], text: (sl.lines || []).map(l => l.text).join(' ') }; });
 if (S.parts) S.parts.forEach(p => p.events.forEach((e, i) => { out['event-' + p.id + '-' + (i + 1)] = { pre: [], text: e.text }; if (S.parts.length === 1) out['event-' + (i + 1)] = { pre: [], text: e.text }; }));
-else (S.events || []).forEach((e, i) => { out['event-' + (e.clipNo || i + 1)] = { pre: [], text: e.text }; });
+else (S.events || []).forEach((e, i) => { out['event-' + (e.clipNo || i + 1)] = { pre: S.spokenTitles ? [e.title + '.'] : [], text: e.text }; });   // S.spokenTitles: the clip starts with the chapter's title (the Six-Day War)
 if (S.campaign) S.campaign.events.forEach((e, i) => { out[e.clipNo ? 'event-' + e.clipNo : 'event-campaign-' + (i + 1)] = { pre: [], text: e.text }; });   // Waterloo's opening part, on its own map
 if (S.welcome) out['welcome'] = { pre: [], text: S.welcome };
 process.stdout.write(JSON.stringify(out));
