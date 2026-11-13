@@ -54,6 +54,7 @@
     }
     // the computer's captions in command mode
     if (S.ai && S.ai.plans && L.ai) Object.keys(L.ai).forEach(side => each(S.ai.plans[side], L.ai[side], (st, t) => { if (t && st.caption) { set(st.caption, 'title', t.title); set(st.caption, 'text', t.text); } }));
+    if (L.record && S.record) Object.keys(L.record).forEach(f => S.record[f] && set(S.record[f], 'caption', L.record[f]));   // the 'From the record' pictures (Vukovar)
     if (L.voices) S.voices = L.voices;               // the translated narrators (audio/<id>/…)
     /* L.strings { 'English text': 'translation' }: every other word the page shows (the armies' cards, map labels and markers,
        captions of photos, the radio card, the library, the globe's names), replaced wherever it appears as a value of one of

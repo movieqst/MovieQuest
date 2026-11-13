@@ -928,7 +928,7 @@ function checkEnd() {
 // "Night, 20 October"). Pieces naming a month, a "Day N" or a year are the date; the rest is the time of day. A chapter
 // that gives only a time keeps the last date. S.clockYear is added to dates without a year; ev.clockTag ('disputed',
 // 'estimate') tints it. An intro slide can carry its own `clock`.
-const CLOCK_DATE = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
+const CLOCK_DATE = /\b(jan|feb|mar|apr|may|maj|jun|jul|aug|avg|sep|oct|okt|nov|dec)[a-z]*\b|\bdays? \d|\b\d{3,4}\b/i;
 function clockTime(t) {
   const m = /^(\d{1,2}):(\d{2})$/.exec(t.trim()); if (!m) return t;
   let h = +m[1]; const pm = h >= 12, lead = m[1].length === 2; if (!lead && h < 12) return h + ':' + m[2] + ' a.m.';
@@ -969,7 +969,7 @@ function drawLegend() {
   ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
   const x = view.w - w - 14, y = view.w < w + 240 ? 92 : view.w < 620 ? 46 : 12;   // a phone: below the zoom buttons ctx.fillStyle = 'rgba(6,16,24,.72)';   // still too narrow: under the date stamp, not over it ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText(((window.BH_UI || {})[window.BH_LANG] || {}).LEGEND || 'LEGEND', x + 12, y + 14);
   ctx.font = "13px system-ui, sans-serif";
   items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
     if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }
