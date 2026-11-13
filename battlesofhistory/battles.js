@@ -328,5 +328,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg',   // the title card: coming from the owner
     coverCredit: '',
     status: 'in progress'
+  },
+  {
+    folder: 'mogadishu1993', progress: 1, lat: 2.0470, lon: 45.3290, osmZoom: 14, osmNote: 'approximate: central Mogadishu around the Bakara Market, where the raid and the first helicopter crash took place',
+    order: 27,
+    era: 'Somalia, 1993',
+    title: 'Battle of Mogadishu',
+    date: '3–4 October 1993', year: 1993,
+    place: 'Central Mogadishu, Somalia: the Bakara Market area and the streets to the UN base and the stadium',
+    sides: 'US Task Force Ranger with UN forces (UNOSOM II: Malaysian and Pakistani troops) vs. the Somali National Alliance (SNA) militia of Mohamed Farrah Aidid',
+    blurb: 'A US raid to capture leaders of Mohamed Farrah Aidid’s militia turned into a night-long battle in the city after two Black Hawk helicopters were shot down. A rescue column with Malaysian and Pakistani troops reached the trapped soldiers the next morning. Eighteen Americans and one Malaysian soldier were killed; estimates of Somali dead, fighters and civilians, range from several hundred to more than a thousand. The United States soon withdrew from Somalia.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner
+    coverCredit: '',
+    status: 'in progress'
   }
 ];
