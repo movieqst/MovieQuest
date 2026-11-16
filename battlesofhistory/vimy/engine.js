@@ -4,6 +4,7 @@
    Reads window.VIMY_SCENARIO (scenario.js). Plain 2D Canvas, no libraries. */
 (() => {
 'use strict';
+const UIT = t => (((window.BH_UI || {})[window.BH_LANG] || {})[t]) || t;   // the map's own words, in the page's language
 const S = window.VIMY_SCENARIO, W = S.world, B = S.battlefield;
 /* A battle may leave out its river, road, fords, city or camp. Missing lists become empty; a missing city or camp
    becomes an empty box far off the map, so the drawing code can still read it and draw nothing. */
@@ -384,7 +385,7 @@ function drawTrenches(drawWorld) {
 }
 function drawSourceNote() {
   srcHit = null; const gr = growthNow(), n = gr ? gr.g.layer : curTrench, src = n && (S.trenchSources || {})[n]; if (!src) return;
-  const t = '🗺 Trench map sources: ' + src.title + '  ⓘ'; ctx.save(); ctx.font = '600 12px system-ui, sans-serif'; const w = ctx.measureText(t).width + 18, x = 12, y = view.h - 64;
+  const t = UIT('🗺 Trench map sources:') + ' ' + src.title + '  ⓘ'; ctx.save(); ctx.font = '600 12px system-ui, sans-serif'; const w = ctx.measureText(t).width + 18, x = 12, y = view.h - 64;
   ctx.fillStyle = 'rgba(8,16,22,.78)'; ctx.strokeStyle = 'rgba(127,233,255,.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.roundRect(x, y, w, 24, 6); ctx.fill(); ctx.stroke();
   ctx.fillStyle = '#d6f6ff'; ctx.textBaseline = 'middle'; ctx.fillText(t, x + 9, y + 12); ctx.restore(); srcHit = { x0: x, x1: x + w, y0: y, y1: y + 24, g: src };
 }
@@ -845,7 +846,7 @@ function combat() {
 }
 function fog() {
   const ai = aiSide(), mine = formations.filter(f => f.side === player && alive(f)), theirs = formations.filter(f => f.side === ai && alive(f));
-  theirs.forEach(f => { if (!f.known && mine.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog('Enemy spotted: ' + f.name); caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true, audioFor('cmd', 'sighted')); if (cam.follow) focusOn(f.x, f.y); } });
+  theirs.forEach(f => { if (!f.known && mine.some(e => dist(e, f) < S.ai.spotRange)) { f.known = true; addLog(UIT('Enemy spotted:') + ' ' + f.name); caption('Enemy sighted', f.name + ' has been spotted.', 'reconstruction', true, audioFor('cmd', 'sighted')); if (cam.follow) focusOn(f.x, f.y); } });
   mine.forEach(f => { if (!f.aiKnown && theirs.some(e => dist(e, f) < S.ai.spotRange)) f.aiKnown = true; });
 }
 function checkEnd() {
@@ -902,7 +903,7 @@ function drawLegend() {
   ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
   const x = view.w - w - 14, y = 12; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText(UIT('LEGEND'), x + 12, y + 14);
   ctx.font = "13px system-ui, sans-serif";
   items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
     if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }

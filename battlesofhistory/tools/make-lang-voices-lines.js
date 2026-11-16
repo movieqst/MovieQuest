@@ -10,7 +10,7 @@ const MIX = 'highpass=f=70,agate=threshold=0.035:ratio=6:attack=8:release=160:kn
 const cap = t => t === t.toUpperCase() ? t.charAt(0) + t.slice(1).toLowerCase() : t;   // a title in capitals is read as words, not spelt out
 const clips = [];
 if (S.welcome) clips.push(['welcome', S.welcome]);
-(S.intro || []).forEach((sl, i) => { if (!sl.choice) clips.push(['intro-' + (i + 1), cap(sl.title) + '. ' + sl.lines.map(l => l.text).join(' ')]); });   // the title, then the lines (as the English clips: no subtitle)
+{ let n = 0; (S.intro || []).forEach(sl => { if (sl.extra) return; n++; if (!sl.choice) clips.push(['intro-' + n, cap(sl.title) + '. ' + sl.lines.map(l => l.text).join(' ')]); }); }   // the title, then the lines (as the English clips: no subtitle); numbered as the page does: slides marked `extra` (Vimy's trench slide) have no clip and are not counted
 (S.events || []).forEach((e, i) => { clips.push(['event-' + (i + 1), e.text]); if (e.explain) clips.push(['explain-' + (i + 1), e.explain]); });
 if (S.campaign) S.campaign.events.forEach((e, i) => clips.push(['event-campaign-' + (i + 1), e.text]));
 if (S.outcome) clips.push(['outcome', S.outcome.map(l => l.text).join(' ')]);

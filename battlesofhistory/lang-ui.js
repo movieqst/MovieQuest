@@ -363,3 +363,9 @@ Object.assign(window.BH_UI.sh, { 'front line, 14 September (CIA)': 'linija front
   'OpenStreetMap contributors': { fr: 'les contributeurs d’OpenStreetMap', zh: 'OpenStreetMap 贡献者', sco: 'OpenStreetMap contributors', gd: 'luchd-cuideachaidh OpenStreetMap', ar: 'مساهمو OpenStreetMap', he: 'תורמי OpenStreetMap', sh: 'suradnici OpenStreetMapa' } };
   Object.keys(window.BH_UI || {}).forEach(c => { const o = {}; for (const k in D) if (D[k][c]) o[k] = D[k][c]; Object.assign(window.BH_UI[c], o); });
 })();
+// French: Vimy Ridge, and page words the French pages did not have yet (the map's legend, the slideshow button)
+Object.assign(window.BH_UI.fr, {
+  'BATTLE OF VIMY RIDGE': 'BATAILLE DE LA CRÊTE DE VIMY', 'Battle of Vimy Ridge — Historical Reenactment': 'Bataille de la crête de Vimy — Reconstitution historique',
+  'Historical reenactment · 9–12 April 1917 · runs locally, no install': 'Reconstitution historique · 9–12 avril 1917 · fonctionne sans installation',
+  '🖼 Slideshow': '🖼 Diaporama', 'LEGEND': 'LÉGENDE', '🗺 Trench map sources:': '🗺 Cartes de tranchées :', 'Enemy spotted:': 'Ennemi repéré :'
+});
