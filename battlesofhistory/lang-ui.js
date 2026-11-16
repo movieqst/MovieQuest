@@ -363,3 +363,17 @@ Object.assign(window.BH_UI.sh, { 'front line, 14 September (CIA)': 'linija front
   'OpenStreetMap contributors': { fr: 'les contributeurs d’OpenStreetMap', zh: 'OpenStreetMap 贡献者', sco: 'OpenStreetMap contributors', gd: 'luchd-cuideachaidh OpenStreetMap', ar: 'مساهمو OpenStreetMap', he: 'תורמי OpenStreetMap', sh: 'suradnici OpenStreetMapa' } };
   Object.keys(window.BH_UI || {}).forEach(c => { const o = {}; for (const k in D) if (D[k][c]) o[k] = D[k][c]; Object.assign(window.BH_UI[c], o); });
 })();
+// French: Vimy Ridge, and page words the French pages did not have yet (the map's legend, the slideshow button)
+Object.assign(window.BH_UI.fr, {
+  'BATTLE OF VIMY RIDGE': 'BATAILLE DE LA CRÊTE DE VIMY', 'Battle of Vimy Ridge — Historical Reenactment': 'Bataille de la crête de Vimy — Reconstitution historique',
+  'Historical reenactment · 9–12 April 1917 · runs locally, no install': 'Reconstitution historique · 9–12 avril 1917 · fonctionne sans installation',
+  '🖼 Slideshow': '🖼 Diaporama', 'LEGEND': 'LÉGENDE', '🗺 Trench map sources:': '🗺 Cartes de tranchées :', 'Enemy spotted:': 'Ennemi repéré :'
+});
+// French: Dunkirk
+Object.assign(window.BH_UI.fr, {
+  'WITHDRAWAL AT DUNKIRK': 'LE REPLI DE DUNKERQUE', 'Withdrawal at Dunkirk, 1940 — Historical Reenactment': 'Le repli de Dunkerque, 1940 — Reconstitution historique',
+  'Historical reenactment · 26 May – 4 June 1940 · runs locally, no install': 'Reconstitution historique · 26 mai – 4 juin 1940 · fonctionne sans installation',
+  'Men brought home so far:': 'Hommes déjà ramenés en Angleterre :'
+});
+// French: the units' states on the map (Vimy's engine)
+Object.assign(window.BH_UI.fr, { 'limbering': 'avant-train', 'unlimbering': 'mise en batterie', 'captured': 'capturé', 'routed': 'en déroute', 'scattered': 'dispersé', 'plundering': 'pillage', 'concealed': 'caché' });

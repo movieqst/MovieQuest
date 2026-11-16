@@ -1,0 +1,372 @@
+{
+ "formations": {
+  "bef": {
+   "name": "Corps expéditionnaire britannique",
+   "division": "BEF",
+   "count": "Environ 250 000 hommes au nord",
+   "note": "Neuf divisions sous lord Gort, qui tenaient la ligne de l’Escaut à l’est de Lille quand les chars allemands atteignirent la mer."
+  },
+  "fr1": {
+   "name": "1re armée française",
+   "division": "1re armée française",
+   "count": "Une douzaine de divisions",
+   "note": "Elle se replia en combattant vers Lille, où une grande partie fut encerclée. Sa résistance jusqu’au 31 mai retint des divisions allemandes loin du périmètre de Dunkerque."
+  },
+  "bel": {
+   "name": "Armée belge",
+   "division": "Armée belge",
+   "count": "Environ 22 divisions",
+   "note": "Elle tint la ligne de la Lys à la gauche des Britanniques jusqu’à la capitulation du roi Léopold III, le 28 mai."
+  },
+  "pzw": {
+   "name": "Groupe blindé Kleist",
+   "division": "Panzers",
+   "count": "Plusieurs divisions blindées",
+   "note": "Les divisions blindées qui percèrent à Sedan, atteignirent la mer à Abbeville le 20 mai, puis remontèrent vers le nord le long de la côte."
+  },
+  "pzs": {
+   "name": "Divisions blindées du corps de Hoth",
+   "division": "Panzers (Rommel)",
+   "count": "Deux divisions blindées",
+   "note": "Dont la 7e division blindée de Rommel, frappée à Arras le 21 mai."
+  },
+  "agb": {
+   "name": "Groupe d’armées B allemand",
+   "division": "Groupe d’armées B",
+   "count": "Des armées d’infanterie qui pressaient depuis l’est",
+   "note": "Les armées d’infanterie qui avaient traversé la Belgique et repoussé les Alliés depuis l’est."
+  },
+  "frank": {
+   "name": "Frankforce (contre-attaque d’Arras)",
+   "division": "Frankforce",
+   "count": "Deux bataillons de chars et deux bataillons d’infanterie",
+   "note": "La contre-attaque britannique au sud d’Arras, le 21 mai. Elle échoua, mais inquiéta le commandement allemand."
+  },
+  "calais": {
+   "name": "Garnison de Calais (30e brigade)",
+   "division": "Calais",
+   "count": "Environ 4 000 soldats britanniques et français",
+   "note": "Elle tint Calais jusqu’au 26 mai, occupant les chars allemands pendant que le couloir vers Dunkerque se formait."
+  },
+  "b-bergues": {
+   "name": "Arrière-garde britannique à Bergues",
+   "division": "Arrière-garde, Bergues",
+   "count": "Des bataillons de la 1re division",
+   "note": "La vieille ville fortifiée de Bergues tenait l’angle de la ligne des canaux. Les Britanniques la tinrent jusqu’au 1er juin, puis les Français."
+  },
+  "b-canal": {
+   "name": "Divisions britanniques sur le canal de Bergues à Furnes",
+   "division": "BEF sur le canal",
+   "count": "Plusieurs divisions, chaque jour moins nombreuses",
+   "note": "Le corps de Gort tenait la moitié est du périmètre, le long du canal de Bergues à Furnes."
+  },
+  "b-furnes": {
+   "name": "Troupes britanniques à Furnes et Nieuport",
+   "division": "BEF, Furnes",
+   "count": "Le IIe corps, puis les 3e et 4e divisions",
+   "note": "L’angle est, où la brèche laissée par la capitulation belge dut être comblée le 28 mai."
+  },
+  "b-nieuport": {
+   "name": "Troupes britanniques à Nieuport",
+   "division": "Nieuport",
+   "count": "Envoyées en hâte le 28 mai",
+   "note": "Dépêchées à l’extrémité côtière de la ligne quand l’armée belge cessa le combat."
+  },
+  "f-west": {
+   "name": "16e corps d’armée français (ouest de Dunkerque)",
+   "division": "Français, canal de Mardyck",
+   "count": "Le commandement de l’amiral Abrial",
+   "note": "Les Français tinrent la moitié ouest du périmètre jusqu’au bout, et tout le périmètre à la fin."
+  },
+  "f-bergues": {
+   "name": "Troupes françaises au sud de Dunkerque",
+   "division": "Arrière-garde française",
+   "count": "Des divisions françaises",
+   "note": "Elles tinrent la ligne après le départ des Britanniques, jusqu’au matin du 4 juin."
+  },
+  "g-west": {
+   "name": "Divisions allemandes à l’ouest de Dunkerque",
+   "division": "Allemands, Gravelines",
+   "count": "Infanterie et chars venus du canal de l’Aa",
+   "note": "Elles pressaient le secteur français depuis l’ouest."
+  },
+  "g-south": {
+   "name": "Divisions allemandes au sud de Bergues",
+   "division": "Allemands, Bergues",
+   "count": "Des divisions d’infanterie",
+   "note": "Elles attaquèrent la ligne des canaux autour de Bergues."
+  },
+  "g-se": {
+   "name": "Divisions allemandes sur le canal",
+   "division": "Allemands, Hondschoote",
+   "count": "Des divisions d’infanterie",
+   "note": "Elles franchirent par endroits le canal de Bergues à Furnes le 1er juin."
+  },
+  "g-east": {
+   "name": "Divisions allemandes venues de Belgique",
+   "division": "Allemands, Furnes",
+   "count": "Groupe d’armées B",
+   "note": "Elles remontèrent à travers la Belgique après la capitulation pour attaquer Nieuport et Furnes."
+  },
+  "q-mole": {
+   "name": "Hommes en file sur le môle Est",
+   "division": "Môle",
+   "count": "Des milliers par heure au plus fort",
+   "note": "La longue digue de l’avant-port. Les navires s’y amarraient, et la plupart des hommes partirent par là."
+  },
+  "q-malo": {
+   "name": "Hommes en file sur la plage de Malo",
+   "division": "Malo"
+  },
+  "q-bray": {
+   "name": "Hommes en file à Bray-Dunes",
+   "division": "Bray-Dunes"
+  },
+  "q-panne": {
+   "name": "Hommes en file à La Panne",
+   "division": "La Panne"
+  },
+  "dd-mole": {
+   "name": "Destroyer le long du môle"
+  },
+  "ferry-mole": {
+   "name": "Ferry transmanche"
+  },
+  "dd-1": {
+   "name": "Destroyer au large de Bray-Dunes"
+  },
+  "dd-2": {
+   "name": "Destroyer au large de La Panne"
+  },
+  "sw-1": {
+   "name": "Dragueur de mines"
+  },
+  "ps-1": {
+   "name": "Bateau à aubes"
+  },
+  "lit-1": {
+   "name": "Petits navires"
+  },
+  "lit-2": {
+   "name": "Petits navires"
+  },
+  "lit-3": {
+   "name": "Petits navires"
+  },
+  "lit-4": {
+   "name": "Petits navires"
+  },
+  "stuka-1": {
+   "name": "Bombardiers en piqué Stuka"
+  },
+  "stuka-2": {
+   "name": "Bombardiers en piqué Stuka"
+  },
+  "bomb-1": {
+   "name": "Bombardiers allemands"
+  },
+  "raf-1": {
+   "name": "Chasseurs de la RAF"
+  },
+  "z-ferry": {
+   "name": "Ferries sur la route Z"
+  },
+  "x-dd": {
+   "name": "Destroyers sur la route X"
+  },
+  "y-dd": {
+   "name": "Le destroyer Wakeful"
+  },
+  "eboat": {
+   "name": "Vedette lance-torpilles allemande S-30"
+  },
+  "little-fleet": {
+   "name": "Les petits navires"
+  },
+  "last-ship": {
+   "name": "HMS Shikari"
+  },
+  "luft-3": {
+   "name": "Bombardiers allemands"
+  }
+ },
+ "units": [
+  {
+   "name": "Infanterie britannique",
+   "desc": "Le Corps expéditionnaire britannique : divisions d’active et de la Territorial Army, surtout à pied.",
+   "lines": [
+    "Le BEF partit pour la France en 1939 : en mai 1940, il comptait sur le terrain dix divisions d’infanterie, plus trois autres pour les travaux et les lignes de communication, et une brigade de chars.",
+    "Le soldat portait le casque d’acier et le battle-dress de serge, et le fusil Lee-Enfield. Chaque groupe avait un fusil-mitrailleur Bren.",
+    "À Dunkerque, la plupart des hommes rentrèrent avec leur fusil et peu d’autre chose. Les canons, camions et chars de l’armée furent détruits et abandonnés."
+   ]
+  },
+  {
+   "name": "Infanterie française",
+   "desc": "La 1re armée française et les troupes de la garnison de Dunkerque.",
+   "lines": [
+    "La France avait la plus grande armée d’Europe de l’Ouest. Les divisions prises au piège dans le nord comptaient parmi ses meilleures et ses plus modernes.",
+    "Une partie de la 1re armée, encerclée à Lille, combattit jusqu’au 31 mai et retint plusieurs divisions allemandes qui, sans cela, auraient pu atteindre le périmètre.",
+    "Les troupes françaises tinrent la moitié ouest du périmètre jusqu’au bout, et toute la ligne à la fin. Environ 139 000 furent conduits en Angleterre."
+   ]
+  },
+  {
+   "name": "Division blindée allemande",
+   "desc": "Chars, infanterie motorisée et bombardiers en piqué agissant ensemble.",
+   "lines": [
+    "Les dix divisions blindées allemandes de 1940 furent concentrées pour le coup à travers les Ardennes et la course vers la mer.",
+    "La plupart des chars allemands étaient plus légers que les meilleurs chars français et britanniques. Leur force tenait à la vitesse, à la radio et à l’étroite coopération avec la Luftwaffe.",
+    "Le 24 mai, les chars furent arrêtés trois jours sur le canal de l’Aa. Quand ils repartirent, le périmètre était en place."
+   ]
+  },
+  {
+   "name": "Destroyer de la Royal Navy",
+   "desc": "Des navires de guerre rapides, qui transportèrent plus d’hommes que tout autre type de navire.",
+   "lines": [
+    "Les destroyers ramenèrent plus d’hommes que tout autre type de navire, souvent 600 à 900 à la fois, entassés sur le pont et dans les entreponts.",
+    "Six destroyers britanniques furent coulés et beaucoup d’autres endommagés : Grafton, Grenade, Wakeful, Basilisk, Havant et Keith.",
+    "Dans cette reconstitution, les navires sont montrés là où le récit en a besoin ; leurs positions exactes sont une reconstitution."
+   ]
+  },
+  {
+   "name": "Les petits navires",
+   "desc": "Yachts, bateaux de pêche, canots de sauvetage et vedettes, beaucoup menés par des volontaires.",
+   "lines": [
+    "Des centaines de petites embarcations furent rassemblées sur la Tamise et la côte sud à partir du 27 mai.",
+    "Leur tâche principale était de conduire les hommes des hauts-fonds jusqu’aux grands navires au large. Beaucoup furent perdues ou s’échouèrent sur les plages.",
+    "L’Association of Dunkirk Little Ships en fait encore naviguer plus d’une centaine aujourd’hui."
+   ]
+  },
+  {
+   "name": "Ju 87 Stuka",
+   "desc": "Le bombardier en piqué allemand, avec sa sirène hurlante.",
+   "lines": [
+    "Les bombardiers en piqué attaquaient le port, le môle et les navires, tandis que les bombardiers bimoteurs frappaient la ville et les plages.",
+    "Le sable mou des plages absorbait une grande partie du souffle : des bombes qui auraient été meurtrières sur un sol dur y faisaient souvent moins de mal.",
+    "Göring avait promis que la Luftwaffe détruirait les armées prises au piège. Le mauvais temps, plusieurs jours, et la RAF l’en empêchèrent."
+   ]
+  },
+  {
+   "name": "Chasseurs de la RAF",
+   "desc": "Spitfire et Hurricane volant depuis des bases du sud-est de l’Angleterre.",
+   "lines": [
+    "Le Fighter Command patrouilla au-dessus de Dunkerque pendant toute l’évacuation, combattant souvent à l’intérieur des terres ou au-dessus des nuages, là où les hommes sur les plages ne pouvaient pas le voir.",
+    "La RAF perdit environ 145 avions au-dessus de Dunkerque. La Luftwaffe en perdit à peu près autant."
+   ]
+  }
+ ],
+ "library": [
+  "Les deux rapports de Gort, publiés dans la London Gazette.",
+  "Le rapport de Ramsay sur l’opération Dynamo, publié dans la London Gazette.",
+  "L’histoire officielle britannique de la campagne.",
+  "Le court récit de l’évacuation par le poète lauréat, écrit moins d’un an après."
+ ],
+ "sources": [
+  "Les rapports des chefs de l’armée et de la marine, London Gazette, 1941 et 1947.",
+  "L. F. Ellis, The War in France and Flanders 1939–1940 (1953).",
+  "Halder et le groupe d’armées A, sur l’ordre d’arrêt et la bataille du périmètre.",
+  "Imperial War Museum, droit d’auteur de la Couronne britannique expiré."
+ ],
+ "strings": {
+  "Dunkirk": "Dunkerque",
+  "Ostend": "Ostende",
+  "Ghent": "Gand",
+  "AA CANAL": "CANAL DE L’AA",
+  "English Channel": "La Manche",
+  "≈ 2 km (the painting is not to scale)": "≈ 2 km (la peinture n’est pas à l’échelle)",
+  "DUNKIRK": "DUNKERQUE",
+  "East Mole": "Môle Est",
+  "flooded fields": "champs inondés",
+  "Bergues–Furnes canal": "canal de Bergues à Furnes",
+  "oil tanks": "réservoirs de pétrole",
+  "to Dover ↑": "vers Douvres ↑",
+  "ROUTE Z · 39 sea miles": "ROUTE Z · 39 milles marins",
+  "ROUTE X · 55 sea miles": "ROUTE X · 55 milles marins",
+  "ROUTE Y · 87 sea miles": "ROUTE Y · 87 milles marins",
+  "Dover": "Douvres",
+  "Goodwin Sands": "Bancs de Goodwin",
+  "Kwinte Buoy": "Bouée de Kwinte",
+  "20 May": "20 mai",
+  "21 May": "21 mai",
+  "24 May": "24 mai",
+  "25 May": "25 mai",
+  "26 May": "26 mai",
+  "27 May": "27 mai",
+  "28 May": "28 mai",
+  "29 May": "29 mai",
+  "30 May": "30 mai",
+  "31 May": "31 mai",
+  "1 June": "1er juin",
+  "2 June": "2 juin",
+  "3 June": "3 juin",
+  "4 June": "4 juin",
+  "German tanks reach the sea": "Les chars allemands atteignent la mer",
+  "The counter-attack at Arras": "La contre-attaque d’Arras",
+  "The halt order": "L’ordre d’arrêt",
+  "Back to the coast": "Retour vers la côte",
+  "Artist rendering: the Strait of Dover with Dunkirk on the French coast. Battle Games, AI-generated.": "Vue d’artiste : le pas de Calais avec Dunkerque sur la côte française. Battle Games, générée par IA.",
+  "Established": "Établi",
+  "German account": "Source allemande",
+  "Estimate": "Estimation",
+  "Reconstruction": "Reconstitution",
+  "British official accounts": "Sources officielles britanniques",
+  "The British Official History; chapters 12–15 cover the evacuation.": "L’histoire officielle britannique ; les chapitres 12 à 15 traitent de l’évacuation.",
+  "A narrative built on hundreds of interviews.": "Un récit fondé sur des centaines d’entretiens.",
+  "The land battle and the rearguards.": "La bataille terrestre et les arrière-gardes.",
+  "The BEF from 1939 to the evacuation, including the perimeter and its canal line.": "Le BEF de 1939 à l’évacuation, y compris le périmètre et sa ligne de canaux.",
+  "The naval side: routes X, Y and Z, ships and losses.": "Le côté naval : les routes X, Y et Z, les navires et les pertes.",
+  "Daily evacuation figures and losses.": "Les chiffres quotidiens de l’évacuation et les pertes.",
+  "The Army chief of staff’s daily notes, including his frustration at the halt order.": "Les notes quotidiennes du chef d’état-major de l’armée de terre, dont son agacement devant l’ordre d’arrêt.",
+  "Rundstedt’s headquarters and the halt of 24 May.": "Le quartier général de Rundstedt et l’arrêt du 24 mai.",
+  "Daily totals differ slightly between sources; this reenactment uses the Admiralty figures that sum to 338,226.": "Les totaux quotidiens diffèrent un peu selon les sources ; cette reconstitution utilise les chiffres de l’Amirauté, dont la somme est 338 226.",
+  "Painted for this game from layout guides drawn from real coordinates (tools/draw-layout-guides.py). The beach map is a closer, less exact view.": "Peintes pour ce jeu d’après des guides tracés sur des coordonnées réelles (tools/draw-layout-guides.py). La carte des plages est une vue plus rapprochée et moins exacte.",
+  "A handful of ships and aircraft stand for hundreds. Which ship is shown where is our choice.": "Une poignée de navires et d’avions en représentent des centaines. Quel navire est montré où relève de notre choix.",
+  "Official report": "Rapport officiel",
+  "Published 1941. UK Crown copyright has expired.": "Publié en 1941. Le droit d’auteur de la Couronne britannique a expiré.",
+  "Vice-Admiral Sir Bertram Ramsay": "Vice-amiral Sir Bertram Ramsay",
+  "Published 1947. UK Crown copyright has expired.": "Publié en 1947. Le droit d’auteur de la Couronne britannique a expiré.",
+  "Official History": "Histoire officielle",
+  "Published 1953 by HMSO. UK Crown copyright has expired.": "Publié en 1953 par HMSO. Le droit d’auteur de la Couronne britannique a expiré.",
+  "Contemporary account": "Récit contemporain",
+  "The little ships": "Les petits navires",
+  "Still in copyright: listed for reference.": "Encore protégé par le droit d’auteur : cité pour référence.",
+  "Gort’s and Ramsay’s despatches": "Les rapports de Gort et de Ramsay",
+  "The British Official History": "L’histoire officielle britannique",
+  "German war diaries": "Journaux de marche allemands",
+  "Photographs": "Photographies",
+  "Despatch: Operations of the British Expeditionary Force, 1939–1940 (Lord Gort)": "Rapport : Operations of the British Expeditionary Force, 1939–1940 (lord Gort)",
+  "Report: The Evacuation of the Allied Armies from Dunkirk (Admiral Ramsay)": "Rapport : The Evacuation of the Allied Armies from Dunkirk (amiral Ramsay)",
+  "Lord Gort": "lord Gort",
+  "German Army Group B": "Groupe d’armées B allemand",
+  "Allies advance into Belgium": "Les Alliés entrent en Belgique",
+  "Panzers, from Sedan to the sea": "Les panzers, de Sedan à la mer",
+  "The sea, 20 May": "La mer, 20 mai",
+  "Cut off": "Encerclés",
+  "BEF: about 250,000 men in the north": "BEF : environ 250 000 hommes au nord",
+  "Army Group B": "Groupe d’armées B",
+  "Army Group A": "Groupe d’armées A",
+  "armour": "blindés",
+  "Panzer divisions": "Divisions blindées",
+  "turning north": "virage vers le nord",
+  "Dover: Admiral Ramsay": "Douvres : l’amiral Ramsay",
+  "Expected: 45,000 men in two days": "Prévu : 45 000 hommes en deux jours",
+  "Destroyers, ferries, steamers": "Destroyers, ferries, vapeurs",
+  "Ju 87 Stukas": "Stukas Ju 87",
+  "He 111 bombers": "Bombardiers He 111",
+  "RAF Spitfires": "Spitfire de la RAF",
+  "ferries, route Z": "ferries, route Z",
+  "destroyers, route X": "destroyers, route X",
+  "E-boat": "Vedette lance-torpilles",
+  "little ships from Ramsgate": "petits navires partis de Ramsgate",
+  "HMS Shikari, the last ship": "HMS Shikari, le dernier navire"
+ },
+ "voices": [
+  {
+   "id": "fr-tom",
+   "name": "Narrateur (homme · Tom)"
+  },
+  {
+   "id": "fr-siwis",
+   "name": "Narratrice (femme · Siwis)"
+  }
+ ]
+}

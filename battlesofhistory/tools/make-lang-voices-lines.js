@@ -4,13 +4,14 @@
    One line per clip and voice: battle, voice id, speaker, length scale, piper args, ffmpeg mix, clip name, text.
    Clip names match the English ones: welcome, intro-N, event-N, explain-N, event-campaign-N, outcome, cmd-<key>. */
 const path = require('path');
-const [battle, lang, voiceList] = process.argv.slice(2);
+const [battle, lang, voiceList, opt] = process.argv.slice(2);
+const CHOICE = opt === '--choice';   // this battle's engine also narrates the choice slide (Dunkirk); Waterloo's does not
 const S = require('./load-scenario.js')(path.join(__dirname, '..', battle), lang);
 const MIX = 'highpass=f=70,agate=threshold=0.035:ratio=6:attack=8:release=160:knee=2,volume=1.6,alimiter=limit=0.95';
 const cap = t => t === t.toUpperCase() ? t.charAt(0) + t.slice(1).toLowerCase() : t;   // a title in capitals is read as words, not spelt out
 const clips = [];
 if (S.welcome) clips.push(['welcome', S.welcome]);
-(S.intro || []).forEach((sl, i) => { if (!sl.choice) clips.push(['intro-' + (i + 1), cap(sl.title) + '. ' + sl.lines.map(l => l.text).join(' ')]); });   // the title, then the lines (as the English clips: no subtitle)
+{ let n = 0; (S.intro || []).forEach(sl => { if (sl.extra) return; n++; if (!sl.choice || CHOICE) clips.push(['intro-' + n, cap(sl.title) + '. ' + sl.lines.map(l => l.text).join(' ')]); }); }   // the title, then the lines (as the English clips: no subtitle); numbered as the page does: slides marked `extra` (Vimy's trench slide) have no clip and are not counted
 (S.events || []).forEach((e, i) => { clips.push(['event-' + (i + 1), e.text]); if (e.explain) clips.push(['explain-' + (i + 1), e.explain]); });
 if (S.campaign) S.campaign.events.forEach((e, i) => clips.push(['event-campaign-' + (i + 1), e.text]));
 if (S.outcome) clips.push(['outcome', S.outcome.map(l => l.text).join(' ')]);

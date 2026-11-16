@@ -1,0 +1,598 @@
+{
+ "title": "Withdrawal at Dunkirk",
+ "date": "26 May – 4 June 1940",
+ "place": "Dunkirk, northern France",
+ "tagline": "The British, French and Belgian armies against the German Army and Luftwaffe",
+ "titleCard": {
+  "title": "WITHDRAWAL AT DUNKIRK",
+  "date": "26 May – 4 June 1940",
+  "place": "Dunkirk and the Strait of Dover",
+  "sides": "British, French and Belgian armies  ·  the German Army and Luftwaffe"
+ },
+ "confidence": {
+  "established": {
+   "label": "Established",
+   "desc": "Generally accepted by historians."
+  },
+  "official": {
+   "label": "British official",
+   "desc": "From the British official accounts: the despatches of Lord Gort and Admiral Ramsay, and the Official History."
+  },
+  "german": {
+   "label": "German account",
+   "desc": "From German war diaries, orders and memoirs."
+  },
+  "estimate": {
+   "label": "Estimate",
+   "desc": "A modern estimate, or a figure the sources give differently."
+  },
+  "reconstruction": {
+   "label": "Reconstruction",
+   "desc": "Our own choice to make the reenactment watchable: positions, timings and which ship is shown where."
+  }
+ },
+ "sides": {
+  "british": "British Expeditionary Force",
+  "french": "French Army",
+  "belgian": "Belgian Army",
+  "german": "German Army and Luftwaffe",
+  "navy": "Royal Navy and the little ships"
+ },
+ "welcome": "Welcome to Battles of History. Today we are learning about Dunkirk, where in nine days at the end of May 1940 more than three hundred thousand British and French soldiers were rescued from the beaches and harbour of Dunkirk in France.",
+ "intro": [
+  {
+   "title": "DUNKIRK, 1940",
+   "subtitle": "26 May – 4 June 1940 · the Strait of Dover",
+   "lines": [
+    "In nine days at the end of May 1940, more than 338,000 British and French soldiers were carried across the Channel from the harbour and beaches of Dunkirk.",
+    "It was a defeat: the army left its guns, tanks and lorries behind. It was also a rescue that let Britain fight on.",
+    "This introduction separates what the records show from what we have reconstructed for the map. Watch for the coloured tags."
+   ],
+   "media": [
+    "Troops brought back from Dunkirk crowd the deck of a destroyer as she comes in to berth at Dover, 31 May 1940.",
+    "The Withdrawal from Dunkirk, June 1940, painted by the official war artist Charles Cundall. Smoke from the burning oil tanks hangs over the town; men queue on the sand, wade out to the boats and are ferried to the ships, while a lorry jetty runs into the sea and German aircraft attack.",
+    "Winston Churchill, Prime Minister for just sixteen days when the evacuation began. On 4 June he told Parliament that “wars are not won by evacuations”, and that Britain would “fight on the beaches”. This famous portrait was taken in Ottawa in December 1941."
+   ]
+  },
+  {
+   "title": "The trap",
+   "lines": [
+    "On 10 May the German Army invaded the Netherlands, Belgium and France. The British and the best French armies advanced into Belgium to meet it.",
+    "The main German blow came further south, through the Ardennes. Its tanks crossed the Meuse at Sedan and raced west to the Channel coast, which they reached on 20 May.",
+    "The armies in Belgium were cut off from the rest of France: the British Expeditionary Force, the French First Army and the Belgian Army, with their backs to the sea."
+   ],
+   "media": [
+    "A German Panzer IV on exercise in the west in March 1940, two months before the invasion. Tanks like this, massed in ten panzer divisions, broke through at Sedan and raced to the Channel coast.",
+    "A British Matilda II at the Tank Museum, Bovington, in later desert colours. In the counter-attack at Arras on 21 May, Matildas shrugged off most German anti-tank shells and briefly threw Rommel’s division into confusion.",
+    "The same Matilda II from the side. Its armour was up to 78 mm thick, more than any German tank of 1940, but it was slow, about walking pace across country, and only a few dozen were in France.",
+    "Generalmajor Erwin Rommel, whose 7th Panzer Division was struck by the Matildas at Arras, at the German victory parade in Paris in June 1940, after the fall of France. He reported being attacked by hundreds of tanks."
+   ]
+  },
+  {
+   "title": "The armies",
+   "lines": [
+    "The British Expeditionary Force, under Lord Gort, had about 390,000 men in France, of whom around 250,000 were in the fighting area in the north.",
+    "Beside them stood the French First Army and the Belgian Army. Against them came two German army groups, with most of the tank divisions in the west.",
+    "The armies on this map are shown as blocks with the usual military symbols: a cross for infantry, an oval for tanks."
+   ],
+   "media": [
+    "General Lord Gort, commander of the British Expeditionary Force, painted in 1940. On 25 May he decided, without waiting for orders, to give up the planned attack south and fall back to the coast: the decision that saved most of his army."
+   ]
+  },
+  {
+   "title": "The ships",
+   "lines": [
+    "From his headquarters in the cliffs at Dover, Vice-Admiral Bertram Ramsay planned the evacuation. Its code name was Operation Dynamo.",
+    "The Admiralty expected to lift perhaps 45,000 men in two days before the Germans closed in.",
+    "Destroyers, minesweepers, ferries and paddle steamers would do most of the work, joined later by hundreds of small boats: the little ships."
+   ],
+   "media": [
+    "Vice-Admiral Bertram Ramsay, who planned and ran Operation Dynamo from his headquarters in the cliffs at Dover. Four years later he commanded the naval side of the D-Day landings. Photographed in October 1943.",
+    "British troops line up on the beach at Dunkirk to wait for the boats, late May 1940.",
+    "Dover Castle from its keep. Deep inside the white cliffs below it ran tunnels first dug in the Napoleonic wars; in 1940 they held Admiral Ramsay’s naval headquarters, and Operation Dynamo was run from a room there.",
+    "One of the entrances to the tunnel system under Dover Castle, now open to visitors as the Secret Wartime Tunnels.",
+    "The paddle steamer Medway Queen, a Thames excursion boat turned minesweeper, called the heroine of Dunkirk. She made seven round trips and brought home about 7,000 men. Restored, she is seen here at Gillingham Pier in Kent in 2016.",
+    "The French destroyer Bourrasque, crowded with troops, sinking off the Belgian coast on 30 May 1940 after striking a mine on the way back from Dunkirk. Around 300 men were lost. More than 200 vessels were sunk in the nine days."
+   ]
+  },
+  {
+   "title": "How to read this reenactment",
+   "lines": [
+    "The story moves between three maps: the campaign in France and Belgium, the beaches and canals around Dunkirk, and the sea crossing.",
+    "The date and the number of men brought home so far are shown in the top corner of the map.",
+    "Positions, and which ship is shown where, are a reconstruction. Press “Explain this moment” at any point to pause and read more."
+   ],
+   "media": [
+    "Smoke from the burning oil storage tanks billows over Dunkirk, with ships offshore, about the start of June 1940. The column could be seen from England; on the beach map of this reenactment it rises from the same tanks."
+   ]
+  },
+  {
+   "title": "Cut off. What happens next?",
+   "lines": [
+    "The story continues on the map.",
+    "Watch the reenactment: sixteen narrated chapters, from the German tanks reaching the sea to the last ship leaving Dunkirk, then a debrief on what it meant.",
+    "Take command is coming later for this battle."
+   ],
+   "media": []
+  }
+ ],
+ "events": [
+  {
+   "title": "The tanks reach the sea",
+   "text": "20 May. German tank divisions that broke through at Sedan reach the Channel coast near Abbeville. The Allied armies in Belgium are cut off from the rest of France.",
+   "explain": "The Allied plan had sent the best British and French troops forward into Belgium. The German main effort went through the wooded Ardennes, which the French thought too difficult for tanks, and cut in behind them."
+  },
+  {
+   "title": "Counter-attack at Arras",
+   "text": "21 May. British tanks and infantry strike south of Arras into Rommel’s 7th Panzer Division. The attack is beaten off, but it shakes the German command.",
+   "explain": "Only two tank battalions took part, many of their tanks slow Matildas armed with machine guns. Rommel reported being attacked by hundreds of tanks. The scare fed the German caution of the following days."
+  },
+  {
+   "title": "The halt order",
+   "text": "24 May. With Boulogne taken and Calais surrounded, the German tanks stop on the Aa canal, about 25 km from Dunkirk. They wait there for three days.",
+   "explain": "Rundstedt, commanding Army Group A, halted the tanks to rest and repair them, and Hitler confirmed the order. Göring promised the Luftwaffe could finish the trapped armies alone. Why the order was given is still argued about."
+  },
+  {
+   "title": "Back to the coast",
+   "text": "25–28 May. Gort gives up the planned attack south and orders his army back to Dunkirk. A corridor is held open while the divisions march north, with rearguards at Cassel and Wormhout.",
+   "explain": "Gort decided on the evening of 25 May without waiting for London or the French command: he sent the two divisions meant for the attack south to fill a gap opening on the Belgian front. Many historians count it the decision that saved the army."
+  },
+  {
+   "title": "Operation Dynamo begins",
+   "text": "26 May, 18:57. The Admiralty signals Ramsay to begin Operation Dynamo. The first ships sail for Dunkirk on the short route, route Z, along the French coast.",
+   "explain": "Some men had already been brought home from Dunkirk over the previous days: wounded and rear-area troops. Dynamo was the order to bring off the fighting army. Nobody expected more than a fraction of it to be saved."
+  },
+  {
+   "title": "Route Z under fire",
+   "text": "27 May. German guns near Calais shell the ships on route Z, the shortest route. By daylight it can no longer be used, and ships must take routes much longer around the sandbanks.",
+   "explain": "Route Z was 39 sea miles; the longer route Y, east around the banks, was 87, more than doubling the turnaround time. Minesweepers set to work clearing a middle route, X."
+  },
+  {
+   "title": "The East Mole",
+   "text": "27 May. The harbour is wrecked and burning. Captain William Tennant, sent to run the evacuation ashore, tries the long breakwater of the outer harbour, the East Mole, as a quay. It works.",
+   "explain": "The mole was never built for ships to tie up to: it was a narrow concrete and timber walkway on piles. But destroyers could lie alongside it, and men could file along it four abreast. Most of the army would leave this way."
+  },
+  {
+   "title": "The perimeter",
+   "text": "28 May. King Leopold surrenders the Belgian Army. British troops race to close the gap at Nieuport. The perimeter is now a line of canals around Dunkirk: French in the west, British from Bergues to Nieuport.",
+   "explain": "The French opened sluices to flood the low fields, making the ground hard for tanks. Inside the line the roads filled with abandoned lorries and guns, wrecked on purpose so the Germans could not use them."
+  },
+  {
+   "title": "Air attack on the ships",
+   "text": "29 May. The Luftwaffe attacks the harbour and the ships in strength. The destroyer Grenade is hit alongside the mole and sinks; others are lost or damaged. Still, 47,000 men are brought home.",
+   "explain": "The smoke from the burning oil tanks hid the harbour on some days and marked it on others. RAF fighters flew patrols over Dunkirk from bases in England, but at the edge of their range they could not be there all the time, and the men on the beaches rarely saw them."
+  },
+  {
+   "title": "Night on route Y",
+   "text": "Night of 28–29 May. Off the Kwinte Buoy on route Y, a German E-boat torpedoes the destroyer Wakeful, crowded with troops. She breaks in two and sinks in seconds; nearly all the 640 soldiers aboard are lost.",
+   "explain": "The long route Y passed close to the Belgian coast at its eastern end, within reach of German E-boats at night and aircraft by day. Losses like the Wakeful’s are why route X, through the minefields, was cleared and used from 29 May."
+  },
+  {
+   "title": "The little ships",
+   "text": "30 May. Small boats arrive off the beaches in numbers: yachts, fishing boats, lifeboats and pleasure launches, many crewed by their owners. They ferry men out from the shallows to the bigger ships.",
+   "explain": "The Small Vessels Pool had been gathering boats for a week. Most were taken over and crewed by the Navy, but many civilians went too. Their great value was reaching the beaches, where the larger ships could not come in close."
+  },
+  {
+   "title": "The biggest day",
+   "text": "31 May. 68,014 men are brought home, the most of any day. Lord Gort hands over command to Major-General Harold Alexander and sails for England, as ordered.",
+   "explain": "The beaches were hard to work from: heavy surf on 31 May overturned boats, and men waded out to their shoulders. The lorry jetties, lines of army lorries driven into the sea and decked over, helped boats come alongside."
+  },
+  {
+   "title": "1 June: the worst day at sea",
+   "text": "1 June. In clear weather the Luftwaffe sinks the destroyers Keith, Basilisk and Havant and many other vessels. German troops cross the canal near Bergues. From now on ships may come only at night.",
+   "explain": "The day’s losses decided Ramsay to stop sailings in daylight. Even so, more than 64,000 men were brought off on 1 June."
+  },
+  {
+   "title": "The last British troops",
+   "text": "2 June. The British rearguard falls back through the town to the mole. At 23:30 Captain Tennant signals Dover: “BEF evacuated.”",
+   "explain": "About 198,000 British soldiers were brought home. Tens of thousands of British troops had already been captured or killed in the campaign, and the army left behind almost all its equipment: some 2,500 guns, 64,000 vehicles and 76,000 tons of ammunition."
+  },
+  {
+   "title": "The French rearguard",
+   "text": "3 June. French troops hold the shrinking line while their comrades are taken off from the mole. Ships return night after night until the end.",
+   "explain": "The French had defended the western sector from the beginning and the whole line at the end. About 139,000 French soldiers were brought to England; most went back to France within days to fight on, until France asked for an armistice on 17 June."
+  },
+  {
+   "title": "The last ship",
+   "text": "4 June, 03:40. The destroyer Shikari leaves the mole, the last ship out. At 10:20 the Germans enter Dunkirk; about 35,000 French soldiers of the rearguard are taken prisoner.",
+   "explain": "The Admiralty ended Operation Dynamo at 14:23 on 4 June. In nine days about 338,000 men had been landed in England, of them about 139,000 French and other Allied soldiers."
+  },
+  {
+   "title": "Operation Dynamo ends",
+   "text": "4 June. That afternoon Churchill tells the House of Commons that “we must be very careful not to assign to this deliverance the attributes of a victory. Wars are not won by evacuations.”",
+   "explain": "The same speech ends with “we shall fight on the beaches”. The army that came home without its weapons became the core of the forces that held Britain in 1940 and fought on until 1945."
+  }
+ ],
+ "outcome": [
+  "About 338,000 men were brought to England between 26 May and 4 June: about 198,000 British and 139,000 French and other Allied soldiers.",
+  "Of the more than 900 vessels that took part, about 240 were lost, among them six British and three French destroyers; the totals vary between sources. The RAF lost about 145 aircraft over Dunkirk.",
+  "The BEF left behind nearly all its heavy equipment: about 2,500 guns, 64,000 vehicles and 76,000 tons of ammunition.",
+  "About 35,000 French soldiers of the rearguard were captured when the town fell on 4 June. France signed an armistice on 22 June.",
+  "Britain fought on. The rescued soldiers became the core of the army that would return to France in 1944."
+ ],
+ "leaders": {},
+ "formations": {
+  "bef": {
+   "name": "British Expeditionary Force",
+   "division": "BEF",
+   "count": "About 250,000 men in the north",
+   "note": "Nine divisions under Lord Gort, holding the Escaut (Scheldt) line east of Lille when the German tanks reached the sea."
+  },
+  "fr1": {
+   "name": "French First Army",
+   "division": "French 1st Army",
+   "count": "About a dozen divisions",
+   "note": "Fought its way back toward Lille, where much of it was surrounded. Its stand there until 31 May held German divisions away from the Dunkirk perimeter."
+  },
+  "bel": {
+   "name": "Belgian Army",
+   "division": "Belgian Army",
+   "count": "About 22 divisions",
+   "note": "Held the line of the Lys on the British left until King Leopold III surrendered on 28 May."
+  },
+  "pzw": {
+   "name": "Panzer Group Kleist",
+   "division": "Panzers",
+   "count": "Several tank divisions",
+   "note": "The tank divisions that broke through at Sedan and reached the sea at Abbeville on 20 May, then turned north along the coast."
+  },
+  "pzs": {
+   "name": "Panzer divisions of Hoth’s corps",
+   "division": "Panzers (Rommel)",
+   "count": "Two tank divisions",
+   "note": "Including Rommel’s 7th Panzer Division, which was struck at Arras on 21 May."
+  },
+  "agb": {
+   "name": "German Army Group B",
+   "division": "Army Group B",
+   "count": "Infantry armies pressing from the east",
+   "note": "The infantry armies that had advanced through Belgium and pushed the Allies back from the east."
+  },
+  "frank": {
+   "name": "Frankforce (Arras counter-attack)",
+   "division": "Frankforce",
+   "count": "Two tank battalions and two infantry battalions",
+   "note": "The British counter-attack south of Arras on 21 May. It failed, but it alarmed the German command."
+  },
+  "calais": {
+   "name": "Calais garrison (30th Brigade)",
+   "division": "Calais",
+   "count": "About 4,000 British and French troops",
+   "note": "Held Calais until 26 May, keeping German tanks busy while the corridor to Dunkirk formed."
+  },
+  "b-bergues": {
+   "name": "British rearguard at Bergues",
+   "division": "Rearguard, Bergues",
+   "count": "Battalions of 1st Division",
+   "note": "The old walled town of Bergues anchored the corner of the canal line. The British held it until 1 June, then the French."
+  },
+  "b-canal": {
+   "name": "British divisions on the Bergues–Furnes canal",
+   "division": "BEF on the canal",
+   "count": "Several divisions, thinning daily",
+   "note": "Gort’s corps held the eastern half of the perimeter, along the canal from Bergues to Furnes."
+  },
+  "b-furnes": {
+   "name": "British troops at Furnes and Nieuport",
+   "division": "BEF, Furnes",
+   "count": "II Corps, then 3rd and 4th Divisions",
+   "note": "The eastern corner, where the gap left by the Belgian surrender had to be filled on 28 May."
+  },
+  "b-nieuport": {
+   "name": "British troops at Nieuport",
+   "division": "Nieuport",
+   "count": "Hurried in on 28 May",
+   "note": "Rushed to the coast end of the line when the Belgian Army stopped fighting."
+  },
+  "f-west": {
+   "name": "French XVI Corps (west of Dunkirk)",
+   "division": "French, Mardyck canal",
+   "count": "Admiral Abrial’s command",
+   "note": "The French held the western half of the perimeter throughout, and the whole of it at the end."
+  },
+  "f-bergues": {
+   "name": "French troops south of Dunkirk",
+   "division": "French rearguard",
+   "count": "French divisions",
+   "note": "Held the line after the British had gone, until the morning of 4 June."
+  },
+  "g-west": {
+   "name": "German divisions west of Dunkirk",
+   "division": "German, Gravelines",
+   "count": "Infantry and tanks from the Aa canal",
+   "note": "Pressing on the French sector from the west."
+  },
+  "g-south": {
+   "name": "German divisions south of Bergues",
+   "division": "German, Bergues",
+   "count": "Infantry divisions",
+   "note": "Attacked the canal line around Bergues."
+  },
+  "g-se": {
+   "name": "German divisions on the canal",
+   "division": "German, Hondschoote",
+   "count": "Infantry divisions",
+   "note": "Crossed the Bergues–Furnes canal in places on 1 June."
+  },
+  "g-east": {
+   "name": "German divisions from Belgium",
+   "division": "German, Furnes",
+   "count": "Army Group B",
+   "note": "Came up through Belgium after the surrender to attack Nieuport and Furnes."
+  },
+  "q-mole": {
+   "name": "Men queueing on the East Mole",
+   "division": "Mole",
+   "count": "Thousands an hour at its best",
+   "note": "The long breakwater of the outer harbour. Ships tied up alongside it, and most of the men left this way."
+  },
+  "q-malo": {
+   "name": "Men queueing on Malo beach",
+   "division": "Malo"
+  },
+  "q-bray": {
+   "name": "Men queueing at Bray-Dunes",
+   "division": "Bray-Dunes"
+  },
+  "q-panne": {
+   "name": "Men queueing at La Panne",
+   "division": "La Panne"
+  },
+  "dd-mole": {
+   "name": "Destroyer alongside the mole"
+  },
+  "ferry-mole": {
+   "name": "Cross-Channel ferry"
+  },
+  "dd-1": {
+   "name": "Destroyer off Bray-Dunes"
+  },
+  "dd-2": {
+   "name": "Destroyer off La Panne"
+  },
+  "sw-1": {
+   "name": "Minesweeper"
+  },
+  "ps-1": {
+   "name": "Paddle steamer"
+  },
+  "lit-1": {
+   "name": "Little ships"
+  },
+  "lit-2": {
+   "name": "Little ships"
+  },
+  "lit-3": {
+   "name": "Little ships"
+  },
+  "lit-4": {
+   "name": "Little ships"
+  },
+  "stuka-1": {
+   "name": "Stuka dive bombers"
+  },
+  "stuka-2": {
+   "name": "Stuka dive bombers"
+  },
+  "bomb-1": {
+   "name": "German bombers"
+  },
+  "raf-1": {
+   "name": "RAF fighters"
+  },
+  "z-ferry": {
+   "name": "Ferries on route Z"
+  },
+  "x-dd": {
+   "name": "Destroyers on route X"
+  },
+  "y-dd": {
+   "name": "Destroyer Wakeful"
+  },
+  "eboat": {
+   "name": "German E-boat S-30"
+  },
+  "little-fleet": {
+   "name": "The little ships"
+  },
+  "last-ship": {
+   "name": "HMS Shikari"
+  },
+  "luft-3": {
+   "name": "German bombers"
+  }
+ },
+ "units": [
+  {
+   "name": "British infantry",
+   "desc": "The British Expeditionary Force: regular and Territorial divisions, mostly on foot.",
+   "lines": [
+    "The BEF went to France in 1939: by May 1940 it had ten infantry divisions in the field and three more for labour and line-of-communication work, plus one tank brigade.",
+    "The soldier wore the steel helmet and serge battledress, and carried the Lee-Enfield rifle. Each section had a Bren light machine gun.",
+    "At Dunkirk most men came home with their rifles and little else. The army’s guns, lorries and tanks were wrecked and left behind."
+   ]
+  },
+  {
+   "name": "French infantry",
+   "desc": "The French First Army and the troops of the Dunkirk garrison.",
+   "lines": [
+    "France had the largest army in western Europe. The divisions trapped in the north were among its best and most modern.",
+    "Part of the First Army, surrounded at Lille, fought on until 31 May and held off several German divisions that might otherwise have reached the perimeter.",
+    "French troops held the western half of the perimeter throughout and the whole line at the end. About 139,000 were brought to England."
+   ]
+  },
+  {
+   "name": "German panzer division",
+   "desc": "Tanks, motorised infantry and dive bombers working together.",
+   "lines": [
+    "The ten German tank divisions of 1940 were concentrated for the blow through the Ardennes and the drive to the sea.",
+    "Most German tanks were lighter than the best French and British ones. Their strength was speed, radio, and close work with the Luftwaffe.",
+    "On 24 May the tanks were halted on the Aa canal for three days. By the time they moved again, the perimeter was in place."
+   ]
+  },
+  {
+   "cls": "destroyer",
+   "name": "Royal Navy destroyer",
+   "desc": "Fast warships that carried more men than any other kind of vessel.",
+   "lines": [
+    "Destroyers brought home more men than any other kind of ship, often 600 to 900 at a time, packed on deck and below.",
+    "Six British destroyers were sunk and many more damaged: Grafton, Grenade, Wakeful, Basilisk, Havant and Keith.",
+    "Ships in this reenactment are shown where the story needs them; their exact positions are a reconstruction."
+   ]
+  },
+  {
+   "cls": "little",
+   "name": "The little ships",
+   "desc": "Yachts, fishing boats, lifeboats and launches, many crewed by volunteers.",
+   "lines": [
+    "Hundreds of small craft were gathered from the Thames and the south coast from 27 May onward.",
+    "Their main work was ferrying men from the shallows to the larger ships offshore. Many were lost or wrecked on the beaches.",
+    "The Association of Dunkirk Little Ships still keeps more than a hundred of them sailing today."
+   ]
+  },
+  {
+   "cls": "stuka",
+   "name": "Ju 87 Stuka",
+   "desc": "The German dive bomber, with its wailing siren.",
+   "lines": [
+    "Dive bombers attacked the harbour, the mole and the ships, while twin-engined bombers struck the town and the beaches.",
+    "The soft sand of the beaches absorbed much of the blast: bombs that would have been deadly on hard ground often did less harm there.",
+    "Göring had promised the Luftwaffe would destroy the trapped armies. Bad weather on several days, and the RAF, stopped it doing so."
+   ]
+  },
+  {
+   "cls": "spitfire",
+   "name": "RAF fighters",
+   "desc": "Spitfires and Hurricanes flying from bases in south-east England.",
+   "lines": [
+    "Fighter Command flew patrols over Dunkirk throughout the evacuation, often fighting inland or above the clouds where the men on the beaches could not see them.",
+    "The RAF lost about 145 aircraft over Dunkirk. The Luftwaffe lost a similar number."
+   ]
+  }
+ ],
+ "library": [
+  "Gort’s two despatches, published in the London Gazette.",
+  "Ramsay’s report on Operation Dynamo, published in the London Gazette.",
+  "The British Official History of the campaign.",
+  "The Poet Laureate’s short account of the evacuation, written within a year."
+ ],
+ "sources": [
+  "The army and navy commanders’ own reports, London Gazette 1941 and 1947.",
+  "L. F. Ellis, The War in France and Flanders 1939–1940 (1953).",
+  "Halder and Army Group A, on the halt order and the battle for the perimeter.",
+  "Imperial War Museum, UK Crown copyright expired."
+ ],
+ "strings": {
+  "Dunkirk": "Dunkirk",
+  "Calais": "Calais",
+  "Boulogne": "Boulogne",
+  "Lille": "Lille",
+  "Arras": "Arras",
+  "Ypres": "Ypres",
+  "Ostend": "Ostend",
+  "Ghent": "Ghent",
+  "Cassel": "Cassel",
+  "AA CANAL": "AA CANAL",
+  "English Channel": "English Channel",
+  "≈ 2 km (the painting is not to scale)": "≈ 2 km (the painting is not to scale)",
+  "DUNKIRK": "DUNKIRK",
+  "East Mole": "East Mole",
+  "Malo-les-Bains": "Malo-les-Bains",
+  "Zuydcoote": "Zuydcoote",
+  "Bray-Dunes": "Bray-Dunes",
+  "La Panne": "La Panne",
+  "Bergues": "Bergues",
+  "Furnes": "Furnes",
+  "flooded fields": "flooded fields",
+  "Bergues–Furnes canal": "Bergues–Furnes canal",
+  "oil tanks": "oil tanks",
+  "to Dover ↑": "to Dover ↑",
+  "ROUTE Z · 39 sea miles": "ROUTE Z · 39 sea miles",
+  "ROUTE X · 55 sea miles": "ROUTE X · 55 sea miles",
+  "ROUTE Y · 87 sea miles": "ROUTE Y · 87 sea miles",
+  "Dover": "Dover",
+  "Ramsgate": "Ramsgate",
+  "Goodwin Sands": "Goodwin Sands",
+  "Kwinte Buoy": "Kwinte Buoy",
+  "20 May": "20 May",
+  "German tanks reach the sea": "German tanks reach the sea",
+  "21 May": "21 May",
+  "The counter-attack at Arras": "The counter-attack at Arras",
+  "24 May": "24 May",
+  "The halt order": "The halt order",
+  "25 May": "25 May",
+  "Back to the coast": "Back to the coast",
+  "26 May": "26 May",
+  "27 May": "27 May",
+  "28 May": "28 May",
+  "29 May": "29 May",
+  "30 May": "30 May",
+  "31 May": "31 May",
+  "1 June": "1 June",
+  "2 June": "2 June",
+  "3 June": "3 June",
+  "4 June": "4 June",
+  "Artist rendering: the Strait of Dover with Dunkirk on the French coast. Battle Games, AI-generated.": "Artist rendering: the Strait of Dover with Dunkirk on the French coast. Battle Games, AI-generated.",
+  "Established": "Established",
+  "The British Official History; chapters 12–15 cover the evacuation.": "The British Official History; chapters 12–15 cover the evacuation.",
+  "A narrative built on hundreds of interviews.": "A narrative built on hundreds of interviews.",
+  "The land battle and the rearguards.": "The land battle and the rearguards.",
+  "British official accounts": "British official accounts",
+  "The BEF from 1939 to the evacuation, including the perimeter and its canal line.": "The BEF from 1939 to the evacuation, including the perimeter and its canal line.",
+  "The naval side: routes X, Y and Z, ships and losses.": "The naval side: routes X, Y and Z, ships and losses.",
+  "Daily evacuation figures and losses.": "Daily evacuation figures and losses.",
+  "German account": "German account",
+  "The Army chief of staff’s daily notes, including his frustration at the halt order.": "The Army chief of staff’s daily notes, including his frustration at the halt order.",
+  "Rundstedt’s headquarters and the halt of 24 May.": "Rundstedt’s headquarters and the halt of 24 May.",
+  "Estimate": "Estimate",
+  "Daily totals differ slightly between sources; this reenactment uses the Admiralty figures that sum to 338,226.": "Daily totals differ slightly between sources; this reenactment uses the Admiralty figures that sum to 338,226.",
+  "Reconstruction": "Reconstruction",
+  "Painted for this game from layout guides drawn from real coordinates (tools/draw-layout-guides.py). The beach map is a closer, less exact view.": "Painted for this game from layout guides drawn from real coordinates (tools/draw-layout-guides.py). The beach map is a closer, less exact view.",
+  "A handful of ships and aircraft stand for hundreds. Which ship is shown where is our choice.": "A handful of ships and aircraft stand for hundreds. Which ship is shown where is our choice.",
+  "Despatch: Operations of the British Expeditionary Force, 1939–1940 (Lord Gort)": "Despatch: Operations of the British Expeditionary Force, 1939–1940 (Lord Gort)",
+  "Lord Gort": "Lord Gort",
+  "Official report": "Official report",
+  "Published 1941. UK Crown copyright has expired.": "Published 1941. UK Crown copyright has expired.",
+  "Report: The Evacuation of the Allied Armies from Dunkirk (Admiral Ramsay)": "Report: The Evacuation of the Allied Armies from Dunkirk (Admiral Ramsay)",
+  "Vice-Admiral Sir Bertram Ramsay": "Vice-Admiral Sir Bertram Ramsay",
+  "Published 1947. UK Crown copyright has expired.": "Published 1947. UK Crown copyright has expired.",
+  "The War in France and Flanders 1939–1940": "The War in France and Flanders 1939–1940",
+  "L. F. Ellis": "L. F. Ellis",
+  "Official History": "Official History",
+  "Published 1953 by HMSO. UK Crown copyright has expired.": "Published 1953 by HMSO. UK Crown copyright has expired.",
+  "The Nine Days Wonder": "The Nine Days Wonder",
+  "John Masefield": "John Masefield",
+  "Contemporary account": "Contemporary account",
+  "The little ships": "The little ships",
+  "Still in copyright: listed for reference.": "Still in copyright: listed for reference.",
+  "Gort’s and Ramsay’s despatches": "Gort’s and Ramsay’s despatches",
+  "The British Official History": "The British Official History",
+  "German war diaries": "German war diaries",
+  "Photographs": "Photographs",
+  "German Army Group B": "German Army Group B",
+  "Allies advance into Belgium": "Allies advance into Belgium",
+  "Panzers, from Sedan to the sea": "Panzers, from Sedan to the sea",
+  "The sea, 20 May": "The sea, 20 May",
+  "Cut off": "Cut off",
+  "BEF: about 250,000 men in the north": "BEF: about 250,000 men in the north",
+  "Army Group B": "Army Group B",
+  "Army Group A": "Army Group A",
+  "armour": "armour",
+  "Panzer divisions": "Panzer divisions",
+  "turning north": "turning north",
+  "Dover: Admiral Ramsay": "Dover: Admiral Ramsay",
+  "Expected: 45,000 men in two days": "Expected: 45,000 men in two days",
+  "Destroyers, ferries, steamers": "Destroyers, ferries, steamers",
+  "mixed": "mixed",
+  "Ju 87 Stukas": "Ju 87 Stukas",
+  "He 111 bombers": "He 111 bombers",
+  "RAF Spitfires": "RAF Spitfires",
+  "ferries, route Z": "ferries, route Z",
+  "destroyers, route X": "destroyers, route X",
+  "HMS Wakeful": "HMS Wakeful",
+  "E-boat": "E-boat",
+  "little ships from Ramsgate": "little ships from Ramsgate",
+  "HMS Shikari, the last ship": "HMS Shikari, the last ship",
+  "Luftwaffe": "Luftwaffe"
+ }
+}
