@@ -369,3 +369,11 @@ Object.assign(window.BH_UI.fr, {
   'Historical reenactment · 9–12 April 1917 · runs locally, no install': 'Reconstitution historique · 9–12 avril 1917 · fonctionne sans installation',
   '🖼 Slideshow': '🖼 Diaporama', 'LEGEND': 'LÉGENDE', '🗺 Trench map sources:': '🗺 Cartes de tranchées :', 'Enemy spotted:': 'Ennemi repéré :'
 });
+// French: Dunkirk
+Object.assign(window.BH_UI.fr, {
+  'WITHDRAWAL AT DUNKIRK': 'LE REPLI DE DUNKERQUE', 'Withdrawal at Dunkirk, 1940 — Historical Reenactment': 'Le repli de Dunkerque, 1940 — Reconstitution historique',
+  'Historical reenactment · 26 May – 4 June 1940 · runs locally, no install': 'Reconstitution historique · 26 mai – 4 juin 1940 · fonctionne sans installation',
+  'Men brought home so far:': 'Hommes déjà ramenés en Angleterre :'
+});
+// French: the units' states on the map (Vimy's engine)
+Object.assign(window.BH_UI.fr, { 'limbering': 'avant-train', 'unlimbering': 'mise en batterie', 'captured': 'capturé', 'routed': 'en déroute', 'scattered': 'dispersé', 'plundering': 'pillage', 'concealed': 'caché' });

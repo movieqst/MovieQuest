@@ -1046,7 +1046,8 @@ function drawFormation(c, f) {
   c.strokeStyle = SIDE_ART[f.side].trim; c.lineWidth = .8; c.stroke();
   // label + strength
   const half = (FR / 2) * sy + 10, ly = f.y + Math.max(half, (FC / 2) * sx * Math.abs(sin) + 8) + 6, pl = P(f.x, ly), ts = Math.max(.8, Math.min(1.5, pl.s / 1.25));
-  const suffix = f.gun && f.gun.phase === 'limber' ? ' \u00b7 limbering' : f.gun && f.gun.phase === 'unlimber' ? ' \u00b7 unlimbering' : f.state === 'captured' ? ' \u00b7 captured' : f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
+  const suffix0 = f.gun && f.gun.phase === 'limber' ? ' \u00b7 limbering' : f.gun && f.gun.phase === 'unlimber' ? ' \u00b7 unlimbering' : f.state === 'captured' ? ' \u00b7 captured' : f.state === 'rout' ? ' \u00b7 routed' : f.state === 'scattered' ? ' \u00b7 scattered' : f.state === 'loot' ? ' \u00b7 plundering' : concealed ? ' \u00b7 concealed' : '';
+  const suffix = suffix0 ? ' \u00b7 ' + UIT(suffix0.slice(3)) : '';   // the state, in the page's language
   outlined(c, f.division + suffix, pl.x, pl.y, 11 * ts, { fill: f.side === 'allied' ? '#ffe1d6' : '#dceeff' });
   if (f.strength < 100 || selected.has(f.id) || simTime - f.lastHit < 1) {
     c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(pl.x - 22 * ts, pl.y + 8 * ts, 44 * ts, 5 * ts);

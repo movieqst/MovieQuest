@@ -11,7 +11,7 @@
   "place": "Vimy Ridge, near Arras, northern France",
   "sides": "The Canadian Corps under Sir Julian Byng  ·  The German Sixth Army"
  },
- "tags": {
+ "confidence": {
   "established": {
    "label": "Established",
    "desc": "In the official history (Nicholson, 1962) and agreed by modern historians."
@@ -126,67 +126,80 @@
   {
    "title": "The night before",
    "clock": "8 April, night",
-   "text": "Easter Sunday night. Fifteen thousand men of the first wave file out into no man's land, into shell-holes and ditches, some within a hundred yards of the German outposts. By four o'clock every man is in place, with a hot meal and a rum ration."
+   "text": "Easter Sunday night. Fifteen thousand men of the first wave file out into no man's land, into shell-holes and ditches, some within a hundred yards of the German outposts. By four o'clock every man is in place, with a hot meal and a rum ration.",
+   "media": "33-lorry-on-shell-battered-road.jpg"
   },
   {
    "title": "Zero hour",
    "clock": "9 April, 5:30",
-   "text": "At half past five the guns open all at once. Snow and sleet blow from behind the Canadians into the Germans' faces. Twenty-one battalions rise and walk forward behind a curtain of shells that moves a hundred yards every three minutes."
+   "text": "At half past five the guns open all at once. Snow and sleet blow from behind the Canadians into the Germans' faces. Twenty-one battalions rise and walk forward behind a curtain of shells that moves a hundred yards every three minutes.",
+   "media": "08-richard-jack-taking-of-vimy-ridge.jpg"
   },
   {
    "title": "The Black Line",
    "clock": "6:15",
-   "text": "Many defenders are still in their dug-outs when the Canadians reach the first trench. By a quarter past six the 1st and 2nd Divisions hold the Black Line. The 2nd Canadian Mounted Rifles pull a hundred and fifty surprised Germans out of a single tunnel."
+   "text": "Many defenders are still in their dug-outs when the Canadians reach the first trench. By a quarter past six the 1st and 2nd Divisions hold the Black Line. The 2nd Canadian Mounted Rifles pull a hundred and fifty surprised Germans out of a single tunnel.",
+   "media": "35-29th-battalion-advancing-over-no-mans-land.jpg"
   },
   {
    "title": "Milne and Sifton",
    "clock": "morning",
-   "text": "Private William Milne of the 16th Battalion crawls up to a machine-gun that is holding up his company and puts it out of action. Lance-Sergeant Ellis Sifton of the 18th leaps into a German trench, takes a hidden gun, and holds off a counter-attack alone. Both win the Victoria Cross. Both are killed that day."
+   "text": "Private William Milne of the 16th Battalion crawls up to a machine-gun that is holding up his company and puts it out of action. Lance-Sergeant Ellis Sifton of the 18th leaps into a German trench, takes a hidden gun, and holds off a counter-attack alone. Both win the Victoria Cross. Both are killed that day.",
+   "media": "36-advancing-through-german-wire.jpg"
   },
   {
    "title": "The Red Line and La Folie Farm",
    "clock": "7:00 to 8:00",
-   "text": "The 3rd Division crosses the crest and finds La Folie Farm a heap of rubble. In the south, the 21st Battalion finds two German headquarters in a cave under Les Tilleuls. By eight o'clock the right of the corps is on the Red Line."
+   "text": "The 3rd Division crosses the crest and finds La Folie Farm a heap of rubble. In the south, the 21st Battalion finds two German headquarters in a cave under Les Tilleuls. By eight o'clock the right of the corps is on the Red Line.",
+   "media": "37-germans-leaving-dugouts-as-canadians-advance.jpg"
   },
   {
    "title": "Hill 145",
    "clock": "9 April, morning",
-   "text": "In the north, the 4th Division meets disaster. A stretch of German trench left untouched by the guns cuts down half the 87th Battalion's first wave. Germans emerge from tunnels behind the attackers, and machine-guns on The Pimple rake the slope. Who asked for that trench to be spared is disputed: the official history blames the 87th's commander; other historians point to Brigadier-General Odlum's own notes."
+   "text": "In the north, the 4th Division meets disaster. A stretch of German trench left untouched by the guns cuts down half the 87th Battalion's first wave. Germans emerge from tunnels behind the attackers, and machine-guns on The Pimple rake the slope. Who asked for that trench to be spared is disputed: the official history blames the 87th's commander; other historians point to Brigadier-General Odlum's own notes.",
+   "media": "06-bringing-in-the-wounded.jpg"
   },
   {
    "title": "Thélus",
    "clock": "late morning",
-   "text": "The reserve brigades pass through to the Blue Line. Thélus falls exactly as the men had rehearsed it. As the snow stops, the sun breaks through. In the official historian's words: \"the Germans saw that the Ridge was lost, the Canadians knew that it was won.\""
+   "text": "The reserve brigades pass through to the Blue Line. Thélus falls exactly as the men had rehearsed it. As the snow stops, the sun breaks through. In the official historian's words: \"the Germans saw that the Ridge was lost, the Canadians knew that it was won.\"",
+   "media": "03-consolidating-positions.jpg"
   },
   {
    "title": "The Brown Line",
    "clock": "early afternoon",
-   "text": "The last stage goes down the steep east face into Farbus Wood and the Bois de la Ville, with a downhill bayonet charge against guns firing point-blank. A Bavarian regimental commander and his staff are captured. By early afternoon three divisions hold their final objectives, on schedule."
+   "text": "The last stage goes down the steep east face into Farbus Wood and the Bois de la Ville, with a downhill bayonet charge against guns firing point-blank. A Bavarian regimental commander and his staff are captured. By early afternoon three divisions hold their final objectives, on schedule.",
+   "media": "02-28th-battalion-signal-station.jpg"
   },
   {
    "title": "The cavalry",
    "clock": "4:20 p.m.",
-   "text": "Byng sends patrols of the Canadian Light Horse, about twenty men, toward Willerval on the plain. Machine-guns cut them down, but German reports of a strong force of cavalry breaking through cause alarm all along the line."
+   "text": "Byng sends patrols of the Canadian Light Horse, about twenty men, toward Willerval on the plain. Machine-guns cut them down, but German reports of a strong force of cavalry breaking through cause alarm all along the line.",
+   "media": "25-canadian-light-horse-going-into-action.jpg"
   },
   {
    "title": "MacDowell",
    "clock": "9 April",
-   "text": "On Hill 145, Captain Thain MacDowell of the 38th Battalion and two runners, Kobus and Hay, find a deep German dug-out. MacDowell convinces the men inside that he has a large force behind him. Two officers and seventy-five men surrender to three Canadians. He wins the Victoria Cross."
+   "text": "On Hill 145, Captain Thain MacDowell of the 38th Battalion and two runners, Kobus and Hay, find a deep German dug-out. MacDowell convinces the men inside that he has a large force behind him. Two officers and seventy-five men surrender to three Canadians. He wins the Victoria Cross.",
+   "media": "22-vimy-from-the-ridge-1917.jpg"
   },
   {
    "title": "Hill 145 falls",
    "clock": "10 April, 3:15 p.m.",
-   "text": "The 10th Brigade, held back for The Pimple, is sent in instead. The 44th and 50th Battalions charge down the eastern slope and take the summit. Private John Pattison of the 50th destroys a machine-gun post and wins the Victoria Cross."
+   "text": "The 10th Brigade, held back for The Pimple, is sent in instead. The 44th and 50th Battalions charge down the eastern slope and take the summit. Private John Pattison of the 50th destroys a machine-gun post and wins the Victoria Cross.",
+   "media": "23-shrapnel-over-troops-digging-in.jpg"
   },
   {
    "title": "The Pimple",
    "clock": "12 April, 5:00",
-   "text": "In a gale of snow and sleet, the 44th, 50th and 46th Battalions attack The Pimple, held by fresh Prussian Guards. By six o'clock it is taken. At daybreak the sky clears, and the Canadians look out over the Douai plain and the suburbs of Lens."
+   "text": "In a gale of snow and sleet, the 44th, 50th and 46th Battalions attack The Pimple, held by fresh Prussian Guards. By six o'clock it is taken. At daybreak the sky clears, and the Canadians look out over the Douai plain and the suburbs of Lens.",
+   "media": "01-machine-gun-crews.jpg"
   },
   {
    "title": "The cost",
    "clock": "9–14 April",
-   "text": "The whole ridge is in Canadian hands. More than four thousand prisoners and fifty-four guns are taken. The Canadian Corps loses 10,602 men, 3,598 of them killed."
+   "text": "The whole ridge is in Canadian hands. More than four thousand prisoners and fifty-four guns are taken. The Canadian Corps loses 10,602 men, 3,598 of them killed.",
+   "media": "27-bush-a-cemetery-on-vimy-ridge.jpg"
   }
  ],
  "outcome": [
@@ -196,7 +209,6 @@
   "In Canada, Vimy became a symbol of the nation's coming of age. Historians debate how much of that was the battle, and how much the meaning given to it later.",
   "On Hill 145 today stands the Canadian National Vimy Memorial, with the names of more than eleven thousand Canadians killed in France who have no known grave."
  ],
- "commandLines": {},
  "leaders": {
   "byng": "Lt-Gen Sir Julian Byng",
   "currie": "Maj-Gen Arthur Currie",
@@ -310,7 +322,6 @@
   {
    "name": "Canadian infantry",
    "desc": "Khaki service dress, the Brodie steel helmet and the Lee-Enfield rifle.",
-   "tag": "established",
    "lines": [
     "Four Canadian divisions, about a hundred thousand men in the Corps with its supporting troops, attacked together for the first time."
    ]
@@ -318,25 +329,20 @@
   {
    "name": "Lewis gunners",
    "desc": "A light machine-gun with a round drum magazine, carried with each platoon.",
-   "tag": "established",
    "lines": [
     "New platoon tactics gave every platoon its own Lewis gun, rifle grenades and bombers, so it could fight its way forward on its own."
    ]
   },
   {
-   "portrait": "canadian-artillery",
    "name": "Canadian guns and mortars",
    "desc": "The 18-pounder field gun and the trench mortar: 983 guns and mortars supported the attack.",
-   "tag": "established",
    "lines": [
     "One heavy gun for every twenty yards of front. The creeping barrage moved a hundred yards every three minutes, with the infantry close behind it."
    ]
   },
   {
-   "portrait": "british-infantry",
    "name": "British 13th Brigade",
    "desc": "A brigade of the British 5th Division, attacking with the 2nd Canadian Division.",
-   "tag": "established",
    "lines": [
     "British troops fought inside the Canadian Corps at Vimy, and British gunners and tunnellers did much of the work underground and behind the lines."
    ]
@@ -344,16 +350,13 @@
   {
    "name": "German infantry",
    "desc": "Field-grey uniform, the 1916 steel helmet and the Gewehr 98.",
-   "tag": "established",
    "lines": [
     "Three German divisions held the ridge, in deep dug-outs behind thick belts of wire."
    ]
   },
   {
-   "portrait": "german-infantry",
    "name": "German machine-guns",
    "desc": "The MG 08, water-cooled, fired from posts in the trench lines.",
-   "tag": "established",
    "lines": [
     "Machine-guns that survived the bombardment caused most of the Canadian losses, above all on Hill 145."
    ]
@@ -396,32 +399,110 @@
  "debrief": {
   "allied": {
    "victory": {
-    "title": "Canadian victory",
-    "text": ""
+    "title": "Canadian victory"
    },
    "defeat": {
-    "title": "Canadian defeat",
-    "text": ""
+    "title": "Canadian defeat"
    },
    "stalemate": {
-    "title": "Stalemate",
-    "text": ""
+    "title": "Stalemate"
    }
   },
   "french": {
    "victory": {
-    "title": "German victory",
-    "text": ""
+    "title": "German victory"
    },
    "defeat": {
-    "title": "German defeat",
-    "text": ""
+    "title": "German defeat"
    },
    "stalemate": {
-    "title": "Stalemate",
-    "text": ""
+    "title": "Stalemate"
    }
   }
  },
- "ai": {}
+ "strings": {
+  "February 1916": "February 1916",
+  "October 1916": "October 1916",
+  "December 1916": "December 1916",
+  "March 1917": "March 1917",
+  "Western Europe in April 1917": "Western Europe in April 1917",
+  "Today’s towns and cities": "Today’s towns and cities",
+  "Towns of April 1917": "Towns of April 1917",
+  "Paris": "Paris",
+  "London": "London",
+  "Brussels": "Brussels",
+  "VIMY RIDGE": "VIMY RIDGE",
+  "Established": "Established",
+  "The plan, the guns, the attack hour by hour, the losses.": "The plan, the guns, the attack hour by hour, the losses.",
+  "Modern assessments.": "Modern assessments.",
+  "One account": "One account",
+  "Milne, Sifton, MacDowell, Pattison.": "Milne, Sifton, MacDowell, Pattison.",
+  "Disputed": "Disputed",
+  "Who asked for the trench on Hill 145 to be spared.": "Who asked for the trench on Hill 145 to be spared.",
+  "How many subways were dug: eleven or thirteen.": "How many subways were dug: eleven or thirteen.",
+  "Estimate": "Estimate",
+  "Strengths of the divisions.": "Strengths of the divisions.",
+  "Reconstruction": "Reconstruction",
+  "Where each unit stood and how it moved between the traced lines; the painted map.": "Where each unit stood and how it moved between the traced lines; the painted map.",
+  "G. W. L. Nicholson, Canadian Expeditionary Force 1914–1919 (Ottawa, 1962), chapter VIII and Map 7": "G. W. L. Nicholson, Canadian Expeditionary Force 1914–1919 (Ottawa, 1962), chapter VIII and Map 7",
+  "M. Boire, “The Underground War: Military Mining Operations in Support of the Attack on Vimy Ridge”, Canadian Military History 1 (1992)": "M. Boire, “The Underground War: Military Mining Operations in Support of the Attack on Vimy Ridge”, Canadian Military History 1 (1992)",
+  "Veterans Affairs Canada, Vimy: Tunnels and Trenches (2021)": "Veterans Affairs Canada, Vimy: Tunnels and Trenches (2021)",
+  "British trench maps, 1916–1917 (National Library of Scotland, CC BY)": "British trench maps, 1916–1917 (National Library of Scotland, CC BY)",
+  "London Gazette nos. 30122 and 30215 (1917)": "London Gazette nos. 30122 and 30215 (1917)",
+  "Music: “It’s a Long, Long Way to Tipperary”, sung by Albert Farrington (1915, remastered)": "Music: “It’s a Long, Long Way to Tipperary”, sung by Albert Farrington (1915, remastered)",
+  "Canadian Expeditionary Force 1914–1919": "Canadian Expeditionary Force 1914–1919",
+  "G. W. L. Nicholson": "G. W. L. Nicholson",
+  "Official history": "Official history",
+  "The narration and the battle lines": "The narration and the battle lines",
+  "Canadian Crown copyright, 1962; public domain in Canada.": "Canadian Crown copyright, 1962; public domain in Canada.",
+  "Sheet 36C S.W. (Vimy–Lens), 1:20,000, Edition 6": "Sheet 36C S.W. (Vimy–Lens), 1:20,000, Edition 6",
+  "British Army trench map (Ordnance Survey / GSGS)": "British Army trench map (Ordnance Survey / GSGS)",
+  "Trenches to 15 February 1916": "Trenches to 15 February 1916",
+  "Trench map": "Trench map",
+  "The trenches-and-tunnels timeline": "The trenches-and-tunnels timeline",
+  "Ordnance Survey / Field Survey (GSGS), Crown copyright expired. Scan: National Library of Scotland, CC BY (\"Reproduced with the permission of the National Library of Scotland\").": "Ordnance Survey / Field Survey (GSGS), Crown copyright expired. Scan: National Library of Scotland, CC BY (\"Reproduced with the permission of the National Library of Scotland\").",
+  "National Library of Scotland viewer": "National Library of Scotland viewer",
+  "Sheet 36B S.E.4 & 36C S.W.3 Givenchy, 1:10,000, Edition 7A": "Sheet 36B S.E.4 & 36C S.W.3 Givenchy, 1:10,000, Edition 7A",
+  "Trenches to 8 April 1916": "Trenches to 8 April 1916",
+  "Sheet 36C S.W.4 Rouvroy, 1:10,000, Edition 7 (redrawn) A": "Sheet 36C S.W.4 Rouvroy, 1:10,000, Edition 7 (redrawn) A",
+  "Trenches to 6 August 1916": "Trenches to 6 August 1916",
+  "Sheet 51B N.W. (Arras), 1:20,000, Edition 4A": "Sheet 51B N.W. (Arras), 1:20,000, Edition 4A",
+  "Trenches to 10 October 1916": "Trenches to 10 October 1916",
+  "Sheet 51B.NW.1 Roclincourt, 1:10,000, Edition 5A": "Sheet 51B.NW.1 Roclincourt, 1:10,000, Edition 5A",
+  "Trenches to 27 December 1916": "Trenches to 27 December 1916",
+  "Sheet 36C.SW.1 Lens, 1:10,000, Edition 8A": "Sheet 36C.SW.1 Lens, 1:10,000, Edition 8A",
+  "Trenches to 10 February 1917": "Trenches to 10 February 1917",
+  "Sheet 51B N.W. (Arras), 1:20,000, Edition 6A": "Sheet 51B N.W. (Arras), 1:20,000, Edition 6A",
+  "Trenches to 4 March 1917": "Trenches to 4 March 1917",
+  "Sheet 51B N.W. (Arras), 1:20,000, Edition 7A": "Sheet 51B N.W. (Arras), 1:20,000, Edition 7A",
+  "Trenches to 25 May 1917": "Trenches to 25 May 1917",
+  "German trenches": "German trenches",
+  "line": "line",
+  "British and Canadian trenches": "British and Canadian trenches",
+  "Canadian Corps": "Canadian Corps",
+  "dot": "dot",
+  "German Sixth Army": "German Sixth Army",
+  "Milne, 16th Battalion": "Milne, 16th Battalion",
+  "Sifton, 18th Battalion": "Sifton, 18th Battalion",
+  "La Folie Farm": "La Folie Farm",
+  "the cave at Les Tilleuls": "the cave at Les Tilleuls",
+  "Hill 145": "Hill 145",
+  "machine-guns on the Pimple": "machine-guns on the Pimple",
+  "Willerval": "Willerval",
+  "the dug-out": "the dug-out",
+  "Hill 145 falls": "Hill 145 falls",
+  "The Pimple, 12 April": "The Pimple, 12 April",
+  "Vimy Ridge": "Vimy Ridge",
+  "Hill 145: the strongest German position · today the Vimy Memorial": "Hill 145: the strongest German position · today the Vimy Memorial",
+  "the Douai plain": "the Douai plain",
+  "the crater line": "the crater line",
+  "Black Line": "Black Line",
+  "Red Line": "Red Line",
+  "Blue Line": "Blue Line",
+  "Brown Line": "Brown Line",
+  "the subways": "the subways",
+  "Bavarians": "Bavarians",
+  "Prussians, 79th Reserve": "Prussians, 79th Reserve",
+  "16th Bavarian": "16th Bavarian"
+ }
 }

@@ -4,6 +4,7 @@
    aircraft; moving smoke, flames, surf and clouds; and a running count of the men brought home. */
 (() => {
 'use strict';
+const UIT = t => (((window.BH_UI || {})[window.BH_LANG] || {})[t]) || t;   // the map's own words, in the page's language
 const S = window.DUNKIRK_SCENARIO, W = { w: 2400, h: 1800 };
 let B = { scale: { px: 100, label: '' }, labels: [] };   // the current map's definition (S.maps[id])
 const $ = id => document.getElementById(id);
@@ -157,7 +158,7 @@ function calendarNow() {
 function drawCounter(c) {
   if (mode === 'intro') return; const k = calendarNow(); if (!k) return;
   const x = 12, y = 12; c.save(); c.font = "700 15px 'Cinzel', Georgia, serif"; const t1 = k.date.toUpperCase() + ' 1940';
-  const t2 = k.total === null ? (k.note || '') : 'Men brought home so far: ' + k.total.toLocaleString('en-GB');
+  const t2 = k.total === null ? (k.note || '') : UIT('Men brought home so far:') + ' ' + k.total.toLocaleString(window.BH_LANG === 'fr' ? 'fr-FR' : 'en-GB');
   c.font = '600 13px system-ui'; const w = Math.max(c.measureText(t2).width, 120) + 24;
   c.fillStyle = 'rgba(6,14,20,.72)'; c.beginPath(); c.roundRect(x, y, w, t2 ? 48 : 30, 6); c.fill(); c.strokeStyle = 'rgba(233,199,122,.5)'; c.lineWidth = 1; c.stroke();
   c.fillStyle = '#e9c77a'; c.font = "700 15px 'Cinzel', Georgia, serif"; c.textAlign = 'left'; c.textBaseline = 'top'; c.fillText(t1, x + 12, y + 8);
@@ -489,7 +490,7 @@ function drawLegend() {
   ctx.save(); ctx.font = "13px system-ui, sans-serif"; const w = Math.max(...items.map(i => ctx.measureText(i.label).width)) + 50, lh = 20, h = items.length * lh + 30;
   const x = view.w - w - 14, y = 12; ctx.fillStyle = 'rgba(6,16,24,.72)'; ctx.strokeStyle = 'rgba(233,199,122,.55)'; ctx.lineWidth = 1;
   ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 8); else ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText('LEGEND', x + 12, y + 14);
+  ctx.font = "bold 11px 'Cinzel', Georgia, serif"; ctx.fillStyle = '#e9c77a'; ctx.textBaseline = 'middle'; ctx.fillText(UIT('LEGEND'), x + 12, y + 14);
   ctx.font = "13px system-ui, sans-serif";
   items.forEach((it, i) => { const cy = y + 32 + i * lh; ctx.shadowColor = it.color; ctx.shadowBlur = it.kind === 'line' ? 8 : 4; ctx.strokeStyle = ctx.fillStyle = it.color;
     if (it.kind === 'line') { ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 12, cy); ctx.lineTo(x + 34, cy); ctx.stroke(); }
@@ -651,7 +652,7 @@ const Narr = {
   tts(text) {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(text); u.rate = .92 * this.rate; u.pitch = .85;
-    const vs = speechSynthesis.getVoices(), pref = vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
+    const vs = speechSynthesis.getVoices(), LG = window.BH_LANG || 'en', pref = (LG === 'en' && vs.find(v => /en.(GB|UK)/i.test(v.lang) && /male|daniel|george|arthur/i.test(v.name))) || vs.find(v => new RegExp('^' + LG, 'i').test(v.lang)) || vs[0];   // the browser's own voice, in the page's language
     if (pref) u.voice = pref; u.onend = () => { const n = this.next; this.next = null; if (n) n(); }; speechSynthesis.speak(u);
     if (!vs.length) this.status('No recorded clip for this line and this browser has no voices installed.');
   },

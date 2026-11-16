@@ -1,5 +1,5 @@
-/* Bataille de la crête de Vimy: the French text of the page, made by tools/make-lang-fr.py from lang/fr.json.
-   Translated by Claude from the fact-checked English; to be read by a native speaker. */
+/* The French text of the page, made by tools/make-lang-fr.py from lang/fr.json. Translated by Claude from the
+   fact-checked English; to be read by a native speaker. */
 window.VIMY_LANG = window.VIMY_LANG || {};
 window.VIMY_LANG.fr = {
  "name": "Français",
@@ -432,7 +432,29 @@ window.VIMY_LANG.fr = {
   "Ordnance Survey / Field Survey (GSGS), Crown copyright expired. Scan: National Library of Scotland, CC BY (\"Reproduced with the permission of the National Library of Scotland\").": "Ordnance Survey / Field Survey (GSGS), droit d’auteur de la Couronne expiré. Numérisation : National Library of Scotland, CC BY (« Reproduced with the permission of the National Library of Scotland »).",
   "National Library of Scotland viewer": "Visionneuse de la National Library of Scotland",
   "British trench maps, 1916–1917 (National Library of Scotland, CC BY)": "Cartes de tranchées britanniques, 1916–1917 (National Library of Scotland, CC BY)",
-  "Music: “It’s a Long, Long Way to Tipperary”, sung by Albert Farrington (1915, remastered)": "Musique : « It’s a Long, Long Way to Tipperary », chantée par Albert Farrington (1915, remastérisée)"
+  "Music: “It’s a Long, Long Way to Tipperary”, sung by Albert Farrington (1915, remastered)": "Musique : « It’s a Long, Long Way to Tipperary », chantée par Albert Farrington (1915, remastérisée)",
+  "VIMY RIDGE": "CRÊTE DE VIMY",
+  "Milne, 16th Battalion": "Milne, 16e Bataillon",
+  "Sifton, 18th Battalion": "Sifton, 18e Bataillon",
+  "La Folie Farm": "Ferme de la Folie",
+  "the cave at Les Tilleuls": "la cave des Tilleuls",
+  "Hill 145": "Cote 145",
+  "machine-guns on the Pimple": "mitrailleuses du Bourgeon",
+  "the dug-out": "l’abri",
+  "Hill 145 falls": "La cote 145 tombe",
+  "The Pimple, 12 April": "Le Bourgeon, 12 avril",
+  "Vimy Ridge": "Crête de Vimy",
+  "Hill 145: the strongest German position · today the Vimy Memorial": "Cote 145 : la plus forte position allemande · aujourd’hui le monument de Vimy",
+  "the Douai plain": "la plaine de Douai",
+  "the crater line": "la ligne des cratères",
+  "Black Line": "Ligne noire",
+  "Red Line": "Ligne rouge",
+  "Blue Line": "Ligne bleue",
+  "Brown Line": "Ligne brune",
+  "the subways": "les souterrains",
+  "Bavarians": "Bavarois",
+  "Prussians, 79th Reserve": "Prussiens, 79e de réserve",
+  "16th Bavarian": "16e bavaroise"
  },
  "voices": [
   {
