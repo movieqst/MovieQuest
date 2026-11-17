@@ -1,9 +1,9 @@
-# Granicus and Issus: Alexander's first battles against Persia: narration script (DRAFT 1)
+# Granicus and Issus: Alexander's first battles against Persia: narration script (DRAFT 2)
 
-This is what the narrators will read. Draft 1 (17 November 2026), written from the research dossier
+This is what the narrators will read. **Draft 2** (17 November 2026) applies ChatGPT's review of draft 1
+(`research/CHATGPT-REVIEW-DRAFT1.md`): every Required change and the Optional ones; listed at the end. Draft 1 was written from the research dossier
 `research/RESEARCH-CHATGPT-1.md` as corrected after ChatGPT's source review (`research/CHATGPT-REVIEW-ROUND1.md`, whose
-Required corrections R1–R15 are applied). Nothing is added from memory. Next: ChatGPT's check of this draft (prompt at the
-end), then draft 2.
+Required corrections R1–R15 are applied). Nothing is added from memory. ChatGPT's verdict: ready to record after the Required changes, which are applied here.
 
 **The ancient writers** (none was an eyewitness; all wrote long after, mostly from accounts on Alexander's side):
 - **Arrian**, *Anabasis*, books 1–2 (2nd century CE). He used the lost histories of Ptolemy and Aristobulus, who served
@@ -18,8 +18,8 @@ end), then draft 2.
 - **Five parts:** the road to Asia; the Granicus; a year in Anatolia; Issus; after Issus. Introduction cards I1–I6,
   chapters 1–26.
 - **Arrian is the main track**, as on the Tyre page. Where another writer tells it differently, the line says so and names
-  him. "Established" is used only where the writers agree, or for secure modern knowledge.
-- **No army totals as headcounts.** The ancient figures (on screen, by author) differ wildly; the enormous Persian totals
+  him. "Established" is used only for secure broad chronology or facts supported by the evidence as a whole.
+- **No army totals as headcounts.** The ancient figures (on screen, by author: Arrian, Diodorus, Plutarch, Justin, and Callisthenes through Polybius; Curtius's losses are left off because his figures differ between editions) differ wildly; the enormous Persian totals
   cannot be treated as real counts. The narration says this and gives no single number.
 - **The Persian side is a side.** Darius, his commanders and the Greek soldiers who served him are given their reasons.
   Their own history of these battles does not survive; the page says so.
@@ -34,7 +34,7 @@ end), then draft 2.
 
 | Tag | Meaning |
 |---|---|
-| established | The ancient writers agree, or it is secure modern knowledge. |
+| established | Secure broad chronology or facts supported by the evidence as a whole. Agreement between ancient writers is considered alongside their sources and reliability. |
 | arrian / diodorus / plutarch / curtius / polybius / justin | The detail comes from that writer (or the writers named in the line). |
 | disputed | The writers disagree, or the story is doubtful. The line says how. |
 | estimate | An ancient figure, attributed, or a rounded conversion. Never a verified count. |
@@ -56,15 +56,15 @@ reliable headcounts, and the actual strengths and losses remain uncertain."
 ---
 
 ## Welcome
-Welcome to Battles of History. Today we follow Alexander the Great into Asia, to his first two great battles against the Persian Empire: at the river Granicus in 334 BCE, and at Issus a year and a half later. Alexander was twenty-two years old when he crossed into Asia. His opponent at Issus was Darius the Third, the Great King of Persia, who ruled the largest empire the world had yet seen. Almost everything we know comes from writers who lived centuries later, and most of what they used came from Alexander's side. We will tell you what they say, where they disagree, and what is still not known.
+Welcome to Battles of History. Today we follow Alexander the Great into Asia, to his first two great battles against the Persian Empire: at the river Granicus in 334 BCE, and at Issus a year and a half later. Alexander was twenty-one years old when he crossed into Asia. His opponent at Issus was Darius the Third, the Great King of Persia, who ruled a vast empire stretching across many peoples and lands. Almost everything we know comes from writers who lived centuries later, and most of what they used came from Alexander's side. We will tell you what they say, where they disagree, and what is still not known.
 
 ## Introduction
 
 ### I1. GRANICUS AND ISSUS
-- In the spring of 334 BCE, Alexander, king of Macedon, crossed from Europe into Asia with an army of Macedonians and Greek allies. *(established)*
+- In the spring of 334 BCE, Alexander, king of Macedon, crossed from Europe into Asia with an army of Macedonians, Greek allies and other troops. *(established)*
 - Near the river Granicus, the Persian governors of the region met him with their cavalry and with Greek soldiers who served Persia. Alexander won. *(established)*
 - In the autumn of 333 BCE, at Issus, on the coast where Anatolia meets Syria, he met the Great King himself, Darius the Third, and won again. Darius escaped. His family was captured. *(established)*
-- Neither battle ended the Persian Empire. It took two more years, and another great battle, at Gaugamela. *(established)*
+- Neither battle ended the Persian Empire. Two years after Issus, Alexander defeated Darius again at Gaugamela. Darius remained at large until 330 BCE. *(established)*
 
 ### I2. Two kingdoms
 *Map: Campaign · 336 BCE*
@@ -87,8 +87,8 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 - Earlier does not always mean more accurate, and later does not always mean worthless. *(editorial)*
 
 ### I5. The armies
-- Alexander's army was built around the phalanx: rows of infantry armed with a pike about five or six metres long, the sarissa. Beside them fought the hypaspists, the king's guard infantry. *(established)*
-- His striking force was the cavalry: the Companions, Macedonian nobles, and on the other wing the horsemen of Thessaly. Light troops, like the Agrianian javelin-men, guarded the flanks. *(established)*
+- Alexander's army was built around the phalanx: rows of infantry armed with long pikes called sarissas. Beside them fought the hypaspists, the king's guard infantry. *(established)*
+- His striking force was the cavalry: the Companions, Macedonian nobles, and alongside them the horsemen of Thessaly. Light troops, like the Agrianian javelin-men, guarded the flanks. *(established)*
 - The Persian army was the army of an empire: Persian and Iranian noble cavalry, infantry and archers from many peoples, and many thousands of Greek mercenaries. *(established)*
 - Ancient writers give widely different army and casualty figures. The enormous Persian totals cannot be treated as reliable headcounts, and the actual strengths and losses remain uncertain. *(estimate; editorial)*
 
@@ -104,7 +104,7 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 - Before leaving for Asia, Alexander campaigned north of Macedon, among the Triballians and other peoples. *(arrian)*
 - A false report that he had been killed set off a revolt at Thebes. Alexander marched south at speed. *(arrian)*
 - Thebes was taken and destroyed, and many of its people were enslaved. Athens was spared. *(arrian; diodorus)*
-- The Greek cities had been warned. Alexander left his general Antipater in charge of Europe. *(arrian)*
+- The destruction of Thebes frightened the other Greek cities. Alexander left his general Antipater in charge of Europe. *(arrian)*
 
 ### 2. Into Asia
 *Map: Campaign · spring 334 BCE*
@@ -126,31 +126,30 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 *Map: Granicus · about May 334 BCE*
 - The Persians took up position on the far bank of the river Granicus, today usually identified as the Biga Çayı in north-western Turkey. *(established; disputed)*
 - In Arrian's account, the Persian cavalry lined the bank, with the Greek mercenary infantry behind them. *(arrian)*
-- Exactly where they stood is uncertain. A survey published in 2025 proposes a crossing place north of the modern town of Biga, as a proposal, not proof. *(scholarship; disputed)*
+- Exactly where they stood is uncertain. Reyhan Körpe's 2025 survey proposes a crossing north of the modern town of Biga; its exact location is still debated. *(scholarship; disputed)*
 
 ### 5. Two stories
 *Map: Granicus · about May 334 BCE*
 - Here the ancient writers tell two different stories, and they cannot both be true. *(disputed)*
 - In Arrian and Plutarch, Parmenion advised waiting until morning, and Alexander refused, and attacked across the river at once. *(arrian; plutarch)*
 - In Diodorus, the army crossed at dawn, and formed up before the Persians could stop it. *(diodorus)*
-- This page follows Arrian, as most modern historians do, among them Badian and Devine. *(scholarship; reconstruction)*
+- This page follows Arrian's version. The historians Badian and Devine also use his account as their main basis. *(scholarship; reconstruction)*
 
 ### 6. The first attack
 *Map: Granicus · about May 334 BCE*
 - In Arrian's account, Alexander sent a first group across ahead of his main charge: horsemen and light infantry, with a squadron of Companions led by Ptolemy, son of Philip. *(arrian)*
-- They met fierce resistance at the bank, and were driven back. *(arrian)*
-- Then Alexander himself led the right wing into the river. *(arrian)*
+- They met fierce resistance at the bank. As the survivors fell back toward him, Alexander was already approaching with the right wing. *(arrian)*
 
 ### 7. The fight at the bank
 *Map: Granicus · about May 334 BCE*
 - Arrian describes a fight of horsemen at the water's edge, at close quarters, with lances and swords. *(arrian)*
 - Alexander struck down Mithridates, a son-in-law of Darius. A Persian noble, Rhoesaces, struck Alexander's helmet. *(arrian)*
-- As Spithridates, a satrap, raised his sword against the king, Alexander's officer Cleitus, called the Black, cut him down. *(arrian)*
+- As Spithridates, a satrap, raised his sword against the king, Alexander's officer Cleitus, called the Black, struck his sword arm and stopped the blow. *(arrian)*
 - Plutarch and Diodorus tell this fight differently, with other names and other blows. We follow Arrian, and do not combine them. *(disputed)*
 
 ### 8. The mercenaries
 *Map: Granicus · about May 334 BCE*
-- The Persian cavalry gave way, and withdrew. Behind them, the Greek mercenaries still stood, on higher ground. *(arrian)*
+- The Persian cavalry gave way and withdrew. Behind them, the Greek mercenaries remained in position. *(arrian)*
 - Plutarch says the mercenaries asked for terms, but Alexander attacked them. *(plutarch)*
 - Alexander surrounded them with infantry and cavalry. Arrian says most were killed, and about two thousand were taken prisoner. *(arrian; estimate)*
 - The prisoners were sent to Macedonia to work the land as forced labourers. Arrian's explanation: the Greek alliance had forbidden Greeks to fight for Persia. *(arrian)*
@@ -172,7 +171,7 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 
 ### 11. Miletus and the fleet
 *Map: Campaign · summer 334 BCE*
-- Miletus resisted. Alexander's fleet reached the harbour before the larger Persian fleet could. *(arrian)*
+- Miletus resisted. Alexander's fleet secured the anchorage at Lade, off the harbour, before the larger Persian fleet arrived. *(arrian)*
 - Parmenion urged a sea battle; Alexander refused. His siege engines broke the walls, and the city fell. *(arrian)*
 - Then Alexander sent most of his fleet home. Arrian says it was too costly, and that he planned to defeat the Persian navy by taking its harbours on land. Diodorus gives cost as one reason, and also reports that some said it was to leave his army no way of escape. *(arrian; diodorus)*
 
@@ -180,13 +179,13 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 *Map: Campaign · autumn 334 BCE*
 - At Halicarnassus, Memnon and the Persian commander Orontobates organised a strong defence, with sorties against the siege engines. *(arrian)*
 - The defenders set fires and withdrew into the city's strongholds. Then, according to Arrian, Alexander ordered the city demolished. *(arrian; diodorus)*
-- Ada, a princess of the ruling family of Caria who had been pushed out of power, came to Alexander. She adopted him as her son, and he gave her the rule of Caria. *(arrian; plutarch)*
+- Ada, a princess of the ruling family of Caria who had been pushed out of power, offered Alexander her stronghold of Alinda and adopted him as her son. He entrusted Caria to her. *(arrian; plutarch)*
 
 ### 13. The winter march
 *Map: Campaign · winter 334 to 333 BCE*
 - Alexander sent the soldiers who had recently married home to Macedonia for the winter. *(arrian)*
 - He marched along the southern coast, through Lycia and Pamphylia, where cities submitted. *(arrian)*
-- At Mount Climax the road ran along the shore. Later stories said the sea itself drew back for him. Plutarch already doubted them. *(plutarch; disputed)*
+- At Mount Climax the road ran along the shore. Some accounts said the sea drew back for him. Plutarch criticised those embellished stories. *(plutarch; disputed)*
 - In the spring, the army gathered again at Gordium, in the heart of Anatolia. *(arrian)*
 
 ### 14. The knot and the fleet
@@ -199,8 +198,8 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 ### 15. Tarsus
 *Map: Campaign · summer 333 BCE*
 - Alexander crossed the Taurus mountains by the narrow pass called the Cilician Gates, and hurried to Tarsus before its Persian governor could burn it. *(arrian)*
-- At Tarsus he fell dangerously ill. Aristobulus blamed exhaustion; other writers blamed a swim in the icy river Cydnus. *(arrian; disputed)*
-- His doctor, Philip of Acarnania, treated him. The writers tell of a letter accusing the doctor of a plot. It is an episode reported by the ancient writers; its details cannot be checked. *(arrian; plutarch; curtius)*
+- At Tarsus he fell dangerously ill. Aristobulus blamed exhaustion; other writers blamed bathing in the cold river Cydnus. *(arrian; disputed)*
+- His doctor, Philip of Acarnania, treated him. The writers tell of a letter accusing the doctor of a plot. It is an episode reported by the ancient writers; its details cannot be independently confirmed. *(arrian; plutarch; curtius)*
 
 ## Part 4: Issus, about November 333 BCE
 
@@ -220,7 +219,7 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 *Map: Issus · about November 333 BCE*
 - The armies met at a river the writers call the Pinarus, on a narrow plain between the mountains and the sea. *(arrian)*
 - Which river it was is uncertain: the Payas, the Deli Çay or the Kuru Çay have all been proposed. This map shows the Payas, as a hypothesis. *(scholarship; disputed)*
-- Callisthenes, through Polybius, gives the width of the plain as at most fourteen stades: about two and a half kilometres. *(polybius; estimate)*
+- Callisthenes, through Polybius, gives the width of the plain as at most fourteen stades: about two point six kilometres. *(polybius; estimate)*
 
 ### 19. The lines
 *Map: Issus · about November 333 BCE*
@@ -236,10 +235,10 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 
 ### 21. Darius leaves the field
 *Map: Issus · about November 333 BCE*
-- Alexander's wing turned toward the centre, where Darius stood. *(arrian)*
+- Alexander's victorious right wing turned against the Greek mercenaries, helping the hard-pressed Macedonian centre. *(arrian)*
 - Arrian says Darius fled, first in his chariot, then on horseback when the ground grew rough. Diodorus tells of fierce fighting around the royal chariot. A personal duel between the two kings is not established. *(arrian; diodorus; disputed)*
 - Plutarch says Alexander was wounded in the thigh. *(plutarch)*
-- Some modern historians see Darius's escape as a choice to save his rule and fight on, rather than only flight. That is a modern interpretation. *(scholarship)*
+- The historian Ernst Badian suggests that Darius escaped to preserve his kingdom's chance of resistance. That is a modern interpretation. *(scholarship)*
 
 ### 22. The rout
 *Map: Issus · about November 333 BCE*
@@ -251,7 +250,7 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 ### 23. The royal family
 *Map: Issus · about November 333 BCE*
 - The Persian camp was taken. Among the captives were Darius's mother, Sisygambis, his wife, Stateira, his daughters and his young son. *(arrian; curtius)*
-- The writers say Alexander promised them protection and their royal rank. They remained captives. *(arrian; diodorus)*
+- The writers say Alexander promised them protection and their royal rank. They remained captives. Other people taken in the camp did not share their privileged treatment. *(arrian; diodorus; curtius)*
 - A famous story says Sisygambis bowed first to Alexander's friend Hephaestion, mistaking him for the king. Arrian tells it only as a story he cannot vouch for. *(diodorus; curtius; arrian; disputed)*
 
 ### 24. Damascus and the survivors
@@ -268,7 +267,7 @@ Welcome to Battles of History. Today we follow Alexander the Great into Asia, to
 ### 26. The road to Tyre
 *Map: Campaign · winter 333 to 332 BCE*
 - Alexander did not chase Darius inland. He marched south along the coast, taking the harbours of the Persian fleet. *(arrian)*
-- Aradus, Byblos and Sidon submitted. The island city of Tyre would not let him in, and a siege of seven months began. Our page on the Siege of Tyre tells that story. *(arrian)*
+- Aradus, Byblos and Sidon submitted. Tyre refused his request to enter the island city to sacrifice. Alexander began a siege, which Plutarch and Diodorus say lasted seven months. Our page on the Siege of Tyre tells that story. *(arrian; plutarch; diodorus)*
 - Darius was still free, and the empire could still raise another army. The two kings would meet again at Gaugamela, in 331 BCE. *(established)*
 
 ## Debrief
@@ -317,3 +316,17 @@ I am making an educational, narrated history page about Alexander the Great's ba
 
 Please check the script against the ancient texts (Arrian, Anabasis 1-2; Diodorus 17; Plutarch, Alexander; Curtius 3; Polybius 12; Justin 11) and against your review's Required corrections. For each line that is wrong, overstated, misattributed or unfair, give: the chapter and the exact words, the problem, the corrected wording, and the source. Pay particular attention to the "Notes for review" list at the end of the script. Also tell me if any line is too graphic for students, or if anything important is missing. Do not rewrite the whole script.
 ```
+
+## Changes in draft 2 (17 November 2026)
+
+From ChatGPT's review of draft 1 (`research/CHATGPT-REVIEW-DRAFT1.md`):
+- **Required:** Alexander twenty-one, not twenty-two, at the crossing (born July 356 BCE); I1 no longer implies the empire
+  ended at Gaugamela (Darius at large until 330 BCE); the sarissa's length removed from an "established" line; chapter 5
+  names Badian and Devine instead of "most modern historians"; chapter 6, the first attackers fall back as Alexander is
+  already approaching (Arrian 1.15.1–3); chapter 7, Cleitus strikes Spithridates' sword arm (Arrian 1.15.8); chapter 8,
+  "higher ground" (Plutarch's) removed from an Arrian line; chapter 21, the right wing turns against the mercenaries
+  (Arrian 2.11.1–4) and Badian is named for the interpretation of Darius's escape; chapter 26, Tyre's refusal of the
+  request to sacrifice, and the seven months credited to Plutarch and Diodorus; the "established" tag redefined.
+- **Optional, applied:** "a vast empire" instead of a superlative; "and other troops"; Thessalians "alongside"; Thebes
+  "frightened" the cities; the anchorage at Lade; Ada offers Alinda; Plutarch "criticised" the sea stories; "bathing in
+  the cold river"; "independently confirmed"; other captives' treatment; Körpe named; "two point six kilometres".
