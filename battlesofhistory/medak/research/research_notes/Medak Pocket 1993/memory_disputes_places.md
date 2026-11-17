@@ -98,7 +98,7 @@ Four points are contested. (1) Croatian losses in the 15 September firefight: "2
 - Zagreb indictment (agreed with ICTY): about 30 civilians and prisoners of war killed — [Hina](https://hina.hr/OTS/4109644) **[CHECK]**.
 - The ICTY's Bobetko indictment (a broader charge against another accused, who died before trial): "at least 100 Serbs" including 29 local civilians — [ICTY Bobetko case sheet](https://www.icty.org/x/cases/bobetko/cis/en/cis_bobetko_en.pdf).
 - A narrower charge in the Zagreb case: indiscriminate shelling of Čitluk and Divoselo killed 5 civilians — [RFE/RL](https://www.slobodnaevropa.org/a/medazcki-dzep-presuda/28051232.html) **[CHECK]**.
-- Veritas: 36 civilians (26 aged over 60) among 88 Serb dead — [N1 Serbia](https://n1info.rs/vesti/veritas-u-ponedeljak-31-godisnjica-stradanja-srba-iz-medackog-dzep/).
+- Veritas: 36 civilians (26 aged over 60) among 88 Serb dead — [N1 Serbia](https://n1info.rs/vesti/veritas-u-ponedeljak-31-godisnjica-stradanja-srba-iz-medackog-dzepa/).
 
 **4. Was it a "battle" for Canada?**
 - Canada: yes. The 2002 unit commendation and the DND, Canadian Encyclopedia and RCI wording are cited above.
