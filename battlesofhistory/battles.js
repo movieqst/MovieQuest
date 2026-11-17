@@ -281,6 +281,7 @@ window.BATTLES = [
     blurb: 'Alexander’s first two battles against Persia, a year apart: the cavalry charge across the Granicus and up its steep bank, then the long march across Anatolia, the two armies passing each other on either side of the mountains, and the clash at the river Pinarus where Darius fled and his family was captured. The story before Tyre and Gaugamela.',
     cover: 'images/cover.jpg', coverPos: '30% 40%',   // Alexander and Bucephalus
     coverCredit: 'Title painting made for this page with ChatGPT (AI-generated), checked against Arrian, Plutarch and Xenophon: an imagined scene combining the two battles, not a record',
+    chapters: [ { title: 'The road to Asia', ev: 'Thebes' }, { title: 'The Granicus, 334 BCE', ev: 'The river' }, { title: 'A year in Anatolia', ev: 'Sardis and Ephesus' }, { title: 'Issus, 333 BCE', ev: 'The Great King comes' }, { title: 'After Issus: the royal family, the letters, the road to Tyre', ev: 'The royal family' } ],
     status: 'in progress'
   },
   {
