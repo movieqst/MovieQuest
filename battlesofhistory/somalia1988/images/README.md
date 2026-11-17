@@ -44,3 +44,4 @@ for move and fire, so each pair matches); green-tinted dust on the tank sheets t
 Scales: all people at 0.448 (the SNM fighter, drawn closer up by ChatGPT, at 0.31 to match), the tank and truck at
 0.558, the MiG at 0.682. Green halos in dust, smoke and muzzle flashes fixed with `tools/fix-green-fringe.py`.
 Still wanted: 08, the SNM fighter walking.
+| record-barre-reagan-1982.jpg | President Mohamed Siad Barre (centre right) with President Ronald Reagan (centre left) and Secretary of State Alexander Haig (right) in the Oval Office, 11 March 1982. Small (286 × 200): cut from the contact sheet; a full scan of frame 10 is to be requested. | White House photograph by **Evans**, roll C06769, frame 10. [Ronald Reagan Presidential Library](https://www.reaganlibrary.gov/archives/photo/c06769-01). **Public domain** (work of the US federal government). The contact sheet is in layout/. |
