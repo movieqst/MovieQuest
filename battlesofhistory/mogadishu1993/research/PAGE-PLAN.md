@@ -1,8 +1,15 @@
 # Battle of Mogadishu (1993): page plan
 
+**Owner's rules for this page (17 November 2026):**
+- **No copyrighted material on the page:** no copyrighted photographs, film stills, book or newspaper images, and no copied
+  text. Only public-domain or openly licensed pictures (US government works, CC BY / CC BY-SA / CC0). Copyrighted
+  sources are cited and linked for further reading, never reproduced.
+- **No graphic violence:** killings, the torture of Shidane Arone and the deaths in the battle are stated plainly, once,
+  without methods, injuries or bodies. No images of the dead or wounded, and none of the photographs taken at
+  Belet Huen on 16 March 1993.
+
 Planned 17 November 2026. Nothing here is verified yet: every fact below is a starting point from memory, to be checked
-against the sources listed before it goes into a script. Same rules as every page: neutral, sourced, tagged; no graphic
-detail; copyrighted material only as link cards or short credited quotations.
+against the sources listed before it goes into a script. Same rules as every page: neutral, sourced, tagged.
 
 ## Shape of the page (draft)
 
@@ -31,7 +38,7 @@ detail; copyrighted material only as link cards or short credited quotations.
 ## Sources to read (to verify everything above)
 
 - Commission of Inquiry into the Deployment of Canadian Forces to Somalia, *Dishonoured Legacy: The Lessons of the
-  Somalia Affair* (1997), Government of Canada (Crown copyright: cite and link; quote briefly).
+  Somalia Affair* (1997), Government of Canada (Crown copyright: cite and link only).
 - Canadian court-martial records and appeal decisions (Brown; Matchee's unfitness; others), as published.
 - UN Security Council resolutions (751, 794, 814, 837) and UN reports on UNOSOM; US Army Center of Military History,
   *The United States Army in Somalia, 1992–1994* (public domain); official US reports on 3–4 October.
