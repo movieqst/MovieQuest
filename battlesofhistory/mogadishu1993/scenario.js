@@ -1391,6 +1391,10 @@ Object.assign(window.MOGADISHU_SCENARIO, {
     { title: 'Address to the Nation on Somalia', author: 'President Bill Clinton', year: '1993', kind: 'speech', about: '7 October 1993: reinforcements, and the deadline of 31 March 1994.', citedIn: 'chapter 27', rights: 'US government: public domain', link: 'https://www.presidency.ucsb.edu/documents/address-the-nation-somalia', linkLabel: 'The American Presidency Project' },
     L({ title: 'Black Hawk Down: A Story of Modern War', author: 'Mark Bowden', year: '1999', kind: 'book', about: 'The journalist’s account of the battle, from interviews with American and Somali participants; the basis of the film.', citedIn: 'Part 7' }),
     L({ title: 'Black Hawk Down', author: 'Ridley Scott (director)', year: '2001', kind: 'film (a dramatisation)', about: 'No images from the film are used on this page.', citedIn: 'Part 7' }),
+    { title: 'Malaysia regrets Black Hawk Down', author: 'Agence France-Presse, via Malaysiakini', year: '2002', kind: 'news report', about: '25 January 2002: Defence Minister Najib Razak on the film, and Brigadier-General Abdul Latif Ahmad’s account of the Malaysian rescue force.', citedIn: 'chapters 24 and 31', rights: 'Link only', link: 'https://www.malaysiakini.com/news/6400', linkLabel: 'malaysiakini.com' },
+    { title: 'Army declares Black Hawk Down authentic', author: 'Linda D. Kozaryn, American Forces Press Service', year: '2002', kind: 'news report', about: '15 January 2002: General Jack Keane and Matt Eversmann at the premiere.', citedIn: 'chapter 31', rights: 'US government work', link: 'https://www.dvidshub.net/news/527437/army-declares-black-hawk-down-authentic', linkLabel: 'DVIDS' },
+    L({ title: 'Protesting Black Hawk Down', author: 'The Nation', year: '2002', kind: 'article', about: 'Objections from Somali Americans to how the film shows Somalis.', citedIn: 'chapter 31', link: 'https://www.thenation.com/article/archive/protesting-black-hawk-down/' }),
+    L({ title: 'Somalis watch Black Hawk Down', author: 'WNYC, On the Media', year: '2002', kind: 'radio report', about: 'Somali viewers on the film.', citedIn: 'chapter 31', link: 'https://www.wnycstudios.org/podcasts/otm/segments/131792-somalis-watch-black-hawk-down' }),
     L({ title: 'Dark Threats and White Knights: The Somalia Affair, Peacekeeping, and the New Imperialism', author: 'Sherene Razack', year: '2004', kind: 'book', about: 'A critical study of the Somalia Affair.', citedIn: 'Part 3 (further reading)' })
   ];
 
@@ -1489,7 +1493,7 @@ Object.assign(window.MOGADISHU_SCENARIO, {
   for (let i = 9; i <= 13; i++) set(i, bel({ zoom: 'fit', markers: [ { ...kCAMP, label: 'Beledweyne, 1993' } ] }));
   // Part 4: UNOSOM II and the hunt for Aidid
   set(14, mog({ zoom: 'fit', markers: [ { ...mAIRPORT, label: 'UNOSOM II and the US Quick Reaction Force', side: 'french' } ], orders: [
-    { id: 'mPak', visible: true }, { id: 'mQRF', visible: true }, { id: 'mAidid', visible: true, at: mSOUTH }, { id: 'mTech', visible: true } ] }));
+    { id: 'mMahdi', gone: true }, { id: 'mPak', visible: true }, { id: 'mQRF', visible: true }, { id: 'mAidid', visible: true, at: mSOUTH }, { id: 'mTech', visible: true } ] }));
   set(15, mog({ zoom: 1.6, focus: mid(mRADIO, mSTADIUM), markers: [ { ...mRADIO, label: 'Radio Mogadishu ' + AP }, { ...mSTADIUM, label: 'Stadium' } ], orders: [
     { id: 'mPak', to: off(mRADIO, 40, -20), speed: 20, state: 'move' }, { id: 'mAidid', to: off(mRADIO, -60, 30), speed: 18, state: 'attack', delay: 8 },
     { id: 'mPak', strengthTo: .6, over: 10, delay: 12 }, { id: 'mPak', to: mSTADIUM, speed: 20, state: 'move', delay: 24 } ] }));
