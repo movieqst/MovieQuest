@@ -20,3 +20,4 @@
 | File | What | Source and licence |
 |---|---|---|
 | record-mig17-memorial-2016.jpg | The Hargeisa War Memorial, 22 January 2016: a Somali Air Force MiG-17, the type that bombed the city in 1988, on a plinth reading "Xus oo xusuusnow 1988" ("Remember and recall 1988"), above a painted mural of the bombing. | Photo: **John Pavelka**, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MiG-17_Jet_Memorial_(42961308501).jpg) (from Flickr, reviewed), **CC BY 2.0**. Saved at 1280 px. |
+| record-memorial-rebuilt-2024.jpg | The Hargeisa War Memorial as rebuilt, 26 January 2024: the same MiG-17 on a new monument of stone columns. | Photo: **Buufin**, own work, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hargeisa_War_Memorial.jpg), **CC0 1.0** (public domain dedication). Saved at 1280 px. |
