@@ -199,6 +199,7 @@ Welcome to Battles of History. Today we are learning about the Battle of Mogadis
 - Private Kyle Brown was convicted of manslaughter and torture in March 1994. He was sentenced to five years in prison and dismissed from the army with disgrace. His appeal was dismissed in January 1995. *(court: conviction; court: appeal)*
 
 ### 11. Officers on trial
+*Map: Beledweyne · 1994 to 1996*
 - Sergeant Mark Boland, in charge of the guard that night, pleaded guilty to negligent performance of duty. On appeal, his sentence was increased to a year in prison. *(court: conviction; court: appeal)*
 - Major Anthony Seward, the company commander, was acquitted of causing bodily harm, and convicted of negligent performance of duty. On appeal, his punishment was raised to three months in prison and dismissal. *(court: conviction; court: appeal)*
 - The regiment's commander, Lieutenant Colonel Carol Mathieu, was charged over his orders about intruders. He was acquitted. An appeal court ordered a new trial, and he was acquitted again. *(court: acquittal; court: appeal)*
@@ -211,6 +212,7 @@ Welcome to Battles of History. Today we are learning about the Battle of Mogadis
 - The regiment had served Canada since 1968. Many of its soldiers had served honourably, in Somalia and elsewhere. *(established)*
 
 ### 13. The inquiry
+*Map: Beledweyne · 1995 to 1997*
 - On the twentieth of March 1995, the government appointed the Commission of Inquiry into the Deployment of Canadian Forces to Somalia, chaired by Justice Gilles Létourneau. *(government: Canada)*
 - The inquiry found that senior officers had failed in their leadership, and examined altered and missing documents. *(inquiry)*
 - The inquiry found that General Jean Boyle, later Chief of the Defence Staff, had been a party to the decision to release altered documents. That is an inquiry finding, not a criminal verdict. *(inquiry)*
@@ -218,6 +220,7 @@ Welcome to Battles of History. Today we are learning about the Battle of Mogadis
 - The commission handed in its report at the end of June 1997. It was published in July, as *Dishonoured Legacy: The Lessons of the Somalia Affair*. *(established)*
 
 ### 14. The victims
+*Map: Beledweyne · 1993 to 1999*
 - Ahmed Arush and Shidane Arone were Somalis who came near a foreign army's camp, in a time of hunger and war. *(established)*
 - Shidane Arone's family later sought damages from the Canadian government in an Ontario court. *(established)*
 - In Canada, the affair prompted demands for changes in military leadership and military justice. *(inquiry)*
@@ -325,6 +328,7 @@ Welcome to Battles of History. Today we are learning about the Battle of Mogadis
 - Somalia remained without an effective national government for many years. *(established)*
 
 ### 29. A long shadow
+*Map: Somalia · 1994*
 - In April 1994, genocide began in Rwanda. United Nations peacekeepers were already in Rwanda. After the genocide began, their force was cut back, and enough reinforcements did not arrive in time to stop it. *(established)*
 - The United States decided not to send its own troops. *(established)*
 - Some former officials and historians say the memory of Mogadishu weighed on these decisions. Others point out that a stricter American policy on peacekeeping was already being written before the battle. *(scholarship)*
@@ -341,6 +345,7 @@ Welcome to Battles of History. Today we are learning about the Battle of Mogadis
 - On this map, the film's places are approximate. The real places are on the Battle map. *(page)*
 
 ### 31. What the film changes
+*Map: Rabat · 2001 to 2002*
 - The film follows the battle from the American side. At its premiere in 2002, the Army's vice chief of staff, General Jack Keane, called it authentic, and the Ranger veteran Matt Eversmann praised it, while noting changes made "for the sake of filmmaking". *(witness; press: American Forces Press Service)*
 - The film briefly introduces the famine and the intervention, but gives little of the political history that led to the raid. *(film)*
 - It gives little part to the Malaysian and Pakistani soldiers of the rescue convoy. In 2002, Malaysia's defence minister, Najib Razak, publicly regretted that. *(government: Malaysia; press: Agence France-Presse)*

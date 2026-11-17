@@ -338,10 +338,10 @@ window.BATTLES = [
     title: 'Battle of Mogadishu',
     date: '3–4 October 1993', year: 1993,
     place: 'Central Mogadishu, Somalia: the Bakara Market area and the streets to the UN base and the stadium',
-    sides: 'US Task Force Ranger with UN forces (UNOSOM II: Malaysian and Pakistani troops) vs. the Somali National Alliance (SNA) militia of Mohamed Farrah Aidid',
-    blurb: 'A US raid to capture leaders of Mohamed Farrah Aidid’s militia turned into a night-long battle in the city after two Black Hawk helicopters were shot down. A rescue column with Malaysian and Pakistani troops reached the trapped soldiers the next morning. Eighteen Americans and one Malaysian soldier were killed; estimates of Somali dead, fighters and civilians, range from several hundred to more than a thousand. The United States soon withdrew from Somalia.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner
-    coverCredit: '',
+    sides: 'The Somali National Alliance (SNA) of Mohamed Farrah Aidid and other armed Somalis vs. US Task Force Ranger with US and UN forces (UNOSOM II: Malaysian and Pakistani troops)',
+    blurb: 'A US raid to capture leaders of Mohamed Farrah Aidid’s militia turned into a night-long battle in the city after two Black Hawk helicopters were shot down. A rescue column with Malaysian and Pakistani troops reached the trapped soldiers the next morning. Eighteen American soldiers and one Malaysian soldier were killed; the Somali dead included fighters and civilians, and no reliable total is known. The United States soon withdrew its combat forces. The page also tells the Somalia Affair (Canadian soldiers at Beledweyne, March 1993) and compares the film Black Hawk Down with the history.',
+    cover: 'images/cover.jpg',   // for now the Bravo Company photograph (the owner may choose another title card)
+    coverCredit: 'Bravo Company, 3rd Battalion, 75th Ranger Regiment, Somalia, 1993. US Army photo, public domain',
     status: 'in progress'
   },
   {

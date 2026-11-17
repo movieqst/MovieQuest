@@ -31,3 +31,8 @@ columns: four frames. All directions checked.
   `us-truck` (0.744), `aid-truck` (0.684), `my-condor` (0.628), `sna-technical` (0.566), `us-humvee` (0.564),
   `us-blackhawk` (0.659), `us-littlebird` (0.476).
 - `sna-rpg` is the agreed non-firing version: raising, aiming, holding, lowering; no flash or smoke.
+
+## Cover
+
+`cover.jpg`: for now a copy of `record-bravo-company-3-75-rangers-1993.jpg` (US Army, public domain), as the home-page card
+picture. The owner may choose another title card.
