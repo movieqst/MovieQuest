@@ -19,3 +19,15 @@ All painted with ChatGPT (AI-generated) on the bases made by tools/draw-maps.py;
 | battle-painting.jpg | the battle area (5 × 3.75 km) | streets on the base's lines (overlay) |
 | beledweyne-painting.jpg | Beledweyne, 1993 (8 × 6 km) | the Shabelle's bends on the base's river (overlay) |
 | rabat-painting.jpg | Rabat and Salé, 2001, for the film comparison (12 × 9 km) | coast 97.2 %; the Bou Regreg on the base's river |
+
+## Sprite sheets (units/, 17 November 2026)
+
+Painted by ChatGPT from `ART-PROMPTS-UNITS.md`, one sheet per chat; originals in `units-raw/` (1254 x 1254, green
+background). Cut with `tools/prepare-sprite-sheet.py`, then `tools/fix-green-fringe.py`. Rows: south, east, north, west;
+columns: four frames. All directions checked.
+- People, 160 px cells: `us-ranger` (scale 0.438), `us-ranger-fire` (0.438, same as walk), `sna-militia` (0.432),
+  `sna-militia-fire` and `sna-rpg` (0.432), `civilians` (0.435, matched to the soldiers).
+- Vehicles and aircraft, 240 x 200 cells, sized against each other (M48 with its gun the longest): `pk-m48` (0.675),
+  `us-truck` (0.744), `aid-truck` (0.684), `my-condor` (0.628), `sna-technical` (0.566), `us-humvee` (0.564),
+  `us-blackhawk` (0.659), `us-littlebird` (0.476).
+- `sna-rpg` is the agreed non-firing version: raising, aiming, holding, lowering; no flash or smoke.

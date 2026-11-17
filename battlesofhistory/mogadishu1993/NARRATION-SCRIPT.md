@@ -173,7 +173,7 @@ Welcome to Battles of History. Today we are learning about the Battle of Mogadis
 *Map: Beledweyne · 1993 to 2008*
 - Master Corporal Clayton Matchee was charged with second-degree murder and torture. Days after his arrest, he tried to take his own life in custody, and suffered a permanent brain injury. *(established)*
 - He was found unfit to stand trial. In 2008 the charges were withdrawn, because, a prosecutor said, he would never be fit. He was never tried, and no court decided his guilt. *(court: unfit to stand trial; court: charges withdrawn)*
-- In 2017 his wife told CBC News that an anti-malaria drug, mefloquine, given to soldiers in Somalia, had changed him. That is her account. No court and not the inquiry made a finding on it. *(witness; press: CBC)*
+- In 2017 his wife told CBC News that an anti-malaria drug, mefloquine, given to soldiers in Somalia, had changed him. That is her account. No court tested it, and the inquiry made no finding on it. *(witness; press: CBC)*
 - Private Kyle Brown was convicted of manslaughter and torture in March 1994. He was sentenced to five years and dismissed from the army with disgrace. He was released early. *(court: conviction)*
 - Brown later wrote a book with a journalist, called *Scapegoat*. In it he maintains his innocence, and argues that the army punished junior soldiers and protected their leaders. That is his account. The court's verdict stands. *(witness)*
 
@@ -363,14 +363,11 @@ Welcome to Battles of History. Today we are learning about the Battle of Mogadis
 
 ## Notes for review (draft 1)
 
-**To decide (owner):**
-1. **Chapter 27, "Television pictures".** The report advises leaving out the treatment of American soldiers' bodies. This
-   draft says only that television pictures, "including a video of the captured pilot", shocked Americans. That is true
-   and not graphic, but the pictures that shocked most people were of the dead. Keep this wording, or say nothing?
-2. **Chapter 10, Matchee's wife and mefloquine.** Included as her account, tagged witness. It may be too much for
-   students, and it is a claim no court tested. Keep or cut?
-3. **Title card and colours.** The page's first side (red) should be named first in the title. Suggested: red for
-   UNOSOM II and the United States, blue for the SNA. Canada's chapters use no armies on the map.
+**Owner's decisions (17 November 2026):**
+1. **Chapter 27, television pictures:** keep the line about the television pictures.
+2. **Chapter 10, mefloquine:** keep it as his wife's account, saying that no court tested it.
+3. **Colours:** the United Nations and the United States are **blue**; Aidid's SNA is **red**. By the page rule (the
+   first-named side is red), the armies list and title name the SNA first. Canada's chapters use no armies on the map.
 
 **Facts that must be checked before draft 2** (from the report's "To verify" tables; the wording above already
 uses the cautious form):
