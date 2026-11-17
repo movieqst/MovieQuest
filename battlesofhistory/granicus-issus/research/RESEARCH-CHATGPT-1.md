@@ -3,6 +3,16 @@
 
 **Editorial status:** working research, not a recording script. Ancient references are chapter/section locators; ranges are intentional where a whole episode is involved. Modern topographic coordinates below are approximate production proposals, not surveyed archaeological positions. No exact battle day is established here.
 
+> **Corrected 17 November 2026 from ChatGPT's source review** (`CHATGPT-REVIEW-ROUND1.md`): the required corrections
+> R1–R15 are applied below (crossing cavalry figures, Issus losses, Curtius's total removed and his losses edition-dependent,
+> Stateira and Barsine references, the demolition of Halicarnassus, the fleet dismissal sources, the 300 armours, Diodorus's
+> qualifiers, the Körpe 2025 survey, the Granicus frame, Hammond and Devine bibliography), plus Plutarch's surrender variant.
+> Editorial rules from the review: never present an ancient army total as a headcount; say "Ancient writers give widely
+> different army and casualty figures. The enormous Persian totals cannot be treated as reliable headcounts, and the actual
+> strengths and losses remain uncertain." Most surviving narratives were written in Greek or Latin after the campaign and
+> draw on accounts from Alexander's side; no equivalent Persian history of these battles survives. No exact day for either
+> battle. Modern numerical estimates (Bosworth, Briant, Heckel and others) still need page checks.
+
 ## A. Story in chronological order
 
 ### 1. Philip’s unfinished war — 336 BC and earlier
@@ -55,11 +65,12 @@
 
 ### 7. Granicus: mercenaries and aftermath
 **Map:** rear of Persian line, battlefield. **People:** Greek mercenaries, Alexander, Arsites.
+- Plutarch says the Greek mercenaries asked for terms, but Alexander attacked them. [PLUTARCH Alex. 16.12–13; attributed]
 - Alexander directed infantry and cavalry against the remaining Greek mercenaries. [ARRIAN 1.16.2]
 - Arrian says most were killed and about 2,000 taken prisoner; the original total and exact deaths are uncertain. [ARRIAN 1.16.2; ESTIMATE]
 - Captives were sent to Macedonia for forced labour; Arrian explains this through the alliance’s prohibition on serving Persia. [ARRIAN 1.16.6]
 - Persian leaders died, including Mithrobuzanes and Spithridates; Arsites escaped and later killed himself according to Arrian. [ARRIAN 1.16.3]
-- Alexander sent 300 Persian suits of armour to Athens as a dedication, excluding Sparta in the inscription. [ARRIAN 1.16.7; PLUTARCH Alex. 16]
+- Arrian says Alexander sent 300 Persian suits of armour to Athena at Athens; Plutarch speaks of shields. Both report that the dedication excluded the Spartans. [ARRIAN 1.16.7; PLUTARCH Alex. 16]
 - The victory opened western Anatolia to further campaigning; it did not destroy the Persian Empire. [ARRIAN 1.17–20; INFERENCE]
 
 ### 8. Sardis and Ionia — summer 334 BC
@@ -75,7 +86,7 @@
 - Miletus resisted; the Macedonian fleet reached the harbour approaches before the Persian fleet could occupy them. [ARRIAN 1.18.3–6]
 - Alexander rejected Parmenion’s proposal for a naval battle. [ARRIAN 1.18.6–9]
 - Siege engines breached the defences; the city fell. [ARRIAN 1.19]
-- Alexander dismissed most of his fleet, citing expense and the strategy of taking coastal bases in Arrian’s explanation. [ARRIAN 1.20.1; DIODORUS 17.23.1–3]
+- Alexander dismissed most of his fleet. Arrian explains it by expense and the strategy of taking the enemy's coastal bases. Diodorus gives expense (17.22.5), and separately reports that "some" said it was to deprive the army of escape (17.23.1–3). [ARRIAN 1.20.1; DIODORUS 17.22.5, 17.23.1–3]
 - This was not the permanent end of Macedonian naval operations. [ARRIAN 2.2; INFERENCE]
 
 ### 10. Halicarnassus and Ada — autumn 334 BC
@@ -83,6 +94,7 @@
 - Memnon and Orontobates organized resistance at Halicarnassus. [ARRIAN 1.20–23; DIODORUS 17.24–27]
 - The siege involved walls, engines and sorties; defenders inflicted losses. [ARRIAN 1.21–22]
 - The defenders abandoned much of the city after setting fires, retaining fortified positions. [ARRIAN 1.23]
+- After the defenders withdrew into the remaining strongholds, Alexander ordered the city demolished, according to Arrian. [ARRIAN 1.23; DIODORUS 17.27.6]
 - Alexander left troops to continue operations rather than claiming every stronghold immediately. [ARRIAN 1.23.6]
 - Ada, a displaced Carian dynast, offered Alexander Alinda and adopted him; he entrusted Caria to her. [ARRIAN 1.23.7–8; PLUTARCH Alex. 22]
 
@@ -123,7 +135,7 @@
 - Alexander campaigned around Soli and Mallus before advancing along the coast. [ARRIAN 2.5]
 - He passed through Issus and moved toward Myriandrus. [ARRIAN 2.6.1–2; 2.7.1]
 - Darius crossed the Amanus by another passage and arrived at Issus behind Alexander. [ARRIAN 2.7.1; POLYBIUS 12.17.2–3]
-- Arrian reports that Darius’ troops killed the sick Macedonians left there; Curtius describes mutilation as well. Keep the versions separate. [ARRIAN 2.7.1; CURTIUS 3.8.14]
+- Arrian reports that Darius’ troops killed the sick Macedonians left there; Curtius describes mutilation as well. Keep the versions separate; narrate only Arrian's plain statement. [ARRIAN 2.7.1; CURTIUS 3.8.14–15]
 - Alexander confirmed the Persian presence by sending men by sea and turned north. [ARRIAN 2.7.2–3]
 - Darius had placed himself across Alexander’s communications, but the coastal terrain limited deployment. [ARRIAN 2.7–8; INFERENCE]
 
@@ -174,7 +186,7 @@
 | Episode | Source | Reported figures / caution |
 |---|---|---|
 | Crossing | Arrian 1.11.3 | slightly over 30,000 infantry, over 5,000 cavalry |
-| Crossing | Diodorus 17.17.3–5 | 32,000 infantry, 5,100 cavalry; detailed list |
+| Crossing | Diodorus 17.17.3–4 | 32,000 infantry; 4,500 cavalry stated, although his contingent figures total 5,100 |
 | Crossing | Plutarch Alex. 15.1 | 30,000–43,000 infantry, 4,000–5,000 cavalry |
 | Crossing | Justin 11.6.2 | 32,000 infantry, 4,500 cavalry |
 | Granicus Persian | Arrian 1.14.4 | about 20,000 cavalry and nearly 20,000 mercenary infantry |
@@ -183,11 +195,11 @@
 | Granicus losses | Diodorus 17.21.6 | over 10,000 Persian infantry and at least 2,000 cavalry killed; over 20,000 captured |
 | Granicus losses | Plutarch Alex. 16 | 20,000 infantry and 2,500 cavalry killed; Aristobulus gives 34 Macedonian dead, nine infantry |
 | Issus Persian | Arrian 2.8.6–8 | 30,000 Greek mercenaries, 60,000 Cardaces, total 600,000 reported; not credible as deployed strength |
-| Issus Persian | Diodorus 17.31.2 | 400,000 infantry and 100,000 cavalry |
-| Issus Persian | Curtius 3.2 | detailed muster; 250,000 total often derived from his list; verify arithmetic and categories before use |
-| Issus losses | Arrian 2.11.8 | about 100,000 infantry and over 10,000 cavalry Persian dead; 120 prominent Macedonian infantry dead in centre (2.10.7), not total losses |
+| Issus Persian | Diodorus 17.31.2 | more than 400,000 infantry and not less than 100,000 cavalry (his reported figures) |
+| Issus Persian | Curtius 3.2 | detailed muster by contingent; no summed total established (the "250,000" is removed); check a critical edition before summing |
+| Issus losses | Arrian 2.11.8; 2.10.7 | about 100,000 enemy killed, including more than 10,000 cavalry; on the Macedonian side Ptolemy son of Seleucus and about 120 other Macedonians of distinction in the centre (not a total) |
 | Issus losses | Diodorus 17.36.6 | over 100,000 Persian infantry and at least 10,000 cavalry; 300 Macedonian infantry and 150 cavalry killed |
-| Issus losses | Curtius 3.11.27 | 100,000 Persian infantry, 10,000 cavalry; 32 Macedonian infantry and 150 cavalry dead, 504 wounded |
+| Issus losses | Curtius 3.11.27 | 100,000 Persian infantry, 10,000 cavalry (his claim); Macedonian figures depend on the edition: 32 infantry and 150 cavalry dead, 504 wounded (Latin Library) or 150 killed, 302 missing, 4,500 wounded (other editions): not to be presented as settled |
 
 [ESTIMATE; DISPUTED] These are reported numbers, not verified counts. Logistics, frontage, and contradictory traditions prevent treating the enormous Persian totals as actual deployment. No reliable exact strength or death total for either battle. Polybius 12.17–22 demonstrates problems even in Callisthenes’ contemporary account. Use representative units, not one sprite per historical soldier.
 
@@ -209,11 +221,11 @@
 | Mithridates | Royal son-in-law, killed by Alexander in Arrian | Arrian 1.15.7 |
 | Arsames | Cilician satrap, withdrew from Tarsus; reported killed at Issus | Arrian 2.4.5, 2.11.8 |
 | Nabarzanes | Persian cavalry commander in Curtius; later involved in seizure of Darius | Curtius 3.9, 5.12–13 |
-| Thymondas | Son of Mentor, brought mercenaries to Darius; later fate not securely established here | Arrian 2.2.1–2 |
+| Thymondas | Son of Mentor, brought mercenaries to Darius; escaped Issus with the mercenaries; later fate not securely established here | Arrian 2.2.1–2, 2.13 |
 | Amyntas son of Antiochus | Macedonian exile serving Persia, advised Darius; escaped Issus and died in Egypt | Arrian 2.6.3, 2.13.2–3; Curtius 4.1 |
 | Sisygambis | Mother of Darius, captive after Issus; reported death after Alexander’s death | Arrian 2.12; Diodorus 17.118.3 |
-| Stateira | Wife of Darius, captive, died before Gaugamela; distinguish daughter of same name | Arrian 2.12, 4.20.1–3; Curtius 4.10 |
-| Barsine | Daughter of Artabazus, widow of Memnon; later associated with Alexander; reported killed with Heracles | Plutarch Alex. 21.4; Diodorus 20.20, 20.28 |
+| Stateira | Wife of Darius, captive, died in captivity before Gaugamela; distinguish the daughter of the same name | Arrian 2.12; Plutarch Alex. 30.1–3; Curtius 4.10–11; Badian, Iranica "Stateira" 2 |
+| Barsine | Daughter of Artabazus, widow of Memnon; captured at Damascus; later associated with Alexander; reported killed with Heracles; not the daughter of Darius called Barsine in Arrian's later marriage account | Plutarch Alex. 21.7–9; Diodorus 20.20, 20.28 |
 | Philip of Acarnania | Physician who treated Alexander; later fate unknown here | Arrian 2.4.8–11 |
 | Ada | Carian dynast, adopted Alexander and restored to authority; death date uncertain | Arrian 1.23.7–8 |
 
@@ -255,7 +267,7 @@ Gazetteer verification: https://pleiades.stoa.org/ ; modern terrain: https://www
 - Modern Biga Çayı / Kocabaş Çayı identification is conventional; exact battlefield remains a research question. [ARRIAN 1.13–16; MODERN: Körpe research reported 2024, S7]
 - Körpe’s team reported a location farther south than earlier proposals near Çınarköprü, arguing the earlier lowland was marshy in antiquity. This is a reported research finding, not independently verified excavation proof. [S7; DISPUTED]
 - Arrian describes difficult banks and a crossing under attack; Diodorus describes a crossing before battle. No measured ancient depth or width can be recovered from these passages. [ARRIAN 1.13–15; DIODORUS 17.19]
-- **Provisional 6 × 4.5 km scouting frame**, centred on modern Biga (not approved battlefield): NW 40.2502, 27.2047; SE 40.2098, 27.2753. [INFERENCE; calculation using local degree lengths]
+- **Provisional 6 × 4.5 km scouting frame**, centred on modern Biga (not approved battlefield; the review notes it cannot contain Körpe's candidate crossing, about 9 km north of Biga near Çınarköprü/Adliye): NW 40.2502, 27.2047; SE 40.2098, 27.2753. [INFERENCE; calculation using local degree lengths]
 - Do not commission final battle art until the proposed Körpe site is georeferenced from a scholarly map. Modern river meanders, embankments and drainage may differ. Keep water, banks, slopes and troop layers separate.
 
 ### Issus
@@ -290,7 +302,7 @@ Further acquisition queue (not cleared assets):
 ## E. Open questions and next research pass
 
 1. Granicus timing: Arrian/Plutarch versus Diodorus. Do not harmonize by inventing two attacks. Check Bosworth and Badian alongside fieldwork.
-2. Granicus site: obtain Körpe’s actual coordinates and peer-reviewed geomorphological publication, if available. The 2024 press report is not enough for a georeferenced final map.
+2. Granicus site: now published: Reyhan Körpe (2025), "2022–2024 Granicus Battlefield Survey: New Findings, New Results", Troy Museum Journal, special issue, pp. 107–123 (pp. 113–116, 121; fig. 4 p. 114): a candidate crossing near the bend south of Adliye and a possible final infantry position at Höyükbayırı Tepe, as proposals. Georeference its map before any final battle art.
 3. Pinarus: obtain Hammond and Devine’s maps and arguments before choosing a river; check ancient coastal evolution and the nomenclature of each modern stream.
 4. Army sizes: use Polybius’ critique and modern logistics; do not invent a replacement precise Persian strength.
 5. Persian plan: cutting communications is a plausible inference, not an authenticated statement of Darius’ intention. Greek accounts of cowardice or flattery are literary framing.
@@ -308,8 +320,8 @@ Further acquisition queue (not cleared assets):
 6. Wikimedia Commons, Le Brun family scene file and Louvre Granicus category: https://commons.wikimedia.org/wiki/File:The_Family_of_Darius_before_Alexander.png ; https://commons.wikimedia.org/wiki/Category:Le_passage_du_Granique_(Louvre_INV_2894) .
 7. Vittoria Benzine, 27 December 2024, report on Reyhan Körpe’s Granicus research: https://news.artnet.com/art-world/alexander-the-great-battle-of-granicus-site-found-2593832 . Secondary news source, not excavation report.
 8. A. B. Bosworth, *A Historical Commentary on Arrian’s History of Alexander*, vol. I (1980), commentary on 1.12–16 and 2.6–12. Further reading, not page-verified here.
-9. N. G. L. Hammond, “The Battle of the Granicus River,” *Journal of Hellenic Studies* 100 (1980), 73–88; “The Battle of Issus,” *Journal of Hellenic Studies* 112 (1992), 52–64. Further reading; verify bibliographic details and maps. https://www.jstor.org/action/doBasicSearch?Query=Hammond+Granicus+Issus
-10. A. M. Devine, “Grand Tactics at the Battle of Issus,” *Ancient World* 12 (1985), 23–50 (bibliographic lead, not consulted in full). Waldemar Heckel, *Who's Who in the Age of Alexander the Great* (2006). Pierre Briant, *From Cyrus to Alexander: A History of the Persian Empire* (2002). Specialist reading list, not page-verified.
+9. N. G. L. Hammond, “The Battle of the Granicus River,” *Journal of Hellenic Studies* 100 (1980), 73–88; “Alexander's Charge at the Battle of Issus in 333 B.C.,” *Historia* 41 (1992), 395–406 (corrected by the review). Further reading; verify bibliographic details and maps. https://www.jstor.org/action/doBasicSearch?Query=Hammond+Granicus+Issus
+10. A. M. Devine, “Grand Tactics at the Battle of Issus,” *Ancient World* 12 (1985), 39–59 (his separate "Strategies … in the Issus Campaign" is pp. 25–38) (bibliographic lead, not consulted in full). Waldemar Heckel, *Who's Who in the Age of Alexander the Great* (2006). Pierre Briant, *From Cyrus to Alexander: A History of the Persian Empire* (2002). Specialist reading list, not page-verified.
 11. Philip Huyse, “Curtius Rufus, Quintus,” *Encyclopaedia Iranica*: https://www.iranicaonline.org/articles/curtius-rufus-quintus-probably-fl/ .
 
 **Handoff status:** narrative outline usable for Claude’s source-by-source fact-check. Do not approve final narration, exact troop counts, battlefield coordinates or the outstanding image licenses until the flagged checks are complete. This pass is not a full specialist-literature or geospatial survey; references to works not inspected are explicitly reading leads rather than claims of verification.
