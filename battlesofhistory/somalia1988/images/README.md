@@ -14,3 +14,9 @@
 | hargeisa-painting.jpg | Hargeisa, 12 × 9 km | The riverbed, the runway and the main roads lie on OpenStreetMap's (checked by overlay); some small side gullies left out | Painted with ChatGPT (AI-generated) on hargeisa-base.png; original in layout/painted/hargeisa-chatgpt-v3.png |
 | burao-painting.jpg | Burao, 8 × 6 km | The Togdheer riverbed, the airstrip and the main roads lie on OpenStreetMap's (checked by overlay) | Painted with ChatGPT (AI-generated) on burao-base.png; original in layout/painted/burao-chatgpt-v3.png |
 | berbera-painting.jpg | Berbera, 12 × 9 km | Sea and harbour match the base 99.0 % (IoU); the runway and the roads lie on OpenStreetMap's | Painted with ChatGPT (AI-generated) on berbera-base.png; original in layout/painted/berbera-chatgpt-v3.png |
+
+## From the record
+
+| File | What | Source and licence |
+|---|---|---|
+| record-mig17-memorial-2016.jpg | The Hargeisa War Memorial, 22 January 2016: a Somali Air Force MiG-17, the type that bombed the city in 1988, on a plinth reading "Xus oo xusuusnow 1988" ("Remember and recall 1988"), above a painted mural of the bombing. | Photo: **John Pavelka**, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MiG-17_Jet_Memorial_(42961308501).jpg) (from Flickr, reviewed), **CC BY 2.0**. Saved at 1280 px. |
