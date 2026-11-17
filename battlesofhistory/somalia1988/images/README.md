@@ -37,13 +37,14 @@ for move and fire, so each pair matches); green-tinted dust on the tank sheets t
 | units/sna-artillery.png | Somali army towed field gun (Soviet D-44 type) and crew of three, loading and firing (type: our reconstruction) |
 | units/sna-truck.png | Somali army six-wheeled cargo truck with soldiers |
 | units/saf-mig17.png | Somali Air Force MiG-17, flying (confirmed type: the Hargeisa memorial; the pilot who flew his to Djibouti) |
+| units/snm-fighters.png | SNM fighter in shirt, macawis and headcloth, walking |
 | units/snm-fighters-fire.png | SNM fighter in shirt and macawis: aiming over a rock, firing, reloading, running on |
 | units/civilians-fleeing.png | a family leaving the town on foot with their belongings |
 | units/civilians-camel.png | a herder leading a camel loaded with the hut poles, mats and water containers |
 
 Scales: all people at 0.448 (the SNM fighter, drawn closer up by ChatGPT, at 0.31 to match), the tank and truck at
 0.558, the MiG at 0.682. Green halos in dust, smoke and muzzle flashes fixed with `tools/fix-green-fringe.py`.
-Still wanted: 08, the SNM fighter walking.
+All 11 sheets done.
 | record-barre-reagan-1982.jpg | President Mohamed Siad Barre (right) with President Ronald Reagan (left) by the Oval Office fireplace, 11 March 1982. In 1982 the United States was Barre's Cold War ally. 348 × 238, cut from the contact sheet (the frame the archive circled). | White House photograph by **Schumacher**, roll C06755, frame 10. [Ronald Reagan Presidential Library](https://www.reaganlibrary.gov/archives/photo/c06755-01). **Public domain** (work of the US federal government). |
 | record-barre-reagan-handshake-1982.jpg | Reagan greets Barre in the Oval Office, 11 March 1982. 349 × 239. | Same roll, frame 7; **public domain**. A second roll of the meeting (Evans, C06769) is in layout/. |
 | record-letter-of-death-1987-p1.jpg | Page 1 of a report (*warbixin*) dated 23 January 1987, from the office of the commander of the 26th Division (Qaybta 26aad, Hargeisa) to the President of the Somali Democratic Republic and the Ministers of Defence and the Interior, stamped *sir culus* ("top secret"). It is attributed to General Mohamed Said Hersi "Morgan" and known in Somaliland as the "Letter of Death". Africa Watch (1990) published it as authentic; it has not been tested in court. **Caption on the page must say so; do not use Commons' description, which is the uploader's own wording.** | Somali Ministry of Defence document (1987), as reprinted by the Haatuf newspaper (6 October 2003); [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Letter-of-Death-1.jpg). Public domain: a Somali government document of 1987 (the term of the 1977 Somali copyright law has run out; tagged PD-Somalia on Commons). 1202 × 1654. |
