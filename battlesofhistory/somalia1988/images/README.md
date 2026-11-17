@@ -34,3 +34,13 @@ for move and fire, so each pair matches); green-tinted dust on the tank sheets t
 | units/sna-infantry-fire.png | the same, kneeling, firing, reloading, rising |
 | units/sna-t55.png | Somali army T-54/55 tank, moving (type: our reconstruction; the sources say only "tanks") |
 | units/sna-t55-fire.png | the same tank, firing |
+| units/sna-artillery.png | Somali army towed field gun (Soviet D-44 type) and crew of three, loading and firing (type: our reconstruction) |
+| units/sna-truck.png | Somali army six-wheeled cargo truck with soldiers |
+| units/saf-mig17.png | Somali Air Force MiG-17, flying (confirmed type: the Hargeisa memorial; the pilot who flew his to Djibouti) |
+| units/snm-fighters-fire.png | SNM fighter in shirt and macawis: aiming over a rock, firing, reloading, running on |
+| units/civilians-fleeing.png | a family leaving the town on foot with their belongings |
+| units/civilians-camel.png | a herder leading a camel loaded with the hut poles, mats and water containers |
+
+Scales: all people at 0.448 (the SNM fighter, drawn closer up by ChatGPT, at 0.31 to match), the tank and truck at
+0.558, the MiG at 0.682. Green halos in dust, smoke and muzzle flashes fixed with `tools/fix-green-fringe.py`.
+Still wanted: 08, the SNM fighter walking.
