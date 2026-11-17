@@ -26,21 +26,22 @@ except OSError: FONT = lambda s: ImageFont.load_default()
 MAIN = {'motorway', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link'}
 SIDE = {'unclassified', 'residential', 'living_street', 'pedestrian', 'track', 'service'}
 THRESH = 300
+ALLSIDE = False   # the pocket map keeps every lane: its villages stood in 1993 (most were destroyed then and are smaller today)
 MAPS = {  # name: (frame, zoom, town data, title)
   'croatia': (frame43(44.90, 15.70, 320), 8, None, 'CROATIA AND THE KRAJINA, 1993'),
-  'lika':    (frame43(44.52, 15.43, 26), 13, 'lika', 'GOSPIC AND THE MEDAK POCKET, 1993'),
-  'pocket':  (frame43(44.485, 15.400, 12), 14, 'lika', 'THE MEDAK POCKET: Divoselo, Citluk, Pocitelj, 1993'),
+  'lika':    (frame43(44.52, 15.43, 26), 13, 'lika', 'GOSPIĆ AND THE MEDAK POCKET, 1993'),
+  'pocket':  (frame43(44.485, 15.400, 12), 14, 'lika', 'THE MEDAK POCKET: Divoselo, Čitluk, Počitelj, 1993'),
 }
 # neutral labels for the painter: (lat, lon, label, approximate?)
 PLACES = {
-  'croatia': [(45.815, 15.982, 'ZAGREB', 0), (45.487, 15.548, 'Karlovac', 0), (44.546, 15.375, 'Gospic', 0), (44.041, 16.199, 'Knin', 0),
-              (44.119, 15.231, 'Zadar', 0), (44.817, 15.871, 'Bihac', 0), (45.327, 14.442, 'Rijeka', 0), (45.266, 15.229, 'Ogulin', 0),
+  'croatia': [(45.815, 15.982, 'ZAGREB', 0), (45.487, 15.548, 'Karlovac', 0), (44.546, 15.375, 'Gospić', 0), (44.041, 16.199, 'Knin', 0),
+              (44.119, 15.231, 'Zadar', 0), (44.817, 15.871, 'Bihać', 0), (45.327, 14.442, 'Rijeka', 0), (45.266, 15.229, 'Ogulin', 0),
               (44.989, 14.906, 'Senj', 0), (44.456, 15.508, 'Medak', 0)],
-  'lika': [(44.5464, 15.3754, 'GOSPIC', 0), (44.5085, 15.3537, 'Divoselo', 0), (44.4741, 15.4038, 'Licki Citluk', 0), (44.4489, 15.4451, 'Pocitelj', 0),
-           (44.4552, 15.5079, 'Medak', 0), (44.6026, 15.4103, 'Licki Osik', 0), (44.4975, 15.4184, 'Ornice', 0), (44.4869, 15.4516, 'Licki Ribnik', 0),
-           (44.5197, 15.4375, 'Bilaj', 0), (44.5414, 15.3497, 'Kaniza', 0), (44.5138, 15.3249, 'Licki Novi', 0), (44.5339, 15.4694, 'Barlete', 0)],
-  'pocket': [(44.5085, 15.3537, 'Divoselo', 0), (44.4741, 15.4038, 'Licki Citluk', 0), (44.4489, 15.4451, 'Pocitelj', 0), (44.4975, 15.4184, 'Ornice', 0),
-             (44.4869, 15.4516, 'Licki Ribnik', 0), (44.5138, 15.3249, 'Licki Novi', 0), (44.5153, 15.4209, 'Novoselo Bilajsko', 0)],
+  'lika': [(44.5464, 15.3754, 'GOSPIĆ', 0), (44.5085, 15.3537, 'Divoselo', 0), (44.4741, 15.4038, 'Lički Čitluk', 0), (44.4489, 15.4451, 'Počitelj', 0),
+           (44.4552, 15.5079, 'Medak', 0), (44.6026, 15.4103, 'Lički Osik', 0), (44.4975, 15.4184, 'Ornice', 0), (44.4869, 15.4516, 'Lički Ribnik', 0),
+           (44.5197, 15.4375, 'Bilaj', 0), (44.5414, 15.3497, 'Kaniža', 0), (44.5138, 15.3249, 'Lički Novi', 0), (44.5339, 15.4694, 'Barlete', 0)],
+  'pocket': [(44.5085, 15.3537, 'Divoselo', 0), (44.4741, 15.4038, 'Lički Čitluk', 0), (44.4489, 15.4451, 'Počitelj', 0), (44.4975, 15.4184, 'Ornice', 0),
+             (44.4869, 15.4516, 'Lički Ribnik', 0), (44.5138, 15.3249, 'Lički Novi', 0), (44.5153, 15.4209, 'Novoselo Bilajsko', 0)],
 }
 AREAS = {
   'croatia': [(44.5, 14.4, 'ADRIATIC SEA'), (44.55, 15.05, 'Velebit mountains'), (44.4, 16.6, 'BOSNIA AND HERZEGOVINA'), (45.6, 15.2, 'CROATIA')],
@@ -84,7 +85,7 @@ def towns_layer(g, m, rgb, town):
         if not any(0 <= x < W and 0 <= y < H for x, y in q): continue
         if o['k'] in MAIN: dr.line(q, fill=255, width=max(3, round(12 / mpp)), joint='curve')
         elif o['k'] in SIDE:
-            if keep(o['p']): dr.line(q, fill=200, width=max(2, round(7 / mpp)), joint='curve'); kept += 1
+            if keep(o['p']) or ALLSIDE: dr.line(q, fill=200, width=max(2, round(7 / mpp)), joint='curve'); kept += 1
             else: dropped += 1
     R = np.asarray(rd); on = (R > 0) & ~sea
     rgb[on & (R == 255)] = (218, 204, 172); rgb[on & (R == 200)] = (206, 192, 162); rgb[(R > 0) & WV] = (150, 145, 135)
@@ -105,6 +106,7 @@ for name in want:
     g = Guide(name + '-guide.png', la0, la1, lo0, lo1, zoom, None, None)
     sea = sea_mask(g); rgb = g.rgb.copy().astype(float); rgb[sea] = (78, 118, 160)
     note = ''
+    ALLSIDE = name == 'pocket'
     if town:
         k, d = towns_layer(g, (la0, la1, lo0, lo1), rgb, town)
         note = f'side streets kept {k}, left out {d}'
