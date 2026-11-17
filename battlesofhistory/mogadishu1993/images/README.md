@@ -7,3 +7,15 @@
 | record-bravo-company-3-75-rangers-1993.jpg | Bravo Company, 3rd Battalion, 75th Ranger Regiment, the Ranger company of Task Force Ranger, on the dunes by the sea in Somalia, 1993 (group photograph; the exact date is not given). | US Army Rangers photo (source given on Commons: SuaSponte.com, Ranger History: Somalia); [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:75th_Ranger_Regiment_Bravo_Company_3rd_Battalion_Somalia_1993.jpg). **Public domain** (PD-USGov-Military-Army). Saved at 1280 px (Commons original 1760 × 1095). |
 
 Not used: "Black_Hawk_Down_Incident.jpg" (a 2022 "own work" claim on what looks like a copied US military photo); "HH-60H_Seahawk_Iraq.jpg" (US Navy, public domain, but a Navy helicopter in Iraq in 2010, not Mogadishu 1993).
+
+## Painted maps (ChatGPT, prompts in layout/ART-PROMPTS-MAPS.md; originals in layout/painted/)
+
+All painted with ChatGPT (AI-generated) on the bases made by tools/draw-maps.py; checked 17 November 2026.
+
+| File | Map | Check |
+|---|---|---|
+| somalia-painting.jpg | Somalia, 1992–1993 (1600 × 1200 km) | coast matches the base 99.8 % (IoU) |
+| mogadishu-painting.jpg | Mogadishu, 1993 (12 × 9 km) | coast 99.0 %; streets and runway on the base's lines |
+| battle-painting.jpg | the battle area (5 × 3.75 km) | streets on the base's lines (overlay) |
+| beledweyne-painting.jpg | Beledweyne, 1993 (8 × 6 km) | the Shabelle's bends on the base's river (overlay) |
+| rabat-painting.jpg | Rabat and Salé, 2001, for the film comparison (12 × 9 km) | coast 97.2 %; the Bou Regreg on the base's river |
