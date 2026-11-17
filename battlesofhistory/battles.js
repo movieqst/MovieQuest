@@ -271,8 +271,8 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'granicus-issus', osmArea: 10, osmSites: [[36.76, 36.21, 'Payas river'], [36.93, 36.18, 'Deli Çay']],  progress: 5, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
-    order: 21,
+    folder: 'granicus-issus', osmArea: 10, osmSites: [[36.76, 36.21, 'Payas river'], [36.93, 36.18, 'Deli Çay']],  progress: 100, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
+    order: 21, readyOrder: 21,
     era: 'Classical Antiquity',
     title: 'Granicus & Issus',
     date: 'May 334 – November 333 BCE', year: -334,
@@ -282,7 +282,7 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '30% 40%',   // Alexander and Bucephalus
     coverCredit: 'Title painting made for this page with ChatGPT (AI-generated), checked against Arrian, Plutarch and Xenophon: an imagined scene combining the two battles, not a record',
     chapters: [ { title: 'The road to Asia', ev: 'Thebes' }, { title: 'The Granicus, 334 BCE', ev: 'The river' }, { title: 'A year in Anatolia', ev: 'Sardis and Ephesus' }, { title: 'Issus, 333 BCE', ev: 'The Great King comes' }, { title: 'After Issus: the royal family, the letters, the road to Tyre', ev: 'The royal family' } ],
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'yugoslavia-escalation', progress: 1, lat: 44.0, lon: 18.5, osmZoom: 6, osmNote: 'the whole of the former Yugoslavia',
