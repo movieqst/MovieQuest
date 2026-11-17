@@ -1,4 +1,4 @@
-# Somalia 1988: War in the North and the Isaaq Genocide: narration script (DRAFT 2)
+# Somalia 1988: War in the North and the Isaaq Genocide: narration script (FINAL, ready to record)
 
 This is what the narrators will read. Draft 2 (17 November 2026) applies ChatGPT's review of draft 1 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`): every Required change, and the Optional ones that make lines clearer or gentler; the changes are listed at the end. Draft 1 was written on 13 November 2026 from the research report `research/reports/Somalia 1988 Isaaq killings.md`, which is verified against the primary documents. Nothing is added from memory. Where a detail was checked or taken directly from a primary text, the Notes at the end say so.
 
@@ -53,7 +53,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 ### 1. SOMALIA 1988
 - In May 1988, rebels of the Somali National Movement attacked Burao and then Hargeisa, in northern Somalia. *(established)*
 - The army answered with artillery, air raids and mass executions. The violence fell overwhelmingly on civilians of the Isaaq clan-family, in what is today Somaliland. *(established)*
-- An investigator for the United States State Department, Robert Gersony, gave a deliberately cautious lowest figure. He estimated that at least five thousand unarmed Isaaq civilians were purposefully murdered by the army between May 1988 and March 1989. *(estimate; report: Gersony)*
+- An investigator for the United States State Department, Robert Gersony, gave a deliberately cautious minimum estimate. He estimated that at least five thousand unarmed Isaaq civilians were purposefully murdered by the army between May 1988 and March 1989. *(estimate; report: Gersony)*
 - In January 1990, the human-rights group Africa Watch estimated fifty to sixty thousand war-related deaths since May 1988, including deaths from attacks, wounds and disease. *(estimate; report: Africa Watch)*
 - By Africa Watch's estimate of January 1990, nearly half a million people had fled abroad, most of them to Ethiopia. *(estimate; report: Africa Watch)*
 - The same investigators also recorded killings by the rebels, of non-Isaaq civilians and of refugees from Ethiopia, on a much smaller scale. *(report: Gersony; report: Africa Watch)*
@@ -72,7 +72,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 ### 3. Barre's Somalia
 *Map: North · 1969 to 1982*
 - Mohamed Siad Barre took power in a military coup on the twenty-first of October 1969. *(established)*
-- His government said it stood against clannism, the politics of clan loyalty. Historians describe how Barre came to rely more and more on selected relatives, officers and allies, including people from the Marehan, Ogaden and Dhulbahante clans. Not every member of those clans supported him. *(scholarship)*
+- His government said it stood against clannism, the politics of clan loyalty. The historian Markus Hoehne and others describe how Barre came to rely more and more on selected relatives, officers and allies, including people from the Marehan, Ogaden and Dhulbahante clans. Not every member of those clans supported him. *(scholarship: Markus Hoehne)*
 - In March 1978 Somalia was defeated in the Ogaden war against Ethiopia. Hundreds of thousands of refugees from the Ogaden, in Ethiopia, then crossed into Somalia. Many were settled in camps near the north-western towns. *(established)*
 - Africa Watch reports that the government formed armed groups among these refugees and conscripted many into the army. *(report: Africa Watch)*
 - These refugees appear twice in this story. The government recruited and armed some of them. Rebel attacks on the camps also killed unarmed refugees. *(report: Gersony; report: Africa Watch)*
@@ -100,7 +100,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - Later evidence came from United Nations experts, forensic scientists who examined graves, and two civil cases in American courts. *(established)*
 
 ### 7. How this page tells it
-- Each line carries a tag. "Established" means the evidence strongly supports it. "Government" marks an account from a government, named. "SNM" marks a statement by the SNM itself. "Scholarship", "press" and "advocacy" mark a scholar's view, a newspaper or a campaigning group. *(established; editorial definition)*
+- Each line carries a tag. "Established" means the evidence strongly supports it. "Government" marks a government account, with the government named. "SNM" marks a statement by the SNM itself. "Scholarship", "press" and "advocacy" mark a scholar's view, a newspaper or a campaigning group. *(established; editorial definition)*
 - "Witness" marks one person's testimony. "Estimate" marks an uncertain number. "Disputed" means sources disagree, or rest on one unconfirmed account. *(established; editorial definition)*
 - "Court" marks a court record, and says what kind. "Report" marks a human-rights or official investigation, and names it. *(established; editorial definition)*
 - Numbers may differ because sources count different deaths, places or periods, and use different methods. We give each number with who counted it, and what it counts. We never add them together. *(established; editorial convention)*
@@ -213,7 +213,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 *Map: Hargeisa · 31 May 1988*
 - The SNM attacked Hargeisa on the thirty-first of May 1988. Both reports give this date, and Africa Watch gives the time as a quarter past two in the morning. *(established; report: Africa Watch)*
 - Khadra Muhumed Abdi, also a former political prisoner, was hiding in her aunt's house in the Dumbuluq district. She told Africa Watch that next morning she saw her own district, near the Radio Station, burning. *(witness: Africa Watch)*
-- She said government loudspeakers announced that "four lice-ridden bandits on a suicide mission" had entered the town and been driven out. People were urged to go home. She said many believed it, and were killed. *(witness: Africa Watch; government)*
+- She said government loudspeakers claimed that a small rebel force had been driven out, and urged residents to return home. She said people who believed the announcement were killed. *(witness: Africa Watch; government)*
 - Gersony found that the SNM spread its fighters, in uniform and in ordinary clothes, through the crowded, mainly Isaaq neighbourhoods. He wrote that this put civilians "in the immediate line of fire". *(report: Gersony)*
 - Gersony did not use this to clear either side. He wrote that neither side was absolved of responsibility for avoidable harm to Hargeisa's civilians. *(report: Gersony)*
 - The SNM's defensive line ran behind the Radio Station. The government kept the airport and the Sha'ab district. *(report: Africa Watch)*
@@ -224,7 +224,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - Long-range guns on the hilltops near the zoo, and on the hills behind Badhka, shelled the city. *(report: Africa Watch)*
 - Aircraft took off from Hargeisa's own airport to bomb the city. Witnesses say pilots flew low over the people trying to escape. *(witness: Africa Watch)*
 - Gersony recorded that the armed forces "used military aircraft to strafe and bomb residential areas in which SNM forces were dispersed". *(report: Gersony)*
-- Hassan Ismail told Africa Watch: "Who could believe that planes belonging to the Somali army would take off from Hargeisa airport to bomb Hargeisa itself and its population?" *(witness: Africa Watch)*
+- Hassan Ismail told Africa Watch of his disbelief that aircraft were taking off from Hargeisa's own airport to bomb the city. *(witness: Africa Watch)*
 - Jama Osman Samater described the shelling as relentless. He said he lost any sense of fear, and that in prison only he had suffered, while here everyone was a victim. *(witness: Africa Watch)*
 - Dumbuluq, south of the dry river bed that divides the city, suffered most. Africa Watch says the SNM had not entered it. *(report: Africa Watch)*
 - A French hospital technician, Jean Metenier, told reporters after his evacuation that at least two dozen people had been shot against the wall of his house. *(witness: reported by Africa Watch from the Sunday Times, 12 June 1988)*
@@ -240,13 +240,13 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - Witnesses described soldiers searching house to house and killing the men they found. One father, they said, lost seven sons. *(witness: Africa Watch)*
 - The investigations also documented torture and severe mistreatment of people in detention. *(report: Gersony; report: Africa Watch)*
 - Africa Watch reports that the army armed non-Isaaq civilians. It released non-Isaaq prisoners, including men convicted of murder, to guard Isaaq detainees or to fight. *(report: Africa Watch)*
-- Across the accounts he collected, Gersony recorded two hundred and thirty-three civilian deaths in thirty-two incidents of summary executions and other killings. They spanned several places and years, from 1982 to 1989; about two thirds fell between late May and August 1988. *(report: Gersony)*
+- Across the wider region, in the accounts he collected, Gersony recorded two hundred and thirty-three civilian deaths in thirty-two incidents of summary executions and other killings. They spanned several places and years, from 1982 to 1989; about two thirds fell between late May and August 1988. *(report: Gersony)*
 
 ### 14. A city in ruins
 *Map: Hargeisa · August 1988 to 1989*
 - Several Africa Watch witnesses place the SNM's withdrawal from Hargeisa in August 1988. *(witness: Africa Watch)*
 - They say the army kept shelling afterwards, looted, and laid mines in buildings, among them the Union Hotel. *(witness: Africa Watch)*
-- The sources reviewed here do not establish the exact dates when the army regained control of Hargeisa and of Burao. *(established)*
+- The sources differ on when the army regained control. The American General Accounting Office gives the thirtieth of May for Burao and the thirteenth of July for Hargeisa. Its report also refers to military control of Hargeisa from late July, while Africa Watch witnesses place the SNM's withdrawal from Hargeisa in August. *(report: GAO; witness: Africa Watch; disputed)*
 - Gersony found that seventy per cent of the army killings his witnesses described happened between the twenty-seventh of May and the thirty-first of August 1988. *(report: Gersony)*
 - The American embassy estimated that seventy per cent of Hargeisa was damaged or destroyed. The General Accounting Office said its own rough inspection confirmed this. *(estimate; report: GAO)*
 - The State Department's human-rights report for 1989 measured something narrower. It said about ninety per cent of the Isaaq homes, businesses and property in Hargeisa were destroyed or severely damaged. *(estimate; report: State Department)*
@@ -277,7 +277,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 
 ### 17. Towns not attacked in the May offensive
 *Map: North · late May to December 1988*
-- The pattern of Berbera was repeated in smaller towns that saw no SNM attack. *(report: Africa Watch)*
+- Africa Watch describes a similar pattern in smaller towns not attacked by the SNM during the May 1988 offensive. *(report: Africa Watch)*
 - In Sheikh, armed refugees from the Bihin and Biyoley camps did most of the killing and looting, witnesses said. *(witness: Africa Watch)*
 - In Erigavo, non-Isaaq men were armed and Isaaq men detained. *(witness: Africa Watch)*
 - In Arabsiyo, witnesses described looting, and elderly people shot, in early June. *(witness: Africa Watch)*
@@ -295,7 +295,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - When the fighting in the towns grew worse, people fled on foot and in vehicles, carrying the old and the sick in hand carts. *(report: Africa Watch)*
 - The General Accounting Office found that the evacuation of Hargeisa and Burao began in early June. Refugees told it they were strafed by aircraft while gathering their families on the edges of the cities. *(report: GAO)*
 - Mohamed Karshe Mohamed, a former seaman, told Africa Watch that after nine days of fighting his family left with nothing. "Because of the planes you never lost the fear," he said, "so you just kept going." *(witness: Africa Watch)*
-- A man called Yusuf told Africa Watch: "It was certain death if you remained and it was death if you left." *(witness: Africa Watch)*
+- Another man, Yusuf, told Africa Watch that people felt unsafe whether they stayed or fled. *(witness: Africa Watch)*
 - Witnesses describe bombing from six in the morning to six in the evening at places where people had gathered: Biyaha Shinaha, Annayo, Udaan and Geed-Debleh, where there was a centre for the wounded. *(witness: Africa Watch)*
 - A woman Africa Watch calls Fadumo, not her real name, set out with about a hundred people for Annayo, west of Hargeisa. She said they learned that a bomber always came after a spotter plane, and hid in the bush when the spotter appeared. *(witness: Africa Watch)*
 - Africa Watch says the planes "followed some people into Ethiopia". *(report: Africa Watch)*
@@ -306,9 +306,9 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 *Map: Core · June 1988 to 1990*
 - Across the border, the largest camps were Hartisheik and Hartisheik B. Smaller camps were set up at Camp Aboker, Rabasso and Daror. *(report: Africa Watch)*
 - Jama Osman Samater told Africa Watch that at Hartisheik there were no tents in the first week, and no water. His family drank muddy rainwater from puddles and ate raw corn until they got ration cards. *(witness: Africa Watch)*
-- Yassin Karshe Mohamed, who stayed in the camps from August 1988 to February 1989, said: "No one who hasn't seen them with his own eyes can imagine life in the camps." He described too little food and water, and many deaths among small children. *(witness: Africa Watch)*
+- Yassin Karshe Mohamed, who stayed in the camps from August 1988 to February 1989, described severe shortages of food and water, and many deaths among small children. *(witness: Africa Watch)*
 - Africa Watch reports malaria, jaundice, meningitis and diarrhoea in the camps. *(report: Africa Watch)*
-- Gersony's report gave an estimated three to five hundred thousand arrivals in eastern Ethiopia between May 1988 and January 1989, up to four thousand a day. *(estimate; report: Gersony)*
+- Gersony's report gave an estimated three hundred thousand to five hundred thousand arrivals in eastern Ethiopia between May 1988 and January 1989, up to four thousand a day. *(estimate; report: Gersony)*
 - Africa Watch, in January 1990, counted over four hundred thousand in Ethiopia, about forty thousand in Djibouti, and close to four hundred thousand displaced inside Somalia. *(estimate; report: Africa Watch)*
 - The State Department counted three hundred and twenty-four thousand refugees in Ethiopia and thirty thousand in Djibouti at the end of 1989. *(estimate; report: State Department)*
 - These are separate estimates, from different dates and sources. They are not directly comparable. *(established)*
@@ -339,7 +339,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - Gersony "conservatively estimated" that at least four hundred unarmed refugees were killed in these attacks. *(estimate; report: Gersony)*
 - The refugees said about ninety per cent of their dead were killed before the camps received weapons. *(witness: Gersony)*
 - Africa Watch accepted that SNM attacks had killed hundreds of refugees, and condemned those killings. It also reported that the SNM diverted relief supplies meant for refugees. *(report: Africa Watch)*
-- In early March 1989, the General Accounting Office reported, an SNM attack on a truck killed eleven refugees. It saw an "emerging SNM pattern of terrorizing the Ogadeni refugees to force their removal". *(report: GAO)*
+- The General Accounting Office reported that, during its visit in early March 1989, an SNM attack on a truck killed eleven refugees. Its investigators were told this reflected a pattern of attacks intended to force refugees from the area. *(report: GAO)*
 - Gersony's overall finding was that both sides gravely violated the protection that refugees in United Nations camps were owed. *(report: Gersony)*
 
 ### 22. The SNM's other abuses
@@ -358,7 +358,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 *Map: North · 1988 to 1991*
 - The historian Markus Hoehne describes support for Barre among leaders and armed groups from several non-Isaaq northern communities, among them the Gadabuursi, the Dhulbahante, the Warsangeli and the Issa. These communities were not politically uniform. *(scholarship)*
 - He gives different reasons for different groups. Some had kinship ties to the regime. Others feared domination by the SNM. Some were armed by the state. *(scholarship)*
-- A witness told Africa Watch that the government told the Darood population that "the Isaaks planned to take over the whole country" and "destroy the Darood". *(witness: Africa Watch)*
+- A witness told Africa Watch that the government spread claims that the SNM threatened the survival of Darood communities. *(witness: Africa Watch)*
 - When the war broke out, the government gave transport to non-Isaaq residents. But it could not move everyone. Africa Watch says thousands of non-Isaaq fled the bombing and shelling alongside the Isaaq. *(report: Africa Watch)*
 - Gersony noted that once the non-Isaaq had left the big towns, the main concentrations of non-Isaaq people in the region were the refugee camps. *(report: Gersony)*
 - He also recorded acts of courage. Witnesses told him of non-Isaaq civilians who saved the lives of Isaaq civilians, and of Isaaq civilians who saved the lives of non-Isaaq. *(report: Gersony)*
@@ -391,7 +391,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 *Map: North · August 1988 to August 1990*
 - In August 1988, a State Department mission led by Kenneth Bleakley confirmed reports of the bombing. *(report: Africa Watch)*
 - Africa Watch's account of September 1990 says a "Reconciliation Committee" set up in January 1989 visited only Berbera and Burao, and had not published findings. *(report: Africa Watch)*
-- The same month, Prime Minister Mohamed Ali Samatar offered an "amnesty" in London. On the twelfth of March 1989, a hundred and twenty-five Isaaq detainees were released from Laanta Bur prison, near Mogadishu. *(government; witness: Africa Watch)*
+- In January 1989, Prime Minister Mohamed Ali Samatar offered an amnesty in London. On the twelfth of March 1989, a hundred and twenty-five Isaaq detainees were released from Laanta Bur prison, near Mogadishu. *(government; witness: Africa Watch)*
 - The government refused Africa Watch access to the north, despite a promise from the Prime Minister. *(report: Africa Watch)*
 - Gersony's report was dated August 1989, and became public later that year. *(established)*
 - The killings did not stop. Africa Watch recorded forty-seven Isaaq men shot at Jezira Beach, near Mogadishu, on the sixteenth of July 1989. *(report: Africa Watch)*
@@ -407,7 +407,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - Gadabuursi communities remember killings and displacement in this advance. The sources reviewed here do not establish the death toll. *(memory: Gadabuursi communities)*
 - Accounts also describe fighting with local militias at Dila. Fighting does not excuse attacks on civilians. *(established)*
 - In February 1991, clan delegates met at Berbera: Issa, Gadabuursi, Dhulbahante, Warsangeli and Isaaq. A larger conference of the northern clans opened at Burao on the twenty-seventh of April. *(established)*
-- On the eighteenth of May 1991, the SNM leadership and delegates at the Burao conference declared the Republic of Somaliland's independence, within the borders of the former British protectorate. Support for separation was not unanimous. *(established)*
+- On the eighteenth of May 1991, the SNM leadership and delegates at the Burao conference declared Somaliland an independent republic, within the borders of the former British protectorate. Support for separation was not unanimous. *(established)*
 - The SNM chairman, Abdirahman Ahmed Ali Tuur, announced it. *(established)*
 - Peace was not complete. There was fighting in 1992, and again from 1994 to 1996. Separation remained contested, including among Dhulbahante leaders and communities. *(established)*
 - In 1993, a conference at Borama chose Mohamed Haji Ibrahim Egal as president, with a Gadabuursi vice-president, Abdirahman Aw Ali Farah, in a power-sharing settlement. *(established)*
@@ -422,7 +422,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - That year a committee to investigate war crimes was set up in Hargeisa. A later United Nations report described its very limited funding. *(report: UN expert)*
 - From the seventeenth to the twenty-first of December 1997, forensic scientists from Physicians for Human Rights visited Hargeisa for the United Nations. *(report: Physicians for Human Rights)*
 - They observed ninety-two to a hundred and sixteen alleged graves at three sites: the Milk Factory, Malko Durduro Elementary School and Badhka. *(report: Physicians for Human Rights)*
-- They test-excavated two graves, which held at least six people. The team concluded that "human rights violations were committed against these individuals". The findings supported the witnesses' accounts of unlawful killings. *(report: Physicians for Human Rights)*
+- They opened two graves for a preliminary examination. These held at least six people. The team concluded that "human rights violations were committed against these individuals". The findings supported the witnesses' accounts of unlawful killings. *(report: Physicians for Human Rights)*
 - Later teams, among them Peruvian forensic scientists from 2012, continued exhumations. Many suspected graves remain unexamined, and these investigations do not establish a total death toll. *(established)*
 - In 2001, the United Nations' independent expert asked General Morgan about responsibility for deaths in Hargeisa. The expert recorded that he said people had a right to defend their country against perceived foreign intervention. *(government; report: UN expert)*
 - He also "alleged that no civilians had been killed", and that specific graves could not be linked to specific battles. *(government; report: UN expert)*
@@ -439,7 +439,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - In its 1990 report, Africa Watch used the word only once, when quoting the aid worker Peter Kieseker. Its own words were "a government at war with its own people". *(report: Africa Watch)*
 - The United Nations' independent expert, in reports of 1998 and 1999, described the mass killings in terms of war crimes and crimes against humanity. Those descriptions do not exclude genocide: more than one legal category can apply. *(report: UN expert)*
 - A United Nations report confirms that United Nations offices commissioned a preliminary study, completed in March 2002 by a consultant, Chris Mburu. Later accounts say it concluded that genocide had occurred. *(report: UN expert; report: 2002 consultant's study)*
-- A consultant's conclusion in a study commissioned by the United Nations is not a judgment, and not a determination by a United Nations body. *(established)*
+- It was a consultant's conclusion, not a court judgment or an official determination by a United Nations body. *(established)*
 - Scholars have since written about the Isaaq case as genocide, among them Mohamed Haji Ingiriis in 2016. Yale University's Genocide Studies Program lists it as a case. *(scholarship)*
 - The Lemkin Institute, an organisation that campaigns against genocide, called it genocide in 2022. *(advocacy: Lemkin Institute)*
 - Somaliland's government recognises the events as genocide. *(government: Somaliland)*
@@ -449,13 +449,13 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 *Map: Core · 1987 to 2019*
 - Two civil cases were brought in the United States by survivors. Civil cases seek damages for harm. They are not criminal trials. *(established)*
 - The first was against Mohamed Ali Samatar, also written Samantar. He was defence minister from 1980 to December 1986, and prime minister from January 1987 to September 1990. *(established)*
-- The case raised questions of immunity first. In 2012, in this case, the United States Court of Appeals for the Fourth Circuit rejected Samatar's claim to immunity for the alleged violations of fundamental prohibitions of international law. It listed the acts in the case as "torture, summary execution and prolonged arbitrary imprisonment". *(court: procedural ruling)*
+- The case raised questions of immunity first. In this case, the United States Court of Appeals for the Fourth Circuit ruled in 2012, rejecting Samatar's claim to immunity for the alleged violations of fundamental prohibitions of international law. It listed the acts in the case as "torture, summary execution and prolonged arbitrary imprisonment". *(court: procedural ruling)*
 - On the twenty-third of February 2012, Samatar accepted a default judgment on civil liability, while denying guilt. The judge then heard evidence on damages. *(court: conceded liability by default)*
 - Because he did not contest the case, the court accepted the plaintiffs' facts as true. On that record, Judge Leonie Brinkema found in August 2012 that he had ordered and permitted the abuses, and awarded twenty-one million dollars. *(court: ruling on a default record)*
 - The claims were killing, attempted killing, torture, cruel treatment, arbitrary detention, crimes against humanity and war crimes. No claim of genocide was made, and the word does not appear in the judge's opinion. *(court: ruling)*
 - Samatar died in 2016, aged eighty-five. *(established)*
 - The second case was brought by Farhan Warfaa against Colonel Yusuf Abdi Ali, known as Tukeh. From May 1987 to July 1988 he commanded an army unit based at Gebiley. *(established)*
-- On the twenty-first of May 2019, a jury found the colonel liable for torturing Farhan Warfaa, and awarded five hundred thousand dollars. It found him not liable for attempted killing. *(court: jury verdict)*
+- On the twenty-first of May 2019, a jury found the colonel liable for torturing Farhan Warfaa, and awarded five hundred thousand dollars. It found him not liable for an attempted unlawful killing. *(court: jury verdict)*
 - Ali denied responsibility. *(established)*
 - Other claims in that case, including war crimes and crimes against humanity, had been dismissed earlier because they lacked the connection to the United States that the law required. That dismissal did not decide whether those abuses happened. No genocide claim was made. *(court: ruling)*
 - These proceedings established civil liability, not criminal convictions. *(established)*
@@ -472,10 +472,10 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 - Refugees from Ethiopia were both forced into the government's service and killed in the SNM's attacks on their camps. *(report: Gersony)*
 
 ### The numbers, side by side (most are estimates)
-- At least five thousand unarmed Isaaq civilians purposefully murdered by the army, May 1988 to March 1989, not counting crossfire and bombing of battle zones: Gersony's cautious lowest figure. *(estimate; report: Gersony)*
+- At least five thousand unarmed Isaaq civilians purposefully murdered by the army, May 1988 to March 1989, not counting crossfire and bombing of battle zones: Gersony's cautious minimum estimate. *(estimate; report: Gersony)*
 - At least five hundred Isaaq men killed in Berbera, perhaps many more: Gersony, and separately Africa Watch. *(estimate; report: Gersony; report: Africa Watch)*
 - Civilian deaths in the crossfire in Hargeisa and Burao "may have ascended into the thousands": Gersony. *(estimate; report: Gersony)*
-- Fifty to sixty thousand killed by government forces, or dead from bombing, shelling, wounds and disease, over nineteen months to January 1990: Africa Watch. It gave no method, and said the true figure was probably higher. *(estimate; report: Africa Watch)*
+- Fifty to sixty thousand killed by government forces, or dead from bombing, shelling, wounds and disease, from May 1988 to January 1990: Africa Watch's estimate of war-related deaths. It did not explain a calculation method in the passages cited here. *(estimate; report: Africa Watch)*
 - Killed by the SNM: at least several hundred civilians in the first three months, and at least four hundred refugees in the camp attacks: Gersony. *(estimate; report: Gersony)*
 - Displaced: nearly half a million abroad and close to four hundred thousand inside Somalia, by Africa Watch's count of January 1990. *(estimate; report: Africa Watch)*
 - These figures count different things, over different periods. Some are subsets of others, and some may overlap. They cannot be added together. Later estimates are higher and more uncertain. *(established)*
@@ -483,7 +483,7 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 ### What the courts did and did not decide
 - The court cases discussed here did not decide whether genocide occurred. *(established)*
 - Samatar accepted a default judgment on civil liability, and a court accepted the plaintiffs' facts on that default. The judgment was for torture, killings, detention, crimes against humanity and war crimes. *(court: conceded liability by default)*
-- A jury found Colonel Yusuf Abdi Ali liable for the torture of one man, and not liable for attempted killing. *(court: jury verdict)*
+- A jury found Colonel Yusuf Abdi Ali liable for the torture of one man, and not liable for an attempted unlawful killing. *(court: jury verdict)*
 - These proceedings established civil liability, not criminal convictions. *(established)*
 
 ### The word genocide
@@ -494,23 +494,49 @@ Welcome to Battles of History. Today we are learning about the war in northern S
 
 ### Memory and aftermath
 - Refugees began going home from Hartisheik in 1997, the United Nations refugee agency reports. By the time the camp closed in 2004, the United Nations refugee agency counted two hundred and thirty thousand people returned. *(established)*
-- Mines remained a danger. Since 1999, a mine-clearing organisation, the HALO Trust, has cleared about eighteen thousand hectares and destroyed about a hundred thousand mines and explosive items, by its own 2012 account. *(estimate; report: HALO Trust)*
+- Mines remained a danger. By its 2012 account, the mine-clearing organisation the HALO Trust had cleared about eighteen thousand hectares since 1999, and destroyed about a hundred thousand mines and other explosive items. *(estimate; report: HALO Trust)*
 - In Hargeisa, a Somali air force jet stands on a monument in Freedom Square, in memory of the bombing. The thirty-first of May is remembered there. *(memory: Somaliland)*
 - Some Dhulbahante writers say Somaliland's national memory centres on the Isaaq and on the SNM, and leaves out their own losses. Gadabuursi communities remember Borama and Dila in 1991. *(memory: Dhulbahante and Gadabuursi writers)*
 - Somaliland declared independence in 1991. Israel recognised Somaliland as an independent state on the twenty-sixth of December 2025. Recognition of Somaliland as a state and recognition of the killings as genocide are separate questions. *(established; government: Israel)*
 
 ### Still unknown
 - How many people died in all. *(established)*
-- The exact days the army regained Hargeisa and Burao, and the days the SNM took each town in 1991. *(established)*
+- The precise sequence of the army's recovery of Hargeisa and Burao remains uncertain, because the accounts differ. The sources used here also do not establish the exact days each town fell in 1991. *(disputed)*
 - The sources used here do not establish the responsibility of individual SNM commanders for the documented abuses, or how many fighters the SNM had. *(established)*
 - How many died around Borama and Dila in 1991. *(established)*
 - Many suspected graves remain unexamined. *(established)*
 
 ---
 
+## Final check (17 November 2026): ready to record
+
+ChatGPT's final check of draft 2 (`research/reviews/CHATGPT-FINAL-CHECK-DRAFT2.md`): 63 of the 65 Required items of the
+first review fixed, 2 partly; **verdict: ready to record after five final edits**, all now applied:
+- **Ch 14 and Debrief, the army's recovery of the towns:** GAO (printed p. 4) gives 30 May for Burao and 13 July for
+  Hargeisa, and p. 6 "late July"; Africa Watch witnesses place the SNM's withdrawal in August. Now told as a conflicting
+  chronology. (The research report's "no source gives an exact date" is to be corrected when it is next updated.)
+- **Ch 17:** bounded to towns not attacked "during the May 1988 offensive".
+- **Ch 21:** the March 1989 truck attack, and the wider pattern as what GAO's investigators were told.
+- **Ch 26:** "The same month" replaced by January 1989.
+- **Debrief:** Africa Watch's 50,000–60,000 as war-related deaths May 1988 to January 1990, "probably higher" removed.
+
+**GAO original checked by ChatGPT** (NSIAD-89-159, 4 May 1989): ch 20's six of fourteen camps (p. 9), ch 20's shipment
+(pp. 8–9) and ch 14's seventy per cent (p. 6) all pass.
+
+**Africa Watch witness quotations:** five paraphrased as recommended (ch 11, 12, 18 Yusuf, 19, 23). One kept, ch 18,
+Mohamed Karshe Mohamed: "Because of the planes you never lost the fear, so you just kept going." Checked word for word
+against our copy of the Africa Watch report (17 November 2026). Peter Kieseker's public statement (ch 25) kept with its
+newspaper source chain.
+
+**Read-aloud:** "minimum estimate"; "three hundred thousand to five hundred thousand"; "opened two graves for a preliminary
+examination"; "an attempted unlawful killing"; the HALO sentence in the past; Markus Hoehne named in Intro 3.
+
+**Before final audio:** a Somali speaker to check the pronunciation lexicon (the respellings in the archived notes are
+unchecked guesses); "SNM" to be read as three letters.
+
 ## Changes in draft 2 (17 November 2026)
 
-From ChatGPT's review of draft 1 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`, 16 November 2026). All Required items applied; Optional items applied where they made a line clearer or gentler. Checked by Claude against the primary texts where we hold them:
+From ChatGPT's review of draft 1 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`, 16 November 2026). Required revisions applied; Optional items applied where they made a line clearer or gentler. Checked by Claude against the primary texts where we hold them:
 - **Gersony's 233 deaths (ch 13):** confirmed in Gersony pp. 23–24: thirty-two incidents reported by refugees, spanning 1982 to March 1989, 156 of them (67%) between 27 May and 31 August 1988. Now narrated as a regional, multi-year count, not a Hargeisa toll.
 - **GAO and the armed camps (ch 20):** the review reads GAO (4 May 1989, pp. 1, 9) as attributing the July 1988 observation to the UN refugee agency and others, GAO's own visit being 25 February to 10 March 1989. Adopted as the review gives it; **GAO original still to be read by us** (gao.gov refused our download). The shipment is now split: GAO confirms its use in the north; the rifles-to-refugees claim stays Africa Watch's.
 - **Gersony on conscription (ch 20):** confirmed in Gersony's "Forced Conscription" section (pp. 53 ff.): longstanding forced conscription in the UN camps, distinct from the later arming.
