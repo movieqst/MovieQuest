@@ -241,8 +241,8 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'somalia1988', progress: 2, lat: 9.5600, lon: 44.0650, osmZoom: 8, osmNote: 'centred on Hargeisa; Burao and Berbera lie to the east and north-east',
-    order: 20,
+    folder: 'somalia1988', progress: 100, lat: 9.5600, lon: 44.0650, osmZoom: 8, osmNote: 'centred on Hargeisa; Burao and Berbera lie to the east and north-east',
+    order: 20, readyOrder: 20,
     era: 'Somalia, 1988',
     title: 'Somalia 1988: War in the North and the Isaaq Genocide',   // the war, and the name researchers use for the killing of Isaaq civilians (Yale GSP, Lemkin Institute, the 2002 UN-commissioned study); no court has ruled on genocide: the page explains
     date: '1987–1989 (the main attack: May–July 1988)', year: 1988,
@@ -251,7 +251,7 @@ window.BATTLES = [
     blurb: 'In May 1988 the Somali National Movement attacked Burao and Hargeisa. The government of Siad Barre answered with bombardment and killings aimed at the Isaaq civilians of the north. Tens of thousands were killed and hundreds of thousands fled to Ethiopia. Genocide researchers call it the Isaaq genocide.',
     cover: 'images/cover.jpg', coverPos: '50% 35%',   // the downed MiG and the words 1988
     coverCredit: 'The Hargeisa War Memorial: a downed Somali Air Force MiG over the words “Xus oo xasuusnow 1988” (“Remember and recall 1988”), 2019. Photo: Gerard van de Bruinhorst, African Studies Centre Leiden, Wikimedia Commons, CC BY-SA 4.0. Cropped',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'granicus-issus', osmArea: 10, osmSites: [[36.76, 36.21, 'Payas river'], [36.93, 36.18, 'Deli Çay']],  progress: 5, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
