@@ -147,6 +147,7 @@ window.BATTLES = [
     blurb: 'In six days in June 1967, after weeks of rising tension, Israel struck the Egyptian air force on the ground, then fought on three fronts: across Sinai to the Suez Canal, into the West Bank and Jerusalem, and up the Golan Heights.',
     cover: 'images/cover.jpg', coverPos: '65% 50%',   // the half-track, not the helmet in the foreground
     coverCredit: 'Israeli half-tracks on the Golan Heights, 1967. Photo: Israel Press and Photo Agency (I.P.P.A.), Dan Hadani collection, National Library of Israel, CC BY 4.0',
+    chapters: [ { title: 'The crisis and the air strike', at: 1 }, { title: 'Sinai and Gaza', at: 8 }, { title: 'Jerusalem and the West Bank', at: 16 }, { title: 'The USS Liberty and the Golan Heights', at: 22 }, { title: 'After the six days', at: 26 } ],   // small chapter cards on the home page (img: optional picture; default the cover)
     status: 'ready'
   },
   {
@@ -251,6 +252,7 @@ window.BATTLES = [
     blurb: 'In May 1988 the Somali National Movement attacked Burao and Hargeisa. The government of Siad Barre answered with bombardment and killings aimed at the Isaaq civilians of the north. Tens of thousands were killed and hundreds of thousands fled to Ethiopia. Genocide researchers call it the Isaaq genocide.',
     cover: 'images/cover.jpg', coverPos: '50% 35%',   // the downed MiG and the words 1988
     coverCredit: 'The Hargeisa War Memorial: a downed Somali Air Force MiG over the words “Xus oo xasuusnow 1988” (“Remember and recall 1988”), 2019. Photo: Gerard van de Bruinhorst, African Studies Centre Leiden, Wikimedia Commons, CC BY-SA 4.0. Cropped',
+    chapters: [ { title: 'The north under emergency rule, 1978–1987', at: 1 }, { title: 'The offensive: Burao and Hargeisa', at: 6 }, { title: 'Beyond the battle zones, and the flight', at: 15 }, { title: 'Refugees, militias and the SNM’s abuses', at: 20 }, { title: 'The long war and after', at: 24 } ],   // small chapter cards on the home page (img: optional picture; default the cover)
     status: 'ready'
   },
   {
@@ -342,6 +344,7 @@ window.BATTLES = [
     blurb: 'A US raid to capture leaders of Mohamed Farrah Aidid’s militia turned into a night-long battle in the city after two Black Hawk helicopters were shot down. A rescue column with Malaysian and Pakistani troops reached the trapped soldiers the next morning. Eighteen American soldiers and one Malaysian soldier were killed; the Somali dead included fighters and civilians, and no reliable total is known. The United States soon withdrew its combat forces. The page also tells the Somalia Affair (Canadian soldiers at Beledweyne, March 1993) and compares the film Black Hawk Down with the history.',
     cover: 'images/cover.jpg',   // for now the Bravo Company photograph (the owner may choose another title card)
     coverCredit: 'Bravo Company, 3rd Battalion, 75th Ranger Regiment, Somalia, 1993. US Army photo, public domain',
+    chapters: [ { title: 'War, famine and the intervention', at: 1 }, { title: 'The Canadian story: Beledweyne and the Somalia Affair', at: 6 }, { title: 'The hunt for Aidid', at: 15 }, { title: 'The battle, 3–4 October 1993', at: 20 }, { title: 'Black Hawk Down: the film and the history', at: 30 } ],   // small chapter cards on the home page (img: optional picture; default the cover)
     status: 'ready'
   },
   {
