@@ -152,6 +152,10 @@
 <script src="battles.js"></script>
 <script>
   const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  // the era label with the battle's year (owner, 17 November 2026): "Napoleonic Wars, 1815", "Bronze Age, c. 1274 BCE";
+  // an era that already gives a year ("Somalia, 1988") is left as it is
+  const eraLabel = b => { if (!b.year || /\d/.test(b.era || '')) return b.era || '';
+    const y = b.year < 0 ? (/^c\./.test(b.date || '') ? 'c. ' : '') + (-b.year) + ' BCE' : String(b.year); return (b.era ? b.era + ', ' : '') + y; };
   // Two sides, split on 'vs.': the first in red, the second in blue. Text without 'vs.' is shown as it is.
   // Side colours: the first side is always red and the second always blue, on every card.
   const pickSideColors = () => ['#c0392b', '#2e5aa8'];   // always the first side red, the second blue
@@ -185,7 +189,7 @@
   document.getElementById('list').innerHTML = (window.BATTLES || []).filter(b => b.status === 'ready').sort((a, b) => (b.readyOrder || b.order || 0) - (a.readyOrder || a.order || 0))   /* newest ready first */.map(b => `
     ${b.status === 'ready' ? `<a class="card" href="${esc(b.folder)}/index.html">` : '<div class="card">'}
       <div class="cover" style="background-image:url('${esc(b.folder)}/${esc(b.cover)}')${b.coverPos ? ';background-position:' + esc(b.coverPos) : ''}">
-        <span class="era">${esc(b.era)}</span>
+        <span class="era">${esc(eraLabel(b))}</span>
         <span class="status ${b.status === 'ready' ? 'ready' : b.status === 'coming soon' ? 'soon' : ''}">${esc(b.status)}</span>
         <div class="title"><h2>${esc(b.title)}</h2><div class="date">${esc(b.date)} · ${esc(b.place)}</div></div>
       </div>
