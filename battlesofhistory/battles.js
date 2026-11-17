@@ -332,8 +332,8 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'mogadishu1993', progress: 1, lat: 2.0470, lon: 45.3290, osmZoom: 14, osmNote: 'approximate: central Mogadishu around the Bakara Market, where the raid and the first helicopter crash took place',
-    order: 27,
+    folder: 'mogadishu1993', progress: 100, lat: 2.0470, lon: 45.3290, osmZoom: 14, osmNote: 'approximate: central Mogadishu around the Bakara Market, where the raid and the first helicopter crash took place',
+    order: 27, readyOrder: 19,
     era: 'Somalia, 1993',
     title: 'Battle of Mogadishu',
     date: '3–4 October 1993', year: 1993,
@@ -342,7 +342,7 @@ window.BATTLES = [
     blurb: 'A US raid to capture leaders of Mohamed Farrah Aidid’s militia turned into a night-long battle in the city after two Black Hawk helicopters were shot down. A rescue column with Malaysian and Pakistani troops reached the trapped soldiers the next morning. Eighteen American soldiers and one Malaysian soldier were killed; the Somali dead included fighters and civilians, and no reliable total is known. The United States soon withdrew its combat forces. The page also tells the Somalia Affair (Canadian soldiers at Beledweyne, March 1993) and compares the film Black Hawk Down with the history.',
     cover: 'images/cover.jpg',   // for now the Bravo Company photograph (the owner may choose another title card)
     coverCredit: 'Bravo Company, 3rd Battalion, 75th Ranger Regiment, Somalia, 1993. US Army photo, public domain',
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'ukraine-escalation', progress: 1, lat: 48.38, lon: 31.17, osmZoom: 5, osmNote: 'the whole of Ukraine',
