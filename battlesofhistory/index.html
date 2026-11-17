@@ -203,7 +203,7 @@
         <span class="status ${b.status === 'ready' ? 'ready' : b.status === 'coming soon' ? 'soon' : ''}">${esc(b.status)}</span>
         <div class="title"><h2>${esc(b.title)}</h2><div class="date">${esc(b.date)} · ${esc(b.place)}</div></div>
       </div>
-      <div class="chaps">${(b.chapters || []).map((c, i) => `<span class="chap" role="link" tabindex="0" aria-label="${esc(c.title)}" title="${esc(c.title)}" data-href="${esc(b.folder)}/index.html?chapter=${c.at}" style="background-image:url('${esc(b.folder)}/${esc(c.img || b.cover)}');background-position:${c.img ? 'center' : (10 + i * 20) + '% 40%'}"><b>${i + 1}</b><span class="tip">${esc(c.title)}</span></span>`).join('')}</div>
+      <div class="chaps">${(b.chapters || []).map((c, i) => `<span class="chap" role="link" tabindex="0" aria-label="${esc(c.title)}" title="${esc(c.title)}" data-href="${esc(b.folder)}/index.html?${c.ev || c.part ? (c.part ? 'part=' + encodeURIComponent(c.part) + '&' : '') + (c.ev ? 'ev=' + encodeURIComponent(c.ev) : 'chapter=1') : 'chapter=' + c.at}" style="background-image:url('${esc(b.folder)}/${esc(c.img || b.cover)}');background-position:${c.img ? 'center' : (10 + i * 20) + '% 40%'}"><b>${i + 1}</b><span class="tip">${esc(c.title)}</span></span>`).join('')}</div>
       <div class="body">
         <p class="sides">${sidesHTML(b.sides, pickSideColors(b))}</p>
         <p class="blurb">${esc(b.blurb)}</p>

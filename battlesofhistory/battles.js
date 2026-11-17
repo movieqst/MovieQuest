@@ -17,6 +17,7 @@ window.BATTLES = [
     blurb: 'The earliest battle in history we can follow move by move. Two Shasu spies, a chariot ambush on a marching column, and a pharaoh who carved his version on five temples.',
     cover: 'images/02-abu-simbel-chariot.jpg',
     coverCredit: 'Relief at Abu Simbel. Photo: Diego Delso, Wikimedia Commons, CC BY-SA 4.0',
+    chapters: [ { title: 'The march', ev: 'The march' }, { title: 'The chariots strike', ev: 'The chariots cross' }, { title: 'Ramesses stands', ev: 'Ramesses stands' }, { title: 'The second wave', ev: 'The second wave' }, { title: 'Day two and after', ev: 'Day two and after' } ],
     status: 'ready'
   },
   {
@@ -30,6 +31,7 @@ window.BATTLES = [
     blurb: 'The first battle between the US Army and the North Vietnamese regulars: three days in a clearing below a mountain at LZ X-Ray, then the ambush of a column on the way to LZ Albany.',
     cover: 'images/17-xray-perimeter.jpg',
     coverCredit: 'US Army photograph, public domain',
+    chapters: [ { title: 'The Pleiku campaign', ev: 'The trap', part: 'Pleiku' }, { title: 'LZ X-Ray: the landing', ev: 'Prep fires and the first lift', part: 'X-Ray' }, { title: 'LZ X-Ray: the lost platoon', ev: 'The lost platoon', part: 'X-Ray' }, { title: 'LZ X-Ray: Broken Arrow', ev: 'Broken Arrow', part: 'X-Ray' }, { title: 'LZ Albany', part: 'Albany' } ],
     status: 'ready'
   },
   {
@@ -43,6 +45,7 @@ window.BATTLES = [
     blurb: 'The first fight of D-Day: six gliders land beside two bridges at a quarter past midnight, 181 men take both in minutes, and hold them until the commandos arrive from the beach.',
     cover: 'images/32-art-bridge-night.jpg',
     coverCredit: 'Painting: Battle Games, original artwork',
+    chapters: [ { title: 'Deadstick: the gliders land', ev: 'Deadstick' }, { title: 'The drop', ev: 'The drop' }, { title: 'Holding the west bank', ev: 'Holding the west bank' }, { title: 'Dawn attack and the gunboat', ev: 'Dawn attack' }, { title: 'Relieved', ev: 'Relieved' } ],
     status: 'ready'
   },
   {
@@ -56,6 +59,7 @@ window.BATTLES = [
     blurb: 'Alexander’s oblique advance, the scythed chariots, and the break in the Persian centre, on a plain whose site is not known. Watch the reconstruction or command either army.',
     cover: 'images/cover.jpg',
     coverCredit: 'Original illustration for this project',
+    chapters: [ { title: 'Deployment', ev: 'Deployment' }, { title: 'The scythed chariots', ev: 'The scythed chariots charge' }, { title: 'Alexander strikes', ev: 'Alexander strikes' }, { title: 'Parmenion under pressure', ev: 'Parmenion under pressure' }, { title: 'The aftermath', ev: 'The aftermath' } ],
     status: 'ready'
   },
   {
@@ -69,6 +73,7 @@ window.BATTLES = [
     blurb: 'The last battle of Napoleon’s return: a ridge held by redcoat squares, cuirassiers breaking up the slope, and the Prussians arriving late in the day. Watch the reconstruction or command either army.',
     cover: 'images/18-sadler-waterloo.jpg',
     coverCredit: 'The Battle of Waterloo by William Sadler, 1815; public domain',
+    chapters: [ { title: 'The ridge and Hougoumont', ev: 'The ridge' }, { title: 'd’Erlon and the Union Brigade', ev: 'attack' }, { title: 'Ney’s cavalry and the squares', ev: 'Ney' }, { title: 'The Prussians and La Haye Sainte', ev: 'The Prussians at Plancenoit' }, { title: 'The last attack', ev: 'The last attack' } ],
     status: 'ready'
   },
   {
@@ -82,6 +87,7 @@ window.BATTLES = [
     blurb: 'Alfred, driven into the Somerset marshes, gathers the men of Wessex and meets Guthrum’s army at Ethandun. A shield-wall battle that saved the last English kingdom.',
     cover: 'images/cover.jpg',
     coverCredit: 'Artist rendering: the shield walls meet at Ethandun. Battle Games, AI-generated',
+    chapters: [ { title: 'The march to Ethandun', ev: 'The march to Ethandun' }, { title: 'The shield walls', ev: 'The shield walls form' }, { title: 'The Viking line breaks', ev: 'The Viking line breaks' }, { title: 'The siege and the peace', ev: 'The siege' } ],
     status: 'ready'
   },
   {
@@ -95,6 +101,7 @@ window.BATTLES = [
     blurb: 'At the edge of two empires, a Tang army meets the forces of the new Abbasid Caliphate. Their Karluk allies change sides, and the Tang army is broken.',
     cover: 'images/cover.jpg',
     coverCredit: 'Tang dynasty figure of a warrior on an armoured horse, from the tomb of Crown Prince Li Chongrun. Photo: Gary Lee Todd, Wikimedia Commons, CC BY-SA 4.0',
+    chapters: [ { title: 'The armies form up', ev: 'The armies form up' }, { title: 'Five days', ev: 'Five days' }, { title: 'The Karluks turn', ev: 'The Karluks turn' }, { title: 'The retreat', ev: 'White Stone Ridge' }, { title: 'What came after', ev: 'What came after' } ],
     status: 'ready'
   },
   {
@@ -108,6 +115,7 @@ window.BATTLES = [
     blurb: 'Cut off by the German advance, the British and French hold a shrinking pocket around Dunkirk while ships, from destroyers to the little ships, carry more than 330,000 men off the beaches and the mole.',
     cover: 'images/cover.jpg',
     coverCredit: 'Troops evacuated from Dunkirk on a destroyer about to berth at Dover, 31 May 1940. Photo: Puttnam and Malindine, War Office official photographers. Imperial War Museum (H 1637), public domain (Crown copyright expired)',
+    chapters: [ { title: 'The tanks reach the sea', ev: 'The tanks reach the sea' }, { title: 'Operation Dynamo begins', ev: 'Operation Dynamo begins' }, { title: 'The little ships', ev: 'The little ships' }, { title: '1 June: the worst day at sea', ev: 'the worst day at sea' }, { title: 'The last ship', ev: 'The last ship' } ],
     status: 'ready'
   },
   {
@@ -121,6 +129,7 @@ window.BATTLES = [
     blurb: 'Wallace and Moray wait on the high ground while the English cross a narrow wooden bridge over the Forth two at a time, then attack before the rest can follow.',
     cover: 'images/cover.jpg',
     coverCredit: 'Artist rendering: the Scots cut off the English vanguard at the north end of the bridge. Battle Games, AI-generated',
+    chapters: [ { title: 'Waiting', ev: 'Waiting' }, { title: 'Two by two across the bridge', ev: 'Two by two' }, { title: 'The Scots attack', ev: 'The Scots attack' }, { title: 'The bridge falls', ev: 'The bridge' }, { title: 'The rout', ev: 'The rout' } ],
     status: 'ready'
   },
   {
@@ -134,6 +143,7 @@ window.BATTLES = [
     blurb: 'For the first time all four Canadian divisions attack together. After months of tunnelling and rehearsal they advance behind a creeping barrage and take the ridge that had held out against the French and British for two years.',
     cover: 'images/cover.jpg', coverPos: '30% 18%',   // keep the memorial in view
     coverCredit: 'Will Longstaff, Ghosts of Vimy Ridge (about 1929): the ghosts of the Canadian Corps gather on the ridge around the Vimy Memorial. House of Commons Heritage Collection, public domain',
+    chapters: [ { title: 'Zero hour', ev: 'Zero hour' }, { title: 'The Black and Red Lines', ev: 'The Black Line' }, { title: 'Hill 145', ev: 'Hill 145' }, { title: 'The Brown Line', ev: 'The Brown Line' }, { title: 'The Pimple and the cost', ev: 'The Pimple' } ],
     status: 'ready'
   },
   {
@@ -161,6 +171,7 @@ window.BATTLES = [
     blurb: 'In a fog-filled mountain valley, the two great coalitions of Japan meet to decide who rules after Toyotomi Hideyoshi. When Kobayakawa Hideaki’s army changes sides on the hill above, the Western Army collapses, and Tokugawa Ieyasu wins the country for two and a half centuries.',
     cover: 'images/cover.jpg', coverPos: '45% 55%',
     coverCredit: 'Sekigahara Kassen Byōbu-zu, folding screen of the battle seen from the north (late Edo period, 19th century). City of Gifu Museum of History, public domain',
+    chapters: [ { title: 'The night march', ev: 'The night march' }, { title: 'The battle begins', ev: 'The battle begins' }, { title: 'Kobayakawa attacks', ev: 'Kobayakawa attacks' }, { title: 'The West breaks', ev: 'The West breaks' }, { title: 'The Shimazu breakout and after', ev: 'The Shimazu breakout' } ],
     status: 'ready'
   },
   {
@@ -174,6 +185,7 @@ window.BATTLES = [
     blurb: 'For four days a Canadian government army presses against the rifle pits dug by the Métis around their village on the South Saskatchewan. On the fourth day it breaks through, and the North-West Resistance of 1885 comes to an end.',
     cover: 'images/cover.jpg', coverPos: '60% 50%',
     coverCredit: 'Hostilities open at Batoche, 9 May 1885. Photograph by Captain James Peters, who served with the field force. Library and Archives Canada, C-003464, public domain',
+    chapters: [ { title: 'The plan and the steamer', ev: 'The plan' }, { title: 'The rifle pits', ev: 'The rifle pits' }, { title: 'Testing the line', ev: 'Testing the line' }, { title: 'The charge', ev: 'The charge' }, { title: 'After the fighting', ev: 'After the fighting' } ],
     status: 'ready'
   },
   {
@@ -187,6 +199,7 @@ window.BATTLES = [
     blurb: 'Tyre refuses Alexander entry, trusting in its island walls half a mile out to sea. For seven months his army builds a causeway across the strait while the Tyrians fight back with a fireship, divers and a surprise sortie, until a fleet of Phoenician and Cypriot ships helps him breach the walls.',
     cover: 'images/cover.jpg', coverPos: '70% 40%',
     coverCredit: 'Original illustration for this project (AI-generated): an artist’s impression, not evidence',
+    chapters: [ { title: 'The mole begins', ev: 'The mole begins' }, { title: 'The fleet changes sides', ev: 'The fleet changes sides' }, { title: 'Machines against machines', ev: 'Machines against machines' }, { title: 'The final assault', ev: 'The final assault' }, { title: 'Inside the city', ev: 'Inside the city' } ],
     status: 'ready'
   },
   {
@@ -200,6 +213,7 @@ window.BATTLES = [
     blurb: 'Dumont\u2019s fighters ambush Middleton\u2019s column from a wooded coulee, stop it in its tracks and hold their ground until nightfall. Middleton waits two weeks before marching on Batoche.',
     cover: 'images/cover.jpg', coverPos: '50% 50%',
     coverCredit: 'The Battle of Fish Creek, coloured lithograph, 1885. Public domain',
+    chapters: [ { title: 'The scouts and the first shots', ev: 'The scouts' }, { title: 'The guns', ev: 'The guns' }, { title: 'Into the ravine', ev: 'Into the ravine' }, { title: 'The grass fire', ev: 'The grass fire' }, { title: 'Back to camp', ev: 'Back to camp' } ],
     status: 'ready'
   },
   {
@@ -239,6 +253,7 @@ window.BATTLES = [
     blurb: 'As Yugoslavia breaks apart, the Yugoslav People\u2019s Army (JNA), with local Territorial Defence and volunteer units, besieges the town of Vukovar on the Danube. For about three months a few thousand Croatian defenders hold out against a much larger force with tanks and artillery, while the town is shelled to ruins. After it falls, prisoners taken from the hospital are killed at nearby Ovčara: the international court found 194 named victims.',
     cover: 'images/cover.jpg', coverPos: '12% 35%',
     coverCredit: 'The Vukovar water tower, 2010. Photo: anjči (London, UK), Wikimedia Commons, CC BY 2.0 (creativecommons.org/licenses/by/2.0). Sky extended for this page',
+    chapters: [ { title: 'Borovo Selo and the siege', ev: 'Borovo Selo' }, { title: 'Battle for the barracks', ev: 'Battle for the barracks' }, { title: 'The convoy', ev: 'The convoy' }, { title: 'The ring closes', ev: 'The ring closes' }, { title: 'The fall and after', ev: 'The fall' } ],
     status: 'ready'
   },
   {
