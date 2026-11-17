@@ -9,8 +9,8 @@
 
 | File | Map | Check | Source |
 |---|---|---|---|
-| north-painting.jpg | The north, 640 × 480 km (frame in layout/maps.json) | Coast matches the base 99.6 % (IoU) | Painted with ChatGPT (AI-generated) on north-base.png; original in layout/painted/north-chatgpt-v3.webp |
-| core-painting.jpg | Hargeisa, Burao, Berbera, 310 × 232 km | Coast matches the base 98.9 % (IoU); Hargeisa, Berbera, Sheikh, Gebiley painted at their real places | Painted with ChatGPT (AI-generated) on core-base.png; original in layout/painted/core-chatgpt-v3.webp |
-| hargeisa-painting.jpg | Hargeisa, 12 × 9 km | The riverbed, the runway and the main roads lie on OpenStreetMap's (checked by overlay); some small side gullies left out | Painted with ChatGPT (AI-generated) on hargeisa-base.png; original in layout/painted/hargeisa-chatgpt-v3.webp |
-| burao-painting.jpg | Burao, 8 × 6 km | The Togdheer riverbed, the airstrip and the main roads lie on OpenStreetMap's (checked by overlay) | Painted with ChatGPT (AI-generated) on burao-base.png; original in layout/painted/burao-chatgpt-v3.webp |
-| berbera-painting.jpg | Berbera, 12 × 9 km | Sea and harbour match the base 99.0 % (IoU); the runway and the roads lie on OpenStreetMap's | Painted with ChatGPT (AI-generated) on berbera-base.png; original in layout/painted/berbera-chatgpt-v3.webp |
+| north-painting.jpg | The north, 640 × 480 km (frame in layout/maps.json) | Coast matches the base 99.6 % (IoU) | Painted with ChatGPT (AI-generated) on north-base.png; original in layout/painted/north-chatgpt-v3.png |
+| core-painting.jpg | Hargeisa, Burao, Berbera, 310 × 232 km | Coast matches the base 98.9 % (IoU); Hargeisa, Berbera, Sheikh, Gebiley painted at their real places | Painted with ChatGPT (AI-generated) on core-base.png; original in layout/painted/core-chatgpt-v3.png |
+| hargeisa-painting.jpg | Hargeisa, 12 × 9 km | The riverbed, the runway and the main roads lie on OpenStreetMap's (checked by overlay); some small side gullies left out | Painted with ChatGPT (AI-generated) on hargeisa-base.png; original in layout/painted/hargeisa-chatgpt-v3.png |
+| burao-painting.jpg | Burao, 8 × 6 km | The Togdheer riverbed, the airstrip and the main roads lie on OpenStreetMap's (checked by overlay) | Painted with ChatGPT (AI-generated) on burao-base.png; original in layout/painted/burao-chatgpt-v3.png |
+| berbera-painting.jpg | Berbera, 12 × 9 km | Sea and harbour match the base 99.0 % (IoU); the runway and the roads lie on OpenStreetMap's | Painted with ChatGPT (AI-generated) on berbera-base.png; original in layout/painted/berbera-chatgpt-v3.png |
