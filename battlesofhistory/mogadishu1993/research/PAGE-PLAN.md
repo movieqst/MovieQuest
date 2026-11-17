@@ -35,6 +35,14 @@ against the sources listed before it goes into a script. Same rules as every pag
    estimates as ranges, attributed).
 6. **Aftermath.** US withdrawal (March 1994), the end of UNOSOM II (1995), and what the intervention left behind.
 
+7. **The film and the history** (owner's request, 17 November 2026). *Black Hawk Down* (2001, dir. Ridley Scott, from
+   Mark Bowden's 1999 book). An inset map: Mogadishu (the real places) and Rabat–Salé, Morocco (where it was filmed,
+   2001). Differences, each to be sourced before use: composite or renamed characters (one renamed because the real
+   soldier was later convicted of a crime); the Malaysian and Pakistani part in the rescue convoy reduced (Malaysian
+   objections); Somalis shown mostly as a crowd, the Somali dead (estimates from several hundred to over a thousand, many
+   civilians) barely shown; events compressed. **No film images, posters or DVD covers** (studio copyright): a link card
+   only, with title, year and a note that it is a dramatisation.
+
 ## Sources to read (to verify everything above)
 
 - Commission of Inquiry into the Deployment of Canadian Forces to Somalia, *Dishonoured Legacy: The Lessons of the
@@ -42,6 +50,7 @@ against the sources listed before it goes into a script. Same rules as every pag
 - Canadian court-martial records and appeal decisions (Brown; Matchee's unfitness; others), as published.
 - UN Security Council resolutions (751, 794, 814, 837) and UN reports on UNOSOM; US Army Center of Military History,
   *The United States Army in Somalia, 1992–1994* (public domain); official US reports on 3–4 October.
+- Contemporary reports on the filming in Morocco (2001) and on the reactions (Malaysia; Somali viewers).
 - Scholarship and journalism (cite, do not copy): Sherene Razack, *Dark Threats and White Knights* (2004); David
   Bercuson, *Significant Incident* (1996); Mark Bowden, *Black Hawk Down* (1999); Somali accounts of the battle.
 - National Post feature on Kyle Brown (owner's screenshots, 16 November 2026): **link card only**; its photographs
