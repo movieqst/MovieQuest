@@ -1,3 +1,5 @@
+> **Superseded:** use `ART-PROMPTS-MAPS-V3.md` (one map per chat; the town maps now have their real streets, riverbeds and runways).
+
 # Somalia 1988: the five painted maps (prompts for ChatGPT, 13 November 2026)
 
 Made by `tools/draw-layout-guides.py` from real elevation. The page zooms from the wide maps to the tight ones:

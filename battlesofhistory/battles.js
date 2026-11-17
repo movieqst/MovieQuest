@@ -2,7 +2,9 @@
    Each entry: folder (the subfolder with its own index.html), title, date (text), year (a number for the
    timeline: negative for BCE), place, sides, blurb, cover (a picture inside the folder's images/),
    coverCredit, optional coverPos (CSS background-position, to keep the subject in the crop), and status: 'ready' | 'in progress'; readyOrder (optional): the order in which battles became ready, newest shown first in the grid (default: order); for in-progress battles,
-   progress (0-100, roughly how far along: research, maps, art, script, voices) decides which 4 show beside the globe. */
+   progress (0-100, roughly how far along: research, maps, art, script, voices) decides which 4 show beside the globe.
+   Optional: kind (e.g. 'Battle', 'Siege', 'Campaign'), shown before the date on the in-progress card; group, a heading shown once
+   above consecutive in-progress cards that share it (e.g. the Russia–Ukraine war, 2014–2015). Cards without them are unchanged. */
 window.BATTLES = [
   {
     folder: 'kadesh', osmArea: 5,  lat: 34.56, lon: 36.52, osmZoom: 12, osmNote: 'Tell Nebi Mend, the site of Kadesh; the battlefield around it is not exactly known',
@@ -330,15 +332,106 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'mogadishu1993', progress: 1, lat: 2.0470, lon: 45.3290, osmZoom: 14, osmNote: 'approximate: central Mogadishu around the Bakara Market, where the raid and the first helicopter crash took place',
-    order: 27,
+    folder: 'mogadishu1993', progress: 100, lat: 2.0470, lon: 45.3290, osmZoom: 14, osmNote: 'approximate: central Mogadishu around the Bakara Market, where the raid and the first helicopter crash took place',
+    order: 27, readyOrder: 19,
     era: 'Somalia, 1993',
     title: 'Battle of Mogadishu',
     date: '3–4 October 1993', year: 1993,
     place: 'Central Mogadishu, Somalia: the Bakara Market area and the streets to the UN base and the stadium',
-    sides: 'US Task Force Ranger with UN forces (UNOSOM II: Malaysian and Pakistani troops) vs. the Somali National Alliance (SNA) militia of Mohamed Farrah Aidid',
-    blurb: 'A US raid to capture leaders of Mohamed Farrah Aidid’s militia turned into a night-long battle in the city after two Black Hawk helicopters were shot down. A rescue column with Malaysian and Pakistani troops reached the trapped soldiers the next morning. Eighteen Americans and one Malaysian soldier were killed; estimates of Somali dead, fighters and civilians, range from several hundred to more than a thousand. The United States soon withdrew from Somalia.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner
+    sides: 'The Somali National Alliance (SNA) of Mohamed Farrah Aidid and other armed Somalis vs. US Task Force Ranger with US and UN forces (UNOSOM II: Malaysian and Pakistani troops)',
+    blurb: 'A US raid to capture leaders of Mohamed Farrah Aidid’s militia turned into a night-long battle in the city after two Black Hawk helicopters were shot down. A rescue column with Malaysian and Pakistani troops reached the trapped soldiers the next morning. Eighteen American soldiers and one Malaysian soldier were killed; the Somali dead included fighters and civilians, and no reliable total is known. The United States soon withdrew its combat forces. The page also tells the Somalia Affair (Canadian soldiers at Beledweyne, March 1993) and compares the film Black Hawk Down with the history.',
+    cover: 'images/cover.jpg',   // for now the Bravo Company photograph (the owner may choose another title card)
+    coverCredit: 'Bravo Company, 3rd Battalion, 75th Ranger Regiment, Somalia, 1993. US Army photo, public domain',
+    status: 'ready'
+  },
+  {
+    folder: 'ukraine-escalation', progress: 1, lat: 48.38, lon: 31.17, osmZoom: 5, osmNote: 'the whole of Ukraine',
+    order: 28,
+    era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Background',
+    title: 'Ukraine and Russia: Escalation',
+    date: '1991–2014 (the road to war)', year: 2004,
+    place: 'Ukraine, Russia and the Black Sea',
+    sides: 'Ukraine vs. the Russian Federation',
+    blurb: 'How relations between independent Ukraine and Russia broke down: independence in 1991, the 1994 Budapest Memorandum under which Ukraine gave up the nuclear weapons on its soil in exchange for security assurances, the agreements on the Black Sea Fleet in Sevastopol, the Orange Revolution of 2004, the gas disputes, the debate over closer ties with the European Union and NATO, and the Euromaidan protests of 2013–2014 that ended with President Yanukovych leaving Kyiv in February 2014.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'crimea2014', progress: 1, lat: 45.0, lon: 34.1, osmZoom: 8, osmNote: 'the whole peninsula; Simferopol, Sevastopol and the Perekop isthmus',
+    order: 29,
+    era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Campaign',
+    title: 'Seizure of Crimea',
+    date: 'February–March 2014', year: 2014,
+    place: 'The Crimean peninsula, Ukraine',
+    sides: 'Russian Armed Forces and local pro-Russian armed groups vs. Ukrainian Armed Forces in Crimea',
+    blurb: 'In late February 2014, after the fall of President Viktor Yanukovych in Kyiv, soldiers without insignia and local armed groups seized Crimea’s parliament, airports and other key sites, and blockaded Ukrainian military bases. Russia later acknowledged that its troops had been involved. After a referendum held on 16 March under Russian control, Russia annexed the peninsula on 18 March. The UN General Assembly called the referendum invalid, and Ukraine and most UN member states do not recognise the annexation.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'sloviansk', progress: 1, lat: 48.852, lon: 37.605, osmZoom: 12, osmNote: 'the town and the hills around it, including Mount Karachun',
+    order: 30,
+    era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Siege',
+    title: 'Siege of Sloviansk',
+    date: 'April–July 2014', year: 2014,
+    place: 'Sloviansk, Donetsk region, Ukraine',
+    sides: 'Ukrainian Armed Forces and National Guard vs. pro-Russian armed groups led by Igor Girkin',
+    blurb: 'On 12 April 2014 an armed group led by Igor Girkin, a former Russian security officer, seized Sloviansk and neighbouring towns. Ukrainian forces surrounded the town in an “anti-terrorist operation” and fought for the surrounding heights through the spring. On 5 July the armed groups withdrew to Donetsk, and Ukrainian forces retook the town.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'donetsk-airport-1', progress: 1, lat: 48.073, lon: 37.74, osmZoom: 13, osmNote: 'Donetsk International Airport, north-west of the city',
+    order: 31,
+    era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Battle',
+    title: 'First Battle of Donetsk Airport',
+    date: 'May 2014', year: 2014,
+    place: 'Donetsk International Airport, Ukraine',
+    sides: 'Ukrainian Armed Forces vs. Russian-backed separatist forces',
+    blurb: 'On 26 May 2014, the day after Ukraine’s presidential election, separatist fighters occupied the terminal of Donetsk’s new international airport. Ukrainian forces counter-attacked with air strikes and paratroopers, and by the next day held the airport again. Dozens of separatist fighters were killed, among them volunteers from Russia.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'ilovaisk', progress: 1, lat: 47.925, lon: 38.2, osmZoom: 12, osmNote: 'the town, and the roads south-west along which the Ukrainian columns withdrew',
+    order: 32,
+    era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Battle',
+    title: 'Battle of Ilovaisk',
+    date: 'August–September 2014', year: 2014,
+    place: 'Ilovaisk, Donetsk region, Ukraine',
+    sides: 'Ukrainian Armed Forces and volunteer battalions vs. Russian-backed separatist forces and Russian Armed Forces',
+    blurb: 'In August 2014 Ukrainian army units and volunteer battalions fought their way into Ilovaisk, east of Donetsk. Late in the month they were encircled after Russian regular forces crossed into Ukraine, which Russia denied. On 29 August the Ukrainian columns were attacked as they withdrew along a route they had been told was safe. It was the heaviest Ukrainian defeat of 2014, and led to the first Minsk agreement on 5 September.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'donetsk-airport-2', progress: 1, lat: 48.073, lon: 37.74, osmZoom: 13, osmNote: 'Donetsk International Airport: the old and new terminals and the control tower',
+    order: 33,
+    era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Battle',
+    title: 'Second Battle of Donetsk Airport',
+    date: 'September 2014–January 2015', year: 2014,
+    place: 'Donetsk International Airport, Ukraine',
+    sides: 'Ukrainian Armed Forces and volunteer units vs. Russian-backed separatist forces',
+    blurb: 'Despite the September 2014 ceasefire, fighting for Donetsk airport resumed and lasted almost four months. Ukrainian troops held the ruined terminals under constant attack; their defenders became known in Ukraine as the “cyborgs”. In January 2015 the new terminal was destroyed and the last defenders withdrew or were captured.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
+    coverCredit: '',
+    status: 'in progress'
+  },
+  {
+    folder: 'debaltseve', progress: 1, lat: 48.34, lon: 38.405, osmZoom: 12, osmNote: 'the town and railway junction, and the salient around it',
+    order: 34,
+    era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Battle',
+    title: 'Battle of Debaltseve',
+    date: 'January–February 2015', year: 2015,
+    place: 'Debaltseve, Donetsk region, Ukraine',
+    sides: 'Ukrainian Armed Forces vs. Russian-backed separatist forces and Russian Armed Forces',
+    blurb: 'Debaltseve, a railway junction between Donetsk and Luhansk, sat in a Ukrainian-held salient. From mid-January 2015 separatist forces, backed by Russian units, attacked it. The second Minsk agreement of 12 February set a ceasefire from 15 February, but the fighting for the town continued. On 18 February Ukrainian forces withdrew from Debaltseve.',
+    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
     coverCredit: '',
     status: 'in progress'
   }
