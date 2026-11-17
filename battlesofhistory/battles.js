@@ -431,8 +431,8 @@ window.BATTLES = [
     place: 'Debaltseve, Donetsk region, Ukraine',
     sides: 'Ukrainian Armed Forces vs. Russian-backed separatist forces and Russian Armed Forces',
     blurb: 'Debaltseve, a railway junction between Donetsk and Luhansk, sat in a Ukrainian-held salient. From mid-January 2015 separatist forces, backed by Russian units, attacked it. The second Minsk agreement of 12 February set a ceasefire from 15 February, but the fighting for the town continued. On 18 February Ukrainian forces withdrew from Debaltseve.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
-    coverCredit: '',
+    cover: 'images/cover.jpg', coverPos: '60% 50%',   // the soldier and the T-64 tank
+    coverCredit: 'Ukrainian troops during the Battle of Debaltseve, 5 February 2015. Frame from a report of UTR, Ukraine’s state international broadcaster (YouTube), via Wikimedia Commons, CC BY 3.0',
     status: 'in progress'
   }
 ];
