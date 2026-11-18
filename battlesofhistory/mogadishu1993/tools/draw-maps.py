@@ -6,6 +6,10 @@
   battle      the area of the battle, 3-4 October 1993: Bakara Market, Olympic Hotel, the stadium (5 x 3.75 km)
   beledweyne  Belet Huen, the town of the Canadian camp, 1993 (8 x 6 km)
   rabat       Rabat and Sale, Morocco: where the film Black Hawk Down was made, 2001 (12 x 9 km)
+  world       Africa, Europe and the Middle East, from Mogadishu to Rabat: the first zoom toward Rabat (9000 x 6750 km)
+  nafrica     North Africa and the Mediterranean, the second zoom (5000 x 3750 km)
+  morocco     (the third zoom)
+  morocco     Morocco and the Strait of Gibraltar, the second zoom toward Rabat (1300 x 975 km)
 Terrain: AWS elevation tiles (the Guide of somalia1988/tools/draw-layout-guides.py). Streets, riverbeds, coast, runways:
 OpenStreetMap (tools/osm-towns.json, (c) OpenStreetMap contributors, ODbL). The 1993 towns: GHS-BUILT-S 1990 (tools/
 ghsl-towns.json, EC JRC, CC BY 4.0): side streets only where buildings stood by 1990; main roads everywhere. Rabat-Sale is
@@ -35,6 +39,9 @@ MAPS = {  # name: (frame, zoom, town data, title)
   'battle':     (frame43(2.056, 45.327, 5), 15, 'mogadishu', 'MOGADISHU: the area of the battle, 3-4 October 1993'),
   'beledweyne': (frame43(4.737, 45.203, 8), 14, 'beledweyne', 'BELEDWEYNE (BELET HUEN), 1993'),
   'rabat':      (frame43(34.030, -6.815, 12), 14, 'rabat', 'RABAT AND SALE, MOROCCO: where the film was made, 2001'),
+  'world':      (frame43(22.0, 17.5, 9000), 4, None, 'FROM SOMALIA TO MOROCCO: Mogadishu and Rabat'),
+  'nafrica':    (frame43(33.0, 5.0, 5000), 5, None, 'NORTH AFRICA AND THE MEDITERRANEAN: on the way to Rabat'),
+  'morocco':    (frame43(33.5, -5.5, 1300), 7, None, 'MOROCCO AND THE STRAIT OF GIBRALTAR: on the way to Rabat'),
 }
 # neutral labels for the painter: (lat, lon, label, approximate?)
 PLACES = {
@@ -48,6 +55,13 @@ PLACES = {
   'beledweyne': [(4.7368, 45.2039, 'Town centre', 0)],
   'rabat': [(34.0497, -6.8234, 'Avenue Nasser (Sidi Moussa)', 0), (34.0555, -6.8190, 'SIDI MOUSSA', 0), (34.0610, -6.7880, 'HAY RAHMA', 0),
             (34.0282, -6.8342, 'Rue des Consuls (Medina)', 0), (34.0260, -6.8368, 'RABAT MEDINA', 0), (34.0370, -6.8190, 'SALE MEDINA', 0)],
+  'nafrica': [(34.020, -6.841, 'RABAT', 0), (40.417, -3.704, 'Madrid', 0), (41.903, 12.496, 'Rome', 0), (36.754, 3.059, 'Algiers', 0),
+              (36.806, 10.181, 'Tunis', 0), (32.887, 13.191, 'Tripoli', 0), (30.044, 31.236, 'Cairo', 0), (48.857, 2.352, 'Paris', 0),
+              (38.722, -9.139, 'Lisbon', 0), (28.124, -15.430, 'Las Palmas', 0), (37.984, 23.728, 'Athens', 0), (2.046, 45.318, 'MOGADISHU', 0), (15.50, 32.56, 'Khartoum', 0), (9.03, 38.74, 'Addis Ababa', 0),
+              (51.507, -0.128, 'London', 0), (24.71, 46.68, 'Riyadh', 0), (14.69, -17.44, 'Dakar', 0), (6.52, 3.38, 'Lagos', 0)],
+  'morocco': [(34.020, -6.841, 'RABAT', 0), (34.040, -6.800, 'Sale', 0), (34.261, -6.580, 'Kenitra', 0), (33.573, -7.590, 'Casablanca', 0),
+              (35.759, -5.834, 'Tangier', 0), (36.140, -5.354, 'Gibraltar', 0), (34.034, -5.000, 'Fes', 0), (31.629, -7.981, 'Marrakesh', 0),
+              (30.428, -9.598, 'Agadir', 0), (37.389, -5.984, 'Seville', 0), (36.721, -4.421, 'Malaga', 0), (35.697, -0.633, 'Oran', 0), (34.681, -1.908, 'Oujda', 0)],
 }
 AREAS = {
   'somalia': [(3.0, 50.0, 'INDIAN OCEAN'), (11.6, 47.5, 'GULF OF ADEN'), (7.0, 42.0, 'ETHIOPIA'), (1.0, 39.8, 'KENYA'), (4.6, 44.6, 'Shabelle river'), (1.6, 42.6, 'Jubba river')],
@@ -55,7 +69,13 @@ AREAS = {
   'battle': [],
   'beledweyne': [(4.760, 45.185, 'Shabelle river')],
   'rabat': [(34.040, -6.870, 'ATLANTIC OCEAN'), (34.024, -6.812, 'Bou Regreg river'), (33.998, -6.840, 'RABAT'), (34.050, -6.790, 'SALE')],
+  'nafrica': [(30.0, -16.0, 'ATLANTIC OCEAN'), (37.5, 6.0, 'MEDITERRANEAN SEA'), (25.0, 2.0, 'SAHARA'), (31.5, -4.5, 'MOROCCO'), (40.0, -4.0, 'SPAIN'),
+              (28.5, 3.0, 'ALGERIA'), (28.0, 17.0, 'LIBYA'), (26.5, 29.5, 'EGYPT'), (6.0, 47.0, 'SOMALIA'), (0.0, 55.0, 'INDIAN OCEAN'), (20.0, 38.5, 'Red Sea'), (45.0, 15.0, 'EUROPE'), (12.0, 20.0, 'AFRICA')],
+  'morocco': [(32.0, -11.0, 'ATLANTIC OCEAN'), (36.3, -2.5, 'MEDITERRANEAN SEA'), (35.95, -5.6, 'Strait of Gibraltar'), (31.3, -6.6, 'High Atlas'),
+              (33.1, -5.2, 'Middle Atlas'), (35.0, -4.2, 'Rif mountains'), (37.6, -4.5, 'SPAIN'), (30.5, -2.0, 'ALGERIA'), (32.2, -7.6, 'MOROCCO')],
 }
+
+PLACES['world'] = PLACES['nafrica']; AREAS['world'] = AREAS['nafrica']   # the same labels; those outside a frame are skipped
 
 
 def towns_layer(g, m, rgb, town):
@@ -109,21 +129,25 @@ for name in want:
     (la0, la1, lo0, lo1), zoom, town, title = MAPS[name]
     G['RAMP'][:] = DRY
     g = Guide(name + '-guide.png', la0, la1, lo0, lo1, zoom, None, None)
-    sea = sea_mask(g); rgb = g.rgb.copy().astype(float); rgb[sea] = (78, 118, 160)
+    sea = sea_mask(g)
+    if name in ('world', 'nafrica'):   # inland seas below sea level that do not touch the edge: the Black Sea, the Caspian (not the small Qattara depression)
+        lab, n = ndi.label(g.e <= .5); sz = ndi.sum(np.ones_like(lab), lab, range(1, n + 1))
+        sea |= np.isin(lab, [i + 1 for i, v in enumerate(sz) if v > 10000])
+    rgb = g.rgb.copy().astype(float); rgb[sea] = (78, 118, 160)
     note = ''
     if town:
         k, d = towns_layer(g, (la0, la1, lo0, lo1), rgb, town)
         note = f'side streets kept {k}, left out {d}'
     g.im = Image.fromarray(rgb.clip(0, 255).astype('uint8')); g.d = ImageDraw.Draw(g.im)
-    if name == 'somalia':
+    if name in ('somalia', 'morocco'):   # (no rivers painted on the two widest maps: Natural Earth's desert wadis would come back as rivers)
         g.geojson_lines(clean(os.path.join(CACHE, 'ne_rivers.geojson')), WATER, 3)
     g.im.save(os.path.join(OUT, name + '-base.png'), optimize=True)
-    if name == 'somalia': g.geojson_lines(clean(os.path.join(CACHE, 'ne_10m_admin_0_boundary_lines_land.geojson')), (90, 90, 90), 3)
-    big = name == 'somalia'
+    if name in ('somalia', 'world', 'nafrica', 'morocco'): g.geojson_lines(clean(os.path.join(CACHE, 'ne_10m_admin_0_boundary_lines_land.geojson')), (90, 90, 90), 3)
+    big = name in ('somalia', 'world', 'nafrica', 'morocco')
     for la, lo, n, ap in PLACES[name]:
         if n and la0 < la < la1 and lo0 < lo < lo1: g.town(la, lo, n, '', 24 if big else 26, GREY if ap else BLACK, 7 if big else 9, -24)
     for la, lo, t in AREAS[name]:
-        if la0 < la < la1 and lo0 < lo < lo1: g.text(la, lo, t, BLUE if t.isupper() and ('OCEAN' in t or 'GULF' in t) else GREY, 26, True)
+        if la0 < la < la1 and lo0 < lo < lo1: g.text(la, lo, t, BLUE if t.isupper() and ('OCEAN' in t or 'GULF' in t or 'SEA' in t) else GREY, 26, True)
     if name == 'rabat':
         g.text(la1 - (la1 - la0) * .06, lo0 + (lo1 - lo0) * .78, 'to Kenitra airbase and Mehdiya beach, about 35 km north', GREY, 22, True)
     g.frame(title + ': layout guide', 'Real elevation; streets, riverbeds and coast: OpenStreetMap (c) OSM contributors, ODbL'
