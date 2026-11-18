@@ -453,5 +453,18 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '60% 50%',   // the soldier and the T-64 tank
     coverCredit: 'Ukrainian troops during the Battle of Debaltseve, 5 February 2015. Frame from a report of UTR, Ukraine’s state international broadcaster (YouTube), via Wikimedia Commons, CC BY 3.0',
     status: 'in progress'
+  },
+  {
+    folder: 'midnight-hammer', progress: 1, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'approximate: the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
+    order: 35,
+    era: 'Iran, 2025',
+    title: 'Operation Midnight Hammer',
+    date: '21–22 June 2025', year: 2025,
+    place: 'Fordow, Natanz and Isfahan, Iran',
+    sides: 'United States vs. Iran',
+    blurb: 'During the June 2025 war between Israel and Iran, American B-2 bombers flew from Missouri to strike Iran’s underground enrichment site at Fordow and the site at Natanz, while a submarine fired cruise missiles at Isfahan. The aircraft reached their targets and returned; what the strike destroyed underground, and how far it set back Iran’s nuclear programme, was disputed.',
+    cover: 'images/cover.jpg',   // the title card: to come (a public-domain DVIDS frame is a candidate)
+    coverCredit: '',
+    status: 'in progress'
   }
 ];
