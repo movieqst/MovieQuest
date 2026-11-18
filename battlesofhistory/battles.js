@@ -227,6 +227,7 @@ window.BATTLES = [
     blurb: 'On the night of 16 June, New England militia dig a redoubt on Breed\u2019s Hill above British-held Boston. By afternoon the Royal Navy and Howe\u2019s infantry are crossing the Charles River to storm it. The British take the hill, but at a terrible cost.',
     cover: 'images/cover.jpg', coverPos: '50% 45%',
     coverCredit: 'John Trumbull, The Battle of Bunker\u2019s Hill, June 17, 1775, oil on canvas, 1786. Yale University Art Gallery, Trumbull Collection, via Wikimedia Commons, public domain. A later painting, not evidence of the battle',
+    chapters: [ { title: 'Boston surrounded', ev: 'Boston surrounded' }, { title: 'A fort in one night', ev: 'A fort in one night' }, { title: 'The landing', ev: 'The landing' }, { title: 'The attacks', ev: 'The first attack' }, { title: 'After the battle', ev: 'The retreat' } ],   // small chapter cards on the home page
     status: 'in progress'
   },
   {
