@@ -217,8 +217,8 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'bunkerhill', progress: 10, lat: 42.3763, lon: -71.0608, osmZoom: 15,
-    order: 17,
+    folder: 'bunkerhill', progress: 100, lat: 42.3763, lon: -71.0608, osmZoom: 15,
+    order: 17, readyOrder: 23,
     era: 'American Revolution',
     title: 'Battle of Bunker Hill',
     date: '17 June 1775', year: 1775,
@@ -228,7 +228,7 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '50% 45%',
     coverCredit: 'John Trumbull, The Battle of Bunker\u2019s Hill, June 17, 1775, oil on canvas, 1786. Yale University Art Gallery, Trumbull Collection, via Wikimedia Commons, public domain. A later painting, not evidence of the battle',
     chapters: [ { title: 'Boston surrounded', ev: 'Boston surrounded' }, { title: 'A fort in one night', ev: 'A fort in one night' }, { title: 'The landing', ev: 'The landing' }, { title: 'The attacks', ev: 'The first attack' }, { title: 'After the battle', ev: 'The retreat' } ],   // small chapter cards on the home page
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'redriver', progress: 5, lat: 49.8873, lon: -97.1316, osmZoom: 13,
