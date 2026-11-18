@@ -1552,6 +1552,8 @@ Object.assign(window.MOGADISHU_SCENARIO, {
   set(29, rab({ zoom: 'fit', markers: [ { ...qSIDI, label: 'Salé, Sidi Moussa: streets dressed as Mogadishu ' + AP }, { ...qRAHMA, label: 'Hay Arrahma, Salé: the first crash site set ' + AP },
     { ...qNORTH, label: 'Kénitra air base, about 35 km north: filming began here, 8 March 2001' } ] }));
   EV[29].mapSeq[3].markers = EV[29].markers;
+  // the debrief returns to the battle map (owner, 18 November 2026)
+  S.debriefMap = 'battle'; S.debriefMarkers = [ { ...bOLYMPIC, label: 'the target building, near the Olympic Hotel' }, { ...bCRASH1, label: 'Super Six-One down ' + AP }, { ...bCRASH2, label: 'Super Six-Four down ' + AP }, { ...bSTADIUM, label: 'the stadium: the end of the Mogadishu Mile' } ];
   set(30, rab({ zoom: 'fit', markers: [ { ...qSIDI, label: 'filmed in Salé' }, { ...qRABAT, label: 'Rabat' } ] }));
 
 
