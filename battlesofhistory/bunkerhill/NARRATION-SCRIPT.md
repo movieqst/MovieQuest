@@ -1,4 +1,4 @@
-# Battle of Bunker Hill, 16–17 June 1775: narration script (DRAFT 2)
+# Battle of Bunker Hill, 16–17 June 1775: narration script (DRAFT 3, ready to record)
 
 This is what the narrators will read. **Draft 2** (18 November 2026) applies ChatGPT's review of draft 1
 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`): every Required change and most Optional ones, listed at the end. Draft 1 was
@@ -51,7 +51,7 @@ Mystic, 0.9 × 0.65 km).
 **On-screen tables** (shown, not narrated):
 - *The British attack:* the first landing: ten companies of grenadiers, ten of light infantry, and the 5th, 38th, 43rd and
   52nd battalions (Gage); "something above two thousand" after the 47th and the 1st Marines joined (Gage); about 2,200 rank
-  and file when the attack began (Howe); later reinforcements, the 2nd Marines and the 63rd, with Clinton following (Gage).
+  and file when the attack began (Howe); later reinforcements; Gage says Clinton followed the reinforcements.
   The Army Historical Foundation estimates about 2,600 engaged overall. Several thousand British troops were in Boston
   (Washington later relayed 7,533 regulars, apparently including Marines).
 - *The provincials:* about 1,000 on the night of 16 June (Prescott); perhaps 2,000 to 3,000 at some time during the day
@@ -157,7 +157,7 @@ Welcome to Battles of History. Today we are learning about the Battle of Bunker 
 *Map: Peninsula · 17 June 1775, afternoon*
 - Provincials fired on the British flank from the houses of Charlestown. *(established)* §5
 - During the fighting, British forces set the town on fire. Most of its people had already fled. The fire destroyed much of the town. *(established)* §5
-- General Burgoyne, watching from Boston, described the whole town in flames. *(letter)* §5
+- From Boston, General Burgoyne watched Charlestown go up in flames. *(letter)* §5
 
 ### 10. The second attack
 *Map: Peninsula · 17 June 1775, afternoon*
@@ -246,3 +246,10 @@ Please check only:
 
 Please answer with: a verdict (ready to record, or not); a short table of any remaining Required changes (chapter, current
 words, problem, replacement); and the final-check items resolved.
+
+## Changes in draft 3 (18 November 2026)
+
+From ChatGPT's final check of draft 2 (`research/reviews/CHATGPT-REVIEW-DRAFT2.md`), verdict "ready to record after one small
+change": chapter 9, "From Boston, General Burgoyne watched Charlestown go up in flames" (the printed versions of his letter
+differ, so no direct quotation); the strength table, "Gage says Clinton followed the reinforcements" (the 2nd Marines and the
+63rd not named as a separate late wave). The Boston map's June chapters draw only works of June 1775.
