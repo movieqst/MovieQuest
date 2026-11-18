@@ -61,6 +61,86 @@
    ],
    "m_per_px": 0.3644740685953117,
    "rotation_deg": -0.7048964020523936
+  },
+  {
+   "file": "boston-guide.png",
+   "width": 2400,
+   "height": 1800,
+   "source": "Pelham 1777, LOC gm71000619, turned 69 degrees",
+   "m_per_px": 4.167291666666666,
+   "anchor": [
+    "Bunker Hill",
+    42.3811,
+    -71.0657
+   ],
+   "corners_latlon_tl_br": [
+    [
+     42.395325393759734,
+     -71.1201796310604
+    ],
+    [
+     42.32794194963469,
+     -70.99855068729767
+    ]
+   ],
+   "places_px": {
+    "Cambridge (the Common)": [
+     40,
+     640
+    ],
+    "Prospect Hill": [
+     480,
+     375
+    ],
+    "Winter Hill": [
+     350,
+     40
+    ],
+    "Charlestown Neck": [
+     990,
+     335
+    ],
+    "Bunker Hill": [
+     1075,
+     380
+    ],
+    "CHARLESTOWN": [
+     1150,
+     560
+    ],
+    "BOSTON": [
+     1320,
+     960
+    ],
+    "the Common": [
+     1160,
+     1090
+    ],
+    "Boston Neck": [
+     1100,
+     1430
+    ],
+    "Roxbury (the road south)": [
+     1060,
+     1740
+    ],
+    "Dorchester Heights": [
+     1650,
+     1600
+    ],
+    "Noddle's Island": [
+     1700,
+     300
+    ],
+    "Castle William": [
+     2310,
+     1420
+    ],
+    "Brookline fort": [
+     330,
+     1280
+    ]
+   }
   }
  ],
  "places_from_plan": {

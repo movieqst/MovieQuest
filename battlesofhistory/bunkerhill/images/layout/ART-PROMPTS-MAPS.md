@@ -14,8 +14,10 @@ battle.
 
 Page colours (owner's default, to confirm): British red, provincials blue.
 
-A third map, Boston and the siege lines (Cambridge, Roxbury, Dorchester), needs a 1775 or 1777 plan of Boston and its
-surroundings as its base (see the note to the owner).
+Map 3, Boston and the siege lines, is cut from **Henry Pelham's "A plan of Boston in New England with its environs" (London,
+1777; Library of Congress gm71000619; public domain)**, turned to true north (`tools/draw-boston-pelham.py`). Pelham's
+compass shows magnetic north; the variation in 1775 was about 7 degrees west. Places are within about half a kilometre to
+a kilometre of their real positions, which is enough for an overview.
 
 ---
 
@@ -70,4 +72,32 @@ WHAT IS WHERE:
 - THE HILLSIDE: grassy pasture on the slopes of Breed's Hill, shaded as in the base; fields divided by low stone walls, rail fences and hedges exactly along the base's lines; tall uncut summer grass; a few trees.
 - WATER: the Mystic River at the top right, with a green marshy shore; a little water at the bottom right.
 - The edge of Charlestown at the bottom left: a few wooden houses with shingle roofs, gardens and fences.
+```
+
+---
+
+# Map 3: Boston and the siege lines, June 1775 (about 10 x 7.5 km)
+
+**How:** open a NEW chat in ChatGPT for this map only. Attach `boston-base` first, then `boston-guide`. Paste the text below
+as one message. If ChatGPT offers **Edit** on the first picture, use it on the whole picture. Download the result as PNG and
+send it to Claude. If the shoreline comes back in the wrong place, reply: "The shoreline is in the wrong place. Keep it
+exactly where it is in the first picture."
+
+```text
+Please EDIT the first picture I attach (the BASE); do not make a new picture. The base is part of a real map engraved in 1777 from surveys made in 1775-1776, turned so that north is at the top, seen from directly above. The second picture is the GUIDE: the same map with labels, only to tell you what is where; do not copy any of its text, dots, lines or frame.
+This is for an educational history page for students aged 12 and up.
+TURN THE OLD MAP INTO A PAINTED VIEW OF THE REAL LANDSCAPE, AS IF SEEN FROM VERY HIGH ABOVE IN JUNE 1775:
+1. Seen from DIRECTLY ABOVE, like a vertical aerial photograph: no tilt, no perspective, no horizon, no sky.
+2. Keep EVERYTHING exactly where it is in the base: every shoreline (the edges of the land against the pale water), the islands, the rivers and creeks, the marshes, the hills (the dark shaded slopes), the roads, the town of Boston and the town of Charlestown and their streets. Same size and shape: 2400 x 1800 pixels, landscape. Do not crop, zoom, rotate or move anything.
+3. REMOVE everything that is not land or water: all writing and numbers (including the large letters across the water and the small depth numbers), the compass rose and its long straight lines, all the thin straight lines that fan out across land and water, the small forts drawn as star shapes and the lines of earthworks (the page will draw those itself), and the paper stains. In the top right corner, beyond the edge of the old map, continue the water and the land naturally.
+4. STYLE (described here, not shown): a realistic, finely detailed painted aerial view in natural early-summer colours, clear morning light, gentle shading for the hills. Calm and peaceful.
+5. No people, soldiers, ships, boats, smoke, fire, flags, text or symbols.
+
+WHAT IS WHERE:
+- WATER (calm blue-grey, shallower water lighter with sandy tidal flats): the wide Charles River and the Back Bay (centre left: in 1775 a broad tidal basin, not land), the Mystic River (top), the harbour (right), the bay south of Boston.
+- BOSTON (centre): a crowded colonial town of 1775 on a hilly peninsula: brick and wooden houses with grey roofs, church steeples, wharves reaching into the harbour on the east side, the open green Common on the west side; joined to the mainland in the south only by the long, narrow Boston Neck with one road along it.
+- CHARLESTOWN (above Boston, across the river mouth): a smaller wooden town at the south end of its peninsula, with green hills and fields behind it (Bunker Hill and Breed's Hill); the narrow Charlestown Neck joins it to the mainland at the top left.
+- THE MAINLAND (left, top and bottom): green farmland, pastures, orchards and woods, stone walls, farm roads, low wooded hills; the small village of Cambridge with its college buildings at the far left; salt marshes along the rivers and creeks.
+- DORCHESTER (bottom centre): a hilly green peninsula with farms, joined to the mainland at its west end.
+- THE ISLANDS (right): Noddle's Island (top right) and Castle Island with its old fort (right edge), grassy, with a few trees.
 ```
