@@ -184,3 +184,14 @@ Make ONE sprite sheet for an educational history page about a 2025 air operation
 Row 1 to Row 4 are four slightly different versions of the same effect; in each row the 4 frames show it growing and fading: frame 1 a small puff, frame 2 larger, frame 3 largest and starting to thin, frame 4 faint and almost gone.
 SUBJECT: A small, distant cloud of pale brown-grey dust and grit rising from desert ground, seen from high above: soft, rounded, billowing, the colour of dry earth. No fire, no flash, no glow, no debris, no mushroom shape. Calm, like dust from a distance.
 ```
+
+---
+
+## Cut (18 November 2026)
+
+All eight sheets received (the Tomahawk on its own, the other seven together) and cut into `images/units/`:
+b2, b2-release (the same scale as b2), kc135, f35a, f16, submarine (240 px cells, one scale per sheet, each figure centred
+in its cell by its main body so turning does not jump), tomahawk (160 px), dust (160 px, keyed softly as one piece so the
+cloud keeps growing; its colour is set to dry earth to remove the green tint). ChatGPT drew the submarine from the side in
+the east and west rows; those rows were replaced by the top-down south frames turned a quarter turn, so all four
+directions are seen from above. The fourth dust frame is almost transparent: the cloud fading away.
