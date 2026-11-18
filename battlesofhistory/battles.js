@@ -461,7 +461,7 @@ window.BATTLES = [
     title: 'Operation Midnight Hammer',
     date: '21–22 June 2025', year: 2025,
     place: 'Fordow, Natanz and Isfahan, Iran',
-    sides: 'United States vs. Iran',
+    sides: 'Iran vs. United States',   // first-named side red: Iran red, the United States blue (owner, 18 Nov 2026)
     blurb: 'During the June 2025 war between Israel and Iran, American B-2 bombers flew from Missouri to strike Iran’s underground enrichment site at Fordow and the site at Natanz, while a submarine fired cruise missiles at Isfahan. The aircraft reached their targets and returned; what the strike destroyed underground, and how far it set back Iran’s nuclear programme, was disputed.',
     cover: 'images/cover.jpg',   // the title card: to come (a public-domain DVIDS frame is a candidate)
     coverCredit: '',

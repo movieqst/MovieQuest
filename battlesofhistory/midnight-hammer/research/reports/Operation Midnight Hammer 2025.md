@@ -122,8 +122,7 @@ ChatGPT's production rules (dossier §§1, 11–13) are sound and are adopted. I
   path underground are **not** drawn.
 - No Iranian casualties are animated, and no "zero deaths" claim is made.
 
-**Colours:** the first-named side is red. On this page that would make the **United States red** and **Iran blue**. The
-owner decides.
+**Colours (owner's decision, 18 November 2026):** **Iran red, the United States blue.** The card lists Iran first.
 
 **Maps** (2400 × 1800, the usual pipeline):
 1. **"World"**: Missouri to Iran on the globe, with schematic arrows, the decoy flight west over the Pacific, and the
