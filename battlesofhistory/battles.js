@@ -347,6 +347,7 @@ window.BATTLES = [
     blurb: 'In September 1993 the Croatian Army took a small salient of Serb-held land near Gospić. Under a ceasefire, UN peacekeepers, Canadian and French, moved in to separate the two sides and came under fire; behind the Croatian lines the villages were destroyed and Serb civilians and prisoners were killed. A Croatian court later convicted one of the commanders and acquitted another.',
     cover: 'images/cover.jpg', coverPos: '50% 60%',   // the Velebit range; the Medak pocket lies on its far (Lika) side
     coverCredit: 'The Velebit mountains, Croatia, seen from the Adriatic coast, 25 October 2007. The Medak pocket lay at the foot of the range on its inland (Lika) side. Photo: Modzzak, Wikimedia Commons (File:Velebit-2.JPG), public domain',
+    chapters: [ { title: 'Lika at war, 1991–1993', ev: 'A war in Lika' }, { title: 'Operation Pocket 93', ev: 'Early morning, the ninth of September' }, { title: 'The peacekeepers', ev: 'CANBAT One' }, { title: 'The courts', ev: 'Accused in The Hague' }, { title: 'Remembering', ev: 'Gospić remembers' } ],   // small chapter cards on the home page
     status: 'in progress'
   },
   {
