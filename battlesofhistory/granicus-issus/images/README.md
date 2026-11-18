@@ -6,3 +6,16 @@
 | terrain-campaign.jpg | The campaign map: Anatolia from the Hellespont to the Gulf of Issus (about 1,180 × 890 km; frame in layout/maps.json) | Painted for this page with ChatGPT (AI-generated) over our base map from real elevation (AWS Terrain Tiles; SRTM, public domain) and Natural Earth coasts and rivers (public domain). Checked: its sea and coasts match the base to 98 %. A painting, not a photograph. |
 | terrain-granicus.jpg | The Granicus: the Biga Çayı north of Biga, the conventional site (8 × 6 km) | Painted with ChatGPT (AI-generated) over our base from real elevation. The river follows the traced valley floor (approx.); the steep east bank is the painter's reading of Arrian 1.13–15. The exact battlefield is disputed. 97 % match to the base. |
 | terrain-issus.jpg | Issus: the coastal plain at the Payas river between the Amanus and the sea (12 × 9 km) | Painted with ChatGPT (AI-generated) over our base from real elevation. The beach is painted a little seaward of today's coast in places (90 % match); the river is approximate; the Payas is the most often proposed Pinarus, not a certainty. |
+
+## Sprite sheets (units/, 17 November 2026)
+
+Painted by ChatGPT from `../ART-PROMPTS-UNITS.md`, one sheet per chat; originals in `units-raw/` (1254 × 1254, green
+background). Cut with `tools/prepare-sprite-sheet.py`, then `tools/fix-green-fringe.py`. Rows: south, east, north, west; all
+directions checked. Equipment follows modern reconstructions (our reconstruction on the page).
+- Foot, 160 px cells: `mac-hypaspist` (0.441), `greek-mercenary` (0.439) and `greek-mercenary-fight` (same), `agrianian`,
+  `persian-infantry`, `persian-archer`.
+- The phalanx with the long sarissa, in larger cells so the pike fits, with the body matched to the hypaspist's:
+  `mac-phalanx` (200 × 300 cells, 0.58), `mac-phalanx-attack` (560 × 300 cells, 0.88; the sarissa levelled).
+- Horses and the chariot, 240 × 200 cells, all at one scale (0.607): `mac-companion`, `mac-companion-charge`,
+  `thessalian-cavalry`, `persian-cavalry`, `persian-cavalry-fight`, `alexander-bucephalus` (black, white star),
+  `darius-chariot`.

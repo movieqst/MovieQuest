@@ -271,8 +271,8 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'granicus-issus', osmArea: 10, osmSites: [[36.76, 36.21, 'Payas river'], [36.93, 36.18, 'Deli Çay']],  progress: 5, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
-    order: 21,
+    folder: 'granicus-issus', osmArea: 10, osmSites: [[36.76, 36.21, 'Payas river'], [36.93, 36.18, 'Deli Çay']],  progress: 100, lat: 36.75, lon: 36.20, osmZoom: 12, osmNote: 'the coast of Issus at the Payas river, the most often proposed site; the Granicus is far to the north-west, near Biga',
+    order: 21, readyOrder: 21,
     era: 'Classical Antiquity',
     title: 'Granicus & Issus',
     date: 'May 334 – November 333 BCE', year: -334,
@@ -281,7 +281,8 @@ window.BATTLES = [
     blurb: 'Alexander’s first two battles against Persia, a year apart: the cavalry charge across the Granicus and up its steep bank, then the long march across Anatolia, the two armies passing each other on either side of the mountains, and the clash at the river Pinarus where Darius fled and his family was captured. The story before Tyre and Gaugamela.',
     cover: 'images/cover.jpg', coverPos: '30% 40%',   // Alexander and Bucephalus
     coverCredit: 'Title painting made for this page with ChatGPT (AI-generated), checked against Arrian, Plutarch and Xenophon: an imagined scene combining the two battles, not a record',
-    status: 'in progress'
+    chapters: [ { title: 'The road to Asia', ev: 'Thebes' }, { title: 'The Granicus, 334 BCE', ev: 'The river' }, { title: 'A year in Anatolia', ev: 'Sardis and Ephesus' }, { title: 'Issus, 333 BCE', ev: 'The Great King comes' }, { title: 'After Issus: the royal family, the letters, the road to Tyre', ev: 'The royal family' } ],
+    status: 'ready'
   },
   {
     folder: 'yugoslavia-escalation', progress: 1, lat: 44.0, lon: 18.5, osmZoom: 6, osmNote: 'the whole of the former Yugoslavia',
@@ -336,7 +337,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'medak', osmArea: 6, progress: 1, lat: 44.49, lon: 15.42, osmZoom: 11, osmNote: 'approximate: the villages of the Medak pocket (Divoselo, Čitluk, Počitelj) south of Gospić',
+    folder: 'medak', osmArea: 6, progress: 35, lat: 44.49, lon: 15.42, osmZoom: 11, osmNote: 'approximate: the villages of the Medak pocket (Divoselo, Čitluk, Počitelj) south of Gospić',
     order: 26,
     era: 'Croatia, 1993',
     title: 'Medak Pocket',
@@ -344,8 +345,8 @@ window.BATTLES = [
     place: 'The Medak pocket south of Gospić, in the Lika region of Croatia',
     sides: 'Croatian Army (HV) and special police vs. Army of the Republic of Serbian Krajina (SVK)',
     blurb: 'In September 1993 the Croatian Army took a small salient of Serb-held land near Gospić. Under a ceasefire, UN peacekeepers, Canadian and French, moved in to separate the two sides and came under fire; behind the Croatian lines the villages were destroyed and Serb civilians and prisoners were killed. A Croatian court later convicted one of the commanders and acquitted another.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner
-    coverCredit: '',
+    cover: 'images/cover.jpg', coverPos: '50% 60%',   // the Velebit range; the Medak pocket lies on its far (Lika) side
+    coverCredit: 'The Velebit mountains, Croatia, seen from the Adriatic coast, 25 October 2007. The Medak pocket lay at the foot of the range on its inland (Lika) side. Photo: Modzzak, Wikimedia Commons (File:Velebit-2.JPG), public domain',
     status: 'in progress'
   },
   {
@@ -451,6 +452,19 @@ window.BATTLES = [
     blurb: 'Debaltseve, a railway junction between Donetsk and Luhansk, sat in a Ukrainian-held salient. From mid-January 2015 separatist forces, backed by Russian units, attacked it. The second Minsk agreement of 12 February set a ceasefire from 15 February, but the fighting for the town continued. On 18 February Ukrainian forces withdrew from Debaltseve.',
     cover: 'images/cover.jpg', coverPos: '60% 50%',   // the soldier and the T-64 tank
     coverCredit: 'Ukrainian troops during the Battle of Debaltseve, 5 February 2015. Frame from a report of UTR, Ukraine’s state international broadcaster (YouTube), via Wikimedia Commons, CC BY 3.0',
+    status: 'in progress'
+  },
+  {
+    folder: 'midnight-hammer', progress: 40, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'approximate: the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
+    order: 35,
+    era: 'Iran, 2025',
+    title: 'Operation Midnight Hammer',
+    date: '21–22 June 2025', year: 2025,
+    place: 'Fordow, Natanz and Isfahan, Iran',
+    sides: 'Iran vs. United States',   // first-named side red: Iran red, the United States blue (owner, 18 Nov 2026)
+    blurb: 'During the June 2025 war between Israel and Iran, American B-2 bombers flew from Missouri to strike Iran’s underground enrichment site at Fordow and the site at Natanz, while a submarine fired cruise missiles at Isfahan. The aircraft reached their targets and returned; what the strike destroyed underground, and how far it set back Iran’s nuclear programme, was disputed.',
+    cover: 'images/cover.jpg', coverPos: '50% 55%',   // the B-2 under the moon
+    coverCredit: 'Title painting made for this page with ChatGPT (AI-generated): a B-2 bomber at night under the moon and the American flag; an imagined scene, not a photograph of the mission',
     status: 'in progress'
   }
 ];

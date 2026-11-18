@@ -65,7 +65,7 @@
 
 ### 7. Granicus: mercenaries and aftermath
 **Map:** rear of Persian line, battlefield. **People:** Greek mercenaries, Alexander, Arsites.
-- Plutarch says the Greek mercenaries asked for terms, but Alexander attacked them. [PLUTARCH Alex. 16.12–13; attributed]
+- Plutarch says the Greek mercenaries asked for terms, but Alexander attacked them. [PLUTARCH Alex. 16.13–14; attributed]
 - Alexander directed infantry and cavalry against the remaining Greek mercenaries. [ARRIAN 1.16.2]
 - Arrian says most were killed and about 2,000 taken prisoner; the original total and exact deaths are uncertain. [ARRIAN 1.16.2; ESTIMATE]
 - Captives were sent to Macedonia for forced labour; Arrian explains this through the alliance’s prohibition on serving Persia. [ARRIAN 1.16.6]
@@ -264,7 +264,7 @@ These are working map anchors based on modern site identifications, not coordina
 Gazetteer verification: https://pleiades.stoa.org/ ; modern terrain: https://www.openstreetmap.org/ (attribution required for derived OSM data).
 
 ### Granicus
-- Modern Biga Çayı / Kocabaş Çayı identification is conventional; exact battlefield remains a research question. [ARRIAN 1.13–16; MODERN: Körpe research reported 2024, S7]
+- Modern Biga Çayı / Kocabaş Çayı identification is conventional; exact battlefield remains a research question. [ARRIAN 1.13–16; MODERN: Körpe 2025, *Troy Museum Journal* special issue, pp. 107–123]
 - Körpe’s team reported a location farther south than earlier proposals near Çınarköprü, arguing the earlier lowland was marshy in antiquity. This is a reported research finding, not independently verified excavation proof. [S7; DISPUTED]
 - Arrian describes difficult banks and a crossing under attack; Diodorus describes a crossing before battle. No measured ancient depth or width can be recovered from these passages. [ARRIAN 1.13–15; DIODORUS 17.19]
 - **Provisional 6 × 4.5 km scouting frame**, centred on modern Biga (not approved battlefield; the review notes it cannot contain Körpe's candidate crossing, about 9 km north of Biga near Çınarköprü/Adliye): NW 40.2502, 27.2047; SE 40.2098, 27.2753. [INFERENCE; calculation using local degree lengths]
@@ -325,3 +325,16 @@ Further acquisition queue (not cleared assets):
 11. Philip Huyse, “Curtius Rufus, Quintus,” *Encyclopaedia Iranica*: https://www.iranicaonline.org/articles/curtius-rufus-quintus-probably-fl/ .
 
 **Handoff status:** narrative outline usable for Claude’s source-by-source fact-check. Do not approve final narration, exact troop counts, battlefield coordinates or the outstanding image licenses until the flagged checks are complete. This pass is not a full specialist-literature or geospatial survey; references to works not inspected are explicitly reading leads rather than claims of verification.
+
+## Added after the draft 1 review (17 November 2026)
+
+Sources the script now relies on, as proper entries:
+- Ernst Badian, "Granicus", *Encyclopaedia Iranica* XI/2 (2002), p. 187: https://www.iranicaonline.org/articles/granicus/
+- Ernst Badian, "Darius v. Darius III", *Encyclopaedia Iranica* VII/1 (1994), pp. 51–54: https://www.iranicaonline.org/articles/darius-v/
+- A. M. Devine, "Demythologizing the Battle of the Granicus", *Phoenix* 40.3 (1986), pp. 265–278 (esp. 265–267).
+- Reyhan Körpe, "2022–2024 Granicus Battlefield Survey: New Findings, New Results", *Troy Museum Journal*, special issue
+  (2025), pp. 107–123 (candidate sites pp. 113–116; fig. 4 p. 114): https://dergipark.org.tr/tr/pub/troymuseum/article/1631720
+- Pierre Briant, *Alexander the Great and His Empire: A Short Introduction*, Introduction p. 1 (birth July 356 BCE).
+- Plutarch, *Alexander* 24.5, and Diodorus 17.46.5: the siege of Tyre lasted seven months.
+Note: "about 9 km north of Biga" describes Çınarköprü; Körpe's candidate crossing south of Adliye is not itself certified at
+that distance: georeference the published map.
