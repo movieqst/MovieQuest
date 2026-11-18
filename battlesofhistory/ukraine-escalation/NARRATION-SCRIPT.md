@@ -1,6 +1,7 @@
-# Ukraine and Russia: Escalation, 1991–2014: narration script (DRAFT 1)
+# Ukraine and Russia: Escalation, 1991–2014: narration script (DRAFT 2)
 
-This is the script for the narrators to read, and the slide list for the projector. **Draft 1** (18 November 2026) is written
+This is the script for the narrators to read, and the slide list for the projector. **Draft 2** (18 November 2026) applies ChatGPT's review of draft 1
+(`research/reviews/CHATGPT-REVIEW-DRAFT1.md`); the changes are listed at the end. Draft 1 was written
 from the research report `research/RESEARCH-REPORT.md` (v2). It also applies ChatGPT's re-check of v2
 (`research/reviews/CHATGPT-RECHECK-V2.md`), whose corrections take precedence. Report sections (§1–§14) are given after the
 tags so that each line can be traced; "R" marks a point from the re-check.
@@ -44,6 +45,7 @@ tags so that each line can be traced; "R" marks a point from the re-check.
 | ukrainian account / russian account | A claim found only in one government's statements, with who said it and when. |
 | court | A finding of a court (a Ukrainian court; the European Court of Human Rights), with what it did and did not decide. |
 | estimate | An uncertain number, with what it counts. |
+| poll | An opinion survey, with who asked and when. |
 | disputed | Identifiable sources disagree. The line says how. |
 | scholarship | Historians' interpretation, described as such. |
 | page | A statement about this page itself. |
@@ -104,14 +106,13 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ▸ **MAP:** `map-ukraine`, the whole country, Crimea marked.
 - For most of the twentieth century, Ukraine and Russia were two republics inside one state, the Soviet Union. *(established)* §1
 - In 1954, a Soviet decree moved the Crimean region from the Russian republic to the Ukrainian republic. The reasons given were economic and geographic ties. *(record)* §1
-- From 1992, Russia's parliament would claim the transfer had been illegal. *(russian account)* §1, §3
 
 ▸ **CARD:** "Crimean Tatars: deported May 1944; returning from the late 1980s".
 - In May 1944, Stalin's government deported the Crimean Tatars, the peninsula's native Muslim people, from Crimea. From the late 1980s, they began to return. *(established)* §1
 
 ▸ **CARD:** "2001 census: declared nationality". Ukraine: 77.8% Ukrainian, 17.3% Russian. Crimea (without Sevastopol): 58.3% Russian, 24.3% Ukrainian, 12.0% Crimean Tatar.
 - Ukraine's census of 2001 asked people their nationality. About three in four said Ukrainian, and about one in six Russian. In Crimea, most said Russian. *(record)* R
-- That is not the same as the language people spoke at home, or how they voted. *(page)* §1
+- That is not the same as the language people spoke at home, or how they voted. *(record)* §1
 
 ### 2. Sovereignty
 ▸ **CARD:** "16 July 1990: Declaration of State Sovereignty".
@@ -126,7 +127,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ▸ **ART:** `art-ballot`, a ballot box and voting slip, 1991.
 - On the first of December, the people voted. About ninety per cent said yes, on a turnout of eighty-four per cent. *(record)* §1
-- Every region voted yes. In Crimea, fifty-four per cent did. In Donetsk and Luhansk, about eighty-four per cent did. *(record)* §1
+- A majority voted yes in every region. About fifty-four per cent did so in Crimea, and fifty-seven per cent in Sevastopol, which was counted separately. In Donetsk and Luhansk, about eighty-four per cent voted yes. *(record)* §1
 - Leonid Kravchuk was elected president the same day. *(established)* §1
 
 ▸ **CARD:** "8 December 1991: Belavezha · 21 December: Alma-Ata · 25 December: Gorbachev resigns".
@@ -146,7 +147,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ▸ **CARD:** "Budapest, 5 December 1994: Memorandum on Security Assurances". The first two undertakings, quoted.
 - In December 1994, at Budapest, Russia, the United States and Britain signed a memorandum with Ukraine, as Ukraine joined the treaty against the spread of nuclear weapons. *(record)* §2
-- They undertook "to respect the independence and sovereignty and the existing borders of Ukraine", and "to refrain from the threat or use of force" against it. *(record)* §2
+- They pledged to respect Ukraine's independence, sovereignty and existing borders, and to refrain from threatening or using force against its territorial integrity or political independence. *(record)* §2
 - These were assurances. They were not a promise to defend Ukraine with armies. *(established)* §2
 
 ▸ **ART:** `art-train`, a covered train at night.
@@ -158,7 +159,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 - In May 1992, Crimea's parliament declared independence, on conditions, and planned a referendum. Kyiv rejected it. Within weeks, Crimea's parliament revoked the declaration and shelved the referendum. *(record)* R
 
 ▸ **CARD:** "21 May 1992 · 9 July 1993: resolutions of Russia's parliament · 20 July 1993: UN Security Council".
-- Russia's parliament declared the 1954 transfer decision void. The next year, it declared Sevastopol a Russian city. *(record)* §3, R
+- In May 1992, Russia's parliament declared the Russian republic's 1954 decision on the transfer void. The following year, it claimed Russian federal status for Sevastopol. *(record)* §3, R
 - The UN Security Council, in a statement by its President, called that claim without effect. Yeltsin's government distanced itself from its parliament. *(record)* §3
 
 ▸ **CARD:** "1994: Meshkov elected · March 1995: the Crimean presidency abolished".
@@ -190,7 +191,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 - Ukraine sent border guards to the island. The building stopped after Presidents Kuchma and Putin met. *(established)* §4
 
 ▸ **PHOTO:** *Vladimir Putin with Leonid Kuchma* (Presidential Press and Information Office, CC BY 4.0). Caption: "24 December 2003".
-- On Christmas Eve 2003, they signed a treaty on sharing the Sea of Azov and the Kerch Strait, as waters belonging to both countries. *(record)* R
+- On Christmas Eve 2003, they signed a treaty treating the Sea of Azov and the Kerch Strait as internal waters of the two countries. They left the exact boundary for later agreement. *(record)* R
 
 ### 8. The Orange Revolution
 ▸ **CARD:** "2004 presidential election: Yushchenko · Yanukovych".
@@ -199,37 +200,36 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ▸ **PHOTO:** *Orange Revolution, 2004* (Ввласенко, CC BY-SA 3.0).
 - Yanukovych was declared the winner of the runoff on the twenty-fourth of November. Election observers documented serious abuses. *(record)* §5, R
-- Hundreds of thousands of people protested in Kyiv, on Independence Square, the Maidan, for weeks. *(estimate)* §5
+- Large crowds gathered in Kyiv, on Independence Square, the Maidan, for weeks. *(established)* §5
 
 ▸ **CARD:** "3 December 2004: Supreme Court · 26 December re-run: Yushchenko 52.0%, Yanukovych 44.2%".
 - Ukraine's Supreme Court ordered the runoff held again. Yushchenko won it. *(record)* §5
 - As part of the settlement, the constitution was changed to give parliament more power and the president less. *(record)* R
-- In Moscow, officials called it a revolution organised from the West. Its supporters called it a citizens' protest against a stolen election. *(disputed)* §5, R
 
 ### 9. Gas
 ▸ **MAP:** `map-pipelines`, the gas pipelines from Russia across Ukraine to Europe.
-- Most of the gas Russia sold to Europe flowed through pipelines across Ukraine. Ukraine bought Russian gas for itself too. *(established)* §6
+- Ukraine was a major transit route for Russian gas to Europe. Ukraine bought Russian gas for itself too. *(established)* §6
 
 ▸ **PHOTO:** *Strilkove Compressor Station* (Ryeland, CC BY-SA 3.0). Caption: "A Ukrainian gas compressor station, 2013".
 - On New Year's Day 2006, after an argument about price, Russia cut the supply of gas for Ukraine. A deal was made within days, through a company in between. *(established)* R
 
 ▸ **ART:** `art-pipeline-snow`, a pipeline and valves in deep snow.
-- On the first of January 2009, it happened again. This time, by the seventh of January, the gas to Europe stopped too, in the middle of winter. *(record)* §6
-- Sixteen countries of the European Union, and Moldova, were cut off or short of gas. Supply came back on the twentieth of January, under new ten-year contracts. *(record)* §6
+- On the first of January 2009, it happened again. By the seventh of January, Russian gas deliveries through Ukraine to Europe had stopped, in the middle of winter. *(established)* §6
+- The cutoff affected sixteen countries of the European Union, and Moldova. Deliveries resumed on the twentieth of January, under new ten-year contracts. *(established)* §6
 
 ### 10. Bucharest and Georgia
 ▸ **CARD:** "Bucharest, 3 April 2008: 'these countries will become members of NATO'".
 - In 2008, Ukraine's leaders asked to start the process of joining NATO. *(established)* §7
-- At Bucharest, NATO's leaders did not start that process, and set no date. But they declared that Ukraine and Georgia "will become members of NATO". *(record)* §7
+- NATO did not grant either country a Membership Action Plan at Bucharest. It said both "will become members of NATO", gave no date, and agreed to further talks. *(record)* §7
 
 ▸ **CARD:** "Kommersant, 7 April 2008: reported words".
-- A Russian newspaper, Kommersant, later reported from an unnamed source that, in a closed meeting, President Putin told President Bush: "You understand, George, that Ukraine isn't even a state." There is no verified record of the meeting. *(account)* §7
+- A Russian newspaper, Kommersant, later reported from an unnamed source that, in a closed meeting, President Putin told President Bush: "You understand, George, that Ukraine isn't even a state." We have no verified transcript for those words. *(account)* §7
 
-▸ **MAP:** `map-europe-1991` reused, panned to the Caucasus, with Georgia marked.
-- That August, war broke out between Georgia and Russia over the region of South Ossetia. Russian troops advanced deep into Georgia. Russia then recognised South Ossetia and Abkhazia as independent states. *(established)* §7
+▸ **MAP:** `map-georgia-2008`, Georgia, South Ossetia and Abkhazia, August 2008.
+- After months of rising tensions, Georgian forces shelled Tskhinvali, in South Ossetia, on the night of the seventh to the eighth of August. Russian forces then advanced deep into Georgia. Later that month, Russia recognised South Ossetia and Abkhazia as independent. *(established)* §7
 
 ▸ **CARD:** "Pew survey, autumn 2009: Ukraine joining NATO within ten years: 28% for, 51% against".
-- In Ukraine, opinion on NATO was divided. In a survey in 2009, more people opposed joining than supported it. *(record)* §7
+- In Ukraine, opinion on NATO was divided. In a survey in 2009, more people opposed joining than supported it. *(poll)* §7
 
 ## Part 4: The road to February
 
@@ -243,7 +243,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ▸ **ART:** `art-rada-empty`, the empty chamber of Ukraine's parliament.
 - In 2011, Yulia Tymoshenko was sentenced to seven years in prison over the 2009 gas contracts. The European Union called it selective justice. *(record; disputed)* §6
-- In 2012, a new language law kept Ukrainian as the state language, and allowed Russian and other languages official use in places where at least a tenth of the people spoke them. *(record)* R
+- In 2012, a new language law kept Ukrainian as the state language, and allowed regional or minority languages, such as Russian, to be used officially, generally where at least one in ten residents reported that language as their native language. *(record)* R
 
 ▸ **CARD:** "Association Agreement with the European Union: initialled 2012".
 - Yanukovych's government negotiated a far-reaching agreement with the European Union. The EU asked for reforms first, and an end to selective justice. *(established)* §8
@@ -251,7 +251,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ### 12. Euromaidan
 ▸ **CARD:** "21 November 2013".
-- On the twenty-first of November 2013, a week before it was due to be signed, the government suspended its plans for the European agreement. That night, protesters gathered on the Maidan. *(established)* §9
+- On the twenty-first of November 2013, a week before the European summit at Vilnius, Ukraine's government suspended preparations to sign the agreement. That night, protesters gathered on the Maidan. *(established)* §9
 
 ▸ **PHOTO:** *2013-12-01-0044 Євромайдан* (teteria sonnna, CC BY 2.0). Caption: "Kyiv, 1 December 2013".
 - On the thirtieth of November, riot police violently cleared students from the square. The next day, a huge crowd filled central Kyiv. *(established; estimate)* §9
@@ -266,32 +266,35 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ### 13. February
 ▸ **PHOTO:** *Barricade line separating interior troops and protesters … February 18, 2014* (Mstyslav Chernov/Unframe, CC BY-SA 3.0). Caption: "Kyiv, 18 February 2014".
-- On the eighteenth of February, the protests turned into the worst violence in Ukraine since independence. *(established)* §9
+- On the eighteenth of February, three days of deadly violence began in central Kyiv. *(established)* §9, R
 
 ▸ **PHOTO:** *Trade union building … burning* (Mstyslav Chernov/Unframe, CC BY-SA 3.0). Caption: "Trade Union Building fire, February 2014".
+- That night, the Trade Union Building on the Maidan, which the protesters had used as their headquarters, caught fire. *(established)* R
+
+▸ **CARD:** "Instytutska Street, 20 February 2014" over `map-kyiv`, with Instytutska Street marked.
 - On the twentieth of February, dozens of protesters were shot on Instytutska Street. *(record)* §9
-- The United Nations human rights office counts a hundred and eight protesters and others, and thirteen police officers, killed in the Maidan events. *(record)* §9, R
-- In 2023, a Ukrainian court convicted former riot police officers in connection with some of the shootings, and acquitted defendants on other charges. Who fired every shot has not been settled. *(court)* §9, R
+- For the whole period of the Maidan protests, the United Nations human rights office counts a hundred and eight protesters and others, and thirteen law-enforcement officers, killed. *(record)* §9, R
+- In 2023, a Ukrainian court convicted former riot police officers in connection with some of the shootings, and acquitted defendants on other charges. The verdict did not identify every shooter. *(court)* §9, R
 
 ▸ **CARD:** "21 February 2014: the agreement · witnesses: Germany, Poland, France".
-- On the twenty-first, Yanukovych and the opposition leaders signed an agreement to restore the 2004 constitution and hold early elections. Russia's envoy did not sign. *(record)* §9
+- On the twenty-first, Yanukovych and the opposition leaders signed an agreement to restore the constitutional arrangements adopted in 2004, and to hold early elections. Russia's envoy did not sign. *(record)* §9
 - That night, Yanukovych left Kyiv. *(established)* §9
 
 ▸ **ART:** `art-rada-empty` again, with a vote board: "328".
 - On the twenty-second, three hundred and twenty-eight members of parliament voted that Yanukovych had withdrawn from his duties, and called an election for May. It was not the impeachment the constitution describes. *(record)* §9
-- Ukraine's new leaders said parliament had acted because the president had stopped governing. Russia's government called it an unconstitutional coup. *(ukrainian account; russian account)* §9
+- On the third of March, at the United Nations Security Council, Russia's representative called the change of power an unconstitutional coup. *(russian account)* §9, R
 - The next day, parliament made its speaker, Oleksandr Turchynov, acting president. It also voted to repeal the 2012 language law. The repeal was never signed into law. *(record)* §9
 
 ## Part 5: Crimea
 
 ### 14. The twenty-seventh of February
-▸ **CARD:** "Putin, in a documentary aired 8 March 2015".
-- A year later, President Putin said in a television documentary that on the night of the twenty-second of February he had told his officials: "We have to start work on returning Crimea to Russia." *(account)* §9
+▸ **CARD:** "Putin, documentary trailer shown 8 March 2015".
+- In a documentary preview shown in March 2015, President Putin said that on the night of the twenty-second to the twenty-third of February 2014 he told officials to start work on what he called returning Crimea to Russia. *(account)* §9, R
 
 ▸ **ART:** `art-crimea-parliament`, the Crimean parliament building in Simferopol at dawn.
 - Early on the twenty-seventh of February 2014, armed men without insignia seized the parliament of Crimea, in Simferopol. *(established)* §9
-- At first, Russia's government denied that its soldiers were involved. On the seventeenth of April, Putin said Russian troops had stood behind Crimea's self-defence forces. *(russian account)* R
-- The European Court of Human Rights later found that Russia had effective control of Crimea from that day. *(court)* §9, R
+- At first, President Putin said these were local self-defence forces. On the seventeenth of April, Putin said Russian troops had stood behind Crimea's self-defence forces. *(russian account)* R
+- The European Court of Human Rights later found that Russia exercised effective control over Crimea from the twenty-seventh of February, for the purposes of the European human rights convention. *(court)* §9, R
 
 ▸ **MAP:** `map-crimea`, slow zoom out to `map-ukraine`.
 - What happened next is told on the following pages: Crimea, and then the war in the Donbas. *(page)*
@@ -302,18 +305,18 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ▸ **MAP:** `map-ukraine`.
 - In 1991, Ukraine and Russia became independent, and in treaty after treaty promised to respect each other's borders. *(record)*
 - Ukraine gave up the nuclear weapons on its soil, in return for assurances. *(record)*
-- They divided the fleet, and Russia leased Sevastopol. They argued about Crimea, gas, elections and alliances. *(established)*
-- In February 2014, after months of protest and deadly violence in Kyiv, Ukraine's president left, and armed men seized Crimea's parliament. *(established)*
+- They divided the fleet, and Russia leased naval bases in Sevastopol. They argued about Crimea, gas, elections and alliances. *(established)*
+- After months of protests and deadly violence, President Yanukovych left Kyiv. Days later, armed men seized Crimea's parliament. *(established)*
 
 ### Two readings
 ▸ **CARD:** "How historians read the causes".
-- Some historians stress how NATO's growth eastward looked from Moscow, and Russia's sense of losing its place. *(scholarship)* §10
-- Others stress Ukraine's own choices as an independent country, and Russia's pressure and claims on it. *(scholarship)* §10
+- Some historians, such as Richard Sakwa, stress how NATO's growth eastward looked from Moscow, and Russia's sense of losing its place. *(scholarship)* §10
+- Others, such as Serhii Plokhy, stress Ukraine's own choices as an independent country, and Russia's pressure and claims on it. *(scholarship)* §10
 - Explaining why something happened is not the same as deciding who was responsible for each act. *(page)* §10
 
 ### What is still argued about
 ▸ **CARD:** the list below.
-- What the Budapest assurances obliged. In March 2014, Putin suggested that a revolution had created a new state, with which Russia had signed nothing. Ukraine, Britain and the United States said Russia had broken its word. *(russian account; ukrainian account)* R
+- What the Budapest assurances obliged. In March 2014, Putin suggested that a revolution had created a new state, with which Russia had signed nothing. Ukraine, Britain and the United States said jointly that Russia had broken its commitments. *(russian account; account)* R
 - Whether February 2014 was a revolution or a coup. *(disputed)* §9
 - Who fired every shot on the Maidan. *(court; disputed)* §9
 
@@ -328,7 +331,8 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 4. `map-sevastopol`: Sevastopol's bays. Used for chapter 6.
 5. `map-kerch`: the Kerch Strait and Tuzla. Used for chapter 7.
 6. `map-pipelines`: a schematic of the gas pipelines from Russia across Ukraine to the EU. Used for chapter 9.
-7. `map-kyiv`: central Kyiv: the Maidan, Khreshchatyk, Hrushevskoho Street, Instytutska Street, the Rada. Used for chapter 12.
+7. `map-kyiv`: central Kyiv: the Maidan, Khreshchatyk, Hrushevskoho Street, Instytutska Street, the Rada. Used for chapters 12 and 13.
+8. `map-georgia-2008`: Georgia with South Ossetia (Tskhinvali) and Abkhazia, and Russia to the north, with the borders of 2008. Used for chapter 10.
 
 **Painted scenes (no people):**
 - `art-title` (I1)
@@ -359,30 +363,43 @@ close chapter 13 if the owner wishes.
 
 **Total:** about 52 slides across the introduction, 14 chapters and the debrief.
 
-## Points for ChatGPT's review
-- Is each line supported by the report and the re-check, and tagged rightly?
-- Is the balance fair, especially in chapters 8, 13 and 14 and the debrief?
-- Are the simplifications for students aged 12 and up still accurate? For example, "about ninety per cent" for 90.32%, "about
-  four-fifths" for 81.7%, and "cheaper gas" for the Kharkiv discount.
-- Are the picture choices suitable?
+## Changes in draft 2 (after ChatGPT's review of draft 1)
+- **Ch. 1:** the 1992 claim moved to chapter 5; the census limits are tagged `record`.
+- **Ch. 3:** a majority in every region; Sevastopol (57%) counted separately.
+- **Ch. 4:** the Budapest undertakings paraphrased in full; quotation marks only on screen for the actual text.
+- **Ch. 5:** the Russian republic's 1954 decision; "Russian federal status" for Sevastopol.
+- **Ch. 7:** the Azov treaty as internal waters, with the boundary left for later.
+- **Ch. 8:** "large crowds"; the unattributed "organised from the West" line dropped.
+- **Ch. 9:** "a major transit route"; deliveries through Ukraine stopped; tags `established`.
+- **Ch. 10:**
+  - no Membership Action Plan, with further talks;
+  - "no verified transcript for those words";
+  - Georgia's shelling of Tskhinvali before the Russian advance;
+  - a new map dated 2008 (`map-georgia-2008`);
+  - Pew tagged `poll` (a new tag).
+- **Ch. 11–12:** the language law's census-based threshold; the Vilnius summit.
+- **Ch. 13:**
+  - three days of deadly violence (no superlative);
+  - the Trade Union Building fire in its own line;
+  - a new Instytutska card;
+  - 108 and 13 for the whole Maidan period, "law-enforcement officers";
+  - "the verdict did not identify every shooter";
+  - the 2004 arrangements;
+  - the coup line attributed to Russia's representative at the UN on 3 March.
+- **Ch. 14:** the trailer of 8 March 2015; Putin named for the denial and the acknowledgement; the ECHR's 27 February date
+  stated.
+- **Debrief:** "naval bases"; Yanukovych left Kyiv; Sakwa and Plokhy named; the Budapest statement attributed jointly.
 
-## Prompt for ChatGPT (copy everything below the line into a new chat, with this file and RESEARCH-REPORT.md attached)
+## Prompt for ChatGPT (short final check; copy everything below the line into a new chat, with this file attached)
 
 ---
 
-I am building an educational history slideshow page for students aged 12 and up: "Ukraine and Russia: Escalation,
-1991–2014", the background page to a series on the Russia–Ukraine war of 2014–2015. You checked the research twice. Attached
-are the narration script (draft 1) and the research report (v2); your second check's corrections were applied in the script
-(marked R).
+You reviewed draft 1 of the narration for "Ukraine and Russia: Escalation, 1991–2014", an educational slideshow page for
+students aged 12 and up. Attached is draft 2, with your changes applied (listed in "Changes in draft 2").
 
-Please review the narration only (the lines under each chapter and the welcome), not the production notes:
-1. Accuracy: any line that is wrong, overstated, or not supported by the report or your checks. Give a table: chapter, current
-   words, problem, replacement, source.
-2. Tags: any line with the wrong tag.
-3. Balance: are the Ukrainian and Russian governments' positions stated fairly and attributed, and kept apart from court
-   findings and records?
-4. Simplifications for students: still accurate?
-5. Pictures: is each photo suitable for its slide and caption, and for students?
+Please do a short final check of the narration lines only:
+1. Were your changes applied correctly?
+2. Is any line now wrong, unsupported, mis-tagged or unbalanced?
 
-Keep the answer under about 1,500 words, in a form that can be saved as a file, ending with a verdict: ready to record, or
-revise first.
+Give a short table (chapter, current words, problem, replacement, source) and a verdict: ready to record, or not. Under about
+800 words, in a form that can be saved as a file.
