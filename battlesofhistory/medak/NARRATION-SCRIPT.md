@@ -64,7 +64,7 @@ short implementation check, not another wholesale rewrite".
 "Pocket" (12 km: Divoselo, Čitluk, Počitelj and their hamlets). The pocket's outline is approximate: the indictment gives
 about four to five by five to six kilometres, not a surveyed boundary (S1). Lički Osik carries no control label.
 
-**Colours (owner to confirm):** the first-named side is red: the **Croatian Army and police (HV and MUP) red**; the
+**Colours (owner's decision, 18 November 2026):** the first-named side is red: the **Croatian Army and police (HV and MUP) red**; the
 **Krajina Serb Army (SVK) blue**; the **UN battalion (Canadians and French) white with UN light blue**, as a third side.
 Civilians are drawn without a side colour.
 
