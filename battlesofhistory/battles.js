@@ -337,8 +337,8 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'medak', osmArea: 6, progress: 35, lat: 44.49, lon: 15.42, osmZoom: 11, osmNote: 'approximate: the villages of the Medak pocket (Divoselo, Čitluk, Počitelj) south of Gospić',
-    order: 26,
+    folder: 'medak', osmArea: 6, progress: 100, lat: 44.49, lon: 15.42, osmZoom: 11, osmNote: 'approximate: the villages of the Medak pocket (Divoselo, Čitluk, Počitelj) south of Gospić',
+    order: 26, readyOrder: 22,
     era: 'Croatia, 1993',
     title: 'Medak Pocket',
     date: '9–17 September 1993', year: 1993,
@@ -348,7 +348,7 @@ window.BATTLES = [
     cover: 'images/cover.jpg', coverPos: '50% 60%',   // the Velebit range; the Medak pocket lies on its far (Lika) side
     coverCredit: 'The Velebit mountains, Croatia, seen from the Adriatic coast, 25 October 2007. The Medak pocket lay at the foot of the range on its inland (Lika) side. Photo: Modzzak, Wikimedia Commons (File:Velebit-2.JPG), public domain',
     chapters: [ { title: 'Lika at war, 1991–1993', ev: 'A war in Lika' }, { title: 'Operation Pocket 93', ev: 'Early morning, the ninth of September' }, { title: 'The peacekeepers', ev: 'CANBAT One' }, { title: 'The courts', ev: 'Accused in The Hague' }, { title: 'Remembering', ev: 'Gospić remembers' } ],   // small chapter cards on the home page
-    status: 'in progress'
+    status: 'ready'
   },
   {
     folder: 'mogadishu1993', progress: 100, lat: 2.0470, lon: 45.3290, osmZoom: 14, osmNote: 'approximate: central Mogadishu around the Bakara Market, where the raid and the first helicopter crash took place',
