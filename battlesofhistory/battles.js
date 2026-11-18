@@ -337,7 +337,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'medak', osmArea: 6, progress: 1, lat: 44.49, lon: 15.42, osmZoom: 11, osmNote: 'approximate: the villages of the Medak pocket (Divoselo, Čitluk, Počitelj) south of Gospić',
+    folder: 'medak', osmArea: 6, progress: 35, lat: 44.49, lon: 15.42, osmZoom: 11, osmNote: 'approximate: the villages of the Medak pocket (Divoselo, Čitluk, Počitelj) south of Gospić',
     order: 26,
     era: 'Croatia, 1993',
     title: 'Medak Pocket',
@@ -345,8 +345,8 @@ window.BATTLES = [
     place: 'The Medak pocket south of Gospić, in the Lika region of Croatia',
     sides: 'Croatian Army (HV) and special police vs. Army of the Republic of Serbian Krajina (SVK)',
     blurb: 'In September 1993 the Croatian Army took a small salient of Serb-held land near Gospić. Under a ceasefire, UN peacekeepers, Canadian and French, moved in to separate the two sides and came under fire; behind the Croatian lines the villages were destroyed and Serb civilians and prisoners were killed. A Croatian court later convicted one of the commanders and acquitted another.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner
-    coverCredit: '',
+    cover: 'images/cover.jpg', coverPos: '50% 60%',   // the Velebit range; the Medak pocket lies on its far (Lika) side
+    coverCredit: 'The Velebit mountains, Croatia, seen from the Adriatic coast, 25 October 2007. The Medak pocket lay at the foot of the range on its inland (Lika) side. Photo: Modzzak, Wikimedia Commons (File:Velebit-2.JPG), public domain',
     status: 'in progress'
   },
   {
