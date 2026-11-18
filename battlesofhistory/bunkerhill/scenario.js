@@ -759,7 +759,7 @@ Object.assign(window.BUNKERHILL_SCENARIO, {
   set(2, { zoom: 1.3, focus: pREDOUBT, photo: Object.assign({}, IMG.page, { at: 4, secs: 12 }), markers: [ { ...pREDOUBT, label: 'the redoubt: digging from about midnight' } ], orders: [ { id: 'pDig', visible: true } ] });
   // Part 2: the battle
   set(3, bos({ zoom: 'fit', markers: [ { ...bCOPPS, label: 'Copp’s Hill battery', side: 'allied' }, { ...bBREED, label: 'the new fort under fire', side: 'french' } ], orders: [
-    { id: 'bShip', visible: true, to: off(bCHARLES, 120, 120), speed: 20, state: 'attack' }, { id: 'bBrit', visible: true }, { id: 'bWard', visible: true } ] }));
+    { id: 'bShip', visible: true, to: B(1380, 580), via: [B(1540, 650)], speed: 20, state: 'attack' }, { id: 'bBrit', visible: true }, { id: 'bWard', visible: true } ] }));
   set(4, bos({ zoom: 'fit', markers: [ { ...bMOULTON, label: 'Moulton’s Point: Gage’s choice' }, { ...bNECKC, label: 'Charlestown Neck: Clinton’s proposal (according to accounts)' } ], orders: [ { id: 'bBrit', visible: true }, { id: 'bShip', visible: true } ] }));
   set(5, { zoom: 'fit', markers: [ { ...pMOULTON, label: 'the landing, early afternoon', side: 'allied' } ], orders: [
     { id: 'pDig', gone: true }, { id: 'pPrescott', visible: true }, { id: 'pBreast', visible: true }, { id: 'pShip1', visible: true }, { id: 'pShip2', visible: true },
