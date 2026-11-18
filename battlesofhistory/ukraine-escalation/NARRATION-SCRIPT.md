@@ -51,8 +51,8 @@ tags so that each line can be traced; "R" marks a point from the re-check.
 | scholarship | Historians' interpretation, described as such. |
 | page | A statement about this page itself. |
 
-**Colours:** the first-named side is red: **Ukraine red, Russia blue** (to confirm with the owner; the battle pages that follow
-should use the same).
+**Colours:** the first-named side is red: **Ukraine red, Russia blue** (confirmed by the owner, 18 November 2026; the battle pages
+that follow use the same).
 
 **Slide kinds** (each slide line names its kind and its file):
 - **MAP:** a painted map by ChatGPT, from Claude's base map. It may slowly zoom or pan within the slide; the move is noted.
