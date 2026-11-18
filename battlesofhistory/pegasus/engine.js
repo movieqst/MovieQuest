@@ -370,7 +370,7 @@ function moveFormation(f) {
 function callFire(o) {
   if (o.kind === 'arclight' && o.along) { const [a, b] = o.along, n = o.n || 8; for (let i = 0; i < n; i++) { const t = i / (n - 1); strikes.push({ kind: 'arclight', x: a[0] + (b[0] - a[0]) * t + (jitter(i, 51) - .5) * 80, y: a[1] + (b[1] - a[1]) * t, r: o.r || 130, t0: simTime, delay: (o.delay || 0) + i * .35, dmg: o.dmg || 55, done: false }); } return; }
   const sp = (PART.support || {})[o.kind] || {};
-  strikes.push({ kind: o.kind, x: o.at.x, y: o.at.y, r: o.r || sp.r || 70, t0: simTime, delay: o.delay !== undefined ? o.delay : (sp.delay || 4), dmg: o.dmg !== undefined ? o.dmg : (sp.dmg || 30), done: false, by: o.by, quiet: o.kind === 'burn' || o.kind === 'dud' || o.kind === 'smoke', life: o.life });
+  strikes.push({ kind: o.kind, x: o.at.x, y: o.at.y, r: o.r || sp.r || 70, t0: simTime, delay: o.delay !== undefined ? o.delay : (sp.delay || 4), dmg: o.dmg !== undefined ? o.dmg : (sp.dmg || 30), done: false, by: o.by, quiet: o.kind === 'burn' || o.kind === 'dud' || o.kind === 'smoke' || o.kind === 'hit', life: o.life });
 }
 function stepStrikes() {
   const mul = mode === 'watch' ? .35 : 1;
@@ -381,7 +381,7 @@ function stepStrikes() {
     if (mode === 'command' && st.kind !== 'arclight' && !st.quiet) { formations.forEach(f => { if (f.side !== player && alive(f) && !f.known && dist(f, st) < st.r + 40) f.known = true; }); }
   });
   strikes = strikes.filter(st => !st.done || simTime - st.hitAt < 1);
-  effects = effects.filter(e => simTime - e.t < (e.kind === 'napalm' ? 9 : e.kind === 'burn' || e.kind === 'smoke' ? (e.life || 40) : e.kind === 'dud' ? 5 : 4));
+  effects = effects.filter(e => simTime - e.t < (e.kind === 'napalm' ? 9 : e.kind === 'burn' || e.kind === 'smoke' ? (e.life || 40) : e.kind === 'dud' ? 5 : e.kind === 'hit' ? 2.5 : 4));
 }
 
 /* ---------------- helicopters: lifts in and out, medevac and gunship runs ---------------- */

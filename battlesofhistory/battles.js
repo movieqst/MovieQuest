@@ -38,5 +38,17 @@ window.BATTLES = [
     cover: 'images/32-art-bridge-night.jpg',
     coverCredit: 'Painting: Battle Games, original artwork',
     status: 'ready'
+  },
+  {
+    folder: 'nagashino',
+    era: 'Sengoku Japan',
+    title: 'Battle of Nagashino',
+    date: '28 June 1575', year: 1575,
+    place: 'Shitaragahara, Mikawa province, Japan',
+    sides: 'Oda Nobunaga and Tokugawa Ieyasu vs. Takeda Katsuyori',
+    blurb: 'Three thousand matchlock gunners behind a palisade meet the finest cavalry in Japan. The battle that is said to have ended the age of the mounted samurai.',
+    cover: 'images/cover.jpg',
+    coverCredit: '',
+    status: 'in progress'
   }
 ];
