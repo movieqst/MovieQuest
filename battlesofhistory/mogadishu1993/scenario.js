@@ -1260,7 +1260,9 @@ Object.assign(window.MOGADISHU_SCENARIO, {
   const PI = Math.PI, E = 0, Wd = PI, N = -PI / 2, So = PI / 2;
   const GEO = { somalia: { lat0: -0.38987, lat1: 10.38987, lon0: 38.58606, lon1: 53.01394 }, mogadishu: { lat0: 2.004576, lat1: 2.085424, lon0: 45.271067, lon1: 45.378933 },
                 battle: { lat0: 2.0391567, lat1: 2.0728433, lon0: 45.3045278, lon1: 45.3494722 }, beledweyne: { lat0: 4.7100507, lat1: 4.7639493, lon0: 45.1669444, lon1: 45.2390556 },
-                rabat: { lat0: 33.989576, lat1: 34.070424, lon0: -6.8800365, lon1: -6.7499635 } };
+                rabat: { lat0: 33.989576, lat1: 34.070424, lon0: -6.8800365, lon1: -6.7499635 },
+                world: { lat0: -8.318002, lat1: 52.318002, lon0: -26.098692, lon1: 61.098692 }, nafrica: { lat0: 16.156665, lat1: 49.843335, lon0: -21.777832, lon1: 31.777832 },
+                morocco: { lat0: 29.120733, lat1: 37.879267, lon0: -12.502185, lon1: 1.502185 } };
   const at = (g, lat, lon) => ({ x: Math.round((lon - g.lon0) / (g.lon1 - g.lon0) * 2400), y: Math.round((g.lat1 - lat) / (g.lat1 - g.lat0) * 1800) });
   const R = (la, lo) => at(GEO.somalia, la, lo), M = (la, lo) => at(GEO.mogadishu, la, lo), B = (la, lo) => at(GEO.battle, la, lo),
         K = (la, lo) => at(GEO.beledweyne, la, lo), Q = (la, lo) => at(GEO.rabat, la, lo);
@@ -1301,7 +1303,8 @@ Object.assign(window.MOGADISHU_SCENARIO, {
     world: { w: 2400, h: 1800 },
     spokenTitles: true,
     mainMap: 'somalia', terrain: 'somalia-painting.jpg', geo: GEO,
-    altMaps: { mogadishu: 'mogadishu-painting.jpg', battle: 'battle-painting.jpg', beledweyne: 'beledweyne-painting.jpg', rabat: 'rabat-painting.jpg' },
+    altMaps: { mogadishu: 'mogadishu-painting.jpg', battle: 'battle-painting.jpg', beledweyne: 'beledweyne-painting.jpg', rabat: 'rabat-painting.jpg',
+               world: 'world-painting.jpg', nafrica: 'nafrica-painting.jpg', morocco: 'morocco-painting.jpg' },
     altLabels: {
       mogadishu: [ { ...mAIRPORT, y: mAIRPORT.y + 34, text: 'Airport' }, { ...mBAKARA, x: mBAKARA.x - 80, text: 'Bakara Market', small: true }, { ...mOLYMPIC, y: mOLYMPIC.y - 30, text: 'Olympic Hotel', small: true },
         { ...mSTADIUM, y: mSTADIUM.y - 30, text: 'Stadium', small: true }, { ...mPORT, y: mPORT.y + 30, text: 'New Port', small: true }, { ...mVILLA, y: mVILLA.y + 28, text: 'Villa Somalia', small: true },
@@ -1539,8 +1542,16 @@ Object.assign(window.MOGADISHU_SCENARIO, {
   set(27, { zoom: 'fit', markers: [ { ...rMOG, label: 'UNOSOM II’s last troops leave, March 1995' } ] });
   set(28, { zoom: 'fit', markers: [ { ...rWEST, label: '◀ Rwanda, about 1,500 km to the west' } ] });
   // Part 7: the film and the history
+  // the zoom in to Rabat (owner, 18 November 2026): from Somalia to Morocco, North Africa, Morocco, then Rabat and Salé
+  const Wm = (la, lo) => at(GEO.world, la, lo), Nm = (la, lo) => at(GEO.nafrica, la, lo), Mm = (la, lo) => at(GEO.morocco, la, lo);
+  EV[29].mapSeq = [
+    { map: 'world', at: 0, markers: [ { ...Wm(2.046, 45.318), label: 'Mogadishu: the battle, 1993' }, { ...Wm(34.02, -6.84), label: 'Rabat: the film, 2001' } ] },
+    { map: 'nafrica', at: 4, markers: [ { ...Nm(34.02, -6.84), label: 'Rabat, Morocco' } ] },
+    { map: 'morocco', at: 8, markers: [ { ...Mm(34.02, -6.84), label: 'Rabat and Salé' }, { ...Mm(34.261, -6.58), label: 'Kénitra' } ] },
+    { map: 'rabat', at: 12, markers: null } ];   // null: the chapter's own markers (set below)
   set(29, rab({ zoom: 'fit', markers: [ { ...qSIDI, label: 'Salé, Sidi Moussa: streets dressed as Mogadishu ' + AP }, { ...qRAHMA, label: 'Hay Arrahma, Salé: the first crash site set ' + AP },
     { ...qNORTH, label: 'Kénitra air base, about 35 km north: filming began here, 8 March 2001' } ] }));
+  EV[29].mapSeq[3].markers = EV[29].markers;
   set(30, rab({ zoom: 'fit', markers: [ { ...qSIDI, label: 'filmed in Salé' }, { ...qRABAT, label: 'Rabat' } ] }));
 
 
@@ -1567,3 +1578,4 @@ Object.assign(window.MOGADISHU_SCENARIO, {
   Object.assign(IS[4], { markers: [ { ...rMOG, label: 'Mogadishu: the battle, October 1993' }, { ...rBELED, label: 'Beledweyne: the Somalia Affair, March 1993' } ] });
   Object.assign(IS[5], { media: [IMG.chalk] });
 })();
+

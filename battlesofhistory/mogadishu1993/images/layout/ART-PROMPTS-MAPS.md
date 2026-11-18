@@ -118,3 +118,79 @@ THE COAST: the Atlantic Ocean (blue in the base) fills the TOP LEFT. It touches 
 THE RIVER: the Bou Regreg winds from the bottom right up to the sea, between Rabat (south, left) and Sale (north, right), exactly along the blue-green line of the base; keep its estuary and bends exactly.
 THE CITIES: a large North African city along the light lines of the base (its main streets): white and cream houses with flat roofs and inner courtyards; the two old walled medinas by the river mouth (dense, narrow lanes, old stone walls); the Kasbah of the Oudayas on the point at the river mouth; newer apartment districts and boulevards with palm trees further out. Do not add streets.
 ```
+
+---
+
+# The three zooms toward Rabat, before map 5 (added 18 November 2026)
+
+The owner asked for three zooms before the Rabat map, so the film chapters start wide and move in: from Somalia to
+Morocco, then North Africa, then Morocco, then Rabat (map 5). Made by `tools/draw-maps.py world nafrica morocco`.
+
+---
+
+# Map 6 of 8: from Somalia to Morocco (9000 x 6750 km), the first zoom toward Rabat
+
+**How:** open a NEW chat in ChatGPT for this map only. Attach `world-base.png` first, then `world-guide.png`. Paste the text
+below as one message. If ChatGPT offers **Edit** on the first picture, use it on the whole picture. Download the result as
+PNG and send it to Claude. If a coastline comes back in the wrong place, reply: "The coast is in the wrong place. Keep it
+exactly where it is in the first picture."
+
+```text
+Please EDIT the first picture I attach (the BASE map); do not make a new picture. It is a real map made from elevation data, seen straight from above, north at the top. The second picture is the GUIDE: the same map with labels, only to tell you what is where; do not copy any of its text, dots, lines, grid or frame.
+This is for an educational history page for students aged 12 and up.
+STRICT RULES:
+1. Seen from DIRECTLY ABOVE, like a satellite photograph from space: no tilt, no perspective, no horizon, no sky, no curve of the Earth, nothing seen from the side.
+2. Keep EVERYTHING exactly where it is in the base: every coastline, island, sea and mountain range, the same size and in the same place. Same size and shape: 2400 x 1800 pixels, landscape. Do not crop, zoom, rotate or move anything.
+3. STYLE (described here, not shown): a realistic, finely detailed painted satellite view in natural colours, in clear daylight, with NO clouds; gentle shading. Calm and neutral.
+4. No people, vehicles, aircraft, ships, smoke or fires. No text, labels, symbols, flags, grid, borders, country lines or frame.
+
+MAP: Africa, southern Europe and the Middle East, about 9000 x 6750 km, seen from space: from the Atlantic coast of Africa on the left to the Arabian Sea on the right, from Britain and France at the top to central Africa at the bottom.
+THE SEA (most important): the Atlantic Ocean on the left; the Mediterranean Sea across the top; the Black Sea and the Caspian Sea at the top right; the Red Sea, the Persian Gulf, the Gulf of Aden and the Indian Ocean on the right. Keep every coastline exactly where the base has it, and do NOT add sea anywhere else.
+LAND: the great golden and pale orange sand of the Sahara across the north of Africa, with darker rocky mountains (the Atlas in the far north-west, the Hoggar and Tibesti in the middle); the green ribbon of the Nile valley through Egypt; the dry brown Arabian peninsula; the green and brown highlands of Ethiopia at the right; below the Sahara, the land turns gradually from tan savanna to the deep green forests of central Africa at the bottom; the horn of Africa (Somalia) as dry brown and tan land pointing into the Indian Ocean. In Europe, green farmland and forests, the white-topped Alps. No cities, no roads.
+```
+
+---
+
+# Map 7 of 8: North Africa and the Mediterranean (5000 x 3750 km), the second zoom
+
+**How:** open a NEW chat in ChatGPT for this map only. Attach `nafrica-base.png` first, then `nafrica-guide.png`. Paste the text
+below as one message. If ChatGPT offers **Edit** on the first picture, use it on the whole picture. Download the result as
+PNG and send it to Claude. If a coastline comes back in the wrong place, reply: "The coast is in the wrong place. Keep it
+exactly where it is in the first picture."
+
+```text
+Please EDIT the first picture I attach (the BASE map); do not make a new picture. It is a real map made from elevation data, seen straight from above, north at the top. The second picture is the GUIDE: the same map with labels, only to tell you what is where; do not copy any of its text, dots, lines, grid or frame.
+This is for an educational history page for students aged 12 and up.
+STRICT RULES:
+1. Seen from DIRECTLY ABOVE, like a satellite photograph from space: no tilt, no perspective, no horizon, no sky, no curve of the Earth, nothing seen from the side.
+2. Keep EVERYTHING exactly where it is in the base: every coastline, island, sea and mountain range, the same size and in the same place. Same size and shape: 2400 x 1800 pixels, landscape. Do not crop, zoom, rotate or move anything.
+3. STYLE (described here, not shown): a realistic, finely detailed painted satellite view in natural colours, in clear daylight, with NO clouds; gentle shading. Calm and neutral.
+4. No people, vehicles, aircraft, ships, smoke or fires. No text, labels, symbols, flags, grid, borders, country lines or frame.
+
+MAP: North Africa, the Mediterranean and southern Europe, about 5000 x 3750 km, seen from very high: from the Atlantic and the Canary Islands on the left to Greece and the edge of Egypt on the right.
+THE SEA (most important): the Atlantic Ocean on the left, the Mediterranean Sea across the middle, from the narrow Strait of Gibraltar between Spain and Morocco to Greece, with Sardinia, Corsica, Sicily and the Balearic islands, and a corner of the Black Sea at the top right. Keep every coastline and island exactly where the base has it, and do NOT add sea anywhere else.
+LAND: the bottom half is the Sahara: golden and orange sand seas, pale gravel plains and dark rocky plateaus; the Atlas mountains of Morocco and Algeria as dark brown and grey ridges along the north-west coast, with green slopes facing the sea; a thin green coastal strip in Morocco, Algeria and Tunisia. At the top, Spain, France, Italy and the Balkans in greens and browns, with the snowy Alps and Pyrenees. Cities only as tiny pale smudges where the guide shows them. No roads.
+```
+
+---
+
+# Map 8 of 8: Morocco and the Strait of Gibraltar (1300 x 975 km), the third zoom
+
+**How:** open a NEW chat in ChatGPT for this map only. Attach `morocco-base.png` first, then `morocco-guide.png`. Paste the text
+below as one message. If ChatGPT offers **Edit** on the first picture, use it on the whole picture. Download the result as
+PNG and send it to Claude. If a coastline comes back in the wrong place, reply: "The coast is in the wrong place. Keep it
+exactly where it is in the first picture."
+
+```text
+Please EDIT the first picture I attach (the BASE map); do not make a new picture. It is a real map made from elevation data, seen straight from above, north at the top. The second picture is the GUIDE: the same map with labels, only to tell you what is where; do not copy any of its text, dots, lines, grid or frame.
+This is for an educational history page for students aged 12 and up.
+STRICT RULES:
+1. Seen from DIRECTLY ABOVE, like a satellite photograph from space: no tilt, no perspective, no horizon, no sky, no curve of the Earth, nothing seen from the side.
+2. Keep EVERYTHING exactly where it is in the base: every coastline, island, sea and mountain range, the same size and in the same place. Same size and shape: 2400 x 1800 pixels, landscape. Do not crop, zoom, rotate or move anything.
+3. STYLE (described here, not shown): a realistic, finely detailed painted satellite view in natural colours, in clear daylight, with NO clouds; gentle shading. Calm and neutral.
+4. No people, vehicles, aircraft, ships, smoke or fires. No text, labels, symbols, flags, grid, borders, country lines or frame.
+
+MAP: Morocco and the Strait of Gibraltar, about 1300 x 975 km, seen from very high: from the Atlantic coast (left) to the Algerian border (right), from southern Spain (top) to the edge of the Sahara (bottom).
+THE SEA (most important): the Atlantic Ocean on the left; the Mediterranean at the top right; the narrow Strait of Gibraltar at the top between Spain and Morocco. Keep every coastline exactly where the base has it, and do NOT add sea anywhere else.
+LAND: the green and golden farmland of the Atlantic coastal plain around Kenitra, Rabat and Casablanca; the Rif mountains in the north as green-brown ridges; the Middle Atlas and High Atlas as long ranges of grey-brown rock, the highest peaks with a little snow; south and east of the mountains, dry tan and orange land toward the Sahara; rivers as thin dark lines exactly along the base's blue lines. In Spain at the top, dry olive-green hills. Cities (Rabat and Sale, Casablanca, Fes, Marrakesh, Tangier) only as small pale-grey smudges where the guide shows them. No roads.
+```

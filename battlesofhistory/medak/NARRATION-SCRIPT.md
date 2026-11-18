@@ -1,4 +1,4 @@
-# Medak Pocket, 9–17 September 1993: narration script (DRAFT 2, a short implementation check before recording)
+# Medak Pocket, 9–17 September 1993: narration script (DRAFT 3, ready to record)
 
 This is what the narrators will read. **Draft 2** (18 November 2026) applies ChatGPT's review of draft 1
 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`): every Required change and the Optional ones, listed at the end. Draft 1 was
@@ -6,7 +6,8 @@ written from the research report `research/reports/Medak Pocket 1993.md` as corr
 (`research/reviews/CHATGPT-REVIEW-REPORT.md`). Source numbers S1–S19 after the tags are the draft 1 review's source
 register (reproduced at the end of this file), so each line can be traced. Every quotation and claim the review marked
 NOT FOUND has been removed or replaced with the review's narrower wording. ChatGPT's verdict: after these changes, "a
-short implementation check, not another wholesale rewrite".
+short implementation check, not another wholesale rewrite". **Draft 3** (18 November 2026) applies that check
+(`research/reviews/CHATGPT-REVIEW-DRAFT2.md`): its seven Required edits and its answers to the seven final checks; listed at the end.
 
 **Owner's rules for this page:**
 - No copyrighted material: no press photographs, book covers, documentary stills or copied text. Books and articles (Carol
@@ -64,7 +65,7 @@ short implementation check, not another wholesale rewrite".
 "Pocket" (12 km: Divoselo, Čitluk, Počitelj and their hamlets). The pocket's outline is approximate: the indictment gives
 about four to five by five to six kilometres, not a surveyed boundary (S1). Lički Osik carries no control label.
 
-**Colours (owner to confirm):** the first-named side is red: the **Croatian Army and police (HV and MUP) red**; the
+**Colours (owner's decision, 18 November 2026):** the first-named side is red: the **Croatian Army and police (HV and MUP) red**; the
 **Krajina Serb Army (SVK) blue**; the **UN battalion (Canadians and French) white with UN light blue**, as a third side.
 Civilians are drawn without a side colour.
 
@@ -81,13 +82,13 @@ Civilians are drawn without a side colour.
     independently reconciled) (S18).
   - HRT, Croatian public broadcaster (9 September 2026): Croatian Army / Interior Ministry police killed: 6 / 7; wounded:
     53 (as reported by HRT) (S17).
-  - Veterans Affairs Canada: Canadian soldiers wounded during the operation: 4. No Canadian killed in the fighting (S5).
+  - National Defence and Veterans Affairs Canada (September 2023): Canadians wounded in the fighting: 4. Captain Jim Decoste died in a vehicle accident during the operation (S5, S22).
   - These figures measure different things. They must not be merged into one range. Combat deaths of soldiers are not in
     themselves crimes.
 - *Destruction:* about 164 houses and 148 outbuildings listed in the ICTY indictment (an allegation; not an independently
   verified census) (S1).
-- *How big was the pocket?* About 4–5 km by 5–6 km (ICTY indictment) (S1); 48 km² (a reference source); "about 225 square
-  kilometres" (a Croatian defence minister, anniversary speech). They may describe different areas, and are not averaged.
+- *How big was the pocket?* About four to five kilometres wide and five to six kilometres long (ICTY indictment, paragraph 36) (S1).
+  Other figures in circulation (48 km², 225 km²) are left out until their sources and areas are established.
 
 **Pronunciation guide (for the voices file, lowercase respellings):**
 Gospić *gos-pitch* · Divoselo *dee-vo-seh-lo* · Čitluk *chit-look* · Počitelj *po-chi-tel* · Medak *meh-dak* · Lika
@@ -104,7 +105,7 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 
 ### I1. MEDAK POCKET 1993
 - On the ninth of September 1993, the Croatian Army and police launched an attack on a Serb-held area south of Gospić, in the Lika region of Croatia. It was called the Medak Pocket. *(established)*
-- After a week of fighting and international pressure, Croatia agreed to withdraw, and to hand the area to United Nations peacekeepers. *(established)* S3
+- On the fifteenth of September, the two sides agreed to a ceasefire, and to United Nations control of the pocket after the Croatian withdrawal. *(established)* S3
 - Canadian and French peacekeepers entered between the fifteenth and the seventeenth of September. They found extensive destruction, and bodies. They also found three survivors, whom they protected and evacuated. *(canbat)* S4
 - In 2008 a court in Zagreb found that war crimes against Serb civilians and prisoners had been committed. It convicted one Croatian commander, and acquitted another. *(court: conviction; court: acquittal; monitoring report)* S6
 
@@ -155,14 +156,14 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 
 ### 4. The shelling of Gospić
 *Map: Lika · summer 1993*
-- Croatian accounts say that in 1993 the town of Gospić was often shelled by Krajina Serb artillery from the pocket area. *(croatian sources)*
+- Croatian accounts say that in 1993 the town of Gospić was often shelled by Krajina Serb artillery near Medak. *(croatian sources)* S24
 - Croatia's Ministry of Defence presents the operation as a military action to end that threat to Gospić. *(government: Croatia)* S13
 
 ## Part 2: Operation "Pocket 93", 9 to 15 September
 
 ### 5. Early morning, the ninth of September
 *Map: Lika · 9 September 1993, early morning*
-- The Croatian name for the operation was "Džep devedeset tri": Pocket 93. *(croatian sources)*
+- The Croatian operation was called "Džep devedeset tri": Pocket Ninety-Three. *(croatian sources)* S25
 - The attack began early in the morning of the ninth of September 1993. A United Nations investigation dates it to about six o'clock. *(un)* S2
 - According to the tribunal's indictment, the attacking forces included the Croatian Army's 9th Guards Brigade, other army and Home Guard units, and special police of the Interior Ministry. Their exact strength is uncertain. *(indictment; estimate)* S1
 - According to the indictment, Rahim Ademi was the acting commander of the Gospić Military District, and Mirko Norac commanded the 9th Guards Brigade and a combat group called Sector One. That is the prosecution's description, not a court finding. *(indictment)* S1
@@ -178,7 +179,7 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 *Map: Pocket · 9 to 17 September 1993*
 - Croatian courts later established that civilians and prisoners of war were killed. *(court: finding; monitoring report)* S6
 - The tribunal's indictment also alleged killings of elderly civilians, and of Serb soldiers who had been captured or wounded. *(indictment)* S1
-- It accused Croatian forces of killing at least twenty-nine Serb civilians, and at least five Serb soldiers who had been captured or wounded. That is an accusation, not a verdict. *(indictment)* S1
+- The prosecutor's figures are on screen. They are accusations, not verdicts. *(indictment; page)* S1
 - Other counts, by Serb organisations and others, differ. They are on screen, each with what it counts. *(estimate; disputed)*
 
 ### 8. Rockets on Croatian cities
@@ -188,7 +189,7 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 
 ### 9. An agreement
 *Map: Lika · 15 September 1993, noon*
-- Under military and international pressure, the two sides agreed that the United Nations would take control of the pocket. *(established)* S3
+- On the fifteenth of September, the two sides agreed to United Nations control of the pocket after the Croatian withdrawal. *(established)* S3
 - The agreement called for a general ceasefire at noon on the fifteenth of September, and for Croatian forces to withdraw to the positions they held before the attack. Serb forces were to stay out. *(established)* S3
 - The tribunal's indictment names the signatories: the Croatian general Petar Stipetić, and the Krajina Serb general Mile Novaković. *(indictment)* S1
 - In a report that December, the United Nations Secretary-General called the operation an incursion by the Croatian Army into the Medak pocket. *(un)* S9
@@ -200,14 +201,14 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 - The United Nations troops in this sector were a Canadian battle group: the Second Battalion, Princess Patricia's Canadian Light Infantry. The UN called it CANBAT One. Its commander was Lieutenant-Colonel James Calvin. *(established)* S4
 - Two French mechanised companies, from the French battalions FREBAT One and FREBAT Three, served under Canadian command. *(canbat)* S4
 - At the time of the attack, CANBAT One was establishing observation posts in the area. *(canbat)* S4
-- Veterans Affairs Canada says four Canadian soldiers were wounded during the operation. No Canadian was killed in the fighting. *(government: Canada)* S5
+- Canadian soldiers were wounded in the fighting, and a Canadian officer, Captain Jim Decoste, died in a vehicle accident during the operation. *(government: Canada)* S5, S22
 
 ### 11. The fifteenth of September
 *Map: Pocket · 15 September 1993*
 - On the fifteenth, Canadian C Company and a French company moved forward, to take over the Serb front-line positions. *(canbat)* S4
 - According to the Canadian operational report, Croatian forces fired on the United Nations soldiers "with small arms, heavy machine gun and in some instances 20 mm cannon fire". *(canbat)* S4
 - The report describes repeated exchanges of fire over about fifteen hours, some of them lasting up to ninety minutes. *(canbat)* S4
-- The report suggests that Serb sniping near the United Nations positions may have played a part at first. It describes Croatian fire continuing after that. *(canbat)* S4
+- The Canadian report suggested that some Croatian fire may have been in response to Serb sniping at Croatian positions. It says Croatian forces continued firing sporadically at United Nations positions after the sniping stopped. *(canbat)* S4
 
 ### 12. The roadblock
 *Map: Pocket · 16 September 1993*
@@ -224,7 +225,6 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 ### 14. A battle, or not?
 *Map: Pocket · 15 September 1993, and after*
 - Canadian accounts call the fifteenth of September a battle. Veterans Affairs Canada says it is considered by many to be the toughest action faced by Canadian soldiers between the wars in Korea and Afghanistan. *(government: Canada)* S5
-- Some Croatian writers dispute the Canadian account of a battle. *(croatian sources; disputed)*
 - What Croatian losses there were in the exchanges, if any, is not known. Figures that circulate are unconfirmed, and this page does not use them. *(disputed; page)*
 
 ## Part 4: The courts
@@ -263,13 +263,14 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 
 ### 20. Divoselo remembers
 *Map: Pocket · September*
-- Serb organisations, among them Veritas and the Serb National Council, hold commemorations for the dead of the pocket. *(organisation: Veritas; organisation: SNV)* S14
+- The Serb National Council commemorated the victims in September 2023. *(organisation: SNV)* S14
+- In September 2026, the Serb documentation centre Veritas issued an anniversary statement calling for justice. *(organisation: Veritas)* S21
 - Their remembrance centres on the civilian victims, and on what they see as justice not done. *(organisation: Veritas; organisation: SNV)*
 - In its 2023 account of a visit, the Youth Initiative for Human Rights described the villages' greatly reduced population. *(organisation: YIHR)* S14
 
 ### 21. Canada remembers
 *Map: Croatia · 1993 to today*
-- In Canada, the action is often called a forgotten battle. *(press)*
+- In 2023, Canada's Department of National Defence described the battle as a largely forgotten part of Canadian history. *(government: Canada)* S23
 - On the first of December 2002, the Governor General, Adrienne Clarkson, presented the battle group with the Commander-in-Chief Unit Commendation, for its "courageous and professional execution of duty" in the Medak Pocket. *(government: Canada)* S15
 - Official commemorations in Gospić, Serb organisations' memorials, and Canadian honours each tell part of this story. History asks what happened, to whom, and how we know. *(page)*
 
@@ -278,7 +279,7 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 ### What happened
 - On the ninth of September 1993, Croatian forces launched an attack on the Serb-held Medak Pocket, south of Gospić. *(established)*
 - The United Nations reported Krajina Serb rockets and missiles fired at Croatian population centres. *(un)* S12
-- Under pressure, Croatia agreed to withdraw, and United Nations peacekeepers, Canadian and French, took over the area between the fifteenth and the seventeenth of September. *(established)* S3, S4
+- On the fifteenth of September, the two sides agreed to a ceasefire and to United Nations control of the pocket. Canadian and French peacekeepers took over the area between the fifteenth and the seventeenth. *(established)* S3, S4
 - The peacekeepers found the villages destroyed, and bodies. Three survivors were evacuated. *(canbat)* S4
 
 ### The courts
@@ -287,7 +288,7 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 - Croatia's courts found that war crimes against Serb civilians and prisoners were committed. *(court: finding; monitoring report)* S6
 
 ### The numbers (see the tables on screen)
-- The tribunal's prosecutor accused Croatian forces of killing at least twenty-nine civilians, and at least five captured or wounded soldiers. *(indictment)* S1
+- The tribunal's prosecutor alleged that Croatian forces killed Serb civilians, and Serb soldiers who had been captured or wounded. Its figures are on screen. *(indictment)* S1
 - Each count on this page counts something different. They cannot be added together. *(page)*
 
 ### Still unknown
@@ -299,7 +300,7 @@ Welcome to Battles of History. Today we are learning about the Medak Pocket, in 
 
 ## Final check before recording (short implementation check)
 
-ChatGPT asked for a short check that its replacements were applied correctly. Items still open:
+**All seven resolved by ChatGPT's draft 2 review (18 November 2026); see "Changes in draft 3".** Kept for the record:
 1. **Chapter 11, Serb sniping:** added from the review's Optional note on the CANBAT report (S4). Check the report's
    paragraph and that the line keeps its qualification ("may have played a part").
 2. **Chapter 14, "Some Croatian writers dispute the Canadian account of a battle":** no quotation; rests on Međimorec
@@ -367,6 +368,11 @@ From ChatGPT's review of draft 1 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`):
 - **S17** HRT/Hina, 9 September 2026 anniversary: https://vijesti.hrt.hr/hrvatska/u-gospicu-obiljezena-33-godisnjica-vro-medacki-dzep-12899054
 - **S18** B92, 10 September 2007 (Veritas and other NGOs): https://www.b92.net/o/eng/news/society-article?dd=10&mm=09&nav_category=113&nav_id=43655&yyyy=2007
 - **S19** ICTY referral decision, 14 September 2005: https://www.icty.org/x/cases/ademi/tdec/en/050914.htm
+- **S21** Veritas, anniversary statement, 8 September 2026: https://www.veritas.org.rs/e-veritas-08-09-2026-saopstenje-za-javnost-33-godine-od-masakra-u-medackom-dzepu-zlocin-bez-pravedne-kazne/
+- **S22** National Defence and Veterans Affairs Canada, 30th anniversary statement, September 2023: https://www.canada.ca/en/department-national-defence/news/2023/09/ministers-of-national-defence-and-veterans-affairs-and-the-canadian-armed-forces-mark-the-30th-anniversary-of-the-battle-of-medak-pocket.html
+- **S23** National Defence, Maple Leaf, "Remembering Medak Pocket", September 2023: https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2023/09/remembering-medak-pocket-battle.html
+- **S24** Veterans Affairs Canada, Balkans (shelling near Medak); Croatian veterans' ministry, 30th anniversary: https://branitelji.gov.hr/vijesti/u-gospicu-svecano-obiljezena-30-obljetnica-vro-medacki-dzep/4448
+- **S25** Matić and Kostenko, *Senjski zbornik* (2023): https://hrcak.srce.hr/en/file/450685
 - Located, not cleared: **U1** Documenta 2023 study; **U2** Međimorec, *National Security and the Future* 3:3–4 (2002);
   Carol Off, *The Ghosts of Medak Pocket* (2004).
 
@@ -387,3 +393,16 @@ Please check only:
 
 Please answer with: a verdict (ready to record, or not); a short table of any remaining Required changes (chapter, current
 words, problem, replacement); and the seven final-check items, each resolved or not.
+
+## Changes in draft 3 (18 November 2026)
+
+From ChatGPT's recording review of draft 2 (`research/reviews/CHATGPT-REVIEW-DRAFT2.md`); its verdict on chapter 17: ready.
+- **I1, ch. 9, Debrief:** "after a week of fighting and pressure" replaced by the agreement of the fifteenth of September.
+- **Ch. 7, Debrief:** the indictment's numbers (at least 29; at least 5) moved off the narration to the on-screen table.
+- **Ch. 11:** the CANBAT report's paragraph 10 on Serb sniping, in its own scope.
+- **Ch. 14:** "Some Croatian writers dispute…" cut (Međimorec's passage not verified).
+- **Ch. 20:** the SNV's 2023 commemoration and Veritas's 2026 statement, each dated.
+- **Ch. 10, table:** Captain Jim Decoste's death in a vehicle accident added; the four wounded on screen.
+- **Ch. 21:** "a largely forgotten part of Canadian history" (National Defence, 2023).
+- **Ch. 4:** shelling "near Medak". **Ch. 5:** "Pocket Ninety-Three". **Size table:** the indictment's figure only.
+- The seven final checks are resolved (review, items 1–7).

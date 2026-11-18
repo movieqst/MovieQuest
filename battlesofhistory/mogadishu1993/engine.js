@@ -886,7 +886,7 @@ const TableCard = (() => {
 function fireEvent(ev) {
   if (ev.music !== undefined && !fastForward) setMusic(ev.music);
   if (ev.trenches !== undefined) setTrench(ev.trenches);
-  currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o)); if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || [];   // o.delay: seconds into the chapter
+  currentEvent = ev; ev.orders.forEach(o => o.delay ? pendingOrders.push({ at: simTime + o.delay, o }) : applyOrder(o)); if (stage === 'campaign' || S.eventMarkers) markers = ev.markers || []; lastSeqStep = null;   // o.delay: seconds into the chapter
   camForEvent(ev);
   RadioCard.show(fastForward ? null : ev.radio); SongCard.show(fastForward ? null : ev.song); TableCard.show(ev.table); MapPhoto.show(ev.photo);   // after a skip, the chapter it lands on still shows its picture
   caption(ev.title, ev.text, ev.tag, !fastForward, evAudio(ev), ev.cite);
@@ -915,6 +915,7 @@ function drawLeader(c, L) {
 let pendingOrders = [];   // chapter orders with a `delay`, waiting for their moment
 function stepWatch() {
   while (eventIndex < S.events.length && S.events[eventIndex].t <= simTime) fireEvent(S.events[eventIndex++]);
+  seqMarkers();
   if (pendingOrders.length) { const due = pendingOrders.filter(p => p.at <= simTime); if (due.length) { pendingOrders = pendingOrders.filter(p => p.at > simTime); due.forEach(p => applyOrder(p.o)); } }
   camBack();
   formations.forEach(moveFormation); moveLeaders(); moveObjects(); artillery(false); barrage();
@@ -1914,7 +1915,15 @@ const ALTTER = {};
 Object.entries(S.altMaps || {}).forEach(([id, file]) => { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; T.getContext('2d').drawImage(img, 0, 0, T.width, T.height); ALTTER[id] = T; if (altMapNow() === id) applyArt(); }; img.src = (S.imageBase || 'images/') + file; });
 const MAIN_MAP = S.mainMap || 'town';   // the Six-Day War: every unit, leader, object and line belongs to one map (f.map)
 const mapKey = () => altMapNow() || MAIN_MAP, onMap = o => (o.map || MAIN_MAP) === mapKey();
-function altMapNow() { const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; return it && it.altMap && ALTTER[it.altMap] ? it.altMap : null; }
+function altMapNow() { const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; if (!it) return null;
+  const sq = seqStep(it); if (sq) return ALTTER[sq.map] ? sq.map : null;
+  return it.altMap && ALTTER[it.altMap] ? it.altMap : null; }
+/* Mogadishu: a chapter can zoom in through several maps (`mapSeq: [{ map, at, markers }]`, `at` in seconds from the start of the
+   chapter): the film chapters go from the Somalia-to-Morocco view, to North Africa, to Morocco, then to Rabat. Each step
+   shows its own markers. */
+function seqStep(it) { if (!it || !it.mapSeq || mode !== 'watch' || it !== currentEvent) return null; const a = simTime - (it.t || 0); let st = it.mapSeq[0]; it.mapSeq.forEach(q => { if (a >= q.at) st = q; }); return st; }
+let lastSeqStep = null;
+function seqMarkers() { const st = seqStep(currentEvent); if (st && st !== lastSeqStep) { lastSeqStep = st; markers = st.markers || []; } else if (!st) lastSeqStep = null; }
 let lastAlt = null;
 // The siege map's place names (B.labels), drawn on screen at a size that stays readable whatever the zoom.
 function drawPlaceLabels(alt) {
