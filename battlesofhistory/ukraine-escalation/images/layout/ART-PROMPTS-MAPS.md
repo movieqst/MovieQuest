@@ -134,3 +134,39 @@ TURN IT INTO A BEAUTIFUL PAINTED RELIEF MAP, LIKE A FINE ATLAS PAINTING OR A SAT
 3. NO borders, NO text, NO names, NO symbols, NO cities, NO roads, NO grid. Land and water only.
 4. STYLE: high summer (August): the Greater Caucasus with grey rock, glaciers and snow on the highest peaks, dark green forests on its lower slopes; the green, fertile lowlands along the Black Sea coast; the drier, golden valleys of eastern Georgia; the Lesser Caucasus and the uplands of Armenia brown and green; the Black Sea deep blue. Gentle, calm, clear.
 ```
+
+---
+
+# Redo (18 November 2026): maps 3 and 7
+
+The first Crimea and Kyiv pictures came back nearly unchanged from the bases. Crimea also had odd pink and turquoise
+triangles over the Sivash, and the Arabat Spit was lost. Use a NEW chat for each. Attach the base, the guide, AND the first
+result (third), then paste the text below.
+
+## Redo, map 3: Crimea
+
+```text
+Please EDIT the first picture I attach (the BASE) again, from the start. The second picture is the GUIDE (labels only; copy none of its text, lines, grid or frame). The third picture is a FIRST TRY that did not work: it only re-coloured the base flatly, it has strange pink and turquoise triangles over the lagoons at the top, and it lost the long thin sand spit (the Arabat Spit) that runs down the coast from the top towards the right-hand peninsula. Do not copy those mistakes.
+This is for an educational history slideshow for students aged 12 and up.
+MAKE A RICH, DETAILED PAINTING, LIKE A HIGH-QUALITY SATELLITE PHOTOGRAPH IN NATURAL COLOURS, seen from DIRECTLY ABOVE (no tilt, no horizon):
+1. Keep EVERY coastline exactly where it is in the base. Same size: 2400 x 1800 pixels. Do not crop, zoom, rotate or move anything.
+2. Paint real TEXTURE everywhere: on the flat north, a patchwork of large fields in many tones of green, gold and brown, thin lines of shelter-belt trees, small villages; in the south, the Crimean Mountains with dark green forest, pale limestone cliffs and plateaus, narrow valleys with vineyards and orchards, falling steeply to the south coast; the west coast with pale beaches.
+3. The SIVASH (the shallow lagoons at the top centre): natural shallow water with salt flats, partly pale pink and partly milky turquoise, with irregular natural shapes following the shorelines in the base, not geometric patches.
+4. The ARABAT SPIT: a long, narrow strip of pale sand, only a few hundred metres wide, running from the top down along the edge of the lagoons to the Kerch peninsula, exactly where the base shows a thin line of land.
+5. The Black Sea deep blue, darker offshore; the Sea of Azov an even, slightly lighter and greener blue. NO hard edges or colour bands in the water.
+6. NO borders, NO text, NO names, NO symbols, NO roads drawn as lines, NO grid.
+```
+
+## Redo, map 7: central Kyiv
+
+```text
+Please EDIT the first picture I attach (the BASE) again, from the start. The second picture is the GUIDE (labels only; copy none of its text, dots, lines, grid or frame). The third picture is a FIRST TRY that did not work: it still looks like a flat street plan, not like a real city seen from above. Do not copy that look.
+This is for an educational history slideshow for students aged 12 and up.
+MAKE A REALISTIC, DETAILED AERIAL PHOTOGRAPH OF A REAL EUROPEAN CITY IN WINTER, seen from DIRECTLY ABOVE (no tilt, no horizon), on a quiet, clear morning after light snow:
+1. Keep EVERY street, building footprint, park and square exactly where it is in the base. Same size: 2400 x 1800 pixels. Do not crop, zoom, rotate or move anything.
+2. THE BUILDINGS: real roofs seen from above, with texture: pitched and flat roofs, chimneys, courtyards inside the blocks, roofs in grey slate, green copper, rust-red tin and brown, each dusted with snow; the shadows of the buildings falling to the north-west in low winter sun.
+3. THE STREETS: dark, wet asphalt, cleared of snow, with snow banks along the kerbs and pavements; the wide main avenue (Khreshchatyk) with its double rows of bare chestnut trees.
+4. THE MAIDAN (Independence Square, centre left): a large paved square with the tall white column of the Independence Monument and its round base, fountains (switched off for winter) and low glass domes, snow on its edges.
+5. THE PARKS AND HILLS (the right-hand side): steep wooded slopes and parks white with snow, with dark bare trees and winding paths; the large columned parliament building in its park; the stadium at the upper right with a snow-covered pitch.
+6. NO people, NO cars, NO tents, NO barricades, NO smoke, NO fire, NO flags, NO text, NO grid.
+```
