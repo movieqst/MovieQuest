@@ -930,7 +930,7 @@ function setStage(st) {
   S.events = src.events; S.formations = src.formations; S.leaders = src.leaders; S.duration = src.duration;
   document.body.dataset.stage = st; applyArt();
 }
-function endWatch() { RadioCard.hide(); SongCard.hide(); battleOver = 'history'; paused = true; showDebrief(); }
+function endWatch() { RadioCard.hide(); SongCard.hide(); battleOver = 'history'; paused = true; if (S.debriefMap) { markers = S.debriefMarkers || []; MapPhoto.show(null); TableCard.show(null); } showDebrief(); }
 function jumpTo(t) {
   fastForward = true; resetSim(); 
   while (simTime < t) { simTime += DT; stepWatch(); }
@@ -1915,7 +1915,8 @@ const ALTTER = {};
 Object.entries(S.altMaps || {}).forEach(([id, file]) => { const img = new Image(); img.onload = () => { const T = document.createElement('canvas'); T.width = W.w * TS; T.height = W.h * TS; T.getContext('2d').drawImage(img, 0, 0, T.width, T.height); ALTTER[id] = T; if (altMapNow() === id) applyArt(); }; img.src = (S.imageBase || 'images/') + file; });
 const MAIN_MAP = S.mainMap || 'town';   // the Six-Day War: every unit, leader, object and line belongs to one map (f.map)
 const mapKey = () => altMapNow() || MAIN_MAP, onMap = o => (o.map || MAIN_MAP) === mapKey();
-function altMapNow() { const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; if (!it) return null;
+function altMapNow() { if (mode === 'watch' && battleOver === 'history' && S.debriefMap) return S.debriefMap === MAIN_MAP ? null : (ALTTER[S.debriefMap] ? S.debriefMap : null);   // the debrief returns to the battle (S.debriefMap)
+  const it = mode === 'intro' ? S.intro && S.intro[introIdx] : mode === 'watch' ? currentEvent : null; if (!it) return null;
   const sq = seqStep(it); if (sq) return ALTTER[sq.map] ? sq.map : null;
   return it.altMap && ALTTER[it.altMap] ? it.altMap : null; }
 /* Mogadishu: a chapter can zoom in through several maps (`mapSeq: [{ map, at, markers }]`, `at` in seconds from the start of the
