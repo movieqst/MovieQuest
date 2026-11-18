@@ -1,6 +1,7 @@
-# Ukraine and Russia: Escalation, 1991–2014: narration script (DRAFT 2)
+# Ukraine and Russia: Escalation, 1991–2014: narration script (DRAFT 3, ready to record)
 
-This is the script for the narrators to read, and the slide list for the projector. **Draft 2** (18 November 2026) applies ChatGPT's review of draft 1
+This is the script for the narrators to read, and the slide list for the projector. **Draft 3** applies ChatGPT's final check of draft 2 (`research/reviews/CHATGPT-REVIEW-DRAFT2.md`): the February–March
+order in chapter 13 and two wording changes. **Draft 2** (18 November 2026) applies ChatGPT's review of draft 1
 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`); the changes are listed at the end. Draft 1 was written
 from the research report `research/RESEARCH-REPORT.md` (v2). It also applies ChatGPT's re-check of v2
 (`research/reviews/CHATGPT-RECHECK-V2.md`), whose corrections take precedence. Report sections (§1–§14) are given after the
@@ -69,7 +70,7 @@ The narration lines under each slide are spoken while that slide is on the scree
 - Instytutska *in-stee-toot-ska* · Hrushevskoho *hroo-shev-sko-ho* · Berkut *bair-koot*
 - Kharkiv *har-kiv* · Luhansk *loo-hansk* · Donetsk *do-netsk* · Tskhinvali *tskin-vah-lee*
 - RosUkrEnergo *ros-ookr-energo* · Massandra *ma-sahn-dra* · Dagomys *da-go-miss* · Azarov *a-za-rov*
-- Kommersant *ko-mer-sahnt* · Gongadze *gon-gahd-zeh*
+- Kommersant *ko-mer-sahnt* · Gongadze *gon-gahd-zeh* · Churkin *choor-kin*
 
 ---
 
@@ -220,7 +221,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ### 10. Bucharest and Georgia
 ▸ **CARD:** "Bucharest, 3 April 2008: 'these countries will become members of NATO'".
 - In 2008, Ukraine's leaders asked to start the process of joining NATO. *(established)* §7
-- NATO did not grant either country a Membership Action Plan at Bucharest. It said both "will become members of NATO", gave no date, and agreed to further talks. *(record)* §7
+- At Bucharest, NATO said Ukraine and Georgia "will become members of NATO". It gave no date and agreed to further talks. Neither country received a Membership Action Plan at the summit. *(record)* §7
 
 ▸ **CARD:** "Kommersant, 7 April 2008: reported words".
 - A Russian newspaper, Kommersant, later reported from an unnamed source that, in a closed meeting, President Putin told President Bush: "You understand, George, that Ukraine isn't even a state." We have no verified transcript for those words. *(account)* §7
@@ -282,8 +283,8 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ▸ **ART:** `art-rada-empty` again, with a vote board: "328".
 - On the twenty-second, three hundred and twenty-eight members of parliament voted that Yanukovych had withdrawn from his duties, and called an election for May. It was not the impeachment the constitution describes. *(record)* §9
-- On the third of March, at the United Nations Security Council, Russia's representative called the change of power an unconstitutional coup. *(russian account)* §9, R
-- The next day, parliament made its speaker, Oleksandr Turchynov, acting president. It also voted to repeal the 2012 language law. The repeal was never signed into law. *(record)* §9
+- On the twenty-third of February, parliament made its speaker, Oleksandr Turchynov, acting president. It also voted to repeal the 2012 language law. The repeal was never signed into law. *(record)* §9
+- On the third of March, at the United Nations Security Council, Russia's representative, Vitaly Churkin, called the change of power a coup. *(russian account)* §9, R
 
 ## Part 5: Crimea
 
@@ -316,7 +317,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ### What is still argued about
 ▸ **CARD:** the list below.
-- What the Budapest assurances obliged. In March 2014, Putin suggested that a revolution had created a new state, with which Russia had signed nothing. Ukraine, Britain and the United States said jointly that Russia had broken its commitments. *(russian account; account)* R
+- What the Budapest assurances obliged. In March 2014, Putin suggested that a revolution had created a new state, with which Russia had signed nothing. On the fifth of March, Ukraine, Britain and the United States said Russia was violating Ukraine's sovereignty and territorial integrity, and called on Russia to consult with Ukraine under the memorandum. *(russian account; account)* R
 - Whether February 2014 was a revolution or a coup. *(disputed)* §9
 - Who fired every shot on the Maidan. *(court; disputed)* §9
 
@@ -363,6 +364,11 @@ close chapter 13 if the owner wishes.
 
 **Total:** about 52 slides across the introduction, 14 chapters and the debrief.
 
+## Changes in draft 3 (after ChatGPT's final check)
+- **Ch. 10:** Ukraine and Georgia named in the Bucharest line.
+- **Ch. 13:** Turchynov's appointment dated 23 February and placed before the UN line; Churkin named.
+- **Debrief:** the joint statement of 5 March 2014 in its own terms.
+
 ## Changes in draft 2 (after ChatGPT's review of draft 1)
 - **Ch. 1:** the 1992 claim moved to chapter 5; the census limits are tagged `record`.
 - **Ch. 3:** a majority in every region; Sevastopol (57%) counted separately.
@@ -389,17 +395,3 @@ close chapter 13 if the owner wishes.
 - **Ch. 14:** the trailer of 8 March 2015; Putin named for the denial and the acknowledgement; the ECHR's 27 February date
   stated.
 - **Debrief:** "naval bases"; Yanukovych left Kyiv; Sakwa and Plokhy named; the Budapest statement attributed jointly.
-
-## Prompt for ChatGPT (short final check; copy everything below the line into a new chat, with this file attached)
-
----
-
-You reviewed draft 1 of the narration for "Ukraine and Russia: Escalation, 1991–2014", an educational slideshow page for
-students aged 12 and up. Attached is draft 2, with your changes applied (listed in "Changes in draft 2").
-
-Please do a short final check of the narration lines only:
-1. Were your changes applied correctly?
-2. Is any line now wrong, unsupported, mis-tagged or unbalanced?
-
-Give a short table (chapter, current words, problem, replacement, source) and a verdict: ready to record, or not. Under about
-800 words, in a form that can be saved as a file.
