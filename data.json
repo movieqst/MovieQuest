@@ -14025,5 +14025,98 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "buffy-season-6-dvd",
+    "title": "Buffy the Vampire Slayer: The Complete Sixth Season",
+    "year": 2001,
+    "years": [
+      2001,
+      2002
+    ],
+    "format": "DVD",
+    "condition": "Brand New (factory sealed)",
+    "image": "https://moviequest.ca/images/buffy-season-6-dvd-1.jpg",
+    "photos": [
+      "images/buffy-season-6-dvd-1.jpg",
+      "images/buffy-season-6-dvd-2.jpg",
+      "images/buffy-season-6-dvd-3.jpg",
+      "images/buffy-season-6-dvd-4.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Buffy%20Vampire%20Slayer%20Sixth%20Season%20DVD%20sealed&campid=5339133571&customid=buffy-season-6-dvd",
+    "price": null,
+    "categories": [
+      "tvseries",
+      "2000s"
+    ],
+    "runYears": "2001–2002",
+    "createdBy": "Joss Whedon",
+    "starring": "Sarah Michelle Gellar, Nicholas Brendon, Alyson Hannigan, Emma Caulfield, Michelle Trachtenberg, James Marsters, Anthony Stewart Head",
+    "producers": "Joss Whedon, Marti Noxon, David Greenwalt, Gail Berman, Sandy Gallin, Fran Rubel Kuzui, Kaz Kuzui",
+    "company": "Mutant Enemy / Kuzui Enterprises / Sandollar Television / 20th Century Fox Television / UPN",
+    "titleNote": "Season 6 / 2001–2002",
+    "tagline": "DVD / Season 6 / 6-Disc Set / Bilingual Canadian Edition / Factory Sealed / Sarah Michelle Gellar / TV Series / 2001–2002",
+    "desc": "\"Wherever I was... I was happy... at peace... I think I was in heaven.\" Elated with having Buffy back from the dead, her friends never wonder if she may have been in a better place. Only Spike knows the truth, and as Buffy struggles to readjust to life, she begins a relationship with Spike that torments her as much as it brings her fleeting comfort. Yet even as Buffy fears that the magic that brought her back has somehow changed her, Willow's growing reliance on magic is an addiction she can barely control, and one that threatens everyone. 6-disc set containing all 22 season six episodes.",
+    "trivia": [
+      {
+        "heading": "Once More, with Feeling",
+        "text": "Season six includes the musical episode \"Once More, with Feeling\", written and directed by Joss Whedon, who also wrote all of its original songs. The set has a behind-the-scenes featurette and karaoke music videos for it."
+      },
+      {
+        "heading": "A New Network",
+        "text": "After five seasons on The WB, Buffy moved to UPN for its sixth season."
+      },
+      {
+        "heading": "Back from the Dead",
+        "text": "The season opens with Buffy brought back to life by her friends after her sacrifice at the end of season five, and the quote on the back cover is her confession that she had been in heaven."
+      },
+      {
+        "heading": "The Trio",
+        "text": "Instead of one big villain, season six pits Buffy against the Trio, three nerdy wannabe supervillains: Warren, Jonathan and Andrew."
+      },
+      {
+        "heading": "Dark Willow",
+        "text": "Willow's growing addiction to magic builds to one of the series' most famous turns, when she becomes \"Dark Willow\" in the final episodes."
+      }
+    ],
+    "tidbits": [
+      "Season six includes the musical episode \"Once More, with Feeling\", written and directed by Joss Whedon, who also wrote all of its original songs. The set has a behind-the-scenes featurette and karaoke music videos for it.",
+      "After five seasons on The WB, Buffy moved to UPN for its sixth season.",
+      "The season opens with Buffy brought back to life by her friends after her sacrifice at the end of season five, and the quote on the back cover is her confession that she had been in heaven.",
+      "Instead of one big villain, season six pits Buffy against the Trio, three nerdy wannabe supervillains: Warren, Jonathan and Andrew.",
+      "Willow's growing addiction to magic builds to one of the series' most famous turns, when she becomes \"Dark Willow\" in the final episodes."
+    ],
+    "copies": [
+      {
+        "id": "buffy-season-6-dvd-1",
+        "added": "2026-11-18",
+        "format": "DVD",
+        "edition": "20th Century Fox 6-disc set, bilingual Canadian packaging (L'intégrale de la sixième saison)",
+        "photos": [
+          "images/buffy-season-6-dvd-1.jpg",
+          "images/buffy-season-6-dvd-2.jpg",
+          "images/buffy-season-6-dvd-3.jpg",
+          "images/buffy-season-6-dvd-4.jpg"
+        ],
+        "gif": "images/buffy-season-6-dvd-1.gif",
+        "condition": {
+          "overall": "Brand New (factory sealed)",
+          "case": "Brand New (factory sealed); HMV price sticker on the front shrink wrap",
+          "discs": [
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)",
+            "Brand New (factory sealed)"
+          ],
+          "inserts": "Sealed",
+          "notes": "20th Century Fox Home Entertainment (2009 repackage, UPC 024543584384), bilingual English/French packaging, still in the original shrink wrap. Region 1 NTSC. All 22 season six episodes (2001 to 2002), approx. 990 minutes, colour, full frame 1.33:1, dual layer. Audio: English Dolby Surround, Spanish Dolby Surround, French Dolby. Subtitles: English, Spanish. Closed captioned. Rated 14A (Canada) / G (Quebec). Special features: Season Six overview; selected episode commentary; Academy of Television Arts & Sciences panel discussion; exclusive David Fury behind-the-scenes featurette on \"Once More, with Feeling\"; Buffy the Vampire Slayer: Television with a Bite (A&E TV-OGRAPHY); DVD-ROM Buffy Demon Guide; karaoke music videos, outtakes and more."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
