@@ -455,7 +455,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'midnight-hammer', progress: 1, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'approximate: the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
+    folder: 'midnight-hammer', progress: 40, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'approximate: the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
     order: 35,
     era: 'Iran, 2025',
     title: 'Operation Midnight Hammer',
@@ -463,8 +463,8 @@ window.BATTLES = [
     place: 'Fordow, Natanz and Isfahan, Iran',
     sides: 'Iran vs. United States',   // first-named side red: Iran red, the United States blue (owner, 18 Nov 2026)
     blurb: 'During the June 2025 war between Israel and Iran, American B-2 bombers flew from Missouri to strike Iran’s underground enrichment site at Fordow and the site at Natanz, while a submarine fired cruise missiles at Isfahan. The aircraft reached their targets and returned; what the strike destroyed underground, and how far it set back Iran’s nuclear programme, was disputed.',
-    cover: 'images/cover.jpg',   // the title card: to come (a public-domain DVIDS frame is a candidate)
-    coverCredit: '',
+    cover: 'images/cover.jpg', coverPos: '50% 55%',   // the B-2 under the moon
+    coverCredit: 'Title painting made for this page with ChatGPT (AI-generated): a B-2 bomber at night under the moon and the American flag; an imagined scene, not a photograph of the mission',
     status: 'in progress'
   }
 ];
