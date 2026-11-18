@@ -279,3 +279,11 @@ Please check:
 
 Please answer in this format: a verdict; a table of Required changes (chapter, current words, problem, replacement); a list
 of Optional improvements; the final check list item by item; and a source register.
+
+---
+
+## On hold (owner, 18 November 2026)
+
+ChatGPT's review of draft 1 is saved at `research/reviews/CHATGPT-REVIEW-DRAFT1.md` (verdict: not yet ready; the
+chronology is sound; Required changes listed). **Not applied yet:** the owner has put Midnight Hammer on hold until after
+Medak Pocket and Bunker Hill are finished. The page must not go live before then.
