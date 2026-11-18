@@ -45,7 +45,7 @@ const tagChip = (tag, cite) => { const c = S.confidence[tag] || S.confidence.rec
 const other = sd => SIDE_IDS.find(s => s !== sd);
 const sideText = sd => SIDES[sd].text;
 let voiceId = (S.voices && S.voices[0]) ? S.voices[0].id : '';
-try { const v = localStorage.getItem(LS('voice')); if (v && S.voices.some(x => x.id === v)) voiceId = v; } catch (e) {}
+{ const pool = (S.voices || []).filter(x => x.id !== 'computer'); if (pool.length) voiceId = pool[Math.floor(Math.random() * pool.length)].id; }   // a different narrator each visit (owner, 18 Nov 2026); the Voice menu still lets the listener choose
 const audioFor = (kind, n) => S.audioBase ? S.audioBase + (voiceId ? voiceId + '/' : '') + kind + (n !== undefined ? '-' + n : '') + '.mp3' : undefined;
 const evAudio = ev => ev.audio || audioFor('event', PART.id + '-' + (PART.events.indexOf(ev) + 1));
 
