@@ -221,51 +221,28 @@ battalions, the time of the first advance, the fire, the bayonets, Salem Poor, t
 Still open:
 1. **Burgoyne's words:** the two reviews disagree ("in one blaze" in Drake's transcription; "a large and a noble town in one
    great blaze" as quoted by the NPS). Draft 2 paraphrases ("described the whole town in flames") until one is settled.
-2. **Title card (owner's decision):** Trumbull's 1786 painting (Yale) shows Warren dying. Keep it as the title card, as a
-   famous painting credited as not evidence, or crop it, or choose another picture?
+2. **Title card:** Trumbull's 1786 painting (Yale) shows Warren dying. **Owner's decision (18 November 2026): keep it as is**,
+   credited as a later painting, not evidence.
 3. **The Boston map's siege works:** Pelham shows works of 1775 and 1776; the page draws only those of June 1775 in the
    June chapters.
 
 ---
 
-## Prompt for ChatGPT (copy everything below the line into a new chat, with this file attached)
+## Prompt for ChatGPT (short final check; copy everything below the line into a new chat, with this file attached)
 
 ---
 
-Please review the attached narration script, "Battle of Bunker Hill, 16–17 June 1775", draft 1, for an educational history
-website (students aged 12 and up). It is written from the research report you checked; your corrections were applied.
+Please do a short final check of the attached narration script, "Battle of Bunker Hill, 16–17 June 1775", draft 2, for an
+educational history website (students aged 12 and up). You reviewed draft 1; your Required changes and most Optional notes
+have been applied (listed under "Changes in draft 2" at the end).
 
-Please check:
-1. **Accuracy:** every narrated line against the original sources you can reach (Prescott's letter to John Adams, Gage's and
-   Howe's letters, Burgoyne's letter, the casualty returns, Frothingham, the Salem Poor petition, NPS). Mark each problem
-   CONFIRMED, WRONG or NOT FOUND.
-2. **The final check list** at the end: resolve as many items as you can.
-3. **Balance and tone:** are the British and the provincials both described fairly? Is anything graphic?
-4. **Tags:** is each line's tag right (letter, record, tradition, estimate, disputed)?
-5. **Spoken English:** anything awkward for a text-to-speech voice.
+Please check only:
+1. That each Required change was applied correctly, and nothing in the narrated lines is still unsupported.
+2. The three items under "Final check before recording": above all, Burgoyne's exact words (your two reviews disagree: "a
+   large and noble town in one blaze" in Drake's transcription, or "a large and a noble town in one great blaze" as quoted
+   by the National Park Service). Please give the wording of the original letter and a link. (The owner has decided to keep
+   Trumbull's painting as the title card.)
+3. Any new problem introduced in draft 2.
 
-Please answer in this format: a verdict; a table of Required changes (chapter, current words, problem, replacement); a list
-of Optional improvements; the final check list item by item; and a source register.
-
-## Changes in draft 2 (18 November 2026)
-
-From ChatGPT's review of draft 1 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`):
-- **I1, Debrief:** "ran out of gunpowder" → "nearly run out of ammunition"; "three attacks" → "driven back before a final
-  assault took the fort".
-- **I3:** "no American flag, no American uniform" → "no standard uniform across the force; the Stars and Stripes had yet to be
-  adopted".
-- **Ch. 1:** "about five thousand British soldiers" → "several thousand".
-- **Ch. 3–4:** the breastwork moved to the morning, from Prescott ("after daybreak … while British guns were firing").
-- **Ch. 4:** Asa Pollard attributed to the historian Richard Frothingham.
-- **Ch. 5:** Clinton's proposal attributed to accounts of the council; "waited for the tide" → "preparing the landing took
-  several hours".
-- **Ch. 6:** "four infantry battalions"; the unattributed 1,500 removed; Howe's "about twenty-two hundred rank-and-file".
-- **Ch. 8:** "mid-afternoon"; the "whites of their eyes" line reworded.
-- **Ch. 9:** Burgoyne paraphrased (see the final check).
-- **Ch. 10:** "three attacks … accounts count them differently" (scholarship).
-- **Ch. 11:** "more British troops crossed; Clinton followed and helped rally"; "forced to retreat"; Warren "killed in the
-  final fighting".
-- **Ch. 13:** "Counts from the time differ"; Salem Poor's petition "fourteen people, including Colonel Prescott".
-- **Ch. 14:** Washington on 2 July; "the fighting reached both hills"; the 2026 excavation tagged archaeology.
-- **Welcome, I1:** "an earthen fort … above Charlestown, across the water from Boston"; "redoubt" and "breastwork" explained
-  on first use.
+Please answer with: a verdict (ready to record, or not); a short table of any remaining Required changes (chapter, current
+words, problem, replacement); and the final-check items resolved.
