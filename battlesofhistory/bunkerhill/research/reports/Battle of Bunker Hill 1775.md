@@ -1,6 +1,9 @@
 # Battle of Bunker Hill, 16–17 June 1775: checked research report
 
-**Battles of History · 18 November 2026.** This report checks ChatGPT's first-pass dossier
+**Battles of History · 18 November 2026. Corrected the same day after ChatGPT's source check**
+(`research/reviews/CHATGPT-REVIEW-REPORT.md`), which read Frothingham, Prescott's letter, Gage's dispatch and the UK National
+Archives extracts, Howe's letter, Burgoyne's letter (Drake) and the Salem Poor petition: its corrections are applied below and
+take precedence. This report checks ChatGPT's first-pass dossier
 (`research/RESEARCH-DOSSIER.md`), item by item, and adds the facts the page needs, each with its sources and how certain it
 is. It is the basis for the 1775 base maps, the sprite prompts and the narration script.
 
@@ -43,8 +46,9 @@ It gives few checkable facts. This report supplies them and makes these correcti
     south of Boston, on 18 June. *(established in outline)*
   - The provincials learned of it. A warning from the New Hampshire Committee of Safety at Exeter (13 June) is the usual
     account. *(the Exeter detail rests mainly on Wikipedia-derived pages: say "the provincials learned of the plan")*
-- **The order to fortify:** on 15 June the Massachusetts Committee of Safety resolved that "the hill called Bunker's Hill in
-  Charlestown be securely kept and defended" **[as quoted; NMUSA transcription; Adams Papers note]**.
+- **The recommendation:** on 15 June the Massachusetts Committee of Safety recommended to the Council of War that "the hill
+  called Bunker's Hill in Charlestown be securely kept and defended" (Frothingham's transcription). Prescott later wrote that
+  he was ordered to march to Breed's Hill. The two are kept distinct. *(confirmed)*
 - The British generals Howe, Clinton and Burgoyne had arrived in Boston on 25 May. *(established)*
 
 ## 2. The night of 16–17 June
@@ -69,11 +73,14 @@ It gives few checkable facts. This report supplies them and makes these correcti
   - J. L. Bell notes that no written marching orders survive. *(disputed: the page says "No one knows for certain why")*
 - **The redoubt:**
   - "We began the Intrenchment about 12, o Clock" (Prescott) **[as quoted]**: about midnight. *(established)*
-  - Size: about 40 metres (130 feet) on a side and about 2 metres (6 feet) high, in the NPS monument history. Figures vary
-    (70 to 132 feet; an NPS lesson gives about 160 × 80 feet). *(estimate: say "a square earthwork about 40 metres across")*
-  - A breastwork ran north from it toward the Mystic side, about 100 yards. *(estimate)*
-- **The 2026 excavation:** in June 2026, City of Boston archaeologists excavated on Breed's Hill. They reported remains of the
-  redoubt, musket balls and gunflints. No human remains were found. *(press: the-past.com, Fox; for the epilogue only)*
+  - Size: NPS gives about 120 feet square; Pelham's map, cited by the City of Boston, shows about 150 feet square with angled
+    extensions; other figures range from 70 to 160 feet. *(narrate "a roughly square earthwork"; the map follows the period
+    plans)*
+  - A breastwork ran north from it: about 20 rods (about 110 feet) in Prescott's account; Howe estimated about 80 yards. The
+  rail fence toward the Mystic was a separate line. *(narrate only "a breastwork extended north from the redoubt"; the map
+  shows the breastwork and the rail fence as separate features)*
+- **The 2026 excavation:** in June 2026, City of Boston archaeologists identified part of the redoubt's defensive ditch on
+  Breed's Hill and recovered musket balls and gunflints. No human remains were found. *(City of Boston; for the epilogue)*
 
 ## 3. The morning of 17 June
 
@@ -112,18 +119,21 @@ It gives few checkable facts. This report supplies them and makes these correcti
   **[as quoted]**. *(established)*
 - **Clinton's reinforcements:** later in the day Major-General Henry Clinton crossed with about 400 more, of the 2nd Marines
   and the 63rd Foot. *(established; numbers vary)*
-- **Use:** "about 2,200 to 2,400 at the start of the attack, roughly 3,000 by the end". The "6,000" in some sources is the
-  whole Boston garrison. *(estimate)*
+- **Use:** Howe reported about 2,200 rank and file when the attack began; more troops joined later. The Army Historical
+  Foundation estimates about 2,600 engaged overall; "3,000" is an estimate, attributed if used. The "6,000" in some sources
+  is the whole Boston garrison. *(confirmed: Howe, Gage; estimate)*
 - **Command:**
   - Howe led the right: the light infantry and grenadiers, with the 5th and 52nd.
   - Brigadier Robert Pigot led the left against the redoubt and Charlestown: the 38th, 43rd, 47th and the Marines.
   - *(established; exact groupings vary)*
-- **Artillery:** the British field guns had been sent with shot of the wrong size and stuck in soft ground, so they were of
-  little use. *(established; whether the shot was 12- or 9-pound is disputed, not narrated)*
+- **Artillery:** both Gage and Howe describe the field guns firing during the advance. Later accounts say some had shot of
+  the wrong size and stuck in soft ground. *(narrate "British field guns supported the advance, though their effectiveness
+  varied")*
 
 **Provincial (American)**
-- The men came from Massachusetts, New Hampshire and Connecticut regiments. They were not yet the Continental Army: Congress
-  adopted the army on 14 June, and Washington was named its commander on 15 June. *(established)*
+- The defenders were New England provincial troops, from Massachusetts, New Hampshire and Connecticut. Congress had just
+  adopted the New England forces (14 June) and appointed George Washington commander in chief (15 June), but he had not yet
+  reached Cambridge, and the troops at Boston were still under their own commanders. *(established)*
 - **Strength:** perhaps 2,000 to 3,000 took part at some time in the day (the American Battlefield Trust and others give
   about 2,200 to 2,400), with fewer at the front at any one moment. Units came and went, there was no single return, and
   the muster rolls were taken weeks later. *(estimate; disputed)*
@@ -141,21 +151,22 @@ It gives few checkable facts. This report supplies them and makes these correcti
   - Stark's men held their fire until the column was close, then drove it back. The light companies of the 23rd (Royal Welch
     Fusiliers) and the 4th (King's Own) led. *(established)*
   - The often-repeated "96 British dead on the beach" has no primary source found. *(not used)*
-  - A British critic in 1780 wrote that the light infantry "were served up in Companies against the grass fence, without
-    being able to penetrate" **[as quoted; Colonial Society of Massachusetts]**.
+  - (A 1780 British criticism of the attack on the fence was not found in the original: not quoted.)
 - **The first two attacks:** on the fence and the redoubt, both driven back with heavy British losses. *(established)*
-  - "Three attacks" is the usual telling. Some historians describe a more continuous assault, felt differently along the
-    line. *(the page says "two attacks were driven back; a third took the redoubt", with a note)*
+  - "Two repulses, then the capture of the redoubt" works as an overview. The beach, the fence and the redoubt are not shown
+    as three attacks happening at once along the whole line. *(the page keeps the overview, with a note)*
 - **Charlestown burned:**
   - Americans fired on Pigot's flank from the houses of Charlestown. Howe ordered the town set on fire (NPS). Several
     accounts say Admiral Graves proposed it. *(established)*
   - It was done with carcasses (shells filled with burning material) and hot shot from Copp's Hill and the ships, and by
     landing parties. *(established)*
-  - When: NPS notes "varying accounts" of when in the fighting **[as quoted]**. *(about mid-afternoon)*
-  - Burgoyne, watching from Copp's Hill, wrote of "a large and noble town in one great blaze" **[as quoted; letter of 25 June
-    1775]**.
-  - How many buildings: about 400 houses (Adams Papers note), "over 500" buildings (another count); 586 loss claims survive
-    and were transcribed by City of Boston archaeologists. *(estimate: say "several hundred buildings, most of the town")*
+  - When and how it began: accounts differ. *(narrate "During the fighting, British forces set Charlestown on fire. Most
+    residents had already fled, and the fire destroyed much of the town.")*
+  - Burgoyne, watching from Copp's Hill, wrote of "a large and noble town in one blaze" (letter to Lord Stanley, Drake's
+    transcription; not "one great blaze").
+  - How many buildings: about 400 houses (Adams Papers note), "over 500" buildings (another count). *(estimate: say "much of
+    the town")* The 586 surviving loss claims (City of Boston) cover property and possessions: a separate figure, not a
+    building count.
   - The people: Charlestown had perhaps 2,000 to 2,700 people before the war (NPS: 2,000–3,000; a 2026 estimate:
     1,500–2,000). Most had left after 19 April; the few who stayed left on the day. They were never compensated (NPS).
     *(established)*
@@ -186,33 +197,33 @@ It gives few checkable facts. This report supplies them and makes these correcti
 | Sergeants, drummers, rank and file | 207 | 758 |
 | **Total** | **226** | **828** |
 
-1,054 in all. Some tables give 62 officers wounded, leaving out the ensigns. Some later histories add the wounded who died
-later.
+1,054 in all (confirmed). The officer breakdown rests on a published transcription; the original return was not seen.
 
 **Provincial: two sets of figures in use** (disputed)
 
 | Source | Killed | Wounded | Captured |
 |---|---|---|---|
-| American Battlefield Trust and many encyclopedias | 115 | 305 | 30 (about 20 died as prisoners) |
-| Other references (Encyclopedia.com, EBSCO) | 140 | 271 | 30 |
-| Washington, from intelligence, 1775 **[as quoted]** | 138 | 276 | 36 missing |
+| Ward's orderly book, quoted by Frothingham (p. 106) | 115 | 305 | 30 captured (total 450) |
+| Frothingham's regimental table (same page) | 140 | 271 | 30 captured (total 441) |
+| Washington to John Augustine Washington, 27 July 1775 | 138 | 276 | 36 missing (total 450) |
 
-**Use:** "about 450 Americans killed, wounded or captured, and more than 1,000 British". The three provincial sets are shown
-on screen and not added together.
+**Use:** "About four hundred and fifty Americans were killed, wounded, captured or reported missing. The British reported
+more than a thousand killed or wounded." The three provincial sets are shown on screen and not added together; both of
+Frothingham's come from the same page, which explains where the two standard figures come from.
 
 ## 7. Words people said, and words they may not have
 
 | Words | Who, where | Status |
 |---|---|---|
 | "Don't fire until you see the whites of their eyes" | Attributed to Putnam (earliest in print 1804–1808: Weems) and to Prescott; similar orders are told of European battles (Dettingen, 1743) | **Not narrated as said.** The page says officers told the men to hold their fire until the British were close and to save powder; the famous words are a later tradition (J. L. Bell; *Journal of the American Revolution*; NPS) |
-| "The Rebels are not the despicable Rabble too many have supposed them to be" | Gage to Dartmouth, 25 June 1775 (UK National Archives, CO 5/92, education resource 3b) **[as quoted]** | Usable, attributed and dated, after checking the TNA transcript |
-| "The conquest of this country is not easy" | The same letter **[as quoted]** | Usable after checking |
-| "Greater than our force can afford to lose" (of the killed and wounded) | Gage, 25 June (TNA) **[as quoted]** | Usable after checking. The "greater than we can bear" / "to Barrington, 26 June" version is **not verified: not used** |
-| "The success is too dearly bought" | Howe, letter of 22/24 June 1775 (Fortescue, *Correspondence of King George III*, vol. 3; recipient uncertain) **[as quoted]** | Usable, attributed |
-| "A dear bought victory, another such would have ruined us" | Clinton, private notes (Clinton Papers, Clements Library) **[as quoted]** | Usable as "Clinton wrote privately" |
-| "A large and noble town in one great blaze" | Burgoyne, letter of 25 June 1775 **[as quoted]** | Usable, attributed |
-| "Our Amunition being nearly exausted…" | Prescott to John Adams, 25 August 1775 **[as quoted]** | Usable, attributed |
-| "A Brave & gallant Soldier" | The petition of 5 December 1775 for Salem Poor, signed by 14 officers including Prescott (Massachusetts Archives; NPS) **[as quoted]** | Usable. "Behaved like an Experienced Officer…" not confirmed: not used |
+| "The Rebels are not the despicable Rabble too many have supposed them to be" | Gage, 25 June 1775 (UK National Archives, source 3b web transcript) | **Confirmed** |
+| "The conquest of this country is not easy" | Gage, 25 June 1775 (TNA source 2c, CO 5/92 f.187d) | **Confirmed** |
+| "Greater than our force can afford to lose" (of the killed and wounded) | Gage, 25 June (TNA 3b) | **Confirmed**. The "greater than we can bear" / "to Barrington, 26 June" version is not verified: not used |
+| "The success is too dearly bought" | Howe, letter of 22 and 24 June 1775 (US Army Corps of Engineers documentary edition; probable recipient Edward Harvey) | **Confirmed**: "Howe wrote afterward" |
+| "A dear bought victory, another such would have ruined us" | Attributed to Clinton by later accounts | **Not found in the original papers: not narrated**; Howe's verified line is used instead |
+| "A large and noble town in one blaze" | Burgoyne to Lord Stanley, 25 June 1775 (Drake's transcription) | **Corrected** (not "one great blaze") |
+| "I recd. Orders to march to Breeds Hill"; "we began the Intrenchmant about 12, o Clock"; "Our Amunition being nearly exausted could keep up only a scattering Fire" | Prescott to John Adams, 25 August 1775 (MHS and OSU transcripts) | **Confirmed**: original spelling kept on screen, or marked as modernised |
+| "A Brave & gallant Soldier"; "behaved like an Experienced officer" | The petition of 5 December 1775 for Salem Poor, signed by fourteen men (thirteen officers and a brigade surgeon, NPS), including Prescott | **Both confirmed** |
 
 ## 8. People of the page
 
@@ -227,8 +238,8 @@ on screen and not added together.
 - **Black soldiers:**
   - **Salem Poor** is documented by the petition of December 1775.
   - **Peter Salem** served in Nixon's regiment. The story that he shot Pitcairn is disputed.
-  - Other Black and Native soldiers served in several regiments; their names (for example Barzillai Lew) are still to be
-    checked.
+  - Barzillai Lew appears as a fifer on a 15 June roll; his presence at the battle is attributed by NPS to the historian
+    William Cooper Nell (19th century). No named Native participant was verified.
   - No individual actions are invented.
 - **British:**
   - General Thomas Gage (in Boston);
@@ -275,7 +286,7 @@ on screen and not added together.
 
 | Place | Lat (N) | Lon (W) | Status |
 |---|---|---|---|
-| Breed's Hill summit (the Monument) | 42.37636 | 71.06078 | exact (Wikipedia) |
+| Breed's Hill summit (the Monument) | 42.37636 | 71.06078 | a modern reference point (the 1775 features are placed from the period plans) |
 | Bunker Hill summit (St Francis de Sales church) | 42.3807 | 71.0657 | approximate; about 700 yards NW of the Monument; about 110 ft high (NPS) |
 | Moulton's Point (the landing) | 42.373 | 71.054 | approximate; now inside the Charlestown Navy Yard, built over marsh and flats |
 | Charlestown Neck | 42.383 | 71.075 | approximate; near today's Sullivan Square; erased by landfill |
@@ -296,8 +307,8 @@ on screen and not added together.
 
 | Item | Date, holder | Rights | Use |
 |---|---|---|---|
-| John Trumbull, *The Death of General Warren at the Battle of Bunker's Hill* | Finished March 1786; Yale University Art Gallery (1832.1); a later replica at the MFA Boston | Public domain (Trumbull d. 1843) | Title card (already the card's cover); credited as a later painting, not evidence |
-| *A correct view of the late battle at Charlestown* | Print, Robert Aitken after Bernard Romans, Philadelphia, about 1775; LOC gm71005455 | Public domain by age (LOC rights line to check) | From the record: the only contemporary American view, with the burning town |
+| John Trumbull, *The Death of General Warren at the Battle of Bunker's Hill* | Finished March 1786; Yale University Art Gallery (1832.1); a later replica at the MFA Boston | Public domain (Trumbull d. 1843); record the source of the actual cover image (the Smithsonian catalogue copy carries usage conditions: use Yale's or Commons') | Title card (already the card's cover); credited as a later painting, not evidence |
+| *A correct view of the late battle at Charlestown* | Print, Robert Aitken (after Bernard Romans), Philadelphia, about 1775; LOC gm71005455 | Public domain by age; credit "Library of Congress, Geography and Map Division" | From the record: "a contemporary American engraving of the battle", with the burning town |
 | Howard Pyle, *The Battle of Bunker Hill* | 1897, published 1898; **missing since 2001, presumed stolen** (do not say "at the Delaware Art Museum") | Public domain | Optional, credited as an 1897 painting |
 | Thomas Hyde Page, *A plan of the action at Bunkers-Hill* | 1775 manuscript (after Montrésor's survey), about 1:4,800; LOC gm71000613 | Public domain by age | **The main source for the battle map**: redoubt, breastwork, rail fence, ships, Copp's Hill battery, routes of advance |
 | John Humfrey, *Sketch of the action…* | 1775 manuscript, about 1:13,800; LOC gm71000617 | Public domain by age | Cross-check of troop movements |
@@ -319,17 +330,17 @@ LOC rights line read, since loc.gov could not be opened here.
 - Colours: the first-named side is red. On this card the **British are named first: British red, provincials blue**. The
   owner to confirm.
 
-## 14. Remaining checks before the script is recorded
+## 14. Remaining checks (after ChatGPT's source check)
 
-1. Read in the originals: Prescott's letter (Adams Papers); Gage's two letters of 25 June (TNA CO 5/92; the battle account);
-   Burgoyne's letter; Howe's letter (Fortescue); Clinton's note; the Salem Poor petition.
-2. The provincial casualty figures: which set Frothingham uses, and why the sets differ.
-3. The redoubt's size, from the NPS monument history and Page's plan.
-4. When Charlestown was set on fire, relative to the attacks.
-5. Peter Salem, Barzillai Lew and other Black and Native soldiers: what is documented.
-6. The LOC rights lines for the four maps and the 1775 print.
-7. The landing time, and the number of boats (the "28 barges" is unconfirmed).
-8. Whether Ward held back reinforcements in the morning (a common claim, not confirmed here).
+Resolved by the review: the quotations of Prescott, Gage, Howe, Burgoyne and the Salem Poor petition; the origin of the two
+American casualty figures (both on Frothingham p. 106); the landing "early that afternoon" (Prescott: about 2 pm); the LOC
+credit line. Still open:
+1. Clinton's "dear bought victory" in the original papers (not narrated meanwhile).
+2. A person-by-person reconciliation of the American casualties (not needed for the page).
+3. The exact sequence of the Charlestown fire relative to the attacks (narrated without it).
+4. The 28 boats and the tide (not narrated).
+5. Ward and the morning reinforcements (not narrated as a specific decision).
+6. Any named Native participant.
 
 ---
 
