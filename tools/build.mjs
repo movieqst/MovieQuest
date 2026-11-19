@@ -223,6 +223,9 @@ ${[
 // The page Movie opens to copy a listing: the listing as eBay will show it,
 // and one button that puts its HTML on the clipboard.
 function listingPage(item, copy, html) {
+  // Only the listing itself: select all, copy and paste it into eBay's
+  // description box. No toolbar or notes, since anything here ends up in
+  // the eBay listing (Movie, 18 Nov).
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,35 +233,10 @@ function listingPage(item, copy, html) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>eBay listing — ${esc(item.title)} — Movie Quest Canada</title>
-<style>
-  body{margin:0;background:#2a2a2a;color:#eee;font-family:"Segoe UI",Tahoma,sans-serif;}
-  .bar{-webkit-user-select:none;user-select:none;position:sticky;top:0;z-index:2;background:#111;border-bottom:2px solid #d32f2f;padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
-  .bar b{font-size:15px;} .bar span{color:#999;font-size:13px;}
-  .bar button{margin-left:auto;background:#d32f2f;color:#fff;border:0;border-radius:4px;padding:10px 18px;font-weight:700;letter-spacing:1px;cursor:pointer;font-size:14px;}
-  .bar a{color:#9ab;font-size:13px;}
-  .wrap{padding:24px 16px;}
-  textarea{position:absolute;left:-9999px;}
-</style>
+<style>body{margin:0;padding:24px 16px;background:#2a2a2a;}</style>
 </head>
 <body>
-<div class="bar">
-  <b>${esc(item.title)}</b><span>${esc(copy.id)}${copy.sold ? ' · SOLD' : ''}</span>
-  <a href="../movies/${encodeURIComponent(item.id)}/">website page</a>
-  <button id="copy" type="button">COPY HTML</button>
-  <span style="flex-basis:100%;">Press COPY HTML, then in eBay tick <b>Show HTML Code</b> and paste. This bar is not part of the listing.</span>
-</div>
-<div class="wrap">${html}</div>
-<textarea id="src" readonly>${esc(html)}</textarea>
-<script>
-  document.getElementById('copy').addEventListener('click', async () => {
-    const text = document.getElementById('src').value;
-    const btn = document.getElementById('copy');
-    try { await navigator.clipboard.writeText(text); }
-    catch { const t = document.getElementById('src'); t.select(); document.execCommand('copy'); }
-    btn.textContent = 'COPIED ✓';
-    setTimeout(() => { btn.textContent = 'COPY HTML'; }, 2000);
-  });
-</script>
+${html}
 </body>
 </html>
 `;

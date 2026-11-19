@@ -63,9 +63,9 @@ A copy:
 Writes `movies/<item-id>/index.html` (one page per movie, with a Copies section:
 one card per copy showing its slideshow GIF, grade and its own eBay link; SOLD
 copies stay up with a SOLD stamp), `listings/<copy-id>.html`
-(the eBay listing for that copy, with a COPY HTML button), `listings/index.html`
+(only the eBay listing for that copy, nothing else), `listings/index.html`
 and `sitemap.xml`. The Pages workflow runs it on every deploy too.
 
 ## 4. eBay
-Open `https://moviequest.ca/listings/<copy-id>.html`, press COPY HTML, and paste
-into the eBay description (HTML view).
+Open `https://moviequest.ca/listings/<copy-id>.html`, press Ctrl+A then Ctrl+C,
+and paste into the eBay description box.
