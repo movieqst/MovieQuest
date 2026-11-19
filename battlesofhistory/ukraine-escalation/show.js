@@ -208,21 +208,20 @@
     if (timingsCache[v]) return Promise.resolve(timingsCache[v]);
     return fetch(AUD + v + '/timings.json').then(r => r.ok ? r.json() : {}).catch(() => ({})).then(j => (timingsCache[v] = j));
   }
+  let clipTok = 0;
   function startClip(i, autoplay) {
-    clearTimeout(gapTimer); stopAudio(); ci = i; curSlide = -1; const c = clips[ci]; $('chapSel').value = ci;
+    clearTimeout(gapTimer); stopAudio(); ci = i; curSlide = -1; const c = clips[ci]; $('chapSel').value = ci; const tok = ++clipTok;
     const tag = $('chapterTag'); tag.textContent = c.kind === 'event' ? `${c.part.toUpperCase()} · CHAPTER ${c.n}: ${c.title}` : c.kind === 'debrief' ? 'LOOKING BACK' : c.kind === 'intro' ? 'INTRODUCTION' : '';
     tag.classList.toggle('show', !!tag.textContent); setTimeout(() => tag.classList.remove('show'), 4200);
     loadTimings(voiceId).then(tm => {
-      const sentT = tm[c.id];
-      audio = new Audio(AUD + voiceId + '/' + c.id + '.mp3'); audio.preload = 'auto';
-      const setStarts = () => {
-        clipDur = audio.duration || estDur(c);
-        starts = c.slides.map(sl => sl.sent <= 0 ? 0 : (sentT && sentT[sl.sent] != null ? sentT[sl.sent] : clipDur * charsBefore(c, sl.sent) / chars(c)));
-      };
-      setStarts(); audio.addEventListener('loadedmetadata', setStarts);
-      audio.addEventListener('ended', () => { playing = false; fan(true); gapTimer = setTimeout(() => { if (ci + 1 < clips.length) startClip(ci + 1, true); else finish(); }, 1600); });
-      audio.addEventListener('error', () => { audio = null; fallback = { t0: performance.now(), off: 0, dur: estDur(c) }; setStarts2(); if (autoplay) play(); });
-      function setStarts2() { clipDur = fallback.dur; starts = c.slides.map(sl => sl.sent <= 0 ? 0 : clipDur * charsBefore(c, sl.sent) / chars(c)); }
+      if (tok !== clipTok) return;   // another chapter was chosen meanwhile
+      const sentT = tm[c.id], a = new Audio(AUD + voiceId + '/' + c.id + '.mp3'); a.preload = 'auto'; audio = a;
+      const fromText = d => c.slides.map(sl => sl.sent <= 0 ? 0 : (sentT && sentT[sl.sent] != null ? sentT[sl.sent] : d * charsBefore(c, sl.sent) / chars(c)));
+      clipDur = estDur(c); starts = fromText(clipDur);
+      a.addEventListener('loadedmetadata', () => { if (audio !== a) return; clipDur = a.duration || estDur(c); starts = fromText(clipDur); });
+      a.addEventListener('ended', () => { if (audio !== a) return; playing = false; fan(true); gapTimer = setTimeout(() => { if (ci + 1 < clips.length) startClip(ci + 1, true); else finish(); }, 1600); });
+      a.addEventListener('error', () => { if (audio !== a || tok !== clipTok) return; audio = null; fallback = { t0: performance.now(), off: 0, dur: estDur(c) }; clipDur = fallback.dur;
+        starts = c.slides.map(sl => sl.sent <= 0 ? 0 : clipDur * charsBefore(c, sl.sent) / chars(c)); if (autoplay) play(); });
       c.sentT = sentT; fallback = null; goSlide(0, false);
       if (autoplay) play();
     });
