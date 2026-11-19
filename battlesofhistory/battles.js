@@ -366,8 +366,8 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'ukraine-escalation', progress: 100, lat: 48.38, lon: 31.17, osmZoom: 5, osmNote: 'the whole of Ukraine',
-    order: 28, readyOrder: 24,
+    folder: 'ukraine-escalation', progress: 90, lat: 48.38, lon: 31.17, osmZoom: 5, osmNote: 'the whole of Ukraine',
+    order: 28,   // built (slideshow.html); goes live after Midnight Hammer (owner, 19 Nov 2026): then rename it index.html, readyOrder 25, status 'ready'
     era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Background',
     title: 'Ukraine and Russia: Escalation',
     date: '1991–2014 (the road to war)', year: 2004,
@@ -379,7 +379,7 @@ window.BATTLES = [
     chapters: [ { title: 'Independence, 1991', ev: 'Independence', img: 'images/art/art-ballot.jpg' }, { title: 'The weapons', ev: 'The weapons', img: 'images/art/art-silo.jpg' },
                 { title: 'Gas', ev: 'Gas', img: 'images/art/art-pipeline-snow.jpg' }, { title: 'Euromaidan', ev: 'Euromaidan', img: 'images/maps/kyiv-painting.jpg' },
                 { title: 'The twenty-seventh of February', ev: 'The twenty-seventh of February', img: 'images/art/art-crimea-parliament.jpg' } ],
-    status: 'ready'
+    status: 'in progress'
   },
   {
     folder: 'crimea2014', progress: 1, lat: 45.0, lon: 34.1, osmZoom: 8, osmNote: 'the whole peninsula; Simferopol, Sevastopol and the Perekop isthmus',
