@@ -1,6 +1,7 @@
-# Yugoslavia: Escalation, 1980–1991: narration script (DRAFT 1)
+# Yugoslavia: Escalation, 1980–1991: narration script (DRAFT 2)
 
-This is the script for the narrators to read, and the slide list for the projector. **Draft 1** (19 November 2026) is written
+This is the script for the narrators to read, and the slide list for the projector. **Draft 2** (19 November 2026) applies ChatGPT's review of draft 1
+(`research/reviews/CHATGPT-REVIEW-DRAFT1.md`); the changes are listed at the end. **Draft 1** was written
 from the research report `research/RESEARCH-REPORT.md` (v3, after ChatGPT's source check and re-check). Report sections
 (§1–§14) are given after the tags so that each line can be traced.
 
@@ -35,7 +36,8 @@ from the research report `research/RESEARCH-REPORT.md` (v3, after ChatGPT's sour
 | record | An official document: a law, constitution, census, election result or referendum count. |
 | account | A named person's, witness's or newspaper's claim, attributed. |
 | serbian account / croatian account / croatian serb account / slovenian account / kosovo albanian account / federal account | A claim found only in one government's, party's or community's statements, with who said it and when. |
-| court | A finding or record of the International Criminal Tribunal for the former Yugoslavia, with what it did and did not decide. |
+| court | A finding of the International Criminal Tribunal for the former Yugoslavia, with what it did and did not decide. |
+| court background | A fact reported in the historical background of a tribunal judgment: not something the court decided. |
 | estimate | An uncertain number, with who counted and what it counts. |
 | disputed | Identifiable sources disagree. The line says how. |
 | scholarship | Historians' interpretation, named. |
@@ -61,7 +63,7 @@ The narration lines under each slide are spoken while that slide is on the scree
 ---
 
 ## Welcome
-Welcome to Battles of History. This is not a battle. It is the background to the battles that follow. In 1980, Yugoslavia was one country of six republics, many nations and two alphabets. By the summer of 1991, two of its republics had declared independence. We will show you, slide by slide, how the federation came apart: what was decided, what was said, and what is still argued about. Some chapters describe deaths. We tell them plainly and without detail.
+Welcome to Battles of History. This is not a battle. It is the background to the battles that follow. In 1980, Yugoslavia was a federation of six republics, with many communities and languages. By the summer of 1991, two of its republics had declared independence. We will show you, slide by slide, how the federation came apart: what was decided, what was said, and what is still argued about. Some chapters describe deaths. We tell them plainly and without detail.
 
 ## Introduction
 
@@ -92,7 +94,8 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ### 1. Many nations
 ▸ **CARD:** "1981 federal census: 22,424,711 people". Serbs 36.3% · Croats 19.7% · Muslims 8.9% · Slovenes 7.8% · Albanians 7.7% · Macedonians 6.0% · Yugoslavs 5.4% · Montenegrins 2.6% · Hungarians 1.9%.
 - The census of 1981 counted more than twenty-two million people. The largest nations were the Serbs and the Croats. Many others lived alongside them, and some people simply called themselves Yugoslavs. *(record)* §1
-- "Muslims" was the census name for a nation then. Today, most of the people it counted call themselves Bosniaks. *(record)* §1
+- The census used "Muslims" as a category of national identity. *(record)* §1
+- Bosniak is the name commonly used today for the community historically associated with that category. *(established)* §1
 
 ▸ **CARD:** "The 1974 constitution".
 - The constitution of 1974 gave the republics, and the two provinces, wide powers, and each its own seat on the federal presidency. *(established)* §1
@@ -102,8 +105,8 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ▸ **PHOTO:** *Sahrana Josipa Broza Tita* (unknown author, Museum of Yugoslavia, CC BY-SA 3.0 Serbia). Caption: "Tito's funeral, Belgrade, 8 May 1980".
 - Tito died in Ljubljana on the fourth of May 1980. His funeral in Belgrade was attended by many of the world's leaders. *(established)* §2
 
-▸ **CARD:** "The collective Presidency: eight members · a new president each year".
-- No one replaced him. A collective presidency of eight members, one from each republic and province, took over, and its president changed every year. *(established)* §2
+▸ **CARD:** "The collective Presidency: a member from every republic and province · a new chair each year".
+- After Tito died, Yugoslavia's collective presidency became the head of state. It included a representative from every republic and province, and its chair changed every year. *(record)* §2
 - "After Tito, Tito" was the slogan. *(established)* §2
 
 ### 3. Debt
@@ -128,7 +131,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ### 5. The Memorandum
 ▸ **CARD:** "September 1986: the draft Memorandum of the Serbian Academy of Sciences and Arts".
 - In the 1980s, Kosovo's Albanian majority grew. Many Serbs and Montenegrins left. Serb petitions complained of pressure. Albanians complained of arrests and trials. Why people left varied by place and time, and is still argued about. *(established; disputed)* §4
-- In September 1986, a newspaper published a leaked draft by members of the Serbian Academy of Sciences and Arts. It argued that Serbs were discriminated against in Yugoslavia, especially in Kosovo and Croatia. *(established)* §4
+- In September 1986, the Belgrade newspaper Večernje novosti published excerpts from a leaked draft by members of the Serbian Academy of Sciences and Arts. It argued that Serbs were discriminated against in Yugoslavia, especially in Kosovo and Croatia. *(established)* §4
 - Serbia's communist leaders at first condemned it. Whether it shaped what came later is a matter of interpretation. *(established; scholarship)* §4
 
 ### 6. Kosovo Polje
@@ -139,7 +142,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 - He told them: "No one is allowed to beat you." The words were broadcast, and made him famous across Serbia. *(established)* §5
 
 ▸ **CARD:** "September 1987: the Eighth Session".
-- That September, at a meeting of Serbia's party leaders, Milošević's side defeated Serbia's president, Ivan Stambolić, who had been his mentor. *(established)* §5
+- That September, at a meeting of Serbia's party leaders, Milošević's side defeated the group around Serbia's president, Ivan Stambolić, who had been his mentor. Stambolić was removed in December. *(established)* §5
 
 ### 7. The rallies
 ▸ **CARD:** "October 1988: Vojvodina · January 1989: Montenegro".
@@ -152,7 +155,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ▸ **CARD:** "March 1989: official toll: 25 killed, including 2 police officers".
 - Unrest followed. The official toll was twenty-five dead, including two police officers. Other estimates circulated. *(estimate)* §4
 - Kosovo Albanian activists said the vote had been forced. Federal authorities later said their response had answered violence against the police. *(kosovo albanian account; federal account)* §4
-- On the eighth of May 1989, Serbia's assembly elected Milošević president of Serbia. *(established)* §5
+- On the eighth of May 1989, Serbia's assembly elected Milošević to chair Serbia's collective presidency. *(established)* §5
 
 ### 8. Gazimestan
 ▸ **PHOTO:** *Gazimestan Kosovo* (FitimSelimi, CC BY-SA 3.0). Caption: "The Gazimestan monument, photographed in 2012".
@@ -161,32 +164,33 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ▸ **CARD:** "Gazimestan, 28 June 1989": the quotation, in Serbian and in English.
 - Milošević said: "Six centuries later, today, we are again fighting battles and facing battles. They are not armed, although even such battles are not yet ruled out." *(established)* §5
 - The same speech also spoke of economic, political and cultural prosperity. *(established)* §5
-- His supporters said Serbia was restoring its unity, after years in which its provinces had been almost separate. *(serbian account)* §1
+- Milošević presented the changes as restoring unity to Serbia. *(serbian account)* §1
+- Under the federal constitution, the provinces had exercised broad autonomy. *(record)* §1
 
 ## Part 3: Coming apart
 
 ### 9. Slovenia
 ▸ **MAP:** `map-yugoslavia`, zoom to Slovenia.
-- In 1988, four Slovenes, including the journalist Janez Janša, were arrested over a military document. *(established)* §6
+- In 1988, a case involving a military document led to the trial of the journalist Janez Janša and three other defendants. *(established)* §6
 - Their arrests sparked a defence committee and protests. In July they were tried by a military court in Ljubljana, in Serbo-Croatian, not in Slovene. *(established)* §6
 
 ▸ **CARD:** "September 1989: Slovenia's constitutional amendments · 1 December 1989: a rally banned".
 - In September 1989, Slovenia's assembly declared its right to self-determination. *(record)* §6
-- That December, Slovenia banned a rally of Kosovo Serbs planned in Ljubljana. A boycott of Slovenian goods followed in Serbia. *(established)* §6
+- Slovenia banned a rally that the Božur association of Kosovo Serbs had planned in Ljubljana for the first of December. A boycott of Slovenian goods followed in Serbia. *(established)* §6
 
 ### 10. A new dinar
 ▸ **PHOTO:** *Visit of Ante Marković, Yugoslav Prime Minister, to the CEC (cropped)* (European Commission, CC BY 4.0). Caption: "Ante Marković, Yugoslav prime minister, 1990".
-- By 1989, prices were rising so fast that money lost its value from week to week. Over that year, prices rose by about two thousand seven hundred per cent. *(estimate)* §3
+- By 1989, prices were rising so fast that money lost its value from week to week. The OECD put the rise in prices during that year at about two thousand seven hundred per cent. *(estimate)* §3
 - In March 1989, Ante Marković became the federal prime minister. *(established)* §3
 
 ▸ **ART:** `art-banknotes` again, with a stamp: "1 January 1990: 1 new dinar = 10,000 old · 7 dinars = 1 Deutschmark".
-- On the first of January 1990, he brought in a new dinar, worth ten thousand old ones, and tied it to the German mark. Within months, inflation had almost stopped. *(record)* §3
+- On the first of January 1990, he brought in a new dinar, worth ten thousand old ones, and tied it to the German mark. By spring, monthly inflation had fallen close to zero. *(record)* §3
 - But his reforms lost support during 1990. *(established)* §3
 
 ### 11. The last congress
 ▸ **ART:** `art-congress`, an empty congress hall (illustration).
 - In January 1990, the League of Communists of Yugoslavia met in Belgrade. *(established)* §7
-- The Slovenian delegation walked out. The Croatian delegation refused to continue without it. The party that had ruled Yugoslavia since 1945 never recovered. *(established)* §7
+- The Slovenian delegation walked out. The Croatian delegation refused to continue without the Slovenes. A reduced session met again in May, but the party that had ruled Yugoslavia since 1945 never recovered. *(established)* §7
 
 ### 12. The elections of 1990
 ▸ **ART:** `art-ballot-1990`, a ballot box and posters with no readable words (illustration).
@@ -198,7 +202,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 - In November and December, Macedonia, Bosnia and Herzegovina, Serbia and Montenegro voted. In Bosnia and Herzegovina, three national parties won most seats. In Serbia, Milošević was elected president with about sixty-five per cent. *(record)* §8
 
 ▸ **CARD:** "May 1990: Territorial Defence weapons · July 1990: Kosovo".
-- In May 1990, an order sought to move the republics' Territorial Defence weapons into the army's depots. Some Slovenian units kept their weapons, and Slovenia secretly organised its own defence. *(established)* §8
+- In May 1990, Slovenia's Territorial Defence command ordered weapons moved to federal army depots. Some Slovenian units kept their weapons, and Slovenian authorities secretly organised a defence network. *(established)* §8
 - In July, Albanian members of Kosovo's assembly, shut out of the building, declared Kosovo a republic within Yugoslavia. No federal authority recognised it. Days later, Serbia dissolved Kosovo's assembly. *(established)* §4
 
 ## Part 4: Toward war
@@ -209,12 +213,15 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 - In July 1990, a Serb assembly at Srb declared the sovereignty and autonomy of the Serbs in Croatia. *(established)* §9
 
 ▸ **ART:** `art-logs`, logs across an empty country road (illustration).
-- On the seventeenth of August 1990, roads around Knin were blocked with logs. Croatian Serb leaders held a vote on Serb autonomy, and reported overwhelming support. It became known as the Log Revolution. *(established)* §9
+- On the seventeenth of August 1990, roads around Knin were blocked with logs. It became known as the Log Revolution. *(established)* §9
+- From the nineteenth of August, Croatian Serb leaders held a vote on Serb sovereignty and autonomy. *(established)* §9
+- The organisers reported overwhelming support. *(croatian serb account)* §9
 - In December, they proclaimed a Serb Autonomous Region of Krajina. *(established)* §9
 
 ▸ **CARD:** "22 December 1990: the Constitution of the Republic of Croatia": the preamble, quoted.
 - Croatia's new constitution, in force from the twenty-second of December 1990, described Croatia as the national state of the Croatian nation, and the state of members of other nations and minorities, naming the Serbs first among them. Its fourteenth article guaranteed equality. *(record)* §9
-- The Croatian government said Serbs kept all their rights. Krajina Serb leaders said Serbs had lost their status as a nation of the republic. *(croatian account; croatian serb account)* §9
+- Croatia's government said Serbs kept full civic rights. *(croatian account)* §9
+- Krajina Serb leaders argued that the constitution stripped Serbs of their former status as a constituent people of the republic. *(croatian serb account)* §9
 
 ### 14. The army and the presidency
 ▸ **CARD:** "25 January 1991: a film on Belgrade television".
@@ -225,27 +232,33 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ▸ **CARD:** "12–15 March 1991: the Presidency votes".
 - Days later, the army's leaders asked the federal presidency for emergency measures. The proposal failed to win a majority. *(established)* §10
-- The army said such measures would prevent violence between nations and protect the federation. Croatian authorities said the army was blocking Croatian police and protecting Serb-held areas. *(federal account; croatian account)* §10
+- The army's leaders said such measures would prevent violence between nations and protect the federation. *(federal account)* §10
+- Croatian witnesses, in the tribunal's Martić case, described the army as increasingly protecting Serb-held areas. *(croatian account)* §10
 - On the sixteenth of March, Milošević said Serbia no longer recognised the presidency's authority. *(account)* §10
 
 ▸ **CARD:** "25 March 1991: Karađorđevo".
-- On the twenty-fifth of March, Milošević and Tuđman met at Karađorđevo. A Croatian politician later testified that Tuđman told him they had agreed in principle to divide Bosnia. He was not at the meeting. Others dispute that any such deal was made, and no agreed text has been verified. *(account; disputed)* §10
+- On the twenty-fifth of March, Milošević and Tuđman met at Karađorđevo. *(established)* §10
+- Josip Manolić later testified that Tuđman had described an agreement in principle concerning Bosnia and Herzegovina. Manolić was not at the meeting. *(account)* §10
+- The defence disputed what his account showed about a partition deal. No agreed text has been verified. *(disputed)* §10
 
 ### 15. Spring 1991
 ▸ **MAP:** `map-croatia`, Pakrac, Plitvice, Borovo Selo and Split marked.
 - In March 1991, Croatian police and local Serb forces faced each other at Pakrac. The army intervened. No deaths were confirmed. *(established)* §9
 
 ▸ **PHOTO:** *Plitvice Lakes- National Park 4* (Logica olgica, CC BY-SA 4.0). Caption: "The Plitvice Lakes, photographed in 2012".
-- On the thirty-first of March, at the Plitvice Lakes, Croatian police retook the national park. A Croatian policeman, Josip Jović, and a Serb, Rajko Vukadinović, were killed. *(established)* §9
+- On the thirty-first of March, at the Plitvice Lakes, Croatian police retook the national park's headquarters. A Croatian policeman, Josip Jović, and a Serb, Rajko Vukadinović, were killed. *(established)* §9
 
 ▸ **PHOTO:** *Memorial in Borovo Selo* (Modzzak, public domain). Caption: "The memorial in Borovo Selo, photographed in 2007".
-- On the second of May, at Borovo Selo, near Vukovar, twelve Croatian policemen were killed. The tribunal's Mrkšić judgment, in its background, also reports three Serb civilians killed. *(established; court)* §9
+- On the second of May, at Borovo Selo, near Vukovar, twelve Croatian policemen were killed. *(established)* §9
+- The historical background of the tribunal's Mrkšić judgment also reports three Serb civilians killed. *(court background)* §9
 - On the sixth of May, at a protest in Split, a Yugoslav army soldier, Saško Gešovski, was killed. *(established)* §9
 
 ### 16. The twenty-fifth of June
 ▸ **CARD:** "Slovenia, 23 December 1990 · Croatia, 19 May 1991": the referendum results.
-- In December 1990, eighty-eight and a half per cent of Slovenia's voters voted for independence. *(record)* §10
-- In May 1991, Croatia voted. Of those who took part, about ninety-three per cent said yes to a sovereign and independent Croatia that could join a union of sovereign republics. Many Serbs boycotted the vote. Krajina's leaders had held their own vote on joining Serbia. *(record)* §9
+- In December 1990, eighty-eight and a half per cent of Slovenia's eligible voters voted for independence. *(record)* §10
+- Slovenia's government said it understood independence as carrying out that mandate, after negotiations failed. *(slovenian account)* §10
+- In May 1991, Croatia voted. Of those who took part, about ninety-three per cent said yes to a sovereign and independent Croatia that could join a union of sovereign republics. *(record)* §9
+- Many Serbs boycotted the vote. Krajina's leaders had held their own vote on joining Serbia and remaining in Yugoslavia. *(established)* §9
 
 ▸ **CARD:** "March–June 1991: the presidents of the six republics meet" · Split · Belgrade · Brdo · Ohrid · Cetinje · Stojčevo.
 - Through the spring, the presidents of the six republics met again and again. Slovenia and Croatia wanted a looser union of states. Serbia and Montenegro wanted a federation. Bosnia and Herzegovina and Macedonia proposed a compromise. They found no agreement. *(established)* §10
@@ -262,9 +275,9 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ### What happened
 ▸ **MAP:** `map-yugoslavia`.
 - After Tito's death, the federation faced debt, austerity and arguments over money and power. *(established)*
-- In Serbia, Milošević rose on the Kosovo question, and Serbia's provinces lost their self-government. *(established)*
+- In Serbia, Milošević rose on the Kosovo question, and Serbia sharply reduced the autonomy of its two provinces. *(established)*
 - The party that held Yugoslavia together split in 1990. Each republic elected its own leaders. *(established)*
-- In Croatia, Serb leaders around Knin rejected the new government. Armed incidents began. In June 1991, Slovenia and Croatia declared independence. *(established)*
+- In Croatia, Croatian Serb leaders around Knin challenged Zagreb's authority and organised a vote on autonomy. Armed incidents began. In June 1991, Slovenia and Croatia declared independence. *(established)*
 
 ### How historians read it
 ▸ **CARD:** "Not ancient hatreds".
@@ -273,7 +286,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ### The courts
 ▸ **CARD:** "The International Criminal Tribunal for the former Yugoslavia".
-- Later, an international tribunal tried some of the people in this story. Milošević died in 2006, before his trial ended. Milan Babić, a Krajina Serb leader, pleaded guilty to persecution. *(court)* §11
+- Later, an international tribunal tried some of the people in this story. Milošević died in 2006, before his trial ended, so there was no verdict. Milan Babić, a Krajina Serb leader, pleaded guilty to persecution. *(court)* §11
 - Those trials mostly concerned the wars after June 1991, which are told on the following pages. *(page)*
 
 ---
@@ -310,30 +323,36 @@ banknote (copyright).
 
 **Total:** about 50 slides across the introduction, 16 chapters and the debrief.
 
-## Points for ChatGPT's review
-- Is each line supported by the report, and tagged rightly?
-- Is the balance fair: Serbian, Croatian, Croatian Serb, Slovenian, Kosovo Albanian and federal accounts, each attributed, and
-  none presented as fact?
-- Are the simplifications for students aged 12 and up still accurate? For example, "about one in eight" for 12.16%, "more
-  than twenty billion dollars", and "money lost its value from week to week".
-- Are the picture choices and captions suitable?
+## Changes in draft 2 (after ChatGPT's review of draft 1)
+- **Welcome:** "many communities and languages".
+- **Ch. 1:** "Muslims" as a census category; "Bosniak" today, tagged separately.
+- **Ch. 2:** the collective presidency already existed; a representative from every republic and province; no "eight
+  members" count (the party president also sat on it, under article 321).
+- **Ch. 5:** Večernje novosti published excerpts.
+- **Ch. 6–7:** the group around Stambolić defeated, and Stambolić removed in December; Milošević elected to chair Serbia's
+  collective presidency.
+- **Ch. 8:** Milošević's own claim; the provinces' autonomy as a record.
+- **Ch. 9:** the trial of Janša and three others; the Božur rally planned for 1 December.
+- **Ch. 10:** 2,700% attributed to the OECD; "by spring, monthly inflation had fallen close to zero".
+- **Ch. 11:** the reduced session in May.
+- **Ch. 12:** the Slovenian TO command's order.
+- **Ch. 13:** the vote dated, and the reported support attributed; "full civic rights" against "constituent people".
+- **Ch. 14:** Croatian witnesses in the Martić case; Manolić named, with the defence's dispute.
+- **Ch. 15:** the park headquarters; the Mrkšić background tagged `court background` (a new tag).
+- **Ch. 16:** "eligible voters"; the Slovenian government's account; Krajina's vote "joining Serbia and remaining in
+  Yugoslavia"; the boycott tagged apart from the ballot return.
+- **Debrief:** "sharply reduced the autonomy"; "challenged Zagreb's authority"; Milošević's trial without a verdict.
 
-## Prompt for ChatGPT (copy everything below the line into a new chat, with this file and RESEARCH-REPORT.md attached)
+## Prompt for ChatGPT (short final check; copy everything below the line into a new chat, with this file attached)
 
 ---
 
-I am building an educational history slideshow page for students aged 12 and up: "Yugoslavia: Escalation, 1980–1991", the
-background page to a series on the wars in the former Yugoslavia. You checked the research twice; attached are the narration
-script (draft 1) and the research report (v3).
+You reviewed draft 1 of the narration for "Yugoslavia: Escalation, 1980–1991", an educational slideshow page for students
+aged 12 and up. Attached is draft 2, with your changes applied (listed in "Changes in draft 2").
 
-Please review the narration only (the welcome and the lines under each chapter), not the production notes:
-1. **Accuracy:** any line that is wrong, overstated, or not supported by the report or your checks. Give a table: chapter,
-   current words, problem, replacement, source.
-2. **Tags:** any line with the wrong tag.
-3. **Balance:** are the Serbian, Croatian, Croatian Serb, Slovenian, Kosovo Albanian and federal positions stated fairly,
-   attributed, and kept apart from court findings and records?
-4. **Simplifications for students:** are they still accurate?
-5. **Pictures:** is each photo suitable for its slide and caption?
+Please do a short final check of the narrated lines only:
+1. Were your changes applied correctly?
+2. Is any line now wrong, unsupported, mis-tagged, unbalanced, or awkward for a text-to-speech voice?
 
-Keep the answer under about 1,500 words, in a form that can be saved as a file, ending with a verdict: ready to record, or
-revise first.
+Give a short table (chapter, current words, problem, replacement, source) and a verdict: ready to record, or not. Under about
+800 words, in a form that can be saved as a file.

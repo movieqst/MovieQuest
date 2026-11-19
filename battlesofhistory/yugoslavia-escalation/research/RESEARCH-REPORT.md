@@ -44,8 +44,9 @@ severance of ties in October belong to the next pages.
 ## 2. Tito's death and the collective Presidency (1980)
 - **4 May 1980:** Tito died in Ljubljana. His funeral in Belgrade on 8 May was attended by many heads of state and
   government. [ESTABLISHED]
-- **After him:** a collective Presidency of eight members (one from each republic and province), whose president changed
-  each year by rotation. The party leadership also rotated. "After Tito, Tito" expressed continuity. [ESTABLISHED]
+- **After him:** the collective Presidency, which already existed, became the head of state: a representative from every
+  republic and province, plus the president of the League of Communists by virtue of office (1974 constitution, art. 321),
+  with a chair that rotated each year (draft 1 review). The party leadership also rotated. "After Tito, Tito" expressed continuity. [ESTABLISHED]
 
 ## 3. The economic crisis (1979–1990)
 - **Foreign debt:** **US$20.3 billion in 1982** (World Bank retrospective). IMF programmes and austerity followed. [ESTABLISHED;
