@@ -108,7 +108,7 @@
     } else if (sl.kind === 'map') {
       const cv = document.createElement('canvas'); slideEl.appendChild(cv);
       const lab = document.createElement('div'); lab.className = 'label';
-      lab.innerHTML = esc(sl.title || '') + '<small>Painted map made for this page with ChatGPT (AI-generated) from real elevation data' + (sl.map === 'kyiv' ? ' and OpenStreetMap (© OpenStreetMap contributors)' : '') + (sl.outline.length ? '; borders of 1991–2014 from Natural Earth' : '') + '</small>';
+      lab.innerHTML = esc(sl.title || '') + '<small>Painted map made for this page with ChatGPT (AI-generated) from real elevation data' + (sl.map === 'kyiv' ? ' and OpenStreetMap (© OpenStreetMap contributors)' : '') + (sl.outline.length ? '; ' + (S.borderNote || 'borders from Natural Earth') : '') + '</small>';
       slideEl.appendChild(lab);
       mapState = { sl, cv, m: S.maps[sl.map], im: img(IMG + 'maps/' + S.maps[sl.map].file) };
       drawMap(0);
@@ -119,7 +119,7 @@
     if (c.quote) h += c.quote.map(q => `<blockquote>${esc(q)}</blockquote>`).join('');
     if (c.rows && c.rows.length) h += '<ul>' + c.rows.map(r => `<li>${esc(r)}</li>`).join('') + '</ul>';
     if (c.cols) h += '<div class="cols">' + c.cols.map(col => `<div><h3 class="${col.side || ''}">${esc(col.head)}</h3><ul>${col.rows.map(r => `<li>${esc(r)}</li>`).join('')}</ul></div>`).join('') + '</div>';
-    if (c.bars) { const mx = 100; h += '<div class="bars">' + c.bars.map(([n, v]) => `<div class="bar"><span>${esc(n)}</span><i style="width:${v / mx * 100}%"></i><b>${v}%</b></div>`).join('') + '</div>'; }
+    if (c.bars) { const mx = c.barMax || 100; h += '<div class="bars">' + c.bars.map(([n, v]) => `<div class="bar"><span>${esc(n)}</span><i style="width:${v / mx * 100}%"></i><b>${v}%</b></div>`).join('') + '</div>'; }
     if (c.small) h += `<div class="small">${esc(c.small)}</div>`;
     return h + '</div>';
   }

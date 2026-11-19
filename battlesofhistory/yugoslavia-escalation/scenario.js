@@ -122,41 +122,6 @@ window.YUGESC_SCENARIO = {
        44.82,
        20.46,
        "Belgrade"
-      ],
-      [
-       45.81,
-       15.98,
-       "Zagreb"
-      ],
-      [
-       46.05,
-       14.51,
-       "Ljubljana"
-      ],
-      [
-       43.86,
-       18.41,
-       "Sarajevo"
-      ],
-      [
-       41.99,
-       21.43,
-       "Skopje"
-      ],
-      [
-       42.44,
-       19.26,
-       "Titograd"
-      ],
-      [
-       42.66,
-       21.17,
-       "Pristina"
-      ],
-      [
-       45.25,
-       19.84,
-       "Novi Sad"
       ]
      ],
      "outline": [
@@ -292,6 +257,7 @@ window.YUGESC_SCENARIO = {
       ]
      ],
      "small": "Declared nationality · Archives of Yugoslavia",
+     "barMax": 40,
      "line": 0
     },
     {
@@ -1511,6 +1477,7 @@ window.YUGESC_SCENARIO = {
   ]
  },
  "borderFill": 0.16,
+ "borderNote": "the republics and provinces from Natural Earth",
  "endNote": "What happened next is told on the following pages: the Ten-Day War in Slovenia, and then the wars in Croatia and Bosnia and Herzegovina.",
  "imageBase": "images/",
  "audioBase": "audio/",

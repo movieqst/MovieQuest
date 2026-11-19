@@ -39,12 +39,12 @@ SLIDES = [
   # I1-I4
   {'kind': 'title', 'file': 'art-title.jpg', 'head': 'Yugoslavia', 'sub': 'Escalation, 1980–1991'},
   MAP('europe', (50.0, 28.0, 1.0), (44.0, 18.7, 2.6), marks=c('belgrade'), outline=REPS, title='Europe, 1980s'),
-  MAP('yugoslavia', (43.9, 18.7, 1.0), (43.9, 18.7, 1.06), marks=c('belgrade', 'zagreb', 'ljubljana', 'sarajevo', 'skopje', 'titograd', 'pristina', 'novisad'), outline=REPS, extra='repnames', title='Six republics, two provinces'),
+  MAP('yugoslavia', (43.9, 18.7, 1.0), (43.9, 18.7, 1.06), marks=c('belgrade'), outline=REPS, extra='repnames', title='Six republics, two provinces'),
   CARD('How this page tells it', 'Each line carries a tag', rows=['record · a law, census, vote or count', 'established · agreed by the standard histories', 'account · a named person, witness or newspaper',
        'serbian / croatian / croatian serb / slovenian / kosovo albanian / federal account · one side’s claim', 'court · a tribunal finding or record', 'estimate · an uncertain number', 'scholarship · historians’ readings']),
   # 1. Many nations
   CARD('1981 federal census', '22,424,711 people', bars=[['Serbs', 36.3, 'n'], ['Croats', 19.7, 'n'], ['Muslims', 8.9, 'n'], ['Slovenes', 7.8, 'n'], ['Albanians', 7.7, 'n'], ['Macedonians', 6.0, 'n'],
-       ['Yugoslavs', 5.4, 'n'], ['Montenegrins', 2.6, 'n'], ['Hungarians', 1.9, 'n']], small='Declared nationality · Archives of Yugoslavia'),
+       ['Yugoslavs', 5.4, 'n'], ['Montenegrins', 2.6, 'n'], ['Hungarians', 1.9, 'n']], small='Declared nationality · Archives of Yugoslavia') | {'barMax': 40},
   CARD('The 1974 constitution', 'Republics and provinces with wide powers', rows=['each with its own seat on the federal presidency', 'the federal army: the Yugoslav People’s Army (JNA)', 'each republic’s reserve force: the Territorial Defence']),
   # 2. After Tito, Tito
   PHOTO('tito-funeral.jpg', 'Tito’s funeral, Belgrade, 8 May 1980', 'unknown author, Museum of Yugoslavia · CC BY-SA 3.0 Serbia', 'Sahrana Josipa Broza Tita.jpg'),
@@ -138,7 +138,7 @@ S = {
   'maps': {k: {'file': k + '-painting.jpg', 'lat0': v['lat0'], 'lat1': v['lat1'], 'lon0': v['lon0'], 'lon1': v['lon1'], 'km_w': v['km_w']} for k, v in MAPS.items()},
   'borderColors': {'Slovenia': [120, 200, 160], 'Croatia': [230, 200, 110], 'Bosnia and Herzegovina': [140, 180, 230], 'Serbia': [235, 150, 120], 'Vojvodina': [235, 190, 160],
                    'Kosovo': [210, 160, 210], 'Montenegro': [170, 210, 120], 'Macedonia': [240, 170, 90]},
-  'borderFill': .16,
+  'borderFill': .16, 'borderNote': 'the republics and provinces from Natural Earth',
   'endNote': 'What happened next is told on the following pages: the Ten-Day War in Slovenia, and then the wars in Croatia and Bosnia and Herzegovina.',
   'imageBase': 'images/', 'audioBase': 'audio/',
   'voices': [{'id': 'clear', 'name': 'Narrator 1 · clear'}, {'id': 'light', 'name': 'Narrator 2 · light'}, {'id': 'bright', 'name': 'Narrator 3 · bright'},
