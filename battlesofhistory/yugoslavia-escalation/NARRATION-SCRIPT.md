@@ -1,6 +1,7 @@
-# Yugoslavia: Escalation, 1980–1991: narration script (DRAFT 2)
+# Yugoslavia: Escalation, 1980–1991: narration script (DRAFT 3, ready to record)
 
-This is the script for the narrators to read, and the slide list for the projector. **Draft 2** (19 November 2026) applies ChatGPT's review of draft 1
+This is the script for the narrators to read, and the slide list for the projector. **Draft 3** applies ChatGPT's final check of draft 2 (`research/reviews/CHATGPT-REVIEW-DRAFT2.md`).
+**Draft 2** (19 November 2026) applies ChatGPT's review of draft 1
 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`); the changes are listed at the end. **Draft 1** was written
 from the research report `research/RESEARCH-REPORT.md` (v3, after ChatGPT's source check and re-check). Report sections
 (§1–§14) are given after the tags so that each line can be traced.
@@ -36,7 +37,7 @@ from the research report `research/RESEARCH-REPORT.md` (v3, after ChatGPT's sour
 | record | An official document: a law, constitution, census, election result or referendum count. |
 | account | A named person's, witness's or newspaper's claim, attributed. |
 | serbian account / croatian account / croatian serb account / slovenian account / kosovo albanian account / federal account | A claim found only in one government's, party's or community's statements, with who said it and when. |
-| court | A finding of the International Criminal Tribunal for the former Yugoslavia, with what it did and did not decide. |
+| court | A finding or record of the International Criminal Tribunal for the former Yugoslavia (a judgment, a plea, how a case ended), with what it did and did not decide. |
 | court background | A fact reported in the historical background of a tribunal judgment: not something the court decided. |
 | estimate | An uncertain number, with who counted and what it counts. |
 | disputed | Identifiable sources disagree. The line says how. |
@@ -171,8 +172,8 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 
 ### 9. Slovenia
 ▸ **MAP:** `map-yugoslavia`, zoom to Slovenia.
-- In 1988, a case involving a military document led to the trial of the journalist Janez Janša and three other defendants. *(established)* §6
-- Their arrests sparked a defence committee and protests. In July they were tried by a military court in Ljubljana, in Serbo-Croatian, not in Slovene. *(established)* §6
+- In 1988, arrests in a case involving a military document sparked protests and the formation of a defence committee. *(established)* §6
+- In July, a military court in Ljubljana tried the journalist Janez Janša and three others. The trial was held in Serbo-Croatian, not in Slovene. *(established)* §6
 
 ▸ **CARD:** "September 1989: Slovenia's constitutional amendments · 1 December 1989: a rally banned".
 - In September 1989, Slovenia's assembly declared its right to self-determination. *(record)* §6
@@ -184,7 +185,8 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 - In March 1989, Ante Marković became the federal prime minister. *(established)* §3
 
 ▸ **ART:** `art-banknotes` again, with a stamp: "1 January 1990: 1 new dinar = 10,000 old · 7 dinars = 1 Deutschmark".
-- On the first of January 1990, he brought in a new dinar, worth ten thousand old ones, and tied it to the German mark. By spring, monthly inflation had fallen close to zero. *(record)* §3
+- On the first of January 1990, Marković's government introduced a new dinar, worth ten thousand old ones, and pegged it to the German mark. *(record)* §3
+- The World Bank reported that monthly inflation fell close to zero between April and June. *(estimate)* §3
 - But his reforms lost support during 1990. *(established)* §3
 
 ### 11. The last congress
@@ -213,7 +215,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 - In July 1990, a Serb assembly at Srb declared the sovereignty and autonomy of the Serbs in Croatia. *(established)* §9
 
 ▸ **ART:** `art-logs`, logs across an empty country road (illustration).
-- On the seventeenth of August 1990, roads around Knin were blocked with logs. It became known as the Log Revolution. *(established)* §9
+- On the seventeenth of August 1990, roads around Knin were blocked with logs. The barricades became a symbol of the unrest known as the Log Revolution. *(established)* §9
 - From the nineteenth of August, Croatian Serb leaders held a vote on Serb sovereignty and autonomy. *(established)* §9
 - The organisers reported overwhelming support. *(croatian serb account)* §9
 - In December, they proclaimed a Serb Autonomous Region of Krajina. *(established)* §9
@@ -233,7 +235,7 @@ Welcome to Battles of History. This is not a battle. It is the background to the
 ▸ **CARD:** "12–15 March 1991: the Presidency votes".
 - Days later, the army's leaders asked the federal presidency for emergency measures. The proposal failed to win a majority. *(established)* §10
 - The army's leaders said such measures would prevent violence between nations and protect the federation. *(federal account)* §10
-- Croatian witnesses, in the tribunal's Martić case, described the army as increasingly protecting Serb-held areas. *(croatian account)* §10
+- In the trial of Milan Martić, Croatian witnesses described the army as increasingly protecting areas held by Serb forces. *(account)* §10
 - On the sixteenth of March, Milošević said Serbia no longer recognised the presidency's authority. *(account)* §10
 
 ▸ **CARD:** "25 March 1991: Karađorđevo".
@@ -343,16 +345,9 @@ banknote (copyright).
   Yugoslavia"; the boycott tagged apart from the ballot return.
 - **Debrief:** "sharply reduced the autonomy"; "challenged Zagreb's authority"; Milošević's trial without a verdict.
 
-## Prompt for ChatGPT (short final check; copy everything below the line into a new chat, with this file attached)
-
----
-
-You reviewed draft 1 of the narration for "Yugoslavia: Escalation, 1980–1991", an educational slideshow page for students
-aged 12 and up. Attached is draft 2, with your changes applied (listed in "Changes in draft 2").
-
-Please do a short final check of the narrated lines only:
-1. Were your changes applied correctly?
-2. Is any line now wrong, unsupported, mis-tagged, unbalanced, or awkward for a text-to-speech voice?
-
-Give a short table (chapter, current words, problem, replacement, source) and a verdict: ready to record, or not. Under about
-800 words, in a form that can be saved as a file.
+## Changes in draft 3 (after ChatGPT's final check of draft 2: "ready to record")
+- **Ch. 9:** the arrests, protests and committee first; then the trial in July.
+- **Ch. 10:** the reform as `record`; the World Bank's measured outcome as `estimate`.
+- **Ch. 13:** "the barricades became a symbol of the unrest known as the Log Revolution".
+- **Ch. 14:** "In the trial of Milan Martić, Croatian witnesses described…", tagged `account`.
+- **Tags:** `court` covers judgments, pleas and how a case ended.
