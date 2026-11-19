@@ -460,8 +460,8 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'midnight-hammer', progress: 40, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
-    order: 35,
+    folder: 'midnight-hammer', progress: 100, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
+    order: 35, readyOrder: 24,
     era: 'Iran, 2025',
     title: 'Operation Midnight Hammer',
     date: '21–22 June 2025', year: 2025,
@@ -470,6 +470,8 @@ window.BATTLES = [
     blurb: 'During the June 2025 war between Israel and Iran, American B-2 bombers flew from Missouri to strike Iran’s underground enrichment site at Fordow and the site at Natanz, while a submarine fired cruise missiles at Isfahan. The aircraft reached their targets and returned; what the strike destroyed underground, and how far it set back Iran’s nuclear programme, was disputed.',
     cover: 'images/cover.jpg', coverPos: '50% 55%',   // the B-2 under the moon
     coverCredit: 'Title painting made for this page with ChatGPT (AI-generated): a B-2 bomber at night under the moon and the American flag; an imagined scene, not a photograph of the mission',
-    status: 'in progress'
+    chapters: [ { title: 'A long dispute', ev: 'A long dispute' }, { title: 'Across the world', ev: 'Across the world' }, { title: 'Fordow, ten past two', ev: 'Fordow, ten past two' },
+                { title: 'Months, or years?', ev: 'Months, or years?' }, { title: 'Al Udeid and the ceasefire', ev: 'Al Udeid' } ],
+    status: 'ready'
   }
 ];
