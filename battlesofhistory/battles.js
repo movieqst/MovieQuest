@@ -366,16 +366,19 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'ukraine-escalation', progress: 1, lat: 48.38, lon: 31.17, osmZoom: 5, osmNote: 'the whole of Ukraine',
-    order: 28,
+    folder: 'ukraine-escalation', progress: 90, lat: 48.38, lon: 31.17, osmZoom: 5, osmNote: 'the whole of Ukraine',
+    order: 28,   // built (slideshow.html); goes live after Midnight Hammer (owner, 19 Nov 2026): then rename it index.html, readyOrder 25, status 'ready'
     era: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', group: 'Russia–Ukraine War: Crimea and Donbas, 2014–2015', kind: 'Background',
     title: 'Ukraine and Russia: Escalation',
     date: '1991–2014 (the road to war)', year: 2004,
     place: 'Ukraine, Russia and the Black Sea',
     sides: 'Ukraine vs. the Russian Federation',
     blurb: 'How relations between independent Ukraine and Russia broke down: independence in 1991, the 1994 Budapest Memorandum under which Ukraine gave up the nuclear weapons on its soil in exchange for security assurances, the agreements on the Black Sea Fleet in Sevastopol, the Orange Revolution of 2004, the gas disputes, the debate over closer ties with the European Union and NATO, and the Euromaidan protests of 2013–2014 that ended with President Yanukovych leaving Kyiv in February 2014.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner (placeholder until then)
-    coverCredit: '',
+    cover: 'images/art/art-title.jpg', coverPos: '50% 50%',
+    coverCredit: 'Title painting made for this page with ChatGPT (AI-generated): an old slide projector showing a map of Ukraine and the Black Sea. The page is a narrated slideshow',
+    chapters: [ { title: 'Independence, 1991', ev: 'Independence', img: 'images/art/art-ballot.jpg' }, { title: 'The weapons', ev: 'The weapons', img: 'images/art/art-silo.jpg' },
+                { title: 'Gas', ev: 'Gas', img: 'images/art/art-pipeline-snow.jpg' }, { title: 'Euromaidan', ev: 'Euromaidan', img: 'images/maps/kyiv-painting.jpg' },
+                { title: 'The twenty-seventh of February', ev: 'The twenty-seventh of February', img: 'images/art/art-crimea-parliament.jpg' } ],
     status: 'in progress'
   },
   {
@@ -457,8 +460,8 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'midnight-hammer', progress: 40, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'approximate: the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
-    order: 35,
+    folder: 'midnight-hammer', progress: 100, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
+    order: 35, readyOrder: 24,
     era: 'Iran, 2025',
     title: 'Operation Midnight Hammer',
     date: '21–22 June 2025', year: 2025,
@@ -467,7 +470,9 @@ window.BATTLES = [
     blurb: 'During the June 2025 war between Israel and Iran, American B-2 bombers flew from Missouri to strike Iran’s underground enrichment site at Fordow and the site at Natanz, while a submarine fired cruise missiles at Isfahan. The aircraft reached their targets and returned; what the strike destroyed underground, and how far it set back Iran’s nuclear programme, was disputed.',
     cover: 'images/cover.jpg', coverPos: '50% 55%',   // the B-2 under the moon
     coverCredit: 'Title painting made for this page with ChatGPT (AI-generated): a B-2 bomber at night under the moon and the American flag; an imagined scene, not a photograph of the mission',
-    status: 'in progress'
+    chapters: [ { title: 'A long dispute', ev: 'A long dispute' }, { title: 'Across the world', ev: 'Across the world' }, { title: 'Fordow, ten past two', ev: 'Fordow, ten past two' },
+                { title: 'Months, or years?', ev: 'Months, or years?' }, { title: 'Al Udeid and the ceasefire', ev: 'Al Udeid' } ],
+    status: 'ready'
   },
   {
     folder: 'nagashino', progress: 5, lat: 34.92, lon: 137.56, osmZoom: 13, osmNote: 'the plain of Shitaragahara west of Nagashino castle, where the Oda and Tokugawa line stood',

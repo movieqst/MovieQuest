@@ -627,12 +627,16 @@ Object.assign(window.BUNKERHILL_SCENARIO, {
     },
     eventMarkers: true,
     trenchLayers: [], trenchAlpha: 1, defaultTrench: null, introTrench: null,
-    globe: { target: { lon: -71.0608, lat: 42.3764 }, region: { lon: -71.06, lat: 42.36 }, pull: 4.6, fit: { lon0: -73.6, lon1: -69.8, lat0: 41.2, lat1: 43.4, margin: .03 }, lift: false, keepBorders: true, keepTowns: true, startLat: 42,
-      periodNote: 'Boston in 1775',
-      paintings: [ { file: 'boston-painting.jpg', lat0: 42.32794, lat1: 42.39533, lon0: -71.12018, lon1: -70.99855 } ],
-      closePull: 90, dive2Secs: 6,
-      stop2: { center: { lon: -71.06, lat: 42.362 }, pull: 12, fit: { lon0: -71.12, lon1: -71.0, lat0: 42.328, lat1: 42.395, margin: .02 }, todayNote: 'Today’s towns', thenNote: 'The same places in 1775' },
-      labels: [ { lon: -71.0608, lat: 42.3764, text: 'BUNKER HILL', size: .8, pin: true, early: true } ] },
+    // the opening: the globe pulls in to the size of the coast map, then three painted zoom maps and the 1775 Boston map take over
+    // in turn, each zoomed to the size of the next, down to the battle map (owner, 18 Nov 2026; tools/draw-zooms.py)
+    globe: (() => { const ZC = [ { file: 'zoom-coast.jpg', lat0: 28.22027, lat1: 49.77973, lon0: -91.49457, lon1: -54.50543 },
+                                 { file: 'zoom-newengland.jpg', lat0: 40.43516, lat1: 43.26484, lon0: -74.13251, lon1: -69.06749 },
+                                 { file: 'zoom-bostonarea.jpg', lat0: 42.22525, lat1: 42.49475, lon0: -71.30314, lon1: -70.81686 },
+                                 { file: 'boston-painting.jpg', lat0: 42.32794, lat1: 42.39533, lon0: -71.12018, lon1: -70.99855 } ];
+      return { target: { lon: -71.0608, lat: 42.3764 }, region: { lon: -73.0, lat: 39.0 }, fit: { lon0: -91.49457, lon1: -54.50543, lat0: 28.22027, lat1: 49.77973, margin: 0 },
+        lift: false, keepBorders: true, keepTowns: true, startLat: 40, periodNote: 'Boston in 1775',
+        paintings: ZC, zoomChain: ZC, zoomEnd: GEO.peninsula, zoomSecs: 3.6,
+        labels: [ { lon: -71.0608, lat: 42.3764, text: 'BUNKER HILL', size: .8, pin: true, early: true } ] }; })(),
     establishing: [],
     imageBase: 'images/', audioBase: 'audio/',
     voices: [

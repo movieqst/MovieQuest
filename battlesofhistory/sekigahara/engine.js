@@ -51,7 +51,7 @@ const alive = f => f.present && f.state !== 'withdrawn' && f.state !== 'destroye
 const esc = t => String(t || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const tagChip = (tag, cite) => { const c = S.confidence[tag] || S.confidence.reconstruction; return `<button class="chip" style="--c:${c.color}" title="${c.desc} Click for the sources." data-tag="${tag}" data-cite="${esc(cite)}">${c.label}</button>`; };
 let voiceId = (S.voices && S.voices[0]) ? S.voices[0].id : '';
-try { const v = localStorage.getItem('sekigahara-voice'); if (v && S.voices.some(x => x.id === v)) voiceId = v; } catch (e) {}
+{ const pool = (S.voices || []).filter(x => x.id !== 'computer'); if (pool.length) voiceId = pool[Math.floor(Math.random() * pool.length)].id; }   // a different narrator each visit (owner, 18 Nov 2026); the Voice menu still lets the listener choose
 const evAudio = ev => ev.audio || (ev.clipNo ? audioFor('event', ev.clipNo) : audioFor(stage === 'campaign' ? 'event-campaign' : 'event', S.events.indexOf(ev) + 1));   // clipNo: the chapter's own clip number (Talas)
 const audioFor = (kind, n) => S.audioBase ? S.audioBase + (voiceId ? voiceId + '/' : '') + kind + (n !== undefined ? '-' + n : '') + '.mp3' : undefined;
 

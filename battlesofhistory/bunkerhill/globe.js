@@ -215,13 +215,18 @@ window.BattleGlobe = (() => {
       // pieces, each placed by its own projected corners, so the image follows the globe's curve.
       (GS.paintings || []).forEach((pm, i) => { if (pm.stage === 'region') return; drawPainting(pm, i, s.paint && s.paint[i]); });
       function drawPainting(pm, i, a) { if (!(a > 0) || !PAINT[i] || !PAINT[i].complete || !PAINT[i].naturalWidth) return; const im = PAINT[i], N = (pm.lon1 - pm.lon0) > 5 ? 24 : 6;   // a finer grid for a big painting, so the globe's curve opens no gaps
-        c.globalAlpha = a;
+        // while it fades, draw the pieces at full strength on a spare canvas and lay that on at `a`: overlapping pieces drawn
+        // each at `a` would show their seams as a grid
+        const main = c; let tmp = null; if (a < 1) { tmp = drawPainting.tmp || (drawPainting.tmp = document.createElement('canvas')); if (tmp.width !== cv.width || tmp.height !== cv.height) { tmp.width = cv.width; tmp.height = cv.height; }
+          const tg = tmp.getContext('2d'); tg.setTransform(main.getTransform()); tg.clearRect(0, 0, w, h); c = tg; }
+        c.globalAlpha = 1;
         for (let gy = 0; gy < N; gy++) for (let gx = 0; gx < N; gx++) {
           const la1 = pm.lat1 - (pm.lat1 - pm.lat0) * gy / N, la0 = pm.lat1 - (pm.lat1 - pm.lat0) * (gy + 1) / N, lo0 = pm.lon0 + (pm.lon1 - pm.lon0) * gx / N, lo1 = pm.lon0 + (pm.lon1 - pm.lon0) * (gx + 1) / N;
           // each piece covers all four of its projected corners (meridians lean together towards the pole), with a pixel to spare
           const q = [proj(lo0 * D, Math.cos(la1 * D), Math.sin(la1 * D)), proj(lo1 * D, Math.cos(la1 * D), Math.sin(la1 * D)), proj(lo0 * D, Math.cos(la0 * D), Math.sin(la0 * D)), proj(lo1 * D, Math.cos(la0 * D), Math.sin(la0 * D))]; if (q.some(p => !p)) continue;
           const x0 = Math.min(q[0][0], q[2][0]), x1 = Math.max(q[1][0], q[3][0]), y0 = Math.min(q[0][1], q[1][1]), y1 = Math.max(q[2][1], q[3][1]);
           const sw = im.width / N, sh = im.height / N; c.drawImage(im, gx * sw, gy * sh, sw, sh, x0 - .5, y0 - .5, x1 - x0 + 1, y1 - y0 + 1); }
+        if (tmp) { c = main; c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = a; c.drawImage(tmp, 0, 0); c.restore(); }
         c.globalAlpha = 1; }
       if (s.ancient > 0) {
         c.globalAlpha = s.ancient * (1 - .65 * ((s.paint && s.paint[0]) || 0));   // lighter tint once the painted map is under it
@@ -305,8 +310,8 @@ window.BattleGlobe = (() => {
       if (cb.onSpinProgress) cb.onSpinProgress(1);
       // pull in until the whole Near East fills the view
       const k = Math.min(1, (now - t0) / DIVE1_SECS), e = ease(k);
-      st.R = R0 * Math.pow(PULL, e); st.lat0 = START_LAT + (NEAR_EAST.lat - START_LAT) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = Math.max(0, (k - .55) / .45); st.regionPaint = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = GS.fit ? 0 : -h * (cb.lift ? .22 : .04) * e;
-      if (k >= 1) { st.phase = 'modern'; t0 = now; }
+      st.R = R0 * Math.pow(PULL, e); st.lat0 = START_LAT + (NEAR_EAST.lat - START_LAT) * e; st.lon0 = KADESH.lon + (NEAR_EAST.lon - KADESH.lon) * e; st.modern = GS.zoomChain ? 0 : Math.max(0, (k - .55) / .45); st.regionPaint = Math.max(0, (k - .55) / .45); st.ancient = 0; st.labels = 0; st.oy = GS.fit ? 0 : -h * (cb.lift ? .22 : .04) * e;
+      if (k >= 1) { st.phase = GS.zoomChain ? 'zooms' : 'modern'; t0 = now; }
     } else if (st.phase === 'modern') {
       const k = Math.min(1, (now - t0) / MODERN_SECS); st.modern = 1;
       if (k >= 1) { st.phase = 'ancient'; t0 = now; }
@@ -338,6 +343,22 @@ window.BattleGlobe = (() => {
       if (GS.paintings) st.paint = [1, Math.max(0, Math.min(1, (k - .65) / .3))]; st.regionPaint = Math.max(0, 1 - k / .5);
       st.ancient = GS.keepBorders ? 1 : Math.max(0, 1 - k / .4); st.tThen = st.stop2 ? (GS.keepTowns ? 1 : Math.max(0, 1 - k / .3)) : 0; st.modern = 0; st.tToday = 0; st.labels = Math.max(0, Math.min(1, (k - .3) / .3)); st.oy = (F.oy !== undefined ? F.oy : -h * (cb.lift ? .22 : .04)) * (1 - e) - h * .05 * e;
       if (k >= 1) { st.phase = 'fade'; t0 = now; if (cb.onFade) cb.onFade(); }
+    } else if (st.phase === 'zooms') {
+      // Bunker Hill (owner, 18 Nov 2026): the globe pulls in to the size of the widest painted map; that map fades in; the view
+      // zooms in on it to the size of the next map, which fades in over it; and so on, until the last map is zoomed to the size
+      // of the battle map, which then takes over. GS.zoomChain: the maps, wide to narrow (they are GS.paintings 0..n-1);
+      // GS.zoomEnd: the battle map's box. Each step: FADE_IN seconds to show the map, then ZOOM seconds to the next size.
+      const Z = GS.zoomChain, boxes = Z.concat([GS.zoomEnd]).map(b => ({ lon0: b.lon0, lon1: b.lon1, lat0: b.lat0, lat1: b.lat1, margin: 0 }));
+      const FADE_IN = 1.3, ZOOM = GS.zoomSecs || 3.6, seg = FADE_IN + ZOOM, el = now - t0, i = Math.min(Z.length - 1, Math.floor(el / seg)), local = el - i * seg;
+      const cen = b => ({ lon: (b.lon0 + b.lon1) / 2, lat: (b.lat0 + b.lat1) / 2 });
+      const from = i === 0 ? { lon: NEAR_EAST.lon, lat: NEAR_EAST.lat, pull: PULL } : { ...cen(boxes[i]), pull: fitPull(R0, boxes[i]) };
+      const to = { ...cen(boxes[i + 1]), pull: fitPull(R0, boxes[i + 1]) };
+      st.paint = Z.map((z, j) => j < i ? 1 : j === i ? Math.min(1, local / FADE_IN) : 0);
+      const k = Math.max(0, Math.min(1, (local - FADE_IN) / ZOOM)), e = ease(k);
+      st.R = R0 * from.pull * Math.pow(to.pull / from.pull, e); st.lat0 = from.lat + (to.lat - from.lat) * e; st.lon0 = from.lon + (to.lon - from.lon) * e;
+      st.modern = 0; st.ancient = 1; st.tToday = 0; st.tThen = 0; st.regionPaint = 0; st.oy = 0;   // (the paintings are drawn in the overlay pass, which needs ancient > 0; this page has no old borders)
+      st.labels = i === Z.length - 1 ? Math.max(0, Math.min(1, (k - .5) / .3)) : 0;
+      if (i === Z.length - 1 && k >= 1) { st.phase = 'fade'; t0 = now; if (cb.onFade) cb.onFade(); }
     } else if (st.phase === 'fade') {
       const k = Math.min(1, (now - t0) / FADE_SECS); cv.style.opacity = String(1 - k);
       if (k >= 1) { stop(); if (cb.onDone) cb.onDone(); return; }
