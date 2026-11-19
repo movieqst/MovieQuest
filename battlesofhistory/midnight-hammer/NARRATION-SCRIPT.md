@@ -1,6 +1,7 @@
-# Operation Midnight Hammer, 21–22 June 2025: narration script (DRAFT 2)
+# Operation Midnight Hammer, 21–22 June 2025: narration script (DRAFT 3, ready to record)
 
-This is what the narrators will read. **Draft 2** (19 November 2026) applies ChatGPT's review of draft 1
+This is what the narrators will read. **Draft 3** (19 November 2026) applies ChatGPT's final check of draft 2
+(`research/reviews/CHATGPT-REVIEW-DRAFT2.md`); the changes are listed at the end. **Draft 2** (19 November 2026) applies ChatGPT's review of draft 1
 (`research/reviews/CHATGPT-REVIEW-DRAFT1.md`): every Required change and the Optional ones, listed at the end. Numbers in
 square brackets [n] refer to that review's source register. Draft 1 (18 November 2026) was written from the checked report
 `research/reports/Operation Midnight Hammer 2025.md`, which verified ChatGPT's dossier
@@ -93,14 +94,14 @@ Welcome to Battles of History. Today we are learning about Operation Midnight Ha
 
 ### I2. Enrichment is not a bomb
 - Enrichment raises the share of uranium two thirty-five. Most nuclear power reactors use uranium enriched to much lower levels. Enriched uranium is a material. A nuclear weapon is a separate device. *(established)* [5], [6]
-- Fordow and Natanz were enrichment plants. They were not nuclear reactors, and they held no bombs. *(established)* C36
-- The bombs used in this operation were ordinary explosives, not nuclear weapons. *(established)* C36
+- Fordow and Natanz were uranium enrichment plants. *(established)* C36
+- The United States used conventional bombs in this operation. *(established)* C36
 
 ### I3. Who is who
 - Iran: the Supreme Leader, Ali Khamenei; the President, Masoud Pezeshkian; the Foreign Minister, Abbas Araghchi. *(established)*
 - The United States: President Donald Trump; Defense Secretary Pete Hegseth; General Dan Caine, the chairman of the Joint Chiefs of Staff; and General Erik Kurilla, who commanded American forces in the Middle East. *(established)* C13
 - On this page Iran is red and the United States is blue. *(page)*
-- The International Atomic Energy Agency, the IAEA, the United Nations' nuclear watchdog, and its director general, Rafael Grossi. It inspects nuclear sites. It commands no one. *(established)*
+- The International Atomic Energy Agency, or IAEA, inspects nuclear sites and reports what it can verify. Rafael Grossi was its director general. *(established)*
 
 ### I4. How this page tells it
 - Each line is tagged with where it comes from. What a government says is that government's claim. *(page)*
@@ -126,7 +127,7 @@ Welcome to Battles of History. Today we are learning about Operation Midnight Ha
 
 ### 3. The twelfth of June
 *Map: Iran · 12 June 2025*
-- On the twelfth of June 2025, the IAEA's Board of Governors found Iran in breach of its safeguards obligations: for years, it said, Iran had not fully explained undeclared nuclear material and places. *(iaea)* C16
+- On the twelfth of June 2025, the agency's board found that Iran had breached its safeguards obligations by failing to cooperate fully and promptly with inspectors investigating undeclared nuclear material and activities. *(iaea)* C16
 - Reuters reported that nineteen countries voted for the finding, three against, and eleven abstained, in a closed-door vote. It was the first such finding against Iran in about twenty years. *(press)* C16; [9]
 - The finding was not a discovery of a bomb. *(page)* C16
 - Iran rejected it. *(iran-official)* C16
@@ -192,7 +193,7 @@ Welcome to Battles of History. Today we are learning about Operation Midnight Ha
 - News reports on the twenty-fourth of June described a leaked preliminary assessment by the Defense Intelligence Agency. It estimated a setback of months. American officials described the assessment as low confidence. *(us-intelligence; press)* C23; [10]
 - On the second of July, the Pentagon said the programme had been set back by one to two years. It did not publish its evidence. *(us-official)* C24; [11]
 - In September, the IAEA reported that it lacked access to verify Iran's highly enriched uranium inventory. *(iaea)* C22; [8]
-- These estimates measure different things, at different times. None is a final answer. *(disputed; page)*
+- The two American assessments gave different estimates of the setback. The IAEA reported a separate problem: it could not verify the highly enriched uranium inventory. *(disputed; iaea)*
 
 ## Part 5: Aftermath
 
@@ -205,7 +206,7 @@ Welcome to Battles of History. Today we are learning about Operation Midnight Ha
 ### 14. Ceasefire
 *Map: Iran · 23 and 24 June 2025*
 - Hours after the attack on Al Udeid, President Trump announced a ceasefire between Israel and Iran. *(us-official)* C26; [15]
-- The strike came just before the end of the war. Whether it caused the ceasefire, and how much, is a matter of opinion. *(disputed; page)*
+- The ceasefire followed soon afterward. The timing alone cannot tell us how much the strike contributed. *(page)*
 - The ceasefire took effect on the twenty-fourth of June, after twelve days of war. *(established)* C26; [15]
 
 ### 15. Questions in Washington
@@ -223,7 +224,7 @@ Welcome to Battles of History. Today we are learning about Operation Midnight Ha
 ### 17. After June 2025
 *Map: World · to November 2026*
 - In November 2026, Reuters reported that the IAEA was still seeking access to the bombed sites and an accounting of the enriched uranium. *(press; iaea)* C31; [18]
-- A new war began on the twenty-eighth of February 2026. The IAEA confirmed that Natanz was struck again. Later images need to be dated carefully, because they can show damage from more than one attack. That war is not told on this page. *(established; iaea; page)* C32; [19], [20]
+- A new war began on the twenty-eighth of February 2026. On the third of March, the IAEA said satellite images showed fresh damage to entrance buildings at Natanz. Later images need to be dated carefully, because they can show damage from more than one attack. That war is not told on this page. *(established; iaea; page)* C32; [19], [20]
 - The bombers reached their targets and came home. What the strike achieved is still argued about. History asks what happened, what was claimed, and how we know. *(page)*
 
 ## Debrief
@@ -235,7 +236,7 @@ Welcome to Battles of History. Today we are learning about Operation Midnight Ha
 
 ### The claims
 - President Trump said the key enrichment facilities were "obliterated". General Caine said the initial assessment pointed to severe damage at all three sites. *(us-official)* C15
-- The IAEA expected very significant damage at Fordow, but could not assess the damage underground, or verify the uranium stockpile. *(iaea)* C21, C22
+- In June, Grossi expected very significant damage at Fordow, and said the extent underground was unknown. In September, the agency reported that it still could not verify the highly enriched uranium inventory. *(iaea)* C21, C22
 - Estimates of the setback ranged from months to two years. *(us-intelligence; us-official; disputed)* C23, C24
 
 ### Still unknown
@@ -274,16 +275,14 @@ Welcome to Battles of History. Today we are learning about Operation Midnight Ha
 - **Title card:** DVIDS 9127316 and 9127322 are public domain ("Courtesy Photo, 509th Bomb Wing", 22 June 2025). The
   AI-made title painting is credited separately as an illustration.
 
-## Prompt for ChatGPT (short final check; copy everything below the line into a new chat, with this file attached)
-
----
-
-You reviewed draft 1 of the narration for "Operation Midnight Hammer, 21–22 June 2025", for an educational history site
-for students aged 12 and up. Attached is draft 2, with your changes applied (listed in "Changes in draft 2").
-
-Please do a short final check of the narrated lines only (the welcome, introduction, chapters and debrief):
-1. Were your changes applied correctly?
-2. Is any line now wrong, unsupported, mis-tagged, unbalanced, or awkward for a text-to-speech voice?
-
-Give a short table (chapter, current words, problem, replacement, source) and a verdict: ready to record, or not. Under about
-800 words, in a form that can be saved as a file.
+## Changes in draft 3 (after ChatGPT's final check of draft 2)
+- **I2:** "uranium enrichment plants"; "the United States used conventional bombs".
+- **I3:** the IAEA "inspects nuclear sites and reports what it can verify".
+- **Ch. 3:** the Board's finding: a failure to cooperate fully and promptly over undeclared material and activities.
+- **Ch. 12:** the two US estimates differ; the IAEA's inventory problem is separate.
+- **Ch. 14:** "the timing alone cannot tell us how much the strike contributed".
+- **Ch. 17:** on 3 March 2026 the IAEA said satellite images showed fresh damage to entrance buildings at Natanz (Reuters, 3
+  March 2026). The November line is from Reuters, 13 November 2026.
+- **Debrief:** June (Grossi) and September (the inventory) kept apart.
+- **Voice:** "B two", "G B U fifty-sevens" and "uranium two thirty-five" are spoken forms; the page shows the standard
+  spellings.

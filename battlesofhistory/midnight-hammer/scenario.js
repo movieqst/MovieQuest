@@ -52,11 +52,11 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
           "tag": "established"
         },
         {
-          "text": "Fordow and Natanz were enrichment plants. They were not nuclear reactors, and they held no bombs.",
+          "text": "Fordow and Natanz were uranium enrichment plants.",
           "tag": "established"
         },
         {
-          "text": "The bombs used in this operation were ordinary explosives, not nuclear weapons.",
+          "text": "The United States used conventional bombs in this operation.",
           "tag": "established"
         }
       ]
@@ -78,7 +78,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
           "tag": "page"
         },
         {
-          "text": "The International Atomic Energy Agency, the IAEA, the United Nations' nuclear watchdog, and its director general, Rafael Grossi. It inspects nuclear sites. It commands no one.",
+          "text": "The International Atomic Energy Agency, or IAEA, inspects nuclear sites and reports what it can verify. Rafael Grossi was its director general.",
           "tag": "established"
         }
       ]
@@ -183,7 +183,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
       ],
       "lines": [
         {
-          "text": "On the twelfth of June 2025, the IAEA's Board of Governors found Iran in breach of its safeguards obligations: for years, it said, Iran had not fully explained undeclared nuclear material and places.",
+          "text": "On the twelfth of June 2025, the agency's board found that Iran had breached its safeguards obligations by failing to cooperate fully and promptly with inspectors investigating undeclared nuclear material and activities.",
           "tag": "iaea"
         },
         {
@@ -199,7 +199,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
           "tag": "iran-official"
         }
       ],
-      "text": "On the twelfth of June 2025, the IAEA's Board of Governors found Iran in breach of its safeguards obligations: for years, it said, Iran had not fully explained undeclared nuclear material and places. Reuters reported that nineteen countries voted for the finding, three against, and eleven abstained, in a closed-door vote. It was the first such finding against Iran in about twenty years. The finding was not a discovery of a bomb. Iran rejected it."
+      "text": "On the twelfth of June 2025, the agency's board found that Iran had breached its safeguards obligations by failing to cooperate fully and promptly with inspectors investigating undeclared nuclear material and activities. Reuters reported that nineteen countries voted for the finding, three against, and eleven abstained, in a closed-door vote. It was the first such finding against Iran in about twenty years. The finding was not a discovery of a bomb. Iran rejected it."
     },
     {
       "part": 2,
@@ -438,8 +438,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
         "press",
         "us-official",
         "iaea",
-        "disputed",
-        "page"
+        "disputed"
       ],
       "lines": [
         {
@@ -458,14 +457,14 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
           "tag": "iaea"
         },
         {
-          "text": "These estimates measure different things, at different times. None is a final answer.",
+          "text": "The two American assessments gave different estimates of the setback. The IAEA reported a separate problem: it could not verify the highly enriched uranium inventory.",
           "tag": [
             "disputed",
-            "page"
+            "iaea"
           ]
         }
       ],
-      "text": "News reports on the twenty-fourth of June described a leaked preliminary assessment by the Defense Intelligence Agency. It estimated a setback of months. American officials described the assessment as low confidence. On the second of July, the Pentagon said the programme had been set back by one to two years. It did not publish its evidence. In September, the IAEA reported that it lacked access to verify Iran's highly enriched uranium inventory. These estimates measure different things, at different times. None is a final answer."
+      "text": "News reports on the twenty-fourth of June described a leaked preliminary assessment by the Defense Intelligence Agency. It estimated a setback of months. American officials described the assessment as low confidence. On the second of July, the Pentagon said the programme had been set back by one to two years. It did not publish its evidence. In September, the IAEA reported that it lacked access to verify Iran's highly enriched uranium inventory. The two American assessments gave different estimates of the setback. The IAEA reported a separate problem: it could not verify the highly enriched uranium inventory."
     },
     {
       "part": 5,
@@ -502,7 +501,6 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
       "clock": "23 and 24 June 2025",
       "tag": [
         "us-official",
-        "disputed",
         "page",
         "established"
       ],
@@ -512,18 +510,15 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
           "tag": "us-official"
         },
         {
-          "text": "The strike came just before the end of the war. Whether it caused the ceasefire, and how much, is a matter of opinion.",
-          "tag": [
-            "disputed",
-            "page"
-          ]
+          "text": "The ceasefire followed soon afterward. The timing alone cannot tell us how much the strike contributed.",
+          "tag": "page"
         },
         {
           "text": "The ceasefire took effect on the twenty-fourth of June, after twelve days of war.",
           "tag": "established"
         }
       ],
-      "text": "Hours after the attack on Al Udeid, President Trump announced a ceasefire between Israel and Iran. The strike came just before the end of the war. Whether it caused the ceasefire, and how much, is a matter of opinion. The ceasefire took effect on the twenty-fourth of June, after twelve days of war."
+      "text": "Hours after the attack on Al Udeid, President Trump announced a ceasefire between Israel and Iran. The ceasefire followed soon afterward. The timing alone cannot tell us how much the strike contributed. The ceasefire took effect on the twenty-fourth of June, after twelve days of war."
     },
     {
       "part": 5,
@@ -607,7 +602,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
           ]
         },
         {
-          "text": "A new war began on the twenty-eighth of February 2026. The IAEA confirmed that Natanz was struck again. Later images need to be dated carefully, because they can show damage from more than one attack. That war is not told on this page.",
+          "text": "A new war began on the twenty-eighth of February 2026. On the third of March, the IAEA said satellite images showed fresh damage to entrance buildings at Natanz. Later images need to be dated carefully, because they can show damage from more than one attack. That war is not told on this page.",
           "tag": [
             "established",
             "iaea",
@@ -619,7 +614,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
           "tag": "page"
         }
       ],
-      "text": "In November 2026, Reuters reported that the IAEA was still seeking access to the bombed sites and an accounting of the enriched uranium. A new war began on the twenty-eighth of February 2026. The IAEA confirmed that Natanz was struck again. Later images need to be dated carefully, because they can show damage from more than one attack. That war is not told on this page. The bombers reached their targets and came home. What the strike achieved is still argued about. History asks what happened, what was claimed, and how we know."
+      "text": "In November 2026, Reuters reported that the IAEA was still seeking access to the bombed sites and an accounting of the enriched uranium. A new war began on the twenty-eighth of February 2026. On the third of March, the IAEA said satellite images showed fresh damage to entrance buildings at Natanz. Later images need to be dated carefully, because they can show damage from more than one attack. That war is not told on this page. The bombers reached their targets and came home. What the strike achieved is still argued about. History asks what happened, what was claimed, and how we know."
     }
   ],
   "outcome": [
@@ -645,7 +640,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
       "heading": "The claims"
     },
     {
-      "text": "The IAEA expected very significant damage at Fordow, but could not assess the damage underground, or verify the uranium stockpile.",
+      "text": "In June, Grossi expected very significant damage at Fordow, and said the extent underground was unknown. In September, the agency reported that it still could not verify the highly enriched uranium inventory.",
       "tag": "iaea"
     },
     {
