@@ -799,7 +799,7 @@ window.YUGESC_SCENARIO = {
      "kind": "photo",
      "file": "markovic.jpg",
      "caption": "Ante Marković, Yugoslav prime minister, 1990",
-     "credit": "European Commission · CC BY 4.0",
+     "credit": "© European Union, 2026 (European Commission Audiovisual Service) · CC BY 4.0",
      "commons": "Visit of Ante Marković, Yugoslav Prime Minister, to the CEC (cropped).jpg",
      "line": 0
     },

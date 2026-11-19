@@ -73,7 +73,7 @@ SLIDES = [
   MAP('yugoslavia', (43.9, 18.7, 1.06), (46.0, 14.9, 2.6), marks=c('ljubljana', 'zagreb'), outline=['Slovenia'], title='Slovenia'),
   CARD('Slovenia, 1989', '', rows=['September · constitutional amendments: the right to self-determination', '1 December · a rally planned by the Božur association, banned']),
   # 10. A new dinar
-  PHOTO('markovic.jpg', 'Ante Marković, Yugoslav prime minister, 1990', 'European Commission · CC BY 4.0', 'Visit of Ante Marković, Yugoslav Prime Minister, to the CEC (cropped).jpg'),
+  PHOTO('markovic.jpg', 'Ante Marković, Yugoslav prime minister, 1990', '© European Union, 2026 (European Commission Audiovisual Service) · CC BY 4.0', 'Visit of Ante Marković, Yugoslav Prime Minister, to the CEC (cropped).jpg'),
   ART('art-banknotes.jpg', '1 January 1990: a new dinar', stamp=['1 new dinar = 10,000 old', '7 dinars = 1 Deutschmark', 'prices in 1989: up about 2,700% (OECD)']),
   # 11. The last congress
   ART('art-congress.jpg', 'Belgrade, 20–22 January 1990: the 14th Extraordinary Congress'),
