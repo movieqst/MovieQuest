@@ -473,5 +473,18 @@ window.BATTLES = [
     chapters: [ { title: 'A long dispute', ev: 'A long dispute' }, { title: 'Across the world', ev: 'Across the world' }, { title: 'Fordow, ten past two', ev: 'Fordow, ten past two' },
                 { title: 'Months, or years?', ev: 'Months, or years?' }, { title: 'Al Udeid and the ceasefire', ev: 'Al Udeid' } ],
     status: 'ready'
+  },
+  {
+    folder: 'nagashino', progress: 5, lat: 34.92, lon: 137.56, osmZoom: 13, osmNote: 'the plain of Shitaragahara west of Nagashino castle, where the Oda and Tokugawa line stood',
+    order: 36,
+    era: 'Sengoku Japan',
+    title: 'Battle of Nagashino',
+    date: '28 June 1575', year: 1575,
+    place: 'Shitaragahara, near Nagashino castle, Mikawa province, Japan',
+    sides: 'Takeda Katsuyori vs. Oda Nobunaga and Tokugawa Ieyasu',   // first-named side red: the Takeda red, the Oda and Tokugawa blue
+    blurb: 'Takeda Katsuyori besieges Nagashino castle. Oda Nobunaga and Tokugawa Ieyasu march to its relief with 38,000 men and three thousand matchlock gunners, and dig in behind a palisade on the plain of Shitaragahara. On the morning of 28 June the Takeda cavalry, the most feared in Japan, charge the line.',
+    cover: 'images/cover.jpg', coverPos: '42% 50%',   // the palisade and the charge, centre of the screen
+    coverCredit: 'Battle of Nagashino folding screen (byōbu), unknown artist, Edo period, about 1750–1850. Nagahama Castle Historical Museum, Shiga, via Wikimedia Commons, public domain. A later painting, not evidence of the battle',
+    status: 'in progress'
   }
 ];
