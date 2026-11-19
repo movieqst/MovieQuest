@@ -286,17 +286,20 @@ window.BATTLES = [
     status: 'ready'
   },
   {
-    folder: 'yugoslavia-escalation', progress: 1, lat: 44.0, lon: 18.5, osmZoom: 6, osmNote: 'the whole of the former Yugoslavia',
-    order: 22,
+    folder: 'yugoslavia-escalation', progress: 100, lat: 44.0, lon: 18.5, osmZoom: 6, osmNote: 'the whole of the former Yugoslavia',
+    order: 22, readyOrder: 25,
     era: 'Yugoslavia, 1980–1991',
     title: 'Yugoslavia: Escalation',
     date: 'May 1980 – June 1991 (the road to war)', year: 1985,
     place: 'The six republics and two autonomous provinces of Yugoslavia: Slovenia, Croatia, Bosnia and Herzegovina, Serbia (with Vojvodina and Kosovo), Montenegro and Macedonia',
     sides: 'The Yugoslav federation, its republics and their leaders, and the Yugoslav People’s Army (JNA)',
     blurb: 'How Yugoslavia came apart: Tito’s death in 1980, the debt crisis, the Kosovo protests of 1981 and 1989, the rise of Slobodan Milošević, the end of the League of Communists in January 1990, the first free elections in the republics, and the armed incidents of 1990–1991, until Slovenia and Croatia declared independence on 25 June 1991.',
-    cover: 'images/cover.jpg',   // the title card: coming from the owner
-    coverCredit: '',
-    status: 'in progress'
+    cover: 'images/art/art-title.jpg', coverPos: '50% 50%',
+    coverCredit: 'Title painting made for this page with ChatGPT (AI-generated): an old slide projector showing a map of the Balkans. The page is a narrated slideshow',
+    chapters: [ { title: 'After Tito', ev: 'After Tito, Tito', img: 'images/photos/tito-funeral.jpg' }, { title: 'Gazimestan', ev: 'Gazimestan', img: 'images/photos/gazimestan.jpg' },
+                { title: 'The elections of 1990', ev: 'The elections of 1990', img: 'images/art/art-ballot-1990.jpg' }, { title: 'Knin', ev: 'Knin', img: 'images/art/art-logs.jpg' },
+                { title: 'The twenty-fifth of June', ev: 'The twenty-fifth of June', img: 'images/art/art-assembly.jpg' } ],
+    status: 'ready'
   },
   {
     folder: 'tenday', progress: 1, lat: 46.05, lon: 14.51, osmZoom: 8, osmNote: 'the whole of Slovenia; the fighting was at border crossings, barracks, the airport and the roads',
