@@ -460,7 +460,7 @@ window.BATTLES = [
     status: 'in progress'
   },
   {
-    folder: 'midnight-hammer', progress: 40, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'approximate: the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
+    folder: 'midnight-hammer', progress: 40, lat: 34.885, lon: 50.995, osmZoom: 9, osmNote: 'the Fordow enrichment site in the mountains north-east of Qom; Natanz and Isfahan lie further south',
     order: 35,
     era: 'Iran, 2025',
     title: 'Operation Midnight Hammer',
