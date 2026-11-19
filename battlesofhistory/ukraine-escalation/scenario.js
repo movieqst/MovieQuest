@@ -789,7 +789,7 @@ window.UKRESC_SCENARIO = {
     {
      "kind": "photo",
      "file": "orange.jpg",
-     "caption": "Kyiv, the Orange Revolution, 2004",
+     "caption": "Ukrainian and orange flags at the Independence Monument, Kyiv (titled “Orange Revolution, 2004”; the file is dated 2010)",
      "credit": "Ввласенко · CC BY-SA 3.0",
      "commons": "Orange Revolution, 2004.jpg",
      "line": 2

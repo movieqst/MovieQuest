@@ -72,7 +72,7 @@ SLIDES = [
   PHOTO('putin-kuchma.jpg', '24 December 2003: Putin and Kuchma; the Azov–Kerch treaty', 'Presidential Press and Information Office (kremlin.ru) · CC BY 4.0', 'Vladimir Putin with Leonid Kuchma.jpg'),
   # 8. The Orange Revolution
   CARD('Presidential election, 2004', 'Viktor Yushchenko · Viktor Yanukovych'),
-  PHOTO('orange.jpg', 'Kyiv, the Orange Revolution, 2004', 'Ввласенко · CC BY-SA 3.0', 'Orange Revolution, 2004.jpg'),
+  PHOTO('orange.jpg', 'Ukrainian and orange flags at the Independence Monument, Kyiv (titled “Orange Revolution, 2004”; the file is dated 2010)', 'Ввласенко · CC BY-SA 3.0', 'Orange Revolution, 2004.jpg'),
   CARD('3 December 2004', 'The Supreme Court orders the runoff held again', bars=[['Yushchenko', 52.0, 'neutral'], ['Yanukovych', 44.2, 'neutral']], small='26 December re-run'),
   # 9. Gas
   MAP('pipelines', (49.0, 26.0, 1.0), (49.0, 27.0, 1.15), marks=[(50.45, 30.52, 'Kyiv'), (48.62, 22.29, 'Uzhhorod'), (55.756, 37.617, 'Moscow'), (48.21, 16.37, 'Vienna'), (52.52, 13.40, 'Berlin')],
