@@ -1,4 +1,4 @@
-# Storyboard v2: four 10-second clips
+# Storyboard v2: six 10-second clips
 Clip 1 is the take-off and the globe. Clips 2, 3 and 4 are one site each: a basemap of the site first, then the drone view, then what different people believe is there. Written 22 November 2026; the beliefs are attributed and dated and should go through ChatGPT's source check with the rest.
 
 Style line for all clips: *photoreal cinematic documentary, 16:9, 24 fps, 10 seconds, slow camera, night palette of moonlight blue with one warm highlight, light grain, no people, no fireballs, no flame, captions only as listed.*
@@ -27,5 +27,11 @@ Style for all three: *a painted documentary map, 16:9, muted night tones (slate 
 3. **Isfahan**: "Map 30 km across centred on 32.65 N 51.68 E: the city of Isfahan with the Zayandeh river and its bridges at the upper left, suburbs fading into open ground to the south-east, a red outline labelled ISFAHAN NUCLEAR TECHNOLOGY CENTRE on the city's south-eastern edge, and dry hills beside it with a red mark 'tunnels'."
 Check each centre point on OpenStreetMap before painting; the coordinates are approximate.
 
+## Clip 5: the way home (0:40–0:50)
+> 0–3 s: night over dark mountains, a B-2 silhouette climbing away to the west with the first grey of dawn behind it; no pursuit, no fire. 3–5 s: dusk-to-dawn time-lapse at altitude, a tanker's boom connecting once more. 5–7 s: the painted world map, the gold line now drawing back from Iran across the Mediterranean and the Atlantic to Missouri. 7–10 s: daylight, midday summer, three B-2s in trail on final approach over green fields, the first passing low over the camera and touching down. Captions: at 1 s "the Pentagon said Iran's fighters did not fly and no shots were seen (US official, 22 June)"; at 8 s "WHITEMAN, 22 JUNE 2025 · about 37 hours after take-off".
+
+## Clip 6: conclusion (0:50–1:00)
+> 0–4 s: slow push on the painted Iran map in night tones, the three red dots fading to grey outlines; 4–7 s: four short lines of text appear one by one on the left, each with its source: "Trump, 22 June: 'obliterated'" · "DIA, 24 June, low confidence: set back by months" · "Pentagon, 2 July: one to two years" · "IAEA, September: could not verify"; 7–10 s: the map dims to black, one line centred: "The bombers reached their targets and came home. What they destroyed is still disputed." then "Battles of History". No other imagery.
+
 ## Cutting note
-Title card 1.5 s, clips 1 to 4 with 12-frame dissolves, end card 3 s: "The bombers returned after about 37 hours. What the strike destroyed is still disputed. · Battles of History". About 45 seconds in all.
+Title card 1.5 s, clips 1 to 6 with 12-frame dissolves, end card 3 s: "The bombers returned after about 37 hours. What the strike destroyed is still disputed. · Battles of History". About 65 seconds in all; drop clip 6 for 55.
