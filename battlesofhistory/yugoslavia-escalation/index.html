@@ -1,4 +1,151 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yugoslavia: Escalation — coming soon</title>
-<style>html,body{margin:0;background:#071017;color:#edf1ed;font:16px/1.5 system-ui,sans-serif}main{max-width:720px;margin:60px auto;padding:0 16px;text-align:center}h1{font:600 32px Georgia,serif;color:#e9c77a}a{color:#9fc8ff}</style></head>
-<body><main><h1>Yugoslavia: Escalation</h1><p>This page is in preparation. It is not open yet.</p><p><a href="../index.html">◀ Battles of History</a></p></main><script src="../stats.js"></script>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yugoslavia: Escalation, 1980–1991 — Battles of History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#e9c77a;--line:#38505c;--text:#edf1ed;--ua:#d0453a;--ru:#3b6fd0;--room:#0b0a09}
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;background:var(--room);color:var(--text);font:14px/1.45 system-ui,Segoe UI,Arial,sans-serif}
+  body{display:flex;flex-direction:column;min-height:100vh}
+  header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 14px;background:#0d1114;border-bottom:1px solid #26323a;flex-wrap:wrap}
+  .brand{font-family:'Cinzel',Georgia,serif;font-weight:700;color:var(--gold);font-size:clamp(17px,2vw,24px);letter-spacing:.08em}
+  .subtitle{color:#9fb1b8;font-size:12px;margin-top:2px}
+  .actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  button,select,a.btn{cursor:pointer;border:1px solid #4d5f69;border-radius:6px;padding:6px 10px;background:#172129;color:#f2f4ef;font-weight:600;font-size:13px;text-decoration:none;font-family:inherit}
+  button:hover,a.btn:hover{filter:brightness(1.2)} button.off{opacity:.55}
+  select{padding:5px 8px;max-width:230px}
+  /* the room and the screen */
+  #room{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:18px 14px 10px;
+        background:radial-gradient(ellipse at 50% 30%,#1c1915 0%,#0b0a09 70%)}
+  #beam{position:absolute;left:50%;bottom:-40px;width:120%;height:115%;transform:translateX(-50%);pointer-events:none;opacity:0;transition:opacity .6s;
+        background:conic-gradient(from 180deg at 50% 100%,transparent 0 160deg,rgba(255,244,214,.05) 172deg,rgba(255,244,214,.09) 180deg,rgba(255,244,214,.05) 188deg,transparent 200deg 360deg)}
+  body.on #beam{opacity:1}
+  #screenWrap{position:relative;width:min(100%,calc((100vh - 290px) * 1.5),1180px);min-width:280px}
+  #screen{position:relative;width:100%;aspect-ratio:3/2;background:#e9e6df;border-radius:3px;overflow:hidden;
+          box-shadow:0 0 0 6px #d8d4cb,0 0 0 7px #8b877e,0 18px 60px rgba(0,0,0,.8)}
+  #screen .dark{position:absolute;inset:0;background:#141210;transition:opacity .5s}
+  body.on #screen .dark{opacity:0}
+  #slide{position:absolute;inset:0;transform-origin:50% 40%}
+  #slide.drop{animation:drop .42s cubic-bezier(.2,.9,.3,1.2)}
+  @keyframes drop{0%{transform:translateY(-3.5%) scale(1.01);filter:blur(1.6px) brightness(1.25)}55%{filter:blur(.4px)}100%{transform:none;filter:none}}
+  #shutter{position:absolute;inset:0;background:#0d0b09;opacity:0;pointer-events:none;transition:opacity .12s}
+  #shutter.shut{opacity:1}
+  #slide canvas,#slide img.full{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #slide img.full{object-fit:cover}
+  #slide img.photo{position:absolute;inset:4% 6% 13%;width:88%;height:83%;object-fit:contain}
+  #slide.photoBg{background:#151515}
+  /* the projector light on the screen */
+  #hot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 46%,rgba(255,250,235,.10) 0%,rgba(255,250,235,0) 45%,rgba(0,0,0,.30) 100%);mix-blend-mode:normal}
+  #flicker{position:absolute;inset:0;pointer-events:none;background:#fff8e6;opacity:0;animation:flick 5.3s infinite steps(1)}
+  @keyframes flick{0%{opacity:0}31%{opacity:.025}32%{opacity:0}63%{opacity:.018}64%{opacity:0}86%{opacity:.03}87%{opacity:0}}
+  #dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  /* typed labels on the slides */
+  .stamp{position:absolute;left:3.5%;bottom:13%;background:rgba(246,240,224,.92);color:#1d1b17;font:clamp(11px,1.45vw,17px)/1.35 'Special Elite','Courier New',monospace;
+         padding:.5em .8em;border-left:4px solid #8b2a20;box-shadow:0 3px 10px rgba(0,0,0,.35);max-width:62%}
+  .label{position:absolute;left:0;right:0;bottom:0;padding:.55em 3.5% .6em;background:linear-gradient(transparent,rgba(0,0,0,.72) 40%);color:#f4efe2;
+         font:clamp(11px,1.35vw,16px)/1.3 'Special Elite','Courier New',monospace}
+  .label small{display:block;color:#c9c2b0;font:clamp(9px,.95vw,12px)/1.3 system-ui,sans-serif;margin-top:2px}
+  .chapterTag{position:absolute;right:3%;top:4%;max-width:60%;text-align:right;background:rgba(15,12,8,.78);color:var(--gold);font:600 clamp(10px,1.2vw,14px)/1.2 'Cinzel',Georgia,serif;letter-spacing:.06em;
+              padding:.45em .8em;border:1px solid rgba(233,199,122,.5);border-radius:3px;opacity:0;transition:opacity .6s}
+  .chapterTag.show{opacity:1}
+  /* typed cards, like slides of the 1990s */
+  .card{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:6% 8%;
+        background:radial-gradient(ellipse at 30% 20%,#23406b 0%,#13233f 55%,#0b1529 100%);color:#f2f0e6;font-family:Georgia,'Times New Roman',serif}
+  .card:before{content:'';position:absolute;inset:3.2%;border:1px solid rgba(233,199,122,.35);pointer-events:none}
+  .card h2{margin:0;color:#f5d36b;font:700 clamp(18px,3.6vw,46px)/1.12 Georgia,serif;letter-spacing:.01em;text-shadow:0 2px 0 rgba(0,0,0,.35)}
+  .card .sub{margin-top:.5em;font-size:clamp(12px,2vw,25px);color:#e8e4d8}
+  .card hr{width:22%;margin:1.1em 0 .9em;border:0;border-top:2px solid #c8a23e}
+  .card ul{margin:.2em 0 0;padding:0;list-style:none;font-size:clamp(11px,1.75vw,22px);line-height:1.45}
+  .card li{padding-left:1.2em;position:relative;margin:.18em 0}.card li:before{content:'▪';position:absolute;left:0;color:#c8a23e}
+  .card blockquote{margin:.4em 0;font-style:italic;font-size:clamp(12px,1.95vw,24px);line-height:1.4;color:#fffbe8;border-left:3px solid #c8a23e;padding-left:.8em}
+  .card .small{margin-top:1.1em;font:clamp(9px,1.25vw,15px)/1.4 'Special Elite','Courier New',monospace;color:#b8c3cf}
+  .card .cols{display:grid;grid-template-columns:1fr 1fr;gap:6%;margin-top:.4em}
+  .card .cols h3{margin:0 0 .3em;font:700 clamp(12px,2vw,24px)/1.2 Georgia,serif;color:#f5d36b}
+  .card .cols h3.ua{color:#ff8a7c}.card .cols h3.ru{color:#8fb2ff}
+  .card .bars{margin-top:.6em;display:flex;flex-direction:column;gap:.55em;font-size:clamp(11px,1.8vw,22px)}
+  .card .bar{display:grid;grid-template-columns:7.5em 1fr 3.5em;align-items:center;gap:.6em}
+  .card .bar i{display:block;height:1.05em;background:linear-gradient(90deg,#d9d2bd,#f3ecd6);border-radius:2px;transform-origin:left;animation:grow 1.4s ease-out}
+  @keyframes grow{from{transform:scaleX(0)}}
+  .titleSlide h1{position:absolute;left:0;right:0;bottom:12%;margin:0;text-align:center;font:700 clamp(22px,5vw,64px)/1.05 'Cinzel',Georgia,serif;color:#f5e3b0;
+                 text-shadow:0 2px 0 #3d2a08,0 4px 24px #000,0 0 40px #000}
+  .titleSlide p{position:absolute;left:0;right:0;bottom:5%;margin:0;text-align:center;font:clamp(12px,2vw,24px)/1.2 'Special Elite',monospace;color:#f3eddc;text-shadow:0 2px 10px #000}
+  /* under the screen */
+  #below{width:min(100%,1180px);margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  #caption{min-height:3.6em;background:#12100e;border:1px solid #2c2722;border-radius:8px;padding:9px 12px;font-size:clamp(14px,1.5vw,17px);line-height:1.45}
+  #caption .tag{display:inline-block;margin-left:.5em;padding:0 .45em;border-radius:3px;background:#2a2620;color:#c9b98e;font:600 11px/1.6 system-ui,sans-serif;vertical-align:1px}
+  #caption .cite{color:#7d8a90;font-size:11px;margin-left:.35em}
+  body.nocc #caption{display:none}
+  #transport{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  #where{color:#b9b2a2;font-size:12px;flex:1;min-width:160px}
+  #prog{height:3px;background:#2a2621;border-radius:2px;overflow:hidden}#prog i{display:block;height:100%;width:0;background:var(--gold)}
+  #tray{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px}
+  #tray .mount{flex:0 0 auto;width:74px;height:74px;position:relative;cursor:pointer;opacity:.55;transition:opacity .2s,transform .2s}
+  #tray .mount.cur{opacity:1;transform:translateY(-3px)}
+  #tray .mount .win{position:absolute;left:16%;top:25%;width:68%;height:45%;background:#203040 center/cover no-repeat}
+  #tray .mount img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  #tray .mount span{position:absolute;left:0;right:0;bottom:4px;text-align:center;font:10px 'Special Elite',monospace;color:#3c372c}
+  /* start and end */
+  #start,#end{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:rgba(6,5,4,.92);padding:20px}
+  #end{display:none;overflow:auto;align-items:flex-start}
+  .panel{max-width:760px;width:100%;background:#15120f;border:1px solid #3a3229;border-radius:10px;padding:22px 24px;box-shadow:0 20px 60px #000}
+  .panel h1{margin:0 0 6px;font:700 clamp(20px,3vw,30px)/1.15 'Cinzel',Georgia,serif;color:var(--gold)}
+  .panel p{color:#d8d2c4}
+  .panel img{width:100%;border-radius:6px;margin:8px 0 12px;display:block}
+  .panel .go{font-size:16px;padding:10px 18px;background:#5a3d10;border-color:#c79a3c}
+  .panel ul{padding-left:18px;color:#cfc8b8;font-size:13px}.panel li{margin:3px 0}
+  .panel h2{font:700 15px/1.2 Georgia,serif;color:var(--gold);margin:18px 0 6px}
+  @media (max-width:700px){#room{padding:10px 6px}#tray .mount{width:58px;height:58px}header{padding:6px 8px}.subtitle{display:none}}
+</style>
+</head>
+<body class="">
+<header>
+  <div><div class="brand">YUGOSLAVIA: ESCALATION</div><div class="subtitle">May 1980 – 25 June 1991 · the background to the wars in the former Yugoslavia · a slideshow</div></div>
+  <div class="actions">
+    <select id="chapSel" aria-label="Chapter"></select>
+    <select id="voiceSel" aria-label="Voice"></select>
+    <button id="ccBtn" title="Captions">CC</button>
+    <button id="sndBtn" title="Projector sounds">🔊 Projector</button>
+    <a class="btn" href="../index.html">◀ Battles of History</a>
+  </div>
+</header>
+<div id="room">
+  <div id="beam"></div>
+  <div id="screenWrap">
+    <div id="screen">
+      <div id="slide"></div>
+      <canvas id="dust"></canvas>
+      <div id="hot"></div><div id="flicker"></div>
+      <div class="chapterTag" id="chapterTag"></div>
+      <div id="shutter"></div>
+      <div class="dark"></div>
+    </div>
+  </div>
+  <div id="below">
+    <div id="prog"><i></i></div>
+    <div id="transport">
+      <button id="prevBtn" title="Previous chapter">⏮</button>
+      <button id="playBtn" title="Play / pause (space)">⏸</button>
+      <button id="nextBtn" title="Next chapter">⏭</button>
+      <div id="where"></div>
+    </div>
+    <div id="caption"></div>
+    <div id="tray"></div>
+  </div>
+</div>
+<div id="start"><div class="panel">
+  <h1>Yugoslavia: Escalation</h1>
+  <p>From Tito’s death in May 1980 to the declarations of independence of Slovenia and Croatia on 25 June 1991: how a federation of six republics came apart. A slideshow of about fifty slides, told by a narrator, in sixteen short chapters. Some chapters describe deaths; we tell them plainly and without detail.</p>
+  <img src="images/art/art-title.jpg" alt="An old slide projector in a dark room, showing a map of the Balkans (painting made for this page)">
+  <button class="go" id="goBtn">▶ Switch on the projector</button>
+</div></div>
+<div id="end"><div class="panel" id="endPanel"></div></div>
+<script src="borders.js"></script>
+<script src="scenario.js"></script>
+<script src="show.js"></script>
+<script src="../stats.js"></script>
+</body>
+</html>

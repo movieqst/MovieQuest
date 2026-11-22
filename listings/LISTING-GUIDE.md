@@ -116,8 +116,9 @@ writes `movies/<id>/index.html` and `listings/<id>-1.html`.
   the file name (`01-<id>.jpg`, `02-<id>.jpg`…), zip them in the scratchpad,
   and send the zip with `SendUserFile`.
 - **eBay description**: send `listings/<id>-1.html`. Tell them: open it,
-  press **COPY HTML**, then in eBay tick **Show HTML Code** and paste. (Never
-  copy the page with Ctrl+A; the toolbar is not part of the listing.)
+  press Ctrl+A then Ctrl+C, and paste into eBay's description box. The page
+  holds only the listing (no toolbar or notes), so nothing extra ends up on
+  eBay. Never add anything above or below the listing on that page.
 - Summarise in a few lines: title, photos used (and which you rotated or left
   out), disc details, grade and any flaw noted, trivia, anything to check.
 - Commit and push to your branch.
