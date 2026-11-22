@@ -30,7 +30,7 @@ Style line for all: *photoreal cinematic, 16:9, 24 fps, 10 seconds, slow camera,
 | Take-off video 3 (tankers) | none | sheet-kc135r, sheet-kc46a |
 | Take-off video 4 (fighters) | none | sheet-f35a, sheet-f16c |
 | Clip 1 of the storyboard (take-off and globe) | painted-whiteman, painted-world-flight | sheet-b2 |
-| Clips 2–4 (Fordow, Natanz, Isfahan) | painted-iran; the three site maps once repainted (see REPROMPTS-SITE-MAPS.md); for now basemap-fordow, basemap-natanz, basemap-isfahan | sheet-b2, sheet-gbu57 (Fordow and Natanz); sheet-submarine, sheet-tomahawk, sheet-tomahawk-3view (Isfahan) |
+| Clips 2–4 (Fordow, Natanz, Isfahan) | painted-iran; painted-fordow.jpg, painted-natanz.jpg, painted-isfahan.jpg (relief tracings), with the -overlay.png alternates and the OSM basemaps for the sharp compound outlines | sheet-b2, sheet-gbu57 (Fordow and Natanz); sheet-submarine, sheet-tomahawk, sheet-tomahawk-3view (Isfahan) |
 | Clip 5 (the way home) | painted-world-flight, painted-whiteman | sheet-b2, sheet-kc135r |
 | Clip 6 (conclusion) | painted-iran | none |
 | Andersen (only if the decoy destination is shown) | painted-andersen, basemap-andersen | sheet-b2 |
