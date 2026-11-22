@@ -5,7 +5,8 @@ All images here were made with ChatGPT from the owner's prompts (AI-generated, n
 |---|---|
 | sheet-b2, sheet-f16c, sheet-f35a, sheet-kc135r, sheet-kc46a, sheet-gbu57, sheet-tomahawk, sheet-tomahawk-3view, sheet-submarine | accepted: shapes match the real types (B-2 no tail, F-16 one fin, F-35A two canted fins, KC-135R fat engines and boom, GBU-57 to scale with a person, Tomahawk in three states, submarine unnamed) |
 | painted-whiteman, painted-andersen, painted-world-flight, painted-iran | accepted: follow the basemaps |
-| draft-fordow-v1 | redo: mountains only; the fenced plant, the motorway, the access road and the villages from the basemap are missing |
+| draft-fordow-v1 | superseded |
+| painted-fordow | accepted: ChatGPT's second tracing came back with the plant area blacked out; Claude patched the area and overlaid the compound, fences, tracks and buildings from the OSM data |
 | draft-natanz-v1 | superseded |
 | painted-natanz | accepted: ChatGPT's second tracing (roads correct) with the walled complex, its buildings and the tunnel mark overlaid from the OSM data by Claude |
 | draft-isfahan-v1 | redo: good city, but the red ring for the nuclear technology centre, the gold ring for the academy and the title are missing |
