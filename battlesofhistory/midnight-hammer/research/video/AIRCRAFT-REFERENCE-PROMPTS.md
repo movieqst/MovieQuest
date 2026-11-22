@@ -1,0 +1,33 @@
+# Aircraft reference sheets: prompts for exact-looking models
+Written 22 November 2026. One prompt per type, asking for a turnaround sheet (several views on one image) so the video maker has the real shape from every angle. Each prompt gives the features that get drawn wrong most often. Public-domain US Air Force and Navy photographs on DVIDS and Wikimedia Commons are the ground truth; ask ChatGPT to match them, and compare its sheet against a real photo before handing it to the animator.
+
+Common style line: *clean reference turnaround sheet on a neutral grey background, 16:9, 4K, the same aircraft drawn in six views arranged in a grid, each labelled: front, left side, top, bottom, rear, and a three-quarter view from above and behind; photoreal materials, even studio light, no motion blur, no background scenery, no visible serial numbers or unit badges, proportions exactly as the real aircraft.*
+
+## 1. B-2 Spirit (the bomber; seven in the strike)
+> Northrop B-2 Spirit stealth bomber. A pure flying wing with no fuselage, no tail fin and no horizontal tail. Wingspan 52 m, length only 21 m, so from above it is a very wide, shallow shape. The trailing edge is a double-W sawtooth with four notches; the leading edge is one straight sweep each side meeting at a pointed nose. The crew cabin is a smooth bulge in the centre with a wide wrap-around windscreen of four panes in a row. Two pairs of engine intakes sit on top of the wing behind the cockpit, each a smooth raised scoop; the exhausts are flat slots on the upper surface near the trailing edge, not visible from below. Matte dark grey-black all over, with slightly lighter grey on the underside. Three landing gear: a single nose leg with two wheels, two main legs each with four wheels in a bogie, retracting into the wing. Two weapon bays under the centre with doors opening outward. No external weapons, no pylons, no tanks ever. From the front it is a thin line with a central hump; from the side a smooth lens shape. Show it with the gear down in the side view and gear up in the others.
+
+## 2. KC-135 Stratotanker (the tanker)
+> Boeing KC-135 Stratotanker. A four-engine jet like an early 707 but narrower: a long tube fuselage with few windows (a row of small cabin windows at the front only), a conventional swept wing with four engines under it on pylons, high-bypass CFM56 engines with large round fat nacelles (the R model), a tall swept tail fin and low horizontal tail. The refuelling boom hangs under the tail: a long telescoping tube with two small ruddervator wings near its end, stowed angled slightly up against the rear fuselage, extended down and back in flight. Show a seventh view with the boom extended and a B-2 nose below it for scale. Grey overall with a dark grey anti-glare panel ahead of the windscreen. Tricycle landing gear with four-wheel main bogies.
+
+## 3. KC-46 Pegasus (the other tanker; optional)
+> Boeing KC-46 Pegasus, a military 767: twin-engine wide-body with large engines, a conventional swept wing, a tall fin; a boom under the tail like the KC-135 but with a bulged camera fairing under the rear fuselage and wingtip hose pods. Grey overall. Only needed if the animator wants two tanker types.
+
+## 4. F-35A Lightning II (the fighters)
+> Lockheed Martin F-35A, the conventional take-off version. Single engine with one large round exhaust nozzle with sawtooth edges; two trapezoidal intakes on the sides of the fuselage under the wing root with no splitter plate (the bulged diverterless intake); a single seat under a one-piece bubble canopy that hinges at the front; a wide, flat-bottomed fuselage; mid-set trapezoidal wings; two canted twin tail fins; two large horizontal tails. Internal weapon bays, no external stores. Grey overall with a faint darker grey pattern of straight-edged panels. The gun is internal on the left wing root (A model only). Tricycle gear, single wheels. Do not give it the F-22's wider body or the F-16's single fin.
+
+## 5. F-16 Fighting Falcon (the other fighters)
+> General Dynamics F-16C. Single engine, single tail fin, a single large oval air intake under the belly behind the nose, a frameless bubble canopy with the pilot's seat reclined, the wing blended into the fuselage with leading-edge root extensions (strakes) running forward along the body, small horizontal tails, two ventral fins under the tail. Usually carries wingtip missiles and underwing fuel tanks; show it clean and once with two wingtip missiles. Two-tone grey camouflage. Do not confuse it with the F-35: the F-16 is slimmer with one fin.
+
+## 6. GBU-57 Massive Ordnance Penetrator (the bomb; 14 used)
+> The GBU-57 MOP: a very long, slender, dark grey bomb about 6 m long and 80 cm across, with a pointed hardened nose, a slim cylindrical body, and a short tail section with four small lattice-grid fins and a tail kit. Weight about 13,600 kg. Show it alone on a stand and again in the B-2's open bay, one per bay (two per aircraft), to scale with a person-height marker beside it. No markings. (Two per aircraft and seven aircraft gives fourteen.)
+
+## 7. Tomahawk cruise missile (more than two dozen)
+> A Tomahawk Block IV/V land-attack cruise missile: a slim cylinder about 5.6 m long, rounded nose, a pop-out straight wing that folds under the body, four small tail fins, a small turbofan air intake under the rear, a rocket booster fitted at the rear for the launch that drops off after a few seconds. Show it: in the launch tube, leaving the water with the booster burning in a short pale plume and the wings folded, and in level flight with the wings out and no booster. Dark grey or white body.
+
+## 8. Ohio-class guided-missile submarine (not named; the class is press reporting)
+> An Ohio-class submarine of the SSGN type: a very long black hull about 170 m, a tall narrow sail with two diving planes on the sail, a long flat missile deck behind the sail with two rows of twelve round hatches, a cruciform tail with a single propeller. Show it surfaced at night with hatches open and a missile leaving, and submerged at periscope depth. No hull number. Caption on any shot: "a US guided-missile submarine, not named (press: Ohio class)".
+
+## How to use the sheets
+1. Give ChatGPT the prompt, then show it one public-domain photograph of the real aircraft and ask it to correct its sheet to match.
+2. Hand the corrected sheet to the video maker as the reference for that type, with the note: "keep these proportions exactly; the B-2 has no tail; the F-16 has one fin; the F-35 has two canted fins".
+3. The three-quarter view from above and behind is the one most shots use; make sure it is the best view on the sheet.
