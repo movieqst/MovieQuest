@@ -878,6 +878,24 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
   Object.assign(IS[1], { markers: [ mk(s('fordow'), 'an enrichment plant, not a reactor'), mk(s('natanz'), 'an enrichment plant, not a reactor') ] });
   Object.assign(IS[2], { altMap: 'region', markers: [ mk(LL('region', 32.0, 54.0), 'Iran', 'allied') ] });
   Object.assign(IS[3], { altMap: 'world', markers: [ mk(wWHITE, 'Missouri', 'french'), mk(wIRAN, 'Iran', 'allied') ] });
+
+  // pictures over the map and in the introduction (made for the page's video, November 2026): painted maps over OpenStreetMap
+  // and Natural Earth data, and AI-generated reference sheets of the aircraft and weapons. None is a photograph of the mission.
+  const VC = 'Map painted with ChatGPT over OpenStreetMap data (© OpenStreetMap contributors, ODbL); AI-generated, not a photograph';
+  const NC = 'Map painted with ChatGPT over Natural Earth data (public domain); AI-generated, not a photograph';
+  const SC = 'AI-generated reference sheet (ChatGPT) checked against public-domain US Air Force and Navy photographs; not a photograph';
+  const VP = (file, caption, credit, at, secs) => ({ file: 'video/' + file, caption, credit, at, secs });
+  EV[0].photo = VP('map-iran.jpg', 'Iran and its neighbours, June 2025: the three sites, the Strait of Hormuz and Al Udeid.', NC, 2, 12);
+  EV[4].photo = [ VP('map-whiteman.jpg', 'Whiteman Air Force Base, Missouri: the north–south runway and the row of bomber hangars.', VC, 1, 6), VP('sheet-b2.jpg', 'The B-2 Spirit: a flying wing with no tail, 52 metres across, a crew of two.', SC, 7.5, 6.5) ];
+  EV[5].photo = [ VP('map-world.jpg', 'The flight, drawn schematically: the real routes were not published. The dim line is the decoy flight west.', NC, 1, 6), VP('sheet-kc135.jpg', 'The KC-135 tanker, with its refuelling boom extended over a B-2.', SC, 7.5, 6.5) ];
+  EV[6].photo = [ VP('map-fordow.jpg', 'Fordow: the fenced plant on its ridge north-east of Qom, with the Qom–Tehran motorway to the west.', VC, 1, 6), VP('sheet-gbu57.jpg', 'The GBU-57 Massive Ordnance Penetrator, about six metres long, beside a person for scale.', SC, 7.5, 6.5) ];
+  EV[7].photo = [ VP('map-natanz.jpg', 'Natanz: the walled complex on the plain beside the Kashan–Isfahan road; the new tunnels lie in the mountain to the south.', VC, 0.5, 4.5), VP('map-isfahan.jpg', 'Isfahan: the nuclear technology centre on the south-eastern edge of the city (position approximate).', VC, 5, 4.5), VP('sheet-tomahawk.jpg', 'The Tomahawk cruise missile: stowed, leaving the water, and in level flight.', SC, 9.5, 4.5) ];
+  EV[8].photo = VP('sheet-submarine.jpg', 'A US guided-missile submarine, not named by the Pentagon; press reports said an Ohio-class boat.', SC, 2, 10);
+  EV[12].photo = VP('map-iran.jpg', 'Al Udeid air base in Qatar, across the Gulf from Iran.', NC, 2, 10);
+  Object.assign(IS[0], { media: [ { at: 0, file: 'video/map-iran.jpg', caption: 'Iran and its neighbours in June 2025: Fordow, Natanz and Isfahan in red; the Strait of Hormuz; Al Udeid in Qatar.', ref: 'Painted for this page; site positions approximate', credit: NC } ] });
+  Object.assign(IS[1], { media: [ { at: 0, file: 'video/map-natanz.jpg', caption: 'Natanz, Iran’s main enrichment site: halls under earth and concrete on the open plain.', ref: 'Painted for this page', credit: VC }, { at: 12, file: 'video/sheet-gbu57.jpg', caption: 'The bombs were conventional: the GBU-57, the largest bunker-buster in the American arsenal.', ref: 'Reference sheet', credit: SC } ] });
+  Object.assign(IS[2], { media: [ { at: 0, file: 'video/sheet-b2.jpg', caption: 'The B-2 Spirit stealth bomber, the aircraft of the strike force, seen from six sides.', ref: 'Reference sheet', credit: SC } ] });
+  Object.assign(IS[3], { media: [ { at: 0, file: 'video/map-world.jpg', caption: 'The flights are drawn as simple lines. The real routes were secret and are not known in detail.', ref: 'Schematic', credit: NC } ] });
   // the debrief returns to the three sites
   S.debriefMap = 'sites'; S.debriefMarkers = [ mk(s('fordow'), 'Fordow'), mk(s('natanz'), 'Natanz'), mk(s('isfahan'), 'Isfahan') ];
 })();

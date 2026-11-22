@@ -10,5 +10,9 @@ All images here were made with ChatGPT from the owner's prompts (AI-generated, n
 | draft-natanz-v1 | superseded |
 | painted-natanz | accepted: ChatGPT's second tracing (roads correct) with the walled complex, its buildings and the tunnel mark overlaid from the OSM data by Claude |
 | draft-isfahan-v1 | superseded |
-| painted-fordow.jpg, painted-natanz.jpg, painted-isfahan.jpg | accepted (third round, "map tracing" prompts): relief-painted tracings of the basemaps with the sites, rings and labels in place; 1152 × 864, so ask ChatGPT for a 4K export if the editor needs to push in |
+| painted-fordow.jpg, painted-natanz.jpg, painted-isfahan.jpg | accepted (third round; the Natanz and Isfahan files were first filed under each other's names and swapped back on 22 November, "map tracing" prompts): relief-painted tracings of the basemaps with the sites, rings and labels in place; 1152 × 864, so ask ChatGPT for a 4K export if the editor needs to push in |
 | painted-fordow-overlay.png, painted-natanz-overlay.png | alternates: flat tracings with the compounds overlaid from OSM data by Claude; sharper at the site but no relief |
+
+
+## On the page
+Resized copies (1600 px wide, JPEG) live in `images/video/` and are shown by `scenario.js` as pictures over the map in chapters 1, 5, 6, 7, 8, 9 and 13 and on the four introduction slides, each with its caption and credit.
