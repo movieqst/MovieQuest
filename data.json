@@ -14944,5 +14944,101 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "seven-1995-vhs",
+    "title": "Seven",
+    "year": 1995,
+    "format": "VHS",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/seven-1995-vhs-1.jpg",
+    "photos": [
+      "images/seven-1995-vhs-1.jpg",
+      "images/seven-1995-vhs-2.jpg",
+      "images/seven-1995-vhs-3.jpg",
+      "images/seven-1995-vhs-4.jpg",
+      "images/seven-1995-vhs-5.jpg",
+      "images/seven-1995-vhs-6.jpg",
+      "images/seven-1995-vhs-7.jpg",
+      "images/seven-1995-vhs-8.jpg",
+      "images/seven-1995-vhs-9.jpg",
+      "images/seven-1995-vhs-10.jpg",
+      "images/seven-1995-vhs-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Seven%20Se7en%20VHS%20Brad%20Pitt&campid=5339133571&customid=seven-1995-vhs",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Brad Pitt, Morgan Freeman, Gwyneth Paltrow, John C. McGinley, Richard Roundtree, R. Lee Ermey, Kevin Spacey",
+    "director": "David Fincher",
+    "producers": "Arnold Kopelson, Phyllis Carlyle",
+    "company": "New Line Cinema / New Line Home Video / Alliance Video (Canada)",
+    "titleNote": "Alliance Video VHS / 1995",
+    "tagline": "VHS / Hi-Fi Stereo / Canadian Release / Brad Pitt / Morgan Freeman / Thriller / 1990s",
+    "desc": "Seven deadly sins. Seven ways to die. Brad Pitt (Interview with a Vampire, Legends of the Fall) and Morgan Freeman (Outbreak, The Shawshank Redemption) star in this searing psychological thriller about two detectives on the trail of a vicious serial killer who chooses his victims according to the seven deadly sins. Methodical, exacting and grotesquely creative, the killer has planned each murder down to the finest detail. As the detectives close in, he patiently awaits the final confrontation, determined to complete his bloody masterpiece of terror. Also features a riveting performance by Gwyneth Paltrow (Flesh and Bone), and brilliantly directed by David Fincher (Alien 3). \"A nerve-jangling thriller with a gut-wrenching climax!\" (Peter Travers, Rolling Stone).",
+    "trivia": [
+      {
+        "heading": "John Doe's Secret",
+        "text": "Kevin Spacey played the killer, John Doe, and insisted on being left off the posters and opening credits so his appearance would be a shock."
+      },
+      {
+        "heading": "\"What's in the Box?\"",
+        "text": "The studio pushed hard to change the famous ending, but Brad Pitt backed director David Fincher and refused to do the film without it."
+      },
+      {
+        "heading": "Those Opening Titles",
+        "text": "Kyle Cooper's scratchy, jittery opening credits, set to a Nine Inch Nails remix, are considered among the most influential title sequences ever made."
+      },
+      {
+        "heading": "Pitt's Real Injury",
+        "text": "Brad Pitt really broke his arm slipping on a wet car during the rain-soaked chase scene, so the script was changed to give his character a cast."
+      },
+      {
+        "heading": "Fincher's Comeback",
+        "text": "After his rough experience making Alien 3, Seven became David Fincher's breakthrough and led to Fight Club, Zodiac and The Social Network."
+      }
+    ],
+    "tidbits": [
+      "Kevin Spacey played the killer, John Doe, and insisted on being left off the posters and opening credits so his appearance would be a shock.",
+      "The studio pushed hard to change the famous ending, but Brad Pitt backed director David Fincher and refused to do the film without it.",
+      "Kyle Cooper's scratchy, jittery opening credits, set to a Nine Inch Nails remix, are considered among the most influential title sequences ever made.",
+      "Brad Pitt really broke his arm slipping on a wet car during the rain-soaked chase scene, so the script was changed to give his character a cast.",
+      "After his rough experience making Alien 3, Seven became David Fincher's breakthrough and led to Fight Club, Zodiac and The Social Network."
+    ],
+    "copies": [
+      {
+        "id": "seven-1995-vhs-1",
+        "added": "2026-11-22",
+        "format": "VHS",
+        "edition": "Alliance Video Canadian VHS (New Line Home Video), Hi-Fi Stereo",
+        "photos": [
+          "images/seven-1995-vhs-1.jpg",
+          "images/seven-1995-vhs-2.jpg",
+          "images/seven-1995-vhs-3.jpg",
+          "images/seven-1995-vhs-4.jpg",
+          "images/seven-1995-vhs-5.jpg",
+          "images/seven-1995-vhs-6.jpg",
+          "images/seven-1995-vhs-7.jpg",
+          "images/seven-1995-vhs-8.jpg",
+          "images/seven-1995-vhs-9.jpg",
+          "images/seven-1995-vhs-10.jpg",
+          "images/seven-1995-vhs-11.jpg"
+        ],
+        "gif": "images/seven-1995-vhs-1.gif",
+        "condition": {
+          "overall": "Good",
+          "case": "Good: cardboard sleeve with heavy wear: worn and frayed corners and edges, a crease and torn corner on the top back, scuffs, and handwritten marker on the front art (to the right of Brad Pitt's face)",
+          "discs": [
+            "Good: tape cassette clean, small pen mark on the label"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Video (1996, UPC 0 65935 11897 8), distributed exclusively in Canada for New Line Home Video. Approx. 2 h 07 min, colour, VHS Hi-Fi Stereo, Dolby Surround, formatted to fit your TV. Rated 18A (Canada) with Canadian Home Video Rating sticker. Printed in Canada."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
