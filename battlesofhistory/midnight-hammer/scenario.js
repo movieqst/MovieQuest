@@ -817,7 +817,9 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
   S.formations.forEach(f => { if (f.map === 'world') f.h = Math.round(f.h * 4); });   // readable on the 14,000 km map
   S.leaders = [];
 
-  const EV = S.events; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; e.t = i * 14; });
+  const EV = S.events; const LEN = { 4: 42 };   // chapter lengths in seconds: 14 unless listed (the Whiteman chapter holds the owner's 40-second take-off film)
+  let tt = 0; EV.forEach((e, i) => { e.clipNo = i + 1; e.orders = e.orders || []; e.t = tt; e.len = LEN[i] || 14; tt += e.len; });
+  S.duration = tt + 30;
   const MAPOF = { Sites: null, Iran: 'region', Fordow: 'fordow', World: 'world' };
   EV.forEach(e => { const m = MAPOF[e.scriptMap]; if (m) e.altMap = m; e.zoom = 'fit'; });
   const set = (i, o) => Object.assign(EV[i], o);
@@ -886,7 +888,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
   const SC = 'AI-generated reference sheet (ChatGPT) checked against public-domain US Air Force and Navy photographs; not a photograph';
   const VP = (file, caption, credit, at, secs) => ({ file: 'video/' + file, caption, credit, at, secs });
   EV[0].photo = VP('map-iran.jpg', 'Iran and its neighbours, June 2025: the three sites, the Strait of Hormuz and Al Udeid.', NC, 2, 12);
-  EV[4].photo = [ VP('map-whiteman.jpg', 'Whiteman Air Force Base, Missouri: the north–south runway and the row of bomber hangars.', VC, 1, 6), VP('sheet-b2.jpg', 'The B-2 Spirit: a flying wing with no tail, 52 metres across, a crew of two.', SC, 7.5, 6.5) ];
+  EV[4].photo = VP('whiteman-takeoff.mp4', 'Take-off from Whiteman, 21 June 2025: a dramatisation made for this page with video AI tools, not footage of the mission.', 'AI-generated dramatisation, edited by the owner (November 2026); the aircraft are drawn by the models and not every shot is an accurate B-2', 0.3, 40.5);
   EV[5].photo = [ VP('map-world.jpg', 'The flight, drawn schematically: the real routes were not published. The dim line is the decoy flight west.', NC, 1, 6), VP('sheet-kc135.jpg', 'The KC-135 tanker, with its refuelling boom extended over a B-2.', SC, 7.5, 6.5) ];
   EV[6].photo = [ VP('map-fordow.jpg', 'Fordow: the fenced plant on its ridge north-east of Qom, with the Qom–Tehran motorway to the west.', VC, 1, 6), VP('sheet-gbu57.jpg', 'The GBU-57 Massive Ordnance Penetrator, about six metres long, beside a person for scale.', SC, 7.5, 6.5) ];
   EV[7].photo = [ VP('map-natanz.jpg', 'Natanz: the walled complex on the plain beside the Kashan–Isfahan road; the new tunnels lie in the mountain to the south.', VC, 0.5, 4.5), VP('map-isfahan.jpg', 'Isfahan: the nuclear technology centre on the south-eastern edge of the city (position approximate).', VC, 5, 4.5), VP('sheet-tomahawk.jpg', 'The Tomahawk cruise missile: stowed, leaving the water, and in level flight.', SC, 9.5, 4.5) ];
@@ -895,7 +897,7 @@ Object.assign(window.MIDNIGHTHAMMER_SCENARIO, {
   Object.assign(IS[0], { media: [ { at: 0, file: 'video/map-iran.jpg', caption: 'Iran and its neighbours in June 2025: Fordow, Natanz and Isfahan in red; the Strait of Hormuz; Al Udeid in Qatar.', ref: 'Painted for this page; site positions approximate', credit: NC } ] });
   Object.assign(IS[1], { media: [ { at: 0, file: 'video/map-natanz.jpg', caption: 'Natanz, Iran’s main enrichment site: halls under earth and concrete on the open plain.', ref: 'Painted for this page', credit: VC }, { at: 12, file: 'video/sheet-gbu57.jpg', caption: 'The bombs were conventional: the GBU-57, the largest bunker-buster in the American arsenal.', ref: 'Reference sheet', credit: SC } ] });
   Object.assign(IS[2], { media: [ { at: 0, file: 'video/sheet-b2.jpg', caption: 'The B-2 Spirit stealth bomber, the aircraft of the strike force, seen from six sides.', ref: 'Reference sheet', credit: SC } ] });
-  Object.assign(IS[3], { media: [ { at: 0, file: 'video/map-world.jpg', caption: 'The flights are drawn as simple lines. The real routes were secret and are not known in detail.', ref: 'Schematic', credit: NC } ] });
+  Object.assign(IS[3], { media: [ { at: 0, file: 'video/map-world.jpg', caption: 'The flights are drawn as simple lines. The real routes were secret and are not known in detail.', ref: 'Schematic', credit: NC }, { at: 11, file: 'video/map-whiteman.jpg', caption: 'Whiteman Air Force Base, Missouri, where the bombers took off and landed: the north–south runway and the row of bomber hangars.', ref: 'Painted for this page', credit: VC } ] });
   // the debrief returns to the three sites
   S.debriefMap = 'sites'; S.debriefMarkers = [ mk(s('fordow'), 'Fordow'), mk(s('natanz'), 'Natanz'), mk(s('isfahan'), 'Isfahan') ];
 })();

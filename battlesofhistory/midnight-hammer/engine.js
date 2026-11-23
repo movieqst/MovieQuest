@@ -771,28 +771,29 @@ const NowPlaying = (() => {
 const MapPhoto = (() => {
   let el = null, timers = [];
   const make = () => { if (el) return el; el = document.createElement('figure'); el.id = 'mapPhoto';
-    el.innerHTML = '<button class="mpx" title="Close">✕</button><img alt=""><figcaption><b></b><span></span></figcaption>';
+    el.innerHTML = '<button class="mpx" title="Close">✕</button><img alt=""><video muted autoplay loop playsinline></video><figcaption><b></b><span></span></figcaption>';
     const css = document.createElement('style');
     css.textContent = `#mapPhoto{position:absolute;left:12px;top:12px;z-index:40;margin:0;max-width:min(46%,420px);background:rgba(8,14,20,.92);border:1px solid #c9a34a;border-radius:8px;padding:8px;box-shadow:0 6px 24px rgba(0,0,0,.6);opacity:0;transform:translateY(-6px);transition:opacity .6s,transform .6s;pointer-events:none}
       #mapPhoto.on{opacity:1;transform:none;pointer-events:auto}
-      #mapPhoto img{display:block;width:100%;max-height:42vh;object-fit:contain;border-radius:4px;cursor:zoom-in;background:#000}
-      #mapPhoto.big{left:50%;top:50%;transform:translate(-50%,-50%);max-width:92%;z-index:41}#mapPhoto.big img{max-height:72vh;cursor:zoom-out}
+      #mapPhoto img,#mapPhoto video{display:block;width:100%;max-height:42vh;object-fit:contain;border-radius:4px;cursor:zoom-in;background:#000}#mapPhoto video,#mapPhoto.vid img{display:none}#mapPhoto.vid video{display:block}
+      #mapPhoto.big{left:50%;top:50%;transform:translate(-50%,-50%);max-width:92%;z-index:41}#mapPhoto.big img,#mapPhoto.big video{max-height:72vh;cursor:zoom-out}
       #mapPhoto figcaption{font:12px/1.4 system-ui,sans-serif;color:#dfe7e4;margin-top:6px}#mapPhoto figcaption b{display:block;color:#e7c66b;font:600 13px 'Cinzel',Georgia,serif;margin-bottom:2px}
       #mapPhoto figcaption span{color:#9fb0b5;font-size:11px}
       #mapPhoto .mpx{position:absolute;right:6px;top:6px;z-index:1;background:rgba(0,0,0,.6);color:#fff;border:1px solid #556;border-radius:4px;cursor:pointer;font-size:12px;padding:1px 6px}`;
     document.head.appendChild(css);
     const panel = $('battlePanel') || document.body; panel.appendChild(el);
     el.querySelector('.mpx').onclick = e => { e.stopPropagation(); hide(); };
-    el.querySelector('img').onclick = () => el.classList.toggle('big');
+    el.querySelector('img').onclick = el.querySelector('video').onclick = () => el.classList.toggle('big');
     return el; };
   function one(p) { make(); el.classList.remove('big');
-    el.querySelector('img').src = (S.imageBase || 'images/') + p.file;
+    const isVid = /\.(mp4|webm)$/i.test(p.file), v = el.querySelector('video'); el.classList.toggle('vid', isVid);   // a short video clip plays muted in the same card
+    if (isVid) { v.src = (S.imageBase || 'images/') + p.file; v.play().catch(() => {}); } else { v.pause(); v.removeAttribute('src'); el.querySelector('img').src = (S.imageBase || 'images/') + p.file; }
     el.querySelector('b').textContent = p.caption || ''; el.querySelector('span').textContent = p.credit || '';
     el.classList.add('on'); }
-  function hide() { timers.forEach(clearTimeout); timers = []; if (el) el.classList.remove('on', 'big'); }
+  function hide() { timers.forEach(clearTimeout); timers = []; if (el) { el.classList.remove('on', 'big'); const v = el.querySelector('video'); if (v) v.pause(); } }
   function show(ph) { hide(); if (!ph) return; [].concat(ph).forEach(p => {
       timers.push(setTimeout(() => one(p), (p.at === undefined ? 3 : p.at) * 1000));
-      timers.push(setTimeout(() => { if (el && el.querySelector('img').src.endsWith(p.file)) el.classList.remove('on', 'big'); }, ((p.at === undefined ? 3 : p.at) + (p.secs || 14)) * 1000)); }); }
+      timers.push(setTimeout(() => { if (el && (el.querySelector('img').src.endsWith(p.file) || (el.querySelector('video').src || '').endsWith(p.file))) { el.classList.remove('on', 'big'); el.querySelector('video').pause(); } }, ((p.at === undefined ? 3 : p.at) + (p.secs || 14)) * 1000)); }); }
   return { show, hide };
 })();
 /* ---- the Six-Day War: radio "from the record" in a chapter. ev.radio { file (in audio/record/), title, when, credit,
