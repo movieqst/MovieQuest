@@ -15040,5 +15040,105 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "chinatown-1974-vhs",
+    "title": "Chinatown",
+    "year": 1974,
+    "format": "VHS",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/chinatown-1974-vhs-1.jpg",
+    "photos": [
+      "images/chinatown-1974-vhs-1.jpg",
+      "images/chinatown-1974-vhs-2.jpg",
+      "images/chinatown-1974-vhs-3.jpg",
+      "images/chinatown-1974-vhs-4.jpg",
+      "images/chinatown-1974-vhs-5.jpg",
+      "images/chinatown-1974-vhs-6.jpg",
+      "images/chinatown-1974-vhs-7.jpg",
+      "images/chinatown-1974-vhs-8.jpg",
+      "images/chinatown-1974-vhs-9.jpg",
+      "images/chinatown-1974-vhs-10.jpg",
+      "images/chinatown-1974-vhs-11.jpg",
+      "images/chinatown-1974-vhs-12.jpg",
+      "images/chinatown-1974-vhs-13.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Chinatown%201974%20VHS%20Paramount&campid=5339133571&customid=chinatown-1974-vhs",
+    "price": null,
+    "categories": [
+      "1970s"
+    ],
+    "starring": "Jack Nicholson, Faye Dunaway, John Huston, John Hillerman, Perry Lopez, Burt Young",
+    "director": "Roman Polanski",
+    "producers": "Robert Evans; associate producer C. O. Erickson",
+    "company": "Paramount Pictures / Long Road Productions / Paramount Home Video",
+    "titleNote": "Paramount Special Collector's Series VHS / 1974",
+    "tagline": "VHS / Hi-Fi Stereo / Special Collector's Series / Jack Nicholson / Faye Dunaway / Film Noir / 1970s",
+    "desc": "This sinister son of film noir is one of the most meticulously crafted Hollywood films in many years. Everyone involved collaborated to re-create for contemporary tastes this disillusioned vision of seedy, sunkissed, pre-war Southern California. Kinks complicate mystery, lies compound complexity, and passion clouds detection as what begins as a seemingly routine matrimonial snoop job mushrooms into a murderous regional and personal scandal. Chinatown was tapped for ten Academy nominations. A Robert Evans production, a Roman Polanski film, starring Jack Nicholson and Faye Dunaway, co-starring John Hillerman, Perry Lopez, Burt Young and John Huston. Music scored by Jerry Goldsmith.",
+    "trivia": [
+      {
+        "heading": "An Oscar-Winning Script",
+        "text": "Robert Towne's screenplay won the Academy Award, one of only one win from the film's eleven nominations, and is still taught as one of the best screenplays ever written."
+      },
+      {
+        "heading": "Nicholson's Bandaged Nose",
+        "text": "Jack Nicholson spends much of the film with a bandaged nose after a thug slices it, a scene in which director Roman Polanski himself plays the knife-wielding hood."
+      },
+      {
+        "heading": "The Famous Last Line",
+        "text": "\"Forget it, Jake. It's Chinatown.\" was voted one of the greatest movie lines of all time by the American Film Institute."
+      },
+      {
+        "heading": "Based on Real Water Wars",
+        "text": "The plot draws on the real early-1900s battles over water rights that built Los Angeles, when the city secretly bought up the Owens Valley's water."
+      },
+      {
+        "heading": "Paramount's 75th Anniversary",
+        "text": "This tape is part of Paramount's Special Collector's Series, released in 1986 to celebrate the studio's 75th anniversary."
+      }
+    ],
+    "tidbits": [
+      "Robert Towne's screenplay won the Academy Award, one of only one win from the film's eleven nominations, and is still taught as one of the best screenplays ever written.",
+      "Jack Nicholson spends much of the film with a bandaged nose after a thug slices it, a scene in which director Roman Polanski himself plays the knife-wielding hood.",
+      "\"Forget it, Jake. It's Chinatown.\" was voted one of the greatest movie lines of all time by the American Film Institute.",
+      "The plot draws on the real early-1900s battles over water rights that built Los Angeles, when the city secretly bought up the Owens Valley's water.",
+      "This tape is part of Paramount's Special Collector's Series, released in 1986 to celebrate the studio's 75th anniversary."
+    ],
+    "copies": [
+      {
+        "id": "chinatown-1974-vhs-1",
+        "added": "2026-11-23",
+        "format": "VHS",
+        "edition": "Paramount Home Video Special Collector's Series (Paramount 75th Anniversary), catalogue 8674, VHS Hi-Fi",
+        "photos": [
+          "images/chinatown-1974-vhs-1.jpg",
+          "images/chinatown-1974-vhs-2.jpg",
+          "images/chinatown-1974-vhs-3.jpg",
+          "images/chinatown-1974-vhs-4.jpg",
+          "images/chinatown-1974-vhs-5.jpg",
+          "images/chinatown-1974-vhs-6.jpg",
+          "images/chinatown-1974-vhs-7.jpg",
+          "images/chinatown-1974-vhs-8.jpg",
+          "images/chinatown-1974-vhs-9.jpg",
+          "images/chinatown-1974-vhs-10.jpg",
+          "images/chinatown-1974-vhs-11.jpg",
+          "images/chinatown-1974-vhs-12.jpg",
+          "images/chinatown-1974-vhs-13.jpg"
+        ],
+        "gif": "images/chinatown-1974-vhs-1.gif",
+        "condition": {
+          "overall": "Good",
+          "case": "Good: cardboard sleeve with heavy wear: worn and frayed corners and edges, small tears at the open end, scuffs and scratches on the spine and sides",
+          "discs": [
+            "Good: tape clean; ex-rental with a Video Express (Prince Albert) sticker and a barcode sticker on the cassette"
+          ],
+          "inserts": "None",
+          "notes": "Paramount Home Video, catalogue 8674, Special Collector's Series (Paramount 75th Anniversary, a Gulf + Western company). Sleeve (C) 1986 Paramount Pictures Corp., printed in U.S.A., licensed for sale only in U.S. and Canada. 1974, colour, 131 minutes, rated R. VHS Hi-Fi stereo. Former rental copy."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
