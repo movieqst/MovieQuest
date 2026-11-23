@@ -116,8 +116,8 @@ writes `movies/<id>/index.html` and `listings/<id>-1.html`.
   the file name (`01-<id>.jpg`, `02-<id>.jpg`…), zip them in the scratchpad,
   and send the zip with `SendUserFile`.
 - **eBay description**: send `listings/<id>-1.html` **on its own, in a separate
-  SendUserFile call with `display: "render"`** so it opens in the owner's side
-  panel (never bundled with the zip or as an attachment), plus the browser
+  SendUserFile call with `display: "attach"`** (the file card with the download
+  arrow; never bundled with the zip), plus the browser
   link `https://raw.githack.com/movieqst/MovieQuest/<branch>/listings/<id>-1.html`
   (Owner, 23 Nov). Tell them: open it,
   press Ctrl+A then Ctrl+C, and paste into eBay's description box. The page
