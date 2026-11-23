@@ -16887,5 +16887,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-adventures-of-ford-fairlane-1990-dvd",
+    "title": "The Adventures of Ford Fairlane",
+    "year": 1990,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/the-adventures-of-ford-fairlane-1990-dvd-1.jpg",
+    "photos": [
+      "images/the-adventures-of-ford-fairlane-1990-dvd-1.jpg",
+      "images/the-adventures-of-ford-fairlane-1990-dvd-2.jpg",
+      "images/the-adventures-of-ford-fairlane-1990-dvd-3.jpg",
+      "images/the-adventures-of-ford-fairlane-1990-dvd-4.jpg",
+      "images/the-adventures-of-ford-fairlane-1990-dvd-5.jpg",
+      "images/the-adventures-of-ford-fairlane-1990-dvd-6.jpg",
+      "images/the-adventures-of-ford-fairlane-1990-dvd-7.jpg",
+      "images/the-adventures-of-ford-fairlane-1990-dvd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Adventures%20of%20Ford%20Fairlane%20DVD&campid=5339133571&customid=the-adventures-of-ford-fairlane-1990-dvd",
+    "price": null,
+    "categories": [
+      "1990s"
+    ],
+    "starring": "Andrew Dice Clay, Wayne Newton, Priscilla Presley, Morris Day, Lauren Holly, Robert Englund, Ed O'Neill, Gilbert Gottfried",
+    "director": "Renny Harlin",
+    "producers": "Joel Silver and Steve Perry; executive producer Michael Levy",
+    "company": "Twentieth Century Fox / Silver Pictures",
+    "titleNote": "Full Screen & Widescreen / 1990",
+    "tagline": "DVD / Andrew Dice Clay / Rock 'n' Roll Detective / Billy Idol / Comedy / Action / 1990s",
+    "desc": "In this hilarious, high-octane whodunit, rock 'n' roll detective Ford Fairlane (Andrew Dice Clay) is stunned when the king of shock-jocks, Johnny Crunch (Gilbert Gottfried), is electrocuted on the air. After all, the victim was his only paying client! Crunch had hired Ford to track down a mysterious groupie named Zuzu Petals, a search which quickly finds Ford tangled up, and trading insults, with a ruthless record executive (Wayne Newton) and a merciless hit man (Robert Englund).",
+    "trivia": [
+      {
+        "heading": "Cradle of Love",
+        "text": "Billy Idol's \"Cradle of Love\" came from this film's soundtrack and was a Top 10 hit in 1990. Its music video, included on this disc, was directed by David Fincher."
+      },
+      {
+        "heading": "Dice's Big Starring Role",
+        "text": "The film was meant to make stand-up star Andrew Dice Clay a movie star. It flopped in cinemas and swept the 1991 Razzie Awards, sharing Worst Picture and winning Clay Worst Actor."
+      },
+      {
+        "heading": "From a Rock Magazine",
+        "text": "Ford Fairlane, the \"rock 'n' roll detective\", began in stories written by Rex Weiner for the Boston Phoenix in the late 1970s."
+      },
+      {
+        "heading": "Die Hard 2's Director",
+        "text": "Renny Harlin directed it the same year as Die Hard 2, with producer Joel Silver behind both films."
+      },
+      {
+        "heading": "A Cult Favourite",
+        "text": "It has since become a cult film, with fans quoting Clay's rhymes and enjoying cameos from Wayne Newton, Priscilla Presley, Morris Day, Robert Englund, Ed O'Neill and Gilbert Gottfried."
+      }
+    ],
+    "tidbits": [
+      "Billy Idol's \"Cradle of Love\" came from this film's soundtrack and was a Top 10 hit in 1990. Its music video, included on this disc, was directed by David Fincher.",
+      "The film was meant to make stand-up star Andrew Dice Clay a movie star. It flopped in cinemas and swept the 1991 Razzie Awards, sharing Worst Picture and winning Clay Worst Actor.",
+      "Ford Fairlane, the \"rock 'n' roll detective\", began in stories written by Rex Weiner for the Boston Phoenix in the late 1970s.",
+      "Renny Harlin directed it the same year as Die Hard 2, with producer Joel Silver behind both films.",
+      "It has since become a cult film, with fans quoting Clay's rhymes and enjoying cameos from Wayne Newton, Priscilla Presley, Morris Day, Robert Englund, Ed O'Neill and Gilbert Gottfried."
+    ],
+    "copies": [
+      {
+        "id": "the-adventures-of-ford-fairlane-1990-dvd-1",
+        "added": "2026-11-23",
+        "format": "DVD",
+        "edition": "Twentieth Century Fox 2003, double-sided disc: full screen and widescreen",
+        "photos": [
+          "images/the-adventures-of-ford-fairlane-1990-dvd-1.jpg",
+          "images/the-adventures-of-ford-fairlane-1990-dvd-2.jpg",
+          "images/the-adventures-of-ford-fairlane-1990-dvd-3.jpg",
+          "images/the-adventures-of-ford-fairlane-1990-dvd-4.jpg",
+          "images/the-adventures-of-ford-fairlane-1990-dvd-5.jpg",
+          "images/the-adventures-of-ford-fairlane-1990-dvd-6.jpg",
+          "images/the-adventures-of-ford-fairlane-1990-dvd-7.jpg",
+          "images/the-adventures-of-ford-fairlane-1990-dvd-8.jpg"
+        ],
+        "gif": "images/the-adventures-of-ford-fairlane-1990-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: black DVD case with light wear",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Scene selection / DVD contents insert",
+          "notes": "(C) 2003 Twentieth Century Fox Home Entertainment; film (C) 1990. UPC 0 24543 10145 1. Disc made in Canada. Single layer, double sided: Side A full screen (1.33:1), Side B anamorphic widescreen (2.35:1). 101 minutes, colour. Rated R. English Dolby Surround; Spanish and French mono; subtitles English and Spanish; closed captioned. Bonus features: audio commentary by director Renny Harlin; \"Making Of\" featurette; music video \"Cradle of Love\" by Billy Idol; theatrical trailer. Music score by Yello."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
