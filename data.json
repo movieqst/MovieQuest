@@ -15140,5 +15140,107 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "memento-2000-vhs",
+    "title": "Memento",
+    "year": 2000,
+    "format": "VHS",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/memento-2000-vhs-1.jpg",
+    "photos": [
+      "images/memento-2000-vhs-1.jpg",
+      "images/memento-2000-vhs-2.jpg",
+      "images/memento-2000-vhs-3.jpg",
+      "images/memento-2000-vhs-4.jpg",
+      "images/memento-2000-vhs-5.jpg",
+      "images/memento-2000-vhs-6.jpg",
+      "images/memento-2000-vhs-7.jpg",
+      "images/memento-2000-vhs-8.jpg",
+      "images/memento-2000-vhs-9.jpg",
+      "images/memento-2000-vhs-10.jpg",
+      "images/memento-2000-vhs-11.jpg",
+      "images/memento-2000-vhs-12.jpg",
+      "images/memento-2000-vhs-13.jpg",
+      "images/memento-2000-vhs-14.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Memento%20VHS%20Guy%20Pearce&campid=5339133571&customid=memento-2000-vhs",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "Guy Pearce, Carrie-Anne Moss, Joe Pantoliano, Mark Boone Junior, Stephen Tobolowsky",
+    "director": "Christopher Nolan",
+    "producers": "Jennifer Todd, Suzanne Todd; executive producer Aaron Ryder",
+    "company": "Summit Entertainment / Team Todd / Alliance Atlantis (Canada)",
+    "titleNote": "Alliance Atlantis VHS / 2000",
+    "tagline": "VHS / Hi-Fi / Dolby Surround / Canadian Release / Guy Pearce / Christopher Nolan / 2000s",
+    "desc": "Some memories are better forgotten. How can you face the future when you can't remember the past? Leonard Shelby (Guy Pearce: L.A. Confidential) and his wife were attacked in their home. The perpetrator raped and murdered his wife and knocked Leonard unconscious. Shelby survived the attack, but suffered an injury that blocks his short term memory. He can remember everything prior to the incident, but everything since fades after a few minutes. Now his world is pieced together with photographs, charts, notes and tattoos. Also starring Carrie-Anne Moss (Chocolat) and Joe Pantoliano (The Matrix). Memento is a profound and gripping thriller that follows the struggles of a man who is trying to find himself within the rag-tag remnants of his past and seek revenge. \"...brainy, brilliant crime thriller.\" (John Griffin, The Montreal Gazette)",
+    "trivia": [
+      {
+        "heading": "Told Backwards",
+        "text": "The colour scenes run in reverse order, so the audience, like Leonard, never knows what just happened. The black-and-white scenes run forwards, and the two meet at the end."
+      },
+      {
+        "heading": "A Brother's Short Story",
+        "text": "The film is based on \"Memento Mori\", a short story by Christopher Nolan's brother Jonathan Nolan, who pitched the idea on a road trip."
+      },
+      {
+        "heading": "Shot in 25 Days",
+        "text": "Christopher Nolan made Memento on a small budget in about 25 days. It was his second feature, before The Dark Knight, Inception and Oppenheimer."
+      },
+      {
+        "heading": "Two Oscar Nominations",
+        "text": "Memento earned Oscar nominations for Best Original Screenplay and Best Film Editing."
+      },
+      {
+        "heading": "The Matrix Reunion",
+        "text": "Carrie-Anne Moss and Joe Pantoliano had just starred together in The Matrix, as Trinity and Cypher."
+      }
+    ],
+    "tidbits": [
+      "The colour scenes run in reverse order, so the audience, like Leonard, never knows what just happened. The black-and-white scenes run forwards, and the two meet at the end.",
+      "The film is based on \"Memento Mori\", a short story by Christopher Nolan's brother Jonathan Nolan, who pitched the idea on a road trip.",
+      "Christopher Nolan made Memento on a small budget in about 25 days. It was his second feature, before The Dark Knight, Inception and Oppenheimer.",
+      "Memento earned Oscar nominations for Best Original Screenplay and Best Film Editing.",
+      "Carrie-Anne Moss and Joe Pantoliano had just starred together in The Matrix, as Trinity and Cypher."
+    ],
+    "copies": [
+      {
+        "id": "memento-2000-vhs-1",
+        "added": "2026-11-23",
+        "format": "VHS",
+        "edition": "Alliance Atlantis Canadian VHS (catalogue 3785), Hi-Fi, Dolby Surround",
+        "photos": [
+          "images/memento-2000-vhs-1.jpg",
+          "images/memento-2000-vhs-2.jpg",
+          "images/memento-2000-vhs-3.jpg",
+          "images/memento-2000-vhs-4.jpg",
+          "images/memento-2000-vhs-5.jpg",
+          "images/memento-2000-vhs-6.jpg",
+          "images/memento-2000-vhs-7.jpg",
+          "images/memento-2000-vhs-8.jpg",
+          "images/memento-2000-vhs-9.jpg",
+          "images/memento-2000-vhs-10.jpg",
+          "images/memento-2000-vhs-11.jpg",
+          "images/memento-2000-vhs-12.jpg",
+          "images/memento-2000-vhs-13.jpg",
+          "images/memento-2000-vhs-14.jpg"
+        ],
+        "gif": "images/memento-2000-vhs-1.gif",
+        "condition": {
+          "overall": "Good",
+          "case": "Good: cardboard sleeve with worn, frayed corners and edges, creases on the top spine and a scuffed bottom edge; ex-Blockbuster price sticker on the back (dated 12/17/01) and a Blockbuster \"Previously Viewed / Fully Guaranteed\" sticker",
+          "discs": [
+            "Good: tape clean; ex-rental with a \"Please remember to rewind\" spine label and a Blockbuster sticker on the cassette edge (top corner torn)"
+          ],
+          "inserts": "None",
+          "notes": "Alliance Atlantis, distributed exclusively in Canada (catalogue 3785). (C) 2000 I Remember Productions, LLC; artwork (C) 2001 Alliance Atlantis Vivafilm. Approx. 1 h 54 min (cassette label says 1 h 56 min), colour, VHS Hi-Fi, Dolby Surround. Rated 14A (Canada). Former Blockbuster Video rental copy."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
