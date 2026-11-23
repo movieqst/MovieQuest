@@ -16680,5 +16680,97 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "archie-bronze-age-series-dvd-rom-2008",
+    "title": "Archie: Bronze Age Series on DVD-ROM",
+    "year": 2008,
+    "years": [
+      1970,
+      2008
+    ],
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/archie-bronze-age-series-dvd-rom-2008-1.jpg",
+    "photos": [
+      "images/archie-bronze-age-series-dvd-rom-2008-1.jpg",
+      "images/archie-bronze-age-series-dvd-rom-2008-2.jpg",
+      "images/archie-bronze-age-series-dvd-rom-2008-3.jpg",
+      "images/archie-bronze-age-series-dvd-rom-2008-4.jpg",
+      "images/archie-bronze-age-series-dvd-rom-2008-5.jpg",
+      "images/archie-bronze-age-series-dvd-rom-2008-6.jpg",
+      "images/archie-bronze-age-series-dvd-rom-2008-7.jpg",
+      "images/archie-bronze-age-series-dvd-rom-2008-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Archie%20Bronze%20Age%20Series%20DVD-ROM&campid=5339133571&customid=archie-bronze-age-series-dvd-rom-2008",
+    "price": null,
+    "categories": [
+      "1970s",
+      "2000s"
+    ],
+    "company": "Graphic Imaging Technology, Inc., under licence from Archie Comic Publications, Inc.",
+    "titleNote": "Comics 1970–1979 / DVD-ROM 2008",
+    "tagline": "Every issue from Feb. 1970 to Dec. 1979: 97 complete printable comic books and annuals",
+    "desc": "Archie Bronze Age Series on DVD-ROM: every issue of Archie from February 1970 to December 1979, 97 complete printable comic books and annuals on one DVD-ROM, as PDF files for Windows and Mac. Cover art from Archie No. 197 (February 1970). Includes Adobe Reader. This is a computer disc (DVD-ROM), not a movie: it plays on a computer, not a DVD player.",
+    "trivia": [
+      {
+        "heading": "A Decade on One Disc",
+        "text": "The disc holds every issue of Archie from February 1970 to December 1979: 97 complete comic books and annuals as printable PDF files."
+      },
+      {
+        "heading": "The Cover Comic",
+        "text": "The case art is the cover of Archie No. 197 (February 1970), the first issue in the set: Archie borrows one of Dad's ties and turns it into a headband."
+      },
+      {
+        "heading": "Joe Namath on the Disc",
+        "text": "The disc label shows Betty asking \"Isn't Archie a dead-ringer for Joe Namath?\", the New York Jets star quarterback of the day."
+      },
+      {
+        "heading": "Part of a Series",
+        "text": "The back advertises the companion Jughead and Betty & Veronica Bronze Age Series discs, promised for the 2008 holiday season."
+      },
+      {
+        "heading": "Riverdale's Bronze Age",
+        "text": "Comic fans call roughly 1970 to 1985 the Bronze Age of comics, after the Golden and Silver Ages."
+      }
+    ],
+    "tidbits": [
+      "The disc holds every issue of Archie from February 1970 to December 1979: 97 complete comic books and annuals as printable PDF files.",
+      "The case art is the cover of Archie No. 197 (February 1970), the first issue in the set: Archie borrows one of Dad's ties and turns it into a headband.",
+      "The disc label shows Betty asking \"Isn't Archie a dead-ringer for Joe Namath?\", the New York Jets star quarterback of the day.",
+      "The back advertises the companion Jughead and Betty & Veronica Bronze Age Series discs, promised for the 2008 holiday season.",
+      "Comic fans call roughly 1970 to 1985 the Bronze Age of comics, after the Golden and Silver Ages."
+    ],
+    "copies": [
+      {
+        "id": "archie-bronze-age-series-dvd-rom-2008-1",
+        "added": "2026-11-23",
+        "format": "DVD-ROM",
+        "edition": "Win/Mac DVD-ROM software, Graphic Imaging Technology, 2008",
+        "photos": [
+          "images/archie-bronze-age-series-dvd-rom-2008-1.jpg",
+          "images/archie-bronze-age-series-dvd-rom-2008-2.jpg",
+          "images/archie-bronze-age-series-dvd-rom-2008-3.jpg",
+          "images/archie-bronze-age-series-dvd-rom-2008-4.jpg",
+          "images/archie-bronze-age-series-dvd-rom-2008-5.jpg",
+          "images/archie-bronze-age-series-dvd-rom-2008-6.jpg",
+          "images/archie-bronze-age-series-dvd-rom-2008-7.jpg",
+          "images/archie-bronze-age-series-dvd-rom-2008-8.jpg"
+        ],
+        "gif": "images/archie-bronze-age-series-dvd-rom-2008-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: black DVD case with light wear; a small dark mark near the bottom right of the back cover",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Installation and system requirements sheet inside the case",
+          "notes": "(C) and TM 2008 Archie Comic Publications, Inc. Software (C) 2008 Graphic Imaging Technology, Inc. One DVD-ROM of PDF files, Windows and Mac; requires Adobe Acrobat Reader 7.0.8 (included on the disc). Windows XP/2000/2003/NT, Intel Pentium, 128MB RAM (256 recommended); Mac OS X 10.2.8, 10.3 or 10.4, PowerPC G3/G4/G5. Plays on a computer, not on a DVD player."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
