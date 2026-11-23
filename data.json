@@ -15667,5 +15667,159 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "rem-document-1987-cd",
+    "title": "R.E.M.: Document",
+    "year": 1987,
+    "format": "CD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/rem-document-1987-cd-1.jpg",
+    "photos": [
+      "images/rem-document-1987-cd-1.jpg",
+      "images/rem-document-1987-cd-2.jpg",
+      "images/rem-document-1987-cd-3.jpg",
+      "images/rem-document-1987-cd-4.jpg",
+      "images/rem-document-1987-cd-5.jpg",
+      "images/rem-document-1987-cd-6.jpg",
+      "images/rem-document-1987-cd-7.jpg",
+      "images/rem-document-1987-cd-8.jpg",
+      "images/rem-document-1987-cd-9.jpg",
+      "images/rem-document-1987-cd-10.jpg",
+      "images/rem-document-1987-cd-11.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=REM%20Document%20CD%20IRS&campid=5339133571&customid=rem-document-1987-cd",
+    "price": null,
+    "categories": [
+      "music"
+    ],
+    "artist": "R.E.M.",
+    "genre": "Alternative Rock / College Rock",
+    "label": "I.R.S. Records (IRSMD 42059), MCA Records Canada",
+    "released": "1987, Canada",
+    "producers": "Produced by Scott Litt and R.E.M. Songs written by Berry, Buck, Mills and Stipe, except \"Strange\" (Gilbert, Lewis, Newman, Gotobed)",
+    "titleNote": "I.R.S. IRSMD 42059 / 1987",
+    "tagline": "Music CD / Alternative Rock / R.E.M. / The One I Love / It's the End of the World / I.R.S. / 1980s",
+    "desc": "R.E.M. No. 5: Document, the 1987 album that took R.E.M. from college radio to the mainstream. 11 tracks including \"The One I Love\", \"It's the End of the World as We Know It (And I Feel Fine)\", \"Finest Worksong\", \"Exhuming McCarthy\" and \"King of Birds\". Produced by Scott Litt and R.E.M. Original Canadian I.R.S. Records CD, distributed by MCA Records Canada.",
+    "tracks": [
+      {
+        "title": "Finest Worksong",
+        "artist": "R.E.M.",
+        "credit": "3:48"
+      },
+      {
+        "title": "Welcome to the Occupation",
+        "artist": "R.E.M.",
+        "credit": "2:48"
+      },
+      {
+        "title": "Exhuming McCarthy",
+        "artist": "R.E.M.",
+        "credit": "3:19"
+      },
+      {
+        "title": "Disturbance at the Heron House",
+        "artist": "R.E.M.",
+        "credit": "3:33"
+      },
+      {
+        "title": "Strange",
+        "artist": "R.E.M.",
+        "credit": "2:32"
+      },
+      {
+        "title": "It's the End of the World as We Know It (And I Feel Fine)",
+        "artist": "R.E.M.",
+        "credit": "4:07"
+      },
+      {
+        "title": "The One I Love",
+        "artist": "R.E.M.",
+        "credit": "3:17"
+      },
+      {
+        "title": "Fireplace",
+        "artist": "R.E.M.",
+        "credit": "3:24"
+      },
+      {
+        "title": "Lightnin' Hopkins",
+        "artist": "R.E.M.",
+        "credit": "3:18"
+      },
+      {
+        "title": "King of Birds",
+        "artist": "R.E.M.",
+        "credit": "4:07"
+      },
+      {
+        "title": "Oddfellows Local 151",
+        "artist": "R.E.M.",
+        "credit": "5:21"
+      }
+    ],
+    "trivia": [
+      {
+        "heading": "R.E.M.'s Breakthrough",
+        "text": "Document was R.E.M.'s fifth album (hence \"R.E.M. No. 5\" on the cover) and their first to go platinum in the US."
+      },
+      {
+        "heading": "The One I Love",
+        "text": "\"The One I Love\" was the band's first US top-10 hit. Despite the title, it's a bitter song about using people, not a love song."
+      },
+      {
+        "heading": "The End of the World",
+        "text": "\"It's the End of the World as We Know It (And I Feel Fine)\" became one of R.E.M.'s best-known songs, with its rapid-fire stream-of-consciousness lyrics."
+      },
+      {
+        "heading": "Last Album on I.R.S.",
+        "text": "Document was R.E.M.'s last studio album for the independent label I.R.S. Records before they signed with Warner Bros."
+      },
+      {
+        "heading": "Enter Scott Litt",
+        "text": "It was the first R.E.M. album produced with Scott Litt, who went on to co-produce their biggest records, including Out of Time and Automatic for the People."
+      }
+    ],
+    "tidbits": [
+      "Document was R.E.M.'s fifth album (hence \"R.E.M. No. 5\" on the cover) and their first to go platinum in the US.",
+      "\"The One I Love\" was the band's first US top-10 hit. Despite the title, it's a bitter song about using people, not a love song.",
+      "\"It's the End of the World as We Know It (And I Feel Fine)\" became one of R.E.M.'s best-known songs, with its rapid-fire stream-of-consciousness lyrics.",
+      "Document was R.E.M.'s last studio album for the independent label I.R.S. Records before they signed with Warner Bros.",
+      "It was the first R.E.M. album produced with Scott Litt, who went on to co-produce their biggest records, including Out of Time and Automatic for the People."
+    ],
+    "copies": [
+      {
+        "id": "rem-document-1987-cd-1",
+        "added": "2026-11-23",
+        "format": "CD",
+        "edition": "I.R.S. Records Canadian CD (IRSMD 42059), distributed by MCA Records Canada",
+        "photos": [
+          "images/rem-document-1987-cd-1.jpg",
+          "images/rem-document-1987-cd-2.jpg",
+          "images/rem-document-1987-cd-3.jpg",
+          "images/rem-document-1987-cd-4.jpg",
+          "images/rem-document-1987-cd-5.jpg",
+          "images/rem-document-1987-cd-6.jpg",
+          "images/rem-document-1987-cd-7.jpg",
+          "images/rem-document-1987-cd-8.jpg",
+          "images/rem-document-1987-cd-9.jpg",
+          "images/rem-document-1987-cd-10.jpg",
+          "images/rem-document-1987-cd-11.jpg"
+        ],
+        "gif": "images/rem-document-1987-cd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: standard jewel case with light scuffs",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "Front insert and back tray card (\"Table of Content\" tracklist)",
+          "notes": "I.R.S. Records, catalogue IRSMD 42059 (spine), UPC 0 7673-22059-2 1. (P) 1987 International Record Syndicate, Inc. Distributed in Canada by MCA Records Canada, Willowdale, Ontario. 11 tracks."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
