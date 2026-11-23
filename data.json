@@ -16977,5 +16977,89 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "road-house-1989-dvd",
+    "title": "Road House",
+    "year": 1989,
+    "format": "DVD",
+    "condition": "Very Good",
+    "image": "https://moviequest.ca/images/road-house-1989-dvd-1.jpg",
+    "photos": [
+      "images/road-house-1989-dvd-1.jpg",
+      "images/road-house-1989-dvd-2.jpg",
+      "images/road-house-1989-dvd-3.jpg",
+      "images/road-house-1989-dvd-4.jpg",
+      "images/road-house-1989-dvd-5.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=Road%20House%20Patrick%20Swayze%20DVD&campid=5339133571&customid=road-house-1989-dvd",
+    "price": null,
+    "categories": [
+      "1980s"
+    ],
+    "starring": "Patrick Swayze, Ben Gazzara, Kelly Lynch, Sam Elliott, featuring The Jeff Healey Band",
+    "director": "Rowdy Herrington",
+    "producers": "Joel Silver; executive producers Steve Perry and Tim Moore",
+    "company": "United Artists / Silver Pictures / MGM Home Entertainment",
+    "titleNote": "Widescreen & Full Screen / 1989",
+    "tagline": "Enter at your own risk.",
+    "desc": "Patrick Swayze stars in this sexy, \"violent tough-guy thriller\" (Fort Worth Star-Telegram) from the producer of Die Hard and The Matrix. Co-starring Ben Gazzara, Kelly Lynch and Sam Elliott, Road House delivers no-holds-barred action that pushes the envelope for high-octane thrills! Swayze is Dalton, a legendary bouncer who comes to Jasper, Missouri, for a special purpose: to restore order at the notorious Double Deuce bar. In one spectacular fight after another, Dalton rids the bar of thugs and henchmen. But when he runs afoul of a ruthless crime boss (Gazzara), the stage is set for a blistering showdown that'll leave only one man standing!",
+    "trivia": [
+      {
+        "heading": "A Canadian Guitar Hero",
+        "text": "The house band at the Double Deuce is the Jeff Healey Band from Toronto. Healey, blind from age one, played guitar flat on his lap."
+      },
+      {
+        "heading": "\"Be Nice\"",
+        "text": "Dalton's three rules for bouncers, ending with \"be nice... until it's time to not be nice\", became one of the film's most quoted scenes."
+      },
+      {
+        "heading": "Swayze Did the Fighting",
+        "text": "Patrick Swayze trained with kickboxing champion Benny Urquidez and performed most of his own fight scenes."
+      },
+      {
+        "heading": "Wade Garrett",
+        "text": "Sam Elliott plays Wade Garrett, Dalton's friend and mentor and the best bouncer in the business."
+      },
+      {
+        "heading": "Back on the Road",
+        "text": "The cult classic was remade in 2024 with Jake Gyllenhaal in the Dalton role."
+      }
+    ],
+    "tidbits": [
+      "The house band at the Double Deuce is the Jeff Healey Band from Toronto. Healey, blind from age one, played guitar flat on his lap.",
+      "Dalton's three rules for bouncers, ending with \"be nice... until it's time to not be nice\", became one of the film's most quoted scenes.",
+      "Patrick Swayze trained with kickboxing champion Benny Urquidez and performed most of his own fight scenes.",
+      "Sam Elliott plays Wade Garrett, Dalton's friend and mentor and the best bouncer in the business.",
+      "The cult classic was remade in 2024 with Jake Gyllenhaal in the Dalton role."
+    ],
+    "copies": [
+      {
+        "id": "road-house-1989-dvd-1",
+        "added": "2026-11-23",
+        "format": "DVD",
+        "edition": "MGM 2004 bilingual Canadian cover (Road House / Bar Routier), widescreen and full screen",
+        "photos": [
+          "images/road-house-1989-dvd-1.jpg",
+          "images/road-house-1989-dvd-2.jpg",
+          "images/road-house-1989-dvd-3.jpg",
+          "images/road-house-1989-dvd-4.jpg",
+          "images/road-house-1989-dvd-5.jpg"
+        ],
+        "gif": "images/road-house-1989-dvd-1.gif",
+        "condition": {
+          "overall": "Very Good",
+          "case": "Very Good: black DVD case with light wear; a store \"Security Device Enclosed\" sticker on the spine",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "",
+          "notes": "Package design (C) 2004 MGM Home Entertainment; film (C) 1989. Catalogue 1007364, ISBN 0-7928-6230-9, UPC 0 27616 91462 0. Region 1 NTSC. 16:9 widescreen 2.35:1 and full screen. English stereo surround, French stereo surround, Spanish mono; subtitles English, French, Spanish and Portuguese; closed captioned. Approx. 1 hour 54 minutes, colour. Canadian rating 18A. Special feature: original theatrical trailer. Featured musical performance by The Jeff Healey Band; music by Michael Kamen."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
