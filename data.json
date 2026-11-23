@@ -16590,5 +16590,95 @@
         "sold": false
       }
     ]
+  },
+  {
+    "id": "the-animatrix-2003-dvd",
+    "title": "The Animatrix",
+    "year": 2003,
+    "format": "DVD",
+    "condition": "Good",
+    "image": "https://moviequest.ca/images/the-animatrix-2003-dvd-1.jpg",
+    "photos": [
+      "images/the-animatrix-2003-dvd-1.jpg",
+      "images/the-animatrix-2003-dvd-2.jpg",
+      "images/the-animatrix-2003-dvd-3.jpg",
+      "images/the-animatrix-2003-dvd-4.jpg",
+      "images/the-animatrix-2003-dvd-5.jpg",
+      "images/the-animatrix-2003-dvd-6.jpg",
+      "images/the-animatrix-2003-dvd-7.jpg",
+      "images/the-animatrix-2003-dvd-8.jpg"
+    ],
+    "storeUrl": "",
+    "searchUrl": "https://www.ebay.ca/sch/i.html?_nkw=The%20Animatrix%20DVD&campid=5339133571&customid=the-animatrix-2003-dvd",
+    "price": null,
+    "categories": [
+      "2000s"
+    ],
+    "starring": "Voices of Keanu Reeves, Carrie-Anne Moss, Clayton Watson, Pamela Adlon, Hedy Burress, Kevin Michael Richardson",
+    "director": "Andy Jones, Mahiro Maeda, Shinichirō Watanabe, Yoshiaki Kawajiri, Takeshi Koike, Kōji Morimoto, Peter Chung",
+    "producers": "Produced by Larry and Andy Wachowski; executive producer Joel Silver; co-producer Steve Richards",
+    "company": "Warner Bros. / Village Roadshow Pictures / Silver Pictures / Warner Home Video",
+    "titleNote": "Widescreen / 2003",
+    "tagline": "9 short films exploring the incredible world of The Matrix",
+    "desc": "Welcome to The Animatrix, a visionary fusion of CG animation and Japanese anime from the world's most revered anime directors. Experience the prequel to The Matrix and learn about the last cities of mankind, the war with the machines and humanity's ultimate downfall. Witness the Final Flight of the Osiris, which sets the stage for The Matrix Reloaded movie and Enter the Matrix video game. The films: Final Flight of the Osiris, The Second Renaissance Parts I & II, Kid's Story, Program, World Record, Beyond, A Detective Story, Matriculated.",
+    "trivia": [
+      {
+        "heading": "Nine Films, Seven Directors",
+        "text": "The nine shorts come from some of anime's best-known directors, including Shinichirō Watanabe (Cowboy Bebop), Kōji Morimoto, Yoshiaki Kawajiri and Peter Chung (Aeon Flux)."
+      },
+      {
+        "heading": "Written by the Wachowskis",
+        "text": "Andy and Larry (now Lana and Lilly) Wachowski wrote four of the films themselves: Final Flight of the Osiris, both parts of The Second Renaissance, and Kid's Story."
+      },
+      {
+        "heading": "Before Reloaded",
+        "text": "Final Flight of the Osiris played in cinemas before Dreamcatcher in 2003. Its story leads straight into The Matrix Reloaded and the Enter the Matrix video game."
+      },
+      {
+        "heading": "Neo Drops In",
+        "text": "Keanu Reeves and Carrie-Anne Moss voice Neo and Trinity in Kid's Story, making it the one short with stars from the films."
+      },
+      {
+        "heading": "How the War Began",
+        "text": "The Second Renaissance, Parts I and II, shows the history of the war between humans and machines that led to the Matrix."
+      }
+    ],
+    "tidbits": [
+      "The nine shorts come from some of anime's best-known directors, including Shinichirō Watanabe (Cowboy Bebop), Kōji Morimoto, Yoshiaki Kawajiri and Peter Chung (Aeon Flux).",
+      "Andy and Larry (now Lana and Lilly) Wachowski wrote four of the films themselves: Final Flight of the Osiris, both parts of The Second Renaissance, and Kid's Story.",
+      "Final Flight of the Osiris played in cinemas before Dreamcatcher in 2003. Its story leads straight into The Matrix Reloaded and the Enter the Matrix video game.",
+      "Keanu Reeves and Carrie-Anne Moss voice Neo and Trinity in Kid's Story, making it the one short with stars from the films.",
+      "The Second Renaissance, Parts I and II, shows the history of the war between humans and machines that led to the Matrix."
+    ],
+    "copies": [
+      {
+        "id": "the-animatrix-2003-dvd-1",
+        "added": "2026-11-23",
+        "format": "DVD",
+        "edition": "Widescreen, Warner Home Video snap case (37316), Canadian 14A sticker",
+        "photos": [
+          "images/the-animatrix-2003-dvd-1.jpg",
+          "images/the-animatrix-2003-dvd-2.jpg",
+          "images/the-animatrix-2003-dvd-3.jpg",
+          "images/the-animatrix-2003-dvd-4.jpg",
+          "images/the-animatrix-2003-dvd-5.jpg",
+          "images/the-animatrix-2003-dvd-6.jpg",
+          "images/the-animatrix-2003-dvd-7.jpg",
+          "images/the-animatrix-2003-dvd-8.jpg"
+        ],
+        "gif": "images/the-animatrix-2003-dvd-1.gif",
+        "condition": {
+          "overall": "Good",
+          "case": "Good: cardboard snap case with a crease at the top edge of the front cover above \"The\", a crease on the left front edge, and rubbing along the spine edge; small scuffs on the inside panel",
+          "discs": [
+            "Very Good"
+          ],
+          "inserts": "None (credits and special features printed inside the snap case)",
+          "notes": "(C) 2003 Warner Bros. Warner Home Video, catalogue 37316, ISBN 0-7907-7229-9, UPC 0 85393 73162 5. Region 1, dual-layer. Widescreen (2.35:1 letterbox, enhanced for widescreen TVs). Languages: English & Japanese, Dolby Surround 5.1. Subtitles: English, Français & Español. Feature 89 mins, extras 78 mins. Not rated (US); Canadian Home Video rating 14A. Special features: making-of documentaries on each film; Scrolls to Screen: The History and Culture of Animé; director commentaries; director profiles; Enter the Matrix game trailer; DVD-ROM features."
+        },
+        "ebayUrl": "",
+        "sold": false
+      }
+    ]
   }
 ]
